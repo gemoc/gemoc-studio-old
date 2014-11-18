@@ -16,7 +16,7 @@ public interface ILogicalStepDecider extends IDisposable
 	 * @param possibleLogicalSteps
 	 * @return The index of the selected logical step, -1 if no logical step selected.
 	 */
-	int decide(GemocExecutionEngine engine, List<LogicalStep> possibleLogicalSteps)  throws InterruptedException;
+	int decide(IExecutionEngine engine, List<LogicalStep> possibleLogicalSteps)  throws InterruptedException;
 	
 	/**
 	 * Stop the decision making in progress.

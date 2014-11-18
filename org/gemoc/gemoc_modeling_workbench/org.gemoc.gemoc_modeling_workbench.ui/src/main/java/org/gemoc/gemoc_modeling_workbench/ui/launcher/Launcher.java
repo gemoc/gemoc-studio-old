@@ -46,7 +46,7 @@ import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
@@ -307,8 +307,8 @@ public class Launcher
 	private void throwExceptionIfEngineAlreadyRunning(ModelExecutionContext executionContext) throws CoreException 
 	{
 		// make sure there is no other running engine on this model
-		Collection<GemocExecutionEngine> engines = org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().values();
-		for (GemocExecutionEngine engine : engines)
+		Collection<IExecutionEngine> engines = org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().values();
+		for (IExecutionEngine engine : engines)
 		{
 			ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
   		  	if (observable.getEngineStatus().getRunningStatus() != RunStatus.Stopped 

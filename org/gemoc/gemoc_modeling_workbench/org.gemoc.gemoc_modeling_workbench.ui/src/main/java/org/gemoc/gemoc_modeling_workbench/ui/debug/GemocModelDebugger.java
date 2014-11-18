@@ -4,7 +4,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -152,29 +152,29 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 	}
 
 	@Override
-	public void engineAboutToStart(GemocExecutionEngine engine) 
+	public void engineAboutToStart(IExecutionEngine engine) 
 	{
 	}
 	
 	@Override
-	public void engineStarted(GemocExecutionEngine executionEngine) 
+	public void engineStarted(IExecutionEngine executionEngine) 
 	{
 		spawnRunningThread(Thread.currentThread().getName(), engine.getExecutionContext().getResourceModel().getContents().get(0));
 	}
 
 
 	@Override
-	public void preLogicalStepSelection(GemocExecutionEngine engine) 
+	public void preLogicalStepSelection(IExecutionEngine engine) 
 	{
 	}
 
 	@Override
-	public void postLogicalStepSelection(GemocExecutionEngine engine) 
+	public void postLogicalStepSelection(IExecutionEngine engine) 
 	{
 	}
 
 	@Override
-	public void postStopEngine(GemocExecutionEngine engine) 
+	public void postStopEngine(IExecutionEngine engine) 
 	{
 		if (!isTerminated(Thread.currentThread().getName())) 
 		{
@@ -183,7 +183,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 	}
 
 	@Override
-	public void aboutToExecuteLogicalStep(GemocExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
+	public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
 	{
 		if (!control(Thread.currentThread().getName(), logicalStepToApply))
 		{
@@ -192,7 +192,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 	}
 
 	@Override
-	public void aboutToExecuteMSE(GemocExecutionEngine executionEngine, ModelSpecificEvent mse) 
+	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse) 
 	{
 		if (!control(Thread.currentThread().getName(), mse.getCaller()))
 		{

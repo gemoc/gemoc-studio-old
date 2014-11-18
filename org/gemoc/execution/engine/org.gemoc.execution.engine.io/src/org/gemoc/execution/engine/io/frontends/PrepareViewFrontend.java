@@ -7,14 +7,14 @@ import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.execution.engine.io.views.event.EventManagerView;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.io.views.timeline.TimeLineView;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.extensions.frontends.IFrontend;
 
 public class PrepareViewFrontend implements IFrontend 
 {
 	
 	@Override
-	public void initialize(final GemocExecutionEngine engine) {
+	public void initialize(final IExecutionEngine engine) {
 		if (PlatformUI.isWorkbenchRunning())
 		{
 			PlatformUI

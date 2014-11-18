@@ -26,7 +26,7 @@ import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
@@ -50,7 +50,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	
 	private ObservableBasicExecutionEngine _currentEngine;
 	
-	private WeakHashMap<GemocExecutionEngine, Integer> _positions = new WeakHashMap<GemocExecutionEngine, Integer>();
+	private WeakHashMap<IExecutionEngine, Integer> _positions = new WeakHashMap<IExecutionEngine, Integer>();
 	
 	public TimeLineView()
 	{
@@ -187,7 +187,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	}
 
 	@Override
-	public void motorSelectionChanged(GemocExecutionEngine engine) {
+	public void motorSelectionChanged(IExecutionEngine engine) {
 		if (engine != null)
 		{
 			if (canDisplayTimeline(engine))
@@ -201,7 +201,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		}
 	}
 
-	private boolean canDisplayTimeline(GemocExecutionEngine engine)
+	private boolean canDisplayTimeline(IExecutionEngine engine)
 	{
 		if (engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Run)
 			&& engine.getEngineStatus().getRunningStatus().equals(RunStatus.Stopped))

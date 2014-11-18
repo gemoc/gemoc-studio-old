@@ -6,7 +6,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.LogicalStep;
@@ -25,9 +25,9 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		if (inputElement instanceof GemocExecutionEngine)
+		if (inputElement instanceof IExecutionEngine)
 		{
-			GemocExecutionEngine engine = (GemocExecutionEngine)inputElement;
+			IExecutionEngine engine = (IExecutionEngine)inputElement;
 			if (engine.getEngineStatus().getRunningStatus().equals(RunStatus.Stopped))
 			{
 				String message = "Motor is not running";
@@ -55,9 +55,9 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		if (parentElement instanceof GemocExecutionEngine)
+		if (parentElement instanceof IExecutionEngine)
 		{
-			GemocExecutionEngine engine = (GemocExecutionEngine)parentElement;
+			IExecutionEngine engine = (IExecutionEngine)parentElement;
 			return engine.getEngineStatus().getCurrentLogicalStepChoice().toArray();
 		}
 		else if (parentElement instanceof LogicalStep)
@@ -82,9 +82,9 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 	@Override
 	public boolean hasChildren(Object element) 
 	{
-		if (element instanceof GemocExecutionEngine)
+		if (element instanceof IExecutionEngine)
 		{
-			GemocExecutionEngine engine = (GemocExecutionEngine)element;
+			IExecutionEngine engine = (IExecutionEngine)element;
 			return engine.getEngineStatus().getCurrentLogicalStepChoice().size() > 0;
 		}
 		else if (element instanceof LogicalStep)

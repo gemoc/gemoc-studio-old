@@ -12,7 +12,7 @@ import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 
@@ -93,10 +93,10 @@ public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorS
 			_menu.dispose();
 	}
 
-	private GemocExecutionEngine _currentSelectedEngine;
+	private IExecutionEngine _currentSelectedEngine;
 	
 	@Override
-	public void motorSelectionChanged(GemocExecutionEngine engine) 
+	public void motorSelectionChanged(IExecutionEngine engine) 
 	{
 		_currentSelectedEngine = engine;
 		for (DeciderAction action : _subActions)

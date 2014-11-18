@@ -5,7 +5,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import org.gemoc.execution.engine.io.Activator;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.extensions.backends.IBackend;
 
 /**
@@ -43,10 +43,10 @@ public class ConsoleBackend implements IBackend, Observer {
 			((Observable) _engine).deleteObserver(this);
 	}
 
-	private GemocExecutionEngine _engine;
+	private IExecutionEngine _engine;
 	
 	@Override
-	public void initialize(GemocExecutionEngine engine)
+	public void initialize(IExecutionEngine engine)
 	{
 		_engine = engine;
 		if (engine instanceof Observable)

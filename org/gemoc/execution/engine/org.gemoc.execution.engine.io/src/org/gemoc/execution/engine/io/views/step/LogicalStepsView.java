@@ -26,7 +26,7 @@ import org.gemoc.execution.engine.io.views.DependantViewPart;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.LogicalStep;
@@ -144,10 +144,10 @@ public class LogicalStepsView extends DependantViewPart
 	}
 
 	
-	private GemocExecutionEngine _currentEngine;
+	private IExecutionEngine _currentEngine;
 	
 	@Override
-	public void motorSelectionChanged(GemocExecutionEngine engine) {
+	public void motorSelectionChanged(IExecutionEngine engine) {
 		if (engine != null
 			&&  engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation)) 
 		{

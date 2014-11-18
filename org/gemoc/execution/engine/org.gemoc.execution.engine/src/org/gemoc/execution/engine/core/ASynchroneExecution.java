@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionFinishedCondition;
@@ -24,7 +24,7 @@ public class ASynchroneExecution extends OperationExecution
 	private IMSEStateController _clockController;
 	private HashMap<Force, When> _forces;
 	
-	public ASynchroneExecution(ModelSpecificEvent mse, Collection<When> whenStatements, IMSEStateController clockController, GemocExecutionEngine engine) 
+	public ASynchroneExecution(ModelSpecificEvent mse, Collection<When> whenStatements, IMSEStateController clockController, IExecutionEngine engine) 
 	{
 		super(mse, engine);
 		_whenStatements = whenStatements;

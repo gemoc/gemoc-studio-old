@@ -9,31 +9,31 @@ public interface IEngineHook {
 	/**
 	 * Operation called before the engine starts
 	 */
-	public void engineAboutToStart(GemocExecutionEngine engine);
-	public void engineStarted(GemocExecutionEngine executionEngine);
+	public void engineAboutToStart(IExecutionEngine engine);
+	public void engineStarted(IExecutionEngine executionEngine);
 
 	
 	/**
 	 * Operation called before the LogicalStep has been chosen
 	 */
-	public void preLogicalStepSelection(GemocExecutionEngine engine);
+	public void preLogicalStepSelection(IExecutionEngine engine);
 	
 	/**
 	 * Operation called after the LogicalStep has been chosen
 	 * It also returns the chosen LogicalStep
 	 */
-	public void postLogicalStepSelection(GemocExecutionEngine engine);
+	public void postLogicalStepSelection(IExecutionEngine engine);
 	
 	/**
 	 * Operation called after the engine has been stopped
 	 */
-	public void postStopEngine(GemocExecutionEngine engine);
+	public void postStopEngine(IExecutionEngine engine);
 
 
-	public void aboutToExecuteLogicalStep(GemocExecutionEngine executionEngine, LogicalStep logicalStepToApply);
+	public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply);
 
 
-	public void aboutToExecuteMSE(GemocExecutionEngine executionEngine, ModelSpecificEvent mse);	
+	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse);	
 	
 
 }

@@ -32,7 +32,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceMode
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
@@ -44,10 +44,10 @@ import fr.inria.aoste.trace.LogicalStep;
 
 public class ModelExecutionTracingCapability implements IExecutionEngineCapability {
 
-	private GemocExecutionEngine _engine;
+	private IExecutionEngine _engine;
 		
 	@Override
-	public void initialize(GemocExecutionEngine engine) {
+	public void initialize(IExecutionEngine engine) {
 		_engine = engine;
 		
 	}

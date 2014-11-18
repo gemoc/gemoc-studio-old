@@ -10,7 +10,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
@@ -66,14 +66,14 @@ import fr.inria.aoste.trace.LogicalStep;
  * actually executed.</li>
  * </ul>
  * 
- * @see GemocExecutionEngine
+ * @see IExecutionEngine
  * 
  * @author flatombe
  * @author didier.vojtisek@inria.fr
  * @param <T>
  * 
  */
-public abstract class ObservableBasicExecutionEngine extends Observable implements GemocExecutionEngine {
+public abstract class ObservableBasicExecutionEngine extends Observable implements IExecutionEngine {
 
 	private boolean _started = false;
 	private boolean terminated = false;

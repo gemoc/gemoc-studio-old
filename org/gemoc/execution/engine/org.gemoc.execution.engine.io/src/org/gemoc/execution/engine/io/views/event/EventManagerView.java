@@ -55,7 +55,7 @@ import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManagerState;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
@@ -525,7 +525,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 * Listen the engine selection in the enginesStatusView
 	 */
 	@Override
-	public void motorSelectionChanged(GemocExecutionEngine engine) {
+	public void motorSelectionChanged(IExecutionEngine engine) {
 		if (engine != null) 
 		{
 			_currentSelectedEngine = (ObservableBasicExecutionEngine) engine;
@@ -622,7 +622,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_viewer.getTable().setFocus();
 	}
 
-	public GemocExecutionEngine getEngine() 
+	public IExecutionEngine getEngine() 
 	{
 		return _currentSelectedEngine;
 	}

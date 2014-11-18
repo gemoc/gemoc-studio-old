@@ -7,7 +7,7 @@ import java.util.List;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
@@ -17,7 +17,7 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 public class SynchroneExecution extends OperationExecution 
 {
 
-	protected SynchroneExecution(ModelSpecificEvent mse, GemocExecutionEngine engine) 
+	protected SynchroneExecution(ModelSpecificEvent mse, IExecutionEngine engine) 
 	{
 		super(mse, engine);
 	}

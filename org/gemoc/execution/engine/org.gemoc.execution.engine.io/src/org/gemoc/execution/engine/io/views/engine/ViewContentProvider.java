@@ -8,7 +8,7 @@ import java.util.List;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 class ViewContentProvider implements ITreeContentProvider 
 {
@@ -23,7 +23,7 @@ class ViewContentProvider implements ITreeContentProvider
 		if (parent instanceof GemocRunningEnginesRegistry)
 		{
 			GemocRunningEnginesRegistry registry = org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry;
-			List<GemocExecutionEngine> engines = new ArrayList<GemocExecutionEngine>(registry.getRunningEngines().values());
+			List<IExecutionEngine> engines = new ArrayList<IExecutionEngine>(registry.getRunningEngines().values());
 			Collections.sort(engines, getComparator()); 
 			return engines.toArray();
 		}
@@ -44,10 +44,10 @@ class ViewContentProvider implements ITreeContentProvider
 		return false;
 	}
 	
-	private Comparator<GemocExecutionEngine> getComparator()
+	private Comparator<IExecutionEngine> getComparator()
 	{
-		Comparator<GemocExecutionEngine> comparator = new Comparator<GemocExecutionEngine>() {
-		    public int compare(GemocExecutionEngine c1, GemocExecutionEngine c2) 
+		Comparator<IExecutionEngine> comparator = new Comparator<IExecutionEngine>() {
+		    public int compare(IExecutionEngine c1, IExecutionEngine c2) 
 		    {
 		    	int c1Value = c1.getEngineStatus().getRunningStatus().ordinal();
 		    	int c2Value = c2.getEngineStatus().getRunningStatus().ordinal();

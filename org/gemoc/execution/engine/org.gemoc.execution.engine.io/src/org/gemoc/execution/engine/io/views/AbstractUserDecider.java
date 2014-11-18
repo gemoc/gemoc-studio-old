@@ -11,7 +11,7 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 
 import fr.inria.aoste.trace.LogicalStep;
@@ -27,7 +27,7 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 	private Semaphore _semaphore = null;
 
 	@Override
-	public int decide(final GemocExecutionEngine engine, final List<LogicalStep> possibleLogicalSteps)
+	public int decide(final IExecutionEngine engine, final List<LogicalStep> possibleLogicalSteps)
 			throws InterruptedException {
 		_preemptionHappened = false;
 		_semaphore = new Semaphore(0);

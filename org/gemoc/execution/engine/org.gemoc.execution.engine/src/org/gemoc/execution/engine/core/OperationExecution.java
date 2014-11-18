@@ -1,6 +1,6 @@
 package org.gemoc.execution.engine.core;
 
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
@@ -9,10 +9,10 @@ public abstract class OperationExecution
 {
 
 	private ModelSpecificEvent _mse;
-	private GemocExecutionEngine _engine;
+	private IExecutionEngine _engine;
 	private Object _result;
 	
-	protected OperationExecution(ModelSpecificEvent mse, GemocExecutionEngine engine)
+	protected OperationExecution(ModelSpecificEvent mse, IExecutionEngine engine)
 	{
 		_mse = mse;
 		_engine = engine;
@@ -25,7 +25,7 @@ public abstract class OperationExecution
 		return _engine.getExecutionContext();
 	}
 	
-	protected GemocExecutionEngine getEngine()
+	protected IExecutionEngine getEngine()
 	{
 		return _engine;
 	}

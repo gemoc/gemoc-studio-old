@@ -38,7 +38,7 @@ import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.actions.StopAllEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 
@@ -154,9 +154,9 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 				public Image getImage(Object element) 
 				{
 					Image result = null;
-					if (element instanceof GemocExecutionEngine)
+					if (element instanceof IExecutionEngine)
 					{
-						GemocExecutionEngine engine = (GemocExecutionEngine)element;
+						IExecutionEngine engine = (IExecutionEngine)element;
 						switch (engine.getEngineStatus().getRunningStatus()) {
 							case Running:
 								result = SharedIcons.getSharedImage(SharedIcons.RUNNING_ENGINE_ICON);							
@@ -195,9 +195,9 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 				public String getText(Object element) 
 				{
 					String result = "";
-					if (element instanceof GemocExecutionEngine)
+					if (element instanceof IExecutionEngine)
 					{					
-						GemocExecutionEngine engine = (GemocExecutionEngine)element;
+						IExecutionEngine engine = (IExecutionEngine)element;
 						result = engine.getExecutionContext().getResourceModel().getURI().segmentsList().get(engine.getExecutionContext().getResourceModel().getURI().segments().length-1);	
 					}
 					return result;
@@ -208,9 +208,9 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 				{
 					Image result = null;
 					ImageDescriptor imageDescriptor = null;
-					if (element instanceof GemocExecutionEngine)
+					if (element instanceof IExecutionEngine)
 					{
-						GemocExecutionEngine engine = (GemocExecutionEngine)element;
+						IExecutionEngine engine = (IExecutionEngine)element;
 						for (DeciderSpecificationExtension spec : DeciderSpecificationExtensionPoint.getSpecifications())
 						{
 							if (engine.getExecutionContext().getLogicalStepDecider().getClass().getName().equals(spec.getDeciderClassName()))
@@ -231,11 +231,11 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 				public String getToolTipText(Object element) 
 				{
 					String result = "";
-					if (element instanceof GemocExecutionEngine)
+					if (element instanceof IExecutionEngine)
 					{					
-						GemocExecutionEngine engine = (GemocExecutionEngine)element;
+						IExecutionEngine engine = (IExecutionEngine)element;
 						GemocRunningEnginesRegistry registry = org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry;
-						for (Entry<String, GemocExecutionEngine> e : registry.getRunningEngines().entrySet())
+						for (Entry<String, IExecutionEngine> e : registry.getRunningEngines().entrySet())
 						{
 							if (e.getValue() == engine)
 							{
@@ -279,9 +279,9 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 				public String getText(Object element) 
 				{
 					String result = "";
-					if (element instanceof GemocExecutionEngine)
+					if (element instanceof IExecutionEngine)
 					{					
-						GemocExecutionEngine engine = (GemocExecutionEngine)element;
+						IExecutionEngine engine = (IExecutionEngine)element;
 						result = String.format("%d", engine.getEngineStatus().getNbLogicalStepRun());
 					}
 					return result;
@@ -336,11 +336,11 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 	 * get the selection
 	 * @return the engine selected or null if no engine selected
 	 */
-	public GemocExecutionEngine getSelectedEngine()
+	public IExecutionEngine getSelectedEngine()
 	{
 		try{
 			IStructuredSelection selection = (IStructuredSelection) _viewer.getSelection();
-			return (GemocExecutionEngine)selection.getFirstElement();
+			return (IExecutionEngine)selection.getFirstElement();
 		} catch(Exception e){
 			Activator.getDefault().error(e.getMessage(), e);
 		}
@@ -353,7 +353,7 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 		    // we may be triggered by a registry change or by an engine change
 		    // if registry changes, then may need to observe the new engine
 //			List<String> engineStopped = new ArrayList<String>();
-		    for (Entry<String, GemocExecutionEngine> engineEntry : org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().entrySet())
+		    for (Entry<String, IExecutionEngine> engineEntry : org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().entrySet())
 		    {		    	  
 		    	switch(engineEntry.getValue().getEngineStatus().getRunningStatus())
 		    	{
@@ -372,7 +372,7 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 	public void update(final Observable o, final Object arg) {
 		Display.getDefault().syncExec(new Runnable() {
 		      public void run() {
-		    	  GemocExecutionEngine engine = (GemocExecutionEngine)o;
+		    	  IExecutionEngine engine = (IExecutionEngine)o;
 		    	  updateUserInterface(engine);
 		    	  if (getSelectedEngine() == engine)
 		    	  {
@@ -394,14 +394,14 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 		_motorSelectionListeners.remove(listener);
 	}
 	private void fireEngineSelectionChanged() {
-		GemocExecutionEngine engine = getSelectedEngine();
+		IExecutionEngine engine = getSelectedEngine();
 		for(IMotorSelectionListener listener: _motorSelectionListeners) {
 			listener.motorSelectionChanged(engine);
 		}
 	}
 
 	@Override
-	public void engineRegistered(final GemocExecutionEngine engine) 
+	public void engineRegistered(final IExecutionEngine engine) 
 	{
 		Display.getDefault().syncExec(new Runnable() {
 		      public void run() {
@@ -416,13 +416,13 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 	}
 
 	@Override
-	public void engineUnregistered(GemocExecutionEngine engine) 
+	public void engineUnregistered(IExecutionEngine engine) 
 	{
 		ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
 		observable.deleteObserver(EnginesStatusView.this);	
 	}
 
-	private void updateUserInterface(final GemocExecutionEngine engine) {
+	private void updateUserInterface(final IExecutionEngine engine) {
     	//TreeViewerHelper.resizeColumns(_viewer);
 //		TreePath treePath = new TreePath(new Object[] {engine});
 //		TreeSelection newSelection = new TreeSelection(treePath);

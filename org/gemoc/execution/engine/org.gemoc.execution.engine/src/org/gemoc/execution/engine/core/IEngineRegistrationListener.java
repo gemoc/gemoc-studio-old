@@ -1,11 +1,11 @@
 package org.gemoc.execution.engine.core;
 
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 public interface IEngineRegistrationListener {
 
-	void engineRegistered(GemocExecutionEngine engine);
+	void engineRegistered(IExecutionEngine engine);
 
-	void engineUnregistered(GemocExecutionEngine engine);
+	void engineUnregistered(IExecutionEngine engine);
 	
 }

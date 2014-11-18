@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.gemoc.execution.engine.core.IModelAnimator;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices.BreakpointListener;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -251,31 +251,31 @@ public abstract class AbstractGemocAnimatorServices {
 		}
 
 		@Override
-		public void engineAboutToStart(GemocExecutionEngine engine) {
+		public void engineAboutToStart(IExecutionEngine engine) {
 			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
-		public void engineStarted(GemocExecutionEngine executionEngine) {
+		public void engineStarted(IExecutionEngine executionEngine) {
 			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
-		public void preLogicalStepSelection(GemocExecutionEngine engine) {
+		public void preLogicalStepSelection(IExecutionEngine engine) {
 			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
-		public void postLogicalStepSelection(GemocExecutionEngine engine) {
+		public void postLogicalStepSelection(IExecutionEngine engine) {
 			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
-		public void postStopEngine(GemocExecutionEngine engine)
+		public void postStopEngine(IExecutionEngine engine)
 		{
 			clear(engine);
 			if (engine.getExecutionContext().getRunConfiguration().getAnimatorURI() != null)
@@ -287,13 +287,13 @@ public abstract class AbstractGemocAnimatorServices {
 		}
 
 		@Override
-		public void aboutToExecuteLogicalStep(GemocExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
+		public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
 		{
 			activate(executionEngine, logicalStepToApply);
 		}
 
 		@Override
-		public void aboutToExecuteMSE(GemocExecutionEngine executionEngine,
+		public void aboutToExecuteMSE(IExecutionEngine executionEngine,
 				ModelSpecificEvent mse) {
 			// TODO Auto-generated method stub
 			

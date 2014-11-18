@@ -15,10 +15,10 @@ import fr.inria.aoste.trace.LogicalStep;
  * @author didier.vojtisek@inria.fr
  * 
  */
-public interface GemocExecutionEngine {
+public interface IExecutionEngine {
 
 	/**
-	 * Starts the {@link GemocExecutionEngine}.
+	 * Starts the {@link IExecutionEngine}.
 	 */
 	public void start();
 	
