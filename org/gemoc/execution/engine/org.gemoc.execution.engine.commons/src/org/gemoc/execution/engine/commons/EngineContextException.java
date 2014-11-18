@@ -1,6 +1,11 @@
-package org.gemoc.gemoc_language_workbench.api.exceptions;
+package org.gemoc.execution.engine.commons;
 
 public class EngineContextException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8964957013028069014L;
 
 	public EngineContextException(String message) 
 	{
