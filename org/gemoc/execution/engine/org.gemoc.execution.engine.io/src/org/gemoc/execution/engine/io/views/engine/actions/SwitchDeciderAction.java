@@ -111,7 +111,7 @@ public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorS
 		{
 			setEnabled(
 					!_currentSelectedEngine.getEngineStatus().getRunningStatus().equals(RunStatus.Stopped)
-					&& _currentSelectedEngine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Debug));			
+					&& _currentSelectedEngine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation));			
 		}
 	}
 

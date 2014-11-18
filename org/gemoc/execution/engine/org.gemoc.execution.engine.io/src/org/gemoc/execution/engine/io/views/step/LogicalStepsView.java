@@ -149,7 +149,7 @@ public class LogicalStepsView extends DependantViewPart
 	@Override
 	public void motorSelectionChanged(GemocExecutionEngine engine) {
 		if (engine != null
-			&&  engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Debug)) 
+			&&  engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation)) 
 		{
 			_currentEngine = engine;	
 			_viewer.setInput(_currentEngine);

@@ -32,7 +32,7 @@ public class DefaultModelLoader implements IModelLoader {
 	{
 		Resource resource = null;
 		ResourceSet resourceSet;
-		if (context.getExecutionMode().equals(ExecutionMode.Debug)
+		if (context.getExecutionMode().equals(ExecutionMode.Animation)
 			&& context.getRunConfiguration().getAnimatorURI() != null)
 		{
 			killPreviousSiriusSession(context.getRunConfiguration().getAnimatorURI());

@@ -208,7 +208,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		{
 			return true;
 		}
-		if (engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Debug))
+		if (engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation))
 		{
 			return true;
 		}	

@@ -555,7 +555,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				if(_mseContextMap.get(_currentSelectedEngine) == null)
 				{
 					createMSEContext();
-					if(_currentSelectedEngine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Debug))
+					if(_currentSelectedEngine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation))
 					{
 						bring2Top();
 					}
