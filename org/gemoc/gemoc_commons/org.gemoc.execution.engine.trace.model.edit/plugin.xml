@@ -10,20 +10,7 @@
       <!-- @generated GemocExecutionEngineTrace -->
       <factory
             uri="http://www.inira.fr/gemoc_execution_trace"
-            class="org.gemoc.execution.engine.trace.gemoc_execution_trace.provider.GemocExecutionEngineTraceItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated GemocExecutionEngineTrace -->
-      <factory
-            uri="http://www.inria.fr/sophia/aoste/trace/1.0.0"
-            class="fr.inria.aoste.trace.provider.TraceItemProviderAdapterFactory"
+            class="org.gemoc.execution.engine.trace.gemoc_execution_trace.provider.Gemoc_execution_traceItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

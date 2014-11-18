@@ -144,7 +144,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_L0oUIW46EeSlS-g-6PFWyw" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//ConstraintState"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L0oUIm46EeSlS-g-6PFWyw" x="970" y="685"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L0oUIm46EeSlS-g-6PFWyw" x="940" y="655"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_L00ham46EeSlS-g-6PFWyw" type="1001">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L06oAG46EeSlS-g-6PFWyw" source="Shortcut">
@@ -163,7 +163,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_L00ha246EeSlS-g-6PFWyw" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//EventOccurrence"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L00hbG46EeSlS-g-6PFWyw" x="525" y="845"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L00hbG46EeSlS-g-6PFWyw" x="550" y="855"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_L06oAm46EeSlS-g-6PFWyw" type="1001">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L06oDm46EeSlS-g-6PFWyw" source="Shortcut">
@@ -182,7 +182,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_L06oA246EeSlS-g-6PFWyw" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//AssertionState"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L06oBG46EeSlS-g-6PFWyw" x="200" y="560"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L06oBG46EeSlS-g-6PFWyw" x="205" y="560"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_L06oEG46EeSlS-g-6PFWyw" type="1001">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L06oHG46EeSlS-g-6PFWyw" source="Shortcut">
@@ -201,7 +201,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_L06oEW46EeSlS-g-6PFWyw" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//Trace"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L06oEm46EeSlS-g-6PFWyw" x="940" y="535"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L06oEm46EeSlS-g-6PFWyw" x="935" y="575"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_L06oHm46EeSlS-g-6PFWyw" type="1001">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L06oKm46EeSlS-g-6PFWyw" source="Shortcut">
@@ -278,10 +278,10 @@
     <children xmi:type="notation:Node" xmi:id="_-nyE6r5cEeOi5rouKRnZRQ" type="4012">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_-nyE675cEeOi5rouKRnZRQ" x="-11" y="59"/>
     </children>
-    <styles xmi:type="notation:ConnectorStyle" xmi:id="_-nyE5b5cEeOi5rouKRnZRQ" lineColor="4210752"/>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_-nyE5b5cEeOi5rouKRnZRQ" routing="Rectilinear" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_-nyE5r5cEeOi5rouKRnZRQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
     <element xmi:type="ecore:EReference" href="GemocExecutionEngineTrace.ecore#//Choice/chosenLogicalStep"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-nyE575cEeOi5rouKRnZRQ" points="[9, 0, -236, -163]$[239, 0, -6, -163]$[239, 163, -6, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-nyE575cEeOi5rouKRnZRQ" points="[9, 13, -236, -150]$[239, 13, -6, -150]$[239, 163, -6, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-oOw0L5cEeOi5rouKRnZRQ" id="(0.9461077844311377,0.6991150442477876)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-oOw0b5cEeOi5rouKRnZRQ" id="(0.18226600985221675,0.0)"/>
   </edges>
@@ -369,29 +369,29 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_L2ofQG46EeSlS-g-6PFWyw" type="3002" source="_-nMPAL5cEeOi5rouKRnZRQ" target="_L0oUIG46EeSlS-g-6PFWyw">
     <children xmi:type="notation:Node" xmi:id="_L2ofRG46EeSlS-g-6PFWyw" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2ofRW46EeSlS-g-6PFWyw" x="-10" y="-10"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2ofRW46EeSlS-g-6PFWyw" x="-20" y="-7"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_L2ul4G46EeSlS-g-6PFWyw" type="4012">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2ul4W46EeSlS-g-6PFWyw" x="10" y="10"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2ul4W46EeSlS-g-6PFWyw" x="-77" y="-7"/>
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_L2ofQW46EeSlS-g-6PFWyw" routing="Rectilinear" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_L2ofQm46EeSlS-g-6PFWyw" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
     <element xmi:type="ecore:EReference" href="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep/constraintStates"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_L2ofQ246EeSlS-g-6PFWyw" points="[152, 145, -292, -36]$[376, 145, -68, -36]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_L2ofQ246EeSlS-g-6PFWyw" points="[152, 110, -247, -33]$[346, 110, -53, -33]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_L3xuxG46EeSlS-g-6PFWyw" id="(0.24509803921568626,0.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_L3xuxW46EeSlS-g-6PFWyw" id="(0.49640287769784175,1.0)"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_L2ul4m46EeSlS-g-6PFWyw" type="3002" source="_-nMPAL5cEeOi5rouKRnZRQ" target="_L00ham46EeSlS-g-6PFWyw">
     <children xmi:type="notation:Node" xmi:id="_L2ul5m46EeSlS-g-6PFWyw" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2ul5246EeSlS-g-6PFWyw" x="-10" y="-10"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2ul5246EeSlS-g-6PFWyw" x="-12" y="-11"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_L2ul6G46EeSlS-g-6PFWyw" type="4012">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2ul6W46EeSlS-g-6PFWyw" x="10" y="10"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2ul6W46EeSlS-g-6PFWyw" x="-12" y="56"/>
     </children>
-    <styles xmi:type="notation:ConnectorStyle" xmi:id="_L2ul4246EeSlS-g-6PFWyw" lineColor="4210752"/>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_L2ul4246EeSlS-g-6PFWyw" routing="Rectilinear" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_L2ul5G46EeSlS-g-6PFWyw" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
     <element xmi:type="ecore:EReference" href="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep/eventOccurrences"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_L2ul5W46EeSlS-g-6PFWyw" points="[-9, 136, 0, -139]$[-9, 210, 0, -65]$[-9, 275, 0, 0]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_L2ul5W46EeSlS-g-6PFWyw" points="[-45, 186, -26, -99]$[-45, 285, -26, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_L3xuwG46EeSlS-g-6PFWyw" id="(0.5,0.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_L3xuwW46EeSlS-g-6PFWyw" id="(0.6569767441860465,0.007352941176470588)"/>
   </edges>
@@ -425,7 +425,7 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_L2ul-m46EeSlS-g-6PFWyw" type="3002" source="_-nMPAL5cEeOi5rouKRnZRQ" target="_L06oAm46EeSlS-g-6PFWyw">
     <children xmi:type="notation:Node" xmi:id="_L2ul_m46EeSlS-g-6PFWyw" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2ul_246EeSlS-g-6PFWyw" x="-10" y="-10"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2ul_246EeSlS-g-6PFWyw" x="-56" y="10"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_L2umAG46EeSlS-g-6PFWyw" type="4012">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_L2umAW46EeSlS-g-6PFWyw" x="10" y="10"/>
@@ -433,13 +433,13 @@
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_L2ul-246EeSlS-g-6PFWyw" routing="Rectilinear" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_L2ul_G46EeSlS-g-6PFWyw" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
     <element xmi:type="ecore:EReference" href="platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep/assertionStates"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_L2ul_W46EeSlS-g-6PFWyw" points="[-9, -29, 269, -36]$[-202, -29, 76, -36]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_L2ul_W46EeSlS-g-6PFWyw" points="[-9, -29, 294, -28]$[-252, -29, 51, -28]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_L3xuwm46EeSlS-g-6PFWyw" id="(0.049019607843137254,0.26811594202898553)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_L3xuw246EeSlS-g-6PFWyw" id="(0.5,1.0)"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_L2umAm46EeSlS-g-6PFWyw" type="3002" source="_L06oEG46EeSlS-g-6PFWyw" target="_-nMPAL5cEeOi5rouKRnZRQ">
     <children xmi:type="notation:Node" xmi:id="_L2umBm46EeSlS-g-6PFWyw" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2umB246EeSlS-g-6PFWyw" x="-10" y="-10"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2umB246EeSlS-g-6PFWyw" x="-36" y="8"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_L2umCG46EeSlS-g-6PFWyw" type="4012">
       <layoutConstraint xmi:type="notation:Location" xmi:id="_L2umCW46EeSlS-g-6PFWyw" x="10" y="10"/>
@@ -470,7 +470,7 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_L2umF246EeSlS-g-6PFWyw" x="-10" y="-10"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_L2umGG46EeSlS-g-6PFWyw" type="4012">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2umGW46EeSlS-g-6PFWyw" x="10" y="10"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_L2umGW46EeSlS-g-6PFWyw" x="-106" y="-9"/>
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_L2umE246EeSlS-g-6PFWyw" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_L2umFG46EeSlS-g-6PFWyw" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>

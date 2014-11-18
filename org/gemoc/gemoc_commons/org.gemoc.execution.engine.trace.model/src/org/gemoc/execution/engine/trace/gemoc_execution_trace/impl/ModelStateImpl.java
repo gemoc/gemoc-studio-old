@@ -3,14 +3,15 @@
 package org.gemoc.execution.engine.trace.gemoc_execution_trace.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 
 /**
@@ -36,6 +37,7 @@ public class ModelStateImpl extends MinimalEObjectImpl.Container implements Mode
 	 * @ordered
 	 */
 	protected EObject model;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,7 +54,7 @@ public class ModelStateImpl extends MinimalEObjectImpl.Container implements Mode
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GemocExecutionEngineTracePackage.Literals.MODEL_STATE;
+		return Gemoc_execution_tracePackage.Literals.MODEL_STATE;
 	}
 
 	/**
@@ -66,7 +68,7 @@ public class ModelStateImpl extends MinimalEObjectImpl.Container implements Mode
 			model = eResolveProxy(oldModel);
 			if (model != oldModel) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GemocExecutionEngineTracePackage.MODEL_STATE__MODEL, oldModel, model));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Gemoc_execution_tracePackage.MODEL_STATE__MODEL, oldModel, model));
 			}
 		}
 		return model;
@@ -90,7 +92,7 @@ public class ModelStateImpl extends MinimalEObjectImpl.Container implements Mode
 		EObject oldModel = model;
 		model = newModel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GemocExecutionEngineTracePackage.MODEL_STATE__MODEL, oldModel, model));
+			eNotify(new ENotificationImpl(this, Notification.SET, Gemoc_execution_tracePackage.MODEL_STATE__MODEL, oldModel, model));
 	}
 
 	/**
@@ -101,7 +103,7 @@ public class ModelStateImpl extends MinimalEObjectImpl.Container implements Mode
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.MODEL_STATE__MODEL:
+			case Gemoc_execution_tracePackage.MODEL_STATE__MODEL:
 				if (resolve) return getModel();
 				return basicGetModel();
 		}
@@ -116,7 +118,7 @@ public class ModelStateImpl extends MinimalEObjectImpl.Container implements Mode
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.MODEL_STATE__MODEL:
+			case Gemoc_execution_tracePackage.MODEL_STATE__MODEL:
 				setModel((EObject)newValue);
 				return;
 		}
@@ -131,7 +133,7 @@ public class ModelStateImpl extends MinimalEObjectImpl.Container implements Mode
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.MODEL_STATE__MODEL:
+			case Gemoc_execution_tracePackage.MODEL_STATE__MODEL:
 				setModel((EObject)null);
 				return;
 		}
@@ -146,7 +148,7 @@ public class ModelStateImpl extends MinimalEObjectImpl.Container implements Mode
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.MODEL_STATE__MODEL:
+			case Gemoc_execution_tracePackage.MODEL_STATE__MODEL:
 				return model != null;
 		}
 		return super.eIsSet(featureID);

@@ -3,7 +3,9 @@
 package org.gemoc.execution.engine.trace.gemoc_execution_trace;
 
 import fr.inria.aoste.trace.LogicalStep;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,16 +20,18 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getPossibleLogicalSteps <em>Possible Logical Steps</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getChosenLogicalStep <em>Chosen Logical Step</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getContextState <em>Context State</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getPreviousChoice <em>Previous Choice</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getChoice()
+ * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getChoice()
  * @model
  * @generated
  */
 public interface Choice extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Next Choice</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getPreviousChoice <em>Previous Choice</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Next Choice</em>' reference isn't clear,
@@ -36,8 +40,9 @@ public interface Choice extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Next Choice</em>' reference.
 	 * @see #setNextChoice(Choice)
-	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getChoice_NextChoice()
-	 * @model
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getChoice_NextChoice()
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getPreviousChoice
+	 * @model opposite="previousChoice"
 	 * @generated
 	 */
 	Choice getNextChoice();
@@ -62,7 +67,7 @@ public interface Choice extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Possible Logical Steps</em>' containment reference list.
-	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getChoice_PossibleLogicalSteps()
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getChoice_PossibleLogicalSteps()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -78,7 +83,7 @@ public interface Choice extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Chosen Logical Step</em>' reference.
 	 * @see #setChosenLogicalStep(LogicalStep)
-	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getChoice_ChosenLogicalStep()
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getChoice_ChosenLogicalStep()
 	 * @model
 	 * @generated
 	 */
@@ -104,7 +109,7 @@ public interface Choice extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Context State</em>' containment reference.
 	 * @see #setContextState(ContextState)
-	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getChoice_ContextState()
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getChoice_ContextState()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -119,5 +124,33 @@ public interface Choice extends EObject {
 	 * @generated
 	 */
 	void setContextState(ContextState value);
+
+	/**
+	 * Returns the value of the '<em><b>Previous Choice</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getNextChoice <em>Next Choice</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Previous Choice</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Previous Choice</em>' reference.
+	 * @see #setPreviousChoice(Choice)
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getChoice_PreviousChoice()
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getNextChoice
+	 * @model opposite="nextChoice"
+	 * @generated
+	 */
+	Choice getPreviousChoice();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getPreviousChoice <em>Previous Choice</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Previous Choice</em>' reference.
+	 * @see #getPreviousChoice()
+	 * @generated
+	 */
+	void setPreviousChoice(Choice value);
 
 } // Choice

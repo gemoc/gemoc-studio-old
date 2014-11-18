@@ -3,12 +3,15 @@
 package org.gemoc.execution.engine.trace.gemoc_execution_trace.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
+
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 
 /**
@@ -35,6 +38,7 @@ public class SolverStateImpl extends MinimalEObjectImpl.Container implements Sol
 	 * @ordered
 	 */
 	protected EObject model;
+
 	/**
 	 * The default value of the '{@link #getSerializableModel() <em>Serializable Model</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -44,6 +48,7 @@ public class SolverStateImpl extends MinimalEObjectImpl.Container implements Sol
 	 * @ordered
 	 */
 	protected static final byte[] SERIALIZABLE_MODEL_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getSerializableModel() <em>Serializable Model</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -53,6 +58,7 @@ public class SolverStateImpl extends MinimalEObjectImpl.Container implements Sol
 	 * @ordered
 	 */
 	protected byte[] serializableModel = SERIALIZABLE_MODEL_EDEFAULT;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,7 +75,7 @@ public class SolverStateImpl extends MinimalEObjectImpl.Container implements Sol
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GemocExecutionEngineTracePackage.Literals.SOLVER_STATE;
+		return Gemoc_execution_tracePackage.Literals.SOLVER_STATE;
 	}
 
 	/**
@@ -83,7 +89,7 @@ public class SolverStateImpl extends MinimalEObjectImpl.Container implements Sol
 			model = eResolveProxy(oldModel);
 			if (model != oldModel) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GemocExecutionEngineTracePackage.SOLVER_STATE__MODEL, oldModel, model));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Gemoc_execution_tracePackage.SOLVER_STATE__MODEL, oldModel, model));
 			}
 		}
 		return model;
@@ -107,7 +113,7 @@ public class SolverStateImpl extends MinimalEObjectImpl.Container implements Sol
 		EObject oldModel = model;
 		model = newModel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GemocExecutionEngineTracePackage.SOLVER_STATE__MODEL, oldModel, model));
+			eNotify(new ENotificationImpl(this, Notification.SET, Gemoc_execution_tracePackage.SOLVER_STATE__MODEL, oldModel, model));
 	}
 
 	/**
@@ -128,7 +134,7 @@ public class SolverStateImpl extends MinimalEObjectImpl.Container implements Sol
 		byte[] oldSerializableModel = serializableModel;
 		serializableModel = newSerializableModel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GemocExecutionEngineTracePackage.SOLVER_STATE__SERIALIZABLE_MODEL, oldSerializableModel, serializableModel));
+			eNotify(new ENotificationImpl(this, Notification.SET, Gemoc_execution_tracePackage.SOLVER_STATE__SERIALIZABLE_MODEL, oldSerializableModel, serializableModel));
 	}
 
 	/**
@@ -139,10 +145,10 @@ public class SolverStateImpl extends MinimalEObjectImpl.Container implements Sol
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.SOLVER_STATE__MODEL:
+			case Gemoc_execution_tracePackage.SOLVER_STATE__MODEL:
 				if (resolve) return getModel();
 				return basicGetModel();
-			case GemocExecutionEngineTracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
+			case Gemoc_execution_tracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
 				return getSerializableModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -153,14 +159,13 @@ public class SolverStateImpl extends MinimalEObjectImpl.Container implements Sol
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.SOLVER_STATE__MODEL:
+			case Gemoc_execution_tracePackage.SOLVER_STATE__MODEL:
 				setModel((EObject)newValue);
 				return;
-			case GemocExecutionEngineTracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
+			case Gemoc_execution_tracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
 				setSerializableModel((byte[])newValue);
 				return;
 		}
@@ -175,10 +180,10 @@ public class SolverStateImpl extends MinimalEObjectImpl.Container implements Sol
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.SOLVER_STATE__MODEL:
+			case Gemoc_execution_tracePackage.SOLVER_STATE__MODEL:
 				setModel((EObject)null);
 				return;
-			case GemocExecutionEngineTracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
+			case Gemoc_execution_tracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
 				setSerializableModel(SERIALIZABLE_MODEL_EDEFAULT);
 				return;
 		}
@@ -193,9 +198,9 @@ public class SolverStateImpl extends MinimalEObjectImpl.Container implements Sol
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.SOLVER_STATE__MODEL:
+			case Gemoc_execution_tracePackage.SOLVER_STATE__MODEL:
 				return model != null;
-			case GemocExecutionEngineTracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
+			case Gemoc_execution_tracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
 				return SERIALIZABLE_MODEL_EDEFAULT == null ? serializableModel != null : !SERIALIZABLE_MODEL_EDEFAULT.equals(serializableModel);
 		}
 		return super.eIsSet(featureID);

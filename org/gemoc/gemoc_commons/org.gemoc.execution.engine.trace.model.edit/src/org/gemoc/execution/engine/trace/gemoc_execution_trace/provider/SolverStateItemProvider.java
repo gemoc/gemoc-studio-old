@@ -5,9 +5,12 @@ package org.gemoc.execution.engine.trace.gemoc_execution_trace.provider;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -18,7 +21,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
+
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 
 /**
@@ -27,7 +31,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SolverStateItemProvider
+public class SolverStateItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -75,7 +79,7 @@ public class SolverStateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_SolverState_model_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SolverState_model_feature", "_UI_SolverState_type"),
-				 GemocExecutionEngineTracePackage.Literals.SOLVER_STATE__MODEL,
+				 Gemoc_execution_tracePackage.Literals.SOLVER_STATE__MODEL,
 				 true,
 				 false,
 				 true,
@@ -97,7 +101,7 @@ public class SolverStateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_SolverState_serializableModel_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SolverState_serializableModel_feature", "_UI_SolverState_type"),
-				 GemocExecutionEngineTracePackage.Literals.SOLVER_STATE__SERIALIZABLE_MODEL,
+				 Gemoc_execution_tracePackage.Literals.SOLVER_STATE__SERIALIZABLE_MODEL,
 				 true,
 				 false,
 				 false,
@@ -131,6 +135,7 @@ public class SolverStateItemProvider
 			getString("_UI_SolverState_type") :
 			getString("_UI_SolverState_type") + " " + label;
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -144,7 +149,7 @@ public class SolverStateItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SolverState.class)) {
-			case GemocExecutionEngineTracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
+			case Gemoc_execution_tracePackage.SOLVER_STATE__SERIALIZABLE_MODEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

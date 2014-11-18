@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getExecutionTraceModel()
+ * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getExecutionTraceModel()
  * @model
  * @generated
  */
@@ -33,7 +33,7 @@ public interface ExecutionTraceModel extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Choices</em>' containment reference list.
-	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getExecutionTraceModel_Choices()
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getExecutionTraceModel_Choices()
 	 * @model containment="true"
 	 * @generated
 	 */

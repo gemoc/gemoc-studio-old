@@ -12,12 +12,12 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.GemocExecutionEngineTraceModelWizardID"
-            name="%_UI_GemocExecutionEngineTraceModelWizard_label"
-            class="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.GemocExecutionEngineTraceModelWizard"
+            id="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.Gemoc_execution_traceModelWizardID"
+            name="%_UI_Gemoc_execution_traceModelWizard_label"
+            class="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.Gemoc_execution_traceModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/GemocExecutionEngineTraceModelFile.gif">
-         <description>%_UI_GemocExecutionEngineTraceModelWizard_description</description>
+            icon="icons/full/obj16/Gemoc_execution_traceModelFile.gif">
+         <description>%_UI_Gemoc_execution_traceModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
@@ -25,41 +25,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated GemocExecutionEngineTrace -->
       <editor
-            id="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.GemocExecutionEngineTraceEditorID"
-            name="%_UI_GemocExecutionEngineTraceEditor_label"
-            icon="icons/full/obj16/GemocExecutionEngineTraceModelFile.gif"
-            extensions="gemocexecutionenginetrace"
-            class="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.GemocExecutionEngineTraceEditor"
-            contributorClass="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.GemocExecutionEngineTraceActionBarContributor">
+            id="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.Gemoc_execution_traceEditorID"
+            name="%_UI_Gemoc_execution_traceEditor_label"
+            icon="icons/full/obj16/Gemoc_execution_traceModelFile.gif"
+            extensions="gemoc_execution_trace"
+            class="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.Gemoc_execution_traceEditor"
+            contributorClass="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.Gemoc_execution_traceActionBarContributor">
       </editor>
    </extension>
-
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated GemocExecutionEngineTrace -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="fr.inria.aoste.trace.presentation.TraceModelWizardID"
-            name="%_UI_TraceModelWizard_label"
-            class="fr.inria.aoste.trace.presentation.TraceModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/TraceModelFile.gif">
-         <description>%_UI_TraceModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated GemocExecutionEngineTrace -->
-      <editor
-            id="fr.inria.aoste.trace.presentation.TraceEditorID"
-            name="%_UI_TraceEditor_label"
-            icon="icons/full/obj16/TraceModelFile.gif"
-            extensions="trace"
-            class="fr.inria.aoste.trace.presentation.TraceEditor"
-            contributorClass="fr.inria.aoste.trace.presentation.TraceActionBarContributor">
-      </editor>
-   </extension>
-
 </plugin>

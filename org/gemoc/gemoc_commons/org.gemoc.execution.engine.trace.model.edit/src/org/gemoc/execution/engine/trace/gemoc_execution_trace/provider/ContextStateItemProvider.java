@@ -5,10 +5,14 @@ package org.gemoc.execution.engine.trace.gemoc_execution_trace.provider;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -17,9 +21,10 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState} object.
@@ -27,7 +32,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngi
  * <!-- end-user-doc -->
  * @generated
  */
-public class ContextStateItemProvider
+public class ContextStateItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -72,8 +77,8 @@ public class ContextStateItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GemocExecutionEngineTracePackage.Literals.CONTEXT_STATE__MODEL_STATE);
-			childrenFeatures.add(GemocExecutionEngineTracePackage.Literals.CONTEXT_STATE__SOLVER_STATE);
+			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.CONTEXT_STATE__MODEL_STATE);
+			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.CONTEXT_STATE__SOLVER_STATE);
 		}
 		return childrenFeatures;
 	}
@@ -112,6 +117,7 @@ public class ContextStateItemProvider
 	public String getText(Object object) {
 		return getString("_UI_ContextState_type");
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -125,8 +131,8 @@ public class ContextStateItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ContextState.class)) {
-			case GemocExecutionEngineTracePackage.CONTEXT_STATE__MODEL_STATE:
-			case GemocExecutionEngineTracePackage.CONTEXT_STATE__SOLVER_STATE:
+			case Gemoc_execution_tracePackage.CONTEXT_STATE__MODEL_STATE:
+			case Gemoc_execution_tracePackage.CONTEXT_STATE__SOLVER_STATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -146,13 +152,13 @@ public class ContextStateItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(GemocExecutionEngineTracePackage.Literals.CONTEXT_STATE__MODEL_STATE,
-				 GemocExecutionEngineTraceFactory.eINSTANCE.createModelState()));
+				(Gemoc_execution_tracePackage.Literals.CONTEXT_STATE__MODEL_STATE,
+				 Gemoc_execution_traceFactory.eINSTANCE.createModelState()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(GemocExecutionEngineTracePackage.Literals.CONTEXT_STATE__SOLVER_STATE,
-				 GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState()));
+				(Gemoc_execution_tracePackage.Literals.CONTEXT_STATE__SOLVER_STATE,
+				 Gemoc_execution_traceFactory.eINSTANCE.createSolverState()));
 	}
 
 	/**

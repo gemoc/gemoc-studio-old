@@ -26,8 +26,8 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice} object.
@@ -35,7 +35,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngi
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChoiceItemProvider
+public class ChoiceItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -66,6 +66,7 @@ public class ChoiceItemProvider
 
 			addNextChoicePropertyDescriptor(object);
 			addChosenLogicalStepPropertyDescriptor(object);
+			addPreviousChoicePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -83,7 +84,7 @@ public class ChoiceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Choice_nextChoice_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_nextChoice_feature", "_UI_Choice_type"),
-				 GemocExecutionEngineTracePackage.Literals.CHOICE__NEXT_CHOICE,
+				 Gemoc_execution_tracePackage.Literals.CHOICE__NEXT_CHOICE,
 				 true,
 				 false,
 				 true,
@@ -105,7 +106,29 @@ public class ChoiceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Choice_chosenLogicalStep_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_chosenLogicalStep_feature", "_UI_Choice_type"),
-				 GemocExecutionEngineTracePackage.Literals.CHOICE__CHOSEN_LOGICAL_STEP,
+				 Gemoc_execution_tracePackage.Literals.CHOICE__CHOSEN_LOGICAL_STEP,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Previous Choice feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPreviousChoicePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Choice_previousChoice_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_previousChoice_feature", "_UI_Choice_type"),
+				 Gemoc_execution_tracePackage.Literals.CHOICE__PREVIOUS_CHOICE,
 				 true,
 				 false,
 				 true,
@@ -126,8 +149,8 @@ public class ChoiceItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GemocExecutionEngineTracePackage.Literals.CHOICE__POSSIBLE_LOGICAL_STEPS);
-			childrenFeatures.add(GemocExecutionEngineTracePackage.Literals.CHOICE__CONTEXT_STATE);
+			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.CHOICE__POSSIBLE_LOGICAL_STEPS);
+			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.CHOICE__CONTEXT_STATE);
 		}
 		return childrenFeatures;
 	}
@@ -166,6 +189,7 @@ public class ChoiceItemProvider
 	public String getText(Object object) {
 		return getString("_UI_Choice_type");
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -179,8 +203,8 @@ public class ChoiceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Choice.class)) {
-			case GemocExecutionEngineTracePackage.CHOICE__POSSIBLE_LOGICAL_STEPS:
-			case GemocExecutionEngineTracePackage.CHOICE__CONTEXT_STATE:
+			case Gemoc_execution_tracePackage.CHOICE__POSSIBLE_LOGICAL_STEPS:
+			case Gemoc_execution_tracePackage.CHOICE__CONTEXT_STATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -200,13 +224,13 @@ public class ChoiceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(GemocExecutionEngineTracePackage.Literals.CHOICE__POSSIBLE_LOGICAL_STEPS,
+				(Gemoc_execution_tracePackage.Literals.CHOICE__POSSIBLE_LOGICAL_STEPS,
 				 TraceFactory.eINSTANCE.createLogicalStep()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(GemocExecutionEngineTracePackage.Literals.CHOICE__CONTEXT_STATE,
-				 GemocExecutionEngineTraceFactory.eINSTANCE.createContextState()));
+				(Gemoc_execution_tracePackage.Literals.CHOICE__CONTEXT_STATE,
+				 Gemoc_execution_traceFactory.eINSTANCE.createContextState()));
 	}
 
 	/**

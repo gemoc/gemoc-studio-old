@@ -6,9 +6,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="nextChoice" eType="#//Choice"
         eOpposite="#//Choice/previousChoice"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="possibleLogicalSteps" upperBound="-1"
-        eType="ecore:EClass platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep"
+        eType="ecore:EClass ../../fr.inria.aoste.trace/model/trace.ecore#//LogicalStep"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="chosenLogicalStep" eType="ecore:EClass platform:/plugin/fr.inria.aoste.trace/model/trace.ecore#//LogicalStep"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="chosenLogicalStep" eType="ecore:EClass ../../fr.inria.aoste.trace/model/trace.ecore#//LogicalStep"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contextState" eType="#//ContextState"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="previousChoice" eType="#//Choice"

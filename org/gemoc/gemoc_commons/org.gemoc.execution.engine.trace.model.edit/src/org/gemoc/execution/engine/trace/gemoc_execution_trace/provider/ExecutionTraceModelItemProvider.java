@@ -23,8 +23,8 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel} object.
@@ -32,7 +32,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngi
  * <!-- end-user-doc -->
  * @generated
  */
-public class ExecutionTraceModelItemProvider
+public class ExecutionTraceModelItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -77,7 +77,7 @@ public class ExecutionTraceModelItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GemocExecutionEngineTracePackage.Literals.EXECUTION_TRACE_MODEL__CHOICES);
+			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.EXECUTION_TRACE_MODEL__CHOICES);
 		}
 		return childrenFeatures;
 	}
@@ -116,6 +116,7 @@ public class ExecutionTraceModelItemProvider
 	public String getText(Object object) {
 		return getString("_UI_ExecutionTraceModel_type");
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -129,7 +130,7 @@ public class ExecutionTraceModelItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ExecutionTraceModel.class)) {
-			case GemocExecutionEngineTracePackage.EXECUTION_TRACE_MODEL__CHOICES:
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -149,8 +150,8 @@ public class ExecutionTraceModelItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(GemocExecutionEngineTracePackage.Literals.EXECUTION_TRACE_MODEL__CHOICES,
-				 GemocExecutionEngineTraceFactory.eINSTANCE.createChoice()));
+				(Gemoc_execution_tracePackage.Literals.EXECUTION_TRACE_MODEL__CHOICES,
+				 Gemoc_execution_traceFactory.eINSTANCE.createChoice()));
 	}
 
 	/**

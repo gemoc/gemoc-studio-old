@@ -2,6 +2,8 @@
  */
 package org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation;
 
+import fr.inria.aoste.trace.provider.traceEditPlugin;
+
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
@@ -40,6 +42,7 @@ public final class GemocExecutionEngineTraceEditorPlugin extends EMFPlugin {
 	public GemocExecutionEngineTraceEditorPlugin() {
 		super
 			(new ResourceLocator [] {
+				traceEditPlugin.INSTANCE,
 			});
 	}
 

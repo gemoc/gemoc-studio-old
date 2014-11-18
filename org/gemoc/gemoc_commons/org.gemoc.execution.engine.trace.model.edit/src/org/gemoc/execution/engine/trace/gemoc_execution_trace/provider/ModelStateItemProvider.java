@@ -5,9 +5,12 @@ package org.gemoc.execution.engine.trace.gemoc_execution_trace.provider;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -16,7 +19,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
+
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState} object.
@@ -24,7 +28,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngi
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModelStateItemProvider
+public class ModelStateItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -71,7 +75,7 @@ public class ModelStateItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ModelState_model_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ModelState_model_feature", "_UI_ModelState_type"),
-				 GemocExecutionEngineTracePackage.Literals.MODEL_STATE__MODEL,
+				 Gemoc_execution_tracePackage.Literals.MODEL_STATE__MODEL,
 				 true,
 				 false,
 				 true,
@@ -101,6 +105,7 @@ public class ModelStateItemProvider
 	public String getText(Object object) {
 		return getString("_UI_ModelState_type");
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

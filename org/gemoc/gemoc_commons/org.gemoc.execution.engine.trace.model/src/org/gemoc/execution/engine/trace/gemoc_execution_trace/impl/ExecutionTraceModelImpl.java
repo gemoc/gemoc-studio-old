@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,7 +60,7 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GemocExecutionEngineTracePackage.Literals.EXECUTION_TRACE_MODEL;
+		return Gemoc_execution_tracePackage.Literals.EXECUTION_TRACE_MODEL;
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 	 */
 	public EList<Choice> getChoices() {
 		if (choices == null) {
-			choices = new EObjectContainmentEList<Choice>(Choice.class, this, GemocExecutionEngineTracePackage.EXECUTION_TRACE_MODEL__CHOICES);
+			choices = new EObjectContainmentEList<Choice>(Choice.class, this, Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES);
 		}
 		return choices;
 	}
@@ -83,7 +83,7 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.EXECUTION_TRACE_MODEL__CHOICES:
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
 				return ((InternalEList<?>)getChoices()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -97,7 +97,7 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.EXECUTION_TRACE_MODEL__CHOICES:
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
 				return getChoices();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -112,7 +112,7 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.EXECUTION_TRACE_MODEL__CHOICES:
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
 				getChoices().clear();
 				getChoices().addAll((Collection<? extends Choice>)newValue);
 				return;
@@ -128,7 +128,7 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.EXECUTION_TRACE_MODEL__CHOICES:
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
 				getChoices().clear();
 				return;
 		}
@@ -143,7 +143,7 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GemocExecutionEngineTracePackage.EXECUTION_TRACE_MODEL__CHOICES:
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
 				return choices != null && !choices.isEmpty();
 		}
 		return super.eIsSet(featureID);

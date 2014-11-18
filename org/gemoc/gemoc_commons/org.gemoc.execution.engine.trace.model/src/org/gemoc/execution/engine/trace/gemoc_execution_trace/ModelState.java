@@ -16,12 +16,11 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getModelState()
+ * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getModelState()
  * @model
  * @generated
  */
 public interface ModelState extends EObject {
-
 	/**
 	 * Returns the value of the '<em><b>Model</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -32,7 +31,7 @@ public interface ModelState extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Model</em>' reference.
 	 * @see #setModel(EObject)
-	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getModelState_Model()
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getModelState_Model()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -47,4 +46,5 @@ public interface ModelState extends EObject {
 	 * @generated
 	 */
 	void setModel(EObject value);
+
 } // ModelState

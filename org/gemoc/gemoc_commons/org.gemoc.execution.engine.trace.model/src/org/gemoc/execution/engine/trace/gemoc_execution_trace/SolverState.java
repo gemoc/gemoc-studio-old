@@ -17,12 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getSolverState()
+ * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getSolverState()
  * @model
  * @generated
  */
 public interface SolverState extends EObject {
-
 	/**
 	 * Returns the value of the '<em><b>Model</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -33,7 +32,7 @@ public interface SolverState extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Model</em>' reference.
 	 * @see #setModel(EObject)
-	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getSolverState_Model()
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getSolverState_Model()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -59,7 +58,7 @@ public interface SolverState extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Serializable Model</em>' attribute.
 	 * @see #setSerializableModel(byte[])
-	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTracePackage#getSolverState_SerializableModel()
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getSolverState_SerializableModel()
 	 * @model dataType="org.gemoc.execution.engine.trace.gemoc_execution_trace.ISerializable"
 	 * @generated
 	 */
@@ -74,4 +73,5 @@ public interface SolverState extends EObject {
 	 * @generated
 	 */
 	void setSerializableModel(byte[] value);
+
 } // SolverState

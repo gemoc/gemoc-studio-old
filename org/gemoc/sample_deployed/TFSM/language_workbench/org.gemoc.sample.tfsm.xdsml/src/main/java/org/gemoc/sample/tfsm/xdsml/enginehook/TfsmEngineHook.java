@@ -10,7 +10,7 @@ import java.util.Properties;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
-import org.gemoc.gemoc_language_workbench.api.core.GemocExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.sample.tfsm.k3dsa.Activator;
 
 
@@ -21,7 +21,7 @@ public class TfsmEngineHook extends org.gemoc.gemoc_language_workbench.api.core.
 	public static final String GROOVY_OPERATION = "groovy.operation";
 	
 	@Override
-	public void engineAboutToStart(GemocExecutionEngine engine) {
+	public void engineAboutToStart(IExecutionEngine engine) {
 		// Use the engine hook to start a groovy script that is referenced in a property file co-located with the model that will be run
 		// this groovy script can start a model specifiv GUI for example
 		Properties properties = new Properties();
