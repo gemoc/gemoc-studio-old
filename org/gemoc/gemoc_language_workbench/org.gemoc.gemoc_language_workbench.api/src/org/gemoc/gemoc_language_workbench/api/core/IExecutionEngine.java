@@ -34,25 +34,27 @@ public interface IExecutionEngine {
 	 * @param type
 	 * @return true if the engine has the capability, false otherwise.
 	 */
-	public <T extends IExecutionEngineCapability> boolean hasCapability(Class<T> type);
+	public <T extends IEngineHook> boolean hasCapability(Class<T> type);
 	/**
 	 * 
 	 * @param type
 	 * @return The capability of the given type if it exists.
 	 */
-	public <T extends IExecutionEngineCapability> T getCapability(Class<T> type);
+	public <T extends IEngineHook> T getCapability(Class<T> type);
 	/**
 	 * Get the capability of the given type.
 	 * If it does not exist, it creates it.
 	 * @param type
 	 * @return The capability of the given type.
 	 */
-	public <T extends IExecutionEngineCapability> T capability(Class<T> type);
+	public <T extends IEngineHook> T capability(Class<T> type);
 
 	public IExecutionContext getExecutionContext();
 
 	public List<LogicalStep> getPossibleLogicalSteps();
 
 	public void addFutureAction(IFutureAction action);
+
+	public LogicalStep getSelectedLogicalStep();
 	
 }

@@ -29,12 +29,12 @@ import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.DefaultEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
@@ -42,15 +42,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
 
-public class ModelExecutionTracingCapability implements IExecutionEngineCapability {
-
-	private IExecutionEngine _engine;
-		
-	@Override
-	public void initialize(IExecutionEngine engine) {
-		_engine = engine;
-		
-	}
+public class ModelExecutionTracingCapability extends DefaultEngineHook {
 	
 	private TransactionalEditingDomain getEditingDomain()
 	{
@@ -159,7 +151,7 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 
 	private boolean _cannotSaveTrace = false;
 	
-	public void saveTraceModel(long stepNumber) {
+	private void saveTraceModel(long stepNumber) {
 		Resource traceResource = _executionTraceModel.eResource();
 		if (traceResource.getContents().size() > 0) 
 		{			
@@ -171,16 +163,16 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 			if (traceModel.getChoices().size() > 0) 
 			{
 				// link it to the trace model
-				ModelState modelState = GemocExecutionEngineTraceFactory.eINSTANCE.createModelState();					
+				ModelState modelState = Gemoc_execution_traceFactory.eINSTANCE.createModelState();					
 				traceResource.getContents().add(result);
 				modelState.setModel(result);
 				
-				SolverState solverState = GemocExecutionEngineTraceFactory.eINSTANCE.createSolverState();									
+				SolverState solverState = Gemoc_execution_traceFactory.eINSTANCE.createSolverState();									
 				solverState.setSerializableModel(_executionContext.getExecutionPlatform().getSolver().getState());
 				Activator.getDefault().debug("step" + stepNumber + ", saving solver state: " 
 						 + solverState.getSerializableModel());
 				
-				ContextState contextState = GemocExecutionEngineTraceFactory.eINSTANCE.createContextState();
+				ContextState contextState = Gemoc_execution_traceFactory.eINSTANCE.createContextState();
 				contextState.setModelState(modelState);
 				contextState.setSolverState(solverState);
 				traceModel.getChoices().get(traceModel.getChoices().size()-1).setContextState(contextState);
@@ -199,10 +191,19 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 		}
 	}
 
-	private ExecutionTraceModel _executionTraceModel = GemocExecutionEngineTraceFactory.eINSTANCE.createExecutionTraceModel();
+	private ExecutionTraceModel _executionTraceModel = Gemoc_execution_traceFactory.eINSTANCE.createExecutionTraceModel();
 
+	
+	private void setUp(IExecutionEngine engine)
+	{
+		if (_executionContext == null)
+		{
+			setModelExecutionContext(engine.getExecutionContext());
+		}
+	}
+	
 	private IExecutionContext _executionContext;
-	public void setModelExecutionContext(IExecutionContext executionContext) {
+	private void setModelExecutionContext(IExecutionContext executionContext) {
 		_executionContext = executionContext;
 		ResourceSet rs = _executionContext.getResourceModel().getResourceSet();
 		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getWorkspace().getExecutionPath().toString() + "/execution.trace", false);
@@ -224,27 +225,27 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 	}
 
 
-	private Choice _lastChoice;
+//	private Choice _lastChoice;
 
-	public void updateTraceModelBeforeAskingSolver(final long count) {
-		final CommandStack commandStack = getEditingDomain().getCommandStack();
-		commandStack.execute(new RecordingCommand(getEditingDomain(), "save trace model") {
-
-			@Override
-			protected void doExecute() {
-				Choice newChoice = createChoice();
-				if (_lastChoice != null) {
-					_lastChoice.setNextChoice(newChoice);
-				}
-				_lastChoice = newChoice;
-				_executionTraceModel.getChoices().add(_lastChoice);
-				saveTraceModel(count);
-			}
-		});
-	}
-	
+//	public void updateTraceModelBeforeAskingSolver(final long count) {
+//		final CommandStack commandStack = getEditingDomain().getCommandStack();
+//		commandStack.execute(new RecordingCommand(getEditingDomain(), "save trace model") {
+//
+//			@Override
+//			protected void doExecute() {
+//				Choice newChoice = createChoice();
+//				if (_lastChoice != null) {
+//					_lastChoice.setNextChoice(newChoice);
+//				}
+//				_lastChoice = newChoice;
+//				_executionTraceModel.getChoices().add(_lastChoice);
+//				saveTraceModel(count);
+//			}
+//		});
+//	}
+		
 	private Choice createChoice() {
-		Choice choice = GemocExecutionEngineTraceFactory.eINSTANCE.createChoice();
+		Choice choice = Gemoc_execution_traceFactory.eINSTANCE.createChoice();
 		return choice;
 	}
 
@@ -254,39 +255,73 @@ public class ModelExecutionTracingCapability implements IExecutionEngineCapabili
 
 			@Override
 			protected void doExecute() {
-				if (_lastChoice.getPossibleLogicalSteps().size() != 0)
+				Choice lastChoice = getLastChoice();
+				Choice choice = createChoice();
+				_executionTraceModel.getChoices().add(choice);
+//				if (lastChoice != null 
+//					&& lastChoice.getChosenLogicalStep() == null) // choice is not complete
+//				{
+//					_executionTraceModel.getChoices().remove(lastChoice);
+//					lastChoice = lastChoice.getPreviousChoice();
+//				}
+				if (lastChoice != null)
 				{
-					_lastChoice.getPossibleLogicalSteps().clear();
-					_executionTraceModel.getChoices().remove(_lastChoice);
-				}
-				_lastChoice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
+					lastChoice.setNextChoice(choice);
+				}		
+				
+//				if (_lastChoice.getPossibleLogicalSteps().size() != 0)
+//				{
+//					_lastChoice.getPossibleLogicalSteps().clear();
+//					_executionTraceModel.getChoices().remove(_lastChoice);
+//				}
+				choice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
 				for (LogicalStep ls : possibleLogicalSteps) {
 					LogicalStepHelper.removeNotTickedEvents(ls);
 				}
-				_executionTraceModel.getChoices().add(_lastChoice);
-				for (LogicalStep step : _lastChoice.getPossibleLogicalSteps()) {
+				_executionTraceModel.getChoices().add(choice);
+				for (LogicalStep step : choice.getPossibleLogicalSteps()) {
 					for (EventOccurrence occurence : step.getEventOccurrences()) {
 						_executionTraceModel.eResource().getContents().add(occurence.getReferedElement());
 					}
 				}
+				saveTraceModel(0);
 			}
 		});
 	}
 	
-	public void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) {
+	public void updateTraceModelAfterDeciding(final LogicalStep selectedLogicalStep) {
 		final CommandStack commandStack = getEditingDomain().getCommandStack();
 		commandStack.execute(new RecordingCommand(getEditingDomain(), "update trace model after deciding") {
 
 			@Override
 			protected void doExecute() {
-				if (_lastChoice.getPossibleLogicalSteps().size() == 0)
+				Choice choice = getLastChoice();
+				if (choice.getPossibleLogicalSteps().size() == 0)
 					return;
-				_lastChoice.setChosenLogicalStep(_lastChoice.getPossibleLogicalSteps().get(selectedLogicalStepIndex));
+				if (choice.getPossibleLogicalSteps().contains(selectedLogicalStep))
+				{
+					choice.setChosenLogicalStep(selectedLogicalStep);					
+				}
 			}
 		});
 	}
 
 	public ExecutionTraceModel getExecutionTrace() {
 		return _executionTraceModel;
+	}
+	
+	
+	@Override
+	public void preLogicalStepSelection(IExecutionEngine engine) 
+	{
+		setUp(engine);
+		updateTraceModelBeforeDeciding(engine.getPossibleLogicalSteps());
+	}
+	
+	@Override
+	public void postLogicalStepSelection(IExecutionEngine engine) 
+	{
+		setUp(engine);
+		updateTraceModelAfterDeciding(engine.getSelectedLogicalStep());
 	}
 }

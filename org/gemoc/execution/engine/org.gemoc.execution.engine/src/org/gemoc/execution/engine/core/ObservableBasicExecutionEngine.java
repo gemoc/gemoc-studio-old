@@ -10,10 +10,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.capabilitites.ModelExecutionTracingCapability;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngineCapability;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
@@ -121,9 +120,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		_mseStateController = createEngineMSEStateController();
 		addMSEStateController(_mseStateController);
 
-		if (_executionContext.getRunConfiguration().isTraceActive())
-			activateTrace();
-
 		try {
 			initialize();
 		} catch (CoreException e) {
@@ -146,11 +142,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 	}
 
 	private ArrayList<IDataProcessingComponent> _executionComponents = new ArrayList<>();
-
-	private void activateTrace() {
-		ModelExecutionTracingCapability capability = capability(ModelExecutionTracingCapability.class);
-		capability.setModelExecutionContext(_executionContext);
-	}
 
 	
 	private EngineRunnable _runnable;
@@ -248,8 +239,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 				while (!terminated) 
 				{
 					switchDeciderIfNecessary();
-					if (hasCapability(ModelExecutionTracingCapability.class))
-						updateTraceModelBeforeAskingSolver(count);
+//					if (hasCapability(ModelExecutionTracingCapability.class))
+//						updateTraceModelBeforeAskingSolver(count);
 									
 					computePossibleLogicalSteps();
 					updatePossibleLogicalSteps();
@@ -275,10 +266,11 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 								terminated = true;
 							}
 						} else {
+							_selectedLogicalStep = _possibleLogicalSteps.get(selectedLogicalStepIndex);
 							engineStatus.setChosenLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));
 							engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
-							if (hasCapability(ModelExecutionTracingCapability.class))
-								updateTraceModelAfterDeciding(selectedLogicalStepIndex);
+//							if (hasCapability(ModelExecutionTracingCapability.class))
+//								updateTraceModelAfterDeciding(selectedLogicalStepIndex);
 
 							notifyEngineHasChanged();
 							for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
@@ -433,10 +425,10 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		_mseStateControllers.add(controller);
 	}
 
-	private ArrayList<IExecutionEngineCapability> _capabilities = new ArrayList<IExecutionEngineCapability>();
+	private ArrayList<IEngineHook> _capabilities = new ArrayList<IEngineHook>();
 
-	public <T extends IExecutionEngineCapability> boolean hasCapability(Class<T> type) {
-		for (IExecutionEngineCapability c : _capabilities) {
+	public <T extends IEngineHook> boolean hasCapability(Class<T> type) {
+		for (IEngineHook c : _capabilities) {
 			if (c.getClass().equals(type))
 				return true;
 		}
@@ -444,20 +436,19 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 	}
 
 	@SuppressWarnings("all")
-	public <T extends IExecutionEngineCapability> T getCapability(Class<T> type) {
-		for (IExecutionEngineCapability c : _capabilities) {
+	public <T extends IEngineHook> T getCapability(Class<T> type) {
+		for (IEngineHook c : _capabilities) {
 			if (c.getClass().equals(type))
 				return (T) c;
 		}
 		return null;
 	}
 
-	public <T extends IExecutionEngineCapability> T capability(Class<T> type) {
+	public <T extends IEngineHook> T capability(Class<T> type) {
 		T capability = getCapability(type);
 		if (capability == null) {
 			try {
 				capability = type.newInstance();
-				capability.initialize(this);
 				_capabilities.add(capability);
 			} catch (InstantiationException e) {
 				e.printStackTrace();
@@ -498,6 +489,13 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		return _possibleLogicalSteps;
 	}
 	
+	private LogicalStep _selectedLogicalStep;
+	@Override
+	public LogicalStep getSelectedLogicalStep() 
+	{
+		return _selectedLogicalStep;
+	}
+	
 	private void updatePossibleLogicalSteps()
 	{
 		for(IMSEStateController c : _mseStateControllers)
@@ -520,17 +518,17 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		updatePossibleLogicalSteps();
 	}
 	
-	private void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) 
-	{
-		if (hasCapability(ModelExecutionTracingCapability.class))
-			capability(ModelExecutionTracingCapability.class).updateTraceModelAfterDeciding(selectedLogicalStepIndex);
-	}
+//	private void updateTraceModelAfterDeciding(final int selectedLogicalStepIndex) 
+//	{
+//		if (hasCapability(ModelExecutionTracingCapability.class))
+//			capability(ModelExecutionTracingCapability.class).updateTraceModelAfterDeciding(selectedLogicalStepIndex);
+//	}
 
-	private void updateTraceModelBeforeAskingSolver(final long count) 
-	{
-		if (hasCapability(ModelExecutionTracingCapability.class))
-			capability(ModelExecutionTracingCapability.class).updateTraceModelBeforeAskingSolver(count);
-	}
+//	private void updateTraceModelBeforeAskingSolver(final long count) 
+//	{
+//		if (hasCapability(ModelExecutionTracingCapability.class))
+//			capability(ModelExecutionTracingCapability.class).updateTraceModelBeforeAskingSolver(count);
+//	}
 
 	private void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) 
 	{

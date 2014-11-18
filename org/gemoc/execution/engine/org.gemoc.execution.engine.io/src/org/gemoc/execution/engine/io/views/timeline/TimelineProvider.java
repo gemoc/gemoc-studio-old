@@ -8,7 +8,7 @@ import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.GemocExecutionEngineTraceFactory;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
@@ -35,7 +35,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 		}
 		else
 		{
-			traceModel = GemocExecutionEngineTraceFactory.eINSTANCE.createExecutionTraceModel();
+			traceModel = Gemoc_execution_traceFactory.eINSTANCE.createExecutionTraceModel();
 		}
 		return traceModel;
 	}
