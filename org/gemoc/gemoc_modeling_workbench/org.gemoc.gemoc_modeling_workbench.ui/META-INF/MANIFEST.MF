@@ -37,7 +37,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.gmf.runtime.emf.core;bundle-version="1.7.0",
  org.eclipse.pde.ui,
  org.eclipse.jdt.ui,
- org.eclipse.jdt.core
+ org.eclipse.jdt.core,
+ fr.inria.diverse.commons.provisionner4eclipse
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.gemoc_modeling_workbench.core,

@@ -252,7 +252,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 						selectedLogicalStepIndex = _executionContext.getLogicalStepDecider().decide(ObservableBasicExecutionEngine.this, _possibleLogicalSteps);
 						count++;
 
-						if (selectedLogicalStepIndex != 1)
+						if (selectedLogicalStepIndex != -1)
 						{
 							_selectedLogicalStep = _possibleLogicalSteps.get(selectedLogicalStepIndex);
 							engineStatus.setChosenLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));

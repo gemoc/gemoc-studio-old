@@ -17,6 +17,7 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.search.IJavaSearchScope;
+import org.eclipse.jdt.core.search.SearchEngine;
 import org.eclipse.jdt.internal.ui.jarpackager.JarPackagerUtil;
 import org.eclipse.jdt.internal.ui.search.JavaSearchScopeFactory;
 import org.eclipse.jdt.internal.ui.util.BusyIndicatorRunnableContext;
@@ -89,8 +90,8 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		Group languageArea = createGroup(area, "Language:");
 		createLanguageLayout(languageArea, null);
 
-		Group debugArea = createGroup(area, "Debug:");
-		createDebugLayout(debugArea, null);
+		Group debugArea = createGroup(area, "Animation:");
+		createAnimationLayout(debugArea, null);
 
 		_k3Area = createGroup(area, "Pure K3 execution:");
 		createK3Layout(_k3Area, null);
@@ -206,7 +207,7 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		return parent;
 	}
 	
-	private Composite createDebugLayout(Composite parent, Font font) {
+	private Composite createAnimationLayout(Composite parent, Font font) {
 		createTextLabelLayout(parent, "Animator");
 
 		_siriusRepresentationLocationText = new Text(parent, SWT.SINGLE | SWT.BORDER);
@@ -334,20 +335,8 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 						List<IResource> resources = new ArrayList<>();
 						IPath path = new Path(_modelLocationText.getText());
 						resources.add(ResourcesPlugin.getWorkspace().getRoot().getFile(path).getProject());
-						IJavaSearchScope searchScope = JavaSearchScopeFactory.getInstance().createJavaSearchScope(resources.toArray(new IResource[resources.size()]), true);
-
-/*						IRunnableContext c = new IRunnableContext() {
-							
-							@Override
-							public void run(boolean fork, boolean cancelable,
-									IRunnableWithProgress runnable) throws InvocationTargetException,
-									InterruptedException {
-								// TODO Auto-generated method stub
-								
-							}
-						};*/
-						IRunnableContext c = new BusyIndicatorRunnableContext();
-						
+						IJavaSearchScope searchScope = SearchEngine.createWorkspaceScope();
+						IRunnableContext c = new BusyIndicatorRunnableContext();						
 						SelectionDialog dialog;
 						try {
 							dialog = JavaUI.createTypeDialog(_parent.getShell(), c, searchScope, IJavaElementSearchConstants.CONSIDER_CLASSES, false);
@@ -361,36 +350,10 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-//						SelectionDialog dialog = JavaUI.createMainTypeDialog(_parent.getShell(), c, searchScope, 0, false);
-						
-						
-//						String className = _entryPointText.getText();
-//						IResource resource = getCurrentIFile();
-//						String type = PDEJavaHelperUI.selectType(resource, IJavaElementSearchConstants.CONSIDER_CLASSES, className, null);
-//						if (type != null)
-//							_entryPointText.setText(type);
-						// handleModelLocationButtonSelected();
-						// TODO launch the appropriate selector
-
-//						SelectAIRDIFileDialog dialog = new SelectAIRDIFileDialog();
-//						if (dialog.open() == Dialog.OK) {
-//							String modelPath = ((IResource) dialog.getResult()[0])
-//									.getFullPath().toPortableString();
-//							_siriusRepresentationLocationText.setText(modelPath);
-//							updateLaunchConfigurationDialog();
-//						}
 					}
 				});
 		return parent;
 	}
-	
-//	protected IFile getCurrentIFile() {
-//		String platformString = rootModelElement.eResource().getURI()
-//				.toPlatformString(true);
-//		return ResourcesPlugin.getWorkspace().getRoot()
-//				.getFile(new Path(platformString));
-//
-//	}
 	
 	@Override
 	protected void updateLaunchConfigurationDialog() 

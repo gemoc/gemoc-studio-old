@@ -1,12 +1,16 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.ILaunch;
@@ -15,29 +19,30 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.search.IJavaSearchConstants;
+import org.eclipse.jdt.core.search.IJavaSearchScope;
+import org.eclipse.jdt.core.search.SearchEngine;
 import org.eclipse.jdt.core.search.SearchMatch;
+import org.eclipse.jdt.core.search.SearchParticipant;
+import org.eclipse.jdt.core.search.SearchPattern;
 import org.eclipse.jdt.core.search.SearchRequestor;
-import org.eclipse.jdt.internal.core.ResolvedBinaryType;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.commons.CCSLExecutionEngine;
 import org.gemoc.execution.engine.commons.ModelExecutionContext;
 import org.gemoc.execution.engine.commons.RunConfiguration;
-import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingHook;
 import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.GemocModelDebugger;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
+import org.kermeta.utils.provisionner4eclipse.Provisionner;
 
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.FeedbackFactory;
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
@@ -105,47 +110,72 @@ public class Launcher
 
 					@Override
 					protected IStatus run(IProgressMonitor monitor) {
-//						String className =  executionContext.getRunConfiguration().getExecutionEntryPoint();
-//						SearchPattern pattern = SearchPattern.createPattern(className,
-//						IJavaSearchConstants.CLASS, 
-//						IJavaSearchConstants.DECLARATIONS,
-//						SearchPattern.R_EXACT_MATCH);
-//							IJavaSearchScope scope = SearchEngine.createWorkspaceScope();
-//							ResolvedBinaryType type = null;
-//							DefaultSearchRequestor requestor = new DefaultSearchRequestor();				
-//							SearchEngine engine = new SearchEngine();
+						
+						String className =  executionContext.getRunConfiguration().getExecutionEntryPoint();
+						SearchPattern pattern = SearchPattern.createPattern(className,
+						IJavaSearchConstants.CLASS, 
+						IJavaSearchConstants.DECLARATIONS,
+						SearchPattern.R_EXACT_MATCH);
+							IJavaSearchScope scope = SearchEngine.createWorkspaceScope();
+							DefaultSearchRequestor requestor = new DefaultSearchRequestor();				
+							SearchEngine engine = new SearchEngine();
+						try {
+							engine.search(pattern, 
+							new SearchParticipant[] { SearchEngine.getDefaultSearchParticipant() }, 
+							scope, 
+							requestor,
+							null);
+						} catch (CoreException e) {
+							return new Status(IStatus.ERROR, getPluginID(), "Execution was not successfull");
+						}
+					
+						// org.gemoc.sample.tfsm.purek3.dsa
+						String projectName = requestor._binaryType.getJavaProject().getElementName();
+						IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+						if (project != null
+							&& project.exists())
+						{
+							Provisionner p = new Provisionner();
+							IStatus status = p.provisionFromProject(project, monitor);
+							if (!status.isOK())
+							{
+								return status;
+							}
+						}
+						
+						try {
+							ArrayList<Object> parameters = new ArrayList<>();
+							parameters.add(executionContext.getResourceModel().getContents().get(0));
+							Class<?> c = Platform.getBundle(project.getName()).loadClass(executionContext.getRunConfiguration().getExecutionEntryPoint());
+							Method method = c.getMethod("main", parameters.get(0).getClass().getInterfaces()[0]);
+							Object o = c.newInstance();
+							method.invoke(o, parameters.get(0));
+						} catch (Exception e1) {
+							e1.printStackTrace();
+							return new Status(IStatus.ERROR, getPluginID(), "Execution was not successfull");
+						}
+						
+
+
+						
+//						ActionCall call = FeedbackFactory.eINSTANCE.createActionCall();
+//						ModelSpecificEvent mse = FeedbackFactory.eINSTANCE.createModelSpecificEvent();
+//						call.setTriggeringEvent(mse);
+//						mse.setCaller(executionContext.getResourceModel().getContents().get(0));
+////						executionContext.getExecutionPlatform().getCodeExecutor().execute(call);
+//						ArrayList<Object> parameters = new ArrayList<>();
+//						parameters.add(executionContext.getResourceModel().getContents().get(0));
 //						try {
-//							engine.search(pattern, 
-//							new SearchParticipant[] { SearchEngine.getDefaultSearchParticipant() }, 
-//							scope, 
-//							requestor,
-//							null);
-//							Class c = MyClassLoader.getClass(requestor._binaryType);
-//							return null;
-//						} catch (CoreException e) {
+//							executionContext.getExecutionPlatform().getCodeExecutor().execute(
+//																						executionContext.getRunConfiguration().getExecutionEntryPoint(), 
+//																						"main", 
+//																						parameters);
+//							return new Status(IStatus.OK, getPluginID(), "Execution was successfull");
+//						} catch (CodeExecutionException e) {
 //							// TODO Auto-generated catch block
 //							e.printStackTrace();
 //						}
-
-						
-						ActionCall call = FeedbackFactory.eINSTANCE.createActionCall();
-						ModelSpecificEvent mse = FeedbackFactory.eINSTANCE.createModelSpecificEvent();
-						call.setTriggeringEvent(mse);
-						mse.setCaller(executionContext.getResourceModel().getContents().get(0));
-//						executionContext.getExecutionPlatform().getCodeExecutor().execute(call);
-						ArrayList<Object> parameters = new ArrayList<>();
-						parameters.add(executionContext.getResourceModel().getContents().get(0));
-						try {
-							executionContext.getExecutionPlatform().getCodeExecutor().execute(
-																						executionContext.getRunConfiguration().getExecutionEntryPoint(), 
-																						"main", 
-																						parameters);
-							return new Status(IStatus.OK, getPluginID(), "Execution was successfull");
-						} catch (CodeExecutionException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						return new Status(IStatus.ERROR, getPluginID(), "Execution was not successfull");
+						return new Status(IStatus.OK, getPluginID(), "Execution was successfull");
 					}
 					
 				};
@@ -388,11 +418,11 @@ public class Launcher
 	class DefaultSearchRequestor extends SearchRequestor
 	{
 		
-		public ResolvedBinaryType _binaryType;
+		public IType _binaryType;
 
 		@Override
 		public void acceptSearchMatch(SearchMatch match) throws CoreException {
-			_binaryType = (ResolvedBinaryType)match.getElement();
+			_binaryType = (IType)match.getElement();
 			System.out.println(match.getElement());
 		}
 		
