@@ -18,6 +18,7 @@
    </license>
 
    <requires>
+   	  <import feature="fr.inria.diverse.commons.provisionner4eclipse.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.mylyn.github.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.team.svn.mylyn" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.team.svn.resource.ignore.rules.jdt" version="0.0.0" match="greaterOrEqual"/>
