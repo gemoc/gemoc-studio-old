@@ -3,15 +3,8 @@ package org.gemoc.gemoc_language_workbench.api.extensions.languages;
 import java.util.Collection;
 import java.util.HashSet;
 
-import org.eclipse.core.internal.registry.IRegistryConstants;
-import org.eclipse.core.internal.registry.RegistryMessages;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.RegistryFactory;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.spi.RegistryContributor;
-import org.eclipse.osgi.util.NLS;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;

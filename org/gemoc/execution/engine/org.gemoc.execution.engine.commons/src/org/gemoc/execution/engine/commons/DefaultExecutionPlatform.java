@@ -11,6 +11,8 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionPlatform;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.EngineAddonSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.EngineAddonSpecificationExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
@@ -35,6 +37,10 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 		}
 		_codeExecutor = _languageDefinition.instanciateCodeExecutor();		
 		_hooks = _languageDefinition.instanciateEngineHooks();
+		for (EngineAddonSpecificationExtension extension : EngineAddonSpecificationExtensionPoint.getSpecifications())
+		{
+			addHook(extension.instanciateComponent());
+		}
 		_clockControllers = _languageDefinition.instanciateMSEStateControllers();
 	}
 

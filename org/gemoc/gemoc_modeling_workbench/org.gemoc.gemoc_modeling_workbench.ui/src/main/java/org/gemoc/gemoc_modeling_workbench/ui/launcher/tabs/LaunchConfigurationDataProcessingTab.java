@@ -13,22 +13,22 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.EngineAddonSpecificationExtension;
 
 public abstract class LaunchConfigurationDataProcessingTab extends LaunchConfigurationTab
 {
 
-	private HashMap<IDataProcessingComponentExtension, Button> _components = new HashMap<>();
+	private HashMap<EngineAddonSpecificationExtension, Button> _components = new HashMap<>();
 
 	protected LaunchConfigurationDataProcessingTab()
 	{
-		for (IDataProcessingComponentExtension extension : getExtensionSpecifications())
+		for (EngineAddonSpecificationExtension extension : getExtensionSpecifications())
 		{
 			_components.put(extension, null);
 		}
 	}
 
-	protected abstract Collection<IDataProcessingComponentExtension> getExtensionSpecifications();
+	protected abstract Collection<EngineAddonSpecificationExtension> getExtensionSpecifications();
 
 	@Override
 	public void createControl(Composite parent) 
@@ -46,7 +46,7 @@ public abstract class LaunchConfigurationDataProcessingTab extends LaunchConfigu
 	
 	private void createLayout(Composite parent) 
 	{
-		for (IDataProcessingComponentExtension extension : _components.keySet())
+		for (EngineAddonSpecificationExtension extension : _components.keySet())
 		{
 			Button checkbox = createCheckButton(parent, extension.getName());
 			checkbox.setSelection(extension.getDefaultActivationValue());
@@ -67,7 +67,7 @@ public abstract class LaunchConfigurationDataProcessingTab extends LaunchConfigu
 	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) 
 	{
-		for (IDataProcessingComponentExtension entry : _components.keySet())
+		for (EngineAddonSpecificationExtension entry : _components.keySet())
 		{
 			configuration.setAttribute(entry.getName(), entry.getDefaultActivationValue());
 		}
@@ -80,7 +80,7 @@ public abstract class LaunchConfigurationDataProcessingTab extends LaunchConfigu
 	@Override
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) 
 	{
-		for (Entry<IDataProcessingComponentExtension, Button> entry : _components.entrySet())
+		for (Entry<EngineAddonSpecificationExtension, Button> entry : _components.entrySet())
 		{
 			configuration.setAttribute(entry.getKey().getName(), entry.getValue().getSelection());
 		}

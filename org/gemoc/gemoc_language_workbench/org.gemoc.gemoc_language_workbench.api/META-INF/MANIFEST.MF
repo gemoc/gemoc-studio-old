@@ -6,7 +6,6 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.gemoc.gemoc_language_workbench.api.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
- fr.inria.aoste.trace;bundle-version="1.0.1",
  org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
  fr.inria.aoste.timesquare.ecl.feedback.model;visibility:=reexport
 Bundle-ActivationPolicy: lazy
@@ -15,9 +14,8 @@ Export-Package: org.gemoc.gemoc_language_workbench.api,
  org.gemoc.gemoc_language_workbench.api.core,
  org.gemoc.gemoc_language_workbench.api.dsa,
  org.gemoc.gemoc_language_workbench.api.dse,
+ org.gemoc.gemoc_language_workbench.api.engine_addon,
  org.gemoc.gemoc_language_workbench.api.extensions,
- org.gemoc.gemoc_language_workbench.api.extensions.backends,
  org.gemoc.gemoc_language_workbench.api.extensions.deciders,
- org.gemoc.gemoc_language_workbench.api.extensions.frontends,
  org.gemoc.gemoc_language_workbench.api.extensions.languages,
  org.gemoc.gemoc_language_workbench.api.moc

@@ -13,11 +13,8 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
-import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.backends.BackendSpecificationExtensionPoint;
-import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.frontends.FrontendSpecificationExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.EngineAddonSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.EngineAddonSpecificationExtensionPoint;
 
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 
@@ -67,13 +64,9 @@ public class RunConfiguration implements IRunConfiguration
 		_deadlockDetectionDepth = getAttribute(LAUNCH_DEADLOCK_DETECTION_DEPTH, 10);
 		_entryPoint = getAttribute(LAUNCH_ENTRY_POINT, "");
 		
-		for (BackendSpecificationExtension extension : BackendSpecificationExtensionPoint.getSpecifications())
+		for (EngineAddonSpecificationExtension extension : EngineAddonSpecificationExtensionPoint.getSpecifications())
 		{
-			_backends.put(extension, getAttribute(extension.getName(), false));			
-		}
-		for (FrontendSpecificationExtension extension : FrontendSpecificationExtensionPoint.getSpecifications())
-		{
-			_frontends.put(extension, getAttribute(extension.getName(), false));			
+			_engineAddons.put(extension, getAttribute(extension.getName(), false));			
 		}
 	}
 
@@ -138,20 +131,13 @@ public class RunConfiguration implements IRunConfiguration
 		return _deadlockDetectionDepth;
 	}
 
-	private HashMap<BackendSpecificationExtension, Boolean> _backends = new HashMap<>();
-
-	private HashMap<FrontendSpecificationExtension, Boolean> _frontends = new HashMap<>();
+	private HashMap<EngineAddonSpecificationExtension, Boolean> _engineAddons = new HashMap<>();
 
 	@Override
-	public Collection<IDataProcessingComponentExtension> getActivatedComponentExtensions() 
+	public Collection<EngineAddonSpecificationExtension> getActivatedComponentExtensions() 
 	{
-		ArrayList<IDataProcessingComponentExtension> result = new ArrayList<IDataProcessingComponentExtension>();
-		for (Entry<FrontendSpecificationExtension, Boolean> e : _frontends.entrySet())
-		{
-			if (e.getValue())
-				result.add(e.getKey());
-		}
-		for (Entry<BackendSpecificationExtension, Boolean> e : _backends.entrySet())
+		ArrayList<EngineAddonSpecificationExtension> result = new ArrayList<EngineAddonSpecificationExtension>();
+		for (Entry<EngineAddonSpecificationExtension, Boolean> e : _engineAddons.entrySet())
 		{
 			if (e.getValue())
 				result.add(e.getKey());

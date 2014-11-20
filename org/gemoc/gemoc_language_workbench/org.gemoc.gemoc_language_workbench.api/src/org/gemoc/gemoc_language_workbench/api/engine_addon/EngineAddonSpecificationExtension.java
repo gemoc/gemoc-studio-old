@@ -1,35 +1,27 @@
-package org.gemoc.gemoc_language_workbench.api.extensions;
+package org.gemoc.gemoc_language_workbench.api.engine_addon;
 
 import org.eclipse.core.runtime.CoreException;
+import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
 
-
-public abstract class DataProcessingComponentExtension<T extends IDataProcessingComponent> extends Extension implements IDataProcessingComponentExtension
+public class EngineAddonSpecificationExtension extends Extension
 {
-	
+
 	public static final String NAME = "Name";
 	public static final String CLASS = "Class";
 	public static final String DEFAULT = "Default";
 
-	public abstract DataProcessingComponentType getType();
-	
 	public String getName()
 	{
 		return getAttribute(NAME);
 	}
-
-	@Override
-	public IDataProcessingComponent instanciateComponent() throws CoreException
-	{
-		return instanciateCastedComponent();
-	}
 	
-	public T instanciateCastedComponent() throws CoreException
+	public IEngineAddon instanciateComponent() throws CoreException
 	{
 		Object instance = instanciate(CLASS);
 		try
 		{
 			@SuppressWarnings("unchecked")
-			T castedInstance = (T)instance;			
+			IEngineAddon castedInstance = (IEngineAddon)instance;			
 			return castedInstance;
 		}
 		catch(Exception e)
@@ -43,5 +35,5 @@ public abstract class DataProcessingComponentExtension<T extends IDataProcessing
 	{
 		return Boolean.parseBoolean(getAttribute(DEFAULT));
 	}
-
+	
 }

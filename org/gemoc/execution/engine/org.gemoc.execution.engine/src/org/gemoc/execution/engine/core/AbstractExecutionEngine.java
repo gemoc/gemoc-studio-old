@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.core.runtime.CoreException;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
@@ -18,8 +17,6 @@ import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
-import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponent;
-import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -117,31 +114,11 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		}
 		_mseStateController = createEngineMSEStateController();
 		addMSEStateController(_mseStateController);
-
-		try {
-			initialize();
-		} catch (CoreException e) {
-			throw new EngineNotCorrectlyInitialized(e.getMessage(), e);
-		}
+		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
 	
 	protected abstract IMSEStateController createEngineMSEStateController();
 
-	private void initialize() throws CoreException 
-	{
-		for (IDataProcessingComponentExtension extension : _executionContext.getRunConfiguration().getActivatedComponentExtensions())
-		{
-			IDataProcessingComponent component = extension.instanciateComponent();
-			_executionComponents.add(component);
-			component.initialize(this);
-		}	
-
-		Activator.getDefault().info("*** Engine initialization done. ***");
-	}
-
-	private ArrayList<IDataProcessingComponent> _executionComponents = new ArrayList<>();
-
-	
 	private EngineRunnable _runnable;
 	@Override
 	public void start() 
@@ -164,6 +141,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	public void stop() 
 	{
 		terminated = true;
+		setEngineStatus(EngineStatus.RunStatus.Stopped);
 		if (_logicalStepDecider != null)
 		{
 			_logicalStepDecider.preempt();
@@ -236,7 +214,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 					int selectedLogicalStepIndex;
 					if (_possibleLogicalSteps.size() == 0) {
 						Activator.getDefault().debug("No more LogicalStep to run");
-						terminated = true;
+						stop();
 					} else {
 						Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
 						setEngineStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
@@ -268,7 +246,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 				} 
 			} catch (Throwable e) {
 				Activator.getDefault().error("Exception received " + e.getMessage() + ", stopping engine.", e);
-				terminated = true;
+				stop();
 			}
 			finally {
 				clean();
@@ -285,7 +263,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			}
 			if ((_lastStepsRun.size() >= getDeadlockDetectionDepth()) && allLastLogicalStepAreTheSame) {
 				Activator.getDefault().debug("Detected " + getDeadlockDetectionDepth() + " identical LogicalStep, stopping engine");
-				terminated = true;
+				stop();
 			}
 			// if queue is full, remove one
 			if (_lastStepsRun.size() > getDeadlockDetectionDepth())
@@ -512,9 +490,5 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	{
 		_mseStateControllers.clear();		
 		_executionContext.dispose();
-		for (IDataProcessingComponent component : _executionComponents)
-		{
-			component.dispose();
-		}
 	}
 }

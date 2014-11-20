@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
-import org.gemoc.gemoc_language_workbench.api.extensions.IDataProcessingComponentExtension;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.EngineAddonSpecificationExtension;
 
 public interface IRunConfiguration {
 
@@ -20,7 +20,7 @@ public interface IRunConfiguration {
 	
 	int getDeadlockDetectionDepth();
 
-	Collection<IDataProcessingComponentExtension> getActivatedComponentExtensions();
+	Collection<EngineAddonSpecificationExtension> getActivatedComponentExtensions();
 
 	String getDeciderName();
 		
