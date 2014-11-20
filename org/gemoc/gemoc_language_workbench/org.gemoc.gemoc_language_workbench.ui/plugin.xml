@@ -159,7 +159,7 @@
             category="org.gemoc.gemoc_language_workbench.ui"
             class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
             icon="icons/IconeGemocLanguage-16.png"
-            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
             name="New xDSML Project"
             project="true">
@@ -167,7 +167,7 @@
       <wizard
             category="org.gemoc.gemoc_language_workbench.ui"
             class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewDSEProject"
-            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewDSEProject"
             name="New DSE Project"
@@ -176,7 +176,7 @@
       <wizard
             category="org.gemoc.gemoc_language_workbench.ui"
             class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewMoCProject"
-            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewMoCProject"
             name="New MoCC Project"
