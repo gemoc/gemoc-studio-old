@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jdt.core.JavaCore;
 
 public class Project {
@@ -80,7 +81,8 @@ public class Project {
 	 */
 	public static IFile createFile(IProject project, String nameOrPath, String content, IProgressMonitor monitor) throws CoreException {
 		ByteArrayInputStream contentStream = new ByteArrayInputStream(content.getBytes());
-		return createFile(project, new Path(nameOrPath), contentStream, monitor);
+		IFile file = createFile(project, new Path(nameOrPath), contentStream, monitor);			
+		return file;
 	}
 	
 	/**
@@ -132,7 +134,18 @@ public class Project {
 					createFolder(project, currentFolderPath, monitor);
 				}				
 			}
-			file.create(contentStream, true, monitor);
+			try
+			{
+				file.create(contentStream, true, monitor);
+			}
+			finally
+			{
+				try {
+					contentStream.close();
+				} catch (IOException e) {
+					throw new CoreException(new Status(Status.ERROR, "", "Could not close stream for file " + file.getFullPath(), e));
+				}
+			}
 		}
 		return file;
 	}
@@ -214,6 +227,37 @@ public class Project {
 		{
 			removeNature(project, natureId);
 			return NatureToggling.Removed;
+		}
+	}
+
+	public static void setFileContent(IProject project, String filePath, String fileContent) throws CoreException 
+	{
+		setFileContent(project, new Path(filePath), fileContent);
+	}
+	
+	public static void setFileContent(IProject project, IPath filePath, String fileContent) throws CoreException 
+	{
+		IFile file = project.getFile(filePath);
+		setFileContent(project, file, fileContent, new NullProgressMonitor());
+	}
+	
+	public static void setFileContent(IProject project, IFile file, String fileContent, IProgressMonitor monitor) throws CoreException 
+	{
+		if (file.exists()) 
+		{
+			ByteArrayInputStream contentStream = new ByteArrayInputStream(fileContent.getBytes());
+			try
+			{
+				file.setContents(contentStream, true, true, monitor);
+			}
+			finally
+			{
+				try {
+					contentStream.close();
+				} catch (IOException e) {
+					throw new CoreException(new Status(Status.ERROR, "", "Could not close stream for file " + file.getFullPath(), e));
+				}
+			}
 		}
 	}
 

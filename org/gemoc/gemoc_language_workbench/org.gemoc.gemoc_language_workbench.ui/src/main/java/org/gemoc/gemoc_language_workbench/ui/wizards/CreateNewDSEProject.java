@@ -92,9 +92,7 @@ public class CreateNewDSEProject extends Wizard implements INewWizard {
 			IWorkspaceRunnable operation = new IWorkspaceRunnable() {
 				 public void run(IProgressMonitor monitor) throws CoreException {
 					 createdProject.create(description, monitor);
-					 createdProject.open(monitor);
-					 addDSEProjectNature(createdProject);
-					 
+					 createdProject.open(monitor);			 
 					 try {
 						PluginConverter.convert(createdProject);
 					 } catch (InvocationTargetException e) {
@@ -112,7 +110,12 @@ public class CreateNewDSEProject extends Wizard implements INewWizard {
 					 String filePath = "ecl/" + _askDSEInfoPage.getTemplateECLFileNameFile() + ".ecl";
 					 Project.createFile(createdProject, filePath, "import '"+_askDSEInfoPage.getEcoreFile()+"'", monitor);
 //						
-					
+					 String buildFileContent = "bin.includes = META-INF/,\\\r\n\tqvto-gen/modeling/";
+					 Project.setFileContent(createdProject, "build.properties", buildFileContent);
+					 
+					 
+					 addDSEProjectNature(createdProject);
+
 					 // save some result for embedding this wizard in a process
 					 createdProjectName = _askProjectNamePage.getProjectName();
 					 createdTemplateECLFile = _askDSEInfoPage.getTemplateECLFileNameFile();
