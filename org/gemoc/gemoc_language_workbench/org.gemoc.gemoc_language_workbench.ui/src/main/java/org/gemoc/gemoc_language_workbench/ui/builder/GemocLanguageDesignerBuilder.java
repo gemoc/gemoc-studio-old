@@ -16,7 +16,6 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -61,15 +60,15 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			IResource resource = delta.getResource();
 			switch (delta.getKind()) {
 				case IResourceDelta.ADDED:
-					updateProjectArtefacts(resource);
+					updateProjectPluginConfiguration(resource);
 					checkConsistency(resource);
 					break;
 				case IResourceDelta.REMOVED:
-					removePersistentProperties(resource);
+					updateProjectPluginConfiguration(resource);
 					checkConsistency(resource);
 					break;
 				case IResourceDelta.CHANGED:
-					updateProjectArtefacts(resource);
+					updateProjectPluginConfiguration(resource);
 					checkConsistency(resource);
 					break;
 			}
@@ -83,17 +82,12 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	class LanguageProjectResourceVisitor implements IResourceVisitor {
 		
 		public boolean visit(IResource resource) {
-			updateProjectArtefacts(resource);
+			updateProjectPluginConfiguration(resource);
 			checkConsistency(resource);
 			// return true to continue visiting children.
 			return true;
 		}
 
-	}
-
-	private void updateProjectArtefacts(IResource resource) {
-		updateProjectPersistentProperties(resource);
-		updateProjectPluginConfiguration(resource);
 	}
 
 	public static final String BUILDER_ID = "org.gemoc.gemoc_language_workbench.ui.gemocLanguageDesignerBuilder";
@@ -116,86 +110,6 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			}
 		}
 		return null;
-	}
-
-	private void updateProjectPersistentProperties(IResource resource) {
-		if (resource instanceof IFile && resource.getName().equals(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)) {
-			IFile file = (IFile) resource;
-			IProject project = file.getProject();
-			try {
-				if (file.exists()) {
-
-					resetPersistentProperties(project);
-
-					Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-					Map<String, Object> m = reg.getExtensionToFactoryMap();
-					m.put(Activator.GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION, new XMIResourceFactoryImpl());
-
-					// Obtain a new resource set
-					ResourceSet resSet = new ResourceSetImpl();
-
-					// Create the resource
-					Resource modelresource = resSet.getResource(URI.createURI(file.getLocationURI().toString()), true);
-					TreeIterator<EObject> it = modelresource.getAllContents();
-					while (it.hasNext()) {
-						EObject eObject = (EObject) it.next();
-						if (eObject instanceof org.gemoc.gemoc_language_workbench.conf.DomainModelProject) {
-							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-									Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), "true");
-						}
-						if (eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSAProject) {
-							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-									Activator.GEMOC_PROJECT_PROPERTY_HAS_DSA), "true");
-						}
-						if (eObject instanceof org.gemoc.gemoc_language_workbench.conf.DSEProject) {
-							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-									Activator.GEMOC_PROJECT_PROPERTY_HAS_DSE), "true");
-						}
-						if (eObject instanceof org.gemoc.gemoc_language_workbench.conf.MoCCProject) {
-							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-									Activator.GEMOC_PROJECT_PROPERTY_HAS_MOC), "true");
-						}
-						if (eObject instanceof org.gemoc.gemoc_language_workbench.conf.EditorProject) {
-							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-									Activator.GEMOC_PROJECT_PROPERTY_HAS_EDITOR), "true");
-						}
-						if (eObject instanceof org.gemoc.gemoc_language_workbench.conf.AnimatorProject) {
-							project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-									Activator.GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR), "true");
-						}
-					}
-				}
-			} catch (CoreException e) {
-				Activator.error(e.getMessage(), e);
-			}
-
-		}
-	}
-
-	private void removePersistentProperties(IResource resource) {
-		if (resource instanceof IFile && resource.getName().equals(Activator.GEMOC_PROJECT_CONFIGURATION_FILE)) {
-			IFile file = (IFile) resource;
-			resetPersistentProperties(file.getProject());
-		}
-	}
-
-	private void resetPersistentProperties(IProject project) {
-		try {
-			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-					Activator.GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL), null);
-			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-					Activator.GEMOC_PROJECT_PROPERTY_HAS_DSA), null);
-			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-					Activator.GEMOC_PROJECT_PROPERTY_HAS_DSE), null);
-			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-					Activator.GEMOC_PROJECT_PROPERTY_HAS_MOC), null);
-			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-					Activator.GEMOC_PROJECT_PROPERTY_HAS_EDITOR), null);
-			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID,
-					Activator.GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR), null);
-		} catch (CoreException e) {
-			Activator.error(e.getMessage(), e);
-		}
 	}
 
 	public void checkConsistency(IResource resource){

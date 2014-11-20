@@ -17,15 +17,6 @@ public class Activator extends AbstractUIPlugin {
 	public static final String GEMOC_PROJECT_CONFIGURATION_FILE = "project."
 			+ GEMOC_PROJECT_CONFIGURATION_FILE_EXTENSION;
 
-	// be careful do not use "." in the property name !!! because it is used to
-	// rebuild the qualified name from a string by ResourcePropertyTester
-	public static final String GEMOC_PROJECT_PROPERTY_HAS_DOMAINMODEL = "gemoc_project_has_DomainModel";
-	public static final String GEMOC_PROJECT_PROPERTY_HAS_DSA = "gemoc_project_has_DSA";
-	public static final String GEMOC_PROJECT_PROPERTY_HAS_DSE = "gemoc_project_has_DSE";
-	public static final String GEMOC_PROJECT_PROPERTY_HAS_MOC = "gemoc_project_has_MoC";
-	public static final String GEMOC_PROJECT_PROPERTY_HAS_EDITOR = "gemoc_project_has_editor";
-	public static final String GEMOC_PROJECT_PROPERTY_HAS_ANIMATOR = "gemoc_project_has_animator";
-
 	// extension point constants
 	
 
