@@ -262,17 +262,6 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 							reg_qvtoFileForModeling.setContent(qvtoModelingContent.getBytes());
 								
 							qvtoFileForModeling.refreshLocal(0, new NullProgressMonitor());
-									
-									
-//									.refreshLocal(0, new NullProgressMonitor());
-							
-							
-//							qvtoFolder.refreshLocal(2, new NullProgressMonitor());
-							
-							
-							
-							
-							
 						} catch (IOException e) {
 							addMarker(eclFile, e.getMessage(), -1, IMarker.SEVERITY_ERROR);
 							Activator.error(e.getMessage(), e);

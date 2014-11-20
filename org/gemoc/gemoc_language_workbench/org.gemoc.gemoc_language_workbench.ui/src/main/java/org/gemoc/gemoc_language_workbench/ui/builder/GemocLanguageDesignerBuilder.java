@@ -417,8 +417,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		if (ld.getDomainModelProject() != null) {
 			Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT);
 			helper.updateXDSMLDefinitionAttributeInExtensionPoint(gemocExtensionPoint,
-					LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT, packageName + "."
-						+ languageToUpperFirst + Activator.MODEL_LOADER_CLASS_NAMEPART);	
+					LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT, 
+//					packageName + "." + languageToUpperFirst + Activator.MODEL_LOADER_CLASS_NAMEPART);	
+					"org.eclipse.core.runtime.CoreException.DefaultModelLoader");
 		}
 		helper.saveDocument(pluginfile);
 
