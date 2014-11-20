@@ -1,6 +1,8 @@
 package org.gemoc.execution.engine.commons;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.core.runtime.CoreException;
 import org.gemoc.execution.engine.commons.solvers.ccsl.SolverMock;
@@ -19,7 +21,6 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 	private ICodeExecutor _codeExecutor;
 	private Collection<IEngineHook> _hooks;
 	private Collection<IMSEStateController> _clockControllers;
-	private Object _javaEntryPoint;
 	
 	public DefaultExecutionPlatform(LanguageDefinitionExtension _languageDefinition) throws CoreException 
 	{
@@ -56,9 +57,12 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 	}
 
 	@Override
-	public Collection<IEngineHook> getHooks() 
+	public Iterable<IEngineHook> getHooks() 
 	{
-		return _hooks;
+		synchronized(_hookLock)
+		{
+			return Collections.unmodifiableCollection(new ArrayList<IEngineHook>(_hooks));
+		}
 	}
 
 	@Override
@@ -73,7 +77,25 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 		_clockControllers.clear();
 		_hooks.clear();
 	}
-	
-	// 			_javaEntryPoint = _languageDefinition.instanciateJavaEntryPoint();
 
+	private Object _hookLock = new Object();
+	
+	@Override
+	public void addHook(IEngineHook hook) 
+	{
+		synchronized (_hookLock) 
+		{
+			_hooks.add(hook);
+		}
+	}
+
+	@Override
+	public void removeHook(IEngineHook hook) 
+	{
+		synchronized (_hookLock) 
+		{
+			_hooks.remove(hook);
+		}
+	}
+	
 }

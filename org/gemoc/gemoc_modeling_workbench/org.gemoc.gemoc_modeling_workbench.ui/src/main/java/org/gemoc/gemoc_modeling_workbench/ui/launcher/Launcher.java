@@ -32,7 +32,7 @@ import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.commons.CCSLExecutionEngine;
 import org.gemoc.execution.engine.commons.ModelExecutionContext;
 import org.gemoc.execution.engine.commons.RunConfiguration;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
@@ -57,7 +57,7 @@ public class Launcher
 
 	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
 
-	private ObservableBasicExecutionEngine _engine;
+	private AbstractExecutionEngine _engine;
 
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor)
@@ -83,11 +83,10 @@ public class Launcher
 			if (executionContext.getFeedbackModel() != null) // hack to find out if execution involves a solver
 			{
 				_engine = new CCSLExecutionEngine(executionContext);				
-				launchEngine(_engine);
 				// delegate for debug mode
 				if (ILaunchManager.DEBUG_MODE.equals(mode)) {
 					IEngineHook animator = AbstractGemocAnimatorServices.getAnimator();
-					_engine.getExecutionContext().getExecutionPlatform().getHooks().add(animator);
+					_engine.getExecutionContext().getExecutionPlatform().addHook(animator);
 					super.launch(configuration, mode, launch, monitor);
 				} else {
 					Job job = new Job(getDebugJobName(configuration,
@@ -261,11 +260,6 @@ public class Launcher
 		}
 	}
 
-	private void launchEngine(ObservableBasicExecutionEngine _engine2) {
-		// TODO Auto-generated method stub
-		
-	}
-
 //	private Session openNewSiriusSession(URI sessionResourceURI, final IProgressMonitor monitor) throws CoreException {
 //		final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(sessionResourceURI);
 //		set.getURIConverter().getURIHandlers().add(0, new DebugURIHandler());
@@ -321,7 +315,7 @@ public class Launcher
 		Collection<IExecutionEngine> engines = org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().values();
 		for (IExecutionEngine engine : engines)
 		{
-			ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
+			AbstractExecutionEngine observable = (AbstractExecutionEngine) engine;
   		  	if (observable.getEngineStatus().getRunningStatus() != RunStatus.Stopped 
   		  		&&  observable.getExecutionContext().getResourceModel().getURI().equals(URI.createPlatformResourceURI(executionContext.getWorkspace().getModelPath().toString(), true)))
   		  	{
@@ -379,7 +373,7 @@ public class Launcher
 			DSLDebugEventDispatcher dispatcher, EObject firstInstruction,
 			IProgressMonitor monitor) {
 		GemocModelDebugger res = new GemocModelDebugger(dispatcher, _engine);
-		_engine.getExecutionContext().getExecutionPlatform().getHooks().add(res);
+		_engine.getExecutionContext().getExecutionPlatform().addHook(res);
 		return res;
 	}
 

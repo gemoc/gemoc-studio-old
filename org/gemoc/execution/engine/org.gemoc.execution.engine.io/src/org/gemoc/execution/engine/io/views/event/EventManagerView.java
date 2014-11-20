@@ -7,8 +7,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.action.Action;
@@ -39,7 +37,7 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
@@ -55,23 +53,24 @@ import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManagerState;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
+import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
+import fr.inria.aoste.trace.LogicalStep;
 
 /**
  * @author lguillem
  * @version 1.6
  */
-public class EventManagerView extends ViewPart implements IMotorSelectionListener, Observer {
+public class EventManagerView extends ViewPart implements IMotorSelectionListener, IEngineHook {
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.event.EventManagerView";
 
 	private TableViewer _viewer;
 	private ViewContentProvider _contentProvider;
-	private ObservableBasicExecutionEngine _currentSelectedEngine;
-	private Map<ObservableBasicExecutionEngine, ModelSpecificEventContext> _mseContextMap = new HashMap<ObservableBasicExecutionEngine, ModelSpecificEventContext>();
+	private AbstractExecutionEngine _currentSelectedEngine;
+	private Map<AbstractExecutionEngine, ModelSpecificEventContext> _mseContextMap = new HashMap<AbstractExecutionEngine, ModelSpecificEventContext>();
 	private Filter _strategyFilterSelected;
 	private ISelectionChangedListener _decisionViewListener;
 	private SelectionListener _menuAndButtonListener;
@@ -498,27 +497,29 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	/**
 	 * Listen the engine change of state.
 	 */
-	@Override
-	public void update(Observable o, Object arg) 
+	private void update(IExecutionEngine engine) 
 	{
-		int engineStep = (int)_currentSelectedEngine.getEngineStatus().getNbLogicalStepRun();
-		//We check when the engine reach a new step
-		if(engineStep > getMSEContext().getCacheStep()
-			&& !isEngineStopped())
+		if (engine == _currentSelectedEngine)
 		{
-			ScenarioManager sm = getScenarioManager();
-			if(sm.getState().equals(ScenarioManagerState.Recording))
+			int engineStep = (int)_currentSelectedEngine.getEngineStatus().getNbLogicalStepRun();
+			//We check when the engine reach a new step
+			if(engineStep > getMSEContext().getCacheStep()
+				&& !isEngineStopped())
 			{
-				sm.record();
+				ScenarioManager sm = getScenarioManager();
+				if(sm.getState().equals(ScenarioManagerState.Recording))
+				{
+					sm.record();
+				}
+				getMSEContext().setCacheStep(engineStep);
+				
+				if(sm.getState().equals(ScenarioManagerState.Playing))
+				{
+					sm.play();
+				}
 			}
-			getMSEContext().setCacheStep(engineStep);
-			
-			if(sm.getState().equals(ScenarioManagerState.Playing))
-			{
-				sm.play();
-			}
+			updateView();
 		}
-		updateView();
 	}
 
 	/**
@@ -528,11 +529,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void motorSelectionChanged(IExecutionEngine engine) {
 		if (engine != null) 
 		{
-			_currentSelectedEngine = (ObservableBasicExecutionEngine) engine;
+			_currentSelectedEngine = (AbstractExecutionEngine) engine;
 			// if the selected engine is stopped we clean its cache and disable all commands
 			if (isEngineStopped())
 			{
-				if(_mseContextMap.get(_currentSelectedEngine) != null)
+				if(_mseContextMap.get(engine) != null)
 				{
 					ScenarioManager sm = getScenarioManager();
 					if (sm.getState().equals(ScenarioManagerState.Recording))
@@ -543,19 +544,19 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					{
 						sm.stopPlaying();
 					}
-					_currentSelectedEngine.deleteObserver(this);
-					_mseContextMap.remove(_currentSelectedEngine);
+					engine.getExecutionContext().getExecutionPlatform().removeHook(this);
+					_mseContextMap.remove(engine);
 				}
 			}
 			else // else we set the current state according to the selected engine cache state
 			{
-				_currentSelectedEngine.deleteObserver(this);
-				_currentSelectedEngine.addObserver(this);
+				engine.getExecutionContext().getExecutionPlatform().removeHook(this);
+				engine.getExecutionContext().getExecutionPlatform().addHook(this);
 				//executeCommand(Commands.DO_INIT);
-				if(_mseContextMap.get(_currentSelectedEngine) == null)
+				if(_mseContextMap.get(engine) == null)
 				{
 					createMSEContext();
-					if(_currentSelectedEngine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation))
+					if(engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation))
 					{
 						bring2Top();
 					}
@@ -608,7 +609,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		decisionView.removeSelectionChangedListener(_decisionViewListener);
 		_contentProvider.dispose();
 		if(_currentSelectedEngine != null) {
-			_currentSelectedEngine.deleteObserver(this);
+			_currentSelectedEngine.getExecutionContext().getExecutionPlatform().removeHook(this);
 		}
 		_currentSelectedEngine = null;	
 		stopListeningToMotorSelectionChange();
@@ -751,5 +752,45 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		getSite().getPage().bringToTop(this);
 	}
 
+	@Override
+	public void engineAboutToStart(IExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void engineStarted(IExecutionEngine executionEngine) 
+	{
+	}
+
+	@Override
+	public void preLogicalStepSelection(IExecutionEngine engine) 
+	{
+		update(engine);
+	}
+
+	@Override
+	public void postLogicalStepSelection(IExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void postStopEngine(IExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
+	{
+	}
+
+	@Override
+	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse) 
+	{
+	}
+
+	@Override
+	public void engineStatusHasChanged(IExecutionEngine engineRunnable, RunStatus newStatus) 
+	{
+	}
 
 }

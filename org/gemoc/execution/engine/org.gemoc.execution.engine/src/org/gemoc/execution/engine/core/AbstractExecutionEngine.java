@@ -4,11 +4,12 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Observable;
 
 import org.eclipse.core.runtime.CoreException;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -71,7 +72,7 @@ import fr.inria.aoste.trace.LogicalStep;
  * @param <T>
  * 
  */
-public abstract class ObservableBasicExecutionEngine extends Observable implements IExecutionEngine {
+public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisposable {
 
 	private boolean _started = false;
 	private boolean terminated = false;
@@ -103,7 +104,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 	 * @param isTraceActive 
 	 * @param _executionContext
 	 */
-	public ObservableBasicExecutionEngine(IExecutionContext executionContext) {
+	public AbstractExecutionEngine(IExecutionContext executionContext) {
 		if (executionContext == null)
 			throw new IllegalArgumentException("executionContext");
 
@@ -170,18 +171,11 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 	}
 
 	private void clean() {
+		setEngineStatus(EngineStatus.RunStatus.Stopped);
 		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 		{
 			hook.postStopEngine(this);
 		}
-		_mseStateControllers.clear();		
-		_executionContext.dispose();
-
-		for (IDataProcessingComponent component : _executionComponents)
-		{
-			component.dispose();
-		}
-
 		getEngineStatus().getCurrentLogicalStepChoice().clear();
 		getEngineStatus().setChosenLogicalStep(null);
 	}
@@ -219,16 +213,14 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 			
 			for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 			{
-				hook.engineStarted(ObservableBasicExecutionEngine.this);
+				hook.engineStarted(AbstractExecutionEngine.this);
 			}
 			
 			// register this engine using a unique name
 			String engineName = Thread.currentThread().getName();
-			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerEngine(engineName, ObservableBasicExecutionEngine.this);
+			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerEngine(engineName, AbstractExecutionEngine.this);
 
-			engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
-			setChanged();
-			notifyObservers("Starting " + engineName);
+			setEngineStatus(EngineStatus.RunStatus.Running);
 			long count = 0;
 			
 			try 
@@ -247,21 +239,19 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 						terminated = true;
 					} else {
 						Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
-						engineStatus.setRunningStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
-						notifyEngineHasChanged();
-						selectedLogicalStepIndex = _executionContext.getLogicalStepDecider().decide(ObservableBasicExecutionEngine.this, _possibleLogicalSteps);
+						setEngineStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
+						selectedLogicalStepIndex = _executionContext.getLogicalStepDecider().decide(AbstractExecutionEngine.this, _possibleLogicalSteps);
 						count++;
 
 						if (selectedLogicalStepIndex != -1)
 						{
 							_selectedLogicalStep = _possibleLogicalSteps.get(selectedLogicalStepIndex);
 							engineStatus.setChosenLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));
-							engineStatus.setRunningStatus(EngineStatus.RunStatus.Running);
+							setEngineStatus(EngineStatus.RunStatus.Running);
 
-							notifyEngineHasChanged();
 							for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 							{
-								hook.postLogicalStepSelection(ObservableBasicExecutionEngine.this);
+								hook.postLogicalStepSelection(AbstractExecutionEngine.this);
 							}
 
 							// 3 - run the selected logical step
@@ -274,8 +264,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 							terminateIfLastStepsSimilar(logicalStepToApply);							
 						}						
 					}
-
-					notifyEngineHasChanged();
 					engineStatus.incrementNbLogicalStepRun();
 				} 
 			} catch (Throwable e) {
@@ -285,10 +273,6 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 			finally {
 				clean();
 			}
-
-			engineStatus.setRunningStatus(EngineStatus.RunStatus.Stopped);
-			ObservableBasicExecutionEngine.this.setChanged();
-			ObservableBasicExecutionEngine.this.notifyObservers("Stopping " + engineName);
 		}
 
 		private void terminateIfLastStepsSimilar(final LogicalStep logicalStepToApply) {
@@ -310,10 +294,19 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 
 	}
 
-	private void notifyEngineHasChanged() {
-		ObservableBasicExecutionEngine.this.setChanged();
-		ObservableBasicExecutionEngine.this.notifyObservers(); 
+	private void setEngineStatus(RunStatus newStatus) 
+	{
+		engineStatus.setRunningStatus(newStatus);
+		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks())
+		{
+			hook.engineStatusHasChanged(this, newStatus);
+		}
 	}
+	
+//	private void notifyEngineHasChanged() {
+//		ObservableBasicExecutionEngine.this.setChanged();
+//		ObservableBasicExecutionEngine.this.notifyObservers(); 
+//	}
 
 	private int getDeadlockDetectionDepth() 
 	{
@@ -404,10 +397,8 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		_mseStateControllers.add(controller);
 	}
 
-	private ArrayList<IEngineHook> _capabilities = new ArrayList<IEngineHook>();
-
 	public <T extends IEngineHook> boolean hasCapability(Class<T> type) {
-		for (IEngineHook c : _capabilities) {
+		for (IEngineHook c : _executionContext.getExecutionPlatform().getHooks()) {
 			if (c.getClass().equals(type))
 				return true;
 		}
@@ -416,7 +407,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 
 	@SuppressWarnings("all")
 	public <T extends IEngineHook> T getCapability(Class<T> type) {
-		for (IEngineHook c : _capabilities) {
+		for (IEngineHook c : _executionContext.getExecutionPlatform().getHooks()) {
 			if (c.getClass().equals(type))
 				return (T) c;
 		}
@@ -428,7 +419,7 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		if (capability == null) {
 			try {
 				capability = type.newInstance();
-				_capabilities.add(capability);
+				_executionContext.getExecutionPlatform().addHook(capability);
 			} catch (InstantiationException e) {
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
@@ -483,10 +474,9 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 		}
 		_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
 		engineStatus.updateCurrentLogicalStepChoice(_possibleLogicalSteps);
-		notifyEngineHasChanged();
 		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
 		{
-			hook.preLogicalStepSelection(ObservableBasicExecutionEngine.this);
+			hook.preLogicalStepSelection(AbstractExecutionEngine.this);
 		}
 	}
 	
@@ -515,5 +505,16 @@ public abstract class ObservableBasicExecutionEngine extends Observable implemen
 	private ICodeExecutor getCodeExecutor()
 	{
 		return _executionContext.getExecutionPlatform().getCodeExecutor();		
+	}
+	
+	@Override
+	public void dispose() 
+	{
+		_mseStateControllers.clear();		
+		_executionContext.dispose();
+		for (IDataProcessingComponent component : _executionComponents)
+		{
+			component.dispose();
+		}
 	}
 }

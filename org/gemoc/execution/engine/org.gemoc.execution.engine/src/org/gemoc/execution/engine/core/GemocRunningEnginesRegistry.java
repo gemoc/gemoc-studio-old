@@ -43,6 +43,7 @@ public class GemocRunningEnginesRegistry {
 			IExecutionEngine engine = runningEngines.get(engineName);
 			if (engine != null)
 			{
+				engine.dispose();
 				runningEngines.remove(engineName);
 				notifyEngineUnregistered(engine);
 			}			

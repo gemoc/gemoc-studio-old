@@ -25,6 +25,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices.BreakpointListener;
 
@@ -294,6 +295,13 @@ public abstract class AbstractGemocAnimatorServices {
 		@Override
 		public void aboutToExecuteMSE(IExecutionEngine executionEngine,
 				ModelSpecificEvent mse) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void engineStatusHasChanged(IExecutionEngine engineRunnable,
+				RunStatus newStatus) {
 			// TODO Auto-generated method stub
 			
 		}

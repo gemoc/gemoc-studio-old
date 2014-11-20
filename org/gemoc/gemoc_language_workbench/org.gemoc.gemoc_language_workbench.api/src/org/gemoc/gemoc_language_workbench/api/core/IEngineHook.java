@@ -1,5 +1,7 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.trace.LogicalStep;
 
@@ -30,10 +32,11 @@ public interface IEngineHook {
 	public void postStopEngine(IExecutionEngine engine);
 
 
-	public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply);
+	public void aboutToExecuteLogicalStep(IExecutionEngine engine, LogicalStep logicalStepToApply);
 
 
-	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse);	
+	public void aboutToExecuteMSE(IExecutionEngine engine, ModelSpecificEvent mse);
+	public void engineStatusHasChanged(IExecutionEngine engine, RunStatus newStatus);	
 	
 
 }

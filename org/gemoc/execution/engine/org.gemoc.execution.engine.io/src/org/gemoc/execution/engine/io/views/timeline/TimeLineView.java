@@ -19,7 +19,7 @@ import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingHook;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingException;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.io.views.AbstractUserDecider;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
@@ -48,7 +48,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	private IContentProvider _contentProvider;
 	private ILabelProvider _labelProvider;
 	
-	private ObservableBasicExecutionEngine _currentEngine;
+	private AbstractExecutionEngine _currentEngine;
 	
 	private WeakHashMap<IExecutionEngine, Integer> _positions = new WeakHashMap<IExecutionEngine, Integer>();
 	
@@ -123,7 +123,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	private TimelineProvider _timelineProvider;
 	private MouseListener _mouseListener = null;
 	
-	public void configure(ObservableBasicExecutionEngine engine)
+	public void configure(AbstractExecutionEngine engine)
 	{
 //		if (_currentEngine == engine
 //			&& _timelineProvider != null)
@@ -150,7 +150,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		}
 	}
 
-	private int getStartIndex(ObservableBasicExecutionEngine engine) {
+	private int getStartIndex(AbstractExecutionEngine engine) {
 		int start = 0;
 		if (_positions.containsKey(engine))
 		{
@@ -192,7 +192,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		{
 			if (canDisplayTimeline(engine))
 			{
-				configure((ObservableBasicExecutionEngine)engine);				
+				configure((AbstractExecutionEngine)engine);				
 			}
 			else
 			{

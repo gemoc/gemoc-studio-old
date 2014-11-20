@@ -1,30 +1,31 @@
 package org.gemoc.execution.engine.io.views.timeline;
 
-import java.util.Observable;
-import java.util.Observer;
-
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingHook;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
+import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.obeo.timeline.view.AbstractTimelineProvider;
 
-public class TimelineProvider extends AbstractTimelineProvider implements Observer, IDisposable {
+public class TimelineProvider extends AbstractTimelineProvider implements IEngineHook, IDisposable {
 
-	private ObservableBasicExecutionEngine _engine;
+	private AbstractExecutionEngine _engine;
 	
-	public TimelineProvider(ObservableBasicExecutionEngine engine) {
+	public TimelineProvider(AbstractExecutionEngine engine) {
 		_engine = engine;
-		_engine.addObserver(this);
+		_engine.getExecutionContext().getExecutionPlatform().addHook(this);
 	}
 	
 	private ExecutionTraceModel getExecutionTrace() {
@@ -143,30 +144,32 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 	private int _numberOfChoices = 0;
 	private int _numberOfSteps = 0;
 	
-	@Override
-	public void update(Observable arg0, Object arg1) 
+	private void update(IExecutionEngine engine) 
 	{
-		if (getExecutionTrace().getChoices().size() > 0)
+		if (engine == _engine)
 		{
-			boolean mustNotify = false;
+			if (getExecutionTrace().getChoices().size() > 0)
+			{
+				boolean mustNotify = false;
 
-			Choice gemocChoice = getExecutionTrace().getChoices().get(getExecutionTrace().getChoices().size() - 1);
-			if (gemocChoice.getPossibleLogicalSteps().size() != _numberOfSteps)
-			{
-				_numberOfSteps = gemocChoice.getPossibleLogicalSteps().size();
-				mustNotify = true;
-			}
-			
-			if (getExecutionTrace().getChoices().size() > _numberOfChoices)
-			{
-				_numberOfChoices = getExecutionTrace().getChoices().size();
-				mustNotify = true;
-			}
-			
-			if (mustNotify)
-			{
-				notifyIsSelectedChanged(getExecutionTrace().getChoices().size() - 1, gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep()), true);				
-				notifyNumberOfChoicesChanged(getExecutionTrace().getChoices().size());			
+				Choice gemocChoice = getExecutionTrace().getChoices().get(getExecutionTrace().getChoices().size() - 1);
+				if (gemocChoice.getPossibleLogicalSteps().size() != _numberOfSteps)
+				{
+					_numberOfSteps = gemocChoice.getPossibleLogicalSteps().size();
+					mustNotify = true;
+				}
+				
+				if (getExecutionTrace().getChoices().size() > _numberOfChoices)
+				{
+					_numberOfChoices = getExecutionTrace().getChoices().size();
+					mustNotify = true;
+				}
+				
+				if (mustNotify)
+				{
+					notifyIsSelectedChanged(getExecutionTrace().getChoices().size() - 1, gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep()), true);				
+					notifyNumberOfChoicesChanged(getExecutionTrace().getChoices().size());			
+				}
 			}
 		}
 	}
@@ -182,8 +185,49 @@ public class TimelineProvider extends AbstractTimelineProvider implements Observ
 	{
 		if (_engine != null)
 		{
-			_engine.deleteObserver(this);
+			_engine.getExecutionContext().getExecutionPlatform().removeHook(this);
 		}
+	}
+
+	@Override
+	public void engineAboutToStart(IExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void engineStarted(IExecutionEngine executionEngine) 
+	{
+	}
+
+	@Override
+	public void preLogicalStepSelection(IExecutionEngine engine) 
+	{
+		update(engine);
+	}
+
+	@Override
+	public void postLogicalStepSelection(IExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void postStopEngine(IExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
+	{
+	}
+
+	@Override
+	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse) 
+	{
+	}
+
+	@Override
+	public void engineStatusHasChanged(IExecutionEngine engineRunnable, RunStatus newStatus) 
+	{
 	}
 
 }

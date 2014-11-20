@@ -3,7 +3,8 @@ package org.gemoc.gemoc_modeling_workbench.ui.debug;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
+import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 
@@ -21,9 +22,9 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 	private static final EObject FAKE_INSTRUCTION = EcorePackage.eINSTANCE;
 
 	/**
-	 * The {@link ObservableBasicExecutionEngine} to debug.
+	 * The {@link AbstractExecutionEngine} to debug.
 	 */
-	private final ObservableBasicExecutionEngine engine;
+	private final AbstractExecutionEngine engine;
 
 	/**
 	 * Tells if the logical step level stack frame is created.
@@ -45,7 +46,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 	 */
 	private boolean steppingReturn;
 	
-	public GemocModelDebugger(IDSLDebugEventProcessor target, ObservableBasicExecutionEngine engine) {
+	public GemocModelDebugger(IDSLDebugEventProcessor target, AbstractExecutionEngine engine) {
 		super(target);
 		this.engine = engine;
 	}
@@ -204,5 +205,12 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 	{
 		super.terminate();
 		engine.stop();
+	}
+
+	@Override
+	public void engineStatusHasChanged(IExecutionEngine engineRunnable,
+			RunStatus newStatus) {
+		// TODO Auto-generated method stub
+		
 	}
 }

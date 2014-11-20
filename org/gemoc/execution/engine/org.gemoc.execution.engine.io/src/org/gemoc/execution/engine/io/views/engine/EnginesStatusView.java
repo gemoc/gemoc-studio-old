@@ -2,8 +2,6 @@ package org.gemoc.execution.engine.io.views.engine;
 
 import java.util.ArrayList;
 import java.util.Map.Entry;
-import java.util.Observable;
-import java.util.Observer;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IToolBarManager;
@@ -31,18 +29,22 @@ import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.TreeViewerHelper;
 import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
 import org.gemoc.execution.engine.core.IEngineRegistrationListener;
-import org.gemoc.execution.engine.core.ObservableBasicExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.actions.StopAllEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 
-public class EnginesStatusView extends ViewPart implements Observer, IEngineRegistrationListener {
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
+import fr.inria.aoste.trace.LogicalStep;
+
+public class EnginesStatusView extends ViewPart implements IEngineHook, IEngineRegistrationListener {
 
 	/**
 	 * The ID of the view as specified by the extension.
@@ -288,42 +290,6 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 				}			
 			});
 	}
-
-//	private void createColumn4() 
-//	{
-//		TreeColumn column = new TreeColumn(_viewer.getTree(), SWT.LEFT);
-////		column.setText("Details");
-//		TreeViewerColumn viewerColumn = new TreeViewerColumn(_viewer, column);
-//		viewerColumn.setLabelProvider(
-//			new ColumnLabelProvider()
-//			{				
-//				@Override
-//				public String getText(Object element) 
-//				{
-//					String result = "";
-//					if (element instanceof GemocExecutionEngine)
-//					{
-//						GemocExecutionEngine engine = (GemocExecutionEngine)element;
-//						switch(engine.getEngineStatus().getRunningStatus())
-//						{
-//							case Initializing : 
-//								result = "Initializing";
-//								break;
-//							case Running:
-//								result = "Running";
-//								break;
-//							case WaitingLogicalStepSelection:
-//								result = "Waiting LogicalStep Selection";
-//								break;
-//							case Stopped:
-//								result = "Stopped";
-//								break;
-//						}					
-//					}
-//					return result;
-//				}			
-//			});	
-//	}
 	
 	/**
 	 * Passing the focus request to the viewer's control.
@@ -367,21 +333,6 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 	      }
 		 });
 	}
-	
-	@Override
-	public void update(final Observable o, final Object arg) {
-		Display.getDefault().syncExec(new Runnable() {
-		      public void run() {
-		    	  IExecutionEngine engine = (IExecutionEngine)o;
-		    	  updateUserInterface(engine);
-		    	  if (getSelectedEngine() == engine)
-		    	  {
-		    		  fireEngineSelectionChanged();
-		    	  }
-		      }
-		 });
-	}
-
 
 	private ArrayList<IMotorSelectionListener> _motorSelectionListeners = new ArrayList<IMotorSelectionListener>();	
 
@@ -405,40 +356,80 @@ public class EnginesStatusView extends ViewPart implements Observer, IEngineRegi
 	{
 		Display.getDefault().syncExec(new Runnable() {
 		      public void run() {
-	    		  ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
-	    		  observable.addObserver(EnginesStatusView.this);
-		    	  _viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);
-		    	  TreeViewerHelper.resizeColumns(_viewer);
-	    		  TreePath treePath = new TreePath(new Object[] {engine});
-	    		  TreeSelection newSelection = new TreeSelection(treePath);
-	    		  _viewer.setSelection(newSelection, true);			      }
+		  		engine.getExecutionContext().getExecutionPlatform().addHook(EnginesStatusView.this);
+		    	_viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);
+		    	TreeViewerHelper.resizeColumns(_viewer);
+	    		TreePath treePath = new TreePath(new Object[] {engine});
+	    		TreeSelection newSelection = new TreeSelection(treePath);
+	    		_viewer.setSelection(newSelection, true);			      }
 		 });
 	}
 
 	@Override
 	public void engineUnregistered(IExecutionEngine engine) 
 	{
-		ObservableBasicExecutionEngine observable = (ObservableBasicExecutionEngine) engine;
-		observable.deleteObserver(EnginesStatusView.this);	
+		engine.getExecutionContext().getExecutionPlatform().removeHook(this);
 	}
 
 	private void updateUserInterface(final IExecutionEngine engine) {
-    	//TreeViewerHelper.resizeColumns(_viewer);
-//		TreePath treePath = new TreePath(new Object[] {engine});
-//		TreeSelection newSelection = new TreeSelection(treePath);
-//    	_viewer.setSelection(newSelection, true);		    		  
-
     	_viewer.update(engine, null);
     	TreeViewerHelper.resizeColumns(_viewer);    	
-		//_viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);	    	  
-//    	if (_lastSelection != null)
- //   	{
-//    		if (engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Run))
-//    		{
-//    			return;
-//    		}    		  
-    		  
-//    	}
-    	//_viewer.expandAll();
+	}
+
+	private void reselectEngine(final IExecutionEngine engine)
+	{
+		Display.getDefault().syncExec(new Runnable() {
+		      public void run() {
+		    	  updateUserInterface(engine);
+		    	  if (getSelectedEngine() == engine)
+		    	  {
+		    		  fireEngineSelectionChanged();
+		    	  }
+		      }
+		 });
+
+	}
+	
+	@Override
+	public void engineAboutToStart(IExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void engineStarted(IExecutionEngine engine) 
+	{
+		reselectEngine(engine);
+	}
+
+	@Override
+	public void preLogicalStepSelection(IExecutionEngine engine) 
+	{
+		reselectEngine(engine);
+	}
+
+	@Override
+	public void postLogicalStepSelection(IExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void postStopEngine(IExecutionEngine engine) 
+	{
+		reselectEngine(engine);
+	}
+
+	@Override
+	public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
+	{
+	}
+
+	@Override
+	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse) 
+	{
+	}
+
+	@Override
+	public void engineStatusHasChanged(IExecutionEngine engineRunnable, RunStatus newStatus) 
+	{
 	}
 }

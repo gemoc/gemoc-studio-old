@@ -24,7 +24,9 @@ public interface IExecutionPlatform extends IDisposable
 	 */
 	IModelLoader getModelLoader();
 
-	Collection<IEngineHook> getHooks();
+	void addHook(IEngineHook hook);
+	void removeHook(IEngineHook hook);
+	Iterable<IEngineHook> getHooks();
 	
 	Collection<IMSEStateController> getMSEStateControllers();
 

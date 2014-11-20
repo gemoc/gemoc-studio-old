@@ -15,7 +15,7 @@ import fr.inria.aoste.trace.LogicalStep;
  * @author didier.vojtisek@inria.fr
  * 
  */
-public interface IExecutionEngine {
+public interface IExecutionEngine extends IDisposable {
 
 	/**
 	 * Starts the {@link IExecutionEngine}.
