@@ -110,7 +110,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 				}
 			}
 		} else if (steppingInto) {
-			res = super.shouldBreak(instruction);
+			res = instruction != null || super.shouldBreak(instruction);
 		}
 		return res;
 	}
