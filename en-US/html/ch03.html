@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 3. GEMOC xDSML definition tutorial</title><link rel="stylesheet" type="text/css" href="css/gemocorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"/><link rel="home" href="index.html" title="GEMOC Studio Guide"/><link rel="up" href="index.html" title="GEMOC Studio Guide"/><link rel="prev" href="ch02.html" title="Chapter 2. Gemoc Modeling workbench"/><link rel="next" href="ch04.html" title="Chapter 4. Introduction"/><meta xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><p xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.gemoc.org" class="site_href"><strong>GEMOC.org</strong></a><a href="http://gemoc.github.io//" class="doc_href"><strong>Community Documentation</strong></a></p><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch04.html"><strong>Next</strong></a></li></ul><div class="chapter" title="Chapter 3. GEMOC xDSML definition tutorial"><div class="titlepage"><div><div><h2 class="title"><a id="_gemoc_xdsml_definition_tutorial"/>Chapter 3. GEMOC xDSML definition tutorial</h2></div></div></div><p>GEMOC Team
+:Author Initials: XC
+:website: http:__gemoc.org</p><div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2><p>This tutorial is a work in progress and is not yet finished.
+It still contains TODO and must be polished.</p></div><div class="bibliography" title="Bibliography"><div class="titlepage"><div><div><h2 class="title"><a id="_bibliography"/>Bibliography</h2></div></div></div><p>The bibliography lists some useful external documents. For a more complete list, please refer to the publications section on <a class="ulink" href="http://gemoc.org">http://gemoc.org</a> site.</p><div class="bibliodiv" title="Articles"><h3 class="title"><a id="d0e1315"/>Articles</h3><div class="bibliomixed"><a id="d0e1318"/><p class="bibliomixed">
+      <span class="bibliomisc"><a id="globalizing-modeling-languages"/>[globalizing-modeling-languages] <a class="ulink" href="http://hal.inria.fr/hal-00994551">Globalizing Modeling Languages</a> (Benoit Combemale, Julien Deantoni, Benoit Baudry, Robert France, Jean-Marc Jezequel, Jeff Gray), In Computer, IEEE, 2014.</span>
+      
+    </p></div></div></div><div class="glossary" title="Glossary"><div class="titlepage"><div><div><h2 class="title"><a id="_glossary"/>Glossary</h2></div></div></div><div class="variablelist"><dl><dt><span class="term">
+      AS
+    </span></dt><dd>Abstract Syntax.</dd><dt><span class="term">
+      API
+    </span></dt><dd>Application Programming Interface.</dd><dt><span class="term">
+      Behavioral Semantics
+    </span></dt><dd>see Execution semantics.</dd><dt><span class="term">
+      CCSL
+    </span></dt><dd>Clock-Constraint Specification Language.</dd><dt><span class="term">
+      Domain Engineer
+    </span></dt><dd>user of the Modeling Workbench.</dd><dt><span class="term">
+      DSA
+    </span></dt><dd>Domain-Specific Action.</dd><dt><span class="term">
+      DSE
+    </span></dt><dd>Domain-Specific Event.</dd><dt><span class="term">
+      DSML
+    </span></dt><dd>Domain-Specific (Modeling) Language.</dd><dt><span class="term">
+      Dynamic Semantics
+    </span></dt><dd>see Execution semantics.</dd><dt><span class="term">
+      Eclipse Plugin
+    </span></dt><dd>an Eclipse plugin is a Java project with associated metadata that can be bundled and deployed as a contribution to an Eclipse-based IDE.</dd><dt><span class="term">
+      ED
+    </span></dt><dd>Execution Data.</dd><dt><span class="term">
+      Execution Semantics
+    </span></dt><dd>Defines when and how elements of a language will produce a model behavior.</dd><dt><span class="term">
+      GEMOC Studio
+    </span></dt><dd>Eclipse-based studio integrating both a language workbench and the corresponding modeling workbenches</dd><dt><span class="term">
+      Language Workbench
+    </span></dt><dd>a language workbench offers the facilities for designing and implementing modeling languages.</dd><dt><span class="term">
+      Language Designer
+    </span></dt><dd>a language designer is the user of the language workbench.</dd><dt><span class="term">
+      MoCC
+    </span></dt><dd>Model of Concurrency and Communication</dd><dt><span class="term">
+      Model
+    </span></dt><dd>model which contributes to the convent of a View</dd><dt><span class="term">
+      Modeling Workbench
+    </span></dt><dd>a modeling workbench offers all the required facilities for editing and animating domain specific models according to a given modeling language.</dd><dt><span class="term">
+      MSA
+    </span></dt><dd>Model-Specific Action.</dd><dt><span class="term">
+      MSE
+    </span></dt><dd>Model-Specific Event.</dd><dt><span class="term">
+      RTD
+    </span></dt><dd>RunTime Data.</dd><dt><span class="term">
+      Static semantics
+    </span></dt><dd>Constraints on a model that cannot be expressed in the metamodel.  For example, static semantics can be expressed as OCL invariants.</dd><dt><span class="term">
+      xDSML
+    </span></dt><dd>Executable Domain-Specific Modeling Language.</dd></dl></div></div><div class="index" title="Index"><div class="titlepage"><div><div><h2 class="title"><a id="_index"/>Index</h2></div></div></div><div class="index"><div class="indexdiv"><h3>D</h3><dl><dt>Decider, <a class="indexterm" href="ch02.html#_general_options">General options</a></dt></dl></div><div class="indexdiv"><h3>E</h3><dl><dt>Engine, <a class="indexterm" href="ch02.html#_run_mode">Run mode</a>, <a class="indexterm" href="ch02.html#_debug_mode">Debug mode</a></dt><dt>Event Manager, <a class="indexterm" href="ch02.html#_debug_mode">Debug mode</a></dt></dl></div><div class="indexdiv"><h3>G</h3><dl><dt>GEMOC</dt><dd><dl><dt>process, <a class="indexterm" href="ch05.html#sec-GEMOC-process">Recommanded GEMOC Process</a></dt><dd><dl><dt>overview, <a class="indexterm" href="ch05.html#sec-GEMOC-architecture">Architecture of a GEMOC xDSML</a></dt></dl></dd></dl></dd></dl></div><div class="indexdiv"><h3>L</h3><dl><dt>language designer, <a class="indexterm" href="ch01.html#_language_workbench_overview">Language Workbench overview</a></dt><dt>Language workbench, <a class="indexterm" href="ch01.html#_language_workbench_overview">Language Workbench overview</a></dt><dt>Logical Step, <a class="indexterm" href="ch02.html#_general_options">General options</a>, <a class="indexterm" href="ch02.html#modeling-workbench-executing-model-debug-view-section">Debug View</a></dt></dl></div><div class="indexdiv"><h3>M</h3><dl><dt>Modeling workbench, <a class="indexterm" href="ch02.html#_modeling_workbench_overview">Modeling workbench overview</a></dt></dl></div><div class="indexdiv"><h3>O</h3><dl><dt>overview, <a class="indexterm" href="ch05.html#sec-GEMOC-architecture">Architecture of a GEMOC xDSML</a></dt></dl></div><div class="indexdiv"><h3>P</h3><dl><dt>process, <a class="indexterm" href="ch05.html#sec-GEMOC-process">Recommanded GEMOC Process</a></dt><dd><dl><dt>overview, <a class="indexterm" href="ch05.html#sec-GEMOC-architecture">Architecture of a GEMOC xDSML</a></dt></dl></dd></dl></div><div class="indexdiv"><h3>R</h3><dl><dt>Runtime Data, <a class="indexterm" href="ch02.html#_debug_mode">Debug mode</a>, <a class="indexterm" href="ch02.html#modeling-workbench-executing-model-variable-view-section">Variable View</a></dt></dl></div><div class="indexdiv"><h3>S</h3><dl><dt>Sirius, <a class="indexterm" href="ch01.html#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius">Defining a concrete syntax with Sirius</a>, <a class="indexterm" href="ch01.html#_defining_an_animation_view">Defining an animation view</a></dt></dl></div><div class="indexdiv"><h3>T</h3><dl><dt>TFSM, <a class="indexterm" href="ch01.html#_language_workbench_overview">Language Workbench overview</a>, <a class="indexterm" href="ch02.html#_modeling_workbench_overview">Modeling workbench overview</a></dt><dd><dl><dt>Language workbench, <a class="indexterm" href="ch01.html#_language_workbench_overview">Language Workbench overview</a></dt><dt>Modeling workbench, <a class="indexterm" href="ch02.html#_modeling_workbench_overview">Modeling workbench overview</a></dt></dl></dd><dt>Timeline, <a class="indexterm" href="ch02.html#_run_mode">Run mode</a>, <a class="indexterm" href="ch02.html#_debug_mode">Debug mode</a></dt></dl></div></div></div></div><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong>Chapter 2. Gemoc Modeling workbench</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch04.html"><strong>Next</strong>Chapter 4. Introduction</a></li></ul></body></html>

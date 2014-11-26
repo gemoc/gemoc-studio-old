@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 8. Increment 1 : Deterministic Automata</title><link rel="stylesheet" type="text/css" href="css/gemocorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"/><link rel="home" href="index.html" title="GEMOC Studio Guide"/><link rel="up" href="ch03.html" title="Chapter 3. GEMOC xDSML definition tutorial"/><link rel="prev" href="ch07.html" title="Chapter 7. Creating an xDSML Project"/><link rel="next" href="ch09.html" title="Chapter 9. Increment 2: new MoCC and DSA for Automata (MoCC focused version)"/><meta xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><p xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.gemoc.org" class="site_href"><strong>GEMOC.org</strong></a><a href="http://gemoc.github.io//" class="doc_href"><strong>Community Documentation</strong></a></p><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch07.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch09.html"><strong>Next</strong></a></li></ul><div class="chapter" title="Chapter 8. Increment 1 : Deterministic Automata"><div class="titlepage"><div><div><h2 class="title"><a id="sec-increment1"/>Chapter 8. Increment 1 : Deterministic Automata</h2></div></div></div><div class="section" title="8.1. Specification of the xDSML interface"><div class="titlepage"><div><div><h2 class="title"><a id="_specification_of_the_xdsml_interface"/>8.1. Specification of the xDSML interface</h2></div></div></div><p>In this step, we describe the interface of the language.  It includes
+interface to the system engineers (for example AS and CS) but also to
+other models and xDSML (AS, DSE, EF and ED).</p></div><div class="section" title="8.2. Define the Abstract Syntax (AS)"><div class="titlepage"><div><div><h2 class="title"><a id="_define_the_abstract_syntax_as"/>8.2. Define the Abstract Syntax (AS)</h2></div></div></div><div class="example"><a id="d0e865"/><p class="title"><strong>Example 8.1. </strong></p><div class="example-contents"><p>To define the AS we can either select an existing project (Browse
+button) or create a new one.  To create a new one, we click on "EMF
+project" on the xDSML view of project.xdsml.
+Let us call it "org.example.automata.model".
+Let us call our package "automata". We will use the default ns URI and ns
+Prefix. We may then edit the Ecore MetaModel either with the graphical
+editor or with the tree editor.</p></div></div><br class="example-break"/><div class="figure"><a id="fig/automata/class diagram"/><p class="title"><strong>Figure 8.1. Automata Metamodel</strong></p><div class="figure-contents"><div class="mediaobject"><img src="t-images/automata-as.png" alt="Automata Metamodel"/></div></div></div><br class="figure-break"/><p>An Automaton is a composed of States (at least one), Transitions and
+Symbols.  A Transition must have a source and a target, both of type
+State. A Transition is fired upon occurrence of one of its associated
+Symbol.  For now, Transitions may have only one associated Symbol For
+practical reasons, we also add EOpposite references whenever possible.
+Therefore States, Transitions and Symbols know which Automata they
+belong to. Symbols know which Transition(s) they are referenced by.
+States know their outgoing and incoming Transitions.  Automatas,
+States, Transitions and Symbols all have a name (factorized in the
+NamedElement metaclass).</p><div class="example"><a id="d0e879"/><p class="title"><strong>Example 8.2. </strong></p><div class="example-contents"><p>Once the Ecore MetaModel is done, we can come back to the xDSML view.
+The "EMF project" and the  "Genmodel URI" have been updated.</p><p>Set the "Root container model element" to "automata::Automata".</p><p>Open the associated Genmodel (click on Genmodel URI) to generate the
+Model Code, Edit Code and Editor Code by right clicking on the root of
+the Genmodel (right-click on root element). The packages "automata",
+"automata.impl" and "automata.util" as well as the plug-ins
+"com.example.automata.model.edit" and
+"com.example.automata.model.editor" are generated.</p></div></div><br class="example-break"/></div><div class="section" title="8.3. Define concrete syntaxes (CS)"><div class="titlepage"><div><div><h2 class="title"><a id="_define_concrete_syntaxes_cs"/>8.3. Define concrete syntaxes (CS)</h2></div></div></div><p>A concrete syntax is convenient way to view or edit a model.  It can
+be textual (Xtext project for example) or graphical (Sirius project
+for example).  They can be added to the xDSML project like we have
+done for AS.</p><p>For now, we postpone the design of the Concrete Syntaxes until we are
+sure the semantics has been correctly implemented.</p><div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2><p>Therefore, a graphical Concrete Syntax is required in order to use the
+graphical animator later on during simulations.</p></div></div><div class="section" title="8.4. Defining DSE"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_dse"/>8.4. Defining DSE</h2></div></div></div><p>Domain Specific Events are part of the interface of the language and
+allow communication with the system engineer and the other models of
+the system.</p><p>For our Automata xDSML, we decide that there are 3 events
+which are of relevant interest to the environment (user through a GUI
+or another xDSML through language composition operators):</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">Initializing the automata : occurs only once at the start of the
+simulation</li><li class="listitem">Injecting a symbol : occurs when the user gives a new symbol of the
+work to test</li><li class="listitem">Terminating the automata : occurs when the user has given all the
+symbols of the word.  It is used to indicate the end on the word.</li></ul></div><p>TODO: Other DSE may be of interrest, for example firing a transition,
+rejecting a symbol, etc which would be output events (the previous
+ones being input events).</p><div class="example"><a id="d0e915"/><p class="title"><strong>Example 8.3. </strong></p><div class="example-contents"><p>At this moment, DSE are defined in an ECL (Event Constraint Language) file.
+In the xDSML view, click on <span class="emphasis"><em>ECL Project</em></span> to create a DSE Project.
+Let us name it "com.example.automata.dse" (it is the proposed name).
+In the corresponding field, place the path to the Ecore MetaModel
+("platform:/resource/com.example.automata.model/model/automata.ecore")
+and make sure the "Root container model element" is
+"automata::Automata" and name the file "automataDSE". Ignore the error
+that is displayed.</p><p>Right click on the DSE project and make sure that in "configure", the
+"DSE builder" functionality is active.</p><p>An error is indicated in the newly created project. To correct it,
+fill-in the "moc2as.properties" file by completing the property with
+the name of the root element. In our case, that is "rootElement =
+Automata".</p><p>TODO: Could it be automatically initialized (from the Root container
+model element)?</p></div></div><br class="example-break"/><div class="example"><a id="d0e927"/><p class="title"><strong>Example 8.4. </strong></p><div class="example-contents"><p>For now, we will complete the ECL file with the following elements:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><span class="strong"><strong>Metamodel import:</strong></span> (already initialized) Domain-Specific Events
+and MoCC constraints are defined in the context of a concept from
+the AS, so the first thing we need is to import the metamodel.</li></ul></div><pre class="screen">import 'platform:/resource/com.example.automata.model/model/automata.ecore'</pre><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><span class="strong"><strong>Domain-Specific Events specification:</strong></span> here we can define MoccEvents
+and a mapping towards EOperations present in the Metamodel (XXX). The
+first step is to identify which behaviors should be schedulable by
+the MoCC, and which should be seen as part of the behavioral
+interface of the xDSML.</li></ul></div><p>Therefore, we define three Domain-Specific Events by defining three MoccEvents each referencing an Execution Function (implemented later).</p><pre class="screen">package automata
+	context Automata
+		def: mocc_initialize : Event = self.initialize()
+		def: mocc_terminate : Event = self.terminate()
+
+	context Symbol
+		def: mocc_occur : Event = self.occur()
+endpackage</pre></div></div><br class="example-break"/><p>TODO: Can we define DSE without mapping them to DSA?</p><div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2><p>The signature of the Execution Functions needs to be present in the
+MetaModel. Therefore, we need to modify the Ecore MetaModel and add
+the three following operations:</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">Automata.initialize()</li><li class="listitem">Automata.terminate()</li><li class="listitem">Symbol.occur()</li></ul></div><p>To represent methods with Void as return type in EMF, do not complete
+the field "EType" of the EOperations.</p></div><div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Tip</h2><p>If the AS is changed (automata.ecore), we have to do "Reload…"
+on the genmodel, generate again the Model, Edit and Editor, and
+re-register the ecore.  Nevertheless, the ECL is not always able to
+see the changes.  In such a case close the editor and open it again.
+It should work.</p></div></div><div class="section" title="8.5. Defining Domain-Specific Actions (DSA)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_actions_dsa"/>8.5. Defining Domain-Specific Actions (DSA)</h2></div></div></div><p>DSA includes the definition of Execution Data (ED) and Execution
+Functions (EF).  They are both implemented in Kermeta 3 in K3 Aspect
+project whose lastname is, by convention, <span class="emphasis"><em>k3dsa</em></span>.</p><div class="example"><a id="d0e976"/><p class="title"><strong>Example 8.5. </strong></p><div class="example-contents"><p>Click on <span class="emphasis"><em>K3 project</em></span> in the xDSML view (Behavioral definition / DSA
+definition).  The wizard to create of new Kermeta 3 project is
+launched with the name of the project initialized (k3dsa is the last
+name).</p><p>Default options can be kept except for the value of <span class="emphasis"><em>Use a template
+based on ecore file</em></span> field which must be changed from <span class="emphasis"><em>None</em></span> to
+<span class="emphasis"><em>Aspect class from ecore file</em></span>.</p><p>We can now finish the wizard.</p><p>Clicking again on <span class="emphasis"><em>K3 project</em></span> will now allow to choose and open
+automata.xtend.  It has been initialized with a template that can be
+discarded.</p></div></div><br class="example-break"/><p>We can now complete the Kermeta 3 file (automata.xtend) with the
+definition of ED and EF.</p><div class="section" title="8.5.1. Execution Data (ED)"><div class="titlepage"><div><div><h3 class="title"><a id="_execution_data_ed"/>8.5.1. Execution Data (ED)</h3></div></div></div><p>We identify one runtime information for Automata which store the
+current state of the automaton.  We call it <span class="emphasis"><em>currentState</em></span>. It is a
+reference in Automata of type State.  It contains either the current
+state of the automata or null is a symbol has been rejected.</p><p>TODO: Change the implementation to reflect this desgin choice.</p><p>TODO: Better, define a new class in DSA ErrorState which extends
+State.  When in the error state, the automate rejects every symbols.</p><div class="example"><a id="d0e1014"/><p class="title"><strong>Example 8.6. </strong></p><div class="example-contents"><p>To add the reference <span class="emphasis"><em>currentState</em></span>, we define it in an Aspect on the
+Automata class as follow.</p><pre class="screen">@Aspect(className=Automata)
+class AutomataAspect {
+	public State currentState;
+}</pre></div></div><br class="example-break"/><div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2><p>If you plan to use the Graphical animation, then comment the
+code above and add this reference to the Ecore Metamodel directly.
+This is due to how the animator connects to the Abstract Syntax (for
+now).</p></div></div><div class="section" title="8.5.2. Execution Functions (EFs)"><div class="titlepage"><div><div><h3 class="title"><a id="_execution_functions_efs"/>8.5.2. Execution Functions (EFs)</h3></div></div></div><p>Here are the execution functions we decide to define:</p><div class="variablelist"><dl><dt><span class="term">
+      Automata.initialize()
+    </span></dt><dd>initialize the automaton:  set its current
+state to its initial state.  Print some information to the console to
+serve as logging.</dd><dt><span class="term">
+      Automata.terminate()
+    </span></dt><dd>log the fact that we wish to finish the Automata.</dd><dt><span class="term">
+      Symbol.occur()
+    </span></dt><dd>log the fact that a symbol has occurred. If
+there is a transition that may react to an occurrence of this
+symbol, then it is fired. If there is not, then we log it.</dd><dt><span class="term">
+      Symbol.getTransitionToFire()
+    </span></dt><dd>this is an "helper" which is called by
+<span class="emphasis"><em>Symbol.occur()</em></span>. It  determines which Transition to fire.</dd><dt><span class="term">
+      Transition.fire()
+    </span></dt><dd>(helper function) change the current state of the
+automata.  A precondition checks that the source state of the
+transition is the current state of the automata.  An exception is
+thrown if the precondition fails.</dd></dl></div><p>TODO:  Change the implementation with :</p><div class="variablelist"><dl><dt><span class="term">
+      Automata.recognize(Symbol s)
+    </span></dt><dd>recognize the current the symbol s. The
+<span class="emphasis"><em>currentState</em></span> is set either to null if there is no transition
+outgoing from the current state associated with the s symbol, the
+target state of such a transition if it exists.</dd><dt><span class="term">
+      State.getTransition(Symbol s)
+    </span></dt><dd>a <span class="emphasis"><em>Query</em></span> which returns the list of
+outgoing transitions of this state that accept the s symbol.</dd></dl></div><div class="example"><a id="d0e1085"/><p class="title"><strong>Example 8.7. </strong></p><div class="example-contents"><p>Complete the file <span class="emphasis"><em>automata.xtend</em></span> with the following code:</p><pre class="screen">@Aspect(className=Automata)
+class AutomataAspect {
+	def public void initialize() {
+		_self.currentState = _self.initialState;
+		System.out.println("[" + _self.name + "]" + "Initialized to " + _self.currentState + ".")
+	}
+
+	def public void terminate() {
+		System.out.println("[" + _self.name + "]" + "Finished.")
+			// TODO: indicate whether the Word is accepted or not.
+		throw new RuntimeException("Finished.")
+			// throwing an exception is the only way for the moment to
+			// force the simulation to end.
+	}
+}
+
+@Aspect(className=Symbol)
+class SymbolAspect {
+	def public void occur() {
+		var log = "[" + _self.automata.name + "]" + "Symbol " + _self.name + " occurred."
+		System.out.println(log)
+		try{
+			var transitionToFire = _self.getTransitionToFire()
+			transitionToFire.fire()
+		} catch(NoTransitionToFireException e){
+			System.out.println("Did not find any transition to fire.")
+		}
+	}
+
+	def private Transition getTransitionToFire(){
+		var possibleTransitions = new ArrayList&lt;Transition&gt;()
+		for(transition :_self.transitionsReacting){
+			if(_self.automata.currentState == transition.source){
+				possibleTransitions.add(transition)
+			}
+		}
+		if(possibleTransitions.size() &gt; 1){
+			throw new RuntimeException("Automatas are supposed to be deterministic in this version.")
+		} else if(possibleTransitions.size() == 0){
+			throw new NoTransitionToFireException()
+		} else{
+			return possibleTransitions.get(0)
+		}
+	}
+
+}
+
+
+class NoTransitionToFireException extends Exception {}
+
+
+@Aspect(className=Transition)
+class TransitionAspect {
+
+	def package void fire() {
+		if (_self.automata.currentState != _self.source) {
+			throw new RuntimeException(
+				"Precondition failed: Cannot fire Transition " + _self.name + " because the current state of the automata is " +
+					_self.automata.currentState.name + " and not " + _self.source.name)
+			// TODO: Use a specific exception for precondition like PreconditionError.
+		}
+		_self.automata.currentState = _self.target
+		System.out.println("[" + _self.automata.name + "]" + "Fired Transition " + _self.name + ".")
+	}
+
+}</pre><p>TODO: Add a test to validate the DSA part !</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">load a model or manually define it</li><li class="listitem">ask the EF as if they were called by the MoCC</li><li class="listitem">check the results (current state, accepted or rejected)</li></ul></div></div></div><br class="example-break"/></div></div><div class="section" title="8.6. Model of Concurrency and Communication (MoCC)"><div class="titlepage"><div><div><h2 class="title"><a id="_model_of_concurrency_and_communication_mocc"/>8.6. Model of Concurrency and Communication (MoCC)</h2></div></div></div><p>TODO: Give the rational.</p><p>There are two sides to the MoCC. First, you can create a new MoCCML
+project (right click on the xDSML project &gt; GEMOC Language &gt; Create
+MoC Project) and place a library of custom MoCCML relations and
+expressions there. Let us call this project
+"com.example.automata.mocc.lib". For instance, we choose to place in a
+library a relation which allows a MoccEvent to have an occurrence only
+once and before all the "other MoccEvents" (using two arguments: first
+the MoccEvent which must have an occurrence and then the collection of
+all the other MoccEvents).</p><pre class="screen">StateRelationBasedLibrary automataLib{
+	imports{
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as ccsl;
+	}
+
+	RelationLibrary basicautomataRelations{
+		RelationDeclaration FirstAndOnlyOnce(mocc_firstEvent : clock, mocc_otherEvents : clock)
+		RelationDefinition FirstAndOnlyOnceImplem[FirstAndOnlyOnce]{
+			Expression firstTickOfFirstEvent = OneTickAndNoMore(OneTickAndNoMoreClock -&gt; mocc_firstEvent)
+			Expression firstTickOfOtherEvents =	OneTickAndNoMore(OneTickAndNoMoreClock -&gt; mocc_otherEvents)
+			Relation Precedes(
+				LeftClock -&gt; mocc_firstEvent,
+				RightClock -&gt; firstTickOfOtherEvents
+			)
+			Relation Coincides(
+				Clock1 -&gt; mocc_firstEvent,
+				Clock2 -&gt; firstTickOfFirstEvent
+			)
+		}
+	}
+}</pre><p>TODO: state-based relations?</p><p>Afterwards, we need to import this library into the ECL file in order to be able to instantiate it using the MoccEvents we have defined as mapped to our Domain-Specific Events. In order to do that, we need to add at the top of the ECL file:</p><pre class="screen">ECLimport "platform:/resource/com.example.automata.mocc.lib/mocc/automata.moccml"</pre><p>We will also probably need the standard libraries of relations and expressions in order to instantiate the MoCC. Therefore, we should also add the following imports:</p><pre class="screen">ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
+ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"</pre><p>Now we need to specify how to instantiate the MoCC in the ECL file. This is done by using MoCCML relations and expressions on MoccEvents.
+First, we want to make sure that we do the initialization of the Automata before anything else. Therefore, we will use the relation "FirstAndOnlyOnce" defined in our custom MoCC library.</p><pre class="screen">context Automata
+	inv InitBeforeAnythingElse:
+		let allOccurEvents : Event = Expression Union(self.symbols.mocc_occur) in
+		let allOtherEvents : Event = Expression Union(allOccurEvents, self.mocc_terminate) in
+		Relation FirstAndOnlyOnce(self.mocc_initialize, allOtherEvents)</pre><p>Now, we also want to make sure that we can only inject one symbol at a time. This is modelled by a relation of exclusion between the MoccEvents corresponding to the injection of the symbols. Therefore we add the following constraint:</p><pre class="screen">inv ExclusivityOfSymbolOccurrences:
+	Relation Exclusion(self.symbols.mocc_occur)</pre><p>However we cannot both inject a symbol and terminate at the same time. Therefore we also need to add the following exclusion:</p><pre class="screen">inv ExclusivityOfSymbolsAndTerminate:
+	let allSymbolOccurEvents : Event = Expression Union(self.symbols.mocc_occur) in
+	Relation Exclusion(self.mocc_terminate, allSymbolOccurEvents)</pre><p>As soon as you save the ECL file, a .qvto file should be generated in the folders qvto-gen/language and qvto-gen/modeling. Make sure that your xDSML project references the .qvto file that is available in qvto-gen/modeling.</p></div><div class="section" title="8.7. Using the Modeling Workbench"><div class="titlepage"><div><div><h2 class="title"><a id="_using_the_modeling_workbench"/>8.7. Using the Modeling Workbench</h2></div></div></div><div class="section" title="8.7.1. Technical Workarounds"><div class="titlepage"><div><div><h3 class="title"><a id="_technical_workarounds"/>8.7.1. Technical Workarounds</h3></div></div></div><p>A few workarounds are needed before you can launch the Modeling
+Workbench :</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">TODO: Dans le projet xDSML, initialiser le champ Code executor class name
+with automata.xdsml.api.impl.AutomataCodeExecutor</li><li class="listitem">In the DSA Project, MANIFEST.MF, runtime, export the non-Java package containing your .xtend DSAs</li><li class="listitem">In the xDSML Project, plugin.xml, add the following attribute to the XDSML_Definition: modelLoader_class="org.gemoc.gemoc_modeling_workbench.core.DefaultModelLoader"</li><li class="listitem">In the xDSML Project, MANIFEST.MF, add the following dependency:
+org.gemoc.gemoc_modeling_workbench.ui,
+org.gemoc.gemoc_language_workbench.extensions.k3</li><li class="listitem">Make sure a .qvto has been generated in the your DSE Project /qvto-gen/modeling.</li><li class="listitem">TODO: Supprimer les import sur les aspects non utilises</li><li class="listitem">Dans project.xdsml, verifier que le QVT-o reference est celui du
+dossier qvto-gen/modeling du projet DSE.</li><li class="listitem">TODO</li></ul></div></div><div class="section" title="8.7.2. Testing and debugging the xDSML"><div class="titlepage"><div><div><h3 class="title"><a id="_testing_and_debugging_the_xdsml"/>8.7.2. Testing and debugging the xDSML</h3></div></div></div><div class="example"><a id="d0e1174"/><p class="title"><strong>Example 8.8. </strong></p><div class="example-contents"><p>Launch the Modeling Workbench. Create a new general project, for
+instance "com.example.automata.instances". In this project, create a
+new Automate instance (New &gt; Other… &gt; Automata Model)
+"ABCD.automata" whose root is of type Automata.</p><p>Create a Run Configuration: right click on the model and select "Run
+As… &gt; Run Configurations". Create a new "Gemoc eXecutable Model"
+configuration. Model to execute:
+"/com.example.automata.instances/ABCD.automata", xDSML: "automata".
+Change the "Decider" to "Step by step user decider".</p></div></div><br class="example-break"/><div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2><p>In "Animator" place any valid .aird. This issue should be solved in the next iteration of the Studio.
+In the panel "Common", select "Shared file" and put the project path there: "/com.example.automata.instances". Give a name to the configuration like "Automata ABCD".</p></div></div></div></div><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch07.html"><strong>Prev</strong>Chapter 7. Creating an xDSML Project</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch09.html"><strong>Next</strong>Chapter 9. Increment 2: new MoCC and DSA for Auto...</a></li></ul></body></html>
