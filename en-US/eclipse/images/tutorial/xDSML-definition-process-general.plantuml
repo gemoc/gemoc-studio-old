@@ -1,0 +1,61 @@
+@startuml
+(*) --> === Start ===
+partition "Simulation Expectations (Requirements)"
+=== Start === --> === B0 ===
+=== B0 === --> "Identify model examples" as IdModels
+=== B0 === --> "Identify scenarios" as IdScenarios
+=== B0 === --> "Identify expected visualizations" as IdVisu
+IdModels --> === B0Fin ===
+IdScenarios --> === B0Fin ===
+IdVisu --> === B0Fin ===
+end partition
+partition "Specification of the xDSML interface"
+=== B0Fin === --> === B1 ===
+=== B1 === --> "Define AS" as DefAS
+--> === B2 ===
+=== B1 === --> "Specify DSE" as IdDSE
+--> === B2 ===
+=== B1 ===--> "Specify End-users' Queries" as Queries
+--> === B2 ===
+end partition
+
+IdVisu -[#blue]-> Queries
+IdScenarios -[#blue]-> IdDSE
+
+partition "DSA (EF and ED)"
+=== B2 === --> "Specify EF" as SEF
+-->  === bSEF ===
+--> "Complete Queries" as CompleteQueries
+--> "Choose ED from Queries"
+--> === B2QD ===
+--> "Implement EF"
+--> "Test EF" as TestEF
+end partition
+
+partition "MoCC"
+=== B2 === --> "Define (or reuse) MoCC (MoCCLib)" as MoCC
+MoCC --> "Test MoCC" as TestMoCC
+--> === sDSEimpl ===
+end partition
+
+partition "Simulation Visualization"
+=== B2QD === --> "Define the animation views" as DefAIR
+end partition
+
+partition "DSE implementation"
+=== bSEF === --> === sDSEimpl ===
+--> "Define DSE/DSA mapping" as mDSA
+mDSA --> === B3 ===
+=== sDSEimpl === --> "Define Feedbacks" as Feedbacks
+--> === B3 ===
+=== sDSEimpl === --> "Define DSE/MoCC mapping" as mMoCC
+--> === B3 ===
+TestMoCC -[#blue]-> mMoCC
+end partition
+
+DefAIR --> === FIN ===
+=== B3 === --> === FIN ===
+TestEF --> === FIN ====
+--> "Validate according to expectations"
+--> (*)
+@enduml

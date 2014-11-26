@@ -1,0 +1,13 @@
+digraph Ccomm {
+    rankdir="LR"
+
+    init -> 0
+    0 -> 1 [label="/"]
+    1 -> 2 [label="*"]
+    2 -> 3 [label=ANY]
+    3 -> 3 [label=ANY]
+    3 -> 4 [label="*"]
+    4 -> 5 [label="/"]
+    5 [peripheries=2]
+    init [shape=point, label=""]
+}
