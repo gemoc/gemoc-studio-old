@@ -43,8 +43,46 @@
          <topic label="Variable View" href="ch02.html#modeling-workbench-executing-model-variable-view-section"/>
       </topic>
    </topic>
+   <topic label="GEMOC xDSML definition tutorial" href="ch03.html">
+      <topic label="Introduction" href="ch03.html#_introduction_2"/>
+      <topic label="The GEMOC Approach for defining eXecutable DSML (xDSML)" href="ch03.html#sec-GEMOC-approach">
+         <topic label="Architecture of a GEMOC xDSML" href="ch03.html#sec-GEMOC-architecture"/>
+         <topic label="Main Characteristics of the GEMOC Process." href="ch03.html#sec-GEMOC-characteristics"/>
+         <topic label="Recommanded GEMOC Process" href="ch03.html#sec-GEMOC-process"/>
+      </topic>
+      <topic label="Definition of the requirements/expectations on the xDSML" href="ch03.html#sec-requirements">
+         <topic label="Application Domain: Automata" href="ch03.html#_application_domain_automata"/>
+         <topic label="Description of automata" href="ch03.html#_description_of_automata"/>
+         <topic label="Informal behavior" href="ch03.html#_informal_behavior"/>
+         <topic label="Scenarios" href="ch03.html#_scenarios"/>
+         <topic label="Examples of models" href="ch03.html#_examples_of_models"/>
+      </topic>
+      <topic label="Creating an xDSML Project" href="ch03.html#_creating_an_xdsml_project"/>
+      <topic label="Increment 1 : Deterministic Automata" href="ch03.html#sec-increment1">
+         <topic label="Specification of the xDSML interface" href="ch03.html#_specification_of_the_xdsml_interface"/>
+         <topic label="Define the Abstract Syntax (AS)" href="ch03.html#_define_the_abstract_syntax_as"/>
+         <topic label="Define concrete syntaxes (CS)" href="ch03.html#_define_concrete_syntaxes_cs"/>
+         <topic label="Defining DSE" href="ch03.html#_defining_dse"/>
+         <topic label="Defining Domain-Specific Actions (DSA)" href="ch03.html#_defining_domain_specific_actions_dsa">
+            <topic label="Execution Data (ED)" href="ch03.html#_execution_data_ed"/>
+            <topic label="Execution Functions (EFs)" href="ch03.html#_execution_functions_efs"/>
+         </topic>
+         <topic label="Model of Concurrency and Communication (MoCC)" href="ch03.html#_model_of_concurrency_and_communication_mocc"/>
+         <topic label="Using the Modeling Workbench" href="ch03.html#_using_the_modeling_workbench">
+            <topic label="Technical Workarounds" href="ch03.html#_technical_workarounds"/>
+            <topic label="Testing and debugging the xDSML" href="ch03.html#_testing_and_debugging_the_xdsml"/>
+         </topic>
+      </topic>
+      <topic label="Increment 2: new MoCC and DSA for Automata (MoCC focused version)" href="ch03.html#_increment_2_new_mocc_and_dsa_for_automata_mocc_focused_version"/>
+      <topic label="Increment 3: Graphical visualization" href="ch03.html#_increment_3_graphical_visualization"/>
+      <topic label="Increment 4: Consider nondeterministic automata." href="ch03.html#_increment_4_consider_nondeterministic_automata"/>
+      <topic label="Increment 5: Pushdown automaton" href="ch03.html#_increment_5_pushdown_automaton"/>
+      <topic label="Increment 6: Call of user actions" href="ch03.html#_increment_6_call_of_user_actions"/>
+      <topic label="Increment: TBD" href="ch03.html#_increment_tbd"/>
+      <topic label="TODO" href="ch03.html#_todo"/>
+   </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d0e548"/>
+      <topic label="Articles" href="bi01.html#d5e802"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>

@@ -1,44 +1,46 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 3. GEMOC xDSML definition tutorial</title><link rel="stylesheet" type="text/css" href="css/gemocorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"/><link rel="home" href="index.html" title="GEMOC Studio Guide"/><link rel="up" href="index.html" title="GEMOC Studio Guide"/><link rel="prev" href="ch02.html" title="Chapter 2. Gemoc Modeling workbench"/><link rel="next" href="bi01.html" title="Bibliography"/><meta xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><p xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.gemoc.org" class="site_href"><strong>GEMOC.org</strong></a><a href="http://gemoc.github.io//" class="doc_href"><strong>Community Documentation</strong></a></p><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="bi01.html"><strong>Next</strong></a></li></ul><div class="chapter" title="Chapter 3. GEMOC xDSML definition tutorial"><div class="titlepage"><div><div><h2 class="title"><a id="_gemoc_xdsml_definition_tutorial"/>Chapter 3. GEMOC xDSML definition tutorial</h2></div></div></div>
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial</title><link rel="stylesheet" type="text/css" href="css/gemocorg.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="GEMOC Studio Guide"><link rel="up" href="index.html" title="GEMOC Studio Guide"><link rel="prev" href="ch02.html" title="Chapter&nbsp;2.&nbsp;Gemoc Modeling workbench"><link rel="next" href="bi01.html" title="Bibliography"><meta xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><p xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.gemoc.org" class="site_href"><strong>GEMOC.org</strong></a><a href="http://gemoc.github.io//" class="doc_href"><strong>Community Documentation</strong></a></p><ul xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="bi01.html"><strong>Next</strong></a></li></ul><div class="chapter" title="Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial"><div class="titlepage"><div><div><h2 class="title"><a name="_gemoc_xdsml_definition_tutorial"></a>Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial</h2></div></div></div>
 
 <p>GEMOC Team
 :Author Initials: XC
 :website: http:__gemoc.org</p>
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
-<p>This tutorial is a work in progress and is not yet finished.
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
+<p xmlns="">This tutorial is a work in progress and is not yet finished.
 It still contains TODO and must be polished.</p>
 </div>
-<div class="section" title="3.1. Introduction"><div class="titlepage"><div><div><h2 class="title"><a id="_introduction_2"/>3.1. Introduction</h2></div></div></div>
+<div class="section" title="3.1.&nbsp;Introduction"><div class="titlepage"><div><div><h2 class="title"><a name="_introduction_2"></a>3.1.&nbsp;Introduction</h2></div></div></div>
 
 <p>The purpose of this tutorial is to explain on a simple example how to
 define an xDSML (eXecutable Domain Specific Modeling Language).  It is
 structured as follows.  First, we recall the
-<a class="link" href="ch03.html#sec-GEMOC-approach" title="3.2. The GEMOC Approach for defining eXecutable DSML (xDSML)">GEMOC approach</a>, including
-<a class="link" href="ch03.html#sec-GEMOC-architecture" title="3.2.1. Architecture of a GEMOC xDSML">architecture of
-the GEMOC xDSML</a> and the <a class="link" href="ch03.html#sec-GEMOC-characteristics" title="3.2.2. Main Characteristics of the GEMOC Process.">main
+<a class="link" href="ch03.html#sec-GEMOC-approach" title="3.2.&nbsp;The GEMOC Approach for defining eXecutable DSML (xDSML)">GEMOC approach</a>, including
+<a class="link" href="ch03.html#sec-GEMOC-architecture" title="3.2.1.&nbsp;Architecture of a GEMOC xDSML">architecture of
+the GEMOC xDSML</a> and the <a class="link" href="ch03.html#sec-GEMOC-characteristics" title="3.2.2.&nbsp;Main Characteristics of the GEMOC Process.">main
 characteristics of a GEMOC process</a>.
-Then, we present the <a class="link" href="ch03.html#sec-GEMOC-process" title="3.2.3. Recommanded GEMOC Process">overall process</a> that will be
+Then, we present the <a class="link" href="ch03.html#sec-GEMOC-process" title="3.2.3.&nbsp;Recommanded GEMOC Process">overall process</a> that will be
 illustrated by this tutorial. The next sections illustrate the process
 on a concrete example, the definition of automata.  We describe the
-<a class="link" href="ch03.html#sec-requirements" title="3.3. Definition of the requirements/expectations on the xDSML">application domain</a>, and structure the development
-in <a class="link" href="ch03.html#sec-increment1" title="3.5. Increment 1 : Deterministic Automata">several increments</a> to structure it and
+<a class="link" href="ch03.html#sec-requirements" title="3.3.&nbsp;Definition of the requirements/expectations on the xDSML">application domain</a>, and structure the development
+in <a class="link" href="ch03.html#sec-increment1" title="3.5.&nbsp;Increment 1 : Deterministic Automata">several increments</a> to structure it and
 illustrate different aspects of the GEMOC studio.</p>
 <p>TODO: Describe the increments?</p>
 <p>TODO: Give the conventions on the tutorial, naming, etc.</p>
 </div>
-<div class="section" title="3.2. The GEMOC Approach for defining eXecutable DSML (xDSML)"><div class="titlepage"><div><div><h2 class="title"><a id="sec-GEMOC-approach"/>3.2. The GEMOC Approach for defining eXecutable DSML (xDSML)</h2></div></div></div>
+<div class="section" title="3.2.&nbsp;The GEMOC Approach for defining eXecutable DSML (xDSML)"><div class="titlepage"><div><div><h2 class="title"><a name="sec-GEMOC-approach"></a>3.2.&nbsp;The GEMOC Approach for defining eXecutable DSML (xDSML)</h2></div></div></div>
 
-<div class="section" title="3.2.1. Architecture of a GEMOC xDSML"><div class="titlepage"><div><div><h3 class="title"><a id="sec-GEMOC-architecture"/>3.2.1. Architecture of a GEMOC xDSML</h3></div></div></div>
+<div class="section" title="3.2.1.&nbsp;Architecture of a GEMOC xDSML"><div class="titlepage"><div><div><h3 class="title"><a name="sec-GEMOC-architecture"></a>3.2.1.&nbsp;Architecture of a GEMOC xDSML</h3></div></div></div>
 
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p>We consider that the Abstract Syntax (AS) of the DSML is already
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
+<p xmlns="">We consider that the Abstract Syntax (AS) of the DSML is already
 defined and thus that its design is not part of the GEMOC xDSML process.
 Nevertheless, the process could easily be extended with a new step
 which consists in defining the AS and its Concrete Syntaxes (CS).</p>
 </div>
-<p>Once the AS is defined — and possibly the CS ---, the execution
+<p>Once the AS is defined&#8201;&#8212;&#8201;and possibly the CS ---, the execution
 semantics of the DSML can be defined.   It includes the definition
 of:</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
@@ -56,7 +58,7 @@ execution of models conforming to the xDSML.
 </li></ul></div>
 <p>There is no mandatory order in which these different parts have to be
 built.  Thus, a first description of the process can focus on this
-characteristic (<a class="link" href="ch03.html#GEMOC-process-overview" title="Figure 3.1. Overview of the GEMOC process">see overview process</a>).
+characteristic (<a class="link" href="ch03.html#GEMOC-process-overview" title="Figure&nbsp;3.1.&nbsp;Overview of the GEMOC process">see overview process</a>).
 The xDSML parts may be built in any order.
 This process stresses a first step which consists in eliciting the
 requirements on the expected execution semantics.  This
@@ -68,19 +70,19 @@ for system engineers to describe they expectations.</p>
 iterations.  Increments address requirements the ones after the
 others.  Iterations allow to rework the different components until the
 requirements are fulfilled.</p>
-<div class="figure"><a id="GEMOC-process-overview"/><p class="title"><strong>Figure 3.1. Overview of the GEMOC process</strong></p><div class="figure-contents">
+<div class="figure"><a name="GEMOC-process-overview"></a><p class="title"><b>Figure&nbsp;3.1.&nbsp;Overview of the GEMOC process</b></p><div class="figure-contents">
 
-<div class="mediaobject"><img src="images/images/tutorial/xDSML-definition-process-overview.png" alt="Overview of the GEMOC process"/></div>
-</div></div><br class="figure-break"/>
-<p><a id="d5e368" class="indexterm"/>
-<a id="d5e372" class="indexterm"/>
-<a id="d5e375" class="indexterm"/></p>
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p>For clarity, the iteration to choose the next increment is not
+<div class="mediaobject"><img src="images/images/tutorial/xDSML-definition-process-overview.png" alt="Overview of the GEMOC process"></div>
+</div></div><br class="figure-break">
+<p><a class="indexterm" name="d5e368"></a>
+<a class="indexterm" name="d5e372"></a>
+<a class="indexterm" name="d5e375"></a></p>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
+<p xmlns="">For clarity, the iteration to choose the next increment is not
 represented of the diagram.</p>
 </div>
 </div>
-<div class="section" title="3.2.2. Main Characteristics of the GEMOC Process."><div class="titlepage"><div><div><h3 class="title"><a id="sec-GEMOC-characteristics"/>3.2.2. Main Characteristics of the GEMOC Process.</h3></div></div></div>
+<div class="section" title="3.2.2.&nbsp;Main Characteristics of the GEMOC Process."><div class="titlepage"><div><div><h3 class="title"><a name="sec-GEMOC-characteristics"></a>3.2.2.&nbsp;Main Characteristics of the GEMOC Process.</h3></div></div></div>
 
 <p>The main characteristics of the definition of an \xdsml according to \gemoc
 are the following:</p>
@@ -114,7 +116,7 @@ animator can then be developed at the same time, by different persons.
 Of course the DSE model can still be changed and the others updated.
 </li></ul></div>
 </div>
-<div class="section" title="3.2.3. Recommanded GEMOC Process"><div class="titlepage"><div><div><h3 class="title"><a id="sec-GEMOC-process"/>3.2.3. Recommanded GEMOC Process</h3></div></div></div>
+<div class="section" title="3.2.3.&nbsp;Recommanded GEMOC Process"><div class="titlepage"><div><div><h3 class="title"><a name="sec-GEMOC-process"></a>3.2.3.&nbsp;Recommanded GEMOC Process</h3></div></div></div>
 
 <p>An xDSML is a language that targets a specific purpose. When defining
 such a language it is important to first identify that purpose so as
@@ -133,21 +135,21 @@ will be further defined.</p>
 GEMOC approach are described hereafter. They are summarized as a UML
 activity diagram.  Package notation is used to group activities by
 domain (and could be considered as a kind of compound activity).</p>
-<div class="figure"><a id="GEMOC-process"/><p class="title"><strong>Figure 3.2. Recommended GEMOC Process</strong></p><div class="figure-contents">
+<div class="figure"><a name="GEMOC-process"></a><p class="title"><b>Figure&nbsp;3.2.&nbsp;Recommended GEMOC Process</b></p><div class="figure-contents">
 
-<div class="mediaobject"><img src="images/images/tutorial/xDSML-definition-process-general.png" alt="Recommended GEMOC Process"/></div>
-</div></div><br class="figure-break"/>
-<p><a id="d5e408" class="indexterm"/>
-<a id="d5e411" class="indexterm"/></p>
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
-<p>This process is the recommanded one, and the one used in this
+<div class="mediaobject"><img src="images/images/tutorial/xDSML-definition-process-general.png" alt="Recommended GEMOC Process"></div>
+</div></div><br class="figure-break">
+<p><a class="indexterm" name="d5e408"></a>
+<a class="indexterm" name="d5e411"></a></p>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
+<p xmlns="">This process is the recommanded one, and the one used in this
 tutorial.  Nevertheless, it is possible to define an xDSML with other
 processes depending on the background of the language designer, his
 knowledge of the GEMOC approach, the considered DSML, etc.</p>
 </div>
 </div>
 </div>
-<div class="section" title="3.3. Definition of the requirements/expectations on the xDSML"><div class="titlepage"><div><div><h2 class="title"><a id="sec-requirements"/>3.3. Definition of the requirements/expectations on the xDSML</h2></div></div></div>
+<div class="section" title="3.3.&nbsp;Definition of the requirements/expectations on the xDSML"><div class="titlepage"><div><div><h2 class="title"><a name="sec-requirements"></a>3.3.&nbsp;Definition of the requirements/expectations on the xDSML</h2></div></div></div>
 
 <p>The first step consists in describing the system engineers'
 expectation concerning the considered domain in terms of execution
@@ -177,36 +179,36 @@ xDSML.</p>
 <p>Finally they can be used to define the increments in the development
 of the xDSML by defining the set of models and scenarios each
 increment must handle.</p>
-<div class="section" title="3.3.1. Application Domain: Automata"><div class="titlepage"><div><div><h3 class="title"><a id="_application_domain_automata"/>3.3.1. Application Domain: Automata</h3></div></div></div>
+<div class="section" title="3.3.1.&nbsp;Application Domain: Automata"><div class="titlepage"><div><div><h3 class="title"><a name="_application_domain_automata"></a>3.3.1.&nbsp;Application Domain: Automata</h3></div></div></div>
 
 <p>We consider the domain of <span class="strong"><strong>automata</strong></span>.  An automaton may be used to
 specify a language defined on a set of symbols called alphabet.  The
 <a class="link" href="">following example</a> shows an automaton
 which recognizes the language <span class="emphasis"><em>a*ba*</em></span>.</p>
 </div>
-<div class="section" title="3.3.2. Description of automata"><div class="titlepage"><div><div><h3 class="title"><a id="_description_of_automata"/>3.3.2. Description of automata</h3></div></div></div>
+<div class="section" title="3.3.2.&nbsp;Description of automata"><div class="titlepage"><div><div><h3 class="title"><a name="_description_of_automata"></a>3.3.2.&nbsp;Description of automata</h3></div></div></div>
 
 <p>An automaton is composed of a finite set of states, transitions and
 symbols. An automaton must have exactly one initial state (and thus at
 least one state).  One transition connects a source state to a target
 state and is labelled by a symbol.
-On the <a class="link" href="ch03.html#automata-aSbaS" title="Figure 3.3. Automata which reads a*ba*">example</a>, states are represented by circles, doubled-circled
+On the <a class="link" href="ch03.html#automata-aSbaS" title="Figure&nbsp;3.3.&nbsp;Automata which reads a*ba*">example</a>, states are represented by circles, doubled-circled
 states are accepting states (or final states).
 A transition is depicted as an arrow from the input state to the
 output state.
 An arrow without input state points to the initial state.</p>
-<div class="figure"><a id="automata-aSbaS"/><p class="title"><strong>Figure 3.3. Automata which reads a*ba*</strong></p><div class="figure-contents">
+<div class="figure"><a name="automata-aSbaS"></a><p class="title"><b>Figure&nbsp;3.3.&nbsp;Automata which reads a*ba*</b></p><div class="figure-contents">
 
-<div class="mediaobject"><img src="images/images/tutorial/automate-aSbaS.png" alt="Automata which reads a*ba*"/></div>
-</div></div><br class="figure-break"/>
+<div class="mediaobject"><img src="images/images/tutorial/automate-aSbaS.png" alt="Automata which reads a*ba*"></div>
+</div></div><br class="figure-break">
 <p>TODO: When.
 An automaton is deterministic is there is no two transitions labelled
 with the same symbol with the same source state. Else it is called
 nondeterministic automaton.</p>
 </div>
-<div class="section" title="3.3.3. Informal behavior"><div class="titlepage"><div><div><h3 class="title"><a id="_informal_behavior"/>3.3.3. Informal behavior</h3></div></div></div>
+<div class="section" title="3.3.3.&nbsp;Informal behavior"><div class="titlepage"><div><div><h3 class="title"><a name="_informal_behavior"></a>3.3.3.&nbsp;Informal behavior</h3></div></div></div>
 
-<p>An automaton is used to decide whether a word — a sequence of symbols — is part of a language (the word is accepted by the automaton) or
+<p>An automaton is used to decide whether a word&#8201;&#8212;&#8201;a sequence of symbols&#8201;&#8212;&#8201;is part of a language (the word is accepted by the automaton) or
 not (the word is rejected).
 An automaton gets one input at a time.
 When run, an automaton has a current state which is the initial state
@@ -219,7 +221,7 @@ A work is accepted if all its symbols have been accepted and the last
 current state of the automaton is an accept state.  Otherwise the work
 is rejected.</p>
 </div>
-<div class="section" title="3.3.4. Scenarios"><div class="titlepage"><div><div><h3 class="title"><a id="_scenarios"/>3.3.4. Scenarios</h3></div></div></div>
+<div class="section" title="3.3.4.&nbsp;Scenarios"><div class="titlepage"><div><div><h3 class="title"><a name="_scenarios"></a>3.3.4.&nbsp;Scenarios</h3></div></div></div>
 
 <p>The scenarios related to automata shared the same structure as they
 all consist in checking whether a work is accepted or rejected by an
@@ -239,7 +241,7 @@ Terminate
 <p>The automaton will then answers. The response can be 'accepted' or
 'refused'</p>
 </div>
-<div class="section" title="3.3.5. Examples of models"><div class="titlepage"><div><div><h3 class="title"><a id="_examples_of_models"/>3.3.5. Examples of models</h3></div></div></div>
+<div class="section" title="3.3.5.&nbsp;Examples of models"><div class="titlepage"><div><div><h3 class="title"><a name="_examples_of_models"></a>3.3.5.&nbsp;Examples of models</h3></div></div></div>
 
 <p>We give here some examples of automaton with the language they model
 and some examples of accepted and rejected words.</p>
@@ -248,10 +250,10 @@ We first consider some simple example of
 automata for which there is only one outgoing transition for a
 state.
 </dd></dl></div>
-<div class="figure"><a id="automata-abcdS"/><p class="title"><strong>Figure 3.4. Automata which reads (ABCD)*</strong></p><div class="figure-contents">
+<div class="figure"><a name="automata-abcdS"></a><p class="title"><b>Figure&nbsp;3.4.&nbsp;Automata which reads (ABCD)*</b></p><div class="figure-contents">
 
-<div class="mediaobject"><img src="images/images/tutorial/automate-abcd-star.png" alt="Automata which reads (ABCD)*"/></div>
-</div></div><br class="figure-break"/>
+<div class="mediaobject"><img src="images/images/tutorial/automate-abcd-star.png" alt="Automata which reads (ABCD)*"></div>
+</div></div><br class="figure-break">
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Examples of accepted words: (empty word), ABCD,
 ABCDABCD, etc.
@@ -269,28 +271,28 @@ several outgoings transition for one state
 several final states.
 </li></ul></div>
 <p>Dictionary Automata:</p>
-<div class="figure"><a id="automata-mots"/><p class="title"><strong>Figure 3.5. Automata which reads words</strong></p><div class="figure-contents">
+<div class="figure"><a name="automata-mots"></a><p class="title"><b>Figure&nbsp;3.5.&nbsp;Automata which reads words</b></p><div class="figure-contents">
 
-<div class="mediaobject"><img src="images/images/tutorial/automate-mots.png" alt="Automata which reads words"/></div>
-</div></div><br class="figure-break"/>
+<div class="mediaobject"><img src="images/images/tutorial/automate-mots.png" alt="Automata which reads words"></div>
+</div></div><br class="figure-break">
 <p>The only accepted words are: IL, ILE, ILES, ILS, ILOT, ILOTS</p>
 <div class="variablelist"><dl><dt><span class="term">Nondeterministic automata</span></dt><dd>
 TODO: Several transitions with the same symbol.
 </dd></dl></div>
 <p>TODO: A transition with no associated symbol (automatic transition?)</p>
-<div class="figure"><a id="automata-ccomm"/><p class="title"><strong>Figure 3.6. Automata which reads C commentary</strong></p><div class="figure-contents">
+<div class="figure"><a name="automata-ccomm"></a><p class="title"><b>Figure&nbsp;3.6.&nbsp;Automata which reads C commentary</b></p><div class="figure-contents">
 
-<div class="mediaobject"><img src="images/images/tutorial/automate-ccomm.png" alt="Automata which C commentary"/></div>
-</div></div><br class="figure-break"/>
+<div class="mediaobject"><img src="images/images/tutorial/automate-ccomm.png" alt="Automata which C commentary"></div>
+</div></div><br class="figure-break">
 <div class="variablelist"><dl><dt><span class="term">Pushdown automata</span></dt><dd>
 For example to check that open and close symbols are well suited.
 </dd></dl></div>
 </div>
 </div>
-<div class="section" title="3.4. Creating an xDSML Project"><div class="titlepage"><div><div><h2 class="title"><a id="_creating_an_xdsml_project"/>3.4. Creating an xDSML Project</h2></div></div></div>
+<div class="section" title="3.4.&nbsp;Creating an xDSML Project"><div class="titlepage"><div><div><h2 class="title"><a name="_creating_an_xdsml_project"></a>3.4.&nbsp;Creating an xDSML Project</h2></div></div></div>
 
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p>TODO: Put the GEMOC Logo for paragraphs which describe GEMOC Studio commands.</p>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
+<p xmlns="">TODO: Put the GEMOC Logo for paragraphs which describe GEMOC Studio commands.</p>
 </div>
 <div class="informalexample">
 <p>First, start by creating a new xDSML project (<span class="emphasis"><em>New &gt; Project &gt; GEMOC
@@ -301,25 +303,25 @@ resources used in an xDSML project (which are part of and managed by
 other projects).  This view is a kind of dashboard or control center to
 have quick access to any important resource of the project.</p>
 </div>
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p>In the MANIFEST.MF (in folder META-INF), add the following
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
+<p xmlns="">In the MANIFEST.MF (in folder META-INF), add the following
 dependency if it is not present:
 "org.gemoc.gemoc_language_workbench.extensions.k3" (click on
-dependencies, then <span class="emphasis"><em>Add…​</em></span>, the type in "k3" and select the right
+dependencies, then <span class="emphasis"><em>Add&#8230;&#8203;</em></span>, the type in "k3" and select the right
 plugin).</p>
 </div>
-<p>TODO: Verifier si ce n’est pas fait lors de la creation du projet K3
+<p>TODO: Verifier si ce n&#8217;est pas fait lors de la creation du projet K3
 par le Wizard.</p>
 </div>
-<div class="section" title="3.5. Increment 1 : Deterministic Automata"><div class="titlepage"><div><div><h2 class="title"><a id="sec-increment1"/>3.5. Increment 1 : Deterministic Automata</h2></div></div></div>
+<div class="section" title="3.5.&nbsp;Increment 1 : Deterministic Automata"><div class="titlepage"><div><div><h2 class="title"><a name="sec-increment1"></a>3.5.&nbsp;Increment 1 : Deterministic Automata</h2></div></div></div>
 
-<div class="section" title="3.5.1. Specification of the xDSML interface"><div class="titlepage"><div><div><h3 class="title"><a id="_specification_of_the_xdsml_interface"/>3.5.1. Specification of the xDSML interface</h3></div></div></div>
+<div class="section" title="3.5.1.&nbsp;Specification of the xDSML interface"><div class="titlepage"><div><div><h3 class="title"><a name="_specification_of_the_xdsml_interface"></a>3.5.1.&nbsp;Specification of the xDSML interface</h3></div></div></div>
 
 <p>In this step, we describe the interface of the language.  It includes
 interface to the system engineers (for example AS and CS) but also to
 other models and xDSML (AS, DSE, EF and ED).</p>
 </div>
-<div class="section" title="3.5.2. Define the Abstract Syntax (AS)"><div class="titlepage"><div><div><h3 class="title"><a id="_define_the_abstract_syntax_as"/>3.5.2. Define the Abstract Syntax (AS)</h3></div></div></div>
+<div class="section" title="3.5.2.&nbsp;Define the Abstract Syntax (AS)"><div class="titlepage"><div><div><h3 class="title"><a name="_define_the_abstract_syntax_as"></a>3.5.2.&nbsp;Define the Abstract Syntax (AS)</h3></div></div></div>
 
 <div class="informalexample">
 <p>To define the AS we can either select an existing project (Browse
@@ -355,7 +357,7 @@ the Genmodel (right-click on root element). The packages "automata",
 "com.example.automata.model.editor" are generated.</p>
 </div>
 </div>
-<div class="section" title="3.5.3. Define concrete syntaxes (CS)"><div class="titlepage"><div><div><h3 class="title"><a id="_define_concrete_syntaxes_cs"/>3.5.3. Define concrete syntaxes (CS)</h3></div></div></div>
+<div class="section" title="3.5.3.&nbsp;Define concrete syntaxes (CS)"><div class="titlepage"><div><div><h3 class="title"><a name="_define_concrete_syntaxes_cs"></a>3.5.3.&nbsp;Define concrete syntaxes (CS)</h3></div></div></div>
 
 <p>A concrete syntax is convenient way to view or edit a model.  It can
 be textual (Xtext project for example) or graphical (Sirius project
@@ -363,12 +365,12 @@ for example).  They can be added to the xDSML project like we have
 done for AS.</p>
 <p>For now, we postpone the design of the Concrete Syntaxes until we are
 sure the semantics has been correctly implemented.</p>
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
-<p>Therefore, a graphical Concrete Syntax is required in order to use the
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
+<p xmlns="">Therefore, a graphical Concrete Syntax is required in order to use the
 graphical animator later on during simulations.</p>
 </div>
 </div>
-<div class="section" title="3.5.4. Defining DSE"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_dse"/>3.5.4. Defining DSE</h3></div></div></div>
+<div class="section" title="3.5.4.&nbsp;Defining DSE"><div class="titlepage"><div><div><h3 class="title"><a name="_defining_dse"></a>3.5.4.&nbsp;Defining DSE</h3></div></div></div>
 
 <p>Domain Specific Events are part of the interface of the language and
 allow communication with the system engineer and the other models of
@@ -433,29 +435,29 @@ interface of the xDSML.
 endpackage</pre>
 </div>
 <p>TODO: Can we define DSE without mapping them to DSA?</p>
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
-<p>The signature of the Execution Functions needs to be present in the
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
+<p xmlns="">The signature of the Execution Functions needs to be present in the
 MetaModel. Therefore, we need to modify the Ecore MetaModel and add
 the three following operations:</p>
-<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+<div xmlns="" class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Automata.initialize()
 </li><li class="listitem">
 Automata.terminate()
 </li><li class="listitem">
 Symbol.occur()
 </li></ul></div>
-<p>To represent methods with Void as return type in EMF, do not complete
+<p xmlns="">To represent methods with Void as return type in EMF, do not complete
 the field "EType" of the EOperations.</p>
 </div>
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Tip</h2>
-<p>If the AS is changed (automata.ecore), we have to do "Reload…​"
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Tip</h2>
+<p xmlns="">If the AS is changed (automata.ecore), we have to do "Reload&#8230;&#8203;"
 on the genmodel, generate again the Model, Edit and Editor, and
 re-register the ecore.  Nevertheless, the ECL is not always able to
 see the changes.  In such a case close the editor and open it again.
 It should work.</p>
 </div>
 </div>
-<div class="section" title="3.5.5. Defining Domain-Specific Actions (DSA)"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_domain_specific_actions_dsa"/>3.5.5. Defining Domain-Specific Actions (DSA)</h3></div></div></div>
+<div class="section" title="3.5.5.&nbsp;Defining Domain-Specific Actions (DSA)"><div class="titlepage"><div><div><h3 class="title"><a name="_defining_domain_specific_actions_dsa"></a>3.5.5.&nbsp;Defining Domain-Specific Actions (DSA)</h3></div></div></div>
 
 <p>DSA includes the definition of Execution Data (ED) and Execution
 Functions (EF).  They are both implemented in Kermeta 3 in K3 Aspect
@@ -475,7 +477,7 @@ discarded.</p>
 </div>
 <p>We can now complete the Kermeta 3 file (automata.xtend) with the
 definition of ED and EF.</p>
-<div class="section" title="Execution Data (ED)"><div class="titlepage"><div><div><h4 class="title"><a id="_execution_data_ed"/>Execution Data (ED)</h4></div></div></div>
+<div class="section" title="Execution Data (ED)"><div class="titlepage"><div><div><h4 class="title"><a name="_execution_data_ed"></a>Execution Data (ED)</h4></div></div></div>
 
 <p>We identify one runtime information for Automata which store the
 current state of the automaton.  We call it 'currentState'. It is a
@@ -492,14 +494,14 @@ class AutomataAspect {
 	public State currentState;
 }</pre>
 </div>
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
-<p>If you plan to use the Graphical animation, then comment the
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
+<p xmlns="">If you plan to use the Graphical animation, then comment the
 code above and add this reference to the Ecore Metamodel directly.
 This is due to how the animator connects to the Abstract Syntax (for
 now).</p>
 </div>
 </div>
-<div class="section" title="Execution Functions (EFs)"><div class="titlepage"><div><div><h4 class="title"><a id="_execution_functions_efs"/>Execution Functions (EFs)</h4></div></div></div>
+<div class="section" title="Execution Functions (EFs)"><div class="titlepage"><div><div><h4 class="title"><a name="_execution_functions_efs"></a>Execution Functions (EFs)</h4></div></div></div>
 
 <p>Here are the execution functions we decide to define:</p>
 <div class="variablelist"><dl><dt><span class="term">Automata.initialize()</span></dt><dd>
@@ -610,7 +612,7 @@ check the results (current state, accepted or rejected)
 </div>
 </div>
 </div>
-<div class="section" title="3.5.6. Model of Concurrency and Communication (MoCC)"><div class="titlepage"><div><div><h3 class="title"><a id="_model_of_concurrency_and_communication_mocc"/>3.5.6. Model of Concurrency and Communication (MoCC)</h3></div></div></div>
+<div class="section" title="3.5.6.&nbsp;Model of Concurrency and Communication (MoCC)"><div class="titlepage"><div><div><h3 class="title"><a name="_model_of_concurrency_and_communication_mocc"></a>3.5.6.&nbsp;Model of Concurrency and Communication (MoCC)</h3></div></div></div>
 
 <p>TODO: Give the rational.</p>
 <p>There are two sides to the MoCC. First, you can create a new MoCCML
@@ -666,9 +668,9 @@ First, we want to make sure that we do the initialization of the Automata before
 	Relation Exclusion(self.mocc_terminate, allSymbolOccurEvents)</pre>
 <p>As soon as you save the ECL file, a .qvto file should be generated in the folders qvto-gen/language and qvto-gen/modeling. Make sure that your xDSML project references the .qvto file that is available in qvto-gen/modeling.</p>
 </div>
-<div class="section" title="3.5.7. Using the Modeling Workbench"><div class="titlepage"><div><div><h3 class="title"><a id="_using_the_modeling_workbench"/>3.5.7. Using the Modeling Workbench</h3></div></div></div>
+<div class="section" title="3.5.7.&nbsp;Using the Modeling Workbench"><div class="titlepage"><div><div><h3 class="title"><a name="_using_the_modeling_workbench"></a>3.5.7.&nbsp;Using the Modeling Workbench</h3></div></div></div>
 
-<div class="section" title="Technical Workarounds"><div class="titlepage"><div><div><h4 class="title"><a id="_technical_workarounds"/>Technical Workarounds</h4></div></div></div>
+<div class="section" title="Technical Workarounds"><div class="titlepage"><div><div><h4 class="title"><a name="_technical_workarounds"></a>Technical Workarounds</h4></div></div></div>
 
 <p>A few workarounds are needed before you can launch the Modeling
 Workbench :</p>
@@ -694,27 +696,27 @@ dossier qvto-gen/modeling du projet DSE.
 TODO
 </li></ul></div>
 </div>
-<div class="section" title="Testing and debugging the xDSML"><div class="titlepage"><div><div><h4 class="title"><a id="_testing_and_debugging_the_xdsml"/>Testing and debugging the xDSML</h4></div></div></div>
+<div class="section" title="Testing and debugging the xDSML"><div class="titlepage"><div><div><h4 class="title"><a name="_testing_and_debugging_the_xdsml"></a>Testing and debugging the xDSML</h4></div></div></div>
 
 <div class="informalexample">
 <p>Launch the Modeling Workbench. Create a new general project, for
 instance "com.example.automata.instances". In this project, create a
-new Automate instance (New &gt; Other…​ &gt; Automata Model)
+new Automate instance (New &gt; Other&#8230;&#8203; &gt; Automata Model)
 "ABCD.automata" whose root is of type Automata.</p>
 <p>Create a Run Configuration: right click on the model and select "Run
-As…​ &gt; Run Configurations". Create a new "Gemoc eXecutable Model"
+As&#8230;&#8203; &gt; Run Configurations". Create a new "Gemoc eXecutable Model"
 configuration. Model to execute:
 "/com.example.automata.instances/ABCD.automata", xDSML: "automata".
 Change the "Decider" to "Step by step user decider".</p>
 </div>
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
-<p>In "Animator" place any valid .aird. This issue should be solved in the next iteration of the Studio.
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
+<p xmlns="">In "Animator" place any valid .aird. This issue should be solved in the next iteration of the Studio.
 In the panel "Common", select "Shared file" and put the project path there: "/com.example.automata.instances". Give a name to the configuration like "Automata ABCD".</p>
 </div>
 </div>
 </div>
 </div>
-<div class="section" title="3.6. Increment 2: new MoCC and DSA for Automata (MoCC focused version)"><div class="titlepage"><div><div><h2 class="title"><a id="_increment_2_new_mocc_and_dsa_for_automata_mocc_focused_version"/>3.6. Increment 2: new MoCC and DSA for Automata (MoCC focused version)</h2></div></div></div>
+<div class="section" title="3.6.&nbsp;Increment 2: new MoCC and DSA for Automata (MoCC focused version)"><div class="titlepage"><div><div><h2 class="title"><a name="_increment_2_new_mocc_and_dsa_for_automata_mocc_focused_version"></a>3.6.&nbsp;Increment 2: new MoCC and DSA for Automata (MoCC focused version)</h2></div></div></div>
 
 <p>In the previous version the MoCC is only responsible of ensuring that
 DSE events (input symbols and end of word event) arrive one at a time.
@@ -728,7 +730,7 @@ will be scheduled by the MoCC.   We add clock on state to know whether
 a state is current or not a simulation step.  To be defined.</p>
 <p>TODO: to be developed.</p>
 </div>
-<div class="section" title="3.7. Increment 3: Graphical visualization"><div class="titlepage"><div><div><h2 class="title"><a id="_increment_3_graphical_visualization"/>3.7. Increment 3: Graphical visualization</h2></div></div></div>
+<div class="section" title="3.7.&nbsp;Increment 3: Graphical visualization"><div class="titlepage"><div><div><h2 class="title"><a name="_increment_3_graphical_visualization"></a>3.7.&nbsp;Increment 3: Graphical visualization</h2></div></div></div>
 
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 On the model
@@ -739,7 +741,7 @@ A specific view as a Gantt
 </li></ul></div>
 <p>TODO: to be developed.</p>
 </div>
-<div class="section" title="3.8. Increment 4: Consider nondeterministic automata."><div class="titlepage"><div><div><h2 class="title"><a id="_increment_4_consider_nondeterministic_automata"/>3.8. Increment 4: Consider nondeterministic automata.</h2></div></div></div>
+<div class="section" title="3.8.&nbsp;Increment 4: Consider nondeterministic automata."><div class="titlepage"><div><div><h2 class="title"><a name="_increment_4_consider_nondeterministic_automata"></a>3.8.&nbsp;Increment 4: Consider nondeterministic automata.</h2></div></div></div>
 
 <p>TODO: to be developed.</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
@@ -751,30 +753,30 @@ A transition with no label.
 all states that are accessible by the symbols already accepte by the
 automaton.</p>
 </div>
-<div class="section" title="3.9. Increment 5: Pushdown automaton"><div class="titlepage"><div><div><h2 class="title"><a id="_increment_5_pushdown_automaton"/>3.9. Increment 5: Pushdown automaton</h2></div></div></div>
+<div class="section" title="3.9.&nbsp;Increment 5: Pushdown automaton"><div class="titlepage"><div><div><h2 class="title"><a name="_increment_5_pushdown_automaton"></a>3.9.&nbsp;Increment 5: Pushdown automaton</h2></div></div></div>
 
 <p>TODO: The purpose of Pushdown Automaton is to illustrate the Feedback
     mechanism.</p>
 <p>We will now extend our automaton to include a stack.  The feedback
 mechanism will be used to decide whether a transition is firable
 according to the symbol on top of the stack.</p>
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p>These aspect will be included in a future version of the
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
+<p xmlns="">These aspect will be included in a future version of the
 tutorial when the proposed approach to handle feedbacks will have been
 integrated to the GEMOC studio.</p>
 </div>
 </div>
-<div class="section" title="3.10. Increment 6: Call of user actions"><div class="titlepage"><div><div><h2 class="title"><a id="_increment_6_call_of_user_actions"/>3.10. Increment 6: Call of user actions</h2></div></div></div>
+<div class="section" title="3.10.&nbsp;Increment 6: Call of user actions"><div class="titlepage"><div><div><h2 class="title"><a name="_increment_6_call_of_user_actions"></a>3.10.&nbsp;Increment 6: Call of user actions</h2></div></div></div>
 
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p>Will be added in a future version of this tutorial.</p>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
+<p xmlns="">Will be added in a future version of this tutorial.</p>
 </div>
 </div>
-<div class="section" title="3.11. Increment: TBD"><div class="titlepage"><div><div><h2 class="title"><a id="_increment_tbd"/>3.11. Increment: TBD</h2></div></div></div>
+<div class="section" title="3.11.&nbsp;Increment: TBD"><div class="titlepage"><div><div><h2 class="title"><a name="_increment_tbd"></a>3.11.&nbsp;Increment: TBD</h2></div></div></div>
 
 <p>Other increments?</p>
 </div>
-<div class="section" title="3.12. TODO"><div class="titlepage"><div><div><h2 class="title"><a id="_todo"/>3.12. TODO</h2></div></div></div>
+<div class="section" title="3.12.&nbsp;TODO"><div class="titlepage"><div><div><h2 class="title"><a name="_todo"></a>3.12.&nbsp;TODO</h2></div></div></div>
 
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Pourquoi automataDSE ? (DSE/ECL part)
@@ -788,7 +790,7 @@ generates on MOCCEvent.
 rename xDSML.model to xDSML.as?
 </li><li class="listitem">
 Expliquer les automates en partant des exemples, pour eviter la
-redondance avec l’explication du MM et plus logique dans l’optique de
+redondance avec l&#8217;explication du MM et plus logique dans l&#8217;optique de
 du system engineer.
 </li><li class="listitem">
 Process: ensure a better conformance of the text with the process
@@ -808,7 +810,7 @@ indeterminism).
 Give examples of models, <span class="strong"><strong>scenarios</strong></span> and <span class="strong"><strong>expected results</strong></span>.
 </li><li class="listitem">
 Add expected results in term of animation : want to see current
-states, executable transitions, incoming symbols…​
+states, executable transitions, incoming symbols&#8230;&#8203;
 </li><li class="listitem">
 A way to formalize scenario (including expected results)?
 </li><li class="listitem">
@@ -821,12 +823,12 @@ class AutomataAspect { }, one for the ED, one the EF?
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Definir un nouveau type de block GEMOC avec le Logo GEMOC.
 </li><li class="listitem">
-Comment definir l’equivalent de --atribute tabsize=4 dans le
+Comment definir l&#8217;equivalent de --atribute tabsize=4 dans le
 .asciidoc directement ?
 </li></ul></div>
-<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
-<p>When the .ecore is changed.  The genmodel must be updated and
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
+<p xmlns="">When the .ecore is changed.  The genmodel must be updated and
 the code generated again.</p>
 </div>
 </div>
-</div><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong>Chapter 2. Gemoc Modeling workbench</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="bi01.html"><strong>Next</strong>Bibliography</a></li></ul></body></html>
+</div><ul xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong>Chapter&nbsp;2.&nbsp;Gemoc Modeling workbench</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="bi01.html"><strong>Next</strong>Bibliography</a></li></ul></body></html>
