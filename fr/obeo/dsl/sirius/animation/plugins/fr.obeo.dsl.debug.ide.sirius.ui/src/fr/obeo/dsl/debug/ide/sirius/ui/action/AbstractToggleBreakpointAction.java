@@ -29,7 +29,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction2;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -50,13 +49,11 @@ public abstract class AbstractToggleBreakpointAction implements IExternalJavaAct
 	 * @see org.eclipse.sirius.tools.api.ui.IExternalJavaAction#execute(java.util.Collection, java.util.Map)
 	 */
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-		final IWorkbenchPart activePart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getActivePage().getActivePart();
 		final ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.getSelection();
-		if (toggleUtiliy.canToggleBreakpoints(activePart, selection)) {
+		if (toggleUtiliy.canToggleBreakpoints(selection)) {
 			try {
-				toggleUtiliy.toggleBreakpoints(activePart, selection);
+				toggleUtiliy.toggleBreakpoints(selection);
 			} catch (CoreException e) {
 				DebugSiriusIdeUiPlugin.getPlugin().getLog().log(
 						new Status(IStatus.ERROR, DebugSiriusIdeUiPlugin.ID, e.getLocalizedMessage(), e));
@@ -70,11 +67,9 @@ public abstract class AbstractToggleBreakpointAction implements IExternalJavaAct
 	 * @see org.eclipse.sirius.tools.api.ui.IExternalJavaAction#canExecute(java.util.Collection)
 	 */
 	public boolean canExecute(Collection<? extends EObject> selections) {
-		final IWorkbenchPart activePart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getActivePage().getActivePart();
 		final ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.getSelection();
-		return toggleUtiliy.canToggleBreakpoints(activePart, selection);
+		return toggleUtiliy.canToggleBreakpoints(selection);
 	}
 
 	/**

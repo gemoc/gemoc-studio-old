@@ -101,11 +101,9 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 				res = true;
 			} else {
 				for (Event event : LogicalStepHelper.getTickedEvents((LogicalStep) instruction)) {
-					if (event.getReferencedObjectRefs().size() != 0) {
-						res = super.shouldBreak(event.getReferencedObjectRefs().get(0));
-						if (res) {
-							break;
-						}
+					res = super.shouldBreak(event) || (event.getReferencedObjectRefs().size() != 0 && super.shouldBreak(event.getReferencedObjectRefs().get(0)));
+					if (res) {
+						break;
 					}
 				}
 			}
@@ -194,7 +192,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 	@Override
 	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse) 
 	{
-		if (!control(Thread.currentThread().getName(), mse.getCaller()))
+		if (!control(Thread.currentThread().getName(), mse.getSolverEvent()))
 		{
 			throw new RuntimeException("Debug thread has stopped.");			
 		}

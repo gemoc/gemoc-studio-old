@@ -151,8 +151,19 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 * @see org.eclipse.debug.ui.ISourcePresentation#getEditorInput(java.lang.Object)
 	 */
 	public IEditorInput getEditorInput(Object element) {
-		final IEditorInput res;
+		return getDefaultEditorInput(element);
+	}
 
+	/**
+	 * Gets the default {@link IEditorInput} for the given {@link Object}.
+	 * 
+	 * @param element
+	 *            the {@link Object}
+	 * @return the default {@link IEditorInput} for the given {@link Object} if any, <code>null</code>
+	 *         otherwise
+	 */
+	protected IEditorInput getDefaultEditorInput(Object element) {
+		final IEditorInput res;
 		if (element instanceof EObject) {
 			Resource resource = ((EObject)element).eResource();
 			if (resource != null) {
@@ -165,7 +176,6 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 		} else {
 			res = null;
 		}
-
 		return res;
 	}
 
@@ -208,6 +218,23 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	public String getEditorId(IEditorInput input, Object element) {
 		final String res;
 
+		res = getDefaultEditorID(input, element);
+
+		return res;
+	}
+
+	/**
+	 * Gets the default editor ID for the given {@link IEditorInput} and element.
+	 * 
+	 * @param input
+	 *            the {@link IEditorInput}
+	 * @param element
+	 *            the element
+	 * @return the default editor ID for the given {@link IEditorInput} and element if any, <code>null</code>
+	 *         otherwise
+	 */
+	protected String getDefaultEditorID(IEditorInput input, Object element) {
+		final String res;
 		if (input instanceof URIEditorInput) {
 			res = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(
 					((URIEditorInput)input).getURI().lastSegment()).getId();
@@ -222,7 +249,6 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 		} else {
 			res = null;
 		}
-
 		return res;
 	}
 

@@ -79,12 +79,22 @@ public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecora
 	/**
 	 * The {@link ResourceSet} used to load {@link EObject instruction} from the {@link DSLBreakpoint}.
 	 */
-	private final ResourceSet resourceSet;
+	private ResourceSet resourceSet;
 
 	/**
 	 * The debug model identifier.
 	 */
 	private final String identifier;
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param identifier
+	 *            the debug model identifier
+	 */
+	public DSLLabelDecorator(String identifier) {
+		this(null, identifier);
+	}
 
 	/**
 	 * Constructor.
@@ -135,22 +145,39 @@ public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecora
 	 * @param breakpoint
 	 *            the {@link DSLBreakpoint}
 	 */
-	private void fireLabelProviderChanged(IBreakpoint breakpoint) {
-		final EObject instruction = resourceSet.getEObject(((DSLBreakpoint)breakpoint).getURI(), false);
-		if (instruction != null) {
-			final LabelProviderChangedEvent event = new LabelProviderChangedEvent(this, instruction);
-			Display.getDefault().asyncExec(new Runnable() {
+	protected void fireLabelProviderChanged(IBreakpoint breakpoint) {
+		if (resourceSet != null) {
+			final Object instruction = getElement(resourceSet, (DSLBreakpoint)breakpoint);
+			if (instruction != null) {
+				final LabelProviderChangedEvent event = new LabelProviderChangedEvent(this, instruction);
+				Display.getDefault().asyncExec(new Runnable() {
 
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see java.lang.Runnable#run()
-				 */
-				public void run() {
-					fireLabelProviderChanged(event);
-				}
-			});
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see java.lang.Runnable#run()
+					 */
+					public void run() {
+						fireLabelProviderChanged(event);
+					}
+				});
+			}
 		}
+	}
+
+	/**
+	 * Gets the element to pass in the {@link LabelProviderChangedEvent} from the given {@link DSLBreakpoint}
+	 * and {@link ResourceSet}.
+	 * 
+	 * @param rs
+	 *            the {@link ResourceSet}
+	 * @param breakpoint
+	 *            the {@link DSLBreakpoint}
+	 * @return the element to pass in the {@link LabelProviderChangedEvent} from the given
+	 *         {@link DSLBreakpoint} and {@link ResourceSet}
+	 */
+	protected Object getElement(ResourceSet rs, DSLBreakpoint breakpoint) {
+		return rs.getEObject(((DSLBreakpoint)breakpoint).getURI(), false);
 	}
 
 	/**
@@ -297,6 +324,16 @@ public class DSLLabelDecorator extends BaseLabelProvider implements ILabelDecora
 			cachedImage.dispose();
 		}
 		super.dispose();
+	}
+
+	/**
+	 * Sets the {@link ResourceSet}.
+	 * 
+	 * @param resourceSet
+	 *            the {@link ResourceSet}
+	 */
+	public void setResourceSet(ResourceSet resourceSet) {
+		this.resourceSet = resourceSet;
 	}
 
 }

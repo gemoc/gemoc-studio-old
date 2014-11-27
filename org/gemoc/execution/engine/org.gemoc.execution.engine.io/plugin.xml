@@ -70,6 +70,26 @@
                tooltip="Follow the last choice">
          </command>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.gemoc.execution.engine.io.views.steps.LogicalStepsView">
+         <command
+               commandId="org.gemoc.execution.engine.io.ToggleBreapointCommand"
+               icon="icons/breakpoint.gif"
+               label="Toggle breakpoint"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.gemoc.execution.engine.io.views.event.EventManagerView">
+         <command
+               commandId="org.gemoc.execution.engine.io.ToggleBreapointCommand"
+               icon="icons/breakpoint.gif"
+               label="Toggle breakpoint"
+               style="push">
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -81,6 +101,11 @@
                class="org.eclipse.ui.handlers.RegistryToggleState:true"
                id="org.eclipse.ui.commands.toggleState">
          </state>
+      </command>
+      <command
+            defaultHandler="org.gemoc.execution.engine.io.views.handlers.GemocToggleBreakpointHandler"
+            id="org.gemoc.execution.engine.io.ToggleBreapointCommand"
+            name="Toggle breapoint">
       </command>
    </extension>
    <extension

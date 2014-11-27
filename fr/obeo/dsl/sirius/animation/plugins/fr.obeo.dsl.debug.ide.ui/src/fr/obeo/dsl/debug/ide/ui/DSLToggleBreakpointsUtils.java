@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.IWorkbenchPart;
 
 /**
  * Utility class for breakpoint {@link DSLBreakpoint} toggling.
@@ -56,12 +55,14 @@ public class DSLToggleBreakpointsUtils {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Toggles a {@link DSLBreakpoint} for the given selection.
 	 * 
-	 * @see org.eclipse.debug.ui.actions.IToggleBreakpointsTargetExtension#toggleBreakpoints(org.eclipse.ui.IWorkbenchPart,
-	 *      org.eclipse.jface.viewers.ISelection)
+	 * @param selection
+	 *            the {@link ISelection}
+	 * @throws CoreException
+	 *             if {@link DSLBreakpoint} can't be retrieved or installed
 	 */
-	public void toggleBreakpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
+	public void toggleBreakpoints(ISelection selection) throws CoreException {
 		if (selection instanceof IStructuredSelection) {
 			@SuppressWarnings("unchecked")
 			final Iterator<Object> it = ((IStructuredSelection)selection).iterator();
@@ -136,12 +137,14 @@ public class DSLToggleBreakpointsUtils {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Tells if we can toggle a {@link DSLBreakpoint} for the given {@link ISelection}.
 	 * 
-	 * @see org.eclipse.debug.ui.actions.IToggleBreakpointsTargetExtension#canToggleBreakpoints(org.eclipse.ui.IWorkbenchPart,
-	 *      org.eclipse.jface.viewers.ISelection)
+	 * @param selection
+	 *            the {@link ISelection}
+	 * @return <code>true</code> if we can toggle a {@link DSLBreakpoint} for the given {@link ISelection},
+	 *         <code>false</code> otherwise
 	 */
-	public boolean canToggleBreakpoints(IWorkbenchPart part, ISelection selection) {
+	public boolean canToggleBreakpoints(ISelection selection) {
 		boolean res = false;
 
 		if (selection instanceof IStructuredSelection) {
