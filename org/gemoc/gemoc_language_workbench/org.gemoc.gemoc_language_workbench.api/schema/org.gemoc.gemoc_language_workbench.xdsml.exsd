@@ -50,7 +50,7 @@
    <element name="XDSML_Definition">
       <complexType>
          <sequence minOccurs="0" maxOccurs="unbounded">
-            <element ref="Engine_hook_Definition"/>
+            <element ref="EngineAddon_Definition"/>
             <element ref="MSE_State_Controller_Definition"/>
          </sequence>
          <attribute name="name" type="string" use="required">
@@ -107,9 +107,9 @@
       </complexType>
    </element>
 
-   <element name="Engine_hook_Definition">
+   <element name="EngineAddon_Definition">
       <complexType>
-         <attribute name="engineHook_class" type="string">
+         <attribute name="engineAddon_class" type="string">
             <annotation>
                <documentation>
                   This class allows to hook some code to some phase of the Gemoc engine.
@@ -118,7 +118,7 @@ This can be used for example to initialize some dsl specific GUI or to monitor t
 This is optional, if not set, the engine will ignore it.
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.core.IEngineHook"/>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon"/>
                </appinfo>
             </annotation>
          </attribute>

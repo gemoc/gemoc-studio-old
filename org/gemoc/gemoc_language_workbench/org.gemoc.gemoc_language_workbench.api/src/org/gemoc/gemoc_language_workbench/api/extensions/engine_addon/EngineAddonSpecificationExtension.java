@@ -1,6 +1,7 @@
-package org.gemoc.gemoc_language_workbench.api.engine_addon;
+package org.gemoc.gemoc_language_workbench.api.extensions.engine_addon;
 
 import org.eclipse.core.runtime.CoreException;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
 
 public class EngineAddonSpecificationExtension extends Extension

@@ -3,8 +3,8 @@ package org.gemoc.execution.engine.commons;
 import org.gemoc.execution.engine.commons.dsa.DefaultMSEStateController;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingHook;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 public class CCSLExecutionEngine extends AbstractExecutionEngine {
 
@@ -12,8 +12,8 @@ public class CCSLExecutionEngine extends AbstractExecutionEngine {
 		super(executionContext);
 		if (getExecutionContext().getRunConfiguration().isTraceActive())
 		{
-			IEngineHook traceHook = new ModelExecutionTracingHook();
-			getExecutionContext().getExecutionPlatform().addHook(traceHook);						
+			IEngineAddon traceHook = new ModelExecutionTracingHook();
+			getExecutionContext().getExecutionPlatform().addEngineAddon(traceHook);						
 		}
 
 	}

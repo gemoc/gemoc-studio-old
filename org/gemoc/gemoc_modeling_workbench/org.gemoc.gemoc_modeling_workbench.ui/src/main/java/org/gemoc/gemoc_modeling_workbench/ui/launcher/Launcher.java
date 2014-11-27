@@ -35,8 +35,8 @@ import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.GemocModelDebugger;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
@@ -85,8 +85,8 @@ public class Launcher
 				_engine = new CCSLExecutionEngine(executionContext);				
 				// delegate for debug mode
 				if (ILaunchManager.DEBUG_MODE.equals(mode)) {
-					IEngineHook animator = AbstractGemocAnimatorServices.getAnimator();
-					_engine.getExecutionContext().getExecutionPlatform().addHook(animator);
+					IEngineAddon animator = AbstractGemocAnimatorServices.getAnimator();
+					_engine.getExecutionContext().getExecutionPlatform().addEngineAddon(animator);
 					super.launch(configuration, mode, launch, monitor);
 				} else {
 					Job job = new Job(getDebugJobName(configuration,
@@ -373,7 +373,7 @@ public class Launcher
 			DSLDebugEventDispatcher dispatcher, EObject firstInstruction,
 			IProgressMonitor monitor) {
 		GemocModelDebugger res = new GemocModelDebugger(dispatcher, _engine);
-		_engine.getExecutionContext().getExecutionPlatform().addHook(res);
+		_engine.getExecutionContext().getExecutionPlatform().addEngineAddon(res);
 		return res;
 	}
 

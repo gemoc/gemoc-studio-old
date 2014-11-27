@@ -9,7 +9,6 @@ import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
@@ -17,6 +16,7 @@ import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -125,9 +125,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	{
 		if (!_started) 
 		{
-			for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+			for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 			{
-				hook.engineAboutToStart(this);
+				addon.engineAboutToStart(this);
 			}
 			engineStatus.setNbLogicalStepRun(0);
 			_runnable = new EngineRunnable();
@@ -150,9 +150,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 
 	private void clean() {
 		setEngineStatus(EngineStatus.RunStatus.Stopped);
-		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 		{
-			hook.postStopEngine(this);
+			addon.postStopEngine(this);
 		}
 		getEngineStatus().getCurrentLogicalStepChoice().clear();
 		getEngineStatus().setChosenLogicalStep(null);
@@ -189,9 +189,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		
 		public void run() {
 			
-			for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+			for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 			{
-				hook.engineStarted(AbstractExecutionEngine.this);
+				addon.engineStarted(AbstractExecutionEngine.this);
 			}
 			
 			// register this engine using a unique name
@@ -227,9 +227,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 							engineStatus.setChosenLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));
 							setEngineStatus(EngineStatus.RunStatus.Running);
 
-							for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+							for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 							{
-								hook.postLogicalStepSelection(AbstractExecutionEngine.this);
+								addon.postLogicalStepSelection(AbstractExecutionEngine.this);
 							}
 
 							// 3 - run the selected logical step
@@ -275,9 +275,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	private void setEngineStatus(RunStatus newStatus) 
 	{
 		engineStatus.setRunningStatus(newStatus);
-		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks())
+		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons())
 		{
-			hook.engineStatusHasChanged(this, newStatus);
+			addon.engineStatusHasChanged(this, newStatus);
 		}
 	}
 	
@@ -304,9 +304,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		// execution feedback is sent to the solver so it can take internal
 		// event into account
 
-		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 		{
-			hook.aboutToExecuteLogicalStep(this, logicalStepToApply);
+			addon.aboutToExecuteLogicalStep(this, logicalStepToApply);
 		}
 
 		Collection<IMSEOccurrence> mseOccurences = MSEOccurrenceFactory.createMSEOccurrences(logicalStepToApply, _executionContext.getFeedbackModel());	
@@ -338,9 +338,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	{
 		if (mse.getAction() != null) 
 		{			
-			for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+			for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 			{
-				hook.aboutToExecuteMSE(this, mse);
+				addon.aboutToExecuteMSE(this, mse);
 			}
 			ActionModel feedbackModel = _executionContext.getFeedbackModel();
 			ArrayList<When> whenStatements = new ArrayList<When>();
@@ -375,8 +375,8 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		_mseStateControllers.add(controller);
 	}
 
-	public <T extends IEngineHook> boolean hasCapability(Class<T> type) {
-		for (IEngineHook c : _executionContext.getExecutionPlatform().getHooks()) {
+	public <T extends IEngineAddon> boolean hasCapability(Class<T> type) {
+		for (IEngineAddon c : _executionContext.getExecutionPlatform().getEngineAddons()) {
 			if (c.getClass().equals(type))
 				return true;
 		}
@@ -384,20 +384,20 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	}
 
 	@SuppressWarnings("all")
-	public <T extends IEngineHook> T getCapability(Class<T> type) {
-		for (IEngineHook c : _executionContext.getExecutionPlatform().getHooks()) {
+	public <T extends IEngineAddon> T getCapability(Class<T> type) {
+		for (IEngineAddon c : _executionContext.getExecutionPlatform().getEngineAddons()) {
 			if (c.getClass().equals(type))
 				return (T) c;
 		}
 		return null;
 	}
 
-	public <T extends IEngineHook> T capability(Class<T> type) {
+	public <T extends IEngineAddon> T capability(Class<T> type) {
 		T capability = getCapability(type);
 		if (capability == null) {
 			try {
 				capability = type.newInstance();
-				_executionContext.getExecutionPlatform().addHook(capability);
+				_executionContext.getExecutionPlatform().addEngineAddon(capability);
 			} catch (InstantiationException e) {
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
@@ -452,9 +452,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		}
 		_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
 		engineStatus.updateCurrentLogicalStepChoice(_possibleLogicalSteps);
-		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 		{
-			hook.preLogicalStepSelection(AbstractExecutionEngine.this);
+			addon.preLogicalStepSelection(AbstractExecutionEngine.this);
 		}
 	}
 	

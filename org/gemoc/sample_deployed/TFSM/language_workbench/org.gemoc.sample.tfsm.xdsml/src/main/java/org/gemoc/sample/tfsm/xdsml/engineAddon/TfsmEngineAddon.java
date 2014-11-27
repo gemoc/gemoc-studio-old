@@ -1,4 +1,4 @@
-package org.gemoc.sample.tfsm.xdsml.enginehook;
+package org.gemoc.sample.tfsm.xdsml.engineAddon;
 
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyObject;
@@ -14,7 +14,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.sample.tfsm.k3dsa.Activator;
 
 
-public class TfsmEngineHook extends org.gemoc.gemoc_language_workbench.api.core.DefaultEngineHook {
+public class TfsmEngineAddon extends org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon {
 
 	public static final String PRE_START_PREFIX = "pre.start.engine.";
 	public static final String GROOVY_SCRIPT_FILE = "groovy.script.file";
@@ -55,7 +55,7 @@ public class TfsmEngineHook extends org.gemoc.gemoc_language_workbench.api.core.
 		try {
 			GroovyObject groovyObj;
 			// use this class class loader, this isn't perfect since the script may use more classe, but this is a start ...
-			GroovyClassLoader gcl = new GroovyClassLoader(TfsmEngineHook.class.getClassLoader());
+			GroovyClassLoader gcl = new GroovyClassLoader(TfsmEngineAddon.class.getClassLoader());
 			Class<?> clazz = null;
 
 			clazz = gcl.parseClass(new File(absolutePathToGroovyControl));

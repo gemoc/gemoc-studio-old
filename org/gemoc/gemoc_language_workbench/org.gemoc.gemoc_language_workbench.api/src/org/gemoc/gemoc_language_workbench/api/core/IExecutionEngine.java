@@ -2,6 +2,8 @@ package org.gemoc.gemoc_language_workbench.api.core;
 
 import java.util.List;
 
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
+
 import fr.inria.aoste.trace.LogicalStep;
 
 
@@ -34,20 +36,20 @@ public interface IExecutionEngine extends IDisposable {
 	 * @param type
 	 * @return true if the engine has the capability, false otherwise.
 	 */
-	public <T extends IEngineHook> boolean hasCapability(Class<T> type);
+	public <T extends IEngineAddon> boolean hasCapability(Class<T> type);
 	/**
 	 * 
 	 * @param type
 	 * @return The capability of the given type if it exists.
 	 */
-	public <T extends IEngineHook> T getCapability(Class<T> type);
+	public <T extends IEngineAddon> T getCapability(Class<T> type);
 	/**
 	 * Get the capability of the given type.
 	 * If it does not exist, it creates it.
 	 * @param type
 	 * @return The capability of the given type.
 	 */
-	public <T extends IEngineHook> T capability(Class<T> type);
+	public <T extends IEngineAddon> T capability(Class<T> type);
 
 	public IExecutionContext getExecutionContext();
 

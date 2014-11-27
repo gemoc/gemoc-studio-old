@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.api.engine_addon;
+package org.gemoc.gemoc_language_workbench.api.extensions.engine_addon;
 
 import java.util.Collection;
 

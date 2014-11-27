@@ -2,11 +2,11 @@ package org.gemoc.gemoc_modeling_workbench.ui.debug;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
@@ -14,7 +14,7 @@ import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.ide.AbstractDSLDebugger;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
-public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHook {
+public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAddon {
 
 	/**
 	 * A fake instruction to prevent the stepping return to stop on each event.

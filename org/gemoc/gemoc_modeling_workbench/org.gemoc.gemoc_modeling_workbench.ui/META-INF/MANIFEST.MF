@@ -26,19 +26,19 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common;bundle-version="1.0.0",
  org.gemoc.commons.eclipse,
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
- org.gemoc.execution.engine;bundle-version="0.1.0",
- org.gemoc.execution.engine.io;bundle-version="0.1.0",
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
  fr.inria.diverse.commons.eclipse.messagingsystem.ui;bundle-version="1.0.0",
  org.gemoc.commons.eclipse.ui;bundle-version="0.1.0",
  org.eclipse.sirius.diagram.ui;bundle-version="1.0.0",
  org.eclipse.core.filesystem,
- org.gemoc.execution.engine.commons,
  org.eclipse.gmf.runtime.emf.core;bundle-version="1.7.0",
  org.eclipse.pde.ui,
  org.eclipse.jdt.ui,
  org.eclipse.jdt.core,
- fr.inria.diverse.commons.provisionner4eclipse
+ fr.inria.diverse.commons.provisionner4eclipse,
+ org.gemoc.execution.engine;bundle-version="0.1.0",
+ org.gemoc.execution.engine.io;bundle-version="0.1.0",
+ org.gemoc.execution.engine.commons;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.gemoc_modeling_workbench.core,

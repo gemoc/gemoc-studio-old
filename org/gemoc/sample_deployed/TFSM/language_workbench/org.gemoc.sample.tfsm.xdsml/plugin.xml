@@ -12,7 +12,7 @@
           solver_class="tfsm.xdsml.api.impl.TfsmSolver"
           toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto"
           xdsmlFilePath="/org.gemoc.sample.tfsm.xdsml/project.xdsml">
-      <Engine_hook_Definition engineHook_class="org.gemoc.sample.tfsm.xdsml.enginehook.TfsmEngineHook" />
+      <EngineAddon_Definition engineAddon_class="org.gemoc.sample.tfsm.xdsml.engineAddon.TfsmEngineAddon" />
     </XDSML_Definition>
     <!-- domainSpecificEventsResource="/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl" -->
   </extension>

@@ -36,15 +36,15 @@ import org.gemoc.execution.engine.io.views.engine.actions.StopAllEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.trace.LogicalStep;
 
-public class EnginesStatusView extends ViewPart implements IEngineHook, IEngineRegistrationListener {
+public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngineRegistrationListener {
 
 	/**
 	 * The ID of the view as specified by the extension.
@@ -356,7 +356,7 @@ public class EnginesStatusView extends ViewPart implements IEngineHook, IEngineR
 	{
 		Display.getDefault().syncExec(new Runnable() {
 		      public void run() {
-		  		engine.getExecutionContext().getExecutionPlatform().addHook(EnginesStatusView.this);
+		  		engine.getExecutionContext().getExecutionPlatform().addEngineAddon(EnginesStatusView.this);
 		    	_viewer.setInput(org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry);
 		    	TreeViewerHelper.resizeColumns(_viewer);
 	    		TreePath treePath = new TreePath(new Object[] {engine});
@@ -368,7 +368,7 @@ public class EnginesStatusView extends ViewPart implements IEngineHook, IEngineR
 	@Override
 	public void engineUnregistered(IExecutionEngine engine) 
 	{
-		engine.getExecutionContext().getExecutionPlatform().removeHook(this);
+		engine.getExecutionContext().getExecutionPlatform().removeEngineAddon(this);
 	}
 
 	private void updateUserInterface(final IExecutionEngine engine) {

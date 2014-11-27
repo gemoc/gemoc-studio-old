@@ -53,8 +53,8 @@ import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManagerState;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.trace.LogicalStep;
@@ -63,7 +63,7 @@ import fr.inria.aoste.trace.LogicalStep;
  * @author lguillem
  * @version 1.6
  */
-public class EventManagerView extends ViewPart implements IMotorSelectionListener, IEngineHook {
+public class EventManagerView extends ViewPart implements IMotorSelectionListener, IEngineAddon {
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.event.EventManagerView";
 
@@ -544,14 +544,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					{
 						sm.stopPlaying();
 					}
-					engine.getExecutionContext().getExecutionPlatform().removeHook(this);
+					engine.getExecutionContext().getExecutionPlatform().removeEngineAddon(this);
 					_mseContextMap.remove(engine);
 				}
 			}
 			else // else we set the current state according to the selected engine cache state
 			{
-				engine.getExecutionContext().getExecutionPlatform().removeHook(this);
-				engine.getExecutionContext().getExecutionPlatform().addHook(this);
+				engine.getExecutionContext().getExecutionPlatform().removeEngineAddon(this);
+				engine.getExecutionContext().getExecutionPlatform().addEngineAddon(this);
 				//executeCommand(Commands.DO_INIT);
 				if(_mseContextMap.get(engine) == null)
 				{
@@ -609,7 +609,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		decisionView.removeSelectionChangedListener(_decisionViewListener);
 		_contentProvider.dispose();
 		if(_currentSelectedEngine != null) {
-			_currentSelectedEngine.getExecutionContext().getExecutionPlatform().removeHook(this);
+			_currentSelectedEngine.getExecutionContext().getExecutionPlatform().removeEngineAddon(this);
 		}
 		_currentSelectedEngine = null;	
 		stopListeningToMotorSelectionChange();

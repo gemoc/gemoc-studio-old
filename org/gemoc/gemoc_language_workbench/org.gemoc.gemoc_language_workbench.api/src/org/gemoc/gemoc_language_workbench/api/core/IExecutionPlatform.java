@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 public interface IExecutionPlatform extends IDisposable
@@ -24,9 +25,9 @@ public interface IExecutionPlatform extends IDisposable
 	 */
 	IModelLoader getModelLoader();
 
-	void addHook(IEngineHook hook);
-	void removeHook(IEngineHook hook);
-	Iterable<IEngineHook> getHooks();
+	void addEngineAddon(IEngineAddon addon);
+	void removeEngineAddon(IEngineAddon addon);
+	Iterable<IEngineAddon> getEngineAddons();
 	
 	Collection<IMSEStateController> getMSEStateControllers();
 
