@@ -10,10 +10,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
-import org.gemoc.gemoc_modeling_workbench.ui.Activator;
+import org.gemoc.execution.engine.io.IEvenPresenter;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.LogicalStep;
@@ -81,7 +79,14 @@ public class GemocDebugModelPresentation extends DSLDebugModelPresentation {
 	}
 
 	private void showEvents(List<Event> events) {
-		// TODO
+		final List<URI> uris = new ArrayList<URI>();
+		for (Event event : events) {
+			uris.add(EcoreUtil.getURI(event));
+		}
+		for (IEvenPresenter presenter : org.gemoc.execution.engine.io.Activator
+				.getDefault().getEventPresenters()) {
+			presenter.present(uris);
+		}
 	}
 
 }

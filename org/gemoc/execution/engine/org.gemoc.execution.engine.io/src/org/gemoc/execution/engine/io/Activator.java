@@ -1,5 +1,8 @@
 package org.gemoc.execution.engine.io;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
 import org.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -14,6 +17,8 @@ public class Activator extends GemocUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
+
+	private final List<IEvenPresenter> eventPresenters = new ArrayList<>();
 
 	/**
 	 * The constructor
@@ -33,7 +38,6 @@ public class Activator extends GemocUIPlugin {
 		plugin = this;
 	}
 
-	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -96,6 +100,14 @@ public class Activator extends GemocUIPlugin {
 	public DefaultLoggingBackend resolveLoggingBackend() {
 		return org.gemoc.execution.engine.commons.Activator.getDefault().resolveLoggingBackend();
 	}
-	
+
+	/**
+	 * Gets the {@link List} of registered {@link IEvenPresenter}.
+	 * 
+	 * @return the {@link List} of registered {@link IEvenPresenter}
+	 */
+	public List<IEvenPresenter> getEventPresenters() {
+		return eventPresenters;
+	}
 
 }
