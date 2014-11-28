@@ -35,10 +35,8 @@ public class GemocSourceLocator extends DSLSourceLocator {
 
 		for (Event event : LogicalStepHelper
 				.getTickedEvents((LogicalStep) step)) {
-			if (event.getReferencedObjectRefs().size() != 0) {
-				res = event.getReferencedObjectRefs().get(0);
-				break;
-			}
+			res = event;
+			break;
 		}
 
 		return res;

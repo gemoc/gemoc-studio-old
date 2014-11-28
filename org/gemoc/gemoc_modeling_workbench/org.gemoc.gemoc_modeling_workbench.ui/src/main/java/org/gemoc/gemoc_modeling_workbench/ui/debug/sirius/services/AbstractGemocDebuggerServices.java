@@ -372,6 +372,7 @@ public abstract class AbstractGemocDebuggerServices {
 			if (currentInstruction instanceof LogicalStep) {
 				for (Event event : LogicalStepHelper
 						.getTickedEvents((LogicalStep) currentInstruction)) {
+					instructionURIs.add(EcoreUtil.getURI(event));
 					if (event.getReferencedObjectRefs().size() != 0) {
 						instructionURIs.add(EcoreUtil.getURI(event
 								.getReferencedObjectRefs().get(0)));

@@ -225,6 +225,7 @@ public abstract class AbstractGemocAnimatorServices {
 		public void activate(Object context, LogicalStep step) {
 			final Set<URI> instructionURIs = new HashSet<URI>();
 			for (Event event : LogicalStepHelper.getTickedEvents(step)) {
+				instructionURIs.add(EcoreUtil.getURI(event));
 				if (event.getReferencedObjectRefs().size() != 0) {
 					instructionURIs.add(EcoreUtil.getURI(event
 							.getReferencedObjectRefs().get(0)));

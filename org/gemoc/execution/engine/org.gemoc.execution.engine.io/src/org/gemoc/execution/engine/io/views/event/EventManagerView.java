@@ -9,8 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.GroupMarker;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -31,10 +37,12 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
@@ -56,8 +64,13 @@ import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.trace.LogicalStep;
+import fr.obeo.dsl.debug.ide.DSLBreakpoint;
+import fr.obeo.dsl.debug.ide.ui.provider.DSLLabelDecorator;
+import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
 
 /**
  * @author lguillem
@@ -65,6 +78,73 @@ import fr.inria.aoste.trace.LogicalStep;
  */
 public class EventManagerView extends ViewPart implements IMotorSelectionListener, IEngineAddon {
 
+	private static final class GemocLabelDecorator extends DSLLabelDecorator {
+
+		public GemocLabelDecorator() {
+			super(LogicalStepsView.MODEL_ID);
+			// TODO Auto-generated constructor stub
+		}
+		
+		private Map<EObject, ModelSpecificEventWrapper> mapping = new HashMap<EObject, ModelSpecificEventWrapper>();			
+		
+		@Override
+		public Image decorateImage(Image image, Object element) {
+			final Image res;
+			
+			if (element instanceof ModelSpecificEventWrapper) {
+				final EObject solverEvent = ((ModelSpecificEventWrapper) element).getMSE().getSolverEvent();
+				if (solverEvent instanceof Clock) {
+					mapping.put(((Clock) solverEvent).getTickingEvent(), (ModelSpecificEventWrapper) element);
+					res = super.decorateImage(image, ((Clock) solverEvent).getTickingEvent());
+				} else {
+					res = super.decorateImage(image, element);
+				}
+			} else {
+				res = super.decorateImage(image, element);
+			}
+
+			return res;
+		}
+		
+		@Override
+		public String decorateText(String text, Object element) {
+			final String res;
+			
+			if (element instanceof ModelSpecificEventWrapper) {
+				final EObject solverEvent = ((ModelSpecificEventWrapper) element).getMSE().getSolverEvent();
+				if (solverEvent instanceof Clock) {
+					mapping.put(((Clock) solverEvent).getTickingEvent(), (ModelSpecificEventWrapper) element);
+					res = super.decorateText(text, ((Clock) solverEvent).getTickingEvent());
+				} else {
+					res = super.decorateText(text, element);
+				}
+			} else {
+				res = super.decorateText(text, element);
+			}
+
+			return res;
+		}
+		
+		protected Object getElement(ResourceSet rs, DSLBreakpoint breakpoint) {
+			final Object res;
+			
+			EObject instruction = rs.getEObject(breakpoint.getURI(), false);
+			if (instruction instanceof Event) {
+				res = mapping.get(instruction);
+			} else {
+				res = super.getElement(rs, breakpoint);
+			}
+			
+			return res;
+		};
+		
+		@Override
+		public void dispose() {
+			mapping.clear();
+			super.dispose();
+		}
+	}
+	
 	public static final String ID = "org.gemoc.execution.engine.io.views.event.EventManagerView";
 
 	private TableViewer _viewer;
@@ -76,6 +156,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private SelectionListener _menuAndButtonListener;
 	private Composite _bottomComposite;
 	private Composite _informationBar;
+	private MenuManager _menuManager;
+	private ColumnLabelProvider _column1LabelProvider;
+	private GemocLabelDecorator _decorator;
+	
 
 	private List<Button> _mseControlButtons;
 
@@ -141,6 +225,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		};		
 		decisionView.addSelectionChangedListener(_decisionViewListener);
 		updateView();
+		createMenuManager();
 	}
 
 	/**
@@ -249,6 +334,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_contentProvider = new ViewContentProvider();
 		_viewer = new TableViewer(parent, SWT.BORDER| SWT.MULTI);
 		_viewer.setContentProvider(_contentProvider);
+		_decorator = new GemocLabelDecorator();
 		createColumn(parent);
 		// make lines and header visible
 		final Table table = _viewer.getTable();
@@ -257,6 +343,26 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		// The table will take all the horizontal and vertical excess space
 		GridData grid = new GridData(SWT.FILL, SWT.FILL, true, true);
 		_viewer.getControl().setLayoutData(grid);
+	}
+
+	private void createMenuManager() {
+		MenuManager menuManager = new MenuManager();
+		_menuManager = menuManager;
+		_menuManager.setRemoveAllWhenShown(true);
+		_menuManager.addMenuListener(new IMenuListener() {
+			public void menuAboutToShow(IMenuManager mgr) {
+				fillContextMenu(mgr);
+			}
+		});
+	    Menu menu = _menuManager.createContextMenu(_viewer.getControl());
+	    _viewer.getControl().setMenu(menu);
+	    getSite().registerContextMenu(_menuManager, _viewer);
+	    // make the selection available
+	    getSite().setSelectionProvider(_viewer);
+	}
+
+	private void fillContextMenu(IMenuManager mgr) {
+		mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
 
 	/**
@@ -270,8 +376,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		column1.setWidth(100);
 		column1.setResizable(true);
 		column1.setMoveable(true);
-
-		viewerColumn1.setLabelProvider(new ColumnLabelProvider() 
+		_column1LabelProvider = new DecoratingColumLabelProvider(new ColumnLabelProvider() 
 		{
 			@Override
 			public String getText(Object element) 
@@ -321,7 +426,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				}
 				return super.getBackground(element);
 			}
-		});
+		}, _decorator);
+		viewerColumn1.setLabelProvider(_column1LabelProvider);
 	}
 
 
@@ -470,6 +576,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				{
 					getMSEContext().refreshFutureTickingFreeClocks();
 					_contentProvider.setFilterStrategy(_strategyFilterSelected);
+					_decorator.setResourceSet(getMSEContext().getEngine().getExecutionContext().getResourceModel().getResourceSet());
+					_decorator.mapping.clear();
 					_viewer.setInput(getMSEContext().getMSESet());					
 				}
 				else
@@ -613,6 +721,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 		_currentSelectedEngine = null;	
 		stopListeningToMotorSelectionChange();
+		_column1LabelProvider.dispose();
 	}
 
 	/**

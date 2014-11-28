@@ -137,7 +137,16 @@ public class DecoratingColumLabelProvider extends ColumnLabelProvider {
 
 	@Override
 	public Image getImage(Object element) {
-		return labelDecorator.decorateImage(labelProvider.getImage(element), element);
+		final Image res;
+
+		final Image image = labelProvider.getImage(element);
+		if (image != null) {
+			res = labelDecorator.decorateImage(image, element);
+		} else {
+			res = image;
+		}
+
+		return res;
 	}
 
 	@Override
