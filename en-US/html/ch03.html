@@ -3,9 +3,6 @@
   PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head><title>Chapter 3. GEMOC xDSML definition tutorial</title><link rel="stylesheet" type="text/css" href="css/gemocorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"/><link rel="home" href="index.html" title="GEMOC Studio Guide"/><link rel="up" href="index.html" title="GEMOC Studio Guide"/><link rel="prev" href="ch02.html" title="Chapter 2. Gemoc Modeling workbench"/><link rel="next" href="bi01.html" title="Bibliography"/><meta xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><p xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.gemoc.org" class="site_href"><strong>GEMOC.org</strong></a><a href="http://gemoc.github.io//" class="doc_href"><strong>Community Documentation</strong></a></p><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="bi01.html"><strong>Next</strong></a></li></ul><div class="chapter" title="Chapter 3. GEMOC xDSML definition tutorial"><div class="titlepage"><div><div><h2 class="title"><a id="_gemoc_xdsml_definition_tutorial"/>Chapter 3. GEMOC xDSML definition tutorial</h2></div></div></div>
 
-<p>GEMOC Team
-:Author Initials: XC
-:website: http:__gemoc.org</p>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
 <p>This tutorial is a work in progress and is not yet finished.
 It still contains TODO and must be polished.</p>
@@ -72,9 +69,9 @@ requirements are fulfilled.</p>
 
 <div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-overview.png" alt="Overview of the GEMOC process"/></div>
 </div></div><br class="figure-break"/>
-<p><a id="d5e368" class="indexterm"/>
-<a id="d5e372" class="indexterm"/>
-<a id="d5e375" class="indexterm"/></p>
+<p><a id="d5e367" class="indexterm"/>
+<a id="d5e371" class="indexterm"/>
+<a id="d5e374" class="indexterm"/></p>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>For clarity, the iteration to choose the next increment is not
 represented of the diagram.</p>
@@ -137,8 +134,8 @@ domain (and could be considered as a kind of compound activity).</p>
 
 <div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-general.png" alt="Recommended GEMOC Process"/></div>
 </div></div><br class="figure-break"/>
-<p><a id="d5e408" class="indexterm"/>
-<a id="d5e411" class="indexterm"/></p>
+<p><a id="d5e407" class="indexterm"/>
+<a id="d5e410" class="indexterm"/></p>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
 <p>This process is the recommanded one, and the one used in this
 tutorial.  Nevertheless, it is possible to define an xDSML with other
@@ -190,7 +187,8 @@ which recognizes the language <span class="emphasis"><em>a*ba*</em></span>.</p>
 symbols. An automaton must have exactly one initial state (and thus at
 least one state).  One transition connects a source state to a target
 state and is labelled by a symbol.
-On the <a class="link" href="ch03.html#automata-aSbaS" title="Figure 3.3. Automata which reads a*ba*">example</a>, states are represented by circles, doubled-circled
+On the <a class="link" href="ch03.html#automata-aSbaS" title="Figure 3.3. Automata which reads a*ba*">example</a>, states are represented by circles,
+doubled-circled
 states are accepting states (or final states).
 A transition is depicted as an arrow from the input state to the
 output state.
@@ -199,10 +197,6 @@ An arrow without input state points to the initial state.</p>
 
 <div class="mediaobject"><img src="./images/tutorial/automate-aSbaS.png" alt="Automata which reads a*ba*"/></div>
 </div></div><br class="figure-break"/>
-<p>TODO: When.
-An automaton is deterministic is there is no two transitions labelled
-with the same symbol with the same source state. Else it is called
-nondeterministic automaton.</p>
 </div>
 <div class="section" title="3.3.3. Informal behavior"><div class="titlepage"><div><div><h3 class="title"><a id="_informal_behavior"/>3.3.3. Informal behavior</h3></div></div></div>
 
@@ -218,6 +212,11 @@ automaton becomes the state targeted by the transition.
 A work is accepted if all its symbols have been accepted and the last
 current state of the automaton is an accept state.  Otherwise the work
 is rejected.</p>
+<p>An automaton is nondeterministic if it contains a transition with no
+symbol (it may be fired as soon as its source state is the current
+state) or if it contains two transitions with the same source state
+and the same symbol.  An automaton is either deterministic or
+nondeterministic.</p>
 </div>
 <div class="section" title="3.3.4. Scenarios"><div class="titlepage"><div><div><h3 class="title"><a id="_scenarios"/>3.3.4. Scenarios</h3></div></div></div>
 
@@ -236,8 +235,8 @@ Feed symbol `a'
 </li><li class="listitem">
 Terminate
 </li></ol></div>
-<p>The automaton will then answers. The response can be 'accepted' or
-'refused'</p>
+<p>The automaton will then answer. The response can be 'accepted' or
+'refused'.</p>
 </div>
 <div class="section" title="3.3.5. Examples of models"><div class="titlepage"><div><div><h3 class="title"><a id="_examples_of_models"/>3.3.5. Examples of models</h3></div></div></div>
 
@@ -258,7 +257,7 @@ ABCDABCD, etc.
 </li><li class="listitem">
 Examples of rejected words: ABC, ABCDA, D, etc.
 </li></ul></div>
-<p>TODO: Other examples :</p>
+<p>TODO: Other examples:</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 only one state
 </li><li class="listitem">
@@ -274,6 +273,7 @@ several final states.
 <div class="mediaobject"><img src="./images/tutorial/automate-mots.png" alt="Automata which reads words"/></div>
 </div></div><br class="figure-break"/>
 <p>The only accepted words are: IL, ILE, ILES, ILS, ILOT, ILOTS</p>
+<p>TODO: To be translated in English.</p>
 <div class="variablelist"><dl><dt><span class="term">Nondeterministic automata</span></dt><dd>
 TODO: Several transitions with the same symbol.
 </dd></dl></div>
@@ -290,9 +290,6 @@ For example to check that open and close symbols are well suited.
 <div class="section" title="3.4. Creating an xDSML Project"><div class="titlepage"><div><div><h2 class="title"><a id="_creating_an_xdsml_project"/>3.4. Creating an xDSML Project</h2></div></div></div>
 
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p>TODO: Put the GEMOC Logo for paragraphs which describe GEMOC Studio commands.</p>
-</div>
-<div class="informalexample">
 <p>First, start by creating a new xDSML project (<span class="emphasis"><em>New &gt; Project &gt; GEMOC
 Project / new xDSML Project</em></span>), with your desired name (for instance
 "com.example.automata").  In the created project, we can open the
@@ -308,8 +305,7 @@ dependency if it is not present:
 dependencies, then <span class="emphasis"><em>Add…​</em></span>, the type in "k3" and select the right
 plugin).</p>
 </div>
-<p>TODO: Verifier si ce n’est pas fait lors de la creation du projet K3
-par le Wizard.</p>
+<p>TODO: Is it still required?</p>
 </div>
 <div class="section" title="3.5. Increment 1 : Deterministic Automata"><div class="titlepage"><div><div><h2 class="title"><a id="sec-increment1"/>3.5. Increment 1 : Deterministic Automata</h2></div></div></div>
 
@@ -321,7 +317,7 @@ other models and xDSML (AS, DSE, EF and ED).</p>
 </div>
 <div class="section" title="3.5.2. Define the Abstract Syntax (AS)"><div class="titlepage"><div><div><h3 class="title"><a id="_define_the_abstract_syntax_as"/>3.5.2. Define the Abstract Syntax (AS)</h3></div></div></div>
 
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>To define the AS we can either select an existing project (Browse
 button) or create a new one.  To create a new one, we click on "EMF
 project" on the xDSML view of project.xdsml.
@@ -343,7 +339,7 @@ belong to. Symbols know which Transition(s) they are referenced by.
 States know their outgoing and incoming Transitions.  Automatas,
 States, Transitions and Symbols all have a name (factorized in the
 NamedElement metaclass).</p>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>Once the Ecore MetaModel is done, we can come back to the xDSML view.
 The "EMF project" and the  "Genmodel URI" have been updated.</p>
 <p>Set the "Root container model element" to "automata::Automata".</p>
@@ -368,7 +364,7 @@ sure the semantics has been correctly implemented.</p>
 graphical animator later on during simulations.</p>
 </div>
 </div>
-<div class="section" title="3.5.4. Defining DSE"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_dse"/>3.5.4. Defining DSE</h3></div></div></div>
+<div class="section" title="3.5.4. Identifying DSE"><div class="titlepage"><div><div><h3 class="title"><a id="_identifying_dse"/>3.5.4. Identifying DSE</h3></div></div></div>
 
 <p>Domain Specific Events are part of the interface of the language and
 allow communication with the system engineer and the other models of
@@ -386,10 +382,10 @@ work to test
 Terminating the automata : occurs when the user has given all the
 symbols of the word.  It is used to indicate the end on the word.
 </li></ul></div>
-<p>TODO: Other DSE may be of interrest, for example firing a transition,
-rejecting a symbol, etc which would be output events (the previous
+<p>TODO: Other DSE may be of interest, for example firing a transition,
+rejecting a symbol, etc. which would be output events (the previous
 ones being input events).</p>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>At this moment, DSE are defined in an ECL (Event Constraint Language) file.
 In the xDSML view, click on <span class="emphasis"><em>ECL Project</em></span> to create a DSE Project.
 Let us name it "com.example.automata.dse" (it is the proposed name).
@@ -407,7 +403,7 @@ Automata".</p>
 <p>TODO: Could it be automatically initialized (from the Root container
 model element)?</p>
 </div>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>For now, we will complete the ECL file with the following elements:</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 <span class="strong"><strong>Metamodel import:</strong></span> (already initialized) Domain-Specific Events
@@ -460,7 +456,7 @@ It should work.</p>
 <p>DSA includes the definition of Execution Data (ED) and Execution
 Functions (EF).  They are both implemented in Kermeta 3 in K3 Aspect
 project whose lastname is, by convention, 'k3dsa'.</p>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>Click on <span class="emphasis"><em>K3 project</em></span> in the xDSML view (Behavioral definition / DSA
 definition).  The wizard to create of new Kermeta 3 project is
 launched with the name of the project initialized (k3dsa is the last
@@ -484,7 +480,7 @@ state of the automata or null is a symbol has been rejected.</p>
 <p>TODO: Change the implementation to reflect this desgin choice.</p>
 <p>TODO: Better, define a new class in DSA ErrorState which extends
 State.  When in the error state, the automate rejects every symbols.</p>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>To add the reference 'currentState', we define it in an Aspect on the
 Automata class as follow.</p>
 <pre class="screen">@Aspect(className=Automata)
@@ -531,7 +527,7 @@ target state of such a transition if it exists.
 a 'Query' which returns the list of
 outgoing transitions of this state that accept the s symbol.
 </dd></dl></div>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>Complete the file 'automata.xtend' with the following code:</p>
 <pre class="screen">@Aspect(className=Automata)
 class AutomataAspect {
@@ -599,6 +595,10 @@ class TransitionAspect {
 	}
 
 }</pre>
+</div>
+</div>
+<div class="section" title="Testing DSA"><div class="titlepage"><div><div><h4 class="title"><a id="_testing_dsa"/>Testing DSA</h4></div></div></div>
+
 <p>TODO: Add a test to validate the DSA part !</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 load a model or manually define it
@@ -607,7 +607,6 @@ ask the EF as if they were called by the MoCC
 </li><li class="listitem">
 check the results (current state, accepted or rejected)
 </li></ul></div>
-</div>
 </div>
 </div>
 <div class="section" title="3.5.6. Model of Concurrency and Communication (MoCC)"><div class="titlepage"><div><div><h3 class="title"><a id="_model_of_concurrency_and_communication_mocc"/>3.5.6. Model of Concurrency and Communication (MoCC)</h3></div></div></div>
@@ -645,13 +644,21 @@ all the other MoccEvents).</p>
 	}
 }</pre>
 <p>TODO: state-based relations?</p>
-<p>Afterwards, we need to import this library into the ECL file in order to be able to instantiate it using the MoccEvents we have defined as mapped to our Domain-Specific Events. In order to do that, we need to add at the top of the ECL file:</p>
+<p>Afterwards, we need to import this library into the ECL file in order
+to be able to instantiate it using the MoccEvents we have defined as
+mapped to our Domain-Specific Events. In order to do that, we need to
+add at the top of the ECL file:</p>
 <pre class="screen">ECLimport "platform:/resource/com.example.automata.mocc.lib/mocc/automata.moccml"</pre>
-<p>We will also probably need the standard libraries of relations and expressions in order to instantiate the MoCC. Therefore, we should also add the following imports:</p>
+<p>We will also probably need the standard libraries of relations and
+expressions in order to instantiate the MoCC. Therefore, we should
+also add the following imports:</p>
 <pre class="screen">ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"</pre>
-<p>Now we need to specify how to instantiate the MoCC in the ECL file. This is done by using MoCCML relations and expressions on MoccEvents.
-First, we want to make sure that we do the initialization of the Automata before anything else. Therefore, we will use the relation "FirstAndOnlyOnce" defined in our custom MoCC library.</p>
+<p>Now we need to specify how to instantiate the MoCC in the ECL file.
+This is done by using MoCCML relations and expressions on MoccEvents.
+First, we want to make sure that we do the initialization of the
+Automata before anything else. Therefore, we will use the relation
+"FirstAndOnlyOnce" defined in our custom MoCC library.</p>
 <pre class="screen">context Automata
 	inv InitBeforeAnythingElse:
 		let allOccurEvents : Event = Expression Union(self.symbols.mocc_occur) in
@@ -665,6 +672,10 @@ First, we want to make sure that we do the initialization of the Automata before
 	let allSymbolOccurEvents : Event = Expression Union(self.symbols.mocc_occur) in
 	Relation Exclusion(self.mocc_terminate, allSymbolOccurEvents)</pre>
 <p>As soon as you save the ECL file, a .qvto file should be generated in the folders qvto-gen/language and qvto-gen/modeling. Make sure that your xDSML project references the .qvto file that is available in qvto-gen/modeling.</p>
+<div class="section" title="Testing the MoCC"><div class="titlepage"><div><div><h4 class="title"><a id="_testing_the_mocc"/>Testing the MoCC</h4></div></div></div>
+
+
+</div>
 </div>
 <div class="section" title="3.5.7. Using the Modeling Workbench"><div class="titlepage"><div><div><h3 class="title"><a id="_using_the_modeling_workbench"/>3.5.7. Using the Modeling Workbench</h3></div></div></div>
 
@@ -696,7 +707,7 @@ TODO
 </div>
 <div class="section" title="Testing and debugging the xDSML"><div class="titlepage"><div><div><h4 class="title"><a id="_testing_and_debugging_the_xdsml"/>Testing and debugging the xDSML</h4></div></div></div>
 
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>Launch the Modeling Workbench. Create a new general project, for
 instance "com.example.automata.instances". In this project, create a
 new Automate instance (New &gt; Other…​ &gt; Automata Model)

@@ -62,12 +62,15 @@
          <topic label="Specification of the xDSML interface" href="ch03.html#_specification_of_the_xdsml_interface"/>
          <topic label="Define the Abstract Syntax (AS)" href="ch03.html#_define_the_abstract_syntax_as"/>
          <topic label="Define concrete syntaxes (CS)" href="ch03.html#_define_concrete_syntaxes_cs"/>
-         <topic label="Defining DSE" href="ch03.html#_defining_dse"/>
+         <topic label="Identifying DSE" href="ch03.html#_identifying_dse"/>
          <topic label="Defining Domain-Specific Actions (DSA)" href="ch03.html#_defining_domain_specific_actions_dsa">
             <topic label="Execution Data (ED)" href="ch03.html#_execution_data_ed"/>
             <topic label="Execution Functions (EFs)" href="ch03.html#_execution_functions_efs"/>
+            <topic label="Testing DSA" href="ch03.html#_testing_dsa"/>
          </topic>
-         <topic label="Model of Concurrency and Communication (MoCC)" href="ch03.html#_model_of_concurrency_and_communication_mocc"/>
+         <topic label="Model of Concurrency and Communication (MoCC)" href="ch03.html#_model_of_concurrency_and_communication_mocc">
+            <topic label="Testing the MoCC" href="ch03.html#_testing_the_mocc"/>
+         </topic>
          <topic label="Using the Modeling Workbench" href="ch03.html#_using_the_modeling_workbench">
             <topic label="Technical Workarounds" href="ch03.html#_technical_workarounds"/>
             <topic label="Testing and debugging the xDSML" href="ch03.html#_testing_and_debugging_the_xdsml"/>
@@ -82,7 +85,7 @@
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e802"/>
+      <topic label="Articles" href="bi01.html#d5e804"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>

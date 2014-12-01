@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><title>GEMOC Studio Guide</title><link rel="stylesheet" type="text/css" href="css/gemocorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"/><meta xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><div xml:lang="en" class="book" title="GEMOC Studio Guide"><div class="titlepage"><div><p xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.gemoc.org" class="site_href"><strong>GEMOC.org</strong></a><a href="http://gemoc.github.io//" class="doc_href"><strong>Community Documentation</strong></a></p><div><h1 class="title"><a id="d5e1"/>GEMOC Studio Guide</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Francois Tanguy &lt;francois.tanguy@inria.fr&gt;, Didier Vojtisek &lt;didier.vojtisek@inria.fr&gt;</span></h3></div></div></div><hr/></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="preface"><a href="#_introduction">Introduction</a></span></dt><dt><span class="chapter"><a href="#_gemoc_language_workbench">1. Gemoc Language workbench</a></span></dt><dd><dl><dt><span class="section"><a href="#_language_workbench_overview">1.1. Language Workbench overview</a></span></dt><dt><span class="section"><a href="#section-gemoc-language-project">1.2. Gemoc Language project</a></span></dt><dt><span class="section"><a href="#section-define-AS-project">1.3. Defining Abstract Syntax (or domain concepts)</a></span></dt><dd><dl><dt><span class="section"><a href="#section-define-AS-project-method-1">1.3.1. Method 1 : Creation via xDSML popup</a></span></dt><dt><span class="section"><a href="#section-define-AS-project-method-2">1.3.2. Method 2 : Manual creation and association to the xDSML</a></span></dt><dt><span class="section"><a href="#section-define-AS-project-method-3">1.3.3. Method 3 : Creation or selection via Gemoc Guideline view</a></span></dt></dl></dd><dt><span class="section"><a href="#_defining_runtime_data">1.4. Defining RunTime Data</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_actions_dsas">1.5. Defining Domain-Specific Actions (DSAs)</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_constraints">1.6. Defining Domain-Specific Constraints</a></span></dt><dt><span class="section"><a href="#_defining_a_concrete_syntax">1.7. Defining a concrete syntax</a></span></dt><dd><dl><dt><span class="section"><a href="#_defining_a_concrete_syntax_with_xtext">1.7.1. Defining a concrete syntax with xText</a></span></dt><dt><span class="section"><a href="#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius">1.7.2. Defining a concrete syntax with Sirius</a></span></dt></dl></dd><dt><span class="section"><a href="#_defining_a_model_of_concurrency_moc">1.8. Defining a Model of Concurrency (MoC)</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_events_dse">1.9. Defining Domain Specific Events (DSE)</a></span></dt><dt><span class="section"><a href="#_defining_an_animation_view">1.10. Defining an animation view</a></span></dt><dt><span class="section"><a href="#section-process-support-view">1.11. Process support view</a></span></dt></dl></dd><dt><span class="chapter"><a href="#chapter-gemoc-modeling-workbench">2. Gemoc Modeling workbench</a></span></dt><dd><dl><dt><span class="section"><a href="#_modeling_workbench_overview">2.1. Modeling workbench overview</a></span></dt><dt><span class="section"><a href="#modeling-workbench-editing-model-section">2.2. Editing model</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-section">2.3. Executing model</a></span></dt><dd><dl><dt><span class="section"><a href="#_launch_configuration">2.3.1. Launch configuration</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-engine-view-section">2.3.2. Engine View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-logical-step-view-section">2.3.3. Logical Steps View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-timeline-view-section">2.3.4. Timeline View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-event-manager-view-section">2.3.5. Event Manager View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-animation-view-section">2.3.6. Animation View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-debug-view-section">2.3.7. Debug View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-variable-view-section">2.3.8. Variable View</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#_gemoc_xdsml_definition_tutorial">3. GEMOC xDSML definition tutorial</a></span></dt><dd><dl><dt><span class="section"><a href="#_introduction_2">3.1. Introduction</a></span></dt><dt><span class="section"><a href="#sec-GEMOC-approach">3.2. The GEMOC Approach for defining eXecutable DSML (xDSML)</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-GEMOC-architecture">3.2.1. Architecture of a GEMOC xDSML</a></span></dt><dt><span class="section"><a href="#sec-GEMOC-characteristics">3.2.2. Main Characteristics of the GEMOC Process.</a></span></dt><dt><span class="section"><a href="#sec-GEMOC-process">3.2.3. Recommanded GEMOC Process</a></span></dt></dl></dd><dt><span class="section"><a href="#sec-requirements">3.3. Definition of the requirements/expectations on the xDSML</a></span></dt><dd><dl><dt><span class="section"><a href="#_application_domain_automata">3.3.1. Application Domain: Automata</a></span></dt><dt><span class="section"><a href="#_description_of_automata">3.3.2. Description of automata</a></span></dt><dt><span class="section"><a href="#_informal_behavior">3.3.3. Informal behavior</a></span></dt><dt><span class="section"><a href="#_scenarios">3.3.4. Scenarios</a></span></dt><dt><span class="section"><a href="#_examples_of_models">3.3.5. Examples of models</a></span></dt></dl></dd><dt><span class="section"><a href="#_creating_an_xdsml_project">3.4. Creating an xDSML Project</a></span></dt><dt><span class="section"><a href="#sec-increment1">3.5. Increment 1 : Deterministic Automata</a></span></dt><dd><dl><dt><span class="section"><a href="#_specification_of_the_xdsml_interface">3.5.1. Specification of the xDSML interface</a></span></dt><dt><span class="section"><a href="#_define_the_abstract_syntax_as">3.5.2. Define the Abstract Syntax (AS)</a></span></dt><dt><span class="section"><a href="#_define_concrete_syntaxes_cs">3.5.3. Define concrete syntaxes (CS)</a></span></dt><dt><span class="section"><a href="#_defining_dse">3.5.4. Defining DSE</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_actions_dsa">3.5.5. Defining Domain-Specific Actions (DSA)</a></span></dt><dt><span class="section"><a href="#_model_of_concurrency_and_communication_mocc">3.5.6. Model of Concurrency and Communication (MoCC)</a></span></dt><dt><span class="section"><a href="#_using_the_modeling_workbench">3.5.7. Using the Modeling Workbench</a></span></dt></dl></dd><dt><span class="section"><a href="#_increment_2_new_mocc_and_dsa_for_automata_mocc_focused_version">3.6. Increment 2: new MoCC and DSA for Automata (MoCC focused version)</a></span></dt><dt><span class="section"><a href="#_increment_3_graphical_visualization">3.7. Increment 3: Graphical visualization</a></span></dt><dt><span class="section"><a href="#_increment_4_consider_nondeterministic_automata">3.8. Increment 4: Consider nondeterministic automata.</a></span></dt><dt><span class="section"><a href="#_increment_5_pushdown_automaton">3.9. Increment 5: Pushdown automaton</a></span></dt><dt><span class="section"><a href="#_increment_6_call_of_user_actions">3.10. Increment 6: Call of user actions</a></span></dt><dt><span class="section"><a href="#_increment_tbd">3.11. Increment: TBD</a></span></dt><dt><span class="section"><a href="#_todo">3.12. TODO</a></span></dt></dl></dd><dt><span class="bibliography"><a href="#_bibliography">Bibliography</a></span></dt><dt><span class="glossary"><a href="#_glossary">Glossary</a></span></dt><dt><span class="index"><a href="#_index">Index</a></span></dt></dl></div><div class="list-of-figures"><p><strong>List of Figures</strong></p><dl><dt>1.1. <a href="#figure-glw-screenshot-of-language_workbench">Screenshot of GEMOC Studio Language Workbench on the TFSM (Timed Finite State Machine) example.</a></dt><dt>2.1. <a href="#figure-glw-screenshot-of-modeling_workbench">Screenshot of GEMOC Studio Modeling Workbench on the TFSM example (execution and animation).</a></dt><dt>3.1. <a href="#GEMOC-process-overview">Overview of the GEMOC process</a></dt><dt>3.2. <a href="#GEMOC-process">Recommended GEMOC Process</a></dt><dt>3.3. <a href="#automata-aSbaS">Automata which reads a*ba*</a></dt><dt>3.4. <a href="#automata-abcdS">Automata which reads (ABCD)*</a></dt><dt>3.5. <a href="#automata-mots">Automata which reads words</a></dt><dt>3.6. <a href="#automata-ccomm">Automata which reads C commentary</a></dt></dl></div>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>GEMOC Studio Guide</title><link rel="stylesheet" type="text/css" href="css/gemocorg.css"/><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"/><meta xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><div xml:lang="en" class="book" title="GEMOC Studio Guide"><div class="titlepage"><div><p xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.gemoc.org" class="site_href"><strong>GEMOC.org</strong></a><a href="http://gemoc.github.io//" class="doc_href"><strong>Community Documentation</strong></a></p><div><h1 class="title"><a id="d5e1"/>GEMOC Studio Guide</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Francois Tanguy &lt;francois.tanguy@inria.fr&gt;, Didier Vojtisek &lt;didier.vojtisek@inria.fr&gt;</span></h3></div></div></div><hr/></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="preface"><a href="#_introduction">Introduction</a></span></dt><dt><span class="chapter"><a href="#_gemoc_language_workbench">1. Gemoc Language workbench</a></span></dt><dd><dl><dt><span class="section"><a href="#_language_workbench_overview">1.1. Language Workbench overview</a></span></dt><dt><span class="section"><a href="#section-gemoc-language-project">1.2. Gemoc Language project</a></span></dt><dt><span class="section"><a href="#section-define-AS-project">1.3. Defining Abstract Syntax (or domain concepts)</a></span></dt><dd><dl><dt><span class="section"><a href="#section-define-AS-project-method-1">1.3.1. Method 1 : Creation via xDSML popup</a></span></dt><dt><span class="section"><a href="#section-define-AS-project-method-2">1.3.2. Method 2 : Manual creation and association to the xDSML</a></span></dt><dt><span class="section"><a href="#section-define-AS-project-method-3">1.3.3. Method 3 : Creation or selection via Gemoc Guideline view</a></span></dt></dl></dd><dt><span class="section"><a href="#_defining_runtime_data">1.4. Defining RunTime Data</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_actions_dsas">1.5. Defining Domain-Specific Actions (DSAs)</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_constraints">1.6. Defining Domain-Specific Constraints</a></span></dt><dt><span class="section"><a href="#_defining_a_concrete_syntax">1.7. Defining a concrete syntax</a></span></dt><dd><dl><dt><span class="section"><a href="#_defining_a_concrete_syntax_with_xtext">1.7.1. Defining a concrete syntax with xText</a></span></dt><dt><span class="section"><a href="#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius">1.7.2. Defining a concrete syntax with Sirius</a></span></dt></dl></dd><dt><span class="section"><a href="#_defining_a_model_of_concurrency_moc">1.8. Defining a Model of Concurrency (MoC)</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_events_dse">1.9. Defining Domain Specific Events (DSE)</a></span></dt><dt><span class="section"><a href="#_defining_an_animation_view">1.10. Defining an animation view</a></span></dt><dt><span class="section"><a href="#section-process-support-view">1.11. Process support view</a></span></dt></dl></dd><dt><span class="chapter"><a href="#chapter-gemoc-modeling-workbench">2. Gemoc Modeling workbench</a></span></dt><dd><dl><dt><span class="section"><a href="#_modeling_workbench_overview">2.1. Modeling workbench overview</a></span></dt><dt><span class="section"><a href="#modeling-workbench-editing-model-section">2.2. Editing model</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-section">2.3. Executing model</a></span></dt><dd><dl><dt><span class="section"><a href="#_launch_configuration">2.3.1. Launch configuration</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-engine-view-section">2.3.2. Engine View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-logical-step-view-section">2.3.3. Logical Steps View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-timeline-view-section">2.3.4. Timeline View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-event-manager-view-section">2.3.5. Event Manager View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-animation-view-section">2.3.6. Animation View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-debug-view-section">2.3.7. Debug View</a></span></dt><dt><span class="section"><a href="#modeling-workbench-executing-model-variable-view-section">2.3.8. Variable View</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#_gemoc_xdsml_definition_tutorial">3. GEMOC xDSML definition tutorial</a></span></dt><dd><dl><dt><span class="section"><a href="#_introduction_2">3.1. Introduction</a></span></dt><dt><span class="section"><a href="#sec-GEMOC-approach">3.2. The GEMOC Approach for defining eXecutable DSML (xDSML)</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-GEMOC-architecture">3.2.1. Architecture of a GEMOC xDSML</a></span></dt><dt><span class="section"><a href="#sec-GEMOC-characteristics">3.2.2. Main Characteristics of the GEMOC Process.</a></span></dt><dt><span class="section"><a href="#sec-GEMOC-process">3.2.3. Recommanded GEMOC Process</a></span></dt></dl></dd><dt><span class="section"><a href="#sec-requirements">3.3. Definition of the requirements/expectations on the xDSML</a></span></dt><dd><dl><dt><span class="section"><a href="#_application_domain_automata">3.3.1. Application Domain: Automata</a></span></dt><dt><span class="section"><a href="#_description_of_automata">3.3.2. Description of automata</a></span></dt><dt><span class="section"><a href="#_informal_behavior">3.3.3. Informal behavior</a></span></dt><dt><span class="section"><a href="#_scenarios">3.3.4. Scenarios</a></span></dt><dt><span class="section"><a href="#_examples_of_models">3.3.5. Examples of models</a></span></dt></dl></dd><dt><span class="section"><a href="#_creating_an_xdsml_project">3.4. Creating an xDSML Project</a></span></dt><dt><span class="section"><a href="#sec-increment1">3.5. Increment 1 : Deterministic Automata</a></span></dt><dd><dl><dt><span class="section"><a href="#_specification_of_the_xdsml_interface">3.5.1. Specification of the xDSML interface</a></span></dt><dt><span class="section"><a href="#_define_the_abstract_syntax_as">3.5.2. Define the Abstract Syntax (AS)</a></span></dt><dt><span class="section"><a href="#_define_concrete_syntaxes_cs">3.5.3. Define concrete syntaxes (CS)</a></span></dt><dt><span class="section"><a href="#_identifying_dse">3.5.4. Identifying DSE</a></span></dt><dt><span class="section"><a href="#_defining_domain_specific_actions_dsa">3.5.5. Defining Domain-Specific Actions (DSA)</a></span></dt><dt><span class="section"><a href="#_model_of_concurrency_and_communication_mocc">3.5.6. Model of Concurrency and Communication (MoCC)</a></span></dt><dt><span class="section"><a href="#_using_the_modeling_workbench">3.5.7. Using the Modeling Workbench</a></span></dt></dl></dd><dt><span class="section"><a href="#_increment_2_new_mocc_and_dsa_for_automata_mocc_focused_version">3.6. Increment 2: new MoCC and DSA for Automata (MoCC focused version)</a></span></dt><dt><span class="section"><a href="#_increment_3_graphical_visualization">3.7. Increment 3: Graphical visualization</a></span></dt><dt><span class="section"><a href="#_increment_4_consider_nondeterministic_automata">3.8. Increment 4: Consider nondeterministic automata.</a></span></dt><dt><span class="section"><a href="#_increment_5_pushdown_automaton">3.9. Increment 5: Pushdown automaton</a></span></dt><dt><span class="section"><a href="#_increment_6_call_of_user_actions">3.10. Increment 6: Call of user actions</a></span></dt><dt><span class="section"><a href="#_increment_tbd">3.11. Increment: TBD</a></span></dt><dt><span class="section"><a href="#_todo">3.12. TODO</a></span></dt></dl></dd><dt><span class="bibliography"><a href="#_bibliography">Bibliography</a></span></dt><dt><span class="glossary"><a href="#_glossary">Glossary</a></span></dt><dt><span class="index"><a href="#_index">Index</a></span></dt></dl></div><div class="list-of-figures"><p><strong>List of Figures</strong></p><dl><dt>1.1. <a href="#figure-glw-screenshot-of-language_workbench">Screenshot of GEMOC Studio Language Workbench on the TFSM (Timed Finite State Machine) example.</a></dt><dt>2.1. <a href="#figure-glw-screenshot-of-modeling_workbench">Screenshot of GEMOC Studio Modeling Workbench on the TFSM example (execution and animation).</a></dt><dt>3.1. <a href="#GEMOC-process-overview">Overview of the GEMOC process</a></dt><dt>3.2. <a href="#GEMOC-process">Recommended GEMOC Process</a></dt><dt>3.3. <a href="#automata-aSbaS">Automata which reads a*ba*</a></dt><dt>3.4. <a href="#automata-abcdS">Automata which reads (ABCD)*</a></dt><dt>3.5. <a href="#automata-mots">Automata which reads words</a></dt><dt>3.6. <a href="#automata-ccomm">Automata which reads C commentary</a></dt></dl></div>
 
 <div class="preface" title="Introduction"><div class="titlepage"><div><div><h2 class="title"><a id="_introduction"/>Introduction</h2></div></div></div>
 
@@ -284,9 +284,6 @@ When an execution is paused, this view presents the current <a id="d5e319" class
 </div>
 <div class="chapter" title="Chapter 3. GEMOC xDSML definition tutorial"><div class="titlepage"><div><div><h2 class="title"><a id="_gemoc_xdsml_definition_tutorial"/>Chapter 3. GEMOC xDSML definition tutorial</h2></div></div></div>
 
-<p>GEMOC Team
-:Author Initials: XC
-:website: http:__gemoc.org</p>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
 <p>This tutorial is a work in progress and is not yet finished.
 It still contains TODO and must be polished.</p>
@@ -353,9 +350,9 @@ requirements are fulfilled.</p>
 
 <div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-overview.png" alt="Overview of the GEMOC process"/></div>
 </div></div><br class="figure-break"/>
-<p><a id="d5e368" class="indexterm"/>
-<a id="d5e372" class="indexterm"/>
-<a id="d5e375" class="indexterm"/></p>
+<p><a id="d5e367" class="indexterm"/>
+<a id="d5e371" class="indexterm"/>
+<a id="d5e374" class="indexterm"/></p>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>For clarity, the iteration to choose the next increment is not
 represented of the diagram.</p>
@@ -418,8 +415,8 @@ domain (and could be considered as a kind of compound activity).</p>
 
 <div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-general.png" alt="Recommended GEMOC Process"/></div>
 </div></div><br class="figure-break"/>
-<p><a id="d5e408" class="indexterm"/>
-<a id="d5e411" class="indexterm"/></p>
+<p><a id="d5e407" class="indexterm"/>
+<a id="d5e410" class="indexterm"/></p>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
 <p>This process is the recommanded one, and the one used in this
 tutorial.  Nevertheless, it is possible to define an xDSML with other
@@ -471,7 +468,8 @@ which recognizes the language <span class="emphasis"><em>a*ba*</em></span>.</p>
 symbols. An automaton must have exactly one initial state (and thus at
 least one state).  One transition connects a source state to a target
 state and is labelled by a symbol.
-On the <a class="link" href="#automata-aSbaS" title="Figure 3.3. Automata which reads a*ba*">example</a>, states are represented by circles, doubled-circled
+On the <a class="link" href="#automata-aSbaS" title="Figure 3.3. Automata which reads a*ba*">example</a>, states are represented by circles,
+doubled-circled
 states are accepting states (or final states).
 A transition is depicted as an arrow from the input state to the
 output state.
@@ -480,10 +478,6 @@ An arrow without input state points to the initial state.</p>
 
 <div class="mediaobject"><img src="./images/tutorial/automate-aSbaS.png" alt="Automata which reads a*ba*"/></div>
 </div></div><br class="figure-break"/>
-<p>TODO: When.
-An automaton is deterministic is there is no two transitions labelled
-with the same symbol with the same source state. Else it is called
-nondeterministic automaton.</p>
 </div>
 <div class="section" title="3.3.3. Informal behavior"><div class="titlepage"><div><div><h3 class="title"><a id="_informal_behavior"/>3.3.3. Informal behavior</h3></div></div></div>
 
@@ -499,6 +493,11 @@ automaton becomes the state targeted by the transition.
 A work is accepted if all its symbols have been accepted and the last
 current state of the automaton is an accept state.  Otherwise the work
 is rejected.</p>
+<p>An automaton is nondeterministic if it contains a transition with no
+symbol (it may be fired as soon as its source state is the current
+state) or if it contains two transitions with the same source state
+and the same symbol.  An automaton is either deterministic or
+nondeterministic.</p>
 </div>
 <div class="section" title="3.3.4. Scenarios"><div class="titlepage"><div><div><h3 class="title"><a id="_scenarios"/>3.3.4. Scenarios</h3></div></div></div>
 
@@ -517,8 +516,8 @@ Feed symbol `a'
 </li><li class="listitem">
 Terminate
 </li></ol></div>
-<p>The automaton will then answers. The response can be 'accepted' or
-'refused'</p>
+<p>The automaton will then answer. The response can be 'accepted' or
+'refused'.</p>
 </div>
 <div class="section" title="3.3.5. Examples of models"><div class="titlepage"><div><div><h3 class="title"><a id="_examples_of_models"/>3.3.5. Examples of models</h3></div></div></div>
 
@@ -539,7 +538,7 @@ ABCDABCD, etc.
 </li><li class="listitem">
 Examples of rejected words: ABC, ABCDA, D, etc.
 </li></ul></div>
-<p>TODO: Other examples :</p>
+<p>TODO: Other examples:</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 only one state
 </li><li class="listitem">
@@ -555,6 +554,7 @@ several final states.
 <div class="mediaobject"><img src="./images/tutorial/automate-mots.png" alt="Automata which reads words"/></div>
 </div></div><br class="figure-break"/>
 <p>The only accepted words are: IL, ILE, ILES, ILS, ILOT, ILOTS</p>
+<p>TODO: To be translated in English.</p>
 <div class="variablelist"><dl><dt><span class="term">Nondeterministic automata</span></dt><dd>
 TODO: Several transitions with the same symbol.
 </dd></dl></div>
@@ -571,9 +571,6 @@ For example to check that open and close symbols are well suited.
 <div class="section" title="3.4. Creating an xDSML Project"><div class="titlepage"><div><div><h2 class="title"><a id="_creating_an_xdsml_project"/>3.4. Creating an xDSML Project</h2></div></div></div>
 
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p>TODO: Put the GEMOC Logo for paragraphs which describe GEMOC Studio commands.</p>
-</div>
-<div class="informalexample">
 <p>First, start by creating a new xDSML project (<span class="emphasis"><em>New &gt; Project &gt; GEMOC
 Project / new xDSML Project</em></span>), with your desired name (for instance
 "com.example.automata").  In the created project, we can open the
@@ -589,8 +586,7 @@ dependency if it is not present:
 dependencies, then <span class="emphasis"><em>Add…​</em></span>, the type in "k3" and select the right
 plugin).</p>
 </div>
-<p>TODO: Verifier si ce n’est pas fait lors de la creation du projet K3
-par le Wizard.</p>
+<p>TODO: Is it still required?</p>
 </div>
 <div class="section" title="3.5. Increment 1 : Deterministic Automata"><div class="titlepage"><div><div><h2 class="title"><a id="sec-increment1"/>3.5. Increment 1 : Deterministic Automata</h2></div></div></div>
 
@@ -602,7 +598,7 @@ other models and xDSML (AS, DSE, EF and ED).</p>
 </div>
 <div class="section" title="3.5.2. Define the Abstract Syntax (AS)"><div class="titlepage"><div><div><h3 class="title"><a id="_define_the_abstract_syntax_as"/>3.5.2. Define the Abstract Syntax (AS)</h3></div></div></div>
 
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>To define the AS we can either select an existing project (Browse
 button) or create a new one.  To create a new one, we click on "EMF
 project" on the xDSML view of project.xdsml.
@@ -624,7 +620,7 @@ belong to. Symbols know which Transition(s) they are referenced by.
 States know their outgoing and incoming Transitions.  Automatas,
 States, Transitions and Symbols all have a name (factorized in the
 NamedElement metaclass).</p>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>Once the Ecore MetaModel is done, we can come back to the xDSML view.
 The "EMF project" and the  "Genmodel URI" have been updated.</p>
 <p>Set the "Root container model element" to "automata::Automata".</p>
@@ -649,7 +645,7 @@ sure the semantics has been correctly implemented.</p>
 graphical animator later on during simulations.</p>
 </div>
 </div>
-<div class="section" title="3.5.4. Defining DSE"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_dse"/>3.5.4. Defining DSE</h3></div></div></div>
+<div class="section" title="3.5.4. Identifying DSE"><div class="titlepage"><div><div><h3 class="title"><a id="_identifying_dse"/>3.5.4. Identifying DSE</h3></div></div></div>
 
 <p>Domain Specific Events are part of the interface of the language and
 allow communication with the system engineer and the other models of
@@ -667,10 +663,10 @@ work to test
 Terminating the automata : occurs when the user has given all the
 symbols of the word.  It is used to indicate the end on the word.
 </li></ul></div>
-<p>TODO: Other DSE may be of interrest, for example firing a transition,
-rejecting a symbol, etc which would be output events (the previous
+<p>TODO: Other DSE may be of interest, for example firing a transition,
+rejecting a symbol, etc. which would be output events (the previous
 ones being input events).</p>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>At this moment, DSE are defined in an ECL (Event Constraint Language) file.
 In the xDSML view, click on <span class="emphasis"><em>ECL Project</em></span> to create a DSE Project.
 Let us name it "com.example.automata.dse" (it is the proposed name).
@@ -688,7 +684,7 @@ Automata".</p>
 <p>TODO: Could it be automatically initialized (from the Root container
 model element)?</p>
 </div>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>For now, we will complete the ECL file with the following elements:</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 <span class="strong"><strong>Metamodel import:</strong></span> (already initialized) Domain-Specific Events
@@ -741,7 +737,7 @@ It should work.</p>
 <p>DSA includes the definition of Execution Data (ED) and Execution
 Functions (EF).  They are both implemented in Kermeta 3 in K3 Aspect
 project whose lastname is, by convention, 'k3dsa'.</p>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>Click on <span class="emphasis"><em>K3 project</em></span> in the xDSML view (Behavioral definition / DSA
 definition).  The wizard to create of new Kermeta 3 project is
 launched with the name of the project initialized (k3dsa is the last
@@ -765,7 +761,7 @@ state of the automata or null is a symbol has been rejected.</p>
 <p>TODO: Change the implementation to reflect this desgin choice.</p>
 <p>TODO: Better, define a new class in DSA ErrorState which extends
 State.  When in the error state, the automate rejects every symbols.</p>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>To add the reference 'currentState', we define it in an Aspect on the
 Automata class as follow.</p>
 <pre class="screen">@Aspect(className=Automata)
@@ -812,7 +808,7 @@ target state of such a transition if it exists.
 a 'Query' which returns the list of
 outgoing transitions of this state that accept the s symbol.
 </dd></dl></div>
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>Complete the file 'automata.xtend' with the following code:</p>
 <pre class="screen">@Aspect(className=Automata)
 class AutomataAspect {
@@ -880,6 +876,10 @@ class TransitionAspect {
 	}
 
 }</pre>
+</div>
+</div>
+<div class="section" title="Testing DSA"><div class="titlepage"><div><div><h4 class="title"><a id="_testing_dsa"/>Testing DSA</h4></div></div></div>
+
 <p>TODO: Add a test to validate the DSA part !</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 load a model or manually define it
@@ -888,7 +888,6 @@ ask the EF as if they were called by the MoCC
 </li><li class="listitem">
 check the results (current state, accepted or rejected)
 </li></ul></div>
-</div>
 </div>
 </div>
 <div class="section" title="3.5.6. Model of Concurrency and Communication (MoCC)"><div class="titlepage"><div><div><h3 class="title"><a id="_model_of_concurrency_and_communication_mocc"/>3.5.6. Model of Concurrency and Communication (MoCC)</h3></div></div></div>
@@ -926,13 +925,21 @@ all the other MoccEvents).</p>
 	}
 }</pre>
 <p>TODO: state-based relations?</p>
-<p>Afterwards, we need to import this library into the ECL file in order to be able to instantiate it using the MoccEvents we have defined as mapped to our Domain-Specific Events. In order to do that, we need to add at the top of the ECL file:</p>
+<p>Afterwards, we need to import this library into the ECL file in order
+to be able to instantiate it using the MoccEvents we have defined as
+mapped to our Domain-Specific Events. In order to do that, we need to
+add at the top of the ECL file:</p>
 <pre class="screen">ECLimport "platform:/resource/com.example.automata.mocc.lib/mocc/automata.moccml"</pre>
-<p>We will also probably need the standard libraries of relations and expressions in order to instantiate the MoCC. Therefore, we should also add the following imports:</p>
+<p>We will also probably need the standard libraries of relations and
+expressions in order to instantiate the MoCC. Therefore, we should
+also add the following imports:</p>
 <pre class="screen">ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"</pre>
-<p>Now we need to specify how to instantiate the MoCC in the ECL file. This is done by using MoCCML relations and expressions on MoccEvents.
-First, we want to make sure that we do the initialization of the Automata before anything else. Therefore, we will use the relation "FirstAndOnlyOnce" defined in our custom MoCC library.</p>
+<p>Now we need to specify how to instantiate the MoCC in the ECL file.
+This is done by using MoCCML relations and expressions on MoccEvents.
+First, we want to make sure that we do the initialization of the
+Automata before anything else. Therefore, we will use the relation
+"FirstAndOnlyOnce" defined in our custom MoCC library.</p>
 <pre class="screen">context Automata
 	inv InitBeforeAnythingElse:
 		let allOccurEvents : Event = Expression Union(self.symbols.mocc_occur) in
@@ -946,6 +953,10 @@ First, we want to make sure that we do the initialization of the Automata before
 	let allSymbolOccurEvents : Event = Expression Union(self.symbols.mocc_occur) in
 	Relation Exclusion(self.mocc_terminate, allSymbolOccurEvents)</pre>
 <p>As soon as you save the ECL file, a .qvto file should be generated in the folders qvto-gen/language and qvto-gen/modeling. Make sure that your xDSML project references the .qvto file that is available in qvto-gen/modeling.</p>
+<div class="section" title="Testing the MoCC"><div class="titlepage"><div><div><h4 class="title"><a id="_testing_the_mocc"/>Testing the MoCC</h4></div></div></div>
+
+
+</div>
 </div>
 <div class="section" title="3.5.7. Using the Modeling Workbench"><div class="titlepage"><div><div><h3 class="title"><a id="_using_the_modeling_workbench"/>3.5.7. Using the Modeling Workbench</h3></div></div></div>
 
@@ -977,7 +988,7 @@ TODO
 </div>
 <div class="section" title="Testing and debugging the xDSML"><div class="titlepage"><div><div><h4 class="title"><a id="_testing_and_debugging_the_xdsml"/>Testing and debugging the xDSML</h4></div></div></div>
 
-<div class="informalexample">
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>Launch the Modeling Workbench. Create a new general project, for
 instance "com.example.automata.instances". In this project, create a
 new Automate instance (New &gt; Other…​ &gt; Automata Model)
@@ -1115,8 +1126,8 @@ the code generated again.</p>
 
 <p>The bibliography lists some useful external documents. For a more complete list, please refer to the publications section on <a class="ulink" href="http://gemoc.org">http://gemoc.org</a> site.</p>
 <div class="bibliodiv" title="Articles">
-<h3 class="title"><a id="d5e802"/>Articles</h3>
-<div class="bibliomixed"><a id="d5e804"/><p class="bibliomixed">
+<h3 class="title"><a id="d5e804"/>Articles</h3>
+<div class="bibliomixed"><a id="d5e806"/><p class="bibliomixed">
 <span class="bibliomisc"><a id="globalizing-modeling-languages"/>[globalizing-modeling-languages] <a class="ulink" href="http://hal.inria.fr/hal-00994551">Globalizing Modeling Languages</a> (Benoit Combemale, Julien Deantoni, Benoit Baudry, Robert France, Jean-Marc Jezequel, Jeff Gray), In Computer, IEEE, 2014.</span>
 </p></div>
 </div>
