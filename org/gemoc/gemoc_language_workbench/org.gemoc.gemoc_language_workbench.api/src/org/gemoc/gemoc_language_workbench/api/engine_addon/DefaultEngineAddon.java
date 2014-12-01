@@ -25,7 +25,7 @@ public class DefaultEngineAddon implements IEngineAddon {
 	}
 
 	@Override
-	public void logicalStepSelected(IExecutionEngine engine) 
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) 
 	{
 	}
 

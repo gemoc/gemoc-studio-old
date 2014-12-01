@@ -81,7 +81,7 @@ public class PrepareViewFrontend implements IEngineAddon
 	}
 
 	@Override
-	public void logicalStepSelected(IExecutionEngine engine) {
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) {
 		// TODO Auto-generated method stub
 		
 	}

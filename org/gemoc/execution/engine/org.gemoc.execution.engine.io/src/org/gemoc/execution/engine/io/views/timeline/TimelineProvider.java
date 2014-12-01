@@ -229,7 +229,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	}
 
 	@Override
-	public void logicalStepSelected(IExecutionEngine engine) {
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) {
 		// TODO Auto-generated method stub
 		
 	}

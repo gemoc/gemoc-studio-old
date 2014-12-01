@@ -301,7 +301,7 @@ public abstract class AbstractGemocAnimatorServices {
 		}
 
 		@Override
-		public void logicalStepSelected(IExecutionEngine engine) {
+		public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) {
 			// TODO Auto-generated method stub
 			
 		}

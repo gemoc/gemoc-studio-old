@@ -32,7 +32,7 @@ public interface IEngineAddon {
 	 * Operation called after the LogicalStep has been chosen
 	 * It also returns the chosen LogicalStep
 	 */
-	public void logicalStepSelected(IExecutionEngine engine);
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep);
 	
 
 	public void aboutToExecuteLogicalStep(IExecutionEngine engine, LogicalStep logicalStepToExecute);

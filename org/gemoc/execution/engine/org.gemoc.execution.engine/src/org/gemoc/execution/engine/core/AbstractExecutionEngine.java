@@ -224,12 +224,12 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 						if (selectedLogicalStepIndex != -1)
 						{
 							_selectedLogicalStep = _possibleLogicalSteps.get(selectedLogicalStepIndex);
-							engineStatus.setChosenLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));
+							engineStatus.setChosenLogicalStep(_selectedLogicalStep);
 							setEngineStatus(EngineStatus.RunStatus.Running);
 
 							for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 							{
-								addon.logicalStepSelected(AbstractExecutionEngine.this);
+								addon.logicalStepSelected(AbstractExecutionEngine.this, _selectedLogicalStep);
 							}
 
 							// 3 - run the selected logical step
@@ -439,11 +439,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	}
 	
 	private LogicalStep _selectedLogicalStep;
-	@Override
-	public LogicalStep getSelectedLogicalStep() 
-	{
-		return _selectedLogicalStep;
-	}
 	
 	private void updatePossibleLogicalSteps()
 	{

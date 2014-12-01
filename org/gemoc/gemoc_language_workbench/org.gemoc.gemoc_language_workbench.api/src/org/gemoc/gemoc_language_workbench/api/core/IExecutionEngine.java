@@ -56,7 +56,5 @@ public interface IExecutionEngine extends IDisposable {
 	public List<LogicalStep> getPossibleLogicalSteps();
 
 	public void addFutureAction(IFutureAction action);
-
-	public LogicalStep getSelectedLogicalStep();
 	
 }

@@ -167,7 +167,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	}
 
 	@Override
-	public void logicalStepSelected(IExecutionEngine engine) 
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) 
 	{
 	}
 
