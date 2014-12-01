@@ -152,7 +152,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		setEngineStatus(EngineStatus.RunStatus.Stopped);
 		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.postStopEngine(this);
+			addon.engineStopped(this);
 		}
 		getEngineStatus().getCurrentLogicalStepChoice().clear();
 		getEngineStatus().setChosenLogicalStep(null);
@@ -229,7 +229,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 
 							for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 							{
-								addon.postLogicalStepSelection(AbstractExecutionEngine.this);
+								addon.logicalStepSelected(AbstractExecutionEngine.this);
 							}
 
 							// 3 - run the selected logical step
@@ -277,7 +277,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		engineStatus.setRunningStatus(newStatus);
 		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons())
 		{
-			addon.engineStatusHasChanged(this, newStatus);
+			addon.engineStatusChanged(this, newStatus);
 		}
 	}
 	
@@ -315,7 +315,12 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			executeAssociatedActions(mseOccurence.getMSE());
 			executeModelSpecificEvent(mseOccurence.getMSE());
 		}
-	}
+
+		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
+		{
+			addon.logicalStepExecuted(this, logicalStepToApply);
+		}
+}
 	
 	private void executeAssociatedActions(ModelSpecificEvent mse)
 	{
@@ -338,10 +343,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	{
 		if (mse.getAction() != null) 
 		{			
-			for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
-			{
-				addon.aboutToExecuteMSE(this, mse);
-			}
 			ActionModel feedbackModel = _executionContext.getFeedbackModel();
 			ArrayList<When> whenStatements = new ArrayList<When>();
 			for (When w : feedbackModel.getWhenStatements())
@@ -454,7 +455,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		engineStatus.updateCurrentLogicalStepChoice(_possibleLogicalSteps);
 		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.preLogicalStepSelection(AbstractExecutionEngine.this);
+			addon.aboutToSelectLogicalStep(AbstractExecutionEngine.this);
 		}
 	}
 	

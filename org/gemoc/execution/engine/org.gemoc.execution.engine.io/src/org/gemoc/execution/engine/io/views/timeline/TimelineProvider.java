@@ -199,21 +199,6 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	{
 	}
 
-	@Override
-	public void preLogicalStepSelection(IExecutionEngine engine) 
-	{
-		update(engine);
-	}
-
-	@Override
-	public void postLogicalStepSelection(IExecutionEngine engine) 
-	{
-	}
-
-	@Override
-	public void postStopEngine(IExecutionEngine engine) 
-	{
-	}
 
 	@Override
 	public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
@@ -226,8 +211,47 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	}
 
 	@Override
-	public void engineStatusHasChanged(IExecutionEngine engineRunnable, RunStatus newStatus) 
-	{
+	public void engineAboutToStop(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
 	}
+
+	@Override
+	public void engineStopped(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
+	{
+		update(engine);
+	}
+
+	@Override
+	public void logicalStepSelected(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void logicalStepExecuted(IExecutionEngine engine,
+			LogicalStep logicalStepExecuted) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineStatusChanged(IExecutionEngine engine, RunStatus newStatus) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

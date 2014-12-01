@@ -280,14 +280,14 @@ public class ModelExecutionTracingHook extends DefaultEngineAddon {
 	
 	
 	@Override
-	public void preLogicalStepSelection(IExecutionEngine engine) 
+	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
 	{
 		setUp(engine);
 		updateTraceModelBeforeDeciding(engine.getPossibleLogicalSteps());
 	}
 	
 	@Override
-	public void postLogicalStepSelection(IExecutionEngine engine) 
+	public void logicalStepSelected(IExecutionEngine engine) 
 	{
 		setUp(engine);
 		updateTraceModelAfterDeciding(engine.getSelectedLogicalStep());

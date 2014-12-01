@@ -20,17 +20,17 @@ public class DefaultEngineAddon implements IEngineAddon {
 	}
 
 	@Override
-	public void preLogicalStepSelection(IExecutionEngine engine) 
+	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
 	{
 	}
 
 	@Override
-	public void postLogicalStepSelection(IExecutionEngine engine) 
+	public void logicalStepSelected(IExecutionEngine engine) 
 	{
 	}
 
 	@Override
-	public void postStopEngine(IExecutionEngine engine) 
+	public void engineStopped(IExecutionEngine engine) 
 	{
 	}
 
@@ -47,7 +47,22 @@ public class DefaultEngineAddon implements IEngineAddon {
 	}
 
 	@Override
-	public void engineStatusHasChanged(IExecutionEngine engineRunnable, RunStatus newStatus) 
+	public void engineStatusChanged(IExecutionEngine engineRunnable, RunStatus newStatus) 
+	{
+	}
+
+	@Override
+	public void engineAboutToStop(IExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void logicalStepExecuted(IExecutionEngine engine, LogicalStep logicalStepExecuted) 
+	{
+	}
+
+	@Override
+	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) 
 	{
 	}
 

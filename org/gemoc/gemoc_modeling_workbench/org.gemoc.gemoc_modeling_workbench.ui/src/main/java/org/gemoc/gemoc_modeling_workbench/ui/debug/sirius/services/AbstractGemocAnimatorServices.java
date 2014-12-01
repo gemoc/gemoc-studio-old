@@ -264,30 +264,6 @@ public abstract class AbstractGemocAnimatorServices {
 		}
 
 		@Override
-		public void preLogicalStepSelection(IExecutionEngine engine) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void postLogicalStepSelection(IExecutionEngine engine) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void postStopEngine(IExecutionEngine engine)
-		{
-			clear(engine);
-			if (engine.getExecutionContext().getRunConfiguration().getAnimatorURI() != null)
-			{
-				Session session = SessionManager.INSTANCE.getSession(engine.getExecutionContext().getRunConfiguration().getAnimatorURI(), new NullProgressMonitor());			
-				session.close(new NullProgressMonitor());
-				SessionManager.INSTANCE.remove(session);
-			}
-		}
-
-		@Override
 		public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
 		{
 			activate(executionEngine, logicalStepToApply);
@@ -301,7 +277,50 @@ public abstract class AbstractGemocAnimatorServices {
 		}
 
 		@Override
-		public void engineStatusHasChanged(IExecutionEngine engineRunnable,
+		public void engineAboutToStop(IExecutionEngine engine) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void engineStopped(IExecutionEngine engine) 
+		{
+			clear(engine);
+			if (engine.getExecutionContext().getRunConfiguration().getAnimatorURI() != null)
+			{
+				Session session = SessionManager.INSTANCE.getSession(engine.getExecutionContext().getRunConfiguration().getAnimatorURI(), new NullProgressMonitor());			
+				session.close(new NullProgressMonitor());
+				SessionManager.INSTANCE.remove(session);
+			}
+		}
+
+		@Override
+		public void aboutToSelectLogicalStep(IExecutionEngine engine) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void logicalStepSelected(IExecutionEngine engine) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void logicalStepExecuted(IExecutionEngine engine,
+				LogicalStep logicalStepExecuted) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void engineStatusChanged(IExecutionEngine engine,
 				RunStatus newStatus) {
 			// TODO Auto-generated method stub
 			

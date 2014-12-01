@@ -2,6 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.xdsml">
-    <XDSML_Definition codeExecutor_class="org.gemoc.sigpml.xdsml.executor.SigpmlCodeExecutor" domainSpecificEventsResource="org.gemoc.sigpml.moc.application/MoCApplication/SigPML.ecl" domainSpecificEventsResourcePath="org.gemoc.sigpml.moc.application/MoCApplication/SigPML.ecl" executor_class="org.gemoc.sigpml.k3dsa.SigPML_Kermeta3AspectsCodeExecutor" mocEventsResource="org.gemoc.sigpml.moc.application/MoCApplication/SigPML.ecl" modelLoader_class="org.gemoc.gemoc_modeling_workbench.core.DefaultModelLoader" name="sigpml" solver_class="sigpml.xdsml.api.impl.SigpmlSolver" toCCSLQVTOFilePath="/org.gemoc.sigpml.moc.application/qvto-gen/modeling/SigPML.qvto" xdsmlFilePath="/org.gemoc.sigpml.xdsml/project.xdsml" />
+    <XDSML_Definition codeExecutor_class="org.gemoc.sigpml.xdsml.executor.SigpmlCodeExecutor" domainSpecificEventsResource="org.gemoc.sigpml.moc.application/MoCApplication/SigPML.ecl" domainSpecificEventsResourcePath="org.gemoc.sigpml.moc.application/MoCApplication/SigPML.ecl" executor_class="org.gemoc.sigpml.k3dsa.SigPML_Kermeta3AspectsCodeExecutor" mocEventsResource="org.gemoc.sigpml.moc.application/MoCApplication/SigPML.ecl" modelLoader_class="org.gemoc.gemoc_modeling_workbench.core.DefaultModelLoader" name="sigpml" solver_class="sigpml.xdsml.api.impl.SigpmlSolver" toCCSLQVTOFilePath="/org.gemoc.sigpml.moc.application/qvto-gen/language/SigPML.qvto" xdsmlFilePath="/org.gemoc.sigpml.xdsml/project.xdsml" />
   </extension>
 </plugin>

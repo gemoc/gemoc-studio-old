@@ -9,8 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IMenuListener;
@@ -46,6 +48,8 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.io.Activator;
+import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
@@ -76,13 +80,12 @@ import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
  * @author lguillem
  * @version 1.6
  */
-public class EventManagerView extends ViewPart implements IMotorSelectionListener, IEngineAddon {
+public class EventManagerView extends ViewPart implements IMotorSelectionListener, IEngineAddon, IEvenPresenter {
 
 	private static final class GemocLabelDecorator extends DSLLabelDecorator {
 
 		public GemocLabelDecorator() {
 			super(LogicalStepsView.MODEL_ID);
-			// TODO Auto-generated constructor stub
 		}
 		
 		private Map<EObject, ModelSpecificEventWrapper> mapping = new HashMap<EObject, ModelSpecificEventWrapper>();			
@@ -147,6 +150,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	
 	public static final String ID = "org.gemoc.execution.engine.io.views.event.EventManagerView";
 
+	private Color notForcedSetColor;
+	private Color forcedSetColor;
+	private Color forcedNotSetColor;
+	private Color representedEventColor;
 	private TableViewer _viewer;
 	private ViewContentProvider _contentProvider;
 	private AbstractExecutionEngine _currentSelectedEngine;
@@ -159,7 +166,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private MenuManager _menuManager;
 	private ColumnLabelProvider _column1LabelProvider;
 	private GemocLabelDecorator _decorator;
-	
+	private List<URI> _eventsToPresent = new ArrayList<URI>(); 
 
 	private List<Button> _mseControlButtons;
 
@@ -190,6 +197,10 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	public void createPartControl(Composite parent) 
 	{
+		notForcedSetColor = new Color(parent.getDisplay(), 212, 255, 141);
+		forcedSetColor = new Color(parent.getDisplay(), 212, 255, 141);
+		forcedNotSetColor = new Color(parent.getDisplay(), 212, 255, 141);
+		representedEventColor = new Color(parent.getDisplay(), 255, 235, 174);
 		// The main parent will be made of a single column
 		GridLayout layout = new GridLayout();
 		parent.setLayout(layout);
@@ -226,6 +237,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		decisionView.addSelectionChangedListener(_decisionViewListener);
 		updateView();
 		createMenuManager();
+		Activator.getDefault().getEventPresenters().add(this);
 	}
 
 	/**
@@ -414,14 +426,19 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			{
 				if (element instanceof ModelSpecificEventWrapper)
 				{
-					ClockStatus state = ((ModelSpecificEventWrapper) element).getState();
-
-					switch(state)
-					{
-					case NOTFORCED_SET: return new Color(parent.getDisplay(), 212, 255, 141);
-					case FORCED_SET: return new Color(parent.getDisplay(), 255, 217, 142);
-					case FORCED_NOTSET: return new Color(parent.getDisplay(), 255, 217, 142);
-					default: break;
+					final EObject solverEvent = ((ModelSpecificEventWrapper) element).getMSE().getSolverEvent();
+					boolean isRepresented = solverEvent instanceof Clock && _eventsToPresent.contains(EcoreUtil.getURI(((Clock)solverEvent).getTickingEvent()));
+					if (isRepresented) {
+						return representedEventColor;
+					} else {
+						ClockStatus state = ((ModelSpecificEventWrapper) element).getState();
+						switch(state)
+						{
+						case NOTFORCED_SET: return notForcedSetColor;
+						case FORCED_SET: return forcedSetColor;
+						case FORCED_NOTSET: return forcedNotSetColor;
+						default: break;
+						}
 					}
 				}
 				return super.getBackground(element);
@@ -712,6 +729,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	@Override
 	public void dispose() 
 	{
+		Activator.getDefault().getEventPresenters().remove(this);
 		super.dispose();
 		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
 		decisionView.removeSelectionChangedListener(_decisionViewListener);
@@ -722,6 +740,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		_currentSelectedEngine = null;	
 		stopListeningToMotorSelectionChange();
 		_column1LabelProvider.dispose();
+		notForcedSetColor.dispose();
+		forcedSetColor.dispose();
+		forcedNotSetColor.dispose();
+		representedEventColor.dispose();
+		_eventsToPresent.clear();
 	}
 
 	/**
@@ -862,44 +885,86 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	@Override
-	public void engineAboutToStart(IExecutionEngine engine) 
-	{
+	public void present(List<URI> events) {
+		_eventsToPresent = events;
+		if (_currentSelectedEngine != null) {
+			ResourceSet rs = _currentSelectedEngine.getExecutionContext().getResourceModel().getResourceSet();
+			for (URI uri : _eventsToPresent) {
+				final EObject event = rs.getEObject(uri, false);
+				ModelSpecificEventWrapper toRefresh = _decorator.mapping.get(event);
+				if (toRefresh != null) {
+					_viewer.refresh(toRefresh);
+				}
+			}
+		}
 	}
 
 	@Override
-	public void engineStarted(IExecutionEngine executionEngine) 
-	{
+	public void engineAboutToStart(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void preLogicalStepSelection(IExecutionEngine engine) 
-	{
+	public void engineStarted(IExecutionEngine executionEngine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineAboutToStop(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineStopped(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void aboutToSelectLogicalStep(IExecutionEngine engine) {
 		update(engine);
 	}
 
 	@Override
-	public void postLogicalStepSelection(IExecutionEngine engine) 
-	{
+	public void logicalStepSelected(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void postStopEngine(IExecutionEngine engine) 
-	{
+	public void aboutToExecuteLogicalStep(IExecutionEngine engine,
+			LogicalStep logicalStepToExecute) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
-	{
+	public void logicalStepExecuted(IExecutionEngine engine,
+			LogicalStep logicalStepExecuted) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse) 
-	{
+	public void aboutToExecuteMSE(IExecutionEngine engine,
+			ModelSpecificEvent mse) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void engineStatusHasChanged(IExecutionEngine engineRunnable, RunStatus newStatus) 
-	{
+	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineStatusChanged(IExecutionEngine engine, RunStatus newStatus) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

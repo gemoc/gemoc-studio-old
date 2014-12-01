@@ -3,16 +3,16 @@ Bundle-SymbolicName: org.gemoc.sigpml.xdsml;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Name: Xdsml
 Bundle-ClassPath: .
-Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:=reexport,
+Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:="reexport",
  fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0",
  org.gemoc.gemoc_language_workbench.api,
  org.gemoc.execution.engine,
  org.gemoc.execution.engine.commons,
  fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.0.0",
- org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.0.0";visibility:="reexport",
  org.eclipse.ui,
  org.eclipse.ui.workbench,
- org.gemoc.sigpml.k3dsa;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.sigpml.k3dsa;bundle-version="0.0.0";visibility:="reexport",
  org.gemoc.sigpml.model;bundle-version="0.0.0";visibility:=reexport,
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
  fr.inria.diverse.commons.eclipse.messagingsystem.ui;bundle-version="1.0.0",

@@ -314,6 +314,9 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_7iHV9eGyEeOdkfPnVsEBSg" name="CPU1" outgoingEdges="_7iHWMuGyEeOdkfPnVsEBSg _7iHWN-GyEeOdkfPnVsEBSg" width="3" height="3" resizeKind="NSEW">
           <target xmi:type="sigpmlextended:HWComputationalResource" href="Simple.sigpml#//@ownedHWPlatform/@ownedHWResources.0"/>
           <semanticElements xmi:type="sigpmlextended:HWComputationalResource" href="Simple.sigpml#//@ownedHWPlatform/@ownedHWResources.0"/>
+          <decorations xmi:type="viewpoint:Decoration" xmi:id="_zJs0gHbWEeS4e-JQ-e-glQ">
+            <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@additionalLayers[name='SigPMLDebug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
+          </decorations>
           <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_7iHV9uGyEeOdkfPnVsEBSg" showIcon="false" borderSize="2" borderSizeComputationExpression="2" labelPosition="node">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7iHV9-GyEeOdkfPnVsEBSg"/>
             <description xmi:type="style:LozengeNodeDescription" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='HWPlateform']/@subNodeMappings[name='HWComputationalResource']/@style"/>
@@ -467,6 +470,9 @@
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_7iHWMuGyEeOdkfPnVsEBSg" sourceNode="_7iHV9eGyEeOdkfPnVsEBSg" targetNode="_7iHWCuGyEeOdkfPnVsEBSg">
         <target xmi:type="sigpmlextended:HWComputationalResource" href="Simple.sigpml#//@ownedHWPlatform/@ownedHWResources.0"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_zKA9kHbWEeS4e-JQ-e-glQ">
+          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@additionalLayers[name='SigPMLDebug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
+        </decorations>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_7iHWM-GyEeOdkfPnVsEBSg" lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='AgentAllocation']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_7iHWNOGyEeOdkfPnVsEBSg" red="136" green="136" blue="136"/>
@@ -478,6 +484,9 @@
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_7iHWN-GyEeOdkfPnVsEBSg" sourceNode="_7iHV9eGyEeOdkfPnVsEBSg" targetNode="_7iHWHuGyEeOdkfPnVsEBSg">
         <target xmi:type="sigpmlextended:HWComputationalResource" href="Simple.sigpml#//@ownedHWPlatform/@ownedHWResources.0"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_zKBkoHbWEeS4e-JQ-e-glQ">
+          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@additionalLayers[name='SigPMLDebug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
+        </decorations>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_7iHWOOGyEeOdkfPnVsEBSg" lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='AgentAllocation']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_7iHWOeGyEeOdkfPnVsEBSg" red="136" green="136" blue="136"/>
