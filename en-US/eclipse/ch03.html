@@ -300,14 +300,6 @@ resources used in an xDSML project (which are part of and managed by
 other projects).  This view is a kind of dashboard or control center to
 have quick access to any important resource of the project.</p>
 </div>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">In the MANIFEST.MF (in folder META-INF), add the following
-dependency if it is not present:
-"org.gemoc.gemoc_language_workbench.extensions.k3" (click on
-dependencies, then <span class="emphasis"><em>Add&#8230;&#8203;</em></span>, the type in "k3" and select the right
-plugin).</p>
-</div>
-<p>TODO: Is it still required?</p>
 </div>
 <div class="section" title="3.5.&nbsp;Increment 1 : Deterministic Automata"><div class="titlepage"><div><div><h2 class="title"><a name="sec-increment1"></a>3.5.&nbsp;Increment 1 : Deterministic Automata</h2></div></div></div>
 
@@ -328,16 +320,19 @@ Let us call our package "automata". We will use the default ns URI and ns
 Prefix. We may then edit the Ecore MetaModel either with the graphical
 editor or with the tree editor.</p>
 </div>
-<p>[[fig/automata/class diagram]]
+<p>[[fig/automata/class-diagram]]
 .Automata Metamodel
 image::images/tutorial/automata-as.png[Automata Metamodel]</p>
 <p>An Automaton is a composed of States (at least one), Transitions and
-Symbols.  A Transition must have a source and a target, both of type
-State. A Transition is fired upon occurrence of one of its associated
-Symbol.  For now, Transitions may have only one associated Symbol For
-practical reasons, we also add EOpposite references whenever possible.
+Symbols.  An autamaton has an initial state (reference).  A state can
+be a final state (attribute).   A Transition must have a source and a
+target, both of type State. A Transition is fired upon occurrence of
+one of its associated Symbol.
+For practical reasons, we also add EOpposite references whenever
+possible.
 Therefore States, Transitions and Symbols know which Automata they
-belong to. Symbols know which Transition(s) they are referenced by.
+belong to.
+Symbols know which Transition(s) they are referenced by.
 States know their outgoing and incoming Transitions.  Automatas,
 States, Transitions and Symbols all have a name (factorized in the
 NamedElement metaclass).</p>
@@ -374,19 +369,19 @@ the system.</p>
 <p>For our Automata xDSML, we decide that there are 3 events
 which are of relevant interest to the environment (user through a GUI
 or another xDSML through language composition operators):</p>
-<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
-Initializing the automata : occurs only once at the start of the
-simulation
-</li><li class="listitem">
-Injecting a symbol : occurs when the user gives a new symbol of the
-work to test
-</li><li class="listitem">
-Terminating the automata : occurs when the user has given all the
-symbols of the word.  It is used to indicate the end on the word.
-</li></ul></div>
-<p>TODO: Other DSE may be of interest, for example firing a transition,
-rejecting a symbol, etc. which would be output events (the previous
-ones being input events).</p>
+<div class="variablelist"><dl><dt><span class="term">Initializing the automata</span></dt><dd>
+occurs only once at the start of the simulation
+</dd><dt><span class="term">Injecting a symbol</span></dt><dd>
+occurs when the user gives a new symbol of the work to test
+</dd><dt><span class="term">Terminating the automata</span></dt><dd>
+occurs when the user has given all the symbols of the word.  It is
+used to indicate the end on the word.
+</dd></dl></div>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Tip</h2>
+<p xmlns="">Other DSE may be of interest, for example firing a transition,
+rejecting a symbol, etc. They would be output events (the already
+identified ones being input events).</p>
+</div>
 <div class="informalexample">
 <p>At this moment, DSE are defined in an ECL (Event Constraint Language) file.
 In the xDSML view, click on <span class="emphasis"><em>ECL Project</em></span> to create a DSE Project.
@@ -402,8 +397,6 @@ that is displayed.</p>
 fill-in the "moc2as.properties" file by completing the property with
 the name of the root element. In our case, that is "rootElement =
 Automata".</p>
-<p>TODO: Could it be automatically initialized (from the Root container
-model element)?</p>
 </div>
 <div class="informalexample">
 <p>For now, we will complete the ECL file with the following elements:</p>
@@ -430,7 +423,7 @@ interface of the xDSML.
 		def: mocc_occur : Event = self.occur()
 endpackage</pre>
 </div>
-<p>TODO: Can we define DSE without mapping them to DSA?</p>
+<p>TODO: Write DSE without mapping them to DSA.</p>
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
 <p xmlns="">The signature of the Execution Functions needs to be present in the
 MetaModel. Therefore, we need to modify the Ecore MetaModel and add
@@ -456,8 +449,8 @@ It should work.</p>
 <div class="section" title="3.5.5.&nbsp;Defining Domain-Specific Actions (DSA)"><div class="titlepage"><div><div><h3 class="title"><a name="_defining_domain_specific_actions_dsa"></a>3.5.5.&nbsp;Defining Domain-Specific Actions (DSA)</h3></div></div></div>
 
 <p>DSA includes the definition of Execution Data (ED) and Execution
-Functions (EF).  They are both implemented in Kermeta 3 in K3 Aspect
-project whose lastname is, by convention, 'k3dsa'.</p>
+Functions (EF).  They are both implemented in Kermeta 3 in 'K3 Aspect
+project' whose lastname is, by convention, 'k3dsa'.</p>
 <div class="informalexample">
 <p>Click on <span class="emphasis"><em>K3 project</em></span> in the xDSML view (Behavioral definition / DSA
 definition).  The wizard to create of new Kermeta 3 project is
@@ -475,19 +468,23 @@ discarded.</p>
 definition of ED and EF.</p>
 <div class="section" title="Execution Data (ED)"><div class="titlepage"><div><div><h4 class="title"><a name="_execution_data_ed"></a>Execution Data (ED)</h4></div></div></div>
 
-<p>We identify one runtime information for Automata which store the
-current state of the automaton.  We call it 'currentState'. It is a
-reference in Automata of type State.  It contains either the current
-state of the automata or null is a symbol has been rejected.</p>
-<p>TODO: Change the implementation to reflect this desgin choice.</p>
-<p>TODO: Better, define a new class in DSA ErrorState which extends
-State.  When in the error state, the automate rejects every symbols.</p>
+<p>We identify two runtime information for Automata.  The first one
+stores the current state of the automaton. It is called
+'currentState', a reference to State.  Its value is either the one of
+the state of the automaton or the 'null' value.  The 'null' value
+indicates that a symbol has not been accepted by the automaton.</p>
+<p>The second ED stores the status of the symbols being analysed,
+either accepted or rejected.  It is modelled as the 'accepted'
+boolean.</p>
+<p>TODO: Define a new class in DSA ErrorState which extends
+State?  When in the error state, the automate rejects every symbols.</p>
 <div class="informalexample">
 <p>To add the reference 'currentState', we define it in an Aspect on the
 Automata class as follow.</p>
 <pre class="screen">@Aspect(className=Automata)
 class AutomataAspect {
-	public State currentState;
+	public State currentState
+	public boolean accepted
 }</pre>
 </div>
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
@@ -840,9 +837,21 @@ Definir un nouveau type de block GEMOC avec le Logo GEMOC.
 Comment definir l&#8217;equivalent de --atribute tabsize=4 dans le
 .asciidoc directement ?
 </li></ul></div>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
-<p xmlns="">When the .ecore is changed.  The genmodel must be updated and
-the code generated again.</p>
-</div>
+<p>To be improved:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+DSE part: for the moment ECL has several purpose.  It is thus
+confusing.  We must first focus on the definition of the DSE and not
+on the various mappings.
+</li></ul></div>
+<p>To be added:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Explain somewhere: When the .ecore is changed.  The genmodel must be
+updated and the code generated again.
+</li></ul></div>
+<p>Studio improvements:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Could the moc2as.properties file in DSE/ECL project be automatically
+initialized (from the Root container model element)?
+</li></ul></div>
 </div>
 </div><ul xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong>Chapter&nbsp;2.&nbsp;Gemoc Modeling workbench</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="bi01.html"><strong>Next</strong>Bibliography</a></li></ul></body></html>
