@@ -291,8 +291,8 @@ For example to check that open and close symbols are well suited.
 </div>
 <div class="section" title="3.4.&nbsp;Creating an xDSML Project"><div class="titlepage"><div><div><h2 class="title"><a name="_creating_an_xdsml_project"></a>3.4.&nbsp;Creating an xDSML Project</h2></div></div></div>
 
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">First, start by creating a new xDSML project (<span class="emphasis"><em>New &gt; Project &gt; GEMOC
+<div class="informalexample">
+<p>First, start by creating a new xDSML project (<span class="emphasis"><em>New &gt; Project &gt; GEMOC
 Project / new xDSML Project</em></span>), with your desired name (for instance
 "com.example.automata").  In the created project, we can open the
 project.xdsml file. The xDSML view summarizes all the important
@@ -319,8 +319,8 @@ other models and xDSML (AS, DSE, EF and ED).</p>
 </div>
 <div class="section" title="3.5.2.&nbsp;Define the Abstract Syntax (AS)"><div class="titlepage"><div><div><h3 class="title"><a name="_define_the_abstract_syntax_as"></a>3.5.2.&nbsp;Define the Abstract Syntax (AS)</h3></div></div></div>
 
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">To define the AS we can either select an existing project (Browse
+<div class="informalexample">
+<p>To define the AS we can either select an existing project (Browse
 button) or create a new one.  To create a new one, we click on "EMF
 project" on the xDSML view of project.xdsml.
 Let us call it "org.example.automata.model".
@@ -341,11 +341,11 @@ belong to. Symbols know which Transition(s) they are referenced by.
 States know their outgoing and incoming Transitions.  Automatas,
 States, Transitions and Symbols all have a name (factorized in the
 NamedElement metaclass).</p>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">Once the Ecore MetaModel is done, we can come back to the xDSML view.
+<div class="informalexample">
+<p>Once the Ecore MetaModel is done, we can come back to the xDSML view.
 The "EMF project" and the  "Genmodel URI" have been updated.</p>
-<p xmlns="">Set the "Root container model element" to "automata::Automata".</p>
-<p xmlns="">Open the associated Genmodel (click on Genmodel URI) to generate the
+<p>Set the "Root container model element" to "automata::Automata".</p>
+<p>Open the associated Genmodel (click on Genmodel URI) to generate the
 Model Code, Edit Code and Editor Code by right clicking on the root of
 the Genmodel (right-click on root element). The packages "automata",
 "automata.impl" and "automata.util" as well as the plug-ins
@@ -387,8 +387,8 @@ symbols of the word.  It is used to indicate the end on the word.
 <p>TODO: Other DSE may be of interest, for example firing a transition,
 rejecting a symbol, etc. which would be output events (the previous
 ones being input events).</p>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">At this moment, DSE are defined in an ECL (Event Constraint Language) file.
+<div class="informalexample">
+<p>At this moment, DSE are defined in an ECL (Event Constraint Language) file.
 In the xDSML view, click on <span class="emphasis"><em>ECL Project</em></span> to create a DSE Project.
 Let us name it "com.example.automata.dse" (it is the proposed name).
 In the corresponding field, place the path to the Ecore MetaModel
@@ -396,32 +396,32 @@ In the corresponding field, place the path to the Ecore MetaModel
 and make sure the "Root container model element" is
 "automata::Automata" and name the file "automataDSE". Ignore the error
 that is displayed.</p>
-<p xmlns="">Right click on the DSE project and make sure that in "configure", the
+<p>Right click on the DSE project and make sure that in "configure", the
 "DSE builder" functionality is active.</p>
-<p xmlns="">An error is indicated in the newly created project. To correct it,
+<p>An error is indicated in the newly created project. To correct it,
 fill-in the "moc2as.properties" file by completing the property with
 the name of the root element. In our case, that is "rootElement =
 Automata".</p>
-<p xmlns="">TODO: Could it be automatically initialized (from the Root container
+<p>TODO: Could it be automatically initialized (from the Root container
 model element)?</p>
 </div>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">For now, we will complete the ECL file with the following elements:</p>
-<div xmlns="" class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+<div class="informalexample">
+<p>For now, we will complete the ECL file with the following elements:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 <span class="strong"><strong>Metamodel import:</strong></span> (already initialized) Domain-Specific Events
 and MoCC constraints are defined in the context of a concept from
 the AS, so the first thing we need is to import the metamodel.
 </li></ul></div>
-<pre xmlns="" class="screen">import 'platform:/resource/com.example.automata.model/model/automata.ecore'</pre>
-<div xmlns="" class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+<pre class="screen">import 'platform:/resource/com.example.automata.model/model/automata.ecore'</pre>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 <span class="strong"><strong>Domain-Specific Events specification:</strong></span> here we can define MoccEvents
 and a mapping towards EOperations present in the Metamodel (XXX). The
 first step is to identify which behaviors should be schedulable by
 the MoCC, and which should be seen as part of the behavioral
 interface of the xDSML.
 </li></ul></div>
-<p xmlns="">Therefore, we define three Domain-Specific Events by defining three MoccEvents each referencing an Execution Function (implemented later).</p>
-<pre xmlns="" class="screen">package automata
+<p>Therefore, we define three Domain-Specific Events by defining three MoccEvents each referencing an Execution Function (implemented later).</p>
+<pre class="screen">package automata
 	context Automata
 		def: mocc_initialize : Event = self.initialize()
 		def: mocc_terminate : Event = self.terminate()
@@ -458,16 +458,16 @@ It should work.</p>
 <p>DSA includes the definition of Execution Data (ED) and Execution
 Functions (EF).  They are both implemented in Kermeta 3 in K3 Aspect
 project whose lastname is, by convention, 'k3dsa'.</p>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">Click on <span class="emphasis"><em>K3 project</em></span> in the xDSML view (Behavioral definition / DSA
+<div class="informalexample">
+<p>Click on <span class="emphasis"><em>K3 project</em></span> in the xDSML view (Behavioral definition / DSA
 definition).  The wizard to create of new Kermeta 3 project is
 launched with the name of the project initialized (k3dsa is the last
 name).</p>
-<p xmlns="">Default options can be kept except for the value of <span class="emphasis"><em>Use a template
+<p>Default options can be kept except for the value of <span class="emphasis"><em>Use a template
 based on ecore file</em></span> field which must be changed from <span class="emphasis"><em>None</em></span> to
 <span class="emphasis"><em>Aspect class from ecore file</em></span>.</p>
-<p xmlns="">We can now finish the wizard.</p>
-<p xmlns="">Clicking again on <span class="emphasis"><em>K3 project</em></span> will now allow to choose and open
+<p>We can now finish the wizard.</p>
+<p>Clicking again on <span class="emphasis"><em>K3 project</em></span> will now allow to choose and open
 automata.xtend.  It has been initialized with a template that can be
 discarded.</p>
 </div>
@@ -482,10 +482,10 @@ state of the automata or null is a symbol has been rejected.</p>
 <p>TODO: Change the implementation to reflect this desgin choice.</p>
 <p>TODO: Better, define a new class in DSA ErrorState which extends
 State.  When in the error state, the automate rejects every symbols.</p>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">To add the reference 'currentState', we define it in an Aspect on the
+<div class="informalexample">
+<p>To add the reference 'currentState', we define it in an Aspect on the
 Automata class as follow.</p>
-<pre xmlns="" class="screen">@Aspect(className=Automata)
+<pre class="screen">@Aspect(className=Automata)
 class AutomataAspect {
 	public State currentState;
 }</pre>
@@ -529,9 +529,9 @@ target state of such a transition if it exists.
 a 'Query' which returns the list of
 outgoing transitions of this state that accept the s symbol.
 </dd></dl></div>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">Complete the file 'automata.xtend' with the following code:</p>
-<pre xmlns="" class="screen">@Aspect(className=Automata)
+<div class="informalexample">
+<p>Complete the file 'automata.xtend' with the following code:</p>
+<pre class="screen">@Aspect(className=Automata)
 class AutomataAspect {
 	def public void initialize() {
 		_self.currentState = _self.initialState;
@@ -709,12 +709,12 @@ TODO
 </div>
 <div class="section" title="Testing and debugging the xDSML"><div class="titlepage"><div><div><h4 class="title"><a name="_testing_and_debugging_the_xdsml"></a>Testing and debugging the xDSML</h4></div></div></div>
 
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">Launch the Modeling Workbench. Create a new general project, for
+<div class="informalexample">
+<p>Launch the Modeling Workbench. Create a new general project, for
 instance "com.example.automata.instances". In this project, create a
 new Automate instance (New &gt; Other&#8230;&#8203; &gt; Automata Model)
 "ABCD.automata" whose root is of type Automata.</p>
-<p xmlns="">Create a Run Configuration: right click on the model and select "Run
+<p>Create a Run Configuration: right click on the model and select "Run
 As&#8230;&#8203; &gt; Run Configurations". Create a new "Gemoc eXecutable Model"
 configuration. Model to execute:
 "/com.example.automata.instances/ABCD.automata", xDSML: "automata".
@@ -790,6 +790,9 @@ integrated to the GEMOC studio.</p>
 <div class="section" title="3.12.&nbsp;TODO"><div class="titlepage"><div><div><h2 class="title"><a name="_todo"></a>3.12.&nbsp;TODO</h2></div></div></div>
 
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Definition of AS should be part of this tutorial (correct NOTE: at the
+beginning).
+</li><li class="listitem">
 Pourquoi automataDSE ? (DSE/ECL part)
 </li><li class="listitem">
 Define concrete Syntax with Sirius.  Sould it be done in the second Eclipse?
