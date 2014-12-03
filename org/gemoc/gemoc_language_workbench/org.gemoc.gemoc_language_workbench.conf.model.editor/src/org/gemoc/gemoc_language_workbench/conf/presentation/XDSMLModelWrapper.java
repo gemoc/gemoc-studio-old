@@ -209,8 +209,8 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 	}
 	
 	public String getMoCCProjectName() {
-		if (languageDefinition != null && languageDefinition.getMoCModelProject() != null && languageDefinition.getMoCModelProject().getProjectName() != null) {
-			return languageDefinition.getMoCModelProject().getProjectName();
+		if (languageDefinition != null && languageDefinition.getMoCCProject() != null && languageDefinition.getMoCCProject().getProjectName() != null) {
+			return languageDefinition.getMoCCProject().getProjectName();
 		} else
 			return "";
 	}

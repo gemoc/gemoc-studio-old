@@ -164,7 +164,7 @@ public class GemocLanguageProcessContext extends ProcessContextImpl {
 	}
 	public MoCCProject getMOCProject(ActionTask task) {
 		MoCCProject project = null;
-		Object o = getXdsmlModel(task).getMoCModelProject();
+		Object o = getXdsmlModel(task).getMoCCProject();
 		if (o instanceof MoCCProject) {
 			project = (MoCCProject)o;
 		}

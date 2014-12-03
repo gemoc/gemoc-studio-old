@@ -106,10 +106,10 @@ public class XDSMLModelHelper {
 
 	public static MoCCProject getOrCreateMoCCProject(
 			LanguageDefinition languageDefinition) {
-		if (languageDefinition.getMoCModelProject() == null) {
-			languageDefinition.setMoCModelProject(confFactory.eINSTANCE
+		if (languageDefinition.getMoCCProject() == null) {
+			languageDefinition.setMoCCProject(confFactory.eINSTANCE
 					.createMoCCProject());
 		}
-		return languageDefinition.getMoCModelProject();
+		return languageDefinition.getMoCCProject();
 	}
 }

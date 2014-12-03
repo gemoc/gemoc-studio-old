@@ -173,7 +173,7 @@ public class CreateMoCWizardContextAction {
 				.createMoCCProject();
 		mocProject.setProjectName(projectName);
 		
-		languageDefinition.setMoCProject(mocProject);
+		languageDefinition.setMoCCProject(mocProject);
 			
 		
 	}

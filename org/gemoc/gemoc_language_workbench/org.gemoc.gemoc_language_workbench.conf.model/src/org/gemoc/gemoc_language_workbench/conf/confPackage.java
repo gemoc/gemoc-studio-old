@@ -114,13 +114,13 @@ public interface confPackage extends EPackage {
 	int LANGUAGE_DEFINITION__EDITOR_PROJECTS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Mo CModel Project</b></em>' containment reference.
+	 * The feature id for the '<em><b>Mo CC Project</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LANGUAGE_DEFINITION__MO_CMODEL_PROJECT = 3;
+	int LANGUAGE_DEFINITION__MO_CC_PROJECT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Animator Projects</b></em>' containment reference list.
@@ -752,15 +752,15 @@ public interface confPackage extends EPackage {
 	EReference getLanguageDefinition_EditorProjects();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProject <em>Mo CModel Project</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCCProject <em>Mo CC Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Mo CModel Project</em>'.
-	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProject()
+	 * @return the meta object for the containment reference '<em>Mo CC Project</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCCProject()
 	 * @see #getLanguageDefinition()
 	 * @generated
 	 */
-	EReference getLanguageDefinition_MoCModelProject();
+	EReference getLanguageDefinition_MoCCProject();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getAnimatorProjects <em>Animator Projects</em>}'.
@@ -1073,12 +1073,12 @@ public interface confPackage extends EPackage {
 		EReference LANGUAGE_DEFINITION__EDITOR_PROJECTS = eINSTANCE.getLanguageDefinition_EditorProjects();
 
 		/**
-		 * The meta object literal for the '<em><b>Mo CModel Project</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Mo CC Project</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LANGUAGE_DEFINITION__MO_CMODEL_PROJECT = eINSTANCE.getLanguageDefinition_MoCModelProject();
+		EReference LANGUAGE_DEFINITION__MO_CC_PROJECT = eINSTANCE.getLanguageDefinition_MoCCProject();
 
 		/**
 		 * The meta object literal for the '<em><b>Animator Projects</b></em>' containment reference list feature.
