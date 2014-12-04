@@ -224,7 +224,13 @@ public class confEditor
 	 * Gemoc specific Viewer
 	 * presented as a form 
 	 */
-	protected GemocFormViewer gemocFormViewer;
+	protected GemocFormViewer<GemocXDSMLFormComposite> gemocFormViewer;
+	
+	/**
+	 * Gemoc Advanced specific Viewer
+	 * presented as a form 
+	 */
+	protected GemocFormViewer<GemocXDSMLAdvancedFormComposite> gemocAdvancedFormViewer;
 
 	/**
 	 * This shows how a tree view with columns works.
@@ -992,7 +998,13 @@ public class confEditor
 					new ViewerPane(getSite().getPage(), confEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
-							return new GemocFormViewer(composite);
+							return new GemocFormViewer<GemocXDSMLFormComposite>(composite){
+
+								@Override
+								public AbstractGemocFormComposite createGemocFormComposite() {
+									return new GemocXDSMLFormComposite(scrollControl, SWT.NONE);
+								}
+							};
 						}
 						@Override
 						public void requestActivation() {
@@ -1001,7 +1013,7 @@ public class confEditor
 						}
 					};
 				viewerPane.createControl(getContainer());
-				gemocFormViewer = (GemocFormViewer)viewerPane.getViewer();
+				gemocFormViewer = (GemocFormViewer<GemocXDSMLFormComposite>)viewerPane.getViewer();
 			
 				gemocFormViewer.setEditingDomain(editingDomain);
 				gemocFormViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
@@ -1009,6 +1021,38 @@ public class confEditor
 				//createContextMenuFor(gemocFormViewer);
 				int pageIndex = addPage(viewerPane.getControl());
 				setPageText(pageIndex, getString("_UI_GemocPage_label"));
+			}
+			
+			// This is the page for the Gemoc Advanced Form viewer.
+			//
+			{
+				ViewerPane viewerPane =
+					new ViewerPane(getSite().getPage(), confEditor.this) {
+						@Override
+						public Viewer createViewer(Composite composite) {
+							return new GemocFormViewer<GemocXDSMLAdvancedFormComposite>(composite){
+
+								@Override
+								public AbstractGemocFormComposite createGemocFormComposite() {
+									return new GemocXDSMLAdvancedFormComposite(scrollControl, SWT.NONE);
+								}
+							};
+						}
+						@Override
+						public void requestActivation() {
+							super.requestActivation();
+							setCurrentViewerPane(this);
+						}
+					};
+				viewerPane.createControl(getContainer());
+				gemocAdvancedFormViewer = (GemocFormViewer<GemocXDSMLAdvancedFormComposite>)viewerPane.getViewer();
+			
+				gemocAdvancedFormViewer.setEditingDomain(editingDomain);
+				gemocAdvancedFormViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+
+				//createContextMenuFor(gemocFormViewer);
+				int pageIndex = addPage(viewerPane.getControl());
+				setPageText(pageIndex, getString("_UI_GemocAdvancedPage_label"));
 			}
 			
 			// Create a page for the selection tree view.
