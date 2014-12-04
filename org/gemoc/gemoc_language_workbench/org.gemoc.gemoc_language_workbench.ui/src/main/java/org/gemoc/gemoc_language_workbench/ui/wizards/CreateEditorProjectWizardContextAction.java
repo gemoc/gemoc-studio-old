@@ -1,6 +1,8 @@
 package org.gemoc.gemoc_language_workbench.ui.wizards;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -22,6 +24,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
+import org.gemoc.commons.eclipse.core.resources.FileFinderVisitor;
 import org.gemoc.commons.eclipse.ui.WizardFinder;
 import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIProjectDialog;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
@@ -169,7 +172,18 @@ public class CreateEditorProjectWizardContextAction {
 				int res = wd.open();
 				if(res == WizardDialog.OK){
 					ResourcesPlugin.getWorkspace().removeResourceChangeListener(workspaceListener);
-					IProject createdProject = workspaceListener.getLastCreatedProject();
+					ArrayList<IProject> newlyCreatedProjects = workspaceListener.getNewlyCreatedProjects();
+					IProject createdProject = null;
+					// find the created project with xtext files in it
+					FileFinderVisitor fileFinder = new FileFinderVisitor("xtext");
+					for (Iterator<IProject> iterator = newlyCreatedProjects.iterator(); iterator.hasNext();) {
+						IProject iProject = (IProject) iterator.next();
+						iProject.accept(fileFinder);
+						if(fileFinder.getFile() != null){
+							createdProject = iProject;
+							break;
+						}
+					}
 					// update the project configuration model
 					if(createdProject != null){
 						XTextEditorProject editorProject = confFactoryImpl.eINSTANCE.createXTextEditorProject();
