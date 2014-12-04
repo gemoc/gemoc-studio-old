@@ -233,7 +233,7 @@
           </vsmElementCustomizations>
         </customization>
       </additionalLayers>
-      <additionalLayers name="Animator">
+      <additionalLayers name="Animation">
         <decorationDescriptionsSet>
           <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Current State" position="EAST" decoratorPath="/org.gemoc.sample.tfsm.design/icons/cursor-3-24.png" preconditionExpression="[self.eContainer(TFSM).currentState = self/]" mappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
         </decorationDescriptionsSet>
