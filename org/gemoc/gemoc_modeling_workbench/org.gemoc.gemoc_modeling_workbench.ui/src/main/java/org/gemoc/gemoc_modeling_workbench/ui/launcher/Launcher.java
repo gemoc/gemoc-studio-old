@@ -1,5 +1,6 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,6 +20,8 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.jdt.core.IPackageFragment;
+import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jdt.core.search.IJavaSearchScope;
@@ -64,7 +67,7 @@ public class Launcher
 			throws CoreException {	
 		try 
 		{
-			RunConfiguration runConfiguration = new RunConfiguration(configuration);
+			final RunConfiguration runConfiguration = new RunConfiguration(configuration);
 			debug("About to initialize and run the GEMOC Execution Engine...");			
 
 			ExecutionMode executionMode = null;
@@ -115,9 +118,9 @@ public class Launcher
 						IJavaSearchConstants.CLASS, 
 						IJavaSearchConstants.DECLARATIONS,
 						SearchPattern.R_EXACT_MATCH);
-							IJavaSearchScope scope = SearchEngine.createWorkspaceScope();
-							DefaultSearchRequestor requestor = new DefaultSearchRequestor();				
-							SearchEngine engine = new SearchEngine();
+						IJavaSearchScope scope = SearchEngine.createWorkspaceScope();
+						DefaultSearchRequestor requestor = new DefaultSearchRequestor();				
+						SearchEngine engine = new SearchEngine();
 						try {
 							engine.search(pattern, 
 							new SearchParticipant[] { SearchEngine.getDefaultSearchParticipant() }, 
@@ -127,12 +130,18 @@ public class Launcher
 						} catch (CoreException e) {
 							return new Status(IStatus.ERROR, getPluginID(), "Execution was not successfull");
 						}
-					
-						// org.gemoc.sample.tfsm.purek3.dsa
+						
+//						requestor._binaryType.getJavaProject().getAllPackageFragmentRoots().contains(requestor._binaryType.getPackageFragment())
+
+						
+						IPackageFragmentRoot packageFragmentRoot = (IPackageFragmentRoot)requestor._binaryType.getPackageFragment().getParent();
+						
 						String projectName = requestor._binaryType.getJavaProject().getElementName();
 						IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+						boolean shouldLookInBundle = true;
 						if (project != null
-							&& project.exists())
+							&& project.exists()
+							&& !project.getFullPath().equals(executionContext.getWorkspace().getProjectPath()))
 						{
 							Provisionner p = new Provisionner();
 							IStatus status = p.provisionFromProject(project, monitor);
@@ -140,19 +149,52 @@ public class Launcher
 							{
 								return status;
 							}
+							shouldLookInBundle = false;
 						}
 						
-						try {
+//						try {
 							ArrayList<Object> parameters = new ArrayList<>();
 							parameters.add(executionContext.getResourceModel().getContents().get(0));
-							Class<?> c = Platform.getBundle(project.getName()).loadClass(executionContext.getRunConfiguration().getExecutionEntryPoint());
-							Method method = c.getMethod("main", parameters.get(0).getClass().getInterfaces()[0]);
-							Object o = c.newInstance();
-							method.invoke(o, parameters.get(0));
-						} catch (Exception e1) {
-							e1.printStackTrace();
-							return new Status(IStatus.ERROR, getPluginID(), "Execution was not successfull");
-						}
+							String bundleName = null;
+							if (shouldLookInBundle)
+							{
+								bundleName = packageFragmentRoot.getPath().removeLastSegments(1).lastSegment().toString();
+							}
+							else
+							{
+								bundleName = project.getName();
+							}
+							Class<?> c;
+							try {
+								c = Platform.getBundle(bundleName).loadClass(executionContext.getRunConfiguration().getExecutionEntryPoint());
+							} catch (ClassNotFoundException e) {
+								e.printStackTrace();
+								return new Status(IStatus.ERROR, getPluginID(), "Could not find class " + executionContext.getRunConfiguration().getExecutionEntryPoint() + " in bundle " + bundleName + ".");
+							}
+							Method method;
+							try {
+								method = c.getMethod("main", parameters.get(0).getClass().getInterfaces()[0]);
+							} catch (Exception e) {
+								e.printStackTrace();
+								return new Status(IStatus.ERROR, getPluginID(), "Could not find method main with correct parameters.");
+							}
+							Object o;
+							try {
+								o = c.newInstance();
+							} catch (Exception e) {
+								e.printStackTrace();
+								return new Status(IStatus.ERROR, getPluginID(), "Could not instanciate class " + executionContext.getRunConfiguration().getExecutionEntryPoint() + ".");
+							} 
+							try {
+								method.invoke(o, parameters.get(0));
+							} catch (Exception e) {
+								e.printStackTrace();
+								return new Status(IStatus.ERROR, getPluginID(), "Invokation of method main failed.");
+							} 
+//						} catch (Exception e1) {
+//							e1.printStackTrace();
+//							return new Status(IStatus.ERROR, getPluginID(), "Execution was not successfull");
+//						}
 						
 
 
