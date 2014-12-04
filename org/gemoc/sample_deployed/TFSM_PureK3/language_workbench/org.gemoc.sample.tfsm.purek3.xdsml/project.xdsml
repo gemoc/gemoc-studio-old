@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<conf:LanguageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:conf="http://www.gemoc.org/gemoc_language_workbench_conf" name="tfsm pure K3">
+  <dsaProject projectName="" codeExecutorClass="tfsm.xdsml.api.impl.TfsmCodeExecutor"/>
+  <domainModelProject projectName="org.gemoc.sample.tfsm.purek3.model" defaultRootEObjectQualifiedName="tfsm::TimedSystem" genmodeluri="platform:/resource/org.gemoc.sample.tfsm.purek3.model/model/tfsm.genmodel"/>
+  <editorProjects xsi:type="conf:SiriusEditorProject" projectName="org.gemoc.sample.tfsm.purek3.design">
+    <fileExtension>sigpml</fileExtension>
+    <fileExtension>SigPML</fileExtension>
+  </editorProjects>
+  <moCModelProject projectName=""/>
+  <dSEProject projectName="" qvtoURI=""/>
+</conf:LanguageDefinition>

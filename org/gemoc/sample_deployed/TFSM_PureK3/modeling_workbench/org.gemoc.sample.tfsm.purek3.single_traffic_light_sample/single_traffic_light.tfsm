@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tfsmextended:TimedSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfsmextended="http://org.gemoc.sample.tfsm.purek3.model/1.0/extended" name="TrafficControl">
+  <tfsms xsi:type="tfsmextended:TFSM" name="Semaphore" initialState="//@tfsms.0/@ownedStates.0" currentState="//@tfsms.0/@ownedStates.2">
+    <ownedStates xsi:type="tfsmextended:State" name="initSemaphore" outgoingTransitions="//@tfsms.0/@ownedTransitions.0"/>
+    <ownedStates xsi:type="tfsmextended:State" name="Red" outgoingTransitions="//@tfsms.0/@ownedTransitions.1" incomingTransitions="//@tfsms.0/@ownedTransitions.0 //@tfsms.0/@ownedTransitions.2"/>
+    <ownedStates xsi:type="tfsmextended:State" name="Green" outgoingTransitions="//@tfsms.0/@ownedTransitions.2" incomingTransitions="//@tfsms.0/@ownedTransitions.1"/>
+    <localClock xsi:type="tfsmextended:FSMClock" name="minutes"/>
+    <ownedTransitions xsi:type="tfsmextended:Transition" name="initSemaphore_to_Red" source="//@tfsms.0/@ownedStates.0" target="//@tfsms.0/@ownedStates.1" action="dosomething">
+      <ownedGuard xsi:type="tfsmextended:TemporalGuard" name="guard_InitSemaphore_to_Red" onClock="//@tfsms.0/@localClock" afterDuration="1"/>
+    </ownedTransitions>
+    <ownedTransitions xsi:type="tfsmextended:Transition" name="Red_to_Green" source="//@tfsms.0/@ownedStates.1" target="//@tfsms.0/@ownedStates.2" action="doGreen">
+      <ownedGuard xsi:type="tfsmextended:TemporalGuard" name="guard_Red_to_Green" onClock="//@tfsms.0/@localClock" afterDuration="3"/>
+    </ownedTransitions>
+    <ownedTransitions xsi:type="tfsmextended:Transition" name="Green_to_Red" source="//@tfsms.0/@ownedStates.2" target="//@tfsms.0/@ownedStates.1" action="doRed">
+      <ownedGuard xsi:type="tfsmextended:EventGuard" name="guard_Green_to_Red" triggeringEvent="//@globalEvents.0"/>
+    </ownedTransitions>
+  </tfsms>
+  <globalEvents xsi:type="tfsmextended:FSMEvent" name="switch" sollicitingTransitions="//@tfsms.0/@ownedTransitions.2"/>
+</tfsmextended:TimedSystem>

@@ -5,6 +5,7 @@
     <properties>
         <sample_root>${basedir}/../../sample</sample_root>
         <tfsm_sample_modeling_root>${basedir}/../../sample_deployed/TFSM/modeling_workbench</tfsm_sample_modeling_root>
+        <tfsm_purek3_sample_modeling_root>${basedir}/../../sample_deployed/TFSM_PureK3/modeling_workbench</tfsm_purek3_sample_modeling_root>
         <sigpml_sample_modeling_root>${basedir}/../../sample_deployed/SigPML/modeling_workbench</sigpml_sample_modeling_root>
     </properties>
     
@@ -38,6 +39,10 @@
 								</zip>
 								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample.zip">
 									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample/" />
+								</zip>
+
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.purek3.single_traffic_light_sample.zip">
+									<fileset dir="${tfsm_purek3_sample_modeling_root}/org.gemoc.sample.tfsm.purek3.single_traffic_light_sample/" />
 								</zip>
 
 								<zip destfile="${basedir}/zips/org.gemoc.sigpml.simple_example.zip">
