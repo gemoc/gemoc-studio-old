@@ -6,6 +6,6 @@
     <fileExtension>sigpml</fileExtension>
     <fileExtension>SigPML</fileExtension>
   </editorProjects>
-  <moCModelProject projectName="org.gemoc.sample.tfsm.moc.lib"/>
+  <moCCProject projectName="org.gemoc.sample.tfsm.moc.lib"/>
   <dSEProject projectName="org.gemoc.sample.tfsm.eclmoc2as" qvtoURI="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto"/>
 </conf:LanguageDefinition>

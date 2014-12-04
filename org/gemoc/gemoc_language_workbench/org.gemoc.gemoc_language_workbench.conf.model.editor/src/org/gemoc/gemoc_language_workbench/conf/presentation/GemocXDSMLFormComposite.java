@@ -470,7 +470,7 @@ public class GemocXDSMLFormComposite extends Composite {
 
 		
 
-		m_bindingContext = initDataBindings();
+	//	m_bindingContext = initDataBindings();
 		
 		initLinkListeners(linkEMFProject, linkGenmodel, linkXTextEditorProject,
 				linkSiriusEditorProject, linkSiriusAnimatorProject,
@@ -503,6 +503,8 @@ public class GemocXDSMLFormComposite extends Composite {
 			}
 		}
 
+		m_bindingContext = initDataBindings();
+		
 		initControlFromWrappedObject();
 
 		initTxtListeners();
@@ -1017,6 +1019,7 @@ public class GemocXDSMLFormComposite extends Composite {
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
 								CreateMOCCWizardContextAction action = new CreateMOCCWizardContextAction(
+										getCurrentIFile().getProject(),
 										rootModelElement);
 								action.actionToExecute = CreateMOCCAction.CREATE_NEW_MOCC_PROJECT;
 								action.execute();

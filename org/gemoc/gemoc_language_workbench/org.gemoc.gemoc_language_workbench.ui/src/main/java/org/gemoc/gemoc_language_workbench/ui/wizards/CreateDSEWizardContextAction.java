@@ -111,7 +111,7 @@ public class CreateDSEWizardContextAction {
 			}
 		}
 		else{
-			Activator.error("wizard with id=org.eclipse.sirius.ui.specificationproject.wizard not found", null);
+			Activator.error("wizard with id=org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewDSEProject not found", null);
 		}
 	}
 
@@ -187,6 +187,10 @@ public class CreateDSEWizardContextAction {
 	}
 
 	protected LanguageDefinition getLanguageDefinition(){
+
+		if(this.gemocLanguageModel != null){
+			return this.gemocLanguageModel;
+		}
 		if(this.gemocLanguageIProject != null){
 			IFile configFile = gemocLanguageIProject.getFile(new Path(
 					Activator.GEMOC_PROJECT_CONFIGURATION_FILE));
@@ -202,9 +206,6 @@ public class CreateDSEWizardContextAction {
 				return (LanguageDefinition) resource
 						.getContents().get(0);
 			}
-		}
-		if(this.gemocLanguageModel != null){
-			return this.gemocLanguageModel;
 		}
 		return null;
 	}
