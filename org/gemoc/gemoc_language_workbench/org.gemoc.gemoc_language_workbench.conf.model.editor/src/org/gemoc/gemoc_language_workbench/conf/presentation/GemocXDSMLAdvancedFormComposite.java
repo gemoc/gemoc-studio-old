@@ -66,6 +66,7 @@ public class GemocXDSMLAdvancedFormComposite extends AbstractGemocFormComposite 
 	protected XDSMLModelWrapper xdsmlWrappedObject = new XDSMLModelWrapper();
 
 	private final FormToolkit toolkit = new FormToolkit(Display.getCurrent());
+	private Text txtModelLoaderClass;
 	private Text txtCodeExecutorClass;
 	private Text txtQvtoURI;
 
@@ -86,6 +87,43 @@ public class GemocXDSMLAdvancedFormComposite extends AbstractGemocFormComposite 
 		toolkit.paintBordersFor(this);
 		setLayout(new ColumnLayout());
 
+		Group grpDomainModelDefinition = new Group(this, SWT.NONE);
+		grpDomainModelDefinition.setText("Domain Model");
+		toolkit.adapt(grpDomainModelDefinition);
+		toolkit.paintBordersFor(grpDomainModelDefinition);
+		grpDomainModelDefinition.setLayout(new GridLayout(3, false));
+
+		Label lblDomainCustomIntroduction = new Label(grpDomainModelDefinition, SWT.NONE);
+		lblDomainCustomIntroduction.setLayoutData(new GridData(SWT.LEFT,
+				SWT.CENTER, false, false, 3, 1));
+		lblDomainCustomIntroduction
+				.setText("Optionnaly provide you own custom model loader.");
+		lblDomainCustomIntroduction.setBounds(0, 0, 397, 15);
+		toolkit.adapt(lblDomainCustomIntroduction, true, true);
+		
+		Link linkModelLoaderClass = new Link(grpDomainModelDefinition, SWT.NONE);
+		linkModelLoaderClass.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false,
+				false, 1, 1));
+		linkModelLoaderClass.setBounds(0, 0, 49, 15);
+		toolkit.adapt(linkModelLoaderClass, true, true);
+		linkModelLoaderClass.setText("<a>Model loader class name</a>");
+
+		txtModelLoaderClass = new Text(grpDomainModelDefinition, SWT.BORDER);
+		GridData gd_txtEMFProject = new GridData(SWT.FILL, SWT.CENTER, false,
+				false, 1, 1);
+		gd_txtEMFProject.widthHint = 226;
+		txtModelLoaderClass.setLayoutData(gd_txtEMFProject);
+		txtModelLoaderClass.setBounds(0, 0, 244, 21);
+		toolkit.adapt(txtModelLoaderClass, true, true);
+
+		Button btnBrowseModelLoaderClass = new Button(grpDomainModelDefinition,
+				SWT.NONE);
+
+		btnBrowseModelLoaderClass.setBounds(0, 0, 50, 25);
+		toolkit.adapt(btnBrowseModelLoaderClass, true, true);
+		btnBrowseModelLoaderClass.setText("Browse");
+
+		
 		Group grpBehaviorDefinition = new Group(this, SWT.NONE);
 		grpBehaviorDefinition.setText("Behavior definition");
 		toolkit.adapt(grpBehaviorDefinition);
@@ -155,9 +193,10 @@ public class GemocXDSMLAdvancedFormComposite extends AbstractGemocFormComposite 
 		toolkit.adapt(btnBrowseQvtoURI, true, true);
 		btnBrowseQvtoURI.setText("Browse");
 		
-		initLinkListeners( linkCodeExecutorClass, linkQvtoURI);
+		initLinkListeners(linkModelLoaderClass, linkCodeExecutorClass, linkQvtoURI);
 
-		initButtonListeners( btnBrowseCodeExecutorClass, btnBrowseQvtoURI);
+		initButtonListeners( btnBrowseModelLoaderClass, btnBrowseCodeExecutorClass, btnBrowseQvtoURI);
+		m_bindingContext = initDataBindings();
 
 	}
 
@@ -206,7 +245,21 @@ public class GemocXDSMLAdvancedFormComposite extends AbstractGemocFormComposite 
 	 */
 	protected void initTxtListeners() {
 		// all the listeners that will really edit the model
-
+		txtModelLoaderClass.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				// Get the widget whose text was modified
+				final Text text = (Text) e.widget;
+				TransactionalEditingDomain teditingDomain = TransactionalEditingDomain.Factory.INSTANCE
+						.createEditingDomain();
+				editingDomain.getCommandStack().execute(
+						new RecordingCommand(teditingDomain) {
+							public void doExecute() {
+								xdsmlWrappedObject.setModelLoaderClass(text
+										.getText());
+							}
+						});
+			}
+		});
 
 		txtCodeExecutorClass.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
@@ -244,7 +297,56 @@ public class GemocXDSMLAdvancedFormComposite extends AbstractGemocFormComposite 
 	/**
 	 * Creates the listeners in charge of the behavior for the links
 	 */
-	protected void initLinkListeners( Link linkCodeExecutor, Link linkQvtoFile) {
+	protected void initLinkListeners(Link linkModelLoader, Link linkCodeExecutor, Link linkQvtoFile) {
+		
+		linkModelLoader.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+			//	if (!txtCodeExecutorClass.getText().isEmpty()) {
+					
+					//String value = txtCodeExecutorClass.getText();
+					IProject project = getCurrentIFile().getProject();
+					/*BundlePluginModel bmodel = new BundlePluginModel();
+					//bmodel.setBundleDescription(Activator.);
+					JavaAttributeValue javaAttributeValue = new JavaAttributeValue(project, bmodel, null, value);
+					javaAttributeValue.
+					value = PDEJavaHelperUI.createClass(value, project, javaAttributeValue, false);
+					if (value != null)
+						txtCodeExecutorClass.setText(value);
+						*/
+					String name = TextUtil.trimNonAlphaChars(txtModelLoaderClass.getText()).replace('$', '.');
+					try {
+						if (project.hasNature(JavaCore.NATURE_ID)) {
+							IJavaProject javaProject = JavaCore.create(project);
+							IJavaElement result = null;
+							if (name.length() > 0)
+								result = javaProject.findType(name);
+							if (result != null)
+								JavaUI.openInEditor(result);
+							else {
+								NewClassCreationWizard wizard = new NewClassCreationWizard();
+								//wizard.init(Plugin., currentSelection);
+								WizardDialog dialog = new WizardDialog(PDEPlugin.getActiveWorkbenchShell(), wizard);
+								dialog.create();
+								SWTUtil.setDialogSize(dialog, 400, 500);
+								int dResult = dialog.open();
+								if (dResult == Window.OK)
+									txtModelLoaderClass.setText(wizard.getCreatedElement().getElementName());
+							}
+						}
+					} catch (PartInitException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (JavaModelException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (CoreException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+			}
+		});
+		
 		linkCodeExecutor.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 			//	if (!txtCodeExecutorClass.getText().isEmpty()) {
@@ -316,8 +418,23 @@ public class GemocXDSMLAdvancedFormComposite extends AbstractGemocFormComposite 
 	/**
 	 * Creates the listeners in charge of the behavior for the buttons
 	 */
-	protected void initButtonListeners(	Button btnBrowseCodeExecutorClass,
+	protected void initButtonListeners(	Button btnModelLoaderClass,
+			Button btnBrowseCodeExecutorClass,
 			Button btnBrowseQvtoFile) {
+		btnModelLoaderClass.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
+				case SWT.Selection:
+					String className = txtModelLoaderClass.getText();
+					IResource resource = getCurrentIFile();
+					String type = PDEJavaHelperUI.selectType(resource, IJavaElementSearchConstants.CONSIDER_CLASSES, className, null);
+					if (type != null)
+						txtModelLoaderClass.setText(type);
+									
+					break;
+				}
+			}
+		});
 		btnBrowseCodeExecutorClass.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				switch (e.type) {
@@ -348,7 +465,6 @@ public class GemocXDSMLAdvancedFormComposite extends AbstractGemocFormComposite 
 		});
 		
 	}
-
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
@@ -359,6 +475,10 @@ public class GemocXDSMLAdvancedFormComposite extends AbstractGemocFormComposite 
 		IObservableValue observeTextTxtQvtoURIObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtQvtoURI);
 		IObservableValue qvtoURIXdsmlWrappedObjectObserveValue = BeanProperties.value("qvtoURI").observe(xdsmlWrappedObject);
 		bindingContext.bindValue(observeTextTxtQvtoURIObserveWidget, qvtoURIXdsmlWrappedObjectObserveValue, null, null);
+		//
+		IObservableValue observeTextTxtModelLoaderClassObserveWidget = WidgetProperties.text(SWT.Modify).observe(txtModelLoaderClass);
+		IObservableValue modelLoaderClassXdsmlWrappedObjectObserveValue = BeanProperties.value("modelLoaderClass").observe(xdsmlWrappedObject);
+		bindingContext.bindValue(observeTextTxtModelLoaderClassObserveWidget, modelLoaderClassXdsmlWrappedObjectObserveValue, null, null);
 		//
 		return bindingContext;
 	}
