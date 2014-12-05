@@ -492,7 +492,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		helper.updateXDSMLDefinitionAttributeInExtensionPoint(
 				gemocExtensionPoint,
 				LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT,
-				qvtoFileLocationUri);
+				qvtoFileLocationUri != null ? qvtoFileLocationUri : "");
 		helper.saveDocument(pluginfile);
 
 		// TODO check that the qvto file exists
