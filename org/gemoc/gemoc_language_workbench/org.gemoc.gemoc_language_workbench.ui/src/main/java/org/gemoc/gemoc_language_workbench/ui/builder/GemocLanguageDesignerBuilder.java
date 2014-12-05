@@ -31,7 +31,9 @@ import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.MoCCProject;
 import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
+import org.gemoc.gemoc_language_workbench.conf.SiriusAnimatorProject;
 import org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
@@ -175,7 +177,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			throws BundleException, IOException, CoreException {
 		if (eObject instanceof DomainModelProject) {
 			DomainModelProject domainModelProject = (DomainModelProject) eObject;
-			updateDependenciesWithDomainProject(manifestChanger, domainModelProject);
+			updateDependenciesWithProject(manifestChanger, domainModelProject.getProjectName());
 			languageRootElement = domainModelProject.getDefaultRootEObjectQualifiedName();
 		}
 		if (eObject instanceof DSAProject) {
@@ -186,26 +188,26 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
 		if (eObject instanceof XTextEditorProject) {
 			XTextEditorProject xtextProject = (XTextEditorProject) eObject;
-			updateDependenciesWithXTextEditorProject(manifestChanger, xtextProject);
+			updateDependenciesWithProject(manifestChanger, xtextProject.getProjectName());
 		}
 		if (eObject instanceof DSEProject) {
-			updateQVTO(project, ((DSEProject) eObject).getQvtoURI(), languageRootElement);			
+			DSEProject dseProject = (DSEProject) eObject;
+			updateDependenciesWithProject(manifestChanger, dseProject.getProjectName());
+			updateQVTO(project, dseProject.getQvtoURI(), languageRootElement);			
+		}
+		if( eObject instanceof MoCCProject){
+			MoCCProject moccProject = (MoCCProject) eObject;
+			updateDependenciesWithProject(manifestChanger, moccProject.getProjectName());
 		}
 
-//		if (eObject instanceof LanguageDefinition) {
-//			LanguageDefinition ld = (LanguageDefinition) eObject;
-//			changePluginLanguageName(project, ld.getName());
-//			if(buildOptions.isGenerateModelLoaderService()){							
-//				updateModelLoaderClass(project, ld);
-//			}
-//			//updateInitializerClass(project, ld);
-//			if(buildOptions.isGenerateCodeExecutorService()){
-//				updateCodeExecutorClass(project, ld);
-//			}
-//			if(buildOptions.isGenerateSolverService()){
-//				updateSolverClass(project, ld);
-//			}
-//		}
+		if( eObject instanceof SiriusEditorProject){
+			SiriusEditorProject editorProject = (SiriusEditorProject) eObject;
+			updateDependenciesWithProject(manifestChanger, editorProject.getProjectName());
+		}
+		if( eObject instanceof SiriusAnimatorProject){
+			SiriusAnimatorProject animatorProject = (SiriusAnimatorProject) eObject;
+			updateDependenciesWithProject(manifestChanger, animatorProject.getProjectName());
+		}
 		return languageRootElement;
 	}
 	
@@ -307,31 +309,19 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		helper.saveDocument(pluginfile);
 	}
 	
-	
-
-	protected void updateDependenciesWithDomainProject(ManifestChanger connection, DomainModelProject domainModelProject) throws BundleException, IOException, CoreException {
-		connection.addPluginDependency(domainModelProject.getProjectName());
+	protected void updateDependenciesWithProject(ManifestChanger connection, String projectName) throws BundleException, IOException, CoreException {
+		connection.addPluginDependency(projectName);
 		// TODO find a way to remove possible old domain model dependencies
 	}
 
 	protected void updateDependenciesWithDSAProject(ManifestChanger connection, DSAProject dsaPoject) throws BundleException, IOException, CoreException {
-		if (dsaPoject.getProjectKind().equals(ProjectKind.ECLIPSE_PLUGIN)) {
-			connection.addPluginDependency(dsaPoject.getProjectName());
-			// TODO find a way to remove possible old domain model
-			// dependencies
-		} else {
-			// TODO deal with maven project (ie. ensure copy of the jar and
-			// use it as internal lib in manifest)
-		}
+		updateDependenciesWithProject(connection, dsaPoject.getProjectName());
 		if (dsaPoject.getCodeExecutorClass() == null || dsaPoject.getCodeExecutorClass().isEmpty()) {
 			// a k3 code executor has been generated so add the required dependency 
 			connection.addPluginDependency(org.gemoc.gemoc_language_workbench.extensions.k3.Activator.PLUGIN_ID);
 		}
 	}
-
-	protected void updateDependenciesWithXTextEditorProject(ManifestChanger connection, XTextEditorProject xtextEditorProject) throws BundleException, IOException, CoreException {
-		connection.addPluginDependency(xtextEditorProject.getProjectName());
-	}
+	
 	/**
 	 * create or replace existing ModelLoaderClass by an implementation that is
 	 * able to load models of the domain
