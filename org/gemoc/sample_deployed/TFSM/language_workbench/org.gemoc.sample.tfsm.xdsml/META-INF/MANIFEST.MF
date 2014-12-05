@@ -1,4 +1,4 @@
-Bundle-SymbolicName: org.gemoc.sample.tfsm;singleton:=true
+Bundle-SymbolicName: org.gemoc.sample.tfsm.xdsml;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Name: Tfsm
 Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
