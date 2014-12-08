@@ -70,7 +70,8 @@ public class ManifestChanger {
 		}
 	}
 	public void addPluginDependency(String plugin) throws BundleException, IOException, CoreException {
-		PluginDependency dependency = new PluginDependency(this);
+		if(plugin == null || plugin.isEmpty()) return;
+		PluginDependency dependency = new PluginDependency(this);		
 		dependency.add(plugin);
 	}
 	public void addPluginDependency(String plugin, String version, boolean reexport, boolean overwrite) throws BundleException, IOException, CoreException {

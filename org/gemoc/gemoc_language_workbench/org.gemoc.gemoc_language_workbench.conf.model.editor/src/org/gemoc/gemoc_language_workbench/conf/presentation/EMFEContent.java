@@ -80,6 +80,12 @@ import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
         		String newValue = n.getNewStringValue();
                 this.xdsmlModelWrapper.firePropertyChange("rootContainerModelElement", oldValue, newValue);
 	        }
+
+	        if (featureID == org.gemoc.gemoc_language_workbench.conf.confPackage.DOMAIN_MODEL_PROJECT__MODEL_LOADER_CLASS){
+        		String oldValue = n.getOldStringValue();
+        		String newValue = n.getNewStringValue();
+                this.xdsmlModelWrapper.firePropertyChange("modelLoaderClass", oldValue, newValue);
+	        }
 		}
 		
 

@@ -47,6 +47,13 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 				.setProjectName(domainModelProjectName);
 	}
 
+	public void setGenmodelLocationURI(String genmodel) {
+		String oldName = getGenmodelLocationURI();
+		firePropertyChange("genmodelLocationURI", oldName, genmodel);
+		XDSMLModelHelper.getOrCreateDomainModelProject(languageDefinition)
+				.setGenmodeluri(genmodel);
+	}
+	
 	public String getGenmodelLocationURI() {
 		if (languageDefinition != null) {
 			if (languageDefinition.getDomainModelProject() != null && languageDefinition.getDomainModelProject().getGenmodeluri() != null) {
@@ -73,13 +80,22 @@ public class XDSMLModelWrapper extends ViewModelWrapper {
 		return "";
 	}
 
-	public void setGenmodelLocationURI(String genmodel) {
+	public void setModelLoaderClass(String modelLoaderClass) {
 		String oldName = getGenmodelLocationURI();
-		firePropertyChange("genmodelLocationURI", oldName, genmodel);
+		firePropertyChange("modelLoaderClass", oldName, modelLoaderClass);
 		XDSMLModelHelper.getOrCreateDomainModelProject(languageDefinition)
-				.setGenmodeluri(genmodel);
+				.setModelLoaderClass(modelLoaderClass);
 	}
-
+	
+	public String getModelLoaderClass() {
+		if (languageDefinition != null) {
+			if (languageDefinition.getDomainModelProject() != null && languageDefinition.getDomainModelProject().getModelLoaderClass() != null) {
+				return languageDefinition.getDomainModelProject().getModelLoaderClass();				
+			}
+		}
+		return "";
+	}
+	
 	public String getSupportedFileExtension(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("Supported file extensions: ");
