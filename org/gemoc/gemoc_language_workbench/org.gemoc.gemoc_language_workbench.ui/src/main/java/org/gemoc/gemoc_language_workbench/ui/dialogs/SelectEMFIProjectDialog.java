@@ -24,13 +24,18 @@ public class SelectEMFIProjectDialog extends SelectAnyIProjectDialog {
 	protected boolean select(IResource resource) {
 		boolean result = super.select(resource);
 		// must contain an ecore file
-		if(resource instanceof IProject){
-			FileFinderVisitor ecoreProjectVisitor = new FileFinderVisitor("ecore");
-			try {
-				resource.accept(ecoreProjectVisitor);
-				result = result && ecoreProjectVisitor.getFiles().size() > 0;
-			} catch (CoreException e) {
-				Activator.error(e.getMessage(), e);
+		if(resource instanceof IProject)
+		{
+			IProject project = (IProject)resource;
+			if (project.isOpen())
+			{
+				FileFinderVisitor ecoreProjectVisitor = new FileFinderVisitor("ecore");
+				try {
+					resource.accept(ecoreProjectVisitor);
+					result = result && ecoreProjectVisitor.getFiles().size() > 0;
+				} catch (CoreException e) {
+					Activator.error(e.getMessage(), e);
+				}
 			}
 		}
 		// TODO project must have java nature 

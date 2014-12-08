@@ -67,7 +67,10 @@ public class ActiveFileEcore extends ActiveFile {
 		    
 		    // get the IProject
 		    DomainModelProject emfEcoreProject = langage.getDomainModelProject();
-		    projectEcore = ResourcesPlugin.getWorkspace().getRoot().getProject(emfEcoreProject.getProjectName());
+		    if (emfEcoreProject.getProjectName() != null)
+		    {
+			    projectEcore = ResourcesPlugin.getWorkspace().getRoot().getProject(emfEcoreProject.getProjectName());		    	
+		    }
 			/*try {
 				resource.save(null);
 			} catch (IOException e) {

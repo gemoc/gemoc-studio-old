@@ -10,7 +10,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -930,21 +929,12 @@ public class GemocXDSMLFormComposite extends AbstractGemocFormComposite {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					ActiveFile activeFileEcore = new ActiveFileEcore(
-							getCurrentIFile().getProject());
-					IFile ecoreFile = activeFileEcore.getActiveFile();
-					if (ecoreFile != null) {
+					String xdsmlURIAsString = xdsmlWrappedObject.languageDefinition.getDomainModelProject().getGenmodeluri();
+					if (xdsmlURIAsString != null) {
 						LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider();
 						ResourceSet resSet = new ResourceSetImpl();
-
-						// get the resource
-						Resource resource = resSet.getResource(URI
-								.createURI(ecoreFile.getLocationURI()
-										.toString()), true);
-						SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(
-								PlatformUI.getWorkbench()
-										.getActiveWorkbenchWindow().getShell(),
-								resource, labelProvider);
+						resSet.getResource(URI.createURI(xdsmlURIAsString), true);
+						SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(resSet, labelProvider);
 						int res = dialog.open();
 						if (res == WizardDialog.OK) {
 							// update the project model

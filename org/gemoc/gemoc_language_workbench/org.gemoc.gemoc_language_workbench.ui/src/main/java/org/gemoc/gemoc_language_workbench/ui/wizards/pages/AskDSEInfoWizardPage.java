@@ -1,9 +1,7 @@
 package org.gemoc.gemoc_language_workbench.ui.wizards.pages;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.dialogs.Dialog;
@@ -12,7 +10,6 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -21,13 +18,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
-import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
-import org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea;
 import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIFileDialog;
-import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.commands.ENamedElementQualifiedNameLabelProvider;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyConcreteEClassDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyEObjectDialog;
@@ -217,14 +208,10 @@ public class AskDSEInfoWizardPage extends WizardPage {
 					if (ecoreFileField.getText() != null && !ecoreFileField.getText().isEmpty()) {
 						LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider();
 						ResourceSet resSet = new ResourceSetImpl();
-
 						// get the resource
-						Resource resource = resSet.getResource(URI
-								.createURI(ecoreFileField.getText()), true);
-						SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(
-								PlatformUI.getWorkbench()
-										.getActiveWorkbenchWindow().getShell(),
-								resource, labelProvider);
+						resSet.getResource(URI.createURI(ecoreFileField.getText()), true);
+
+						SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(resSet, labelProvider);
 						int res = dialog.open();
 						if (res == WizardDialog.OK) {
 							// update the field
