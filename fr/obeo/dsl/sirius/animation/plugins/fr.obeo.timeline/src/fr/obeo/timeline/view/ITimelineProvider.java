@@ -25,102 +25,158 @@ package fr.obeo.timeline.view;
 public interface ITimelineProvider {
 
 	/**
-	 * Gets the number of choices in the timeline.
+	 * Gets the number of branches.
 	 * 
-	 * @return the number of choices in the timeline
+	 * @return the number of branches
 	 */
-	int getNumberOfChoices();
+	int getNumberOfBranches();
 
 	/**
-	 * Gets the number of possible steps at the given timeline index.
+	 * Gets the start index of the branch.
 	 * 
-	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @return the number of possible steps at the given timeline index
+	 * @param branch
+	 *            the branch index [0..{@link ITimelineProvider#getNumberOfBranches() nbBranches}[
+	 * @return the start index [{@link ITimelineProvider#getStart(int) originalBranchStart}..
+	 *         {@link ITimelineProvider#getEnd(int) originalBranchEnd}[
 	 */
-	int getNumberOfPossibleStepsAt(int index);
+	int getStart(int branch);
 
 	/**
-	 * Gets the text for the given index of the timeline.
+	 * Gets the end index of the branch.
 	 * 
-	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @return the text for the given index of the timeline
+	 * @param branch
+	 *            the branch index [0..{@link ITimelineProvider#getNumberOfBranches() nbBranches}[
+	 * @return the end index ]{@link ITimelineProvider#getStart(int) branchStart}..{@link Integer#MAX_VALUE
+	 *         MaxInteger}]
 	 */
-	String getTextAt(int index);
+	int getEnd(int branch);
 
 	/**
-	 * Tells if the given possible step (timeline index and possible step index) is selected.
+	 * Gets the text for the given branch.
 	 * 
-	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @return the selected possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
-	 *         nbPossibleSteps}[) if any, <code>-1</code> otherwise
+	 * @param branch
+	 *            the branch index [0..{@link ITimelineProvider#getNumberOfBranches() nbBranches}[
+	 * @return the text for the given branch
 	 */
-	int getSelectedPossibleStep(int index);
+	String getTextAt(int branch);
 
 	/**
-	 * Gets the {@link Object} at the given possible step (timeline index and possible step index).
+	 * Gets the number of possible steps at the given timeline index in the given branch.
 	 * 
+	 * @param branch
+	 *            the branch index [0..{@link ITimelineProvider#getNumberOfBranches() nbBranches}[
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 *            the timeline index [{@link ITimelineProvider#getStart(int) branchStart}..
+	 *            {@link ITimelineProvider#getEnd(int) branchEnd}[
+	 * @return the number of possible steps at the given timeline index in the given branch
+	 */
+	int getNumberOfPossibleStepsAt(int branch, int index);
+
+	/**
+	 * Gets the text for the given index of the timeline in the given branch.
+	 * 
+	 * @param branch
+	 *            the branch index [0..{@link ITimelineProvider#getNumberOfBranches() nbBranches}[
+	 * @param index
+	 *            the timeline index [{@link ITimelineProvider#getStart(int) branchStart}..
+	 *            {@link ITimelineProvider#getEnd(int) branchEnd}[
+	 * @return the text for the given index of the timeline in the given branch
+	 */
+	String getTextAt(int branch, int index);
+
+	/**
+	 * Gets the selected possibleStep at the given timeline index in the given branch.
+	 * 
+	 * @param branch
+	 *            the branch index [0..{@link ITimelineProvider#getNumberOfBranches() nbBranches}[
+	 * @param index
+	 *            the timeline index [{@link ITimelineProvider#getStart(int) branchStart}..
+	 *            {@link ITimelineProvider#getEnd(int) branchEnd}[
+	 * @return the selected possible step index ([0..
+	 *         {@link ITimelineProvider#getNumberOfPossibleStepsAt(int, int) nbPossibleSteps}[) if any,
+	 *         <code>-1</code> otherwise
+	 */
+	int getSelectedPossibleStep(int branch, int index);
+
+	/**
+	 * Gets the {@link Object} at the given possible step (timeline index and possible step index) in the
+	 * given branch.
+	 * 
+	 * @param branch
+	 *            the branch index [0..{@link ITimelineProvider#getNumberOfBranches() nbBranches}[
+	 * @param index
+	 *            the timeline index [{@link ITimelineProvider#getStart(int) branchStart}..
+	 *            {@link ITimelineProvider#getEnd(int) branchEnd}[
 	 * @param possibleStep
-	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
-	 *            nbPossibleSteps}[)
-	 * @return the {@link Object} at the given possible step (timeline index and possible step index) if any,
+	 *            the possible step index [0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int, int)
+	 *            nbPossibleSteps}[
+	 * @return the {@link Object} at the given possible step (timeline index and possible step index) in the
+	 *         given branch if any, <code>null</code> otherwise
+	 */
+	Object getAt(int branch, int index, int possibleStep);
+
+	/**
+	 * Gets the {@link Object} at the given possible step (timeline index) in the given branch.
+	 * 
+	 * @param branch
+	 *            the branch index [0..{@link ITimelineProvider#getNumberOfBranches() nbBranches}[
+	 * @param index
+	 *            the timeline index [{@link ITimelineProvider#getStart(int) branchStart}..
+	 *            {@link ITimelineProvider#getEnd(int) branchEnd}[
+	 * @return the {@link Object} at the given possible step (timeline index) in the given branch if any,
 	 *         <code>null</code> otherwise
 	 */
-	Object getAt(int index, int possibleStep);
+	Object getAt(int branch, int index);
 
 	/**
-	 * Gets the {@link Object} at the given possible step (timeline index).
+	 * Gets the text for the given possible step (timeline index and possible step index) in the given branch.
 	 * 
+	 * @param branch
+	 *            the branch index [0..{@link ITimelineProvider#getNumberOfBranches() nbBranches}[
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @return the {@link Object} at the given possible step (timeline index and possible step index) if any,
-	 *         <code>null</code> otherwise
+	 *            the timeline index [{@link ITimelineProvider#getStart(int) branchStart}..
+	 *            {@link ITimelineProvider#getEnd(int) branchEnd}[
+	 * @param possibleStep
+	 *            the possible step index [0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int, int)
+	 *            nbPossibleSteps}[
+	 * @return the text for the given possible step (timeline index and possibe step index) in the given
+	 *         branch
 	 */
-	Object getAt(int index);
+	String getTextAt(int branch, int index, int possibleStep);
 
 	/**
-	 * Gets the text for the given possible step (timeline index and possible step index).
-	 * 
-	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @param possible
-	 *            step the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
-	 *            nbPossibleSteps}[)
-	 * @return the text for the given possible step (timeline index and possibe step index)
-	 */
-	String getTextAt(int index, int possibleStep);
-
-	/**
-	 * Gets the following possible step index for the given possible step (timeline index and possible step
+	 * Gets the following possible steps index for the given possible step (timeline index and possible step
 	 * index).
 	 * 
+	 * @param branch
+	 *            the branch index [0..{@link ITimelineProvider#getNumberOfBranches() nbBranches}[
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 *            the timeline index [{@link ITimelineProvider#getStart(int) branchStart}..
+	 *            {@link ITimelineProvider#getEnd(int) branchEnd}[
 	 * @param possibleStep
-	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
-	 *            nbPossibleSteps}[)
-	 * @return the following possible step for the given possible step (timeline index and possible step
-	 *         index) if any, <code>-1</code> otherwise
+	 *            the possible step index [0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int, int)
+	 *            nbPossibleSteps}[
+	 * @return the following possible steps for the given possible step (timeline index and possible step
+	 *         index) [branch, possibleStep]
 	 */
-	int getFollowing(int index, int possibleStep);
+	int[][] getFollowings(int branch, int index, int possibleStep);
 
 	/**
-	 * Gets the preceding possible step index for the given possible step (timeline index and possible step
+	 * Gets the preceding possible steps index for the given possible step (timeline index and possible step
 	 * index).
 	 * 
+	 * @param branch
+	 *            the branch index [0..{@link ITimelineProvider#getNumberOfBranches() nbBranches}[
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 *            the timeline index [{@link ITimelineProvider#getStart(int) branchStart}..
+	 *            {@link ITimelineProvider#getEnd(int) branchEnd}[
 	 * @param possibleStep
-	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
-	 *            nbPossibleSteps}[)
-	 * @return the preceding possible step for the given possible step (timeline index and possible step
-	 *         index) if any, <code>-1</code> otherwise
+	 *            the possible step index [0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int, int)
+	 *            nbPossibleSteps}[
+	 * @return the preceding possible steps for the given possible step (timeline index and possible step
+	 *         index) [branch, possibleStep]
 	 */
-	int getPreceding(int index, int possibleStep);
+	int[][] getPrecedings(int branch, int index, int possibleStep);
 
 	/**
 	 * Adds a {@link ITimelineListener}.

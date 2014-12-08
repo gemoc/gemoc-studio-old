@@ -40,6 +40,11 @@ public final class PossibleStep {
 	private final TimelineWindow timelineWindow;
 
 	/**
+	 * The branch index.
+	 */
+	private final int branch;
+
+	/**
 	 * The timeline index.
 	 */
 	private final int index;
@@ -54,13 +59,16 @@ public final class PossibleStep {
 	 * 
 	 * @param timelineWindow
 	 *            the containing {@link TimelineWindow}
+	 * @param branch
+	 *            the branch index
 	 * @param index
 	 *            the timeline index
 	 * @param possibleStep
 	 *            the possible step index
 	 */
-	public PossibleStep(TimelineWindow timelineWindow, int index, int possibleStep) {
+	public PossibleStep(TimelineWindow timelineWindow, int branch, int index, int possibleStep) {
 		this.timelineWindow = timelineWindow;
+		this.branch = branch;
 		this.index = index;
 		this.possibleStep = possibleStep;
 	}
@@ -80,7 +88,7 @@ public final class PossibleStep {
 	 * @return the name
 	 */
 	public String getName() {
-		return getTimelineWindow().getProvider().getTextAt(index, possibleStep);
+		return getTimelineWindow().getProvider().getTextAt(branch, index, possibleStep);
 	}
 
 	/**
@@ -89,7 +97,7 @@ public final class PossibleStep {
 	 * @return <code>true</code> if the possible step has been selected, <code>false</code> otherwise.
 	 */
 	public boolean isSelected() {
-		return getTimelineWindow().getProvider().getSelectedPossibleStep(index) == possibleStep;
+		return getTimelineWindow().getProvider().getSelectedPossibleStep(branch, index) == possibleStep;
 	}
 
 	/**
@@ -98,7 +106,7 @@ public final class PossibleStep {
 	 * @return the owning {@link Choice}
 	 */
 	public Choice getChoice() {
-		return new Choice(getTimelineWindow(), index);
+		return new Choice(getTimelineWindow(), branch, index);
 	}
 
 	/**
@@ -110,7 +118,7 @@ public final class PossibleStep {
 		final PossibleStep res;
 
 		if (possibleStep > 0) {
-			res = new PossibleStep(getTimelineWindow(), index, possibleStep - 1);
+			res = new PossibleStep(getTimelineWindow(), branch, index, possibleStep - 1);
 		} else {
 			res = null;
 		}
@@ -126,8 +134,8 @@ public final class PossibleStep {
 	public PossibleStep getNextPossibleStep() {
 		final PossibleStep res;
 
-		if (possibleStep < getTimelineWindow().getProvider().getNumberOfPossibleStepsAt(index)) {
-			res = new PossibleStep(getTimelineWindow(), index, possibleStep + 1);
+		if (possibleStep < getTimelineWindow().getProvider().getNumberOfPossibleStepsAt(branch, index)) {
+			res = new PossibleStep(getTimelineWindow(), branch, index, possibleStep + 1);
 		} else {
 			res = null;
 		}
@@ -163,9 +171,14 @@ public final class PossibleStep {
 
 		final ITimelineProvider provider = getTimelineWindow().getProvider();
 		if (isSelected() && index > getTimelineWindow().getStart()) {
-			final int preceding = provider.getPreceding(index, possibleStep);
-			if (preceding >= 0) {
-				res.add(new Connection(new PossibleStep(getTimelineWindow(), index - 1, preceding), this));
+			final int[][] precedings = provider.getPrecedings(branch, index, possibleStep);
+			for (int i = 0; i < precedings.length; ++i) {
+				int precedingBranch = precedings[i][0];
+				int preceding = precedings[i][1];
+				if (preceding >= 0) {
+					res.add(new Connection(new PossibleStep(getTimelineWindow(), precedingBranch, index - 1,
+							preceding), this));
+				}
 			}
 		}
 
@@ -182,11 +195,16 @@ public final class PossibleStep {
 
 		final ITimelineProvider provider = getTimelineWindow().getProvider();
 		if (isSelected()
-				&& index + 1 < Math.min(getTimelineWindow().getEnd(), getTimelineWindow().getProvider()
-						.getNumberOfChoices())) {
-			final int following = provider.getFollowing(index, possibleStep);
-			if (following >= 0) {
-				res.add(new Connection(this, new PossibleStep(getTimelineWindow(), index + 1, following)));
+				&& index + 1 < Math.min(getTimelineWindow().getEnd(), getTimelineWindow()
+						.getMaxTimelineIndex())) {
+			final int[][] followings = provider.getFollowings(branch, index, possibleStep);
+			for (int i = 0; i < followings.length; ++i) {
+				int followingBranch = followings[i][0];
+				int following = followings[i][1];
+				if (following >= 0) {
+					res.add(new Connection(this, new PossibleStep(getTimelineWindow(), followingBranch,
+							index + 1, following)));
+				}
 			}
 		}
 
@@ -195,21 +213,21 @@ public final class PossibleStep {
 
 	@Override
 	public int hashCode() {
-		return (index << SHIFT) + possibleStep;
+		return ((branch << SHIFT / 2) + index << SHIFT) + possibleStep;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof PossibleStep && ((PossibleStep)obj).index == index
-				&& ((PossibleStep)obj).possibleStep == possibleStep;
+		return obj instanceof PossibleStep && ((PossibleStep)obj).branch == branch
+				&& ((PossibleStep)obj).index == index && ((PossibleStep)obj).possibleStep == possibleStep;
 	}
 
 	public Object getPossibleStep() {
-		return getTimelineWindow().getProvider().getAt(index, possibleStep);
+		return getTimelineWindow().getProvider().getAt(branch, index, possibleStep);
 	}
 
 	public Object getChoice2() {
-		return getTimelineWindow().getProvider().getAt(index);
+		return getTimelineWindow().getProvider().getAt(branch, index);
 	}
 
 }

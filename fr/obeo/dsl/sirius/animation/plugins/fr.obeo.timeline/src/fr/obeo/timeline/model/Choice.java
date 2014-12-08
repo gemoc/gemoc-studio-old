@@ -35,6 +35,11 @@ public final class Choice {
 	private final TimelineWindow timelineWindow;
 
 	/**
+	 * The branch index.
+	 */
+	private final int branch;
+
+	/**
 	 * The index in the owning {@link TimelineWindow}.
 	 */
 	private final int index;
@@ -44,11 +49,14 @@ public final class Choice {
 	 * 
 	 * @param timelineWindow
 	 *            the containing {@link TimelineWindow}
+	 * @param branch
+	 *            the branch index
 	 * @param index
 	 *            the index in the owning {@link TimelineWindow}
 	 */
-	public Choice(TimelineWindow timelineWindow, int index) {
+	public Choice(TimelineWindow timelineWindow, int branch, int index) {
 		this.timelineWindow = timelineWindow;
+		this.branch = branch;
 		this.index = index;
 	}
 
@@ -70,21 +78,30 @@ public final class Choice {
 		List<PossibleStep> res = new ArrayList<PossibleStep>();
 
 		final ITimelineProvider provider = getTimelineWindow().getProvider();
-		final int numberOfPossibleStepsAt = provider.getNumberOfPossibleStepsAt(index);
+		final int numberOfPossibleStepsAt = provider.getNumberOfPossibleStepsAt(branch, index);
 		for (int i = 0; i < numberOfPossibleStepsAt; ++i) {
-			res.add(new PossibleStep(getTimelineWindow(), index, i));
+			res.add(new PossibleStep(getTimelineWindow(), branch, index, i));
 		}
 
 		return res;
 	}
 
 	/**
-	 * Gets the index in the owning {@link TimelineWindow}.
+	 * Gets the index in the owning {@link Branch}.
 	 * 
-	 * @return the index in the owning {@link TimelineWindow}
+	 * @return the index in the owning {@link Branch}
 	 */
 	public int getIndex() {
 		return index;
+	}
+
+	/**
+	 * Gets the branch index.
+	 * 
+	 * @return the branch index
+	 */
+	public int getBranch() {
+		return branch;
 	}
 
 	/**
@@ -94,8 +111,8 @@ public final class Choice {
 	 */
 	public Choice getPreviousChoice() {
 		final Choice res;
-		if (index > 0) {
-			res = new Choice(getTimelineWindow(), index - 1);
+		if (index > getTimelineWindow().getProvider().getStart(branch)) {
+			res = new Choice(getTimelineWindow(), branch, index - 1);
 		} else {
 			res = null;
 		}
@@ -109,9 +126,9 @@ public final class Choice {
 	 */
 	public Choice getNextChoice() {
 		final Choice res;
-		final int numberOfChoices = getTimelineWindow().getProvider().getNumberOfChoices();
+		final int numberOfChoices = getTimelineWindow().getProvider().getEnd(branch);
 		if (index < numberOfChoices - 1) {
-			res = new Choice(getTimelineWindow(), index + 1);
+			res = new Choice(getTimelineWindow(), branch, index + 1);
 		} else {
 			res = null;
 		}
@@ -134,7 +151,7 @@ public final class Choice {
 	 * @return the index of the connected possible step if any, <code>-1</code> otherwise
 	 */
 	public int getConnectedIndex() {
-		return getTimelineWindow().getProvider().getSelectedPossibleStep(index);
+		return getTimelineWindow().getProvider().getSelectedPossibleStep(branch, index);
 	}
 
 	/**
@@ -144,6 +161,6 @@ public final class Choice {
 	 *         {@link PossibleStep} , <code>false</code> otherwise
 	 */
 	public boolean hasSelected() {
-		return getTimelineWindow().getProvider().getSelectedPossibleStep(index) >= 0;
+		return getTimelineWindow().getProvider().getSelectedPossibleStep(branch, index) >= 0;
 	}
 }

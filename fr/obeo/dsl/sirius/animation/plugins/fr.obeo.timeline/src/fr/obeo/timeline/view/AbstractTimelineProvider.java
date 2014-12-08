@@ -34,14 +34,177 @@ public abstract class AbstractTimelineProvider implements ITimelineProvider {
 	private List<ITimelineListener> listeners = new ArrayList<ITimelineListener>();
 
 	/**
-	 * Notifies the number of choices in the timeline has changed.
+	 * Notifies the start of the given branch has changed.
 	 * 
-	 * @param numberOfChoices
-	 *            the number of choices in the timeline
+	 * @param branch
+	 *            the branch
+	 * @param start
+	 *            the new start
 	 */
-	public void notifyNumberOfChoicesChanged(int numberOfChoices) {
+	public void notifyStartChanged(int branch, int start) {
 		for (ITimelineListener listener : getListeners()) {
-			listener.numberOfChoicesChanged(numberOfChoices);
+			listener.startChanged(branch, start);
+		}
+	}
+
+	/**
+	 * Notifies the end of the given branch has changed.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @param end
+	 *            the new end
+	 */
+	public void notifyEndChanged(int branch, int end) {
+		for (ITimelineListener listener : getListeners()) {
+			listener.endChanged(branch, end);
+		}
+	}
+
+	/**
+	 * Notifies the text of the given branch has changed.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @param text
+	 *            the new text
+	 */
+	public void notifyTextAtChanged(int branch, String text) {
+		for (ITimelineListener listener : getListeners()) {
+			listener.textAtChanged(branch, text);
+		}
+	}
+
+	/**
+	 * Notifies the number of possible steps at the given timeline index has changed.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @param index
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
+	 * @param numberOfPossibleStep
+	 *            the number of possibleSteps at the given timeline index
+	 */
+	public void notifyNumberOfPossibleStepsAtChanged(int branch, int index, int numberOfPossibleStep) {
+		for (ITimelineListener listener : getListeners()) {
+			listener.numberOfPossibleStepsAtChanged(branch, index, numberOfPossibleStep);
+		}
+	}
+
+	/**
+	 * Notifies the text for the given index of the timeline has changed.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @param index
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
+	 * @param text
+	 *            the text for the given index of the timeline
+	 */
+	public void notifyTextAtChanged(int branch, int index, String text) {
+		for (ITimelineListener listener : getListeners()) {
+			listener.textAtChanged(branch, index, text);
+		}
+	}
+
+	/**
+	 * Notifies the {@link Object} at the given possible step (timeline index and possible step index) has
+	 * changed.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @param index
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
+	 * @param possibleStep
+	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
+	 *            nbPossibleSteps}[)
+	 * @param object
+	 *            the {@link Object} at the given possible step (timeline index and posible step index)
+	 */
+	public void notifyAtChanged(int branch, int index, int possibleStep, Object object) {
+		for (ITimelineListener listener : getListeners()) {
+			listener.atChanged(branch, index, possibleStep, object);
+		}
+	}
+
+	/**
+	 * Notifies the given possible step (timeline index and possible step index) has been selected or
+	 * de-selected.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @param index
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
+	 * @param possibleStep
+	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
+	 *            nbPossibleSteps}[)
+	 * @param selected
+	 *            <code>true</code> if the possibleStep is now selected, <code>false</code> otherwise
+	 */
+	public void notifyIsSelectedChanged(int branch, int index, int possibleStep, boolean selected) {
+		for (ITimelineListener listener : getListeners()) {
+			listener.isSelectedChanged(branch, index, possibleStep, selected);
+		}
+	}
+
+	/**
+	 * Notifies the text for the given possible step (timeline index and possible step index) has changed.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @param index
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
+	 * @param possibleStep
+	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
+	 *            nbPossibleSteps}[)
+	 * @param text
+	 *            the text for the given possible step (timeline index and possible step index)
+	 */
+	public void notifyTextAtChanged(int branch, int index, int possibleStep, String text) {
+		for (ITimelineListener listener : getListeners()) {
+			listener.textAtChanged(branch, index, possibleStep, text);
+		}
+	}
+
+	/**
+	 * Notifies the following possible step index for the given possible step (timeline index and possible
+	 * step index) has changed.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @param index
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
+	 * @param possibleStep
+	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
+	 *            nbPossibleSteps}[)
+	 * @param followings
+	 *            the following possible step for the given possible step (timeline index and possible step
+	 *            index) [branch, possibleStep]
+	 */
+	public void notifyFollowingsChanged(int branch, int index, int possibleStep, int[][] followings) {
+		for (ITimelineListener listener : getListeners()) {
+			listener.followingsChanged(branch, index, possibleStep, followings);
+		}
+	}
+
+	/**
+	 * Notifies the preceding possible step index for the given possible step (timeline index and possible
+	 * step index) has changed.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @param index
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
+	 * @param possibleStep
+	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
+	 *            nbPossibleSteps}[)
+	 * @param precedings
+	 *            the preceding possible step for the given possible step (timeline index and possible step
+	 *            index) [branch, possibleStep]
+	 */
+	public void notifyPrecedingsChanged(int branch, int index, int possibleStep, int[][] precedings) {
+		for (ITimelineListener listener : getListeners()) {
+			listener.precedingsChanged(branch, index, possibleStep, precedings);
 		}
 	}
 
@@ -56,125 +219,6 @@ public abstract class AbstractTimelineProvider implements ITimelineProvider {
 			l = new ArrayList<ITimelineListener>(listeners);
 		}
 		return l;
-	}
-
-	/**
-	 * Notifies the number of possible steps at the given timeline index has changed.
-	 * 
-	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @param numberOfPossibleStep
-	 *            the number of possibleSteps at the given timeline index
-	 */
-	public void notifyNumberOfPossibleStepsAtChanged(int index, int numberOfPossibleStep) {
-		for (ITimelineListener listener : getListeners()) {
-			listener.numberOfPossibleStepsAtChanged(index, numberOfPossibleStep);
-		}
-	}
-
-	/**
-	 * Notifies the text for the given index of the timeline has changed.
-	 * 
-	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @param text
-	 *            the text for the given index of the timeline
-	 */
-	public void notifyTextAtChanged(int index, String text) {
-		for (ITimelineListener listener : getListeners()) {
-			listener.textAtChanged(index, text);
-		}
-	}
-
-	/**
-	 * Notifies the {@link Object} at the given possible step (timeline index and possible step index) has
-	 * changed.
-	 * 
-	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @param possibleStep
-	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
-	 *            nbPossibleSteps}[)
-	 * @param object
-	 *            the {@link Object} at the given possible step (timeline index and posible step index)
-	 */
-	public void notifyAtChanged(int index, int possibleStep, Object object) {
-		for (ITimelineListener listener : getListeners()) {
-			listener.atChanged(index, possibleStep, object);
-		}
-	}
-
-	/**
-	 * Notifies the given possible step (timeline index and possible step index) has been selected or
-	 * de-selected.
-	 * 
-	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @param possibleStep
-	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
-	 *            nbPossibleSteps}[)
-	 * @param selected
-	 *            <code>true</code> if the possibleStep is now selected, <code>false</code> otherwise
-	 */
-	public void notifyIsSelectedChanged(int index, int possibleStep, boolean selected) {
-		for (ITimelineListener listener : getListeners()) {
-			listener.isSelectedChanged(index, possibleStep, selected);
-		}
-	}
-
-	/**
-	 * Notifies the text for the given possible step (timeline index and possible step index) has changed.
-	 * 
-	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @param possibleStep
-	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
-	 *            nbPossibleSteps}[)
-	 * @param text
-	 *            the text for the given possible step (timeline index and possible step index)
-	 */
-	public void notifyTextAtChanged(int index, int possibleStep, String text) {
-		for (ITimelineListener listener : getListeners()) {
-			listener.textAtChanged(index, possibleStep, text);
-		}
-	}
-
-	/**
-	 * Notifies the following possible step index for the given possible step (timeline index and possible
-	 * step index) has changed.
-	 * 
-	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @param possibleStep
-	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
-	 *            nbPossibleSteps}[)
-	 * @param following
-	 *            the following possible step for the given possible step (timeline index and possible step
-	 *            index) if any, <code>-1</code> otherwise
-	 */
-	public void notifyFollowingChanged(int index, int possibleStep, int following) {
-		for (ITimelineListener listener : getListeners()) {
-			listener.followingChanged(index, possibleStep, following);
-		}
-	}
-
-	/**
-	 * Notifies the preceding possible step index for the given possible step (timeline index and possible
-	 * step index) has changed.
-	 * 
-	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
-	 * @param possibleStep
-	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
-	 *            nbPossibleSteps}[)
-	 * @param preceding
-	 *            the preceding possible step for the given possible step (timeline index and possible step
-	 *            index) if any, <code>-1</code> otherwise
-	 */
-	public void notifyPrecedingChanged(int index, int possibleStep, int preceding) {
-		for (ITimelineListener listener : getListeners()) {
-			listener.precedingChanged(index, possibleStep, preceding);
-		}
 	}
 
 	@Override
