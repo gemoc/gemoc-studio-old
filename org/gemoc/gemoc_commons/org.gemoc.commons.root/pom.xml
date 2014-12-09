@@ -10,6 +10,8 @@
         <module>../../gemoc_language_workbench/org.gemoc.gemoc_language_workbench.api</module>
         <module>../org.gemoc.commons</module>
         <module>../org.gemoc.commons.eclipse</module>
+        <module>../org.gemoc.commons.eclipse.pde</module>
+        <module>../org.gemoc.commons.eclipse.jdt</module>
         <module>../org.gemoc.commons.eclipse.ui</module>
         <module>../org.gemoc.execution.engine.trace.model</module>
         <module>../org.gemoc.execution.engine.trace.model.edit</module>

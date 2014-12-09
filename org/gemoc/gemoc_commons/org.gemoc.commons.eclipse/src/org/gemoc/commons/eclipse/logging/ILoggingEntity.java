@@ -1,8 +1,8 @@
-package org.gemoc.commons.eclipse.pde;
+package org.gemoc.commons.eclipse.logging;
 
 import org.eclipse.core.runtime.ILog;
 
-public interface IPlugin {
+public interface ILoggingEntity {
 
 	public String getName();
 

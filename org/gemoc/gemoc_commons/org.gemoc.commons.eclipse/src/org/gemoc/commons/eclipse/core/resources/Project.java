@@ -16,7 +16,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jdt.core.JavaCore;
 
 public class Project {
 
@@ -148,48 +147,6 @@ public class Project {
 			}
 		}
 		return file;
-	}
-	
-	public static void addJavaNature(IProject project) throws CoreException, IOException 
-	{
-		if(!project.hasNature(JavaCore.NATURE_ID)){
-			JavaCore.create(project);
-			addNature(project, JavaCore.NATURE_ID);
-			Project.createFolder(project, "src/main/java", new NullProgressMonitor());
-			Project.createFolder(project, "src/main/xdsml-java-gen", new NullProgressMonitor());
-			addJavaResources(project);
-		}
-	}
-		
-	public static final String CLASSPATH_TEMPLATE= "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
-"<classpath>\n"+
-"	<classpathentry kind=\"src\" path=\"src/main/java\"/>\n"+
-"	<classpathentry kind=\"src\" path=\"src/main/xdsml-java-gen\"/>\n"+
-"	<classpathentry kind=\"con\" path=\"org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6\"/>\n"+
-"	<classpathentry kind=\"output\" path=\"bin\"/>\n"+
-"</classpath>";
-	
-	private static void addJavaResources(IProject project) throws CoreException, IOException 
-	{
-		final IFile file = project.getFile(new Path(".classpath")); 
-		InputStream stream = null;
-		try 
-			{
-				stream = new ByteArrayInputStream(CLASSPATH_TEMPLATE.getBytes());
-				if (file.exists()) 
-				{
-					file.setContents(stream, true, true, null);
-				} 
-				else 
-				{
-					file.create(stream, true, null);
-				}
-			} 
-			finally
-			{
-				if (stream != null)
-					stream.close();				
-			}
 	}
 	
 	public static void addNature(IProject project, String natureId) throws CoreException 

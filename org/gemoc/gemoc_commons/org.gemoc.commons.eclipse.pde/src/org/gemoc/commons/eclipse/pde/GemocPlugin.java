@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 import org.eclipse.core.runtime.Plugin;
 import org.gemoc.commons.eclipse.logging.ILoggingBackend;
+import org.gemoc.commons.eclipse.logging.ILoggingEntity;
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
 import org.osgi.framework.BundleContext;
 
-public abstract class GemocPlugin extends Plugin implements IPlugin {
+public abstract class GemocPlugin extends Plugin implements ILoggingEntity {
 
 	
 	@Override
