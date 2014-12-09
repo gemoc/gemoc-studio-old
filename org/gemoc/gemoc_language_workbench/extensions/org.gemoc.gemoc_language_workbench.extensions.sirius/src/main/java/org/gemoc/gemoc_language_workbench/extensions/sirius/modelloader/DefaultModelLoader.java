@@ -23,6 +23,7 @@ import org.gemoc.execution.engine.core.DebugURIHandler;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.debug.DebugSessionFactory;
 
 public class DefaultModelLoader implements IModelLoader {
 

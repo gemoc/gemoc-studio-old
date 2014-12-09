@@ -18,6 +18,7 @@
 		<module>../org.gemoc.gemoc_language_workbench.documentation</module>
 		<module>../org.gemoc.gemoc_language_workbench.sample.deployer</module>
 		<module>../extensions/org.gemoc.gemoc_language_workbench.extensions.k3</module>
+		<module>../extensions/org.gemoc.gemoc_language_workbench.extensions.sirius</module>
 		<module>../extensions/org.gemoc.gemoc_language_workbench.extensions.timesquare</module>
 
 		<!-- feature and update site -->

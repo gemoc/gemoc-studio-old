@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.gemoc.gemoc_modeling_workbench.core;
+package org.gemoc.gemoc_language_workbench.extensions.sirius.debug;
 
 import java.io.IOException;
 import java.io.InputStream;

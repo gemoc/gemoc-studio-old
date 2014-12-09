@@ -183,6 +183,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			DomainModelProject domainModelProject = (DomainModelProject) eObject;
 			updateDependenciesWithProject(manifestChanger, domainModelProject.getProjectName());
 			updateModelLoaderClass(project, domainModelProject.getModelLoaderClass());
+			if(domainModelProject.getModelLoaderClass() == null){
+				manifestChanger.addPluginDependency(org.gemoc.gemoc_language_workbench.extensions.sirius.Activator.PLUGIN_ID);
+			}
 			languageRootElement = domainModelProject.getDefaultRootEObjectQualifiedName();
 		}
 		if (eObject instanceof DSAProject) {
@@ -356,7 +359,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		helper.updateXDSMLDefinitionAttributeInExtensionPoint(
 				gemocExtensionPoint,
 				LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT,
-				modelLoaderClass != null ? modelLoaderClass : "org.gemoc.gemoc_modeling_workbench.core.DefaultModelLoader");
+				modelLoaderClass != null ? modelLoaderClass : "org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader");
 		helper.saveDocument(pluginfile);
 
 
