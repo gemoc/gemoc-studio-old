@@ -4,7 +4,6 @@ Bundle-Name: GEMOC Commons Eclipse PDE
 Bundle-SymbolicName: org.gemoc.commons.eclipse.pde;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.pde.core,
  org.gemoc.commons.eclipse
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

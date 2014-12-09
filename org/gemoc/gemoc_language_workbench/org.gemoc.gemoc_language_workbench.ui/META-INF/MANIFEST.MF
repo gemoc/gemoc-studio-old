@@ -27,7 +27,9 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.commons.eclipse,
  org.eclipse.equinox.registry,
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
- org.gemoc.commons.eclipse.ui
+ org.gemoc.commons.eclipse.ui,
+ org.gemoc.commons.eclipse.pde,
+ org.gemoc.commons.eclipse.jdt
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.filesystem
