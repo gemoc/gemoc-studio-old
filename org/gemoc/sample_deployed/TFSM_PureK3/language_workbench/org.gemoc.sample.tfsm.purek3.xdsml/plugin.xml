@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.xdsml">
-    <XDSML_Definition codeExecutor_class="tfsm.xdsml.api.impl.TfsmCodeExecutor" domainSpecificEventsResourcePath="/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl" eventExecutor_class="org.gemoc.sample.tfsm.xdsml.executor.TfsmEventExecutor" feedbackPolicy_class="org.gemoc.sample.tfsm.xdsml.feedback.TfsmFeedbackPolicy" modelLoader_class="org.gemoc.gemoc_modeling_workbench.core.DefaultModelLoader" name="tfsm pure K3" toCCSLQVTOFilePath="" xdsmlFilePath="/org.gemoc.sample.tfsm.purek3.xdsml/project.xdsml">
+    <XDSML_Definition codeExecutor_class="org.gemoc.sample.tfsm.xdsml.api.impl.TfsmCodeExecutor" domainSpecificEventsResourcePath="/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl" eventExecutor_class="org.gemoc.sample.tfsm.xdsml.executor.TfsmEventExecutor" feedbackPolicy_class="org.gemoc.sample.tfsm.xdsml.feedback.TfsmFeedbackPolicy" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader" name="tfsm pure K3" toCCSLQVTOFilePath="" xdsmlFilePath="/org.gemoc.sample.tfsm.purek3.xdsml/project.xdsml" solver_class="">
       <Engine_hook_Definition engineHook_class="org.gemoc.sample.tfsm.xdsml.enginehook.TfsmEngineHook" />
     </XDSML_Definition>
     <!-- domainSpecificEventsResource="/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl" -->
