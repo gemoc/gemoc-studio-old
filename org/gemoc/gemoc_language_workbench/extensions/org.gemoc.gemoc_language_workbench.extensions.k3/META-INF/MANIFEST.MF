@@ -8,7 +8,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.gemoc.gemoc_language_workbench.api,
  org.eclipse.emf.ecore,
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
- fr.inria.diverse.commons.eclipse.messagingsystem.ui;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.ecl.feedback.model
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

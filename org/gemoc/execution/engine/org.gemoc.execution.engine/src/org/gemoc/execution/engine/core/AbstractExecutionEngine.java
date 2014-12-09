@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.dse.DefaultMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
@@ -112,13 +113,11 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		{
 			addMSEStateController(c);
 		}
-		_mseStateController = createEngineMSEStateController();
+		_mseStateController = new DefaultMSEStateController();
 		addMSEStateController(_mseStateController);
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
 	
-	protected abstract IMSEStateController createEngineMSEStateController();
-
 	private EngineRunnable _runnable;
 	@Override
 	public void start() 

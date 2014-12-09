@@ -42,7 +42,6 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.commons,
  org.gemoc.execution.engine.commons.deciders,
- org.gemoc.execution.engine.commons.dsa,
  org.gemoc.execution.engine.commons.dsa.executors,
  org.gemoc.execution.engine.commons.solvers.ccsl,
  org.gemoc.execution.engine.commons.trace
