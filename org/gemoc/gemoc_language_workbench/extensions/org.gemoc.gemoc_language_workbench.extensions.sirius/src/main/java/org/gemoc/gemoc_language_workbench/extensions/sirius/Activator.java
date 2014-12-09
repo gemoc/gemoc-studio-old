@@ -1,6 +1,5 @@
-package org.gemoc.gemoc_language_workbench.extensions.timesquare;
+package org.gemoc.gemoc_language_workbench.extensions.sirius;
 
-import org.eclipse.core.runtime.Status;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -17,47 +16,22 @@ public class Activator implements BundleActivator {
 		return context;
 	}
 	
-	public static final String PLUGIN_ID = "org.gemoc.gemoc_language_workbench.extensions.timesquare"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.gemoc.gemoc_language_workbench.extensions.sirius"; //$NON-NLS-1$
 
 
 	protected static MessagingSystem messagingSystem = null;
 
-
-	// The shared instance
-	private static Activator plugin;
-	
 	public static MessagingSystem getMessagingSystem() {
 		if (messagingSystem == null) 
 		{
 			MessagingSystemManager msm = new MessagingSystemManager();
-			messagingSystem = msm.createBestPlatformMessagingSystem(PLUGIN_ID, "GEMOC extensions TimeSquare");
+			messagingSystem = msm.createBestPlatformMessagingSystem(PLUGIN_ID, "GEMOC extensions Sirius");
 			if (messagingSystem instanceof EclipseMessagingSystem)
 				((EclipseMessagingSystem) messagingSystem).setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
 		}
 		return messagingSystem;
 	}
 
-	public static void warn(String msg){
-		getMessagingSystem().warn(msg, "");
-	}
-	public static void warn(String msg, Throwable e){
-		getMessagingSystem().warn(msg, "", e);
-		/*Activator.getDefault().getLog().log(new Status(Status.WARNING, PLUGIN_ID,
-                Status.OK, 
-                msg, 
-                e));*/
-	}
-	public static void error(String msg){
-		getMessagingSystem().error(msg, "");
-	}
-	public static void error(String msg, Throwable e){
-		getMessagingSystem().error(msg, "", e);
-		/*Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID,
-                Status.OK, 
-                msg, 
-                e));*/
-	}
-	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -67,7 +41,6 @@ public class Activator implements BundleActivator {
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
-		plugin = this;
 	}
 
 	/*
@@ -78,15 +51,6 @@ public class Activator implements BundleActivator {
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;
-	}
-
-	/**
-	 * Returns the shared instance
-	 * 
-	 * @return the shared instance
-	 */
-	public static Activator getDefault() {
-		return plugin;
 	}
 
 }

@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.gemoc.execution.engine.commons.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
+import org.gemoc.gemoc_language_workbench.extensions.timesquare.Activator;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
 
 import fr.inria.aoste.timesquare.ccslkernel.explorer.CCSLConstraintState;
@@ -118,13 +118,13 @@ public class CcslSolver implements
 			return res;
 		} catch (SolverException e) {
 			String errorMessage = "SolverException while trying to get next Ccsl step";
-			Activator.getDefault().error(errorMessage);
-			Activator.getDefault().error(errorMessage, e);
+			Activator.error(errorMessage);
+			Activator.error(errorMessage, e);
 			return null;
 		} catch (SimulationException e) {
 			String errorMessage = "SimulationException while trying to get next Ccsl step";
-			Activator.getDefault().error(errorMessage);
-			Activator.getDefault().error(errorMessage, e);
+			Activator.error(errorMessage);
+			Activator.error(errorMessage, e);
 			return null;
 		}
 	}
@@ -175,20 +175,20 @@ public class CcslSolver implements
 					new MaxCardSimulationPolicy());
 		} catch (IOException e) {
 			String errorMessage = "IOException while instantiating the CcslSolver";
-			Activator.getDefault().error(errorMessage);
-			Activator.getDefault().error(errorMessage, e);
+			Activator.error(errorMessage);
+			Activator.error(errorMessage, e);
 		} catch (UnfoldingException e) {
 			String errorMessage = "UnfoldingException while instantiating the CcslSolver";
-			Activator.getDefault().error(errorMessage);
-			Activator.getDefault().error(errorMessage, e);
+			Activator.error(errorMessage);
+			Activator.error(errorMessage, e);
 		} catch (SolverException e) {
 			String errorMessage = "SolverException while instantiating the CcslSolver";
-			Activator.getDefault().error(errorMessage);
-			Activator.getDefault().error(errorMessage, e);
+			Activator.error(errorMessage);
+			Activator.error(errorMessage, e);
 		} catch (SimulationException e) {
 			String errorMessage = "SimulationException while instantiating the CcslSolver";
-			Activator.getDefault().error(errorMessage);
-			Activator.getDefault().error(errorMessage, e);
+			Activator.error(errorMessage);
+			Activator.error(errorMessage, e);
 		}
 	}
 
@@ -196,16 +196,16 @@ public class CcslSolver implements
 			URI solverInputURI) {
 		Map<EObject, Collection<Setting>>  unresolvedProxies = EcoreUtil.UnresolvedProxyCrossReferencer.find(resourceSet);
 		if(unresolvedProxies.size() != 0){
-			Activator.getDefault().warn("There are unresolved proxies in "+solverInputURI+ ", the first is "+unresolvedProxies.entrySet().toArray()[0]);
-			Activator.getDefault().warn("Please verify your extendedCCSL file, (it must not contain resolve warning).");
+			Activator.warn("There are unresolved proxies in "+solverInputURI+ ", the first is "+unresolvedProxies.entrySet().toArray()[0]);
+			Activator.warn("Please verify your extendedCCSL file, (it must not contain resolve warning).");
 		}
 	}
 
 	private void traceResources(ResourceSet resourceSet) {
-		Activator.getDefault().info("Input resources:");
+		Activator.getMessagingSystem().info("Input resources:", "");
 		for(Resource r : resourceSet.getResources()) 
 		{
-			Activator.getDefault().info(r.getURI().toString());
+			Activator.getMessagingSystem().info(r.getURI().toString(),"");
 		}
 	}
 

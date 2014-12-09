@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gemoc extension for Sirius
+Bundle-SymbolicName: org.gemoc.gemoc_language_workbench.extensions.sirius
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: org.gemoc.gemoc_language_workbench.extensions.sirius.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.gemoc.gemoc_language_workbench.api,
+ org.eclipse.emf.ecore,
+ fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
+ fr.inria.diverse.commons.eclipse.messagingsystem.ui;bundle-version="1.0.0",
+ fr.inria.aoste.timesquare.ecl.feedback.model,
+ org.eclipse.sirius
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.gemoc.gemoc_language_workbench.extensions.sirius,
+ org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader
