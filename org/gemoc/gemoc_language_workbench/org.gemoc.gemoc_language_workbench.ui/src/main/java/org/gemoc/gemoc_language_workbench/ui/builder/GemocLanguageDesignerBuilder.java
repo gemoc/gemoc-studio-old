@@ -183,6 +183,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			DomainModelProject domainModelProject = (DomainModelProject) eObject;
 			updateDependenciesWithProject(manifestChanger, domainModelProject.getProjectName());
 			updateModelLoaderClass(project, domainModelProject.getModelLoaderClass());
+			if(domainModelProject.getModelLoaderClass() == null){
+				manifestChanger.addPluginDependency(org.gemoc.gemoc_language_workbench.extensions.sirius.Activator.PLUGIN_ID);
+			}
 			languageRootElement = domainModelProject.getDefaultRootEObjectQualifiedName();
 		}
 		if (eObject instanceof DSAProject) {
@@ -198,8 +201,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		if (eObject instanceof DSEProject) {
 			DSEProject dseProject = (DSEProject) eObject;
 			updateDependenciesWithProject(manifestChanger, dseProject.getProjectName());
+			updateDependenciesWithDSEProject(manifestChanger, dseProject);
+			updateQVTO(project, dseProject.getQvtoURI(), dseProject.getProjectName());
 			updateSolverClass(project, dseProject.getSolverClass(), dseProject.getProjectName());
-			updateQVTO(project, dseProject.getQvtoURI(), dseProject.getProjectName());			
 		}
 		if( eObject instanceof MoCCProject){
 			MoCCProject moccProject = (MoCCProject) eObject;
@@ -327,6 +331,16 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			connection.addPluginDependency(org.gemoc.gemoc_language_workbench.extensions.k3.Activator.PLUGIN_ID);
 		}
 	}
+	protected void updateDependenciesWithDSEProject(ManifestChanger connection, DSEProject dsePoject) throws BundleException, IOException, CoreException {
+		String dseProjectName = dsePoject.getProjectName();		
+		if(!dseProjectName.isEmpty()){
+			updateDependenciesWithProject(connection, dsePoject.getProjectName());
+			String solverClassName = dsePoject.getSolverClass();
+			if(solverClassName == null || solverClassName.isEmpty()){
+				connection.addPluginDependency(org.gemoc.gemoc_language_workbench.extensions.timesquare.Activator.PLUGIN_ID);
+			}
+		}
+	}
 	
 	/**
 	 * create or replace existing ModelLoaderClass by an implementation that is
@@ -345,7 +359,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		helper.updateXDSMLDefinitionAttributeInExtensionPoint(
 				gemocExtensionPoint,
 				LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT,
-				modelLoaderClass != null ? modelLoaderClass : "org.gemoc.gemoc_modeling_workbench.core.DefaultModelLoader");
+				modelLoaderClass != null ? modelLoaderClass : "org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader");
 		helper.saveDocument(pluginfile);
 
 
@@ -381,7 +395,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		String computedSolverClassName = "";
 		if(!dseProjectName.isEmpty()){
 			if(solverClassName == null || solverClassName.isEmpty()){
-				computedSolverClassName = "org.gemoc.execution.engine.commons.solvers.ccsl.CcslSolver";
+				computedSolverClassName = "org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl.CcslSolver";
 			}
 			else{
 				computedSolverClassName = solverClassName;
@@ -423,6 +437,18 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			else{
 				computedQVTOLocationURI = qvtoFileLocationUri;
 			}
+			
+			// update plugin.xml
+			IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);
+			PluginXMLHelper.createEmptyTemplateFile(pluginfile, false);
+			PluginXMLHelper helper = new PluginXMLHelper();
+			helper.loadDocument(pluginfile);
+			Element gemocExtensionPoint = helper.getOrCreateExtensionPoint(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT);
+			helper.updateXDSMLDefinitionAttributeInExtensionPoint(
+					gemocExtensionPoint,
+					LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT,
+					computedQVTOLocationURI);
+			helper.saveDocument(pluginfile);
 		}
 		// update plugin.xml
 		IFile pluginfile = project.getFile(PluginXMLHelper.PLUGIN_FILENAME);

@@ -16,7 +16,9 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  org.eclipse.swt;bundle-version="3.103.1",
  org.gemoc.gemoc_modeling_workbench.ui;bundle-version="0.1.0",
  org.gemoc.sample.tfsm.design;bundle-version="0.0.0";visibility:="reexport",
- org.gemoc.sample.tfsm.eclmoc2as;bundle-version=0.0.0;visibility:=reexport
+ org.gemoc.sample.tfsm.eclmoc2as;bundle-version="0.0.0";visibility:="reexport",
+ org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.0.0";visibility:="reexport",
+ org.gemoc.gemoc_language_workbench.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Manifest-Version: 1.0

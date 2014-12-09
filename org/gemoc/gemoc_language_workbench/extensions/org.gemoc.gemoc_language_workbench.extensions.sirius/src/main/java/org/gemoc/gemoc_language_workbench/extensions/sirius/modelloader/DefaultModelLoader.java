@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.core;
+package org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -23,6 +23,7 @@ import org.gemoc.execution.engine.core.DebugURIHandler;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.debug.DebugSessionFactory;
 
 public class DefaultModelLoader implements IModelLoader {
 

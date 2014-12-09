@@ -1,5 +1,5 @@
 
-package tfsm.xdsml.api.impl;
+package org.gemoc.sample.tfsm.xdsml.api.impl;
 
 import java.lang.reflect.Method;
 import java.util.List;
