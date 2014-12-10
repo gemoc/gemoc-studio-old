@@ -51,7 +51,7 @@
          <topic label="Recommanded GEMOC Process" href="ch03.html#sec-GEMOC-process"/>
       </topic>
       <topic label="Definition of the requirements/expectations on the xDSML" href="ch03.html#sec-requirements">
-         <topic label="Application Domain: Automata" href="ch03.html#_application_domain_automata"/>
+         <topic label="Application Domain: Automata" href="ch03.html#automata-domain"/>
          <topic label="Description of automata" href="ch03.html#_description_of_automata"/>
          <topic label="Informal behavior" href="ch03.html#_informal_behavior"/>
          <topic label="Scenarios" href="ch03.html#_scenarios"/>
@@ -69,6 +69,8 @@
             <topic label="Testing DSA" href="ch03.html#_testing_dsa"/>
          </topic>
          <topic label="Model of Concurrency and Communication (MoCC)" href="ch03.html#_model_of_concurrency_and_communication_mocc">
+            <topic label="Reusable part of the MoCC: MoCCML" href="ch03.html#_reusable_part_of_the_mocc_moccml"/>
+            <topic label="Specific part of the MoCC" href="ch03.html#_specific_part_of_the_mocc"/>
             <topic label="Testing the MoCC" href="ch03.html#_testing_the_mocc"/>
          </topic>
          <topic label="Using the Modeling Workbench" href="ch03.html#_using_the_modeling_workbench">
@@ -76,16 +78,16 @@
             <topic label="Testing and debugging the xDSML" href="ch03.html#_testing_and_debugging_the_xdsml"/>
          </topic>
       </topic>
-      <topic label="Increment 2: new MoCC and DSA for Automata (MoCC focused version)" href="ch03.html#_increment_2_new_mocc_and_dsa_for_automata_mocc_focused_version"/>
-      <topic label="Increment 3: Graphical visualization" href="ch03.html#_increment_3_graphical_visualization"/>
-      <topic label="Increment 4: Consider nondeterministic automata." href="ch03.html#_increment_4_consider_nondeterministic_automata"/>
-      <topic label="Increment 5: Pushdown automaton" href="ch03.html#_increment_5_pushdown_automaton"/>
-      <topic label="Increment 6: Call of user actions" href="ch03.html#_increment_6_call_of_user_actions"/>
-      <topic label="Increment: TBD" href="ch03.html#_increment_tbd"/>
+      <topic label="Increment 2: new MoCC and DSA for Automata (MoCC focused version)" href="ch03.html#sec-increment2"/>
+      <topic label="Increment 3: Graphical visualization" href="ch03.html#sec-visualization"/>
+      <topic label="Increment 4: Consider nondeterministic automata." href="ch03.html#sec-nondeterministic"/>
+      <topic label="Increment 5: Pushdown automaton" href="ch03.html#sec-pushdown"/>
+      <topic label="Increment 6: Call of user actions" href="ch03.html#sec-userCode"/>
+      <topic label="Increment: TBD" href="ch03.html#sec-otherIncrements"/>
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e1025"/>
+      <topic label="Articles" href="bi01.html#d5e904"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>

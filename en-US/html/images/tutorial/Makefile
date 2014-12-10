@@ -3,6 +3,7 @@ PDFFILES = \
 	automate-aSbaS.pdf	\
 	automate-mots.pdf	\
 	automate-ccomm.pdf	\
+	automate-abcde.pdf	\
 
 GENERES =	\
 	${PDFFILES:%.pdf=%.png}	\

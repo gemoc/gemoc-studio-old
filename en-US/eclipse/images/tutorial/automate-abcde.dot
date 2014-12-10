@@ -1,0 +1,16 @@
+digraph "a*[bcd]e*" {
+	rankdir="LR"
+	init -> s0
+	s0 -> s0 [label="a"]
+	se -> se [label="e"]
+	s0 -> sb [label=""]
+	s0 -> sc [label=""]
+	s0 -> sd [label=""]
+	sd -> sd2 [label=""]
+	sd2 -> sd [label=""]
+	sb -> se [label="b"]
+	sc -> se [label="c"]
+	sd2 -> se [label="d"]
+	se [peripheries=2]
+	init [shape=point, label=""]
+}

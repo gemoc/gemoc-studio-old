@@ -18,12 +18,41 @@ the GEMOC xDSML</a> and the <a class="link" href="ch03.html#sec-GEMOC-characteri
 characteristics of a GEMOC process</a>.
 Then, we present the <a class="link" href="ch03.html#sec-GEMOC-process" title="3.2.3. Recommanded GEMOC Process">overall process</a> that will be
 illustrated by this tutorial. The next sections illustrate the process
-on a concrete example, the definition of automata.  We describe the
-<a class="link" href="ch03.html#sec-requirements" title="3.3. Definition of the requirements/expectations on the xDSML">application domain</a>, and structure the development
-in <a class="link" href="ch03.html#sec-increment1" title="3.5. Increment 1 : Deterministic Automata">several increments</a> to structure it and
+on a concrete example, the <a class="link" href="ch03.html#automata-domain" title="3.3.1. Application Domain: Automata">definition of automata</a>.
+We describe the <a class="link" href="ch03.html#sec-requirements" title="3.3. Definition of the requirements/expectations on the xDSML">application domain</a>, and then
+we split the development in <a class="link" href="ch03.html#sec-increment1" title="3.5. Increment 1 : Deterministic Automata">several increments</a> to
 illustrate different aspects of the GEMOC studio.</p>
-<p>TODO: Describe the increments?</p>
-<p>TODO: Give the conventions on the tutorial, naming, etc.</p>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<a class="link" href="ch03.html#sec-increment1" title="3.5. Increment 1 : Deterministic Automata">First implementation</a> of the deterministic
+Automata xDSML with a focus on the DSA.
+</li><li class="listitem">
+<a class="link" href="ch03.html#sec-increment2" title="3.6. Increment 2: new MoCC and DSA for Automata (MoCC focused version)">Second implementation</a> with a focus on the MoCC
+(to show that a balance must be found)
+</li><li class="listitem">
+<a class="link" href="ch03.html#sec-visualization" title="3.7. Increment 3: Graphical visualization">Graphical visualization</a>.
+</li><li class="listitem">
+<a class="link" href="ch03.html#sec-nondeterministic" title="3.8. Increment 4: Consider nondeterministic automata.">Nondeterministic automata</a> (evolution of the previous example)
+</li><li class="listitem">
+<a class="link" href="ch03.html#sec-pushdown" title="3.9. Increment 5: Pushdown automaton">Pushdown Automata</a> (demonstrate the feedback mechanism)
+</li><li class="listitem">
+<a class="link" href="ch03.html#sec-userCode" title="3.10. Increment 6: Call of user actions">Integration of user defined code</a> (connect the
+automata to a specific graphical interface).
+</li><li class="listitem">
+<p class="simpara"><a class="link" href="ch03.html#sec-otherIncrements" title="3.11. Increment: TBD">Other increments</a>:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Composite DSE
+</li><li class="listitem">
+Composition operators
+</li><li class="listitem">
+Traces
+</li></ul></div>
+</li></ol></div>
+<p><span class="strong"><strong>Conventions used in this tutorial</strong></span></p>
+<p>Normal text is used to explain the process and  give some rationals
+and the proposed solutions.</p>
+<div class="informalexample">
+<p>This kind of paragraph corresponds to manipulation to be performed of the GEMOC studio, either the Language Workbench or the Modeling Workbench.</p>
+</div>
 </div>
 <div class="section" title="3.2. The GEMOC Approach for defining eXecutable DSML (xDSML)"><div class="titlepage"><div><div><h2 class="title"><a id="sec-GEMOC-approach"/>3.2. The GEMOC Approach for defining eXecutable DSML (xDSML)</h2></div></div></div>
 
@@ -69,9 +98,9 @@ requirements are fulfilled.</p>
 
 <div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-overview.png" alt="Overview of the GEMOC process"/></div>
 </div></div><br class="figure-break"/>
-<p><a id="d5e367" class="indexterm"/>
-<a id="d5e371" class="indexterm"/>
-<a id="d5e374" class="indexterm"/></p>
+<p><a id="d5e400" class="indexterm"/>
+<a id="d5e404" class="indexterm"/>
+<a id="d5e407" class="indexterm"/></p>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>For clarity, the iteration to choose the next increment is not
 represented of the diagram.</p>
@@ -134,8 +163,8 @@ domain (and could be considered as a kind of compound activity).</p>
 
 <div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-general.png" alt="Recommended GEMOC Process"/></div>
 </div></div><br class="figure-break"/>
-<p><a id="d5e407" class="indexterm"/>
-<a id="d5e410" class="indexterm"/></p>
+<p><a id="d5e440" class="indexterm"/>
+<a id="d5e443" class="indexterm"/></p>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
 <p>This process is the recommanded one, and the one used in this
 tutorial.  Nevertheless, it is possible to define an xDSML with other
@@ -174,7 +203,7 @@ xDSML.</p>
 <p>Finally they can be used to define the increments in the development
 of the xDSML by defining the set of models and scenarios each
 increment must handle.</p>
-<div class="section" title="3.3.1. Application Domain: Automata"><div class="titlepage"><div><div><h3 class="title"><a id="_application_domain_automata"/>3.3.1. Application Domain: Automata</h3></div></div></div>
+<div class="section" title="3.3.1. Application Domain: Automata"><div class="titlepage"><div><div><h3 class="title"><a id="automata-domain"/>3.3.1. Application Domain: Automata</h3></div></div></div>
 
 <p>We consider the domain of <span class="strong"><strong>automata</strong></span>.  An automaton may be used to
 specify a language defined on a set of symbols called alphabet.  The
@@ -318,11 +347,12 @@ Let us call our package "automata". We will use the default ns URI and ns
 Prefix. We may then edit the Ecore MetaModel either with the graphical
 editor or with the tree editor.</p>
 </div>
-<p>[[fig/automata/class-diagram]]
-.Automata Metamodel
-image::images/tutorial/automata-as.png[Automata Metamodel]</p>
+<div class="figure"><a id="fig-automata-classDiagram"/><p class="title"><strong>Figure 3.7. Automata Metamodel</strong></p><div class="figure-contents">
+
+<div class="mediaobject"><img src="./images/tutorial/automata-as.png" alt="Automata Abstract Syntax (Metamodel)"/></div>
+</div></div><br class="figure-break"/>
 <p>An Automaton is a composed of States (at least one), Transitions and
-Symbols.  An autamaton has an initial state (reference).  A state can
+Symbols.  An automaton has an initial state (reference).  A state can
 be a final state (attribute).   A Transition must have a source and a
 target, both of type State. A Transition is fired upon occurrence of
 one of its associated Symbol.
@@ -479,13 +509,11 @@ State?  When in the error state, the automate rejects every symbols.</p>
 <div class="informalexample">
 <p>To add 'currentState' and 'accepted' execution data, we define them in
 an Aspect on the Automata class as follow.</p>
-<p><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup>
-@Aspect(className=Automata)
-class AutomataAspect {
-	public State currentState
-	public boolean accepted
-}
-<sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup></p>
+<pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="JAVA"><!-- <br/> --><span class="java_plain">@</span><!-- <br/> --><span class="java_type">Aspect</span><!-- <br/> --><span class="java_separator">(</span><!-- <br/> --><span class="java_plain">className</span><!-- <br/> --><span class="java_operator">=</span><!-- <br/> --><span class="java_type">Automata</span><!-- <br/> --><span class="java_separator">)</span>
+<!--  --><br/><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">AutomataAspect</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">State</span><span class="java_plain">&nbsp;currentState</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">boolean</span><span class="java_plain">&nbsp;accepted</span>
+<!--  --><br/><span class="java_separator">}</span></pre>
 </div>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
 <p>If you plan to use the Graphical animation, then comment the
@@ -535,99 +563,124 @@ precondition fails.
 </dd></dl></div>
 <p>Here is the complete 'automata.xtend' file with the code of all
 execution functions (and execution data).</p>
-<p><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup>
-package automata</p>
-<p>import java.util.logging.Level
-import java.util.logging.Logger</p>
-<p>import static extension automata.AutomataAspect.*
+<p title="automata.xtend">
+<strong>automata.xtend. </strong>
+
+</p><pre class="screen">package automata
+
+import java.util.logging.Level
+import java.util.logging.Logger
+
+import static extension automata.AutomataAspect.*
 import static extension automata.SymbolAspect.*
 import static extension automata.StateAspect.*
 import static extension automata.AutomataAspect.*
-import static extension automata.TransitionAspect.*</p>
-<p>import fr.inria.diverse.k3.al.annotationprocessor.Aspect</p>
-<p>@Aspect(className=Automata)
+import static extension automata.TransitionAspect.*
+
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect
+
+@Aspect(className=Automata)
 class AutomataAspect {
-	static private Logger logger = Logger.getLogger(typeof(Automata).getName())</p>
-<pre class="literallayout">public State currentState
-public boolean accepted</pre>
-<pre class="literallayout">def public void initialize() {
-    _self.currentState = _self.initialState;
-    _self.accepted = false;
-    _self.logger.info("[" + _self.name + "] Initialized, currentState is " + _self.currentState.name + ".")
-}</pre>
-<pre class="literallayout">def public void terminate() {
-    _self.logger.info("[" + _self.name + "]" + "Finished.")
-    // XXX: ne marche pas
-    _self.accepted = _self.currentState != null &amp;&amp; _self.currentState.isFinal
-    val cs = _self.states.filter[ it === _self.currentState ]
-    _self.accepted = cs.size &gt; 0 &amp;&amp; cs.head.isFinal
-    var result = "rejected"    // XXX better way to write it?
-    if (_self.accepted) {
-        result = "accepted"
-    }
-    // throw new RuntimeException("Finished. Word is " + result)
-        // throwing an exception is the only way for the moment to
-        // force the simulation to end.
-}</pre>
-<pre class="literallayout">//@ Helper with arguments
-def void read(Symbol s) {
-    _self.logger.info("[" + _self.name + "]" + "read(" + s.name + ").")
-    if (_self.currentState == null) {
-        _self.logger.finer("** Already in the error state!");
-    } else {
-        val possibleTransitions = _self.currentState.getTransitions(s)
-        val size = possibleTransitions.size
-        // FIXME: I have not been able to write it with a switch :(
-        if (size == 0) {    // No possible transition
-            _self.logger.finer("No transition for symbol " + s.name + " from state " + _self.currentState.name)
-            _self.currentState = null
-            _self.accepted = false    // useful?
-        } else if (size == 1) {    // only one possible transition
-            var singleTransition = possibleTransitions.head
-            _self.logger.finer("Only one possible transition: " + singleTransition.name)
-            singleTransition.fire()
-        } else {    // nondeterministic
-            throw new RuntimeException("Non deterministic automaton: "
-                    + "several transitions accept symbol " + s.name
-                    + " in state " + _self.currentState.name)
-        }
-    }
-}</pre>
-<pre class="literallayout">def String toString() {
-    // XXX To be improved
-    var String str = "States : "
-    str += _self.states.map[ s | (if (s == _self.currentState)  '[' + s.name + ']' else s.name)
-        + (if (s.isFinal) '!' else '')]
-    str
-}</pre>
-<p>}</p>
-<p>@Aspect(className=State)
-class StateAspect {</p>
-<pre class="literallayout">//@ Helper (Query) with arguments
-def package Iterable&lt;Transition&gt; getTransitions(Symbol s){
-    _self.outgoingTransitions.filter[symbols.filter[name == s.name].size &gt; 0]
-}</pre>
-<p>}</p>
-<p>@Aspect(className=Symbol)
+	static private Logger logger = Logger.getLogger(typeof(Automata).getName())
+
+	public State currentState
+	public boolean accepted
+
+	def public void initialize() {
+		_self.currentState = _self.initialState;
+		_self.accepted = false;
+		_self.logger.info("[" + _self.name + "] Initialized, currentState is " + _self.currentState.name + ".")
+	}
+
+	def public void terminate() {
+		_self.logger.info("[" + _self.name + "]" + "Finished.")
+		// XXX: ne marche pas
+		_self.accepted = _self.currentState != null &amp;&amp; _self.currentState.isFinal
+		val cs = _self.states.filter[ it === _self.currentState ]
+		_self.accepted = cs.size &gt; 0 &amp;&amp; cs.head.isFinal
+		var result = "rejected"	// XXX better way to write it?
+		if (_self.accepted) {
+			result = "accepted"
+		}
+		// throw new RuntimeException("Finished. Word is " + result)
+			// throwing an exception is the only way for the moment to
+			// force the simulation to end.
+	}
+
+	//@ Helper with arguments
+	def void read(Symbol s) {
+		_self.logger.info("[" + _self.name + "]" + "read(" + s.name + ").")
+		if (_self.currentState == null) {
+			_self.logger.finer("** Already in the error state!");
+		} else {
+			val possibleTransitions = _self.currentState.getTransitions(s)
+			val size = possibleTransitions.size
+			// FIXME: I have not been able to write it with a switch :(
+			if (size == 0) {	// No possible transition
+				_self.logger.finer("No transition for symbol " + s.name + " from state " + _self.currentState.name)
+				_self.currentState = null
+				_self.accepted = false	// useful?
+			} else if (size == 1) {	// only one possible transition
+				var singleTransition = possibleTransitions.head
+				_self.logger.finer("Only one possible transition: " + singleTransition.name)
+				singleTransition.fire()
+			} else {	// nondeterministic
+				throw new RuntimeException("Non deterministic automaton: "
+						+ "several transitions accept symbol " + s.name
+						+ " in state " + _self.currentState.name)
+			}
+		}
+	}
+
+	def String toString() {
+		// XXX To be improved
+		var String str = "States : "
+		str += _self.states.map[ s | (if (s == _self.currentState)  '[' + s.name + ']' else s.name)
+			+ (if (s.isFinal) '!' else '')]
+		str
+	}
+
+}
+
+
+@Aspect(className=State)
+class StateAspect {
+
+	//@ Helper (Query) with arguments
+	def package Iterable&lt;Transition&gt; getTransitions(Symbol s){
+		_self.outgoingTransitions.filter[symbols.filter[name == s.name].size &gt; 0]
+	}
+
+}
+
+
+@Aspect(className=Symbol)
 class SymbolAspect {
-	static private Logger logger = Logger.getLogger(typeof(Symbol).getName())</p>
-<pre class="literallayout">def public void occur() {
-    _self.logger.info("[" + _self.automata.name + "]" + "Symbol " + _self.name + " occurred.")
-    _self.automata.read(_self)    // call an helper DSA
-}</pre>
-<p>}</p>
-<p>@Aspect(className=Transition)
+	static private Logger logger = Logger.getLogger(typeof(Symbol).getName())
+
+	def public void occur() {
+		_self.logger.info("[" + _self.automata.name + "]" + "Symbol " + _self.name + " occurred.")
+		_self.automata.read(_self)	// call an helper DSA
+	}
+
+}
+
+
+@Aspect(className=Transition)
 class TransitionAspect {
-	static private Logger logger = Logger.getLogger(typeof(Transition).getName())</p>
-<pre class="literallayout">def package void fire() {
-    Contract.require(_self.automata.currentState === _self.source,
-            "[" + _self.automata.name + "]" + "Source state of " + _self.name
-            + " (" + _self.source.name + ") is not the current state (" + _self.automata.currentState.name + ")")
-    _self.logger.info("[" + _self.automata.name + "]" + "Fired Transition " + _self.name + ".")
-    _self.automata.currentState = _self.target
-}</pre>
-<p>}
-<sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup></p>
+	static private Logger logger = Logger.getLogger(typeof(Transition).getName())
+
+	def package void fire() {
+		Contract.require(_self.automata.currentState === _self.source,
+				"[" + _self.automata.name + "]" + "Source state of " + _self.name
+				+ " (" + _self.source.name + ") is not the current state (" + _self.automata.currentState.name + ")")
+		_self.logger.info("[" + _self.automata.name + "]" + "Fired Transition " + _self.name + ".")
+		_self.automata.currentState = _self.target
+	}
+
+}</pre><p title="automata.xtend">
+
+</p>
 </div>
 <div class="section" title="Testing DSA"><div class="titlepage"><div><div><h4 class="title"><a id="_testing_dsa"/>Testing DSA</h4></div></div></div>
 
@@ -636,103 +689,148 @@ class TransitionAspect {
 <p>First, we define a method that feeds an automaton with a word (each
 letter of the word is considered as a symbol).  It is defined in the
 AutomataExecution class.  Here is the xtend code.</p>
-<p><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup>
-package automata</p>
-<p>import static extension automata.AutomataAspect.*
-import static extension automata.SymbolAspect.*</p>
-<p>class AutomataExecution {</p>
-<pre class="literallayout">def static boolean accepted(Automata a, String word) {
-    println("==== What about " + word + "?")
-    a.initialize()
-    for (var i = 0; i &lt; word.length(); i++) {
-        val c = word.charAt(i)
-        val ss = a.symbols.filter[name.equals("" + c)]
-        if (ss.size == 0) {    // unknown symbol for the automaton
-            return false
-        } else {
-            ss.get(0).occur()
-        }
-    }
-    a.terminate()
-    println("==== What about " + word + "? : " + a.accepted)
-    a.accepted
-}</pre>
-<p>}
-<sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup></p>
-<p>Then, we can write a classical JUnit TestCase that assert for some
-words whether they are accepted or rejected by an automaton. Here is
-an example of such a test case.</p>
-<p><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup>
-package automata;</p>
-<p>import org.junit.Test;
-import static org.junit.Assert.<span class="strong"><strong>;
-import static automata.AutomataIO.</strong></span>;
-import org.eclipse.emf.ecore.resource.Resource;</p>
-<p>public class AutomataTest {</p>
-<pre class="literallayout">@Test
-public void testerAStar() {
-    Resource model = loadResource("../org.example.automata.as/model/aS.xmi");    // XXX
-    Automata a = (Automata) model.getContents().get(0);</pre>
-<pre class="literallayout">    assertTrue(AutomataExecution.accepted(a, "a"));
-    assertTrue(AutomataExecution.accepted(a, "aaaaa"));
-    assertTrue(AutomataExecution.accepted(a, ""));
-    assertFalse(AutomataExecution.accepted(a, "aaabaaa"));
-    assertFalse(AutomataExecution.accepted(a, "c"));
-}</pre>
-<p>}
-<sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup></p>
+<pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="JAVA"><!-- <br/> --><span class="java_keyword">package</span><!-- <br/> --><span class="java_plain">&nbsp;automata</span>
+</span>
+<!--  --><br/><span class="java_keyword">import</span><span class="java_plain">&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;extension&nbsp;automata</span><span class="java_separator">.</span><span class="java_type">AutomataAspect</span><span class="java_separator">.</span><span class="java_operator">*</span>
+<!--  --><br/><span class="java_keyword">import</span><span class="java_plain">&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;extension&nbsp;automata</span><span class="java_separator">.</span><span class="java_type">SymbolAspect</span><span class="java_separator">.</span><span class="java_operator">*</span>
+</span>
+<!--  --><br/><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">AutomataExecution</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span>
+</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;</span><span class="java_type">boolean</span><span class="java_plain">&nbsp;accepted</span><span class="java_separator">(</span><span class="java_type">Automata</span><span class="java_plain">&nbsp;a</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_plain">&nbsp;word</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;println</span><span class="java_separator">(</span><span class="java_literal">&quot;====&nbsp;What&nbsp;about&nbsp;&quot;</span><span class="java_plain">&nbsp;</span><span class="java_operator">+</span><span class="java_plain">&nbsp;word&nbsp;</span><span class="java_operator">+</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;?&quot;</span><span class="java_separator">)</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a</span><span class="java_separator">.</span><span class="java_plain">initialize</span><span class="java_separator">()</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">for</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_plain">var&nbsp;i&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">0</span><span class="java_separator">;</span><span class="java_plain">&nbsp;i&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">&nbsp;word</span><span class="java_separator">.</span><span class="java_plain">length</span><span class="java_separator">();</span><span class="java_plain">&nbsp;i</span><span class="java_operator">++</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;c&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;word</span><span class="java_separator">.</span><span class="java_plain">charAt</span><span class="java_separator">(</span><span class="java_plain">i</span><span class="java_separator">)</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;ss&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;a</span><span class="java_separator">.</span><span class="java_plain">symbols</span><span class="java_separator">.</span><span class="java_plain">filter</span><span class="java_separator">[</span><span class="java_plain">name</span><span class="java_separator">.</span><span class="java_plain">equals</span><span class="java_separator">(</span><span class="java_literal">&quot;&quot;</span><span class="java_plain">&nbsp;</span><span class="java_operator">+</span><span class="java_plain">&nbsp;c</span><span class="java_separator">)]</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">if</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_plain">ss</span><span class="java_separator">.</span><span class="java_plain">size&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">0</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain">&nbsp;</span><span class="java_operator">//</span><span class="java_plain">&nbsp;unknown&nbsp;symbol&nbsp;</span><span class="java_keyword">for</span><span class="java_plain">&nbsp;the&nbsp;automaton</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;</span><span class="java_literal">false</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain">&nbsp;</span><span class="java_keyword">else</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ss</span><span class="java_separator">.</span><span class="java_plain">get</span><span class="java_separator">(</span><span class="java_literal">0</span><span class="java_separator">).</span><span class="java_plain">occur</span><span class="java_separator">()</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a</span><span class="java_separator">.</span><span class="java_plain">terminate</span><span class="java_separator">()</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;println</span><span class="java_separator">(</span><span class="java_literal">&quot;====&nbsp;What&nbsp;about&nbsp;&quot;</span><span class="java_plain">&nbsp;</span><span class="java_operator">+</span><span class="java_plain">&nbsp;word&nbsp;</span><span class="java_operator">+</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;?&nbsp;:&nbsp;&quot;</span><span class="java_plain">&nbsp;</span><span class="java_operator">+</span><span class="java_plain">&nbsp;a</span><span class="java_separator">.</span><span class="java_plain">accepted</span><span class="java_separator">)</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a</span><span class="java_separator">.</span><span class="java_plain">accepted</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span>
+</span>
+<!--  --><br/><span class="java_separator">}</span></pre>
+<p>Then, we can write a classical JUnit TestCase that tests an automaton
+on some tests using the 'AutomataExecution.accepted(String word)'
+method.
+Here is an example of such a test case.</p>
+<pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="JAVA"><!-- <br/> --><span class="java_keyword">package</span><!-- <br/> --><span class="java_plain">&nbsp;automata</span><!-- <br/> --><span class="java_separator">;</span>
+</span>
+<!--  --><br/><span class="java_keyword">import</span><span class="java_plain">&nbsp;org</span><span class="java_separator">.</span><span class="java_plain">junit</span><span class="java_separator">.</span><span class="java_type">Test</span><span class="java_separator">;</span>
+<!--  --><br/><span class="java_keyword">import</span><span class="java_plain">&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;org</span><span class="java_separator">.</span><span class="java_plain">junit</span><span class="java_separator">.</span><span class="java_type">Assert</span><span class="java_separator">.</span><span class="java_operator">*</span><span class="java_separator">;</span>
+<!--  --><br/><span class="java_keyword">import</span><span class="java_plain">&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;automata</span><span class="java_separator">.</span><span class="java_type">AutomataIO</span><span class="java_separator">.</span><span class="java_operator">*</span><span class="java_separator">;</span>
+<!--  --><br/><span class="java_keyword">import</span><span class="java_plain">&nbsp;org</span><span class="java_separator">.</span><span class="java_plain">eclipse</span><span class="java_separator">.</span><span class="java_plain">emf</span><span class="java_separator">.</span><span class="java_plain">ecore</span><span class="java_separator">.</span><span class="java_plain">resource</span><span class="java_separator">.</span><span class="java_type">Resource</span><span class="java_separator">;</span>
+</span>
+<!--  --><br/><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">AutomataTest</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span>
+</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;@</span><span class="java_type">Test</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;testerAStar</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">Resource</span><span class="java_plain">&nbsp;model&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;loadResource</span><span class="java_separator">(</span><span class="java_literal">&quot;../org.example.automata.as/model/aS.xmi&quot;</span><span class="java_separator">);</span><span class="java_plain">&nbsp;&nbsp;&nbsp;</span><span class="java_operator">//</span><span class="java_plain">&nbsp;XXX</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">Automata</span><span class="java_plain">&nbsp;a&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">Automata</span><span class="java_separator">)</span><span class="java_plain">&nbsp;model</span><span class="java_separator">.</span><span class="java_plain">getContents</span><span class="java_separator">().</span><span class="java_plain">get</span><span class="java_separator">(</span><span class="java_literal">0</span><span class="java_separator">);</span>
+</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue</span><span class="java_separator">(</span><span class="java_type">AutomataExecution</span><span class="java_separator">.</span><span class="java_plain">accepted</span><span class="java_separator">(</span><span class="java_plain">a</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;a&quot;</span><span class="java_separator">));</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue</span><span class="java_separator">(</span><span class="java_type">AutomataExecution</span><span class="java_separator">.</span><span class="java_plain">accepted</span><span class="java_separator">(</span><span class="java_plain">a</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;aaaaa&quot;</span><span class="java_separator">));</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue</span><span class="java_separator">(</span><span class="java_type">AutomataExecution</span><span class="java_separator">.</span><span class="java_plain">accepted</span><span class="java_separator">(</span><span class="java_plain">a</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;&quot;</span><span class="java_separator">));</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertFalse</span><span class="java_separator">(</span><span class="java_type">AutomataExecution</span><span class="java_separator">.</span><span class="java_plain">accepted</span><span class="java_separator">(</span><span class="java_plain">a</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;aaabaaa&quot;</span><span class="java_separator">));</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertFalse</span><span class="java_separator">(</span><span class="java_type">AutomataExecution</span><span class="java_separator">.</span><span class="java_plain">accepted</span><span class="java_separator">(</span><span class="java_plain">a</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;c&quot;</span><span class="java_separator">));</span>
+<!--  --><br/><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span>
+</span>
+<!--  --><br/><span class="java_separator">}</span></pre>
 </div>
 </div>
 <div class="section" title="3.5.6. Model of Concurrency and Communication (MoCC)"><div class="titlepage"><div><div><h3 class="title"><a id="_model_of_concurrency_and_communication_mocc"/>3.5.6. Model of Concurrency and Communication (MoCC)</h3></div></div></div>
 
-<p>TODO: Give the rational.</p>
-<p>There are two sides to the MoCC. First, you can create a new MoCCML
-project (right click on the xDSML project &gt; GEMOC Language &gt; Create
-MoC Project) and place a library of custom MoCCML relations and
-expressions there. Let us call this project
-"com.example.automata.mocc.lib". For instance, we choose to place in a
-library a relation which allows a MoccEvent to have an occurrence only
-once and before all the "other MoccEvents" (using two arguments: first
-the MoccEvent which must have an occurrence and then the collection of
-all the other MoccEvents).</p>
-<pre class="screen">StateRelationBasedLibrary automataLib{
+<p>At the moment the MoCC is defined using MoCCML, a superset of CCSL.
+It is composed of two parts.  The first one is the reusable one,
+defined in a MoCCML project. It contains the declaration and
+definition of relations on clocks (MoCC events).  At the top level, a
+state machine can be used to specify the relations.  The second one
+explains how to use those relations according to the abstract syntax
+of the DSML.  Is part of the DSE/ECL project.</p>
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
+<p>We will use the term clock as a synonym of MoCC event, that is
+events that are managed by the MoCC.  The purpose is to avoid
+confusion with domain specific events (DSE).</p>
+</div>
+<p>We have already identify DSE and we have defined them in the ECL file
+(DSE project).  Implicitly, these DSE events are mapped to
+corresponding clock at the MoCC level.  So, we have three clocks,
+initialize, occur and terminate.</p>
+<p>We want that the 'initialize' clock clicks only once and before all
+other clocks.  Then we can have any occurrences of the 'occur' clock
+and, eventually, one occurrence of the 'terminate' clock.</p>
+<p>TODO: It could be defined using a state machine : initialize, then
+occur *, then terminate.</p>
+<div class="section" title="Reusable part of the MoCC: MoCCML"><div class="titlepage"><div><div><h4 class="title"><a id="_reusable_part_of_the_mocc_moccml"/>Reusable part of the MoCC: MoCCML</h4></div></div></div>
+
+<p>Here, we want that 'initialize()' DSE occurs only once before any other
+event.  Thus we define a <span class="strong"><strong>relation</strong></span> called 'FirstAndOnlyOnce' whose
+purpose is specify that a first clock will happen only once, before all
+the others clocks. Thus, it takes two arguments, the first clock, the collection
+of other clock.  Its prototype is as follows:</p>
+<pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="MOCCML">RelationDeclaration FirstAndOnlyOnce(first : clock, other : clock)</pre>
+<p>Then, we have to provide the definition <span class="strong"><strong>(RelationDefinition</strong></span>) which
+satisfies the this specification. The mocclib file hereafter provides
+both the declaration and the definition of this relation.</p>
+<p title="automata.mocclib"><a id="automata.mocclib"/>
+<strong>automata.mocclib. </strong>
+
+</p><pre class="screen">StateRelationBasedLibrary automataLib{
 	imports{
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as ccsl;
 	}
 
 	RelationLibrary basicautomataRelations{
-		RelationDeclaration FirstAndOnlyOnce(mocc_firstEvent : clock, mocc_otherEvents : clock)
+		RelationDeclaration FirstAndOnlyOnce(first : clock, other : clock)
 		RelationDefinition FirstAndOnlyOnceImplem[FirstAndOnlyOnce]{
-			Expression firstTickOfFirstEvent = OneTickAndNoMore(OneTickAndNoMoreClock -&gt; mocc_firstEvent)
-			Expression firstTickOfOtherEvents =	OneTickAndNoMore(OneTickAndNoMoreClock -&gt; mocc_otherEvents)
+			Expression firstTickOfFirstEvent = OneTickAndNoMore(OneTickAndNoMoreClock -&gt; first)
+			Expression firstTickOfOtherEvents = OneTickAndNoMore(OneTickAndNoMoreClock -&gt; other)
 			Relation Precedes(
-				LeftClock -&gt; mocc_firstEvent,
+				LeftClock -&gt; first,
 				RightClock -&gt; firstTickOfOtherEvents
 			)
 			Relation Coincides(
-				Clock1 -&gt; mocc_firstEvent,
+				Clock1 -&gt; first,
 				Clock2 -&gt; firstTickOfFirstEvent
 			)
 		}
 	}
-}</pre>
-<p>TODO: state-based relations?</p>
-<p>Afterwards, we need to import this library into the ECL file in order
-to be able to instantiate it using the MoccEvents we have defined as
-mapped to our Domain-Specific Events. In order to do that, we need to
-add at the top of the ECL file:</p>
-<pre class="screen">ECLimport "platform:/resource/com.example.automata.mocc.lib/mocc/automata.moccml"</pre>
-<p>We will also probably need the standard libraries of relations and
-expressions in order to instantiate the MoCC. Therefore, we should
-also add the following imports:</p>
-<pre class="screen">ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
+}</pre><p title="automata.mocclib">
+
+</p>
+<div class="informalexample">
+<p>First, we create a new MoCCML project (right click on the xDSML
+project &gt; GEMOC Language &gt; Create MoC Project) --- this action is not
+yet available from the xDSML view --- and place a library of custom
+MoCCML relations and expressions there. Let us call this project
+"com.example.automata.mocc.lib".  We can now complete the
+<a class="link" href="">automat.mocclib</a> file.</p>
+</div>
+</div>
+<div class="section" title="Specific part of the MoCC"><div class="titlepage"><div><div><h4 class="title"><a id="_specific_part_of_the_mocc"/>Specific part of the MoCC</h4></div></div></div>
+
+<p>Next, we can define the actual constraints on the clock of an Automata
+model.  It is described in the ECL file (SDE project) using AS
+concepts and the relations defined in the MoCCML project as well as
+the standard libraries relations.
+Thus, we start to import the lib and the ecore files (at top of the
+ECL file).</p>
+<pre class="screen">import 'platform:/resource/com.example.automata.as/model/automata.ecore'
+ECLimport "platform:/resource/com.example.automata.mocc.lib/mocc/automata.moccml"
+ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"</pre>
-<p>Now we need to specify how to instantiate the MoCC in the ECL file.
-This is done by using MoCCML relations and expressions on MoccEvents.
-First, we want to make sure that we do the initialization of the
-Automata before anything else. Therefore, we will use the relation
-"FirstAndOnlyOnce" defined in our custom MoCC library.</p>
+<p>The main part of the ECL file specify how to instantiate clocks ('def'
+keyword and 'Expression' construction) and which constraints to put on
+them thanks to the 'Relation' concept.</p>
+<p>First, we want to make sure that we do the initialization
+('initialize' clock) of the Automata before anything else. Therefore,
+we will use the relation "FirstAndOnlyOnce" defined in our custom
+MoCCML library.</p>
 <pre class="screen">context Automata
 	inv InitBeforeAnythingElse:
 		let allOccurEvents : Event = Expression Union(self.symbols.mocc_occur) in
@@ -745,10 +843,19 @@ Automata before anything else. Therefore, we will use the relation
 <pre class="screen">inv ExclusivityOfSymbolsAndTerminate:
 	let allSymbolOccurEvents : Event = Expression Union(self.symbols.mocc_occur) in
 	Relation Exclusion(self.mocc_terminate, allSymbolOccurEvents)</pre>
-<p>As soon as you save the ECL file, a .qvto file should be generated in the folders qvto-gen/language and qvto-gen/modeling. Make sure that your xDSML project references the .qvto file that is available in qvto-gen/modeling.</p>
+<p>As soon as you save the ECL file, a .qvto file should be generated in
+the folders qvto-gen/language and qvto-gen/modeling. Make sure that
+your xDSML project references the .qvto file that is available in
+qvto-gen/modeling.</p>
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Tip</h2>
+<p>If the Ecore file describing the syntax is changed while the ECL
+file is opened, it may be required to close the ECL file and to open
+it again to ensure modifications on the Ecore file are seen by ECL.</p>
+</div>
+</div>
 <div class="section" title="Testing the MoCC"><div class="titlepage"><div><div><h4 class="title"><a id="_testing_the_mocc"/>Testing the MoCC</h4></div></div></div>
 
-
+<p>TODO: To be completed</p>
 </div>
 </div>
 <div class="section" title="3.5.7. Using the Modeling Workbench"><div class="titlepage"><div><div><h3 class="title"><a id="_using_the_modeling_workbench"/>3.5.7. Using the Modeling Workbench</h3></div></div></div>
@@ -799,7 +906,7 @@ In the panel "Common", select "Shared file" and put the project path there: "/co
 </div>
 </div>
 </div>
-<div class="section" title="3.6. Increment 2: new MoCC and DSA for Automata (MoCC focused version)"><div class="titlepage"><div><div><h2 class="title"><a id="_increment_2_new_mocc_and_dsa_for_automata_mocc_focused_version"/>3.6. Increment 2: new MoCC and DSA for Automata (MoCC focused version)</h2></div></div></div>
+<div class="section" title="3.6. Increment 2: new MoCC and DSA for Automata (MoCC focused version)"><div class="titlepage"><div><div><h2 class="title"><a id="sec-increment2"/>3.6. Increment 2: new MoCC and DSA for Automata (MoCC focused version)</h2></div></div></div>
 
 <p>In the previous version the MoCC is only responsible of ensuring that
 DSE events (input symbols and end of word event) arrive one at a time.
@@ -813,18 +920,18 @@ will be scheduled by the MoCC.   We add clock on state to know whether
 a state is current or not a simulation step.  To be defined.</p>
 <p>TODO: to be developed.</p>
 </div>
-<div class="section" title="3.7. Increment 3: Graphical visualization"><div class="titlepage"><div><div><h2 class="title"><a id="_increment_3_graphical_visualization"/>3.7. Increment 3: Graphical visualization</h2></div></div></div>
+<div class="section" title="3.7. Increment 3: Graphical visualization"><div class="titlepage"><div><div><h2 class="title"><a id="sec-visualization"/>3.7. Increment 3: Graphical visualization</h2></div></div></div>
 
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
-On the model
+On the model (current states, the symbols already analyzed?)
 </li><li class="listitem">
-A tabular presentation with start and end time of activities
+A tabular presentation ?
 </li><li class="listitem">
 A specific view as a Gantt
 </li></ul></div>
 <p>TODO: to be developed.</p>
 </div>
-<div class="section" title="3.8. Increment 4: Consider nondeterministic automata."><div class="titlepage"><div><div><h2 class="title"><a id="_increment_4_consider_nondeterministic_automata"/>3.8. Increment 4: Consider nondeterministic automata.</h2></div></div></div>
+<div class="section" title="3.8. Increment 4: Consider nondeterministic automata."><div class="titlepage"><div><div><h2 class="title"><a id="sec-nondeterministic"/>3.8. Increment 4: Consider nondeterministic automata.</h2></div></div></div>
 
 <p>TODO: to be developed.</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
@@ -836,7 +943,7 @@ A transition with no label.
 all states that are accessible by the symbols already accepte by the
 automaton.</p>
 </div>
-<div class="section" title="3.9. Increment 5: Pushdown automaton"><div class="titlepage"><div><div><h2 class="title"><a id="_increment_5_pushdown_automaton"/>3.9. Increment 5: Pushdown automaton</h2></div></div></div>
+<div class="section" title="3.9. Increment 5: Pushdown automaton"><div class="titlepage"><div><div><h2 class="title"><a id="sec-pushdown"/>3.9. Increment 5: Pushdown automaton</h2></div></div></div>
 
 <p>TODO: The purpose of Pushdown Automaton is to illustrate the Feedback
     mechanism.</p>
@@ -849,15 +956,15 @@ tutorial when the proposed approach to handle feedbacks will have been
 integrated to the GEMOC studio.</p>
 </div>
 </div>
-<div class="section" title="3.10. Increment 6: Call of user actions"><div class="titlepage"><div><div><h2 class="title"><a id="_increment_6_call_of_user_actions"/>3.10. Increment 6: Call of user actions</h2></div></div></div>
+<div class="section" title="3.10. Increment 6: Call of user actions"><div class="titlepage"><div><div><h2 class="title"><a id="sec-userCode"/>3.10. Increment 6: Call of user actions</h2></div></div></div>
 
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>Will be added in a future version of this tutorial.</p>
 </div>
 </div>
-<div class="section" title="3.11. Increment: TBD"><div class="titlepage"><div><div><h2 class="title"><a id="_increment_tbd"/>3.11. Increment: TBD</h2></div></div></div>
+<div class="section" title="3.11. Increment: TBD"><div class="titlepage"><div><div><h2 class="title"><a id="sec-otherIncrements"/>3.11. Increment: TBD</h2></div></div></div>
 
-<p>Other increments?</p>
+<p>TODO: Which other increments?</p>
 </div>
 <div class="section" title="3.12. TODO"><div class="titlepage"><div><div><h2 class="title"><a id="_todo"/>3.12. TODO</h2></div></div></div>
 
@@ -931,6 +1038,36 @@ updated and the code generated again.
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Could the moc2as.properties file in DSE/ECL project be automatically
 initialized (from the Root container model element)?
+</li></ul></div>
+<p>MoCCML:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+How to represent a collection of clocks in a RelationDeclaration rule?
+</li></ul></div>
+<p>Tutorial focus:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Illustration of the process
+</li><li class="listitem">
+Demonstrative in term of GEMOC studio basic operations
+</li></ul></div>
+<p>Tutorial maintenance:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Which version of GEMOC Studio to use?
+</li><li class="listitem">
+What frequency for updating the tutorial?
+</li><li class="listitem">
+How contribute to the tutorial after the first version?
+</li><li class="listitem">
+Keep a single file or split the tutorial in several mini-tutorial?
+</li><li class="listitem">
+Record a video? Once the tutorial has been validated !
+</li></ul></div>
+<p>Choices in the way of writing DSA/EF</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Use logging?
+</li><li class="listitem">
+Add a Contract class for preconditions?
+</li><li class="listitem">
+…​
 </li></ul></div>
 </div>
 </div><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong>Chapter 2. Gemoc Modeling workbench</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="bi01.html"><strong>Next</strong>Bibliography</a></li></ul></body></html>
