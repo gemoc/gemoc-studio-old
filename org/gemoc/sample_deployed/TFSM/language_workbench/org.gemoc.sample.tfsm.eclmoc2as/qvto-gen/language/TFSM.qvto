@@ -101,82 +101,56 @@ main() {
 
 		
 
-		inM.rootObjects().allSubobjects()->including(self)[ FSMClock ]->map ticks2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ FSMClock ]->map ticks2Clock();
 		
 
 
 		
 
-		inM.rootObjects().allSubobjects()->including(self)[ Transition ]->map fire2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fire2Clock();
 		
 
 
 		
 
-		inM.rootObjects().allSubobjects()->including(self)[ EvaluateGuard ]->map evaluate2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ EvaluateGuard ]->map evaluate2Clock();
 		
 
 
 		
 
-		inM.rootObjects().allSubobjects()->including(self)[ FSMEvent ]->map occurs2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ FSMEvent ]->map occurs2Clock();
 		
 
 
 		
 
-		inM.rootObjects().allSubobjects()->including(self)[ State ]->map entering2Clock();
-		inM.rootObjects().allSubobjects()->including(self)[ State ]->map leaving2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ State ]->map entering2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ State ]->map leaving2Clock();
 		
 
 
 		
 
-		inM.rootObjects().allSubobjects()->including(self)[ EvaluateGuard ]->map evaluatedTrue2Clock();
-		inM.rootObjects().allSubobjects()->including(self)[ EvaluateGuard ]->map evaluatedFalse2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ EvaluateGuard ]->map evaluatedTrue2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ EvaluateGuard ]->map evaluatedFalse2Clock();
 		
 
 
 		
 
-		inM.rootObjects().allSubobjects()->including(self)[ TFSM ]->map start2Clock();
-		inM.rootObjects().allSubobjects()->including(self)[ TFSM ]->map stall2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map start2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map stall2Clock();
 		
 
 
-		
-
-		
-
-
-		
-		inM.rootObjects().allSubobjects()->including(self)[ FSMEvent ]->map occursWhenSolicitate212occursWhenSolicitate();
-		
 		
 
 		
 
 
 		
-		inM.rootObjects().allSubobjects()->including(self)[ Transition ]->map fireWhenRestrueOccursTransition502fireWhenRestrueOccursTransition();
-		
-		
-		inM.rootObjects().allSubobjects()->including(self)[ Transition ]->map fireWhenRestrueOccursVariousTransition512fireWhenRestrueOccursVariousTransition();
-		
-		
-		inM.rootObjects().allSubobjects()->including(self)[ Transition ]->map fireWhenEventOccursOneTransition522fireWhenEventOccursOneTransition();
-		
-		
-		inM.rootObjects().allSubobjects()->including(self)[ Transition ]->map fireWhenEventOccursVariousTransition512fireWhenEventOccursVariousTransition();
-		
-		
-		inM.rootObjects().allSubobjects()->including(self)[ Transition ]->map fireWhenTemporalGuardHoldsVariousTransition632fireWhenTemporalGuardHoldsVariousTransition();
-		
-		
-		inM.rootObjects().allSubobjects()->including(self)[ Transition ]->map fireWhenTemporalGuardHoldsOneTransition652fireWhenTemporalGuardHoldsOneTransition();
-		
-		
-		inM.rootObjects().allSubobjects()->including(self)[ Transition ]->map EvaluateGuardWhenEnteringState122EvaluateGuardWhenEnteringState();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ FSMEvent ]->map occursWhenSolicitate212occursWhenSolicitate();
 		
 		
 
@@ -184,13 +158,25 @@ main() {
 
 
 		
-		inM.rootObjects().allSubobjects()->including(self)[ State ]->map enterOnceBeforeToLeave12enterOnceBeforeToLeave();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenRestrueOccursTransition502fireWhenRestrueOccursTransition();
 		
 		
-		inM.rootObjects().allSubobjects()->including(self)[ State ]->map firingATransitionAlternatesWithLeavingState102firingATransitionAlternatesWithLeavingState();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenRestrueOccursVariousTransition512fireWhenRestrueOccursVariousTransition();
 		
 		
-		inM.rootObjects().allSubobjects()->including(self)[ State ]->map stateEntering232stateEntering();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenEventOccursOneTransition522fireWhenEventOccursOneTransition();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenEventOccursVariousTransition512fireWhenEventOccursVariousTransition();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenTemporalGuardHoldsVariousTransition632fireWhenTemporalGuardHoldsVariousTransition();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenTemporalGuardHoldsOneTransition652fireWhenTemporalGuardHoldsOneTransition();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map EvaluateGuardWhenEnteringState122EvaluateGuardWhenEnteringState();
 		
 		
 
@@ -198,7 +184,13 @@ main() {
 
 
 		
-		inM.rootObjects().allSubobjects()->including(self)[ EvaluateGuard ]->map fireEvaluationAndResult12fireEvaluationAndResult();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ State ]->map enterOnceBeforeToLeave12enterOnceBeforeToLeave();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ State ]->map firingATransitionAlternatesWithLeavingState102firingATransitionAlternatesWithLeavingState();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ State ]->map stateEntering232stateEntering();
 		
 		
 
@@ -206,16 +198,24 @@ main() {
 
 
 		
-		inM.rootObjects().allSubobjects()->including(self)[ TFSM ]->map oneStateAtATime12oneStateAtATime();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ EvaluateGuard ]->map fireEvaluationAndResult12fireEvaluationAndResult();
 		
 		
-		inM.rootObjects().allSubobjects()->including(self)[ TFSM ]->map oneTransitionAtATime12oneTransitionAtATime();
+
+		
+
+
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map oneStateAtATime12oneStateAtATime();
 		
 		
-		inM.rootObjects().allSubobjects()->including(self)[ TFSM ]->map firstIsInitialState12firstIsInitialState();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map oneTransitionAtATime12oneTransitionAtATime();
 		
 		
-		inM.rootObjects().allSubobjects()->including(self)[ TFSM ]->map firstOnlyOnce82firstOnlyOnce();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map firstIsInitialState12firstIsInitialState();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map firstOnlyOnce82firstOnlyOnce();
 		
 	}
 
