@@ -24,7 +24,6 @@ import static extension org.gemoc.sample.tfsm.k3dsa.aspect.FSMClockAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TimedSystemAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect.*
 import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
-import fr.inria.diverse.k3.al.annotationprocessor.TransactionSupport
 
 @Aspect(className=typeof(TFSM))
 class TFSMAspect extends NamedElementAspect {
@@ -57,7 +56,7 @@ class StateAspect extends NamedElementAspect {
 	}
 }
 
-@Aspect(className=typeof(Transition), transactionSupport=TransactionSupport.EMF)
+@Aspect(className=typeof(Transition))
 class TransitionAspect extends NamedElementAspect {
 	def public String fire() {
 		GroovyRunner.executeScript(_self.action, _self);
