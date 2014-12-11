@@ -15,10 +15,10 @@
         "http://download.eclipse.org/ecoretools/updates/releases/2.0.1/luna/"
         ],
     "sirius": [
-        "http://download.eclipse.org/sirius/updates/releases/1.0.0/luna/"
+        "http://download.eclipse.org/sirius/updates/releases/2.0.0/luna"
         ],    
     "umldesigner": [
-        "http://www.obeo.fr/download/release/uml/4.0.1/repository"
+        "http://marketplace.obeonetwork.com/updates/nightly/uml/repository"
         ],
     "xtext": [
          "http://download.eclipse.org/modeling/emft/mwe/updates/releases/", 
