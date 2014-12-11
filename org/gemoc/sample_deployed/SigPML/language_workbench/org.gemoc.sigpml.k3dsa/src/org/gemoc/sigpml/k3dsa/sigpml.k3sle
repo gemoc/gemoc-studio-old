@@ -8,11 +8,11 @@ metamodel SigPML {
 metamodel SigPMLExtended inherits SigPML {
 	resource EMF uri "http://org.gemoc.sigpml.model/1.0/extended"
 	exactType SigPMLExtended_MT
-	aspect org.gemoc.sigpml.k3dsa.AgentAspect 
-	aspect org.gemoc.sigpml.k3dsa.PlaceAspect
-	aspect org.gemoc.sigpml.k3dsa.HWComputationalResourceAspect
-	aspect org.gemoc.sigpml.k3dsa.NamedElementAspect
-	aspect org.gemoc.sigpml.k3dsa.InputPortAspect
-	aspect org.gemoc.sigpml.k3dsa.OutputPortAspect
-	aspect org.gemoc.sigpml.k3dsa.SystemAspect
+	with org.gemoc.sigpml.k3dsa.AgentAspect 
+	with org.gemoc.sigpml.k3dsa.PlaceAspect
+	with org.gemoc.sigpml.k3dsa.HWComputationalResourceAspect
+	with org.gemoc.sigpml.k3dsa.NamedElementAspect
+	with org.gemoc.sigpml.k3dsa.InputPortAspect
+	with org.gemoc.sigpml.k3dsa.OutputPortAspect
+	with org.gemoc.sigpml.k3dsa.SystemAspect
 }
