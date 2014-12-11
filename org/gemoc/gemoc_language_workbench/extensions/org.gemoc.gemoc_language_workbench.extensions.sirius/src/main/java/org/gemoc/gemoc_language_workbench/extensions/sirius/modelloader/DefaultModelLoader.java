@@ -15,7 +15,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
+import org.eclipse.sirius.diagram.tools.internal.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
