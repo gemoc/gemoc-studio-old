@@ -22,7 +22,7 @@
       <import feature="org.eclipse.xtext.sdk" version="2.5.4" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtend.sdk" version="2.5.4" match="greaterOrEqual"/>
       <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.ecoretools.design" version="3.0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecoretools.sdk" version="3.0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_language_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gemoc_modeling_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>
@@ -42,7 +42,6 @@
       <import feature="fr.inria.aoste.timesquare.nobackend.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.aoste.timesquare.backend.obeoviewpointanimator.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.aoste.timesquare.ecl.feature" version="1.0.0.201403211604" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.ecoretools" version="3.0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.doc.feature" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
