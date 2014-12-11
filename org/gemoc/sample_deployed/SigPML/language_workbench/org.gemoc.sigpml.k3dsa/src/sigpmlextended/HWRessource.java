@@ -10,7 +10,7 @@ package sigpmlextended;
  *
  *
  * @see sigpmlextended.SigpmlextendedPackage#getHWRessource()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface HWRessource extends org.gemoc.sigpml.HWRessource {

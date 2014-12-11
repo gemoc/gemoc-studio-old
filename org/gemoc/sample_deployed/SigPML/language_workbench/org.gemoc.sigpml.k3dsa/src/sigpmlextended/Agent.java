@@ -27,58 +27,32 @@ import javax.swing.JFrame;
  * @model
  * @generated
  */
-public interface Agent extends org.gemoc.sigpml.Agent {
+public interface Agent extends org.gemoc.sigpml.Agent, NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Current Exec Cycle</b></em>' attribute.
+	 * Returns the value of the '<em><b>Plotter</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Current Exec Cycle</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Plotter</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Current Exec Cycle</em>' attribute.
-	 * @see #setCurrentExecCycle(int)
-	 * @see sigpmlextended.SigpmlextendedPackage#getAgent_CurrentExecCycle()
-	 * @model
+	 * @return the value of the '<em>Plotter</em>' attribute.
+	 * @see #setPlotter(SwingPlotter)
+	 * @see sigpmlextended.SigpmlextendedPackage#getAgent_Plotter()
+	 * @model dataType="sigpmlextended.SwingPlotter"
 	 * @generated
 	 */
-	int getCurrentExecCycle();
+	SwingPlotter getPlotter();
 
 	/**
-	 * Sets the value of the '{@link sigpmlextended.Agent#getCurrentExecCycle <em>Current Exec Cycle</em>}' attribute.
+	 * Sets the value of the '{@link sigpmlextended.Agent#getPlotter <em>Plotter</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Current Exec Cycle</em>' attribute.
-	 * @see #getCurrentExecCycle()
+	 * @param value the new value of the '<em>Plotter</em>' attribute.
+	 * @see #getPlotter()
 	 * @generated
 	 */
-	void setCurrentExecCycle(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Figure</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Figure</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Figure</em>' attribute.
-	 * @see #setFigure(Figure)
-	 * @see sigpmlextended.SigpmlextendedPackage#getAgent_Figure()
-	 * @model dataType="sigpmlextended.Figure"
-	 * @generated
-	 */
-	Figure getFigure();
-
-	/**
-	 * Sets the value of the '{@link sigpmlextended.Agent#getFigure <em>Figure</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Figure</em>' attribute.
-	 * @see #getFigure()
-	 * @generated
-	 */
-	void setFigure(Figure value);
+	void setPlotter(SwingPlotter value);
 
 	/**
 	 * Returns the value of the '<em><b>Frame</b></em>' attribute.
@@ -107,38 +81,56 @@ public interface Agent extends org.gemoc.sigpml.Agent {
 	void setFrame(JFrame value);
 
 	/**
-	 * Returns the value of the '<em><b>Plotter</b></em>' attribute.
+	 * Returns the value of the '<em><b>Figure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Plotter</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Figure</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Plotter</em>' attribute.
-	 * @see #setPlotter(SwingPlotter)
-	 * @see sigpmlextended.SigpmlextendedPackage#getAgent_Plotter()
-	 * @model dataType="sigpmlextended.SwingPlotter"
+	 * @return the value of the '<em>Figure</em>' attribute.
+	 * @see #setFigure(Figure)
+	 * @see sigpmlextended.SigpmlextendedPackage#getAgent_Figure()
+	 * @model dataType="sigpmlextended.Figure"
 	 * @generated
 	 */
-	SwingPlotter getPlotter();
+	Figure getFigure();
 
 	/**
-	 * Sets the value of the '{@link sigpmlextended.Agent#getPlotter <em>Plotter</em>}' attribute.
+	 * Sets the value of the '{@link sigpmlextended.Agent#getFigure <em>Figure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Plotter</em>' attribute.
-	 * @see #getPlotter()
+	 * @param value the new value of the '<em>Figure</em>' attribute.
+	 * @see #getFigure()
 	 * @generated
 	 */
-	void setPlotter(SwingPlotter value);
+	void setFigure(Figure value);
 
 	/**
+	 * Returns the value of the '<em><b>Current Exec Cycle</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Current Exec Cycle</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Current Exec Cycle</em>' attribute.
+	 * @see #setCurrentExecCycle(int)
+	 * @see sigpmlextended.SigpmlextendedPackage#getAgent_CurrentExecCycle()
 	 * @model
 	 * @generated
 	 */
-	void execute();
+	int getCurrentExecCycle();
+
+	/**
+	 * Sets the value of the '{@link sigpmlextended.Agent#getCurrentExecCycle <em>Current Exec Cycle</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Current Exec Cycle</em>' attribute.
+	 * @see #getCurrentExecCycle()
+	 * @generated
+	 */
+	void setCurrentExecCycle(int value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,5 +139,13 @@ public interface Agent extends org.gemoc.sigpml.Agent {
 	 * @generated
 	 */
 	void isExecuting();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void execute();
 
 } // Agent

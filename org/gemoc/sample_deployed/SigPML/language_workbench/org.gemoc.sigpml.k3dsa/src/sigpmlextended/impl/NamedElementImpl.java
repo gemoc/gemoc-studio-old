@@ -18,7 +18,7 @@ import sigpmlextended.SigpmlextendedPackage;
  *
  * @generated
  */
-public class NamedElementImpl extends org.gemoc.sigpml.impl.NamedElementImpl implements NamedElement {
+public abstract class NamedElementImpl extends org.gemoc.sigpml.impl.NamedElementImpl implements NamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -26,13 +26,10 @@ import sigpmlextended.Application;
 import sigpmlextended.HWCommunicationResource;
 import sigpmlextended.HWComputationalResource;
 import sigpmlextended.HWPlatform;
-import sigpmlextended.HWRessource;
 import sigpmlextended.HWStorageResource;
 import sigpmlextended.InputPort;
-import sigpmlextended.NamedElement;
 import sigpmlextended.OutputPort;
 import sigpmlextended.Place;
-import sigpmlextended.Port;
 import sigpmlextended.SigpmlextendedFactory;
 import sigpmlextended.SigpmlextendedPackage;
 
@@ -82,12 +79,9 @@ public class SigpmlextendedFactoryImpl extends EFactoryImpl implements Sigpmlext
 		switch (eClass.getClassifierID()) {
 			case SigpmlextendedPackage.APPLICATION: return createApplication();
 			case SigpmlextendedPackage.AGENT: return createAgent();
-			case SigpmlextendedPackage.PORT: return createPort();
 			case SigpmlextendedPackage.INPUT_PORT: return createInputPort();
 			case SigpmlextendedPackage.OUTPUT_PORT: return createOutputPort();
 			case SigpmlextendedPackage.PLACE: return createPlace();
-			case SigpmlextendedPackage.NAMED_ELEMENT: return createNamedElement();
-			case SigpmlextendedPackage.HW_RESSOURCE: return createHWRessource();
 			case SigpmlextendedPackage.HW_COMPUTATIONAL_RESOURCE: return createHWComputationalResource();
 			case SigpmlextendedPackage.HW_STORAGE_RESOURCE: return createHWStorageResource();
 			case SigpmlextendedPackage.HW_COMMUNICATION_RESOURCE: return createHWCommunicationResource();
@@ -169,16 +163,6 @@ public class SigpmlextendedFactoryImpl extends EFactoryImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Port createPort() {
-		PortImpl port = new PortImpl();
-		return port;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public InputPort createInputPort() {
 		InputPortImpl inputPort = new InputPortImpl();
 		return inputPort;
@@ -202,26 +186,6 @@ public class SigpmlextendedFactoryImpl extends EFactoryImpl implements Sigpmlext
 	public Place createPlace() {
 		PlaceImpl place = new PlaceImpl();
 		return place;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NamedElement createNamedElement() {
-		NamedElementImpl namedElement = new NamedElementImpl();
-		return namedElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HWRessource createHWRessource() {
-		HWRessourceImpl hwRessource = new HWRessourceImpl();
-		return hwRessource;
 	}
 
 	/**
@@ -279,8 +243,8 @@ public class SigpmlextendedFactoryImpl extends EFactoryImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Figure createFigureFromString(EDataType eDataType, String initialValue) {
-		return (Figure)super.createFromString(eDataType, initialValue);
+	public SwingPlotter createSwingPlotterFromString(EDataType eDataType, String initialValue) {
+		return (SwingPlotter)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -288,7 +252,7 @@ public class SigpmlextendedFactoryImpl extends EFactoryImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertFigureToString(EDataType eDataType, Object instanceValue) {
+	public String convertSwingPlotterToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -315,8 +279,8 @@ public class SigpmlextendedFactoryImpl extends EFactoryImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SwingPlotter createSwingPlotterFromString(EDataType eDataType, String initialValue) {
-		return (SwingPlotter)super.createFromString(eDataType, initialValue);
+	public Figure createFigureFromString(EDataType eDataType, String initialValue) {
+		return (Figure)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -324,7 +288,7 @@ public class SigpmlextendedFactoryImpl extends EFactoryImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertSwingPlotterToString(EDataType eDataType, Object instanceValue) {
+	public String convertFigureToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

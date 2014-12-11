@@ -90,6 +90,7 @@ public class SigpmlextendedSwitch<T> extends Switch<T> {
 				Agent agent = (Agent)theEObject;
 				T result = caseAgent(agent);
 				if (result == null) result = caseSigpml_Agent(agent);
+				if (result == null) result = caseNamedElement(agent);
 				if (result == null) result = caseSigpml_NamedElement(agent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -106,6 +107,7 @@ public class SigpmlextendedSwitch<T> extends Switch<T> {
 				InputPort inputPort = (InputPort)theEObject;
 				T result = caseInputPort(inputPort);
 				if (result == null) result = caseSigpml_InputPort(inputPort);
+				if (result == null) result = caseNamedElement(inputPort);
 				if (result == null) result = caseSigpml_Port(inputPort);
 				if (result == null) result = caseSigpml_NamedElement(inputPort);
 				if (result == null) result = defaultCase(theEObject);
@@ -115,6 +117,7 @@ public class SigpmlextendedSwitch<T> extends Switch<T> {
 				OutputPort outputPort = (OutputPort)theEObject;
 				T result = caseOutputPort(outputPort);
 				if (result == null) result = caseSigpml_OutputPort(outputPort);
+				if (result == null) result = caseNamedElement(outputPort);
 				if (result == null) result = caseSigpml_Port(outputPort);
 				if (result == null) result = caseSigpml_NamedElement(outputPort);
 				if (result == null) result = defaultCase(theEObject);
@@ -124,6 +127,7 @@ public class SigpmlextendedSwitch<T> extends Switch<T> {
 				Place place = (Place)theEObject;
 				T result = casePlace(place);
 				if (result == null) result = caseSigpml_Place(place);
+				if (result == null) result = caseNamedElement(place);
 				if (result == null) result = caseSigpml_NamedElement(place);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

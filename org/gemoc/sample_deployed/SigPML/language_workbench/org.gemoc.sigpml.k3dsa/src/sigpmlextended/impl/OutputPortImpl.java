@@ -2,6 +2,8 @@
  */
 package sigpmlextended.impl;
 
+import com.google.common.collect.LinkedListMultimap;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -91,6 +93,17 @@ public class OutputPortImpl extends org.gemoc.sigpml.impl.OutputPortImpl impleme
 	 * @generated
 	 */
 	public void write() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LinkedListMultimap sharedMemory() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
