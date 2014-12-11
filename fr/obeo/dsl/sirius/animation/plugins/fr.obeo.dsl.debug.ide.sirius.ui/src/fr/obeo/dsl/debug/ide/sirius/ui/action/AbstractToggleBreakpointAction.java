@@ -28,7 +28,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.sirius.tools.api.ui.IExternalJavaAction2;
+import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -36,7 +36,7 @@ import org.eclipse.ui.PlatformUI;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public abstract class AbstractToggleBreakpointAction implements IExternalJavaAction2 {
+public abstract class AbstractToggleBreakpointAction implements IExternalJavaAction {
 
 	/**
 	 * Toggle breakpoint utility.

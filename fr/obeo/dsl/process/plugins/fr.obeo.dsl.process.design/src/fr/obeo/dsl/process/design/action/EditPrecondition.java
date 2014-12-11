@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.tools.api.ui.IExternalJavaAction2;
+import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -33,7 +33,7 @@ import org.eclipse.ui.PlatformUI;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class EditPrecondition implements IExternalJavaAction2 {
+public class EditPrecondition implements IExternalJavaAction {
 
 	/**
 	 * {@inheritDoc}

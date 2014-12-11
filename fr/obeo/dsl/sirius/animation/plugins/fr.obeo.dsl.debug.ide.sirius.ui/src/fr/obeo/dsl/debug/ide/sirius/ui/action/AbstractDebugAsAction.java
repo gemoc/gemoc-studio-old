@@ -32,7 +32,7 @@ import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchDelegate;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.tools.api.ui.IExternalJavaAction2;
+import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -40,7 +40,7 @@ import org.eclipse.ui.PlatformUI;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public abstract class AbstractDebugAsAction implements IExternalJavaAction2 {
+public abstract class AbstractDebugAsAction implements IExternalJavaAction {
 
 	/**
 	 * {@inheritDoc}
