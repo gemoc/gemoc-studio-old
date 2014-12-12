@@ -1,45 +1,21 @@
 package org.gemoc.gemoc_language_workbench.ui.dialogs;
 
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
+import java.util.Arrays;
+
 import org.eclipse.swt.widgets.Shell;
-import org.gemoc.commons.eclipse.core.resources.FileFinderVisitor;
-import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIProjectDialog;
-import org.gemoc.gemoc_language_workbench.utils.Activator;
 
 /**
  * Dialog that allow to select an IProject that can be used as an EMF project
- * @author dvojtise
+ * @Ie. is a Plugin project containing at least one genmodel or ecore file
  *
  */
-public class SelectEMFIProjectDialog extends SelectAnyIProjectDialog {
+public class SelectEMFIProjectDialog extends SelectPluginIProjectWithFileExtensionDialog {
 
 	public SelectEMFIProjectDialog(Shell parentShell) {
-		super(parentShell);
+		super(parentShell, Arrays.asList("ecore", "genmodel"));
 	}
 
-	@Override
-	protected boolean select(IResource resource) {
-		boolean result = super.select(resource);
-		// must contain an ecore file
-		if(resource instanceof IProject)
-		{
-			IProject project = (IProject)resource;
-			if (project.isOpen())
-			{
-				FileFinderVisitor ecoreProjectVisitor = new FileFinderVisitor("ecore");
-				try {
-					resource.accept(ecoreProjectVisitor);
-					result = result && ecoreProjectVisitor.getFiles().size() > 0;
-				} catch (CoreException e) {
-					Activator.error(e.getMessage(), e);
-				}
-			}
-		}
-		// TODO project must have java nature 
-		return result;
-	}
+	
 
 }
