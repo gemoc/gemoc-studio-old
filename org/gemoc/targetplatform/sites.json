@@ -15,7 +15,7 @@
         "http://download.eclipse.org/ecoretools/updates/nightly/3.0.x/luna"
         ],
     "sirius": [
-        "http://download.eclipse.org/sirius/updates/releases/2.0.0/luna"
+        "http://download.eclipse.org/sirius/updates/nightly/2.0.x/luna"
         ],    
     "umldesigner": [
         "http://marketplace.obeonetwork.com/updates/nightly/uml/repository"
