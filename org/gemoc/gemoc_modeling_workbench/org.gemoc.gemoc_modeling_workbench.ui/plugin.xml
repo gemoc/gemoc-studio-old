@@ -136,7 +136,7 @@
           class="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject"
           icon="icons/IconeGemocModel-16.png"
           id="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject"
-          name="New Executable Modeling Project"
+          name="New GEMOC Modeling Project"
           project="true">
     </wizard>
  </extension>

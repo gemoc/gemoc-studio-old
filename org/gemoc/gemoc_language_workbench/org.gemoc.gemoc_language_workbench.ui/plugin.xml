@@ -161,7 +161,7 @@
             icon="icons/IconeGemocLanguage-16.png"
             finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
-            name="New xDSML Project"
+            name="New GEMOC Language Project"
             project="true">
       </wizard>
       <wizard
