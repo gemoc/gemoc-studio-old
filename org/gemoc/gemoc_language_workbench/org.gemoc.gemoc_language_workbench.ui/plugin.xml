@@ -153,7 +153,7 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="org.gemoc.gemoc_language_workbench.ui"
-            name="GEMOC Project">
+            name="GEMOC">
       </category>
       <wizard
             category="org.gemoc.gemoc_language_workbench.ui"
@@ -165,7 +165,7 @@
             project="true">
       </wizard>
       <wizard
-            category="org.gemoc.gemoc_language_workbench.ui"
+            category="org.gemoc.gemoc_language_workbench.ui.category.ecl"
             class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewDSEProject"
             finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             icon="icons/IconeGemocLanguage-16.png"
@@ -174,14 +174,22 @@
             project="true">
       </wizard>
       <wizard
-            category="org.gemoc.gemoc_language_workbench.ui"
+            category="org.gemoc.gemoc_language_workbench.ui.category.moccml"
             class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewMoCProject"
             finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewMoCProject"
-            name="New MoCC Project"
+            name="New MoCCML Project"
             project="true">
       </wizard>
+      <category
+            id="org.gemoc.gemoc_language_workbench.ui.category.ecl"
+            name="ECL">
+      </category>
+      <category
+            id="org.gemoc.gemoc_language_workbench.ui.category.moccml"
+            name="MoCCML">
+      </category>
    </extension>
 
 
@@ -231,7 +239,7 @@
          point="org.eclipse.ui.commands">
       <category
             id="org.gemoc.gemoc_language_workbench.ui.dse.category"
-            name="DSE commands">
+            name="ECL">
       </category>
       <command
             categoryId="org.gemoc.gemoc_language_workbench.ui.dse.category"
