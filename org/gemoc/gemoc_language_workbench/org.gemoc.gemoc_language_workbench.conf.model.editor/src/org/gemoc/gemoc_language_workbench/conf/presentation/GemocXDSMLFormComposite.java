@@ -45,13 +45,13 @@ import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
-import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
-import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 import org.gemoc.gemoc_language_workbench.ui.commands.ENamedElementQualifiedNameLabelProvider;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyConcreteEClassDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAnyEObjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectDSAIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectDSEIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectMoCCIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectODesignIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectPluginIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectXtextIProjectDialog;
@@ -1022,7 +1022,7 @@ public class GemocXDSMLFormComposite extends AbstractGemocFormComposite {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(
+					SelectPluginIProjectDialog dialog = new SelectMoCCIProjectDialog(
 							PlatformUI.getWorkbench()
 									.getActiveWorkbenchWindow().getShell());
 					int res = dialog.open();
@@ -1039,7 +1039,7 @@ public class GemocXDSMLFormComposite extends AbstractGemocFormComposite {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					SelectPluginIProjectDialog dialog = new SelectPluginIProjectDialog(
+					SelectPluginIProjectDialog dialog = new SelectDSEIProjectDialog(
 							PlatformUI.getWorkbench()
 									.getActiveWorkbenchWindow().getShell());
 					int res = dialog.open();
