@@ -269,7 +269,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		{
 			try 
 			{
-				_currentEngine.capability(ModelExecutionTracingHook.class).backToPast(choice);
+				_currentEngine.getCapability(ModelExecutionTracingHook.class).backToPast(choice);
 			} catch (ModelExecutionTracingException e) 
 			{
 				e.printStackTrace();

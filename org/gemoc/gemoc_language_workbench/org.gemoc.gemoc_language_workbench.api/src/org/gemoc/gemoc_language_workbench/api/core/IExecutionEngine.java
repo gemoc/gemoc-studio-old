@@ -43,13 +43,6 @@ public interface IExecutionEngine extends IDisposable {
 	 * @return The capability of the given type if it exists.
 	 */
 	public <T extends IEngineAddon> T getCapability(Class<T> type);
-	/**
-	 * Get the capability of the given type.
-	 * If it does not exist, it creates it.
-	 * @param type
-	 * @return The capability of the given type.
-	 */
-	public <T extends IEngineAddon> T capability(Class<T> type);
 
 	public IExecutionContext getExecutionContext();
 

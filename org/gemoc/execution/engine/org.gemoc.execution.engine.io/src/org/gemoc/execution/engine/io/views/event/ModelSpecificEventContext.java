@@ -31,7 +31,7 @@ public class ModelSpecificEventContext
 	private void configure()
 	{
 		_mseSet = new ModelSpecificEventSet(_engine.getExecutionContext().getFeedbackModel());
-		_engine.get_clockControllers().add(_clockController);
+		_engine.getExecutionContext().getExecutionPlatform().getMSEStateControllers().add(_clockController);
 	}
 
 	public void forceClock(ModelSpecificEventWrapper mse, ClockStatus state) 

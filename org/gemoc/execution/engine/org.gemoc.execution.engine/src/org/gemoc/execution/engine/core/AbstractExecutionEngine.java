@@ -109,12 +109,8 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		_executionContext = executionContext;
 		_lastStepsRun = new ArrayDeque<LogicalStep>(getDeadlockDetectionDepth());
 
-		for(IMSEStateController c: _executionContext.getExecutionPlatform().getMSEStateControllers())
-		{
-			addMSEStateController(c);
-		}
 		_mseStateController = new DefaultMSEStateController();
-		addMSEStateController(_mseStateController);
+		_executionContext.getExecutionPlatform().getMSEStateControllers().add(_mseStateController);
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
 	
@@ -369,12 +365,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		return this.getClass().getName() + "@[Executor=" + getCodeExecutor() + " ; Solver=" + getSolver() + " ; ModelResource=" + _executionContext.getResourceModel()+ "]";
 	}
 
-	private ArrayList<IMSEStateController> _mseStateControllers = new ArrayList<IMSEStateController>();
-	private void addMSEStateController(IMSEStateController controller) 
-	{
-		_mseStateControllers.add(controller);
-	}
-
 	public <T extends IEngineAddon> boolean hasCapability(Class<T> type) {
 		for (IEngineAddon c : _executionContext.getExecutionPlatform().getEngineAddons()) {
 			if (c.getClass().equals(type))
@@ -390,25 +380,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 				return (T) c;
 		}
 		return null;
-	}
-
-	public <T extends IEngineAddon> T capability(Class<T> type) {
-		T capability = getCapability(type);
-		if (capability == null) {
-			try {
-				capability = type.newInstance();
-				_executionContext.getExecutionPlatform().addEngineAddon(capability);
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			}
-		}
-		return capability;
-	}
-
-	public ArrayList<IMSEStateController> get_clockControllers() {
-		return _mseStateControllers;
 	}
 
 	@Override
@@ -441,7 +412,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	
 	private void updatePossibleLogicalSteps()
 	{
-		for(IMSEStateController c : _mseStateControllers)
+		for(IMSEStateController c : _executionContext.getExecutionPlatform().getMSEStateControllers())
 		{
 			c.applyMSEFutureStates(getSolver());
 		}
@@ -483,7 +454,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	@Override
 	public void dispose() 
 	{
-		_mseStateControllers.clear();		
 		_executionContext.dispose();
 	}
 }
