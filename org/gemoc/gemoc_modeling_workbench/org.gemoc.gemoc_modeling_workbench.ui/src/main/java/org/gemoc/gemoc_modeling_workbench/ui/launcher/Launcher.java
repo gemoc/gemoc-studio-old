@@ -45,6 +45,7 @@ import org.gemoc.gemoc_modeling_workbench.ui.debug.GemocModelDebugger;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
 import org.kermeta.utils.provisionner4eclipse.Provisionner;
+import org.osgi.framework.Bundle;
 
 import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 import fr.obeo.dsl.debug.ide.IDSLDebugger;
@@ -165,8 +166,15 @@ public class Launcher
 								bundleName = project.getName();
 							}
 							Class<?> c;
+
+							Bundle bundle = Platform.getBundle(bundleName);
+							if (bundle == null)
+							{
+								return new Status(IStatus.ERROR, getPluginID(), "Could not find bundle " + bundleName + ".");								
+							}
+							
 							try {
-								c = Platform.getBundle(bundleName).loadClass(executionContext.getRunConfiguration().getExecutionEntryPoint());
+								c = bundle.loadClass(executionContext.getRunConfiguration().getExecutionEntryPoint());
 							} catch (ClassNotFoundException e) {
 								e.printStackTrace();
 								return new Status(IStatus.ERROR, getPluginID(), "Could not find class " + executionContext.getRunConfiguration().getExecutionEntryPoint() + " in bundle " + bundleName + ".");
