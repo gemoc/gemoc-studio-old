@@ -5,7 +5,7 @@
     <properties>
         <sample_root>${basedir}/../../sample</sample_root>
         <tfsm_sample_language_root>${basedir}/../../sample_deployed/TFSM/language_workbench</tfsm_sample_language_root>
-        <tfsm_purek3_sample_language_root>${basedir}/../../sample_deployed/TFSM_PureK3/language_workbench</tfsm_purek3_sample_language_root>
+        <tfsm_plaink3_sample_language_root>${basedir}/../../sample_deployed/TFSM_Plaink3/language_workbench</tfsm_plaink3_sample_language_root>
         <sigpml_sample_language_root>${basedir}/../../sample_deployed/SigPML/language_workbench</sigpml_sample_language_root>
     </properties>
     
@@ -60,21 +60,21 @@
 									<fileset dir="${tfsm_sample_language_root}/org.gemoc.sample.tfsm.xdsml/" />
 								</zip>
 
-								<!-- TFSm PureK3 -->
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.purek3.design.zip">
-									<fileset dir="${tfsm_purek3_sample_language_root}/org.gemoc.sample.tfsm.purek3.design/" />
+								<!-- TFSm plaink3 -->
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.design.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.design/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.purek3.dsa.zip">
-									<fileset dir="${tfsm_purek3_sample_language_root}/org.gemoc.sample.tfsm.purek3.dsa/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.dsa.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.dsa/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.purek3.dsa.ext.zip">
-									<fileset dir="${tfsm_purek3_sample_language_root}/org.gemoc.sample.tfsm.purek3.dsa.ext/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.dsa.ext.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.dsa.ext/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.purek3.model.zip">
-									<fileset dir="${tfsm_purek3_sample_language_root}/org.gemoc.sample.tfsm.purek3.model/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.model.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.model/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.purek3.xdsml.zip">
-									<fileset dir="${tfsm_purek3_sample_language_root}/org.gemoc.sample.tfsm.purek3.xdsml/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml/" />
 								</zip>
 
 								<!-- SigPML -->

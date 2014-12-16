@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Single_traffic_light_sample
-Bundle-SymbolicName: org.gemoc.tfsm.purek3.single_traffic_light_sample
-Bundle-Version: 1.0.0.qualifier
-Require-Bundle: org.gemoc.sample.tfsm.purek3.dsa.ext;bundle-version="1.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Bundle-ClassPath: src/
