@@ -4,8 +4,8 @@ package tfsmextended.tfsmextended.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import tfsmextended.tfsmextended.FSMEvent;
 import tfsmextended.tfsmextended.TfsmextendedPackage;
 

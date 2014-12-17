@@ -14,4 +14,12 @@ package tfsmextended.tfsmextended;
  * @generated
  */
 public interface TimedSystem extends org.gemoc.sample.tfsm.TimedSystem {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void visit();
 } // TimedSystem

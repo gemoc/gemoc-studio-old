@@ -2,7 +2,6 @@
  */
 package tfsmextended.tfsmextended;
 
-import org.gemoc.sample.tfsm.plaink3.dsa.IVisitor;
 
 
 
@@ -21,8 +20,8 @@ public interface TemporalGuard extends org.gemoc.sample.tfsm.TemporalGuard, Guar
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model visitorDataType="tfsmextended.tfsmextended.IVisitor"
+	 * @model
 	 * @generated
 	 */
-	void accept(IVisitor visitor);
+	void visit();
 } // TemporalGuard

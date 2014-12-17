@@ -5,13 +5,11 @@ package tfsmextended.tfsmextended.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.gemoc.sample.tfsm.TfsmPackage;
 
-import org.gemoc.sample.tfsm.plaink3.dsa.IVisitor;
 import tfsmextended.tfsmextended.EvaluateGuard;
 import tfsmextended.tfsmextended.EventGuard;
 import tfsmextended.tfsmextended.FSMClock;
@@ -114,13 +112,6 @@ public class TfsmextendedPackageImpl extends EPackageImpl implements Tfsmextende
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType iVisitorEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EDataType integerEDataType = null;
 
 	/**
@@ -203,6 +194,24 @@ public class TfsmextendedPackageImpl extends EPackageImpl implements Tfsmextende
 	 */
 	public EReference getTFSM_CurrentState() {
 		return (EReference)tfsmEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTFSM_StepNumber() {
+		return (EAttribute)tfsmEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTFSM_LastStateChangeStepNumber() {
+		return (EAttribute)tfsmEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -318,15 +327,6 @@ public class TfsmextendedPackageImpl extends EPackageImpl implements Tfsmextende
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getIVisitor() {
-		return iVisitorEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EDataType getInteger() {
 		return integerEDataType;
 	}
@@ -361,6 +361,8 @@ public class TfsmextendedPackageImpl extends EPackageImpl implements Tfsmextende
 		// Create classes and their features
 		tfsmEClass = createEClass(TFSM);
 		createEReference(tfsmEClass, TFSM__CURRENT_STATE);
+		createEAttribute(tfsmEClass, TFSM__STEP_NUMBER);
+		createEAttribute(tfsmEClass, TFSM__LAST_STATE_CHANGE_STEP_NUMBER);
 
 		stateEClass = createEClass(STATE);
 
@@ -385,7 +387,6 @@ public class TfsmextendedPackageImpl extends EPackageImpl implements Tfsmextende
 		evaluateGuardEClass = createEClass(EVALUATE_GUARD);
 
 		// Create data types
-		iVisitorEDataType = createEDataType(IVISITOR);
 		integerEDataType = createEDataType(INTEGER);
 	}
 
@@ -437,11 +438,12 @@ public class TfsmextendedPackageImpl extends EPackageImpl implements Tfsmextende
 		// Initialize classes and features; add operations and parameters
 		initEClass(tfsmEClass, tfsmextended.tfsmextended.TFSM.class, "TFSM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTFSM_CurrentState(), this.getState(), null, "currentState", null, 0, 1, tfsmextended.tfsmextended.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTFSM_StepNumber(), ecorePackage.getEInt(), "stepNumber", null, 0, 1, tfsmextended.tfsmextended.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTFSM_LastStateChangeStepNumber(), ecorePackage.getEInt(), "lastStateChangeStepNumber", null, 0, 1, tfsmextended.tfsmextended.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(tfsmEClass, ecorePackage.getEString(), "Init", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsmEClass, ecorePackage.getEString(), "init", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = addEOperation(tfsmEClass, null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIVisitor(), "visitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsmEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -449,32 +451,27 @@ public class TfsmextendedPackageImpl extends EPackageImpl implements Tfsmextende
 
 		addEOperation(stateEClass, ecorePackage.getEString(), "onLeave", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(stateEClass, null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIVisitor(), "visitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(stateEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(transitionEClass, ecorePackage.getEString(), "fire", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(transitionEClass, null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIVisitor(), "visitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(transitionEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(guardEClass, Guard.class, "Guard", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(guardEClass, null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIVisitor(), "visitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(guardEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(temporalGuardEClass, TemporalGuard.class, "TemporalGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(temporalGuardEClass, null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIVisitor(), "visitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(temporalGuardEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(eventGuardEClass, EventGuard.class, "EventGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(eventGuardEClass, null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIVisitor(), "visitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(eventGuardEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fsmEventEClass, FSMEvent.class, "FSMEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFSMEvent_IsTriggered(), ecorePackage.getEBoolean(), "isTriggered", null, 0, 1, FSMEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -484,15 +481,15 @@ public class TfsmextendedPackageImpl extends EPackageImpl implements Tfsmextende
 
 		addEOperation(fsmClockEClass, this.getInteger(), "ticks", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(fsmClockEClass, null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIVisitor(), "visitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(fsmClockEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(timedSystemEClass, TimedSystem.class, "TimedSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(timedSystemEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(evaluateGuardEClass, EvaluateGuard.class, "EvaluateGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
-		initEDataType(iVisitorEDataType, IVisitor.class, "IVisitor", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(integerEDataType, Integer.class, "Integer", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
@@ -523,6 +520,16 @@ public class TfsmextendedPackageImpl extends EPackageImpl implements Tfsmextende
 		   });	
 		addAnnotation
 		  (getTFSM_CurrentState(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTFSM_StepNumber(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTFSM_LastStateChangeStepNumber(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -583,6 +590,11 @@ public class TfsmextendedPackageImpl extends EPackageImpl implements Tfsmextende
 		   });	
 		addAnnotation
 		  (getFSMClock_NumberOfTicks(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (timedSystemEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });

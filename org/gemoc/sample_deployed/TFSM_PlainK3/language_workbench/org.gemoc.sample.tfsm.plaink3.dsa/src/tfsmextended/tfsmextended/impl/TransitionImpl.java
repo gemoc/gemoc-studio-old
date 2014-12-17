@@ -4,7 +4,6 @@ package tfsmextended.tfsmextended.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.gemoc.sample.tfsm.plaink3.dsa.IVisitor;
 import tfsmextended.tfsmextended.TfsmextendedPackage;
 import tfsmextended.tfsmextended.Transition;
 
@@ -53,7 +52,7 @@ public class TransitionImpl extends org.gemoc.sample.tfsm.impl.TransitionImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void accept(IVisitor visitor) {
+	public void visit() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

@@ -9,13 +9,18 @@ metamodel TFSMExtended inherits TFSM {
 	resource EMF uri "http://org.gemoc.sample.tfsm.plaink3.model/1.0/extended"
 	exactType TFSMExtended_MT
 
-	with org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect 
-	with org.gemoc.sample.tfsm.plaink3.dsa.StateAspect
-	with org.gemoc.sample.tfsm.plaink3.dsa.TransitionAspect
-	with org.gemoc.sample.tfsm.plaink3.dsa.GuardAspect
-	with org.gemoc.sample.tfsm.plaink3.dsa.TemporalGuardAspect
-	with org.gemoc.sample.tfsm.plaink3.dsa.EventGuardAspect
-	with org.gemoc.sample.tfsm.plaink3.dsa.FSMClockAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.TimedSystemVisitorAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect
 	with org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.FSMClockAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.FSMClockVisitorAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.StateAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.StateVisitorAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.TransitionAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.TransitionVisitorAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.GuardVisitorAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.TemporalGuardVisitorAspect
+	with org.gemoc.sample.tfsm.plaink3.dsa.EventGuardVisitorAspect
 
 } 

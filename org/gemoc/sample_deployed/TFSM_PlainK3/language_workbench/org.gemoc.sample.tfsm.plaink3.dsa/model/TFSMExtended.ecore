@@ -2,16 +2,23 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tfsmextended" nsURI="http://org.gemoc.sample.tfsm.plaink3.model/1.0/extended" nsPrefix="tfsmextended">
   <eClassifiers xsi:type="ecore:EClass" name="TFSM">
     <eSuperTypes href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//TFSM"/>
-    <eOperations name="Init">
+    <eOperations name="init">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="accept">
+    <eOperations name="visit">
       <eAnnotations source="aspect"/>
-      <eParameters name="visitor" eType="//IVisitor"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentState" eType="//State">
       <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stepNumber">
+      <eAnnotations source="aspect"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastStateChangeStepNumber">
+      <eAnnotations source="aspect"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State">
@@ -24,9 +31,8 @@
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="accept">
+    <eOperations name="visit">
       <eAnnotations source="aspect"/>
-      <eParameters name="visitor" eType="//IVisitor"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transition">
@@ -35,9 +41,8 @@
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="accept">
+    <eOperations name="visit">
       <eAnnotations source="aspect"/>
-      <eParameters name="visitor" eType="//IVisitor"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
@@ -45,25 +50,22 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Guard" abstract="true">
     <eSuperTypes href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//Guard"/>
-    <eOperations name="accept">
+    <eOperations name="visit">
       <eAnnotations source="aspect"/>
-      <eParameters name="visitor" eType="//IVisitor"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TemporalGuard">
     <eSuperTypes href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//TemporalGuard"/>
     <eSuperTypes href="#//Guard"/>
-    <eOperations name="accept">
+    <eOperations name="visit">
       <eAnnotations source="aspect"/>
-      <eParameters name="visitor" eType="//IVisitor"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EventGuard">
     <eSuperTypes href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//EventGuard"/>
     <eSuperTypes href="#//Guard"/>
-    <eOperations name="accept">
+    <eOperations name="visit">
       <eAnnotations source="aspect"/>
-      <eParameters name="visitor" eType="//IVisitor"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FSMEvent">
@@ -78,9 +80,8 @@
     <eOperations name="ticks" eType="//Integer">
       <eAnnotations source="aspect"/>
     </eOperations>
-    <eOperations name="accept">
+    <eOperations name="visit">
       <eAnnotations source="aspect"/>
-      <eParameters name="visitor" eType="//IVisitor"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfTicks" eType="//Integer">
       <eAnnotations source="aspect"/>
@@ -88,10 +89,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TimedSystem">
     <eSuperTypes href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//TimedSystem"/>
+    <eOperations name="visit">
+      <eAnnotations source="aspect"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EvaluateGuard">
     <eSuperTypes href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//EvaluateGuard"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="IVisitor" instanceClassName="org.gemoc.sample.tfsm.plaink3.dsa.IVisitor"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Integer" instanceClassName="java.lang.Integer"/>
 </ecore:EPackage>

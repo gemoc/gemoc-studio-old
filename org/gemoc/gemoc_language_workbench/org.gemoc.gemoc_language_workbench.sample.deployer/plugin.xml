@@ -26,7 +26,7 @@
       <wizard
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
-            class="org.gemoc.gemoc_language_workbench.sample.deployer.wizards.TFSM_PureK3ExampleWizard"
+            class="org.gemoc.gemoc_language_workbench.sample.deployer.wizards.TFSM_PlainK3ExampleWizard"
             finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.sample.deployer.tfsm_purek3.wizard"

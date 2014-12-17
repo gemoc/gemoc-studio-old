@@ -1,6 +1,6 @@
-package org.gemoc.sample.tfsm.plaink3.dsa.ext
+package org.gemoc.sample.tfsm.plaink3.dsa
 
-import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
+import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.common.util.URI
@@ -23,7 +23,6 @@ class Main  {
 	static def public void main(TimedSystem system)
 	{
 		val tfsm = system.tfsms.get(0)
-		val visitor = new MyVisitor
 		var i = 0
 		while (i != 20)
 		{
@@ -35,7 +34,7 @@ class Main  {
 				]
 			}
 			
-			tfsm.accept(visitor)
+			tfsm.visit
 
 			if (i == 10)
 			{

@@ -4,9 +4,6 @@
   <genPackages prefix="Tfsmextended" basePackage="tfsmextended" disposableProviderFactory="true">
     <ecorePackage href="TFSMExtended.ecore#/"/>
     <genDataTypes>
-      <ecoreDataType href="TFSMExtended.ecore#//IVisitor"/>
-    </genDataTypes>
-    <genDataTypes>
       <ecoreDataType href="TFSMExtended.ecore#//Integer"/>
     </genDataTypes>
     <genClasses>
@@ -14,14 +11,17 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="TFSMExtended.ecore#//TFSM/currentState"/>
       </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="TFSMExtended.ecore#//TFSM/stepNumber"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="TFSMExtended.ecore#//TFSM/lastStateChangeStepNumber"/>
+      </genFeatures>
       <genOperations>
-        <ecoreOperation href="TFSMExtended.ecore#//TFSM/Init"/>
+        <ecoreOperation href="TFSMExtended.ecore#//TFSM/init"/>
       </genOperations>
       <genOperations>
-        <ecoreOperation href="TFSMExtended.ecore#//TFSM/accept"/>
-        <genParameters>
-          <ecoreParameter href="TFSMExtended.ecore#//TFSM/accept/visitor"/>
-        </genParameters>
+        <ecoreOperation href="TFSMExtended.ecore#//TFSM/visit"/>
       </genOperations>
     </genClasses>
     <genClasses>
@@ -33,10 +33,7 @@
         <ecoreOperation href="TFSMExtended.ecore#//State/onLeave"/>
       </genOperations>
       <genOperations>
-        <ecoreOperation href="TFSMExtended.ecore#//State/accept"/>
-        <genParameters>
-          <ecoreParameter href="TFSMExtended.ecore#//State/accept/visitor"/>
-        </genParameters>
+        <ecoreOperation href="TFSMExtended.ecore#//State/visit"/>
       </genOperations>
     </genClasses>
     <genClasses>
@@ -45,10 +42,7 @@
         <ecoreOperation href="TFSMExtended.ecore#//Transition/fire"/>
       </genOperations>
       <genOperations>
-        <ecoreOperation href="TFSMExtended.ecore#//Transition/accept"/>
-        <genParameters>
-          <ecoreParameter href="TFSMExtended.ecore#//Transition/accept/visitor"/>
-        </genParameters>
+        <ecoreOperation href="TFSMExtended.ecore#//Transition/visit"/>
       </genOperations>
     </genClasses>
     <genClasses>
@@ -57,28 +51,19 @@
     <genClasses image="false">
       <ecoreClass href="TFSMExtended.ecore#//Guard"/>
       <genOperations>
-        <ecoreOperation href="TFSMExtended.ecore#//Guard/accept"/>
-        <genParameters>
-          <ecoreParameter href="TFSMExtended.ecore#//Guard/accept/visitor"/>
-        </genParameters>
+        <ecoreOperation href="TFSMExtended.ecore#//Guard/visit"/>
       </genOperations>
     </genClasses>
     <genClasses>
       <ecoreClass href="TFSMExtended.ecore#//TemporalGuard"/>
       <genOperations>
-        <ecoreOperation href="TFSMExtended.ecore#//TemporalGuard/accept"/>
-        <genParameters>
-          <ecoreParameter href="TFSMExtended.ecore#//TemporalGuard/accept/visitor"/>
-        </genParameters>
+        <ecoreOperation href="TFSMExtended.ecore#//TemporalGuard/visit"/>
       </genOperations>
     </genClasses>
     <genClasses>
       <ecoreClass href="TFSMExtended.ecore#//EventGuard"/>
       <genOperations>
-        <ecoreOperation href="TFSMExtended.ecore#//EventGuard/accept"/>
-        <genParameters>
-          <ecoreParameter href="TFSMExtended.ecore#//EventGuard/accept/visitor"/>
-        </genParameters>
+        <ecoreOperation href="TFSMExtended.ecore#//EventGuard/visit"/>
       </genOperations>
     </genClasses>
     <genClasses>
@@ -96,14 +81,14 @@
         <ecoreOperation href="TFSMExtended.ecore#//FSMClock/ticks"/>
       </genOperations>
       <genOperations>
-        <ecoreOperation href="TFSMExtended.ecore#//FSMClock/accept"/>
-        <genParameters>
-          <ecoreParameter href="TFSMExtended.ecore#//FSMClock/accept/visitor"/>
-        </genParameters>
+        <ecoreOperation href="TFSMExtended.ecore#//FSMClock/visit"/>
       </genOperations>
     </genClasses>
     <genClasses>
       <ecoreClass href="TFSMExtended.ecore#//TimedSystem"/>
+      <genOperations>
+        <ecoreOperation href="TFSMExtended.ecore#//TimedSystem/visit"/>
+      </genOperations>
     </genClasses>
     <genClasses>
       <ecoreClass href="TFSMExtended.ecore#//EvaluateGuard"/>

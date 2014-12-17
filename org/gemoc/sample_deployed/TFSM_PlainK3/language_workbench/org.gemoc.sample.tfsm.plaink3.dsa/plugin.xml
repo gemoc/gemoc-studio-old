@@ -6,7 +6,7 @@
       <package
             class="tfsmextended.tfsmextended.TfsmextendedPackage"
             genModel="model/TFSMExtended.genmodel"
-            uri="http://org.gemoc.sample.tfsm.purek3.model/1.0/extended">
+            uri="http://org.gemoc.sample.tfsm.plaink3.model/1.0/extended">
       </package>
    </extension>
 null

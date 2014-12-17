@@ -15,30 +15,10 @@ import org.gemoc.sample.tfsm.Transition
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.StateAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TransitionAspect.*
-import static extension org.gemoc.sample.tfsm.plaink3.dsa.GuardAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMClockAspect.*
-//import static extension org.gemoc.sample.tfsm.purek3.dsa.TemporalGuardAspect.*
-//import static extension org.gemoc.sample.tfsm.purek3.dsa.EventGuardAspect.*
-//import static extension org.gemoc.sample.tfsm.purek3.dsa.FSMEventAspect.*
-//import static extension org.gemoc.sample.tfsm.purek3.dsa.TimedSystemAspect.*
-//import static extension org.gemoc.sample.tfsm.k3dsa.EvaluateGuardAspect.*
 //import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
 import fr.inria.diverse.k3.al.annotationprocessor.TransactionSupport
 
-
-@Aspect(className=TimedSystem)
-class TimedSystemAspect 
-{
-
-	def public void accept(IVisitor visitor)
-	{
-		visitor.beginVisit(_self)
- 		_self.globalClocks.forEach[ e | e.accept(visitor)]
- 		_self.tfsms.forEach[ t | t.accept(visitor)]
-		visitor.endVisit(_self)
-	}
-	
-}
 
 @Aspect(className=TFSM, transactionSupport = TransactionSupport.EMF)
 class TFSMAspect 
@@ -48,31 +28,13 @@ class TFSMAspect
 
 	public State currentState
 
-	def public String Init() 
+	def public String init() 
 	{
 		if (_self.currentState == null) 
 		{
 			_self.currentState = _self.initialState;
 		}
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".Init()]Initialized " + _self.name)
-	}
-		
-	def public void accept(IVisitor visitor)
-	{
-		visitor.beginVisit(_self)
-		if (_self.currentState == null)
-		{
-			_self.Init()
-		}
-		else
-		{
-			if (_self.localClock != null)
-			{
-				_self.localClock.accept(visitor)
-			}
-			_self.currentState.accept(visitor)			
-		}
-		visitor.endVisit(_self)
 	}
 		
 }
@@ -90,11 +52,6 @@ class FSMClockAspect
 		return _self.numberOfTicks
 	}
 	
-	def public void accept(IVisitor visitor)
-	{
-		visitor.beginVisit(_self)
- 		visitor.endVisit(_self)
-	}
 }
 
 @Aspect(className=State)
@@ -109,65 +66,17 @@ class StateAspect
 	{
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".onLeave()]Leaving " + _self.name)
 	}
-	
-	def public void accept(IVisitor visitor)
-	{
-		visitor.beginVisit(_self)
- 		_self.outgoingTransitions.forEach[ t | t.accept(visitor)]
-		visitor.endVisit(_self)
-	}
 }
 
 @Aspect(className=Transition, transactionSupport=TransactionSupport.EMF)
 class TransitionAspect 
-{
-	
+{	
 	def public String fire() 
 	{
 		_self.source.owningFSM.currentState = _self.target
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".fire()]Fired " + _self.name + " -> " +
 			_self.action)
 	}
-	
-	def public void accept(IVisitor visitor)
-	{
-		visitor.beginVisit(_self)
-		if (_self.ownedGuard != null)
-		{
-	 		_self.ownedGuard.accept(visitor)
-		}
-		visitor.endVisit(_self)
-	}
-}
-
-@Aspect(className=Guard)
-abstract class GuardAspect 
-{
-	abstract def public void accept(IVisitor visitor)
-}
-
-@Aspect(className=TemporalGuard)
-class TemporalGuardAspect extends GuardAspect 
-{
-	
-	def public void accept(IVisitor visitor)
-	{
-		visitor.beginVisit(_self)
-		visitor.endVisit(_self)
-	}
-	
-}
-
-@Aspect(className=EventGuard)
-class EventGuardAspect extends GuardAspect 
-{
-	
-	def public void accept(IVisitor visitor)
-	{
-		visitor.beginVisit(_self)
-		visitor.endVisit(_self)
-	}
-	
 }
 
 @Aspect(className=FSMEvent)
@@ -177,18 +86,3 @@ class FSMEventAspect
 	public boolean isTriggered = false
 	
 }
-
-//@Aspect(className=typeof(EvaluateGuard))
-//class EvaluateGuardAspect extends GuardAspect {
-//	def public Boolean evaluate() {
-//		var Object res;
-//		res = GroovyRunner.executeScript(_self.condition, _self)
-//
-//		return res as Boolean;
-//	}
-//	
-//	def public void accept(Visitor visitor)
-//	{
-//		visitor.visit(_self)
-//	}
-//}

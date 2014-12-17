@@ -2,7 +2,6 @@
  */
 package tfsmextended.tfsmextended;
 
-import org.gemoc.sample.tfsm.plaink3.dsa.IVisitor;
 
 
 
@@ -15,6 +14,8 @@ import org.gemoc.sample.tfsm.plaink3.dsa.IVisitor;
  * The following features are supported:
  * <ul>
  *   <li>{@link tfsmextended.tfsmextended.TFSM#getCurrentState <em>Current State</em>}</li>
+ *   <li>{@link tfsmextended.tfsmextended.TFSM#getStepNumber <em>Step Number</em>}</li>
+ *   <li>{@link tfsmextended.tfsmextended.TFSM#getLastStateChangeStepNumber <em>Last State Change Step Number</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,18 +52,70 @@ public interface TFSM extends org.gemoc.sample.tfsm.TFSM {
 	void setCurrentState(State value);
 
 	/**
+	 * Returns the value of the '<em><b>Step Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Step Number</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Step Number</em>' attribute.
+	 * @see #setStepNumber(int)
+	 * @see tfsmextended.tfsmextended.TfsmextendedPackage#getTFSM_StepNumber()
+	 * @model
+	 * @generated
+	 */
+	int getStepNumber();
+
+	/**
+	 * Sets the value of the '{@link tfsmextended.tfsmextended.TFSM#getStepNumber <em>Step Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Step Number</em>' attribute.
+	 * @see #getStepNumber()
+	 * @generated
+	 */
+	void setStepNumber(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Last State Change Step Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Last State Change Step Number</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Last State Change Step Number</em>' attribute.
+	 * @see #setLastStateChangeStepNumber(int)
+	 * @see tfsmextended.tfsmextended.TfsmextendedPackage#getTFSM_LastStateChangeStepNumber()
+	 * @model
+	 * @generated
+	 */
+	int getLastStateChangeStepNumber();
+
+	/**
+	 * Sets the value of the '{@link tfsmextended.tfsmextended.TFSM#getLastStateChangeStepNumber <em>Last State Change Step Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Last State Change Step Number</em>' attribute.
+	 * @see #getLastStateChangeStepNumber()
+	 * @generated
+	 */
+	void setLastStateChangeStepNumber(int value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	String Init();
+	String init();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model visitorDataType="tfsmextended.tfsmextended.IVisitor"
+	 * @model
 	 * @generated
 	 */
-	void accept(IVisitor visitor);
+	void visit();
 } // TFSM

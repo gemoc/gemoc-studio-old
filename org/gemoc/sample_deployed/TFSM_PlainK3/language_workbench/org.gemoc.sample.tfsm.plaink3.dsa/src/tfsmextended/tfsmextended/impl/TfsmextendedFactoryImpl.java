@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.gemoc.sample.tfsm.plaink3.dsa.IVisitor;
 import tfsmextended.tfsmextended.*;
 import tfsmextended.tfsmextended.EvaluateGuard;
 import tfsmextended.tfsmextended.EventGuard;
@@ -91,8 +90,6 @@ public class TfsmextendedFactoryImpl extends EFactoryImpl implements Tfsmextende
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case TfsmextendedPackage.IVISITOR:
-				return createIVisitorFromString(eDataType, initialValue);
 			case TfsmextendedPackage.INTEGER:
 				return createIntegerFromString(eDataType, initialValue);
 			default:
@@ -108,8 +105,6 @@ public class TfsmextendedFactoryImpl extends EFactoryImpl implements Tfsmextende
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case TfsmextendedPackage.IVISITOR:
-				return convertIVisitorToString(eDataType, instanceValue);
 			case TfsmextendedPackage.INTEGER:
 				return convertIntegerToString(eDataType, instanceValue);
 			default:
@@ -215,24 +210,6 @@ public class TfsmextendedFactoryImpl extends EFactoryImpl implements Tfsmextende
 	public EvaluateGuard createEvaluateGuard() {
 		EvaluateGuardImpl evaluateGuard = new EvaluateGuardImpl();
 		return evaluateGuard;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IVisitor createIVisitorFromString(EDataType eDataType, String initialValue) {
-		return (IVisitor)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertIVisitorToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

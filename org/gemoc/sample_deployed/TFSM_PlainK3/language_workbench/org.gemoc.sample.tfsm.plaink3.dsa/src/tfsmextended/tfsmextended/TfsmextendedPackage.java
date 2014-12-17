@@ -131,13 +131,31 @@ public interface TfsmextendedPackage extends EPackage {
 	int TFSM__CURRENT_STATE = TfsmPackage.TFSM_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Step Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM__STEP_NUMBER = TfsmPackage.TFSM_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Last State Change Step Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM__LAST_STATE_CHANGE_STEP_NUMBER = TfsmPackage.TFSM_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>TFSM</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_FEATURE_COUNT = TfsmPackage.TFSM_FEATURE_COUNT + 1;
+	int TFSM_FEATURE_COUNT = TfsmPackage.TFSM_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link tfsmextended.tfsmextended.impl.StateImpl <em>State</em>}' class.
@@ -583,16 +601,6 @@ public interface TfsmextendedPackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '<em>IVisitor</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.plaink3.dsa.IVisitor
-	 * @see tfsmextended.tfsmextended.impl.TfsmextendedPackageImpl#getIVisitor()
-	 * @generated
-	 */
-	int IVISITOR = 11;
-
-	/**
 	 * The meta object id for the '<em>Integer</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -600,7 +608,7 @@ public interface TfsmextendedPackage extends EPackage {
 	 * @see tfsmextended.tfsmextended.impl.TfsmextendedPackageImpl#getInteger()
 	 * @generated
 	 */
-	int INTEGER = 12;
+	int INTEGER = 11;
 
 
 	/**
@@ -623,6 +631,28 @@ public interface TfsmextendedPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTFSM_CurrentState();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tfsmextended.tfsmextended.TFSM#getStepNumber <em>Step Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Step Number</em>'.
+	 * @see tfsmextended.tfsmextended.TFSM#getStepNumber()
+	 * @see #getTFSM()
+	 * @generated
+	 */
+	EAttribute getTFSM_StepNumber();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tfsmextended.tfsmextended.TFSM#getLastStateChangeStepNumber <em>Last State Change Step Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Last State Change Step Number</em>'.
+	 * @see tfsmextended.tfsmextended.TFSM#getLastStateChangeStepNumber()
+	 * @see #getTFSM()
+	 * @generated
+	 */
+	EAttribute getTFSM_LastStateChangeStepNumber();
 
 	/**
 	 * Returns the meta object for class '{@link tfsmextended.tfsmextended.State <em>State</em>}'.
@@ -747,17 +777,6 @@ public interface TfsmextendedPackage extends EPackage {
 	EClass getEvaluateGuard();
 
 	/**
-	 * Returns the meta object for data type '{@link org.gemoc.sample.tfsm.plaink3.dsa.IVisitor <em>IVisitor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>IVisitor</em>'.
-	 * @see org.gemoc.sample.tfsm.plaink3.dsa.IVisitor
-	 * @model instanceClass="org.gemoc.sample.tfsm.plaink3.dsa.IVisitor"
-	 * @generated
-	 */
-	EDataType getIVisitor();
-
-	/**
 	 * Returns the meta object for data type '{@link java.lang.Integer <em>Integer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -807,6 +826,22 @@ public interface TfsmextendedPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TFSM__CURRENT_STATE = eINSTANCE.getTFSM_CurrentState();
+
+		/**
+		 * The meta object literal for the '<em><b>Step Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TFSM__STEP_NUMBER = eINSTANCE.getTFSM_StepNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Last State Change Step Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TFSM__LAST_STATE_CHANGE_STEP_NUMBER = eINSTANCE.getTFSM_LastStateChangeStepNumber();
 
 		/**
 		 * The meta object literal for the '{@link tfsmextended.tfsmextended.impl.StateImpl <em>State</em>}' class.
@@ -923,16 +958,6 @@ public interface TfsmextendedPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EVALUATE_GUARD = eINSTANCE.getEvaluateGuard();
-
-		/**
-		 * The meta object literal for the '<em>IVisitor</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.plaink3.dsa.IVisitor
-		 * @see tfsmextended.tfsmextended.impl.TfsmextendedPackageImpl#getIVisitor()
-		 * @generated
-		 */
-		EDataType IVISITOR = eINSTANCE.getIVisitor();
 
 		/**
 		 * The meta object literal for the '<em>Integer</em>' data type.

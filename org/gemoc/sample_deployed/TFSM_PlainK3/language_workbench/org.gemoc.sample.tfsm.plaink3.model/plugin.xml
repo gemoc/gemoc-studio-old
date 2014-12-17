@@ -5,7 +5,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated tfsm -->
       <package
-            uri="http://www.gemoc.org/sample/tfsm/purek3"
+            uri="http://www.gemoc.org/sample/tfsm/plaink3"
             class="org.gemoc.sample.tfsm.TfsmPackage"
             genModel="model/tfsm.genmodel"/>
    </extension>

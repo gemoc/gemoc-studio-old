@@ -37,7 +37,7 @@ public interface TfsmPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.gemoc.org/sample/tfsm/purek3";
+	String eNS_URI = "http://www.gemoc.org/sample/tfsm/plaink3";
 
 	/**
 	 * The package namespace name.

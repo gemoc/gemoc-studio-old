@@ -36,4 +36,15 @@ public class TimedSystemImpl extends org.gemoc.sample.tfsm.impl.TimedSystemImpl 
 		return TfsmextendedPackage.Literals.TIMED_SYSTEM;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void visit() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
 } //TimedSystemImpl
