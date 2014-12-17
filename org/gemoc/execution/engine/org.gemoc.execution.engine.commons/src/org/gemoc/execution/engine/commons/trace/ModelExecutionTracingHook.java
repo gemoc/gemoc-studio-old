@@ -70,7 +70,8 @@ public class ModelExecutionTracingHook extends DefaultEngineAddon {
 			commandStack.execute(new RecordingCommand(getEditingDomain(), "Back to " + index) {
 				@Override
 				protected void doExecute() {
-					_executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size()).clear();
+					List<Choice> choicesToRemove = _executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size());
+					_executionTraceModel.getChoices().removeAll(choicesToRemove);
 					if (_executionTraceModel.getChoices().size() > 0)
 						_executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1).setNextChoice(null);
 					try {
