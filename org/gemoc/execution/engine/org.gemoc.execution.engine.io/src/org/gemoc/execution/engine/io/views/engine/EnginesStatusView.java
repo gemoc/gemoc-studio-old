@@ -159,7 +159,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 					if (element instanceof IExecutionEngine)
 					{
 						IExecutionEngine engine = (IExecutionEngine)element;
-						switch (engine.getEngineStatus().getRunningStatus()) {
+						switch (engine.getRunningStatus()) {
 							case Running:
 								result = SharedIcons.getSharedImage(SharedIcons.RUNNING_ENGINE_ICON);							
 								break;
@@ -246,7 +246,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 							}								
 						}
 						result += "\n";
-						switch(engine.getEngineStatus().getRunningStatus())
+						switch(engine.getRunningStatus())
 						{
 							case Initializing : 
 								result += "Initializing";
@@ -321,7 +321,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 //			List<String> engineStopped = new ArrayList<String>();
 		    for (Entry<String, IExecutionEngine> engineEntry : org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().entrySet())
 		    {		    	  
-		    	switch(engineEntry.getValue().getEngineStatus().getRunningStatus())
+		    	switch(engineEntry.getValue().getRunningStatus())
 		    	{
 		    		case Stopped:
 		    			org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.unregisterEngine(engineEntry.getKey());		    			

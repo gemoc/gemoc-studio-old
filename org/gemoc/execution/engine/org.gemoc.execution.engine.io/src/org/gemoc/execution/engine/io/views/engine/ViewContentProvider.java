@@ -49,8 +49,8 @@ class ViewContentProvider implements ITreeContentProvider
 		Comparator<IExecutionEngine> comparator = new Comparator<IExecutionEngine>() {
 		    public int compare(IExecutionEngine c1, IExecutionEngine c2) 
 		    {
-		    	int c1Value = c1.getEngineStatus().getRunningStatus().ordinal();
-		    	int c2Value = c2.getEngineStatus().getRunningStatus().ordinal();
+		    	int c1Value = c1.getRunningStatus().ordinal();
+		    	int c2Value = c2.getRunningStatus().ordinal();
 		        if (c1Value < c2Value) 
 		        {
 		        	return -1;

@@ -124,7 +124,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 				if (element instanceof LogicalStep)
 				{
 					LogicalStep ls = (LogicalStep)element;
-					if(ls == _currentEngine.getEngineStatus().getChosenLogicalStep())
+					if(ls == _currentEngine.getSelectedLogicalStep())
 					{
 						return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_RUNNING_ICON);
 					}
@@ -227,7 +227,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			_decorator.setResourceSet(_currentEngine.getExecutionContext().getResourceModel().getResourceSet());
 			_viewer.setInput(_currentEngine);
 			if (_currentEngine != null
-				&& !_currentEngine.getEngineStatus().getRunningStatus().equals(RunStatus.Stopped))
+				&& !_currentEngine.getRunningStatus().equals(RunStatus.Stopped))
 			{
 				_viewer.expandAll();
 				TreeViewerHelper.resizeColumns(_viewer);				

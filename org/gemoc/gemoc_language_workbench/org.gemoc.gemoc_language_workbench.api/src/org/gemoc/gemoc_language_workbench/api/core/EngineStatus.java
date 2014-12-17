@@ -5,7 +5,6 @@ import java.util.List;
 import fr.inria.aoste.trace.LogicalStep;
 public class  EngineStatus {
 	long nbLogicalStepRun = 0;
-	RunStatus runningStatus = RunStatus.Initializing;
 	
 	LogicalStep chosenLogicalStep;
 	
@@ -24,25 +23,6 @@ public class  EngineStatus {
 	public void incrementNbLogicalStepRun() {
 		this.nbLogicalStepRun +=1;
 	}
-
-	public RunStatus getRunningStatus() {
-		return runningStatus;
-	}
-
-	public void setRunningStatus(RunStatus runningStatus) {
-		this.runningStatus = runningStatus;
-	};
 		
-	public LogicalStep getChosenLogicalStep() {
-		synchronized (this){
-			return chosenLogicalStep;
-		}
-	}
-
-	public void setChosenLogicalStep(LogicalStep chosenLogicalStep) {
-		synchronized (this){
-			this.chosenLogicalStep = chosenLogicalStep;
-		}
-	}
 	
 }

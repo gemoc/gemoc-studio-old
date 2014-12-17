@@ -614,7 +614,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		if (_currentSelectedEngine != null)
 		{
-			return _currentSelectedEngine.getEngineStatus().getRunningStatus().equals(RunStatus.Stopped);
+			return _currentSelectedEngine.getRunningStatus().equals(RunStatus.Stopped);
 		}
 		return false;
 	}

@@ -149,7 +149,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		{
 			addon.engineStopped(this);
 		}
-		getEngineStatus().setChosenLogicalStep(null);
+		setSelectedLogicalStep(null);
 	}
 
 	public EngineStatus getEngineStatus() {
@@ -217,13 +217,12 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 
 						if (selectedLogicalStepIndex != -1)
 						{
-							_selectedLogicalStep = _possibleLogicalSteps.get(selectedLogicalStepIndex);
-							engineStatus.setChosenLogicalStep(_selectedLogicalStep);
+							setSelectedLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));
 							setEngineStatus(EngineStatus.RunStatus.Running);
 
 							for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 							{
-								addon.logicalStepSelected(AbstractExecutionEngine.this, _selectedLogicalStep);
+								addon.logicalStepSelected(AbstractExecutionEngine.this, getSelectedLogicalStep());
 							}
 
 							// 3 - run the selected logical step
@@ -268,7 +267,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 
 	private void setEngineStatus(RunStatus newStatus) 
 	{
-		engineStatus.setRunningStatus(newStatus);
+		_runningStatus = newStatus;
 		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons())
 		{
 			addon.engineStatusChanged(this, newStatus);
@@ -460,4 +459,25 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	{
 		_executionContext.dispose();
 	}
+	
+	@Override
+	public LogicalStep getSelectedLogicalStep() 
+	{
+		synchronized (this) {
+			return _selectedLogicalStep;
+		}
+	}
+	private void setSelectedLogicalStep(LogicalStep ls)
+	{
+		synchronized (this) {
+			_selectedLogicalStep = ls;
+		}
+	}
+	
+	private RunStatus _runningStatus = RunStatus.Initializing;
+
+	public RunStatus getRunningStatus() {
+		return _runningStatus;
+	}
+
 }

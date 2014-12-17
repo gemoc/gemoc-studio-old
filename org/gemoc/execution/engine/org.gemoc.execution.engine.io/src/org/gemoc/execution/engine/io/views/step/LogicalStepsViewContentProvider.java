@@ -28,7 +28,7 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		if (inputElement instanceof IExecutionEngine)
 		{
 			IExecutionEngine engine = (IExecutionEngine)inputElement;
-			if (engine.getEngineStatus().getRunningStatus().equals(RunStatus.Stopped))
+			if (engine.getRunningStatus().equals(RunStatus.Stopped))
 			{
 				String message = "Motor is not running";
 				return new Object[] {

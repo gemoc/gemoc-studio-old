@@ -366,7 +366,7 @@ public class Launcher
 		for (IExecutionEngine engine : engines)
 		{
 			AbstractExecutionEngine observable = (AbstractExecutionEngine) engine;
-  		  	if (observable.getEngineStatus().getRunningStatus() != RunStatus.Stopped 
+  		  	if (observable.getRunningStatus() != RunStatus.Stopped 
   		  		&&  observable.getExecutionContext().getResourceModel().getURI().equals(URI.createPlatformResourceURI(executionContext.getWorkspace().getModelPath().toString(), true)))
   		  	{
   		  		String message = "An engine is already running on this model, please stop it first";
