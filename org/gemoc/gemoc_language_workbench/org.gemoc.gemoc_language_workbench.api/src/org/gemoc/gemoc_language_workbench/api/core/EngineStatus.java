@@ -7,7 +7,6 @@ public class  EngineStatus {
 	long nbLogicalStepRun = 0;
 	RunStatus runningStatus = RunStatus.Initializing;
 	
-	List<LogicalStep> currentLogicalStepChoice = new ArrayList<LogicalStep>();
 	LogicalStep chosenLogicalStep;
 	
 
@@ -33,23 +32,7 @@ public class  EngineStatus {
 	public void setRunningStatus(RunStatus runningStatus) {
 		this.runningStatus = runningStatus;
 	};
-	
-	
-	public void updateCurrentLogicalStepChoice(List<LogicalStep> newCurrentLogicalStepChoice){
-		synchronized (this){
-			currentLogicalStepChoice.clear();
-			if (newCurrentLogicalStepChoice != null)
-				currentLogicalStepChoice.addAll(newCurrentLogicalStepChoice);
-		}
-	}
-	
-	public List<LogicalStep> getCurrentLogicalStepChoice(){
-		List<LogicalStep> newCurrentLogicalStepChoice = new ArrayList<LogicalStep>();
-		synchronized (this){
-			newCurrentLogicalStepChoice.addAll(currentLogicalStepChoice);
-		}
-		return newCurrentLogicalStepChoice;
-	}
+		
 	public LogicalStep getChosenLogicalStep() {
 		synchronized (this){
 			return chosenLogicalStep;

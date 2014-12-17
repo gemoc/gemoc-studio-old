@@ -149,7 +149,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		{
 			addon.engineStopped(this);
 		}
-		getEngineStatus().getCurrentLogicalStepChoice().clear();
 		getEngineStatus().setChosenLogicalStep(null);
 	}
 
@@ -405,7 +404,10 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	@Override
 	public List<LogicalStep> getPossibleLogicalSteps() 
 	{
-		return _possibleLogicalSteps;
+		synchronized (this)
+		{
+			return new ArrayList<LogicalStep>(_possibleLogicalSteps);
+		}
 	}
 	
 	private LogicalStep _selectedLogicalStep;
@@ -416,8 +418,10 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		{
 			c.applyMSEFutureStates(getSolver());
 		}
-		_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
-		engineStatus.updateCurrentLogicalStepChoice(_possibleLogicalSteps);
+		synchronized(this)
+		{
+			_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
+		}
 		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 		{
 			addon.aboutToSelectLogicalStep(AbstractExecutionEngine.this);

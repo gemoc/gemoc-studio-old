@@ -37,7 +37,7 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 			}
 			else
 			{
-				return engine.getEngineStatus().getCurrentLogicalStepChoice().toArray();				
+				return engine.getPossibleLogicalSteps().toArray();				
 			}
 		}
 		else if (inputElement instanceof LogicalStep)
@@ -58,7 +58,7 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		if (parentElement instanceof IExecutionEngine)
 		{
 			IExecutionEngine engine = (IExecutionEngine)parentElement;
-			return engine.getEngineStatus().getCurrentLogicalStepChoice().toArray();
+			return engine.getPossibleLogicalSteps().toArray();
 		}
 		else if (parentElement instanceof LogicalStep)
 		{
@@ -85,7 +85,7 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		if (element instanceof IExecutionEngine)
 		{
 			IExecutionEngine engine = (IExecutionEngine)element;
-			return engine.getEngineStatus().getCurrentLogicalStepChoice().size() > 0;
+			return engine.getPossibleLogicalSteps().size() > 0;
 		}
 		else if (element instanceof LogicalStep)
 		{
