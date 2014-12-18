@@ -25,7 +25,6 @@ public class TFSM_PlainK3ExampleWizard
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.design.zip", "org.gemoc.sample.tfsm.plaink3.design"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.dsa.zip", "org.gemoc.sample.tfsm.plaink3.dsa"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.dsa.ext.zip", "org.gemoc.sample.tfsm.plaink3.dsa.ext"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.model.zip", "org.gemoc.sample.tfsm.plaink3.model"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.xdsml.zip", "org.gemoc.sample.tfsm.plaink3.xdsml"));
 		return projects;

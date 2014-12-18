@@ -67,9 +67,6 @@
 								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.dsa.zip">
 									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.dsa/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.dsa.ext.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.dsa.ext/" />
-								</zip>
 								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.model.zip">
 									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.model/" />
 								</zip>
