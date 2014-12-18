@@ -18,7 +18,7 @@ public class ExecutionWorkspace implements IExecutionWorkspace
 
 	public ExecutionWorkspace(URI modelURI) throws CoreException
 	{
-		_modelPath = new Path(URIHelper.removePlatformResource(modelURI));
+		_modelPath = new Path(URIHelper.removePlatformScheme(modelURI));
 		_projectPath = _modelPath.removeLastSegments(_modelPath.segmentCount() - 1);
 		_executionTopParentPath = _projectPath.append("gemoc-gen");			
 		_executionPath = _executionTopParentPath

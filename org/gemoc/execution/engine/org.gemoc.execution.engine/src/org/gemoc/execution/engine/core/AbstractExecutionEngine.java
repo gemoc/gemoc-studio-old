@@ -394,7 +394,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		}
 	}
 
-	private List<LogicalStep> _possibleLogicalSteps;
+	private List<LogicalStep> _possibleLogicalSteps = new ArrayList<>();
 	private void computePossibleLogicalSteps() 
 	{
 		_possibleLogicalSteps = getSolver().computeAndGetPossibleLogicalSteps();
