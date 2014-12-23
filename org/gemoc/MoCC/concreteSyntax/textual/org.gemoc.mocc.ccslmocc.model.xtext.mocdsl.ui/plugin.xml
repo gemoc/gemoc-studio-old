@@ -8,6 +8,7 @@
  
  Contributors:
    Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
+   Papa Diallo - ENSTA Bretagne [papa_issa.diallo@ensta-bretagne.fr]
    
  All rights reserved. This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
@@ -297,33 +298,7 @@
 			</command>
 		</menuContribution>
 	</extension>
-
-   <extension
-         point="org.eclipse.ui.newWizards">
-      <wizard
-            category="org.eclipse.xtext.projectwiz"
-            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.MoCDslExecutableExtensionFactory:org.gemoc.mocc.ccslmocc.model.xtext.ui.wizard.MoCDslNewProjectWizard"
-            id="org.gemoc.mocc.ccslmocc.model.xtext.ui.wizard.MoCDslNewProjectWizard"
-            name="%wizard.name"
-            project="true">
-      </wizard>
-   </extension>
-   <!-- New file wizard - added to the gemoc workbench -->
-   <extension
-         point="org.eclipse.ui.newWizards">
-      <category
-            id="org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui"
-            name="%category.name"
-            parentCategory="org.gemoc.gemoc_language_workbench.ui">
-      </category>
-      <wizard
-            name="%wizard.name.0"
-            icon="icons/IconeGemocMoC_16x16x32.png"
-            category="org.gemoc.gemoc_language_workbench.ui/org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui"
-            class="org.gemoc.mocc.ccslmocc.model.xtext.ui.wizard.NewMoCMLWizard"
-            id="org.gemoc.mocc.ccslmocc.model.xtext.ui.wizards.NewMoCMLWizard">
-      </wizard>
-   </extension>
+   
     <!-- quickfix marker resolution generator for org.gemoc.mocc.ccslmocc.model.xtext.MoCDsl -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">

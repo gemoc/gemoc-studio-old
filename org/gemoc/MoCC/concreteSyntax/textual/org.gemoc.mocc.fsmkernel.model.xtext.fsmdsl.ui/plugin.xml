@@ -325,15 +325,4 @@
         </markerResolutionGenerator>
     </extension>
 
-   <extension
-         point="org.eclipse.ui.newWizards">
-      <wizard
-            category="org.eclipse.xtext.projectwiz"
-            class="org.gemoc.mocc.fsmkernel.model.xtext.ui.FSMDslExecutableExtensionFactory:org.gemoc.mocc.fsmkernel.model.xtext.ui.wizard.FSMDslNewProjectWizard"
-            id="org.gemoc.mocc.fsmkernel.model.xtext.ui.wizard.FSMDslNewProjectWizard"
-            name="%wizard.name"
-            project="true">
-      </wizard>
-   </extension>
-
 </plugin>
