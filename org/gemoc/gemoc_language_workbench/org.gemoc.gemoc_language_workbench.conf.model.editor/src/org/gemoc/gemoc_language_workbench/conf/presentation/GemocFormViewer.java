@@ -14,10 +14,10 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
-public class GemocFormViewer extends ContentViewer {
+public abstract class GemocFormViewer<GemocFormComposite extends  AbstractGemocFormComposite > extends ContentViewer {
 
 	protected ScrolledComposite scrollControl;
-	protected GemocXDSMLFormComposite viewControl;
+	protected AbstractGemocFormComposite viewControl;
 
 	protected AdapterFactoryEditingDomain editingDomain;
 
@@ -29,7 +29,7 @@ public class GemocFormViewer extends ContentViewer {
 		parent.setLayout(new FillLayout());
 		scrollControl = new ScrolledComposite(parent, SWT.V_SCROLL | SWT.BORDER);
 
-		viewControl = new GemocXDSMLFormComposite(scrollControl, SWT.NONE);
+		viewControl = createGemocFormComposite();
 		scrollControl.setContent(viewControl);
 		// Set the minimum size
 		// scrollControl.setMinSize(400, 400);
@@ -46,6 +46,12 @@ public class GemocFormViewer extends ContentViewer {
 
 	}
 
+	/**
+	 * typical use :
+	 * return new YourGemocFormComposite(scrollControl, SWT.NONE);
+	 */
+	public abstract AbstractGemocFormComposite createGemocFormComposite();
+	
 	@Override
 	public Control getControl() {
 		return scrollControl;

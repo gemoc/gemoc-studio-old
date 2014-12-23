@@ -43,7 +43,6 @@ import org.gemoc.gemoc_language_workbench.process.specific.AbstractGemocActionPr
 import org.gemoc.gemoc_language_workbench.process.specific.GemocLanguageProcessContext;
 import org.gemoc.gemoc_language_workbench.process.utils.EMFResource;
 import org.gemoc.gemoc_language_workbench.process.utils.EclipseResource;
-import org.gemoc.gemoc_language_workbench.process.utils.EclipseUI;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
@@ -147,8 +146,7 @@ public class SetDomainModelRootTask extends AbstractGemocActionProcessor {
 		if (ecoreFile != null) {
 			LabelProvider labelProvider = new ENamedElementQualifiedNameLabelProvider();
 			Resource resource = EMFResource.getResource(ecoreFile);
-			SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(EclipseUI
-					.getActiveWorkbenchShell(), resource, labelProvider);
+			SelectAnyEObjectDialog dialog = new SelectAnyConcreteEClassDialog(resource.getResourceSet(), labelProvider);
 			int res = dialog.open();
 			if (res == WizardDialog.OK) {
 				// update the project model

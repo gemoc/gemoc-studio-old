@@ -1,10 +1,13 @@
 package org.gemoc.gemoc_language_workbench.ui.builder;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.regex.Pattern;
+import java.util.Properties;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -28,14 +31,13 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.gemoc.commons.eclipse.core.resources.NatureToggling;
 import org.gemoc.commons.eclipse.core.resources.Project;
+import org.gemoc.commons.eclipse.pde.JavaProject;
 import org.gemoc.commons.eclipse.pde.ManifestChanger;
 import org.gemoc.commons.eclipse.pde.ui.PluginConverter;
-import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
-import org.jdom2.Element;
 import org.osgi.framework.BundleException;
 
 public class ToggleNatureAction implements IObjectActionDelegate {
@@ -100,7 +102,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			NatureToggling result = Project.toggleNature(project, GemocLanguageDesignerNature.NATURE_ID);
 			switch (result) {
 				case Added:
-					Project.addJavaNature(project);
+					JavaProject.create(project);
 					addPluginNature(project);
 					addGemocNature(project, languageName);
 					break;
@@ -142,7 +144,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 				// create first the plugin.xml file
 				PluginXMLHelper.createEmptyTemplateFile(project.getFile(PluginXMLHelper.PLUGIN_FILENAME), false);					
 				// convert to plugin and add necessary entries in the build.properties
-				PluginConverter.convert(project);
+				PluginConverter.convert(project);							
 				// complement manifest
 				ManifestChanger changer = new ManifestChanger(project);
 				changer.addPluginDependency(org.gemoc.gemoc_language_workbench.api.Activator.PLUGIN_ID, "0.1.0", true, true);
@@ -165,6 +167,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 			throws CoreException {
 		addAsMainNature(project, GemocLanguageDesignerNature.NATURE_ID, null);
 		addMissingResourcesToNature(project, languageName);
+		addGemocResourcesToBuildProperties(project);
 	}
 
 	// add the nature making sure this will be the first
@@ -217,5 +220,38 @@ public class ToggleNatureAction implements IObjectActionDelegate {
 		}			
 	}
 	
+	private void addGemocResourcesToBuildProperties(IProject project){
+
+
+		try {
+			Properties properties = new Properties();
+			InputStream inputStream = project.getFile("build.properties").getContents();
+			properties.load(inputStream);
+			String binIncludes = properties.getProperty("bin.includes");
+			if(binIncludes != null ){
+				if(!binIncludes.contains("project.xdsml")){
+					properties.put("bin.includes", binIncludes+", project.xdsml");
+				}
+			}
+			//create an empty InputStream
+			PipedInputStream in = new PipedInputStream();
+			//create an OutputStream with the InputStream from above as input
+			PipedOutputStream out = new PipedOutputStream(in);
+
+			//now work on the OutputStream e.g.
+			properties.store(out, "");
+			out.close();
+			//now you have the OutputStream as InputStream
+
+			//overwrite file contents
+			project.getFile("build.properties").setContents(in, true, true, new NullProgressMonitor());
+				
+		} catch (CoreException e1) {
+			Activator.error(e1.getMessage(), e1);
+		} catch (IOException e) {
+			Activator.error(e.getMessage(), e);
+		}
+		
+	}
 
 }

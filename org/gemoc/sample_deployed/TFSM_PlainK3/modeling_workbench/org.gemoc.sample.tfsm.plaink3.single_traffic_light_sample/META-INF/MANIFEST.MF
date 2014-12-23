@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Single_traffic_light_sample
+Bundle-SymbolicName: org.gemoc.tfsm.plaink3.single_traffic_light_sample
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.gemoc.sample.tfsm.plaink3.dsa;bundle-version="0.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: src/

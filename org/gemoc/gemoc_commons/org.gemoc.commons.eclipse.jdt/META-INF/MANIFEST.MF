@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: GEMOC Commons Eclipse JDT
+Bundle-SymbolicName: org.gemoc.commons.eclipse.jdt;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Require-Bundle: org.eclipse.jdt.core,
+ org.eclipse.core.runtime,
+ org.gemoc.commons.eclipse
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: org.gemoc.commons.eclipse.pde
+Import-Package: org.eclipse.core.resources
+Bundle-Vendor: INRIA

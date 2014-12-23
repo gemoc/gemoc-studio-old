@@ -6,13 +6,13 @@ import java.util.Collections;
 
 import org.eclipse.core.runtime.CoreException;
 import org.gemoc.execution.engine.commons.solvers.ccsl.SolverMock;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionPlatform;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
-import org.gemoc.gemoc_language_workbench.api.engine_addon.EngineAddonSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.engine_addon.EngineAddonSpecificationExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
+import org.gemoc.gemoc_language_workbench.api.extensions.engine_addon.EngineAddonSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.engine_addon.EngineAddonSpecificationExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
@@ -21,7 +21,7 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 	private IModelLoader _modelLoader;
 	private ISolver _solver;
 	private ICodeExecutor _codeExecutor;
-	private Collection<IEngineHook> _hooks;
+	private Collection<IEngineAddon> _addons;
 	private Collection<IMSEStateController> _clockControllers;
 	
 	public DefaultExecutionPlatform(LanguageDefinitionExtension _languageDefinition) throws CoreException 
@@ -36,10 +36,14 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 			_solver = new SolverMock();
 		}
 		_codeExecutor = _languageDefinition.instanciateCodeExecutor();		
-		_hooks = _languageDefinition.instanciateEngineHooks();
+		_addons = _languageDefinition.instanciateEngineAddons();
 		for (EngineAddonSpecificationExtension extension : EngineAddonSpecificationExtensionPoint.getSpecifications())
 		{
-			addHook(extension.instanciateComponent());
+			addEngineAddon(extension.instanciateComponent());
+		}
+		for (IEngineAddon addon : _languageDefinition.instanciateEngineAddons())
+		{
+			addEngineAddon(addon);			
 		}
 		_clockControllers = _languageDefinition.instanciateMSEStateControllers();
 	}
@@ -63,11 +67,11 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 	}
 
 	@Override
-	public Iterable<IEngineHook> getHooks() 
+	public Iterable<IEngineAddon> getEngineAddons() 
 	{
-		synchronized(_hookLock)
+		synchronized(_addonLock)
 		{
-			return Collections.unmodifiableCollection(new ArrayList<IEngineHook>(_hooks));
+			return Collections.unmodifiableCollection(new ArrayList<IEngineAddon>(_addons));
 		}
 	}
 
@@ -81,26 +85,26 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 	public void dispose() 
 	{
 		_clockControllers.clear();
-		_hooks.clear();
+		_addons.clear();
 	}
 
-	private Object _hookLock = new Object();
+	private Object _addonLock = new Object();
 	
 	@Override
-	public void addHook(IEngineHook hook) 
+	public void addEngineAddon(IEngineAddon addon) 
 	{
-		synchronized (_hookLock) 
+		synchronized (_addonLock) 
 		{
-			_hooks.add(hook);
+			_addons.add(addon);
 		}
 	}
 
 	@Override
-	public void removeHook(IEngineHook hook) 
+	public void removeEngineAddon(IEngineAddon addon) 
 	{
-		synchronized (_hookLock) 
+		synchronized (_addonLock) 
 		{
-			_hooks.remove(hook);
+			_addons.remove(addon);
 		}
 	}
 	

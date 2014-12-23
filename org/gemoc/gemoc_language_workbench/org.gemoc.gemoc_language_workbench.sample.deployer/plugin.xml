@@ -22,6 +22,19 @@
          <description>
             T⁮his set of projects feature a simple Timed finite state machine language which is made executable using Gemoc.
          </description>
+      </wizard>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
+            class="org.gemoc.gemoc_language_workbench.sample.deployer.wizards.TFSM_PlainK3ExampleWizard"
+            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            icon="icons/IconeGemocLanguage-16.png"
+            id="org.gemoc.gemoc_language_workbench.sample.deployer.tfsm_plaink3.wizard"
+            name="Gemoc TFSM Plain K3 Language example"
+            preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling,fr.obeo.dsl.viewpoint.ui.tools.perspective.design">
+         <description>
+            T⁮his set of projects feature a simple Timed finite state machine language which is made executable using Gemoc.
+         </description>
       </wizard>      
       <wizard
             canFinishEarly="true"

@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
-import org.gemoc.gemoc_language_workbench.api.engine_addon.EngineAddonSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.engine_addon.EngineAddonSpecificationExtension;
 
 public interface IRunConfiguration {
 
@@ -20,12 +20,10 @@ public interface IRunConfiguration {
 	
 	int getDeadlockDetectionDepth();
 
-	Collection<EngineAddonSpecificationExtension> getActivatedComponentExtensions();
+	Collection<EngineAddonSpecificationExtension> getEngineAddonExtensions();
 
 	String getDeciderName();
 		
 	String getExecutionEntryPoint();
-
-	Object instanciateJavaEntryPoint() throws CoreException;
 	
 }

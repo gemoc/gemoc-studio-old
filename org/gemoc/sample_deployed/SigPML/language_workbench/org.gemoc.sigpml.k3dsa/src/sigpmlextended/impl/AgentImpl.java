@@ -6,6 +6,8 @@ import cnrs.luchogie.up.SwingPlotter;
 
 import cnrs.luchogie.up.data.Figure;
 
+import com.google.common.collect.LinkedListMultimap;
+
 import javax.swing.JFrame;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -138,8 +140,8 @@ public class AgentImpl extends org.gemoc.sigpml.impl.AgentImpl implements Agent 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getCurrentExecCycle() {
-		return currentExecCycle;
+	public SwingPlotter getPlotter() {
+		return plotter;
 	}
 
 	/**
@@ -147,32 +149,11 @@ public class AgentImpl extends org.gemoc.sigpml.impl.AgentImpl implements Agent 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCurrentExecCycle(int newCurrentExecCycle) {
-		int oldCurrentExecCycle = currentExecCycle;
-		currentExecCycle = newCurrentExecCycle;
+	public void setPlotter(SwingPlotter newPlotter) {
+		SwingPlotter oldPlotter = plotter;
+		plotter = newPlotter;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.AGENT__CURRENT_EXEC_CYCLE, oldCurrentExecCycle, currentExecCycle));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Figure getFigure() {
-		return figure;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFigure(Figure newFigure) {
-		Figure oldFigure = figure;
-		figure = newFigure;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.AGENT__FIGURE, oldFigure, figure));
+			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.AGENT__PLOTTER, oldPlotter, plotter));
 	}
 
 	/**
@@ -201,8 +182,8 @@ public class AgentImpl extends org.gemoc.sigpml.impl.AgentImpl implements Agent 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SwingPlotter getPlotter() {
-		return plotter;
+	public Figure getFigure() {
+		return figure;
 	}
 
 	/**
@@ -210,11 +191,43 @@ public class AgentImpl extends org.gemoc.sigpml.impl.AgentImpl implements Agent 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPlotter(SwingPlotter newPlotter) {
-		SwingPlotter oldPlotter = plotter;
-		plotter = newPlotter;
+	public void setFigure(Figure newFigure) {
+		Figure oldFigure = figure;
+		figure = newFigure;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.AGENT__PLOTTER, oldPlotter, plotter));
+			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.AGENT__FIGURE, oldFigure, figure));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getCurrentExecCycle() {
+		return currentExecCycle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCurrentExecCycle(int newCurrentExecCycle) {
+		int oldCurrentExecCycle = currentExecCycle;
+		currentExecCycle = newCurrentExecCycle;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.AGENT__CURRENT_EXEC_CYCLE, oldCurrentExecCycle, currentExecCycle));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void isExecuting() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -233,7 +246,7 @@ public class AgentImpl extends org.gemoc.sigpml.impl.AgentImpl implements Agent 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void isExecuting() {
+	public LinkedListMultimap sharedMemory() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

@@ -8,8 +8,8 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceMode
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -19,13 +19,13 @@ import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.obeo.timeline.view.AbstractTimelineProvider;
 
-public class TimelineProvider extends AbstractTimelineProvider implements IEngineHook, IDisposable {
+public class TimelineProvider extends AbstractTimelineProvider implements IEngineAddon, IDisposable {
 
 	private AbstractExecutionEngine _engine;
 	
 	public TimelineProvider(AbstractExecutionEngine engine) {
 		_engine = engine;
-		_engine.getExecutionContext().getExecutionPlatform().addHook(this);
+		_engine.getExecutionContext().getExecutionPlatform().addEngineAddon(this);
 	}
 	
 	private ExecutionTraceModel getExecutionTrace() {
@@ -185,7 +185,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	{
 		if (_engine != null)
 		{
-			_engine.getExecutionContext().getExecutionPlatform().removeHook(this);
+			_engine.getExecutionContext().getExecutionPlatform().removeEngineAddon(this);
 		}
 	}
 
@@ -199,21 +199,6 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	{
 	}
 
-	@Override
-	public void preLogicalStepSelection(IExecutionEngine engine) 
-	{
-		update(engine);
-	}
-
-	@Override
-	public void postLogicalStepSelection(IExecutionEngine engine) 
-	{
-	}
-
-	@Override
-	public void postStopEngine(IExecutionEngine engine) 
-	{
-	}
 
 	@Override
 	public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
@@ -226,8 +211,47 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	}
 
 	@Override
-	public void engineStatusHasChanged(IExecutionEngine engineRunnable, RunStatus newStatus) 
-	{
+	public void engineAboutToStop(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
 	}
+
+	@Override
+	public void engineStopped(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
+	{
+		update(engine);
+	}
+
+	@Override
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void logicalStepExecuted(IExecutionEngine engine,
+			LogicalStep logicalStepExecuted) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineStatusChanged(IExecutionEngine engine, RunStatus newStatus) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

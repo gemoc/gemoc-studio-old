@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.gemoc_studio.branding.source.feature"
       label="Gemoc Studio Main Features sources"
-      version="0.1.3.qualifier"
+      version="0.1.4.qualifier"
       provider-name="GEMOC">
 
    <description url="http://www.gemoc.org">

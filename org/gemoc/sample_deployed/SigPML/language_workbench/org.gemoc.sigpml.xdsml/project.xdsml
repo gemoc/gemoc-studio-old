@@ -6,6 +6,6 @@
     <fileExtension>sigpml</fileExtension>
     <fileExtension>SigPML</fileExtension>
   </editorProjects>
-  <moCModelProject projectName="org.gemoc.sigpml.moc.lib"/>
+  <moCCProject projectName="org.gemoc.sigpml.moc.lib"/>
   <dSEProject projectName="org.gemoc.sigpml.moc.application" qvtoURI="/org.gemoc.sigpml.moc.application/qvto-gen/modeling/SigPML.qvto"/>
 </conf:LanguageDefinition>

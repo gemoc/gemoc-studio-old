@@ -218,9 +218,6 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_c1BaY-phEeO1TtKGEeVrvg" name="Green" outgoingEdges="_c1BadOphEeO1TtKGEeVrvg" incomingEdges="_c1Bab-phEeO1TtKGEeVrvg">
         <target xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
         <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
-        <decorations xmi:type="viewpoint:Decoration" xmi:id="_MLjfoAdeEeSLt9LsW_RG7w">
-          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Debug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
-        </decorations>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>

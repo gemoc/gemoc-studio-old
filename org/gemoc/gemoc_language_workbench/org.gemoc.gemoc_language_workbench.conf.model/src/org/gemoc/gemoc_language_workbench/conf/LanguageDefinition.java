@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDsaProject <em>Dsa Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDomainModelProject <em>Domain Model Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getEditorProjects <em>Editor Projects</em>}</li>
- *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProject <em>Mo CModel Project</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCCProject <em>Mo CC Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getAnimatorProjects <em>Animator Projects</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDSEProject <em>DSE Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getName <em>Name</em>}</li>
@@ -98,30 +98,30 @@ public interface LanguageDefinition extends EObject {
 	EList<EditorProject> getEditorProjects();
 
 	/**
-	 * Returns the value of the '<em><b>Mo CModel Project</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Mo CC Project</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Mo CModel Project</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Mo CC Project</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Mo CModel Project</em>' containment reference.
-	 * @see #setMoCModelProject(MoCCProject)
-	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_MoCModelProject()
+	 * @return the value of the '<em>Mo CC Project</em>' containment reference.
+	 * @see #setMoCCProject(MoCCProject)
+	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_MoCCProject()
 	 * @model containment="true"
 	 * @generated
 	 */
-	MoCCProject getMoCModelProject();
+	MoCCProject getMoCCProject();
 
 	/**
-	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCModelProject <em>Mo CModel Project</em>}' containment reference.
+	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMoCCProject <em>Mo CC Project</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Mo CModel Project</em>' containment reference.
-	 * @see #getMoCModelProject()
+	 * @param value the new value of the '<em>Mo CC Project</em>' containment reference.
+	 * @see #getMoCCProject()
 	 * @generated
 	 */
-	void setMoCModelProject(MoCCProject value);
+	void setMoCCProject(MoCCProject value);
 
 	/**
 	 * Returns the value of the '<em><b>Animator Projects</b></em>' containment reference list.
@@ -201,7 +201,5 @@ public interface LanguageDefinition extends EObject {
 	 * @generated
 	 */
 	EList<String> getFileExtensions();
-
-	void setMoCProject(MoCCProject mocProject);
 
 } // LanguageDefinition

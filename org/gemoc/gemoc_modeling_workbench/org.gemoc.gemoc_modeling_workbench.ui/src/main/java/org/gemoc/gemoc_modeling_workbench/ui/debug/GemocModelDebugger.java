@@ -2,11 +2,11 @@ package org.gemoc.gemoc_modeling_workbench.ui.debug;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
@@ -14,7 +14,7 @@ import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.ide.AbstractDSLDebugger;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
-public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHook {
+public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAddon {
 
 	/**
 	 * A fake instruction to prevent the stepping return to stop on each event.
@@ -162,17 +162,17 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 
 
 	@Override
-	public void preLogicalStepSelection(IExecutionEngine engine) 
+	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
 	{
 	}
 
 	@Override
-	public void postLogicalStepSelection(IExecutionEngine engine) 
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) 
 	{
 	}
 
 	@Override
-	public void postStopEngine(IExecutionEngine engine) 
+	public void engineStopped(IExecutionEngine engine) 
 	{
 		if (!isTerminated(Thread.currentThread().getName())) 
 		{
@@ -206,9 +206,22 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineHo
 	}
 
 	@Override
-	public void engineStatusHasChanged(IExecutionEngine engineRunnable,
-			RunStatus newStatus) {
-		// TODO Auto-generated method stub
-		
+	public void engineStatusChanged(IExecutionEngine engineRunnable, RunStatus newStatus) 
+	{
+	}
+
+	@Override
+	public void engineAboutToStop(IExecutionEngine engine) 
+	{
+	}
+
+	@Override
+	public void logicalStepExecuted(IExecutionEngine engine, LogicalStep logicalStepExecuted) 
+	{
+	}
+
+	@Override
+	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) 
+	{
 	}
 }

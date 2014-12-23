@@ -10,7 +10,7 @@ package sigpmlextended;
  *
  *
  * @see sigpmlextended.SigpmlextendedPackage#getPort()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Port extends org.gemoc.sigpml.Port {

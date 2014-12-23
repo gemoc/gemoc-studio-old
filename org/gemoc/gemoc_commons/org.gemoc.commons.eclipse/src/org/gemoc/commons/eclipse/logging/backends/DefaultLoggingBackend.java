@@ -2,7 +2,7 @@ package org.gemoc.commons.eclipse.logging.backends;
 
 import org.eclipse.core.runtime.Status;
 import org.gemoc.commons.eclipse.logging.ILoggingBackend;
-import org.gemoc.commons.eclipse.pde.IPlugin;
+import org.gemoc.commons.eclipse.logging.ILoggingEntity;
 
 import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 import fr.inria.diverse.commons.messagingsystem.api.impl.StdioSimpleMessagingSystem;
@@ -10,11 +10,11 @@ import fr.inria.diverse.commons.messagingsystem.api.impl.StdioSimpleMessagingSys
 public class DefaultLoggingBackend implements ILoggingBackend 
 {
 
-	private IPlugin _plugin;
+	private ILoggingEntity _loggingEntity;
 
-	public DefaultLoggingBackend(IPlugin plugin)
+	public DefaultLoggingBackend(ILoggingEntity plugin)
 	{
-		_plugin = plugin;
+		_loggingEntity = plugin;
 	}
 	
 	private MessagingSystem _messagingSystem;
@@ -35,32 +35,32 @@ public class DefaultLoggingBackend implements ILoggingBackend
 	
 	@Override
 	public void info(String message) {
-		getMessagingSystem().info(message, _plugin.getId());	
+		getMessagingSystem().info(message, _loggingEntity.getId());	
 	}
 
 	@Override
 	public void debug(String message) {
-		getMessagingSystem().debug(message, _plugin.getId());	
+		getMessagingSystem().debug(message, _loggingEntity.getId());	
 	}
 
 	@Override
 	public void warn(String message) {
-		getMessagingSystem().warn(message, _plugin.getId());	
+		getMessagingSystem().warn(message, _loggingEntity.getId());	
 	}
 
 	@Override
 	public void error(String message) {
-		getMessagingSystem().error(message, _plugin.getId());	
+		getMessagingSystem().error(message, _loggingEntity.getId());	
 	}
 
 	@Override
 	public void warn(String message, Throwable e) {
 		warn(message);
-		_plugin
+		_loggingEntity
 			.getLog()
 			.log(new Status(
 						Status.WARNING, 
-						_plugin.getId(), 
+						_loggingEntity.getId(), 
 						Status.OK, 
 						message, e));
 	}
@@ -68,11 +68,11 @@ public class DefaultLoggingBackend implements ILoggingBackend
 	@Override
 	public void error(String message, Throwable e) {
 		error(message);
-		_plugin
+		_loggingEntity
 			.getLog()
 			.log(new Status(
 						Status.ERROR, 
-						_plugin.getId(), 
+						_loggingEntity.getId(), 
 						Status.OK, 
 						message, e));	
 	}
@@ -80,11 +80,11 @@ public class DefaultLoggingBackend implements ILoggingBackend
 	@Override
 	public void info(String message, Throwable e) {
 		info(message);
-		_plugin
+		_loggingEntity
 			.getLog()
 			.log(new Status(
 						Status.INFO, 
-						_plugin.getId(), 
+						_loggingEntity.getId(), 
 						Status.OK, 
 						message, e));	
 	}

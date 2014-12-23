@@ -4,7 +4,10 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated tfsm -->
-      <package uri="http://www.gemoc.org/sample/tfsm" class="org.gemoc.sample.tfsm.TfsmPackage" genModel="model/tfsm.genmodel"></package>
+      <package
+            uri="http://www.gemoc.org/sample/tfsm"
+            class="org.gemoc.sample.tfsm.TfsmPackage"
+            genModel="model/tfsm.genmodel"/>
    </extension>
 
 </plugin>

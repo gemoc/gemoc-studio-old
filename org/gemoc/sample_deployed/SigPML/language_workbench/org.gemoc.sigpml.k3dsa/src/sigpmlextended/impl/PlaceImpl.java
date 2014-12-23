@@ -2,6 +2,8 @@
  */
 package sigpmlextended.impl;
 
+import com.google.common.collect.LinkedListMultimap;
+
 import java.util.ArrayList;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -113,27 +115,6 @@ public class PlaceImpl extends org.gemoc.sigpml.impl.PlaceImpl implements Place 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getCurrentSize() {
-		return currentSize;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCurrentSize(int newCurrentSize) {
-		int oldCurrentSize = currentSize;
-		currentSize = newCurrentSize;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.PLACE__CURRENT_SIZE, oldCurrentSize, currentSize));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ArrayList getFifo() {
 		return fifo;
 	}
@@ -176,6 +157,38 @@ public class PlaceImpl extends org.gemoc.sigpml.impl.PlaceImpl implements Place 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getCurrentSize() {
+		return currentSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCurrentSize(int newCurrentSize) {
+		int oldCurrentSize = currentSize;
+		currentSize = newCurrentSize;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.PLACE__CURRENT_SIZE, oldCurrentSize, currentSize));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void push() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void pop() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -187,7 +200,7 @@ public class PlaceImpl extends org.gemoc.sigpml.impl.PlaceImpl implements Place 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void push() {
+	public LinkedListMultimap sharedMemory() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

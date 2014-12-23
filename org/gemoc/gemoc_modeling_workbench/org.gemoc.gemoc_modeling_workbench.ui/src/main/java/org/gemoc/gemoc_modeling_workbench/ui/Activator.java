@@ -37,6 +37,8 @@ public class Activator extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		AbstractGemocDebuggerServices.LISTENER.install();
+		// start the messagin system ui plugin to load default settings.
+		fr.inria.diverse.commons.eclipse.messagingsystem.ui.Activator.getDefault();
 	}
 
 	/*

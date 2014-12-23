@@ -19,7 +19,7 @@ package sigpmlextended;
  * @model
  * @generated
  */
-public interface InputPort extends org.gemoc.sigpml.InputPort {
+public interface InputPort extends org.gemoc.sigpml.InputPort, NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Size Toread</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -52,6 +52,22 @@ public interface InputPort extends org.gemoc.sigpml.InputPort {
 	 * @model
 	 * @generated
 	 */
-	void read();
+	int read();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void logSizeToReadWhenZero();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void logSizeToReadWhenNotZero();
 
 } // InputPort

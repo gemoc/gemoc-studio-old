@@ -22,6 +22,19 @@
          <description>
             T⁮his project contains some TFSM models that can be executed if you have installed the TFSM language.
          </description>
+      </wizard>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
+            class="org.gemoc.gemoc_modeling_workbench.sample.deployer.wizards.TFSM_PlainK3ExampleWizard"
+            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.gemoc_modeling_workbench.sample.deployer.tfsm_plaink3.model.wizard"
+            name="Gemoc TrafficLight model example for TFSM Plain K3 Language"
+            preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling">
+         <description>
+            T⁮his project contains some TFSM models that can be executed if you have installed the TFSM language.
+         </description>
       </wizard>      
       <wizard
             canFinishEarly="true"

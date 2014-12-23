@@ -21,7 +21,7 @@ public class RecordScenarioAction extends Action {
 	public void run() {
 		EventManagerView eventView = ViewHelper.retrieveView(EventManagerView.ID);
 		if(eventView.getEngine()!=null &&
-		   !eventView.getEngine().getEngineStatus().getRunningStatus().equals(RunStatus.Stopped))
+		   !eventView.getEngine().getRunningStatus().equals(RunStatus.Stopped))
 		{
 			eventView.startRecordScenario();
 		}

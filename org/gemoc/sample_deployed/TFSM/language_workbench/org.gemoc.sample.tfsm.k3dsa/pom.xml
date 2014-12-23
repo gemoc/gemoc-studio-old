@@ -6,10 +6,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.gemoc.sample.robotml</groupId>
-		<artifactId>org.gemoc.sample.robotml.root</artifactId>
+		<groupId>org.gemoc.sample.tfsm.raspberry</groupId>
+		<artifactId>org.gemoc.sample.tfsm.raspberry.root</artifactId>
 		<version>0.1.0-SNAPSHOT</version>
-		<relativePath>../../../RobotML/Language/org.gemoc.sample.robotml.root</relativePath>
+		<relativePath>../../modeling_workbench/org.gemoc.sample.tfsm.raspberry.root</relativePath>
 	</parent>
 
 	<artifactId>org.gemoc.sample.tfsm.k3dsa</artifactId>

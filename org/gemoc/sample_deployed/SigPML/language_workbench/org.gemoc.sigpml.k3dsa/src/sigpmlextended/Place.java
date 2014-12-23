@@ -22,33 +22,7 @@ import java.util.ArrayList;
  * @model
  * @generated
  */
-public interface Place extends org.gemoc.sigpml.Place {
-	/**
-	 * Returns the value of the '<em><b>Current Size</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Current Size</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Current Size</em>' attribute.
-	 * @see #setCurrentSize(int)
-	 * @see sigpmlextended.SigpmlextendedPackage#getPlace_CurrentSize()
-	 * @model
-	 * @generated
-	 */
-	int getCurrentSize();
-
-	/**
-	 * Sets the value of the '{@link sigpmlextended.Place#getCurrentSize <em>Current Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Current Size</em>' attribute.
-	 * @see #getCurrentSize()
-	 * @generated
-	 */
-	void setCurrentSize(int value);
-
+public interface Place extends org.gemoc.sigpml.Place, NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Fifo</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -102,12 +76,30 @@ public interface Place extends org.gemoc.sigpml.Place {
 	void setIsInitialized(boolean value);
 
 	/**
+	 * Returns the value of the '<em><b>Current Size</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Current Size</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Current Size</em>' attribute.
+	 * @see #setCurrentSize(int)
+	 * @see sigpmlextended.SigpmlextendedPackage#getPlace_CurrentSize()
 	 * @model
 	 * @generated
 	 */
-	void pop();
+	int getCurrentSize();
+
+	/**
+	 * Sets the value of the '{@link sigpmlextended.Place#getCurrentSize <em>Current Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Current Size</em>' attribute.
+	 * @see #getCurrentSize()
+	 * @generated
+	 */
+	void setCurrentSize(int value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,5 +108,13 @@ public interface Place extends org.gemoc.sigpml.Place {
 	 * @generated
 	 */
 	void push();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void pop();
 
 } // Place

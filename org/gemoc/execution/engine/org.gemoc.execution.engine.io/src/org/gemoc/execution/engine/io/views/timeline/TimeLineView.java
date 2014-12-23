@@ -204,7 +204,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	private boolean canDisplayTimeline(IExecutionEngine engine)
 	{
 		if (engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Run)
-			&& engine.getEngineStatus().getRunningStatus().equals(RunStatus.Stopped))
+			&& engine.getRunningStatus().equals(RunStatus.Stopped))
 		{
 			return true;
 		}
@@ -238,7 +238,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 				{								
 					Choice choice = (Choice)o1;
 					LogicalStep logicalStep = (LogicalStep)o2;
-					if (_currentEngine.getEngineStatus().getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection))
+					if (_currentEngine.getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection))
 					{
 						if (choice.getNextChoice() == null)
 						{
@@ -269,7 +269,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		{
 			try 
 			{
-				_currentEngine.capability(ModelExecutionTracingHook.class).backToPast(choice);
+				_currentEngine.getCapability(ModelExecutionTracingHook.class).backToPast(choice);
 			} catch (ModelExecutionTracingException e) 
 			{
 				e.printStackTrace();

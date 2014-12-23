@@ -14,7 +14,7 @@
         eType="#//DomainModelProject" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="editorProjects" upperBound="-1"
         eType="#//EditorProject" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="moCModelProject" eType="#//MoCCProject"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moCCProject" eType="#//MoCCProject"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="animatorProjects" upperBound="-1"
         eType="#//AnimatorProject" containment="true"/>

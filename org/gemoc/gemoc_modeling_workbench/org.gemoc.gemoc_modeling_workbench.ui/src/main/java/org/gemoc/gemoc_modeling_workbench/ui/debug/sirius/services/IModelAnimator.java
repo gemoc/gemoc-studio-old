@@ -1,6 +1,6 @@
 package org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services;
 
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.inria.aoste.trace.LogicalStep;
 
@@ -10,7 +10,7 @@ import fr.inria.aoste.trace.LogicalStep;
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  * 
  */
-public interface IModelAnimator extends IEngineHook {
+public interface IModelAnimator extends IEngineAddon {
 
 	/**
 	 * Activates the given {@link LogicalStep}.

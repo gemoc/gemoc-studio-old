@@ -32,17 +32,17 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceMode
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
-import org.gemoc.gemoc_language_workbench.api.core.DefaultEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
 
-public class ModelExecutionTracingHook extends DefaultEngineHook {
+public class ModelExecutionTracingHook extends DefaultEngineAddon {
 	
 	private TransactionalEditingDomain getEditingDomain()
 	{
@@ -70,7 +70,8 @@ public class ModelExecutionTracingHook extends DefaultEngineHook {
 			commandStack.execute(new RecordingCommand(getEditingDomain(), "Back to " + index) {
 				@Override
 				protected void doExecute() {
-					_executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size()).clear();
+					List<Choice> choicesToRemove = _executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size());
+					_executionTraceModel.getChoices().removeAll(choicesToRemove);
 					if (_executionTraceModel.getChoices().size() > 0)
 						_executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1).setNextChoice(null);
 					try {
@@ -280,16 +281,16 @@ public class ModelExecutionTracingHook extends DefaultEngineHook {
 	
 	
 	@Override
-	public void preLogicalStepSelection(IExecutionEngine engine) 
+	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
 	{
 		setUp(engine);
 		updateTraceModelBeforeDeciding(engine.getPossibleLogicalSteps());
 	}
 	
 	@Override
-	public void postLogicalStepSelection(IExecutionEngine engine) 
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) 
 	{
 		setUp(engine);
-		updateTraceModelAfterDeciding(engine.getSelectedLogicalStep());
+		updateTraceModelAfterDeciding(selectedLogicalStep);
 	}
 }

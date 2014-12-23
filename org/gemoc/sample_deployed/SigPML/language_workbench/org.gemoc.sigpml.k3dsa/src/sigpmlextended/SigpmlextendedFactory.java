@@ -40,15 +40,6 @@ public interface SigpmlextendedFactory extends EFactory {
 	Agent createAgent();
 
 	/**
-	 * Returns a new object of class '<em>Port</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Port</em>'.
-	 * @generated
-	 */
-	Port createPort();
-
-	/**
 	 * Returns a new object of class '<em>Input Port</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,24 +65,6 @@ public interface SigpmlextendedFactory extends EFactory {
 	 * @generated
 	 */
 	Place createPlace();
-
-	/**
-	 * Returns a new object of class '<em>Named Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Named Element</em>'.
-	 * @generated
-	 */
-	NamedElement createNamedElement();
-
-	/**
-	 * Returns a new object of class '<em>HW Ressource</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>HW Ressource</em>'.
-	 * @generated
-	 */
-	HWRessource createHWRessource();
 
 	/**
 	 * Returns a new object of class '<em>HW Computational Resource</em>'.

@@ -16,7 +16,7 @@ import sigpmlextended.SigpmlextendedPackage;
  *
  * @generated
  */
-public class PortImpl extends org.gemoc.sigpml.impl.PortImpl implements Port {
+public abstract class PortImpl extends org.gemoc.sigpml.impl.PortImpl implements Port {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

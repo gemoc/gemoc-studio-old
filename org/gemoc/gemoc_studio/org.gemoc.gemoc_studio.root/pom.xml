@@ -4,7 +4,7 @@
     <name>Gemoc Studio root build</name>
     <groupId>org.gemoc.gemoc_studio</groupId>
     <artifactId>org.gemoc.gemoc_studio.root</artifactId>
-    <version>0.1.3-SNAPSHOT</version>
+    <version>0.1.4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>

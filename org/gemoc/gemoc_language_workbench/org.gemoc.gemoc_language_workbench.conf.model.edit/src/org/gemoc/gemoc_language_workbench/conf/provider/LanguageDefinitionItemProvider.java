@@ -101,7 +101,7 @@ public class LanguageDefinitionItemProvider
 			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__DSA_PROJECT);
 			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT);
 			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__EDITOR_PROJECTS);
-			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT);
+			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__MO_CC_PROJECT);
 			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS);
 			childrenFeatures.add(confPackage.Literals.LANGUAGE_DEFINITION__DSE_PROJECT);
 		}
@@ -164,7 +164,7 @@ public class LanguageDefinitionItemProvider
 			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECT:
 			case confPackage.LANGUAGE_DEFINITION__DOMAIN_MODEL_PROJECT:
 			case confPackage.LANGUAGE_DEFINITION__EDITOR_PROJECTS:
-			case confPackage.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT:
+			case confPackage.LANGUAGE_DEFINITION__MO_CC_PROJECT:
 			case confPackage.LANGUAGE_DEFINITION__ANIMATOR_PROJECTS:
 			case confPackage.LANGUAGE_DEFINITION__DSE_PROJECT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -211,7 +211,7 @@ public class LanguageDefinitionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(confPackage.Literals.LANGUAGE_DEFINITION__MO_CMODEL_PROJECT,
+				(confPackage.Literals.LANGUAGE_DEFINITION__MO_CC_PROJECT,
 				 confFactory.eINSTANCE.createMoCCProject()));
 
 		newChildDescriptors.add

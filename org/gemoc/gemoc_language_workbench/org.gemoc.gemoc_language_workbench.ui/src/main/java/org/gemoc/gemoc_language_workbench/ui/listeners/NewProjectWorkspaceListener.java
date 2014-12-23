@@ -32,6 +32,9 @@ public class NewProjectWorkspaceListener implements IResourceChangeListener {
 		}
 	}
 
+	public ArrayList<IProject> getNewlyCreatedProjects(){
+		return newlyCreatedProjects;
+	}
 	public IProject getLastCreatedProject(){
 		if(newlyCreatedProjects.size() == 0) return null;
 		else return newlyCreatedProjects.get(newlyCreatedProjects.size()-1);

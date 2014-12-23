@@ -6,10 +6,10 @@ import java.util.Collection;
 import java.util.List;
 
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.dse.DefaultMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
@@ -17,6 +17,7 @@ import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -108,26 +109,20 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		_executionContext = executionContext;
 		_lastStepsRun = new ArrayDeque<LogicalStep>(getDeadlockDetectionDepth());
 
-		for(IMSEStateController c: _executionContext.getExecutionPlatform().getMSEStateControllers())
-		{
-			addMSEStateController(c);
-		}
-		_mseStateController = createEngineMSEStateController();
-		addMSEStateController(_mseStateController);
+		_mseStateController = new DefaultMSEStateController();
+		_executionContext.getExecutionPlatform().getMSEStateControllers().add(_mseStateController);
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
 	
-	protected abstract IMSEStateController createEngineMSEStateController();
-
 	private EngineRunnable _runnable;
 	@Override
 	public void start() 
 	{
 		if (!_started) 
 		{
-			for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+			for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 			{
-				hook.engineAboutToStart(this);
+				addon.engineAboutToStart(this);
 			}
 			engineStatus.setNbLogicalStepRun(0);
 			_runnable = new EngineRunnable();
@@ -150,12 +145,11 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 
 	private void clean() {
 		setEngineStatus(EngineStatus.RunStatus.Stopped);
-		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 		{
-			hook.postStopEngine(this);
+			addon.engineStopped(this);
 		}
-		getEngineStatus().getCurrentLogicalStepChoice().clear();
-		getEngineStatus().setChosenLogicalStep(null);
+		setSelectedLogicalStep(null);
 	}
 
 	public EngineStatus getEngineStatus() {
@@ -189,9 +183,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		
 		public void run() {
 			
-			for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+			for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 			{
-				hook.engineStarted(AbstractExecutionEngine.this);
+				addon.engineStarted(AbstractExecutionEngine.this);
 			}
 			
 			// register this engine using a unique name
@@ -223,13 +217,12 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 
 						if (selectedLogicalStepIndex != -1)
 						{
-							_selectedLogicalStep = _possibleLogicalSteps.get(selectedLogicalStepIndex);
-							engineStatus.setChosenLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));
+							setSelectedLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));
 							setEngineStatus(EngineStatus.RunStatus.Running);
 
-							for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+							for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 							{
-								hook.postLogicalStepSelection(AbstractExecutionEngine.this);
+								addon.logicalStepSelected(AbstractExecutionEngine.this, getSelectedLogicalStep());
 							}
 
 							// 3 - run the selected logical step
@@ -274,10 +267,10 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 
 	private void setEngineStatus(RunStatus newStatus) 
 	{
-		engineStatus.setRunningStatus(newStatus);
-		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks())
+		_runningStatus = newStatus;
+		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons())
 		{
-			hook.engineStatusHasChanged(this, newStatus);
+			addon.engineStatusChanged(this, newStatus);
 		}
 	}
 	
@@ -304,9 +297,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		// execution feedback is sent to the solver so it can take internal
 		// event into account
 
-		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 		{
-			hook.aboutToExecuteLogicalStep(this, logicalStepToApply);
+			addon.aboutToExecuteLogicalStep(this, logicalStepToApply);
 		}
 
 		Collection<IMSEOccurrence> mseOccurences = MSEOccurrenceFactory.createMSEOccurrences(logicalStepToApply, _executionContext.getFeedbackModel());	
@@ -315,7 +308,12 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			executeAssociatedActions(mseOccurence.getMSE());
 			executeModelSpecificEvent(mseOccurence.getMSE());
 		}
-	}
+
+		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
+		{
+			addon.logicalStepExecuted(this, logicalStepToApply);
+		}
+}
 	
 	private void executeAssociatedActions(ModelSpecificEvent mse)
 	{
@@ -338,10 +336,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	{
 		if (mse.getAction() != null) 
 		{			
-			for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
-			{
-				hook.aboutToExecuteMSE(this, mse);
-			}
 			ActionModel feedbackModel = _executionContext.getFeedbackModel();
 			ArrayList<When> whenStatements = new ArrayList<When>();
 			for (When w : feedbackModel.getWhenStatements())
@@ -369,14 +363,8 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		return this.getClass().getName() + "@[Executor=" + getCodeExecutor() + " ; Solver=" + getSolver() + " ; ModelResource=" + _executionContext.getResourceModel()+ "]";
 	}
 
-	private ArrayList<IMSEStateController> _mseStateControllers = new ArrayList<IMSEStateController>();
-	private void addMSEStateController(IMSEStateController controller) 
-	{
-		_mseStateControllers.add(controller);
-	}
-
-	public <T extends IEngineHook> boolean hasCapability(Class<T> type) {
-		for (IEngineHook c : _executionContext.getExecutionPlatform().getHooks()) {
+	public <T extends IEngineAddon> boolean hasCapability(Class<T> type) {
+		for (IEngineAddon c : _executionContext.getExecutionPlatform().getEngineAddons()) {
 			if (c.getClass().equals(type))
 				return true;
 		}
@@ -384,31 +372,12 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	}
 
 	@SuppressWarnings("all")
-	public <T extends IEngineHook> T getCapability(Class<T> type) {
-		for (IEngineHook c : _executionContext.getExecutionPlatform().getHooks()) {
+	public <T extends IEngineAddon> T getCapability(Class<T> type) {
+		for (IEngineAddon c : _executionContext.getExecutionPlatform().getEngineAddons()) {
 			if (c.getClass().equals(type))
 				return (T) c;
 		}
 		return null;
-	}
-
-	public <T extends IEngineHook> T capability(Class<T> type) {
-		T capability = getCapability(type);
-		if (capability == null) {
-			try {
-				capability = type.newInstance();
-				_executionContext.getExecutionPlatform().addHook(capability);
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			}
-		}
-		return capability;
-	}
-
-	public ArrayList<IMSEStateController> get_clockControllers() {
-		return _mseStateControllers;
 	}
 
 	@Override
@@ -425,7 +394,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		}
 	}
 
-	private List<LogicalStep> _possibleLogicalSteps;
+	private List<LogicalStep> _possibleLogicalSteps = new ArrayList<>();
 	private void computePossibleLogicalSteps() 
 	{
 		_possibleLogicalSteps = getSolver().computeAndGetPossibleLogicalSteps();
@@ -434,27 +403,27 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	@Override
 	public List<LogicalStep> getPossibleLogicalSteps() 
 	{
-		return _possibleLogicalSteps;
+		synchronized (this)
+		{
+			return new ArrayList<LogicalStep>(_possibleLogicalSteps);
+		}
 	}
 	
 	private LogicalStep _selectedLogicalStep;
-	@Override
-	public LogicalStep getSelectedLogicalStep() 
-	{
-		return _selectedLogicalStep;
-	}
 	
 	private void updatePossibleLogicalSteps()
 	{
-		for(IMSEStateController c : _mseStateControllers)
+		for(IMSEStateController c : _executionContext.getExecutionPlatform().getMSEStateControllers())
 		{
 			c.applyMSEFutureStates(getSolver());
 		}
-		_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
-		engineStatus.updateCurrentLogicalStepChoice(_possibleLogicalSteps);
-		for (IEngineHook hook : _executionContext.getExecutionPlatform().getHooks()) 
+		synchronized(this)
 		{
-			hook.preLogicalStepSelection(AbstractExecutionEngine.this);
+			_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
+		}
+		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
+		{
+			addon.aboutToSelectLogicalStep(AbstractExecutionEngine.this);
 		}
 	}
 	
@@ -488,7 +457,27 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	@Override
 	public void dispose() 
 	{
-		_mseStateControllers.clear();		
 		_executionContext.dispose();
 	}
+	
+	@Override
+	public LogicalStep getSelectedLogicalStep() 
+	{
+		synchronized (this) {
+			return _selectedLogicalStep;
+		}
+	}
+	private void setSelectedLogicalStep(LogicalStep ls)
+	{
+		synchronized (this) {
+			_selectedLogicalStep = ls;
+		}
+	}
+	
+	private RunStatus _runningStatus = RunStatus.Initializing;
+
+	public RunStatus getRunningStatus() {
+		return _runningStatus;
+	}
+
 }

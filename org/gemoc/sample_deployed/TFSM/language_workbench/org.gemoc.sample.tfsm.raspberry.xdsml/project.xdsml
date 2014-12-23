@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<conf:LanguageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:conf="http://www.gemoc.org/gemoc_language_workbench_conf" name="tfsm for raspberry">
+  <dsaProject projectName="org.gemoc.sample.tfsm.k3dsa" codeExecutorClass="tfsm.xdsml.api.impl.TfsmCodeExecutor"/>
+  <domainModelProject projectName="org.gemoc.sample.tfsm.model" defaultRootEObjectQualifiedName="tfsm::TimedSystem" genmodeluri="platform:/resource/org.gemoc.sample.tfsm.model/model/tfsm.genmodel"/>
+  <editorProjects xsi:type="conf:SiriusEditorProject" projectName="org.gemoc.sample.tfsm.design">
+    <fileExtension>sigpml</fileExtension>
+    <fileExtension>SigPML</fileExtension>
+  </editorProjects>
+  <moCCProject projectName="org.gemoc.sample.tfsm.moc.lib"/>
+  <dSEProject projectName="org.gemoc.sample.tfsm.eclmoc2as" qvtoURI="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto"/>
+</conf:LanguageDefinition>

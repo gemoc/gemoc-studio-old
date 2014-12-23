@@ -3,8 +3,8 @@ package org.gemoc.execution.engine.io.views.event;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.gemoc.execution.engine.commons.dsa.DefaultMSEStateController;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.dse.DefaultMSEStateController;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
 import org.gemoc.execution.engine.scenario.Future;
 
@@ -31,7 +31,7 @@ public class ModelSpecificEventContext
 	private void configure()
 	{
 		_mseSet = new ModelSpecificEventSet(_engine.getExecutionContext().getFeedbackModel());
-		_engine.get_clockControllers().add(_clockController);
+		_engine.getExecutionContext().getExecutionPlatform().getMSEStateControllers().add(_clockController);
 	}
 
 	public void forceClock(ModelSpecificEventWrapper mse, ClockStatus state) 

@@ -11,7 +11,7 @@ import com.google.common.collect.LinkedListMultimap;
  *
  *
  * @see sigpmlextended.SigpmlextendedPackage#getNamedElement()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface NamedElement extends org.gemoc.sigpml.NamedElement {

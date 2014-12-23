@@ -40,9 +40,8 @@ public class GroovyRunner {
 				return groovyScriptAbsolutePath;
 			} catch (Exception e) {
 				String errorMessage = e.getClass().getSimpleName() + " when trying to property file referencing the groovy script. "+e.getMessage();
-				 Activator.getMessagingSystem().error(errorMessage,
-				 Activator.PLUGIN_ID);
-				 Activator.error(errorMessage, e);
+				 Activator.getDefault().error(errorMessage);
+				 Activator.getDefault().error(errorMessage, e);
 			}
 		}
 		return null;	
@@ -66,11 +65,11 @@ public class GroovyRunner {
 			return r;
 		} catch (Exception e) {
 			String errorMessage = e.getClass().getSimpleName() + " when trying to execute a Groovy expression";
-			 Activator.getMessagingSystem().error(errorMessage,
-			 Activator.PLUGIN_ID);
-			 Activator.error(errorMessage, e);
+			 Activator.getDefault().error(errorMessage);
+			 Activator.getDefault().error(errorMessage, e);
 		}
 		return null;
 	}
 
 }
+

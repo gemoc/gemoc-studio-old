@@ -65,8 +65,8 @@ import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManagerState;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -80,7 +80,7 @@ import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
  * @author lguillem
  * @version 1.6
  */
-public class EventManagerView extends ViewPart implements IMotorSelectionListener, IEngineHook, IEvenPresenter {
+public class EventManagerView extends ViewPart implements IMotorSelectionListener, IEngineAddon, IEvenPresenter {
 
 	private static final class GemocLabelDecorator extends DSLLabelDecorator {
 
@@ -614,7 +614,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	{
 		if (_currentSelectedEngine != null)
 		{
-			return _currentSelectedEngine.getEngineStatus().getRunningStatus().equals(RunStatus.Stopped);
+			return _currentSelectedEngine.getRunningStatus().equals(RunStatus.Stopped);
 		}
 		return false;
 	}
@@ -669,14 +669,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 					{
 						sm.stopPlaying();
 					}
-					engine.getExecutionContext().getExecutionPlatform().removeHook(this);
+					engine.getExecutionContext().getExecutionPlatform().removeEngineAddon(this);
 					_mseContextMap.remove(engine);
 				}
 			}
 			else // else we set the current state according to the selected engine cache state
 			{
-				engine.getExecutionContext().getExecutionPlatform().removeHook(this);
-				engine.getExecutionContext().getExecutionPlatform().addHook(this);
+				engine.getExecutionContext().getExecutionPlatform().removeEngineAddon(this);
+				engine.getExecutionContext().getExecutionPlatform().addEngineAddon(this);
 				//executeCommand(Commands.DO_INIT);
 				if(_mseContextMap.get(engine) == null)
 				{
@@ -735,7 +735,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		decisionView.removeSelectionChangedListener(_decisionViewListener);
 		_contentProvider.dispose();
 		if(_currentSelectedEngine != null) {
-			_currentSelectedEngine.getExecutionContext().getExecutionPlatform().removeHook(this);
+			_currentSelectedEngine.getExecutionContext().getExecutionPlatform().removeEngineAddon(this);
 		}
 		_currentSelectedEngine = null;	
 		stopListeningToMotorSelectionChange();
@@ -885,47 +885,6 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	@Override
-	public void engineAboutToStart(IExecutionEngine engine) 
-	{
-	}
-
-	@Override
-	public void engineStarted(IExecutionEngine executionEngine) 
-	{
-	}
-
-	@Override
-	public void preLogicalStepSelection(IExecutionEngine engine) 
-	{
-		update(engine);
-	}
-
-	@Override
-	public void postLogicalStepSelection(IExecutionEngine engine) 
-	{
-	}
-
-	@Override
-	public void postStopEngine(IExecutionEngine engine) 
-	{
-	}
-
-	@Override
-	public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
-	{
-	}
-
-	@Override
-	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse) 
-	{
-	}
-
-	@Override
-	public void engineStatusHasChanged(IExecutionEngine engineRunnable, RunStatus newStatus) 
-	{
-	}
-
-	@Override
 	public void present(List<URI> events) {
 		_eventsToPresent = events;
 		if (_currentSelectedEngine != null) {
@@ -938,6 +897,74 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 				}
 			}
 		}
+	}
+
+	@Override
+	public void engineAboutToStart(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineStarted(IExecutionEngine executionEngine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineAboutToStop(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineStopped(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void aboutToSelectLogicalStep(IExecutionEngine engine) {
+		update(engine);
+	}
+
+	@Override
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void aboutToExecuteLogicalStep(IExecutionEngine engine,
+			LogicalStep logicalStepToExecute) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void logicalStepExecuted(IExecutionEngine engine,
+			LogicalStep logicalStepExecuted) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void aboutToExecuteMSE(IExecutionEngine engine,
+			ModelSpecificEvent mse) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineStatusChanged(IExecutionEngine engine, RunStatus newStatus) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

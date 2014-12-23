@@ -116,10 +116,10 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		try 
 		{
 			RunConfiguration runConfiguration = new RunConfiguration(configuration);
-			_modelLocationText.setText(URIHelper.removePlatformResource(runConfiguration.getExecutedModelURI()));
+			_modelLocationText.setText(URIHelper.removePlatformScheme(runConfiguration.getExecutedModelURI()));
 
 			if (runConfiguration.getAnimatorURI() != null)
-				_siriusRepresentationLocationText.setText(URIHelper.removePlatformResource(runConfiguration.getAnimatorURI()));
+				_siriusRepresentationLocationText.setText(URIHelper.removePlatformScheme(runConfiguration.getAnimatorURI()));
 			else
 				_siriusRepresentationLocationText.setText("");
 			_delayText.setText(Integer.toString(runConfiguration.getAnimationDelay()));

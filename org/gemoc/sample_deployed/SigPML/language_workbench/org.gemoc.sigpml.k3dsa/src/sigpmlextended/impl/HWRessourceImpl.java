@@ -16,7 +16,7 @@ import sigpmlextended.SigpmlextendedPackage;
  *
  * @generated
  */
-public class HWRessourceImpl extends org.gemoc.sigpml.impl.HWRessourceImpl implements HWRessource {
+public abstract class HWRessourceImpl extends org.gemoc.sigpml.impl.HWRessourceImpl implements HWRessource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

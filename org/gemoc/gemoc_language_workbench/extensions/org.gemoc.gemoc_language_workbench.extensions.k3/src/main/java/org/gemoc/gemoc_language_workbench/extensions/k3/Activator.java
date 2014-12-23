@@ -4,8 +4,6 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 import fr.inria.diverse.commons.eclipse.messagingsystem.api.MessagingSystemManager;
-import fr.inria.diverse.commons.eclipse.messagingsystem.ui.ConsoleLogLevel;
-import fr.inria.diverse.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem;
 import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 
 public class Activator implements BundleActivator {
@@ -26,8 +24,6 @@ public class Activator implements BundleActivator {
 		{
 			MessagingSystemManager msm = new MessagingSystemManager();
 			messagingSystem = msm.createBestPlatformMessagingSystem(PLUGIN_ID, "GEMOC extensions k3");
-			if (messagingSystem instanceof EclipseMessagingSystem)
-				((EclipseMessagingSystem) messagingSystem).setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
 		}
 		return messagingSystem;
 	}

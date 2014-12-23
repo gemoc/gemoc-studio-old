@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="org.gemoc.sigpml.k3dsa/src" modelName="SigPMLExtended" complianceLevel="7.0" copyrightFields="false">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="org.gemoc.sigpml.k3dsa/src" modelPluginID="org.gemoc.sigpml.k3dsa" modelName="SigPMLExtended" complianceLevel="7.0" copyrightFields="false">
   <foreignModel>platform:/resource/org.gemoc.sigpml.k3dsa/model/SigPMLExtended.ecore</foreignModel>
-  <genPackages prefix="Sigpmlextended" basePackage="sigpmlextended" disposableProviderFactory="true">
+  <genPackages prefix="Sigpmlextended" disposableProviderFactory="true">
     <ecorePackage href="SigPMLExtended.ecore#/"/>
     <genDataTypes>
       <ecoreDataType href="SigPMLExtended.ecore#//SwingPlotter"/>

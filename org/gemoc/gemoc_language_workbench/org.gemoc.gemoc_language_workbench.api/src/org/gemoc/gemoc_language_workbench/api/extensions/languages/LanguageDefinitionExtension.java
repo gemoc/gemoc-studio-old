@@ -5,10 +5,10 @@ import java.util.HashSet;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.gemoc.gemoc_language_workbench.api.core.IEngineHook;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
@@ -55,18 +55,18 @@ public class LanguageDefinitionExtension extends Extension
 		return _configurationElement.getAttribute(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
 	}
 	
-	final public Collection<IEngineHook> instanciateEngineHooks() 
+	final public Collection<IEngineAddon> instanciateEngineAddons() 
 			throws CoreException 
 	{
-		HashSet<IEngineHook> engineHooks = new HashSet<IEngineHook>();
-		for(IConfigurationElement childConfElement : _configurationElement.getChildren(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF)){
+		HashSet<IEngineAddon> addons = new HashSet<IEngineAddon>();
+		for(IConfigurationElement childConfElement : _configurationElement.getChildren(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_ADDON_DEF)){
 			childConfElement.getName();				
-			final Object oEngineHook = childConfElement.createExecutableExtension(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_HOOK_DEF_ENGINE_HOOK_ATT);
-			if(oEngineHook instanceof IEngineHook){
-				engineHooks.add((IEngineHook) oEngineHook);
+			final Object addon = childConfElement.createExecutableExtension(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_ADDON_DEF_ENGINE_ADDON_ATT);
+			if(addon instanceof IEngineAddon){
+				addons.add((IEngineAddon) addon);
 			}
 		}
-		return engineHooks;
+		return addons;
 	}
 
 	final public Collection<IMSEStateController> instanciateMSEStateControllers() 

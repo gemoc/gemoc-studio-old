@@ -9,6 +9,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.FeedbackFactory;
@@ -25,12 +26,20 @@ public class SynchroneExecution extends OperationExecution
 	@Override
 	public void run() 
 	{
+		for (IEngineAddon addon : getEngine().getExecutionContext().getExecutionPlatform().getEngineAddons()) 
+		{
+			addon.aboutToExecuteMSE(getEngine(), getMSE());
+		}
 		Object res = callExecutor();
 		setResult(res);
 		try {
 			applyAnimationTime();
 		} catch (InterruptedException e) {
 			Activator.getDefault().error("Exception received " + e.getMessage(), e);
+		}
+		for (IEngineAddon addon : getEngine().getExecutionContext().getExecutionPlatform().getEngineAddons()) 
+		{
+			addon.mseExecuted(getEngine(), getMSE());
 		}
 	}
 	

@@ -881,14 +881,14 @@ public interface SigpmlextendedPackage extends EPackage {
 	int SYSTEM_FEATURE_COUNT = SigpmlPackage.SYSTEM_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '<em>Figure</em>' data type.
+	 * The meta object id for the '<em>Swing Plotter</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see cnrs.luchogie.up.data.Figure
-	 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getFigure()
+	 * @see cnrs.luchogie.up.SwingPlotter
+	 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getSwingPlotter()
 	 * @generated
 	 */
-	int FIGURE = 15;
+	int SWING_PLOTTER = 13;
 
 	/**
 	 * The meta object id for the '<em>JFrame</em>' data type.
@@ -901,14 +901,14 @@ public interface SigpmlextendedPackage extends EPackage {
 	int JFRAME = 14;
 
 	/**
-	 * The meta object id for the '<em>Swing Plotter</em>' data type.
+	 * The meta object id for the '<em>Figure</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see cnrs.luchogie.up.SwingPlotter
-	 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getSwingPlotter()
+	 * @see cnrs.luchogie.up.data.Figure
+	 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getFigure()
 	 * @generated
 	 */
-	int SWING_PLOTTER = 13;
+	int FIGURE = 15;
 
 	/**
 	 * The meta object id for the '<em>Array List</em>' data type.
@@ -952,26 +952,15 @@ public interface SigpmlextendedPackage extends EPackage {
 	EClass getAgent();
 
 	/**
-	 * Returns the meta object for the attribute '{@link sigpmlextended.Agent#getCurrentExecCycle <em>Current Exec Cycle</em>}'.
+	 * Returns the meta object for the attribute '{@link sigpmlextended.Agent#getPlotter <em>Plotter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Current Exec Cycle</em>'.
-	 * @see sigpmlextended.Agent#getCurrentExecCycle()
+	 * @return the meta object for the attribute '<em>Plotter</em>'.
+	 * @see sigpmlextended.Agent#getPlotter()
 	 * @see #getAgent()
 	 * @generated
 	 */
-	EAttribute getAgent_CurrentExecCycle();
-
-	/**
-	 * Returns the meta object for the attribute '{@link sigpmlextended.Agent#getFigure <em>Figure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Figure</em>'.
-	 * @see sigpmlextended.Agent#getFigure()
-	 * @see #getAgent()
-	 * @generated
-	 */
-	EAttribute getAgent_Figure();
+	EAttribute getAgent_Plotter();
 
 	/**
 	 * Returns the meta object for the attribute '{@link sigpmlextended.Agent#getFrame <em>Frame</em>}'.
@@ -985,15 +974,26 @@ public interface SigpmlextendedPackage extends EPackage {
 	EAttribute getAgent_Frame();
 
 	/**
-	 * Returns the meta object for the attribute '{@link sigpmlextended.Agent#getPlotter <em>Plotter</em>}'.
+	 * Returns the meta object for the attribute '{@link sigpmlextended.Agent#getFigure <em>Figure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Plotter</em>'.
-	 * @see sigpmlextended.Agent#getPlotter()
+	 * @return the meta object for the attribute '<em>Figure</em>'.
+	 * @see sigpmlextended.Agent#getFigure()
 	 * @see #getAgent()
 	 * @generated
 	 */
-	EAttribute getAgent_Plotter();
+	EAttribute getAgent_Figure();
+
+	/**
+	 * Returns the meta object for the attribute '{@link sigpmlextended.Agent#getCurrentExecCycle <em>Current Exec Cycle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Current Exec Cycle</em>'.
+	 * @see sigpmlextended.Agent#getCurrentExecCycle()
+	 * @see #getAgent()
+	 * @generated
+	 */
+	EAttribute getAgent_CurrentExecCycle();
 
 	/**
 	 * Returns the meta object for class '{@link sigpmlextended.Port <em>Port</em>}'.
@@ -1058,17 +1058,6 @@ public interface SigpmlextendedPackage extends EPackage {
 	EClass getPlace();
 
 	/**
-	 * Returns the meta object for the attribute '{@link sigpmlextended.Place#getCurrentSize <em>Current Size</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Current Size</em>'.
-	 * @see sigpmlextended.Place#getCurrentSize()
-	 * @see #getPlace()
-	 * @generated
-	 */
-	EAttribute getPlace_CurrentSize();
-
-	/**
 	 * Returns the meta object for the attribute '{@link sigpmlextended.Place#getFifo <em>Fifo</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1089,6 +1078,17 @@ public interface SigpmlextendedPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPlace_IsInitialized();
+
+	/**
+	 * Returns the meta object for the attribute '{@link sigpmlextended.Place#getCurrentSize <em>Current Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Current Size</em>'.
+	 * @see sigpmlextended.Place#getCurrentSize()
+	 * @see #getPlace()
+	 * @generated
+	 */
+	EAttribute getPlace_CurrentSize();
 
 	/**
 	 * Returns the meta object for class '{@link sigpmlextended.NamedElement <em>Named Element</em>}'.
@@ -1183,15 +1183,15 @@ public interface SigpmlextendedPackage extends EPackage {
 	EAttribute getSystem_SharedMemory();
 
 	/**
-	 * Returns the meta object for data type '{@link cnrs.luchogie.up.data.Figure <em>Figure</em>}'.
+	 * Returns the meta object for data type '{@link cnrs.luchogie.up.SwingPlotter <em>Swing Plotter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Figure</em>'.
-	 * @see cnrs.luchogie.up.data.Figure
-	 * @model instanceClass="cnrs.luchogie.up.data.Figure"
+	 * @return the meta object for data type '<em>Swing Plotter</em>'.
+	 * @see cnrs.luchogie.up.SwingPlotter
+	 * @model instanceClass="cnrs.luchogie.up.SwingPlotter"
 	 * @generated
 	 */
-	EDataType getFigure();
+	EDataType getSwingPlotter();
 
 	/**
 	 * Returns the meta object for data type '{@link javax.swing.JFrame <em>JFrame</em>}'.
@@ -1205,15 +1205,15 @@ public interface SigpmlextendedPackage extends EPackage {
 	EDataType getJFrame();
 
 	/**
-	 * Returns the meta object for data type '{@link cnrs.luchogie.up.SwingPlotter <em>Swing Plotter</em>}'.
+	 * Returns the meta object for data type '{@link cnrs.luchogie.up.data.Figure <em>Figure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Swing Plotter</em>'.
-	 * @see cnrs.luchogie.up.SwingPlotter
-	 * @model instanceClass="cnrs.luchogie.up.SwingPlotter"
+	 * @return the meta object for data type '<em>Figure</em>'.
+	 * @see cnrs.luchogie.up.data.Figure
+	 * @model instanceClass="cnrs.luchogie.up.data.Figure"
 	 * @generated
 	 */
-	EDataType getSwingPlotter();
+	EDataType getFigure();
 
 	/**
 	 * Returns the meta object for data type '{@link java.util.ArrayList <em>Array List</em>}'.
@@ -1280,20 +1280,12 @@ public interface SigpmlextendedPackage extends EPackage {
 		EClass AGENT = eINSTANCE.getAgent();
 
 		/**
-		 * The meta object literal for the '<em><b>Current Exec Cycle</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Plotter</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute AGENT__CURRENT_EXEC_CYCLE = eINSTANCE.getAgent_CurrentExecCycle();
-
-		/**
-		 * The meta object literal for the '<em><b>Figure</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute AGENT__FIGURE = eINSTANCE.getAgent_Figure();
+		EAttribute AGENT__PLOTTER = eINSTANCE.getAgent_Plotter();
 
 		/**
 		 * The meta object literal for the '<em><b>Frame</b></em>' attribute feature.
@@ -1304,12 +1296,20 @@ public interface SigpmlextendedPackage extends EPackage {
 		EAttribute AGENT__FRAME = eINSTANCE.getAgent_Frame();
 
 		/**
-		 * The meta object literal for the '<em><b>Plotter</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Figure</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute AGENT__PLOTTER = eINSTANCE.getAgent_Plotter();
+		EAttribute AGENT__FIGURE = eINSTANCE.getAgent_Figure();
+
+		/**
+		 * The meta object literal for the '<em><b>Current Exec Cycle</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AGENT__CURRENT_EXEC_CYCLE = eINSTANCE.getAgent_CurrentExecCycle();
 
 		/**
 		 * The meta object literal for the '{@link sigpmlextended.impl.PortImpl <em>Port</em>}' class.
@@ -1368,14 +1368,6 @@ public interface SigpmlextendedPackage extends EPackage {
 		EClass PLACE = eINSTANCE.getPlace();
 
 		/**
-		 * The meta object literal for the '<em><b>Current Size</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PLACE__CURRENT_SIZE = eINSTANCE.getPlace_CurrentSize();
-
-		/**
 		 * The meta object literal for the '<em><b>Fifo</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1390,6 +1382,14 @@ public interface SigpmlextendedPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PLACE__IS_INITIALIZED = eINSTANCE.getPlace_IsInitialized();
+
+		/**
+		 * The meta object literal for the '<em><b>Current Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLACE__CURRENT_SIZE = eINSTANCE.getPlace_CurrentSize();
 
 		/**
 		 * The meta object literal for the '{@link sigpmlextended.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -1478,14 +1478,14 @@ public interface SigpmlextendedPackage extends EPackage {
 		EAttribute SYSTEM__SHARED_MEMORY = eINSTANCE.getSystem_SharedMemory();
 
 		/**
-		 * The meta object literal for the '<em>Figure</em>' data type.
+		 * The meta object literal for the '<em>Swing Plotter</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see cnrs.luchogie.up.data.Figure
-		 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getFigure()
+		 * @see cnrs.luchogie.up.SwingPlotter
+		 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getSwingPlotter()
 		 * @generated
 		 */
-		EDataType FIGURE = eINSTANCE.getFigure();
+		EDataType SWING_PLOTTER = eINSTANCE.getSwingPlotter();
 
 		/**
 		 * The meta object literal for the '<em>JFrame</em>' data type.
@@ -1498,14 +1498,14 @@ public interface SigpmlextendedPackage extends EPackage {
 		EDataType JFRAME = eINSTANCE.getJFrame();
 
 		/**
-		 * The meta object literal for the '<em>Swing Plotter</em>' data type.
+		 * The meta object literal for the '<em>Figure</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see cnrs.luchogie.up.SwingPlotter
-		 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getSwingPlotter()
+		 * @see cnrs.luchogie.up.data.Figure
+		 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getFigure()
 		 * @generated
 		 */
-		EDataType SWING_PLOTTER = eINSTANCE.getSwingPlotter();
+		EDataType FIGURE = eINSTANCE.getFigure();
 
 		/**
 		 * The meta object literal for the '<em>Array List</em>' data type.

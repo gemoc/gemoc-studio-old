@@ -5,16 +5,12 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import org.eclipse.core.internal.registry.IRegistryConstants;
-import org.eclipse.core.internal.registry.RegistryMessages;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
-import org.gemoc.gemoc_language_workbench.api.engine_addon.EngineAddonSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.engine_addon.EngineAddonSpecificationExtensionPoint;
+import org.gemoc.gemoc_language_workbench.api.extensions.engine_addon.EngineAddonSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.engine_addon.EngineAddonSpecificationExtensionPoint;
 
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 
@@ -66,7 +62,7 @@ public class RunConfiguration implements IRunConfiguration
 		
 		for (EngineAddonSpecificationExtension extension : EngineAddonSpecificationExtensionPoint.getSpecifications())
 		{
-			_engineAddons.put(extension, getAttribute(extension.getName(), false));			
+			_engineAddonExtensions.put(extension, getAttribute(extension.getName(), false));			
 		}
 	}
 
@@ -131,13 +127,13 @@ public class RunConfiguration implements IRunConfiguration
 		return _deadlockDetectionDepth;
 	}
 
-	private HashMap<EngineAddonSpecificationExtension, Boolean> _engineAddons = new HashMap<>();
+	private HashMap<EngineAddonSpecificationExtension, Boolean> _engineAddonExtensions = new HashMap<>();
 
 	@Override
-	public Collection<EngineAddonSpecificationExtension> getActivatedComponentExtensions() 
+	public Collection<EngineAddonSpecificationExtension> getEngineAddonExtensions() 
 	{
 		ArrayList<EngineAddonSpecificationExtension> result = new ArrayList<EngineAddonSpecificationExtension>();
-		for (Entry<EngineAddonSpecificationExtension, Boolean> e : _engineAddons.entrySet())
+		for (Entry<EngineAddonSpecificationExtension, Boolean> e : _engineAddonExtensions.entrySet())
 		{
 			if (e.getValue())
 				result.add(e.getKey());
@@ -152,28 +148,5 @@ public class RunConfiguration implements IRunConfiguration
 	{
 		return _entryPoint;
 	}
-
-
-	@Override
-	final public Object instanciateJavaEntryPoint() throws CoreException 
-	{
-		Object result = null;
-		Class classInstance = null;
-		try {
-			classInstance = Class.forName(getExecutionEntryPoint());
-		} catch (ClassNotFoundException e1) {
-			String message = "Unable to find class " + getExecutionEntryPoint();
-			throw new CoreException(new Status(IStatus.ERROR, RegistryMessages.OWNER_NAME, IRegistryConstants.PLUGIN_ERROR, message, e1));
-		}
-
-		try {
-			result = classInstance.newInstance();
-		} catch (Exception e) {
-			String message = "Unable to instanciate class " + getExecutionEntryPoint();
-			throw new CoreException(new Status(IStatus.ERROR, RegistryMessages.OWNER_NAME, IRegistryConstants.PLUGIN_ERROR, message, e));
-		}
-		return result;
-	}
-
 
 }

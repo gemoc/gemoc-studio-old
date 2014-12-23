@@ -19,7 +19,7 @@ package sigpmlextended;
  * @model
  * @generated
  */
-public interface OutputPort extends org.gemoc.sigpml.OutputPort {
+public interface OutputPort extends org.gemoc.sigpml.OutputPort, NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Size Written</b></em>' attribute.
 	 * <!-- begin-user-doc -->

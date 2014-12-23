@@ -47,23 +47,6 @@ public class PrepareViewFrontend implements IEngineAddon
 		
 	}
 
-	@Override
-	public void preLogicalStepSelection(IExecutionEngine engine) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void postLogicalStepSelection(IExecutionEngine engine) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void postStopEngine(IExecutionEngine engine) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void aboutToExecuteLogicalStep(IExecutionEngine engine,
@@ -80,8 +63,44 @@ public class PrepareViewFrontend implements IEngineAddon
 	}
 
 	@Override
-	public void engineStatusHasChanged(IExecutionEngine engine,
-			RunStatus newStatus) {
+	public void engineAboutToStop(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineStopped(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void aboutToSelectLogicalStep(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void logicalStepExecuted(IExecutionEngine engine,
+			LogicalStep logicalStepExecuted) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void engineStatusChanged(IExecutionEngine engine, RunStatus newStatus) {
 		// TODO Auto-generated method stub
 		
 	}

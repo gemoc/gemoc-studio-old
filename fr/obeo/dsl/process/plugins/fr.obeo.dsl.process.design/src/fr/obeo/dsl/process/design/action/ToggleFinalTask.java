@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.tools.api.ui.IExternalJavaAction2;
+import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 
 /**
  * Toggles a {@link Task} has being {@link ComposedTask#getFinalTasks() final} in its
@@ -32,7 +32,7 @@ import org.eclipse.sirius.tools.api.ui.IExternalJavaAction2;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class ToggleFinalTask implements IExternalJavaAction2 {
+public class ToggleFinalTask implements IExternalJavaAction {
 
 	/**
 	 * {@inheritDoc}

@@ -139,7 +139,7 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType figureEDataType = null;
+	private EDataType swingPlotterEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,7 +153,7 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType swingPlotterEDataType = null;
+	private EDataType figureEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -256,17 +256,8 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAgent_CurrentExecCycle() {
-		return (EAttribute)agentEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAgent_Figure() {
-		return (EAttribute)agentEClass.getEStructuralFeatures().get(2);
+	public EAttribute getAgent_Plotter() {
+		return (EAttribute)agentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -283,8 +274,17 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAgent_Plotter() {
-		return (EAttribute)agentEClass.getEStructuralFeatures().get(0);
+	public EAttribute getAgent_Figure() {
+		return (EAttribute)agentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAgent_CurrentExecCycle() {
+		return (EAttribute)agentEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -346,15 +346,6 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPlace_CurrentSize() {
-		return (EAttribute)placeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getPlace_Fifo() {
 		return (EAttribute)placeEClass.getEStructuralFeatures().get(0);
 	}
@@ -366,6 +357,15 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 	 */
 	public EAttribute getPlace_IsInitialized() {
 		return (EAttribute)placeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPlace_CurrentSize() {
+		return (EAttribute)placeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -454,8 +454,8 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getFigure() {
-		return figureEDataType;
+	public EDataType getSwingPlotter() {
+		return swingPlotterEDataType;
 	}
 
 	/**
@@ -472,8 +472,8 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getSwingPlotter() {
-		return swingPlotterEDataType;
+	public EDataType getFigure() {
+		return figureEDataType;
 	}
 
 	/**
@@ -600,10 +600,14 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 		// Add supertypes to classes
 		applicationEClass.getESuperTypes().add(theSigpmlPackage.getApplication());
 		agentEClass.getESuperTypes().add(theSigpmlPackage.getAgent());
+		agentEClass.getESuperTypes().add(this.getNamedElement());
 		portEClass.getESuperTypes().add(theSigpmlPackage.getPort());
 		inputPortEClass.getESuperTypes().add(theSigpmlPackage.getInputPort());
+		inputPortEClass.getESuperTypes().add(this.getNamedElement());
 		outputPortEClass.getESuperTypes().add(theSigpmlPackage.getOutputPort());
+		outputPortEClass.getESuperTypes().add(this.getNamedElement());
 		placeEClass.getESuperTypes().add(theSigpmlPackage.getPlace());
+		placeEClass.getESuperTypes().add(this.getNamedElement());
 		namedElementEClass.getESuperTypes().add(theSigpmlPackage.getNamedElement());
 		hwRessourceEClass.getESuperTypes().add(theSigpmlPackage.getHWRessource());
 		hwComputationalResourceEClass.getESuperTypes().add(theSigpmlPackage.getHWComputationalResource());
@@ -625,12 +629,16 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 
 		addEOperation(agentEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(portEClass, Port.class, "Port", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(inputPortEClass, InputPort.class, "InputPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInputPort_SizeToread(), ecorePackage.getEInt(), "sizeToread", null, 0, 1, InputPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(inputPortEClass, null, "read", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(inputPortEClass, ecorePackage.getEInt(), "read", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(inputPortEClass, null, "logSizeToReadWhenZero", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(inputPortEClass, null, "logSizeToReadWhenNotZero", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(outputPortEClass, OutputPort.class, "OutputPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOutputPort_SizeWritten(), ecorePackage.getEInt(), "sizeWritten", null, 0, 1, OutputPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -646,11 +654,11 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 
 		addEOperation(placeEClass, null, "pop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(namedElementEClass, this.getLinkedListMultimap(), "sharedMemory", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(hwRessourceEClass, HWRessource.class, "HWRessource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(hwRessourceEClass, HWRessource.class, "HWRessource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(hwComputationalResourceEClass, HWComputationalResource.class, "HWComputationalResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHWComputationalResource_CurrentExecCycle(), ecorePackage.getEInt(), "currentExecCycle", null, 0, 1, HWComputationalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -721,6 +729,16 @@ public class SigpmlextendedPackageImpl extends EPackageImpl implements Sigpmlext
 		   });	
 		addAnnotation
 		  (inputPortEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (inputPortEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (inputPortEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
 		   });	

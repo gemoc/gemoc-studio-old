@@ -2,6 +2,9 @@ package org.gemoc.gemoc_language_workbench.api.core;
 
 import java.util.List;
 
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
+
 import fr.inria.aoste.trace.LogicalStep;
 
 
@@ -25,36 +28,30 @@ public interface IExecutionEngine extends IDisposable {
 	/**
 	 * Asks the engine to stop
 	 */
-	public void stop();
+	void stop();
 	
-	public EngineStatus getEngineStatus();
+	EngineStatus getEngineStatus();
 	
 	/**
 	 * 
 	 * @param type
 	 * @return true if the engine has the capability, false otherwise.
 	 */
-	public <T extends IEngineHook> boolean hasCapability(Class<T> type);
+	<T extends IEngineAddon> boolean hasCapability(Class<T> type);
 	/**
 	 * 
 	 * @param type
 	 * @return The capability of the given type if it exists.
 	 */
-	public <T extends IEngineHook> T getCapability(Class<T> type);
-	/**
-	 * Get the capability of the given type.
-	 * If it does not exist, it creates it.
-	 * @param type
-	 * @return The capability of the given type.
-	 */
-	public <T extends IEngineHook> T capability(Class<T> type);
+	<T extends IEngineAddon> T getCapability(Class<T> type);
 
-	public IExecutionContext getExecutionContext();
+	IExecutionContext getExecutionContext();
 
-	public List<LogicalStep> getPossibleLogicalSteps();
+	List<LogicalStep> getPossibleLogicalSteps();
 
-	public void addFutureAction(IFutureAction action);
-
-	public LogicalStep getSelectedLogicalStep();
+	LogicalStep getSelectedLogicalStep();
 	
+	void addFutureAction(IFutureAction action);
+	
+	RunStatus getRunningStatus();
 }

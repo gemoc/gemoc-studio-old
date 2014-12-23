@@ -10,12 +10,22 @@ import org.eclipse.core.runtime.CoreException;
 
 public class FileFinderVisitor implements IResourceVisitor {
 
-	public FileFinderVisitor(String fileExtension) 
+	/**
+	 * Searched file extensions
+	 * @param searchedFileExtensions, must not be empty,
+	 *  must contain the empty string to match file without extensions
+	 */
+	public FileFinderVisitor(List<String> searchedFileExtensions) 
 	{
-		_fileExtension = fileExtension;
+		_searchedFileExtensions.addAll(searchedFileExtensions);
 	}
 	
-	private String _fileExtension;
+	public FileFinderVisitor(String searchedFileExtension) 
+	{
+		_searchedFileExtensions.add(searchedFileExtension);
+	}
+	
+	private ArrayList<String> _searchedFileExtensions = new ArrayList<String>();
 	
 	protected List<IFile> _files = new ArrayList<IFile>();
 	
@@ -38,7 +48,11 @@ public class FileFinderVisitor implements IResourceVisitor {
 	public boolean visit(IResource resource) throws CoreException {
 		boolean mustVisitChild = true;
 		if(resource instanceof IFile){
-			if(resource.getFileExtension().equals(_fileExtension)){
+			String resourceExtension = resource.getFileExtension();
+			if(resourceExtension == null){
+				resourceExtension = "";
+			}
+			if(_searchedFileExtensions.contains(resourceExtension)){
 				_files.add((IFile) resource);
 			}
 			mustVisitChild = false;

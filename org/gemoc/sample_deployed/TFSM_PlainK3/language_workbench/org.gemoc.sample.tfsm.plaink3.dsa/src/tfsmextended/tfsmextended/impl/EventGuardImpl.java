@@ -1,0 +1,50 @@
+/**
+ */
+package tfsmextended.tfsmextended.impl;
+
+import org.eclipse.emf.ecore.EClass;
+
+import tfsmextended.tfsmextended.EventGuard;
+import tfsmextended.tfsmextended.TfsmextendedPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Event Guard</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * </p>
+ *
+ * @generated
+ */
+public class EventGuardImpl extends org.gemoc.sample.tfsm.impl.EventGuardImpl implements EventGuard {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EventGuardImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return TfsmextendedPackage.Literals.EVENT_GUARD;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void visit() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+} //EventGuardImpl
