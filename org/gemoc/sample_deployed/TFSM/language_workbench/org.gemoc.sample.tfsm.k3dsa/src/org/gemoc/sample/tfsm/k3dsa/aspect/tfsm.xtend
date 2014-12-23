@@ -35,7 +35,7 @@ class TFSMAspect extends NamedElementAspect {
 
 			_self.currentState = _self.initialState;
 		}
-		return "[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".Init()]Initialized " + _self.name;
+		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".Init()]Initialized " + _self.name);
 	}
 	
 	def public void changeCurrentState(State newState)
@@ -48,21 +48,21 @@ class TFSMAspect extends NamedElementAspect {
 @Aspect(className=typeof(State))
 class StateAspect extends NamedElementAspect {
 	def public String onEnter() {
-		return "[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".onEnter()]Entering " + _self.name;
+		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".onEnter()]Entering " + _self.name);
 	}
 
 	def public String onLeave() {
-		return "[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".onLeave()]Leaving " + _self.name;
+		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".onLeave()]Leaving " + _self.name);
 	}
 }
 
 @Aspect(className=typeof(Transition))
 class TransitionAspect extends NamedElementAspect {
 	def public String fire() {
-		GroovyRunner.executeScript(_self.action, _self);
+//		GroovyRunner.executeScript(_self.action, _self);
 		_self.source.owningFSM.currentState = _self.target
-		return "[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".fire()]Fired " + _self.name + " -> " +
-			_self.action
+		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".fire()]Fired " + _self.name + " -> " +
+			_self.action)
 	}
 }
 
@@ -92,15 +92,15 @@ class FSMClockAspect extends NamedElementAspect {
 
 	// Clock tick
 	def public String ticks() {
-		GroovyRunner.executeScript("doTick", _self);
+		//GroovyRunner.executeScript("doTick", _self);
 
 		if (_self.numberOfTicks == null) {
 			_self.numberOfTicks = 0
 		} else {
 			_self.numberOfTicks = _self.numberOfTicks + 1
 		}
-		return "[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".ticks()]New number of ticks : " +
-			_self.numberOfTicks.toString()
+		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".ticks()]New number of ticks : " +
+			_self.numberOfTicks.toString())
 	}
 }
 
@@ -112,7 +112,7 @@ class TimedSystemAspect extends NamedElementAspect {
 class EvaluateGuardAspect extends GuardAspect {
 	def public Boolean evaluate() {
 		var Object res;
-		res = GroovyRunner.executeScript(_self.condition, _self)
+//		res = GroovyRunner.executeScript(_self.condition, _self)
 
 		return res as Boolean;
 	}

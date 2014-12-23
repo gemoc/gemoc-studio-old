@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.gemoc.commons.eclipse;bundle-version="0.1.0",
  org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.1.0",
  org.gemoc.sample.tfsm.model;bundle-version="0.1.0",
- org.gemoc.sample.tfsm.single_traffic_light_sample.mocc;bundle-version="0.1.0"
+ org.gemoc.sample.tfsm.single_traffic_light_sample.mocc;bundle-version="0.1.0",
+ org.gemoc.sample.tfsm.k3dsa;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.sample.tfsm.raspberry.launcher
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

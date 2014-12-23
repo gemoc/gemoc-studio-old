@@ -14,6 +14,7 @@
 
     <modules>
         <module>../../language_workbench/org.gemoc.sample.tfsm.model</module>
+        <module>../../language_workbench/org.gemoc.sample.tfsm.k3dsa</module>
         <module>../org.gemoc.sample.tfsm.single_traffic_light_sample.mocc</module>
         <module>../org.gemoc.sample.tfsm.raspberry.launcher</module>
         <module>../org.gemoc.sample.tfsm.raspberry.product</module>
@@ -53,11 +54,11 @@
 <!--                             <ws>gtk</ws> -->
 <!--                             <arch>x86_64</arch> -->
 <!--                         </environment> -->
-<!--                         <environment> -->
-<!--                             <os>linux</os> -->
-<!--                             <ws>gtk</ws> -->
-<!--                             <arch>x86</arch> -->
-<!--                         </environment> -->
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86</arch>
+                        </environment>
 <!--                         <environment> -->
 <!--                             <os>win32</os> -->
 <!--                             <ws>win32</ws> -->

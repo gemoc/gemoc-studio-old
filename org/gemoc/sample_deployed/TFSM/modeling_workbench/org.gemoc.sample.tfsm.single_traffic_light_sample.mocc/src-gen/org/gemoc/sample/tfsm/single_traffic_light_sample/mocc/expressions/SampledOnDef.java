@@ -24,16 +24,16 @@ public class SampledOnDef extends AbstractRuntimeExpression {
 
 
     protected void init() {
-        sampledonrootconcat = new RuntimeConcatenation(getExpressionClock(), onesampled_clock, getExpressionClock());
-        sampledonrootconcat.setName("SampledOnrootConcat");
-        sampledonrootconcat.setParent(this);
-        sampledonrootconcat.setParent(this);
         if ( onesampled_clock == null ) {
             onesampled_clock = new ExpressionClock("OneSampled");
         }
         onesampled_clock.setDense(false);
         onesampled_clock.setParent(this);
         onesampled_clock.bddVariableNumber = BDDHelper.newBDDVariableNumber();
+        sampledonrootconcat = new RuntimeConcatenation(getExpressionClock(), onesampled_clock, getExpressionClock());
+        sampledonrootconcat.setName("SampledOnrootConcat");
+        sampledonrootconcat.setParent(this);
+        sampledonrootconcat.setParent(this);
         onesampled = new RuntimeStrictSampling(onesampled_clock, sampledonsampledclock, sampledontrigger);
         onesampled.setName("OneSampled");
         onesampled.setParent(this);

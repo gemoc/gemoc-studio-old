@@ -1,3 +1,6 @@
+Bundle-SymbolicName: org.gemoc.sample.tfsm.xdsml;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Name: Tfsm
 Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  org.gemoc.sample.tfsm.model;bundle-version="0.0.0";visibility:="reexport",
  org.gemoc.sample.tfsm.k3dsa;bundle-version="0.0.0";visibility:="reexport",
@@ -15,10 +18,8 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  org.gemoc.sample.tfsm.design;bundle-version="0.0.0";visibility:="reexport",
  org.gemoc.sample.tfsm.eclmoc2as;bundle-version="0.0.0";visibility:="reexport",
  org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.0.0";visibility:="reexport",
- org.gemoc.gemoc_language_workbench.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport
-Bundle-Version: 1.0.0.qualifier
-Manifest-Version: 1.0
-Bundle-Name: Tfsm
+ org.gemoc.gemoc_language_workbench.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.commons.eclipse.pde
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: org.gemoc.sample.tfsm.xdsml;singleton:=true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Manifest-Version: 1.0

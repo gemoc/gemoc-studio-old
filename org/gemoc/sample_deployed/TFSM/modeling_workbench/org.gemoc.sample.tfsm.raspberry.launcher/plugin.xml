@@ -23,7 +23,7 @@
          <property
                name="appName"
                value="TFSM Application">
-         	RobotML Application
+         	TFSM Application
          </property>
       </product>
    </extension>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<feedback:ActionModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:feedback="http://timesquare.inria.fr/feedback">
+  <events name="MSE_minutes_ticks">
+    <caller href="single_traffic_light.tfsm#//@globalClocks.0"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//FSMClock/ticks"/>
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.0"/>
+  </events>
+  <events name="MSE_Green_to_Red_fire">
+    <caller href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//Transition/fire"/>
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.1"/>
+  </events>
+  <events name="MSE_Red_to_Green_fire">
+    <caller href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//Transition/fire"/>
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.2"/>
+  </events>
+  <events name="MSE_initSemaphore_to_Red_fire">
+    <caller href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//Transition/fire"/>
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.3"/>
+  </events>
+  <events name="MSE_switch_occurs">
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.4"/>
+  </events>
+  <events name="MSE_Green_entering">
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.5"/>
+  </events>
+  <events name="MSE_initSemaphore_entering">
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.6"/>
+  </events>
+  <events name="MSE_Red_entering">
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.7"/>
+  </events>
+  <events name="MSE_Green_leaving">
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.8"/>
+  </events>
+  <events name="MSE_initSemaphore_leaving">
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.9"/>
+  </events>
+  <events name="MSE_Red_leaving">
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.10"/>
+  </events>
+  <events name="MSE_Semaphore_start">
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.11"/>
+  </events>
+  <events name="MSE_Semaphore_stall">
+    <solverEvent href="single_traffic_light_executionModel.timemodel#//@subBlock.0/@elements.12"/>
+  </events>
+  <importStatements importURI="platform:/1"/>
+</feedback:ActionModel>

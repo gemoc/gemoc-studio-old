@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product uid="org.gemoc.sample.tfsm.product_id" id="org.gemoc.sample.tfsm.launcher.tfsm_product" application="org.gemoc.sample.robotml.application" version="0.1.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product uid="org.gemoc.sample.tfsm.product_id" id="org.gemoc.sample.tfsm.launcher.tfsm_product" version="0.1.0.qualifier" useFeatures="false" includeLaunchers="true">
+
 
    <configIni use="default">
    </configIni>
@@ -21,12 +22,14 @@
 
    <windowImages/>
 
+
    <launcher name="rover">
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
       <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</linux>
@@ -35,7 +38,9 @@
       <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</windows>
    </vm>
 
+
    <plugins>
+      <plugin id="org.eclipse.core.runtime"/>
       <plugin id="org.gemoc.sample.tfsm.raspberry.launcher"/>
    </plugins>
 
@@ -146,5 +151,9 @@
       <feature id="org.eclipse.ocl.examples" version="3.4.0.v20140117-1841"/>
    </features>
 
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="5" />
+      <plugin id="org.gemoc.sample.tfsm.raspberry.launcher" autoStart="false" startLevel="0" />
+   </configurations>
 
 </product>

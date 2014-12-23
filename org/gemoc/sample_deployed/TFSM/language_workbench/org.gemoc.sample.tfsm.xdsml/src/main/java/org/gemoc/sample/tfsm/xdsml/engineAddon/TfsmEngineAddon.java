@@ -11,7 +11,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.sample.tfsm.k3dsa.Activator;
+import org.gemoc.sample.tfsm.xdsml.Activator;
 
 
 public class TfsmEngineAddon extends org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon {
@@ -43,8 +43,8 @@ public class TfsmEngineAddon extends org.gemoc.gemoc_language_workbench.api.engi
 				
 			} catch (Exception e) {
 				String errorMessage = e.getClass().getSimpleName() + " when trying to execute a Groovy expression. "+e.getMessage();
-				 Activator.getMessagingSystem().error(errorMessage,
-				 Activator.PLUGIN_ID);
+//				 Activator.getMessagingSystem().error(errorMessage,
+//				 Activator.PLUGIN_ID);
 //				 Activator.error(errorMessage, e);
 			}
 		}
@@ -65,8 +65,8 @@ public class TfsmEngineAddon extends org.gemoc.gemoc_language_workbench.api.engi
 			return r;
 		} catch (Exception e) {
 			String errorMessage = e.getClass().getSimpleName() + " when trying to execute a Groovy expression";
-			 Activator.getMessagingSystem().error(errorMessage,
-			 Activator.PLUGIN_ID);
+//			 Activator.getMessagingSystem().error(errorMessage,
+//			 Activator.PLUGIN_ID);
 //			 Activator.error(errorMessage, e);
 		}
 		return null;

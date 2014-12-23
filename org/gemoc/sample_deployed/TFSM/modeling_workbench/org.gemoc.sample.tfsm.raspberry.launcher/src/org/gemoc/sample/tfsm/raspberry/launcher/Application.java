@@ -25,36 +25,22 @@ public class Application implements IApplication {
 	public Object start(IApplicationContext context) throws Exception {
 	
 		try {
-//			IWorkspace workspace = ResourcesPlugin.getWorkspace();
-//
-//			System.out.println("Workspace root: " + workspace.getRoot().getLocation().toString());
-//			
-//			for (IProject p : workspace.getRoot().getProjects()) {
-//				System.out.println("Project " + p.getLocation().toString());				
-//			}
-//			
-//			IWorkspaceDescription desc= workspace.getDescription();
-//			desc.setAutoBuilding(false);
-//			workspace.setDescription(desc);
-//
-//			if (org.eclipse.core.internal.registry.RegistryProviderFactory.getDefault() == null) {
-//				System.out.println("Exiting because RegistryProviderFactory.getDefault() returned null.");
-//				return null;
-//			}
-//			System.out.println("ExtendedCCSLStandaloneSetup.doSetup succeeded.");
 			TfsmPackageImpl.init();
 		
 			ResourceFactoryRegistryImpl.INSTANCE.getExtensionToFactoryMap().put("timemodel", new XMIResourceFactoryImpl());
-			URI uri = URI.createFileURI("C:/Users/ftanguy/git/gemoc-dev/org/gemoc/sample_deployed/TFSM/modeling_workbench/org.gemoc.sample.tfsm.single_traffic_light_sample/single_traffic_light.timemodel");
-			
+			//URI uri = URI.createFileURI("C:/Users/ftanguy/git/gemoc-dev/org/gemoc/sample_deployed/TFSM/modeling_workbench/org.gemoc.sample.tfsm.single_traffic_light_sample/single_traffic_light.timemodel");
+			URI uri = URI.createPlatformPluginURI("/org.gemoc.sample.tfsm.raspberry.launcher/model/single_traffic_light.tfsm", true);
+												   
+			System.out.println("Hello");
 			
 			RunConfiguration runConfiguration = new RunConfiguration(uri);
 			ExecutionContext executionContext = new ExecutionContext(runConfiguration);
+			System.out.println("Hello");
 									
 			ExecutionEngine engine = new ExecutionEngine(executionContext);
 			engine.start();
 			
-			Thread.sleep(50000);
+			Thread.sleep(500000);
 //			ModelRunner2 runner = new ModelRunner2();
 //			runner.run("tfsm", 
 //					new Path("/org.gemoc.sample.tfsm.single_traffic_light_sample"),
