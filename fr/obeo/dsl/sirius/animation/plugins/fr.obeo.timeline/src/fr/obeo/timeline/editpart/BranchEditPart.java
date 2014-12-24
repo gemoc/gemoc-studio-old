@@ -28,6 +28,7 @@ import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.FreeformLayer;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
@@ -70,6 +71,14 @@ public class BranchEditPart extends AbstractGraphicalEditPart {
 		res.setToolTip(toolTip);
 		res.setLayoutManager(layout);
 		return res;
+	}
+
+	@Override
+	protected void refreshVisuals() {
+		super.refreshVisuals();
+		int offset = Math.max(getModel().getTimelineWindow().getProvider().getStart(getModel().getBranch())
+				- getModel().getTimelineWindow().getStart(), 0);
+		getFigure().setBorder(new MarginBorder(0, offset * (SPACING + PossibleStepEditPart.SIZE), 0, 0));
 	}
 
 	@Override

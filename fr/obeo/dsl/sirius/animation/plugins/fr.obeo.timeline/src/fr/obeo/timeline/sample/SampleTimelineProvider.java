@@ -53,19 +53,27 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 		private final int branch;
 
 		/**
-		 * The size of the timeline.
+		 * The start index of the branch.
+		 */
+		private final int start;
+
+		/**
+		 * The size of the branch.
 		 */
 		private int size;
 
 		/**
 		 * Constructor.
 		 * 
+		 * @param start
+		 *            the start index of the branch.
 		 * @param branch
 		 *            the branch index
 		 * @param size
 		 *            the final size of the branch
 		 */
-		public SampleBranch(int branch, int size) {
+		public SampleBranch(int branch, int start, int size) {
+			this.start = start;
 			possibleSteps = new int[size];
 			selected = new int[size];
 			this.branch = branch;
@@ -124,7 +132,7 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	 */
 	public SampleTimelineProvider() {
 		for (int i = 0; i < branches.length; ++i) {
-			branches[i] = new SampleBranch(i, 100);
+			branches[i] = new SampleBranch(i, i * 2, 100);
 		}
 		new Thread(new Runnable() {
 
@@ -152,7 +160,7 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 
 	@Override
 	public int getStart(int branch) {
-		return 0;
+		return branches[branch].start;
 	}
 
 	@Override
@@ -162,12 +170,12 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 
 	@Override
 	public int getEnd(int branch) {
-		return branches[branch].size;
+		return getStart(branch) + branches[branch].size;
 	}
 
 	@Override
 	public int getNumberOfPossibleStepsAt(int branch, int index) {
-		return branches[branch].possibleSteps[index];
+		return branches[branch].possibleSteps[index - getStart(branch)];
 	}
 
 	@Override
@@ -187,7 +195,7 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 
 	@Override
 	public int getSelectedPossibleStep(int branch, int index) {
-		return branches[branch].selected[index];
+		return branches[branch].selected[index - getStart(branch)];
 	}
 
 	@Override
@@ -199,8 +207,9 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	public int[][] getFollowings(int branch, int index, int possibleStep) {
 		final int[][] res;
 
-		if (index < branches[branch].size - 1 && possibleStep == branches[branch].selected[index]) {
-			final int[][] tmp = {{branch, branches[branch].selected[index + 1] } };
+		if (index - getStart(branch) < branches[branch].size - 1
+				&& possibleStep == branches[branch].selected[index - getStart(branch)]) {
+			final int[][] tmp = {{branch, branches[branch].selected[index + 1 - getStart(branch)] } };
 			res = tmp;
 		} else {
 			final int[][] tmp = {};
@@ -214,8 +223,9 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 	public int[][] getPrecedings(int branch, int index, int possibleStep) {
 		final int[][] res;
 
-		if (index > 0 && possibleStep == branches[branch].selected[index]) {
-			final int[][] tmp = {{branch, branches[branch].selected[index - 1] } };
+		if (index - getStart(branch) > 0
+				&& possibleStep == branches[branch].selected[index - getStart(branch)]) {
+			final int[][] tmp = {{branch, branches[branch].selected[index - 1 - getStart(branch)] } };
 			res = tmp;
 		} else {
 			final int[][] tmp = {};
