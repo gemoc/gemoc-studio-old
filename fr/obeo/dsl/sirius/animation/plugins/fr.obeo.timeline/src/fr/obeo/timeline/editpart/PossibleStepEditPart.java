@@ -92,8 +92,10 @@ public class PossibleStepEditPart extends AbstractGraphicalEditPart {
 			ellipse = createEllipse();
 			add(ellipse);
 			label = new Label();
-			add(label);
-			hasLabel = true;
+			if (withLabel) {
+				add(label);
+				hasLabel = true;
+			}
 			addMouseListener(new MouseListener.Stub() {
 
 				/**
@@ -195,6 +197,21 @@ public class PossibleStepEditPart extends AbstractGraphicalEditPart {
 	public static final int SPACING = 5;
 
 	/**
+	 * Should we show the label.
+	 */
+	private final boolean withLabel;
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param withLabel
+	 *            should we show the label
+	 */
+	public PossibleStepEditPart(boolean withLabel) {
+		this.withLabel = withLabel;
+	}
+
+	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#createFigure()
@@ -212,7 +229,7 @@ public class PossibleStepEditPart extends AbstractGraphicalEditPart {
 			figure.getEllipseToolTip().setVisible(false);
 			figure.getLabel().setText(getModel().getName());
 			figure.getEllipse().setBackgroundColor(ColorConstants.orange);
-			if (!figure.hasLabel()) {
+			if (withLabel && !figure.hasLabel()) {
 				figure.addLabel();
 				figure.invalidate();
 			}
@@ -223,7 +240,7 @@ public class PossibleStepEditPart extends AbstractGraphicalEditPart {
 			} else {
 				figure.getEllipse().setBackgroundColor(ColorConstants.lightGreen);
 			}
-			if (figure.hasLabel()) {
+			if (withLabel && figure.hasLabel()) {
 				figure.removeLabel();
 				figure.invalidate();
 			}

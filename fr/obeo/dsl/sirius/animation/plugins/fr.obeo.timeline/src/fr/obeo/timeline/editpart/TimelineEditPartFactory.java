@@ -33,12 +33,27 @@ import org.eclipse.gef.EditPartFactory;
  */
 public class TimelineEditPartFactory implements EditPartFactory {
 
+	/**
+	 * Should we show the label.
+	 */
+	private final boolean withLabel;
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param withLabel
+	 *            should we show the label
+	 */
+	public TimelineEditPartFactory(boolean withLabel) {
+		this.withLabel = withLabel;
+	}
+
 	@Override
 	public EditPart createEditPart(EditPart context, Object model) {
 		final EditPart res;
 
 		if (model instanceof PossibleStep) {
-			res = new PossibleStepEditPart();
+			res = new PossibleStepEditPart(withLabel);
 		} else if (model instanceof Connection) {
 			res = new ConnectionEditPart();
 		} else if (model instanceof Choice) {

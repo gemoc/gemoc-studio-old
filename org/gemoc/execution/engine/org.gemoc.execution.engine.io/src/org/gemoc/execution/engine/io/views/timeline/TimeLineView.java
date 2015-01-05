@@ -30,6 +30,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
+import fr.obeo.timeline.editpart.TimelineEditPartFactory;
 import fr.obeo.timeline.view.AbstractTimelineView;
 
 public class TimeLineView extends AbstractTimelineView implements IMotorSelectionListener
@@ -276,4 +277,10 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 			}
 		}
 	}
+	
+	@Override
+	protected TimelineEditPartFactory getTimelineEditPartFactory() {
+		return new TimelineEditPartFactory(false);
+	}
+	
 }
