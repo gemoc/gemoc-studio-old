@@ -374,7 +374,7 @@ public abstract class AbstractTimelineView extends ViewPart {
 		gridData.verticalAlignment = SWT.FILL;
 		gridData.grabExcessVerticalSpace = true;
 		timelineViewer.getControl().setLayoutData(gridData);
-		timelineViewer.setEditPartFactory(new TimelineEditPartFactory());
+		timelineViewer.setEditPartFactory(getTimelineEditPartFactory());
 		timelineWindow = new TimelineWindow(provider);
 		timelineViewer.setContents(timelineWindow);
 		timelineSlider.setPageIncrement(timelineWindow.getLength());
@@ -483,6 +483,13 @@ public abstract class AbstractTimelineView extends ViewPart {
 			}
 		}
 	}
+
+	/**
+	 * Gets the {@link TimelineEditPartFactory}.
+	 * 
+	 * @return the {@link TimelineEditPartFactory}
+	 */
+	protected abstract TimelineEditPartFactory getTimelineEditPartFactory();
 
 	/**
 	 * Toggle the follow value via the command.
