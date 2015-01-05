@@ -30,6 +30,11 @@ import java.util.List;
 public final class Choice {
 
 	/**
+	 * Shift for the {@link PossibleStep#hashCode() hash code}.
+	 */
+	private static final int SHIFT = 8;
+
+	/**
 	 * The containing {@link TimelineWindow}.
 	 */
 	private final TimelineWindow timelineWindow;
@@ -137,12 +142,12 @@ public final class Choice {
 
 	@Override
 	public int hashCode() {
-		return index;
+		return (branch << SHIFT) + index;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof Choice && ((Choice)obj).index == index;
+		return obj instanceof Choice && ((Choice)obj).branch == branch && ((Choice)obj).index == index;
 	}
 
 	/**
