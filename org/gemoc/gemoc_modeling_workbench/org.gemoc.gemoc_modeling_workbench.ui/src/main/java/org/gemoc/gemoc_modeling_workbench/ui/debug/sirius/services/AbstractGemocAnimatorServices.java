@@ -85,7 +85,7 @@ public abstract class AbstractGemocAnimatorServices {
 		}
 	}
 
-	private final static class GemocModelAnimator implements
+	public final static class GemocModelAnimator implements
 			IModelAnimator {
 
 		/**
@@ -326,12 +326,31 @@ public abstract class AbstractGemocAnimatorServices {
 			
 		}
 
+		/**
+		 * Tells if the given layer id and representation id should be refreshed.
+		 * 
+		 * @param representationId
+		 *            the representation id
+		 * @param layerID
+		 *            the layer id, it can be <code>null</code>
+		 * @return <code>true</code> if the given layer id and representation id should be refreshed while
+		 *         debugging the given debug model id, <code>false</code> otherwise
+		 */
+		public boolean isRepresentationToRefresh(String representationId, String layerID) {
+			final boolean res;
+
+			final Set<String> layerIDs = representationToRefresh.get(representationId);
+			res = layerIDs == ANY_LAYER || layerIDs.contains(layerID);
+
+			return res;
+		}
+
 	}
 
 	/**
 	 * The {@link GemocModelAnimator} instance.
 	 */
-	private final static GemocModelAnimator ANIMATOR = new GemocModelAnimator();
+	public final static GemocModelAnimator ANIMATOR = new GemocModelAnimator();
 
 	/**
 	 * Constructor.

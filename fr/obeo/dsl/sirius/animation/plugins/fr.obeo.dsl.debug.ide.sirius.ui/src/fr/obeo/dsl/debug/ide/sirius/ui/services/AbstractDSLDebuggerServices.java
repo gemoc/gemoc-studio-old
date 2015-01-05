@@ -372,6 +372,33 @@ public abstract class AbstractDSLDebuggerServices {
 			}
 		}
 
+		/**
+		 * Tells if the given layer id and representation id should be refreshed while debugging the given
+		 * debug model id.
+		 * 
+		 * @param debugModelID
+		 *            the debug model id
+		 * @param representationId
+		 *            the representation id
+		 * @param layerID
+		 *            the layer id, it can be <code>null</code>
+		 * @return <code>true</code> if the given layer id and representation id should be refreshed while
+		 *         debugging the given debug model id, <code>false</code> otherwise
+		 */
+		public boolean isRepresentationToRefresh(String debugModelID, String representationId, String layerID) {
+			final boolean res;
+
+			final Map<String, Set<String>> representations = representationToRefresh.get(debugModelID);
+			if (representations != null) {
+				final Set<String> layerIDs = representations.get(representationId);
+				res = layerIDs == ANY_LAYER || layerIDs.contains(layerID);
+			} else {
+				res = false;
+			}
+
+			return res;
+		}
+
 	}
 
 	/**
