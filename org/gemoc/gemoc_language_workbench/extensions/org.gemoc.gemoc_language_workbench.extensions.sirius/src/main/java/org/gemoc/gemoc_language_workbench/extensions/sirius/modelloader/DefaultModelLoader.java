@@ -24,12 +24,13 @@ import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.debug.DebugSessionFactory;
-import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
-import org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocAnimatorServices;
 
 import fr.obeo.dsl.debug.ide.sirius.ui.services.AbstractDSLDebuggerServices;
 
 public class DefaultModelLoader implements IModelLoader {
+
+	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
 
 	@Override
 	public Resource loadModel(IExecutionContext context) 
@@ -88,7 +89,7 @@ public class DefaultModelLoader implements IModelLoader {
 					protected void doExecute() {
 						for(Layer l : diagram.getDescription().getAdditionalLayers())
 						{
-							boolean mustBeActive = AbstractDSLDebuggerServices.LISTENER.isRepresentationToRefresh(Launcher.MODEL_ID, diagram.getName(), l.getName()) ||
+							boolean mustBeActive = AbstractDSLDebuggerServices.LISTENER.isRepresentationToRefresh(MODEL_ID, diagram.getName(), l.getName()) ||
 							AbstractGemocAnimatorServices.ANIMATOR.isRepresentationToRefresh(diagram.getName(), l.getName());
 							if (mustBeActive
 									&& !diagram.getActivatedLayers().contains(l))
