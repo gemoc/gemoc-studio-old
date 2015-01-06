@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services;
+package org.gemoc.gemoc_language_workbench.extensions.sirius.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,12 +27,10 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices.BreakpointListener;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.trace.LogicalStep;
-import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 
 public abstract class AbstractGemocAnimatorServices {
 
