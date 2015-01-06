@@ -1,6 +1,5 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,7 +19,6 @@ import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
@@ -40,9 +38,9 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.GemocModelDebugger;
-import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
 import org.kermeta.utils.provisionner4eclipse.Provisionner;
 import org.osgi.framework.Bundle;

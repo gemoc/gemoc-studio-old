@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services;
+package org.gemoc.gemoc_language_workbench.extensions.sirius.services;
 
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
