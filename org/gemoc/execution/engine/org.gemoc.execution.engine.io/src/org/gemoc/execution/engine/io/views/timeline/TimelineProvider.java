@@ -42,34 +42,49 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	}
 
 	@Override
-	public int getNumberOfChoices() {
+	public int getNumberOfBranches() {
+		return 1;
+	}
+	
+	@Override
+	public int getStart(int branch) {
+		return 0;
+	}
+
+	@Override
+	public int getEnd(int branch) {
 		int numberOfChoices = getExecutionTrace().getChoices().size();
 		return numberOfChoices;
 	}
 
 	@Override
-	public int getNumberOfPossibleStepsAt(int index) {
+	public int getNumberOfPossibleStepsAt(int branch, int index) {
 		int numberOfPossibleSteps = getExecutionTrace().getChoices().get(index).getPossibleLogicalSteps().size();
 		return numberOfPossibleSteps;
 	}
 
 	@Override
-	public String getTextAt(int index) {
+	public String getTextAt(int branch) {
+		return "Current execution";
+	}
+	
+	@Override
+	public String getTextAt(int branch, int index) {
 		return String.valueOf(index);
 	}
 
 	@Override
-	public Object getAt(int index, int choice) {
+	public Object getAt(int branch, int index, int choice) {
 		return getExecutionTrace().getChoices().get(index).getPossibleLogicalSteps().get(choice);
 	}
 
 	@Override
-	public Object getAt(int index) {
+	public Object getAt(int branch, int index) {
 		return getExecutionTrace().getChoices().get(index);
 	}
 
 	@Override
-	public String getTextAt(int index, int choice) 
+	public String getTextAt(int branch, int index, int choice) 
 	{
 		StringBuilder builder = new StringBuilder();
 		LogicalStep ls = (LogicalStep)getAt(index, choice);
@@ -107,9 +122,9 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	}
 	
 	@Override
-	public int getFollowing(int index, int choice) {
+	public int[][] getFollowings(int branch, int index, int choice) {
 		int result = -1;
-		if (index < getNumberOfChoices())
+		if (index < getEnd(branch))
 		{
 			Choice gemocChoice = getExecutionTrace().getChoices().get(index);
 			int chosenLogicalStepIndex = gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep());
@@ -120,13 +135,14 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 				result = nextChoice.getPossibleLogicalSteps().indexOf(nextChoice.getChosenLogicalStep());
 			}			
 		}
-		return result;
+		final int[][] res = {{branch, result } };
+		return res;
 	}
 
 	@Override
-	public int getPreceding(int index, int choice) {
+	public int[][] getPrecedings(int branch, int index, int choice) {
 		int result = -1;
-		if (index < getNumberOfChoices())
+		if (index < getEnd(branch))
 		{
 			Choice gemocChoice = getExecutionTrace().getChoices().get(index);
 			int chosenLogicalStepIndex = gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep());
@@ -137,7 +153,8 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 				result = lastChoice.getPossibleLogicalSteps().indexOf(lastChoice.getChosenLogicalStep());
 			}			
 		}
-		return result;
+		final int[][] res = {{branch, result } };
+		return res;
 	}
 
 
@@ -167,15 +184,15 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 				
 				if (mustNotify)
 				{
-					notifyIsSelectedChanged(getExecutionTrace().getChoices().size() - 1, gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep()), true);				
-					notifyNumberOfChoicesChanged(getExecutionTrace().getChoices().size());			
+					notifyIsSelectedChanged(0, getExecutionTrace().getChoices().size() - 1, gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep()), true);				
+					notifyEndChanged(0, getExecutionTrace().getChoices().size());			
 				}
 			}
 		}
 	}
 
 	@Override
-	public int getSelectedPossibleStep(int index) {
+	public int getSelectedPossibleStep(int branch, int index) {
 		Choice gemocChoice = getExecutionTrace().getChoices().get(index);
 		return gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep());
 	}
