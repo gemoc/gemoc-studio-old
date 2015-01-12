@@ -338,7 +338,7 @@ public abstract class AbstractGemocAnimatorServices {
 			final boolean res;
 
 			final Set<String> layerIDs = representationToRefresh.get(representationId);
-			res = layerIDs == ANY_LAYER || layerIDs.contains(layerID);
+			res = layerIDs == ANY_LAYER || (layerIDs != null && layerIDs.contains(layerID));
 
 			return res;
 		}
