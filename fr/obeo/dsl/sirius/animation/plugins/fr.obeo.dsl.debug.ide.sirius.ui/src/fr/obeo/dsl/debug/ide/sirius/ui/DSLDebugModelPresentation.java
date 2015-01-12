@@ -22,31 +22,19 @@ import fr.obeo.dsl.debug.ide.adapter.DSLDebugTargetAdapter;
 import fr.obeo.dsl.debug.ide.adapter.DSLStackFrameAdapter;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EValidator;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
-import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 
@@ -58,7 +46,7 @@ import org.eclipse.ui.IEditorPart;
 public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebugModelPresentation {
 
 	// FIXME this code is ugly but should work... the right way to do this is to add
-	// DialectUIManager.getEditorInput(...) and DialectUIManager.getDeitorID(...)
+	// DialectUIManager.getEditorInput(...) and DialectUIManager.getEditorID(...)
 	// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=426431
 
 	/**
@@ -81,7 +69,7 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 
 		editor = null;
 		if (instructionURI != null) {
-			List<Session> sessions = getSessions(instructionURI);
+			List<Session> sessions = SiriusEditorUtils.getSessions(instructionURI);
 
 			final Session session;
 			if (sessions.size() > 1) {
@@ -93,7 +81,8 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 			}
 
 			if (session != null) {
-				List<DRepresentation> representations = getRepresentations(session, instructionURI);
+				List<DRepresentation> representations = SiriusEditorUtils.getRepresentations(session,
+						instructionURI);
 
 				final DRepresentation representation;
 				if (representations.size() > 1) {
@@ -133,81 +122,6 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 	}
 
 	/**
-	 * Gets the {@link List} of {@link Session} referencing the given semantic {@link URI}.
-	 * 
-	 * @param uri
-	 *            the semantic {@link URI}
-	 * @return the {@link List} of {@link Session} referencing the given semantic {@link URI}
-	 */
-	protected List<Session> getSessions(URI uri) {
-		final List<Session> res = new ArrayList<Session>();
-		final URI resourceURI = uri.trimFragment();
-		for (Session session : SessionManager.INSTANCE.getSessions()) {
-			for (Resource resource : session.getSemanticResources()) {
-				if (resourceURI.equals(resource.getURI())) {
-					res.add(session);
-					break;
-				}
-			}
-		}
-
-		return res;
-	}
-
-	/**
-	 * Gets the {@link List} of {@link DRepresentation} representing the given instruction.
-	 * 
-	 * @param session
-	 *            the {@link Session}
-	 * @param instructionURI
-	 *            the instruction {@link URI}
-	 * @return the {@link List} of {@link DRepresentation} representing the given instruction
-	 */
-	protected List<DRepresentation> getRepresentations(Session session, URI instructionURI) {
-		final List<DRepresentation> res = new ArrayList<DRepresentation>();
-
-		final EObject instruction = session.getTransactionalEditingDomain().getResourceSet().getEObject(
-				instructionURI, false);
-		for (DView view : session.getSelectedViews()) {
-			for (DRepresentation representation : view.getOwnedRepresentations()) {
-				if (representSemanticElement(representation, instruction)) {
-					res.add(representation);
-				}
-			}
-		}
-
-		return res;
-	}
-
-	/**
-	 * Tells if the given {@link DRepresentation} represents the given {@link EObject instruction}.
-	 * 
-	 * @param representation
-	 *            the {@link DRepresentation}
-	 * @param instruction
-	 *            the {@link EObject instruction}
-	 * @return <code>true</code> if the given {@link DRepresentation} represents the given {@link EObject
-	 *         instruction}, <code>false</code> otherwise
-	 */
-	protected boolean representSemanticElement(DRepresentation representation, EObject instruction) {
-		boolean res = false;
-
-		if (representation.eCrossReferences().contains(instruction)) {
-			res = true;
-		} else {
-			for (final DRepresentationElement representationElement : representation
-					.getRepresentationElements()) {
-				if (representationElement.eCrossReferences().contains(instruction)) {
-					res = true;
-					break;
-				}
-			}
-		}
-
-		return res;
-	}
-
-	/**
 	 * Selects a {@link DRepresentation} from the given {@link List} of {@link DRepresentation}.
 	 * 
 	 * @param representations
@@ -237,40 +151,13 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 			changeCurrentStackFrame(frame);
 			if (editorPart instanceof DialectEditor) {
 				final EObject instruction = ((DSLStackFrameAdapter)frame).getCurrentInstruction();
-				showInstruction(editorPart, instruction);
+				SiriusEditorUtils.showInstruction(editorPart, instruction);
 			} else {
 				super.addAnnotations(editorPart, frame);
 			}
 		}
 
 		return true;
-	}
-
-	/**
-	 * Show the given {@link EObject instruction}.
-	 * 
-	 * @param editorPart
-	 *            the opened {@link IEditorPart}
-	 * @param instruction
-	 *            the {@link EObject instruction} to show
-	 */
-	protected void showInstruction(IEditorPart editorPart, final EObject instruction) {
-		final URI resourceURI = instruction.eResource().getURI();
-		if (resourceURI.isPlatformResource()) {
-			final String resourcePath = resourceURI.toPlatformString(true);
-			final IResource resource = ResourcesPlugin.getWorkspace().getRoot().getFile(
-					new Path(resourcePath));
-			try {
-				final IMarker marker = resource.createMarker(EValidator.MARKER);
-				marker.setAttribute(EValidator.URI_ATTRIBUTE, EcoreUtil.getURI(instruction).toString());
-				final TraceabilityMarkerNavigationProvider navigationProvider = new TraceabilityMarkerNavigationProvider(
-						(DialectEditor)editorPart);
-				navigationProvider.gotoMarker(marker);
-				marker.delete();
-			} catch (CoreException e) {
-				DebugSiriusIdeUiPlugin.INSTANCE.log(e);
-			}
-		}
 	}
 
 	/**

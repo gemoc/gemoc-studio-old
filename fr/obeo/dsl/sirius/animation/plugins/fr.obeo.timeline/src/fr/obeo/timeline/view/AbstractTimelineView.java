@@ -24,6 +24,10 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.editparts.ScalableFreeformRootEditPart;
 import org.eclipse.gef.editparts.ZoomListener;
 import org.eclipse.gef.ui.parts.ScrollingGraphicalViewer;
+import org.eclipse.jface.action.GroupMarker;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
@@ -50,7 +54,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Slider;
+import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
@@ -158,19 +164,23 @@ public abstract class AbstractTimelineView extends ViewPart {
 
 		@Override
 		public void mouseDown(MouseEvent e) {
-			originMousePosition = new Point(e.x, e.y);
-			final Canvas canevas = (Canvas)timelineViewer.getControl();
-			doneShift = 0;
-			if (canevas.getVerticalBar() != null) {
-				offset.y = canevas.getVerticalBar().getSelection();
-			} else {
-				offset.y = 0;
+			if (e.button == 1) {
+				originMousePosition = new Point(e.x, e.y);
+				final Canvas canevas = (Canvas)timelineViewer.getControl();
+				doneShift = 0;
+				if (canevas.getVerticalBar() != null) {
+					offset.y = canevas.getVerticalBar().getSelection();
+				} else {
+					offset.y = 0;
+				}
 			}
 		}
 
 		@Override
 		public void mouseUp(MouseEvent e) {
-			originMousePosition = null;
+			if (e.button == 1) {
+				originMousePosition = null;
+			}
 		}
 
 		@Override
@@ -342,6 +352,11 @@ public abstract class AbstractTimelineView extends ViewPart {
 	 */
 	private int nbVirtualChoices;
 
+	/**
+	 * The {@link MenuManager}.
+	 */
+	private MenuManager menuManager;
+
 	@Override
 	public void createPartControl(Composite parent) {
 		final Composite container;
@@ -353,7 +368,6 @@ public abstract class AbstractTimelineView extends ViewPart {
 			container = parent;
 		}
 		timelineViewer = new ScrollingGraphicalViewer();
-		getSite().setSelectionProvider(timelineViewer);
 		Composite timelineComposite = new Composite(container, SWT.NONE);
 		timelineComposite.setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
 		if (hasDetailViewer()) {
@@ -487,6 +501,35 @@ public abstract class AbstractTimelineView extends ViewPart {
 				follow = state != null && ((Boolean)state.getValue()).booleanValue();
 			}
 		}
+		createMenuManager();
+	}
+
+	/**
+	 * Creates the {@link MenuManager}.
+	 */
+	private void createMenuManager() {
+		menuManager = new MenuManager();
+		menuManager.setRemoveAllWhenShown(true);
+		menuManager.addMenuListener(new IMenuListener() {
+			public void menuAboutToShow(IMenuManager mgr) {
+				fillContextMenu(mgr);
+			}
+		});
+		Menu menu = menuManager.createContextMenu(timelineViewer.getControl());
+		timelineViewer.getControl().setMenu(menu);
+		getSite().registerContextMenu(menuManager, timelineViewer);
+		// make the selection available
+		getSite().setSelectionProvider(timelineViewer);
+	}
+
+	/**
+	 * Fills the context menu.
+	 * 
+	 * @param mgr
+	 *            the {@link IMenuManager}
+	 */
+	private void fillContextMenu(IMenuManager mgr) {
+		mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
 
 	/**

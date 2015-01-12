@@ -27,10 +27,6 @@ import fr.obeo.dsl.debug.provider.CustomDebugItemProviderAdapterFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IValue;
@@ -38,14 +34,9 @@ import org.eclipse.debug.ui.IDebugEditorPresentation;
 import org.eclipse.debug.ui.IDebugModelPresentation;
 import org.eclipse.debug.ui.IValueDetailListener;
 import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.ui.URIEditorInput;
-import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
@@ -55,15 +46,10 @@ import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IFileEditorInput;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.part.FileEditorInput;
 
 /**
  * The {@link IDebugModelPresentation} for the DSL debug model.
@@ -151,62 +137,7 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 * @see org.eclipse.debug.ui.ISourcePresentation#getEditorInput(java.lang.Object)
 	 */
 	public IEditorInput getEditorInput(Object element) {
-		return getDefaultEditorInput(element);
-	}
-
-	/**
-	 * Gets the default {@link IEditorInput} for the given {@link Object}.
-	 * 
-	 * @param element
-	 *            the {@link Object}
-	 * @return the default {@link IEditorInput} for the given {@link Object} if any, <code>null</code>
-	 *         otherwise
-	 */
-	protected IEditorInput getDefaultEditorInput(Object element) {
-		final IEditorInput res;
-		if (element instanceof EObject) {
-			Resource resource = ((EObject)element).eResource();
-			if (resource != null) {
-				res = getEditorInput(resource.getURI());
-			} else {
-				res = null;
-			}
-		} else if (element instanceof DSLBreakpoint) {
-			res = getEditorInput(((DSLBreakpoint)element).getURI().trimFragment());
-		} else {
-			res = null;
-		}
-		return res;
-	}
-
-	/**
-	 * Gets the {@link IEditorInput} from the given {@link URI}.
-	 * 
-	 * @param uri
-	 *            the {@link URI}
-	 * @return the {@link IEditorInput} from the given {@link URI} or <code>null</code> if none can be created
-	 */
-	protected IEditorInput getEditorInput(URI uri) {
-		final IEditorInput res;
-
-		if (uri != null) {
-			if (uri.isPlatformResource()) {
-				String path = uri.toPlatformString(true);
-				IResource workspaceResource = ResourcesPlugin.getWorkspace().getRoot().findMember(
-						new Path(path));
-				if (workspaceResource instanceof IFile) {
-					res = new FileEditorInput((IFile)workspaceResource);
-				} else {
-					res = new URIEditorInput(uri);
-				}
-			} else {
-				res = new URIEditorInput(uri);
-			}
-		} else {
-			res = null;
-		}
-
-		return res;
+		return EMFEditorUtils.getEditorInput(element);
 	}
 
 	/**
@@ -218,37 +149,8 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	public String getEditorId(IEditorInput input, Object element) {
 		final String res;
 
-		res = getDefaultEditorID(input, element);
+		res = EMFEditorUtils.getEditorID(input, element);
 
-		return res;
-	}
-
-	/**
-	 * Gets the default editor ID for the given {@link IEditorInput} and element.
-	 * 
-	 * @param input
-	 *            the {@link IEditorInput}
-	 * @param element
-	 *            the element
-	 * @return the default editor ID for the given {@link IEditorInput} and element if any, <code>null</code>
-	 *         otherwise
-	 */
-	protected String getDefaultEditorID(IEditorInput input, Object element) {
-		final String res;
-		if (input instanceof URIEditorInput) {
-			res = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(
-					((URIEditorInput)input).getURI().lastSegment()).getId();
-		} else if (input instanceof IFileEditorInput) {
-			IEditorDescriptor defaultEditor = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(
-					((IFileEditorInput)input).getFile().getName());
-			if (defaultEditor != null) {
-				res = defaultEditor.getId();
-			} else {
-				res = "org.eclipse.emf.ecore.presentation.ReflectiveEditorID";
-			}
-		} else {
-			res = null;
-		}
 		return res;
 	}
 
@@ -343,34 +245,11 @@ public class DSLDebugModelPresentation implements IDebugModelPresentation, IDebu
 	 */
 	public boolean addAnnotations(IEditorPart editorPart, IStackFrame frame) {
 		if (frame instanceof DSLStackFrameAdapter) {
-			if (editorPart instanceof IViewerProvider) {
-				if (editorPart instanceof IEditingDomainProvider) {
-					final EObject instruction = ((DSLStackFrameAdapter)frame).getCurrentInstruction();
-					final URI instructionUri = EcoreUtil.getURI(instruction);
-					selectInstruction(editorPart, instructionUri);
-				}
-			}
+			final EObject instruction = ((DSLStackFrameAdapter)frame).getCurrentInstruction();
+			final URI instructionUri = EcoreUtil.getURI(instruction);
+			EMFEditorUtils.selectInstruction(editorPart, instructionUri);
 		}
 		return true;
-	}
-
-	/**
-	 * Selects the given instruction.
-	 * 
-	 * @param editorPart
-	 *            the {@link IEditorPart}
-	 * @param instructionUri
-	 *            the instruction {@link URI}
-	 */
-	private void selectInstruction(IEditorPart editorPart, final URI instructionUri) {
-		final EditingDomain domain = ((IEditingDomainProvider)editorPart).getEditingDomain();
-		final EObject selection = domain.getResourceSet().getEObject(instructionUri, false);
-		if (selection != null) {
-			((IViewerProvider)editorPart).getViewer().setSelection(new StructuredSelection(selection), true);
-		} else {
-			DebugIdeUiPlugin.getPlugin().log(
-					new IllegalStateException("can't find source for " + instructionUri));
-		}
 	}
 
 	/**
