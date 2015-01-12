@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.gemoc_modeling_workbench.ui;bundle-version="0.1.0",
  org.eclipse.sirius.diagram;bundle-version="1.0.0",
  org.eclipse.emf.transaction;bundle-version="1.4.0",
- org.gemoc.sample.tfsm.model;bundle-version="0.1.0"
+ org.gemoc.sample.tfsm.model;bundle-version="0.1.0",
+ org.gemoc.gemoc_language_workbench.extensions.sirius
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ManifestVersion: 2
