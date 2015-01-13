@@ -1,5 +1,5 @@
 --import 'http://www.gemoc.org/sample/tfsm'
-import 'platform:/plugin/org.gemoc.sample.tfsm.model/model/tfsm.ecore'
+import 'platform:/resource/org.gemoc.sample.tfsm.model/model/tfsm.ecore'
 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
@@ -18,15 +18,6 @@ package tfsm
 
   	context Transition
      def: fire : Event = self.fire()
---     def: fire : Event = self.fire() [result]
---     						switch 
---     							case 0
---     								force(self.readCallback1);
---     							case 1
---     								force(self.readCallback2);
-     							
-	def : readCallback1 : Event = self.logWhenZero()
-    def : readCallback2 : Event = self.logWhenNotZero()
     
   	-- Mapped to the evaluation of the guard
   	context EvaluateGuard
