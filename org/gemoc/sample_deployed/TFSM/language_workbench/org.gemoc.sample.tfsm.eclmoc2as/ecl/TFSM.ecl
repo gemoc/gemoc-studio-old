@@ -15,8 +15,19 @@ package tfsm
 	 */ 
   	context FSMClock
      def: ticks : Event = self.ticks()
+
   	context Transition
      def: fire : Event = self.fire()
+--     def: fire : Event = self.fire() [result]
+--     						switch 
+--     							case 0
+--     								force(self.readCallback1);
+--     							case 1
+--     								force(self.readCallback2);
+     							
+	def : readCallback1 : Event = self.logWhenZero()
+    def : readCallback2 : Event = self.logWhenNotZero()
+    
   	-- Mapped to the evaluation of the guard
   	context EvaluateGuard
      def : evaluate : Event = self.evaluate()
@@ -31,8 +42,8 @@ package tfsm
      --def : entering : Event = StartEvent
      --def : entering : Event = self.onEnter()
      -- these events are tracked by the debugger thanks to the reference to self
-     def : entering : Event(self) = self
-     def : leaving : Event(self) = self
+     def : entering : Event = self
+     def : leaving : Event = self
     
 /**
  * @Private DSE
@@ -50,8 +61,8 @@ package tfsm
 	context FSMEvent
 		inv occursWhenSolicitate:
 			(self.sollicitingTransitions->size() >0) implies  
-			let AllTriggeringOccurrences : Event = Expression Union(self.sollicitingTransitions.fire) in
-			Relation FSMEventSendReceive(AllTriggeringOccurrences, self.occurs)
+			(let AllTriggeringOccurrences : Event = Expression Union(self.sollicitingTransitions.fire) in
+			Relation FSMEventSendReceive(AllTriggeringOccurrences, self.occurs))
 	
 	context Transition
 	    inv fireWhenRestrueOccursTransition: 
