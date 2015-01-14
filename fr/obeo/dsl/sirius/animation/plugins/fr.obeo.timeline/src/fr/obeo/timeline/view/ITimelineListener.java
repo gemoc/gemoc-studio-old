@@ -32,144 +32,190 @@ public interface ITimelineListener {
 	class Stub implements ITimelineListener {
 
 		@Override
-		public void numberOfChoicesChanged(int numberOfChoices) {
+		public void startChanged(int branch, int start) {
 			// nothing to do here
 		}
 
 		@Override
-		public void numberOfPossibleStepsAtChanged(int index, int numberOfPossibleStep) {
+		public void endChanged(int branch, int end) {
 			// nothing to do here
 		}
 
 		@Override
-		public void textAtChanged(int index, String text) {
+		public void textAtChanged(int branch, String text) {
 			// nothing to do here
 		}
 
 		@Override
-		public void atChanged(int index, int possibleStep, Object object) {
+		public void numberOfPossibleStepsAtChanged(int branch, int index, int numberOfpossibleStep) {
 			// nothing to do here
 		}
 
 		@Override
-		public void isSelectedChanged(int index, int possibleStep, boolean selected) {
+		public void textAtChanged(int branch, int index, String text) {
 			// nothing to do here
 		}
 
 		@Override
-		public void textAtChanged(int index, int possibleStep, String text) {
+		public void atChanged(int branch, int index, int possibleStep, Object object) {
 			// nothing to do here
 		}
 
 		@Override
-		public void followingChanged(int index, int possibleStep, int following) {
+		public void isSelectedChanged(int branch, int index, int possibleStep, boolean selected) {
 			// nothing to do here
 		}
 
 		@Override
-		public void precedingChanged(int index, int possibleStep, int preceding) {
+		public void textAtChanged(int branch, int index, int possibleStep, String text) {
+			// nothing to do here
+		}
+
+		@Override
+		public void followingsChanged(int branch, int index, int possibleStep, int[][] followings) {
+			// nothing to do here
+		}
+
+		@Override
+		public void precedingsChanged(int branch, int index, int possibleStep, int[][] precedings) {
 			// nothing to do here
 		}
 
 	}
 
 	/**
-	 * Notifies the number of choices in the timeline has changed.
+	 * Notifies the start of the given branch has changed.
 	 * 
-	 * @param numberOfChoices
-	 *            the number of choices in the timeline
+	 * @param branch
+	 *            the branch
+	 * @param start
+	 *            the new start
 	 */
-	void numberOfChoicesChanged(int numberOfChoices);
+	void startChanged(int branch, int start);
+
+	/**
+	 * Notifies the end of the given branch has changed.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @param end
+	 *            the new end
+	 */
+	void endChanged(int branch, int end);
+
+	/**
+	 * Notifies the text of the given branch has changed.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @param text
+	 *            the new text
+	 */
+	void textAtChanged(int branch, String text);
 
 	/**
 	 * Notifies the number of possible steps at the given timeline index has changed.
 	 * 
+	 * @param branch
+	 *            the branch
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
 	 * @param numberOfpossibleStep
 	 *            the number of possible steps at the given timeline index
 	 */
-	void numberOfPossibleStepsAtChanged(int index, int numberOfpossibleStep);
+	void numberOfPossibleStepsAtChanged(int branch, int index, int numberOfpossibleStep);
 
 	/**
 	 * Notifies the text for the given index of the timeline has changed.
 	 * 
+	 * @param branch
+	 *            the branch
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
 	 * @param text
 	 *            the text for the given index of the timeline
 	 */
-	void textAtChanged(int index, String text);
+	void textAtChanged(int branch, int index, String text);
 
 	/**
 	 * Notifies the {@link Object} at the given possible step (timeline index and possible step index) has
 	 * changed.
 	 * 
+	 * @param branch
+	 *            the branch
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
 	 * @param possibleStep
 	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
 	 *            nbPossibleSteps}[)
 	 * @param object
 	 *            the {@link Object} at the given possible step (timeline index and possible step index)
 	 */
-	void atChanged(int index, int possibleStep, Object object);
+	void atChanged(int branch, int index, int possibleStep, Object object);
 
 	/**
 	 * Notifies the given possible step (timeline index and possible step index) has been selected or
 	 * de-selected.
 	 * 
+	 * @param branch
+	 *            the branch
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
 	 * @param possibleStep
 	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
 	 *            nbPossibleSteps}[)
 	 * @param selected
 	 *            <code>true</code> if the possible step is now selected, <code>false</code> otherwise
 	 */
-	void isSelectedChanged(int index, int possibleStep, boolean selected);
+	void isSelectedChanged(int branch, int index, int possibleStep, boolean selected);
 
 	/**
 	 * Notifies the text for the given possible step (timeline index and possible step index) has changed.
 	 * 
+	 * @param branch
+	 *            the branch
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
 	 * @param possibleStep
 	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
 	 *            nbPossibleSteps}[)
 	 * @param text
 	 *            the text for the given possible step (timeline index and possible step index)
 	 */
-	void textAtChanged(int index, int possibleStep, String text);
+	void textAtChanged(int branch, int index, int possibleStep, String text);
 
 	/**
 	 * Notifies the following possible step index for the given possible step (timeline index and possible
 	 * step index) has changed.
 	 * 
+	 * @param branch
+	 *            the branch
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
 	 * @param possibleStep
 	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
 	 *            nbPossibleSteps}[)
-	 * @param following
+	 * @param followings
 	 *            the following possible step for the given possible step (timeline index and possible step
-	 *            index) if any, <code>-1</code> otherwise
+	 *            index) [branch, possibleStep]
 	 */
-	void followingChanged(int index, int possibleStep, int following);
+	void followingsChanged(int branch, int index, int possibleStep, int[][] followings);
 
 	/**
 	 * Notifies the preceding possible step index for the given possible step (timeline index and possible
 	 * step index) has changed.
 	 * 
 	 * @param index
-	 *            the timeline index ([0..{@link ITimelineProvider#getNumberOfChoices() nbChoices}[)
+	 *            the timeline index ([0..{@link ITimelineProvider#getMaxTimelineIndex() nbChoices}[)
 	 * @param possibleStep
 	 *            the possible step index ([0..{@link ITimelineProvider#getNumberOfPossibleStepsAt(int)
 	 *            nbPossibleSteps}[)
-	 * @param preceding
-	 *            the preceding possible step for the given possible step (timeline index and possible step
-	 *            index) if any, <code>-1</code> otherwise
+	 * @param branch
+	 *            the branch
+	 * @param precedings
+	 *            the precedings possible step for the given possible step (timeline index and possible step
+	 *            index) [branch, possibleStep]
 	 */
-	void precedingChanged(int index, int possibleStep, int preceding);
+	void precedingsChanged(int branch, int index, int possibleStep, int[][] precedings);
 
 }

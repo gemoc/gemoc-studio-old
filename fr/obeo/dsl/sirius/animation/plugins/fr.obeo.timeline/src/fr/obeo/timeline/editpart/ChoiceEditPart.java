@@ -107,7 +107,8 @@ public class ChoiceEditPart extends AbstractGraphicalEditPart {
 				&& figure.getChildren().get(figure.getChildren().size() - existing - 2) instanceof PaddingFigure) {
 			++existing;
 		}
-		final int offset = ((TimelineWindowEditPart)getParent()).getModel().getMaxSelectedIndex()
+		final int offset = ((BranchEditPart)getParent()).getModel().getTimelineWindow().getMaxSelectedIndex(
+				getModel().getBranch())
 				- getModel().getConnectedIndex();
 
 		if (existing < offset) {
