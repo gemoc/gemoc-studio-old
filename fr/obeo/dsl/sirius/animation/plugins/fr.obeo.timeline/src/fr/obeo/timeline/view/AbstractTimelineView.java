@@ -7,7 +7,6 @@ import fr.obeo.timeline.editpart.PossibleStepEditPart;
 import fr.obeo.timeline.editpart.TimelineEditPartFactory;
 import fr.obeo.timeline.model.ITimelineWindowListener;
 import fr.obeo.timeline.model.TimelineWindow;
-import fr.obeo.timeline.sample.SampleTimelineProvider;
 
 import java.util.Iterator;
 import java.util.List;
@@ -488,7 +487,6 @@ public abstract class AbstractTimelineView extends ViewPart {
 				follow = state != null && ((Boolean)state.getValue()).booleanValue();
 			}
 		}
-		setTimelineProvider(new SampleTimelineProvider(), 0);
 	}
 
 	/**

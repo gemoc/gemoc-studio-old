@@ -87,7 +87,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	public String getTextAt(int branch, int index, int choice) 
 	{
 		StringBuilder builder = new StringBuilder();
-		LogicalStep ls = (LogicalStep)getAt(index, choice);
+		LogicalStep ls = (LogicalStep)getAt(branch, index, choice);
 		for(EventOccurrence eventOccurrence : ls.getEventOccurrences()) {
 			if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
 				ModelElementReference reference = (ModelElementReference)eventOccurrence.getReferedElement();
