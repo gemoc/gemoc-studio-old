@@ -9,11 +9,11 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.osgi.util.ManifestElement;
 import org.osgi.framework.BundleException;
 
-class PluginDependency {
+class ManifestChangerPluginDependency {
 
 	private ManifestChanger _connection;
 	
-	public PluginDependency(ManifestChanger connection) {
+	public ManifestChangerPluginDependency(ManifestChanger connection) {
 		_connection = connection;
 	}
 	
