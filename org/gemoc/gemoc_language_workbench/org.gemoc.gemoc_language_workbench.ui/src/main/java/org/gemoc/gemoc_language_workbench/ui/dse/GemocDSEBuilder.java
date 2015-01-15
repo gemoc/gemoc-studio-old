@@ -182,7 +182,7 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 			
 			IFile propertyFile = (IFile) resource.getProject().getFile("moc2as.properties");
 			if(!propertyFile.exists()){
-				//addMarker(resource.getProject(), "Missing moc2as.properties, cannot generate qvto", -1, IMarker.SEVERITY_ERROR);
+				addMarker(eclFile, "Missing moc2as.properties, cannot generate qvto with DSE builder", -1, IMarker.SEVERITY_WARNING);
 				return;
 			}
 			try {
@@ -190,7 +190,7 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 				properties.load(propertyFile.getContents());
 				String rootElement = properties.getProperty("rootElement");
 				if(rootElement==null || rootElement.isEmpty()){
-					//addMarker(eclFile, "rootElement not defined in moc2as.properties, cannot generate qvto", -1, IMarker.SEVERITY_WARNING);
+					addMarker(eclFile, "rootElement not defined in moc2as.properties, cannot generate qvto with DSE builder", -1, IMarker.SEVERITY_WARNING);
 					return;
 				}
 				String uristring = eclFile.getLocation().toOSString();
@@ -222,7 +222,12 @@ public class GemocDSEBuilder extends IncrementalProjectBuilder {
 				//LanguageDefinition ld = EObjectUtil.eContainerOfType(ecliFilePath, LanguageDefinition.class);
 				//String qvtoFileName = uri.lastSegment().replace(".ecl",	"_toCCSL.qvto");
 				arguments.add(qvtoFileName);
-				arguments.add(rootElement); 
+				// the qvto transformation need to have the first package removed
+				String fixedRootElement = rootElement;
+				if(rootElement.contains("::")){
+					fixedRootElement = rootElement.substring(rootElement.indexOf("::")+2);
+				}
+				arguments.add(fixedRootElement); 
 				// create QVTO file
 				ISafeRunnable runnable = new ISafeRunnable() {
 					@Override
