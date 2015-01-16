@@ -1,6 +1,6 @@
 package org.gemoc.execution.engine.io.views.timeline;
 
-import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingHook;
+import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
@@ -30,9 +30,9 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	
 	private ExecutionTraceModel getExecutionTrace() {
 		ExecutionTraceModel traceModel = null;;
-		if (_engine.hasCapability(ModelExecutionTracingHook.class))
+		if (_engine.hasCapability(ModelExecutionTracingAddon.class))
 		{
-			traceModel = _engine.getCapability(ModelExecutionTracingHook.class).getExecutionTrace();			
+			traceModel = _engine.getCapability(ModelExecutionTracingAddon.class).getExecutionTrace();			
 		}
 		else
 		{

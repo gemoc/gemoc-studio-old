@@ -9,14 +9,17 @@ import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.io.views.timeline.TimeLineView;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.trace.LogicalStep;
 
-public class PrepareViewFrontend implements IEngineAddon 
+public class PrepareViewFrontend extends DefaultEngineAddon 
 {
 
+	private TimeLineView _timelineView;
+	
 	@Override
 	public void engineAboutToStart(final IExecutionEngine engine) 
 	{
@@ -33,76 +36,24 @@ public class PrepareViewFrontend implements IEngineAddon
 								ViewHelper.retrieveView(EnginesStatusView.ID);
 								ViewHelper.retrieveView(LogicalStepsView.ID);
 								ViewHelper.retrieveView(EventManagerView.ID);
-								TimeLineView timelineView = ViewHelper.retrieveView(TimeLineView.ID);		
+								_timelineView = ViewHelper.retrieveView(TimeLineView.ID);		
 								AbstractExecutionEngine castedEngine = (AbstractExecutionEngine)engine;
-								timelineView.configure(castedEngine);
+								_timelineView.configure(castedEngine);
 							}			
 						});	
 		}
 	}
 
 	@Override
-	public void engineStarted(IExecutionEngine executionEngine) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void aboutToExecuteLogicalStep(IExecutionEngine engine,
-			LogicalStep logicalStepToApply) {
-		// TODO Auto-generated method stub
-		
+	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
+	{
+		_timelineView.update(engine);
 	}
 
 	@Override
-	public void aboutToExecuteMSE(IExecutionEngine engine,
-			ModelSpecificEvent mse) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void engineAboutToStop(IExecutionEngine engine) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void engineStopped(IExecutionEngine engine) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void logicalStepExecuted(IExecutionEngine engine,
-			LogicalStep logicalStepExecuted) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void engineStatusChanged(IExecutionEngine engine, RunStatus newStatus) {
-		// TODO Auto-generated method stub
-		
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) 
+	{
+		_timelineView.update(engine);
 	}
 
 }

@@ -17,7 +17,7 @@ import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingHook;
+import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingException;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.io.views.AbstractUserDecider;
@@ -126,16 +126,6 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	
 	public void configure(AbstractExecutionEngine engine)
 	{
-//		if (_currentEngine == engine
-//			&& _timelineProvider != null)
-//		{
-//			if (_currentEngine.getPossibleLogicalSteps() != null
-//				&& _timelineProvider.getNumberOfChoices() != _currentEngine.getPossibleLogicalSteps().size())
-//			{
-//				_timelineProvider.notifyNumberOfChoicesChanged(_timelineProvider.getNumberOfChoices());
-//			}
-//		}
-//		else
 		if (_currentEngine != engine
 			|| _timelineProvider == null)
 		{
@@ -189,17 +179,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 
 	@Override
 	public void motorSelectionChanged(IExecutionEngine engine) {
-		if (engine != null)
-		{
-			if (canDisplayTimeline(engine))
-			{
-				configure((AbstractExecutionEngine)engine);				
-			}
-			else
-			{
-				disposeTimeLineProvider();
-			}
-		}
+		update(engine);
 	}
 
 	private boolean canDisplayTimeline(IExecutionEngine engine)
@@ -247,7 +227,8 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 						}
 						else
 						{
-							backToPastIfPossible(choice);							
+							Choice choiceToRestore = choice.getNextChoice();
+							backToPastIfPossible(choiceToRestore);							
 						}
 					}
 				}
@@ -266,11 +247,11 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	}
 
 	private void backToPastIfPossible(Choice choice) {
-		if (_currentEngine.hasCapability(ModelExecutionTracingHook.class)) 
+		if (_currentEngine.hasCapability(ModelExecutionTracingAddon.class)) 
 		{
 			try 
 			{
-				_currentEngine.getCapability(ModelExecutionTracingHook.class).backToPast(choice);
+				_currentEngine.getCapability(ModelExecutionTracingAddon.class).backToPast(choice);
 			} catch (ModelExecutionTracingException e) 
 			{
 				e.printStackTrace();
@@ -283,4 +264,18 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		return new TimelineEditPartFactory(false);
 	}
 	
+	public void update(IExecutionEngine engine)
+	{
+		if (engine != null)
+		{
+			if (canDisplayTimeline(engine))
+			{
+				configure((AbstractExecutionEngine)engine);				
+			}
+			else
+			{
+				disposeTimeLineProvider();
+			}
+		}		
+	}
 }

@@ -1,6 +1,6 @@
 package org.gemoc.execution.engine.commons;
 
-import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingHook;
+import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
@@ -10,7 +10,7 @@ public class CCSLExecutionEngine extends AbstractExecutionEngine {
 		super(executionContext);
 		if (getExecutionContext().getRunConfiguration().isTraceActive())
 		{
-			IEngineAddon traceHook = new ModelExecutionTracingHook();
+			IEngineAddon traceHook = new ModelExecutionTracingAddon();
 			getExecutionContext().getExecutionPlatform().addEngineAddon(traceHook);						
 		}
 

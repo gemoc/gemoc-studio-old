@@ -42,7 +42,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.LogicalStep;
 
-public class ModelExecutionTracingHook extends DefaultEngineAddon {
+public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	
 	private TransactionalEditingDomain getEditingDomain()
 	{
@@ -70,6 +70,7 @@ public class ModelExecutionTracingHook extends DefaultEngineAddon {
 			commandStack.execute(new RecordingCommand(getEditingDomain(), "Back to " + index) {
 				@Override
 				protected void doExecute() {
+//					int fixedIndex = index == 0 ? index : index -1;
 					List<Choice> choicesToRemove = _executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size());
 					_executionTraceModel.getChoices().removeAll(choicesToRemove);
 					if (_executionTraceModel.getChoices().size() > 0)
@@ -258,7 +259,7 @@ public class ModelExecutionTracingHook extends DefaultEngineAddon {
 		});
 	}
 	
-	public void updateTraceModelAfterDeciding(final LogicalStep selectedLogicalStep) {
+	private void updateTraceModelAfterExecution(final LogicalStep selectedLogicalStep) {
 		final CommandStack commandStack = getEditingDomain().getCommandStack();
 		commandStack.execute(new RecordingCommand(getEditingDomain(), "update trace model after deciding") {
 
@@ -287,10 +288,16 @@ public class ModelExecutionTracingHook extends DefaultEngineAddon {
 		updateTraceModelBeforeDeciding(engine.getPossibleLogicalSteps());
 	}
 	
+//	@Override
+//	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) 
+//	{
+//		setUp(engine);
+//		updateTraceModelAfterDeciding(selectedLogicalStep);
+//	}
+	
 	@Override
-	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) 
-	{
+	public void logicalStepExecuted(IExecutionEngine engine, LogicalStep logicalStepExecuted) {
 		setUp(engine);
-		updateTraceModelAfterDeciding(selectedLogicalStep);
+		updateTraceModelAfterExecution(logicalStepExecuted);
 	}
 }
