@@ -191,7 +191,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		if (eObject instanceof DSAProject) {
 			DSAProject dsaProject = (DSAProject) eObject;
 			updateDependenciesWithDSAProject(manifestChanger, dsaProject);
-			updateCodeExecutorClass(project, (LanguageDefinition) eObject.eContainer());
+			updateCodeExecutorClass(project, (LanguageDefinition) eObject.eContainer(), manifestChanger);
 		}
 
 		if (eObject instanceof XTextEditorProject) {
@@ -227,8 +227,12 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	 * 
 	 * @param project
 	 * @param ld
+	 * @param manifestChanger 
+	 * @throws CoreException 
+	 * @throws IOException 
+	 * @throws BundleException 
 	 */
-	protected void updateCodeExecutorClass(IProject project, LanguageDefinition ld) {
+	protected void updateCodeExecutorClass(IProject project, LanguageDefinition ld, ManifestChanger manifestChanger) throws BundleException, IOException, CoreException {
 		// if codeExecutor null or empty, generate an executor class and updtae plugin.xml 
 		if(ld.getDsaProject() != null ){
 			if ( ld.getDsaProject().getCodeExecutorClass() == null || ld.getDsaProject().getCodeExecutorClass().isEmpty()){ 
@@ -286,6 +290,9 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				
 				// update plugin.xml with the generated codeexecutor
 				setPluginCodeExecutorValue(project, packageName + "."	+ languageToUpperFirst + Activator.CODEEXECUTOR_CLASS_NAMEPART);
+				
+				// add the codeexutor package to exported packages
+				manifestChanger.addExportPackage(packageName);
 				
 			} else {
 				// update plugin.xml with the value in the xdsml

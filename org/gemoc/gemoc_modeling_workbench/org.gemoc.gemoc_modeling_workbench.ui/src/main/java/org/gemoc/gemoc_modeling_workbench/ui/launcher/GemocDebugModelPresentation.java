@@ -17,6 +17,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.ide.adapter.DSLStackFrameAdapter;
 import fr.obeo.dsl.debug.ide.sirius.ui.DSLDebugModelPresentation;
+import fr.obeo.dsl.debug.ide.sirius.ui.SiriusEditorUtils;
 
 public class GemocDebugModelPresentation extends DSLDebugModelPresentation {
 
@@ -63,12 +64,12 @@ public class GemocDebugModelPresentation extends DSLDebugModelPresentation {
 					showEvents(tickedEvents);
 					for (Event event : tickedEvents) {
 						if (event.getReferencedObjectRefs().size() != 0) {
-							showInstruction(editorPart, event
+							SiriusEditorUtils.showInstruction(editorPart, event
 									.getReferencedObjectRefs().get(0));
 						}
 					}
 				} else {
-					showInstruction(editorPart, instruction);
+					SiriusEditorUtils.showInstruction(editorPart, instruction);
 				}
 			} else {
 				super.addAnnotations(editorPart, frame);

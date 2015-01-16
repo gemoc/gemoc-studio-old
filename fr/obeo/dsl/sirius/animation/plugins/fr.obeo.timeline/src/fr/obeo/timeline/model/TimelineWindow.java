@@ -21,6 +21,7 @@ import fr.obeo.timeline.view.ITimelineListener;
 import fr.obeo.timeline.view.ITimelineProvider;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,6 +37,11 @@ public class TimelineWindow implements ITimelineListener {
 	private ITimelineProvider provider;
 
 	/**
+	 * The maximum timeline index.
+	 */
+	private int maxTimelineIndex;
+
+	/**
 	 * The {@link List} of {@link ITimelineListener} to notify.
 	 */
 	private final List<ITimelineWindowListener> listeners = new ArrayList<ITimelineWindowListener>();
@@ -49,11 +55,6 @@ public class TimelineWindow implements ITimelineListener {
 	 * The length of the window.
 	 */
 	private int length;
-
-	/**
-	 * The maximum index of the selected possible step.
-	 */
-	private int maxSelectedIndex = -1;
 
 	/**
 	 * Constructor.
@@ -79,34 +80,61 @@ public class TimelineWindow implements ITimelineListener {
 	 * 
 	 * @return the {@link List} of {@link Choice}
 	 */
-	public List<Choice> getChoices() {
-		final List<Choice> res = new ArrayList<Choice>();
+	public List<Branch> getBranches() {
+		final List<Branch> res = new ArrayList<Branch>();
 
 		if (getProvider() != null) {
-			final int begin = getStart();
-			final int end = Math.min(begin + getLength(), getProvider().getNumberOfChoices());
-			for (int i = begin; i < end; ++i) {
-				res.add(new Choice(this, i));
+			int numberOfBranches = provider.getNumberOfBranches();
+			for (int branch = 0; branch < numberOfBranches; ++branch) {
+				if (isBranchVisibleInWindow(branch)) {
+					res.add(new Branch(this, branch));
+				}
 			}
 		}
+
+		Collections.sort(res);
 
 		return res;
 	}
 
 	/**
-	 * Gets the maximum selected possible step index.
+	 * Tells if the given branch is visible in the window.
 	 * 
-	 * @return the maximum selected possible step index
+	 * @param branch
+	 *            the branch index
+	 * @return <code>true</code> if the given branch is visible in the window, <code>false</code> otherwise
 	 */
-	public int getMaxSelectedIndex() {
-		if (maxSelectedIndex < 0) {
-			final int end = Math.min(getEnd(), getProvider().getNumberOfChoices());
-			for (int choice = 0; choice < end; ++choice) {
-				final int selectedPossibleStep = getProvider().getSelectedPossibleStep(choice);
-				maxSelectedIndex = Math.max(maxSelectedIndex, selectedPossibleStep);
-			}
+	private boolean isBranchVisibleInWindow(int branch) {
+		return provider.getStart(branch) <= getEnd() && provider.getEnd(branch) > getStart();
+	}
+
+	/**
+	 * Gets the maximum timeline index.
+	 * 
+	 * @return the maximum timeline index
+	 */
+	public int getMaxTimelineIndex() {
+		return maxTimelineIndex;
+	}
+
+	/**
+	 * Gets the maximum selected possible step index for the given branch.
+	 * 
+	 * @param branch
+	 *            the branch
+	 * @return the maximum selected possible step index for the given branch
+	 */
+	public int getMaxSelectedIndex(int branch) {
+		int res = 0;
+
+		final int begin = Math.max(getStart(), provider.getStart(branch));
+		final int end = Math.min(getEnd(), provider.getEnd(branch));
+		for (int choice = begin; choice < end; ++choice) {
+			final int selectedPossibleStep = getProvider().getSelectedPossibleStep(branch, choice);
+			res = Math.max(res, selectedPossibleStep);
 		}
-		return maxSelectedIndex;
+
+		return res;
 	}
 
 	/**
@@ -125,7 +153,6 @@ public class TimelineWindow implements ITimelineListener {
 	 *            the new start index
 	 */
 	public void setStart(int start) {
-		maxSelectedIndex = -1;
 		if (this.start != start) {
 			this.start = start;
 			for (ITimelineWindowListener listener : getListeners()) {
@@ -159,7 +186,6 @@ public class TimelineWindow implements ITimelineListener {
 	 *            the length of the window
 	 */
 	public void setLength(int length) {
-		maxSelectedIndex = -1;
 		if (this.length != length) {
 			this.length = length;
 			for (ITimelineWindowListener listener : getListeners()) {
@@ -183,13 +209,17 @@ public class TimelineWindow implements ITimelineListener {
 				this.provider.removeTimelineListener(this);
 			}
 			this.provider = newProvider;
+			maxTimelineIndex = 0;
+			final int numberOfBranches = provider.getNumberOfBranches();
+			for (int branch = 0; branch < numberOfBranches; ++branch) {
+				maxTimelineIndex = Math.max(maxTimelineIndex, provider.getEnd(branch) - 1);
+			}
 			if (this.provider != null) {
 				this.provider.addTimelineListener(this);
 				for (ITimelineWindowListener listener : getListeners()) {
 					listener.providerChanged(newProvider);
 				}
-				maxSelectedIndex = -1;
-				if (newStart >= 0 && newStart <= provider.getNumberOfChoices()) {
+				if (newStart >= 0 && newStart <= getMaxTimelineIndex()) {
 					setStart(newStart);
 				}
 			}
@@ -233,76 +263,93 @@ public class TimelineWindow implements ITimelineListener {
 	}
 
 	@Override
-	public void numberOfChoicesChanged(int numberOfChoices) {
-		if (isInWindow(numberOfChoices)) {
+	public void startChanged(int branch, int newStart) {
+		if (isInWindow(newStart)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.numberOfChoicesChanged(numberOfChoices);
+				listener.startChanged(branch, newStart);
 			}
 		}
 	}
 
 	@Override
-	public void numberOfPossibleStepsAtChanged(int index, int numberOfPossibleStep) {
+	public void endChanged(int branch, int end) {
+		maxTimelineIndex = Math.max(maxTimelineIndex, end);
+		if (isInWindow(end)) {
+			for (ITimelineWindowListener listener : getListeners()) {
+				listener.endChanged(branch, end);
+			}
+		}
+	}
+
+	@Override
+	public void textAtChanged(int branch, String text) {
+		if (isBranchVisibleInWindow(branch)) {
+			for (ITimelineWindowListener listener : getListeners()) {
+				listener.textAtChanged(branch, text);
+			}
+		}
+
+	}
+
+	@Override
+	public void numberOfPossibleStepsAtChanged(int branch, int index, int numberOfPossibleStep) {
 		if (isInWindow(index)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.numberOfPossibleStepsAtChanged(index, numberOfPossibleStep);
+				listener.numberOfPossibleStepsAtChanged(branch, index, numberOfPossibleStep);
 			}
 		}
 	}
 
 	@Override
-	public void textAtChanged(int index, String text) {
+	public void textAtChanged(int branch, int index, String text) {
 		if (isInWindow(index)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.textAtChanged(index, text);
+				listener.textAtChanged(branch, index, text);
 			}
 		}
 	}
 
 	@Override
-	public void atChanged(int index, int possibleStep, Object object) {
+	public void atChanged(int branch, int index, int possibleStep, Object object) {
 		if (isInWindow(index)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.atChanged(index, possibleStep, object);
+				listener.atChanged(branch, index, possibleStep, object);
 			}
 		}
 	}
 
 	@Override
-	public void isSelectedChanged(int index, int possibleStep, boolean selected) {
-		if (isInWindow(index)) {
-			if (maxSelectedIndex >= 0) {
-				maxSelectedIndex = Math.max(maxSelectedIndex, possibleStep);
-			}
-			for (ITimelineWindowListener listener : getListeners()) {
-				listener.isSelectedChanged(index, possibleStep, selected);
-			}
-		}
-	}
-
-	@Override
-	public void textAtChanged(int index, int possibleStep, String text) {
+	public void isSelectedChanged(int branch, int index, int possibleStep, boolean selected) {
 		if (isInWindow(index)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.textAtChanged(index, possibleStep, text);
+				listener.isSelectedChanged(branch, index, possibleStep, selected);
 			}
 		}
 	}
 
 	@Override
-	public void followingChanged(int index, int possibleStep, int following) {
+	public void textAtChanged(int branch, int index, int possibleStep, String text) {
+		if (isInWindow(index)) {
+			for (ITimelineWindowListener listener : getListeners()) {
+				listener.textAtChanged(branch, index, possibleStep, text);
+			}
+		}
+	}
+
+	@Override
+	public void followingsChanged(int branch, int index, int possibleStep, int[][] followings) {
 		if (isInWindow(index) && isInWindow(index + 1)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.followingChanged(index, possibleStep, following);
+				listener.followingsChanged(branch, index, possibleStep, followings);
 			}
 		}
 	}
 
 	@Override
-	public void precedingChanged(int index, int possibleStep, int preceding) {
+	public void precedingsChanged(int branch, int index, int possibleStep, int[][] precedings) {
 		if (isInWindow(index - 1) && isInWindow(index)) {
 			for (ITimelineWindowListener listener : getListeners()) {
-				listener.precedingChanged(index, possibleStep, preceding);
+				listener.precedingsChanged(branch, index, possibleStep, precedings);
 			}
 		}
 	}

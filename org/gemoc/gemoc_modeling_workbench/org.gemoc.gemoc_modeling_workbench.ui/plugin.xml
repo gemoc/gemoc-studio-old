@@ -218,6 +218,11 @@
                id="org.gemoc.gemoc_modeling_workbench.ui.addDebugLayer"
                name="Add debug layer">
          </command>
+         <command
+               defaultHandler="org.gemoc.gemoc_modeling_workbench.ui.commands.ShowCallerHandler"
+               id="org.gemoc.gemoc_modeling_workbench.ui.timeline.ShowCallerCommand"
+               name="Show Caller">
+         </command>
       </extension>
       <extension
             point="org.eclipse.ui.menus">
@@ -252,6 +257,32 @@
                   </visibleWhen>
                </command>
             </menu>
+         </menuContribution>
+         <menuContribution
+               allPopups="false"
+               locationURI="popup:org.gemoc.execution.engine.io.views.timeline.TimeLineView">
+            <command
+                  commandId="org.gemoc.gemoc_modeling_workbench.ui.timeline.ShowCallerCommand"
+                  icon="icons/showCaller.png"
+                  label="Show Caller"
+                  style="toggle">
+               <visibleWhen
+                     checkEnabled="true">
+                  <with
+                        variable="selection">
+                     <and>
+                        <count
+                              value="1">
+                        </count>
+                        <iterate>
+                           <instanceof
+                                 value="fr.obeo.timeline.editpart.PossibleStepEditPart">
+                           </instanceof>
+                        </iterate>
+                     </and>
+                  </with>
+               </visibleWhen>
+            </command>
          </menuContribution>
       </extension>
    

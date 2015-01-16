@@ -17,6 +17,7 @@
  *******************************************************************************/
 package fr.obeo.timeline.editpart;
 
+import fr.obeo.timeline.model.Branch;
 import fr.obeo.timeline.model.Choice;
 import fr.obeo.timeline.model.Connection;
 import fr.obeo.timeline.model.PossibleStep;
@@ -57,6 +58,8 @@ public class TimelineEditPartFactory implements EditPartFactory {
 			res = new ConnectionEditPart();
 		} else if (model instanceof Choice) {
 			res = new ChoiceEditPart();
+		} else if (model instanceof Branch) {
+			res = new BranchEditPart();
 		} else if (model instanceof TimelineWindow) {
 			res = new TimelineWindowEditPart();
 		} else {

@@ -1,9 +1,10 @@
 package fr.obeo.timeline.view;
 
 import fr.obeo.timeline.Activator;
+import fr.obeo.timeline.editpart.BranchEditPart;
+import fr.obeo.timeline.editpart.ChoiceEditPart;
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
 import fr.obeo.timeline.editpart.TimelineEditPartFactory;
-import fr.obeo.timeline.editpart.TimelineWindowEditPart;
 import fr.obeo.timeline.model.ITimelineWindowListener;
 import fr.obeo.timeline.model.TimelineWindow;
 
@@ -20,10 +21,13 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.editparts.ScalableFreeformRootEditPart;
 import org.eclipse.gef.editparts.ZoomListener;
 import org.eclipse.gef.ui.parts.ScrollingGraphicalViewer;
+import org.eclipse.jface.action.GroupMarker;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
@@ -50,7 +54,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Slider;
+import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
@@ -99,8 +105,8 @@ public abstract class AbstractTimelineView extends ViewPart {
 					case SWT.ARROW_RIGHT:
 						// shift the TimelineWindow if needed
 						if (timelineWindow.getEnd() <= part.getModel().getChoice().getIndex() + 1
-								&& part.getModel().getChoice().getIndex() + 1 <= provider
-										.getNumberOfChoices()
+								&& part.getModel().getChoice().getIndex() + 1 <= timelineWindow
+										.getMaxTimelineIndex()
 										+ nbVirtualChoices) {
 							timelineWindow.setStart(timelineWindow.getStart() + 1);
 						}
@@ -123,6 +129,7 @@ public abstract class AbstractTimelineView extends ViewPart {
 				if (toSelect != null) {
 					timelineViewer.getSelectionManager().deselectAll();
 					timelineViewer.getSelectionManager().appendSelection(toSelect);
+					part.getViewer().reveal(toSelect);
 				}
 			}
 		}
@@ -157,19 +164,23 @@ public abstract class AbstractTimelineView extends ViewPart {
 
 		@Override
 		public void mouseDown(MouseEvent e) {
-			originMousePosition = new Point(e.x, e.y);
-			final Canvas canevas = (Canvas)timelineViewer.getControl();
-			doneShift = 0;
-			if (canevas.getVerticalBar() != null) {
-				offset.y = canevas.getVerticalBar().getSelection();
-			} else {
-				offset.y = 0;
+			if (e.button == 1) {
+				originMousePosition = new Point(e.x, e.y);
+				final Canvas canevas = (Canvas)timelineViewer.getControl();
+				doneShift = 0;
+				if (canevas.getVerticalBar() != null) {
+					offset.y = canevas.getVerticalBar().getSelection();
+				} else {
+					offset.y = 0;
+				}
 			}
 		}
 
 		@Override
 		public void mouseUp(MouseEvent e) {
-			originMousePosition = null;
+			if (e.button == 1) {
+				originMousePosition = null;
+			}
 		}
 
 		@Override
@@ -178,7 +189,7 @@ public abstract class AbstractTimelineView extends ViewPart {
 				final FigureCanvas canvas = (FigureCanvas)timelineViewer.getControl();
 				canvas.scrollTo(offset.x, offset.y - e.y + originMousePosition.y);
 				final int shift = (int)((-e.x + originMousePosition.x)
-						/ (PossibleStepEditPart.SIZE + TimelineWindowEditPart.SPACING) / rootEditPart
+						/ (PossibleStepEditPart.SIZE + BranchEditPart.SPACING) / rootEditPart
 						.getZoomManager().getZoom())
 						- doneShift;
 				final int multiplier;
@@ -193,10 +204,10 @@ public abstract class AbstractTimelineView extends ViewPart {
 				if (timelineWindow.getStart() + shift * multiplier < 0) {
 					timelineWindow.setStart(0);
 				} else if (provider != null
-						&& timelineWindow.getStart() + timelineWindow.getLength() + shift * multiplier > provider
-								.getNumberOfChoices()
+						&& timelineWindow.getStart() + timelineWindow.getLength() + shift * multiplier > timelineWindow
+								.getMaxTimelineIndex()
 								+ nbVirtualChoices) {
-					timelineWindow.setStart(Math.max(provider.getNumberOfChoices() + nbVirtualChoices
+					timelineWindow.setStart(Math.max(timelineWindow.getMaxTimelineIndex() + nbVirtualChoices
 							- timelineWindow.getLength(), 0));
 				} else if (shift != 0) {
 					doneShift += shift;
@@ -212,19 +223,21 @@ public abstract class AbstractTimelineView extends ViewPart {
 	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
 	 */
 	private class TimelineWindowListener extends ITimelineWindowListener.Stub {
+
 		@Override
-		public void numberOfChoicesChanged(final int numberOfChoices) {
+		public void endChanged(int branch, int end) {
 			Display.getDefault().syncExec(new Runnable() {
 
 				@Override
 				public void run() {
 					if (!timelineSlider.isDisposed()) {
-						timelineSlider.setMaximum(numberOfChoices + nbVirtualChoices);
-						timelineSlider.setVisible(timelineWindow.getLength() < numberOfChoices
+						timelineSlider.setMaximum(timelineWindow.getMaxTimelineIndex() + nbVirtualChoices);
+						timelineSlider.setVisible(timelineWindow.getLength() < timelineWindow
+								.getMaxTimelineIndex()
 								+ nbVirtualChoices);
 					}
 					if (follow && provider != null) {
-						int start = provider.getNumberOfChoices() + nbVirtualChoices
+						int start = timelineWindow.getMaxTimelineIndex() + nbVirtualChoices
 								- timelineWindow.getLength();
 						if (start < 0) {
 							start = 0;
@@ -259,16 +272,17 @@ public abstract class AbstractTimelineView extends ViewPart {
 						timelineSlider.setPageIncrement(length);
 						timelineSlider.setThumb(length);
 						if (provider != null) {
-							timelineSlider.setMaximum(provider.getNumberOfChoices() + nbVirtualChoices);
-							timelineSlider.setVisible(timelineWindow.getLength() < provider
-									.getNumberOfChoices()
+							timelineSlider
+									.setMaximum(timelineWindow.getMaxTimelineIndex() + nbVirtualChoices);
+							timelineSlider.setVisible(timelineWindow.getLength() < timelineWindow
+									.getMaxTimelineIndex()
 									+ nbVirtualChoices);
 						} else {
 							timelineSlider.setVisible(false);
 						}
 					}
 					if (follow && provider != null) {
-						int start = provider.getNumberOfChoices() + nbVirtualChoices - length;
+						int start = timelineWindow.getMaxTimelineIndex() + nbVirtualChoices - length;
 						if (start >= 0) {
 							timelineWindow.setStart(start);
 						}
@@ -338,6 +352,11 @@ public abstract class AbstractTimelineView extends ViewPart {
 	 */
 	private int nbVirtualChoices;
 
+	/**
+	 * The {@link MenuManager}.
+	 */
+	private MenuManager menuManager;
+
 	@Override
 	public void createPartControl(Composite parent) {
 		final Composite container;
@@ -349,7 +368,6 @@ public abstract class AbstractTimelineView extends ViewPart {
 			container = parent;
 		}
 		timelineViewer = new ScrollingGraphicalViewer();
-		getSite().setSelectionProvider(timelineViewer);
 		Composite timelineComposite = new Composite(container, SWT.NONE);
 		timelineComposite.setLayout(new FillLayout(SWT.HORIZONTAL | SWT.VERTICAL));
 		if (hasDetailViewer()) {
@@ -381,8 +399,8 @@ public abstract class AbstractTimelineView extends ViewPart {
 		timelineSlider.setThumb(timelineWindow.getLength());
 		timelineSlider.setSelection(timelineWindow.getStart());
 		if (provider != null) {
-			timelineSlider.setMaximum(provider.getNumberOfChoices() + nbVirtualChoices);
-			timelineSlider.setVisible(timelineWindow.getLength() < provider.getNumberOfChoices()
+			timelineSlider.setMaximum(timelineWindow.getMaxTimelineIndex() + nbVirtualChoices);
+			timelineSlider.setVisible(timelineWindow.getLength() < timelineWindow.getMaxTimelineIndex()
 					+ nbVirtualChoices);
 		} else {
 			timelineSlider.setVisible(false);
@@ -442,10 +460,11 @@ public abstract class AbstractTimelineView extends ViewPart {
 					rootEditPart.getZoomManager().zoomOut();
 					final int length = getWindowLength();
 					if (provider != null
-							&& timelineWindow.getStart() + length > provider.getNumberOfChoices()
+							&& timelineWindow.getStart() + length > timelineWindow.getMaxTimelineIndex()
 									+ nbVirtualChoices
-							&& provider.getNumberOfChoices() + nbVirtualChoices - length >= 0) {
-						timelineWindow.setStart(provider.getNumberOfChoices() + nbVirtualChoices - length);
+							&& timelineWindow.getMaxTimelineIndex() + nbVirtualChoices - length >= 0) {
+						timelineWindow.setStart(timelineWindow.getMaxTimelineIndex() + nbVirtualChoices
+								- length);
 					}
 				}
 			}
@@ -482,6 +501,35 @@ public abstract class AbstractTimelineView extends ViewPart {
 				follow = state != null && ((Boolean)state.getValue()).booleanValue();
 			}
 		}
+		createMenuManager();
+	}
+
+	/**
+	 * Creates the {@link MenuManager}.
+	 */
+	private void createMenuManager() {
+		menuManager = new MenuManager();
+		menuManager.setRemoveAllWhenShown(true);
+		menuManager.addMenuListener(new IMenuListener() {
+			public void menuAboutToShow(IMenuManager mgr) {
+				fillContextMenu(mgr);
+			}
+		});
+		Menu menu = menuManager.createContextMenu(timelineViewer.getControl());
+		timelineViewer.getControl().setMenu(menu);
+		getSite().registerContextMenu(menuManager, timelineViewer);
+		// make the selection available
+		getSite().setSelectionProvider(timelineViewer);
+	}
+
+	/**
+	 * Fills the context menu.
+	 * 
+	 * @param mgr
+	 *            the {@link IMenuManager}
+	 */
+	private void fillContextMenu(IMenuManager mgr) {
+		mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
 
 	/**
@@ -570,47 +618,70 @@ public abstract class AbstractTimelineView extends ViewPart {
 	@SuppressWarnings("unchecked")
 	private int getWindowLength() {
 		int length = 0;
-		double averageWidth = 0;
-		int lastChoiceWidth = 0;
+
+		double averageWidth = PossibleStepEditPart.SIZE;
+		int lastChoiceWidth = PossibleStepEditPart.SIZE;
 		if (provider != null && timelineViewer != null) {
-			if (timelineViewer.getContents().getChildren().size() != 0) {
-				Iterator<GraphicalEditPart> it = (Iterator<GraphicalEditPart>)timelineViewer.getContents()
-						.getChildren().iterator();
-				while (it.hasNext()) {
-					GraphicalEditPart editPart = it.next();
-					if (timelineWindow.getEnd() >= provider.getNumberOfChoices()) {
-						if (it.hasNext()) {
-							averageWidth += editPart.getFigure().getPreferredSize().width;
-						} else {
-							lastChoiceWidth = editPart.getFigure().getPreferredSize(Integer.MAX_VALUE,
-									Integer.MAX_VALUE).width;
-						}
-					} else {
-						averageWidth += editPart.getFigure().getPreferredSize().width;
-					}
-				}
-				if (timelineWindow.getEnd() >= provider.getNumberOfChoices()) {
-					averageWidth /= timelineViewer.getContents().getChildren().size() - 1;
-				} else {
-					averageWidth /= timelineViewer.getContents().getChildren().size();
-				}
-			} else {
-				averageWidth = PossibleStepEditPart.SIZE;
+			for (BranchEditPart branchEditPart : (List<BranchEditPart>)timelineViewer.getContents()
+					.getChildren()) {
+				double[] widthes = computeWidthesForBranch(branchEditPart);
+				averageWidth = Math.max(averageWidth, widthes[0]);
+				lastChoiceWidth = Math.max(lastChoiceWidth, (int)widthes[1]);
 			}
-			final double baseWidth = (averageWidth + TimelineWindowEditPart.SPACING)
+			final double baseWidth = (averageWidth + BranchEditPart.SPACING)
 					* rootEditPart.getZoomManager().getZoom();
-			length = (int)Math
-					.floor((timelineViewer.getControl().getBounds().width - 2 * TimelineWindowEditPart.MARGIN)
-							/ baseWidth);
+			if (timelineViewer.getControl().getBounds().width > 2 * BranchEditPart.MARGIN) {
+				length = (int)Math
+						.floor((timelineViewer.getControl().getBounds().width - 2 * BranchEditPart.MARGIN)
+								/ baseWidth);
+			} else {
+				length = 0;
+			}
 			if (lastChoiceWidth > PossibleStepEditPart.SIZE) {
 				nbVirtualChoices = (int)(Math.floor(lastChoiceWidth * rootEditPart.getZoomManager().getZoom()
 						/ baseWidth));
 				if (provider != null) {
-					timelineSlider.setMaximum(provider.getNumberOfChoices() + nbVirtualChoices);
+					timelineSlider.setMaximum(timelineWindow.getMaxTimelineIndex() + nbVirtualChoices);
 				}
 			}
 		}
+
 		return length;
+	}
+
+	/**
+	 * Computes the average width and the last choice width for the given {@link BranchEditPart}.
+	 * 
+	 * @param branchEditPart
+	 *            the {@link BranchEditPart}
+	 * @return the computed average width and last choice width
+	 */
+	private double[] computeWidthesForBranch(BranchEditPart branchEditPart) {
+		double averageWidth = 0;
+		int lastChoiceWidth = 0;
+
+		if (branchEditPart.getChildren().size() != 0) {
+			Iterator<ChoiceEditPart> it = (Iterator<ChoiceEditPart>)branchEditPart.getChildren().iterator();
+			while (it.hasNext()) {
+				ChoiceEditPart editPart = it.next();
+				if (timelineWindow.getEnd() >= timelineWindow.getMaxTimelineIndex()) {
+					if (it.hasNext()) {
+						averageWidth += editPart.getFigure().getPreferredSize().width;
+					} else {
+						lastChoiceWidth = editPart.getFigure().getPreferredSize(Integer.MAX_VALUE,
+								Integer.MAX_VALUE).width;
+					}
+				} else {
+					averageWidth += editPart.getFigure().getPreferredSize().width;
+				}
+			}
+			averageWidth /= branchEditPart.getChildren().size();
+		} else {
+			averageWidth = PossibleStepEditPart.SIZE;
+			lastChoiceWidth = PossibleStepEditPart.SIZE;
+		}
+
+		return new double[] {averageWidth, lastChoiceWidth };
 	}
 
 	/**
@@ -690,7 +761,7 @@ public abstract class AbstractTimelineView extends ViewPart {
 	public void setFollow(boolean newFollow) {
 		this.follow = newFollow;
 		if (follow && provider != null && timelineWindow != null) {
-			int start = provider.getNumberOfChoices() + nbVirtualChoices - timelineWindow.getLength();
+			int start = timelineWindow.getMaxTimelineIndex() + nbVirtualChoices - timelineWindow.getLength();
 			if (start >= 0) {
 				timelineWindow.setStart(start);
 			}

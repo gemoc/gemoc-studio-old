@@ -71,12 +71,17 @@ public class ManifestChanger {
 	}
 	public void addPluginDependency(String plugin) throws BundleException, IOException, CoreException {
 		if(plugin == null || plugin.isEmpty()) return;
-		PluginDependency dependency = new PluginDependency(this);		
+		ManifestChangerPluginDependency dependency = new ManifestChangerPluginDependency(this);		
 		dependency.add(plugin);
 	}
 	public void addPluginDependency(String plugin, String version, boolean reexport, boolean overwrite) throws BundleException, IOException, CoreException {
-		PluginDependency dependency = new PluginDependency(this);
+		ManifestChangerPluginDependency dependency = new ManifestChangerPluginDependency(this);
 		dependency.add(plugin, version, reexport, overwrite);
+	}
+	public void addExportPackage(String packageName) throws BundleException, IOException, CoreException {
+		if(packageName == null || packageName.isEmpty()) return;
+		ManifestChangerExportPackage exportPackageMFChanger = new ManifestChangerExportPackage(this);
+		exportPackageMFChanger.add(packageName);
 	}
 	public void addSingleton() throws BundleException, IOException, CoreException {
 		Singleton singleton = new Singleton(this);

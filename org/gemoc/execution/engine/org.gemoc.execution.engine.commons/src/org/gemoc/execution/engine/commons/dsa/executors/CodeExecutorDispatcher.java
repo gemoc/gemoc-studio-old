@@ -57,7 +57,7 @@ public class CodeExecutorDispatcher implements ICodeExecutor
 				e.printStackTrace();
 			}
 		}
-		throw new CodeExecutionException("No code executor could perform the action call", call);
+		throw new CodeExecutionException("No code executor could perform the action call. (a commons mistake is : missing package export of the called class or aspect)", call);
 	}
 
 	@Override
@@ -72,6 +72,6 @@ public class CodeExecutorDispatcher implements ICodeExecutor
 				e.printStackTrace();
 			}
 		}
-		throw new CodeExecutionException("No code executor could perform the action call", null);
+		throw new CodeExecutionException("No code executor could perform the action call. (a commons mistake is : missing package export of the called class or aspect)", null);
 	}
 }
