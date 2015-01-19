@@ -2,21 +2,21 @@
  */
 package org.gemoc.execution.engine.trace.gemoc_execution_trace.impl;
 
-import fr.inria.aoste.trace.TracePackage;
-
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.FeedbackPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 
@@ -61,6 +61,20 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 	 * @generated
 	 */
 	private EClass contextStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass logicalStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mseExecutionContextEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,7 +130,7 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 		isInited = true;
 
 		// Initialize simple dependencies
-		TracePackage.eINSTANCE.eClass();
+		FeedbackPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theGemoc_execution_tracePackage.createPackageContents();
@@ -282,6 +296,60 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLogicalStep() {
+		return logicalStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLogicalStep_EventExecutionContexts() {
+		return (EReference)logicalStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMSEExecutionContext() {
+		return mseExecutionContextEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMSEExecutionContext_Mse() {
+		return (EReference)mseExecutionContextEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMSEExecutionContext_Parameters() {
+		return (EAttribute)mseExecutionContextEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMSEExecutionContext_Result() {
+		return (EAttribute)mseExecutionContextEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getISerializable() {
 		return iSerializableEDataType;
 	}
@@ -335,6 +403,14 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 		createEReference(contextStateEClass, CONTEXT_STATE__MODEL_STATE);
 		createEReference(contextStateEClass, CONTEXT_STATE__SOLVER_STATE);
 
+		logicalStepEClass = createEClass(LOGICAL_STEP);
+		createEReference(logicalStepEClass, LOGICAL_STEP__EVENT_EXECUTION_CONTEXTS);
+
+		mseExecutionContextEClass = createEClass(MSE_EXECUTION_CONTEXT);
+		createEReference(mseExecutionContextEClass, MSE_EXECUTION_CONTEXT__MSE);
+		createEAttribute(mseExecutionContextEClass, MSE_EXECUTION_CONTEXT__PARAMETERS);
+		createEAttribute(mseExecutionContextEClass, MSE_EXECUTION_CONTEXT__RESULT);
+
 		// Create data types
 		iSerializableEDataType = createEDataType(ISERIALIZABLE);
 	}
@@ -363,7 +439,8 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		TracePackage theTracePackage = (TracePackage)EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI);
+		FeedbackPackage theFeedbackPackage = (FeedbackPackage)EPackage.Registry.INSTANCE.getEPackage(FeedbackPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -374,8 +451,8 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 		// Initialize classes, features, and operations; add parameters
 		initEClass(choiceEClass, Choice.class, "Choice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChoice_NextChoice(), this.getChoice(), this.getChoice_PreviousChoice(), "nextChoice", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getChoice_PossibleLogicalSteps(), theTracePackage.getLogicalStep(), null, "possibleLogicalSteps", null, 0, -1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getChoice_ChosenLogicalStep(), theTracePackage.getLogicalStep(), null, "chosenLogicalStep", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChoice_PossibleLogicalSteps(), this.getLogicalStep(), null, "possibleLogicalSteps", null, 0, -1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChoice_ChosenLogicalStep(), this.getLogicalStep(), null, "chosenLogicalStep", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChoice_ContextState(), this.getContextState(), null, "contextState", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChoice_PreviousChoice(), this.getChoice(), this.getChoice_NextChoice(), "previousChoice", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -392,6 +469,14 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 		initEClass(contextStateEClass, ContextState.class, "ContextState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContextState_ModelState(), this.getModelState(), null, "modelState", null, 1, 1, ContextState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContextState_SolverState(), this.getSolverState(), null, "solverState", null, 1, 1, ContextState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(logicalStepEClass, LogicalStep.class, "LogicalStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLogicalStep_EventExecutionContexts(), this.getMSEExecutionContext(), null, "eventExecutionContexts", null, 1, -1, LogicalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mseExecutionContextEClass, MSEExecutionContext.class, "MSEExecutionContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMSEExecutionContext_Mse(), theFeedbackPackage.getModelSpecificEvent(), null, "mse", null, 1, 1, MSEExecutionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMSEExecutionContext_Parameters(), theEcorePackage.getEJavaObject(), "parameters", null, 0, -1, MSEExecutionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMSEExecutionContext_Result(), ecorePackage.getEJavaObject(), "result", null, 0, -1, MSEExecutionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(iSerializableEDataType, byte[].class, "ISerializable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

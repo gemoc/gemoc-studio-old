@@ -31,19 +31,18 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.gemoc.commons.eclipse.ui.TreeViewerHelper;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.DependantViewPart;
 import org.gemoc.execution.engine.io.views.ViewUtils;
-import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
+import org.gemoc.execution.engine.trace.LogicalStepHelper;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
-import fr.inria.aoste.trace.LogicalStep;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.dsl.debug.ide.ui.provider.DSLLabelDecorator;
 import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
 
@@ -111,9 +110,9 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 					LogicalStep ls = (LogicalStep)element;
 					return LogicalStepHelper.getLogicalStepName(ls);
 				}
-				else if (element instanceof Event)
+				else if (element instanceof ModelSpecificEvent)
 				{
-					Event event = (Event)element;
+					ModelSpecificEvent event = (ModelSpecificEvent)element;
 					return event.getName();
 				}
 				return super.getText(element);
@@ -132,7 +131,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 						return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_ICON);					
 					}
 				}
-				else if (element instanceof Event)
+				else if (element instanceof ModelSpecificEvent)
 				{
 					return SharedIcons.getSharedImage(SharedIcons.VISIBLE_EVENT_ICON);
 				}
@@ -143,7 +142,8 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			public Color getBackground(Object element) {
 				final Color res;
 				
-				if (element instanceof Event && _eventsToPresent.contains(EcoreUtil.getURI((Event)element))) {
+				if (element instanceof ModelSpecificEvent 
+					&& _eventsToPresent.contains(EcoreUtil.getURI((ModelSpecificEvent)element))) {
 					res = _representedEventColor;
 				} else {
 					res = super.getBackground(element);
@@ -164,9 +164,9 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			
 			@Override
 			public String getText(Object element) {
-				if (element instanceof Event)
+				if (element instanceof ModelSpecificEvent)
 				{
-					String details = ViewUtils.eventToString((Event)element);
+					String details = ViewUtils.eventToString((ModelSpecificEvent)element);
 					return "   " + details;
 				}
 				return "";
@@ -176,7 +176,8 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			public Color getBackground(Object element) {
 				final Color res;
 				
-				if (element instanceof Event && _eventsToPresent.contains(EcoreUtil.getURI((Event)element))) {
+				if (element instanceof ModelSpecificEvent 
+					&& _eventsToPresent.contains(EcoreUtil.getURI((ModelSpecificEvent)element))) {
 					res = _representedEventColor;
 				} else {
 					res = super.getBackground(element);
@@ -267,7 +268,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 						{
 							_lastSelectedLogicalStep = (LogicalStep)path.getLastSegment();						
 						}
-						else if (path.getLastSegment() instanceof Event)
+						else if (path.getLastSegment() instanceof ModelSpecificEvent)
 						{
 							_lastSelectedLogicalStep = (LogicalStep) path.getFirstSegment();
 						}

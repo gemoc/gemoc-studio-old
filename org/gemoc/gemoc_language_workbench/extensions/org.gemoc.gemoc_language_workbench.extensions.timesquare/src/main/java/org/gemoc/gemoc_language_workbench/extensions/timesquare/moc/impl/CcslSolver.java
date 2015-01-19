@@ -20,6 +20,9 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
 import org.gemoc.gemoc_language_workbench.extensions.timesquare.Activator;
@@ -33,10 +36,12 @@ import fr.inria.aoste.timesquare.ccslkernel.runtime.exceptions.NoBooleanSolution
 import fr.inria.aoste.timesquare.ccslkernel.runtime.exceptions.SimulationException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
 import fr.inria.aoste.timesquare.ccslkernel.solver.launch.CCSLKernelSolverWrapper;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.timesquare.simulationpolicy.maxcardpolicy.MaxCardSimulationPolicy;
 import fr.inria.aoste.timesquare.trace.util.HelperFactory;
 import fr.inria.aoste.trace.EventOccurrence;
-import fr.inria.aoste.trace.LogicalStep;
+//import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.Reference;
 
@@ -44,14 +49,13 @@ import fr.inria.aoste.trace.Reference;
  * Implementation of the ISolver dedicated to CCSL.
  * 
  */
-public class CcslSolver implements
-		org.gemoc.gemoc_language_workbench.api.moc.ISolver {
+public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.ISolver {
 
 	private CCSLKernelSolverWrapper solverWrapper = null;
 	private URI solverInputURI = null;
 	private LogicalStep lastLogicalStep = null;
 	private Map<Event, ModelElementReference> mappingEventToOriginalMer = null;
-
+	private ActionModel _feedbackModel;
 	
 	public CcslSolver() {
 		this.mappingEventToOriginalMer = new HashMap<Event, ModelElementReference>();
@@ -96,26 +100,26 @@ public class CcslSolver implements
 	public LogicalStep getNextStep() {
 		try {
 			// Retrieve a step from the CCSL Solver.
-			LogicalStep res = this.solverWrapper.getSolver()
-					.doOneSimulationStep();
-
+			fr.inria.aoste.trace.LogicalStep res = this.solverWrapper.getSolver().doOneSimulationStep();
+			LogicalStep ls = createLogicalStep(res);
+			
 			// We need to slightly adapt the trace so as to be able to establish
 			// the link
 			// between an EventOccurrence and an ECL Event.
-			for (EventOccurrence eventOccurrence : res.getEventOccurrences()) {
-				Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
-				if (c != null) {
-					// We memorize the reference to the Clock (3 EObjects : file
-					// / block / clock) so it can be retrieved later on.
-					mappingEventToOriginalMer.put(c.getTickingEvent(),
-												(ModelElementReference) eventOccurrence.getReferedElement());
-					// Instead we place the ECL Event
-					eventOccurrence.setReferedElement(HelperFactory
-							.createModelElementReference(c.getTickingEvent()));
-				}
-			}
-			this.lastLogicalStep = res;
-			return res;
+//			for (EventOccurrence eventOccurrence : res.getEventOccurrences()) {
+//				Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
+//				if (c != null) {
+//					// We memorize the reference to the Clock (3 EObjects : file
+//					// / block / clock) so it can be retrieved later on.
+//					mappingEventToOriginalMer.put(c.getTickingEvent(),
+//												(ModelElementReference) eventOccurrence.getReferedElement());
+//					// Instead we place the ECL Event
+//					eventOccurrence.setReferedElement(HelperFactory
+//							.createModelElementReference(c.getTickingEvent()));
+//				}
+//			}
+			this.lastLogicalStep = ls;
+			return ls;
 		} catch (SolverException e) {
 			String errorMessage = "SolverException while trying to get next Ccsl step";
 			Activator.error(errorMessage);
@@ -129,28 +133,47 @@ public class CcslSolver implements
 		}
 	}
 
-	/**
-	 * Returns the clock linked to an EventOccurrence.
-	 * 
-	 * @param eventOcc
-	 * @return
-	 */
-	private Clock getClockLinkedToOccurrence(EventOccurrence eventOcc) {
-		Reference ref = eventOcc.getReferedElement();
-		if (ref instanceof ModelElementReference) {
-			ModelElementReference mer = (ModelElementReference) ref;
-			EList<EObject> eobjects = mer.getElementRef();
-			EObject actualObject = eobjects.get(eobjects.size() - 1);
-			if (actualObject instanceof Clock) {
-				// you got the clock that ticked
-				return (Clock) actualObject;
-			} else {
-				return null;
+	private LogicalStep createLogicalStep(fr.inria.aoste.trace.LogicalStep res) {
+		LogicalStep ls = Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep();
+		for (Event e : LogicalStepHelper.getTickedEvents(res))
+		{
+			MSEExecutionContext context = Gemoc_execution_traceFactory.eINSTANCE.createMSEExecutionContext();
+			for (ModelSpecificEvent mse : _feedbackModel.getEvents())
+			{
+				if (mse.getName().replace("MSE_", "").equals(e.getName().replace("evt_", "")))
+				{
+					context.setMse(mse);
+					break;
+				}
 			}
-		} else {
-			return null;
+			
+			ls.getEventExecutionContexts().add(context);
 		}
+		return ls;
 	}
+
+//	/**
+//	 * Returns the clock linked to an EventOccurrence.
+//	 * 
+//	 * @param eventOcc
+//	 * @return
+//	 */
+//	private Clock getClockLinkedToOccurrence(EventOccurrence eventOcc) {
+//		Reference ref = eventOcc.getReferedElement();
+//		if (ref instanceof ModelElementReference) {
+//			ModelElementReference mer = (ModelElementReference) ref;
+//			EList<EObject> eobjects = mer.getElementRef();
+//			EObject actualObject = eobjects.get(eobjects.size() - 1);
+//			if (actualObject instanceof Clock) {
+//				// you got the clock that ticked
+//				return (Clock) actualObject;
+//			} else {
+//				return null;
+//			}
+//		} else {
+//			return null;
+//		}
+//	}
 
 	@Override
 	public String toString() {
@@ -171,8 +194,17 @@ public class CcslSolver implements
 			this.solverWrapper = new CCSLKernelSolverWrapper();
 			this.solverWrapper.getSolver().loadModel(ccslResource);
 			this.solverWrapper.getSolver().initSimulation();
-			this.solverWrapper.getSolver().setPolicy(
-					new MaxCardSimulationPolicy());
+			this.solverWrapper.getSolver().setPolicy(new MaxCardSimulationPolicy());
+			
+			for (Resource r : resourceSet.getResources())
+			{
+				if (r.getContents().size() > 0
+					&& r.getContents().get(0) instanceof ActionModel)
+				{
+					_feedbackModel = (ActionModel)r.getContents().get(0);
+				}
+			}
+			
 		} catch (IOException e) {
 			String errorMessage = "IOException while instantiating the CcslSolver";
 			Activator.error(errorMessage);
@@ -233,7 +265,13 @@ public class CcslSolver implements
 	public List<LogicalStep> computeAndGetPossibleLogicalSteps() {
 		
 		try {
-			List<LogicalStep> result = solverWrapper.computeAndGetPossibleLogicalSteps();			
+			List<fr.inria.aoste.trace.LogicalStep> intermediateResult = solverWrapper.computeAndGetPossibleLogicalSteps();			
+			List<LogicalStep> result = new ArrayList<LogicalStep>();
+			for (fr.inria.aoste.trace.LogicalStep lsFromTimesquare : intermediateResult)
+			{
+				LogicalStep lsFromTrace = createLogicalStep(lsFromTimesquare);
+				result.add(lsFromTrace);
+			}
 			return result;
 		} catch (NoBooleanSolution e) {
 			Activator.getDefault().error(e.getMessage(), e);
@@ -249,7 +287,13 @@ public class CcslSolver implements
 	public List<LogicalStep> updatePossibleLogicalSteps() {
 		
 		try {
-			List<LogicalStep> result = solverWrapper.updatePossibleLogicalSteps();			
+			List<fr.inria.aoste.trace.LogicalStep> intermediateResult = solverWrapper.updatePossibleLogicalSteps();			
+			List<LogicalStep> result = new ArrayList<LogicalStep>();
+			for (fr.inria.aoste.trace.LogicalStep lsFromTimesquare : intermediateResult)
+			{
+				LogicalStep lsFromTrace = createLogicalStep(lsFromTimesquare);
+				result.add(lsFromTrace);
+			}
 			return result;
 		} catch (NoBooleanSolution e) {
 			Activator.getDefault().error(e.getMessage(), e);

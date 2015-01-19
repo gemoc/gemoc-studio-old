@@ -297,13 +297,105 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	int CONTEXT_STATE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.LogicalStepImpl <em>Logical Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.LogicalStepImpl
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.Gemoc_execution_tracePackageImpl#getLogicalStep()
+	 * @generated
+	 */
+	int LOGICAL_STEP = 5;
+
+	/**
+	 * The feature id for the '<em><b>Event Execution Contexts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_STEP__EVENT_EXECUTION_CONTEXTS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Logical Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_STEP_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Logical Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_STEP_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.MSEExecutionContextImpl <em>MSE Execution Context</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.MSEExecutionContextImpl
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.Gemoc_execution_tracePackageImpl#getMSEExecutionContext()
+	 * @generated
+	 */
+	int MSE_EXECUTION_CONTEXT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Mse</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MSE_EXECUTION_CONTEXT__MSE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MSE_EXECUTION_CONTEXT__PARAMETERS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MSE_EXECUTION_CONTEXT__RESULT = 2;
+
+	/**
+	 * The number of structural features of the '<em>MSE Execution Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MSE_EXECUTION_CONTEXT_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>MSE Execution Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MSE_EXECUTION_CONTEXT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '<em>ISerializable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.Gemoc_execution_tracePackageImpl#getISerializable()
 	 * @generated
 	 */
-	int ISERIALIZABLE = 5;
+	int ISERIALIZABLE = 7;
 
 
 	/**
@@ -478,6 +570,70 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	EReference getContextState_SolverState();
 
 	/**
+	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep <em>Logical Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Logical Step</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep
+	 * @generated
+	 */
+	EClass getLogicalStep();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep#getEventExecutionContexts <em>Event Execution Contexts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Event Execution Contexts</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep#getEventExecutionContexts()
+	 * @see #getLogicalStep()
+	 * @generated
+	 */
+	EReference getLogicalStep_EventExecutionContexts();
+
+	/**
+	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext <em>MSE Execution Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>MSE Execution Context</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext
+	 * @generated
+	 */
+	EClass getMSEExecutionContext();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext#getMse <em>Mse</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Mse</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext#getMse()
+	 * @see #getMSEExecutionContext()
+	 * @generated
+	 */
+	EReference getMSEExecutionContext_Mse();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext#getParameters <em>Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Parameters</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext#getParameters()
+	 * @see #getMSEExecutionContext()
+	 * @generated
+	 */
+	EAttribute getMSEExecutionContext_Parameters();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext#getResult <em>Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Result</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext#getResult()
+	 * @see #getMSEExecutionContext()
+	 * @generated
+	 */
+	EAttribute getMSEExecutionContext_Result();
+
+	/**
 	 * Returns the meta object for data type '<em>ISerializable</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -647,6 +803,58 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONTEXT_STATE__SOLVER_STATE = eINSTANCE.getContextState_SolverState();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.LogicalStepImpl <em>Logical Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.LogicalStepImpl
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.Gemoc_execution_tracePackageImpl#getLogicalStep()
+		 * @generated
+		 */
+		EClass LOGICAL_STEP = eINSTANCE.getLogicalStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Event Execution Contexts</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOGICAL_STEP__EVENT_EXECUTION_CONTEXTS = eINSTANCE.getLogicalStep_EventExecutionContexts();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.MSEExecutionContextImpl <em>MSE Execution Context</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.MSEExecutionContextImpl
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.Gemoc_execution_tracePackageImpl#getMSEExecutionContext()
+		 * @generated
+		 */
+		EClass MSE_EXECUTION_CONTEXT = eINSTANCE.getMSEExecutionContext();
+
+		/**
+		 * The meta object literal for the '<em><b>Mse</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MSE_EXECUTION_CONTEXT__MSE = eINSTANCE.getMSEExecutionContext_Mse();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameters</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MSE_EXECUTION_CONTEXT__PARAMETERS = eINSTANCE.getMSEExecutionContext_Parameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MSE_EXECUTION_CONTEXT__RESULT = eINSTANCE.getMSEExecutionContext_Result();
 
 		/**
 		 * The meta object literal for the '<em>ISerializable</em>' data type.

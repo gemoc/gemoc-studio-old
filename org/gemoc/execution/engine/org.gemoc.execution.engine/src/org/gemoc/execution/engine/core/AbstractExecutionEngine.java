@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.dse.DefaultMSEStateController;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
@@ -20,11 +22,9 @@ import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.When;
-import fr.inria.aoste.trace.LogicalStep;
 
 /**
  * Basic abstract implementation of the ExecutionEngine, independent from the
@@ -161,12 +161,14 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			return true;
 
 		List<String> ls1TickedEventOccurences = new ArrayList<String>();
-		for (Event event : LogicalStepHelper.getTickedEvents(ls1)) {
-			ls1TickedEventOccurences.add(event.getName());
+		for (MSEExecutionContext context : ls1.getEventExecutionContexts())
+		{
+			ls1TickedEventOccurences.add(context.getMse().getName());
 		}
 		List<String> ls2TickedEventOccurences = new ArrayList<String>();
-		for (Event event : LogicalStepHelper.getTickedEvents(ls2)) {
-			ls2TickedEventOccurences.add(event.getName());
+		for (MSEExecutionContext context : ls2.getEventExecutionContexts())
+		{
+			ls2TickedEventOccurences.add(context.getMse().getName());
 		}
 
 		if (ls1TickedEventOccurences.size() == ls2TickedEventOccurences.size()) {
@@ -302,11 +304,11 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			addon.aboutToExecuteLogicalStep(this, logicalStepToApply);
 		}
 
-		Collection<IMSEOccurrence> mseOccurences = MSEOccurrenceFactory.createMSEOccurrences(logicalStepToApply, _executionContext.getFeedbackModel());	
+		Collection<IMSEOccurrence> mseOccurences = MSEOccurrenceFactory.createMSEOccurrences(logicalStepToApply);	
 		for (final IMSEOccurrence mseOccurence : mseOccurences) 
 		{
-			executeAssociatedActions(mseOccurence.getMSE());
-			executeModelSpecificEvent(mseOccurence.getMSE());
+			executeAssociatedActions(mseOccurence.getMSEExecutionContext().getMse());
+			executeModelSpecificEvent(mseOccurence.getMSEExecutionContext().getMse());
 		}
 
 		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 

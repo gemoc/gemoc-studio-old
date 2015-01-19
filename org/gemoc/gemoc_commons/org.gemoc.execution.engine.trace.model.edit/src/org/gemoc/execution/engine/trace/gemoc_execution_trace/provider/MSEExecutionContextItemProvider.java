@@ -5,10 +5,12 @@ package org.gemoc.execution.engine.trace.gemoc_execution_trace.provider;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -16,19 +18,20 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
+
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice} object.
+ * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChoiceItemProvider 
+public class MSEExecutionContextItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -42,7 +45,7 @@ public class ChoiceItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ChoiceItemProvider(AdapterFactory adapterFactory) {
+	public MSEExecutionContextItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -57,27 +60,27 @@ public class ChoiceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNextChoicePropertyDescriptor(object);
-			addChosenLogicalStepPropertyDescriptor(object);
-			addPreviousChoicePropertyDescriptor(object);
+			addMsePropertyDescriptor(object);
+			addParametersPropertyDescriptor(object);
+			addResultPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Next Choice feature.
+	 * This adds a property descriptor for the Mse feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNextChoicePropertyDescriptor(Object object) {
+	protected void addMsePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Choice_nextChoice_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_nextChoice_feature", "_UI_Choice_type"),
-				 Gemoc_execution_tracePackage.Literals.CHOICE__NEXT_CHOICE,
+				 getString("_UI_MSEExecutionContext_mse_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MSEExecutionContext_mse_feature", "_UI_MSEExecutionContext_type"),
+				 Gemoc_execution_tracePackage.Literals.MSE_EXECUTION_CONTEXT__MSE,
 				 true,
 				 false,
 				 true,
@@ -87,89 +90,58 @@ public class ChoiceItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Chosen Logical Step feature.
+	 * This adds a property descriptor for the Parameters feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addChosenLogicalStepPropertyDescriptor(Object object) {
+	protected void addParametersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Choice_chosenLogicalStep_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_chosenLogicalStep_feature", "_UI_Choice_type"),
-				 Gemoc_execution_tracePackage.Literals.CHOICE__CHOSEN_LOGICAL_STEP,
+				 getString("_UI_MSEExecutionContext_parameters_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MSEExecutionContext_parameters_feature", "_UI_MSEExecutionContext_type"),
+				 Gemoc_execution_tracePackage.Literals.MSE_EXECUTION_CONTEXT__PARAMETERS,
 				 true,
 				 false,
-				 true,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Previous Choice feature.
+	 * This adds a property descriptor for the Result feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPreviousChoicePropertyDescriptor(Object object) {
+	protected void addResultPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Choice_previousChoice_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_previousChoice_feature", "_UI_Choice_type"),
-				 Gemoc_execution_tracePackage.Literals.CHOICE__PREVIOUS_CHOICE,
+				 getString("_UI_MSEExecutionContext_result_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MSEExecutionContext_result_feature", "_UI_MSEExecutionContext_type"),
+				 Gemoc_execution_tracePackage.Literals.MSE_EXECUTION_CONTEXT__RESULT,
 				 true,
 				 false,
-				 true,
-				 null,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.CHOICE__POSSIBLE_LOGICAL_STEPS);
-			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.CHOICE__CONTEXT_STATE);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns Choice.gif.
+	 * This returns MSEExecutionContext.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Choice"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/MSEExecutionContext"));
 	}
 
 	/**
@@ -180,7 +152,7 @@ public class ChoiceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Choice_type");
+		return getString("_UI_MSEExecutionContext_type");
 	}
 	
 
@@ -195,10 +167,10 @@ public class ChoiceItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Choice.class)) {
-			case Gemoc_execution_tracePackage.CHOICE__POSSIBLE_LOGICAL_STEPS:
-			case Gemoc_execution_tracePackage.CHOICE__CONTEXT_STATE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(MSEExecutionContext.class)) {
+			case Gemoc_execution_tracePackage.MSE_EXECUTION_CONTEXT__PARAMETERS:
+			case Gemoc_execution_tracePackage.MSE_EXECUTION_CONTEXT__RESULT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -214,16 +186,6 @@ public class ChoiceItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(Gemoc_execution_tracePackage.Literals.CHOICE__POSSIBLE_LOGICAL_STEPS,
-				 Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(Gemoc_execution_tracePackage.Literals.CHOICE__CONTEXT_STATE,
-				 Gemoc_execution_traceFactory.eINSTANCE.createContextState()));
 	}
 
 	/**

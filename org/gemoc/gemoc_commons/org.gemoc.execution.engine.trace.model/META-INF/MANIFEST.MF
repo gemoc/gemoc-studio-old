@@ -7,11 +7,14 @@ Bundle-ClassPath: .
 Bundle-Vendor: INRIA
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.gemoc.execution.engine.trace.gemoc_execution_trace,
+Export-Package: org.gemoc.execution.engine.trace,
+ org.gemoc.execution.engine.trace.gemoc_execution_trace,
  org.gemoc.execution.engine.trace.gemoc_execution_trace.impl,
  org.gemoc.execution.engine.trace.gemoc_execution_trace.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
+ org.gemoc.execution.engine.trace.model;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- fr.inria.aoste.trace;bundle-version="1.0.1";visibility:=reexport
+ fr.inria.aoste.trace;bundle-version="1.0.1";visibility:=reexport,
+ fr.inria.aoste.timesquare.ecl.feedback.model;bundle-version="1.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy

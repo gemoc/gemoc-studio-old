@@ -10,7 +10,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.obeo.dsl.debug.ide.ui.DSLToggleBreakpointsUtils;
 
 public class GemocToggleBreakpointHandler extends AbstractHandler {
@@ -31,12 +30,7 @@ public class GemocToggleBreakpointHandler extends AbstractHandler {
 				final EObject res;
 				
 				if (selected instanceof ModelSpecificEventWrapper) {
-					final EObject solverEvent = ((ModelSpecificEventWrapper) selected).getMSE().getSolverEvent();
-					if (solverEvent instanceof Clock) {
-						res = ((Clock) solverEvent).getTickingEvent();
-					} else {
-						res = super.getInstruction(selected);
-					}
+					res = ((ModelSpecificEventWrapper) selected).getMSE();
 				} else {
 					res = super.getInstruction(selected);
 				}

@@ -2,10 +2,9 @@ package org.gemoc.execution.engine.commons.deciders;
 
 import java.util.List;
 
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-
-import fr.inria.aoste.trace.LogicalStep;
 
 /**
  * Decider that will delegate its choice to the solver

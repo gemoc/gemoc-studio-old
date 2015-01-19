@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gemoc_execution_trace" nsURI="http://www.inira.fr/gemoc_execution_trace" nsPrefix="gemoc_execution_trace">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gemoc_execution_trace" nsURI="http://www.inira.fr/gemoc_execution_trace"
+    nsPrefix="gemoc_execution_trace">
   <eClassifiers xsi:type="ecore:EClass" name="Choice">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="nextChoice" eType="//Choice" eOpposite="//Choice/previousChoice"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="possibleLogicalSteps" upperBound="-1" containment="true">
-      <eType xsi:type="ecore:EClass" href="../../fr.inria.aoste.trace/model/trace.ecore#//LogicalStep"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="chosenLogicalStep">
-      <eType xsi:type="ecore:EClass" href="../../fr.inria.aoste.trace/model/trace.ecore#//LogicalStep"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contextState" eType="//ContextState" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="previousChoice" eType="//Choice" eOpposite="//Choice/nextChoice"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nextChoice" eType="#//Choice"
+        eOpposite="#//Choice/previousChoice"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="possibleLogicalSteps" upperBound="-1"
+        eType="#//LogicalStep" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="chosenLogicalStep" eType="#//LogicalStep"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contextState" eType="#//ContextState"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="previousChoice" eType="#//Choice"
+        eOpposite="#//Choice/nextChoice"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExecutionTraceModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="choices" upperBound="-1" eType="//Choice" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="choices" upperBound="-1"
+        eType="#//Choice" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SolverState">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1">
-      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serializableModel" eType="//ISerializable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serializableModel" eType="#//ISerializable"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelState">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1">
-      <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContextState">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modelState" lowerBound="1" eType="//ModelState" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="solverState" lowerBound="1" eType="//SolverState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelState" lowerBound="1"
+        eType="#//ModelState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="solverState" lowerBound="1"
+        eType="#//SolverState" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="ISerializable" instanceClassName="byte[]"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicalStep">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventExecutionContexts"
+        lowerBound="1" upperBound="-1" eType="#//MSEExecutionContext" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MSEExecutionContext">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mse" lowerBound="1" eType="ecore:EClass ../../fr.inria.aoste.timesquare.ecl.feedback.model/model/feedback.ecore#//ModelSpecificEvent"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameters" upperBound="-1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="result" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+  </eClassifiers>
 </ecore:EPackage>

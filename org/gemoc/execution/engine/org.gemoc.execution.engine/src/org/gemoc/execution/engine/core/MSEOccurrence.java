@@ -1,22 +1,21 @@
 package org.gemoc.execution.engine.core;
 
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEOccurrence;
-
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 public class MSEOccurrence implements IMSEOccurrence {
 
-	private ModelSpecificEvent _mse;
+	private MSEExecutionContext _mseExecutionContext;
 	
-	public MSEOccurrence(ModelSpecificEvent mse) 
+	public MSEOccurrence(MSEExecutionContext mseExecutionContext) 
 	{
-		_mse = mse;
+		_mseExecutionContext = mseExecutionContext;
 	}
 
 	@Override
-	public ModelSpecificEvent getMSE() 
+	public MSEExecutionContext getMSEExecutionContext() 
 	{
-		return _mse;
+		return _mseExecutionContext;
 	}
 
 }

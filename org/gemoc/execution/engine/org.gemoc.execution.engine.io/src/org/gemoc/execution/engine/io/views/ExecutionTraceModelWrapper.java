@@ -3,13 +3,11 @@ package org.gemoc.execution.engine.io.views;
 import org.eclipse.swt.graphics.Image;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
-import fr.inria.aoste.trace.EventOccurrence;
-import fr.inria.aoste.trace.LogicalStep;
-import fr.inria.aoste.trace.ModelElementReference;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 public class ExecutionTraceModelWrapper {
 
@@ -83,38 +81,22 @@ public class ExecutionTraceModelWrapper {
 		if (shiftedIndex < _choice.getPossibleLogicalSteps().size()) {
 			StringBuilder builder = new StringBuilder();
 			LogicalStep ls = _choice.getPossibleLogicalSteps().get(shiftedIndex);
-			for(EventOccurrence eventOccurrence : ls.getEventOccurrences()) {
-				if (eventOccurrence.getReferedElement() instanceof ModelElementReference) {
-					ModelElementReference reference = (ModelElementReference)eventOccurrence.getReferedElement();
-					AppendToolTipTextToBuilder(builder, reference);
-					builder.append(System.getProperty("line.separator"));
-				}
+			for(MSEExecutionContext context : ls.getEventExecutionContexts()) 
+			{
+				appendToolTipTextToBuilder(builder, context.getMse());
+				builder.append(System.getProperty("line.separator"));
 			}
 			return builder.toString();						
 		}
 		return null;
 	}
 
-	private void AppendToolTipTextToBuilder(StringBuilder builder, ModelElementReference reference) {
-		int numberOfElements = reference.getElementRef().size();
-		switch(numberOfElements) {
-			case 1:
-				throw new UnsupportedOperationException();
-			case 2:
-				throw new UnsupportedOperationException();
-			case 3:
-				// element 0 is ClockConstraintSystemImpl
-				// element 1 is BlockImpl
-				// element 2 is ClockImpl
-				Clock clock = (Clock)reference.getElementRef().get(2);
-				Event event = clock.getTickingEvent();
-				String s = String.format("%-50s%s", event.getName(), ViewUtils.eventToString(event));
-				builder.append(s);
-				break;
-			case 4:
-				break;
-			default:
-				throw new UnsupportedOperationException();
+	private void appendToolTipTextToBuilder(StringBuilder builder, ModelSpecificEvent mse) {
+		if (mse.getCaller() != null
+			&& mse.getAction() != null)
+		{
+			String s = String.format("%-50s%s", mse.getName(), ViewUtils.eventToString(mse));
+			builder.append(s);
 		}
 	}
 	

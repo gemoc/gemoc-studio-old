@@ -1,10 +1,10 @@
 package org.gemoc.gemoc_language_workbench.api.engine_addon;
 
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
-import fr.inria.aoste.trace.LogicalStep;
 
 public interface IEngineAddon {
 

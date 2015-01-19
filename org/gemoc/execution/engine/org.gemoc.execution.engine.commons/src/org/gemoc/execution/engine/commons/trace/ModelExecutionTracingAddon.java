@@ -25,11 +25,11 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
@@ -38,9 +38,6 @@ import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
-
-import fr.inria.aoste.trace.EventOccurrence;
-import fr.inria.aoste.trace.LogicalStep;
 
 public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	
@@ -245,15 +242,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 					lastChoice.setNextChoice(choice);
 				}		
 				choice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
-				for (LogicalStep ls : possibleLogicalSteps) {
-					LogicalStepHelper.removeNotTickedEvents(ls);
-				}
 				_executionTraceModel.getChoices().add(choice);
-				for (LogicalStep step : choice.getPossibleLogicalSteps()) {
-					for (EventOccurrence occurence : step.getEventOccurrences()) {
-						_executionTraceModel.eResource().getContents().add(occurence.getReferedElement());
-					}
-				}
 				saveTraceModel(0);
 			}
 		});
