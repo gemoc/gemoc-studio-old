@@ -15,7 +15,7 @@
       </application>
    </extension>
    <extension
-         id="tfsm_product"
+         id="org.gemoc.sample.tfsm.launcher.tfsm_product"
          point="org.eclipse.core.runtime.products">
       <product
             application="org.gemoc.sample.tfsm.raspberry.application"
