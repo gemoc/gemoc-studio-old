@@ -75,6 +75,9 @@
     	],
     "nebula": [
 		"http://download.eclipse.org/technology/nebula/incubation/snapshot"
+    	],
+    "patches": [
+    	"http://gemoc.org/pub/studio/patch_osgi_luna/"
     	]
 
 }

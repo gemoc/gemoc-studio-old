@@ -57,6 +57,7 @@
       <import feature="fr.obeo.dsl.process.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.process.ui.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.workspace.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.e4.rcp.patch" version="1.0.0"/>
    </requires>
 
    <plugin
