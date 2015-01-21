@@ -25,7 +25,7 @@ import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TimedSystemAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect.*
 import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
 
-@Aspect(className=typeof(TFSM))
+@Aspect(className=TFSM)
 class TFSMAspect extends NamedElementAspect {
 	// should be added automatically by the dsa, currently introduced directly in the ecore
 	// public State currentState;
@@ -45,7 +45,7 @@ class TFSMAspect extends NamedElementAspect {
 		
 }
 
-@Aspect(className=typeof(State))
+@Aspect(className=State)
 class StateAspect extends NamedElementAspect {
 	def public String onEnter() {
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".onEnter()]Entering " + _self.name);
@@ -56,7 +56,7 @@ class StateAspect extends NamedElementAspect {
 	}
 }
 
-@Aspect(className=typeof(Transition))
+@Aspect(className=Transition)
 class TransitionAspect extends NamedElementAspect {
 	def public String fire() {
 //		GroovyRunner.executeScript(_self.action, _self);
@@ -66,27 +66,27 @@ class TransitionAspect extends NamedElementAspect {
 	}
 }
 
-@Aspect(className=typeof(NamedElement))
+@Aspect(className=NamedElement)
 class NamedElementAspect {
 }
 
-@Aspect(className=typeof(Guard))
+@Aspect(className=Guard)
 abstract class GuardAspect extends NamedElementAspect {
 }
 
-@Aspect(className=typeof(TemporalGuard))
+@Aspect(className=TemporalGuard)
 class TemporalGuardAspect extends GuardAspect {
 }
 
-@Aspect(className=typeof(EventGuard))
+@Aspect(className=EventGuard)
 class EventGuardAspect extends GuardAspect {
 }
 
-@Aspect(className=typeof(FSMEvent))
+@Aspect(className=FSMEvent)
 class FSMEventAspect extends NamedElementAspect {
 }
 
-@Aspect(className=typeof(FSMClock))
+@Aspect(className=FSMClock)
 class FSMClockAspect extends NamedElementAspect {
 	public Integer numberOfTicks;
 
@@ -104,11 +104,11 @@ class FSMClockAspect extends NamedElementAspect {
 	}
 }
 
-@Aspect(className=typeof(TimedSystem))
+@Aspect(className=TimedSystem)
 class TimedSystemAspect extends NamedElementAspect {
 }
 
-@Aspect(className=typeof(EvaluateGuard))
+@Aspect(className=EvaluateGuard)
 class EvaluateGuardAspect extends GuardAspect {
 	def public Boolean evaluate() {
 		var Object res;
