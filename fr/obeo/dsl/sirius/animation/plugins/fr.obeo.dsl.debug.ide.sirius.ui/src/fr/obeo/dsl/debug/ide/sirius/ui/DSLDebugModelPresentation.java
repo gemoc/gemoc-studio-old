@@ -32,6 +32,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -69,15 +70,20 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 
 		editor = null;
 		if (instructionURI != null) {
-			List<Session> sessions = SiriusEditorUtils.getSessions(instructionURI);
 
 			final Session session;
-			if (sessions.size() > 1) {
-				session = selectSession(sessions);
-			} else if (sessions.size() == 1) {
-				session = sessions.get(0);
+			final Session inSession = SessionManager.INSTANCE.getSession((EObject)element);
+			if (inSession != null) {
+				session = inSession;
 			} else {
-				session = null;
+				List<Session> sessions = SiriusEditorUtils.getSessions(instructionURI);
+				if (sessions.size() > 1) {
+					session = selectSession(sessions);
+				} else if (sessions.size() == 1) {
+					session = sessions.get(0);
+				} else {
+					session = null;
+				}
 			}
 
 			if (session != null) {
