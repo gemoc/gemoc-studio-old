@@ -7,6 +7,7 @@ import java.util.List;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
@@ -75,7 +76,17 @@ public class SynchroneExecution extends OperationExecution
 					return result;
 				}
 			};
-			editingDomain.getCommandStack().execute(command);
+			IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(editingDomain.getResourceSet());
+			try {
+				if (checkpoint != null) {
+					checkpoint.allow(true);
+				}
+				editingDomain.getCommandStack().execute(command);
+			} finally {
+				if (checkpoint != null) {
+					checkpoint.allow(false);
+				}
+			}
 			res = (Object) command.getResult().iterator().next();
 		} else {
 			try {

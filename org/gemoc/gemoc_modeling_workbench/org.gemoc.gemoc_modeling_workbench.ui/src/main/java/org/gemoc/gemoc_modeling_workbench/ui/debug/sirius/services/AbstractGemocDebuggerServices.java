@@ -28,6 +28,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -272,8 +273,19 @@ public abstract class AbstractGemocDebuggerServices {
 										transactionalEditingDomain,
 										new NullProgressMonitor(),
 										representations);
-								transactionalEditingDomain.getCommandStack()
-										.execute(refresh);
+								final IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS
+										.get(resourceSet);
+								try {
+									if (checkpoint != null) {
+										checkpoint.allow(true);
+									}
+									transactionalEditingDomain
+											.getCommandStack().execute(refresh);
+								} finally {
+									if (checkpoint != null) {
+										checkpoint.allow(false);
+									}
+								}
 							}
 						}
 					}
