@@ -17,28 +17,11 @@ public class DebugPermissionAuthority extends AbstractPermissionAuthority
 	 */
 	private int allow;
 
-	/**
-	 * {@link List} of {@link EObject} to
-	 * {@link DebugPermissionAuthority#notifyLock(Collection) lock},
-	 * {@link DebugPermissionAuthority#notifyUnlock(Collection) unlock}
-	 */
-	private final List<EObject> elements;
-
-	public DebugPermissionAuthority(List<EObject> elements) {
-		this.elements = elements;
-	}
-
 	public void allow(boolean allow) {
 		if (allow) {
 			this.allow++;
-			if (this.allow == 1) {
-				notifyUnlock(elements);
-			}
 		} else {
 			this.allow--;
-			if (this.allow == 1) {
-				notifyLock(elements);
-			}
 		}
 	}
 

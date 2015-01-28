@@ -1,9 +1,7 @@
 package org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -17,7 +15,6 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -26,9 +23,6 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.tools.internal.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
-import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionAuthorityRegistryImpl;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
@@ -94,25 +88,14 @@ public class DefaultModelLoader implements IModelLoader {
 		final TransactionalEditingDomain editingDomain = session
 				.getTransactionalEditingDomain();
 		final CommandStack commandStack = editingDomain.getCommandStack();
-		final List<EObject> elements = new ArrayList<EObject>();
-		final DebugPermissionAuthority debugPermissionAuthority = addDebugPermissionAuthority(rs, elements);
 		session.open(monitor);
-		session.addListener(new SessionListener() {
-
-			@Override
-			public void notify(int changeKind) {
-				if (changeKind == SessionListener.CLOSED) {
-					removeDebugPermissionAuthority(rs);
-				}
-			}
-		});
 		for (DView view : session.getSelectedViews()) {
 			for (DRepresentation representation : view
 					.getOwnedRepresentations()) {
 				final DSemanticDiagramSpec diagram = (DSemanticDiagramSpec) representation;
 
+				final List<EObject> elements = new ArrayList<EObject>();
 				elements.add(diagram);
-				debugPermissionAuthority.notifyLock(elements);
 
 				final IEditorPart editorPart = DialectUIManager.INSTANCE.openEditor(session, representation,
 						monitor);
@@ -164,75 +147,4 @@ public class DefaultModelLoader implements IModelLoader {
 		return session;
 	}
 
-	/**
-	 * Add a newly created {@link DebugPermissionAuthority} to the given
-	 * {@link ResourceSet}.
-	 * 
-	 * @param rs
-	 *            the {@link ResourceSet}
-	 * @param elements 
-	 * @param commandStack 
-	 * @return the created {@link DebugPermissionAuthority}
-	 */
-	private DebugPermissionAuthority addDebugPermissionAuthority(ResourceSet rs, List<EObject> elements) {
-		final DebugPermissionAuthority res = new DebugPermissionAuthority(elements);
-
-		IExecutionCheckpoint.CHECKPOINTS.put(rs, res);
-		getMapping().put(rs, res);
-
-		return res;
-	}
-
-	/**
-	 * Removes the {@link DebugPermissionAuthority} associated with the given
-	 * {@link ResourceSet}.
-	 * 
-	 * @param rs
-	 *            the {@link ResourceSet}
-	 * @param commandStack 
-	 */
-	private void removeDebugPermissionAuthority(ResourceSet rs) {
-		IExecutionCheckpoint.CHECKPOINTS.remove(rs);
-		getMapping().remove(rs);
-	}
-
-	/**
-	 * Gets the registry mapping. This is dirty but it prevents the
-	 * {@link DebugPermissionAuthority} to be associated with irrelevant
-	 * {@link ResourceSet}.
-	 * 
-	 * @return the registry mapping
-	 */
-	private Map<ResourceSet, IPermissionAuthority> getMapping() {
-		Map<ResourceSet, IPermissionAuthority> res = null;
-
-		Field mapField = null;
-		for (Field field : PermissionAuthorityRegistryImpl.class
-				.getDeclaredFields()) {
-			if ("resourceSetToAuthority".equals(field.getName())) {
-				mapField = field;
-				break;
-			}
-		}
-		if (mapField != null) {
-			try {
-				mapField.setAccessible(true);
-				res = (Map<ResourceSet, IPermissionAuthority>) mapField
-						.get(PermissionAuthorityRegistry.getDefault());
-			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				mapField.setAccessible(false);
-			}
-		} else {
-			throw new IllegalStateException(
-					"PermissionAuthorityRegistryImpl.resourceSetToAuthority doesn't exist anymore ?");
-		}
-
-		return res;
-	}
 }
