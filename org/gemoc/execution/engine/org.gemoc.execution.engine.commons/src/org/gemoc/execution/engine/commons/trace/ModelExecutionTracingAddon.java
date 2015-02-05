@@ -32,6 +32,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tr
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
@@ -62,25 +63,35 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	private void backInTraceModelTo(final Choice choice) {
 		final int index = _executionTraceModel.getChoices().indexOf(choice);
 		if (index != -1
-			&& index != _executionTraceModel.getChoices().size()) {
+				&& index != _executionTraceModel.getChoices().size()) {
 			final CommandStack commandStack = getEditingDomain().getCommandStack();
-			commandStack.execute(new RecordingCommand(getEditingDomain(), "Back to " + index) {
-				@Override
-				protected void doExecute() {
-//					int fixedIndex = index == 0 ? index : index -1;
-					List<Choice> choicesToRemove = _executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size());
-					_executionTraceModel.getChoices().removeAll(choicesToRemove);
-					if (_executionTraceModel.getChoices().size() > 0)
-						_executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1).setNextChoice(null);
-					try {
-						restoreModelState(choice);
-						restoreSolverState(choice);
-					}
-					catch (Exception e) {
-						e.printStackTrace();
-					}
+			IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(getEditingDomain().getResourceSet());
+			try {
+				if (checkpoint != null) {
+					checkpoint.allow(true);
 				}
-			});
+				commandStack.execute(new RecordingCommand(getEditingDomain(), "Back to " + index) {
+					@Override
+					protected void doExecute() {
+						//					int fixedIndex = index == 0 ? index : index -1;
+						List<Choice> choicesToRemove = _executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size());
+						_executionTraceModel.getChoices().removeAll(choicesToRemove);
+						if (_executionTraceModel.getChoices().size() > 0)
+							_executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1).setNextChoice(null);
+						try {
+							restoreModelState(choice);
+							restoreSolverState(choice);
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			} finally {
+				if (checkpoint != null) {
+					checkpoint.allow(false);
+				}
+			}
 		}
 	}
 
@@ -208,12 +219,22 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getWorkspace().getExecutionPath().toString() + "/execution.trace", false);
 		final Resource modelResource = rs.createResource(traceModelURI);
 		final CommandStack commandStack = getEditingDomain().getCommandStack();
-		commandStack.execute(new RecordingCommand(getEditingDomain(), "set model execution context") {
-			@Override
-			protected void doExecute() {
-				modelResource.getContents().add(_executionTraceModel);
+		IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(getEditingDomain().getResourceSet());
+		try {
+			if (checkpoint != null) {
+				checkpoint.allow(true);
 			}
-		});
+			commandStack.execute(new RecordingCommand(getEditingDomain(), "set model execution context") {
+				@Override
+				protected void doExecute() {
+					modelResource.getContents().add(_executionTraceModel);
+				}
+			});
+		} finally {
+			if (checkpoint != null) {
+				checkpoint.allow(false);
+			}
+		}
 	}
 
 	public Choice getLastChoice() {
@@ -230,7 +251,12 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 	public void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
 		final CommandStack commandStack = getEditingDomain().getCommandStack();
-		commandStack.execute(new RecordingCommand(getEditingDomain(), "update trace model") {
+		IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(getEditingDomain().getResourceSet());
+		try {
+			if (checkpoint != null) {
+				checkpoint.allow(true);
+			}
+			commandStack.execute(new RecordingCommand(getEditingDomain(), "update trace model") {
 
 			@Override
 			protected void doExecute() {
@@ -243,26 +269,39 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 				}		
 				choice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
 				_executionTraceModel.getChoices().add(choice);
-				saveTraceModel(0);
+			}});
+		} finally {
+			if (checkpoint != null) {
+				checkpoint.allow(false);
 			}
-		});
+		}
 	}
 	
 	private void updateTraceModelAfterExecution(final LogicalStep selectedLogicalStep) {
 		final CommandStack commandStack = getEditingDomain().getCommandStack();
-		commandStack.execute(new RecordingCommand(getEditingDomain(), "update trace model after deciding") {
-
-			@Override
-			protected void doExecute() {
-				Choice choice = getLastChoice();
-				if (choice.getPossibleLogicalSteps().size() == 0)
-					return;
-				if (choice.getPossibleLogicalSteps().contains(selectedLogicalStep))
-				{
-					choice.setChosenLogicalStep(selectedLogicalStep);					
-				}
+		IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(getEditingDomain().getResourceSet());
+		try {
+			if (checkpoint != null) {
+				checkpoint.allow(true);
 			}
-		});
+			commandStack.execute(new RecordingCommand(getEditingDomain(), "update trace model after deciding") {
+
+				@Override
+				protected void doExecute() {
+					Choice choice = getLastChoice();
+					if (choice.getPossibleLogicalSteps().size() == 0)
+						return;
+					if (choice.getPossibleLogicalSteps().contains(selectedLogicalStep))
+					{
+						choice.setChosenLogicalStep(selectedLogicalStep);					
+					}
+				}
+			});
+		} finally {
+			if (checkpoint != null) {
+				checkpoint.allow(false);
+			}
+		}
 	}
 
 	public ExecutionTraceModel getExecutionTrace() {

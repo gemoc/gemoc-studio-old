@@ -29,6 +29,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher;
 
 import fr.obeo.dsl.debug.StackFrame;
@@ -271,8 +272,19 @@ public abstract class AbstractGemocDebuggerServices {
 										transactionalEditingDomain,
 										new NullProgressMonitor(),
 										representations);
-								transactionalEditingDomain.getCommandStack()
-										.execute(refresh);
+								final IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS
+										.get(resourceSet);
+								try {
+									if (checkpoint != null) {
+										checkpoint.allow(true);
+									}
+									transactionalEditingDomain
+											.getCommandStack().execute(refresh);
+								} finally {
+									if (checkpoint != null) {
+										checkpoint.allow(false);
+									}
+								}
 							}
 						}
 					}
