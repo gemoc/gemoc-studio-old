@@ -153,7 +153,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 					mustNotify = true;
 				}
 				
-				if (getExecutionTrace().getChoices().size() > _numberOfChoices)
+				if (getExecutionTrace().getChoices().size() != _numberOfChoices)
 				{
 					_numberOfChoices = getExecutionTrace().getChoices().size();
 					mustNotify = true;
@@ -223,9 +223,9 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	}
 
 	@Override
-	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) {
-		// TODO Auto-generated method stub
-		
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) 
+	{
+		update(engine);
 	}
 
 	@Override

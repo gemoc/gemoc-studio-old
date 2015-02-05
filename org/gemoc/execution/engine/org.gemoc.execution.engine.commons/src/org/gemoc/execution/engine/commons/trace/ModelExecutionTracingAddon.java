@@ -61,35 +61,43 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	}
 
 	private void backInTraceModelTo(final Choice choice) {
-		final int index = _executionTraceModel.getChoices().indexOf(choice);
-		if (index != -1
+		if (choice.getNextChoice() != null)
+		{
+			final int index = _executionTraceModel.getChoices().indexOf(choice);
+			if (index != -1
 				&& index != _executionTraceModel.getChoices().size()) {
-			final CommandStack commandStack = getEditingDomain().getCommandStack();
-			IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(getEditingDomain().getResourceSet());
-			try {
-				if (checkpoint != null) {
-					checkpoint.allow(true);
-				}
-				commandStack.execute(new RecordingCommand(getEditingDomain(), "Back to " + index) {
-					@Override
-					protected void doExecute() {
-						//					int fixedIndex = index == 0 ? index : index -1;
-						List<Choice> choicesToRemove = _executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size());
-						_executionTraceModel.getChoices().removeAll(choicesToRemove);
-						if (_executionTraceModel.getChoices().size() > 0)
-							_executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1).setNextChoice(null);
-						try {
-							restoreModelState(choice);
-							restoreSolverState(choice);
-						}
-						catch (Exception e) {
-							e.printStackTrace();
-						}
+				final CommandStack commandStack = getEditingDomain().getCommandStack();
+				IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(getEditingDomain().getResourceSet());
+				try {
+					if (checkpoint != null) {
+						checkpoint.allow(true);
 					}
-				});
-			} finally {
-				if (checkpoint != null) {
-					checkpoint.allow(false);
+					commandStack.execute(new RecordingCommand(getEditingDomain(), "Back to " + index) {
+						@Override
+						protected void doExecute() {
+							//int fixedIndex = index == 0 ? index : index -1;
+							List<Choice> choicesToRemove = _executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size());
+							for (Choice c : choicesToRemove)
+							{
+								c.setNextChoice(null);
+								c.setPreviousChoice(null);
+							}							
+							_executionTraceModel.getChoices().removeAll(choicesToRemove);
+							if (_executionTraceModel.getChoices().size() > 0)
+								_executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1).setNextChoice(null);
+							try {
+								restoreModelState(choice);
+								restoreSolverState(choice);
+							}
+							catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					});
+				} finally {
+					if (checkpoint != null) {
+						checkpoint.allow(false);
+					}
 				}
 			}
 		}
@@ -269,6 +277,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 				}		
 				choice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
 				_executionTraceModel.getChoices().add(choice);
+				saveTraceModel(0);
 			}});
 		} finally {
 			if (checkpoint != null) {
