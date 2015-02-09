@@ -58,6 +58,7 @@ public class SynchroneExecution extends OperationExecution
 		Object res = null;
 		final MSEExecutionContext call = Gemoc_execution_traceFactory.eINSTANCE.createMSEExecutionContext();
 		call.setMse(getMSE());
+		
 		if (editingDomain != null) {
 			final RecordingCommand command = new RecordingCommand(editingDomain, "execute engine event occurence " + getMSE()) {
 				private List<Object> result = new ArrayList<Object>();
@@ -76,18 +77,7 @@ public class SynchroneExecution extends OperationExecution
 					return result;
 				}
 			};
-			IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(editingDomain.getResourceSet());
-			try {
-				if (checkpoint != null) {
-					checkpoint.allow(true);
-				}
-				editingDomain.getCommandStack().execute(command);
-			} finally {
-				if (checkpoint != null) {
-					checkpoint.allow(false);
-				}
-			}
-			res = (Object) command.getResult().iterator().next();
+			res = CommandExecution.execute(editingDomain, command);
 		} else {
 			try {
 				res = getExecutionContext().getExecutionPlatform().getCodeExecutor().execute(call);

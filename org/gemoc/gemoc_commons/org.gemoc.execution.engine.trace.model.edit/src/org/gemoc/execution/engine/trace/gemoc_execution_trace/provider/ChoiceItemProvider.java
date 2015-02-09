@@ -57,27 +57,28 @@ public class ChoiceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNextChoicePropertyDescriptor(object);
+			addNextChoicesPropertyDescriptor(object);
 			addChosenLogicalStepPropertyDescriptor(object);
 			addPreviousChoicePropertyDescriptor(object);
+			addSelectedNextChoicePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Next Choice feature.
+	 * This adds a property descriptor for the Next Choices feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNextChoicePropertyDescriptor(Object object) {
+	protected void addNextChoicesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Choice_nextChoice_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_nextChoice_feature", "_UI_Choice_type"),
-				 Gemoc_execution_tracePackage.Literals.CHOICE__NEXT_CHOICE,
+				 getString("_UI_Choice_nextChoices_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_nextChoices_feature", "_UI_Choice_type"),
+				 Gemoc_execution_tracePackage.Literals.CHOICE__NEXT_CHOICES,
 				 true,
 				 false,
 				 true,
@@ -122,6 +123,28 @@ public class ChoiceItemProvider
 				 getString("_UI_Choice_previousChoice_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_previousChoice_feature", "_UI_Choice_type"),
 				 Gemoc_execution_tracePackage.Literals.CHOICE__PREVIOUS_CHOICE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Selected Next Choice feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSelectedNextChoicePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Choice_selectedNextChoice_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_selectedNextChoice_feature", "_UI_Choice_type"),
+				 Gemoc_execution_tracePackage.Literals.CHOICE__SELECTED_NEXT_CHOICE,
 				 true,
 				 false,
 				 true,

@@ -221,13 +221,13 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 					LogicalStep logicalStep = (LogicalStep)o2;
 					if (_currentEngine.getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection))
 					{
-						if (choice.getNextChoice() == null)
+						if (choice.getSelectedNextChoice() == null)
 						{
 							performExecutionStep(logicalStep);
 						}
 						else
 						{
-							Choice choiceToRestore = choice.getNextChoice();
+							Choice choiceToRestore = choice.getNextChoices().get(0);
 							backToPastIfPossible(choiceToRestore);							
 						}
 					}

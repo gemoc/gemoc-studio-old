@@ -25,6 +25,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
@@ -61,30 +62,29 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	}
 
 	private void backInTraceModelTo(final Choice choice) {
-		if (choice.getNextChoice() != null)
+		if (choice.getSelectedNextChoice() != null)
 		{
 			final int index = _executionTraceModel.getChoices().indexOf(choice);
 			if (index != -1
 				&& index != _executionTraceModel.getChoices().size()) {
-				final CommandStack commandStack = getEditingDomain().getCommandStack();
-				IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(getEditingDomain().getResourceSet());
-				try {
-					if (checkpoint != null) {
-						checkpoint.allow(true);
-					}
-					commandStack.execute(new RecordingCommand(getEditingDomain(), "Back to " + index) {
+				RecordingCommand command = new RecordingCommand(getEditingDomain(), "Back to " + index) {
 						@Override
 						protected void doExecute() {
 							//int fixedIndex = index == 0 ? index : index -1;
 							List<Choice> choicesToRemove = _executionTraceModel.getChoices().subList(index, _executionTraceModel.getChoices().size());
 							for (Choice c : choicesToRemove)
 							{
-								c.setNextChoice(null);
+								c.getNextChoices().clear();
+								c.setSelectedNextChoice(null);
 								c.setPreviousChoice(null);
 							}							
 							_executionTraceModel.getChoices().removeAll(choicesToRemove);
 							if (_executionTraceModel.getChoices().size() > 0)
-								_executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1).setNextChoice(null);
+							{
+								Choice lastChoice = _executionTraceModel.getChoices().get(_executionTraceModel.getChoices().size()-1);
+								lastChoice.setSelectedNextChoice(null);
+								lastChoice.getNextChoices().remove(choice);
+							}
 							try {
 								restoreModelState(choice);
 								restoreSolverState(choice);
@@ -93,12 +93,8 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 								e.printStackTrace();
 							}
 						}
-					});
-				} finally {
-					if (checkpoint != null) {
-						checkpoint.allow(false);
-					}
-				}
+					};
+				CommandExecution.execute(getEditingDomain(), command);
 			}
 		}
 	}
@@ -226,23 +222,14 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		ResourceSet rs = _executionContext.getResourceModel().getResourceSet();
 		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getWorkspace().getExecutionPath().toString() + "/execution.trace", false);
 		final Resource modelResource = rs.createResource(traceModelURI);
-		final CommandStack commandStack = getEditingDomain().getCommandStack();
-		IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(getEditingDomain().getResourceSet());
-		try {
-			if (checkpoint != null) {
-				checkpoint.allow(true);
+
+		RecordingCommand command = new RecordingCommand(getEditingDomain(), "set model execution context") {
+			@Override
+			protected void doExecute() {
+				modelResource.getContents().add(_executionTraceModel);
 			}
-			commandStack.execute(new RecordingCommand(getEditingDomain(), "set model execution context") {
-				@Override
-				protected void doExecute() {
-					modelResource.getContents().add(_executionTraceModel);
-				}
-			});
-		} finally {
-			if (checkpoint != null) {
-				checkpoint.allow(false);
-			}
-		}
+		};
+		CommandExecution.execute(getEditingDomain(), command);
 	}
 
 	public Choice getLastChoice() {
@@ -258,13 +245,8 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	}
 
 	public void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
-		final CommandStack commandStack = getEditingDomain().getCommandStack();
-		IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(getEditingDomain().getResourceSet());
-		try {
-			if (checkpoint != null) {
-				checkpoint.allow(true);
-			}
-			commandStack.execute(new RecordingCommand(getEditingDomain(), "update trace model") {
+
+		RecordingCommand command = new RecordingCommand(getEditingDomain(), "update trace model") {
 
 			@Override
 			protected void doExecute() {
@@ -273,44 +255,30 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 				_executionTraceModel.getChoices().add(choice);
 				if (lastChoice != null)
 				{
-					lastChoice.setNextChoice(choice);
+					lastChoice.getNextChoices().add(choice);
+					lastChoice.setSelectedNextChoice(choice);
 				}		
 				choice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
 				_executionTraceModel.getChoices().add(choice);
 				saveTraceModel(0);
-			}});
-		} finally {
-			if (checkpoint != null) {
-				checkpoint.allow(false);
-			}
-		}
+			}};
+		CommandExecution.execute(getEditingDomain(), command);
 	}
 	
 	private void updateTraceModelAfterExecution(final LogicalStep selectedLogicalStep) {
-		final CommandStack commandStack = getEditingDomain().getCommandStack();
-		IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(getEditingDomain().getResourceSet());
-		try {
-			if (checkpoint != null) {
-				checkpoint.allow(true);
-			}
-			commandStack.execute(new RecordingCommand(getEditingDomain(), "update trace model after deciding") {
-
-				@Override
-				protected void doExecute() {
-					Choice choice = getLastChoice();
-					if (choice.getPossibleLogicalSteps().size() == 0)
-						return;
-					if (choice.getPossibleLogicalSteps().contains(selectedLogicalStep))
-					{
-						choice.setChosenLogicalStep(selectedLogicalStep);					
-					}
+		RecordingCommand command = new RecordingCommand(getEditingDomain(), "update trace model after deciding") {
+			@Override
+			protected void doExecute() {
+				Choice choice = getLastChoice();
+				if (choice.getPossibleLogicalSteps().size() == 0)
+					return;
+				if (choice.getPossibleLogicalSteps().contains(selectedLogicalStep))
+				{
+					choice.setChosenLogicalStep(selectedLogicalStep);					
 				}
-			});
-		} finally {
-			if (checkpoint != null) {
-				checkpoint.allow(false);
 			}
-		}
+		};
+		CommandExecution.execute(getEditingDomain(), command);
 	}
 
 	public ExecutionTraceModel getExecutionTrace() {

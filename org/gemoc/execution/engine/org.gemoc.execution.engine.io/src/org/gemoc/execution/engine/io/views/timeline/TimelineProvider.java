@@ -106,9 +106,9 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 			Choice gemocChoice = getExecutionTrace().getChoices().get(index);
 			int chosenLogicalStepIndex = gemocChoice.getPossibleLogicalSteps().indexOf(gemocChoice.getChosenLogicalStep());
 			if (chosenLogicalStepIndex == choice
-				&& gemocChoice.getNextChoice() != null)
+				&& gemocChoice.getNextChoices().size() > 0)
 			{
-				Choice nextChoice = gemocChoice.getNextChoice();
+				Choice nextChoice = gemocChoice.getNextChoices().get(0);
 				result = nextChoice.getPossibleLogicalSteps().indexOf(nextChoice.getChosenLogicalStep());
 			}			
 		}

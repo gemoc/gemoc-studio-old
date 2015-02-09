@@ -41,7 +41,7 @@ public class ExecutionTraceModelWrapper {
 			}
 		} else {
 			if (isEngineRunning()) {
-				if( _choice.getNextChoice() == null) {
+				if( _choice.getNextChoices().size() > 0) {
 					if (choiceIndex == shiftedIndex)
 						return SharedIcons.getSharedImage(SharedIcons.PRESENT_CHOSEN_LOGICALSTEP_ICON);		
 					else if (shiftedIndex < _choice.getPossibleLogicalSteps().size())

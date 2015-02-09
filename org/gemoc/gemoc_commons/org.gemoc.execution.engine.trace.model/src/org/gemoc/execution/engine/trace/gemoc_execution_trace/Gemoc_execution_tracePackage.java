@@ -68,13 +68,13 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	int CHOICE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Next Choice</b></em>' reference.
+	 * The feature id for the '<em><b>Next Choices</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHOICE__NEXT_CHOICE = 0;
+	int CHOICE__NEXT_CHOICES = 0;
 
 	/**
 	 * The feature id for the '<em><b>Possible Logical Steps</b></em>' containment reference list.
@@ -113,13 +113,22 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	int CHOICE__PREVIOUS_CHOICE = 4;
 
 	/**
+	 * The feature id for the '<em><b>Selected Next Choice</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__SELECTED_NEXT_CHOICE = 5;
+
+	/**
 	 * The number of structural features of the '<em>Choice</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHOICE_FEATURE_COUNT = 5;
+	int CHOICE_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Choice</em>' class.
@@ -409,15 +418,15 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	EClass getChoice();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getNextChoice <em>Next Choice</em>}'.
+	 * Returns the meta object for the reference list '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getNextChoices <em>Next Choices</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Next Choice</em>'.
-	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getNextChoice()
+	 * @return the meta object for the reference list '<em>Next Choices</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getNextChoices()
 	 * @see #getChoice()
 	 * @generated
 	 */
-	EReference getChoice_NextChoice();
+	EReference getChoice_NextChoices();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getPossibleLogicalSteps <em>Possible Logical Steps</em>}'.
@@ -462,6 +471,17 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getChoice_PreviousChoice();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getSelectedNextChoice <em>Selected Next Choice</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Selected Next Choice</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getSelectedNextChoice()
+	 * @see #getChoice()
+	 * @generated
+	 */
+	EReference getChoice_SelectedNextChoice();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel <em>Execution Trace Model</em>}'.
@@ -677,12 +697,12 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 		EClass CHOICE = eINSTANCE.getChoice();
 
 		/**
-		 * The meta object literal for the '<em><b>Next Choice</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Next Choices</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CHOICE__NEXT_CHOICE = eINSTANCE.getChoice_NextChoice();
+		EReference CHOICE__NEXT_CHOICES = eINSTANCE.getChoice_NextChoices();
 
 		/**
 		 * The meta object literal for the '<em><b>Possible Logical Steps</b></em>' containment reference list feature.
@@ -715,6 +735,14 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CHOICE__PREVIOUS_CHOICE = eINSTANCE.getChoice_PreviousChoice();
+
+		/**
+		 * The meta object literal for the '<em><b>Selected Next Choice</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHOICE__SELECTED_NEXT_CHOICE = eINSTANCE.getChoice_SelectedNextChoice();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl <em>Execution Trace Model</em>}' class.

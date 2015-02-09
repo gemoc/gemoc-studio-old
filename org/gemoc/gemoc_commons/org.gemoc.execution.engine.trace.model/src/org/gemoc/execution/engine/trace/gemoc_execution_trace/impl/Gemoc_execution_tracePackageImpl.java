@@ -161,7 +161,7 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getChoice_NextChoice() {
+	public EReference getChoice_NextChoices() {
 		return (EReference)choiceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -199,6 +199,15 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 	 */
 	public EReference getChoice_PreviousChoice() {
 		return (EReference)choiceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getChoice_SelectedNextChoice() {
+		return (EReference)choiceEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -383,11 +392,12 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 
 		// Create classes and their features
 		choiceEClass = createEClass(CHOICE);
-		createEReference(choiceEClass, CHOICE__NEXT_CHOICE);
+		createEReference(choiceEClass, CHOICE__NEXT_CHOICES);
 		createEReference(choiceEClass, CHOICE__POSSIBLE_LOGICAL_STEPS);
 		createEReference(choiceEClass, CHOICE__CHOSEN_LOGICAL_STEP);
 		createEReference(choiceEClass, CHOICE__CONTEXT_STATE);
 		createEReference(choiceEClass, CHOICE__PREVIOUS_CHOICE);
+		createEReference(choiceEClass, CHOICE__SELECTED_NEXT_CHOICE);
 
 		executionTraceModelEClass = createEClass(EXECUTION_TRACE_MODEL);
 		createEReference(executionTraceModelEClass, EXECUTION_TRACE_MODEL__CHOICES);
@@ -450,11 +460,12 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(choiceEClass, Choice.class, "Choice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChoice_NextChoice(), this.getChoice(), this.getChoice_PreviousChoice(), "nextChoice", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChoice_NextChoices(), this.getChoice(), this.getChoice_PreviousChoice(), "nextChoices", null, 0, -1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChoice_PossibleLogicalSteps(), this.getLogicalStep(), null, "possibleLogicalSteps", null, 0, -1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChoice_ChosenLogicalStep(), this.getLogicalStep(), null, "chosenLogicalStep", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChoice_ContextState(), this.getContextState(), null, "contextState", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getChoice_PreviousChoice(), this.getChoice(), this.getChoice_NextChoice(), "previousChoice", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChoice_PreviousChoice(), this.getChoice(), this.getChoice_NextChoices(), "previousChoice", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChoice_SelectedNextChoice(), this.getChoice(), null, "selectedNextChoice", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(executionTraceModelEClass, ExecutionTraceModel.class, "ExecutionTraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExecutionTraceModel_Choices(), this.getChoice(), null, "choices", null, 0, -1, ExecutionTraceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
