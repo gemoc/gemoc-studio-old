@@ -61,6 +61,7 @@ public class ChoiceItemProvider
 			addChosenLogicalStepPropertyDescriptor(object);
 			addPreviousChoicePropertyDescriptor(object);
 			addSelectedNextChoicePropertyDescriptor(object);
+			addBranchPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -145,6 +146,28 @@ public class ChoiceItemProvider
 				 getString("_UI_Choice_selectedNextChoice_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_selectedNextChoice_feature", "_UI_Choice_type"),
 				 Gemoc_execution_tracePackage.Literals.CHOICE__SELECTED_NEXT_CHOICE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Branch feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBranchPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Choice_branch_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Choice_branch_feature", "_UI_Choice_type"),
+				 Gemoc_execution_tracePackage.Literals.CHOICE__BRANCH,
 				 true,
 				 false,
 				 true,

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getContextState <em>Context State</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getPreviousChoice <em>Previous Choice</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getSelectedNextChoice <em>Selected Next Choice</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getBranch <em>Branch</em>}</li>
  * </ul>
  * </p>
  *
@@ -166,5 +167,33 @@ public interface Choice extends EObject {
 	 * @generated
 	 */
 	void setSelectedNextChoice(Choice value);
+
+	/**
+	 * Returns the value of the '<em><b>Branch</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch#getChoices <em>Choices</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Branch</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Branch</em>' reference.
+	 * @see #setBranch(Branch)
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getChoice_Branch()
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch#getChoices
+	 * @model opposite="choices" required="true"
+	 * @generated
+	 */
+	Branch getBranch();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getBranch <em>Branch</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Branch</em>' reference.
+	 * @see #getBranch()
+	 * @generated
+	 */
+	void setBranch(Branch value);
 
 } // Choice

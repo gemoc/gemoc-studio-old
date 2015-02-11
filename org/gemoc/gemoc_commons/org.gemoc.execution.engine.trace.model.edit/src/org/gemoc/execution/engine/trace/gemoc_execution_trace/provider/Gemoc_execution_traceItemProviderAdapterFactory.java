@@ -233,6 +233,29 @@ public class Gemoc_execution_traceItemProviderAdapterFactory extends Gemoc_execu
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BranchItemProvider branchItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBranchAdapter() {
+		if (branchItemProvider == null) {
+			branchItemProvider = new BranchItemProvider(this);
+		}
+
+		return branchItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -338,6 +361,7 @@ public class Gemoc_execution_traceItemProviderAdapterFactory extends Gemoc_execu
 		if (contextStateItemProvider != null) contextStateItemProvider.dispose();
 		if (logicalStepItemProvider != null) logicalStepItemProvider.dispose();
 		if (mseExecutionContextItemProvider != null) mseExecutionContextItemProvider.dispose();
+		if (branchItemProvider != null) branchItemProvider.dispose();
 	}
 
 }

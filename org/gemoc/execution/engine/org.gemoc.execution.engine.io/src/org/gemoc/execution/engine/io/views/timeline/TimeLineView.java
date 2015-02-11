@@ -227,7 +227,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 						}
 						else
 						{
-							Choice choiceToRestore = choice.getNextChoices().get(0);
+							Choice choiceToRestore = choice.getSelectedNextChoice();
 							backToPastIfPossible(choiceToRestore);							
 						}
 					}

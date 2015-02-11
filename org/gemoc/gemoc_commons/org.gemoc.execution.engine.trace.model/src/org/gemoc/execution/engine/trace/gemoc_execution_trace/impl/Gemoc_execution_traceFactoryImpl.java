@@ -64,6 +64,7 @@ public class Gemoc_execution_traceFactoryImpl extends EFactoryImpl implements Ge
 			case Gemoc_execution_tracePackage.CONTEXT_STATE: return createContextState();
 			case Gemoc_execution_tracePackage.LOGICAL_STEP: return createLogicalStep();
 			case Gemoc_execution_tracePackage.MSE_EXECUTION_CONTEXT: return createMSEExecutionContext();
+			case Gemoc_execution_tracePackage.BRANCH: return createBranch();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -167,6 +168,16 @@ public class Gemoc_execution_traceFactoryImpl extends EFactoryImpl implements Ge
 	public MSEExecutionContext createMSEExecutionContext() {
 		MSEExecutionContextImpl mseExecutionContext = new MSEExecutionContextImpl();
 		return mseExecutionContext;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Branch createBranch() {
+		BranchImpl branch = new BranchImpl();
+		return branch;
 	}
 
 	/**

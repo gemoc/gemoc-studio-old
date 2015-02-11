@@ -96,6 +96,10 @@ public class Gemoc_execution_traceAdapterFactory extends AdapterFactoryImpl {
 				return createMSEExecutionContextAdapter();
 			}
 			@Override
+			public Adapter caseBranch(Branch object) {
+				return createBranchAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -210,6 +214,20 @@ public class Gemoc_execution_traceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMSEExecutionContextAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch <em>Branch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch
+	 * @generated
+	 */
+	public Adapter createBranchAdapter() {
 		return null;
 	}
 

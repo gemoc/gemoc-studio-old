@@ -122,13 +122,22 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	int CHOICE__SELECTED_NEXT_CHOICE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Branch</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE__BRANCH = 6;
+
+	/**
 	 * The number of structural features of the '<em>Choice</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHOICE_FEATURE_COUNT = 6;
+	int CHOICE_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Choice</em>' class.
@@ -159,13 +168,22 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	int EXECUTION_TRACE_MODEL__CHOICES = 0;
 
 	/**
+	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_TRACE_MODEL__BRANCHES = 1;
+
+	/**
 	 * The number of structural features of the '<em>Execution Trace Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_TRACE_MODEL_FEATURE_COUNT = 1;
+	int EXECUTION_TRACE_MODEL_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Execution Trace Model</em>' class.
@@ -398,13 +416,68 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	int MSE_EXECUTION_CONTEXT_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.BranchImpl <em>Branch</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.BranchImpl
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.Gemoc_execution_tracePackageImpl#getBranch()
+	 * @generated
+	 */
+	int BRANCH = 7;
+
+	/**
+	 * The feature id for the '<em><b>Start Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BRANCH__START_INDEX = 0;
+
+	/**
+	 * The feature id for the '<em><b>Stop Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BRANCH__STOP_INDEX = 1;
+
+	/**
+	 * The feature id for the '<em><b>Choices</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BRANCH__CHOICES = 2;
+
+	/**
+	 * The number of structural features of the '<em>Branch</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BRANCH_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Branch</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BRANCH_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '<em>ISerializable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.Gemoc_execution_tracePackageImpl#getISerializable()
 	 * @generated
 	 */
-	int ISERIALIZABLE = 7;
+	int ISERIALIZABLE = 8;
 
 
 	/**
@@ -484,6 +557,17 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	EReference getChoice_SelectedNextChoice();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getBranch <em>Branch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Branch</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice#getBranch()
+	 * @see #getChoice()
+	 * @generated
+	 */
+	EReference getChoice_Branch();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel <em>Execution Trace Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -503,6 +587,17 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getExecutionTraceModel_Choices();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel#getBranches <em>Branches</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Branches</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel#getBranches()
+	 * @see #getExecutionTraceModel()
+	 * @generated
+	 */
+	EReference getExecutionTraceModel_Branches();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState <em>Solver State</em>}'.
@@ -654,6 +749,49 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 	EAttribute getMSEExecutionContext_Result();
 
 	/**
+	 * Returns the meta object for class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch <em>Branch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Branch</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch
+	 * @generated
+	 */
+	EClass getBranch();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch#getChoices <em>Choices</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Choices</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch#getChoices()
+	 * @see #getBranch()
+	 * @generated
+	 */
+	EReference getBranch_Choices();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch#getStartIndex <em>Start Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start Index</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch#getStartIndex()
+	 * @see #getBranch()
+	 * @generated
+	 */
+	EAttribute getBranch_StartIndex();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch#getStopIndex <em>Stop Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Stop Index</em>'.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch#getStopIndex()
+	 * @see #getBranch()
+	 * @generated
+	 */
+	EAttribute getBranch_StopIndex();
+
+	/**
 	 * Returns the meta object for data type '<em>ISerializable</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -745,6 +883,14 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 		EReference CHOICE__SELECTED_NEXT_CHOICE = eINSTANCE.getChoice_SelectedNextChoice();
 
 		/**
+		 * The meta object literal for the '<em><b>Branch</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHOICE__BRANCH = eINSTANCE.getChoice_Branch();
+
+		/**
 		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl <em>Execution Trace Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -761,6 +907,14 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXECUTION_TRACE_MODEL__CHOICES = eINSTANCE.getExecutionTraceModel_Choices();
+
+		/**
+		 * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXECUTION_TRACE_MODEL__BRANCHES = eINSTANCE.getExecutionTraceModel_Branches();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.SolverStateImpl <em>Solver State</em>}' class.
@@ -883,6 +1037,40 @@ public interface Gemoc_execution_tracePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MSE_EXECUTION_CONTEXT__RESULT = eINSTANCE.getMSEExecutionContext_Result();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.BranchImpl <em>Branch</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.BranchImpl
+		 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.Gemoc_execution_tracePackageImpl#getBranch()
+		 * @generated
+		 */
+		EClass BRANCH = eINSTANCE.getBranch();
+
+		/**
+		 * The meta object literal for the '<em><b>Choices</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BRANCH__CHOICES = eINSTANCE.getBranch_Choices();
+
+		/**
+		 * The meta object literal for the '<em><b>Start Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BRANCH__START_INDEX = eINSTANCE.getBranch_StartIndex();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BRANCH__STOP_INDEX = eINSTANCE.getBranch_StopIndex();
 
 		/**
 		 * The meta object literal for the '<em>ISerializable</em>' data type.

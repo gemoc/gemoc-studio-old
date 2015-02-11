@@ -85,6 +85,15 @@ public interface Gemoc_execution_traceFactory extends EFactory {
 	MSEExecutionContext createMSEExecutionContext();
 
 	/**
+	 * Returns a new object of class '<em>Branch</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Branch</em>'.
+	 * @generated
+	 */
+	Branch createBranch();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

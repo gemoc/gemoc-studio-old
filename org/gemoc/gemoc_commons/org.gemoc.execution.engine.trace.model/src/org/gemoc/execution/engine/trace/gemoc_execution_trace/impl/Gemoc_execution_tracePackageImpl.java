@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
@@ -75,6 +76,13 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 	 * @generated
 	 */
 	private EClass mseExecutionContextEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass branchEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -215,6 +223,15 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getChoice_Branch() {
+		return (EReference)choiceEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getExecutionTraceModel() {
 		return executionTraceModelEClass;
 	}
@@ -226,6 +243,15 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 	 */
 	public EReference getExecutionTraceModel_Choices() {
 		return (EReference)executionTraceModelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExecutionTraceModel_Branches() {
+		return (EReference)executionTraceModelEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -359,6 +385,42 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getBranch() {
+		return branchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBranch_Choices() {
+		return (EReference)branchEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBranch_StartIndex() {
+		return (EAttribute)branchEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBranch_StopIndex() {
+		return (EAttribute)branchEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getISerializable() {
 		return iSerializableEDataType;
 	}
@@ -398,9 +460,11 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 		createEReference(choiceEClass, CHOICE__CONTEXT_STATE);
 		createEReference(choiceEClass, CHOICE__PREVIOUS_CHOICE);
 		createEReference(choiceEClass, CHOICE__SELECTED_NEXT_CHOICE);
+		createEReference(choiceEClass, CHOICE__BRANCH);
 
 		executionTraceModelEClass = createEClass(EXECUTION_TRACE_MODEL);
 		createEReference(executionTraceModelEClass, EXECUTION_TRACE_MODEL__CHOICES);
+		createEReference(executionTraceModelEClass, EXECUTION_TRACE_MODEL__BRANCHES);
 
 		solverStateEClass = createEClass(SOLVER_STATE);
 		createEReference(solverStateEClass, SOLVER_STATE__MODEL);
@@ -420,6 +484,11 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 		createEReference(mseExecutionContextEClass, MSE_EXECUTION_CONTEXT__MSE);
 		createEAttribute(mseExecutionContextEClass, MSE_EXECUTION_CONTEXT__PARAMETERS);
 		createEAttribute(mseExecutionContextEClass, MSE_EXECUTION_CONTEXT__RESULT);
+
+		branchEClass = createEClass(BRANCH);
+		createEAttribute(branchEClass, BRANCH__START_INDEX);
+		createEAttribute(branchEClass, BRANCH__STOP_INDEX);
+		createEReference(branchEClass, BRANCH__CHOICES);
 
 		// Create data types
 		iSerializableEDataType = createEDataType(ISERIALIZABLE);
@@ -466,9 +535,11 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 		initEReference(getChoice_ContextState(), this.getContextState(), null, "contextState", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChoice_PreviousChoice(), this.getChoice(), this.getChoice_NextChoices(), "previousChoice", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChoice_SelectedNextChoice(), this.getChoice(), null, "selectedNextChoice", null, 0, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChoice_Branch(), this.getBranch(), this.getBranch_Choices(), "branch", null, 1, 1, Choice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(executionTraceModelEClass, ExecutionTraceModel.class, "ExecutionTraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExecutionTraceModel_Choices(), this.getChoice(), null, "choices", null, 0, -1, ExecutionTraceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutionTraceModel_Branches(), this.getBranch(), null, "branches", null, 0, -1, ExecutionTraceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(solverStateEClass, SolverState.class, "SolverState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSolverState_Model(), ecorePackage.getEObject(), null, "model", null, 1, 1, SolverState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -488,6 +559,11 @@ public class Gemoc_execution_tracePackageImpl extends EPackageImpl implements Ge
 		initEReference(getMSEExecutionContext_Mse(), theFeedbackPackage.getModelSpecificEvent(), null, "mse", null, 1, 1, MSEExecutionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMSEExecutionContext_Parameters(), theEcorePackage.getEJavaObject(), "parameters", null, 0, -1, MSEExecutionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMSEExecutionContext_Result(), ecorePackage.getEJavaObject(), "result", null, 0, -1, MSEExecutionContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(branchEClass, Branch.class, "Branch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBranch_StartIndex(), theEcorePackage.getEInt(), "startIndex", null, 0, 1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBranch_StopIndex(), theEcorePackage.getEInt(), "stopIndex", null, 0, 1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBranch_Choices(), this.getChoice(), this.getChoice_Branch(), "choices", null, 0, -1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(iSerializableEDataType, byte[].class, "ISerializable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

@@ -11,28 +11,27 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel} object.
+ * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ExecutionTraceModelItemProvider 
+public class BranchItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -46,7 +45,7 @@ public class ExecutionTraceModelItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionTraceModelItemProvider(AdapterFactory adapterFactory) {
+	public BranchItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -61,50 +60,88 @@ public class ExecutionTraceModelItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addStartIndexPropertyDescriptor(object);
+			addStopIndexPropertyDescriptor(object);
+			addChoicesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Choices feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.EXECUTION_TRACE_MODEL__CHOICES);
-			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.EXECUTION_TRACE_MODEL__BRANCHES);
-		}
-		return childrenFeatures;
+	protected void addChoicesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Branch_choices_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Branch_choices_feature", "_UI_Branch_type"),
+				 Gemoc_execution_tracePackage.Literals.BRANCH__CHOICES,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Start Index feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addStartIndexPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Branch_startIndex_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Branch_startIndex_feature", "_UI_Branch_type"),
+				 Gemoc_execution_tracePackage.Literals.BRANCH__START_INDEX,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This returns ExecutionTraceModel.gif.
+	 * This adds a property descriptor for the Stop Index feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStopIndexPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Branch_stopIndex_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Branch_stopIndex_feature", "_UI_Branch_type"),
+				 Gemoc_execution_tracePackage.Literals.BRANCH__STOP_INDEX,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns Branch.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExecutionTraceModel"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Branch"));
 	}
 
 	/**
@@ -115,7 +152,8 @@ public class ExecutionTraceModelItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ExecutionTraceModel_type");
+		Branch branch = (Branch)object;
+		return getString("_UI_Branch_type") + " " + branch.getStartIndex();
 	}
 	
 
@@ -130,10 +168,10 @@ public class ExecutionTraceModelItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ExecutionTraceModel.class)) {
-			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
-			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(Branch.class)) {
+			case Gemoc_execution_tracePackage.BRANCH__START_INDEX:
+			case Gemoc_execution_tracePackage.BRANCH__STOP_INDEX:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -149,16 +187,6 @@ public class ExecutionTraceModelItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(Gemoc_execution_tracePackage.Literals.EXECUTION_TRACE_MODEL__CHOICES,
-				 Gemoc_execution_traceFactory.eINSTANCE.createChoice()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(Gemoc_execution_tracePackage.Literals.EXECUTION_TRACE_MODEL__BRANCHES,
-				 Gemoc_execution_traceFactory.eINSTANCE.createBranch()));
 	}
 
 	/**
