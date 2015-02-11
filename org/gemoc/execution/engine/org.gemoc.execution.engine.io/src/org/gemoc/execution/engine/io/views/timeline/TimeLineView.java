@@ -23,6 +23,7 @@ import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.io.views.AbstractUserDecider;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
@@ -228,7 +229,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 						else
 						{
 							Choice choiceToRestore = choice.getSelectedNextChoice();
-							backToPastIfPossible(choiceToRestore);							
+							branchIfPossible(choiceToRestore);							
 						}
 					}
 				}
@@ -246,12 +247,23 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		return;
 	}
 
-	private void backToPastIfPossible(Choice choice) {
+	private void branchIfPossible(Choice choice) {
 		if (_currentEngine.hasCapability(ModelExecutionTracingAddon.class)) 
 		{
+			ModelExecutionTracingAddon addon = _currentEngine.getCapability(ModelExecutionTracingAddon.class);
 			try 
-			{
-				_currentEngine.getCapability(ModelExecutionTracingAddon.class).backToPast(choice);
+			{		
+				Choice previousChoice = choice.getPreviousChoice();
+				Branch previousBranch = previousChoice.getBranch();
+				// if the choice is the last before last one, then branch
+				if (previousBranch.getChoices().indexOf(previousChoice) == (previousBranch.getChoices().size() - 2))
+				{
+					addon.reintegrateBranch(choice);
+				}
+				else
+				{
+					addon.branch(choice);				
+				}
 			} catch (ModelExecutionTracingException e) 
 			{
 				e.printStackTrace();

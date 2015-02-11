@@ -48,8 +48,8 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	}
 
 	private boolean _backToPastHappened = false;
-	public void backToPast(Choice choice) throws ModelExecutionTracingException {
-		backInTraceModelTo(choice);
+	public void branch(Choice choice) throws ModelExecutionTracingException {
+		internalBranch(choice);
 		_backToPastHappened = true;
 		if (_executionContext.getLogicalStepDecider() != null) 
 		{
@@ -59,7 +59,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 	private Choice _lastChoice;
 	
-	private void backInTraceModelTo(final Choice choice) {
+	private void internalBranch(final Choice choice) {
 		final int index = _executionTraceModel.getChoices().indexOf(choice);
 		if (index != -1
 			&& index != _executionTraceModel.getChoices().size()) {
@@ -298,5 +298,33 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	public void logicalStepExecuted(IExecutionEngine engine, LogicalStep logicalStepExecuted) {
 		setUp(engine);
 		updateTraceModelAfterExecution(logicalStepExecuted);
+	}
+
+	public void reintegrateBranch(final Choice choice) 
+	{
+		RecordingCommand command = new RecordingCommand(getEditingDomain(), "Reintegrate branch") 
+		{
+			@Override
+			protected void doExecute() 
+			{
+				_currentBranch = choice.getBranch();
+				_lastChoice = choice.getPreviousChoice();
+				choice.setPreviousChoice(null);
+				_lastChoice.setSelectedNextChoice(null);
+				_currentBranch.getChoices().remove(choice);
+				try {
+					restoreModelState(choice);
+					restoreSolverState(choice);
+					if (_executionContext.getLogicalStepDecider() != null) 
+					{
+						_executionContext.getLogicalStepDecider().preempt();
+					}
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+	CommandExecution.execute(getEditingDomain(), command);
 	}
 }
