@@ -12,11 +12,13 @@ Require-Bundle: org.eclipse.xtend2.lib;bundle-version="2.4.3",
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
  org.eclipse.emf.transaction;bundle-version="1.8.0",
  org.gemoc.commons.eclipse.pde;bundle-version="0.1.0",
- org.gemoc.commons.eclipse
-Bundle-ClassPath: .,
- libs/groovy-all-2.1.2.jar
+ org.gemoc.commons.eclipse,
+ fr.inria.diverse.melange.lib;bundle-version="0.1.0",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.10.2"
+Bundle-ClassPath: .,libs/groovy-all-2.1.2.jar
 Export-Package: org.gemoc.sample.tfsm.k3dsa,
  org.gemoc.sample.tfsm.k3dsa.aspect
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Activator: org.gemoc.sample.tfsm.k3dsa.Activator
+
