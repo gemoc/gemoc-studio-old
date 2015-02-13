@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="../SigPMLExtendedRuntime/src/" modelName="SigPMLExtended" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false">
+  <foreignModel>SigPMLExtended.ecore</foreignModel>
+  <genPackages prefix="Sigpmlextended" disposableProviderFactory="true">
+    <ecorePackage href="SigPMLExtended.ecore#/"/>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="SigPMLExtended.ecore#//sizeType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="SigPMLExtended.ecore#//sizeType/B"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="SigPMLExtended.ecore#//sizeType/kB"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="SigPMLExtended.ecore#//sizeType/MB"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="SigPMLExtended.ecore#//sizeType/GB"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genClasses>
+      <ecoreClass href="SigPMLExtended.ecore#//Application"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//Application/ownedAgents"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//Application/ownedPlaces"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="SigPMLExtended.ecore#//Agent"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//Agent/ownedPorts"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="SigPMLExtended.ecore#//Agent/cycles"/>
+      </genFeatures>
+      <genFeatures property="None" notify="false" createChild="false">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//Agent/owner"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="SigPMLExtended.ecore#//Agent/code"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//Agent/allocatedTo"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="SigPMLExtended.ecore#//Agent/isExecuting"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="SigPMLExtended.ecore#//Agent/execute"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="SigPMLExtended.ecore#//Port"/>
+      <genFeatures property="None" notify="false" createChild="false">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//Port/owner"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="SigPMLExtended.ecore#//Port/rate"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="SigPMLExtended.ecore#//Port/byteRate"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="SigPMLExtended.ecore#//Port/type"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="SigPMLExtended.ecore#//InputPort"/>
+      <genOperations>
+        <ecoreOperation href="SigPMLExtended.ecore#//InputPort/read"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="SigPMLExtended.ecore#//InputPort/logSizeToReadWhenZero"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="SigPMLExtended.ecore#//InputPort/logSizeToReadWhenNotZero"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="SigPMLExtended.ecore#//OutputPort"/>
+      <genOperations>
+        <ecoreOperation href="SigPMLExtended.ecore#//OutputPort/write"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="SigPMLExtended.ecore#//Place"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//Place/itsOutputPort"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//Place/itsInputPort"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="SigPMLExtended.ecore#//Place/size"/>
+      </genFeatures>
+      <genFeatures property="None" notify="false" createChild="false">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//Place/owner"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="SigPMLExtended.ecore#//Place/type"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="SigPMLExtended.ecore#//Place/byteSize"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="SigPMLExtended.ecore#//Place/delay"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="SigPMLExtended.ecore#//Place/push"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="SigPMLExtended.ecore#//Place/pop"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="SigPMLExtended.ecore#//NamedElement"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="SigPMLExtended.ecore#//NamedElement/name"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="SigPMLExtended.ecore#//NamedElement/getSystem"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="SigPMLExtended.ecore#//HWRessource"/>
+      <genFeatures property="None" notify="false" createChild="false">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//HWRessource/owner"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//HWRessource/connectedTo"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="SigPMLExtended.ecore#//HWComputationalResource"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="SigPMLExtended.ecore#//HWComputationalResource/isUnderPreemptiveManagement"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//HWComputationalResource/allocatedAgents"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="SigPMLExtended.ecore#//HWComputationalResource/incCycle"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="SigPMLExtended.ecore#//HWStorageResource"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//HWStorageResource/allocatedPlaces"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="SigPMLExtended.ecore#//HWCommunicationResource"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="SigPMLExtended.ecore#//HWPlatform"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//HWPlatform/ownedHWResources"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="SigPMLExtended.ecore#//System"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//System/ownedApplication"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="SigPMLExtended.ecore#//System/ownedHWPlatform"/>
+      </genFeatures>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
