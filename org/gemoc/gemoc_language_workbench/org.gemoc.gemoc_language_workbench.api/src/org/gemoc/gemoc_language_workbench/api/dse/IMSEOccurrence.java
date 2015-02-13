@@ -1,9 +1,9 @@
 package org.gemoc.gemoc_language_workbench.api.dse;
 
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 
 public interface IMSEOccurrence {
 
-	ModelSpecificEvent getMSE();
+	MSEExecutionContext getMSEExecutionContext();
 
 }

@@ -24,14 +24,13 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
-import fr.inria.aoste.trace.LogicalStep;
 
 public abstract class AbstractGemocAnimatorServices {
 
@@ -232,11 +231,12 @@ public abstract class AbstractGemocAnimatorServices {
 		@Override
 		public void activate(Object context, LogicalStep step) {
 			final Set<URI> instructionURIs = new HashSet<URI>();
-			for (Event event : LogicalStepHelper.getTickedEvents(step)) {
-				instructionURIs.add(EcoreUtil.getURI(event));
-				if (event.getReferencedObjectRefs().size() != 0) {
-					instructionURIs.add(EcoreUtil.getURI(event
-							.getReferencedObjectRefs().get(0)));
+			for (MSEExecutionContext mseContext : step.getEventExecutionContexts())
+			{
+				instructionURIs.add(EcoreUtil.getURI(mseContext.getMse().getSolverEvent()));
+				if (mseContext.getMse().getCaller() != null)
+				{
+					instructionURIs.add(EcoreUtil.getURI(mseContext.getMse().getCaller()));
 				}
 			}
 			clear(context);

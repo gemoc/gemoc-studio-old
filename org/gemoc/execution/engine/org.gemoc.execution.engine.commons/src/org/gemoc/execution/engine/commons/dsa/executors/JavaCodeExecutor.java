@@ -6,10 +6,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
-
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 
 public class JavaCodeExecutor implements ICodeExecutor {
 
@@ -18,12 +17,12 @@ public class JavaCodeExecutor implements ICodeExecutor {
 	}
 
 	@Override
-	public Object execute(ActionCall call) throws CodeExecutionException
+	public Object execute(MSEExecutionContext executionContext) throws CodeExecutionException
 	{
-		return execute(call.getTriggeringEvent().getCaller(), 
-				call.getTriggeringEvent().getAction().getName(), 
-				call.getParameters(), 
-				call);
+		return execute(executionContext.getMse().getCaller(), 
+				executionContext.getMse().getAction().getName(), 
+				executionContext.getParameters(), 
+				executionContext);
 	}
 
 	@Override
@@ -35,12 +34,12 @@ public class JavaCodeExecutor implements ICodeExecutor {
 						null);
 	}
 	
-	private Object execute(Object caller, String methodName, Collection<Object> parameters, ActionCall call) throws CodeExecutionException {
+	private Object execute(Object caller, String methodName, Collection<Object> parameters, MSEExecutionContext executionContext) throws CodeExecutionException {
 		Class<?>[] parameterTypes = null;
 		ArrayList<Class<?>> parameterTypesList = new ArrayList<Class<?>>();
-		if (call.getParameters() != null) 
+		if (executionContext.getParameters() != null) 
 		{
-			for (Object param : call.getParameters()) 
+			for (Object param : executionContext.getParameters()) 
 			{
 				parameterTypesList.add(param.getClass());
 			}
@@ -49,9 +48,9 @@ public class JavaCodeExecutor implements ICodeExecutor {
 		Object result = null;
 		try {
 			method = caller.getClass().getMethod(methodName, parameterTypes);
-			result =  method.invoke(caller, call.getParameters());
+			result =  method.invoke(caller, executionContext.getParameters());
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			throw new CodeExecutionException("Could not perform action call, see inner exception.", e, call);
+			throw new CodeExecutionException("Could not perform action call, see inner exception.", e, executionContext);
 		}
 		return result;
 	}

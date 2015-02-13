@@ -28,6 +28,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.ui.IEditorPart;
+import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.core.DebugURIHandler;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
@@ -82,12 +83,9 @@ public class DefaultModelLoader implements IModelLoader {
 		final ResourceSet rs = ResourceSetFactory.createFactory()
 				.createResourceSet(sessionResourceURI);
 		rs.getURIConverter().getURIHandlers().add(0, new DebugURIHandler());
-		final Session session = DebugSessionFactory.INSTANCE.createSession(rs,
-				sessionResourceURI);
+		final Session session = DebugSessionFactory.INSTANCE.createSession(rs, sessionResourceURI);
 		final IProgressMonitor monitor = new NullProgressMonitor();
-		final TransactionalEditingDomain editingDomain = session
-				.getTransactionalEditingDomain();
-		final CommandStack commandStack = editingDomain.getCommandStack();
+		final TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
 		session.open(monitor);
 		for (DView view : session.getSelectedViews()) {
 			for (DRepresentation representation : view
@@ -108,39 +106,31 @@ public class DefaultModelLoader implements IModelLoader {
 						}
 					});
 				}
-				IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(editingDomain.getResourceSet());
-				try {
-					if (checkpoint != null) {
-						checkpoint.allow(true);
-					}
-					commandStack.execute(new RecordingCommand(
-							editingDomain, "Activating animator and debug layers") {
-						@Override
-						protected void doExecute() {
-							for (Layer l : diagram.getDescription()
-									.getAdditionalLayers()) {
-								boolean mustBeActive = AbstractDSLDebuggerServices.LISTENER
-										.isRepresentationToRefresh(MODEL_ID,
-												diagram.getDescription().getName(), l.getName())
-												|| AbstractGemocAnimatorServices.ANIMATOR
-												.isRepresentationToRefresh(
-														diagram.getDescription().getName(),
-														l.getName());
-								if (mustBeActive
-										&& !diagram.getActivatedLayers()
-										.contains(l)) {
-									ChangeLayerActivationCommand c = new ChangeLayerActivationCommand(
-											editingDomain, diagram, l, monitor);
-									c.execute();
-								}
+				
+				RecordingCommand command = new RecordingCommand(
+						editingDomain, "Activating animator and debug layers") {
+					@Override
+					protected void doExecute() {
+						for (Layer l : diagram.getDescription()
+								.getAdditionalLayers()) {
+							boolean mustBeActive = AbstractDSLDebuggerServices.LISTENER
+									.isRepresentationToRefresh(MODEL_ID,
+											diagram.getDescription().getName(), l.getName())
+											|| AbstractGemocAnimatorServices.ANIMATOR
+											.isRepresentationToRefresh(
+													diagram.getDescription().getName(),
+													l.getName());
+							if (mustBeActive
+									&& !diagram.getActivatedLayers()
+									.contains(l)) {
+								ChangeLayerActivationCommand c = new ChangeLayerActivationCommand(
+										editingDomain, diagram, l, monitor);
+								c.execute();
 							}
 						}
-					});
-				} finally {
-					if (checkpoint != null) {
-						checkpoint.allow(false);
 					}
-				}
+				};
+				CommandExecution.execute(editingDomain, command);
 			}
 		}
 

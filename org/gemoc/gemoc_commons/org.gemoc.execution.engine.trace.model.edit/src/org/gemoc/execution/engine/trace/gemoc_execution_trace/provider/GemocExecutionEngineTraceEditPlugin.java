@@ -2,11 +2,10 @@
  */
 package org.gemoc.execution.engine.trace.gemoc_execution_trace.provider;
 
-import fr.inria.aoste.trace.provider.traceEditPlugin;
-
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.provider.FeedbackEditPlugin;
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 
 /**
  * This is the central singleton for the GemocExecutionEngineTrace edit plugin.
@@ -40,7 +39,8 @@ public final class GemocExecutionEngineTraceEditPlugin extends EMFPlugin {
 	public GemocExecutionEngineTraceEditPlugin() {
 		super
 		  (new ResourceLocator [] {
-		     traceEditPlugin.INSTANCE,
+		     EcoreEditPlugin.INSTANCE,
+		     FeedbackEditPlugin.INSTANCE,
 		   });
 	}
 

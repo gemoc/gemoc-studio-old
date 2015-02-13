@@ -16,7 +16,8 @@ public class DebugPermissionProvider implements IPermissionProvider {
 	public boolean provides(ResourceSet set) {
 		final boolean res;
 		
-		if (set.getURIConverter() != null) {
+		if (set !=null
+			&& set.getURIConverter() != null) {
 			URIConverter converter = set.getURIConverter();
 			if (converter.getURIHandlers().size() > 0) {
 				res = converter.getURIHandlers().get(0) instanceof DebugURIHandler;

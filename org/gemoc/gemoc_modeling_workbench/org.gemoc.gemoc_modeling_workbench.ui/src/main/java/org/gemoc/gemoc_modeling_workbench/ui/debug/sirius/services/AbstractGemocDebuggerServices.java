@@ -27,12 +27,11 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
-import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
@@ -382,12 +381,12 @@ public abstract class AbstractGemocDebuggerServices {
 			EObject currentInstruction = frame.getCurrentInstruction();
 			final Set<URI> instructionURIs = new HashSet<URI>();
 			if (currentInstruction instanceof LogicalStep) {
-				for (Event event : LogicalStepHelper
-						.getTickedEvents((LogicalStep) currentInstruction)) {
-					instructionURIs.add(EcoreUtil.getURI(event));
-					if (event.getReferencedObjectRefs().size() != 0) {
-						instructionURIs.add(EcoreUtil.getURI(event
-								.getReferencedObjectRefs().get(0)));
+				for (MSEExecutionContext context : ((LogicalStep) currentInstruction).getEventExecutionContexts())
+				{
+					instructionURIs.add(EcoreUtil.getURI(context.getMse()));
+					if (context.getMse().getCaller() != null)
+					{
+						instructionURIs.add(EcoreUtil.getURI(context.getMse().getCaller()));					
 					}
 				}
 			} else {

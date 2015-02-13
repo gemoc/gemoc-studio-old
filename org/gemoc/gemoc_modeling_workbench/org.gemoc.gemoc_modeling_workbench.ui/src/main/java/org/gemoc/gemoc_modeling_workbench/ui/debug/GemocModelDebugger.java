@@ -3,14 +3,14 @@ package org.gemoc.gemoc_modeling_workbench.ui.debug;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.execution.engine.trace.LogicalStepHelper;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
-import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.ide.AbstractDSLDebugger;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
@@ -100,8 +100,10 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 				steppingReturn = false;
 				res = true;
 			} else {
-				for (Event event : LogicalStepHelper.getTickedEvents((LogicalStep) instruction)) {
-					res = super.shouldBreak(event) || (event.getReferencedObjectRefs().size() != 0 && super.shouldBreak(event.getReferencedObjectRefs().get(0)));
+				for (MSEExecutionContext context : ((LogicalStep) instruction).getEventExecutionContexts())
+				{
+					res = super.shouldBreak(context.getMse()) 
+							|| (context.getMse().getCaller() != null && super.shouldBreak(context.getMse().getCaller()));
 					if (res) {
 						break;
 					}

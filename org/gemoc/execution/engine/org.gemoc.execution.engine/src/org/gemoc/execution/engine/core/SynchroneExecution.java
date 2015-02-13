@@ -8,12 +8,12 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.FeedbackFactory;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 public class SynchroneExecution extends OperationExecution 
@@ -56,8 +56,9 @@ public class SynchroneExecution extends OperationExecution
 	{
 		final TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(getExecutionContext().getResourceModel().getResourceSet());
 		Object res = null;
-		final ActionCall call = FeedbackFactory.eINSTANCE.createActionCall();
-		call.setTriggeringEvent(getMSE());
+		final MSEExecutionContext call = Gemoc_execution_traceFactory.eINSTANCE.createMSEExecutionContext();
+		call.setMse(getMSE());
+		
 		if (editingDomain != null) {
 			final RecordingCommand command = new RecordingCommand(editingDomain, "execute engine event occurence " + getMSE()) {
 				private List<Object> result = new ArrayList<Object>();
@@ -76,18 +77,7 @@ public class SynchroneExecution extends OperationExecution
 					return result;
 				}
 			};
-			IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(editingDomain.getResourceSet());
-			try {
-				if (checkpoint != null) {
-					checkpoint.allow(true);
-				}
-				editingDomain.getCommandStack().execute(command);
-			} finally {
-				if (checkpoint != null) {
-					checkpoint.allow(false);
-				}
-			}
-			res = (Object) command.getResult().iterator().next();
+			res = CommandExecution.execute(editingDomain, command);
 		} else {
 			try {
 				res = getExecutionContext().getExecutionPlatform().getCodeExecutor().execute(call);

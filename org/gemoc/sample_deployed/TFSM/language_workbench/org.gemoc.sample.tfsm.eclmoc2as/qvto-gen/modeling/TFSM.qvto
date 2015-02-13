@@ -150,7 +150,7 @@ main() {
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ FSMEvent ]->map occursWhenSolicitate212occursWhenSolicitate();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ FSMEvent ]->map occursWhenSolicitate222occursWhenSolicitate();
 		
 		
 
@@ -231,11 +231,15 @@ main() {
 	mapping inMM1::FSMEvent::intermediate_AllTriggeringOccurrences2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_AllTriggeringOccurrences'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = an1.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an2.name+'_fire']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 		end{
 			theMainBlock.expressions += result;
@@ -245,10 +249,16 @@ main() {
 	mapping inMM1::FSMEvent::intermediate_AllTriggeringOccurrences2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_AllTriggeringOccurrences'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
-					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+					 _abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an.name+'_fire']->first();
+					
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
 		end{
 			theMainBlock.expressions += result;
 		}
@@ -283,15 +293,15 @@ main() {
 
 	mapping inMM1::Transition::restrueOccursAfterOrWhileStateEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
-		name := self.name+'_invalid_restrueOccursAfterOrWhileStateEntering';
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		name := self.name+'_SampledOn_restrueOccursAfterOrWhileStateEntering';
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "SampledOn")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.source.name+'_entering']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'SampledOnSampledClock' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'SampledOn']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.ownedGuard.oclAsType(EvaluateGuard).name+'_evaluatedTrue']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'SampledOnTrigger' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'SampledOn']->first();
 				};
 		end{
 			theMainBlock.expressions += result;
@@ -304,11 +314,15 @@ main() {
 	mapping inMM1::Transition::intermediate_otherFireFromTheSameState32Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_otherFireFromTheSameState3'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = an1.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an2.name+'_fire']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 		end{
 			theMainBlock.expressions += result;
@@ -318,10 +332,16 @@ main() {
 	mapping inMM1::Transition::intermediate_otherFireFromTheSameState32Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_otherFireFromTheSameState3'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
-					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+					 _abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an.name+'_fire']->first();
+					
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
 		end{
 			theMainBlock.expressions += result;
 		}
@@ -356,15 +376,15 @@ main() {
 
 	mapping inMM1::Transition::eventOccursAfterOrWhileStateEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
-		name := self.name+'_invalid_eventOccursAfterOrWhileStateEntering';
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		name := self.name+'_SampledOn_eventOccursAfterOrWhileStateEntering';
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "SampledOn")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.source.name+'_entering']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'SampledOnSampledClock' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'SampledOn']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.ownedGuard.oclAsType(EventGuard).triggeringEvent.name+'_occurs']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'SampledOnTrigger' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'SampledOn']->first();
 				};
 		end{
 			theMainBlock.expressions += result;
@@ -377,11 +397,15 @@ main() {
 	mapping inMM1::Transition::intermediate_otherFireFromTheSameState22Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_otherFireFromTheSameState2'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = an1.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an2.name+'_fire']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 		end{
 			theMainBlock.expressions += result;
@@ -391,10 +415,16 @@ main() {
 	mapping inMM1::Transition::intermediate_otherFireFromTheSameState22Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_otherFireFromTheSameState2'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
-					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+					 _abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an.name+'_fire']->first();
+					
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
 		end{
 			theMainBlock.expressions += result;
 		}
@@ -434,11 +464,15 @@ main() {
 	mapping inMM1::Transition::intermediate_otherFireFromTheSameState2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_otherFireFromTheSameState'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = an1.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an2.name+'_fire']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 		end{
 			theMainBlock.expressions += result;
@@ -448,10 +482,16 @@ main() {
 	mapping inMM1::Transition::intermediate_otherFireFromTheSameState2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_otherFireFromTheSameState'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
-					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+					 _abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an.name+'_fire']->first();
+					
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
 		end{
 			theMainBlock.expressions += result;
 		}
@@ -486,19 +526,19 @@ main() {
 
 	mapping inMM1::Transition::delayIsExpired_wrt_StateEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
-		name := self.name+'_invalid_delayIsExpired_wrt_StateEntering';
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		name := self.name+'_DelayFor_delayIsExpired_wrt_StateEntering';
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "DelayFor")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.source.name+'_entering']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'DelayForClockToDelay' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'DelayFor']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.ownedGuard.oclAsType(TemporalGuard).onClock.name+'_ticks']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'DelayForClockForCounting' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'DelayFor']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := self.ownedGuard.oclAsType(TemporalGuard).afterDuration -> map Real2Integer(self.name+self.ownedGuard.oclAsType(TemporalGuard).name+"_afterDuration")->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'DelayForDelay' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'DelayFor']->first();
 				};
 		end{
 			theMainBlock.expressions += result;
@@ -511,11 +551,15 @@ main() {
 	mapping inMM1::State::intermediate_allFiredoutgoingTransition2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_allFiredoutgoingTransition'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = an1.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an2.name+'_fire']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 		end{
 			theMainBlock.expressions += result;
@@ -525,10 +569,16 @@ main() {
 	mapping inMM1::State::intermediate_allFiredoutgoingTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_allFiredoutgoingTransition'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
-					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+					 _abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an.name+'_fire']->first();
+					
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
 		end{
 			theMainBlock.expressions += result;
 		}
@@ -568,11 +618,15 @@ main() {
 	mapping inMM1::State::intermediate_allInputTransition2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_allInputTransition'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = an1.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an2.name+'_fire']->first();
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
 				};
 		end{
 			theMainBlock.expressions += result;
@@ -582,10 +636,16 @@ main() {
 	mapping inMM1::State::intermediate_allInputTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_allInputTransition'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
-					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+					 _abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
+				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
+					bindable := theMainBlock.elements[name = an.name+'_fire']->first();
+					
+					_abstract := seqOfExpressionDeclaration[name = 'Union']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelExpression::Union).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(2).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
+				};
 		end{
 			theMainBlock.expressions += result;
 		}
@@ -625,11 +685,11 @@ main() {
 	mapping inMM1::TFSM::intermediate_onlyOneFirst2Expression(an1 : TFSM, an2 : TFSM, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_onlyOneFirst'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "OneTickAndNoMore")->first();
 				 
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = an1.name+'_start']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'OneTickAndNoMoreClock' and container().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).name = 'OneTickAndNoMore']->first();
 				};
 		end{
 			theMainBlock.expressions += result;
@@ -639,10 +699,10 @@ main() {
 	mapping inMM1::TFSM::intermediate_onlyOneFirst2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : TFSM, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_onlyOneFirst'+nb.toString();
-		type := seqOfExpressionDeclaration->select(rd | rd.name = "invalid")->first();
+		type := seqOfExpressionDeclaration->select(rd | rd.name = "OneTickAndNoMore")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.expressions[name = expr.name]->first();
-					_abstract := seqOfExpressionDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
+					_abstract := seqOfExpressionDeclaration[name = 'OneTickAndNoMore']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence()->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);									};
 		end{
 			theMainBlock.expressions += result;
 		}
@@ -688,7 +748,7 @@ main() {
 				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "ticks")->first().oclAsType(EObject);
 			
 				name := 'evt_'+self.name+'_ticks';
-				kind := TimeModel::EventKind::undefined;
+			kind :=TimeModel::EventKind::undefined;
 						
 			};
 			type:= Kernel_Clock_Type;
@@ -709,7 +769,7 @@ main() {
 				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "fire")->first().oclAsType(EObject);
 			
 				name := 'evt_'+self.name+'_fire';
-				kind := TimeModel::EventKind::undefined;
+			kind :=TimeModel::EventKind::undefined;
 						
 			};
 			type:= Kernel_Clock_Type;
@@ -730,7 +790,7 @@ main() {
 				referencedObjectRefs += self.oclAsType(EObject).eClass().eAllOperations->select(op |op.name = "evaluate")->first().oclAsType(EObject);
 			
 				name := 'evt_'+self.name+'_evaluate';
-				kind := TimeModel::EventKind::undefined;
+			kind :=TimeModel::EventKind::undefined;
 						
 			};
 			type:= Kernel_Clock_Type;
@@ -746,9 +806,10 @@ main() {
 		{
 			name:= self.name+'_occurs';
 			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
 			
 				name := 'evt_'+self.name+'_occurs';
-				kind := TimeModel::EventKind::undefined;
+			kind :=TimeModel::EventKind::undefined;
 						
 			};
 			type:= Kernel_Clock_Type;
@@ -767,7 +828,7 @@ main() {
  				referencedObjectRefs += self.oclAsType(EObject);
 			
 				name := 'evt_'+self.name+'_entering';
-				kind := TimeModel::EventKind::undefined;
+			kind :=TimeModel::EventKind::undefined;
 						
 			};
 			type:= Kernel_Clock_Type;
@@ -784,7 +845,7 @@ main() {
  				referencedObjectRefs += self.oclAsType(EObject);
 			
 				name := 'evt_'+self.name+'_leaving';
-				kind := TimeModel::EventKind::undefined;
+			kind :=TimeModel::EventKind::undefined;
 						
 			};
 			type:= Kernel_Clock_Type;
@@ -800,9 +861,10 @@ main() {
 		{
 			name:= self.name+'_evaluatedTrue';
 			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
 			
 				name := 'evt_'+self.name+'_evaluatedTrue';
-				kind := TimeModel::EventKind::undefined;
+			kind :=TimeModel::EventKind::undefined;
 						
 			};
 			type:= Kernel_Clock_Type;
@@ -816,9 +878,10 @@ main() {
 		{
 			name:= self.name+'_evaluatedFalse';
 			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
 			
 				name := 'evt_'+self.name+'_evaluatedFalse';
-				kind := TimeModel::EventKind::undefined;
+			kind :=TimeModel::EventKind::undefined;
 						
 			};
 			type:= Kernel_Clock_Type;
@@ -834,9 +897,10 @@ main() {
 		{
 			name:= self.name+'_start';
 			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
 			
 				name := 'evt_'+self.name+'_start';
-				kind := TimeModel::EventKind::undefined;
+			kind :=TimeModel::EventKind::undefined;
 						
 			};
 			type:= Kernel_Clock_Type;
@@ -850,9 +914,10 @@ main() {
 		{
 			name:= self.name+'_stall';
 			tickingEvent := object TimeModel::Event{
+ 				referencedObjectRefs += self.oclAsType(EObject);
 			
 				name := 'evt_'+self.name+'_stall';
-				kind := TimeModel::EventKind::undefined;
+			kind :=TimeModel::EventKind::undefined;
 						
 			};
 			type:= Kernel_Clock_Type;
@@ -866,21 +931,21 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM1::FSMEvent::occursWhenSolicitate212occursWhenSolicitate(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::FSMEvent::occursWhenSolicitate222occursWhenSolicitate(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.sollicitingTransitions->size() >0) 
 				
 }
 		{
-		 	name := self.name+"invalid_occursWhenSolicitate";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"FSMEventSendReceive_occursWhenSolicitate";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "FSMEventSendReceive")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map AllTriggeringOccurrences2Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'FSMEventRendezVous_LeftClock']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_occurs']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'FSMEventRendezVous_RightClock']->first();
 				};
 		
 		theMainBlock.relations += result;
@@ -895,15 +960,15 @@ main() {
 				
 }
 		{
-		 	name := self.name+"invalid_fireWhenRestrueOccursTransition";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"Coincides_fireWhenRestrueOccursTransition";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map restrueOccursAfterOrWhileStateEntering2Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
 		theMainBlock.relations += result;
@@ -916,23 +981,23 @@ main() {
 				
 }
 		{
-		 	name := self.name+"invalid_fireWhenRestrueOccursVariousTransition";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"EventTransition_fireWhenRestrueOccursVariousTransition";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "EventTransition")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.source.name+'_entering']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'EventTransition_MakeFireable']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.ownedGuard.oclAsType(EvaluateGuard).name+'_evaluatedTrue']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'EventTransition_Trigger']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map otherFireFromTheSameState32Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'EventTransition_Reset']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'EventTransition_Fire']->first();
 				};
 		
 		theMainBlock.relations += result;
@@ -945,15 +1010,15 @@ main() {
 				
 }
 		{
-		 	name := self.name+"invalid_fireWhenEventOccursOneTransition";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"Coincides_fireWhenEventOccursOneTransition";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map eventOccursAfterOrWhileStateEntering2Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
 		theMainBlock.relations += result;
@@ -966,23 +1031,23 @@ main() {
 				
 }
 		{
-		 	name := self.name+"invalid_fireWhenEventOccursVariousTransition";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"EventTransition_fireWhenEventOccursVariousTransition";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "EventTransition")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.source.name+'_entering']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'EventTransition_MakeFireable']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.ownedGuard.oclAsType(EventGuard).triggeringEvent.name+'_occurs']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'EventTransition_Trigger']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map otherFireFromTheSameState22Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'EventTransition_Reset']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'EventTransition_Fire']->first();
 				};
 		
 		theMainBlock.relations += result;
@@ -995,28 +1060,28 @@ main() {
 				
 }
 		{
-		 	name := self.name+"invalid_fireWhenTemporalGuardHoldsVariousTransition";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"TemporalTransition_fireWhenTemporalGuardHoldsVariousTransition";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "TemporalTransition")->first();
 					var guardDelay : Integer := self.ownedGuard.oclAsType(TemporalGuard).afterDuration;
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.source.name+'_entering']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'TemporalTransition_MakeFireable']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.ownedGuard.oclAsType(TemporalGuard).onClock.name+'_ticks']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'TemporalTransition_RefClock']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map otherFireFromTheSameState2Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'TemporalTransition_Reset']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self.ownedGuard.oclAsType(TemporalGuard).afterDuration -> map Real2Integer(self.name+self.ownedGuard.oclAsType(TemporalGuard).name+"guardDelay"+"_afterDuration")->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'TemporalTransition_delay']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'TemporalTransition_Fire']->first();
 				};
 		
 		theMainBlock.relations += result;
@@ -1029,16 +1094,16 @@ main() {
 				
 }
 		{
-		 	name := self.name+"invalid_fireWhenTemporalGuardHoldsOneTransition";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"Coincides_fireWhenTemporalGuardHoldsOneTransition";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
 					var delay : Integer := self.ownedGuard.oclAsType(TemporalGuard).afterDuration;
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map delayIsExpired_wrt_StateEntering2Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_fire']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
 		theMainBlock.relations += result;
@@ -1051,15 +1116,15 @@ main() {
 				
 }
 		{
-		 	name := self.name+"invalid_EvaluateGuardWhenEnteringState";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"Coincides_EvaluateGuardWhenEnteringState";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.ownedGuard.oclAsType(EvaluateGuard).name+'_evaluate']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.source.name+'_entering']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
 		theMainBlock.relations += result;
@@ -1070,15 +1135,15 @@ main() {
 	
 		mapping inMM1::State::enterOnceBeforeToLeave12enterOnceBeforeToLeave(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
-		 	name := self.name+"invalid_enterOnceBeforeToLeave";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"Alternates_enterOnceBeforeToLeave";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Alternates")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_entering']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesLeftClock']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_leaving']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'AlternatesRightClock']->first();
 				};
 		
 		theMainBlock.relations += result;
@@ -1087,15 +1152,15 @@ main() {
 	
 		mapping inMM1::State::firingATransitionAlternatesWithLeavingState102firingATransitionAlternatesWithLeavingState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
-		 	name := self.name+"invalid_firingATransitionAlternatesWithLeavingState";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"Coincides_firingATransitionAlternatesWithLeavingState";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map allFiredoutgoingTransition2Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_leaving']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
 		theMainBlock.relations += result;
@@ -1108,15 +1173,15 @@ main() {
 				
 }
 		{
-		 	name := self.name+"invalid_stateEntering";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"Causes_stateEntering";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Causes")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map allInputTransition2Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Causes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_entering']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Causes']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
 		theMainBlock.relations += result;
@@ -1127,19 +1192,19 @@ main() {
 	
 		mapping inMM1::EvaluateGuard::fireEvaluationAndResult12fireEvaluationAndResult(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
-		 	name := self.name+"invalid_fireEvaluationAndResult";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"TransitionRule_fireEvaluationAndResult";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "TransitionRule")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_evaluate']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'evaluateGuard']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_evaluatedTrue']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'resTrue']->first();
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_evaluatedFalse']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfAbstractEntity[name = 'resFalse']->first();
 				};
 		
 		theMainBlock.relations += result;
@@ -1153,8 +1218,8 @@ main() {
 	mapping inMM1::TFSM::intermediate_oneStateAtATime12oneStateAtATime(an1 : State, an2 : State, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 	{
 		name := self.name+'intermediate_oneStateAtATime'+nbi.toString()+"_"+nbj.toString();
-		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Exclusion).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
-		type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Exclusion']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Exclusion).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
+		type := seqOfRelationDeclaration->select(rd | rd.name = "Exclusion")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = an1.name+'_entering']->first();
 					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
@@ -1193,8 +1258,8 @@ main() {
 	mapping inMM1::TFSM::intermediate_oneTransitionAtATime12oneTransitionAtATime(an1 : Transition, an2 : Transition, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 	{
 		name := self.name+'intermediate_oneTransitionAtATime'+nbi.toString()+"_"+nbj.toString();
-		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'invalid']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Exclusion).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
-		type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Exclusion']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Exclusion).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
+		type := seqOfRelationDeclaration->select(rd | rd.name = "Exclusion")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = an1.name+'_fire']->first();
 					_abstract := seqAbstract->at(1).oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity);
@@ -1230,15 +1295,15 @@ main() {
 	
 		mapping inMM1::TFSM::firstIsInitialState12firstIsInitialState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
-		 	name := self.name+"invalid_firstIsInitialState";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"Coincides_firstIsInitialState";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_start']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.initialState.name+'_entering']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
 		theMainBlock.relations += result;
@@ -1247,15 +1312,15 @@ main() {
 	
 		mapping inMM1::TFSM::firstOnlyOnce82firstOnlyOnce(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
-		 	name := self.name+"invalid_firstOnlyOnce";
-			type := seqOfRelationDeclaration->select(rd | rd.name = "invalid")->first();
+		 	name := self.name+"Coincides_firstOnlyOnce";
+			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 					bindable := theMainBlock.elements[name = self.name+'_start']->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).leftEntity;
 				};
 				bindings += object TimeModel::CCSLModel::ClockExpressionAndRelation::Binding{
 							bindable := self -> map onlyOneFirst2Expression()->asSequence()->first();
-					_abstract := seqOfAbstractEntity[name = 'invalid']->first();
+					_abstract := seqOfRelationDeclaration[name = 'Coincides']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::KernelRelationDeclaration).rightEntity;
 				};
 		
 		theMainBlock.relations += result;

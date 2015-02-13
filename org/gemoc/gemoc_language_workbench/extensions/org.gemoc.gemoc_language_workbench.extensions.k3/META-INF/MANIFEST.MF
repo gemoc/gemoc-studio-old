@@ -8,7 +8,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.gemoc.gemoc_language_workbench.api,
  org.eclipse.emf.ecore,
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
- fr.inria.aoste.timesquare.ecl.feedback.model
+ fr.inria.aoste.timesquare.ecl.feedback.model,
+ org.gemoc.execution.engine.trace.model
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.gemoc_language_workbench.extensions.k3,

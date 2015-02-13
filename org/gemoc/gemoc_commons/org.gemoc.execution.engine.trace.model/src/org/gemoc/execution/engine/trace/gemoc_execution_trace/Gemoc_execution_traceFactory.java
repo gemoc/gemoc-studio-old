@@ -67,6 +67,33 @@ public interface Gemoc_execution_traceFactory extends EFactory {
 	ContextState createContextState();
 
 	/**
+	 * Returns a new object of class '<em>Logical Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Logical Step</em>'.
+	 * @generated
+	 */
+	LogicalStep createLogicalStep();
+
+	/**
+	 * Returns a new object of class '<em>MSE Execution Context</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>MSE Execution Context</em>'.
+	 * @generated
+	 */
+	MSEExecutionContext createMSEExecutionContext();
+
+	/**
+	 * Returns a new object of class '<em>Branch</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Branch</em>'.
+	 * @generated
+	 */
+	Branch createBranch();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

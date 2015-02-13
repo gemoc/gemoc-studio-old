@@ -33,4 +33,5 @@
             contributorClass="org.gemoc.execution.engine.trace.gemoc_execution_trace.presentation.Gemoc_execution_traceActionBarContributor">
       </editor>
    </extension>
+
 </plugin>

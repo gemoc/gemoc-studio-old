@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
@@ -28,6 +29,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tr
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl#getChoices <em>Choices</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl#getBranches <em>Branches</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,6 +45,16 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected EList<Choice> choices;
+
+	/**
+	 * The cached value of the '{@link #getBranches() <em>Branches</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBranches()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Branch> branches;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,11 +92,25 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Branch> getBranches() {
+		if (branches == null) {
+			branches = new EObjectContainmentEList<Branch>(Branch.class, this, Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES);
+		}
+		return branches;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
 				return ((InternalEList<?>)getChoices()).basicRemove(otherEnd, msgs);
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES:
+				return ((InternalEList<?>)getBranches()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -99,6 +125,8 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 		switch (featureID) {
 			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
 				return getChoices();
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES:
+				return getBranches();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -116,6 +144,10 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 				getChoices().clear();
 				getChoices().addAll((Collection<? extends Choice>)newValue);
 				return;
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES:
+				getBranches().clear();
+				getBranches().addAll((Collection<? extends Branch>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -131,6 +163,9 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
 				getChoices().clear();
 				return;
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES:
+				getBranches().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -145,6 +180,8 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 		switch (featureID) {
 			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
 				return choices != null && !choices.isEmpty();
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES:
+				return branches != null && !branches.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
