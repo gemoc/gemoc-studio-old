@@ -4,9 +4,9 @@ import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
-public class CCSLExecutionEngine extends AbstractExecutionEngine {
+public class ExecutionEngine extends AbstractExecutionEngine {
 
-	public CCSLExecutionEngine(ModelExecutionContext executionContext) {
+	public ExecutionEngine(ModelExecutionContext executionContext) {
 		super(executionContext);
 		if (getExecutionContext().getRunConfiguration().isTraceActive())
 		{

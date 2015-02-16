@@ -262,7 +262,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 				}
 				else
 				{
-					addon.branch(choice);				
+					addon.branch(choice);	
 				}
 			} catch (ModelExecutionTracingException e) 
 			{

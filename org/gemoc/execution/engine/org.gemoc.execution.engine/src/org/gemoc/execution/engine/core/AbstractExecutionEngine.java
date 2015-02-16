@@ -352,6 +352,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			{
 				execution = new SynchroneExecution(mse, this);				
 			}
+			// if there is a future, execute async.
 			else
 			{
 				execution = new ASynchroneExecution(mse, whenStatements, _mseStateController, this);
