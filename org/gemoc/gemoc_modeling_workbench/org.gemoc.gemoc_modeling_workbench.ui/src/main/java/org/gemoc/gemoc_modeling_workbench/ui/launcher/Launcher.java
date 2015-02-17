@@ -129,9 +129,6 @@ public class Launcher
 							return new Status(IStatus.ERROR, getPluginID(), "Execution was not successfull");
 						}
 						
-//						requestor._binaryType.getJavaProject().getAllPackageFragmentRoots().contains(requestor._binaryType.getPackageFragment())
-
-						
 						IPackageFragmentRoot packageFragmentRoot = (IPackageFragmentRoot)requestor._binaryType.getPackageFragment().getParent();
 						
 						String projectName = requestor._binaryType.getJavaProject().getElementName();
@@ -150,152 +147,56 @@ public class Launcher
 							shouldLookInBundle = false;
 						}
 						
-//						try {
-							ArrayList<Object> parameters = new ArrayList<>();
-							parameters.add(executionContext.getResourceModel().getContents().get(0));
-							String bundleName = null;
-							if (shouldLookInBundle)
-							{
-								bundleName = packageFragmentRoot.getPath().removeLastSegments(1).lastSegment().toString();
-							}
-							else
-							{
-								bundleName = project.getName();
-							}
-							Class<?> c;
+						ArrayList<Object> parameters = new ArrayList<>();
+						parameters.add(executionContext.getResourceModel().getContents().get(0));
+						String bundleName = null;
+						if (shouldLookInBundle)
+						{
+							bundleName = packageFragmentRoot.getPath().removeLastSegments(1).lastSegment().toString();
+						}
+						else
+						{
+							bundleName = project.getName();
+						}
+						Class<?> c;
 
-							Bundle bundle = Platform.getBundle(bundleName);
-							if (bundle == null)
-							{
-								return new Status(IStatus.ERROR, getPluginID(), "Could not find bundle " + bundleName + ".");								
-							}
-							
-							try {
-								c = bundle.loadClass(executionContext.getRunConfiguration().getExecutionEntryPoint());
-							} catch (ClassNotFoundException e) {
-								e.printStackTrace();
-								return new Status(IStatus.ERROR, getPluginID(), "Could not find class " + executionContext.getRunConfiguration().getExecutionEntryPoint() + " in bundle " + bundleName + ".");
-							}
-							Method method;
-							try {
-								method = c.getMethod("main", parameters.get(0).getClass().getInterfaces()[0]);
-							} catch (Exception e) {
-								e.printStackTrace();
-								return new Status(IStatus.ERROR, getPluginID(), "Could not find method main with correct parameters.");
-							}
-							Object o;
-							try {
-								o = c.newInstance();
-							} catch (Exception e) {
-								e.printStackTrace();
-								return new Status(IStatus.ERROR, getPluginID(), "Could not instanciate class " + executionContext.getRunConfiguration().getExecutionEntryPoint() + ".");
-							} 
-							try {
-								method.invoke(o, parameters.get(0));
-							} catch (Exception e) {
-								e.printStackTrace();
-								return new Status(IStatus.ERROR, getPluginID(), "Invokation of method main failed.");
-							} 
-//						} catch (Exception e1) {
-//							e1.printStackTrace();
-//							return new Status(IStatus.ERROR, getPluginID(), "Execution was not successfull");
-//						}
+						Bundle bundle = Platform.getBundle(bundleName);
+						if (bundle == null)
+						{
+							return new Status(IStatus.ERROR, getPluginID(), "Could not find bundle " + bundleName + ".");								
+						}
 						
-
-
-						
-//						ActionCall call = FeedbackFactory.eINSTANCE.createActionCall();
-//						ModelSpecificEvent mse = FeedbackFactory.eINSTANCE.createModelSpecificEvent();
-//						call.setTriggeringEvent(mse);
-//						mse.setCaller(executionContext.getResourceModel().getContents().get(0));
-////						executionContext.getExecutionPlatform().getCodeExecutor().execute(call);
-//						ArrayList<Object> parameters = new ArrayList<>();
-//						parameters.add(executionContext.getResourceModel().getContents().get(0));
-//						try {
-//							executionContext.getExecutionPlatform().getCodeExecutor().execute(
-//																						executionContext.getRunConfiguration().getExecutionEntryPoint(), 
-//																						"main", 
-//																						parameters);
-//							return new Status(IStatus.OK, getPluginID(), "Execution was successfull");
-//						} catch (CodeExecutionException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}
+						try {
+							c = bundle.loadClass(executionContext.getRunConfiguration().getExecutionEntryPoint());
+						} catch (ClassNotFoundException e) {
+							e.printStackTrace();
+							return new Status(IStatus.ERROR, getPluginID(), "Could not find class " + executionContext.getRunConfiguration().getExecutionEntryPoint() + " in bundle " + bundleName + ".");
+						}
+						Method method;
+						try {
+							method = c.getMethod("main", parameters.get(0).getClass().getInterfaces()[0]);
+						} catch (Exception e) {
+							e.printStackTrace();
+							return new Status(IStatus.ERROR, getPluginID(), "Could not find method main with correct parameters.");
+						}
+						Object o;
+						try {
+							o = c.newInstance();
+						} catch (Exception e) {
+							e.printStackTrace();
+							return new Status(IStatus.ERROR, getPluginID(), "Could not instanciate class " + executionContext.getRunConfiguration().getExecutionEntryPoint() + ".");
+						} 
+						try {
+							method.invoke(o, parameters.get(0));
+						} catch (Exception e) {
+							e.printStackTrace();
+							return new Status(IStatus.ERROR, getPluginID(), "Invokation of method main failed.");
+						} 
 						return new Status(IStatus.OK, getPluginID(), "Execution was successfull");
 					}
 					
 				};
 				job.schedule();
-//				String className =  executionContext.getRunConfiguration().getExecutionEntryPoint();
-//				//IProject project = ResourcesPlugin.getWorkspace().ge;
-//
-//				List<IResource> resources = new ArrayList<>();
-//				IPath path = executionContext.getWorkspace().getProjectPath();
-//				resources.add(ResourcesPlugin.getWorkspace().getRoot().getProject(path.toString()));
-//				
-//				SearchPattern pattern = SearchPattern.createPattern(className,
-//																	IJavaSearchConstants.CLASS, 
-//																	IJavaSearchConstants.DECLARATIONS,
-//																	SearchPattern.R_EXACT_MATCH);
-//				IJavaSearchScope scope = SearchEngine.createWorkspaceScope();
-//				ResolvedBinaryType type = null;
-//				DefaultSearchRequestor requestor = new DefaultSearchRequestor();				
-//				SearchEngine engine = new SearchEngine();
-//				engine.search(pattern, 
-//							new SearchParticipant[] { SearchEngine.getDefaultSearchParticipant() }, 
-//							scope, 
-//							requestor,
-//							null);
-				
-//				IMethod constructor = null;
-//				IMethod main = null;
-//				Class.forName(requestor._binaryType.);
-//				for (IMethod m : requestor._binaryType.getMethods())
-//				{
-////					if (m.get)
-//				}
-				
-				
-//				IJavaSearchScope searchScope = JavaSearchScopeFactory.getInstance().createJavaSearchScope(resources.toArray(new IResource[resources.size()]), true);
-//				ISearchPattern searchPattern = SearchEngine.createSearchPattern(className, IJavaSearchConstants.CLASS, IJavaSearchConstants.DECLARATIONS, false);
-//				IJavaSearchResultCollector resultCollector = new IJavaSearchResultCollector() {
-//					
-//					@Override
-//					public IProgressMonitor getProgressMonitor() {
-//						// TODO Auto-generated method stub
-//						return null;
-//					}
-//					
-//					@Override
-//					public void done() {
-//						return;
-//					}
-//					
-//					@Override
-//					public void accept(IResource resource, int start, int end,
-//							IJavaElement enclosingElement, int accuracy) throws CoreException {
-//						return;
-//					}
-//					
-//					@Override
-//					public void aboutToStart() {
-//						return;
-//					}
-//				};
-//				new SearchEngine().search(ResourcesPlugin.getWorkspace(),
-//		                   				searchPattern,
-//		                   				searchScope,
-//		                   				resultCollector);
-				
-//				String bundleName = executionContext.getWorkspace().getProjectPath().toString().replace("/", "");
-//				Platform.getBundle(bundleName);
-//				Class modelRootClass = OSGIUtils.getDefault().getBundle(bundleName).loadClass(className);
-//				Object o = modelRootClass.newInstance();
-				
-//				Object o = executionContext.getRunConfiguration().instanciateJavaEntryPoint();
-//				Class modelRootClass = executionContext.getResourceModel().getContents().get(0).getClass();
-//				Method m = o.getClass().getMethod("main", modelRootClass);
-//				m.invoke(o, executionContext.getResourceModel().getContents().get(0));
 			}
 		} 
 		catch (Exception e)
@@ -306,55 +207,6 @@ public class Launcher
 		  	throw new CoreException(new Status(Status.ERROR, Activator.PLUGIN_ID, message, e));
 		}
 	}
-
-//	private Session openNewSiriusSession(URI sessionResourceURI, final IProgressMonitor monitor) throws CoreException {
-//		final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(sessionResourceURI);
-//		set.getURIConverter().getURIHandlers().add(0, new DebugURIHandler());
-//		final Session session = DebugSessionFactory.INSTANCE.createSession(set, sessionResourceURI);
-//		session.open(monitor);
-//		for (DView view : session.getSelectedViews())
-//		{
-//			for (DRepresentation representation : view.getOwnedRepresentations())
-//			{
-//				final DSemanticDiagramSpec diagram = (DSemanticDiagramSpec)representation;
-//				DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
-//
-//				final TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
-//				final CommandStack commandStack = editingDomain.getCommandStack();
-//				commandStack.execute(new RecordingCommand(editingDomain) {
-//					@Override
-//					protected void doExecute() {
-//						for(Layer l : diagram.getDescription().getAdditionalLayers())
-//						{
-//							boolean mustBeActive = l.getName().toUpperCase().contains("DEBUG")
-//									|| l.getName().toUpperCase().contains("ANIMATION");
-//							if (mustBeActive
-//									&& !diagram.getActivatedLayers().contains(l))
-//							{
-//								ChangeLayerActivationCommand c = new ChangeLayerActivationCommand(
-//										editingDomain, 
-//										diagram, 
-//										l, 
-//										monitor);
-//								c.execute();															
-//							}
-//						}
-//					}
-//				});
-//			}
-//		}
-//
-//		return session;
-//	}
-
-//	private void killPreviousSiriusSession(URI sessionResourceURI, IProgressMonitor monitor) {
-//		Session session = SessionManager.INSTANCE.getExistingSession(sessionResourceURI);
-//		if (session != null) {
-//			session.close(monitor);
-//			SessionManager.INSTANCE.remove(session);			
-//		}
-//	}
-
 
 	private void throwExceptionIfEngineAlreadyRunning(ModelExecutionContext executionContext) throws CoreException 
 	{
