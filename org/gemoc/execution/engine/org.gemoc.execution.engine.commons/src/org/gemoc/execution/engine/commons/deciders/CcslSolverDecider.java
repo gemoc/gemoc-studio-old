@@ -13,8 +13,8 @@ import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 public class CcslSolverDecider implements ILogicalStepDecider {
 
 	@Override
-	public int decide(IExecutionEngine engine, List<LogicalStep> possibleLogicalSteps) {
-		return engine.getExecutionContext().getExecutionPlatform().getSolver().proposeLogicalStepByIndex();
+	public LogicalStep decide(IExecutionEngine engine, List<LogicalStep> possibleLogicalSteps) {
+		return engine.getExecutionContext().getExecutionPlatform().getSolver().proposeLogicalStep();
 	}
 
 	@Override

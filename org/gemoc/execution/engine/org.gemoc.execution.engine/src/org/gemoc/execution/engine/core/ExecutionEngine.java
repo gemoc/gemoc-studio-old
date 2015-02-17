@@ -207,19 +207,19 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 					updatePossibleLogicalSteps();
 					// 2- select one solution from available logical step /
 					// select interactive vs batch
-					int selectedLogicalStepIndex;
+					LogicalStep selectedLogicalStep;
 					if (_possibleLogicalSteps.size() == 0) {
 						Activator.getDefault().debug("No more LogicalStep to run");
 						stop();
 					} else {
 						Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
 						setEngineStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
-						selectedLogicalStepIndex = _executionContext.getLogicalStepDecider().decide(ExecutionEngine.this, _possibleLogicalSteps);
+						selectedLogicalStep = _executionContext.getLogicalStepDecider().decide(ExecutionEngine.this, _possibleLogicalSteps);
 						count++;
 
-						if (selectedLogicalStepIndex != -1)
+						if (selectedLogicalStep != null)
 						{
-							setSelectedLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));
+							setSelectedLogicalStep(selectedLogicalStep);
 							setEngineStatus(EngineStatus.RunStatus.Running);
 
 							for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
@@ -228,13 +228,12 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 							}
 
 							// 3 - run the selected logical step
-							final LogicalStep logicalStepToApply = _possibleLogicalSteps.get(selectedLogicalStepIndex);
 							// inform the solver that we will run this step
-							getSolver().applyLogicalStepByIndex(selectedLogicalStepIndex);
+							getSolver().applyLogicalStep(selectedLogicalStep);
 							// run all the event occurrences of this logical
 							// step
-							executeLogicalStep(logicalStepToApply);
-							terminateIfLastStepsSimilar(logicalStepToApply);							
+							executeLogicalStep(selectedLogicalStep);
+							terminateIfLastStepsSimilar(selectedLogicalStep);							
 						}						
 					}
 					engineStatus.incrementNbLogicalStepRun();

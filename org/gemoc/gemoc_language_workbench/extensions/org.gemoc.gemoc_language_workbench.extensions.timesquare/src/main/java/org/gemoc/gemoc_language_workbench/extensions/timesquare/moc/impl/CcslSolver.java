@@ -7,13 +7,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
@@ -29,7 +27,6 @@ import org.gemoc.gemoc_language_workbench.extensions.timesquare.Activator;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
 
 import fr.inria.aoste.timesquare.ccslkernel.explorer.CCSLConstraintState;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.exception.UnfoldingException;
 import fr.inria.aoste.timesquare.ccslkernel.runtime.exceptions.NoBooleanSolution;
@@ -39,7 +36,6 @@ import fr.inria.aoste.timesquare.ccslkernel.solver.launch.CCSLKernelSolverWrappe
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.timesquare.simulationpolicy.maxcardpolicy.MaxCardSimulationPolicy;
-import fr.inria.aoste.timesquare.trace.util.HelperFactory;
 import fr.inria.aoste.trace.EventOccurrence;
 //import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
@@ -53,12 +49,11 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 
 	private CCSLKernelSolverWrapper solverWrapper = null;
 	private URI solverInputURI = null;
-	private LogicalStep lastLogicalStep = null;
-	private Map<Event, ModelElementReference> mappingEventToOriginalMer = null;
+	private ArrayList<LogicalStep> _lastLogicalSteps = new ArrayList<LogicalStep>();
 	private ActionModel _feedbackModel;
 	
-	public CcslSolver() {
-		this.mappingEventToOriginalMer = new HashMap<Event, ModelElementReference>();
+	public CcslSolver() 
+	{
 	}
 
 	@Override
@@ -96,44 +91,8 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		}
 	}
 
-	@Override
-	public LogicalStep getNextStep() {
-		try {
-			// Retrieve a step from the CCSL Solver.
-			fr.inria.aoste.trace.LogicalStep res = this.solverWrapper.getSolver().doOneSimulationStep();
-			LogicalStep ls = createLogicalStep(res);
-			
-			// We need to slightly adapt the trace so as to be able to establish
-			// the link
-			// between an EventOccurrence and an ECL Event.
-//			for (EventOccurrence eventOccurrence : res.getEventOccurrences()) {
-//				Clock c = this.getClockLinkedToOccurrence(eventOccurrence);
-//				if (c != null) {
-//					// We memorize the reference to the Clock (3 EObjects : file
-//					// / block / clock) so it can be retrieved later on.
-//					mappingEventToOriginalMer.put(c.getTickingEvent(),
-//												(ModelElementReference) eventOccurrence.getReferedElement());
-//					// Instead we place the ECL Event
-//					eventOccurrence.setReferedElement(HelperFactory
-//							.createModelElementReference(c.getTickingEvent()));
-//				}
-//			}
-			this.lastLogicalStep = ls;
-			return ls;
-		} catch (SolverException e) {
-			String errorMessage = "SolverException while trying to get next Ccsl step";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
-			return null;
-		} catch (SimulationException e) {
-			String errorMessage = "SimulationException while trying to get next Ccsl step";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
-			return null;
-		}
-	}
-
-	private LogicalStep createLogicalStep(fr.inria.aoste.trace.LogicalStep res) {
+	private LogicalStep createLogicalStep(fr.inria.aoste.trace.LogicalStep res) 
+	{
 		LogicalStep ls = Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep();
 		for (Event e : LogicalStepHelper.getTickedEvents(res))
 		{
@@ -151,29 +110,6 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		}
 		return ls;
 	}
-
-//	/**
-//	 * Returns the clock linked to an EventOccurrence.
-//	 * 
-//	 * @param eventOcc
-//	 * @return
-//	 */
-//	private Clock getClockLinkedToOccurrence(EventOccurrence eventOcc) {
-//		Reference ref = eventOcc.getReferedElement();
-//		if (ref instanceof ModelElementReference) {
-//			ModelElementReference mer = (ModelElementReference) ref;
-//			EList<EObject> eobjects = mer.getElementRef();
-//			EObject actualObject = eobjects.get(eobjects.size() - 1);
-//			if (actualObject instanceof Clock) {
-//				// you got the clock that ticked
-//				return (Clock) actualObject;
-//			} else {
-//				return null;
-//			}
-//		} else {
-//			return null;
-//		}
-//	}
 
 	@Override
 	public String toString() {
@@ -266,13 +202,13 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		
 		try {
 			List<fr.inria.aoste.trace.LogicalStep> intermediateResult = solverWrapper.computeAndGetPossibleLogicalSteps();			
-			List<LogicalStep> result = new ArrayList<LogicalStep>();
+			_lastLogicalSteps.clear();
 			for (fr.inria.aoste.trace.LogicalStep lsFromTimesquare : intermediateResult)
 			{
 				LogicalStep lsFromTrace = createLogicalStep(lsFromTimesquare);
-				result.add(lsFromTrace);
+				_lastLogicalSteps.add(lsFromTrace);
 			}
-			return result;
+			return new ArrayList<LogicalStep>(_lastLogicalSteps);
 		} catch (NoBooleanSolution e) {
 			Activator.getDefault().error(e.getMessage(), e);
 		} catch (SolverException e) {
@@ -288,13 +224,13 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		
 		try {
 			List<fr.inria.aoste.trace.LogicalStep> intermediateResult = solverWrapper.updatePossibleLogicalSteps();			
-			List<LogicalStep> result = new ArrayList<LogicalStep>();
+			_lastLogicalSteps.clear();
 			for (fr.inria.aoste.trace.LogicalStep lsFromTimesquare : intermediateResult)
 			{
 				LogicalStep lsFromTrace = createLogicalStep(lsFromTimesquare);
-				result.add(lsFromTrace);
+				_lastLogicalSteps.add(lsFromTrace);
 			}
-			return result;
+			return new ArrayList<LogicalStep>(_lastLogicalSteps);
 		} catch (NoBooleanSolution e) {
 			Activator.getDefault().error(e.getMessage(), e);
 		} catch (SolverException e) {
@@ -306,17 +242,21 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 	}
 
 	@Override
-	public int proposeLogicalStepByIndex() {
-		return solverWrapper.proposeLogicalStepByIndex();
+	public LogicalStep proposeLogicalStep() {
+		int index = solverWrapper.proposeLogicalStepByIndex();
+		LogicalStep result = null;
+		if (_lastLogicalSteps.size() > index)
+		{
+			result = _lastLogicalSteps.get(index);			
+		}
+		return result;
 	}
 
 	@Override
-	public void applyLogicalStepByIndex(int indexOfStepToApply) {
+	public void applyLogicalStep(LogicalStep logicalStep) {
 		try {
-			solverWrapper.applyLogicalStepByIndex(indexOfStepToApply);
-			// needed to 
-//			solverWrapper.getSolver().bddFromEnvironment.free();
-//			solverWrapper.getSolver().bddFromEnvironment = solverWrapper.getSolver().getBddFactory().one();
+			int index = _lastLogicalSteps.indexOf(logicalStep);
+			solverWrapper.applyLogicalStepByIndex(index);
 		} catch (SolverException e) {
 			Activator.getDefault().error(e.getMessage(), e);
 		} catch (SimulationException e) {
