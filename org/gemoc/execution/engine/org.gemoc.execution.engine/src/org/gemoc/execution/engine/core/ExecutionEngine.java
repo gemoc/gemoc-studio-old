@@ -70,7 +70,7 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.When;
  * @param <T>
  * 
  */
-public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisposable {
+public class ExecutionEngine implements IExecutionEngine, IDisposable {
 
 	private boolean _started = false;
 	private boolean terminated = false;
@@ -102,7 +102,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	 * @param isTraceActive 
 	 * @param _executionContext
 	 */
-	public AbstractExecutionEngine(IExecutionContext executionContext) {
+	public ExecutionEngine(IExecutionContext executionContext) {
 		if (executionContext == null)
 			throw new IllegalArgumentException("executionContext");
 
@@ -187,12 +187,12 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			
 			for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 			{
-				addon.engineStarted(AbstractExecutionEngine.this);
+				addon.engineStarted(ExecutionEngine.this);
 			}
 			
 			// register this engine using a unique name
 			String engineName = Thread.currentThread().getName();
-			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerEngine(engineName, AbstractExecutionEngine.this);
+			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerEngine(engineName, ExecutionEngine.this);
 
 			setEngineStatus(EngineStatus.RunStatus.Running);
 			long count = 0;
@@ -214,7 +214,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 					} else {
 						Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
 						setEngineStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
-						selectedLogicalStepIndex = _executionContext.getLogicalStepDecider().decide(AbstractExecutionEngine.this, _possibleLogicalSteps);
+						selectedLogicalStepIndex = _executionContext.getLogicalStepDecider().decide(ExecutionEngine.this, _possibleLogicalSteps);
 						count++;
 
 						if (selectedLogicalStepIndex != -1)
@@ -224,7 +224,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 
 							for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 							{
-								addon.logicalStepSelected(AbstractExecutionEngine.this, getSelectedLogicalStep());
+								addon.logicalStepSelected(ExecutionEngine.this, getSelectedLogicalStep());
 							}
 
 							// 3 - run the selected logical step
@@ -426,7 +426,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		}
 		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.aboutToSelectLogicalStep(AbstractExecutionEngine.this);
+			addon.aboutToSelectLogicalStep(ExecutionEngine.this);
 		}
 	}
 	

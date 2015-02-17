@@ -30,10 +30,9 @@ import org.eclipse.jdt.core.search.SearchPattern;
 import org.eclipse.jdt.core.search.SearchRequestor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IEditorPart;
-import org.gemoc.execution.engine.commons.CCSLExecutionEngine;
 import org.gemoc.execution.engine.commons.ModelExecutionContext;
 import org.gemoc.execution.engine.commons.RunConfiguration;
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -59,7 +58,7 @@ public class Launcher
 
 	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
 
-	private AbstractExecutionEngine _engine;
+	private ExecutionEngine _engine;
 
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor)
@@ -84,7 +83,7 @@ public class Launcher
 
 			if (executionContext.getFeedbackModel() != null) // hack to find out if execution involves a solver
 			{
-				_engine = new CCSLExecutionEngine(executionContext);				
+				_engine = new ExecutionEngine(executionContext);				
 				// delegate for debug mode
 				if (ILaunchManager.DEBUG_MODE.equals(mode)) {
 					IEngineAddon animator = AbstractGemocAnimatorServices.getAnimator();
@@ -363,7 +362,7 @@ public class Launcher
 		Collection<IExecutionEngine> engines = org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().values();
 		for (IExecutionEngine engine : engines)
 		{
-			AbstractExecutionEngine observable = (AbstractExecutionEngine) engine;
+			ExecutionEngine observable = (ExecutionEngine) engine;
   		  	if (observable.getRunningStatus() != RunStatus.Stopped 
   		  		&&  observable.getExecutionContext().getResourceModel().getURI().equals(URI.createPlatformResourceURI(executionContext.getWorkspace().getModelPath().toString(), true)))
   		  	{

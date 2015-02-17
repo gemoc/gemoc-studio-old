@@ -1,7 +1,6 @@
 package org.gemoc.execution.engine.io.views.timeline;
 
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
@@ -19,10 +18,10 @@ import fr.obeo.timeline.view.AbstractTimelineProvider;
 
 public class TimelineProvider extends AbstractTimelineProvider implements IEngineAddon, IDisposable {
 
-	private AbstractExecutionEngine _engine;
+	private IExecutionEngine _engine;
 	private ModelExecutionTracingAddon _tracingAddon;
 	
-	public TimelineProvider(AbstractExecutionEngine engine) {
+	public TimelineProvider(IExecutionEngine engine) {
 		_engine = engine;
 		_engine.getExecutionContext().getExecutionPlatform().addEngineAddon(this);
 	}

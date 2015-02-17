@@ -2,7 +2,7 @@ package org.gemoc.gemoc_modeling_workbench.ui.debug;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.trace.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
@@ -22,9 +22,9 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	private static final EObject FAKE_INSTRUCTION = EcorePackage.eINSTANCE;
 
 	/**
-	 * The {@link AbstractExecutionEngine} to debug.
+	 * The {@link ExecutionEngine} to debug.
 	 */
-	private final AbstractExecutionEngine engine;
+	private final ExecutionEngine engine;
 
 	/**
 	 * Tells if the logical step level stack frame is created.
@@ -46,7 +46,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	 */
 	private boolean steppingReturn;
 	
-	public GemocModelDebugger(IDSLDebugEventProcessor target, AbstractExecutionEngine engine) {
+	public GemocModelDebugger(IDSLDebugEventProcessor target, ExecutionEngine engine) {
 		super(target);
 		this.engine = engine;
 	}

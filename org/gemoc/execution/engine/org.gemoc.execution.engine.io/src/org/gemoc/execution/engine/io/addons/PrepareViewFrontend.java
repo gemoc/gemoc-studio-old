@@ -2,7 +2,6 @@ package org.gemoc.execution.engine.io.addons;
 
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 import org.gemoc.execution.engine.io.views.event.EventManagerView;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
@@ -33,8 +32,7 @@ public class PrepareViewFrontend extends DefaultEngineAddon
 								ViewHelper.retrieveView(LogicalStepsView.ID);
 								ViewHelper.retrieveView(EventManagerView.ID);
 								_timelineView = ViewHelper.retrieveView(TimeLineView.ID);		
-								AbstractExecutionEngine castedEngine = (AbstractExecutionEngine)engine;
-								_timelineView.configure(castedEngine);
+								_timelineView.configure(engine);
 							}			
 						});	
 		}

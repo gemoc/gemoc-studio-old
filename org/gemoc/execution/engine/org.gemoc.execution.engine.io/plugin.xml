@@ -138,6 +138,11 @@
             Default="true"
             Name="Open Views">
       </Addon>
+      <Addon
+            Class="org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon"
+            Default="true"
+            Name="Execution tracing">
+      </Addon>
    </extension>
 
 
