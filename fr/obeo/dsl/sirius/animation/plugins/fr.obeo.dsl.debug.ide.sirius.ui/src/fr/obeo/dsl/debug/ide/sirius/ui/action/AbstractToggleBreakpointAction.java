@@ -41,7 +41,17 @@ public abstract class AbstractToggleBreakpointAction implements IExternalJavaAct
 	/**
 	 * Toggle breakpoint utility.
 	 */
-	private final DSLToggleBreakpointsUtils toggleUtiliy = new DSLToggleBreakpointsUtils(getModelIdentifier());
+	private final DSLToggleBreakpointsUtils toggleUtility = createToggleBreakpointsUtils();
+
+	/**
+	 * Creates an instance of {@link DSLToggleBreakpointsUtils}.
+	 * 
+	 * @return the created {@link DSLToggleBreakpointsUtils
+
+	 */
+	protected DSLToggleBreakpointsUtils createToggleBreakpointsUtils() {
+		return new DSLToggleBreakpointsUtils(getModelIdentifier());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -51,9 +61,9 @@ public abstract class AbstractToggleBreakpointAction implements IExternalJavaAct
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		final ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.getSelection();
-		if (toggleUtiliy.canToggleBreakpoints(selection)) {
+		if (toggleUtility.canToggleBreakpoints(selection)) {
 			try {
-				toggleUtiliy.toggleBreakpoints(selection);
+				toggleUtility.toggleBreakpoints(selection);
 			} catch (CoreException e) {
 				DebugSiriusIdeUiPlugin.getPlugin().getLog().log(
 						new Status(IStatus.ERROR, DebugSiriusIdeUiPlugin.ID, e.getLocalizedMessage(), e));
@@ -69,7 +79,7 @@ public abstract class AbstractToggleBreakpointAction implements IExternalJavaAct
 	public boolean canExecute(Collection<? extends EObject> selections) {
 		final ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.getSelection();
-		return toggleUtiliy.canToggleBreakpoints(selection);
+		return toggleUtility.canToggleBreakpoints(selection);
 	}
 
 	/**

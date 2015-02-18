@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.handlers;
+package org.gemoc.gemoc_modeling_workbench.ui.commands;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -8,10 +8,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
-import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
+import org.gemoc.gemoc_modeling_workbench.ui.breakpoint.GemocBreakpoint;
+import org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
-import fr.obeo.dsl.debug.ide.ui.DSLToggleBreakpointsUtils;
+import fr.obeo.dsl.debug.ide.DSLBreakpoint;
+import fr.obeo.dsl.debug.ide.sirius.ui.DSLToggleBreakpointsUtils;
 
 public class GemocToggleBreakpointHandler extends AbstractHandler {
 
@@ -24,24 +25,25 @@ public class GemocToggleBreakpointHandler extends AbstractHandler {
 	 * Constructor.
 	 */
 	public GemocToggleBreakpointHandler() {
-		breakpointUtils = new DSLToggleBreakpointsUtils(LogicalStepsView.MODEL_ID) {
+		breakpointUtils = new DSLToggleBreakpointsUtils(Launcher.MODEL_ID) {
 			
 			@Override
 			protected EObject getInstruction(Object selected) {
 				final EObject res;
 				
 				if (selected instanceof ModelSpecificEventWrapper) {
-					final EObject solverEvent = ((ModelSpecificEventWrapper) selected).getMSE().getSolverEvent();
-					if (solverEvent instanceof Clock) {
-						res = ((Clock) solverEvent).getTickingEvent();
-					} else {
-						res = super.getInstruction(selected);
-					}
+					res = ((ModelSpecificEventWrapper) selected).getMSE();
 				} else {
 					res = super.getInstruction(selected);
 				}
 
 				return res;
+			}
+			
+			@Override
+			protected DSLBreakpoint createBreakpoint(Object selected,
+					EObject instruction) throws CoreException {
+				return new GemocBreakpoint(identifier, instruction, true);
 			}
 			
 		};

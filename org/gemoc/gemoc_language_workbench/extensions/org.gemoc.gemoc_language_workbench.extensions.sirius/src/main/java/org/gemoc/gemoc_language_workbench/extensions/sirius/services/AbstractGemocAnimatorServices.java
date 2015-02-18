@@ -24,13 +24,11 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
-import fr.inria.aoste.trace.LogicalStep;
 
 public abstract class AbstractGemocAnimatorServices {
 
@@ -83,8 +81,7 @@ public abstract class AbstractGemocAnimatorServices {
 		}
 	}
 
-	public final static class GemocModelAnimator implements
-			IModelAnimator {
+	public final static class GemocModelAnimator implements IModelAnimator {
 
 		/**
 		 * Any layer {@link Set}, means always refresh the given
@@ -101,8 +98,7 @@ public abstract class AbstractGemocAnimatorServices {
 		private final Map<String, Set<String>> representationToRefresh = new HashMap<String, Set<String>>();
 
 		/**
-		 * {@link IModelAnimator#activate(LogicalStep) Activated}
-		 * instructions.
+		 * {@link IModelAnimator#activate(LogicalStep) Activated} instructions.
 		 */
 		private final Map<Object, Set<URI>> activatedInstructions = new HashMap<Object, Set<URI>>();
 
@@ -149,8 +145,19 @@ public abstract class AbstractGemocAnimatorServices {
 							final RefreshRepresentationsCommand refresh = new RefreshRepresentationsCommand(
 									transactionalEditingDomain,
 									new NullProgressMonitor(), representations);
-							transactionalEditingDomain.getCommandStack()
-									.execute(refresh);
+							final IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS
+									.get(resourceSet);
+							try {
+								if (checkpoint != null) {
+									checkpoint.allow(true);
+								}
+								transactionalEditingDomain.getCommandStack()
+										.execute(refresh);
+							} finally {
+								if (checkpoint != null) {
+									checkpoint.allow(false);
+								}
+							}
 						}
 					}
 				}
@@ -222,11 +229,12 @@ public abstract class AbstractGemocAnimatorServices {
 		@Override
 		public void activate(Object context, LogicalStep step) {
 			final Set<URI> instructionURIs = new HashSet<URI>();
-			for (Event event : LogicalStepHelper.getTickedEvents(step)) {
-				instructionURIs.add(EcoreUtil.getURI(event));
-				if (event.getReferencedObjectRefs().size() != 0) {
-					instructionURIs.add(EcoreUtil.getURI(event
-							.getReferencedObjectRefs().get(0)));
+			for (MSEOccurrence mseOccurrence : step.getMseOccurrences())
+			{
+				instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse().getSolverEvent()));
+				if (mseOccurrence.getMse().getCaller() != null)
+				{
+					instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse().getCaller()));
 				}
 			}
 			clear(context);
@@ -241,7 +249,8 @@ public abstract class AbstractGemocAnimatorServices {
 
 		@Override
 		public void clear(Object context) {
-			final Set<URI> oldInstructions = activatedInstructions.remove(context);
+			final Set<URI> oldInstructions = activatedInstructions
+					.remove(context);
 			if (oldInstructions != null && oldInstructions.size() != 0) {
 				final Set<URI> tmpInstructions = new HashSet<URI>(
 						oldInstructions);
@@ -252,41 +261,42 @@ public abstract class AbstractGemocAnimatorServices {
 		@Override
 		public void engineAboutToStart(IExecutionEngine engine) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void engineStarted(IExecutionEngine executionEngine) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
-		public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine, LogicalStep logicalStepToApply) 
-		{
+		public void aboutToExecuteLogicalStep(IExecutionEngine executionEngine,
+				LogicalStep logicalStepToApply) {
 			activate(executionEngine, logicalStepToApply);
 		}
 
 		@Override
-		public void aboutToExecuteMSE(IExecutionEngine executionEngine,
-				ModelSpecificEvent mse) {
+		public void aboutToExecuteMSEOccurrence(IExecutionEngine executionEngine,
+				MSEOccurrence mseOccurrence) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void engineAboutToStop(IExecutionEngine engine) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
-		public void engineStopped(IExecutionEngine engine) 
-		{
+		public void engineStopped(IExecutionEngine engine) {
 			clear(engine);
-			if (engine.getExecutionContext().getRunConfiguration().getAnimatorURI() != null)
-			{
-				Session session = SessionManager.INSTANCE.getSession(engine.getExecutionContext().getRunConfiguration().getAnimatorURI(), new NullProgressMonitor());			
+			if (engine.getExecutionContext().getRunConfiguration()
+					.getAnimatorURI() != null) {
+				Session session = SessionManager.INSTANCE.getSession(engine
+						.getExecutionContext().getRunConfiguration()
+						.getAnimatorURI(), new NullProgressMonitor());
 				session.close(new NullProgressMonitor());
 				SessionManager.INSTANCE.remove(session);
 			}
@@ -295,50 +305,56 @@ public abstract class AbstractGemocAnimatorServices {
 		@Override
 		public void aboutToSelectLogicalStep(IExecutionEngine engine) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
-		public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) {
+		public void logicalStepSelected(IExecutionEngine engine,
+				LogicalStep selectedLogicalStep) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void logicalStepExecuted(IExecutionEngine engine,
 				LogicalStep logicalStepExecuted) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
-		public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
+		public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void engineStatusChanged(IExecutionEngine engine,
 				RunStatus newStatus) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		/**
-		 * Tells if the given layer id and representation id should be refreshed.
+		 * Tells if the given layer id and representation id should be
+		 * refreshed.
 		 * 
 		 * @param representationId
 		 *            the representation id
 		 * @param layerID
 		 *            the layer id, it can be <code>null</code>
-		 * @return <code>true</code> if the given layer id and representation id should be refreshed while
-		 *         debugging the given debug model id, <code>false</code> otherwise
+		 * @return <code>true</code> if the given layer id and representation id
+		 *         should be refreshed while debugging the given debug model id,
+		 *         <code>false</code> otherwise
 		 */
-		public boolean isRepresentationToRefresh(String representationId, String layerID) {
+		public boolean isRepresentationToRefresh(String representationId,
+				String layerID) {
 			final boolean res;
 
-			final Set<String> layerIDs = representationToRefresh.get(representationId);
-			res = layerIDs == ANY_LAYER || (layerIDs != null && layerIDs.contains(layerID));
+			final Set<String> layerIDs = representationToRefresh
+					.get(representationId);
+			res = layerIDs == ANY_LAYER
+					|| (layerIDs != null && layerIDs.contains(layerID));
 
 			return res;
 		}
@@ -393,8 +409,8 @@ public abstract class AbstractGemocAnimatorServices {
 	 * @param instruction
 	 *            the {@link EObject instruction}
 	 * @return <code>true</code> if the given {@link EObject instruction} is a
-	 *         currently {@link IModelAnimator#activate(LogicalStep)
-	 *         activated}, <code>false</code> otherwise
+	 *         currently {@link IModelAnimator#activate(LogicalStep) activated},
+	 *         <code>false</code> otherwise
 	 */
 	public boolean hasBeenActivated(EObject instruction) {
 		boolean res = false;

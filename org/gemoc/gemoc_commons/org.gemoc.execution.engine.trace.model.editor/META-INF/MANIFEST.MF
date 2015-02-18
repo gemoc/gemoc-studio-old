@@ -15,5 +15,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport,
- fr.inria.aoste.trace.edit.ui;bundle-version="1.0.1";visibility:=reexport
+ fr.inria.aoste.trace.edit.ui;bundle-version="1.0.1";visibility:=reexport,
+ fr.inria.aoste.timesquare.ecl.feedback.model.edit;visibility:=reexport,
+ org.eclipse.emf.ecore.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

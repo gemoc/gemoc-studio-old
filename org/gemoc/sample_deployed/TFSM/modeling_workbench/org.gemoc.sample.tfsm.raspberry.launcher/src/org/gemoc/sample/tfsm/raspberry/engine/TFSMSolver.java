@@ -6,6 +6,8 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 import org.gemoc.sample.tfsm.single_traffic_light_sample.mocc.models.TrafficControlModel;
@@ -20,7 +22,6 @@ import fr.inria.aoste.timesquare.ccslkernel.runtime.simulation.CCSLSimulationEng
 import fr.inria.aoste.timesquare.ccslkernel.runtime.simulation.CCSLStepExecutionEngine;
 import fr.inria.aoste.timesquare.simulationpolicy.random.RandomSimulationPolicy;
 import fr.inria.aoste.trace.EventOccurrence;
-import fr.inria.aoste.trace.LogicalStep;
 import fr.inria.aoste.trace.ModelElementReference;
 import fr.inria.aoste.trace.TraceFactory;
 
@@ -84,7 +85,7 @@ public class TFSMSolver implements ISolver{
 
 		if (firedClocks.size() > 0)
 		{
-			LogicalStep ls = TraceFactory.eINSTANCE.createLogicalStep();
+			LogicalStep ls = Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep();
 			_logicalSteps.add(ls);
 			for (RuntimeClock rc : firedClocks)
 			{

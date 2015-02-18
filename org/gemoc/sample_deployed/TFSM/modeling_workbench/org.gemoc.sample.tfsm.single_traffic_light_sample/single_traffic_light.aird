@@ -200,7 +200,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_c1AzV-phEeO1TtKGEeVrvg" name="Red" outgoingEdges="_c1Bab-phEeO1TtKGEeVrvg" incomingEdges="_c1BaauphEeO1TtKGEeVrvg _c1BadOphEeO1TtKGEeVrvg">
         <target xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
         <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
-        <decorations xmi:type="viewpoint:Decoration" xmi:id="_LpgigAdeEeSLt9LsW_RG7w">
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_ehQo8J_rEeSvduzJ39bq0Q">
           <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Debug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
         </decorations>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -254,7 +254,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_c1BadOphEeO1TtKGEeVrvg" name="when switch&#xA; / &#xA;doRed&#xA;" sourceNode="_c1BaY-phEeO1TtKGEeVrvg" targetNode="_c1AzV-phEeO1TtKGEeVrvg">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_c1BadOphEeO1TtKGEeVrvg" name="after 4 on minutes&#xA; / &#xA;doRed&#xA;  !switch;" sourceNode="_c1BaY-phEeO1TtKGEeVrvg" targetNode="_c1AzV-phEeO1TtKGEeVrvg">
         <target xmi:type="org.gemoc.sample.tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
         <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_c1BadephEeO1TtKGEeVrvg" size="2">

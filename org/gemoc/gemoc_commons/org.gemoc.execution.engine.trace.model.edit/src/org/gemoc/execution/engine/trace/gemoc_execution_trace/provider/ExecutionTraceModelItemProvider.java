@@ -78,6 +78,7 @@ public class ExecutionTraceModelItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.EXECUTION_TRACE_MODEL__CHOICES);
+			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.EXECUTION_TRACE_MODEL__BRANCHES);
 		}
 		return childrenFeatures;
 	}
@@ -131,6 +132,7 @@ public class ExecutionTraceModelItemProvider
 
 		switch (notification.getFeatureID(ExecutionTraceModel.class)) {
 			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__CHOICES:
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -152,6 +154,11 @@ public class ExecutionTraceModelItemProvider
 			(createChildParameter
 				(Gemoc_execution_tracePackage.Literals.EXECUTION_TRACE_MODEL__CHOICES,
 				 Gemoc_execution_traceFactory.eINSTANCE.createChoice()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(Gemoc_execution_tracePackage.Literals.EXECUTION_TRACE_MODEL__BRANCHES,
+				 Gemoc_execution_traceFactory.eINSTANCE.createBranch()));
 	}
 
 	/**

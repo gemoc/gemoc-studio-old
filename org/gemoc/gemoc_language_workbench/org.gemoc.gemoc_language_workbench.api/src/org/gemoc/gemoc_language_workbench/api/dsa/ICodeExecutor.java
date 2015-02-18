@@ -2,7 +2,7 @@ package org.gemoc.gemoc_language_workbench.api.dsa;
 
 import java.util.List;
 
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 
 /**
  * A CodeExecutor is an entity responsible for being able to invoke a method on
@@ -14,7 +14,7 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 public interface ICodeExecutor 
 {
 	
-	Object execute(ActionCall call) throws CodeExecutionException;
+	Object execute(MSEOccurrence mseOccurrence) throws CodeExecutionException;
 	Object execute(Object caller, String methodName, List<Object> parameters) throws CodeExecutionException;
 
 }

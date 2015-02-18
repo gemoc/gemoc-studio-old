@@ -2,27 +2,22 @@
  */
 package org.gemoc.execution.engine.trace.gemoc_execution_trace.impl;
 
-import fr.inria.aoste.trace.LogicalStep;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,11 +26,13 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tr
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getNextChoice <em>Next Choice</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getNextChoices <em>Next Choices</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getPossibleLogicalSteps <em>Possible Logical Steps</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getChosenLogicalStep <em>Chosen Logical Step</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getContextState <em>Context State</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getPreviousChoice <em>Previous Choice</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getSelectedNextChoice <em>Selected Next Choice</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ChoiceImpl#getBranch <em>Branch</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,14 +40,14 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tr
  */
 public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 	/**
-	 * The cached value of the '{@link #getNextChoice() <em>Next Choice</em>}' reference.
+	 * The cached value of the '{@link #getNextChoices() <em>Next Choices</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNextChoice()
+	 * @see #getNextChoices()
 	 * @generated
 	 * @ordered
 	 */
-	protected Choice nextChoice;
+	protected EList<Choice> nextChoices;
 
 	/**
 	 * The cached value of the '{@link #getPossibleLogicalSteps() <em>Possible Logical Steps</em>}' containment reference list.
@@ -93,6 +90,26 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 	protected Choice previousChoice;
 
 	/**
+	 * The cached value of the '{@link #getSelectedNextChoice() <em>Selected Next Choice</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSelectedNextChoice()
+	 * @generated
+	 * @ordered
+	 */
+	protected Choice selectedNextChoice;
+
+	/**
+	 * The cached value of the '{@link #getBranch() <em>Branch</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBranch()
+	 * @generated
+	 * @ordered
+	 */
+	protected Branch branch;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -116,59 +133,11 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Choice getNextChoice() {
-		if (nextChoice != null && nextChoice.eIsProxy()) {
-			InternalEObject oldNextChoice = (InternalEObject)nextChoice;
-			nextChoice = (Choice)eResolveProxy(oldNextChoice);
-			if (nextChoice != oldNextChoice) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE, oldNextChoice, nextChoice));
-			}
+	public EList<Choice> getNextChoices() {
+		if (nextChoices == null) {
+			nextChoices = new EObjectWithInverseResolvingEList<Choice>(Choice.class, this, Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES, Gemoc_execution_tracePackage.CHOICE__PREVIOUS_CHOICE);
 		}
-		return nextChoice;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Choice basicGetNextChoice() {
-		return nextChoice;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetNextChoice(Choice newNextChoice, NotificationChain msgs) {
-		Choice oldNextChoice = nextChoice;
-		nextChoice = newNextChoice;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE, oldNextChoice, newNextChoice);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNextChoice(Choice newNextChoice) {
-		if (newNextChoice != nextChoice) {
-			NotificationChain msgs = null;
-			if (nextChoice != null)
-				msgs = ((InternalEObject)nextChoice).eInverseRemove(this, Gemoc_execution_tracePackage.CHOICE__PREVIOUS_CHOICE, Choice.class, msgs);
-			if (newNextChoice != null)
-				msgs = ((InternalEObject)newNextChoice).eInverseAdd(this, Gemoc_execution_tracePackage.CHOICE__PREVIOUS_CHOICE, Choice.class, msgs);
-			msgs = basicSetNextChoice(newNextChoice, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE, newNextChoice, newNextChoice));
+		return nextChoices;
 	}
 
 	/**
@@ -314,9 +283,9 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 		if (newPreviousChoice != previousChoice) {
 			NotificationChain msgs = null;
 			if (previousChoice != null)
-				msgs = ((InternalEObject)previousChoice).eInverseRemove(this, Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE, Choice.class, msgs);
+				msgs = ((InternalEObject)previousChoice).eInverseRemove(this, Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES, Choice.class, msgs);
 			if (newPreviousChoice != null)
-				msgs = ((InternalEObject)newPreviousChoice).eInverseAdd(this, Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE, Choice.class, msgs);
+				msgs = ((InternalEObject)newPreviousChoice).eInverseAdd(this, Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES, Choice.class, msgs);
 			msgs = basicSetPreviousChoice(newPreviousChoice, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -329,17 +298,118 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Choice getSelectedNextChoice() {
+		if (selectedNextChoice != null && selectedNextChoice.eIsProxy()) {
+			InternalEObject oldSelectedNextChoice = (InternalEObject)selectedNextChoice;
+			selectedNextChoice = (Choice)eResolveProxy(oldSelectedNextChoice);
+			if (selectedNextChoice != oldSelectedNextChoice) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Gemoc_execution_tracePackage.CHOICE__SELECTED_NEXT_CHOICE, oldSelectedNextChoice, selectedNextChoice));
+			}
+		}
+		return selectedNextChoice;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Choice basicGetSelectedNextChoice() {
+		return selectedNextChoice;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSelectedNextChoice(Choice newSelectedNextChoice) {
+		Choice oldSelectedNextChoice = selectedNextChoice;
+		selectedNextChoice = newSelectedNextChoice;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Gemoc_execution_tracePackage.CHOICE__SELECTED_NEXT_CHOICE, oldSelectedNextChoice, selectedNextChoice));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Branch getBranch() {
+		if (branch != null && branch.eIsProxy()) {
+			InternalEObject oldBranch = (InternalEObject)branch;
+			branch = (Branch)eResolveProxy(oldBranch);
+			if (branch != oldBranch) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Gemoc_execution_tracePackage.CHOICE__BRANCH, oldBranch, branch));
+			}
+		}
+		return branch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Branch basicGetBranch() {
+		return branch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetBranch(Branch newBranch, NotificationChain msgs) {
+		Branch oldBranch = branch;
+		branch = newBranch;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Gemoc_execution_tracePackage.CHOICE__BRANCH, oldBranch, newBranch);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBranch(Branch newBranch) {
+		if (newBranch != branch) {
+			NotificationChain msgs = null;
+			if (branch != null)
+				msgs = ((InternalEObject)branch).eInverseRemove(this, Gemoc_execution_tracePackage.BRANCH__CHOICES, Branch.class, msgs);
+			if (newBranch != null)
+				msgs = ((InternalEObject)newBranch).eInverseAdd(this, Gemoc_execution_tracePackage.BRANCH__CHOICES, Branch.class, msgs);
+			msgs = basicSetBranch(newBranch, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Gemoc_execution_tracePackage.CHOICE__BRANCH, newBranch, newBranch));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE:
-				if (nextChoice != null)
-					msgs = ((InternalEObject)nextChoice).eInverseRemove(this, Gemoc_execution_tracePackage.CHOICE__PREVIOUS_CHOICE, Choice.class, msgs);
-				return basicSetNextChoice((Choice)otherEnd, msgs);
+			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getNextChoices()).basicAdd(otherEnd, msgs);
 			case Gemoc_execution_tracePackage.CHOICE__PREVIOUS_CHOICE:
 				if (previousChoice != null)
-					msgs = ((InternalEObject)previousChoice).eInverseRemove(this, Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE, Choice.class, msgs);
+					msgs = ((InternalEObject)previousChoice).eInverseRemove(this, Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES, Choice.class, msgs);
 				return basicSetPreviousChoice((Choice)otherEnd, msgs);
+			case Gemoc_execution_tracePackage.CHOICE__BRANCH:
+				if (branch != null)
+					msgs = ((InternalEObject)branch).eInverseRemove(this, Gemoc_execution_tracePackage.BRANCH__CHOICES, Branch.class, msgs);
+				return basicSetBranch((Branch)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -352,14 +422,16 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE:
-				return basicSetNextChoice(null, msgs);
+			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES:
+				return ((InternalEList<?>)getNextChoices()).basicRemove(otherEnd, msgs);
 			case Gemoc_execution_tracePackage.CHOICE__POSSIBLE_LOGICAL_STEPS:
 				return ((InternalEList<?>)getPossibleLogicalSteps()).basicRemove(otherEnd, msgs);
 			case Gemoc_execution_tracePackage.CHOICE__CONTEXT_STATE:
 				return basicSetContextState(null, msgs);
 			case Gemoc_execution_tracePackage.CHOICE__PREVIOUS_CHOICE:
 				return basicSetPreviousChoice(null, msgs);
+			case Gemoc_execution_tracePackage.CHOICE__BRANCH:
+				return basicSetBranch(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -372,9 +444,8 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE:
-				if (resolve) return getNextChoice();
-				return basicGetNextChoice();
+			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES:
+				return getNextChoices();
 			case Gemoc_execution_tracePackage.CHOICE__POSSIBLE_LOGICAL_STEPS:
 				return getPossibleLogicalSteps();
 			case Gemoc_execution_tracePackage.CHOICE__CHOSEN_LOGICAL_STEP:
@@ -385,6 +456,12 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 			case Gemoc_execution_tracePackage.CHOICE__PREVIOUS_CHOICE:
 				if (resolve) return getPreviousChoice();
 				return basicGetPreviousChoice();
+			case Gemoc_execution_tracePackage.CHOICE__SELECTED_NEXT_CHOICE:
+				if (resolve) return getSelectedNextChoice();
+				return basicGetSelectedNextChoice();
+			case Gemoc_execution_tracePackage.CHOICE__BRANCH:
+				if (resolve) return getBranch();
+				return basicGetBranch();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -398,8 +475,9 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE:
-				setNextChoice((Choice)newValue);
+			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES:
+				getNextChoices().clear();
+				getNextChoices().addAll((Collection<? extends Choice>)newValue);
 				return;
 			case Gemoc_execution_tracePackage.CHOICE__POSSIBLE_LOGICAL_STEPS:
 				getPossibleLogicalSteps().clear();
@@ -414,6 +492,12 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 			case Gemoc_execution_tracePackage.CHOICE__PREVIOUS_CHOICE:
 				setPreviousChoice((Choice)newValue);
 				return;
+			case Gemoc_execution_tracePackage.CHOICE__SELECTED_NEXT_CHOICE:
+				setSelectedNextChoice((Choice)newValue);
+				return;
+			case Gemoc_execution_tracePackage.CHOICE__BRANCH:
+				setBranch((Branch)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -426,8 +510,8 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE:
-				setNextChoice((Choice)null);
+			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES:
+				getNextChoices().clear();
 				return;
 			case Gemoc_execution_tracePackage.CHOICE__POSSIBLE_LOGICAL_STEPS:
 				getPossibleLogicalSteps().clear();
@@ -441,6 +525,12 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 			case Gemoc_execution_tracePackage.CHOICE__PREVIOUS_CHOICE:
 				setPreviousChoice((Choice)null);
 				return;
+			case Gemoc_execution_tracePackage.CHOICE__SELECTED_NEXT_CHOICE:
+				setSelectedNextChoice((Choice)null);
+				return;
+			case Gemoc_execution_tracePackage.CHOICE__BRANCH:
+				setBranch((Branch)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -453,8 +543,8 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICE:
-				return nextChoice != null;
+			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES:
+				return nextChoices != null && !nextChoices.isEmpty();
 			case Gemoc_execution_tracePackage.CHOICE__POSSIBLE_LOGICAL_STEPS:
 				return possibleLogicalSteps != null && !possibleLogicalSteps.isEmpty();
 			case Gemoc_execution_tracePackage.CHOICE__CHOSEN_LOGICAL_STEP:
@@ -463,6 +553,10 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 				return contextState != null;
 			case Gemoc_execution_tracePackage.CHOICE__PREVIOUS_CHOICE:
 				return previousChoice != null;
+			case Gemoc_execution_tracePackage.CHOICE__SELECTED_NEXT_CHOICE:
+				return selectedNextChoice != null;
+			case Gemoc_execution_tracePackage.CHOICE__BRANCH:
+				return branch != null;
 		}
 		return super.eIsSet(featureID);
 	}

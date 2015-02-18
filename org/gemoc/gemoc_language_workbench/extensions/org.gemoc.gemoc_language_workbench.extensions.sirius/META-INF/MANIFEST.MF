@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Gemoc extension for Sirius
-Bundle-SymbolicName: org.gemoc.gemoc_language_workbench.extensions.sirius
+Bundle-SymbolicName: org.gemoc.gemoc_language_workbench.extensions.sirius;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.gemoc.gemoc_language_workbench.extensions.sirius.Activator
 Require-Bundle: org.eclipse.core.runtime,
@@ -18,7 +18,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui;bundle-version="3.106.0",
  org.eclipse.gmf.runtime.emf.core;bundle-version="1.7.0",
  fr.obeo.dsl.debug.ide.sirius.ui;bundle-version="1.0.0",
- fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0"
+ fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
+ org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
+ org.eclipse.sirius.ecore.extender;bundle-version="2.0.3",
+ org.eclipse.gef
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.gemoc_language_workbench.extensions.sirius,

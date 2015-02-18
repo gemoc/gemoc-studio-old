@@ -1,3 +1,4 @@
+Export-Package: tfsm.xdsml.api.impl
 Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  org.gemoc.sample.tfsm.model;bundle-version="0.0.0";visibility:="reexport",
  org.gemoc.sample.tfsm.k3dsa;bundle-version="0.0.0";visibility:="reexport",
@@ -12,10 +13,9 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  org.gemoc.sample.tfsm.eclmoc2as;bundle-version="0.0.0";visibility:="reexport",
  org.gemoc.execution.engine.commons;bundle-version="0.1.0",
  org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.0.0";visibility:="reexport",
- org.gemoc.gemoc_language_workbench.extensions.timesquare;bundle-version=0.0.0;visibility:=reexport
-Export-Package: tfsm.xdsml.api.impl
-Manifest-Version: 1.0
+ org.gemoc.gemoc_language_workbench.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport
 Bundle-Version: 1.0.0.qualifier
+Manifest-Version: 1.0
 Bundle-Name: Tfsm
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.gemoc.sample.tfsm.raspberry.xdsml;singleton:=true

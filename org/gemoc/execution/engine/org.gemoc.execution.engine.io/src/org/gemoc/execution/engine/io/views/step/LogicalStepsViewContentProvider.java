@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
-import fr.inria.aoste.trace.LogicalStep;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 
@@ -43,10 +43,10 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		else if (inputElement instanceof LogicalStep)
 		{
 			LogicalStep ls = (LogicalStep)inputElement;
-			ArrayList<Event> events = new ArrayList<Event>();
-			for(Event event : LogicalStepHelper.getTickedEvents(ls))
+			ArrayList<ModelSpecificEvent> events = new ArrayList<ModelSpecificEvent>();
+			for (MSEOccurrence occurrence : ls.getMseOccurrences())
 			{
-				events.add(event);
+				events.add(occurrence.getMse());
 			}
 			return events.toArray();
 		}
@@ -63,10 +63,10 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		else if (parentElement instanceof LogicalStep)
 		{
 			LogicalStep ls = (LogicalStep)parentElement;
-			ArrayList<Event> events = new ArrayList<Event>();
-			for(Event event : LogicalStepHelper.getTickedEvents(ls))
+			ArrayList<ModelSpecificEvent> events = new ArrayList<ModelSpecificEvent>();		
+			for (MSEOccurrence occurrence : ls.getMseOccurrences())
 			{
-				events.add(event);
+				events.add(occurrence.getMse());
 			}
 			return events.toArray();
 		}
@@ -90,10 +90,10 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		else if (element instanceof LogicalStep)
 		{
 			LogicalStep ls = (LogicalStep)element;
-			ArrayList<Event> events = new ArrayList<Event>();
-			for(Event event : LogicalStepHelper.getTickedEvents(ls))
+			ArrayList<ModelSpecificEvent> events = new ArrayList<ModelSpecificEvent>();
+			for (MSEOccurrence occurrence : ls.getMseOccurrences())
 			{
-				events.add(event);
+				events.add(occurrence.getMse());
 			}
 			return events.size() > 0;
 		}

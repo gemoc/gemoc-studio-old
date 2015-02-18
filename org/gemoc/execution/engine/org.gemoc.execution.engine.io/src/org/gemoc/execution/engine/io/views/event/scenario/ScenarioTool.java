@@ -4,14 +4,17 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.io.views.event.ModelSpecificEventContext;
 import org.gemoc.execution.engine.scenario.Fragment;
 import org.gemoc.execution.engine.scenario.Scenario;
 import org.gemoc.execution.engine.scenario.ScenarioFactory;
 import org.gemoc.execution.engine.scenario.impl.ScenarioFactoryImpl;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 
 public class ScenarioTool 
 {
+
 	protected ModelSpecificEventContext _mseContext;
 	protected Scenario _scenario;
 	protected Fragment _fragment;
@@ -28,15 +31,13 @@ public class ScenarioTool
 	
 	protected void safeModelModification(final Runnable runnable, String label)
 	{
-//		TransactionalEditingDomain editingDomain = 
-//				TransactionUtil.getEditingDomain(_manager.getCache().getSystem());
 		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(_resource);
-		editingDomain.getCommandStack().execute(
-				new RecordingCommand(editingDomain, label) {
-					public void doExecute() {
-						runnable.run();
-					}
-				});		
+		RecordingCommand command = new RecordingCommand(editingDomain, label) {
+			public void doExecute() {
+				runnable.run();
+			}
+		};
+		CommandExecution.execute(editingDomain, command);
 	}
 	
 	public Scenario getScenario()

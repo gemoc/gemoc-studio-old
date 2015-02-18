@@ -1,10 +1,9 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -64,8 +63,4 @@ public class LogicalStepHelper {
 		logicalStep.getEventOccurrences().addAll(eventOccurencesToKeep);
 	}
 
-	public static String getLogicalStepName(LogicalStep step) {
-		//returns the emf id or the java id if the emf id is null
-		return "LogicalStep ["+(EcoreUtil.getID(step) !=  null ? EcoreUtil.getID(step):System.identityHashCode(step)) +"]";
-	}
 }

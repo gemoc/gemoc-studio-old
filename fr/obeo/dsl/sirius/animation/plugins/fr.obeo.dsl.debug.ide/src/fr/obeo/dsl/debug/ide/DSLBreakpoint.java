@@ -98,7 +98,7 @@ public class DSLBreakpoint extends Breakpoint {
 	 * 
 	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
 	 */
-	private final class CreateMarker implements IWorkspaceRunnable {
+	public final class CreateMarker implements IWorkspaceRunnable {
 		/**
 		 * Should be persisted.
 		 */
@@ -124,7 +124,7 @@ public class DSLBreakpoint extends Breakpoint {
 		 * @param persistent
 		 *            should be persisted
 		 */
-		private CreateMarker(IFile resource, EObject instruction, boolean persistent) {
+		public CreateMarker(IFile resource, EObject instruction, boolean persistent) {
 			this.persistent = persistent;
 			this.instruction = instruction;
 			this.resource = resource;
@@ -136,22 +136,8 @@ public class DSLBreakpoint extends Breakpoint {
 		 * @see org.eclipse.core.resources.IWorkspaceRunnable#run(org.eclipse.core.runtime.IProgressMonitor)
 		 */
 		public void run(IProgressMonitor monitor) throws CoreException {
-			final IMarker marker = resource.createMarker(MARKER_ID);
-			final IItemLabelProvider provider = (IItemLabelProvider)ADAPTER_FACTORY.adapt(instruction,
-					IItemLabelProvider.class);
-			marker.setAttribute(IBreakpoint.ENABLED, true);
-			marker.setAttribute(IBreakpoint.PERSISTED, persistent);
-			marker.setAttribute(IBreakpoint.ID, getModelIdentifier());
-			marker.setAttribute(EValidator.URI_ATTRIBUTE, EcoreUtil.getURI(instruction).toString());
-			final String instructionText = provider.getText(instruction);
-			marker.setAttribute(IMarker.MESSAGE, "DSL Breakpoint: " + resource.getFullPath() + " ["
-					+ instructionText + "]");
-			try {
-				marker.setAttribute(IMAGE_ATTRIBUTE, toAttribute(provider.getImage(instruction)));
-			} catch (IOException e) {
-				Activator.getDefault().error(e);
-			}
-			marker.setAttribute(TEXT_ATTRIBUTE, instructionText);
+			final IMarker marker = resource.createMarker(getMarkerID());
+			setMarkerAttibutes(marker, resource, instruction, persistent);
 			setMarker(marker);
 		}
 	}
@@ -390,6 +376,48 @@ public class DSLBreakpoint extends Breakpoint {
 			Activator.getDefault().error(e);
 		}
 		return res;
+	}
+
+	/**
+	 * Gets the marker ID.
+	 * 
+	 * @return the marker ID
+	 */
+	protected String getMarkerID() {
+		return MARKER_ID;
+	}
+
+	/**
+	 * Sets attributes for the given {@link IMarker}.
+	 * 
+	 * @param marker
+	 *            the {@link IMarker}
+	 * @param resource
+	 *            the {@link IFile} containing the mode
+	 * @param instruction
+	 *            the {@link EObject} representing the instruction
+	 * @param persistent
+	 *            should be persisted
+	 * @throws CoreException
+	 *             if attributes can't be set
+	 */
+	protected void setMarkerAttibutes(final IMarker marker, IFile resource, EObject instruction,
+			boolean persistent) throws CoreException {
+		final IItemLabelProvider provider = (IItemLabelProvider)ADAPTER_FACTORY.adapt(instruction,
+				IItemLabelProvider.class);
+		marker.setAttribute(IBreakpoint.ENABLED, true);
+		marker.setAttribute(IBreakpoint.PERSISTED, persistent);
+		marker.setAttribute(IBreakpoint.ID, getModelIdentifier());
+		marker.setAttribute(EValidator.URI_ATTRIBUTE, EcoreUtil.getURI(instruction).toString());
+		final String instructionText = provider.getText(instruction);
+		marker.setAttribute(IMarker.MESSAGE, "DSL Breakpoint: " + resource.getFullPath() + " ["
+				+ instructionText + "]");
+		try {
+			marker.setAttribute(IMAGE_ATTRIBUTE, toAttribute(provider.getImage(instruction)));
+		} catch (IOException e) {
+			Activator.getDefault().error(e);
+		}
+		marker.setAttribute(TEXT_ATTRIBUTE, instructionText);
 	}
 
 }

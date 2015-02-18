@@ -62,6 +62,9 @@ public class Gemoc_execution_traceFactoryImpl extends EFactoryImpl implements Ge
 			case Gemoc_execution_tracePackage.SOLVER_STATE: return createSolverState();
 			case Gemoc_execution_tracePackage.MODEL_STATE: return createModelState();
 			case Gemoc_execution_tracePackage.CONTEXT_STATE: return createContextState();
+			case Gemoc_execution_tracePackage.LOGICAL_STEP: return createLogicalStep();
+			case Gemoc_execution_tracePackage.MSE_OCCURRENCE: return createMSEOccurrence();
+			case Gemoc_execution_tracePackage.BRANCH: return createBranch();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -145,6 +148,36 @@ public class Gemoc_execution_traceFactoryImpl extends EFactoryImpl implements Ge
 	public ContextState createContextState() {
 		ContextStateImpl contextState = new ContextStateImpl();
 		return contextState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LogicalStep createLogicalStep() {
+		LogicalStepImpl logicalStep = new LogicalStepImpl();
+		return logicalStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MSEOccurrence createMSEOccurrence() {
+		MSEOccurrenceImpl mseOccurrence = new MSEOccurrenceImpl();
+		return mseOccurrence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Branch createBranch() {
+		BranchImpl branch = new BranchImpl();
+		return branch;
 	}
 
 	/**

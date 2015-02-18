@@ -12,12 +12,11 @@ import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.extensions.k3.Activator;
 import org.gemoc.gemoc_language_workbench.extensions.k3.dsa.api.IK3DSAExecutorClassLoader;
-
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
 
 /**
  * Executor that is able to find the helper class associated with a given object
@@ -43,11 +42,11 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 
 	
 	@Override
-	public Object execute(ActionCall call) throws CodeExecutionException 
+	public Object execute(MSEOccurrence mseOccurrence) throws CodeExecutionException 
 	{
-		Object caller = call.getTriggeringEvent().getCaller();
-		String methodName = call.getTriggeringEvent().getAction().getName();
-		return internal_execute(caller, methodName, call.getParameters(), call);
+		Object caller = mseOccurrence.getMse().getCaller();
+		String methodName = mseOccurrence.getMse().getAction().getName();
+		return internal_execute(caller, methodName, mseOccurrence.getParameters(), mseOccurrence);
 	}
 
 	@Override
@@ -56,7 +55,7 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 		return internal_execute(caller, methodName, parameters, null);
 	}
 	
-	private Object internal_execute(Object caller, String methodName, Collection<Object> parameters, ActionCall call) throws CodeExecutionException 
+	private Object internal_execute(Object caller, String methodName, Collection<Object> parameters, MSEOccurrence mseOccurrence) throws CodeExecutionException 
 	{
 		ArrayList<Object> staticParameters = new ArrayList<Object>();
 		staticParameters.add(caller);
@@ -64,9 +63,9 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 		{
 			staticParameters.addAll(parameters);
 		}
-		Method bestApplicableMethod = getBestApplicableMethod(caller, methodName, staticParameters, call);
+		Method bestApplicableMethod = getBestApplicableMethod(caller, methodName, staticParameters);
 		if (bestApplicableMethod == null)
-			throw new CodeExecutionException("No static class found or no method founc call: " + call, call); 
+			throw new CodeExecutionException("No static class found or no method founc call: " + mseOccurrence, mseOccurrence); 
 		
 		Object[] args = new Object[0];
 		if (staticParameters != null) 
@@ -79,15 +78,14 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 		} catch (IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) 
 		{
-			throw new CodeExecutionException("Exception caught during execution of a call, see inner exception.", e, call);
+			throw new CodeExecutionException("Exception caught during execution of a call, see inner exception.", e, mseOccurrence);
 		}
 		return result;
 	}
 	
 	private Method getBestApplicableMethod(Object caller, 
 											String methodName,
-											List<Object> parameters,
-											ActionCall call)
+											List<Object> parameters)
 	{
 		Class<?> staticHelperClass = getStaticHelperClass(caller);
 		if (staticHelperClass == null)

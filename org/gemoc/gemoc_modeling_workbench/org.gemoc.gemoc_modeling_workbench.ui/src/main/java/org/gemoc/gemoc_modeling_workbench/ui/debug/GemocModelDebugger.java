@@ -2,15 +2,14 @@ package org.gemoc.gemoc_modeling_workbench.ui.debug;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.execution.engine.core.ExecutionEngine;
+import org.gemoc.execution.engine.trace.LogicalStepHelper;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
-import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.ide.AbstractDSLDebugger;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
@@ -22,9 +21,9 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	private static final EObject FAKE_INSTRUCTION = EcorePackage.eINSTANCE;
 
 	/**
-	 * The {@link AbstractExecutionEngine} to debug.
+	 * The {@link ExecutionEngine} to debug.
 	 */
-	private final AbstractExecutionEngine engine;
+	private final ExecutionEngine engine;
 
 	/**
 	 * Tells if the logical step level stack frame is created.
@@ -46,7 +45,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	 */
 	private boolean steppingReturn;
 	
-	public GemocModelDebugger(IDSLDebugEventProcessor target, AbstractExecutionEngine engine) {
+	public GemocModelDebugger(IDSLDebugEventProcessor target, ExecutionEngine engine) {
 		super(target);
 		this.engine = engine;
 	}
@@ -100,8 +99,10 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 				steppingReturn = false;
 				res = true;
 			} else {
-				for (Event event : LogicalStepHelper.getTickedEvents((LogicalStep) instruction)) {
-					res = super.shouldBreak(event) || (event.getReferencedObjectRefs().size() != 0 && super.shouldBreak(event.getReferencedObjectRefs().get(0)));
+				for (MSEOccurrence mseOccurrence : ((LogicalStep) instruction).getMseOccurrences())
+				{
+					res = super.shouldBreak(mseOccurrence.getMse()) 
+							|| (mseOccurrence.getMse().getCaller() != null && super.shouldBreak(mseOccurrence.getMse().getCaller()));
 					if (res) {
 						break;
 					}
@@ -190,9 +191,9 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	}
 
 	@Override
-	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse) 
+	public void aboutToExecuteMSEOccurrence(IExecutionEngine executionEngine, MSEOccurrence mseOccurrence) 
 	{
-		if (!control(Thread.currentThread().getName(), mse.getSolverEvent()))
+		if (!control(Thread.currentThread().getName(), mseOccurrence.getMse().getSolverEvent()))
 		{
 			throw new RuntimeException("Debug thread has stopped.");			
 		}
@@ -221,7 +222,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	}
 
 	@Override
-	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) 
+	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) 
 	{
 	}
 }

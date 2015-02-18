@@ -27,11 +27,11 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
-import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
@@ -114,6 +114,10 @@ public abstract class AbstractGemocDebuggerServices {
 		 * The current {@link StackFrame}.
 		 */
 		private StackFrame currentFrame;
+
+		public BreakpointListener() {
+			install();
+		}
 
 		/**
 		 * Installs this {@link IBreakpointListener}.
@@ -272,8 +276,19 @@ public abstract class AbstractGemocDebuggerServices {
 										transactionalEditingDomain,
 										new NullProgressMonitor(),
 										representations);
-								transactionalEditingDomain.getCommandStack()
-										.execute(refresh);
+								final IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS
+										.get(resourceSet);
+								try {
+									if (checkpoint != null) {
+										checkpoint.allow(true);
+									}
+									transactionalEditingDomain
+											.getCommandStack().execute(refresh);
+								} finally {
+									if (checkpoint != null) {
+										checkpoint.allow(false);
+									}
+								}
 							}
 						}
 					}
@@ -370,12 +385,12 @@ public abstract class AbstractGemocDebuggerServices {
 			EObject currentInstruction = frame.getCurrentInstruction();
 			final Set<URI> instructionURIs = new HashSet<URI>();
 			if (currentInstruction instanceof LogicalStep) {
-				for (Event event : LogicalStepHelper
-						.getTickedEvents((LogicalStep) currentInstruction)) {
-					instructionURIs.add(EcoreUtil.getURI(event));
-					if (event.getReferencedObjectRefs().size() != 0) {
-						instructionURIs.add(EcoreUtil.getURI(event
-								.getReferencedObjectRefs().get(0)));
+				for (MSEOccurrence mseOccurrence : ((LogicalStep) currentInstruction)
+						.getMseOccurrences()) {
+					instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse()));
+					if (mseOccurrence.getMse().getCaller() != null) {
+						instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse()
+								.getCaller()));
 					}
 				}
 			} else {
@@ -428,14 +443,14 @@ public abstract class AbstractGemocDebuggerServices {
 	}
 
 	/**
-	 * The {@link IBreakpointListener} maintaining breakpoints.
-	 */
-	public static final BreakpointListener LISTENER = new BreakpointListener();
-
-	/**
 	 * {@link Map} of {@link URI} pointing {@link DSLBreakpoint}.
 	 */
 	private static final Map<URI, Set<DSLBreakpoint>> BREAKPOINTS = new HashMap<URI, Set<DSLBreakpoint>>();
+
+	/**
+	 * The {@link IBreakpointListener} maintaining breakpoints.
+	 */
+	public static final BreakpointListener LISTENER = new BreakpointListener();
 
 	/**
 	 * Current instruction for a given {@link StackFrame}.

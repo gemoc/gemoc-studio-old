@@ -19,16 +19,17 @@ import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingException;
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.io.views.AbstractUserDecider;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
-import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
 import fr.obeo.timeline.editpart.TimelineEditPartFactory;
 import fr.obeo.timeline.view.AbstractTimelineView;
@@ -49,7 +50,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	private IContentProvider _contentProvider;
 	private ILabelProvider _labelProvider;
 	
-	private AbstractExecutionEngine _currentEngine;
+	private IExecutionEngine _currentEngine;
 	
 	private WeakHashMap<IExecutionEngine, Integer> _positions = new WeakHashMap<IExecutionEngine, Integer>();
 	
@@ -124,7 +125,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	private TimelineProvider _timelineProvider;
 	private MouseListener _mouseListener = null;
 	
-	public void configure(AbstractExecutionEngine engine)
+	public void configure(IExecutionEngine engine)
 	{
 		if (_currentEngine != engine
 			|| _timelineProvider == null)
@@ -141,7 +142,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		}
 	}
 
-	private int getStartIndex(AbstractExecutionEngine engine) {
+	private int getStartIndex(IExecutionEngine engine) {
 		int start = 0;
 		if (_positions.containsKey(engine))
 		{
@@ -221,14 +222,14 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 					LogicalStep logicalStep = (LogicalStep)o2;
 					if (_currentEngine.getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection))
 					{
-						if (choice.getNextChoice() == null)
+						if (choice.getSelectedNextChoice() == null)
 						{
 							performExecutionStep(logicalStep);
 						}
 						else
 						{
-							Choice choiceToRestore = choice.getNextChoice();
-							backToPastIfPossible(choiceToRestore);							
+							Choice choiceToRestore = choice.getSelectedNextChoice();
+							branchIfPossible(choiceToRestore);							
 						}
 					}
 				}
@@ -246,12 +247,23 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		return;
 	}
 
-	private void backToPastIfPossible(Choice choice) {
+	private void branchIfPossible(Choice choice) {
 		if (_currentEngine.hasCapability(ModelExecutionTracingAddon.class)) 
 		{
+			ModelExecutionTracingAddon addon = _currentEngine.getCapability(ModelExecutionTracingAddon.class);
 			try 
-			{
-				_currentEngine.getCapability(ModelExecutionTracingAddon.class).backToPast(choice);
+			{		
+				Choice previousChoice = choice.getPreviousChoice();
+				Branch previousBranch = previousChoice.getBranch();
+				// if the choice is the last before last one, then branch
+				if (previousBranch.getChoices().indexOf(previousChoice) == (previousBranch.getChoices().size() - 2))
+				{
+					addon.reintegrateBranch(choice);
+				}
+				else
+				{
+					addon.branch(choice);	
+				}
 			} catch (ModelExecutionTracingException e) 
 			{
 				e.printStackTrace();
@@ -270,7 +282,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		{
 			if (canDisplayTimeline(engine))
 			{
-				configure((AbstractExecutionEngine)engine);				
+				configure((ExecutionEngine)engine);				
 			}
 			else
 			{

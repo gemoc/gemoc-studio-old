@@ -45,8 +45,8 @@ public class ModelExecutionContext implements IExecutionContext
 			_resourceModel = _executionPlatform.getModelLoader().loadModel(this);					
 			_logicalStepDecider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(), executionMode);
 			setUpEditingDomain();	
-			_executionPlatform.getSolver().setUp(this);
 			setUpFeedbackModel();
+			_executionPlatform.getSolver().setUp(this);
 		} 
 		catch (CoreException e)
 		{

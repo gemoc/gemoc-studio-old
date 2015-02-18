@@ -1,7 +1,7 @@
 package org.gemoc.gemoc_language_workbench.api.extensions.languages;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -58,7 +58,7 @@ public class LanguageDefinitionExtension extends Extension
 	final public Collection<IEngineAddon> instanciateEngineAddons() 
 			throws CoreException 
 	{
-		HashSet<IEngineAddon> addons = new HashSet<IEngineAddon>();
+		ArrayList<IEngineAddon> addons = new ArrayList<IEngineAddon>();
 		for(IConfigurationElement childConfElement : _configurationElement.getChildren(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_ADDON_DEF)){
 			childConfElement.getName();				
 			final Object addon = childConfElement.createExecutableExtension(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_ENGINE_ADDON_DEF_ENGINE_ADDON_ATT);
@@ -72,7 +72,7 @@ public class LanguageDefinitionExtension extends Extension
 	final public Collection<IMSEStateController> instanciateMSEStateControllers() 
 			throws CoreException 
 	{
-		HashSet<IMSEStateController> controllers = new HashSet<IMSEStateController>();
+		ArrayList<IMSEStateController> controllers = new ArrayList<IMSEStateController>();
 		for(IConfigurationElement childConfElement : _configurationElement.getChildren(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_MSE_STATE_CONTROLLER_DEFINITION)){
 			childConfElement.getName();				
 			final Object c = childConfElement.createExecutableExtension(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_MSE_STATE_CONTROLLER_CLASS_DEFINITION);

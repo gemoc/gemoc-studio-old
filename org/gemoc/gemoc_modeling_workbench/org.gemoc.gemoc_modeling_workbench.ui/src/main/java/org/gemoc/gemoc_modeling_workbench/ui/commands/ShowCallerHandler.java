@@ -19,10 +19,9 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.gemoc.execution.engine.core.LogicalStepHelper;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
-import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.ide.sirius.ui.DebugSiriusIdeUiPlugin;
 import fr.obeo.dsl.debug.ide.sirius.ui.SiriusEditorUtils;
 import fr.obeo.dsl.debug.ide.ui.EMFEditorUtils;
@@ -47,12 +46,10 @@ public class ShowCallerHandler extends AbstractHandler {
 						.getModel();
 				Object element = step.getPossibleStep();
 				if (element instanceof LogicalStep) {
-					final List<Event> tickedEvents = LogicalStepHelper
-							.getTickedEvents((LogicalStep) element);
-					for (Event e : tickedEvents) {
-						if (e.getReferencedObjectRefs().size() != 0) {
-							openEditorAndShowInstruction(e
-									.getReferencedObjectRefs().get(0));
+					for (MSEOccurrence mseOccurrence : ((LogicalStep)element).getMseOccurrences()) {
+						if (mseOccurrence.getMse().getCaller() != null)
+						{
+							openEditorAndShowInstruction(mseOccurrence.getMse().getCaller());
 						}
 					}
 				}

@@ -47,7 +47,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;
@@ -63,15 +63,14 @@ import org.gemoc.execution.engine.io.views.event.scenario.ScenarioException;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManagerState;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
-import fr.inria.aoste.trace.LogicalStep;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 import fr.obeo.dsl.debug.ide.ui.provider.DSLLabelDecorator;
 import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
@@ -88,20 +87,16 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			super(LogicalStepsView.MODEL_ID);
 		}
 		
-		private Map<EObject, ModelSpecificEventWrapper> mapping = new HashMap<EObject, ModelSpecificEventWrapper>();			
+		private Map<ModelSpecificEvent, ModelSpecificEventWrapper> mapping = new HashMap<ModelSpecificEvent, ModelSpecificEventWrapper>();			
 		
 		@Override
 		public Image decorateImage(Image image, Object element) {
 			final Image res;
 			
 			if (element instanceof ModelSpecificEventWrapper) {
-				final EObject solverEvent = ((ModelSpecificEventWrapper) element).getMSE().getSolverEvent();
-				if (solverEvent instanceof Clock) {
-					mapping.put(((Clock) solverEvent).getTickingEvent(), (ModelSpecificEventWrapper) element);
-					res = super.decorateImage(image, ((Clock) solverEvent).getTickingEvent());
-				} else {
-					res = super.decorateImage(image, element);
-				}
+				final ModelSpecificEvent solverEvent = ((ModelSpecificEventWrapper) element).getMSE();
+				mapping.put(solverEvent, (ModelSpecificEventWrapper) element);
+				res = super.decorateImage(image, solverEvent);
 			} else {
 				res = super.decorateImage(image, element);
 			}
@@ -114,13 +109,9 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			final String res;
 			
 			if (element instanceof ModelSpecificEventWrapper) {
-				final EObject solverEvent = ((ModelSpecificEventWrapper) element).getMSE().getSolverEvent();
-				if (solverEvent instanceof Clock) {
-					mapping.put(((Clock) solverEvent).getTickingEvent(), (ModelSpecificEventWrapper) element);
-					res = super.decorateText(text, ((Clock) solverEvent).getTickingEvent());
-				} else {
-					res = super.decorateText(text, element);
-				}
+				final ModelSpecificEvent solverEvent = ((ModelSpecificEventWrapper) element).getMSE();
+				mapping.put(solverEvent, (ModelSpecificEventWrapper) element);
+				res = super.decorateText(text, solverEvent);
 			} else {
 				res = super.decorateText(text, element);
 			}
@@ -132,7 +123,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			final Object res;
 			
 			EObject instruction = rs.getEObject(breakpoint.getURI(), false);
-			if (instruction instanceof Event) {
+			if (instruction instanceof ModelSpecificEvent) {
 				res = mapping.get(instruction);
 			} else {
 				res = super.getElement(rs, breakpoint);
@@ -156,8 +147,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private Color representedEventColor;
 	private TableViewer _viewer;
 	private ViewContentProvider _contentProvider;
-	private AbstractExecutionEngine _currentSelectedEngine;
-	private Map<AbstractExecutionEngine, ModelSpecificEventContext> _mseContextMap = new HashMap<AbstractExecutionEngine, ModelSpecificEventContext>();
+	private ExecutionEngine _currentSelectedEngine;
+	private Map<ExecutionEngine, ModelSpecificEventContext> _mseContextMap = new HashMap<ExecutionEngine, ModelSpecificEventContext>();
 	private Filter _strategyFilterSelected;
 	private ISelectionChangedListener _decisionViewListener;
 	private SelectionListener _menuAndButtonListener;
@@ -426,8 +417,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 			{
 				if (element instanceof ModelSpecificEventWrapper)
 				{
-					final EObject solverEvent = ((ModelSpecificEventWrapper) element).getMSE().getSolverEvent();
-					boolean isRepresented = solverEvent instanceof Clock && _eventsToPresent.contains(EcoreUtil.getURI(((Clock)solverEvent).getTickingEvent()));
+					final ModelSpecificEvent solverEvent = ((ModelSpecificEventWrapper) element).getMSE();
+					boolean isRepresented = _eventsToPresent.contains(EcoreUtil.getURI(solverEvent));
 					if (isRepresented) {
 						return representedEventColor;
 					} else {
@@ -654,7 +645,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void motorSelectionChanged(IExecutionEngine engine) {
 		if (engine != null) 
 		{
-			_currentSelectedEngine = (AbstractExecutionEngine) engine;
+			_currentSelectedEngine = (ExecutionEngine) engine;
 			// if the selected engine is stopped we clean its cache and disable all commands
 			if (isEngineStopped())
 			{
@@ -949,14 +940,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	@Override
-	public void aboutToExecuteMSE(IExecutionEngine engine,
-			ModelSpecificEvent mse) {
+	public void aboutToExecuteMSEOccurrence(IExecutionEngine engine,
+			MSEOccurrence mseOccurrence) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
+	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) {
 		// TODO Auto-generated method stub
 		
 	}
