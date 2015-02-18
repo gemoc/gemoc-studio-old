@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_modeling_workbench.ui.breakpoint.GemocBreakpoint;
 import org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher;
 
@@ -31,9 +32,16 @@ public class GemocToggleBreakpointHandler extends AbstractHandler {
 			protected EObject getInstruction(Object selected) {
 				final EObject res;
 				
-				if (selected instanceof ModelSpecificEventWrapper) {
+				if (selected instanceof ModelSpecificEventWrapper) 
+				{
 					res = ((ModelSpecificEventWrapper) selected).getMSE();
-				} else {
+				} 
+				else if (selected instanceof MSEOccurrence)
+				{
+					res = ((MSEOccurrence) selected).getMse();				
+				} 
+				else 
+				{
 					res = super.getInstruction(selected);
 				}
 

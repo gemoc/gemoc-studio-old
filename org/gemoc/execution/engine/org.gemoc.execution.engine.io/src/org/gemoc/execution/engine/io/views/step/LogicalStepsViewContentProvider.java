@@ -1,15 +1,10 @@
 package org.gemoc.execution.engine.io.views.step;
 
-import java.util.ArrayList;
-
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 
@@ -43,12 +38,7 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		else if (inputElement instanceof LogicalStep)
 		{
 			LogicalStep ls = (LogicalStep)inputElement;
-			ArrayList<ModelSpecificEvent> events = new ArrayList<ModelSpecificEvent>();
-			for (MSEOccurrence occurrence : ls.getMseOccurrences())
-			{
-				events.add(occurrence.getMse());
-			}
-			return events.toArray();
+			return ls.getMseOccurrences().toArray();
 		}
 		return new Object[0];
 	}
@@ -63,12 +53,7 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		else if (parentElement instanceof LogicalStep)
 		{
 			LogicalStep ls = (LogicalStep)parentElement;
-			ArrayList<ModelSpecificEvent> events = new ArrayList<ModelSpecificEvent>();		
-			for (MSEOccurrence occurrence : ls.getMseOccurrences())
-			{
-				events.add(occurrence.getMse());
-			}
-			return events.toArray();
+			return ls.getMseOccurrences().toArray();
 		}
 		return new Object[0];	
 	}
@@ -90,12 +75,7 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		else if (element instanceof LogicalStep)
 		{
 			LogicalStep ls = (LogicalStep)element;
-			ArrayList<ModelSpecificEvent> events = new ArrayList<ModelSpecificEvent>();
-			for (MSEOccurrence occurrence : ls.getMseOccurrences())
-			{
-				events.add(occurrence.getMse());
-			}
-			return events.size() > 0;
+			return ls.getMseOccurrences().size() > 0;
 		}
 		return false;	
 	}

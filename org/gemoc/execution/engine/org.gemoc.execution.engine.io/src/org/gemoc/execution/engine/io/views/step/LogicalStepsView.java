@@ -38,6 +38,7 @@ import org.gemoc.execution.engine.io.views.DependantViewPart;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.execution.engine.trace.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -110,10 +111,10 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 					LogicalStep ls = (LogicalStep)element;
 					return LogicalStepHelper.getLogicalStepName(ls);
 				}
-				else if (element instanceof ModelSpecificEvent)
+				else if (element instanceof MSEOccurrence)
 				{
-					ModelSpecificEvent event = (ModelSpecificEvent)element;
-					return event.getName();
+					MSEOccurrence event = (MSEOccurrence)element;
+					return event.getMse().getName();
 				}
 				return super.getText(element);
 			}
@@ -131,7 +132,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 						return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_ICON);					
 					}
 				}
-				else if (element instanceof ModelSpecificEvent)
+				else if (element instanceof MSEOccurrence)
 				{
 					return SharedIcons.getSharedImage(SharedIcons.VISIBLE_EVENT_ICON);
 				}
@@ -142,8 +143,8 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			public Color getBackground(Object element) {
 				final Color res;
 				
-				if (element instanceof ModelSpecificEvent 
-					&& _eventsToPresent.contains(EcoreUtil.getURI((ModelSpecificEvent)element))) {
+				if (element instanceof MSEOccurrence 
+					&& _eventsToPresent.contains(EcoreUtil.getURI(((MSEOccurrence)element).getMse()))) {
 					res = _representedEventColor;
 				} else {
 					res = super.getBackground(element);
@@ -164,9 +165,9 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			
 			@Override
 			public String getText(Object element) {
-				if (element instanceof ModelSpecificEvent)
+				if (element instanceof MSEOccurrence)
 				{
-					String details = ViewUtils.eventToString((ModelSpecificEvent)element);
+					String details = ViewUtils.eventToString(((MSEOccurrence)element).getMse());
 					return "   " + details;
 				}
 				return "";
@@ -176,8 +177,8 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			public Color getBackground(Object element) {
 				final Color res;
 				
-				if (element instanceof ModelSpecificEvent 
-					&& _eventsToPresent.contains(EcoreUtil.getURI((ModelSpecificEvent)element))) {
+				if (element instanceof MSEOccurrence 
+					&& _eventsToPresent.contains(EcoreUtil.getURI(((MSEOccurrence)element).getMse()))) {
 					res = _representedEventColor;
 				} else {
 					res = super.getBackground(element);
@@ -268,7 +269,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 						{
 							_lastSelectedLogicalStep = (LogicalStep)path.getLastSegment();						
 						}
-						else if (path.getLastSegment() instanceof ModelSpecificEvent)
+						else if (path.getLastSegment() instanceof MSEOccurrence)
 						{
 							_lastSelectedLogicalStep = (LogicalStep) path.getFirstSegment();
 						}

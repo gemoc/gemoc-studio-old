@@ -193,7 +193,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	@Override
 	public void aboutToExecuteMSEOccurrence(IExecutionEngine executionEngine, MSEOccurrence mseOccurrence) 
 	{
-		if (!control(Thread.currentThread().getName(), mseOccurrence.getMse().getSolverEvent()))
+		if (!control(Thread.currentThread().getName(), mseOccurrence.getMse()))
 		{
 			throw new RuntimeException("Debug thread has stopped.");			
 		}
