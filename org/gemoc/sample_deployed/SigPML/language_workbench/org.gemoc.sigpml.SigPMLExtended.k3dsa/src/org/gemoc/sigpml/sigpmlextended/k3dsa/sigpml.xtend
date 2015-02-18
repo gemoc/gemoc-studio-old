@@ -1,4 +1,4 @@
-package org.gemoc.sigpml.k3dsa
+package org.gemoc.sigpml.sigpmlextended.k3dsa
 
 import cnrs.luchogie.up.InteractiveSwingPlotter
 import cnrs.luchogie.up.SwingPlotter
@@ -16,18 +16,18 @@ import java.util.Map
 
 import javax.swing.JFrame
 
-import org.gemoc.sigpml.Agent
-import org.gemoc.sigpml.HWComputationalResource
-import org.gemoc.sigpml.InputPort
-import org.gemoc.sigpml.NamedElement
-import org.gemoc.sigpml.OutputPort
-import org.gemoc.sigpml.Place
-import org.gemoc.sigpml.Port
-import org.gemoc.sigpml.System
+import sigpmlextended.Agent
+import sigpmlextended.HWComputationalResource
+import sigpmlextended.InputPort
+import sigpmlextended.NamedElement
+import sigpmlextended.OutputPort
+import sigpmlextended.Place
+import sigpmlextended.Port
+import sigpmlextended.System
 
-import static extension org.gemoc.sigpml.k3dsa.InputPortAspect.*
-import static extension org.gemoc.sigpml.k3dsa.OutputPortAspect.*
-import static extension org.gemoc.sigpml.k3dsa.SystemAspect.*
+import static extension org.gemoc.sigpml.sigpmlextended.k3dsa.InputPortAspect.*
+import static extension org.gemoc.sigpml.sigpmlextended.k3dsa.OutputPortAspect.*
+import static extension org.gemoc.sigpml.sigpmlextended.k3dsa.SystemAspect.*
 
 @Aspect(className = HWComputationalResource)
 class HWComputationalResourceAspect {
@@ -213,7 +213,7 @@ class SystemAspect {
 abstract class NamedElementAspect {
 	def System getSystem() {
 		var contents = _self.eResource.contents
-		val system = contents.findFirst[x | x instanceof org.gemoc.sigpml.System] as org.gemoc.sigpml.System
+		val system = contents.findFirst[x | x instanceof sigpmlextended.System] as sigpmlextended.System
 		
 		if (system != null && system.sharedMemory == null)
 			system.sharedMemory = LinkedListMultimap.create
