@@ -72,6 +72,31 @@
              id="org.gemoc.gemoc_modeling_workbench.ui.debugModel">
        </debugModelPresentation>
     </extension>
+    <extension
+          id="org.gemoc.gemoc_modeling_workbench.ui.breakpoint.breakpointMarker"
+          point="org.eclipse.core.resources.markers">
+       <persistent
+             value="true">
+       </persistent>
+       <super
+             type="fr.obeo.dsl.debug.ide.breakpointMarker">
+       </super>
+       <attribute
+             name="org.gemoc.gemoc_modeling_workbench.ui.breakpoint.breakOnLogicalStep">
+       </attribute>
+       <attribute
+             name="org.gemoc.gemoc_modeling_workbench.ui.breakpoint.breakOnMSE">
+       </attribute>
+    </extension>
+    <extension
+          point="org.eclipse.debug.core.breakpoints">
+       <breakpoint
+             class="org.gemoc.gemoc_modeling_workbench.ui.breakpoint.GemocBreakpoint"
+             id="org.gemoc.gemoc_modeling_workbench.ui.breakpoint.gemocBreakpoint"
+             markerType="org.gemoc.gemoc_modeling_workbench.ui.breakpoint.breakpointMarker"
+             name="Gemoc Breakpoints">
+       </breakpoint>
+    </extension>
    <extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
     <launchConfigurationTypeImage
         icon="icons/IconeGemocModel-16.png"
@@ -129,6 +154,26 @@
          </contextualLaunch>
       </shortcut>
    </extension>
+ <extension
+       point="org.eclipse.debug.ui.detailPaneFactories">
+    <detailFactories
+          class="org.gemoc.gemoc_modeling_workbench.ui.breakpoint.BreakpointDetailPaneFactory"
+          id="org.gemoc.gemoc_modeling_workbench.ui.breakpoint.detailFactories">
+       <enablement>
+          <with
+                variable="selection">
+             <count
+                   value="1">
+             </count>
+             <iterate>
+                <instanceof
+                      value="org.gemoc.gemoc_modeling_workbench.ui.breakpoint.GemocBreakpoint">
+                </instanceof>
+             </iterate>
+          </with>
+       </enablement>
+    </detailFactories>
+ </extension>
  <extension
        point="org.eclipse.ui.newWizards">
     <wizard
@@ -223,6 +268,11 @@
                id="org.gemoc.gemoc_modeling_workbench.ui.timeline.ShowCallerCommand"
                name="Show Caller">
          </command>
+         <command
+               defaultHandler="org.gemoc.gemoc_modeling_workbench.ui.commands.GemocToggleBreakpointHandler"
+               id="org.gemoc.gemoc_modeling_workbench.ui.ToggleBreapointCommand"
+               name="Toggle breapoint">
+         </command>
       </extension>
       <extension
             point="org.eclipse.ui.menus">
@@ -282,6 +332,26 @@
                      </and>
                   </with>
                </visibleWhen>
+            </command>
+         </menuContribution>
+         <menuContribution
+               allPopups="false"
+               locationURI="popup:org.gemoc.execution.engine.io.views.steps.LogicalStepsView">
+            <command
+                  commandId="org.gemoc.gemoc_modeling_workbench.ui.ToggleBreapointCommand"
+                  icon="icons/breakpoint.gif"
+                  label="Toggle breakpoint"
+                  style="push">
+            </command>
+         </menuContribution>
+         <menuContribution
+               allPopups="false"
+               locationURI="popup:org.gemoc.execution.engine.io.views.event.EventManagerView">
+            <command
+                  commandId="org.gemoc.gemoc_modeling_workbench.ui.ToggleBreapointCommand"
+                  icon="icons/breakpoint.gif"
+                  label="Toggle breakpoint"
+                  style="push">
             </command>
          </menuContribution>
       </extension>
