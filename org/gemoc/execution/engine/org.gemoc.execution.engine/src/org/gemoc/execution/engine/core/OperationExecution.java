@@ -1,20 +1,21 @@
 package org.gemoc.execution.engine.core;
 
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 public abstract class OperationExecution 
 {
 
-	private ModelSpecificEvent _mse;
+	private MSEOccurrence _mseOccurrence;
 	private IExecutionEngine _engine;
 	private Object _result;
 	
-	protected OperationExecution(ModelSpecificEvent mse, IExecutionEngine engine)
+	protected OperationExecution(MSEOccurrence mseOccurrence, IExecutionEngine engine)
 	{
-		_mse = mse;
+		_mseOccurrence = mseOccurrence;
 		_engine = engine;
 	}
 	
@@ -30,9 +31,9 @@ public abstract class OperationExecution
 		return _engine;
 	}
 	
-	protected ModelSpecificEvent getMSE()
+	protected MSEOccurrence getMSEOccurrence()
 	{
-		return _mse;
+		return _mseOccurrence;
 	}
 
 	protected void setResult(Object result)

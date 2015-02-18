@@ -40,7 +40,16 @@ import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
+
+/**
+ * 
+ * Class responsible for feeding the trace model
+ * and to perform the move backward/forward.
+ * @author ftanguy
+ *
+ */
 public class ModelExecutionTracingAddon extends DefaultEngineAddon {
+
 	
 	private TransactionalEditingDomain getEditingDomain()
 	{
@@ -164,7 +173,8 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		Resource traceResource = _executionTraceModel.eResource();
 		if (traceResource.getContents().size() > 0) 
 		{			
-		    Copier copier = new GCopier();		    
+			// copy the model
+			Copier copier = new GCopier();		    
 		    EObject result = copier.copy(_executionContext.getResourceModel().getContents().get(0));
 		    copier.copyReferences();
 			
@@ -241,7 +251,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		return choice;
 	}
 
-	public void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
+	private void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
 
 		RecordingCommand command = new RecordingCommand(getEditingDomain(), "update trace model") {
 
@@ -257,7 +267,6 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 				}		
 				choice.getPossibleLogicalSteps().addAll(possibleLogicalSteps);
 				_lastChoice = choice;
-				_executionTraceModel.getChoices().add(choice);
 				saveTraceModel(0);
 			}};
 		CommandExecution.execute(getEditingDomain(), command);

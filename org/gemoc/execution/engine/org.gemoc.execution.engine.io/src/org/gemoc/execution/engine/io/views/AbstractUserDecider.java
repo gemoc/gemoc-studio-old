@@ -26,13 +26,13 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 	private Semaphore _semaphore = null;
 
 	@Override
-	public int decide(final IExecutionEngine engine, final List<LogicalStep> possibleLogicalSteps)
+	public LogicalStep decide(final IExecutionEngine engine, final List<LogicalStep> possibleLogicalSteps)
 			throws InterruptedException {
 		_preemptionHappened = false;
 		_semaphore = new Semaphore(0);
 		if(!isStepByStep() 
 			&& engine.getPossibleLogicalSteps().size() == 1) 
-			return 0;
+			return possibleLogicalSteps.get(0);
 
 		decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
 		
@@ -93,9 +93,8 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 		decisionView.removeMenuListener(menuListener);
 		decisionView.removeDoubleClickListener(doubleClickListener);
 		if (_preemptionHappened)
-			return -1;
-		return engine.getPossibleLogicalSteps().indexOf(_selectedLogicalStep);
-
+			return null;
+		return _selectedLogicalStep;
 	}
 
 	private LogicalStep _selectedLogicalStep;

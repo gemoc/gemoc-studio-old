@@ -1,10 +1,9 @@
 package org.gemoc.gemoc_language_workbench.api.engine_addon;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 
 public class DefaultEngineAddon implements IEngineAddon {
@@ -42,7 +41,7 @@ public class DefaultEngineAddon implements IEngineAddon {
 
 
 	@Override
-	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse) 
+	public void aboutToExecuteMSEOccurrence(IExecutionEngine executionEngine, MSEOccurrence mseOccurrence) 
 	{
 	}
 
@@ -62,7 +61,7 @@ public class DefaultEngineAddon implements IEngineAddon {
 	}
 
 	@Override
-	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) 
+	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) 
 	{
 	}
 

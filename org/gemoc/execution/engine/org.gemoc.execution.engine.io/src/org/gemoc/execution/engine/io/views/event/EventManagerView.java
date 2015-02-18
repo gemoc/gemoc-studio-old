@@ -47,7 +47,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;
@@ -64,6 +64,7 @@ import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManagerState;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -146,8 +147,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	private Color representedEventColor;
 	private TableViewer _viewer;
 	private ViewContentProvider _contentProvider;
-	private AbstractExecutionEngine _currentSelectedEngine;
-	private Map<AbstractExecutionEngine, ModelSpecificEventContext> _mseContextMap = new HashMap<AbstractExecutionEngine, ModelSpecificEventContext>();
+	private ExecutionEngine _currentSelectedEngine;
+	private Map<ExecutionEngine, ModelSpecificEventContext> _mseContextMap = new HashMap<ExecutionEngine, ModelSpecificEventContext>();
 	private Filter _strategyFilterSelected;
 	private ISelectionChangedListener _decisionViewListener;
 	private SelectionListener _menuAndButtonListener;
@@ -644,7 +645,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	public void motorSelectionChanged(IExecutionEngine engine) {
 		if (engine != null) 
 		{
-			_currentSelectedEngine = (AbstractExecutionEngine) engine;
+			_currentSelectedEngine = (ExecutionEngine) engine;
 			// if the selected engine is stopped we clean its cache and disable all commands
 			if (isEngineStopped())
 			{
@@ -939,14 +940,14 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	@Override
-	public void aboutToExecuteMSE(IExecutionEngine engine,
-			ModelSpecificEvent mse) {
+	public void aboutToExecuteMSEOccurrence(IExecutionEngine engine,
+			MSEOccurrence mseOccurrence) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
+	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) {
 		// TODO Auto-generated method stub
 		
 	}

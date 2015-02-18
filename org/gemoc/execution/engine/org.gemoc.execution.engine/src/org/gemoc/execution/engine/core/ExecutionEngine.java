@@ -2,13 +2,12 @@ package org.gemoc.execution.engine.core;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.dse.DefaultMSEStateController;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
@@ -17,7 +16,6 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.dse.IMSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
@@ -70,7 +68,7 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.When;
  * @param <T>
  * 
  */
-public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisposable {
+public class ExecutionEngine implements IExecutionEngine, IDisposable {
 
 	private boolean _started = false;
 	private boolean terminated = false;
@@ -102,7 +100,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	 * @param isTraceActive 
 	 * @param _executionContext
 	 */
-	public AbstractExecutionEngine(IExecutionContext executionContext) {
+	public ExecutionEngine(IExecutionContext executionContext) {
 		if (executionContext == null)
 			throw new IllegalArgumentException("executionContext");
 
@@ -161,14 +159,14 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			return true;
 
 		List<String> ls1TickedEventOccurences = new ArrayList<String>();
-		for (MSEExecutionContext context : ls1.getEventExecutionContexts())
+		for (MSEOccurrence mseOccurence : ls1.getMseOccurrences())
 		{
-			ls1TickedEventOccurences.add(context.getMse().getName());
+			ls1TickedEventOccurences.add(mseOccurence.getMse().getName());
 		}
 		List<String> ls2TickedEventOccurences = new ArrayList<String>();
-		for (MSEExecutionContext context : ls2.getEventExecutionContexts())
+		for (MSEOccurrence mseOccurence : ls2.getMseOccurrences())
 		{
-			ls2TickedEventOccurences.add(context.getMse().getName());
+			ls2TickedEventOccurences.add(mseOccurence.getMse().getName());
 		}
 
 		if (ls1TickedEventOccurences.size() == ls2TickedEventOccurences.size()) {
@@ -187,12 +185,12 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			
 			for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 			{
-				addon.engineStarted(AbstractExecutionEngine.this);
+				addon.engineStarted(ExecutionEngine.this);
 			}
 			
 			// register this engine using a unique name
 			String engineName = Thread.currentThread().getName();
-			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerEngine(engineName, AbstractExecutionEngine.this);
+			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerEngine(engineName, ExecutionEngine.this);
 
 			setEngineStatus(EngineStatus.RunStatus.Running);
 			long count = 0;
@@ -207,34 +205,33 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 					updatePossibleLogicalSteps();
 					// 2- select one solution from available logical step /
 					// select interactive vs batch
-					int selectedLogicalStepIndex;
+					LogicalStep selectedLogicalStep;
 					if (_possibleLogicalSteps.size() == 0) {
 						Activator.getDefault().debug("No more LogicalStep to run");
 						stop();
 					} else {
 						Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
 						setEngineStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
-						selectedLogicalStepIndex = _executionContext.getLogicalStepDecider().decide(AbstractExecutionEngine.this, _possibleLogicalSteps);
+						selectedLogicalStep = _executionContext.getLogicalStepDecider().decide(ExecutionEngine.this, _possibleLogicalSteps);
 						count++;
 
-						if (selectedLogicalStepIndex != -1)
+						if (selectedLogicalStep != null)
 						{
-							setSelectedLogicalStep(_possibleLogicalSteps.get(selectedLogicalStepIndex));
+							setSelectedLogicalStep(selectedLogicalStep);
 							setEngineStatus(EngineStatus.RunStatus.Running);
 
 							for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 							{
-								addon.logicalStepSelected(AbstractExecutionEngine.this, getSelectedLogicalStep());
+								addon.logicalStepSelected(ExecutionEngine.this, getSelectedLogicalStep());
 							}
 
 							// 3 - run the selected logical step
-							final LogicalStep logicalStepToApply = _possibleLogicalSteps.get(selectedLogicalStepIndex);
 							// inform the solver that we will run this step
-							getSolver().applyLogicalStepByIndex(selectedLogicalStepIndex);
+							getSolver().applyLogicalStep(selectedLogicalStep);
 							// run all the event occurrences of this logical
 							// step
-							executeLogicalStep(logicalStepToApply);
-							terminateIfLastStepsSimilar(logicalStepToApply);							
+							executeLogicalStep(selectedLogicalStep);
+							terminateIfLastStepsSimilar(selectedLogicalStep);							
 						}						
 					}
 					engineStatus.incrementNbLogicalStepRun();
@@ -304,11 +301,10 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			addon.aboutToExecuteLogicalStep(this, logicalStepToApply);
 		}
 
-		Collection<IMSEOccurrence> mseOccurences = MSEOccurrenceFactory.createMSEOccurrences(logicalStepToApply);	
-		for (final IMSEOccurrence mseOccurence : mseOccurences) 
+		for (final MSEOccurrence mseOccurence : logicalStepToApply.getMseOccurrences()) 
 		{
-			executeAssociatedActions(mseOccurence.getMSEExecutionContext().getMse());
-			executeModelSpecificEvent(mseOccurence.getMSEExecutionContext().getMse());
+			executeAssociatedActions(mseOccurence.getMse());
+			executeMSEOccurrence(mseOccurence);
 		}
 
 		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
@@ -334,8 +330,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		}
 	}
 	
-	private void executeModelSpecificEvent(ModelSpecificEvent mse)
+	private void executeMSEOccurrence(MSEOccurrence mseOccurrence)
 	{
+		ModelSpecificEvent mse = mseOccurrence.getMse();
 		if (mse.getAction() != null) 
 		{			
 			ActionModel feedbackModel = _executionContext.getFeedbackModel();
@@ -350,11 +347,12 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			OperationExecution execution = null;
 			if (whenStatements.size() == 0)
 			{
-				execution = new SynchroneExecution(mse, this);				
+				execution = new SynchroneExecution(mseOccurrence, this);				
 			}
+			// if there is a future, execute async.
 			else
 			{
-				execution = new ASynchroneExecution(mse, whenStatements, _mseStateController, this);
+				execution = new ASynchroneExecution(mseOccurrence, whenStatements, _mseStateController, this);
 			}
 			execution.run();
 		}
@@ -425,7 +423,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		}
 		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.aboutToSelectLogicalStep(AbstractExecutionEngine.this);
+			addon.aboutToSelectLogicalStep(ExecutionEngine.this);
 		}
 	}
 	

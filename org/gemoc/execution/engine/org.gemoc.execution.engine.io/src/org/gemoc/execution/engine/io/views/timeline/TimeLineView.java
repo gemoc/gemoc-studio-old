@@ -19,7 +19,7 @@ import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingException;
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.io.views.AbstractUserDecider;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
@@ -50,7 +50,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	private IContentProvider _contentProvider;
 	private ILabelProvider _labelProvider;
 	
-	private AbstractExecutionEngine _currentEngine;
+	private IExecutionEngine _currentEngine;
 	
 	private WeakHashMap<IExecutionEngine, Integer> _positions = new WeakHashMap<IExecutionEngine, Integer>();
 	
@@ -125,7 +125,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	private TimelineProvider _timelineProvider;
 	private MouseListener _mouseListener = null;
 	
-	public void configure(AbstractExecutionEngine engine)
+	public void configure(IExecutionEngine engine)
 	{
 		if (_currentEngine != engine
 			|| _timelineProvider == null)
@@ -142,7 +142,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		}
 	}
 
-	private int getStartIndex(AbstractExecutionEngine engine) {
+	private int getStartIndex(IExecutionEngine engine) {
 		int start = 0;
 		if (_positions.containsKey(engine))
 		{
@@ -262,7 +262,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 				}
 				else
 				{
-					addon.branch(choice);				
+					addon.branch(choice);	
 				}
 			} catch (ModelExecutionTracingException e) 
 			{
@@ -282,7 +282,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		{
 			if (canDisplayTimeline(engine))
 			{
-				configure((AbstractExecutionEngine)engine);				
+				configure((ExecutionEngine)engine);				
 			}
 			else
 			{

@@ -3,7 +3,7 @@ package org.gemoc.execution.engine.io.views.event;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.dse.DefaultMSEStateController;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
 import org.gemoc.execution.engine.scenario.Future;
@@ -11,7 +11,7 @@ import org.gemoc.execution.engine.scenario.Future;
 public class ModelSpecificEventContext 
 {
 
-	private AbstractExecutionEngine _engine;
+	private ExecutionEngine _engine;
 	
 	private ModelSpecificEventSet _mseSet;
 	
@@ -20,7 +20,7 @@ public class ModelSpecificEventContext
 	private ScenarioManager _scenarioManager;
 
 	
-	public ModelSpecificEventContext(AbstractExecutionEngine engine)
+	public ModelSpecificEventContext(ExecutionEngine engine)
 	{
 		_engine = engine;
 		_executionStep = (int) engine.getEngineStatus().getNbLogicalStepRun();
@@ -128,7 +128,7 @@ public class ModelSpecificEventContext
 		return _mseSet.getMSEs();
 	}
 	
-	public AbstractExecutionEngine getEngine()
+	public ExecutionEngine getEngine()
 	{
 		return _engine;
 	}

@@ -20,10 +20,17 @@ public class RandomDecider implements ILogicalStepDecider {
 	}
 
 	@Override
-	public int decide(IExecutionEngine engine, List<LogicalStep> possibleLogicalSteps) {
+	public LogicalStep decide(IExecutionEngine engine, List<LogicalStep> possibleLogicalSteps) {
+		int index = -1;
 		if (possibleLogicalSteps.size() < 2)
-			return 0;
-		return rand.nextInt(possibleLogicalSteps.size());
+		{
+			index = 0;
+		}
+		else
+		{
+			index = rand.nextInt(possibleLogicalSteps.size());
+		}
+		return possibleLogicalSteps.get(index);
 	}
 
 	@Override

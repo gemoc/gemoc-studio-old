@@ -36,6 +36,7 @@ import fr.obeo.dsl.debug.ide.event.debugger.VariableReply;
 import fr.obeo.dsl.debug.ide.event.model.AbstractBreakpointRequest;
 import fr.obeo.dsl.debug.ide.event.model.AbstractStepRequest;
 import fr.obeo.dsl.debug.ide.event.model.AddBreakpointRequest;
+import fr.obeo.dsl.debug.ide.event.model.ChangeBreakPointRequest;
 import fr.obeo.dsl.debug.ide.event.model.DisconnectRequest;
 import fr.obeo.dsl.debug.ide.event.model.RemoveBreakpointRequest;
 import fr.obeo.dsl.debug.ide.event.model.ResumeRequest;
@@ -46,12 +47,12 @@ import fr.obeo.dsl.debug.ide.event.model.StepReturnRequest;
 import fr.obeo.dsl.debug.ide.event.model.SuspendRequest;
 import fr.obeo.dsl.debug.ide.event.model.TerminateRequest;
 
+import java.io.Serializable;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -86,9 +87,9 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 	private final Map<String, ThreadController> controllers = new ConcurrentHashMap<String, ThreadController>();
 
 	/**
-	 * Instructions marked as breakpoints. TODO find something more powerful (expression, EClass, etc...)
+	 * Instructions marked as breakpoints with their attributes.
 	 */
-	private final Set<URI> breakpoints = new HashSet<URI>();
+	private final Map<URI, Map<String, Serializable>> breakpoints = new HashMap<URI, Map<String, Serializable>>();
 
 	/**
 	 * Constructor.
@@ -136,6 +137,9 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 			addBreakPoint(breakpointRequest.getURI());
 		} else if (breakpointRequest instanceof RemoveBreakpointRequest) {
 			removeBreakPoint(breakpointRequest.getURI());
+		} else if (breakpointRequest instanceof ChangeBreakPointRequest) {
+			changeBreakPoint(breakpointRequest.getURI(), ((ChangeBreakPointRequest)breakpointRequest)
+					.getAttribute(), ((ChangeBreakPointRequest)breakpointRequest).getValue());
 		}
 	}
 
@@ -337,7 +341,33 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#shouldBreak(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean shouldBreak(EObject instruction) {
-		return breakpoints.contains(EcoreUtil.getURI(instruction));
+		final boolean res;
+
+		res = getBreakpointAttributes(instruction, IBreakpoint.ENABLED) == Boolean.TRUE;
+
+		return res;
+	}
+
+	/**
+	 * Gets the value of the given breakpoint attribute.
+	 * 
+	 * @param instruction
+	 *            the instruction referenced in the breakpoint
+	 * @param attribute
+	 *            the attribute
+	 * @return the value of the given breakpoint attribute if any, <code>null</code> otherwise
+	 */
+	protected Serializable getBreakpointAttributes(EObject instruction, String attribute) {
+		final Serializable res;
+
+		Map<String, Serializable> attributes = breakpoints.get(EcoreUtil.getURI(instruction));
+		if (attributes != null) {
+			res = attributes.get(attribute);
+		} else {
+			res = null;
+		}
+
+		return res;
 	}
 
 	/**
@@ -346,7 +376,7 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#addBreakPoint(org.eclipse.emf.common.util.URI)
 	 */
 	public void addBreakPoint(URI instruction) {
-		breakpoints.add(instruction);
+		breakpoints.put(instruction, new HashMap<String, Serializable>());
 	}
 
 	/**
@@ -356,6 +386,17 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 	 */
 	public void removeBreakPoint(URI instruction) {
 		breakpoints.remove(instruction);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#changeBreakPoint(org.eclipse.emf.common.util.URI,
+	 *      java.lang.String, java.io.Serializable)
+	 */
+	public void changeBreakPoint(URI instruction, String attribute, Serializable value) {
+		final Map<String, Serializable> attributes = breakpoints.get(instruction);
+		attributes.put(attribute, value);
 	}
 
 	/**

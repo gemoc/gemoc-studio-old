@@ -25,12 +25,6 @@ public class SolverMock implements ISolver {
 	}
 
 	@Override
-	public LogicalStep getNextStep() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<LogicalStep> computeAndGetPossibleLogicalSteps() {
 		// TODO Auto-generated method stub
 		return null;
@@ -43,13 +37,13 @@ public class SolverMock implements ISolver {
 	}
 
 	@Override
-	public int proposeLogicalStepByIndex() {
+	public LogicalStep proposeLogicalStep() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
-	public void applyLogicalStepByIndex(int indexOfStepToApply) {
+	public void applyLogicalStep(LogicalStep logicalStep) {
 		// TODO Auto-generated method stub
 		
 	}

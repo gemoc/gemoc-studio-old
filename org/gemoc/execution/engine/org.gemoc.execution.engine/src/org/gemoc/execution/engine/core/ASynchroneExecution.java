@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 
@@ -14,7 +15,6 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.ComparisonOperator;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.Condition;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.Force;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ForceKind;
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.When;
 
 public class ASynchroneExecution extends OperationExecution
@@ -24,9 +24,9 @@ public class ASynchroneExecution extends OperationExecution
 	private IMSEStateController _clockController;
 	private HashMap<Force, When> _forces;
 	
-	public ASynchroneExecution(ModelSpecificEvent mse, Collection<When> whenStatements, IMSEStateController clockController, IExecutionEngine engine) 
+	public ASynchroneExecution(MSEOccurrence mseOccurrence, Collection<When> whenStatements, IMSEStateController clockController, IExecutionEngine engine) 
 	{
-		super(mse, engine);
+		super(mseOccurrence, engine);
 		_whenStatements = whenStatements;
 		_clockController = clockController;
 	}
@@ -158,7 +158,7 @@ public class ASynchroneExecution extends OperationExecution
 
 	private void executeMSESynchronously() 
 	{
-		SynchroneExecution execution = new SynchroneExecution(getMSE(), getEngine());
+		SynchroneExecution execution = new SynchroneExecution(getMSEOccurrence(), getEngine());
 		execution.run();
 		setResult(execution.getResult());
 	}

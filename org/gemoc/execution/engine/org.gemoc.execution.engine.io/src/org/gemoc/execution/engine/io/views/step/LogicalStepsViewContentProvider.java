@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
@@ -44,9 +44,9 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		{
 			LogicalStep ls = (LogicalStep)inputElement;
 			ArrayList<ModelSpecificEvent> events = new ArrayList<ModelSpecificEvent>();
-			for (MSEExecutionContext context : ls.getEventExecutionContexts())
+			for (MSEOccurrence occurrence : ls.getMseOccurrences())
 			{
-				events.add(context.getMse());
+				events.add(occurrence.getMse());
 			}
 			return events.toArray();
 		}
@@ -64,9 +64,9 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		{
 			LogicalStep ls = (LogicalStep)parentElement;
 			ArrayList<ModelSpecificEvent> events = new ArrayList<ModelSpecificEvent>();		
-			for (MSEExecutionContext context : ls.getEventExecutionContexts())
+			for (MSEOccurrence occurrence : ls.getMseOccurrences())
 			{
-				events.add(context.getMse());
+				events.add(occurrence.getMse());
 			}
 			return events.toArray();
 		}
@@ -91,9 +91,9 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 		{
 			LogicalStep ls = (LogicalStep)element;
 			ArrayList<ModelSpecificEvent> events = new ArrayList<ModelSpecificEvent>();
-			for (MSEExecutionContext context : ls.getEventExecutionContexts())
+			for (MSEOccurrence occurrence : ls.getMseOccurrences())
 			{
-				events.add(context.getMse());
+				events.add(occurrence.getMse());
 			}
 			return events.size() > 0;
 		}

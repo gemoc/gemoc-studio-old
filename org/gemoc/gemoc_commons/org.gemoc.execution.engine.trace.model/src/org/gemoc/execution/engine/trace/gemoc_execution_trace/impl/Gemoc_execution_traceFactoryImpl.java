@@ -63,7 +63,7 @@ public class Gemoc_execution_traceFactoryImpl extends EFactoryImpl implements Ge
 			case Gemoc_execution_tracePackage.MODEL_STATE: return createModelState();
 			case Gemoc_execution_tracePackage.CONTEXT_STATE: return createContextState();
 			case Gemoc_execution_tracePackage.LOGICAL_STEP: return createLogicalStep();
-			case Gemoc_execution_tracePackage.MSE_EXECUTION_CONTEXT: return createMSEExecutionContext();
+			case Gemoc_execution_tracePackage.MSE_OCCURRENCE: return createMSEOccurrence();
 			case Gemoc_execution_tracePackage.BRANCH: return createBranch();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -165,9 +165,9 @@ public class Gemoc_execution_traceFactoryImpl extends EFactoryImpl implements Ge
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MSEExecutionContext createMSEExecutionContext() {
-		MSEExecutionContextImpl mseExecutionContext = new MSEExecutionContextImpl();
-		return mseExecutionContext;
+	public MSEOccurrence createMSEOccurrence() {
+		MSEOccurrenceImpl mseOccurrence = new MSEOccurrenceImpl();
+		return mseOccurrence;
 	}
 
 	/**

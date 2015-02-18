@@ -23,15 +23,15 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext} object.
+ * This is the item provider adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class MSEExecutionContextItemProvider 
+public class MSEOccurrenceItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -45,7 +45,7 @@ public class MSEExecutionContextItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MSEExecutionContextItemProvider(AdapterFactory adapterFactory) {
+	public MSEOccurrenceItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -78,9 +78,9 @@ public class MSEExecutionContextItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_MSEExecutionContext_mse_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MSEExecutionContext_mse_feature", "_UI_MSEExecutionContext_type"),
-				 Gemoc_execution_tracePackage.Literals.MSE_EXECUTION_CONTEXT__MSE,
+				 getString("_UI_MSEOccurrence_mse_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MSEOccurrence_mse_feature", "_UI_MSEOccurrence_type"),
+				 Gemoc_execution_tracePackage.Literals.MSE_OCCURRENCE__MSE,
 				 true,
 				 false,
 				 true,
@@ -100,9 +100,9 @@ public class MSEExecutionContextItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_MSEExecutionContext_parameters_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MSEExecutionContext_parameters_feature", "_UI_MSEExecutionContext_type"),
-				 Gemoc_execution_tracePackage.Literals.MSE_EXECUTION_CONTEXT__PARAMETERS,
+				 getString("_UI_MSEOccurrence_parameters_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MSEOccurrence_parameters_feature", "_UI_MSEOccurrence_type"),
+				 Gemoc_execution_tracePackage.Literals.MSE_OCCURRENCE__PARAMETERS,
 				 true,
 				 false,
 				 false,
@@ -122,9 +122,9 @@ public class MSEExecutionContextItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_MSEExecutionContext_result_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MSEExecutionContext_result_feature", "_UI_MSEExecutionContext_type"),
-				 Gemoc_execution_tracePackage.Literals.MSE_EXECUTION_CONTEXT__RESULT,
+				 getString("_UI_MSEOccurrence_result_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MSEOccurrence_result_feature", "_UI_MSEOccurrence_type"),
+				 Gemoc_execution_tracePackage.Literals.MSE_OCCURRENCE__RESULT,
 				 true,
 				 false,
 				 false,
@@ -134,14 +134,14 @@ public class MSEExecutionContextItemProvider
 	}
 
 	/**
-	 * This returns MSEExecutionContext.gif.
+	 * This returns MSEOccurrence.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/MSEExecutionContext"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/MSEOccurrence"));
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class MSEExecutionContextItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_MSEExecutionContext_type");
+		return getString("_UI_MSEOccurrence_type");
 	}
 	
 
@@ -167,9 +167,9 @@ public class MSEExecutionContextItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(MSEExecutionContext.class)) {
-			case Gemoc_execution_tracePackage.MSE_EXECUTION_CONTEXT__PARAMETERS:
-			case Gemoc_execution_tracePackage.MSE_EXECUTION_CONTEXT__RESULT:
+		switch (notification.getFeatureID(MSEOccurrence.class)) {
+			case Gemoc_execution_tracePackage.MSE_OCCURRENCE__PARAMETERS:
+			case Gemoc_execution_tracePackage.MSE_OCCURRENCE__RESULT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

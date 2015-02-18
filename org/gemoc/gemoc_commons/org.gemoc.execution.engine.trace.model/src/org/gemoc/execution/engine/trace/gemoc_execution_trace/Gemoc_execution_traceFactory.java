@@ -76,13 +76,13 @@ public interface Gemoc_execution_traceFactory extends EFactory {
 	LogicalStep createLogicalStep();
 
 	/**
-	 * Returns a new object of class '<em>MSE Execution Context</em>'.
+	 * Returns a new object of class '<em>MSE Occurrence</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>MSE Execution Context</em>'.
+	 * @return a new object of class '<em>MSE Occurrence</em>'.
 	 * @generated
 	 */
-	MSEExecutionContext createMSEExecutionContext();
+	MSEOccurrence createMSEOccurrence();
 
 	/**
 	 * Returns a new object of class '<em>Branch</em>'.

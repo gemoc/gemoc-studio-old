@@ -42,6 +42,7 @@ import fr.obeo.dsl.debug.ide.event.debugger.SuspendedReply;
 import fr.obeo.dsl.debug.ide.event.debugger.TerminatedReply;
 import fr.obeo.dsl.debug.ide.event.debugger.VariableReply;
 import fr.obeo.dsl.debug.ide.event.model.AddBreakpointRequest;
+import fr.obeo.dsl.debug.ide.event.model.ChangeBreakPointRequest;
 import fr.obeo.dsl.debug.ide.event.model.DisconnectRequest;
 import fr.obeo.dsl.debug.ide.event.model.RemoveBreakpointRequest;
 import fr.obeo.dsl.debug.ide.event.model.ResumeRequest;
@@ -49,10 +50,14 @@ import fr.obeo.dsl.debug.ide.event.model.StartRequest;
 import fr.obeo.dsl.debug.ide.event.model.SuspendRequest;
 import fr.obeo.dsl.debug.ide.event.model.TerminateRequest;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IMarkerDelta;
+import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.DebugException;
@@ -238,14 +243,24 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 	public void breakpointChanged(IBreakpoint breakpoint, IMarkerDelta delta) {
 		if (supportsBreakpoint(breakpoint)) {
 			try {
-				if (breakpoint.isEnabled() && !delta.getAttribute(IBreakpoint.ENABLED, Boolean.FALSE)) {
-					// TODO EMF representation of breakpoints ?
-					final URI uri = ((DSLBreakpoint)breakpoint).getURI();
-					factory.getDebugger().handleEvent(new AddBreakpointRequest(uri));
-				} else if (!breakpoint.isEnabled() && delta.getAttribute(IBreakpoint.ENABLED, Boolean.FALSE)) {
-					// TODO EMF representation of breakpoints ?
-					final URI uri = ((DSLBreakpoint)breakpoint).getURI();
-					factory.getDebugger().handleEvent(new RemoveBreakpointRequest(uri));
+				final URI uri = ((DSLBreakpoint)breakpoint).getURI();
+				final IMarker marker = breakpoint.getMarker();
+				for (Entry<String, Object> entry : delta.getAttributes().entrySet()) {
+					final Object markerValue = marker.getAttribute(entry.getKey());
+					final Object deltaValue = entry.getValue();
+					if ((markerValue != null && !markerValue.equals(deltaValue))
+							|| (deltaValue != null && !deltaValue.equals(markerValue))) {
+						if (delta.getKind() == IResourceDelta.ADDED) {
+							factory.getDebugger()
+									.handleEvent(
+											new ChangeBreakPointRequest(uri, entry.getKey(),
+													(Serializable)deltaValue));
+						} else {
+							factory.getDebugger().handleEvent(
+									new ChangeBreakPointRequest(uri, entry.getKey(),
+											(Serializable)markerValue));
+						}
+					}
 				}
 			} catch (CoreException e) {
 				Activator.getDefault().error(e);

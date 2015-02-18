@@ -1,28 +1,26 @@
 package org.gemoc.execution.engine.io.views.timeline;
 
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.timeline.view.AbstractTimelineProvider;
 
 public class TimelineProvider extends AbstractTimelineProvider implements IEngineAddon, IDisposable {
 
-	private AbstractExecutionEngine _engine;
+	private IExecutionEngine _engine;
 	private ModelExecutionTracingAddon _tracingAddon;
 	
-	public TimelineProvider(AbstractExecutionEngine engine) {
+	public TimelineProvider(IExecutionEngine engine) {
 		_engine = engine;
 		_engine.getExecutionContext().getExecutionPlatform().addEngineAddon(this);
 	}
@@ -151,16 +149,16 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	{
 		StringBuilder builder = new StringBuilder();
 		LogicalStep ls = (LogicalStep)getAt(branchIndex, choiceIndex, logicalStepIndex);
-		for(MSEExecutionContext context : ls.getEventExecutionContexts())
+		for(MSEOccurrence mseOccurrence : ls.getMseOccurrences())
 		{
-			appendToolTipTextToBuilder(builder, context);
+			appendToolTipTextToBuilder(builder, mseOccurrence);
 			builder.append(System.getProperty("line.separator"));
 		}
 		return builder.toString();
 	}
 
-	private void appendToolTipTextToBuilder(StringBuilder builder, MSEExecutionContext context) {
-		String s = String.format("%-50s%s", context.getMse().getName(), ViewUtils.eventToString(context.getMse()));
+	private void appendToolTipTextToBuilder(StringBuilder builder, MSEOccurrence mseOccurrence) {
+		String s = String.format("%-50s%s", mseOccurrence.getMse().getName(), ViewUtils.eventToString(mseOccurrence.getMse()));
 		builder.append(s);
 	}
 	
@@ -310,7 +308,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	}
 
 	@Override
-	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse) 
+	public void aboutToExecuteMSEOccurrence(IExecutionEngine executionEngine, MSEOccurrence mseOccurrence) 
 	{
 	}
 
@@ -346,7 +344,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	}
 
 	@Override
-	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
+	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) {
 		// TODO Auto-generated method stub
 		
 	}
