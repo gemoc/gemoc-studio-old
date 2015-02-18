@@ -25,12 +25,10 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 public abstract class AbstractGemocAnimatorServices {
 
@@ -231,12 +229,12 @@ public abstract class AbstractGemocAnimatorServices {
 		@Override
 		public void activate(Object context, LogicalStep step) {
 			final Set<URI> instructionURIs = new HashSet<URI>();
-			for (MSEExecutionContext mseContext : step.getEventExecutionContexts())
+			for (MSEOccurrence mseOccurrence : step.getMseOccurrences())
 			{
-				instructionURIs.add(EcoreUtil.getURI(mseContext.getMse().getSolverEvent()));
-				if (mseContext.getMse().getCaller() != null)
+				instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse().getSolverEvent()));
+				if (mseOccurrence.getMse().getCaller() != null)
 				{
-					instructionURIs.add(EcoreUtil.getURI(mseContext.getMse().getCaller()));
+					instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse().getCaller()));
 				}
 			}
 			clear(context);
@@ -279,8 +277,8 @@ public abstract class AbstractGemocAnimatorServices {
 		}
 
 		@Override
-		public void aboutToExecuteMSE(IExecutionEngine executionEngine,
-				ModelSpecificEvent mse) {
+		public void aboutToExecuteMSEOccurrence(IExecutionEngine executionEngine,
+				MSEOccurrence mseOccurrence) {
 			// TODO Auto-generated method stub
 
 		}
@@ -325,7 +323,7 @@ public abstract class AbstractGemocAnimatorServices {
 		}
 
 		@Override
-		public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) {
+		public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) {
 			// TODO Auto-generated method stub
 
 		}

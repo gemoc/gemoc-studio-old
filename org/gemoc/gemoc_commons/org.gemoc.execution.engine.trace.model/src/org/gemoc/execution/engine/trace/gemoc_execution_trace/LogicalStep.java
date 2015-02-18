@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep#getEventExecutionContexts <em>Event Execution Contexts</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep#getMseOccurrences <em>Mse Occurrences</em>}</li>
  * </ul>
  * </p>
  *
@@ -24,19 +24,21 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface LogicalStep extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Event Execution Contexts</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext}.
+	 * Returns the value of the '<em><b>Mse Occurrences</b></em>' containment reference list.
+	 * The list contents are of type {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence}.
+	 * It is bidirectional and its opposite is '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence#getLogicalstep <em>Logicalstep</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Event Execution Contexts</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Mse Occurrences</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Event Execution Contexts</em>' containment reference list.
-	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getLogicalStep_EventExecutionContexts()
-	 * @model containment="true" required="true"
+	 * @return the value of the '<em>Mse Occurrences</em>' containment reference list.
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getLogicalStep_MseOccurrences()
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence#getLogicalstep
+	 * @model opposite="logicalstep" containment="true" required="true"
 	 * @generated
 	 */
-	EList<MSEExecutionContext> getEventExecutionContexts();
+	EList<MSEOccurrence> getMseOccurrences();
 
 } // LogicalStep

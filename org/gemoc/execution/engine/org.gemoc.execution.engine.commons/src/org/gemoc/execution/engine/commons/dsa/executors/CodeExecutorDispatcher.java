@@ -3,7 +3,7 @@ package org.gemoc.execution.engine.commons.dsa.executors;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 
@@ -45,18 +45,18 @@ public class CodeExecutorDispatcher implements ICodeExecutor
 	}
 
 	@Override
-	public Object execute(MSEExecutionContext executionContext) throws CodeExecutionException 
+	public Object execute(MSEOccurrence mseOccurrence) throws CodeExecutionException 
 	{		
 		for (ICodeExecutor executor : _executors) 
 		{
 			try {
-				return executor.execute(executionContext);
+				return executor.execute(mseOccurrence);
 			} catch (CodeExecutionException e) 
 			{
 				e.printStackTrace();
 			}
 		}
-		throw new CodeExecutionException("No code executor could perform the action call. (a commons mistake is : missing package export of the called class or aspect)", executionContext);
+		throw new CodeExecutionException("No code executor could perform the action call. (a commons mistake is : missing package export of the called class or aspect)", mseOccurrence);
 	}
 
 	@Override

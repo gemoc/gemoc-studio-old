@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
 import org.gemoc.gemoc_language_workbench.extensions.timesquare.Activator;
@@ -96,17 +96,17 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		LogicalStep ls = Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep();
 		for (Event e : LogicalStepHelper.getTickedEvents(res))
 		{
-			MSEExecutionContext context = Gemoc_execution_traceFactory.eINSTANCE.createMSEExecutionContext();
+			MSEOccurrence mseOccurrence = Gemoc_execution_traceFactory.eINSTANCE.createMSEOccurrence();
 			for (ModelSpecificEvent mse : _feedbackModel.getEvents())
 			{
 				if (mse.getName().replace("MSE_", "").equals(e.getName().replace("evt_", "")))
 				{
-					context.setMse(mse);
+					mseOccurrence.setMse(mse);
 					break;
 				}
 			}
 			
-			ls.getEventExecutionContexts().add(context);
+			ls.getMseOccurrences().add(mseOccurrence);
 		}
 		return ls;
 	}

@@ -2,13 +2,12 @@ package org.gemoc.execution.engine.core;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.dse.DefaultMSEStateController;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
@@ -17,7 +16,6 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.dse.IMSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
@@ -161,14 +159,14 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 			return true;
 
 		List<String> ls1TickedEventOccurences = new ArrayList<String>();
-		for (MSEExecutionContext context : ls1.getEventExecutionContexts())
+		for (MSEOccurrence mseOccurence : ls1.getMseOccurrences())
 		{
-			ls1TickedEventOccurences.add(context.getMse().getName());
+			ls1TickedEventOccurences.add(mseOccurence.getMse().getName());
 		}
 		List<String> ls2TickedEventOccurences = new ArrayList<String>();
-		for (MSEExecutionContext context : ls2.getEventExecutionContexts())
+		for (MSEOccurrence mseOccurence : ls2.getMseOccurrences())
 		{
-			ls2TickedEventOccurences.add(context.getMse().getName());
+			ls2TickedEventOccurences.add(mseOccurence.getMse().getName());
 		}
 
 		if (ls1TickedEventOccurences.size() == ls2TickedEventOccurences.size()) {
@@ -303,11 +301,10 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 			addon.aboutToExecuteLogicalStep(this, logicalStepToApply);
 		}
 
-		Collection<IMSEOccurrence> mseOccurences = MSEOccurrenceFactory.createMSEOccurrences(logicalStepToApply);	
-		for (final IMSEOccurrence mseOccurence : mseOccurences) 
+		for (final MSEOccurrence mseOccurence : logicalStepToApply.getMseOccurrences()) 
 		{
-			executeAssociatedActions(mseOccurence.getMSEExecutionContext().getMse());
-			executeModelSpecificEvent(mseOccurence.getMSEExecutionContext().getMse());
+			executeAssociatedActions(mseOccurence.getMse());
+			executeMSEOccurrence(mseOccurence);
 		}
 
 		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
@@ -333,8 +330,9 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 		}
 	}
 	
-	private void executeModelSpecificEvent(ModelSpecificEvent mse)
+	private void executeMSEOccurrence(MSEOccurrence mseOccurrence)
 	{
+		ModelSpecificEvent mse = mseOccurrence.getMse();
 		if (mse.getAction() != null) 
 		{			
 			ActionModel feedbackModel = _executionContext.getFeedbackModel();
@@ -349,12 +347,12 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 			OperationExecution execution = null;
 			if (whenStatements.size() == 0)
 			{
-				execution = new SynchroneExecution(mse, this);				
+				execution = new SynchroneExecution(mseOccurrence, this);				
 			}
 			// if there is a future, execute async.
 			else
 			{
-				execution = new ASynchroneExecution(mse, whenStatements, _mseStateController, this);
+				execution = new ASynchroneExecution(mseOccurrence, whenStatements, _mseStateController, this);
 			}
 			execution.run();
 		}

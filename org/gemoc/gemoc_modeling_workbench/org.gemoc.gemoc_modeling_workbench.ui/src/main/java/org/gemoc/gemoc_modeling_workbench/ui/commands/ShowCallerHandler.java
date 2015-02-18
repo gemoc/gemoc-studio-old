@@ -20,7 +20,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 
 import fr.obeo.dsl.debug.ide.sirius.ui.DebugSiriusIdeUiPlugin;
 import fr.obeo.dsl.debug.ide.sirius.ui.SiriusEditorUtils;
@@ -46,10 +46,10 @@ public class ShowCallerHandler extends AbstractHandler {
 						.getModel();
 				Object element = step.getPossibleStep();
 				if (element instanceof LogicalStep) {
-					for (MSEExecutionContext context : ((LogicalStep)element).getEventExecutionContexts()) {
-						if (context.getMse().getCaller() != null)
+					for (MSEOccurrence mseOccurrence : ((LogicalStep)element).getMseOccurrences()) {
+						if (mseOccurrence.getMse().getCaller() != null)
 						{
-							openEditorAndShowInstruction(context.getMse().getCaller());
+							openEditorAndShowInstruction(mseOccurrence.getMse().getCaller());
 						}
 					}
 				}

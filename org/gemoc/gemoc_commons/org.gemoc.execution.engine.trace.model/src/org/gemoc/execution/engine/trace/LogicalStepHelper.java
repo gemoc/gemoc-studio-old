@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
@@ -18,9 +18,9 @@ public class LogicalStepHelper {
 
 	public static List<ModelSpecificEvent> getMSEs(LogicalStep instruction) {
 		ArrayList<ModelSpecificEvent> l = new ArrayList<ModelSpecificEvent>();
-		for (MSEExecutionContext context : instruction.getEventExecutionContexts())
+		for (MSEOccurrence o : instruction.getMseOccurrences())
 		{
-			l.add(context.getMse());
+			l.add(o.getMse());
 		}
 		return l;
 	}

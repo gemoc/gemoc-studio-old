@@ -210,26 +210,26 @@ public class Gemoc_execution_traceItemProviderAdapterFactory extends Gemoc_execu
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MSEExecutionContextItemProvider mseExecutionContextItemProvider;
+	protected MSEOccurrenceItemProvider mseOccurrenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext}.
+	 * This creates an adapter for a {@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createMSEExecutionContextAdapter() {
-		if (mseExecutionContextItemProvider == null) {
-			mseExecutionContextItemProvider = new MSEExecutionContextItemProvider(this);
+	public Adapter createMSEOccurrenceAdapter() {
+		if (mseOccurrenceItemProvider == null) {
+			mseOccurrenceItemProvider = new MSEOccurrenceItemProvider(this);
 		}
 
-		return mseExecutionContextItemProvider;
+		return mseOccurrenceItemProvider;
 	}
 
 	/**
@@ -360,7 +360,7 @@ public class Gemoc_execution_traceItemProviderAdapterFactory extends Gemoc_execu
 		if (modelStateItemProvider != null) modelStateItemProvider.dispose();
 		if (contextStateItemProvider != null) contextStateItemProvider.dispose();
 		if (logicalStepItemProvider != null) logicalStepItemProvider.dispose();
-		if (mseExecutionContextItemProvider != null) mseExecutionContextItemProvider.dispose();
+		if (mseOccurrenceItemProvider != null) mseOccurrenceItemProvider.dispose();
 		if (branchItemProvider != null) branchItemProvider.dispose();
 	}
 

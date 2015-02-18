@@ -77,7 +77,7 @@ public class LogicalStepItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.LOGICAL_STEP__EVENT_EXECUTION_CONTEXTS);
+			childrenFeatures.add(Gemoc_execution_tracePackage.Literals.LOGICAL_STEP__MSE_OCCURRENCES);
 		}
 		return childrenFeatures;
 	}
@@ -130,7 +130,7 @@ public class LogicalStepItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LogicalStep.class)) {
-			case Gemoc_execution_tracePackage.LOGICAL_STEP__EVENT_EXECUTION_CONTEXTS:
+			case Gemoc_execution_tracePackage.LOGICAL_STEP__MSE_OCCURRENCES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -150,8 +150,8 @@ public class LogicalStepItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(Gemoc_execution_tracePackage.Literals.LOGICAL_STEP__EVENT_EXECUTION_CONTEXTS,
-				 Gemoc_execution_traceFactory.eINSTANCE.createMSEExecutionContext()));
+				(Gemoc_execution_tracePackage.Literals.LOGICAL_STEP__MSE_OCCURRENCES,
+				 Gemoc_execution_traceFactory.eINSTANCE.createMSEOccurrence()));
 	}
 
 	/**

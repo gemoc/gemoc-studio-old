@@ -102,9 +102,9 @@ public class Gemoc_execution_traceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case Gemoc_execution_tracePackage.MSE_EXECUTION_CONTEXT: {
-				MSEExecutionContext mseExecutionContext = (MSEExecutionContext)theEObject;
-				T result = caseMSEExecutionContext(mseExecutionContext);
+			case Gemoc_execution_tracePackage.MSE_OCCURRENCE: {
+				MSEOccurrence mseOccurrence = (MSEOccurrence)theEObject;
+				T result = caseMSEOccurrence(mseOccurrence);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -209,17 +209,17 @@ public class Gemoc_execution_traceSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>MSE Execution Context</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>MSE Occurrence</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>MSE Execution Context</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>MSE Occurrence</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMSEExecutionContext(MSEExecutionContext object) {
+	public T caseMSEOccurrence(MSEOccurrence object) {
 		return null;
 	}
 

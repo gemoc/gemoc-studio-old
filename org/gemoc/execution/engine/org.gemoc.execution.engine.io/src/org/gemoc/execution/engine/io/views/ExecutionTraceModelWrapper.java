@@ -4,7 +4,7 @@ import org.eclipse.swt.graphics.Image;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
@@ -81,9 +81,9 @@ public class ExecutionTraceModelWrapper {
 		if (shiftedIndex < _choice.getPossibleLogicalSteps().size()) {
 			StringBuilder builder = new StringBuilder();
 			LogicalStep ls = _choice.getPossibleLogicalSteps().get(shiftedIndex);
-			for(MSEExecutionContext context : ls.getEventExecutionContexts()) 
+			for(MSEOccurrence mseOccurrence : ls.getMseOccurrences()) 
 			{
-				appendToolTipTextToBuilder(builder, context.getMse());
+				appendToolTipTextToBuilder(builder, mseOccurrence.getMse());
 				builder.append(System.getProperty("line.separator"));
 			}
 			return builder.toString();						

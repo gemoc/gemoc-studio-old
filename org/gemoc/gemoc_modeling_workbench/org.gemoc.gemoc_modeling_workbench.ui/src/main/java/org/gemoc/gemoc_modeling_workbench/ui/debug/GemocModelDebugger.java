@@ -5,12 +5,11 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.trace.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.dsl.debug.ide.AbstractDSLDebugger;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
@@ -100,10 +99,10 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 				steppingReturn = false;
 				res = true;
 			} else {
-				for (MSEExecutionContext context : ((LogicalStep) instruction).getEventExecutionContexts())
+				for (MSEOccurrence mseOccurrence : ((LogicalStep) instruction).getMseOccurrences())
 				{
-					res = super.shouldBreak(context.getMse()) 
-							|| (context.getMse().getCaller() != null && super.shouldBreak(context.getMse().getCaller()));
+					res = super.shouldBreak(mseOccurrence.getMse()) 
+							|| (mseOccurrence.getMse().getCaller() != null && super.shouldBreak(mseOccurrence.getMse().getCaller()));
 					if (res) {
 						break;
 					}
@@ -192,9 +191,9 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	}
 
 	@Override
-	public void aboutToExecuteMSE(IExecutionEngine executionEngine, ModelSpecificEvent mse) 
+	public void aboutToExecuteMSEOccurrence(IExecutionEngine executionEngine, MSEOccurrence mseOccurrence) 
 	{
-		if (!control(Thread.currentThread().getName(), mse.getSolverEvent()))
+		if (!control(Thread.currentThread().getName(), mseOccurrence.getMse().getSolverEvent()))
 		{
 			throw new RuntimeException("Debug thread has stopped.");			
 		}
@@ -223,7 +222,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	}
 
 	@Override
-	public void mseExecuted(IExecutionEngine engine, ModelSpecificEvent mse) 
+	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) 
 	{
 	}
 }

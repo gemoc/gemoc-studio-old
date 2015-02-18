@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.extensions.k3.Activator;
@@ -42,11 +42,11 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 
 	
 	@Override
-	public Object execute(MSEExecutionContext call) throws CodeExecutionException 
+	public Object execute(MSEOccurrence mseOccurrence) throws CodeExecutionException 
 	{
-		Object caller = call.getMse().getCaller();
-		String methodName = call.getMse().getAction().getName();
-		return internal_execute(caller, methodName, call.getParameters(), call);
+		Object caller = mseOccurrence.getMse().getCaller();
+		String methodName = mseOccurrence.getMse().getAction().getName();
+		return internal_execute(caller, methodName, mseOccurrence.getParameters(), mseOccurrence);
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 		return internal_execute(caller, methodName, parameters, null);
 	}
 	
-	private Object internal_execute(Object caller, String methodName, Collection<Object> parameters, MSEExecutionContext executionContext) throws CodeExecutionException 
+	private Object internal_execute(Object caller, String methodName, Collection<Object> parameters, MSEOccurrence mseOccurrence) throws CodeExecutionException 
 	{
 		ArrayList<Object> staticParameters = new ArrayList<Object>();
 		staticParameters.add(caller);
@@ -63,9 +63,9 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 		{
 			staticParameters.addAll(parameters);
 		}
-		Method bestApplicableMethod = getBestApplicableMethod(caller, methodName, staticParameters, executionContext);
+		Method bestApplicableMethod = getBestApplicableMethod(caller, methodName, staticParameters);
 		if (bestApplicableMethod == null)
-			throw new CodeExecutionException("No static class found or no method founc call: " + executionContext, executionContext); 
+			throw new CodeExecutionException("No static class found or no method founc call: " + mseOccurrence, mseOccurrence); 
 		
 		Object[] args = new Object[0];
 		if (staticParameters != null) 
@@ -78,15 +78,14 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 		} catch (IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) 
 		{
-			throw new CodeExecutionException("Exception caught during execution of a call, see inner exception.", e, executionContext);
+			throw new CodeExecutionException("Exception caught during execution of a call, see inner exception.", e, mseOccurrence);
 		}
 		return result;
 	}
 	
 	private Method getBestApplicableMethod(Object caller, 
 											String methodName,
-											List<Object> parameters,
-											MSEExecutionContext executionContext)
+											List<Object> parameters)
 	{
 		Class<?> staticHelperClass = getStaticHelperClass(caller);
 		if (staticHelperClass == null)

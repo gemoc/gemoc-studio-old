@@ -92,8 +92,8 @@ public class Gemoc_execution_traceAdapterFactory extends AdapterFactoryImpl {
 				return createLogicalStepAdapter();
 			}
 			@Override
-			public Adapter caseMSEExecutionContext(MSEExecutionContext object) {
-				return createMSEExecutionContextAdapter();
+			public Adapter caseMSEOccurrence(MSEOccurrence object) {
+				return createMSEOccurrenceAdapter();
 			}
 			@Override
 			public Adapter caseBranch(Branch object) {
@@ -204,16 +204,16 @@ public class Gemoc_execution_traceAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext <em>MSE Execution Context</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence <em>MSE Occurrence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence
 	 * @generated
 	 */
-	public Adapter createMSEExecutionContextAdapter() {
+	public Adapter createMSEOccurrenceAdapter() {
 		return null;
 	}
 

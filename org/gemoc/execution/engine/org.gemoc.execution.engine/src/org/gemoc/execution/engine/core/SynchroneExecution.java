@@ -7,20 +7,17 @@ import java.util.List;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
-
 public class SynchroneExecution extends OperationExecution 
 {
 
-	protected SynchroneExecution(ModelSpecificEvent mse, IExecutionEngine engine) 
+	protected SynchroneExecution(MSEOccurrence mseOccurrence, IExecutionEngine engine) 
 	{
-		super(mse, engine);
+		super(mseOccurrence, engine);
 	}
 
 	@Override
@@ -28,7 +25,7 @@ public class SynchroneExecution extends OperationExecution
 	{
 		for (IEngineAddon addon : getEngine().getExecutionContext().getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.aboutToExecuteMSE(getEngine(), getMSE());
+			addon.aboutToExecuteMSEOccurrence(getEngine(), getMSEOccurrence());
 		}
 		Object res = callExecutor();
 		setResult(res);
@@ -39,7 +36,7 @@ public class SynchroneExecution extends OperationExecution
 		}
 		for (IEngineAddon addon : getEngine().getExecutionContext().getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.mseExecuted(getEngine(), getMSE());
+			addon.mseOccurrenceExecuted(getEngine(), getMSEOccurrence());
 		}
 	}
 	
@@ -55,17 +52,14 @@ public class SynchroneExecution extends OperationExecution
 	{
 		final TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(getExecutionContext().getResourceModel().getResourceSet());
 		Object res = null;
-		final MSEExecutionContext call = Gemoc_execution_traceFactory.eINSTANCE.createMSEExecutionContext();
-		call.setMse(getMSE());
-		
 		if (editingDomain != null) {
-			final RecordingCommand command = new RecordingCommand(editingDomain, "execute engine event occurence " + getMSE()) {
+			final RecordingCommand command = new RecordingCommand(editingDomain, "execute engine event occurence " + getMSEOccurrence()) {
 				private List<Object> result = new ArrayList<Object>();
 
 				@Override
 				protected void doExecute() {
 					try {
-						result.add(getExecutionContext().getExecutionPlatform().getCodeExecutor().execute(call));
+						result.add(getExecutionContext().getExecutionPlatform().getCodeExecutor().execute(getMSEOccurrence()));
 					} catch (CodeExecutionException e) {
 						Activator.getDefault().error("Exception received " + e.getMessage(), e);
 					}
@@ -79,7 +73,7 @@ public class SynchroneExecution extends OperationExecution
 			res = CommandExecution.execute(editingDomain, command);
 		} else {
 			try {
-				res = getExecutionContext().getExecutionPlatform().getCodeExecutor().execute(call);
+				res = getExecutionContext().getExecutionPlatform().getCodeExecutor().execute(getMSEOccurrence());
 			} catch (CodeExecutionException e) { 
 				Activator.getDefault().error("Exception received " + e.getMessage(), e);
 			}

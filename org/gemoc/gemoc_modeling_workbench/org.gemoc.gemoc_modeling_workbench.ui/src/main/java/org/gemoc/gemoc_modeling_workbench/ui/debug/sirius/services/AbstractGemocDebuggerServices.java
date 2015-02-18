@@ -28,7 +28,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEExecutionContext;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher;
 
@@ -385,11 +385,11 @@ public abstract class AbstractGemocDebuggerServices {
 			EObject currentInstruction = frame.getCurrentInstruction();
 			final Set<URI> instructionURIs = new HashSet<URI>();
 			if (currentInstruction instanceof LogicalStep) {
-				for (MSEExecutionContext context : ((LogicalStep) currentInstruction)
-						.getEventExecutionContexts()) {
-					instructionURIs.add(EcoreUtil.getURI(context.getMse()));
-					if (context.getMse().getCaller() != null) {
-						instructionURIs.add(EcoreUtil.getURI(context.getMse()
+				for (MSEOccurrence mseOccurrence : ((LogicalStep) currentInstruction)
+						.getMseOccurrences()) {
+					instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse()));
+					if (mseOccurrence.getMse().getCaller() != null) {
+						instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse()
 								.getCaller()));
 					}
 				}
