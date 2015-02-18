@@ -72,7 +72,12 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 		if (instructionURI != null) {
 
 			final Session session;
-			final Session inSession = SessionManager.INSTANCE.getSession((EObject)element);
+			final Session inSession;
+			if (element instanceof EObject) {
+				inSession = SessionManager.INSTANCE.getSession((EObject)element);
+			} else {
+				inSession = null;
+			}
 			if (inSession != null) {
 				session = inSession;
 			} else {

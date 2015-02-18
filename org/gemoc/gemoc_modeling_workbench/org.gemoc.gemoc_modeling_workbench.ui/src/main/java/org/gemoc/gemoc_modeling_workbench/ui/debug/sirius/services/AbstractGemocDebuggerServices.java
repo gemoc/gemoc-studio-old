@@ -115,6 +115,10 @@ public abstract class AbstractGemocDebuggerServices {
 		 */
 		private StackFrame currentFrame;
 
+		public BreakpointListener() {
+			install();
+		}
+
 		/**
 		 * Installs this {@link IBreakpointListener}.
 		 */
@@ -381,12 +385,12 @@ public abstract class AbstractGemocDebuggerServices {
 			EObject currentInstruction = frame.getCurrentInstruction();
 			final Set<URI> instructionURIs = new HashSet<URI>();
 			if (currentInstruction instanceof LogicalStep) {
-				for (MSEExecutionContext context : ((LogicalStep) currentInstruction).getEventExecutionContexts())
-				{
+				for (MSEExecutionContext context : ((LogicalStep) currentInstruction)
+						.getEventExecutionContexts()) {
 					instructionURIs.add(EcoreUtil.getURI(context.getMse()));
-					if (context.getMse().getCaller() != null)
-					{
-						instructionURIs.add(EcoreUtil.getURI(context.getMse().getCaller()));					
+					if (context.getMse().getCaller() != null) {
+						instructionURIs.add(EcoreUtil.getURI(context.getMse()
+								.getCaller()));
 					}
 				}
 			} else {
@@ -439,14 +443,14 @@ public abstract class AbstractGemocDebuggerServices {
 	}
 
 	/**
-	 * The {@link IBreakpointListener} maintaining breakpoints.
-	 */
-	public static final BreakpointListener LISTENER = new BreakpointListener();
-
-	/**
 	 * {@link Map} of {@link URI} pointing {@link DSLBreakpoint}.
 	 */
 	private static final Map<URI, Set<DSLBreakpoint>> BREAKPOINTS = new HashMap<URI, Set<DSLBreakpoint>>();
+
+	/**
+	 * The {@link IBreakpointListener} maintaining breakpoints.
+	 */
+	public static final BreakpointListener LISTENER = new BreakpointListener();
 
 	/**
 	 * Current instruction for a given {@link StackFrame}.
