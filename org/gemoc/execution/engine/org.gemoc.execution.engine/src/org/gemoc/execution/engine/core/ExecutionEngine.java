@@ -363,7 +363,7 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 		return this.getClass().getName() + "@[Executor=" + getCodeExecutor() + " ; Solver=" + getSolver() + " ; ModelResource=" + _executionContext.getResourceModel()+ "]";
 	}
 
-	public <T extends IEngineAddon> boolean hasCapability(Class<T> type) {
+	public <T extends IEngineAddon> boolean hasAddon(Class<T> type) {
 		for (IEngineAddon c : _executionContext.getExecutionPlatform().getEngineAddons()) {
 			if (c.getClass().equals(type))
 				return true;
@@ -372,7 +372,7 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 	}
 
 	@SuppressWarnings("all")
-	public <T extends IEngineAddon> T getCapability(Class<T> type) {
+	public <T extends IEngineAddon> T getAddon(Class<T> type) {
 		for (IEngineAddon c : _executionContext.getExecutionPlatform().getEngineAddons()) {
 			if (c.getClass().equals(type))
 				return (T) c;
@@ -423,7 +423,7 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 		}
 		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.aboutToSelectLogicalStep(ExecutionEngine.this);
+			addon.aboutToSelectLogicalStep(ExecutionEngine.this, getPossibleLogicalSteps());
 		}
 	}
 	

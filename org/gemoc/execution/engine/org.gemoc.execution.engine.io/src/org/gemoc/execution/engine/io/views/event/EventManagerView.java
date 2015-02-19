@@ -915,7 +915,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine) {
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
+	{
 		update(engine);
 	}
 

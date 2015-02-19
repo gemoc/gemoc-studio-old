@@ -1,6 +1,7 @@
 package org.gemoc.gemoc_language_workbench.extensions.sirius.services;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -303,7 +304,8 @@ public abstract class AbstractGemocAnimatorServices {
 		}
 
 		@Override
-		public void aboutToSelectLogicalStep(IExecutionEngine engine) {
+		public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
+		{
 			// TODO Auto-generated method stub
 
 		}

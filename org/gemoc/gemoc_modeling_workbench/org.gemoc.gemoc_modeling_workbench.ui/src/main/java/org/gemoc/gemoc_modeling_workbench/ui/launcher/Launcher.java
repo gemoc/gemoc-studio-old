@@ -32,7 +32,11 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.commons.ModelExecutionContext;
 import org.gemoc.execution.engine.commons.RunConfiguration;
+import org.gemoc.execution.engine.commons.trace.IAddon;
+import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
+import org.gemoc.execution.engine.commons.trace.TraceManager;
 import org.gemoc.execution.engine.core.ExecutionEngine;
+import org.gemoc.execution.engine.core.PlainK3ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -58,7 +62,7 @@ public class Launcher
 
 	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
 
-	private ExecutionEngine _engine;
+	private IExecutionEngine _executionEngine;
 
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor)
@@ -83,11 +87,11 @@ public class Launcher
 
 			if (executionContext.getFeedbackModel() != null) // hack to find out if execution involves a solver
 			{
-				_engine = new ExecutionEngine(executionContext);				
+				_executionEngine = new ExecutionEngine(executionContext);				
 				// delegate for debug mode
 				if (ILaunchManager.DEBUG_MODE.equals(mode)) {
 					IEngineAddon animator = AbstractGemocAnimatorServices.getAnimator();
-					_engine.getExecutionContext().getExecutionPlatform().addEngineAddon(animator);
+					_executionEngine.getExecutionContext().getExecutionPlatform().addEngineAddon(animator);
 					super.launch(configuration, mode, launch, monitor);
 				} else {
 					Job job = new Job(getDebugJobName(configuration,
@@ -95,7 +99,7 @@ public class Launcher
 
 						@Override
 						protected IStatus run(IProgressMonitor monitor) {
-							_engine.start();
+							_executionEngine.start();
 							return new Status(IStatus.OK, getPluginID(),
 									"Execution was successfull");
 						}
@@ -187,11 +191,33 @@ public class Launcher
 							return new Status(IStatus.ERROR, getPluginID(), "Could not instanciate class " + executionContext.getRunConfiguration().getExecutionEntryPoint() + ".");
 						} 
 						try {
+							_executionEngine = new PlainK3ExecutionEngine(executionContext);
+							for (IEngineAddon addon : _executionEngine.getExecutionContext().getExecutionPlatform().getEngineAddons())
+							{
+								addon.engineAboutToStart(_executionEngine);
+							}
+							TraceManager.getInstance().addEngine(_executionEngine);
+							for (IEngineAddon addon : _executionEngine.getExecutionContext().getExecutionPlatform().getEngineAddons())
+							{
+								addon.engineStarted(_executionEngine);
+							}
 							method.invoke(o, parameters.get(0));
 						} catch (Exception e) {
 							e.printStackTrace();
 							return new Status(IStatus.ERROR, getPluginID(), "Invokation of method main failed.");
 						} 
+						finally
+						{
+							for (IEngineAddon addon : _executionEngine.getExecutionContext().getExecutionPlatform().getEngineAddons())
+							{
+								addon.engineAboutToStop(_executionEngine);
+							}
+							TraceManager.getInstance().removeEngine(_executionEngine);							
+							for (IEngineAddon addon : _executionEngine.getExecutionContext().getExecutionPlatform().getEngineAddons())
+							{
+								addon.engineStopped(_executionEngine);
+							}
+						}
 						return new Status(IStatus.OK, getPluginID(), "Execution was successfull");
 					}
 					
@@ -271,8 +297,8 @@ public class Launcher
 	protected IDSLDebugger getDebugger(ILaunchConfiguration configuration,
 			DSLDebugEventDispatcher dispatcher, EObject firstInstruction,
 			IProgressMonitor monitor) {
-		GemocModelDebugger res = new GemocModelDebugger(dispatcher, _engine);
-		_engine.getExecutionContext().getExecutionPlatform().addEngineAddon(res);
+		GemocModelDebugger res = new GemocModelDebugger(dispatcher, _executionEngine);
+		_executionEngine.getExecutionContext().getExecutionPlatform().addEngineAddon(res);
 		return res;
 	}
 
