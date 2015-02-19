@@ -95,6 +95,9 @@ public class PossibleStepEditPart extends AbstractGraphicalEditPart {
 			if (withLabel) {
 				add(label);
 				hasLabel = true;
+			} else {
+				ellipse.setToolTip(toolTip);
+				hasLabel = false;
 			}
 			addMouseListener(new MouseListener.Stub() {
 
@@ -226,12 +229,17 @@ public class PossibleStepEditPart extends AbstractGraphicalEditPart {
 		super.refreshVisuals();
 		final PossibleStepFigure figure = (PossibleStepFigure)getFigure();
 		if (!getModel().getChoice().hasSelected()) {
-			figure.getEllipseToolTip().setVisible(false);
 			figure.getLabel().setText(getModel().getName());
 			figure.getEllipse().setBackgroundColor(ColorConstants.orange);
-			if (withLabel && !figure.hasLabel()) {
-				figure.addLabel();
-				figure.invalidate();
+			if (withLabel) {
+				figure.getEllipseToolTip().setVisible(false);
+				if (!figure.hasLabel()) {
+					figure.addLabel();
+					figure.invalidate();
+				}
+			} else {
+				figure.getEllipseToolTip().setVisible(true);
+				figure.getEllipseToolTip().setText(getModel().getName());
 			}
 		} else {
 			figure.getEllipseToolTip().setText(getModel().getName());
