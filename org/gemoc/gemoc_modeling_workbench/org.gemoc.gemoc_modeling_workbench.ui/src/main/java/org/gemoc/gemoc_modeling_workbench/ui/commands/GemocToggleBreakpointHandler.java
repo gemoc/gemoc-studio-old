@@ -1,17 +1,24 @@
 package org.gemoc.gemoc_modeling_workbench.ui.commands;
 
+import java.util.Iterator;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.ui.ISelectionService;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_modeling_workbench.ui.breakpoint.GemocBreakpoint;
 import org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher;
 
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 import fr.obeo.dsl.debug.ide.sirius.ui.DSLToggleBreakpointsUtils;
 
@@ -73,5 +80,33 @@ public class GemocToggleBreakpointHandler extends AbstractHandler {
 
 		return null;
 	}
-
+	
+	@Override
+	public boolean isEnabled() {
+		final boolean res;
+		
+		ISelectionService service = (ISelectionService) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getService(ISelectionService.class);
+		if (service != null) {
+			final ISelection selection = service.getSelection();
+			if (selection instanceof IStructuredSelection) {
+				boolean allMSE = true;
+				final Iterator<?> it = ((IStructuredSelection) selection).iterator();
+				while (allMSE && it.hasNext()) {
+					Object current = it.next();
+					if (current instanceof ModelSpecificEventWrapper) {
+						current = ((ModelSpecificEventWrapper) current).getMSE();
+					}
+					allMSE = current instanceof ModelSpecificEvent && ((ModelSpecificEvent) current).getAction() != null;
+				}
+				res = allMSE;
+			} else {
+				res = false;
+			}
+		} else {
+			res = false;
+		}
+		
+		return res;
+	}
+	
 }

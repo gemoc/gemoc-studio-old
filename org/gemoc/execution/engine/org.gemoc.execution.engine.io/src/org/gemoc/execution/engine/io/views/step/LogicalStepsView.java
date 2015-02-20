@@ -43,7 +43,6 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.dsl.debug.ide.ui.provider.DSLLabelDecorator;
 import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
 
@@ -52,15 +51,10 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.steps.LogicalStepsView";
 	
-	// TODO should use Launcher.MODEL_ID
-	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
-
 	private Color _representedEventColor;
 
 	private TreeViewer _viewer;
 
-	private DSLLabelDecorator _decorator;
-	
 	private ColumnLabelProvider _column1LabelProvider;
 
 	private ColumnLabelProvider _column2LabelProvider;
@@ -89,7 +83,6 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 		_viewer.setUseHashlookup(true);
 		_contentProvider = new LogicalStepsViewContentProvider();
 		_viewer.setContentProvider(_contentProvider);
-		_decorator = new DSLLabelDecorator(MODEL_ID);
 		Font mono = JFaceResources.getFont(JFaceResources.TEXT_FONT);
 		_viewer.getTree().setFont(mono);
 		createColumns();
@@ -101,7 +94,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 		TreeColumn column1 = new TreeColumn(_viewer.getTree(), SWT.LEFT);
 		column1.setText("Logical Steps");
 		TreeViewerColumn viewerColumn1 = new TreeViewerColumn(_viewer, column1);
-		_column1LabelProvider = new DecoratingColumLabelProvider(new ColumnLabelProvider()
+		_column1LabelProvider = new ColumnLabelProvider()
 		{
 			
 			@Override
@@ -153,14 +146,14 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 				return res;
 			}
 			
-		}, _decorator);
+		};
 		viewerColumn1.setLabelProvider(_column1LabelProvider);
 
 	
 		TreeColumn column2 = new TreeColumn(_viewer.getTree(), SWT.LEFT);
 		column1.setText("Logical Steps");
 		TreeViewerColumn viewerColumn2 = new TreeViewerColumn(_viewer, column2);
-		_column2LabelProvider = new DecoratingColumLabelProvider(new ColumnLabelProvider()
+		_column2LabelProvider = new ColumnLabelProvider()
 		{
 			
 			@Override
@@ -187,7 +180,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 				return res;
 			}
 			
-		}, _decorator);
+		};
 		viewerColumn2.setLabelProvider(_column2LabelProvider);
 		}
 
@@ -226,7 +219,6 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			&&  engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation)) 
 		{
 			_currentEngine = engine;	
-			_decorator.setResourceSet(_currentEngine.getExecutionContext().getResourceModel().getResourceSet());
 			_viewer.setInput(_currentEngine);
 			if (_currentEngine != null
 				&& !_currentEngine.getRunningStatus().equals(RunStatus.Stopped))

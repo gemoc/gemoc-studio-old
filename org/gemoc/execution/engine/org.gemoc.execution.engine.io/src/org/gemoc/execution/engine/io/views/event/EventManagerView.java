@@ -83,8 +83,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	private static final class GemocLabelDecorator extends DSLLabelDecorator {
 
+		// TODO should use Launcher.MODEL_ID
+		private final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
+
 		public GemocLabelDecorator() {
-			super(LogicalStepsView.MODEL_ID);
+			super(MODEL_ID);
 		}
 		
 		private Map<ModelSpecificEvent, ModelSpecificEventWrapper> mapping = new HashMap<ModelSpecificEvent, ModelSpecificEventWrapper>();			
