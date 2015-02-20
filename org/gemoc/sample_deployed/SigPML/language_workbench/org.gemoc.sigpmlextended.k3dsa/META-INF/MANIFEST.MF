@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.gemoc.sigpmlextended.k3dsa
+Bundle-SymbolicName: org.gemoc.sigpmlextended.k3dsa;singleton:=true
+Bundle-Version: 0.1.0
+Require-Bundle: org.eclipse.emf.ecore,
+  org.eclipse.osgi,
+  org.gemoc.gemoc_language_workbench.extensions.k3,
+  org.gemoc.sigpml.model,
+  org.eclipse.emf.common,
+  org.eclipse.emf.ecore.xmi,
+  fr.inria.diverse.k3.al.annotationprocessor.plugin,
+  org.eclipse.core.runtime,
+  org.gemoc.sigpml.sigpmlextended.model,
+  org.gemoc.gemoc_language_workbench.api,
+  fr.cnrs.luchogie.ultimateplotter,
+  org.eclipse.jdt.groovy.core,
+  org.codehaus.groovy
+Export-Package: org.gemoc.sigpmlextended.k3dsa
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+

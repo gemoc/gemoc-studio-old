@@ -1,7 +1,6 @@
-package org.gemoc.sigpml.k3dsa
+package org.gemoc.sigpml.xdsml
 
-//import org.gemoc.sigpml.k3dsa.*
-import org.gemoc.sigpml.sigpmlextended.k3dsa.*
+import org.gemoc.sigpml.k3dsa.*
 
 metamodel SigPML {
 	ecore "platform:/resource/org.gemoc.sigpml.model/model/sigpml.ecore"
@@ -9,7 +8,6 @@ metamodel SigPML {
 }
 
 metamodel SigPMLExtended inherits SigPML {
-	//ecore "platform:/resource/org.gemoc.sigpml.model/model/sigpml.ecore"  
 	exactType SigPMLExtendedMT
 	with HWComputationalResourceAspect
 	with AgentAspect
@@ -18,6 +16,4 @@ metamodel SigPMLExtended inherits SigPML {
 	with PlaceAspect
 	with SystemAspect
 	with NamedElementAspect
-} 
-
-
+}
