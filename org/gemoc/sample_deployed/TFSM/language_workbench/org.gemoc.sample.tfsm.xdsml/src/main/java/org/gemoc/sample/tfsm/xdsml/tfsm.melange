@@ -1,22 +1,22 @@
-package org.gemoc.sample.tfsm.k3dsa
+package org.gemoc.sample.tfsm.xdsml
 
-import org.gemoc.sample.tfsm.k3dsa.extended.aspect.*
+import org.gemoc.sample.tfsm.k3dsa.aspect.*
 
 metamodel SimpleTfsm {
 	ecore "platform:/resource/org.gemoc.sample.tfsm.model/model/tfsm.ecore"
-	exactType SimpleTfsmMT
+	exactType SimpleTfsmMT 
 }
 
-metamodel TfsmExtended /*inherits SimpleTfsm*/ {
-	exactType TfsmExtendedMT 
+metamodel TfsmExtended inherits SimpleTfsm {
+	exactType TfsmExtendedMT
 	with TFSMAspect
-	with StateAspect
+	with StateAspect  
 	with TransitionAspect
 	with FSMClockAspect
 	with EvaluateGuardAspect
-}
+} 
 
-@Main
+/*@Main
 transformation main() {
 	//val m1 = TfsmExtended.load("input/Simple.fsm",      TfsmExtendedMT)
 	val m1 = TfsmExtended.load("input/daynight_single_traffic_light_control.tfsm").toTfsmExtendedMT
@@ -27,4 +27,6 @@ transformation main() {
 	timedSystem.printHello
 	// execute.call(m2)
 	println("ho")
-}
+}*/
+
+
