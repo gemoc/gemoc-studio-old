@@ -204,9 +204,17 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 		if (supportsBreakpoint(breakpoint)) {
 			try {
 				if (breakpoint.isEnabled()) {
-					// TODO EMF representation of breakpoints ?
 					URI uri = ((DSLBreakpoint)breakpoint).getURI();
 					factory.getDebugger().handleEvent(new AddBreakpointRequest(uri));
+					try {
+						for (Entry<String, Object> entry : breakpoint.getMarker().getAttributes().entrySet()) {
+							factory.getDebugger().handleEvent(
+									new ChangeBreakPointRequest(((DSLBreakpoint)breakpoint).getURI(), entry
+											.getKey(), (Serializable)entry.getValue()));
+						}
+					} catch (CoreException e) {
+						Activator.getDefault().error(e);
+					}
 				}
 			} catch (CoreException e) {
 				Activator.getDefault().error(e);
