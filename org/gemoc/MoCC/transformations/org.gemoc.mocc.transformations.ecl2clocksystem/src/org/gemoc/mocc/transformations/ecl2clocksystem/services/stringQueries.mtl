@@ -1,6 +1,6 @@
 [comment encoding = Cp1252 /]
 [module stringQueries('http://www.eclipse.org/emf/2002/Ecore',
-	'http://org.gemoc.mocc.fsmmodel/1.0')/]
+	'http://org.gemoc.moccml.fsmmodel/1.0')/]
 
 [query public lSquareBracket(arg0 : EObject) : String
 	= invoke('org.gemoc.mocc.transformations.ecl2clocksystem.services.StringServices', 'lSquareBracket(org.eclipse.emf.ecore.EObject)', Sequence{arg0})

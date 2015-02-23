@@ -19,6 +19,7 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.contenttype_3.4.200.v20140207-1251.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.app_1.3.200.v20130910-1609.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ecl_1.0.0.201502181417.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ccslkernel.model_1.0.0.201502211047.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore_2.10.2.v20150123-0348.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.common_2.10.1.v20150123-0348.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore.xmi_2.10.2.v20150123-0348.jar"/>
