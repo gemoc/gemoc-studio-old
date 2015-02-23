@@ -50,7 +50,7 @@
  context ccslmocc::StateRelationBasedLibrary
  inv nonRealTypesUsedInTheModel(
  	'The library '+self.name+' cannot use Real'): 
- 	self.oclAsType(ecore::EObject).eAllContents()->selectByKind(BasicType::BasicType::Real).oclAsType(ecore::EObject)->asSet()->union(self.oclAsType(ecore::EObject).eAllContents()->selectByKind(BasicType::BasicType::RealElement).oclAsType(ecore::EObject)->asSet())->union(self.oclAsType(ecore::EObject).eAllContents()->selectByKind(ClassicalExpression::RealExpression).oclAsType(ecore::EObject)->asSet())->isEmpty()
+ 	self.oclAsType(ecore::EObject).eAllContents()->selectByKind(BasicType::Real).oclAsType(ecore::EObject)->asSet()->union(self.oclAsType(ecore::EObject).eAllContents()->selectByKind(BasicType::RealElement).oclAsType(ecore::EObject)->asSet())->union(self.oclAsType(ecore::EObject).eAllContents()->selectByKind(ClassicalExpression::RealExpression).oclAsType(ecore::EObject)->asSet())->isEmpty()
 
  
  /*
@@ -60,7 +60,7 @@
  context ccslmocc::StartClock
  inv startClockBindsAClockType(
  	'The start clock action in transition '+self.oclAsType(ecore::EObject).eContainer().oclAsType(FSMModel::Transition).name+' is linked to a wrong type ('+self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclAsType(ecore::EObject).eClass().name+')'):  
- 	self.clock->oclIsTypeOf(ClockExpressionAndRelation::AbstractEntity) and (self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::BasicType::DiscreteClockType)or self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::BasicType::DenseClockType))
+ 	self.clock->oclIsTypeOf(ClockExpressionAndRelation::AbstractEntity) and (self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::DiscreteClockType)or self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::DenseClockType))
  	
  /*
   * Action Finish clock acts on clock
@@ -69,7 +69,7 @@
  context ccslmocc::StartClock
  inv finishClockBindsAClockType(
  	'The finish clock action in transition '+self.oclAsType(ecore::EObject).eContainer().oclAsType(FSMModel::Transition).name+' is linked to a wrong type ('+self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclAsType(ecore::EObject).eClass().name+')'):  
- 	self.clock->oclIsTypeOf(ClockExpressionAndRelation::AbstractEntity) and (self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::BasicType::DiscreteClockType)or self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::BasicType::DenseClockType))
+ 	self.clock->oclIsTypeOf(ClockExpressionAndRelation::AbstractEntity) and (self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::DiscreteClockType)or self.clock.oclAsType(ClockExpressionAndRelation::AbstractEntity).type.oclIsTypeOf(BasicType::DenseClockType))
  	
  	
  endpackage	

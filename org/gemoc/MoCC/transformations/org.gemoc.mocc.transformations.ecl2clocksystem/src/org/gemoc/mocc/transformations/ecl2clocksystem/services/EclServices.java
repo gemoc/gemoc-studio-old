@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ocl.examples.pivot.Package;
 import org.eclipse.ocl.examples.xtext.base.basecs.ConstraintCS;
+import org.eclipse.ocl.examples.xtext.base.basecs.PrimitiveTypeRefCS;
 import org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.ClassifierContextDeclCS;
 import org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.ContextDeclCS;
 import org.eclipse.ocl.examples.xtext.completeocl.completeoclcs.DefCS;
@@ -31,17 +32,14 @@ import org.eclipse.ocl.examples.xtext.essentialocl.essentialoclcs.ExpSpecificati
 import org.eclipse.ocl.examples.xtext.essentialocl.essentialoclcs.InfixExpCS;
 import org.eclipse.ocl.examples.xtext.essentialocl.essentialoclcs.LetExpCS;
 import org.eclipse.ocl.examples.xtext.essentialocl.essentialoclcs.LetVariableCS;
-import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition;
-import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateRelationBasedLibrary;
+import org.gemoc.mocc.ccslmoc.model.moccml.StateMachineRelationDefinition;
+import org.gemoc.mocc.ccslmoc.model.moccml.StateRelationBasedLibrary;
 import org.gemoc.mocc.transformations.ecl2clocksystem.libLoader.LibLoader;
 
 import fr.inria.aoste.timesquare.ECL.ECLDocument;
 import fr.inria.aoste.timesquare.ECL.ECLExpression;
 import fr.inria.aoste.timesquare.ECL.ECLRelation;
 import fr.inria.aoste.timesquare.ECL.EventType;
-
-import org.eclipse.ocl.examples.xtext.base.basecs.PrimitiveTypeRefCS;
-
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.IntegerElement;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ConcreteEntity;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ExpressionLibrary;
