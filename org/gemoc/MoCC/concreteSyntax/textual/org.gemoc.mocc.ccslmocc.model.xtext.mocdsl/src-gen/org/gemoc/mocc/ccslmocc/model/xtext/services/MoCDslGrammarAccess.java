@@ -1048,7 +1048,8 @@ public class MoCDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IntegerVariableRef returns ClassicalExpression::IntegerVariableRef:
-	//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "IntegerVariableRef" name=ID? "["
+	//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "get("
+	//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ")" | "IntegerVariableRef" name=ID? "["
 	//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] "]";
 	public FSMDslGrammarAccess.IntegerVariableRefElements getIntegerVariableRefAccess() {
 		return gaFSMDsl.getIntegerVariableRefAccess();

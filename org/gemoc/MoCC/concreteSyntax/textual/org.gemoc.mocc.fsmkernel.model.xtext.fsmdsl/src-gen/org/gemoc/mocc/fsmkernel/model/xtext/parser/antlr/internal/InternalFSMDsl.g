@@ -1733,31 +1733,9 @@ ruleIntegerVariableRef returns [EObject current=null]
     	newLeafNode(otherlv_1, grammarAccess.getIntegerVariableRefAccess().getValueKeyword_0_1());
     }
 )
-    |(	otherlv_2='IntegerVariableRef' 
+    |(	otherlv_2='get(' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getIntegerVariableRefAccess().getIntegerVariableRefKeyword_1_0());
-    }
-(
-(
-		lv_name_3_0=RULE_ID
-		{
-			newLeafNode(lv_name_3_0, grammarAccess.getIntegerVariableRefAccess().getNameIDTerminalRuleCall_1_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getIntegerVariableRefRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_3_0, 
-        		"ID");
-	    }
-
-)
-)?	otherlv_4='[' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getIntegerVariableRefAccess().getLeftSquareBracketKeyword_1_2());
+    	newLeafNode(otherlv_2, grammarAccess.getIntegerVariableRefAccess().getGetKeyword_1_0());
     }
 (
 (
@@ -1770,16 +1748,65 @@ ruleIntegerVariableRef returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getIntegerVariableRefAccess().getReferencedVarAbstractEntityCrossReference_1_3_0()); 
+	        newCompositeNode(grammarAccess.getIntegerVariableRefAccess().getReferencedVarAbstractEntityCrossReference_1_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_6=']' 
+)	otherlv_4=')' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getIntegerVariableRefAccess().getRightSquareBracketKeyword_1_4());
+    	newLeafNode(otherlv_4, grammarAccess.getIntegerVariableRefAccess().getRightParenthesisKeyword_1_2());
+    }
+)
+    |(	otherlv_5='IntegerVariableRef' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getIntegerVariableRefAccess().getIntegerVariableRefKeyword_2_0());
+    }
+(
+(
+		lv_name_6_0=RULE_ID
+		{
+			newLeafNode(lv_name_6_0, grammarAccess.getIntegerVariableRefAccess().getNameIDTerminalRuleCall_2_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getIntegerVariableRefRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_6_0, 
+        		"ID");
+	    }
+
+)
+)?	otherlv_7='[' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getIntegerVariableRefAccess().getLeftSquareBracketKeyword_2_2());
+    }
+(
+(
+		{ 
+		  /* */ 
+		}
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getIntegerVariableRefRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getIntegerVariableRefAccess().getReferencedVarAbstractEntityCrossReference_2_3_0()); 
+	    }
+		ruleEString		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_9=']' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getIntegerVariableRefAccess().getRightSquareBracketKeyword_2_4());
     }
 ))
 ;

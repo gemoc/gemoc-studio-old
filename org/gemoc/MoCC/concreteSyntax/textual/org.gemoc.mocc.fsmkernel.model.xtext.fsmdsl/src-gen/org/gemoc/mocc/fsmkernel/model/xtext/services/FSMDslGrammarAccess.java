@@ -1051,21 +1051,29 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cReferencedVarAbstractEntityEStringParserRuleCall_0_0_0_1 = (RuleCall)cReferencedVarAbstractEntityCrossReference_0_0_0.eContents().get(1);
 		private final Keyword cValueKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cIntegerVariableRefKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Assignment cReferencedVarAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final CrossReference cReferencedVarAbstractEntityCrossReference_1_3_0 = (CrossReference)cReferencedVarAssignment_1_3.eContents().get(0);
-		private final RuleCall cReferencedVarAbstractEntityEStringParserRuleCall_1_3_0_1 = (RuleCall)cReferencedVarAbstractEntityCrossReference_1_3_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
+		private final Keyword cGetKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cReferencedVarAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final CrossReference cReferencedVarAbstractEntityCrossReference_1_1_0 = (CrossReference)cReferencedVarAssignment_1_1.eContents().get(0);
+		private final RuleCall cReferencedVarAbstractEntityEStringParserRuleCall_1_1_0_1 = (RuleCall)cReferencedVarAbstractEntityCrossReference_1_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Keyword cIntegerVariableRefKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cNameAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_2_1_0 = (RuleCall)cNameAssignment_2_1.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Assignment cReferencedVarAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
+		private final CrossReference cReferencedVarAbstractEntityCrossReference_2_3_0 = (CrossReference)cReferencedVarAssignment_2_3.eContents().get(0);
+		private final RuleCall cReferencedVarAbstractEntityEStringParserRuleCall_2_3_0_1 = (RuleCall)cReferencedVarAbstractEntityCrossReference_2_3_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		
 		//IntegerVariableRef returns ClassicalExpression::IntegerVariableRef:
-		//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "IntegerVariableRef" name=ID? "["
+		//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "get("
+		//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ")" | "IntegerVariableRef" name=ID? "["
 		//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] "]";
 		public ParserRule getRule() { return rule; }
 
-		//referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "IntegerVariableRef" name=ID? "["
+		//referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "get("
+		//referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ")" | "IntegerVariableRef" name=ID? "["
 		//referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] "]"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -1084,32 +1092,50 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		//".value"
 		public Keyword getValueKeyword_0_1() { return cValueKeyword_0_1; }
 
-		//"IntegerVariableRef" name=ID? "[" referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] "]"
+		//"get(" referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ")"
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"IntegerVariableRef"
-		public Keyword getIntegerVariableRefKeyword_1_0() { return cIntegerVariableRefKeyword_1_0; }
-
-		//name=ID?
-		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_1_0() { return cNameIDTerminalRuleCall_1_1_0; }
-
-		//"["
-		public Keyword getLeftSquareBracketKeyword_1_2() { return cLeftSquareBracketKeyword_1_2; }
+		//"get("
+		public Keyword getGetKeyword_1_0() { return cGetKeyword_1_0; }
 
 		//referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString]
-		public Assignment getReferencedVarAssignment_1_3() { return cReferencedVarAssignment_1_3; }
+		public Assignment getReferencedVarAssignment_1_1() { return cReferencedVarAssignment_1_1; }
 
 		//[ClockExpressionAndRelation::AbstractEntity|EString]
-		public CrossReference getReferencedVarAbstractEntityCrossReference_1_3_0() { return cReferencedVarAbstractEntityCrossReference_1_3_0; }
+		public CrossReference getReferencedVarAbstractEntityCrossReference_1_1_0() { return cReferencedVarAbstractEntityCrossReference_1_1_0; }
 
 		//EString
-		public RuleCall getReferencedVarAbstractEntityEStringParserRuleCall_1_3_0_1() { return cReferencedVarAbstractEntityEStringParserRuleCall_1_3_0_1; }
+		public RuleCall getReferencedVarAbstractEntityEStringParserRuleCall_1_1_0_1() { return cReferencedVarAbstractEntityEStringParserRuleCall_1_1_0_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_1_2() { return cRightParenthesisKeyword_1_2; }
+
+		//"IntegerVariableRef" name=ID? "[" referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] "]"
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"IntegerVariableRef"
+		public Keyword getIntegerVariableRefKeyword_2_0() { return cIntegerVariableRefKeyword_2_0; }
+
+		//name=ID?
+		public Assignment getNameAssignment_2_1() { return cNameAssignment_2_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_1_0() { return cNameIDTerminalRuleCall_2_1_0; }
+
+		//"["
+		public Keyword getLeftSquareBracketKeyword_2_2() { return cLeftSquareBracketKeyword_2_2; }
+
+		//referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString]
+		public Assignment getReferencedVarAssignment_2_3() { return cReferencedVarAssignment_2_3; }
+
+		//[ClockExpressionAndRelation::AbstractEntity|EString]
+		public CrossReference getReferencedVarAbstractEntityCrossReference_2_3_0() { return cReferencedVarAbstractEntityCrossReference_2_3_0; }
+
+		//EString
+		public RuleCall getReferencedVarAbstractEntityEStringParserRuleCall_2_3_0_1() { return cReferencedVarAbstractEntityEStringParserRuleCall_2_3_0_1; }
 
 		//"]"
-		public Keyword getRightSquareBracketKeyword_1_4() { return cRightSquareBracketKeyword_1_4; }
+		public Keyword getRightSquareBracketKeyword_2_4() { return cRightSquareBracketKeyword_2_4; }
 	}
 
 	public class UnaryIntegerExpressionElements extends AbstractParserRuleElementFinder {
@@ -4092,7 +4118,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IntegerVariableRef returns ClassicalExpression::IntegerVariableRef:
-	//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "IntegerVariableRef" name=ID? "["
+	//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "get("
+	//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ")" | "IntegerVariableRef" name=ID? "["
 	//	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] "]";
 	public IntegerVariableRefElements getIntegerVariableRefAccess() {
 		return pIntegerVariableRef;

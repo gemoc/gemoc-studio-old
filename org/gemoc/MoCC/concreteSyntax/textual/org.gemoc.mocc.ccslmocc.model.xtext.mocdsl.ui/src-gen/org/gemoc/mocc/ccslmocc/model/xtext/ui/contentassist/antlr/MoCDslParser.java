@@ -142,6 +142,7 @@ public class MoCDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getIntegerAssignementAccess().getGroup_1(), "rule__IntegerAssignement__Group_1__0");
 					put(grammarAccess.getIntegerVariableRefAccess().getGroup_0(), "rule__IntegerVariableRef__Group_0__0");
 					put(grammarAccess.getIntegerVariableRefAccess().getGroup_1(), "rule__IntegerVariableRef__Group_1__0");
+					put(grammarAccess.getIntegerVariableRefAccess().getGroup_2(), "rule__IntegerVariableRef__Group_2__0");
 					put(grammarAccess.getIntEqualAccess().getGroup_0(), "rule__IntEqual__Group_0__0");
 					put(grammarAccess.getIntEqualAccess().getGroup_1(), "rule__IntEqual__Group_1__0");
 					put(grammarAccess.getIntEqualAccess().getGroup_1_1(), "rule__IntEqual__Group_1_1__0");
@@ -415,8 +416,9 @@ public class MoCDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getIntegerAssignementAccess().getLeftValueAssignment_2(), "rule__IntegerAssignement__LeftValueAssignment_2");
 					put(grammarAccess.getIntegerAssignementAccess().getRightValueAssignment_4(), "rule__IntegerAssignement__RightValueAssignment_4");
 					put(grammarAccess.getIntegerVariableRefAccess().getReferencedVarAssignment_0_0(), "rule__IntegerVariableRef__ReferencedVarAssignment_0_0");
-					put(grammarAccess.getIntegerVariableRefAccess().getNameAssignment_1_1(), "rule__IntegerVariableRef__NameAssignment_1_1");
-					put(grammarAccess.getIntegerVariableRefAccess().getReferencedVarAssignment_1_3(), "rule__IntegerVariableRef__ReferencedVarAssignment_1_3");
+					put(grammarAccess.getIntegerVariableRefAccess().getReferencedVarAssignment_1_1(), "rule__IntegerVariableRef__ReferencedVarAssignment_1_1");
+					put(grammarAccess.getIntegerVariableRefAccess().getNameAssignment_2_1(), "rule__IntegerVariableRef__NameAssignment_2_1");
+					put(grammarAccess.getIntegerVariableRefAccess().getReferencedVarAssignment_2_3(), "rule__IntegerVariableRef__ReferencedVarAssignment_2_3");
 					put(grammarAccess.getIntEqualAccess().getLeftValueAssignment_0_1(), "rule__IntEqual__LeftValueAssignment_0_1");
 					put(grammarAccess.getIntEqualAccess().getRightValueAssignment_0_3(), "rule__IntEqual__RightValueAssignment_0_3");
 					put(grammarAccess.getIntEqualAccess().getNameAssignment_1_1_1(), "rule__IntEqual__NameAssignment_1_1_1");

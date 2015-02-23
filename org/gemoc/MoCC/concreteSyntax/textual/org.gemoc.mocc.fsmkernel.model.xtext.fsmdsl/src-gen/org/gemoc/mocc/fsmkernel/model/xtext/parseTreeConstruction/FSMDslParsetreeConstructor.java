@@ -5185,12 +5185,14 @@ protected class IntegerExpression_IntegerVariableRefParserRuleCall_4 extends Rul
 /************ begin Rule IntegerVariableRef ****************
  *
  * IntegerVariableRef returns ClassicalExpression::IntegerVariableRef:
- * 	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "IntegerVariableRef" name=ID? "["
+ * 	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "get("
+ * 	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ")" | "IntegerVariableRef" name=ID? "["
  * 	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] "]";
  *
  **/
 
-// referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "IntegerVariableRef" name=ID? "["
+// referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ".value" | "get("
+// referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ")" | "IntegerVariableRef" name=ID? "["
 // referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] "]"
 protected class IntegerVariableRef_Alternatives extends AlternativesToken {
 
@@ -5208,6 +5210,7 @@ protected class IntegerVariableRef_Alternatives extends AlternativesToken {
 		switch(index) {
 			case 0: return new IntegerVariableRef_Group_0(lastRuleCallOrigin, this, 0, inst);
 			case 1: return new IntegerVariableRef_Group_1(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new IntegerVariableRef_Group_2(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -5302,7 +5305,7 @@ protected class IntegerVariableRef_ValueKeyword_0_1 extends KeywordToken  {
 }
 
 
-// "IntegerVariableRef" name=ID? "[" referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] "]"
+// "get(" referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] ")"
 protected class IntegerVariableRef_Group_1 extends GroupToken {
 	
 	public IntegerVariableRef_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5317,7 +5320,110 @@ protected class IntegerVariableRef_Group_1 extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IntegerVariableRef_RightSquareBracketKeyword_1_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IntegerVariableRef_RightParenthesisKeyword_1_2(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "get("
+protected class IntegerVariableRef_GetKeyword_1_0 extends KeywordToken  {
+	
+	public IntegerVariableRef_GetKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getIntegerVariableRefAccess().getGetKeyword_1_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString]
+protected class IntegerVariableRef_ReferencedVarAssignment_1_1 extends AssignmentToken  {
+	
+	public IntegerVariableRef_ReferencedVarAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getIntegerVariableRefAccess().getReferencedVarAssignment_1_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new IntegerVariableRef_GetKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("referencedVar",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("referencedVar");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getIntegerVariableRefAccess().getReferencedVarAbstractEntityCrossReference_1_1_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getIntegerVariableRefAccess().getReferencedVarAbstractEntityCrossReference_1_1_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// ")"
+protected class IntegerVariableRef_RightParenthesisKeyword_1_2 extends KeywordToken  {
+	
+	public IntegerVariableRef_RightParenthesisKeyword_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getIntegerVariableRefAccess().getRightParenthesisKeyword_1_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new IntegerVariableRef_ReferencedVarAssignment_1_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+// "IntegerVariableRef" name=ID? "[" referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString] "]"
+protected class IntegerVariableRef_Group_2 extends GroupToken {
+	
+	public IntegerVariableRef_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getIntegerVariableRefAccess().getGroup_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new IntegerVariableRef_RightSquareBracketKeyword_2_4(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -5325,15 +5431,15 @@ protected class IntegerVariableRef_Group_1 extends GroupToken {
 }
 
 // "IntegerVariableRef"
-protected class IntegerVariableRef_IntegerVariableRefKeyword_1_0 extends KeywordToken  {
+protected class IntegerVariableRef_IntegerVariableRefKeyword_2_0 extends KeywordToken  {
 	
-	public IntegerVariableRef_IntegerVariableRefKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IntegerVariableRef_IntegerVariableRefKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getIntegerVariableRefAccess().getIntegerVariableRefKeyword_1_0();
+		return grammarAccess.getIntegerVariableRefAccess().getIntegerVariableRefKeyword_2_0();
 	}
 
     @Override
@@ -5346,21 +5452,21 @@ protected class IntegerVariableRef_IntegerVariableRefKeyword_1_0 extends Keyword
 }
 
 // name=ID?
-protected class IntegerVariableRef_NameAssignment_1_1 extends AssignmentToken  {
+protected class IntegerVariableRef_NameAssignment_2_1 extends AssignmentToken  {
 	
-	public IntegerVariableRef_NameAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IntegerVariableRef_NameAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getIntegerVariableRefAccess().getNameAssignment_1_1();
+		return grammarAccess.getIntegerVariableRefAccess().getNameAssignment_2_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IntegerVariableRef_IntegerVariableRefKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IntegerVariableRef_IntegerVariableRefKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -5369,9 +5475,9 @@ protected class IntegerVariableRef_NameAssignment_1_1 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getIntegerVariableRefAccess().getNameIDTerminalRuleCall_1_1_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getIntegerVariableRefAccess().getNameIDTerminalRuleCall_2_1_0(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getIntegerVariableRefAccess().getNameIDTerminalRuleCall_1_1_0();
+			element = grammarAccess.getIntegerVariableRefAccess().getNameIDTerminalRuleCall_2_1_0();
 			return obj;
 		}
 		return null;
@@ -5380,22 +5486,22 @@ protected class IntegerVariableRef_NameAssignment_1_1 extends AssignmentToken  {
 }
 
 // "["
-protected class IntegerVariableRef_LeftSquareBracketKeyword_1_2 extends KeywordToken  {
+protected class IntegerVariableRef_LeftSquareBracketKeyword_2_2 extends KeywordToken  {
 	
-	public IntegerVariableRef_LeftSquareBracketKeyword_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IntegerVariableRef_LeftSquareBracketKeyword_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getIntegerVariableRefAccess().getLeftSquareBracketKeyword_1_2();
+		return grammarAccess.getIntegerVariableRefAccess().getLeftSquareBracketKeyword_2_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IntegerVariableRef_NameAssignment_1_1(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new IntegerVariableRef_IntegerVariableRefKeyword_1_0(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new IntegerVariableRef_NameAssignment_2_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new IntegerVariableRef_IntegerVariableRefKeyword_2_0(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -5403,21 +5509,21 @@ protected class IntegerVariableRef_LeftSquareBracketKeyword_1_2 extends KeywordT
 }
 
 // referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString]
-protected class IntegerVariableRef_ReferencedVarAssignment_1_3 extends AssignmentToken  {
+protected class IntegerVariableRef_ReferencedVarAssignment_2_3 extends AssignmentToken  {
 	
-	public IntegerVariableRef_ReferencedVarAssignment_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IntegerVariableRef_ReferencedVarAssignment_2_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getIntegerVariableRefAccess().getReferencedVarAssignment_1_3();
+		return grammarAccess.getIntegerVariableRefAccess().getReferencedVarAssignment_2_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IntegerVariableRef_LeftSquareBracketKeyword_1_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IntegerVariableRef_LeftSquareBracketKeyword_2_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -5428,9 +5534,9 @@ protected class IntegerVariableRef_ReferencedVarAssignment_1_3 extends Assignmen
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("referencedVar");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getIntegerVariableRefAccess().getReferencedVarAbstractEntityCrossReference_1_3_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getIntegerVariableRefAccess().getReferencedVarAbstractEntityCrossReference_2_3_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getIntegerVariableRefAccess().getReferencedVarAbstractEntityCrossReference_1_3_0(); 
+				element = grammarAccess.getIntegerVariableRefAccess().getReferencedVarAbstractEntityCrossReference_2_3_0(); 
 				return obj;
 			}
 		}
@@ -5440,21 +5546,21 @@ protected class IntegerVariableRef_ReferencedVarAssignment_1_3 extends Assignmen
 }
 
 // "]"
-protected class IntegerVariableRef_RightSquareBracketKeyword_1_4 extends KeywordToken  {
+protected class IntegerVariableRef_RightSquareBracketKeyword_2_4 extends KeywordToken  {
 	
-	public IntegerVariableRef_RightSquareBracketKeyword_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IntegerVariableRef_RightSquareBracketKeyword_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getIntegerVariableRefAccess().getRightSquareBracketKeyword_1_4();
+		return grammarAccess.getIntegerVariableRefAccess().getRightSquareBracketKeyword_2_4();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IntegerVariableRef_ReferencedVarAssignment_1_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IntegerVariableRef_ReferencedVarAssignment_2_3(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}

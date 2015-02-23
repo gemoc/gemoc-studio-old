@@ -105,6 +105,7 @@ IntegerExpression returns ClassicalExpression::IntegerExpression:
 IntegerVariableRef returns ClassicalExpression::IntegerVariableRef:
 	referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString]".value"
 	|
+	"get("referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString]")" |
 	'IntegerVariableRef' (name=ID)? '['referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString]']'
 	;
 
