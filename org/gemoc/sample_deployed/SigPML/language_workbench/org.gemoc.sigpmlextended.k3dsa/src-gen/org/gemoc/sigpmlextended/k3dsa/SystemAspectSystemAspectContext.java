@@ -13,7 +13,7 @@ public class SystemAspectSystemAspectContext {
     		return INSTANCE.map.get(_self);
   }
   
-  private Map<sigpmlextended.System, SystemAspectSystemAspectProperties> map = new java.util.HashMap<sigpmlextended.System, org.gemoc.sigpmlextended.k3dsa.SystemAspectSystemAspectProperties>();
+  private Map<sigpmlextended.System, SystemAspectSystemAspectProperties> map = new java.util.WeakHashMap<sigpmlextended.System, org.gemoc.sigpmlextended.k3dsa.SystemAspectSystemAspectProperties>();
   
   public Map<sigpmlextended.System, SystemAspectSystemAspectProperties> getMap() {
     return map;

@@ -12,6 +12,7 @@ import org.gemoc.sample.tfsm.TFSM
 import org.gemoc.sample.tfsm.TemporalGuard
 import org.gemoc.sample.tfsm.TimedSystem
 import org.gemoc.sample.tfsm.Transition
+/*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TFSMAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.StateAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TransitionAspect.*
@@ -23,7 +24,8 @@ import static extension org.gemoc.sample.tfsm.k3dsa.aspect.FSMEventAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.FSMClockAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TimedSystemAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect.*
-import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
+*/
+//import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
 
 @Aspect(className=TFSM)
 class TFSMAspect extends NamedElementAspect {
@@ -111,7 +113,7 @@ class TimedSystemAspect extends NamedElementAspect {
 
 @Aspect(className=EvaluateGuard)
 class EvaluateGuardAspect extends GuardAspect {
-	def public Boolean evaluate() {
+	def public boolean evaluate() {
 		var Object res;
 //		res = GroovyRunner.executeScript(_self.condition, _self)
 

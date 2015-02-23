@@ -14,7 +14,7 @@ metamodel TfsmExtended inherits SimpleTfsm {
 	with TransitionAspect
 	with FSMClockAspect
 	with EvaluateGuardAspect
-} 
+}
 
 /*@Main
 transformation main() {

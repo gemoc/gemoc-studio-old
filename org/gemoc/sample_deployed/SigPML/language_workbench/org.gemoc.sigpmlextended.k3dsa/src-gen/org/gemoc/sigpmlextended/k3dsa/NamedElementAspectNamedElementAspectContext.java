@@ -14,7 +14,7 @@ public class NamedElementAspectNamedElementAspectContext {
     		return INSTANCE.map.get(_self);
   }
   
-  private Map<NamedElement, NamedElementAspectNamedElementAspectProperties> map = new java.util.HashMap<sigpmlextended.NamedElement, org.gemoc.sigpmlextended.k3dsa.NamedElementAspectNamedElementAspectProperties>();
+  private Map<NamedElement, NamedElementAspectNamedElementAspectProperties> map = new java.util.WeakHashMap<sigpmlextended.NamedElement, org.gemoc.sigpmlextended.k3dsa.NamedElementAspectNamedElementAspectProperties>();
   
   public Map<NamedElement, NamedElementAspectNamedElementAspectProperties> getMap() {
     return map;

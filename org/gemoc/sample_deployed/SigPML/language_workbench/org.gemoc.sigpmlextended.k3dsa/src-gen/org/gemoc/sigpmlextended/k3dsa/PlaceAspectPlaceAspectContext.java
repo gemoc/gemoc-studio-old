@@ -14,7 +14,7 @@ public class PlaceAspectPlaceAspectContext {
     		return INSTANCE.map.get(_self);
   }
   
-  private Map<Place, PlaceAspectPlaceAspectProperties> map = new java.util.HashMap<sigpmlextended.Place, org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectProperties>();
+  private Map<Place, PlaceAspectPlaceAspectProperties> map = new java.util.WeakHashMap<sigpmlextended.Place, org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectProperties>();
   
   public Map<Place, PlaceAspectPlaceAspectProperties> getMap() {
     return map;

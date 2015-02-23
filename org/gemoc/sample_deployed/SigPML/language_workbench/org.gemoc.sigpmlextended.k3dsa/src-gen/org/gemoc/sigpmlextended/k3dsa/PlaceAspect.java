@@ -19,59 +19,57 @@ import org.gemoc.sigpmlextended.k3dsa.SystemAspect;
 @SuppressWarnings("all")
 public class PlaceAspect extends NamedElementAspect {
   private static void initialize(final Place _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
-    _privk3_initialize(_self);
+    org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
+    _privk3_initialize(_self_, _self);
   }
   
   public static void push(final Place _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
-    _privk3_push(_self);
+    org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
+    _privk3_push(_self_, _self);
   }
   
   public static void pop(final Place _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
-    _privk3_pop(_self);
+    org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
+    _privk3_pop(_self_, _self);
   }
   
-  public static PlaceAspectPlaceAspectProperties _self_;
-  
   public static ArrayList<Object> fifo(final Place _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
+    org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
     Object result = null;
-    result =_privk3_fifo(_self);
+    result =_privk3_fifo(_self_, _self);
     return (java.util.ArrayList<java.lang.Object>)result;
   }
   
   public static void fifo(final Place _self, final ArrayList<Object> fifo) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
-    _privk3_fifo(_self,fifo);
+    org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
+    _privk3_fifo(_self_, _self,fifo);
   }
   
   public static boolean isInitialized(final Place _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
+    org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
     Object result = null;
-    result =_privk3_isInitialized(_self);
+    result =_privk3_isInitialized(_self_, _self);
     return (boolean)result;
   }
   
   public static void isInitialized(final Place _self, final boolean isInitialized) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
-    _privk3_isInitialized(_self,isInitialized);
+    org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
+    _privk3_isInitialized(_self_, _self,isInitialized);
   }
   
   public static int currentSize(final Place _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
+    org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
     Object result = null;
-    result =_privk3_currentSize(_self);
+    result =_privk3_currentSize(_self_, _self);
     return (int)result;
   }
   
   public static void currentSize(final Place _self, final int currentSize) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
-    _privk3_currentSize(_self,currentSize);
+    org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.PlaceAspectPlaceAspectContext.getSelf(_self);
+    _privk3_currentSize(_self_, _self,currentSize);
   }
   
-  protected static void _privk3_initialize(final Place _self) {
+  protected static void _privk3_initialize(final PlaceAspectPlaceAspectProperties _self_, final Place _self) {
     String _name = _self.getName();
     String _plus = ("place " + _name);
     String _plus_1 = (_plus + "is initializing");
@@ -92,7 +90,7 @@ public class PlaceAspect extends NamedElementAspect {
     PlaceAspect.currentSize(_self, _size);
   }
   
-  protected static void _privk3_push(final Place _self) {
+  protected static void _privk3_push(final PlaceAspectPlaceAspectProperties _self_, final Place _self) {
     boolean _isInitialized = PlaceAspect.isInitialized(_self);
     boolean _not = (!_isInitialized);
     if (_not) {
@@ -137,7 +135,7 @@ public class PlaceAspect extends NamedElementAspect {
     InputOutput.<String>println(_plus_2);
   }
   
-  protected static void _privk3_pop(final Place _self) {
+  protected static void _privk3_pop(final PlaceAspectPlaceAspectProperties _self_, final Place _self) {
     boolean _isInitialized = PlaceAspect.isInitialized(_self);
     boolean _not = (!_isInitialized);
     if (_not) {
@@ -171,12 +169,12 @@ public class PlaceAspect extends NamedElementAspect {
     InputOutput.<String>println(_plus_2);
   }
   
-  protected static ArrayList<Object> _privk3_fifo(final Place _self) {
-     return org.gemoc.sigpmlextended.k3dsa.PlaceAspect._self_.fifo; 
+  protected static ArrayList<Object> _privk3_fifo(final PlaceAspectPlaceAspectProperties _self_, final Place _self) {
+     return _self_.fifo; 
   }
   
-  protected static void _privk3_fifo(final Place _self, final ArrayList<Object> fifo) {
-    org.gemoc.sigpmlextended.k3dsa.PlaceAspect._self_.fifo = fifo; try {
+  protected static void _privk3_fifo(final PlaceAspectPlaceAspectProperties _self_, final Place _self, final ArrayList<Object> fifo) {
+    _self_.fifo = fifo; try {
     
     			for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
     				if (m.getName().equals("set" + "Fifo")
@@ -190,12 +188,12 @@ public class PlaceAspect extends NamedElementAspect {
     		} 
   }
   
-  protected static boolean _privk3_isInitialized(final Place _self) {
-     return org.gemoc.sigpmlextended.k3dsa.PlaceAspect._self_.isInitialized; 
+  protected static boolean _privk3_isInitialized(final PlaceAspectPlaceAspectProperties _self_, final Place _self) {
+     return _self_.isInitialized; 
   }
   
-  protected static void _privk3_isInitialized(final Place _self, final boolean isInitialized) {
-    org.gemoc.sigpmlextended.k3dsa.PlaceAspect._self_.isInitialized = isInitialized; try {
+  protected static void _privk3_isInitialized(final PlaceAspectPlaceAspectProperties _self_, final Place _self, final boolean isInitialized) {
+    _self_.isInitialized = isInitialized; try {
     
     			for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
     				if (m.getName().equals("set" + "IsInitialized")
@@ -209,12 +207,12 @@ public class PlaceAspect extends NamedElementAspect {
     		} 
   }
   
-  protected static int _privk3_currentSize(final Place _self) {
-     return org.gemoc.sigpmlextended.k3dsa.PlaceAspect._self_.currentSize; 
+  protected static int _privk3_currentSize(final PlaceAspectPlaceAspectProperties _self_, final Place _self) {
+     return _self_.currentSize; 
   }
   
-  protected static void _privk3_currentSize(final Place _self, final int currentSize) {
-    org.gemoc.sigpmlextended.k3dsa.PlaceAspect._self_.currentSize = currentSize; try {
+  protected static void _privk3_currentSize(final PlaceAspectPlaceAspectProperties _self_, final Place _self, final int currentSize) {
+    _self_.currentSize = currentSize; try {
     
     			for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
     				if (m.getName().equals("set" + "CurrentSize")

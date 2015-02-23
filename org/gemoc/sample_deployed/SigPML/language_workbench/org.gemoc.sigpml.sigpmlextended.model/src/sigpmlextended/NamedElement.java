@@ -47,4 +47,12 @@ public interface NamedElement extends EObject {
 	 */
 	void setName(String value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	sigpmlextended.System getSystem();
+
 } // NamedElement

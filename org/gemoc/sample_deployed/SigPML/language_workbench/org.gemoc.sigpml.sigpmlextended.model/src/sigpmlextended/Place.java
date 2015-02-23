@@ -2,6 +2,7 @@
  */
 package sigpmlextended;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,11 +14,14 @@ package sigpmlextended;
  * <ul>
  *   <li>{@link sigpmlextended.Place#getItsOutputPort <em>Its Output Port</em>}</li>
  *   <li>{@link sigpmlextended.Place#getItsInputPort <em>Its Input Port</em>}</li>
+ *   <li>{@link sigpmlextended.Place#getFifo <em>Fifo</em>}</li>
+ *   <li>{@link sigpmlextended.Place#isIsInitialized <em>Is Initialized</em>}</li>
  *   <li>{@link sigpmlextended.Place#getSize <em>Size</em>}</li>
  *   <li>{@link sigpmlextended.Place#getOwner <em>Owner</em>}</li>
  *   <li>{@link sigpmlextended.Place#getType <em>Type</em>}</li>
  *   <li>{@link sigpmlextended.Place#getByteSize <em>Byte Size</em>}</li>
  *   <li>{@link sigpmlextended.Place#getDelay <em>Delay</em>}</li>
+ *   <li>{@link sigpmlextended.Place#getCurrentSize <em>Current Size</em>}</li>
  * </ul>
  * </p>
  *
@@ -78,6 +82,48 @@ public interface Place extends NamedElement {
 	 * @generated
 	 */
 	void setItsInputPort(InputPort value);
+
+	/**
+	 * Returns the value of the '<em><b>Fifo</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.Object}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Fifo</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Fifo</em>' attribute list.
+	 * @see sigpmlextended.SigpmlextendedPackage#getPlace_Fifo()
+	 * @model dataType="sigpmlextended.Object"
+	 * @generated
+	 */
+	EList<Object> getFifo();
+
+	/**
+	 * Returns the value of the '<em><b>Is Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Is Initialized</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Initialized</em>' attribute.
+	 * @see #setIsInitialized(boolean)
+	 * @see sigpmlextended.SigpmlextendedPackage#getPlace_IsInitialized()
+	 * @model
+	 * @generated
+	 */
+	boolean isIsInitialized();
+
+	/**
+	 * Sets the value of the '{@link sigpmlextended.Place#isIsInitialized <em>Is Initialized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Initialized</em>' attribute.
+	 * @see #isIsInitialized()
+	 * @generated
+	 */
+	void setIsInitialized(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Size</b></em>' attribute.
@@ -213,5 +259,47 @@ public interface Place extends NamedElement {
 	 * @generated
 	 */
 	void setDelay(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Current Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Current Size</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Current Size</em>' attribute.
+	 * @see #setCurrentSize(int)
+	 * @see sigpmlextended.SigpmlextendedPackage#getPlace_CurrentSize()
+	 * @model
+	 * @generated
+	 */
+	int getCurrentSize();
+
+	/**
+	 * Sets the value of the '{@link sigpmlextended.Place#getCurrentSize <em>Current Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Current Size</em>' attribute.
+	 * @see #getCurrentSize()
+	 * @generated
+	 */
+	void setCurrentSize(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void push();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void pop();
 
 } // Place

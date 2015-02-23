@@ -10,8 +10,8 @@ metamodel SigPML {
 metamodel SigPMLExtended inherits SigPML {
 	exactType SigPMLExtendedMT
 	with HWComputationalResourceAspect
-	with AgentAspect
-	with InputPortAspect
+	with AgentAspect 
+	with InputPortAspect 
 	with OutputPortAspect
 	with PlaceAspect
 	with SystemAspect

@@ -14,7 +14,7 @@ public class AgentAspectAgentAspectContext {
     		return INSTANCE.map.get(_self);
   }
   
-  private Map<Agent, AgentAspectAgentAspectProperties> map = new java.util.HashMap<sigpmlextended.Agent, org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties>();
+  private Map<Agent, AgentAspectAgentAspectProperties> map = new java.util.WeakHashMap<sigpmlextended.Agent, org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties>();
   
   public Map<Agent, AgentAspectAgentAspectProperties> getMap() {
     return map;

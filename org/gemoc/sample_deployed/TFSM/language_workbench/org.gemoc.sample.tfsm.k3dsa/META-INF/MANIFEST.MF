@@ -6,7 +6,7 @@ Bundle-Version: 0.1.0.qualifier
 Require-Bundle: org.eclipse.xtend2.lib;bundle-version="2.4.3",
  org.eclipse.emf.ecore;bundle-version="2.9.1",
  org.gemoc.sample.tfsm.model;bundle-version="0.1.0",
- fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.0.0",
+ fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.0.0";visibility:=reexport,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",

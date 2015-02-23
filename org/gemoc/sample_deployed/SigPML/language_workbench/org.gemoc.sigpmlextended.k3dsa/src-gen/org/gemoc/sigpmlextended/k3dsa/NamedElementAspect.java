@@ -16,15 +16,13 @@ import org.gemoc.sigpmlextended.k3dsa.SystemAspect;
 @SuppressWarnings("all")
 public abstract class NamedElementAspect {
   public static sigpmlextended.System getSystem(final NamedElement _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.NamedElementAspectNamedElementAspectContext.getSelf(_self);
+    org.gemoc.sigpmlextended.k3dsa.NamedElementAspectNamedElementAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.NamedElementAspectNamedElementAspectContext.getSelf(_self);
     Object result = null;
-    result =_privk3_getSystem(_self);
+    result =_privk3_getSystem(_self_, _self);
     return (sigpmlextended.System)result;
   }
   
-  public static NamedElementAspectNamedElementAspectProperties _self_;
-  
-  protected static sigpmlextended.System _privk3_getSystem(final NamedElement _self) {
+  protected static sigpmlextended.System _privk3_getSystem(final NamedElementAspectNamedElementAspectProperties _self_, final NamedElement _self) {
     Resource _eResource = _self.eResource();
     EList<EObject> contents = _eResource.getContents();
     final Function1<EObject, Boolean> _function = new Function1<EObject, Boolean>() {

@@ -2,6 +2,8 @@
  */
 package sigpmlextended.util;
 
+import com.google.common.collect.LinkedListMultimap;
+
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -127,6 +129,10 @@ public class SigpmlextendedValidator extends EObjectValidator {
 				return validateSystem((sigpmlextended.System)value, diagnostics, context);
 			case SigpmlextendedPackage.SIZE_TYPE:
 				return validatesizeType((sizeType)value, diagnostics, context);
+			case SigpmlextendedPackage.OBJECT:
+				return validateObject(value, diagnostics, context);
+			case SigpmlextendedPackage.LINKED_LIST_MULTIMAP:
+				return validateLinkedListMultimap((LinkedListMultimap)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -294,6 +300,24 @@ public class SigpmlextendedValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatesizeType(sizeType sizeType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateObject(Object object, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateLinkedListMultimap(LinkedListMultimap linkedListMultimap, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

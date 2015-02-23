@@ -14,7 +14,7 @@ public class InputPortAspectInputPortAspectContext {
     		return INSTANCE.map.get(_self);
   }
   
-  private Map<InputPort, InputPortAspectInputPortAspectProperties> map = new java.util.HashMap<sigpmlextended.InputPort, org.gemoc.sigpmlextended.k3dsa.InputPortAspectInputPortAspectProperties>();
+  private Map<InputPort, InputPortAspectInputPortAspectProperties> map = new java.util.WeakHashMap<sigpmlextended.InputPort, org.gemoc.sigpmlextended.k3dsa.InputPortAspectInputPortAspectProperties>();
   
   public Map<InputPort, InputPortAspectInputPortAspectProperties> getMap() {
     return map;

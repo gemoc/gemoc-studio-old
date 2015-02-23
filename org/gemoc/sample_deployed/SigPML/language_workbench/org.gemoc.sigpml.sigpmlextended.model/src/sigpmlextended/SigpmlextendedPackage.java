@@ -4,6 +4,7 @@ package sigpmlextended;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -324,13 +325,22 @@ public interface SigpmlextendedPackage extends EPackage {
 	int INPUT_PORT__TYPE = PORT__TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Size Toread</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PORT__SIZE_TOREAD = PORT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Input Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 0;
+	int INPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link sigpmlextended.impl.OutputPortImpl <em>Output Port</em>}' class.
@@ -388,13 +398,22 @@ public interface SigpmlextendedPackage extends EPackage {
 	int OUTPUT_PORT__TYPE = PORT__TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Size Written</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PORT__SIZE_WRITTEN = PORT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Output Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OUTPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 0;
+	int OUTPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link sigpmlextended.impl.PlaceImpl <em>Place</em>}' class.
@@ -434,13 +453,31 @@ public interface SigpmlextendedPackage extends EPackage {
 	int PLACE__ITS_INPUT_PORT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Fifo</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE__FIFO = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Is Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE__IS_INITIALIZED = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__SIZE = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int PLACE__SIZE = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' container reference.
@@ -449,7 +486,7 @@ public interface SigpmlextendedPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__OWNER = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int PLACE__OWNER = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -458,7 +495,7 @@ public interface SigpmlextendedPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int PLACE__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Byte Size</b></em>' attribute.
@@ -467,7 +504,7 @@ public interface SigpmlextendedPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__BYTE_SIZE = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int PLACE__BYTE_SIZE = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Delay</b></em>' attribute.
@@ -476,7 +513,16 @@ public interface SigpmlextendedPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__DELAY = NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int PLACE__DELAY = NAMED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Current Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE__CURRENT_SIZE = NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Place</em>' class.
@@ -485,7 +531,7 @@ public interface SigpmlextendedPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int PLACE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link sigpmlextended.impl.HWRessourceImpl <em>HW Ressource</em>}' class.
@@ -773,13 +819,22 @@ public interface SigpmlextendedPackage extends EPackage {
 	int SYSTEM__OWNED_HW_PLATFORM = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Shared Memory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__SHARED_MEMORY = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int SYSTEM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link sigpmlextended.sizeType <em>size Type</em>}' enum.
@@ -790,6 +845,26 @@ public interface SigpmlextendedPackage extends EPackage {
 	 * @generated
 	 */
 	int SIZE_TYPE = 13;
+
+	/**
+	 * The meta object id for the '<em>Object</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Object
+	 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getObject()
+	 * @generated
+	 */
+	int OBJECT = 14;
+
+	/**
+	 * The meta object id for the '<em>Linked List Multimap</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.google.common.collect.LinkedListMultimap
+	 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getLinkedListMultimap()
+	 * @generated
+	 */
+	int LINKED_LIST_MULTIMAP = 15;
 
 
 	/**
@@ -954,6 +1029,17 @@ public interface SigpmlextendedPackage extends EPackage {
 	EClass getInputPort();
 
 	/**
+	 * Returns the meta object for the attribute '{@link sigpmlextended.InputPort#getSizeToread <em>Size Toread</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Size Toread</em>'.
+	 * @see sigpmlextended.InputPort#getSizeToread()
+	 * @see #getInputPort()
+	 * @generated
+	 */
+	EAttribute getInputPort_SizeToread();
+
+	/**
 	 * Returns the meta object for class '{@link sigpmlextended.OutputPort <em>Output Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -962,6 +1048,17 @@ public interface SigpmlextendedPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getOutputPort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link sigpmlextended.OutputPort#getSizeWritten <em>Size Written</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Size Written</em>'.
+	 * @see sigpmlextended.OutputPort#getSizeWritten()
+	 * @see #getOutputPort()
+	 * @generated
+	 */
+	EAttribute getOutputPort_SizeWritten();
 
 	/**
 	 * Returns the meta object for class '{@link sigpmlextended.Place <em>Place</em>}'.
@@ -994,6 +1091,28 @@ public interface SigpmlextendedPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPlace_ItsInputPort();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link sigpmlextended.Place#getFifo <em>Fifo</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Fifo</em>'.
+	 * @see sigpmlextended.Place#getFifo()
+	 * @see #getPlace()
+	 * @generated
+	 */
+	EAttribute getPlace_Fifo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link sigpmlextended.Place#isIsInitialized <em>Is Initialized</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Initialized</em>'.
+	 * @see sigpmlextended.Place#isIsInitialized()
+	 * @see #getPlace()
+	 * @generated
+	 */
+	EAttribute getPlace_IsInitialized();
 
 	/**
 	 * Returns the meta object for the attribute '{@link sigpmlextended.Place#getSize <em>Size</em>}'.
@@ -1049,6 +1168,17 @@ public interface SigpmlextendedPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPlace_Delay();
+
+	/**
+	 * Returns the meta object for the attribute '{@link sigpmlextended.Place#getCurrentSize <em>Current Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Current Size</em>'.
+	 * @see sigpmlextended.Place#getCurrentSize()
+	 * @see #getPlace()
+	 * @generated
+	 */
+	EAttribute getPlace_CurrentSize();
 
 	/**
 	 * Returns the meta object for class '{@link sigpmlextended.NamedElement <em>Named Element</em>}'.
@@ -1220,6 +1350,17 @@ public interface SigpmlextendedPackage extends EPackage {
 	EReference getSystem_OwnedHWPlatform();
 
 	/**
+	 * Returns the meta object for the attribute '{@link sigpmlextended.System#getSharedMemory <em>Shared Memory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Shared Memory</em>'.
+	 * @see sigpmlextended.System#getSharedMemory()
+	 * @see #getSystem()
+	 * @generated
+	 */
+	EAttribute getSystem_SharedMemory();
+
+	/**
 	 * Returns the meta object for enum '{@link sigpmlextended.sizeType <em>size Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1228,6 +1369,28 @@ public interface SigpmlextendedPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getsizeType();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.Object <em>Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Object</em>'.
+	 * @see java.lang.Object
+	 * @model instanceClass="java.lang.Object"
+	 * @generated
+	 */
+	EDataType getObject();
+
+	/**
+	 * Returns the meta object for data type '{@link com.google.common.collect.LinkedListMultimap <em>Linked List Multimap</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Linked List Multimap</em>'.
+	 * @see com.google.common.collect.LinkedListMultimap
+	 * @model instanceClass="com.google.common.collect.LinkedListMultimap"
+	 * @generated
+	 */
+	EDataType getLinkedListMultimap();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1380,6 +1543,14 @@ public interface SigpmlextendedPackage extends EPackage {
 		EClass INPUT_PORT = eINSTANCE.getInputPort();
 
 		/**
+		 * The meta object literal for the '<em><b>Size Toread</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INPUT_PORT__SIZE_TOREAD = eINSTANCE.getInputPort_SizeToread();
+
+		/**
 		 * The meta object literal for the '{@link sigpmlextended.impl.OutputPortImpl <em>Output Port</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1388,6 +1559,14 @@ public interface SigpmlextendedPackage extends EPackage {
 		 * @generated
 		 */
 		EClass OUTPUT_PORT = eINSTANCE.getOutputPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Size Written</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OUTPUT_PORT__SIZE_WRITTEN = eINSTANCE.getOutputPort_SizeWritten();
 
 		/**
 		 * The meta object literal for the '{@link sigpmlextended.impl.PlaceImpl <em>Place</em>}' class.
@@ -1414,6 +1593,22 @@ public interface SigpmlextendedPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PLACE__ITS_INPUT_PORT = eINSTANCE.getPlace_ItsInputPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Fifo</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLACE__FIFO = eINSTANCE.getPlace_Fifo();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Initialized</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLACE__IS_INITIALIZED = eINSTANCE.getPlace_IsInitialized();
 
 		/**
 		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
@@ -1454,6 +1649,14 @@ public interface SigpmlextendedPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PLACE__DELAY = eINSTANCE.getPlace_Delay();
+
+		/**
+		 * The meta object literal for the '<em><b>Current Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLACE__CURRENT_SIZE = eINSTANCE.getPlace_CurrentSize();
 
 		/**
 		 * The meta object literal for the '{@link sigpmlextended.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -1598,6 +1801,14 @@ public interface SigpmlextendedPackage extends EPackage {
 		EReference SYSTEM__OWNED_HW_PLATFORM = eINSTANCE.getSystem_OwnedHWPlatform();
 
 		/**
+		 * The meta object literal for the '<em><b>Shared Memory</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SYSTEM__SHARED_MEMORY = eINSTANCE.getSystem_SharedMemory();
+
+		/**
 		 * The meta object literal for the '{@link sigpmlextended.sizeType <em>size Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1606,6 +1817,26 @@ public interface SigpmlextendedPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SIZE_TYPE = eINSTANCE.getsizeType();
+
+		/**
+		 * The meta object literal for the '<em>Object</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Object
+		 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getObject()
+		 * @generated
+		 */
+		EDataType OBJECT = eINSTANCE.getObject();
+
+		/**
+		 * The meta object literal for the '<em>Linked List Multimap</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.google.common.collect.LinkedListMultimap
+		 * @see sigpmlextended.impl.SigpmlextendedPackageImpl#getLinkedListMultimap()
+		 * @generated
+		 */
+		EDataType LINKED_LIST_MULTIMAP = eINSTANCE.getLinkedListMultimap();
 
 	}
 

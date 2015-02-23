@@ -26,66 +26,64 @@ import org.gemoc.sigpmlextended.k3dsa.SystemAspect;
 @SuppressWarnings("all")
 public class AgentAspect extends NamedElementAspect {
   public static void isExecuting(final Agent _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
-    _privk3_isExecuting(_self);
+    org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
+    _privk3_isExecuting(_self_, _self);
   }
   
   public static void execute(final Agent _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
-    _privk3_execute(_self);
+    org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
+    _privk3_execute(_self_, _self);
   }
   
-  public static AgentAspectAgentAspectProperties _self_;
-  
-  public static SwingPlotter plotter(final Agent _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
+  private static SwingPlotter plotter(final Agent _self) {
+    org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
     Object result = null;
-    result =_privk3_plotter(_self);
+    result =_privk3_plotter(_self_, _self);
     return (cnrs.luchogie.up.SwingPlotter)result;
   }
   
-  public static void plotter(final Agent _self, final SwingPlotter plotter) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
-    _privk3_plotter(_self,plotter);
+  private static void plotter(final Agent _self, final SwingPlotter plotter) {
+    org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
+    _privk3_plotter(_self_, _self,plotter);
   }
   
-  public static JFrame frame(final Agent _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
+  private static JFrame frame(final Agent _self) {
+    org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
     Object result = null;
-    result =_privk3_frame(_self);
+    result =_privk3_frame(_self_, _self);
     return (javax.swing.JFrame)result;
   }
   
-  public static void frame(final Agent _self, final JFrame frame) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
-    _privk3_frame(_self,frame);
+  private static void frame(final Agent _self, final JFrame frame) {
+    org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
+    _privk3_frame(_self_, _self,frame);
   }
   
-  public static Figure figure(final Agent _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
+  private static Figure figure(final Agent _self) {
+    org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
     Object result = null;
-    result =_privk3_figure(_self);
+    result =_privk3_figure(_self_, _self);
     return (cnrs.luchogie.up.data.Figure)result;
   }
   
-  public static void figure(final Agent _self, final Figure figure) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
-    _privk3_figure(_self,figure);
+  private static void figure(final Agent _self, final Figure figure) {
+    org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
+    _privk3_figure(_self_, _self,figure);
   }
   
   public static int currentExecCycle(final Agent _self) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
+    org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
     Object result = null;
-    result =_privk3_currentExecCycle(_self);
+    result =_privk3_currentExecCycle(_self_, _self);
     return (int)result;
   }
   
   public static void currentExecCycle(final Agent _self, final int currentExecCycle) {
-    _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
-    _privk3_currentExecCycle(_self,currentExecCycle);
+    org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectProperties _self_ = org.gemoc.sigpmlextended.k3dsa.AgentAspectAgentAspectContext.getSelf(_self);
+    _privk3_currentExecCycle(_self_, _self,currentExecCycle);
   }
   
-  protected static void _privk3_isExecuting(final Agent _self) {
+  protected static void _privk3_isExecuting(final AgentAspectAgentAspectProperties _self_, final Agent _self) {
     String _name = _self.getName();
     String _plus = (_name + "\n      isExecuting (");
     int _currentExecCycle = AgentAspect.currentExecCycle(_self);
@@ -97,7 +95,7 @@ public class AgentAspect extends NamedElementAspect {
     AgentAspect.currentExecCycle(_self, _plus_3);
   }
   
-  protected static void _privk3_execute(final Agent _self) {
+  protected static void _privk3_execute(final AgentAspectAgentAspectProperties _self_, final Agent _self) {
     String _name = _self.getName();
     String _plus = (_name + "\n      execute (");
     int _currentExecCycle = AgentAspect.currentExecCycle(_self);
@@ -192,12 +190,12 @@ public class AgentAspect extends NamedElementAspect {
     InputOutput.<String>println(_plus_6);
   }
   
-  protected static SwingPlotter _privk3_plotter(final Agent _self) {
-     return org.gemoc.sigpmlextended.k3dsa.AgentAspect._self_.plotter; 
+  protected static SwingPlotter _privk3_plotter(final AgentAspectAgentAspectProperties _self_, final Agent _self) {
+     return _self_.plotter; 
   }
   
-  protected static void _privk3_plotter(final Agent _self, final SwingPlotter plotter) {
-    org.gemoc.sigpmlextended.k3dsa.AgentAspect._self_.plotter = plotter; try {
+  protected static void _privk3_plotter(final AgentAspectAgentAspectProperties _self_, final Agent _self, final SwingPlotter plotter) {
+    _self_.plotter = plotter; try {
     
     			for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
     				if (m.getName().equals("set" + "Plotter")
@@ -211,12 +209,12 @@ public class AgentAspect extends NamedElementAspect {
     		} 
   }
   
-  protected static JFrame _privk3_frame(final Agent _self) {
-     return org.gemoc.sigpmlextended.k3dsa.AgentAspect._self_.frame; 
+  protected static JFrame _privk3_frame(final AgentAspectAgentAspectProperties _self_, final Agent _self) {
+     return _self_.frame; 
   }
   
-  protected static void _privk3_frame(final Agent _self, final JFrame frame) {
-    org.gemoc.sigpmlextended.k3dsa.AgentAspect._self_.frame = frame; try {
+  protected static void _privk3_frame(final AgentAspectAgentAspectProperties _self_, final Agent _self, final JFrame frame) {
+    _self_.frame = frame; try {
     
     			for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
     				if (m.getName().equals("set" + "Frame")
@@ -230,12 +228,12 @@ public class AgentAspect extends NamedElementAspect {
     		} 
   }
   
-  protected static Figure _privk3_figure(final Agent _self) {
-     return org.gemoc.sigpmlextended.k3dsa.AgentAspect._self_.figure; 
+  protected static Figure _privk3_figure(final AgentAspectAgentAspectProperties _self_, final Agent _self) {
+     return _self_.figure; 
   }
   
-  protected static void _privk3_figure(final Agent _self, final Figure figure) {
-    org.gemoc.sigpmlextended.k3dsa.AgentAspect._self_.figure = figure; try {
+  protected static void _privk3_figure(final AgentAspectAgentAspectProperties _self_, final Agent _self, final Figure figure) {
+    _self_.figure = figure; try {
     
     			for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
     				if (m.getName().equals("set" + "Figure")
@@ -249,12 +247,12 @@ public class AgentAspect extends NamedElementAspect {
     		} 
   }
   
-  protected static int _privk3_currentExecCycle(final Agent _self) {
-     return org.gemoc.sigpmlextended.k3dsa.AgentAspect._self_.currentExecCycle; 
+  protected static int _privk3_currentExecCycle(final AgentAspectAgentAspectProperties _self_, final Agent _self) {
+     return _self_.currentExecCycle; 
   }
   
-  protected static void _privk3_currentExecCycle(final Agent _self, final int currentExecCycle) {
-    org.gemoc.sigpmlextended.k3dsa.AgentAspect._self_.currentExecCycle = currentExecCycle; try {
+  protected static void _privk3_currentExecCycle(final AgentAspectAgentAspectProperties _self_, final Agent _self, final int currentExecCycle) {
+    _self_.currentExecCycle = currentExecCycle; try {
     
     			for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
     				if (m.getName().equals("set" + "CurrentExecCycle")

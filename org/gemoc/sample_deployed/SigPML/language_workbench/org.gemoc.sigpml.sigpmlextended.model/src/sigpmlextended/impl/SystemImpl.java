@@ -2,6 +2,8 @@
  */
 package sigpmlextended.impl;
 
+import com.google.common.collect.LinkedListMultimap;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -23,6 +25,7 @@ import sigpmlextended.SigpmlextendedPackage;
  * <ul>
  *   <li>{@link sigpmlextended.impl.SystemImpl#getOwnedApplication <em>Owned Application</em>}</li>
  *   <li>{@link sigpmlextended.impl.SystemImpl#getOwnedHWPlatform <em>Owned HW Platform</em>}</li>
+ *   <li>{@link sigpmlextended.impl.SystemImpl#getSharedMemory <em>Shared Memory</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,6 +51,26 @@ public class SystemImpl extends NamedElementImpl implements sigpmlextended.Syste
 	 * @ordered
 	 */
 	protected HWPlatform ownedHWPlatform;
+
+	/**
+	 * The default value of the '{@link #getSharedMemory() <em>Shared Memory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSharedMemory()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final LinkedListMultimap SHARED_MEMORY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSharedMemory() <em>Shared Memory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSharedMemory()
+	 * @generated
+	 * @ordered
+	 */
+	protected LinkedListMultimap sharedMemory = SHARED_MEMORY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,6 +182,27 @@ public class SystemImpl extends NamedElementImpl implements sigpmlextended.Syste
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LinkedListMultimap getSharedMemory() {
+		return sharedMemory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSharedMemory(LinkedListMultimap newSharedMemory) {
+		LinkedListMultimap oldSharedMemory = sharedMemory;
+		sharedMemory = newSharedMemory;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.SYSTEM__SHARED_MEMORY, oldSharedMemory, sharedMemory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -182,6 +226,8 @@ public class SystemImpl extends NamedElementImpl implements sigpmlextended.Syste
 				return getOwnedApplication();
 			case SigpmlextendedPackage.SYSTEM__OWNED_HW_PLATFORM:
 				return getOwnedHWPlatform();
+			case SigpmlextendedPackage.SYSTEM__SHARED_MEMORY:
+				return getSharedMemory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -199,6 +245,9 @@ public class SystemImpl extends NamedElementImpl implements sigpmlextended.Syste
 				return;
 			case SigpmlextendedPackage.SYSTEM__OWNED_HW_PLATFORM:
 				setOwnedHWPlatform((HWPlatform)newValue);
+				return;
+			case SigpmlextendedPackage.SYSTEM__SHARED_MEMORY:
+				setSharedMemory((LinkedListMultimap)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -218,6 +267,9 @@ public class SystemImpl extends NamedElementImpl implements sigpmlextended.Syste
 			case SigpmlextendedPackage.SYSTEM__OWNED_HW_PLATFORM:
 				setOwnedHWPlatform((HWPlatform)null);
 				return;
+			case SigpmlextendedPackage.SYSTEM__SHARED_MEMORY:
+				setSharedMemory(SHARED_MEMORY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -234,8 +286,26 @@ public class SystemImpl extends NamedElementImpl implements sigpmlextended.Syste
 				return ownedApplication != null;
 			case SigpmlextendedPackage.SYSTEM__OWNED_HW_PLATFORM:
 				return ownedHWPlatform != null;
+			case SigpmlextendedPackage.SYSTEM__SHARED_MEMORY:
+				return SHARED_MEMORY_EDEFAULT == null ? sharedMemory != null : !SHARED_MEMORY_EDEFAULT.equals(sharedMemory);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (sharedMemory: ");
+		result.append(sharedMemory);
+		result.append(')');
+		return result.toString();
 	}
 
 } //SystemImpl

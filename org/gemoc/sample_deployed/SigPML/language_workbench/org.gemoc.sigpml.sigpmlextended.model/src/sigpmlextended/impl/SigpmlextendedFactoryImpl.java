@@ -2,6 +2,8 @@
  */
 package sigpmlextended.impl;
 
+import com.google.common.collect.LinkedListMultimap;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -93,6 +95,10 @@ public class SigpmlextendedFactoryImpl extends EFactoryImpl implements Sigpmlext
 		switch (eDataType.getClassifierID()) {
 			case SigpmlextendedPackage.SIZE_TYPE:
 				return createsizeTypeFromString(eDataType, initialValue);
+			case SigpmlextendedPackage.OBJECT:
+				return createObjectFromString(eDataType, initialValue);
+			case SigpmlextendedPackage.LINKED_LIST_MULTIMAP:
+				return createLinkedListMultimapFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -108,6 +114,10 @@ public class SigpmlextendedFactoryImpl extends EFactoryImpl implements Sigpmlext
 		switch (eDataType.getClassifierID()) {
 			case SigpmlextendedPackage.SIZE_TYPE:
 				return convertsizeTypeToString(eDataType, instanceValue);
+			case SigpmlextendedPackage.OBJECT:
+				return convertObjectToString(eDataType, instanceValue);
+			case SigpmlextendedPackage.LINKED_LIST_MULTIMAP:
+				return convertLinkedListMultimapToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -231,6 +241,42 @@ public class SigpmlextendedFactoryImpl extends EFactoryImpl implements Sigpmlext
 	 */
 	public String convertsizeTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object createObjectFromString(EDataType eDataType, String initialValue) {
+		return super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertObjectToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LinkedListMultimap createLinkedListMultimapFromString(EDataType eDataType, String initialValue) {
+		return (LinkedListMultimap)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLinkedListMultimapToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

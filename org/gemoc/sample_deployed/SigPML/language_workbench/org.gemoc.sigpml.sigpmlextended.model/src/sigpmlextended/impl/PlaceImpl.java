@@ -2,14 +2,19 @@
  */
 package sigpmlextended.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import sigpmlextended.Application;
@@ -28,11 +33,14 @@ import sigpmlextended.sizeType;
  * <ul>
  *   <li>{@link sigpmlextended.impl.PlaceImpl#getItsOutputPort <em>Its Output Port</em>}</li>
  *   <li>{@link sigpmlextended.impl.PlaceImpl#getItsInputPort <em>Its Input Port</em>}</li>
+ *   <li>{@link sigpmlextended.impl.PlaceImpl#getFifo <em>Fifo</em>}</li>
+ *   <li>{@link sigpmlextended.impl.PlaceImpl#isIsInitialized <em>Is Initialized</em>}</li>
  *   <li>{@link sigpmlextended.impl.PlaceImpl#getSize <em>Size</em>}</li>
  *   <li>{@link sigpmlextended.impl.PlaceImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link sigpmlextended.impl.PlaceImpl#getType <em>Type</em>}</li>
  *   <li>{@link sigpmlextended.impl.PlaceImpl#getByteSize <em>Byte Size</em>}</li>
  *   <li>{@link sigpmlextended.impl.PlaceImpl#getDelay <em>Delay</em>}</li>
+ *   <li>{@link sigpmlextended.impl.PlaceImpl#getCurrentSize <em>Current Size</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,6 +66,36 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 	 * @ordered
 	 */
 	protected InputPort itsInputPort;
+
+	/**
+	 * The cached value of the '{@link #getFifo() <em>Fifo</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFifo()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Object> fifo;
+
+	/**
+	 * The default value of the '{@link #isIsInitialized() <em>Is Initialized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsInitialized()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_INITIALIZED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsInitialized() <em>Is Initialized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsInitialized()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isInitialized = IS_INITIALIZED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
@@ -128,6 +166,26 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 	 * @ordered
 	 */
 	protected int delay = DELAY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCurrentSize() <em>Current Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CURRENT_SIZE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getCurrentSize() <em>Current Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected int currentSize = CURRENT_SIZE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -222,6 +280,39 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 		itsInputPort = newItsInputPort;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.PLACE__ITS_INPUT_PORT, oldItsInputPort, itsInputPort));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Object> getFifo() {
+		if (fifo == null) {
+			fifo = new EDataTypeUniqueEList<Object>(Object.class, this, SigpmlextendedPackage.PLACE__FIFO);
+		}
+		return fifo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isIsInitialized() {
+		return isInitialized;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsInitialized(boolean newIsInitialized) {
+		boolean oldIsInitialized = isInitialized;
+		isInitialized = newIsInitialized;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.PLACE__IS_INITIALIZED, oldIsInitialized, isInitialized));
 	}
 
 	/**
@@ -355,6 +446,49 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getCurrentSize() {
+		return currentSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCurrentSize(int newCurrentSize) {
+		int oldCurrentSize = currentSize;
+		currentSize = newCurrentSize;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlextendedPackage.PLACE__CURRENT_SIZE, oldCurrentSize, currentSize));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void push() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void pop() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -408,6 +542,10 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 			case SigpmlextendedPackage.PLACE__ITS_INPUT_PORT:
 				if (resolve) return getItsInputPort();
 				return basicGetItsInputPort();
+			case SigpmlextendedPackage.PLACE__FIFO:
+				return getFifo();
+			case SigpmlextendedPackage.PLACE__IS_INITIALIZED:
+				return isIsInitialized();
 			case SigpmlextendedPackage.PLACE__SIZE:
 				return getSize();
 			case SigpmlextendedPackage.PLACE__OWNER:
@@ -418,6 +556,8 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 				return getByteSize();
 			case SigpmlextendedPackage.PLACE__DELAY:
 				return getDelay();
+			case SigpmlextendedPackage.PLACE__CURRENT_SIZE:
+				return getCurrentSize();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -427,6 +567,7 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -435,6 +576,13 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 				return;
 			case SigpmlextendedPackage.PLACE__ITS_INPUT_PORT:
 				setItsInputPort((InputPort)newValue);
+				return;
+			case SigpmlextendedPackage.PLACE__FIFO:
+				getFifo().clear();
+				getFifo().addAll((Collection<? extends Object>)newValue);
+				return;
+			case SigpmlextendedPackage.PLACE__IS_INITIALIZED:
+				setIsInitialized((Boolean)newValue);
 				return;
 			case SigpmlextendedPackage.PLACE__SIZE:
 				setSize((Integer)newValue);
@@ -450,6 +598,9 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 				return;
 			case SigpmlextendedPackage.PLACE__DELAY:
 				setDelay((Integer)newValue);
+				return;
+			case SigpmlextendedPackage.PLACE__CURRENT_SIZE:
+				setCurrentSize((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -469,6 +620,12 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 			case SigpmlextendedPackage.PLACE__ITS_INPUT_PORT:
 				setItsInputPort((InputPort)null);
 				return;
+			case SigpmlextendedPackage.PLACE__FIFO:
+				getFifo().clear();
+				return;
+			case SigpmlextendedPackage.PLACE__IS_INITIALIZED:
+				setIsInitialized(IS_INITIALIZED_EDEFAULT);
+				return;
 			case SigpmlextendedPackage.PLACE__SIZE:
 				setSize(SIZE_EDEFAULT);
 				return;
@@ -483,6 +640,9 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 				return;
 			case SigpmlextendedPackage.PLACE__DELAY:
 				setDelay(DELAY_EDEFAULT);
+				return;
+			case SigpmlextendedPackage.PLACE__CURRENT_SIZE:
+				setCurrentSize(CURRENT_SIZE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -500,6 +660,10 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 				return itsOutputPort != null;
 			case SigpmlextendedPackage.PLACE__ITS_INPUT_PORT:
 				return itsInputPort != null;
+			case SigpmlextendedPackage.PLACE__FIFO:
+				return fifo != null && !fifo.isEmpty();
+			case SigpmlextendedPackage.PLACE__IS_INITIALIZED:
+				return isInitialized != IS_INITIALIZED_EDEFAULT;
 			case SigpmlextendedPackage.PLACE__SIZE:
 				return size != SIZE_EDEFAULT;
 			case SigpmlextendedPackage.PLACE__OWNER:
@@ -510,6 +674,8 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 				return getByteSize() != BYTE_SIZE_EDEFAULT;
 			case SigpmlextendedPackage.PLACE__DELAY:
 				return delay != DELAY_EDEFAULT;
+			case SigpmlextendedPackage.PLACE__CURRENT_SIZE:
+				return currentSize != CURRENT_SIZE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -524,12 +690,18 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (size: ");
+		result.append(" (fifo: ");
+		result.append(fifo);
+		result.append(", isInitialized: ");
+		result.append(isInitialized);
+		result.append(", size: ");
 		result.append(size);
 		result.append(", type: ");
 		result.append(type);
 		result.append(", delay: ");
 		result.append(delay);
+		result.append(", currentSize: ");
+		result.append(currentSize);
 		result.append(')');
 		return result.toString();
 	}

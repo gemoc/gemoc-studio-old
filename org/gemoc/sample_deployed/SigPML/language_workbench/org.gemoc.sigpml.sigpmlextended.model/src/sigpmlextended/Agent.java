@@ -149,4 +149,20 @@ public interface Agent extends NamedElement {
 	 */
 	void setAllocatedTo(HWComputationalResource value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	void isExecuting();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void execute();
+
 } // Agent

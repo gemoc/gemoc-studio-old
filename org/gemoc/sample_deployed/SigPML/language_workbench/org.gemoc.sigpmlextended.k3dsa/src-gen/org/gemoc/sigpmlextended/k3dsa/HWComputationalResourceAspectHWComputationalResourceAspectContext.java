@@ -14,7 +14,7 @@ public class HWComputationalResourceAspectHWComputationalResourceAspectContext {
     		return INSTANCE.map.get(_self);
   }
   
-  private Map<HWComputationalResource, HWComputationalResourceAspectHWComputationalResourceAspectProperties> map = new java.util.HashMap<sigpmlextended.HWComputationalResource, org.gemoc.sigpmlextended.k3dsa.HWComputationalResourceAspectHWComputationalResourceAspectProperties>();
+  private Map<HWComputationalResource, HWComputationalResourceAspectHWComputationalResourceAspectProperties> map = new java.util.WeakHashMap<sigpmlextended.HWComputationalResource, org.gemoc.sigpmlextended.k3dsa.HWComputationalResourceAspectHWComputationalResourceAspectProperties>();
   
   public Map<HWComputationalResource, HWComputationalResourceAspectHWComputationalResourceAspectProperties> getMap() {
     return map;
