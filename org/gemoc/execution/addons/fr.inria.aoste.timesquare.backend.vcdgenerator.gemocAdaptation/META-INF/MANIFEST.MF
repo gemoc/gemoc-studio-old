@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Timesquare VCD Generation addon for GEMOC
+Bundle-SymbolicName: fr.inria.aoste.timesquare.backend.vcdgenerator.gemocAdaptation;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: fr.inria.aoste.timesquare.backend.vcdgenerator.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.ui.ide,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ fr.inria.aoste.timesquare.utils.console;bundle-version="1.0.0",
+ fr.inria.aoste.timesquare.utils.ui,
+ fr.inria.aoste.timesquare.utils.pluginhelpers;bundle-version="1.0.0",
+ fr.inria.aoste.trace;bundle-version="1.0.1",
+ fr.inria.aoste.timesquare.trace.util,
+ fr.inria.aoste.timesquare.launcher.core;bundle-version="1.4.1",
+ fr.inria.aoste.timesquare.backend.manager;bundle-version="1.2.0",
+ fr.inria.aoste.timesquare.duration.model;bundle-version="1.0.0",
+ fr.inria.aoste.timesquare.vcd;bundle-version="1.4.0",
+ fr.inria.aoste.timesquare.vcd.antlr;bundle-version="1.4.0",
+ org.gemoc.gemoc_language_workbench.api;bundle-version="0.1.0",
+ org.gemoc.execution.engine.trace.model
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: fr.inria.aoste.timesquare.backend.vcdgenerator,
+ fr.inria.aoste.timesquare.backend.vcdgenerator.behaviors,
+ fr.inria.aoste.timesquare.backend.vcdgenerator.manager
+Bundle-Vendor: Aoste INRIA/I3S
