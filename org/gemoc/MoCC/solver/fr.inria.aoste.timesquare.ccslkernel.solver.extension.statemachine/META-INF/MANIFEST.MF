@@ -9,10 +9,10 @@ Require-Bundle: org.eclipse.core.runtime,
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.ccslkernel.modelunfolding;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.javabdd.runtime;bundle-version="1.2.0",
- org.gemoc.mocc.ccslmocc.model;bundle-version="0.1.0",
  fr.inria.aoste.timesquare.ccslkernel.runtime;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0",
- fr.inria.aoste.utils.grph
+ fr.inria.aoste.utils.grph,
+ org.gemoc.mocc.ccslmocc.model;bundle-version="0.1.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine
