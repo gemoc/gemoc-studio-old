@@ -1,5 +1,6 @@
 package org.gemoc.gemoc_language_workbench.api.moc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
@@ -8,6 +9,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 
 import fr.inria.aoste.trace.EventOccurrence;
+import fr.inria.aoste.trace.ModelElementReference;
 
 /**
  * A Solver is the visible interface of any constraint solver system that runs
@@ -55,7 +57,8 @@ public interface ISolver {
 	 */
 	public void applyLogicalStep(LogicalStep logicalStep);
 
-	
+
+	public ArrayList<ModelElementReference> getAllDiscreteClocks();
 
 //	/**
 //	 * Returns the facility that allows the Execution Engine to create an input

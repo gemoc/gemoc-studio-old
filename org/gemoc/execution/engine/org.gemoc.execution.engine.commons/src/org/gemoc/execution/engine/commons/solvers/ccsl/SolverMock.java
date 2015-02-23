@@ -1,5 +1,6 @@
 package org.gemoc.execution.engine.commons.solvers.ccsl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
@@ -9,6 +10,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.trace.EventOccurrence;
+import fr.inria.aoste.trace.ModelElementReference;
 
 public class SolverMock implements ISolver {
 
@@ -88,6 +90,12 @@ public class SolverMock implements ISolver {
 	public void setUp(IExecutionContext context) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public ArrayList<ModelElementReference> getAllDiscreteClocks() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
