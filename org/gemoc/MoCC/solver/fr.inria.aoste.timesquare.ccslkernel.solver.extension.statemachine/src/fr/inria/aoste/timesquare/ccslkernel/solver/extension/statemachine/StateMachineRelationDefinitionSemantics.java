@@ -7,8 +7,8 @@ import java.util.Map;
 
 import net.javabdd.BDD;
 
-import org.gemoc.mocc.ccslmoc.model.ccslmocc.FinishClock;
-import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition;
+import org.gemoc.mocc.ccslmoc.model.moccml.FinishClock;
+import org.gemoc.mocc.ccslmoc.model.moccml.StateMachineRelationDefinition;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.AbstractAction;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Guard;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.IntegerAssignement;

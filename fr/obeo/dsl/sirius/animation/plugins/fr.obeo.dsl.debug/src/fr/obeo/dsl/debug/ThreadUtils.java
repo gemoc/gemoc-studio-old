@@ -492,7 +492,7 @@ public final class ThreadUtils {
 			res = topStackFrame;
 		} else {
 			throw new IllegalStateException(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.");
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.");
 		}
 		return res;
 	}
@@ -503,15 +503,12 @@ public final class ThreadUtils {
 	 * @param thread
 	 *            the {@link Thread}
 	 * @return <code>true</code> if the {@link Thread#getDebugTarget() debug target} is
-	 *         {@link DebugTargetState#CONNECTED connected} and the given {@link Thread} is suspended and
-	 *         there is a {@link Thread#getTopStackFrame() top stack frame} with a
-	 *         {@link StackFrame#getParentFrame() parent frame}.
+	 *         {@link DebugTargetState#CONNECTED connected} and the given {@link Thread} is suspended.
 	 */
 	public static boolean canPopFrame(Thread thread) {
 		final StackFrame topStackFrame = thread.getTopStackFrame();
 		return thread.getDebugTarget().getState() == DebugTargetState.CONNECTED
-				&& thread.getState() == State.SUSPENDED && topStackFrame != null
-				&& topStackFrame.getParentFrame() != null;
+				&& thread.getState() == State.SUSPENDED && topStackFrame != null;
 	}
 
 	/**

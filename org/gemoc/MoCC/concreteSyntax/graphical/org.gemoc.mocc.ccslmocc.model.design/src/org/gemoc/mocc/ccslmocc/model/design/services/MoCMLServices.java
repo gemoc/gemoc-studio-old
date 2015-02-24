@@ -21,11 +21,13 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
-import org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage;
-import org.gemoc.mocc.ccslmoc.model.ccslmocc.FinishClock;
-import org.gemoc.mocc.ccslmoc.model.ccslmocc.StartClock;
-import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition;
-import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateRelationBasedLibrary;
+import org.eclipse.xtext.serializer.impl.Serializer;
+import org.gemoc.mocc.ccslmoc.model.moccml.CcslmoccPackage;
+import org.gemoc.mocc.ccslmoc.model.moccml.FinishClock;
+import org.gemoc.mocc.ccslmoc.model.moccml.StartClock;
+import org.gemoc.mocc.ccslmoc.model.moccml.StateMachineRelationDefinition;
+import org.gemoc.mocc.ccslmoc.model.moccml.StateRelationBasedLibrary;
+import org.gemoc.mocc.ccslmocc.model.xtext.MoCDslRuntimeModule;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.AbstractAction;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Guard;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.IntegerAssignement;
@@ -33,6 +35,9 @@ import org.gemoc.mocc.fsmkernel.model.FSMModel.IntegerAssignementBlock;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.State;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Trigger;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.NamedElement;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.IntegerElement;
@@ -229,70 +234,73 @@ public class MoCMLServices {
 	 */
 	public String computeLabel(Transition element){
 		StringBuilder sb = new StringBuilder(16);
+		Injector injector = Guice.createInjector(new MoCDslRuntimeModule());
+		Serializer serializer = injector.getInstance(Serializer.class);
 		boolean changed = false;
 		if (element.getTrigger()!=null) {
-			if (!((Trigger)element.getTrigger()).getTrueTriggers().isEmpty()) {
-				for (Iterator<BindableEntity> iterator = ((Trigger)element.getTrigger()).getTrueTriggers().iterator(); iterator
-						.hasNext();) {
-					BindableEntity trigger = (BindableEntity) iterator.next();
-					sb.append(trigger.getName());
-					if (iterator.hasNext()) {
-						sb.append(", ");
-					}
-				}			
-			}else if (!((Trigger)element.getTrigger()).getFalseTriggers().isEmpty()) {
-				for (Iterator<BindableEntity> iterator = ((Trigger)element.getTrigger()).getFalseTriggers().iterator(); iterator
-						.hasNext();) {
-					BindableEntity trigger = (BindableEntity) iterator.next();
-					sb.append(trigger.getName());
-					if (iterator.hasNext()) {
-						sb.append(", ");
-					}
-				}
-			}
-			changed = true;
+			sb.append("when" +serializer.serialize(element.getTrigger())+"\n");
+//			if (!((Trigger)element.getTrigger()).getTrueTriggers().isEmpty()) {
+//				
+//				for (Iterator<BindableEntity> iterator = ((Trigger)element.getTrigger()).getTrueTriggers().iterator(); iterator
+//						.hasNext();) {
+//					BindableEntity trigger = (BindableEntity) iterator.next();
+//					sb.append(trigger.getName());
+//					if (iterator.hasNext()) {
+//						sb.append(", ");
+//					}
+//				}			
+//			}else if (!((Trigger)element.getTrigger()).getFalseTriggers().isEmpty()) {
+//				for (Iterator<BindableEntity> iterator = ((Trigger)element.getTrigger()).getFalseTriggers().iterator(); iterator
+//						.hasNext();) {
+//					BindableEntity trigger = (BindableEntity) iterator.next();
+//					sb.append(trigger.getName());
+//					if (iterator.hasNext()) {
+//						sb.append(", ");
+//					}
+//				}
+//			}
+//			changed = true;
 		}
 		if (element.getGuard()!=null) {
-			sb.append(" [");
-			sb.append(((Guard)element.getGuard()).getValue().getName());
-			sb.append("] ");
-			changed = true;
+			sb.append("if "+serializer.serialize(element.getGuard()));
+//		
+//			sb.append(" [");
+//			String s = serializer.serialize(((Guard)element.getGuard()).getValue());
+//			sb.append(s);
+//			sb.append("] ");
+//			changed = true;
 		} 
 		if (!element.getActions().isEmpty()) {
-				sb.append(" /");
+				sb.append("\n / ");
 				for (Iterator<AbstractAction> iterator = element.getActions().iterator(); iterator
 						.hasNext();) {
 					AbstractAction action = iterator.next();
-					sb.append("do ");
-					switch (action.eClass().getClassifierID()) {
-					case CcslmoccPackage.START_CLOCK:
-						sb.append("start ");
-						sb.append(((StartClock)action).getClock().getName());
-						break;
-					case CcslmoccPackage.FINISH_CLOCK:
-						sb.append("finish ");
-						sb.append(((FinishClock)action).getClock().getName());
-						break;
-					default: //FSMModelPackage.INTEGER_ASSIGNEMENT or block
-						if (action instanceof IntegerAssignement) {
-							sb.append("assign ");
-							sb.append(((IntegerAssignement)action).getName());
-						}else {
-							sb.append("assign ");
-							sb.append(((IntegerAssignementBlock)action).getName());
-						}
-						
-						break;
-					}
-					if (iterator.hasNext()) {
-						sb.append(", ");
-					}
+					sb.append("\n"+serializer.serialize(action));
+//					sb.append("do ");
+//					switch (action.eClass().getClassifierID()) {
+//					case CcslmoccPackage.START_CLOCK:
+//						sb.append("start ");
+//						sb.append(((StartClock)action).getClock().getName());
+//						break;
+//					case CcslmoccPackage.FINISH_CLOCK:
+//						sb.append("finish ");
+//						sb.append(((FinishClock)action).getClock().getName());
+//						break;
+//					default: //FSMModelPackage.INTEGER_ASSIGNEMENT or block
+//						if (action instanceof IntegerAssignement) {
+//							sb.append("assign ");
+//							sb.append(((IntegerAssignement)action).getName());
+//						}else {
+//							sb.append("assign ");
+//							sb.append(((IntegerAssignementBlock)action).getName());
+//						}
+//						
+//						break;
+//					}
+
 				}
-				changed = true;
 		}
-		if (!changed) {
-			sb.append(element.getName());
-		}
+
 		return sb.toString();
 	}
 	

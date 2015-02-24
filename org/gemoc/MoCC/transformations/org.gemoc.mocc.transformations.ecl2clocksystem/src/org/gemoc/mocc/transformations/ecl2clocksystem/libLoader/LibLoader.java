@@ -18,7 +18,7 @@ package org.gemoc.mocc.transformations.ecl2clocksystem.libLoader;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateRelationBasedLibrary;
+import org.gemoc.mocc.ccslmoc.model.moccml.StateRelationBasedLibrary;
 import org.gemoc.mocc.ccslmocc.model.xtext.ui.internal.MoCDslActivator;
 
 import com.google.inject.Injector;

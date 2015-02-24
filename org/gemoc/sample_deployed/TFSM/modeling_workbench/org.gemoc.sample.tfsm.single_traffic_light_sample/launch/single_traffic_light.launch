@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.gemoc.gemoc_modeling_workbench.ui.launcher">
 <booleanAttribute key="Console Backend" value="true"/>
+<booleanAttribute key="Execution tracing" value="true"/>
 <booleanAttribute key="GEMOC Perspective" value="true"/>
 <booleanAttribute key="GEMOC_ANIMATE" value="false"/>
 <intAttribute key="GEMOC_ANIMATE_DELAY" value="0"/>

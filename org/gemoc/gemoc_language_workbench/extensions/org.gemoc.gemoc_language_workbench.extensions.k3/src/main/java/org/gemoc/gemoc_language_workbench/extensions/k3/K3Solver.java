@@ -14,6 +14,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.trace.EventOccurrence;
+import fr.inria.aoste.trace.ModelElementReference;
 
 public class K3Solver implements ISolver, IMSEOccurrenceListener
 {
@@ -125,6 +126,12 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 			logicalSteps.add(occurrence.getLogicalstep());
 		}
 
+	}
+
+	@Override
+	public ArrayList<ModelElementReference> getAllDiscreteClocks() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

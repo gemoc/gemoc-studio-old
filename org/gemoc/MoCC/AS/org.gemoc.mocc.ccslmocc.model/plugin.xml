@@ -22,8 +22,8 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Ccslmocc -->
       <package
-            uri="http://org.gemoc.mocc.ccslmocc/1.0"
-            class="org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage"
+            uri="http://org.gemoc.moccml/1.0"
+            class="org.gemoc.mocc.ccslmoc.model.moccml.CcslmoccPackage"
             genModel="model/Ccslmocc.genmodel"/>
    </extension>
 

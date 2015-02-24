@@ -24,7 +24,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated FSMModel -->
       <package
-            uri="http://org.gemoc.mocc.fsmmodel/1.0"
+            uri="http://org.gemoc.moccml.fsmmodel/1.0"
             class="org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage"
             genModel="model/FSMModel.genmodel"/>
    </extension>

@@ -57,6 +57,11 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 	}
 
 	@Override
+	public ArrayList<ModelElementReference> getAllDiscreteClocks(){
+		return solverWrapper.getClockList();
+	}
+	
+	@Override
 	public void forbidEventOccurrence(EventOccurrence eventOccurrence) {
 		this.solverWrapper.forceClockAbsence(this
 				.getModelElementReferenceFromEventOccurrence(eventOccurrence));

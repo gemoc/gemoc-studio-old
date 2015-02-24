@@ -1,18 +1,13 @@
 package fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine;
 
-import java.util.Map;
 
-import org.gemoc.mocc.ccslmoc.model.ccslmocc.StateMachineRelationDefinition;
+import org.gemoc.mocc.ccslmoc.model.moccml.StateMachineRelationDefinition;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.AbstractEntity;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ExternalRelationDefinition;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDeclaration;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.AbstractConcreteMapping;
 import fr.inria.aoste.timesquare.ccslkernel.solver.ISolverElement;
-import fr.inria.aoste.timesquare.ccslkernel.solver.SolverElement;
-import fr.inria.aoste.timesquare.ccslkernel.solver.TimeModel.SolverClock;
 import fr.inria.aoste.timesquare.ccslkernel.solver.exception.SolverException;
-import fr.inria.aoste.timesquare.ccslkernel.solver.exception.UnboundAbstract;
 import fr.inria.aoste.timesquare.ccslkernel.solver.extension.ISolverRelationFactory;
 import fr.inria.aoste.timesquare.ccslkernel.solver.relation.AbstractWrappedRelation;
 
