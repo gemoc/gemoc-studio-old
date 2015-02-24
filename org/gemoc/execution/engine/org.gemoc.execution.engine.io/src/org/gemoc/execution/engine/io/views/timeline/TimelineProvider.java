@@ -358,5 +358,8 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 		
 	}
 
+	protected void setSelectedLogicalStep(LogicalStep ls) {
+	}
+
 
 }

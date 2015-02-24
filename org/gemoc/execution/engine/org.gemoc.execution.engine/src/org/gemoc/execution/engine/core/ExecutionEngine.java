@@ -8,8 +8,6 @@ import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.dse.DefaultMSEStateController;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
-import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
-import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -68,19 +66,12 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.When;
  * @param <T>
  * 
  */
-public class ExecutionEngine implements IExecutionEngine, IDisposable {
-
-	private boolean _started = false;
-	private boolean terminated = false;
-
-	protected EngineStatus engineStatus = new EngineStatus();
+public class ExecutionEngine extends AbstractExecutionEngine implements IDisposable {
 
 	/**
 	 * used to detect
 	 */
 	protected ArrayDeque<LogicalStep> _lastStepsRun;
-
-	private IExecutionContext _executionContext;
 
 	private IMSEStateController _mseStateController;
 	
@@ -100,58 +91,13 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 	 * @param isTraceActive 
 	 * @param _executionContext
 	 */
-	public ExecutionEngine(IExecutionContext executionContext) {
-		if (executionContext == null)
-			throw new IllegalArgumentException("executionContext");
-
-		_executionContext = executionContext;
+	public ExecutionEngine(IExecutionContext executionContext) 
+	{
+		super(executionContext);
 		_lastStepsRun = new ArrayDeque<LogicalStep>(getDeadlockDetectionDepth());
-
 		_mseStateController = new DefaultMSEStateController();
 		_executionContext.getExecutionPlatform().getMSEStateControllers().add(_mseStateController);
 		Activator.getDefault().info("*** Engine initialization done. ***");
-	}
-	
-	private EngineRunnable _runnable;
-	@Override
-	public void start() 
-	{
-		if (!_started) 
-		{
-			for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
-			{
-				addon.engineAboutToStart(this);
-			}
-			engineStatus.setNbLogicalStepRun(0);
-			_runnable = new EngineRunnable();
-			Thread mainThread = new Thread(_runnable, "Gemoc engine " + _executionContext.getRunConfiguration().getExecutedModelURI());
-			mainThread.start();
-		}
-
-	}
-
-	@Override
-	public void stop() 
-	{
-		terminated = true;
-		setEngineStatus(EngineStatus.RunStatus.Stopped);
-		if (_logicalStepDecider != null)
-		{
-			_logicalStepDecider.preempt();
-		}
-	}
-
-	private void clean() {
-		setEngineStatus(EngineStatus.RunStatus.Stopped);
-		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
-		{
-			addon.engineStopped(this);
-		}
-		setSelectedLogicalStep(null);
-	}
-
-	public EngineStatus getEngineStatus() {
-		return engineStatus;
 	}
 
 	private static boolean areLogicalStepSimilar(LogicalStep ls1, LogicalStep ls2) {
@@ -176,72 +122,20 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 		}
 		return false;
 	}
-
-	private ILogicalStepDecider _logicalStepDecider;
 	
 	class EngineRunnable implements Runnable {
 		
 		public void run() {
-			
-			for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
-			{
-				addon.engineStarted(ExecutionEngine.this);
-			}
-			
-			// register this engine using a unique name
-			String engineName = Thread.currentThread().getName();
-			engineName = Activator.getDefault().gemocRunningEngineRegistry.registerEngine(engineName, ExecutionEngine.this);
-
-			setEngineStatus(EngineStatus.RunStatus.Running);
-			long count = 0;
-			
+			engineStatus.setNbLogicalStepRun(0);
 			try 
 			{
-				while (!terminated) 
-				{
-					switchDeciderIfNecessary();
-									
-					computePossibleLogicalSteps();
-					updatePossibleLogicalSteps();
-					// 2- select one solution from available logical step /
-					// select interactive vs batch
-					LogicalStep selectedLogicalStep;
-					if (_possibleLogicalSteps.size() == 0) {
-						Activator.getDefault().debug("No more LogicalStep to run");
-						stop();
-					} else {
-						Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
-						setEngineStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
-						selectedLogicalStep = _executionContext.getLogicalStepDecider().decide(ExecutionEngine.this, _possibleLogicalSteps);
-						count++;
-
-						if (selectedLogicalStep != null)
-						{
-							setSelectedLogicalStep(selectedLogicalStep);
-							setEngineStatus(EngineStatus.RunStatus.Running);
-
-							for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
-							{
-								addon.logicalStepSelected(ExecutionEngine.this, getSelectedLogicalStep());
-							}
-
-							// 3 - run the selected logical step
-							// inform the solver that we will run this step
-							getSolver().applyLogicalStep(selectedLogicalStep);
-							// run all the event occurrences of this logical
-							// step
-							executeLogicalStep(selectedLogicalStep);
-							terminateIfLastStepsSimilar(selectedLogicalStep);							
-						}						
-					}
-					engineStatus.incrementNbLogicalStepRun();
+				while (!_isStopped) 
+				{					
+					performExecutionStep();
+					terminateIfLastStepsSimilar(getSelectedLogicalStep());							
 				} 
 			} catch (Throwable e) {
-				Activator.getDefault().error("Exception received " + e.getMessage() + ", stopping engine.", e);
-				stop();
-			}
-			finally {
-				clean();
+				throw new RuntimeException(e);
 			}
 		}
 
@@ -263,31 +157,18 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 		}
 
 	}
-
-	private void setEngineStatus(RunStatus newStatus) 
-	{
-		_runningStatus = newStatus;
-		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons())
-		{
-			addon.engineStatusChanged(this, newStatus);
-		}
-	}
-	
-//	private void notifyEngineHasChanged() {
-//		ObservableBasicExecutionEngine.this.setChanged();
-//		ObservableBasicExecutionEngine.this.notifyObservers(); 
-//	}
-
 	private int getDeadlockDetectionDepth() 
 	{
 		return _executionContext.getRunConfiguration().getDeadlockDetectionDepth();
 	}
+	
 	/**
 	 * run all the event occurrences of this logical step
 	 * 
 	 * @param logicalStepToApply
 	 */
-	private void executeLogicalStep(LogicalStep logicalStepToApply) {
+	@Override
+	protected void executeSelectedLogicalStep() {
 		// = step in debug mode, goes to next logical step
 		// -> run all event occurrences of the logical step
 		// step into / open internal thread and pause them
@@ -295,24 +176,13 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 		// thread in the debugger
 		// execution feedback is sent to the solver so it can take internal
 		// event into account
-
-		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
-		{
-			addon.aboutToExecuteLogicalStep(this, logicalStepToApply);
-		}
-
-		for (final MSEOccurrence mseOccurence : logicalStepToApply.getMseOccurrences()) 
+		for (final MSEOccurrence mseOccurence : getSelectedLogicalStep().getMseOccurrences()) 
 		{
 			executeAssociatedActions(mseOccurence.getMse());
 			executeMSEOccurrence(mseOccurence);
 		}
+	}
 
-		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
-		{
-			addon.logicalStepExecuted(this, logicalStepToApply);
-		}
-}
-	
 	private void executeAssociatedActions(ModelSpecificEvent mse)
 	{
 		synchronized(_futureActionsLock)
@@ -357,81 +227,6 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 			execution.run();
 		}
 	}
-
-	@Override
-	public String toString() {
-		return this.getClass().getName() + "@[Executor=" + getCodeExecutor() + " ; Solver=" + getSolver() + " ; ModelResource=" + _executionContext.getResourceModel()+ "]";
-	}
-
-	public <T extends IEngineAddon> boolean hasAddon(Class<T> type) {
-		for (IEngineAddon c : _executionContext.getExecutionPlatform().getEngineAddons()) {
-			if (c.getClass().equals(type))
-				return true;
-		}
-		return false;
-	}
-
-	@SuppressWarnings("all")
-	public <T extends IEngineAddon> T getAddon(Class<T> type) {
-		for (IEngineAddon c : _executionContext.getExecutionPlatform().getEngineAddons()) {
-			if (c.getClass().equals(type))
-				return (T) c;
-		}
-		return null;
-	}
-
-	@Override
-	public IExecutionContext getExecutionContext() {
-		return _executionContext;
-	}
-
-	private void switchDeciderIfNecessary()
-	{
-		if (_executionContext.getLogicalStepDecider() != null
-			&& _executionContext.getLogicalStepDecider() != _logicalStepDecider)
-		{
-			_logicalStepDecider = _executionContext.getLogicalStepDecider();
-		}
-	}
-
-	private List<LogicalStep> _possibleLogicalSteps = new ArrayList<>();
-	private void computePossibleLogicalSteps() 
-	{
-		_possibleLogicalSteps = getSolver().computeAndGetPossibleLogicalSteps();
-	}
-
-	@Override
-	public List<LogicalStep> getPossibleLogicalSteps() 
-	{
-		synchronized (this)
-		{
-			return new ArrayList<LogicalStep>(_possibleLogicalSteps);
-		}
-	}
-	
-	private LogicalStep _selectedLogicalStep;
-	
-	private void updatePossibleLogicalSteps()
-	{
-		for(IMSEStateController c : _executionContext.getExecutionPlatform().getMSEStateControllers())
-		{
-			c.applyMSEFutureStates(getSolver());
-		}
-		synchronized(this)
-		{
-			_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
-		}
-		for (IEngineAddon addon : _executionContext.getExecutionPlatform().getEngineAddons()) 
-		{
-			addon.aboutToSelectLogicalStep(ExecutionEngine.this, getPossibleLogicalSteps());
-		}
-	}
-	
-	public void recomputePossibleLogicalSteps()
-	{
-		getSolver().revertForceClockEffect();
-		updatePossibleLogicalSteps();
-	}
 	
 	private ArrayList<IFutureAction> _futureActions = new ArrayList<>();
 	private Object _futureActionsLock = new Object();
@@ -444,40 +239,10 @@ public class ExecutionEngine implements IExecutionEngine, IDisposable {
 		}
 	}
 
-	private ISolver getSolver()
-	{
-		return _executionContext.getExecutionPlatform().getSolver();
-	}
-	
-	private ICodeExecutor getCodeExecutor()
-	{
-		return _executionContext.getExecutionPlatform().getCodeExecutor();		
-	}
-	
 	@Override
-	public void dispose() 
+	protected Runnable getRunnable() 
 	{
-		_executionContext.dispose();
+		return new EngineRunnable();
 	}
 	
-	@Override
-	public LogicalStep getSelectedLogicalStep() 
-	{
-		synchronized (this) {
-			return _selectedLogicalStep;
-		}
-	}
-	private void setSelectedLogicalStep(LogicalStep ls)
-	{
-		synchronized (this) {
-			_selectedLogicalStep = ls;
-		}
-	}
-	
-	private RunStatus _runningStatus = RunStatus.Initializing;
-
-	public RunStatus getRunningStatus() {
-		return _runningStatus;
-	}
-
 }

@@ -90,4 +90,10 @@ public class SolverMock implements ISolver {
 		
 	}
 
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

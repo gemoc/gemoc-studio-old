@@ -1,81 +1,37 @@
 package org.gemoc.execution.engine.core;
 
-import java.util.List;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
-import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
-import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
-public class PlainK3ExecutionEngine implements IExecutionEngine
+public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements IMSEOccurrenceListener
 {
 
-	private IExecutionContext _executionContext;
-
-	public PlainK3ExecutionEngine(IExecutionContext context) 
-	{
-		_executionContext = context;
-	}
+	private Runnable _runnable;
 	
-	@Override
-	public void dispose() 
+	public PlainK3ExecutionEngine(final IExecutionContext context, final Object caller, final Method method, final ArrayList<Object> parameters) 
 	{
-	}
-
-	@Override
-	public void start() 
-	{
-	}
-
-	@Override
-	public void stop() 
-	{
-	}
-
-	@Override
-	public EngineStatus getEngineStatus() 
-	{
-		return null;
-	}
-
-	@Override
-	public <T extends IEngineAddon> boolean hasAddon(Class<T> type) {
-		for (IEngineAddon c : _executionContext.getExecutionPlatform().getEngineAddons()) {
-			if (c.getClass().equals(type))
-				return true;
-		}
-		return false;
-	}
-
-	@Override
-	@SuppressWarnings("all")
-	public <T extends IEngineAddon> T getAddon(Class<T> type) {
-		for (IEngineAddon c : _executionContext.getExecutionPlatform().getEngineAddons()) {
-			if (c.getClass().equals(type))
-				return (T) c;
-		}
-		return null;
-	}
-
-	@Override
-	public IExecutionContext getExecutionContext() 
-	{
-		return _executionContext;
-	}
-
-	@Override
-	public List<LogicalStep> getPossibleLogicalSteps() 
-	{
-		return null;
-	}
-
-	@Override
-	public LogicalStep getSelectedLogicalStep() 
-	{
-		return null;
+		super(context);
+		_runnable = new Runnable() {			
+			@Override
+			public void run() {
+				try
+				{
+					MSEManager.getInstance().addListener(PlainK3ExecutionEngine.this);
+					method.invoke(caller, parameters.get(0));
+				} 						
+				catch (Exception e) {
+					throw new RuntimeException(e);
+				}
+				finally
+				{
+					MSEManager.getInstance().removeListener(PlainK3ExecutionEngine.this);
+				}
+			}
+		};
 	}
 
 	@Override
@@ -84,9 +40,31 @@ public class PlainK3ExecutionEngine implements IExecutionEngine
 	}
 
 	@Override
-	public RunStatus getRunningStatus() 
+	protected void executeSelectedLogicalStep() 
 	{
-		return null;
+		if (_isStopped)
+		{
+			throw new RuntimeException(getName() + " is stopped");
+		}
+		notifyAboutToExecuteLogicalStep();
+		notifyLogicalStepExecuted();
+	}
+	
+	@Override
+	protected Runnable getRunnable() 
+	{
+		return _runnable;
+	}
+
+	@Override
+	public void mseOccurenceRaised(MSEOccurrence occurrence) 
+	{
+		// before coming here, i is absolutely necessary to have visited the solver first.
+		try {
+			performExecutionStep();
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }

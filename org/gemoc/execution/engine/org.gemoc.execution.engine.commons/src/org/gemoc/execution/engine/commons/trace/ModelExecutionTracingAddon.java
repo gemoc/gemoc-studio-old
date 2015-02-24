@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -49,7 +48,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
  * @author ftanguy
  *
  */
-public class ModelExecutionTracingAddon extends DefaultEngineAddon implements IAddon {
+public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 	
 	private TransactionalEditingDomain getEditingDomain()
@@ -338,9 +337,4 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon implements IA
 	CommandExecution.execute(getEditingDomain(), command);
 	}
 
-	@Override
-	public Resource getResource() 
-	{
-		return getExecutionTrace().eResource().getResourceSet().getResources().get(0);
-	}
 }

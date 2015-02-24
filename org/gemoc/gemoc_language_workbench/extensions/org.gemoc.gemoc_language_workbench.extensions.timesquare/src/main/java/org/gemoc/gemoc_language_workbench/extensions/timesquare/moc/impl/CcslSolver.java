@@ -337,4 +337,10 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 						"platform:/resource" + workspace.getFeedbackModelPath().toString());			
 		}		
 	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
+	}
 }

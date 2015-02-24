@@ -113,13 +113,12 @@ public class DefaultModelLoader implements IModelLoader {
 					protected void doExecute() {
 						for (Layer l : diagram.getDescription()
 								.getAdditionalLayers()) {
-							boolean mustBeActive = AbstractDSLDebuggerServices.LISTENER
-									.isRepresentationToRefresh(MODEL_ID,
-											diagram.getDescription().getName(), l.getName())
-											|| AbstractGemocAnimatorServices.ANIMATOR
-											.isRepresentationToRefresh(
-													diagram.getDescription().getName(),
-													l.getName());
+							boolean mustBeActive = AbstractDSLDebuggerServices
+														.LISTENER
+														.isRepresentationToRefresh(MODEL_ID, diagram.getDescription().getName(), l.getName())
+													|| 
+													AbstractGemocAnimatorServices.ANIMATOR
+														.isRepresentationToRefresh(diagram.getDescription().getName(), l.getName());
 							if (mustBeActive
 									&& !diagram.getActivatedLayers()
 									.contains(l)) {

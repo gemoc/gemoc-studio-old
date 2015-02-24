@@ -9,7 +9,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.ecl.feedback.model,
- org.gemoc.execution.engine.trace.model
+ org.gemoc.execution.engine.trace.model,
+ org.gemoc.execution.engine;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.gemoc_language_workbench.extensions.k3,

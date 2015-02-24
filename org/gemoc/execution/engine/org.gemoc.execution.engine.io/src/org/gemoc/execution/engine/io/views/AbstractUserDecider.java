@@ -22,6 +22,8 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 	{
 		super();
 	}
+	
+	private LogicalStep _selectedLogicalStep;
 
 	private Semaphore _semaphore = null;
 
@@ -97,8 +99,6 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 		return _selectedLogicalStep;
 	}
 
-	private LogicalStep _selectedLogicalStep;
-	
 	private LogicalStepsView decisionView;
 
 	@Override
