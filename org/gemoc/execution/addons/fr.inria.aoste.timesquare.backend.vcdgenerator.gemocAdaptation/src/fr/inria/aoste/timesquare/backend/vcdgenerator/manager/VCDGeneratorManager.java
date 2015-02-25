@@ -12,6 +12,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.activities.NotDefinedException;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -26,15 +27,14 @@ import fr.inria.aoste.timesquare.backend.vcdgenerator.ScoreBoard;
 import fr.inria.aoste.timesquare.backend.vcdgenerator.behaviors.AbstractVCDClockBehavior;
 import fr.inria.aoste.timesquare.backend.vcdgenerator.behaviors.VCDGeneratorClockBehavior;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.NamedElement;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ConcreteEntity;
 import fr.inria.aoste.timesquare.trace.util.HelperFactory;
 import fr.inria.aoste.timesquare.trace.util.TimeBase;
 import fr.inria.aoste.timesquare.trace.util.adapter.AdapterRegistry;
-import fr.inria.aoste.timesquare.utils.console.ErrorConsole;
 import fr.inria.aoste.timesquare.utils.pluginhelpers.PluginHelpers;
 import fr.inria.aoste.timesquare.vcd.antlr.editors.VcdMultiPageEditor;
 import fr.inria.aoste.timesquare.vcd.menu.Mode;
-import fr.inria.aoste.timesquare.vcd.model.ICommentCommand;
 import fr.inria.aoste.timesquare.vcd.model.command.DateCommand;
 import fr.inria.aoste.timesquare.vcd.model.command.SimulationCommand;
 import fr.inria.aoste.timesquare.vcd.model.command.TimeScaleCommand;
@@ -112,6 +112,19 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 
 	private String _durationModelFilename;
 	
+	
+	private PhysicalBase pb = null;
+	private TimeBase physical = null;
+
+	private static class StepManager {
+		SimulationCommand simCommand;
+		boolean fixed;
+	}
+
+	private HashMap<Integer, StepManager> hmism = new HashMap<Integer, StepManager>();
+	private List<StepManager> lsstep = new ArrayList<StepManager>();
+	
+	
 	public String getPluginName() {
 		return PLUGIN_NAME;
 	}
@@ -167,8 +180,9 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 	 */
 	public void addVCDGeneratorBehavior(GemocClockEntity clockEntity, boolean pulses, boolean ghosts,
 			GemocClockEntity discretize) {
+		//String shortName = ((NamedElement)clockEntity.getModelElementReference().getElementRef().get(clockEntity.getModelElementReference().getElementRef().size()-1)).getName();
 		addVCDGeneratorBehavior(
-				new VCDGeneratorClockBehavior(pulses, ghosts, clockEntity.getName(),
+				new VCDGeneratorClockBehavior(pulses, ghosts, clockEntity.getName()/*shortName*/,
 						(discretize != null ? AdapterRegistry.getAdapter(
 								discretize.getModelElementReference()).getUID(
 								discretize.getModelElementReference()) : "")), clockEntity,
@@ -355,7 +369,7 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 		_scoreBoard.getVcdModel().addDefinition(scaleCommand);
 		createFileCreationThread();
 
-		createVCDUpdateThread();
+		//createVCDUpdateThread();
 
 	}
 
@@ -405,7 +419,7 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 	}
 
 	
-	private int step = -1;
+	private int step = 0;
 	/**
 	 * aNewStep method<BR>
 	 * This generates the steps numbers on the output and updates the VCD
@@ -418,24 +432,18 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 	public void logicalStepExecuted(IExecutionEngine engine, LogicalStep logicalStepExecuted){
 		if (_scoreBoard == null)
 			return;
-		createVCDUpdateThread();
-
-		step++;
-		int date = step;
-		_currentStep = step;
-		int instant = step * 10;
+		
+		_currentStep++;
+		int instant = _currentStep * 10;
 
 		StepManager sm = new StepManager();
 		SimulationCommand sc = _scoreBoard.tick(instant);
 		sm.simCommand = sc;
 		sm.fixed = false;
-		hmism.put(date, sm);
+		hmism.put(_currentStep, sm);
 		lsstep.add(sm);
 		
-		
-		
 		ArrayList<AbstractVCDClockBehavior> alreadyDone = new ArrayList<AbstractVCDClockBehavior>();
-		
 		for(MSEOccurrence occ : logicalStepExecuted.getMseOccurrences()){
 			Clock c = (Clock) occ.getMse().getSolverEvent();
 			for (AbstractVCDClockBehavior b : _behaviorList){
@@ -443,35 +451,32 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 					VCDGeneratorClockBehavior vb = (VCDGeneratorClockBehavior)b;
 					ConcreteEntity ce = ((GemocClockEntity)vb.getClock())._ce;
 					ModelElementReference mer = ((GemocClockEntity)vb.getClock())._mer;
-					if (ce.getName() == c.getName()){
+					if (ce.getName() == c.getName()){ //TODO: Fix this ugly comparison
 						alreadyDone.add(b);
 						EventOccurrence eocc = TraceFactory.eINSTANCE.createEventOccurrence();
 						eocc.setFState(FiredStateKind.TICK);
 						eocc.setReferedElement(mer);
 						TraceHelper th = new TraceHelper(eocc, vb.getClock());
 						vb.run(th);
-						
+						vb.aPostNewStep();
 					}
 				}
 			}
 		}
-		
-		
 		for (AbstractVCDClockBehavior b : _behaviorList){
-			if (alreadyDone.contains(b)){
-				continue;
+			if (! alreadyDone.contains(b)){
+				if (b instanceof VCDGeneratorClockBehavior){
+					VCDGeneratorClockBehavior vb = (VCDGeneratorClockBehavior)b;
+					EventOccurrence eocc = TraceFactory.eINSTANCE.createEventOccurrence();
+					eocc.setFState(FiredStateKind.NO_TICK);
+					TraceHelper th = new TraceHelper(eocc, vb.getClock());
+					vb.run(th);
+					vb.aPostNewStep();
+				}
 			}
-			if (b instanceof VCDGeneratorClockBehavior){
-				VCDGeneratorClockBehavior vb = (VCDGeneratorClockBehavior)b;
-				EventOccurrence eocc = TraceFactory.eINSTANCE.createEventOccurrence();
-				eocc.setFState(FiredStateKind.NO_TICK);
-				TraceHelper th = new TraceHelper(eocc, vb.getClock());
-				vb.run(th);
-				
-			}
-			b.aPostNewStep();
 		}
-				
+
+		createVCDUpdateThread();
 	}
 
 
@@ -622,6 +627,9 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 				try {
 					if (_vcdEditor != null)
 						_vcdEditor.update2(previousSize, currentSize, false);
+//						_vcdEditor.syncModel2Text();
+//						_vcdEditor.vcdMultiPageEditorRefresh();
+//						_vcdEditor.setActiveVCDPage();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -739,16 +747,18 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 		}
 	}
 
-	PhysicalBase pb = null;
-	TimeBase physical = null;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
-	private static class StepManager {
-		SimulationCommand simCommand;
-		boolean fixed;
-	}
-
-	private HashMap<Integer, StepManager> hmism = new HashMap<Integer, StepManager>();
-	private List<StepManager> lsstep = new ArrayList<StepManager>();
 
 	public int updateDate(PhysicalBase pb) {
 		try {
