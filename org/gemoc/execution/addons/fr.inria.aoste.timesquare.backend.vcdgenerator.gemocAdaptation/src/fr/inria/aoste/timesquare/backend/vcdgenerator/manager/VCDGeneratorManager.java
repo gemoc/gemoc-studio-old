@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
@@ -311,8 +312,9 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 	public void engineStarted(IExecutionEngine executionEngine) {
 		
 		IPath fin = executionEngine.getExecutionContext().getWorkspace().getExecutionPath();
-		IPath p = new Path(ResourcesPlugin.getWorkspace().getRoot().getLocation()+"/"+fin.toPortableString());
-		setOutputFile(p, "vcdFromSimu");
+		IFolder folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(fin);
+//		IPath p = new Path(ResourcesPlugin.getWorkspace().getRoot().getLocation()+"/"+fin.toPortableString());
+		setOutputFile(folder.getLocation(), "vcdFromSimu");
 		_myColorAPI = VcdColorPreferences.createColor();
 		_scoreBoard = ScoreBoard.getScoreboard(_outputFileName, _myColorAPI);
 
@@ -385,37 +387,39 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 	@Override
 	public void engineAboutToStop(IExecutionEngine engine) {
 		_currentStep++;
-
-		int instant = _currentStep * 10;
-		// Representation of the end of the simulation
-		SimulationCommand sc = _scoreBoard.tick(instant);
-		for (AbstractVCDClockBehavior behavior : _behaviorList) {
-			behavior.end();
-		}
-		StepManager sm = new StepManager();
-		sm.simCommand = sc;
-		sm.fixed = false;
-		if (hmism != null)
-			hmism.put(_currentStep, sm);
-		lsstep.add(sm);
-		if (pb != null) {
-			updateDate(pb);
-		}
-		createEndThread();
-		_myColorAPI = null;
 		if (_scoreBoard != null)
-			ScoreBoard.removeScoreboard(_scoreBoard);
-		_scoreBoard = null;
-		for (AbstractVCDClockBehavior b : _behaviorList) {
-			b.setScoreBoard(null);
+		{
+			int instant = _currentStep * 10;
+			// Representation of the end of the simulation
+			SimulationCommand sc = _scoreBoard.tick(instant);
+			for (AbstractVCDClockBehavior behavior : _behaviorList) {
+				behavior.end();
+			}
+			StepManager sm = new StepManager();
+			sm.simCommand = sc;
+			sm.fixed = false;
+			if (hmism != null)
+				hmism.put(_currentStep, sm);
+			lsstep.add(sm);
+			if (pb != null) {
+				updateDate(pb);
+			}
+			createEndThread();
+			_myColorAPI = null;
+			if (_scoreBoard != null)
+				ScoreBoard.removeScoreboard(_scoreBoard);
+			_scoreBoard = null;
+			for (AbstractVCDClockBehavior b : _behaviorList) {
+				b.setScoreBoard(null);
+			}
+			_behaviorList.clear();
+			_behaviorList = null;
+			hmism.clear();
+			lsstep.clear();
+			hmism = null;
+			lsstep = null;
+			_vcdEditor = null;
 		}
-		_behaviorList.clear();
-		_behaviorList = null;
-		hmism.clear();
-		lsstep.clear();
-		hmism = null;
-		lsstep = null;
-		_vcdEditor = null;
 	}
 
 	
