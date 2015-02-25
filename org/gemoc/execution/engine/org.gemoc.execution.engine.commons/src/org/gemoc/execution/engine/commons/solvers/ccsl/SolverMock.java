@@ -51,24 +51,6 @@ public class SolverMock implements ISolver {
 	}
 
 	@Override
-	public URI prepareSolverInputFileForUserModel(URI userModelURI) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isSolverInputFileReadyForUserModel(URI userModelURI) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void setSolverInputFile(ResourceSet rs, URI solverInputURI) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public byte[] getState() {
 		// TODO Auto-generated method stub
 		return null;

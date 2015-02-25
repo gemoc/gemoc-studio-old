@@ -122,12 +122,16 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 				+ this.solverInputURI + "]";
 	}
 
-	@Override
-	public void setSolverInputFile(ResourceSet resourceSet, URI solverInputURI) {
-		this.solverInputURI = solverInputURI;
-		try {
+	private void createSolver(IExecutionContext context) 
+	{
+		this.solverInputURI = URI.createPlatformResourceURI(context.getWorkspace().getMoCPath().toString(), true);
+		URI feedbackURI = URI.createPlatformResourceURI(context.getWorkspace().getFeedbackModelPath().toString(), true);
+		
+		try 
+		{
+			ResourceSet resourceSet = context.getResourceModel().getResourceSet();		
+			
 			Resource ccslResource = resourceSet.getResource(this.solverInputURI, true);
-			ccslResource.load(null);
 			EcoreUtil.resolveAll(resourceSet);
 			traceResources(resourceSet);
 			traceUnresolvedProxies(resourceSet, solverInputURI);			
@@ -136,15 +140,9 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 			this.solverWrapper.getSolver().loadModel(ccslResource);
 			this.solverWrapper.getSolver().initSimulation();
 			this.solverWrapper.getSolver().setPolicy(new MaxCardSimulationPolicy());
-			
-			for (Resource r : resourceSet.getResources())
-			{
-				if (r.getContents().size() > 0
-					&& r.getContents().get(0) instanceof ActionModel)
-				{
-					_feedbackModel = (ActionModel)r.getContents().get(0);
-				}
-			}
+
+			Resource feedbackResource = resourceSet.getResource(feedbackURI, true);
+			_feedbackModel = (ActionModel)feedbackResource.getContents().get(0);
 			
 		} catch (IOException e) {
 			String errorMessage = "IOException while instantiating the CcslSolver";
@@ -180,26 +178,6 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		{
 			Activator.getDefault().info(r.getURI().toString());
 		}
-	}
-
-	/**
-	 * used to test if we need to generate the extendedCCSL
-	 * extendedCCSL should be regenerated if user model is newer than the extendedCCSL
-	 */
-	public boolean isSolverInputFileReadyForUserModel(URI userModelURI){
-		// TODO implement this feature 
-		return true;
-	}
-	
-	/**
-	 * generate the ExtendedCCSL using the provided qvto transformation
-	 * return the URI of the prepared file 
-	 */
-	public URI prepareSolverInputFileForUserModel(URI userModelURI){
-		// generate the ExtendedCCSL
-		// set the input
-		// TODO implement this feature 
-		return null;
 	}
 
 	@Override
@@ -315,19 +293,24 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 	@Override
 	public void setUp(IExecutionContext context) 
 	{
-		URI mocURI = URI.createPlatformResourceURI(context.getWorkspace().getMoCPath().toString(), true);
 		generateMoC(context);
-		setSolverInputFile(context.getResourceModel().getResourceSet(), mocURI);
+		createSolver(context);
 	}
 	
 	private void generateMoC(IExecutionContext context) 
 	{
 		IExecutionWorkspace workspace = context.getWorkspace();
 		String transformationPath = context.getLanguageDefinitionExtension().getQVTOPath();
-		boolean mustGenerate = true;
-		IFile mocFile = ResourcesPlugin.getWorkspace().getRoot().getFile(context.getWorkspace().getMoCPath());
-		if (mocFile.exists()
-			&& workspace.getModelPath().toFile().lastModified() > workspace.getMoCPath().toFile().lastModified()) 
+		boolean mustGenerate = false;
+		IFile mocFile = ResourcesPlugin.getWorkspace().getRoot().getFile(workspace.getMoCPath());
+		if (!mocFile.exists()
+			|| workspace.getModelPath().toFile().lastModified() > workspace.getMoCPath().toFile().lastModified()) 
+		{
+			mustGenerate = true;
+		}
+		IFile feedbackFile = ResourcesPlugin.getWorkspace().getRoot().getFile(workspace.getFeedbackModelPath());
+		if (!feedbackFile.exists()
+				|| workspace.getModelPath().toFile().lastModified() > workspace.getFeedbackModelPath().toFile().lastModified()) 
 		{
 			mustGenerate = true;
 		}

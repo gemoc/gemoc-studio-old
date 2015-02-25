@@ -6,7 +6,6 @@ import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -27,11 +26,11 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.core.DebugURIHandler;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.debug.DebugSessionFactory;
@@ -69,13 +68,22 @@ public class DefaultModelLoader implements IModelLoader {
 		return resource;
 	}
 
-	private void killPreviousSiriusSession(URI sessionResourceURI) {
-		Session session = SessionManager.INSTANCE
-				.getExistingSession(sessionResourceURI);
-		if (session != null) {
-			session.close(new NullProgressMonitor());
-			SessionManager.INSTANCE.remove(session);
-		}
+	private void killPreviousSiriusSession(final URI sessionResourceURI) {
+		Runnable runnable = new Runnable()
+		{
+			@Override
+			public void run() 
+			{
+				Session session = SessionManager.INSTANCE
+						.getExistingSession(sessionResourceURI);
+				if (session != null) {
+					session.close(new NullProgressMonitor());
+					SessionManager.INSTANCE.remove(session);
+				}
+			}
+			
+		};
+		Display.getDefault().syncExec(runnable);
 	}
 
 	private Session openNewSiriusSession(URI sessionResourceURI)

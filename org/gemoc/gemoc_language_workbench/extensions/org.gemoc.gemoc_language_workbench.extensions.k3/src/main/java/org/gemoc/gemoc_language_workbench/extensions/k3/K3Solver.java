@@ -3,9 +3,7 @@ package org.gemoc.gemoc_language_workbench.extensions.k3;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.gemoc.execution.engine.core.IMSEOccurrenceListener;
 import org.gemoc.execution.engine.core.MSEManager;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
@@ -62,25 +60,8 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 	public void applyLogicalStep(LogicalStep logicalStep) 
 	{
 	}
-	
-	@Override
-	public URI prepareSolverInputFileForUserModel(URI userModelURI) 
-	{
-		return null;
-	}
-
-	@Override
-	public boolean isSolverInputFileReadyForUserModel(URI userModelURI) 
-	{
-		return false;
-	}
 
 	private Resource _resourceModel;
-	
-	@Override
-	public void setSolverInputFile(ResourceSet rs, URI solverInputURI) 
-	{
-	}
 
 	@Override
 	public byte[] getState() 
