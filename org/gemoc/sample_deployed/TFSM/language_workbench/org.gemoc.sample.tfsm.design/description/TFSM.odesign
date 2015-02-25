@@ -20,8 +20,8 @@
           </subNodeMappings>
           <subContainerMappings name="TFSM" labelDirectEdit="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self.tfsms/]" doubleClickDescription="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20TFSM']" domainClass="TFSM">
             <subNodeMappings name="FSMEvent" semanticCandidatesExpression="[self.localEvents/]" domainClass="FSMEvent">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="4" labelFormat="bold" showIcon="false" iconPath="event_small.png" sizeComputationExpression="-1" roundedCorner="true" workspacePath="/org.gemoc.sample.tfsm.design/icons/event_small.gif">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <style xsi:type="style:WorkspaceImageDescription" labelFormat="bold" showIcon="false" iconPath="event_small.png" sizeComputationExpression="-1" roundedCorner="true" workspacePath="/org.gemoc.sample.tfsm.design/icons/event_small.gif">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
@@ -163,7 +163,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="State" iconPath="/fr.inria.aoste.gemoc.example.tfsm.design/icons/state_small.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="State" containerMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']" iconPath="/fr.inria.aoste.gemoc.example.tfsm.design/icons/state_small.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -186,7 +186,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="editName" inputLabelExpression="&lt;%name%>">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[$0/]"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="editEventTransition" forceRefresh="true" inputLabelExpression="when &lt;%self.ownedGuard.triggeringEvent.name%> / &lt;%self.action%>  &lt;%for (self.generatedEvents){%>!&lt;%self.name+&quot;;&quot;%>&lt;%}%>">
