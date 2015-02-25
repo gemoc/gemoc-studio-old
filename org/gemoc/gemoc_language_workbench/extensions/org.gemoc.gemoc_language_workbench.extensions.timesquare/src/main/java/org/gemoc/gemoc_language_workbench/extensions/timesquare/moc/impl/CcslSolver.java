@@ -148,20 +148,20 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 			
 		} catch (IOException e) {
 			String errorMessage = "IOException while instantiating the CcslSolver";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 		} catch (UnfoldingException e) {
 			String errorMessage = "UnfoldingException while instantiating the CcslSolver";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 		} catch (SolverException e) {
 			String errorMessage = "SolverException while instantiating the CcslSolver";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 		} catch (SimulationException e) {
 			String errorMessage = "SimulationException while instantiating the CcslSolver";
-			Activator.error(errorMessage);
-			Activator.error(errorMessage, e);
+			Activator.getDefault().error(errorMessage);
+			Activator.getDefault().error(errorMessage, e);
 		}
 	}
 
@@ -169,16 +169,16 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 			URI solverInputURI) {
 		Map<EObject, Collection<Setting>>  unresolvedProxies = EcoreUtil.UnresolvedProxyCrossReferencer.find(resourceSet);
 		if(unresolvedProxies.size() != 0){
-			Activator.warn("There are unresolved proxies in "+solverInputURI+ ", the first is "+unresolvedProxies.entrySet().toArray()[0]);
-			Activator.warn("Please verify your extendedCCSL file, (it must not contain resolve warning).");
+			Activator.getDefault().warn("There are unresolved proxies in "+solverInputURI+ ", the first is "+unresolvedProxies.entrySet().toArray()[0]);
+			Activator.getDefault().warn("Please verify your extendedCCSL file, (it must not contain resolve warning).");
 		}
 	}
 
 	private void traceResources(ResourceSet resourceSet) {
-		Activator.getMessagingSystem().info("Input resources:", "");
+		Activator.getDefault().info("Input resources:");
 		for(Resource r : resourceSet.getResources()) 
 		{
-			Activator.getMessagingSystem().info(r.getURI().toString(),"");
+			Activator.getDefault().info(r.getURI().toString());
 		}
 	}
 
