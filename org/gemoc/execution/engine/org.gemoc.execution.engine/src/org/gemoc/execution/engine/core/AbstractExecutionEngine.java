@@ -1,7 +1,6 @@
 package org.gemoc.execution.engine.core;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.gemoc.execution.engine.Activator;
@@ -210,9 +209,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		{
 			_started = true;
 			Activator.getDefault().gemocRunningEngineRegistry.registerEngine(getName(), this);
-			notifyEngineAboutToStart();
-			setEngineStatus(EngineStatus.RunStatus.Running);
-			notifyEngineStarted();
 			Runnable r = new Runnable() {
 				
 				@Override
@@ -220,6 +216,9 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 				{
 					try
 					{
+						notifyEngineAboutToStart();
+						setEngineStatus(EngineStatus.RunStatus.Running);
+						notifyEngineStarted();
 						getRunnable().run();
 					} catch (Throwable e) {
 						e.printStackTrace();
@@ -269,7 +268,10 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			LogicalStep selectedLogicalStep = selectAndExecuteLogicalStep();						
 			// 3 - run the selected logical step
 			// inform the solver that we will run this step
-			getSolver().applyLogicalStep(selectedLogicalStep);
+			if (selectedLogicalStep != null)
+			{
+				getSolver().applyLogicalStep(selectedLogicalStep);
+			}
 		}
 		engineStatus.incrementNbLogicalStepRun();
 	}

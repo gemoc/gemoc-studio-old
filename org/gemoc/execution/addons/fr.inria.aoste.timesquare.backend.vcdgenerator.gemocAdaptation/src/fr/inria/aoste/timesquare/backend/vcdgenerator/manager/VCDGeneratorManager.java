@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
@@ -297,7 +298,9 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 	public void engineStarted(IExecutionEngine executionEngine) {
 		
 		IPath fin = executionEngine.getExecutionContext().getWorkspace().getExecutionPath();
-		IPath p = new Path(ResourcesPlugin.getWorkspace().getRoot().getLocation()+"/"+fin.toPortableString());
+		IFolder folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(fin);
+//		IPath p = new Path(ResourcesPlugin.getWorkspace().getRoot().getLocation()+"/"+fin.toPortableString());
+		IPath p = folder.getLocation();
 		setOutputFile(p, "vcdFromSimu");
 		_myColorAPI = VcdColorPreferences.createColor();
 		_scoreBoard = ScoreBoard.getScoreboard(_outputFileName, _myColorAPI);
@@ -371,37 +374,39 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 	@Override
 	public void engineAboutToStop(IExecutionEngine engine) {
 		_currentStep++;
-
-		int instant = _currentStep * 10;
-		// Representation of the end of the simulation
-		SimulationCommand sc = _scoreBoard.tick(instant);
-		for (AbstractVCDClockBehavior behavior : _behaviorList) {
-			behavior.end();
-		}
-		StepManager sm = new StepManager();
-		sm.simCommand = sc;
-		sm.fixed = false;
-		if (hmism != null)
-			hmism.put(_currentStep, sm);
-		lsstep.add(sm);
-		if (pb != null) {
-			updateDate(pb);
-		}
-		createEndThread();
-		_myColorAPI = null;
 		if (_scoreBoard != null)
-			ScoreBoard.removeScoreboard(_scoreBoard);
-		_scoreBoard = null;
-		for (AbstractVCDClockBehavior b : _behaviorList) {
-			b.setScoreBoard(null);
+		{
+			int instant = _currentStep * 10;
+			// Representation of the end of the simulation
+			SimulationCommand sc = _scoreBoard.tick(instant);
+			for (AbstractVCDClockBehavior behavior : _behaviorList) {
+				behavior.end();
+			}
+			StepManager sm = new StepManager();
+			sm.simCommand = sc;
+			sm.fixed = false;
+			if (hmism != null)
+				hmism.put(_currentStep, sm);
+			lsstep.add(sm);
+			if (pb != null) {
+				updateDate(pb);
+			}
+			createEndThread();
+			_myColorAPI = null;
+			if (_scoreBoard != null)
+				ScoreBoard.removeScoreboard(_scoreBoard);
+			_scoreBoard = null;
+			for (AbstractVCDClockBehavior b : _behaviorList) {
+				b.setScoreBoard(null);
+			}
+			_behaviorList.clear();
+			_behaviorList = null;
+			hmism.clear();
+			lsstep.clear();
+			hmism = null;
+			lsstep = null;
+			_vcdEditor = null;
 		}
-		_behaviorList.clear();
-		_behaviorList = null;
-		hmism.clear();
-		lsstep.clear();
-		hmism = null;
-		lsstep = null;
-		_vcdEditor = null;
 	}
 
 	
@@ -418,13 +423,16 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 	public void logicalStepExecuted(IExecutionEngine engine, LogicalStep logicalStepExecuted){
 		if (_scoreBoard == null)
 			return;
-		createVCDUpdateThread();
 
-		step++;
-		int date = step;
-		_currentStep = step;
-		int instant = step * 10;
+//		step++;
+//		int date = step;
+//		_currentStep = step;
+//		int instant = step * 10;
 
+		_currentStep++;
+		int date = _currentStep;
+		int instant = _currentStep * 10;
+		
 		StepManager sm = new StepManager();
 		SimulationCommand sc = _scoreBoard.tick(instant);
 		sm.simCommand = sc;
@@ -472,6 +480,7 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 			b.aPostNewStep();
 		}
 				
+		createVCDUpdateThread();
 	}
 
 
@@ -617,15 +626,16 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 		 */
 		@Override
 		public void run() {
-			if (_scoreBoard != null) {
+			if (_scoreBoard != null
+				&& _vcdEditor != null) 
+			{
 				int currentSize = _scoreBoard.getSize();
 				try {
-					if (_vcdEditor != null)
-						_vcdEditor.update2(previousSize, currentSize, false);
+					_vcdEditor.update2(previousSize, currentSize+1, false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				previousSize = currentSize;
+				//previousSize = currentSize;			
 				_vcdEditor.setSimulationProgress(currentSize/10);
 			}
 		}

@@ -12,11 +12,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
-import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
-import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
-import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
@@ -139,21 +135,24 @@ public class ExecutionEngine extends AbstractExecutionEngine implements IDisposa
 			}
 		}
 
-		private void terminateIfLastStepsSimilar(final LogicalStep logicalStepToApply) {
+		private void terminateIfLastStepsSimilar(LogicalStep logicalStepToApply) {
 			// if all lastStepsRun are the same, then we may have reached the
 			// end of the simulation
-			_lastStepsRun.add(logicalStepToApply);
-			boolean allLastLogicalStepAreTheSame = true;
-			for (LogicalStep logicalStep : _lastStepsRun) {
-				allLastLogicalStepAreTheSame = allLastLogicalStepAreTheSame && areLogicalStepSimilar(logicalStep, logicalStepToApply);
+			if (logicalStepToApply != null)
+			{
+				_lastStepsRun.add(logicalStepToApply);
+				boolean allLastLogicalStepAreTheSame = true;
+				for (LogicalStep logicalStep : _lastStepsRun) {
+					allLastLogicalStepAreTheSame = allLastLogicalStepAreTheSame && areLogicalStepSimilar(logicalStep, logicalStepToApply);
+				}
+				if ((_lastStepsRun.size() >= getDeadlockDetectionDepth()) && allLastLogicalStepAreTheSame) {
+					Activator.getDefault().debug("Detected " + getDeadlockDetectionDepth() + " identical LogicalStep, stopping engine");
+					stop();
+				}
+				// if queue is full, remove one
+				if (_lastStepsRun.size() > getDeadlockDetectionDepth())
+					_lastStepsRun.poll();
 			}
-			if ((_lastStepsRun.size() >= getDeadlockDetectionDepth()) && allLastLogicalStepAreTheSame) {
-				Activator.getDefault().debug("Detected " + getDeadlockDetectionDepth() + " identical LogicalStep, stopping engine");
-				stop();
-			}
-			// if queue is full, remove one
-			if (_lastStepsRun.size() > getDeadlockDetectionDepth())
-				_lastStepsRun.poll();
 		}
 
 	}
