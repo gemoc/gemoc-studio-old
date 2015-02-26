@@ -1,4 +1,6 @@
-Export-Package: org.gemoc.sigpml.xdsml,org.gemoc.sigpml.xdsml.executor
+Manifest-Version: 1.0
+Export-Package: org.gemoc.sigpml.xdsml,
+ org.gemoc.sigpml.xdsml.executor
 Bundle-SymbolicName: org.gemoc.sigpml.xdsml;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Name: Xdsml
@@ -33,4 +35,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.gemoc.sigpml.xdsml.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Manifest-Version: 1.0
+

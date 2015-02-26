@@ -28,6 +28,8 @@ import org.gemoc.sigpml.System
 import static extension org.gemoc.sigpml.k3dsa.InputPortAspect.*
 import static extension org.gemoc.sigpml.k3dsa.OutputPortAspect.*
 import static extension org.gemoc.sigpml.k3dsa.SystemAspect.*
+import org.eclipse.core.runtime.Platform
+import org.osgi.framework.wiring.BundleWiring
 
 @Aspect(className = HWComputationalResource)
 class HWComputationalResourceAspect {
@@ -96,22 +98,34 @@ class AgentAspect extends NamedElementAspect {
 			}
 		}
 
-		//val b = Platform.getBundle("org.gemoc.sigpml.k3dsa")
-		//val ucl = b.adapt(BundleWiring).getClassLoader()
-		val ucl = _self.class.classLoader
-		val shell = new GroovyShell(ucl,binding)
-
-		val res = shell.evaluate(_self.code) as Map<String, Object>
-
-		if (res.containsValue("figure")) {
-			_self.figure.addFigure(res.get("figure") as Figure)
+		
+		try{
+			//val ucl = _self.class.classLoader
+			//val b = Platform.getBundle("org.gemoc.sigpml.k3dsa")
+			//val ucl = b.adapt(BundleWiring).getClassLoader()			
+			val ucl = AgentAspect.classLoader
+			//val ucl = _self.class.classLoader	
+			val shell = new GroovyShell(ucl,binding)
+	
+			val res = shell.evaluate(_self.code) as Map<String, Object>
+	
+			if (res.containsValue("figure")) {
+				_self.figure.addFigure(res.get("figure") as Figure)
+			}
+	
+			for (String portName : outputPortNames) {
+				_self.system.sharedMemory.put(portName, res.get(portName))
+			}
+			println("sharedMemory: " + _self.system.sharedMemory)
+		} catch (org.codehaus.groovy.control.MultipleCompilationErrorsException cnfe){
+			println("Failed to call Groovy script"+cnfe.message)
+			println("figure not correctly updated")
+			println("using default values for system.sharedMemory instead of computed ones")
+			for (String portName : outputPortNames) {
+				_self.system.sharedMemory.put(portName, 0.0)
+			}
+			cnfe.printStackTrace
 		}
-
-		for (String portName : outputPortNames) {
-			_self.system.sharedMemory.put(portName, res.get(portName))
-		}
-
-		println("sharedMemory: " + _self.system.sharedMemory)
 	}
 }
 

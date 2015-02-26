@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.swing.JFrame;
+import org.codehaus.groovy.control.MultipleCompilationErrorsException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import sigpmlextended.Agent;
@@ -166,28 +168,46 @@ public class AgentAspect extends NamedElementAspect {
         InputPortAspect.sizeToread(((InputPort)p_1), 0);
       }
     }
-    Class<? extends Agent> _class = _self.getClass();
-    final ClassLoader ucl = _class.getClassLoader();
-    final GroovyShell shell = new GroovyShell(ucl, binding);
-    String _code = _self.getCode();
-    Object _evaluate = shell.evaluate(_code);
-    final Map<String, Object> res = ((Map<String, Object>) _evaluate);
-    boolean _containsValue = res.containsValue("figure");
-    if (_containsValue) {
-      Figure _figure_1 = AgentAspect.figure(_self);
-      Object _get = res.get("figure");
-      _figure_1.addFigure(((Figure) _get));
+    try {
+      final ClassLoader ucl = AgentAspect.class.getClassLoader();
+      final GroovyShell shell = new GroovyShell(ucl, binding);
+      String _code = _self.getCode();
+      Object _evaluate = shell.evaluate(_code);
+      final Map<String, Object> res = ((Map<String, Object>) _evaluate);
+      boolean _containsValue = res.containsValue("figure");
+      if (_containsValue) {
+        Figure _figure_1 = AgentAspect.figure(_self);
+        Object _get = res.get("figure");
+        _figure_1.addFigure(((Figure) _get));
+      }
+      for (final String portName : outputPortNames) {
+        sigpmlextended.System _system_1 = NamedElementAspect.getSystem(_self);
+        LinkedListMultimap _sharedMemory_1 = SystemAspect.sharedMemory(_system_1);
+        Object _get_1 = res.get(portName);
+        _sharedMemory_1.put(portName, _get_1);
+      }
+      sigpmlextended.System _system_2 = NamedElementAspect.getSystem(_self);
+      LinkedListMultimap _sharedMemory_2 = SystemAspect.sharedMemory(_system_2);
+      String _plus_6 = ("sharedMemory: " + _sharedMemory_2);
+      InputOutput.<String>println(_plus_6);
+    } catch (final Throwable _t) {
+      if (_t instanceof MultipleCompilationErrorsException) {
+        final MultipleCompilationErrorsException cnfe = (MultipleCompilationErrorsException)_t;
+        String _message = cnfe.getMessage();
+        String _plus_7 = ("Failed to call Groovy script" + _message);
+        InputOutput.<String>println(_plus_7);
+        InputOutput.<String>println("figure not correctly updated");
+        InputOutput.<String>println("using default values for system.sharedMemory instead of computed ones");
+        for (final String portName_1 : outputPortNames) {
+          sigpmlextended.System _system_3 = NamedElementAspect.getSystem(_self);
+          LinkedListMultimap _sharedMemory_3 = SystemAspect.sharedMemory(_system_3);
+          _sharedMemory_3.put(portName_1, Double.valueOf(0.0));
+        }
+        cnfe.printStackTrace();
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
     }
-    for (final String portName : outputPortNames) {
-      sigpmlextended.System _system_1 = NamedElementAspect.getSystem(_self);
-      LinkedListMultimap _sharedMemory_1 = SystemAspect.sharedMemory(_system_1);
-      Object _get_1 = res.get(portName);
-      _sharedMemory_1.put(portName, _get_1);
-    }
-    sigpmlextended.System _system_2 = NamedElementAspect.getSystem(_self);
-    LinkedListMultimap _sharedMemory_2 = SystemAspect.sharedMemory(_system_2);
-    String _plus_6 = ("sharedMemory: " + _sharedMemory_2);
-    InputOutput.<String>println(_plus_6);
   }
   
   protected static SwingPlotter _privk3_plotter(final AgentAspectAgentAspectProperties _self_, final Agent _self) {
