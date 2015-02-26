@@ -29,6 +29,7 @@
         <module>../extensions/org.gemoc.gemoc_language_workbench.extensions.k3</module>
         <module>../extensions/org.gemoc.gemoc_language_workbench.extensions.sirius</module>
         <module>../extensions/org.gemoc.gemoc_language_workbench.extensions.timesquare</module>
+        <module>../../execution/addons/fr.inria.aoste.timesquare.backend.vcdgenerator.gemocAdaptation</module>
         <!-- feature and update site -->
         <module>../../execution/engine/org.gemoc.execution.engine.feature</module>
 	</modules>
