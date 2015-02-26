@@ -12,6 +12,8 @@ import org.gemoc.sample.tfsm.TFSM
 import org.gemoc.sample.tfsm.TemporalGuard
 import org.gemoc.sample.tfsm.TimedSystem
 import org.gemoc.sample.tfsm.Transition
+import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
+
 /*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TFSMAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.StateAspect.*
@@ -25,7 +27,6 @@ import static extension org.gemoc.sample.tfsm.k3dsa.aspect.FSMClockAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TimedSystemAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect.*
 */
-//import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
 
 @Aspect(className=TFSM)
 class TFSMAspect extends NamedElementAspect {
@@ -61,7 +62,7 @@ class StateAspect extends NamedElementAspect {
 @Aspect(className=Transition)
 class TransitionAspect extends NamedElementAspect {
 	def public String fire() {
-//		GroovyRunner.executeScript(_self.action, _self);
+		GroovyRunner.executeScript(_self.action, _self);
 		_self.source.owningFSM.currentState = _self.target
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".fire()]Fired " + _self.name + " -> " +
 			_self.action)
