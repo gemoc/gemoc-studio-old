@@ -14,15 +14,6 @@
         <module>../../../gemoc_language_workbench/extensions/org.gemoc.gemoc_language_workbench.extensions.k3</module>
         <module>../../../gemoc_language_workbench/extensions/org.gemoc.gemoc_language_workbench.extensions.sirius</module>
         <module>../../../gemoc_language_workbench/extensions/org.gemoc.gemoc_language_workbench.extensions.timesquare</module>
-        <!-- <module>../org.gemoc.execution.engine.launcher</module>
-        <module>../org.gemoc.execution.javasolver</module>-->
-        <!-- <module>../org.gemoc.execution.engine.executors.emf</module>
-        <module>../org.gemoc.execution.engine.executors.emf.configuration</module>
-        <module>../org.gemoc.execution.engine.executors.emf.configuration.ui</module>
-        <module>../org.gemoc.execution.engine.feedback.data</module>
-        <module>../org.gemoc.execution.engine.feedback.policy</module>
-        <module>../org.gemoc.execution.engine.launcher</module>
-        <module>../org.gemoc.execution.engine.solvers</module> -->
 
         <!-- feature and update site -->
         <module>../org.gemoc.execution.engine.feature</module>
