@@ -12,9 +12,9 @@ import "http://org.gemoc.moccml.fsmmodel/1.0" as fsmmodel
 
 StateRelationBasedLibrary returns ccslmoc::StateRelationBasedLibrary:
 	{ccslmoc::StateRelationBasedLibrary} 
-	'StateRelationBasedLibrary' name=EString
+	'AutomataConstraintLibrary' name=EString
 	'{'
-		(('imports' '{' ( imports+= ImportStatement)* '}' )? 
+		((imports+= ImportStatement)* 
 		(expressionLibraries+=ExpressionLibrary |
 		 relationLibraries+=RelationLibrary  |
 		 predefinedTypes+=Type  )*)
@@ -31,7 +31,7 @@ RelationDefinition returns ClockExpressionAndRelation::RelationDefinition:
 
 CCSLStateMachineRelationDefinition returns ccslmoc::StateMachineRelationDefinition:
 	{ccslmoc::StateMachineRelationDefinition}
-	'StateBasedRelationDefinition'name=EString '['declaration=[ClockExpressionAndRelation::RelationDeclaration|EString]']'
+	'AutomataRelationDefinition'name=EString '['declaration=[ClockExpressionAndRelation::RelationDeclaration|EString]']'
 	'{'
 		(declarationBlock=DeclarationBlock)?
 		('init: ' initialStates+= [fsmmodel::State|EString]) ( "," initialStates+=[fsmmodel::State|EString])*
@@ -45,6 +45,7 @@ Transition returns fsmmodel::Transition:
 	{fsmmodel::Transition}
 	'from' source=[fsmmodel::State|EString] 'to' target=[fsmmodel::State|EString]':'name=EString '('
 		((('when' trigger=Trigger) ('if' guard=Guard)?)|
+
 		 (('if' guard=Guard) ('when' trigger=Trigger)? ))?
 		('do' (actions+=Action))*
 	')';   
@@ -63,6 +64,7 @@ Trigger returns fsmmodel::Trigger:
 Action returns fsmmodel::AbstractAction:
 	FinishClock | StartClock | IntegerAssignement	| IntegerAssignementBlock;
     
+
 FinishClock returns ccslmoc::FinishClock:
 {ccslmoc::FinishClock}
 	'kill' '(' clock=[ClockExpressionAndRelation::BindableEntity|EString]')'

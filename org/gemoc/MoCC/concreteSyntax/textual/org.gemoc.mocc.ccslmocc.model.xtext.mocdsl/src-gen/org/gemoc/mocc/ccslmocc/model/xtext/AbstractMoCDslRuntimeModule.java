@@ -126,7 +126,7 @@ public abstract class AbstractMoCDslRuntimeModule extends DefaultRuntimeModule {
 
 	// contributed by org.eclipse.xtext.generator.formatting.FormatterFragment
 	public Class<? extends org.eclipse.xtext.formatting.IFormatter> bindIFormatter() {
-		return org.gemoc.mocc.ccslmocc.model.xtext.formatting.MoCDslFormatter.class;
+		return org.gemoc.mocc.ccslmocc.model.xtext.formatting.MoCCMLFormatter.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
