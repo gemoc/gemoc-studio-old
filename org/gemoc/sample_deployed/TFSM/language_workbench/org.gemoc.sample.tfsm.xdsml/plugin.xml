@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.xdsml">
-    <XDSML_Definition codeExecutor_class="tfsm.xdsml.api.impl.TfsmCodeExecutor" domainSpecificEventsResourcePath="/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl" eventExecutor_class="org.gemoc.sample.tfsm.xdsml.executor.TfsmEventExecutor" feedbackPolicy_class="org.gemoc.sample.tfsm.xdsml.feedback.TfsmFeedbackPolicy" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader" name="tfsm" solver_class="org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto" xdsmlFilePath="/org.gemoc.sample.tfsm.xdsml/project.xdsml">
+    <XDSML_Definition codeExecutor_class="org.gemoc.sample.tfsm.xdsml.api.impl.TfsmCodeExecutor" domainSpecificEventsResourcePath="/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl" eventExecutor_class="org.gemoc.sample.tfsm.xdsml.executor.TfsmEventExecutor" feedbackPolicy_class="org.gemoc.sample.tfsm.xdsml.feedback.TfsmFeedbackPolicy" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader" name="tfsm" solver_class="org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto" xdsmlFilePath="/org.gemoc.sample.tfsm.xdsml/project.xdsml">
       <EngineAddon_Definition engineAddon_class="org.gemoc.sample.tfsm.xdsml.engineAddon.TfsmEngineAddon" />
     </XDSML_Definition>
     <!-- domainSpecificEventsResource="/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl" -->

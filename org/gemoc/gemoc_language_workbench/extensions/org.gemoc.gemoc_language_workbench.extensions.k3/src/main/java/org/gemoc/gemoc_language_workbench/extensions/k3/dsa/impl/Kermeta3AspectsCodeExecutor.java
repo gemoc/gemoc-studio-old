@@ -65,7 +65,7 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 		}
 		Method bestApplicableMethod = getBestApplicableMethod(caller, methodName, staticParameters);
 		if (bestApplicableMethod == null)
-			throw new CodeExecutionException("No static class found or no method founc call: " + mseOccurrence, mseOccurrence); 
+			throw new CodeExecutionException("No static class found or no method found call: " + mseOccurrence, mseOccurrence); 
 		
 		Object[] args = new Object[0];
 		if (staticParameters != null) 
