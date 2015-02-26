@@ -10,6 +10,7 @@
         <module>../org.gemoc.execution.engine</module>
         <module>../org.gemoc.execution.engine.commons</module>
         <module>../org.gemoc.execution.engine.io</module>
+        <module>../../addons/fr.inria.aoste.timesquare.backend.vcdgenerator.gemocAdaptation</module>
         <module>../../../gemoc_language_workbench/extensions/org.gemoc.gemoc_language_workbench.extensions.k3</module>
         <module>../../../gemoc_language_workbench/extensions/org.gemoc.gemoc_language_workbench.extensions.sirius</module>
         <module>../../../gemoc_language_workbench/extensions/org.gemoc.gemoc_language_workbench.extensions.timesquare</module>
