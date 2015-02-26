@@ -16,7 +16,7 @@ import org.eclipse.xtext.util.Pair;
  * 
  * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an example
  */
-public class MoCDslFormatter extends AbstractDeclarativeFormatter {
+public class MoCCMLFormatter extends AbstractDeclarativeFormatter {
 	
 	@Override
 	protected void configureFormatting(FormattingConfig c) {
