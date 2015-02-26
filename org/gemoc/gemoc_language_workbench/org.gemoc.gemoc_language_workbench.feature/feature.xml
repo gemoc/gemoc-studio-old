@@ -62,13 +62,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.gemoc.gemoc_language_workbench.extensions.k3"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.gemoc.gemoc_language_workbench.sample.deployer"
          download-size="0"
          install-size="0"
@@ -77,20 +70,6 @@
 
    <plugin
          id="org.gemoc.gemoc_language_workbench.guideline.process"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.gemoc_language_workbench.extensions.timesquare"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.gemoc_language_workbench.extensions.sirius"
          download-size="0"
          install-size="0"
          version="0.0.0"

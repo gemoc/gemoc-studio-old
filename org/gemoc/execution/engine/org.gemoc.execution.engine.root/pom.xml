@@ -10,6 +10,9 @@
         <module>../org.gemoc.execution.engine</module>
         <module>../org.gemoc.execution.engine.commons</module>
         <module>../org.gemoc.execution.engine.io</module>
+        <module>../../../gemoc_language_workbench/extensions/org.gemoc.gemoc_language_workbench.extensions.k3</module>
+        <module>../../../gemoc_language_workbench/extensions/org.gemoc.gemoc_language_workbench.extensions.sirius</module>
+        <module>../../../gemoc_language_workbench/extensions/org.gemoc.gemoc_language_workbench.extensions.timesquare</module>
         <!-- <module>../org.gemoc.execution.engine.launcher</module>
         <module>../org.gemoc.execution.javasolver</module>-->
         <!-- <module>../org.gemoc.execution.engine.executors.emf</module>
