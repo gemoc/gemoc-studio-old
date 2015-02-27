@@ -154,4 +154,20 @@ public interface TFSM extends NamedElement {
 	 */
 	void setCurrentState(State value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	String Init();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void changeCurrentState(State newState);
+
 } // TFSM

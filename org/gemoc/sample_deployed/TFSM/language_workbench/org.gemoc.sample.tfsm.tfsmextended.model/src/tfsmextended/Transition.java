@@ -152,7 +152,7 @@ public interface Transition extends NamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String fire();

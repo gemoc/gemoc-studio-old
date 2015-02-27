@@ -90,7 +90,7 @@ public interface State extends NamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String onEnter();
@@ -98,7 +98,7 @@ public interface State extends NamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String onLeave();

@@ -33,7 +33,7 @@
           </style>
         </containerMappings>
         <toolSections name="Node">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="TFSM" forceRefresh="true" containerMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']" iconPath="/fr.inria.aoste.gemoc.example.tfsm.design/icons/TFSM_small.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="TFSM" forceRefresh="true" containerMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']" iconPath="/org.gemoc.sample.tfsm.design/icons/TFSM_small.gif">
             <variable name="container"/>
             <viewVariable name="itsTFSM"/>
             <initialOperation>

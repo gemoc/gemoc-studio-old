@@ -10,7 +10,7 @@ metamodel SimpleTfsm {
 metamodel TfsmExtended inherits SimpleTfsm {
 	exactType TfsmExtendedMT
 	with TFSMAspect
-	with StateAspect  
+	with StateAspect
 	with TransitionAspect
 	with FSMClockAspect
 	with EvaluateGuardAspect

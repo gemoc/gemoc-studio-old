@@ -4,16 +4,16 @@ import fr.inria.aoste.timesquare.ecl.EclQVToHelper;
 modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 //modeltype pivot uses 'http://www.eclipse.org/ocl/3.1.0/Pivot';
 
-	modeltype inMM1 uses 'http://www.gemoc.org/sample/tfsm';
+	modeltype inMM1 uses 'http://tfsmextended';
 
 
-//modeltype inMM uses 'http://www.gemoc.org/sample/tfsm';
+//modeltype inMM uses 'http://tfsmextended';
 modeltype QVT uses 'http://www.eclipse.org/QVT/1.0.0/Operational';//http://www.eclipse.org/m2m/qvt/oml/1.0.0/Stdlib';//http://www.eclipse.org/qvt/1.0/ImperativeOCL'; 
 modeltype TimeModel uses 'http://fr.inria.aoste.timemodel';
 
 modeltype FeedBack uses 'http://timesquare.inria.fr/feedback';
 
-transformation dotfsm_ecore_To_CCSL(in inM : inMM1, out ccsl : TimeModel, out feedback : FeedBack);
+transformation doTfsmExtended_ecore_To_CCSL(in inM : inMM1, out ccsl : TimeModel, out feedback : FeedBack);
 property theFeedBackSpec		:FeedBack::ActionModel = null;
 property seqOfMSE :	Sequence(FeedBack::ModelSpecificEvent)    = Sequence{};
 
@@ -62,13 +62,13 @@ query identifyUserRelations() {
 
 main() {
 	identifyUserRelations();
-	inM.rootObjects()[inMM1::TimedSystem]->asSequence()->first()-> map tfsm2CCSL();
-	inM.rootObjects()[inMM1::TimedSystem]->asSequence()->first()-> map tfsm2FeedBack();
+	inM.rootObjects()[inMM1::TimedSystem]->asSequence()->first()-> map tfsmextended2CCSL();
+	inM.rootObjects()[inMM1::TimedSystem]->asSequence()->first()-> map tfsmextended2FeedBack();
 
 	}
 
 			
-	mapping inMM1::TimedSystem::tfsm2CCSL() : TimeModel::CCSLModel::ClockConstraintSystem {
+	mapping inMM1::TimedSystem::tfsmextended2CCSL() : TimeModel::CCSLModel::ClockConstraintSystem {
 	    theCCSLSpec := result;
 	    name := self.name;
 	    theMainBlock :=object TimeModel::CCSLModel::Block{
@@ -1347,7 +1347,7 @@ main() {
 
 
 
-mapping inMM1::TimedSystem::tfsm2FeedBack() : FeedBack::ActionModel {
+mapping inMM1::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 	    theFeedBackSpec := result;
 		importStatements+= object FeedBack::ImportStatement{
 			importURI := getModelPath(ccsl.objectsOfType(Clock)->asSequence()->first().oclAsType(EObject));

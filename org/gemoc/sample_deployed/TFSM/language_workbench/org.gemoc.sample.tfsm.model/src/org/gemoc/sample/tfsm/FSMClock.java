@@ -14,12 +14,5 @@ package org.gemoc.sample.tfsm;
  * @generated
  */
 public interface FSMClock extends NamedElement {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true"
-	 * @generated
-	 */
-	String ticks();
 
 } // FSMClock

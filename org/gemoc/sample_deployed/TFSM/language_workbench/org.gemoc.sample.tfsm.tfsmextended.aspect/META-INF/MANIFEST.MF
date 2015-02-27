@@ -18,6 +18,7 @@ Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.emf.transaction,
  org.codehaus.groovy;bundle-version="2.3.3",
  org.eclipse.jdt.groovy.core;bundle-version="2.9.0"
-Export-Package: org.gemoc.sample.tfsm.tfsmextended.aspect
+Export-Package: org.gemoc.sample.tfsm.tfsmextended.aspect,
+ tfsmextended.k3dsa
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

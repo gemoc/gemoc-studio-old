@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.gemoc.sample.tfsm.TFSM#getLocalEvents <em>Local Events</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.TFSM#getLocalClock <em>Local Clock</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.TFSM#getOwnedTransitions <em>Owned Transitions</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.TFSM#getCurrentState <em>Current State</em>}</li>
  * </ul>
  * </p>
  *
@@ -127,31 +126,5 @@ public interface TFSM extends NamedElement {
 	 * @generated
 	 */
 	EList<Transition> getOwnedTransitions();
-
-	/**
-	 * Returns the value of the '<em><b>Current State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Current State</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Current State</em>' reference.
-	 * @see #setCurrentState(State)
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#getTFSM_CurrentState()
-	 * @model
-	 * @generated
-	 */
-	State getCurrentState();
-
-	/**
-	 * Sets the value of the '{@link org.gemoc.sample.tfsm.TFSM#getCurrentState <em>Current State</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Current State</em>' reference.
-	 * @see #getCurrentState()
-	 * @generated
-	 */
-	void setCurrentState(State value);
 
 } // TFSM

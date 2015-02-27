@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.gemoc.sample.tfsm="http://www.gemoc.org/sample/tfsm" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_cdXvYOphEeO1TtKGEeVrvg" selectedViews="_czoTQOphEeO1TtKGEeVrvg" version="8.1.1">
-  <models xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="single_traffic_light.tfsm#/"/>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tfsmextended="http://tfsmextended" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_cdXvYOphEeO1TtKGEeVrvg" selectedViews="_czoTQOphEeO1TtKGEeVrvg" version="8.1.1">
+  <models xmi:type="tfsmextended:TimedSystem" href="single_traffic_light.tfsm#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_czoTQOphEeO1TtKGEeVrvg" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_c0KewOphEeO1TtKGEeVrvg" name="TrafficControl">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_c0LF0OphEeO1TtKGEeVrvg" source="GMF_DIAGRAMS">
@@ -19,14 +19,14 @@
               </children>
               <children xmi:type="notation:Node" xmi:id="_c0M7B-phEeO1TtKGEeVrvg" type="3007" element="_c0KezephEeO1TtKGEeVrvg">
                 <children xmi:type="notation:Node" xmi:id="_c0NiEuphEeO1TtKGEeVrvg" type="5003">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_c0NiE-phEeO1TtKGEeVrvg" x="31"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_c0NiE-phEeO1TtKGEeVrvg" x="47"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_c0PXQOphEeO1TtKGEeVrvg" type="3005" element="_c0KezuphEeO1TtKGEeVrvg">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_c0PXQephEeO1TtKGEeVrvg" fontName="Segoe UI"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c0PXQuphEeO1TtKGEeVrvg"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_c0NiEOphEeO1TtKGEeVrvg" fontName="Segoe UI" fontHeight="8" bold="true"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c0NiEephEeO1TtKGEeVrvg" x="-2" y="69" width="30" height="27"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c0NiEephEeO1TtKGEeVrvg" x="-2" y="69" width="46" height="46"/>
               </children>
               <children xmi:type="notation:Node" xmi:id="_c0OwMOphEeO1TtKGEeVrvg" type="3007" element="_c0Ke0ephEeO1TtKGEeVrvg">
                 <children xmi:type="notation:Node" xmi:id="_c0OwM-phEeO1TtKGEeVrvg" type="5003">
@@ -43,14 +43,14 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_c0MT8uphEeO1TtKGEeVrvg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_c0Ls4uphEeO1TtKGEeVrvg" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c0Ls4-phEeO1TtKGEeVrvg"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c0Ls4-phEeO1TtKGEeVrvg" width="443" height="343"/>
           </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_c0Ls4OphEeO1TtKGEeVrvg"/>
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_c0KewephEeO1TtKGEeVrvg" name="TrafficControl">
-        <target xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="single_traffic_light.tfsm#/"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="single_traffic_light.tfsm#/"/>
+        <target xmi:type="tfsmextended:TimedSystem" href="single_traffic_light.tfsm#/"/>
+        <semanticElements xmi:type="tfsmextended:TimedSystem" href="single_traffic_light.tfsm#/"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_c0KewuphEeO1TtKGEeVrvg" showIcon="false">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_c0Kew-phEeO1TtKGEeVrvg"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@style"/>
@@ -60,8 +60,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_c0Kex-phEeO1TtKGEeVrvg" name="Semaphore">
-          <target xmi:type="org.gemoc.sample.tfsm:TFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
-          <semanticElements xmi:type="org.gemoc.sample.tfsm:TFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
+          <target xmi:type="tfsmextended:TFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
+          <semanticElements xmi:type="tfsmextended:TFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -75,8 +75,8 @@
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_c0KezephEeO1TtKGEeVrvg" name="minutes" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="org.gemoc.sample.tfsm:FSMClock" href="single_traffic_light.tfsm#//@globalClocks.0"/>
-          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMClock" href="single_traffic_light.tfsm#//@globalClocks.0"/>
+          <target xmi:type="tfsmextended:FSMClock" href="single_traffic_light.tfsm#//@globalClocks.0"/>
+          <semanticElements xmi:type="tfsmextended:FSMClock" href="single_traffic_light.tfsm#//@globalClocks.0"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -88,8 +88,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_c0Ke0ephEeO1TtKGEeVrvg" name="switch" width="-1" height="-1">
-          <target xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="single_traffic_light.tfsm#//@globalEvents.0"/>
-          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="single_traffic_light.tfsm#//@globalEvents.0"/>
+          <target xmi:type="tfsmextended:FSMEvent" href="single_traffic_light.tfsm#//@globalEvents.0"/>
+          <semanticElements xmi:type="tfsmextended:FSMEvent" href="single_traffic_light.tfsm#//@globalEvents.0"/>
           <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_c0Ke0uphEeO1TtKGEeVrvg" labelFormat="bold" showIcon="false" iconPath="event_small.png" borderSize="4" borderSizeComputationExpression="4" workspacePath="/org.gemoc.sample.tfsm.design/icons/event_small.gif">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_c0Ke0-phEeO1TtKGEeVrvg"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']/@style"/>
@@ -102,7 +102,7 @@
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_c0Ke1ephEeO1TtKGEeVrvg"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer"/>
       <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@additionalLayers[name='Debug']"/>
-      <target xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="single_traffic_light.tfsm#/"/>
+      <target xmi:type="tfsmextended:TimedSystem" href="single_traffic_light.tfsm#/"/>
     </ownedRepresentations>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_c1AzUOphEeO1TtKGEeVrvg" name="Semaphore">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_c1CBcOphEeO1TtKGEeVrvg" source="GMF_DIAGRAMS">
@@ -186,8 +186,11 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_c1AzUephEeO1TtKGEeVrvg" name="initSemaphore" outgoingEdges="_c1BaauphEeO1TtKGEeVrvg">
-        <target xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.0"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.0"/>
+        <target xmi:type="tfsmextended:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.0"/>
+        <semanticElements xmi:type="tfsmextended:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.0"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_sq_ocL5jEeSQIqsNNdKoYA">
+          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Animation']/@decorationDescriptionsSet/@decorationDescriptions[name='Current%20State']"/>
+        </decorations>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_c1AzUuphEeO1TtKGEeVrvg" showIcon="false" borderSize="4" borderSizeComputationExpression="4" backgroundStyle="Liquid">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_c1AzU-phEeO1TtKGEeVrvg"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']/@conditionnalStyles.0/@style"/>
@@ -198,11 +201,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_c1AzV-phEeO1TtKGEeVrvg" name="Red" outgoingEdges="_c1Bab-phEeO1TtKGEeVrvg" incomingEdges="_c1BaauphEeO1TtKGEeVrvg _c1BadOphEeO1TtKGEeVrvg">
-        <target xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
-        <decorations xmi:type="viewpoint:Decoration" xmi:id="_ehQo8J_rEeSvduzJ39bq0Q">
-          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Debug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
-        </decorations>
+        <target xmi:type="tfsmextended:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
+        <semanticElements xmi:type="tfsmextended:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -216,8 +216,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_c1BaY-phEeO1TtKGEeVrvg" name="Green" outgoingEdges="_c1BadOphEeO1TtKGEeVrvg" incomingEdges="_c1Bab-phEeO1TtKGEeVrvg">
-        <target xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
+        <target xmi:type="tfsmextended:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
+        <semanticElements xmi:type="tfsmextended:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -230,9 +230,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_c1BaauphEeO1TtKGEeVrvg" name="after 1 on minutes&#xA; / &#xA;dosomething&#xA;" sourceNode="_c1AzUephEeO1TtKGEeVrvg" targetNode="_c1AzV-phEeO1TtKGEeVrvg">
-        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.0"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_c1BaauphEeO1TtKGEeVrvg" name="Invalid feature as name" sourceNode="_c1AzUephEeO1TtKGEeVrvg" targetNode="_c1AzV-phEeO1TtKGEeVrvg">
+        <target xmi:type="tfsmextended:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <semanticElements xmi:type="tfsmextended:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_c1Baa-phEeO1TtKGEeVrvg" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_c1BabOphEeO1TtKGEeVrvg" red="136" green="136" blue="136"/>
@@ -242,9 +242,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_c1Bab-phEeO1TtKGEeVrvg" name="after 3 on minutes&#xA; / &#xA;doGreen&#xA;" sourceNode="_c1AzV-phEeO1TtKGEeVrvg" targetNode="_c1BaY-phEeO1TtKGEeVrvg">
-        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.1"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_c1Bab-phEeO1TtKGEeVrvg" name="Invalid feature as name" sourceNode="_c1AzV-phEeO1TtKGEeVrvg" targetNode="_c1BaY-phEeO1TtKGEeVrvg">
+        <target xmi:type="tfsmextended:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <semanticElements xmi:type="tfsmextended:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_c1BacOphEeO1TtKGEeVrvg" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_c1BacephEeO1TtKGEeVrvg" red="136" green="136" blue="136"/>
@@ -254,9 +254,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_c1BadOphEeO1TtKGEeVrvg" name="after 4 on minutes&#xA; / &#xA;doRed&#xA;  !switch;" sourceNode="_c1BaY-phEeO1TtKGEeVrvg" targetNode="_c1AzV-phEeO1TtKGEeVrvg">
-        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_c1BadOphEeO1TtKGEeVrvg" name="Invalid feature as name" sourceNode="_c1BaY-phEeO1TtKGEeVrvg" targetNode="_c1AzV-phEeO1TtKGEeVrvg">
+        <target xmi:type="tfsmextended:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <semanticElements xmi:type="tfsmextended:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_c1BadephEeO1TtKGEeVrvg" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_c1BaduphEeO1TtKGEeVrvg" red="136" green="136" blue="136"/>
@@ -271,7 +271,8 @@
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer"/>
       <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Debug']"/>
       <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Animator']"/>
-      <target xmi:type="org.gemoc.sample.tfsm:TFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Animation']"/>
+      <target xmi:type="tfsmextended:TFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']"/>
   </ownedViews>

@@ -461,13 +461,22 @@ public interface TfsmextendedPackage extends EPackage {
 	int FSM_CLOCK__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Number Of Ticks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_CLOCK__NUMBER_OF_TICKS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>FSM Clock</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int FSM_CLOCK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link tfsmextended.impl.TimedSystemImpl <em>Timed System</em>}' class.
@@ -862,6 +871,17 @@ public interface TfsmextendedPackage extends EPackage {
 	EClass getFSMClock();
 
 	/**
+	 * Returns the meta object for the attribute '{@link tfsmextended.FSMClock#getNumberOfTicks <em>Number Of Ticks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number Of Ticks</em>'.
+	 * @see tfsmextended.FSMClock#getNumberOfTicks()
+	 * @see #getFSMClock()
+	 * @generated
+	 */
+	EAttribute getFSMClock_NumberOfTicks();
+
+	/**
 	 * Returns the meta object for class '{@link tfsmextended.TimedSystem <em>Timed System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1188,6 +1208,14 @@ public interface TfsmextendedPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FSM_CLOCK = eINSTANCE.getFSMClock();
+
+		/**
+		 * The meta object literal for the '<em><b>Number Of Ticks</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FSM_CLOCK__NUMBER_OF_TICKS = eINSTANCE.getFSMClock_NumberOfTicks();
 
 		/**
 		 * The meta object literal for the '{@link tfsmextended.impl.TimedSystemImpl <em>Timed System</em>}' class.

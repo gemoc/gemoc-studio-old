@@ -23,6 +23,15 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="TfsmExtended.ecore#//TFSM/currentState"/>
       </genFeatures>
+      <genOperations>
+        <ecoreOperation href="TfsmExtended.ecore#//TFSM/Init"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="TfsmExtended.ecore#//TFSM/changeCurrentState"/>
+        <genParameters>
+          <ecoreParameter href="TfsmExtended.ecore#//TFSM/changeCurrentState/newState"/>
+        </genParameters>
+      </genOperations>
     </genClasses>
     <genClasses>
       <ecoreClass href="TfsmExtended.ecore#//State"/>
@@ -95,6 +104,9 @@
     </genClasses>
     <genClasses>
       <ecoreClass href="TfsmExtended.ecore#//FSMClock"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="TfsmExtended.ecore#//FSMClock/numberOfTicks"/>
+      </genFeatures>
       <genOperations>
         <ecoreOperation href="TfsmExtended.ecore#//FSMClock/ticks"/>
       </genOperations>

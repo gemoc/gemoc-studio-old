@@ -14,9 +14,9 @@ import org.gemoc.sample.tfsm.TimedSystem
 import org.gemoc.sample.tfsm.Transition
 import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
 
-/*
+
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TFSMAspect.*
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.StateAspect.*
+/*import static extension org.gemoc.sample.tfsm.k3dsa.aspect.StateAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TransitionAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.NamedElementAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.GuardAspect.*
@@ -31,7 +31,7 @@ import static extension org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect.*
 @Aspect(className=TFSM)
 class TFSMAspect extends NamedElementAspect {
 	// should be added automatically by the dsa, currently introduced directly in the ecore
-	// public State currentState;
+	public State currentState;
 
 	def public String Init() {
 		if (_self.currentState == null) {
