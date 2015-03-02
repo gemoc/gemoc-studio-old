@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
@@ -96,6 +97,7 @@ public class DefaultModelLoader implements IModelLoader {
 		final TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
 		session.open(monitor);
 		for (DView view : session.getSelectedViews()) {
+			refreshRepresentations(editingDomain, view.getOwnedRepresentations());
 			for (DRepresentation representation : view
 					.getOwnedRepresentations()) {
 				final DSemanticDiagramSpec diagram = (DSemanticDiagramSpec) representation;
@@ -142,6 +144,23 @@ public class DefaultModelLoader implements IModelLoader {
 		}
 
 		return session;
+	}
+
+	/**Refreshes given {@link DRepresentation} in the given {@link TransactionalEditingDomain}.
+	 * @param transactionalEditingDomain the {@link TransactionalEditingDomain}
+	 * @param representations the {@link List} of {@link DRepresentation} to refresh
+	 */
+	public void refreshRepresentations(
+			final TransactionalEditingDomain transactionalEditingDomain,
+			final List<DRepresentation> representations) {
+		// TODO prevent the editors from getting dirty
+		if (representations.size() != 0) {
+			final RefreshRepresentationsCommand refresh = new RefreshRepresentationsCommand(
+					transactionalEditingDomain,
+					new NullProgressMonitor(),
+					representations);
+			CommandExecution.execute(transactionalEditingDomain, refresh);
+		}
 	}
 
 }
