@@ -21,7 +21,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.xtext.serializer.impl.Serializer;
 import org.gemoc.mocc.ccslmoc.model.moccml.CcslmoccPackage;
 import org.gemoc.mocc.ccslmoc.model.moccml.FinishClock;
@@ -65,6 +68,9 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalE
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.AbstractEntity;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.BindableEntity;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ConcreteEntity;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDeclaration;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationDefinition;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.RelationLibrary;
 
 
 
@@ -83,6 +89,71 @@ public class MoCMLServices {
 	 * @param fsm : the given state machine
 	 * @return the ordered list of states and transitions
 	 */
+	
+	
+	public int numRelationDeclaration (StateRelationBasedLibrary stateLib)
+	{
+		int num = 0;
+		EList<RelationLibrary> lst = new BasicEList<RelationLibrary>();
+		lst =  stateLib.getRelationLibraries();
+		for(RelationLibrary rl : lst)
+		{
+			num = num + rl.getRelationDeclarations().size();
+		}
+		return num;
+	}
+	
+	public int numStateMachineRelationDefinition (StateRelationBasedLibrary stateLib)
+	{
+		int num = 0;
+		EList<RelationLibrary> lst = new BasicEList<RelationLibrary>();
+		lst =  stateLib.getRelationLibraries();
+		for(RelationLibrary rl : lst)
+		{
+			num = num + rl.getRelationDefinitions().size();
+		}
+		return num;
+	}
+	
+	public int numFormalParam (StateRelationBasedLibrary stateLib)
+	{
+		int num = 0;
+		EList<RelationLibrary> lst = new BasicEList<RelationLibrary>();
+		EList<RelationDeclaration> lstDecl = new BasicEList<RelationDeclaration>();
+		lst =  stateLib.getRelationLibraries();
+		for(RelationLibrary rl : lst)
+		{
+			lstDecl.addAll(rl.getRelationDeclarations());
+		}
+		
+		for(RelationDeclaration rd : lstDecl)
+		{
+			num = num + rd.getParameters().size();
+		}
+		
+		return num;
+	}
+	
+	public int numStates (StateRelationBasedLibrary stateLib)
+	{
+		int num = 0;
+		EList<RelationLibrary> lst = new BasicEList<RelationLibrary>();
+		EList<StateMachineRelationDefinition> lstDef = new BasicEList<StateMachineRelationDefinition>();
+		lst =  stateLib.getRelationLibraries();
+		for(RelationLibrary rl : lst)
+		{
+			lstDef.addAll((Collection<? extends StateMachineRelationDefinition>) rl.getRelationDefinitions());
+		}
+		
+		for(StateMachineRelationDefinition rd : lstDef)
+		{
+			num = num + rd.getStates().size();
+		}
+		
+		return num;
+	}
+	
+	
 	public Collection<NamedElement> getDetails(StateMachineRelationDefinition fsm){
 		Collection<NamedElement> lst = new ArrayList<NamedElement>();
 		//initial state
@@ -130,7 +201,7 @@ public class MoCMLServices {
 		}
 		if ((stateLib.getPredefinedTypes()!=null)&&(!stateLib.getPredefinedTypes().isEmpty())) {
 			lst.addAll(stateLib.getPredefinedTypes());
-		}
+		}		
 		return lst;
 	}
 	
@@ -664,5 +735,4 @@ public class MoCMLServices {
 		}
 		return sb.toString();
 	}
-	
 }

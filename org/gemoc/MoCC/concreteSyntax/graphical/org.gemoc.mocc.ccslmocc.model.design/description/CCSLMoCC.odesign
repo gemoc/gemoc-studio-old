@@ -14,7 +14,7 @@
       <metamodel href="../../org.gemoc.mocc.ccslmocc.model/model/Ccslmocc.ecore#/"/>
       <metamodel href="../../org.gemoc.mocc.fsmkernel.model/model/FSMModel.ecore#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="RelationDefToDeclaration" deletionDescription="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='DelDeclarationRelation']" sourceMapping="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='StateMachineRelationDefinition']" targetMapping="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration']" targetFinderExpression="feature:declaration" reconnections="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='SetDeclarationChange']">
+        <edgeMappings name="RelationDefToDeclaration" deletionDescription="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DelDeclarationRelation']" sourceMapping="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='StateMachineRelationDefinition']" targetMapping="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration']" targetFinderExpression="feature:declaration" reconnections="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='SetDeclarationChange']">
           <style lineStyle="dash" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="defines">
@@ -22,8 +22,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="RelationLibrary" labelDirectEdit="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='NameEditRelationTools']" semanticCandidatesExpression="feature:eAllContents" domainClass="RelationLibrary">
-          <subContainerMappings name="StateMachineRelationDefinition" detailDescriptions="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='CreateStateBasedDefDiagram']" labelDirectEdit="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='NameEditRelationTools']" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenXtextEditorOnDeclAndSMRDef']" domainClass="moccml.StateMachineRelationDefinition">
+        <containerMappings name="RelationLibrary" labelDirectEdit="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='NameEditRelationTools']" semanticCandidatesExpression="feature:eAllContents" domainClass="RelationLibrary">
+          <subContainerMappings name="StateMachineRelationDefinition" detailDescriptions="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='CreateStateBasedDefDiagram']" labelDirectEdit="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='NameEditRelationTools']" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='OpenXtextEditorOnDeclAndSMRDef']" domainClass="moccml.StateMachineRelationDefinition">
             <style xsi:type="style:FlatContainerStyleDescription" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/FSM.gif" backgroundStyle="Liquid">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -32,8 +32,8 @@
               <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="RelationDeclaration" labelDirectEdit="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='EditRelationDeclaration']" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenXtextEditorOnDeclAndSMRDef']" domainClass="RelationDeclaration" childrenPresentation="List" listContainer="true">
-            <subNodeMappings name="AbstractEntity" labelDirectEdit="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='NameEditAbstractEntity']" semanticCandidatesExpression="feature:eAllContents" domainClass="AbstractEntity">
+          <subContainerMappings name="RelationDeclaration" labelDirectEdit="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='EditRelationDeclaration']" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='OpenXtextEditorOnDeclAndSMRDef']" domainClass="RelationDeclaration" childrenPresentation="List" listContainer="true">
+            <subNodeMappings name="AbstractEntity" labelDirectEdit="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='NameEditAbstractEntity']" semanticCandidatesExpression="feature:eAllContents" domainClass="AbstractEntity">
               <style xsi:type="style:SquareDescription" labelFormat="italic" labelExpression="service:computeLabel" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Parameter.gif" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -61,6 +61,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="RelationLibrary" referenceName="relationLibraries">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['newRelationLib'+container->filter(Library).relationLibraries->size()/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="ListOfTypes" valueExpression="[self.eContainer()->filter(StateRelationBasedLibrary).getAllExistingTypes()/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -82,7 +83,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SetDeclaration" label="Set Declaration Relation" edgeMappings="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@edgeMappings[name='RelationDefToDeclaration']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateDeclaration.gif" connectionStartPrecondition="[preSource.oclAsType(ccslmocc::StateMachineRelationDefinition).declaration=null/]">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SetDeclaration" label="Set Declaration Relation" edgeMappings="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@edgeMappings[name='RelationDefToDeclaration']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateDeclaration.gif" connectionStartPrecondition="[preSource.oclAsType(moccml::StateMachineRelationDefinition).declaration=null/]">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -191,6 +192,54 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="LibraryAddingDefaultElement" label="New Library &amp; Required Feature">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CreateRelationLibraryReq" label="New Relation Library +" forceRefresh="true" containerMappings="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateRelationLibrary.jpg">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="RelationLibrary" referenceName="relationLibraries">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['newRelationLib'+container->filter(StateRelationBasedLibrary).relationLibraries->size()/]"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="RelationDeclaration" referenceName="relationDeclarations">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['newRelationDecl'+container->filter(StateRelationBasedLibrary).numRelationDeclaration()/]"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AbstractEntity" referenceName="parameters">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['param'+container->filter(StateRelationBasedLibrary).numFormalParam()/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="[(container->filter(StateRelationBasedLibrary).predefinedTypes->asOrderedSet()->first()).oclAsType(DiscreteClockType)/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CreateStateBasedDefinitionReq" label="New Automata Definition +" forceRefresh="true" containerMappings="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='StateMachineRelationDefinition']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/CreateFSM.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="StateMachineRelationDefinition" referenceName="relationDefinitions">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['newFSM'+((container->filter(RelationLibrary)).eContainer())->filter(StateRelationBasedLibrary).numStateMachineRelationDefinition()/]"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="State" referenceName="states">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['S'+((container->filter(RelationLibrary)).eContainer())->filter(StateRelationBasedLibrary).numStateMachineRelationDefinition()/]">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['S'+((container->filter(RelationLibrary)).eContainer())->filter(StateRelationBasedLibrary).numStates()/]"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="initialStates" valueExpression="var:instance"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CreateRelationDeclarationID" label="New Relation Declaration +" containerMappings="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@defaultLayer/@containerMappings[name='RelationLibrary']/@subContainerMappings[name='RelationDeclaration']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="RelationDeclaration" referenceName="relationDeclarations">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['newRelationDecl'+((container->filter(RelationLibrary)).eContainer())->filter(StateRelationBasedLibrary).numRelationDeclaration()/]"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AbstractEntity" referenceName="parameters">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['param'+((container->filter(RelationLibrary)).eContainer())->filter(StateRelationBasedLibrary).numFormalParam()/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="[((container->filter(RelationLibrary)).eContainer()->filter(StateRelationBasedLibrary).predefinedTypes->asOrderedSet()->first()).oclAsType(DiscreteClockType)/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="LibraryToolsModification">
@@ -331,7 +380,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="CreateKernelURI" label="Import Kernel Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
+            <tools xsi:type="tool_1:ToolDescription" name="CreateKernelURI" label="Import Kernel Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -342,6 +391,9 @@
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="kernel"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"/>
                       </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="DiscreteClockType" referenceName="predefinedTypes" variableName="disc">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['clock'+element->filter(StateRelationBasedLibrary).predefinedTypes->size()/]"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </cases>
                   <cases conditionExpression="[element.oclIsTypeOf(ImportStatement)/]">
@@ -350,13 +402,16 @@
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="kernel"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="importURI" valueExpression="platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"/>
                       </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="DiscreteClockType" referenceName="predefinedTypes" variableName="disc">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['clock'+element->filter(StateRelationBasedLibrary).predefinedTypes->size()/]"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </cases>
                   <default/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="CreateCCSLURI" label="Import CCSL Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]">
+            <tools xsi:type="tool_1:ToolDescription" name="CreateCCSLURI" label="Import CCSL Library" precondition="[container.oclIsTypeOf(StateRelationBasedLibrary) or container.oclIsTypeOf(ImportStatement)/]" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -754,7 +809,7 @@
         </toolSections>
         <toolSections name="StateMachineToolsNavigation">
           <ownedTools xsi:type="tool_1:ExternalJavaAction" name="OpenEmbeddedEditorAction" forceRefresh="true" id="org.gemoc.mocc.ccslmocc.model.design.OpenEmbeddedEditorID"/>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="OpenTextDescription" label="Open Textual Description" precondition="[self.oclIsTypeOf(ccslmocc::StateMachineRelationDefinition)/]" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:PopupMenu" name="OpenTextDescription" label="Open Textual Description" precondition="[self.oclIsTypeOf(moccml::StateMachineRelationDefinition)/]" forceRefresh="true">
             <menuItemDescription xsi:type="tool_1:ExternalJavaActionCall" name="org.gemoc.mocc.ccslmocc.model.design.popupOpenEditorActionCallID" action="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='OpenEmbeddedEditorAction']"/>
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="OpenXtextEditorState" label="Open Xtext Editor State" forceRefresh="true" mappings="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='StateMachineRelationDiagram']/@defaultLayer/@nodeMappings[name='FSMState']">
@@ -824,14 +879,14 @@
           </style>
         </containerMappings>
         <toolSections name="DeclarationsTooling" label="Declarations Edition">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="DeclarationBlockCreation" label="New Declaration Block" precondition="[container.oclAsType(ccslmocc::StateMachineRelationDefinition).declarationBlock=null/]" containerMappings="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/DeclarationBloc.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="DeclarationBlockCreation" label="New Declaration Block" precondition="[container.oclAsType(moccml::StateMachineRelationDefinition).declarationBlock=null/]" containerMappings="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='DeclarationBlockID']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/DeclarationBloc.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="DeclarationBlock" referenceName="declarationBlock"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="RelationDeclarationBlocCreation" label="New Relation Declaration" precondition="[container.oclAsType(ccslmocc::StateMachineRelationDefinition).declaration=null/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='RelationDeclarationID']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Variable.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="RelationDeclarationBlocCreation" label="New Relation Declaration" precondition="[container.oclAsType(moccml::StateMachineRelationDefinition).declaration=null/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='StateMachineRelationDiagram']/@additionalLayers[name='Declarations']/@containerMappings[name='RelationDeclarationID']" iconPath="/org.gemoc.mocc.ccslmocc.model.design/images/Variable.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

@@ -82,6 +82,14 @@ public class MoCCMLFormatter extends AbstractDeclarativeFormatter {
 			c.setLinewrap(2).before(state);
 		}
 		
+		for(Keyword relib: f.findKeywords("RelationLibrary")) {
+			c.setLinewrap(2).before(relib);
+		}
+		
+		for(Keyword reldec: f.findKeywords("RelationDeclaration")) {
+			c.setLinewrap(1).before(reldec);
+		}
+		
 		for(Keyword point: f.findKeywords(".")) {
 			c.setNoLinewrap().before(point);
 			c.setNoSpace().before(point);
