@@ -39,6 +39,11 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.ui.IEditorPart;
 
+/**
+ * Sirius editors utility class.
+ *
+ * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
+ */
 public final class SiriusEditorUtils {
 
 	/**
