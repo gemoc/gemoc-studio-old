@@ -131,7 +131,7 @@ BooleanRef returns ClassicalExpression::BooleanRef:
 	'r['realElem=[BasicType::RealElement|EString]']'|'r#ref'name=ID'['realElem=[BasicType::RealElement|EString]']';*/
 
 IntegerRef returns ClassicalExpression::IntegerRef:
-	'i.'(integerElem=[BasicType::IntegerElement|EString])|('i#ref'name=ID'['integerElem=[BasicType::IntegerElement|EString]']');
+	(integerElem=[BasicType::IntegerElement|EString]) | 'i.'(integerElem=[BasicType::IntegerElement|EString])|('i#ref'name=ID'['integerElem=[BasicType::IntegerElement|EString]']');
 	//(integerElem=[BasicType::IntegerElement|EString])|('i#ref'name=ID'['integerElem=[BasicType::IntegerElement|EString]']');
 	//(('i#ref'name=ID'[')? integerElem=[BasicType::IntegerElement|EString](']')?);
 

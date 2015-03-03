@@ -130,8 +130,8 @@ public class FSMDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getIntEqualAccess().getGroup_1_1(), "rule__IntEqual__Group_1_1__0");
 					put(grammarAccess.getBooleanRefAccess().getGroup_1(), "rule__BooleanRef__Group_1__0");
 					put(grammarAccess.getBooleanRefAccess().getGroup_2(), "rule__BooleanRef__Group_2__0");
-					put(grammarAccess.getIntegerRefAccess().getGroup_0(), "rule__IntegerRef__Group_0__0");
 					put(grammarAccess.getIntegerRefAccess().getGroup_1(), "rule__IntegerRef__Group_1__0");
+					put(grammarAccess.getIntegerRefAccess().getGroup_2(), "rule__IntegerRef__Group_2__0");
 					put(grammarAccess.getUnaryIntPlusAccess().getGroup_0(), "rule__UnaryIntPlus__Group_0__0");
 					put(grammarAccess.getUnaryIntPlusAccess().getGroup_1(), "rule__UnaryIntPlus__Group_1__0");
 					put(grammarAccess.getUnaryIntPlusAccess().getGroup_1_1(), "rule__UnaryIntPlus__Group_1_1__0");
@@ -385,9 +385,10 @@ public class FSMDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBooleanRefAccess().getReferencedBoolAssignment_1_1(), "rule__BooleanRef__ReferencedBoolAssignment_1_1");
 					put(grammarAccess.getBooleanRefAccess().getNameAssignment_2_1(), "rule__BooleanRef__NameAssignment_2_1");
 					put(grammarAccess.getBooleanRefAccess().getReferencedBoolAssignment_2_3(), "rule__BooleanRef__ReferencedBoolAssignment_2_3");
-					put(grammarAccess.getIntegerRefAccess().getIntegerElemAssignment_0_1(), "rule__IntegerRef__IntegerElemAssignment_0_1");
-					put(grammarAccess.getIntegerRefAccess().getNameAssignment_1_1(), "rule__IntegerRef__NameAssignment_1_1");
-					put(grammarAccess.getIntegerRefAccess().getIntegerElemAssignment_1_3(), "rule__IntegerRef__IntegerElemAssignment_1_3");
+					put(grammarAccess.getIntegerRefAccess().getIntegerElemAssignment_0(), "rule__IntegerRef__IntegerElemAssignment_0");
+					put(grammarAccess.getIntegerRefAccess().getIntegerElemAssignment_1_1(), "rule__IntegerRef__IntegerElemAssignment_1_1");
+					put(grammarAccess.getIntegerRefAccess().getNameAssignment_2_1(), "rule__IntegerRef__NameAssignment_2_1");
+					put(grammarAccess.getIntegerRefAccess().getIntegerElemAssignment_2_3(), "rule__IntegerRef__IntegerElemAssignment_2_3");
 					put(grammarAccess.getUnaryIntPlusAccess().getValueAssignment_0_3(), "rule__UnaryIntPlus__ValueAssignment_0_3");
 					put(grammarAccess.getUnaryIntPlusAccess().getOperandAssignment_0_5(), "rule__UnaryIntPlus__OperandAssignment_0_5");
 					put(grammarAccess.getUnaryIntPlusAccess().getNameAssignment_1_1_1(), "rule__UnaryIntPlus__NameAssignment_1_1_1");

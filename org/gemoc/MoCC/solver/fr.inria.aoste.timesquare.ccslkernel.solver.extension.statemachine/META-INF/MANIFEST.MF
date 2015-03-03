@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.core.runtime,
  fr.inria.aoste.timesquare.ccslkernel.runtime;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0",
  fr.inria.aoste.utils.grph,
- org.gemoc.mocc.ccslmocc.model;bundle-version="0.1.2"
+ org.gemoc.mocc.ccslmocc.model;bundle-version="0.1.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine

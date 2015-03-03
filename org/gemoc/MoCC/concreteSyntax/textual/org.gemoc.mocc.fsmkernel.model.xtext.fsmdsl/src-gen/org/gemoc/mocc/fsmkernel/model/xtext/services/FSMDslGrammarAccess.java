@@ -451,8 +451,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//State returns fsmmodel::State:
 		//	{fsmmodel::State} "State" name=EString "(" ("in" ":" inputTransitions+=[fsmmodel::Transition|EString] (","
-		//	inputTransitions+=[fsmmodel::Transition|EString])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition|EString]
-		//	("," outputTransitions+=[fsmmodel::Transition|EString])*)? ")";
+		//	inputTransitions+=[fsmmodel::Transition|EString])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition|EString] (","
+		//	outputTransitions+=[fsmmodel::Transition|EString])*)? ")";
 		public ParserRule getRule() { return rule; }
 
 		//{fsmmodel::State} "State" name=EString "(" ("in" ":" inputTransitions+=[fsmmodel::Transition|EString] (","
@@ -768,8 +768,7 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightValueIntegerExpressionParserRuleCall_4_0 = (RuleCall)cRightValueAssignment_4.eContents().get(0);
 		
 		//IntSelfPlusAssign returns extension::IntSelfPlusAssignement:
-		//	{extension::IntSelfPlusAssignement} ("#ref" name=EString "=")? leftValue=IntegerRef "+="
-		//	rightValue=IntegerExpression;
+		//	{extension::IntSelfPlusAssignement} ("#ref" name=EString "=")? leftValue=IntegerRef "+=" rightValue=IntegerExpression;
 		public ParserRule getRule() { return rule; }
 
 		//{extension::IntSelfPlusAssignement} ("#ref" name=EString "=")? leftValue=IntegerRef "+=" rightValue=IntegerExpression
@@ -1415,73 +1414,85 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class IntegerRefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IntegerRef");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cIKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Assignment cIntegerElemAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final CrossReference cIntegerElemIntegerElementCrossReference_0_1_0 = (CrossReference)cIntegerElemAssignment_0_1.eContents().get(0);
-		private final RuleCall cIntegerElemIntegerElementEStringParserRuleCall_0_1_0_1 = (RuleCall)cIntegerElemIntegerElementCrossReference_0_1_0.eContents().get(1);
+		private final Assignment cIntegerElemAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final CrossReference cIntegerElemIntegerElementCrossReference_0_0 = (CrossReference)cIntegerElemAssignment_0.eContents().get(0);
+		private final RuleCall cIntegerElemIntegerElementEStringParserRuleCall_0_0_1 = (RuleCall)cIntegerElemIntegerElementCrossReference_0_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cIRefKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Assignment cIntegerElemAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final CrossReference cIntegerElemIntegerElementCrossReference_1_3_0 = (CrossReference)cIntegerElemAssignment_1_3.eContents().get(0);
-		private final RuleCall cIntegerElemIntegerElementEStringParserRuleCall_1_3_0_1 = (RuleCall)cIntegerElemIntegerElementCrossReference_1_3_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
+		private final Keyword cIKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cIntegerElemAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final CrossReference cIntegerElemIntegerElementCrossReference_1_1_0 = (CrossReference)cIntegerElemAssignment_1_1.eContents().get(0);
+		private final RuleCall cIntegerElemIntegerElementEStringParserRuleCall_1_1_0_1 = (RuleCall)cIntegerElemIntegerElementCrossReference_1_1_0.eContents().get(1);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Keyword cIRefKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cNameAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_2_1_0 = (RuleCall)cNameAssignment_2_1.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Assignment cIntegerElemAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
+		private final CrossReference cIntegerElemIntegerElementCrossReference_2_3_0 = (CrossReference)cIntegerElemAssignment_2_3.eContents().get(0);
+		private final RuleCall cIntegerElemIntegerElementEStringParserRuleCall_2_3_0_1 = (RuleCall)cIntegerElemIntegerElementCrossReference_2_3_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		
 		/// *RealRef returns ClassicalExpression::RealRef:
 		//	'r['realElem=[BasicType::RealElement|EString]']'|'r#ref'name=ID'['realElem=[BasicType::RealElement|EString]']';* / IntegerRef
 		//returns ClassicalExpression::IntegerRef:
-		//	"i." integerElem=[BasicType::IntegerElement|EString] | "i#ref" name=ID "["
-		//	integerElem=[BasicType::IntegerElement|EString] "]";
+		//	integerElem=[BasicType::IntegerElement|EString] | "i." integerElem=[BasicType::IntegerElement|EString] | "i#ref"
+		//	name=ID "[" integerElem=[BasicType::IntegerElement|EString] "]";
 		public ParserRule getRule() { return rule; }
 
-		//"i." integerElem=[BasicType::IntegerElement|EString] | "i#ref" name=ID "["
-		//integerElem=[BasicType::IntegerElement|EString] "]"
+		//integerElem=[BasicType::IntegerElement|EString] | "i." integerElem=[BasicType::IntegerElement|EString] | "i#ref" name=ID
+		//"[" integerElem=[BasicType::IntegerElement|EString] "]"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"i." integerElem=[BasicType::IntegerElement|EString]
-		public Group getGroup_0() { return cGroup_0; }
-
-		//"i."
-		public Keyword getIKeyword_0_0() { return cIKeyword_0_0; }
-
 		//integerElem=[BasicType::IntegerElement|EString]
-		public Assignment getIntegerElemAssignment_0_1() { return cIntegerElemAssignment_0_1; }
+		public Assignment getIntegerElemAssignment_0() { return cIntegerElemAssignment_0; }
 
 		//[BasicType::IntegerElement|EString]
-		public CrossReference getIntegerElemIntegerElementCrossReference_0_1_0() { return cIntegerElemIntegerElementCrossReference_0_1_0; }
+		public CrossReference getIntegerElemIntegerElementCrossReference_0_0() { return cIntegerElemIntegerElementCrossReference_0_0; }
 
 		//EString
-		public RuleCall getIntegerElemIntegerElementEStringParserRuleCall_0_1_0_1() { return cIntegerElemIntegerElementEStringParserRuleCall_0_1_0_1; }
+		public RuleCall getIntegerElemIntegerElementEStringParserRuleCall_0_0_1() { return cIntegerElemIntegerElementEStringParserRuleCall_0_0_1; }
 
-		//"i#ref" name=ID "[" integerElem=[BasicType::IntegerElement|EString] "]"
+		//"i." integerElem=[BasicType::IntegerElement|EString]
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"i#ref"
-		public Keyword getIRefKeyword_1_0() { return cIRefKeyword_1_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_1_0() { return cNameIDTerminalRuleCall_1_1_0; }
-
-		//"["
-		public Keyword getLeftSquareBracketKeyword_1_2() { return cLeftSquareBracketKeyword_1_2; }
+		//"i."
+		public Keyword getIKeyword_1_0() { return cIKeyword_1_0; }
 
 		//integerElem=[BasicType::IntegerElement|EString]
-		public Assignment getIntegerElemAssignment_1_3() { return cIntegerElemAssignment_1_3; }
+		public Assignment getIntegerElemAssignment_1_1() { return cIntegerElemAssignment_1_1; }
 
 		//[BasicType::IntegerElement|EString]
-		public CrossReference getIntegerElemIntegerElementCrossReference_1_3_0() { return cIntegerElemIntegerElementCrossReference_1_3_0; }
+		public CrossReference getIntegerElemIntegerElementCrossReference_1_1_0() { return cIntegerElemIntegerElementCrossReference_1_1_0; }
 
 		//EString
-		public RuleCall getIntegerElemIntegerElementEStringParserRuleCall_1_3_0_1() { return cIntegerElemIntegerElementEStringParserRuleCall_1_3_0_1; }
+		public RuleCall getIntegerElemIntegerElementEStringParserRuleCall_1_1_0_1() { return cIntegerElemIntegerElementEStringParserRuleCall_1_1_0_1; }
+
+		//"i#ref" name=ID "[" integerElem=[BasicType::IntegerElement|EString] "]"
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"i#ref"
+		public Keyword getIRefKeyword_2_0() { return cIRefKeyword_2_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_2_1() { return cNameAssignment_2_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_1_0() { return cNameIDTerminalRuleCall_2_1_0; }
+
+		//"["
+		public Keyword getLeftSquareBracketKeyword_2_2() { return cLeftSquareBracketKeyword_2_2; }
+
+		//integerElem=[BasicType::IntegerElement|EString]
+		public Assignment getIntegerElemAssignment_2_3() { return cIntegerElemAssignment_2_3; }
+
+		//[BasicType::IntegerElement|EString]
+		public CrossReference getIntegerElemIntegerElementCrossReference_2_3_0() { return cIntegerElemIntegerElementCrossReference_2_3_0; }
+
+		//EString
+		public RuleCall getIntegerElemIntegerElementEStringParserRuleCall_2_3_0_1() { return cIntegerElemIntegerElementEStringParserRuleCall_2_3_0_1; }
 
 		//"]"
-		public Keyword getRightSquareBracketKeyword_1_4() { return cRightSquareBracketKeyword_1_4; }
+		public Keyword getRightSquareBracketKeyword_2_4() { return cRightSquareBracketKeyword_2_4; }
 	}
 
 	public class UnaryIntPlusElements extends AbstractParserRuleElementFinder {
@@ -3896,8 +3907,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	//State returns fsmmodel::State:
 	//	{fsmmodel::State} "State" name=EString "(" ("in" ":" inputTransitions+=[fsmmodel::Transition|EString] (","
-	//	inputTransitions+=[fsmmodel::Transition|EString])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition|EString]
-	//	("," outputTransitions+=[fsmmodel::Transition|EString])*)? ")";
+	//	inputTransitions+=[fsmmodel::Transition|EString])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition|EString] (","
+	//	outputTransitions+=[fsmmodel::Transition|EString])*)? ")";
 	public StateElements getStateAccess() {
 		return pState;
 	}
@@ -3942,8 +3953,7 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IntSelfPlusAssign returns extension::IntSelfPlusAssignement:
-	//	{extension::IntSelfPlusAssignement} ("#ref" name=EString "=")? leftValue=IntegerRef "+="
-	//	rightValue=IntegerExpression;
+	//	{extension::IntSelfPlusAssignement} ("#ref" name=EString "=")? leftValue=IntegerRef "+=" rightValue=IntegerExpression;
 	public IntSelfPlusAssignElements getIntSelfPlusAssignAccess() {
 		return pIntSelfPlusAssign;
 	}
@@ -4054,8 +4064,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	/// *RealRef returns ClassicalExpression::RealRef:
 	//	'r['realElem=[BasicType::RealElement|EString]']'|'r#ref'name=ID'['realElem=[BasicType::RealElement|EString]']';* / IntegerRef
 	//returns ClassicalExpression::IntegerRef:
-	//	"i." integerElem=[BasicType::IntegerElement|EString] | "i#ref" name=ID "["
-	//	integerElem=[BasicType::IntegerElement|EString] "]";
+	//	integerElem=[BasicType::IntegerElement|EString] | "i." integerElem=[BasicType::IntegerElement|EString] | "i#ref"
+	//	name=ID "[" integerElem=[BasicType::IntegerElement|EString] "]";
 	public IntegerRefElements getIntegerRefAccess() {
 		return pIntegerRef;
 	}
@@ -4495,8 +4505,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Relation returns ClockExpressionAndRelation::Relation:
-	//	isAnAssertion?="assert"? "Relation" (name=ID "[")? type=[ClockExpressionAndRelation::RelationDeclaration|EString]
-	//	"]"? "(" (bindings+=Binding ("," bindings+=Binding)*)? ")";
+	//	isAnAssertion?="assert"? "Relation" (name=ID "[")? type=[ClockExpressionAndRelation::RelationDeclaration|EString] "]"?
+	//	"(" (bindings+=Binding ("," bindings+=Binding)*)? ")";
 	public CCSLLibraryGrammarAccess.RelationElements getRelationAccess() {
 		return gaCCSLLibrary.getRelationAccess();
 	}
@@ -4651,7 +4661,7 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////| CharElement;
-	// PrimitiveElement returns BasicType::PrimitiveElement:
+	//PrimitiveElement returns BasicType::PrimitiveElement:
 	//	StringElement | BooleanElement | IntegerElement | IntegerVariableRef | RealElement;
 	public CCSLLibraryGrammarAccess.PrimitiveElementElements getPrimitiveElementAccess() {
 		return gaCCSLLibrary.getPrimitiveElementAccess();
@@ -4723,10 +4733,9 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////ConcreteEntity_Impl returns ClockExpressionAndRelation::ConcreteEntity:
-	//
 	////	{ClockExpressionAndRelation::ConcreteEntity}
-	// //	'ConcreteEntity' name=ID;
-	// Boolean0 returns ecore::EBoolean:
+	////	'ConcreteEntity' name=ID;
+	//Boolean0 returns ecore::EBoolean:
 	//	"True" | "False";
 	public CCSLLibraryGrammarAccess.Boolean0Elements getBoolean0Access() {
 		return gaCCSLLibrary.getBoolean0Access();
@@ -4758,8 +4767,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
-	//	"UnaryRealMinus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand"
-	//	operand=RealExpression "}";
+	//	"UnaryRealMinus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression
+	//	"}";
 	public CCSLLibraryGrammarAccess.UnaryRealMinusElements getUnaryRealMinusAccess() {
 		return gaCCSLLibrary.getUnaryRealMinusAccess();
 	}
@@ -4885,9 +4894,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	////Real0 returns Real:
-	// //	'Real' / * TODO: implement this rule and an appropriate IValueConverter * /;
-	// IntegerElement
-	//returns BasicType::IntegerElement:
+	////	'Real' / * TODO: implement this rule and an appropriate IValueConverter * /;
+	//IntegerElement returns BasicType::IntegerElement:
 	//	"Integer" name=ID (":" type=[BasicType::Type|EString])? "=" value=INT | name=ID "=" value=INT | value=INT;
 	public CCSLLibraryGrammarAccess.IntegerElementElements getIntegerElementAccess() {
 		return gaCCSLLibrary.getIntegerElementAccess();
@@ -4936,19 +4944,16 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////		('type' type=[BasicType::Type|EString])?
-	// //CharElement returns BasicType::CharElement:
-	// //	'CharElement'
-	// //	'{'
-	//
+	////CharElement returns BasicType::CharElement:
+	////	'CharElement'
+	////	'{'
 	////		('name' name=ID)?
-	// //		'value' value=Char0
-	// //		('type' type=[BasicType::Type|EString])?
-	// //    '}';
-	//
+	////		'value' value=Char0
+	////		('type' type=[BasicType::Type|EString])?
+	////    '}';
 	////Char0 returns Char:
-	// //	'Char' / * TODO: implement this rule and an appropriate IValueConverter * /;
-	// RecordElement
-	//returns BasicType::RecordElement:
+	////	'Char' / * TODO: implement this rule and an appropriate IValueConverter * /;
+	//RecordElement returns BasicType::RecordElement:
 	//	"RecordElement" "{" ("name" name=ID)? ("type" type=[BasicType::Type|EString])? "box" "{" box+=Box ("," box+=Box)* "}"
 	//	"}";
 	public CCSLLibraryGrammarAccess.RecordElementElements getRecordElementAccess() {
@@ -5090,9 +5095,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	////This is only for the kernel.ccslLib !!!
-	// SubClock returns KernelRelation::SubClock:
-	//	"_SubClock" "{" ("name" name=ID)? "rightEntity" rightEntity=AbstractEntity "leftEntity" leftEntity=AbstractEntity
-	//	"}";
+	//SubClock returns KernelRelation::SubClock:
+	//	"_SubClock" "{" ("name" name=ID)? "rightEntity" rightEntity=AbstractEntity "leftEntity" leftEntity=AbstractEntity "}";
 	public CCSLLibraryGrammarAccess.SubClockElements getSubClockAccess() {
 		return gaCCSLLibrary.getSubClockAccess();
 	}
@@ -5201,8 +5205,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Intersection returns KernelExpression::Intersection:
-	//	"_Intersection" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1"
-	//	clock1=AbstractEntity "clock2" clock2=AbstractEntity "}";
+	//	"_Intersection" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
+	//	"clock2" clock2=AbstractEntity "}";
 	public CCSLLibraryGrammarAccess.IntersectionElements getIntersectionAccess() {
 		return gaCCSLLibrary.getIntersectionAccess();
 	}
@@ -5212,8 +5216,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Sup returns KernelExpression::Sup:
-	//	"_Sup" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
-	//	"clock2" clock2=AbstractEntity "}";
+	//	"_Sup" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity "clock2"
+	//	clock2=AbstractEntity "}";
 	public CCSLLibraryGrammarAccess.SupElements getSupAccess() {
 		return gaCCSLLibrary.getSupAccess();
 	}
@@ -5223,8 +5227,8 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Inf returns KernelExpression::Inf:
-	//	"_Inf" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
-	//	"clock2" clock2=AbstractEntity "}";
+	//	"_Inf" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity "clock2"
+	//	clock2=AbstractEntity "}";
 	public CCSLLibraryGrammarAccess.InfElements getInfAccess() {
 		return gaCCSLLibrary.getInfAccess();
 	}

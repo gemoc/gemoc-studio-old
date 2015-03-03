@@ -288,8 +288,8 @@ public class PopupXTextEditorHelper {
 		
 		Composite parentComposite = (Composite) diagramEditPart.getViewer().getControl();
 
-		xtextEditorComposite = new Decorations(parentComposite, SWT.RESIZE|SWT.CLOSE); //SWT.TITLE|SWT.CLOSE|SWT.RESIZE | SWT.ON_TOP | SWT.BORDER
-
+		xtextEditorComposite = new Shell(parentComposite.getDisplay()); //SWT.TITLE|SWT.CLOSE|SWT.RESIZE | SWT.ON_TOP | SWT.BORDER
+// SWT.ICON_WORKING|SWT.TITLE|SWT.CLOSE|SWT.BORDER|SWT.RESIZE
 		xtextEditorComposite.setLayout(new FillLayout());
 		
 		xtextEditorComposite.addDisposeListener(new DisposeListener() {

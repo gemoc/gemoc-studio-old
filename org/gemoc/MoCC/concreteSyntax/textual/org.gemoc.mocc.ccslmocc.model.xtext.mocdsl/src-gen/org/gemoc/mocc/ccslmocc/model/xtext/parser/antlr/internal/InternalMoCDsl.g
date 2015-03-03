@@ -2673,9 +2673,28 @@ ruleIntegerRef returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((	otherlv_0='i.' 
+((
+(
+		{ 
+		  /* */ 
+		}
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getIntegerRefRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_0_0()); 
+	    }
+		ruleEString		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+    |(	otherlv_1='i.' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getIntegerRefAccess().getIKeyword_0_0());
+    	newLeafNode(otherlv_1, grammarAccess.getIntegerRefAccess().getIKeyword_1_0());
     }
 (
 (
@@ -2688,7 +2707,7 @@ ruleIntegerRef returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_0_1_0()); 
+	        newCompositeNode(grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_1_1_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
@@ -2696,15 +2715,15 @@ ruleIntegerRef returns [EObject current=null]
 
 )
 ))
-    |(	otherlv_2='i#ref' 
+    |(	otherlv_3='i#ref' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getIntegerRefAccess().getIRefKeyword_1_0());
+    	newLeafNode(otherlv_3, grammarAccess.getIntegerRefAccess().getIRefKeyword_2_0());
     }
 (
 (
-		lv_name_3_0=RULE_ID
+		lv_name_4_0=RULE_ID
 		{
-			newLeafNode(lv_name_3_0, grammarAccess.getIntegerRefAccess().getNameIDTerminalRuleCall_1_1_0()); 
+			newLeafNode(lv_name_4_0, grammarAccess.getIntegerRefAccess().getNameIDTerminalRuleCall_2_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -2713,14 +2732,14 @@ ruleIntegerRef returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_3_0, 
+        		lv_name_4_0, 
         		"ID");
 	    }
 
 )
-)	otherlv_4='[' 
+)	otherlv_5='[' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getIntegerRefAccess().getLeftSquareBracketKeyword_1_2());
+    	newLeafNode(otherlv_5, grammarAccess.getIntegerRefAccess().getLeftSquareBracketKeyword_2_2());
     }
 (
 (
@@ -2733,16 +2752,16 @@ ruleIntegerRef returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_1_3_0()); 
+	        newCompositeNode(grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_2_3_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_6=']' 
+)	otherlv_7=']' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getIntegerRefAccess().getRightSquareBracketKeyword_1_4());
+    	newLeafNode(otherlv_7, grammarAccess.getIntegerRefAccess().getRightSquareBracketKeyword_2_4());
     }
 ))
 ;

@@ -2036,8 +2036,8 @@ protected class IntegerAssignementBlock_RightCurlyBracketKeyword_6 extends Keywo
  *
  * State returns fsmmodel::State:
  * 	{fsmmodel::State} "State" name=EString "(" ("in" ":" inputTransitions+=[fsmmodel::Transition|EString] (","
- * 	inputTransitions+=[fsmmodel::Transition|EString])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition|EString]
- * 	("," outputTransitions+=[fsmmodel::Transition|EString])*)? ")";
+ * 	inputTransitions+=[fsmmodel::Transition|EString])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition|EString] (","
+ * 	outputTransitions+=[fsmmodel::Transition|EString])*)? ")";
  *
  **/
 
@@ -3642,8 +3642,7 @@ protected class BinaryIntegerExpression_IntSelfDivAssignParserRuleCall_8 extends
 /************ begin Rule IntSelfPlusAssign ****************
  *
  * IntSelfPlusAssign returns extension::IntSelfPlusAssignement:
- * 	{extension::IntSelfPlusAssignement} ("#ref" name=EString "=")? leftValue=IntegerRef "+="
- * 	rightValue=IntegerExpression;
+ * 	{extension::IntSelfPlusAssignement} ("#ref" name=EString "=")? leftValue=IntegerRef "+=" rightValue=IntegerExpression;
  *
  **/
 
@@ -6823,13 +6822,13 @@ protected class BooleanRef_RightSquareBracketKeyword_2_4 extends KeywordToken  {
  * / *RealRef returns ClassicalExpression::RealRef:
  * 	'r['realElem=[BasicType::RealElement|EString]']'|'r#ref'name=ID'['realElem=[BasicType::RealElement|EString]']';* / IntegerRef
  * returns ClassicalExpression::IntegerRef:
- * 	"i." integerElem=[BasicType::IntegerElement|EString] | "i#ref" name=ID "["
- * 	integerElem=[BasicType::IntegerElement|EString] "]";
+ * 	integerElem=[BasicType::IntegerElement|EString] | "i." integerElem=[BasicType::IntegerElement|EString] | "i#ref"
+ * 	name=ID "[" integerElem=[BasicType::IntegerElement|EString] "]";
  *
  **/
 
-// "i." integerElem=[BasicType::IntegerElement|EString] | "i#ref" name=ID "["
-// integerElem=[BasicType::IntegerElement|EString] "]"
+// integerElem=[BasicType::IntegerElement|EString] | "i." integerElem=[BasicType::IntegerElement|EString] | "i#ref" name=ID
+// "[" integerElem=[BasicType::IntegerElement|EString] "]"
 protected class IntegerRef_Alternatives extends AlternativesToken {
 
 	public IntegerRef_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6844,8 +6843,9 @@ protected class IntegerRef_Alternatives extends AlternativesToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IntegerRef_Group_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IntegerRef_IntegerElemAssignment_0(lastRuleCallOrigin, this, 0, inst);
 			case 1: return new IntegerRef_Group_1(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new IntegerRef_Group_2(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -6859,38 +6859,16 @@ protected class IntegerRef_Alternatives extends AlternativesToken {
 
 }
 
-// "i." integerElem=[BasicType::IntegerElement|EString]
-protected class IntegerRef_Group_0 extends GroupToken {
+// integerElem=[BasicType::IntegerElement|EString]
+protected class IntegerRef_IntegerElemAssignment_0 extends AssignmentToken  {
 	
-	public IntegerRef_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IntegerRef_IntegerElemAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getIntegerRefAccess().getGroup_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new IntegerRef_IntegerElemAssignment_0_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// "i."
-protected class IntegerRef_IKeyword_0_0 extends KeywordToken  {
-	
-	public IntegerRef_IKeyword_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getIntegerRefAccess().getIKeyword_0_0();
+	public Assignment getGrammarElement() {
+		return grammarAccess.getIntegerRefAccess().getIntegerElemAssignment_0();
 	}
 
     @Override
@@ -6900,37 +6878,15 @@ protected class IntegerRef_IKeyword_0_0 extends KeywordToken  {
 		}	
 	}
 
-}
-
-// integerElem=[BasicType::IntegerElement|EString]
-protected class IntegerRef_IntegerElemAssignment_0_1 extends AssignmentToken  {
-	
-	public IntegerRef_IntegerElemAssignment_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getIntegerRefAccess().getIntegerElemAssignment_0_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new IntegerRef_IKeyword_0_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
     @Override	
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("integerElem",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("integerElem");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_0_1_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_0_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_0_1_0(); 
+				element = grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_0_0(); 
 				return obj;
 			}
 		}
@@ -6939,8 +6895,7 @@ protected class IntegerRef_IntegerElemAssignment_0_1 extends AssignmentToken  {
 
 }
 
-
-// "i#ref" name=ID "[" integerElem=[BasicType::IntegerElement|EString] "]"
+// "i." integerElem=[BasicType::IntegerElement|EString]
 protected class IntegerRef_Group_1 extends GroupToken {
 	
 	public IntegerRef_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6955,7 +6910,88 @@ protected class IntegerRef_Group_1 extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IntegerRef_RightSquareBracketKeyword_1_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IntegerRef_IntegerElemAssignment_1_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "i."
+protected class IntegerRef_IKeyword_1_0 extends KeywordToken  {
+	
+	public IntegerRef_IKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getIntegerRefAccess().getIKeyword_1_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// integerElem=[BasicType::IntegerElement|EString]
+protected class IntegerRef_IntegerElemAssignment_1_1 extends AssignmentToken  {
+	
+	public IntegerRef_IntegerElemAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getIntegerRefAccess().getIntegerElemAssignment_1_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new IntegerRef_IKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("integerElem",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("integerElem");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_1_1_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_1_1_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+
+// "i#ref" name=ID "[" integerElem=[BasicType::IntegerElement|EString] "]"
+protected class IntegerRef_Group_2 extends GroupToken {
+	
+	public IntegerRef_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getIntegerRefAccess().getGroup_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new IntegerRef_RightSquareBracketKeyword_2_4(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -6963,15 +6999,15 @@ protected class IntegerRef_Group_1 extends GroupToken {
 }
 
 // "i#ref"
-protected class IntegerRef_IRefKeyword_1_0 extends KeywordToken  {
+protected class IntegerRef_IRefKeyword_2_0 extends KeywordToken  {
 	
-	public IntegerRef_IRefKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IntegerRef_IRefKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getIntegerRefAccess().getIRefKeyword_1_0();
+		return grammarAccess.getIntegerRefAccess().getIRefKeyword_2_0();
 	}
 
     @Override
@@ -6984,21 +7020,21 @@ protected class IntegerRef_IRefKeyword_1_0 extends KeywordToken  {
 }
 
 // name=ID
-protected class IntegerRef_NameAssignment_1_1 extends AssignmentToken  {
+protected class IntegerRef_NameAssignment_2_1 extends AssignmentToken  {
 	
-	public IntegerRef_NameAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IntegerRef_NameAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getIntegerRefAccess().getNameAssignment_1_1();
+		return grammarAccess.getIntegerRefAccess().getNameAssignment_2_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IntegerRef_IRefKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IntegerRef_IRefKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -7007,9 +7043,9 @@ protected class IntegerRef_NameAssignment_1_1 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getIntegerRefAccess().getNameIDTerminalRuleCall_1_1_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getIntegerRefAccess().getNameIDTerminalRuleCall_2_1_0(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getIntegerRefAccess().getNameIDTerminalRuleCall_1_1_0();
+			element = grammarAccess.getIntegerRefAccess().getNameIDTerminalRuleCall_2_1_0();
 			return obj;
 		}
 		return null;
@@ -7018,21 +7054,21 @@ protected class IntegerRef_NameAssignment_1_1 extends AssignmentToken  {
 }
 
 // "["
-protected class IntegerRef_LeftSquareBracketKeyword_1_2 extends KeywordToken  {
+protected class IntegerRef_LeftSquareBracketKeyword_2_2 extends KeywordToken  {
 	
-	public IntegerRef_LeftSquareBracketKeyword_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IntegerRef_LeftSquareBracketKeyword_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getIntegerRefAccess().getLeftSquareBracketKeyword_1_2();
+		return grammarAccess.getIntegerRefAccess().getLeftSquareBracketKeyword_2_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IntegerRef_NameAssignment_1_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IntegerRef_NameAssignment_2_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -7040,21 +7076,21 @@ protected class IntegerRef_LeftSquareBracketKeyword_1_2 extends KeywordToken  {
 }
 
 // integerElem=[BasicType::IntegerElement|EString]
-protected class IntegerRef_IntegerElemAssignment_1_3 extends AssignmentToken  {
+protected class IntegerRef_IntegerElemAssignment_2_3 extends AssignmentToken  {
 	
-	public IntegerRef_IntegerElemAssignment_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IntegerRef_IntegerElemAssignment_2_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getIntegerRefAccess().getIntegerElemAssignment_1_3();
+		return grammarAccess.getIntegerRefAccess().getIntegerElemAssignment_2_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IntegerRef_LeftSquareBracketKeyword_1_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IntegerRef_LeftSquareBracketKeyword_2_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -7065,9 +7101,9 @@ protected class IntegerRef_IntegerElemAssignment_1_3 extends AssignmentToken  {
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("integerElem");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_1_3_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_2_3_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_1_3_0(); 
+				element = grammarAccess.getIntegerRefAccess().getIntegerElemIntegerElementCrossReference_2_3_0(); 
 				return obj;
 			}
 		}
@@ -7077,21 +7113,21 @@ protected class IntegerRef_IntegerElemAssignment_1_3 extends AssignmentToken  {
 }
 
 // "]"
-protected class IntegerRef_RightSquareBracketKeyword_1_4 extends KeywordToken  {
+protected class IntegerRef_RightSquareBracketKeyword_2_4 extends KeywordToken  {
 	
-	public IntegerRef_RightSquareBracketKeyword_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IntegerRef_RightSquareBracketKeyword_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getIntegerRefAccess().getRightSquareBracketKeyword_1_4();
+		return grammarAccess.getIntegerRefAccess().getRightSquareBracketKeyword_2_4();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IntegerRef_IntegerElemAssignment_1_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IntegerRef_IntegerElemAssignment_2_3(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -20807,8 +20843,8 @@ protected class ExternalExpressionDefinition_RightSquareBracketKeyword_5 extends
  **/
 
 // "ConditionalRelationDefinition" name=ID "[" declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]"
-// "{" ((concreteEntities+=ConcreteEntity | classicalExpressions+=ClassicalExpression0)* & ("switch" "{"
-// relCases+=RelCase relCases+=RelCase* "}" "default" defaultRelation+=Relation*)?) "}"
+// "{" ((concreteEntities+=ConcreteEntity | classicalExpressions+=ClassicalExpression0)* & ("switch" "{" relCases+=RelCase
+// relCases+=RelCase* "}" "default" defaultRelation+=Relation*)?) "}"
 protected class ConditionalRelationDefinition_Group extends GroupToken {
 	
 	public ConditionalRelationDefinition_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -21645,8 +21681,8 @@ protected class ExternalRelationDefinition_RightSquareBracketKeyword_5 extends K
 /************ begin Rule Relation ****************
  *
  * Relation returns ClockExpressionAndRelation::Relation:
- * 	isAnAssertion?="assert"? "Relation" (name=ID "[")? type=[ClockExpressionAndRelation::RelationDeclaration|EString]
- * 	"]"? "(" (bindings+=Binding ("," bindings+=Binding)*)? ")";
+ * 	isAnAssertion?="assert"? "Relation" (name=ID "[")? type=[ClockExpressionAndRelation::RelationDeclaration|EString] "]"?
+ * 	"(" (bindings+=Binding ("," bindings+=Binding)*)? ")";
  *
  **/
 
@@ -25327,7 +25363,7 @@ protected class SeqExpression_NumberSeqVariableRefParserRuleCall_4 extends RuleC
 /************ begin Rule PrimitiveElement ****************
  *
  * //| CharElement;
- *  PrimitiveElement returns BasicType::PrimitiveElement:
+ * PrimitiveElement returns BasicType::PrimitiveElement:
  * 	StringElement | BooleanElement | IntegerElement | IntegerVariableRef | RealElement;
  *
  **/
@@ -27273,8 +27309,8 @@ protected class UnaryRealPlus_RightCurlyBracketKeyword_7 extends KeywordToken  {
 /************ begin Rule UnaryRealMinus ****************
  *
  * UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
- * 	"UnaryRealMinus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand"
- * 	operand=RealExpression "}";
+ * 	"UnaryRealMinus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression
+ * 	"}";
  *
  **/
 
@@ -30545,9 +30581,8 @@ protected class RealElement_ValueAssignment_4 extends AssignmentToken  {
 /************ begin Rule IntegerElement ****************
  *
  * //Real0 returns Real:
- *  //	'Real' / * TODO: implement this rule and an appropriate IValueConverter * /;
- *  IntegerElement
- * returns BasicType::IntegerElement:
+ * //	'Real' / * TODO: implement this rule and an appropriate IValueConverter * /;
+ * IntegerElement returns BasicType::IntegerElement:
  * 	"Integer" name=ID (":" type=[BasicType::Type|EString])? "=" value=INT | name=ID "=" value=INT | value=INT;
  *
  **/
@@ -31964,19 +31999,16 @@ protected class StringElement_ValueAssignment_3 extends AssignmentToken  {
 /************ begin Rule RecordElement ****************
  *
  * //		('type' type=[BasicType::Type|EString])?
- *  //CharElement returns BasicType::CharElement:
- *  //	'CharElement'
- *  //	'{'
- * 
+ * //CharElement returns BasicType::CharElement:
+ * //	'CharElement'
+ * //	'{'
  * //		('name' name=ID)?
- *  //		'value' value=Char0
- *  //		('type' type=[BasicType::Type|EString])?
- *  //    '}';
- * 
+ * //		'value' value=Char0
+ * //		('type' type=[BasicType::Type|EString])?
+ * //    '}';
  * //Char0 returns Char:
- *  //	'Char' / * TODO: implement this rule and an appropriate IValueConverter * /;
- *  RecordElement
- * returns BasicType::RecordElement:
+ * //	'Char' / * TODO: implement this rule and an appropriate IValueConverter * /;
+ * RecordElement returns BasicType::RecordElement:
  * 	"RecordElement" "{" ("name" name=ID)? ("type" type=[BasicType::Type|EString])? "box" "{" box+=Box ("," box+=Box)* "}"
  * 	"}";
  *
@@ -34539,9 +34571,8 @@ protected class Field_RightCurlyBracketKeyword_5 extends KeywordToken  {
 /************ begin Rule SubClock ****************
  *
  * //This is only for the kernel.ccslLib !!!
- *  SubClock returns KernelRelation::SubClock:
- * 	"_SubClock" "{" ("name" name=ID)? "rightEntity" rightEntity=AbstractEntity "leftEntity" leftEntity=AbstractEntity
- * 	"}";
+ * SubClock returns KernelRelation::SubClock:
+ * 	"_SubClock" "{" ("name" name=ID)? "rightEntity" rightEntity=AbstractEntity "leftEntity" leftEntity=AbstractEntity "}";
  *
  **/
 
@@ -38185,8 +38216,8 @@ protected class Union_RightCurlyBracketKeyword_9 extends KeywordToken  {
 /************ begin Rule Intersection ****************
  *
  * Intersection returns KernelExpression::Intersection:
- * 	"_Intersection" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1"
- * 	clock1=AbstractEntity "clock2" clock2=AbstractEntity "}";
+ * 	"_Intersection" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
+ * 	"clock2" clock2=AbstractEntity "}";
  *
  **/
 
@@ -38567,8 +38598,8 @@ protected class Intersection_RightCurlyBracketKeyword_9 extends KeywordToken  {
 /************ begin Rule Sup ****************
  *
  * Sup returns KernelExpression::Sup:
- * 	"_Sup" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
- * 	"clock2" clock2=AbstractEntity "}";
+ * 	"_Sup" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity "clock2"
+ * 	clock2=AbstractEntity "}";
  *
  **/
 
@@ -38949,8 +38980,8 @@ protected class Sup_RightCurlyBracketKeyword_9 extends KeywordToken  {
 /************ begin Rule Inf ****************
  *
  * Inf returns KernelExpression::Inf:
- * 	"_Inf" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
- * 	"clock2" clock2=AbstractEntity "}";
+ * 	"_Inf" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity "clock2"
+ * 	clock2=AbstractEntity "}";
  *
  **/
 
