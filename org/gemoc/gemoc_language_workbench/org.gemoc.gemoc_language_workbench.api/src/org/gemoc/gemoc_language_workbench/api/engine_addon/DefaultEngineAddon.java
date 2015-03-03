@@ -1,5 +1,7 @@
 package org.gemoc.gemoc_language_workbench.api.engine_addon;
 
+import java.util.Collection;
+
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
@@ -19,7 +21,7 @@ public class DefaultEngineAddon implements IEngineAddon {
 	}
 
 	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
 	{
 	}
 

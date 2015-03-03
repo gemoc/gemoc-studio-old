@@ -37,13 +37,13 @@ public interface IExecutionEngine extends IDisposable {
 	 * @param type
 	 * @return true if the engine has the capability, false otherwise.
 	 */
-	<T extends IEngineAddon> boolean hasCapability(Class<T> type);
+	<T extends IEngineAddon> boolean hasAddon(Class<T> type);
 	/**
 	 * 
 	 * @param type
 	 * @return The capability of the given type if it exists.
 	 */
-	<T extends IEngineAddon> T getCapability(Class<T> type);
+	<T extends IEngineAddon> T getAddon(Class<T> type);
 
 	IExecutionContext getExecutionContext();
 

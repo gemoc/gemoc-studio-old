@@ -17,13 +17,21 @@
 		<module>../org.gemoc.gemoc_language_workbench.guideline.process</module>
 		<module>../org.gemoc.gemoc_language_workbench.documentation</module>
 		<module>../org.gemoc.gemoc_language_workbench.sample.deployer</module>
-		<module>../extensions/org.gemoc.gemoc_language_workbench.extensions.k3</module>
-		<module>../extensions/org.gemoc.gemoc_language_workbench.extensions.sirius</module>
-		<module>../extensions/org.gemoc.gemoc_language_workbench.extensions.timesquare</module>
-
 		<!-- feature and update site -->
 		<module>../org.gemoc.gemoc_language_workbench.feature</module>
 		<module>../org.gemoc.gemoc_language_workbench.p2updatesite</module>
+
+
+<!--   moteur --> 
+        <module>../../execution/engine/org.gemoc.execution.engine</module>
+        <module>../../execution/engine/org.gemoc.execution.engine.commons</module>
+        <module>../../execution/engine/org.gemoc.execution.engine.io</module>
+        <module>../extensions/org.gemoc.gemoc_language_workbench.extensions.k3</module>
+        <module>../extensions/org.gemoc.gemoc_language_workbench.extensions.sirius</module>
+        <module>../extensions/org.gemoc.gemoc_language_workbench.extensions.timesquare</module>
+        <module>../../execution/addons/fr.inria.aoste.timesquare.backend.vcdgenerator.gemocAdaptation</module>
+        <!-- feature and update site -->
+        <module>../../execution/engine/org.gemoc.execution.engine.feature</module>
 	</modules>
 
 	<properties>

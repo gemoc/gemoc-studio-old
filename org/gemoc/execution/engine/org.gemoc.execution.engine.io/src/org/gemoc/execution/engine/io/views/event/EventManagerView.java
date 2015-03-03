@@ -646,7 +646,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	@Override
 	public void motorSelectionChanged(IExecutionEngine engine) {
-		if (engine != null) 
+		if (engine != null
+			&& engine instanceof ExecutionEngine) 
 		{
 			_currentSelectedEngine = (ExecutionEngine) engine;
 			// if the selected engine is stopped we clean its cache and disable all commands
@@ -918,7 +919,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine) {
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
+	{
 		update(engine);
 	}
 

@@ -1,5 +1,7 @@
 package org.gemoc.gemoc_modeling_workbench.ui.debug;
 
+import java.util.Collection;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.gemoc.execution.engine.core.ExecutionEngine;
@@ -24,7 +26,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	/**
 	 * The {@link ExecutionEngine} to debug.
 	 */
-	private final ExecutionEngine engine;
+	private final IExecutionEngine engine;
 
 	/**
 	 * Tells if the logical step level stack frame is created.
@@ -41,7 +43,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	 */
 	private boolean breakNextLogicalStep;
 	
-	public GemocModelDebugger(IDSLDebugEventProcessor target, ExecutionEngine engine) {
+	public GemocModelDebugger(IDSLDebugEventProcessor target, IExecutionEngine engine) {
 		super(target);
 		this.engine = engine;
 	}
@@ -176,7 +178,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 
 
 	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
 	{
 	}
 

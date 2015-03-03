@@ -86,6 +86,7 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 	{
 		_clockControllers.clear();
 		_addons.clear();
+		_solver.dispose();
 	}
 
 	private Object _addonLock = new Object();

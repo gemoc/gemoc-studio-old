@@ -32,7 +32,14 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 			}
 			else
 			{
-				return engine.getPossibleLogicalSteps().toArray();				
+				if (engine.getPossibleLogicalSteps() != null)
+				{
+					return engine.getPossibleLogicalSteps().toArray();				
+				}
+				else
+				{
+					return new Object[] {};
+				}
 			}
 		}
 		else if (inputElement instanceof LogicalStep)

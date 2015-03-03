@@ -6,7 +6,6 @@ import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -14,6 +13,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
@@ -27,11 +27,11 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.core.DebugURIHandler;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.debug.DebugSessionFactory;
@@ -69,13 +69,22 @@ public class DefaultModelLoader implements IModelLoader {
 		return resource;
 	}
 
-	private void killPreviousSiriusSession(URI sessionResourceURI) {
-		Session session = SessionManager.INSTANCE
-				.getExistingSession(sessionResourceURI);
-		if (session != null) {
-			session.close(new NullProgressMonitor());
-			SessionManager.INSTANCE.remove(session);
-		}
+	private void killPreviousSiriusSession(final URI sessionResourceURI) {
+		Runnable runnable = new Runnable()
+		{
+			@Override
+			public void run() 
+			{
+				Session session = SessionManager.INSTANCE
+						.getExistingSession(sessionResourceURI);
+				if (session != null) {
+					session.close(new NullProgressMonitor());
+					SessionManager.INSTANCE.remove(session);
+				}
+			}
+			
+		};
+		Display.getDefault().syncExec(runnable);
 	}
 
 	private Session openNewSiriusSession(URI sessionResourceURI)
@@ -88,6 +97,7 @@ public class DefaultModelLoader implements IModelLoader {
 		final TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
 		session.open(monitor);
 		for (DView view : session.getSelectedViews()) {
+			refreshRepresentations(editingDomain, view.getOwnedRepresentations());
 			for (DRepresentation representation : view
 					.getOwnedRepresentations()) {
 				final DSemanticDiagramSpec diagram = (DSemanticDiagramSpec) representation;
@@ -113,13 +123,12 @@ public class DefaultModelLoader implements IModelLoader {
 					protected void doExecute() {
 						for (Layer l : diagram.getDescription()
 								.getAdditionalLayers()) {
-							boolean mustBeActive = AbstractDSLDebuggerServices.LISTENER
-									.isRepresentationToRefresh(MODEL_ID,
-											diagram.getDescription().getName(), l.getName())
-											|| AbstractGemocAnimatorServices.ANIMATOR
-											.isRepresentationToRefresh(
-													diagram.getDescription().getName(),
-													l.getName());
+							boolean mustBeActive = AbstractDSLDebuggerServices
+														.LISTENER
+														.isRepresentationToRefresh(MODEL_ID, diagram.getDescription().getName(), l.getName())
+													|| 
+													AbstractGemocAnimatorServices.ANIMATOR
+														.isRepresentationToRefresh(diagram.getDescription().getName(), l.getName());
 							if (mustBeActive
 									&& !diagram.getActivatedLayers()
 									.contains(l)) {
@@ -135,6 +144,23 @@ public class DefaultModelLoader implements IModelLoader {
 		}
 
 		return session;
+	}
+
+	/**Refreshes given {@link DRepresentation} in the given {@link TransactionalEditingDomain}.
+	 * @param transactionalEditingDomain the {@link TransactionalEditingDomain}
+	 * @param representations the {@link List} of {@link DRepresentation} to refresh
+	 */
+	public void refreshRepresentations(
+			final TransactionalEditingDomain transactionalEditingDomain,
+			final List<DRepresentation> representations) {
+		// TODO prevent the editors from getting dirty
+		if (representations.size() != 0) {
+			final RefreshRepresentationsCommand refresh = new RefreshRepresentationsCommand(
+					transactionalEditingDomain,
+					new NullProgressMonitor(),
+					representations);
+			CommandExecution.execute(transactionalEditingDomain, refresh);
+		}
 	}
 
 }

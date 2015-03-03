@@ -45,8 +45,8 @@ public class ModelExecutionContext implements IExecutionContext
 			_resourceModel = _executionPlatform.getModelLoader().loadModel(this);					
 			_logicalStepDecider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(), executionMode);
 			setUpEditingDomain();	
-			setUpFeedbackModel();
 			_executionPlatform.getSolver().setUp(this);
+			setUpFeedbackModel();
 		} 
 		catch (CoreException e)
 		{
@@ -83,12 +83,13 @@ public class ModelExecutionContext implements IExecutionContext
 	private void setUpFeedbackModel() 
 	{
 		URI feedbackURI = URI.createPlatformResourceURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
-		Resource resource = getResourceSet().createResource(feedbackURI);
-		try {
-			resource.load(null);
-			_feedbackModel = (ActionModel)resource.getContents().get(0);
-		} catch (IOException e) {
-			e.printStackTrace();
+		for (Resource r : getResourceSet().getResources())
+		{
+			if (r.getURI().equals(feedbackURI))
+			{				
+				_feedbackModel = (ActionModel)r.getContents().get(0);
+				break;
+			}
 		}
 	}
 

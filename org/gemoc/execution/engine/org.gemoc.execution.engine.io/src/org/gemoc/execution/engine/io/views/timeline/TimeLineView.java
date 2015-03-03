@@ -248,9 +248,9 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	}
 
 	private void branchIfPossible(Choice choice) {
-		if (_currentEngine.hasCapability(ModelExecutionTracingAddon.class)) 
+		if (_currentEngine.hasAddon(ModelExecutionTracingAddon.class)) 
 		{
-			ModelExecutionTracingAddon addon = _currentEngine.getCapability(ModelExecutionTracingAddon.class);
+			ModelExecutionTracingAddon addon = _currentEngine.getAddon(ModelExecutionTracingAddon.class);
 			try 
 			{		
 				Choice previousChoice = choice.getPreviousChoice();
@@ -282,7 +282,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		{
 			if (canDisplayTimeline(engine))
 			{
-				configure((ExecutionEngine)engine);				
+				configure(engine);				
 			}
 			else
 			{

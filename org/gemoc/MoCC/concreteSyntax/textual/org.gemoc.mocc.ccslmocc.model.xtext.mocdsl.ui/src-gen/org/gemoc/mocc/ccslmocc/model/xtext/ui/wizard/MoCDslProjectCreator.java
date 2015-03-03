@@ -49,7 +49,7 @@ public class MoCDslProjectCreator extends org.eclipse.xtext.ui.wizard.AbstractPl
 		output.addOutlet(new Outlet(false, getEncoding(), null, true, project.getLocation().makeAbsolute().toOSString()));
 
 		XpandExecutionContextImpl execCtx = new XpandExecutionContextImpl(output, null);
-		execCtx.getResourceManager().setFileEncoding("UTF-8");
+		execCtx.getResourceManager().setFileEncoding("Cp1252");
 		execCtx.registerMetaModel(new JavaBeansMetaModel());
 
 		XpandFacade facade = XpandFacade.create(execCtx);

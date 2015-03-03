@@ -1,6 +1,7 @@
 package org.gemoc.execution.engine.io.views.engine;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map.Entry;
 
 import org.eclipse.jface.action.Action;
@@ -423,7 +424,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 	}
 
 	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
 	{
 		reselectEngine(engine);
 	}
