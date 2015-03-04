@@ -18,7 +18,9 @@
 package fr.obeo.dsl.debug.ide.sirius.ui;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -30,14 +32,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.ui.IEditorPart;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Sirius editors utility class.
@@ -132,11 +136,11 @@ public final class SiriusEditorUtils {
 	 * Show the given {@link EObject instruction}.
 	 * 
 	 * @param editorPart
-	 *            the opened {@link IEditorPart}
+	 *            the opened {@link DialectEditor}
 	 * @param instruction
 	 *            the {@link EObject instruction} to show
 	 */
-	public static void showInstruction(IEditorPart editorPart, final EObject instruction) {
+	public static void showInstruction(DialectEditor editorPart, EObject instruction) {
 		final URI resourceURI = instruction.eResource().getURI();
 		if (resourceURI.isPlatformResource()) {
 			final String resourcePath = resourceURI.toPlatformString(true);
@@ -155,4 +159,26 @@ public final class SiriusEditorUtils {
 		}
 	}
 
+	/**
+	 * Show the given {@link List} of {@link EObject instruction}.
+	 * 
+	 * @param editorPart
+	 *            the opened {@link DialectEditor}
+	 * @param instructions
+	 *            the {@link List} of {@link EObject instruction} to show
+	 */
+	public static void showInstructions(DialectEditor editorPart, List<EObject> instructions) {
+		Set<DRepresentationElement> representationElements = new LinkedHashSet<DRepresentationElement>();
+		for (EObject instruction : instructions) {
+			for (EObject eObj : new EObjectQuery(instruction).getInverseReferences(ViewpointPackage.eINSTANCE
+					.getDRepresentationElement_SemanticElements())) {
+				if (eObj instanceof DRepresentationElement) {
+					representationElements.add((DRepresentationElement)eObj);
+				}
+			}
+			showInstruction(editorPart, instruction);
+		}
+		DialectUIManager.INSTANCE.setSelection(editorPart, new ArrayList<DRepresentationElement>(
+				representationElements));
+	}
 }
