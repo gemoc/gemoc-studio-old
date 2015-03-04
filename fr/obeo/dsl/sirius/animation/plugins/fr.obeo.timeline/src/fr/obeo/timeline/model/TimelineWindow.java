@@ -215,14 +215,12 @@ public class TimelineWindow implements ITimelineListener {
 				for (int branch = 0; branch < numberOfBranches; ++branch) {
 					maxTimelineIndex = Math.max(maxTimelineIndex, provider.getEnd(branch) - 1);
 				}
-				if (this.provider != null) {
-					this.provider.addTimelineListener(this);
-					for (ITimelineWindowListener listener : getListeners()) {
-						listener.providerChanged(newProvider);
-					}
-					if (newStart >= 0 && newStart <= getMaxTimelineIndex()) {
-						setStart(newStart);
-					}
+				this.provider.addTimelineListener(this);
+				for (ITimelineWindowListener listener : getListeners()) {
+					listener.providerChanged(newProvider);
+				}
+				if (newStart >= 0 && newStart <= getMaxTimelineIndex()) {
+					setStart(newStart);
 				}
 			}
 		}
