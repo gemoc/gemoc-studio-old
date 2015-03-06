@@ -82,13 +82,16 @@ public class ModelExecutionContext implements IExecutionContext
 
 	private void setUpFeedbackModel() 
 	{
-		URI feedbackURI = URI.createPlatformResourceURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
-		Resource resource = getResourceSet().createResource(feedbackURI);
-		try {
-			resource.load(null);
+		URI feedbackPlatformURI = URI.createPlatformResourceURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
+//		URI feedbackMelangeURI = URI.createURI(feedbackPlatformURI.toString().replace("platform", "melange"));
+		try
+		{
+			Resource resource = getResourceSet().getResource(feedbackPlatformURI, true);
 			_feedbackModel = (ActionModel)resource.getContents().get(0);
-		} catch (IOException e) {
-			e.printStackTrace();
+		}
+		catch(Exception e)
+		{
+			//file will be created later
 		}
 	}
 

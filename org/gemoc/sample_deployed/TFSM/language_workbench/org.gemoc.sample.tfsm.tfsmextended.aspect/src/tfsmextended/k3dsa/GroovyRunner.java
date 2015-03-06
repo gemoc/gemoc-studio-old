@@ -25,7 +25,9 @@ public class GroovyRunner {
 
 	public static String getGroovyScriptPathFromReferenceEObjectModelElement(EObject referenceModelElement){
 		Properties properties = new Properties();
-		String propertyPath = referenceModelElement.eResource().getURI().trimFileExtension().toPlatformString(true).toString()+".properties";
+		String cleanPath = referenceModelElement.eResource().getURI().trimFileExtension().toString().replace("melange", "platform");
+		URI cleanURI = URI.createURI(cleanPath.substring(0, cleanPath.indexOf('?')));		
+		String propertyPath = cleanURI.toPlatformString(true).toString()+".properties";
 		IFile propertyFile = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(propertyPath);
 		if(propertyFile != null && propertyFile.exists()){
 			InputStream inStream;

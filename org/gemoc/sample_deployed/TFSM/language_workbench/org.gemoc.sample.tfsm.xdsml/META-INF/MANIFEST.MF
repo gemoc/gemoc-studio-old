@@ -1,30 +1,32 @@
 Manifest-Version: 1.0
-Export-Package: tfsm.xdsml.api.impl
-Bundle-SymbolicName: org.gemoc.sample.tfsm.xdsml;singleton:=true
-Bundle-Version: 1.0.0.qualifier
-Bundle-Name: Tfsm
-Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
- org.gemoc.sample.tfsm.model;bundle-version="0.0.0";visibility:="reexport",
- org.gemoc.sample.tfsm.k3dsa;bundle-version="0.0.0";visibility:="reexport",
- org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.0.0";visibility:="reexport",
+Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.gemoc.sample.tfsm.model;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.sample.tfsm.k3dsa;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.gemoc_language_workbench.api,
  org.gemoc.execution.engine,
  org.gemoc.execution.engine.commons,
- org.gemoc.sample.tfsm.moc.lib;bundle-version="0.0.0";visibility:="reexport",
+ org.gemoc.sample.tfsm.moc.lib;bundle-version="0.0.0";visibility:=reexport,
  org.codehaus.groovy,
  org.eclipse.core.runtime;bundle-version="3.9.100",
  org.eclipse.core.resources;bundle-version="3.8.101",
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
  org.eclipse.swt;bundle-version="3.103.1",
  org.gemoc.gemoc_modeling_workbench.ui;bundle-version="0.1.0",
- org.gemoc.sample.tfsm.design;bundle-version="0.0.0";visibility:="reexport",
- org.gemoc.sample.tfsm.eclmoc2as;bundle-version="0.0.0";visibility:="reexport",
- org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.0.0";visibility:="reexport",
+ org.gemoc.sample.tfsm.design;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.sample.tfsm.eclmoc2as;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.gemoc_language_workbench.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.commons.eclipse.pde,
  org.gemoc.sample.tfsm.tfsmextended.aspect;bundle-version="0.1.0",
  org.gemoc.sample.tfsm.tfsmextended.model;bundle-version="0.1.0",
- fr.inria.diverse.melange.lib;bundle-version="0.1.0"
+ fr.inria.diverse.melange.lib;bundle-version="0.1.0",
+ org.eclipse.sirius.common.acceleo.mtl;bundle-version="2.0.5",
+ org.eclipse.sirius.diagram;bundle-version="2.0.5"
+Export-Package: tfsm.xdsml.api.impl
+Bundle-Version: 1.0.0.qualifier
+Bundle-Name: Tfsm
 Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.gemoc.sample.tfsm.xdsml;singleton:=true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

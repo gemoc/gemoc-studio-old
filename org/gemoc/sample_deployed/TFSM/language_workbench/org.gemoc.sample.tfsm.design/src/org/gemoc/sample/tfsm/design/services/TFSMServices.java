@@ -51,4 +51,34 @@ public class TFSMServices {
 		return res.toString();
 	}
 
+	public String getLabel(tfsmextended.Transition transition) {
+		final StringBuilder res = new StringBuilder();
+
+		if (transition.getOwnedGuard() instanceof tfsmextended.EventGuard) {
+			res.append("when ");
+			res.append(((tfsmextended.EventGuard) transition.getOwnedGuard())
+					.getTriggeringEvent().getName());
+		} else if (transition.getOwnedGuard() instanceof tfsmextended.TemporalGuard) {
+			res.append("after ");
+			res.append(((tfsmextended.TemporalGuard) transition.getOwnedGuard())
+					.getAfterDuration());
+			res.append(" on ");
+			res.append(((tfsmextended.TemporalGuard) transition.getOwnedGuard())
+					.getOnClock().getName());
+		} else if (transition.getOwnedGuard() instanceof tfsmextended.EvaluateGuard) {
+			res.append("when ");
+			res.append(((tfsmextended.EvaluateGuard) transition.getOwnedGuard())
+					.getCondition());
+		}
+		res.append("\n / \n");
+		res.append(transition.getAction());
+		res.append("\n");
+		for (tfsmextended.FSMEvent event : transition.getGeneratedEvents()) {
+			res.append("  !");
+			res.append(event.getName());
+			res.append(";");
+		}
+
+		return res.toString();
+	}
 }

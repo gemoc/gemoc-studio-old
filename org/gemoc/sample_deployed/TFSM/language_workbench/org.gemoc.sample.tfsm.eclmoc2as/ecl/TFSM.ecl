@@ -1,6 +1,6 @@
---import 'http://www.gemoc.org/sample/tfsm'
+import 'http://tfsmextended'
 --import 'platform:/resource/org.gemoc.sample.tfsm.model/model/tfsm.ecore'
-import 'platform:/resource/org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore'
+--import 'platform:/resource/org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore'
 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"

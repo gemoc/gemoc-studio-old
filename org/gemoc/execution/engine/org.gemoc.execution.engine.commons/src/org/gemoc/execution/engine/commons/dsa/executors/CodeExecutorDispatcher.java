@@ -53,7 +53,7 @@ public class CodeExecutorDispatcher implements ICodeExecutor
 				return executor.execute(mseOccurrence);
 			} catch (CodeExecutionException e) 
 			{
-				e.printStackTrace();
+				org.gemoc.execution.engine.commons.Activator.getDefault().error("", e);
 			}
 		}
 		throw new CodeExecutionException("No code executor could perform the action call. (a commons mistake is : missing package export of the called class or aspect)", mseOccurrence);

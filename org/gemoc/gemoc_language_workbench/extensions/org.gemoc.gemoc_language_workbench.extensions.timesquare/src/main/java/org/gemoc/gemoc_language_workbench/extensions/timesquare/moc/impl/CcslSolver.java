@@ -122,7 +122,6 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		this.solverInputURI = solverInputURI;
 		try {
 			Resource ccslResource = resourceSet.getResource(this.solverInputURI, true);
-			ccslResource.load(null);
 			EcoreUtil.resolveAll(resourceSet);
 			traceResources(resourceSet);
 			traceUnresolvedProxies(resourceSet, solverInputURI);			
@@ -310,9 +309,10 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 	@Override
 	public void setUp(IExecutionContext context) 
 	{
-		URI mocURI = URI.createPlatformResourceURI(context.getWorkspace().getMoCPath().toString(), true);
+		URI mocPlatformURI = URI.createPlatformResourceURI(context.getWorkspace().getMoCPath().toString(), true);
+//		URI mocMelangeURI = URI.createURI(mocPlatformURI.toString().replace("platform", "melange"));
 		generateMoC(context);
-		setSolverInputFile(context.getResourceModel().getResourceSet(), mocURI);
+		setSolverInputFile(context.getResourceModel().getResourceSet(), mocPlatformURI);
 	}
 	
 	private void generateMoC(IExecutionContext context) 
@@ -331,8 +331,9 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		{
 			QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
 			performer.run(
+						context.getResourceModel().getResourceSet(),
 						"platform:/plugin" + transformationPath, 
-						"platform:/resource" + workspace.getModelPath().toString(), 
+						"melange:/resource" + workspace.getModelPath().toString() + "?mm=http://tfsmextended", 
 						"platform:/resource" + workspace.getMoCPath().toString(),
 						"platform:/resource" + workspace.getFeedbackModelPath().toString());			
 		}		

@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.xtend2.lib;bundle-version="2.4.3",
  org.gemoc.commons.eclipse.pde;bundle-version="0.1.0",
  org.gemoc.commons.eclipse,
  fr.inria.diverse.melange.lib;bundle-version="0.1.0",
- org.eclipse.emf.ecore.xmi;bundle-version="2.10.2"
+ org.eclipse.emf.ecore.xmi
 Bundle-ClassPath: .,libs/groovy-all-2.1.2.jar
 Export-Package: org.gemoc.sample.tfsm.k3dsa,
  org.gemoc.sample.tfsm.k3dsa.aspect

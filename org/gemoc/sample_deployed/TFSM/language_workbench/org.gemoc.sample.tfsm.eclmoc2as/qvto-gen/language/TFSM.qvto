@@ -13,7 +13,7 @@ modeltype TimeModel uses 'http://fr.inria.aoste.timemodel';
 
 modeltype FeedBack uses 'http://timesquare.inria.fr/feedback';
 
-transformation doTfsmExtended_ecore_To_CCSL(in inM : inMM1, out ccsl : TimeModel, out feedback : FeedBack);
+transformation dotfsmextended_To_CCSL(in inM : inMM1, out ccsl : TimeModel, out feedback : FeedBack);
 property theFeedBackSpec		:FeedBack::ActionModel = null;
 property seqOfMSE :	Sequence(FeedBack::ModelSpecificEvent)    = Sequence{};
 

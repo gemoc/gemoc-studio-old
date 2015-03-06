@@ -78,6 +78,7 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 		} catch (IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) 
 		{
+			e.printStackTrace();
 			throw new CodeExecutionException("Exception caught during execution of a call, see inner exception.", e, mseOccurrence);
 		}
 		return result;
