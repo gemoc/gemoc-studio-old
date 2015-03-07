@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: StateMachineSolverExtension
 Bundle-SymbolicName: fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.1.qualifier
 Bundle-Activator: fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine.Activator
 Bundle-Vendor: Aoste INRIA/I3S
 Require-Bundle: org.eclipse.core.runtime,
