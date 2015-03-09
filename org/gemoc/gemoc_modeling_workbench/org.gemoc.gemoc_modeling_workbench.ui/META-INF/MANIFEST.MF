@@ -44,6 +44,5 @@ Export-Package: org.gemoc.gemoc_modeling_workbench.ui,
  org.gemoc.gemoc_modeling_workbench.ui.breakpoint,
  org.gemoc.gemoc_modeling_workbench.ui.commands,
  org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action,
- org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services,
  org.gemoc.gemoc_modeling_workbench.ui.launcher,
  org.gemoc.gemoc_modeling_workbench.ui.wizards

@@ -36,8 +36,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.debug.DebugSessionFactory;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocAnimatorServices;
-
-import fr.obeo.dsl.debug.ide.sirius.ui.services.AbstractDSLDebuggerServices;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocDebuggerServices;
 
 public class DefaultModelLoader implements IModelLoader {
 
@@ -123,7 +122,7 @@ public class DefaultModelLoader implements IModelLoader {
 					protected void doExecute() {
 						for (Layer l : diagram.getDescription()
 								.getAdditionalLayers()) {
-							boolean mustBeActive = AbstractDSLDebuggerServices
+							boolean mustBeActive = AbstractGemocDebuggerServices
 														.LISTENER
 														.isRepresentationToRefresh(MODEL_ID, diagram.getDescription().getName(), l.getName())
 													|| 

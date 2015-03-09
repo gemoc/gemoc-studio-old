@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services;
+package org.gemoc.gemoc_language_workbench.extensions.sirius.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
-import org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader;
 
 import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
@@ -462,6 +462,33 @@ public abstract class AbstractGemocDebuggerServices {
 			}
 		}
 
+		/**
+		 * Tells if the given layer id and representation id should be refreshed while debugging the given
+		 * debug model id.
+		 * 
+		 * @param debugModelID
+		 *            the debug model id
+		 * @param representationId
+		 *            the representation id
+		 * @param layerID
+		 *            the layer id, it can be <code>null</code>
+		 * @return <code>true</code> if the given layer id and representation id should be refreshed while
+		 *         debugging the given debug model id, <code>false</code> otherwise
+		 */
+		public boolean isRepresentationToRefresh(String debugModelID, String representationId, String layerID) {
+			final boolean res;
+
+			final Map<String, Set<String>> representations = representationToRefresh.get(debugModelID);
+			if (representations != null) {
+				final Set<String> layerIDs = representations.get(representationId);
+				res = layerIDs == ANY_LAYER || layerIDs.contains(layerID);
+			} else {
+				res = false;
+			}
+
+			return res;
+		}
+
 	}
 
 	/**
@@ -629,7 +656,7 @@ public abstract class AbstractGemocDebuggerServices {
 	 * @return the debug model identifier
 	 */
 	public String getModelIdentifier() {
-		return Launcher.MODEL_ID;
+		return DefaultModelLoader.MODEL_ID;
 	}
 
 }

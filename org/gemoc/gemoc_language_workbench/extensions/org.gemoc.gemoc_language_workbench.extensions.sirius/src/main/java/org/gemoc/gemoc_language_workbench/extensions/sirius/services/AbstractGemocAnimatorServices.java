@@ -29,7 +29,6 @@ import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 public abstract class AbstractGemocAnimatorServices {
