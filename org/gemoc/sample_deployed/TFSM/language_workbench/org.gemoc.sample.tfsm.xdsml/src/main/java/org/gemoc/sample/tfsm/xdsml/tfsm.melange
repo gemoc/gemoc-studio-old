@@ -8,7 +8,7 @@ metamodel SimpleTfsm {
 }
 
 metamodel TfsmExtended inherits SimpleTfsm {
-	exactType TfsmExtendedMT
+	exactType TfsmExtendedMT uri "http://tfsm/mt"
 	with TFSMAspect
 	with StateAspect
 	with TransitionAspect

@@ -120,7 +120,7 @@ public class DefaultModelLoader implements IModelLoader {
 
 				final List<EObject> elements = new ArrayList<EObject>();
 				elements.add(diagram);
-
+				
 				final IEditorPart editorPart = DialectUIManager.INSTANCE.openEditor(session, representation,
 						monitor);
 				if (editorPart instanceof DDiagramEditor) {
@@ -168,7 +168,7 @@ public class DefaultModelLoader implements IModelLoader {
 		// fix sirius to prevent non intentional model savings
 		rs.getURIConverter().getURIHandlers().add(0, new DebugURIHandler());
 		final String fileExtension = modelURI.fileExtension();
-		final XMLURIHandler handler = new XMLURIHandler(additionalInfo, fileExtension);
+		final XMLURIHandler handler = new XMLURIHandler(additionalInfo, fileExtension); // use to resolve cross ref URI during XMI parsing
 		handler.setResourceSet(rs);
 		rs.getLoadOptions().put(XMLResource.OPTION_URI_HANDLER, handler);
 		rs.setURIConverter(new MelangeURIConverter(fileExtension));
