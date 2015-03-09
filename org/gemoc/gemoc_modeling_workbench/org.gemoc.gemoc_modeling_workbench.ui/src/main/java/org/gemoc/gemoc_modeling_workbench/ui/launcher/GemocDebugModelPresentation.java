@@ -1,7 +1,9 @@
 package org.gemoc.gemoc_modeling_workbench.ui.launcher;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.emf.common.util.URI;
@@ -60,13 +62,15 @@ public class GemocDebugModelPresentation extends DSLDebugModelPresentation {
 				if (instruction instanceof LogicalStep) {
 					final List<ModelSpecificEvent> tickedEvents = LogicalStepHelper.getMSEs((LogicalStep) instruction);
 					showEvents(tickedEvents);
+					final Set<EObject> callers = new LinkedHashSet<EObject>();
 					for (ModelSpecificEvent event : tickedEvents) {
 						if (event.getCaller() != null) {
-							SiriusEditorUtils.showInstruction(editorPart, event.getCaller());
+							callers.add(event.getCaller());
 						}
 					}
+					SiriusEditorUtils.showInstructions((DialectEditor) editorPart, new ArrayList<EObject>(callers));
 				} else {
-					SiriusEditorUtils.showInstruction(editorPart, instruction);
+					SiriusEditorUtils.showInstruction((DialectEditor) editorPart, instruction);
 				}
 			} else {
 				super.addAnnotations(editorPart, frame);
