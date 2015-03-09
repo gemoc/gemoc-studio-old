@@ -14,10 +14,13 @@ import org.gemoc.mocc.fsmkernel.model.FSMModel.Guard;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.IntegerAssignement;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
 import org.gemoc.mocc.fsmkernel.model.FSMModel.Trigger;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.editionextension.IntInfEqual;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.editionextension.IntSupEqual;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.BasicTypeFactory;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.DiscreteClockType;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.IntegerElement;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.And;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.BooleanExpression;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.IntEqual;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.IntInf;
@@ -27,6 +30,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalE
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.IntegerExpression;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.IntegerRef;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.IntegerVariableRef;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalExpression.Or;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.AbstractEntity;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ConcreteEntity;
 import fr.inria.aoste.timesquare.ccslkernel.modelunfolding.AbstractConcreteMapping;
@@ -199,18 +203,7 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		semanticHelper.registerClockUse(usedClocks);
 	}
 
-	private boolean evaluate(BooleanExpression guard) {
-		if(guard instanceof IntEqual){
-			return evaluateIntEqual((IntEqual) guard);
-		}
-		if(guard instanceof IntInf){
-			return evaluateIntInf((IntInf) guard);
-		}
-		if(guard instanceof IntSup){
-			return evaluateIntSup((IntSup) guard);
-		}
-		return false;
-	}
+	
 
   
 	@Override
@@ -335,7 +328,33 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		return;
 	}
 
-	private boolean evaluateIntEqual(IntEqual guard){
+	
+	private boolean evaluate(BooleanExpression guard) {
+		if(guard instanceof IntEqual){
+			return evaluate((IntEqual) guard);
+		}
+		if(guard instanceof IntInf){
+			return evaluate((IntInf) guard);
+		}
+		if(guard instanceof IntSup){
+			return evaluate((IntSup) guard);
+		}
+		if(guard instanceof IntInfEqual){
+			return evaluate((IntInfEqual) guard);
+		}
+		if(guard instanceof IntSupEqual){
+			return evaluate((IntSupEqual) guard);
+		}
+		if(guard instanceof And){
+			return evaluate((And) guard);
+		}
+		if(guard instanceof Or){
+			return evaluate((Or) guard);
+		}
+		return false;
+	}
+	
+	private boolean evaluate(IntEqual guard){
 		
 		IntegerExpression leftExpr = guard.getLeftValue();
 		IntegerExpression rightExpr = guard.getRightValue();
@@ -346,8 +365,23 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 	}
 	
 	
+	private boolean evaluate(And guard){
+		
+		boolean left = evaluate(guard.getLeftValue());
+		boolean right = evaluate(guard.getRightValue());
+		
+		return left & right;
+	}
 	
-	private boolean evaluateIntInf(IntInf guard){
+	private boolean evaluate(Or guard){
+		
+		boolean left = evaluate(guard.getLeftValue());
+		boolean right = evaluate(guard.getRightValue());
+		
+		return left | right;
+	}
+	
+	private boolean evaluate(IntInf guard){
 		IntegerExpression leftExpr = guard.getLeftValue();
 		IntegerExpression rightExpr = guard.getRightValue();
 		
@@ -357,7 +391,17 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		return left < right;
 	}
 	
-	private boolean evaluateIntSup(IntSup guard){
+	private boolean evaluate(IntInfEqual guard){
+		IntegerExpression leftExpr = guard.getLeftValue();
+		IntegerExpression rightExpr = guard.getRightValue();
+		
+		int left = getInteger(leftExpr);
+		int right = getInteger(rightExpr);
+		
+		return left <= right;
+	}
+	
+	private boolean evaluate(IntSup guard){
 		IntegerExpression leftExpr = guard.getLeftValue();
 		IntegerExpression rightExpr = guard.getRightValue();
 		
@@ -365,6 +409,16 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		int right = getInteger(rightExpr);
 		//System.out.println("capacity ("+left+") > currentSize("+right+")");
 		return left > right;
+	}
+	
+	private boolean evaluate(IntSupEqual guard){
+		IntegerExpression leftExpr = guard.getLeftValue();
+		IntegerExpression rightExpr = guard.getRightValue();
+		
+		int left = getInteger(leftExpr);
+		int right = getInteger(rightExpr);
+		//System.out.println("capacity ("+left+") > currentSize("+right+")");
+		return left >= right;
 	}
 	
 	private int getInteger(IntegerExpression expr){
