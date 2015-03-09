@@ -41,7 +41,7 @@ public class ModelExecutionContext implements IExecutionContext
 			_executionWorkspace = new ExecutionWorkspace(_runConfiguration.getExecutedModelURI());
 			_executionWorkspace.copyFileToExecutionFolder(_executionWorkspace.getModelPath());
 			_languageDefinition = getLanguageDefinition(_runConfiguration.getLanguageName());
-			_executionPlatform = new DefaultExecutionPlatform(_languageDefinition);
+			_executionPlatform = new DefaultExecutionPlatform(_languageDefinition, runConfiguration);
 			_resourceModel = _executionPlatform.getModelLoader().loadModel(this);					
 			_logicalStepDecider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(), executionMode);
 			setUpEditingDomain();	
