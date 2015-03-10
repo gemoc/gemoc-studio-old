@@ -17,10 +17,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
-import org.gemoc.sample.tfsm.raspberry.launcher.ModelRunner;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.impl.CCSLModelPackageImpl;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 
 public class ExecutionContext implements IExecutionContext
@@ -28,8 +25,6 @@ public class ExecutionContext implements IExecutionContext
 
 	private ResourceSet _resourceSet;
 	private Resource _modelResource;
-	private Resource _timeModelResource;
-	private ActionModel _feedbackModel;
 	
 	public ExecutionContext(RunConfiguration runConfiguration) throws IOException 
 	{
@@ -37,18 +32,9 @@ public class ExecutionContext implements IExecutionContext
 		_executionPlatform = new ExecutionPlatform();
 		_runConfiguration = runConfiguration;
 		createResourceSet();
-		loadTimeModelResource(runConfiguration);
-		loadFeedbackModel();
+		_modelResource = _resourceSet.getResource(runConfiguration.getExecutedModelURI(), true);
 		EcoreUtil.resolveAll(_resourceSet);
-		_executionPlatform.getSolver().setSolverInputFile(_resourceSet, null);
-		for (Resource r : _resourceSet.getResources())
-		{
-			if (r.getURI().equals(runConfiguration.getExecutedModelURI()))
-			{
-				_modelResource = r;
-				break;
-			}
-		}
+		_executionPlatform.getSolver().setUp(this);
 	}
 
 	private void createResourceSet() 
@@ -59,22 +45,6 @@ public class ExecutionContext implements IExecutionContext
 		{
 			editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain(_resourceSet);			
 		}
-	}
-
-	private void loadTimeModelResource(RunConfiguration runConfiguration)
-			throws IOException {
-		CCSLModelPackageImpl.init();
-		URI uri = URI.createPlatformPluginURI(_executionWorkspace.getMoCPath().toString(), true);
-		_timeModelResource = _resourceSet.createResource(uri);
-		_timeModelResource.load(null);
-	}
-	
-	private void loadFeedbackModel() throws IOException
-	{
-		URI uri = URI.createPlatformPluginURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
-		Resource resource = _resourceSet.createResource(uri);
-		resource.load(null);
-		_feedbackModel = (ActionModel)resource.getContents().get(0);
 	}
 	
 	@Override
@@ -125,7 +95,14 @@ public class ExecutionContext implements IExecutionContext
 	@Override
 	public ActionModel getFeedbackModel() 
 	{
-		return _feedbackModel;
+		URI uri = URI.createPlatformPluginURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
+		Resource r = _resourceSet.getResource(uri, false);
+		ActionModel model = null;
+		if (r != null)
+		{
+			model = (ActionModel)r.getContents().get(0);
+		}
+		return model;
 	}
 
 	private ILogicalStepDecider _decider = new RandomDecider();
