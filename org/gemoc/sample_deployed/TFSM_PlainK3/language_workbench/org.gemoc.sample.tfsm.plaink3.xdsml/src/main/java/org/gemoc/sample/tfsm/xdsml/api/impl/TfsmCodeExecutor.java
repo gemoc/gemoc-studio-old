@@ -4,17 +4,11 @@ package org.gemoc.sample.tfsm.xdsml.api.impl;
 import java.lang.reflect.Method;
 import java.util.List;
 
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionCall;
-
 public class TfsmCodeExecutor implements ICodeExecutor  {
-
-	@Override
-	public Object execute(ActionCall call) throws CodeExecutionException {
-		return null;
-	}
 
 	@Override
 	public Object execute(Object className, String methodName, List<Object> parameters) throws CodeExecutionException {
@@ -27,6 +21,13 @@ public class TfsmCodeExecutor implements ICodeExecutor  {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public Object execute(MSEOccurrence mseOccurrence)
+			throws CodeExecutionException 
+	{
 		return null;
 	}
 
