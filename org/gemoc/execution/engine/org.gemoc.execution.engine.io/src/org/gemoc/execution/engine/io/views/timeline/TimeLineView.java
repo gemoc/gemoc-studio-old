@@ -27,10 +27,12 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
+import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
 import fr.obeo.timeline.editpart.TimelineEditPartFactory;
+import fr.obeo.timeline.view.AbstractTimelineProvider;
 import fr.obeo.timeline.view.AbstractTimelineView;
 
 public class TimeLineView extends AbstractTimelineView implements IMotorSelectionListener
@@ -121,7 +123,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		}
 	}
 	
-	private TimelineProvider _timelineProvider;
+	private AbstractTimelineProvider _timelineProvider;
 	private MouseListener _mouseListener = null;
 	
 	public void configure(IExecutionEngine engine)
@@ -135,8 +137,16 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 			if (engine != null)
 			{
 				int start = getStartIndex(engine);
-				_timelineProvider = new TimelineProvider(engine);
-				setTimelineProvider(_timelineProvider, start);			
+
+				if (engine.hasAddon(TimeLineProviderProvider.class)) {
+					TimeLineProviderProvider providerprovider = engine.getAddon(TimeLineProviderProvider.class);
+					_timelineProvider = providerprovider.getTimeLineProvider();
+				} else {
+					_timelineProvider = new TimelineProvider(engine);
+					setTimelineProvider(_timelineProvider, start);
+				}
+				
+							
 			}			
 		}
 	}
@@ -171,7 +181,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	private void disposeTimeLineProvider() {
 		if (_timelineProvider != null)
 		{
-			_timelineProvider.dispose();
+			((IDisposable)_timelineProvider).dispose();
 			_timelineProvider = null;
 			setTimelineProvider(_timelineProvider, 0);
 		}
