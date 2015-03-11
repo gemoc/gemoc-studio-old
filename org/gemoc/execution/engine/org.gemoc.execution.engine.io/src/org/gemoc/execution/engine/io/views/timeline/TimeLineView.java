@@ -19,7 +19,6 @@ import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingException;
-import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.io.views.AbstractUserDecider;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
@@ -248,9 +247,9 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	}
 
 	private void branchIfPossible(Choice choice) {
-		if (_currentEngine.hasCapability(ModelExecutionTracingAddon.class)) 
+		if (_currentEngine.hasAddon(ModelExecutionTracingAddon.class)) 
 		{
-			ModelExecutionTracingAddon addon = _currentEngine.getCapability(ModelExecutionTracingAddon.class);
+			ModelExecutionTracingAddon addon = _currentEngine.getAddon(ModelExecutionTracingAddon.class);
 			try 
 			{		
 				Choice previousChoice = choice.getPreviousChoice();
@@ -282,7 +281,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 		{
 			if (canDisplayTimeline(engine))
 			{
-				configure((ExecutionEngine)engine);				
+				configure(engine);				
 			}
 			else
 			{

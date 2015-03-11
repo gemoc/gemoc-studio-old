@@ -83,8 +83,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 
 	private static final class GemocLabelDecorator extends DSLLabelDecorator {
 
+		// TODO should use Launcher.MODEL_ID
+		private final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
+
 		public GemocLabelDecorator() {
-			super(LogicalStepsView.MODEL_ID);
+			super(MODEL_ID);
 		}
 		
 		private Map<ModelSpecificEvent, ModelSpecificEventWrapper> mapping = new HashMap<ModelSpecificEvent, ModelSpecificEventWrapper>();			
@@ -643,7 +646,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	 */
 	@Override
 	public void motorSelectionChanged(IExecutionEngine engine) {
-		if (engine != null) 
+		if (engine != null
+			&& engine instanceof ExecutionEngine) 
 		{
 			_currentSelectedEngine = (ExecutionEngine) engine;
 			// if the selected engine is stopped we clean its cache and disable all commands
@@ -915,7 +919,8 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine) {
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
+	{
 		update(engine);
 	}
 

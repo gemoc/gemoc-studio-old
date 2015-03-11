@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.swt.SWT;
@@ -19,6 +20,7 @@ public abstract class LaunchConfigurationDataProcessingTab extends LaunchConfigu
 {
 
 	private HashMap<EngineAddonSpecificationExtension, Button> _components = new HashMap<>();
+	private HashMap<EngineAddonSpecificationExtension, Boolean> _componentsActive = new HashMap<>();
 
 	protected LaunchConfigurationDataProcessingTab()
 	{
@@ -49,7 +51,7 @@ public abstract class LaunchConfigurationDataProcessingTab extends LaunchConfigu
 		for (EngineAddonSpecificationExtension extension : _components.keySet())
 		{
 			Button checkbox = createCheckButton(parent, extension.getName());
-			checkbox.setSelection(extension.getDefaultActivationValue());
+			//checkbox.setSelection(extension.getDefaultActivationValue());
 			checkbox.addSelectionListener(new SelectionListener() {
 				
 				@Override
@@ -75,7 +77,20 @@ public abstract class LaunchConfigurationDataProcessingTab extends LaunchConfigu
 
 	@Override
 	public void initializeFrom(ILaunchConfiguration configuration) 
-	{}
+	{
+		for (EngineAddonSpecificationExtension extension : _components.keySet())
+		{
+			try {
+				boolean value = configuration.getAttribute(extension.getName(), true);
+//				_componentsActive.put(extension, value);
+				Button checkbox = _components.get(extension);
+				checkbox.setSelection(value);
+			} catch (CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 
 	@Override
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) 

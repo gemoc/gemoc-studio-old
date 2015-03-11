@@ -28,7 +28,7 @@ Workflow {
 		registerGeneratedEPackage = "org.gemoc.mocc.fsmkernel.model.FSMModel.FSMModelPackage"
 	    
 		
-		registerGeneratedEPackage = "org.gemoc.mocc.ccslmoc.model.ccslmocc.CcslmoccPackage"
+		registerGeneratedEPackage = "org.gemoc.mocc.ccslmoc.model.moccml.CcslmoccPackage"
 		//registerGenModelFile = "platform:/resource/org.gemoc.mocc.ccslmocc.model/model/Ccslmocc.genmodel"
 		//registerGenModelFile = "platform:/resource/org.gemoc.mocc.fsmkernel.model/model/FSMModel.genmodel"
 		//registerGenModelFile = "platform:/resource/fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel"

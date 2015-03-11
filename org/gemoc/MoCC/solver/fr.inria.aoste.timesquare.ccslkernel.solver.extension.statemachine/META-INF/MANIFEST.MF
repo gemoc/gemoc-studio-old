@@ -2,17 +2,17 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: StateMachineSolverExtension
 Bundle-SymbolicName: fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.1.qualifier
 Bundle-Activator: fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine.Activator
 Bundle-Vendor: Aoste INRIA/I3S
 Require-Bundle: org.eclipse.core.runtime,
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.ccslkernel.modelunfolding;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.javabdd.runtime;bundle-version="1.2.0",
- org.gemoc.mocc.ccslmocc.model;bundle-version="0.1.0",
  fr.inria.aoste.timesquare.ccslkernel.runtime;bundle-version="1.0.0",
  fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0",
- fr.inria.aoste.utils.grph
+ fr.inria.aoste.utils.grph,
+ org.gemoc.mocc.ccslmocc.model;bundle-version="0.1.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine

@@ -1,6 +1,7 @@
 package org.gemoc.gemoc_language_workbench.extensions.sirius.services;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -24,10 +25,10 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 public abstract class AbstractGemocAnimatorServices {
@@ -109,59 +110,85 @@ public abstract class AbstractGemocAnimatorServices {
 		 *            the {@link URI} of the instruction to refresh.
 		 */
 		public void notifySirius(Set<URI> instructionUris) {
+			final Map<String, Set<String>> toRefresh = representationToRefresh;
 			for (IEditingSession session : SessionUIManager.INSTANCE
 					.getUISessions()) {
 				final TransactionalEditingDomain transactionalEditingDomain = session
 						.getSession().getTransactionalEditingDomain();
 				final ResourceSet resourceSet = transactionalEditingDomain
 						.getResourceSet();
-				for (DialectEditor editor : session.getEditors()) {
-					boolean instructionPresent = false;
-					for (URI instructionUri : instructionUris) {
-						if (resourceSet.getEObject(instructionUri, false) != null) {
-							instructionPresent = true;
-							break;
-						}
-					}
-					if (instructionPresent) {
-						final DRepresentation representation = editor
-								.getRepresentation();
-						final List<DRepresentation> representations = new ArrayList<DRepresentation>();
-						final RepresentationDescription description = DialectManager.INSTANCE
-								.getDescription(representation);
-						final String representationId = description.getName();
-						final Set<String> layerIDs = representationToRefresh
-								.get(representationId);
-						if (layerIDs == ANY_LAYER) {
-							representations.add(representation);
-						} else if (layerIDs != null
-								&& representation instanceof DDiagram
-								&& isActiveLayer((DDiagram) representation,
-										layerIDs)) {
-							representations.add(representation);
-						}
-						// TODO prevent the editors from getting dirty
-						if (representations.size() != 0) {
-							final RefreshRepresentationsCommand refresh = new RefreshRepresentationsCommand(
-									transactionalEditingDomain,
-									new NullProgressMonitor(), representations);
-							final IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS
-									.get(resourceSet);
-							try {
-								if (checkpoint != null) {
-									checkpoint.allow(true);
-								}
-								transactionalEditingDomain.getCommandStack()
-										.execute(refresh);
-							} finally {
-								if (checkpoint != null) {
-									checkpoint.allow(false);
-								}
-							}
-						}
-					}
+				final boolean instructionPresent = isOneInstructionPresent(
+						instructionUris, resourceSet);
+				if (instructionPresent) {
+					final List<DRepresentation> representations = getRepresentationsToRefresh(
+							toRefresh, session);
+					refreshRepresentations(transactionalEditingDomain,
+							representations);
 				}
 			}
+		}
+
+		/**Refreshes given {@link DRepresentation} in the given {@link TransactionalEditingDomain}.
+		 * @param transactionalEditingDomain the {@link TransactionalEditingDomain}
+		 * @param representations the {@link List} of {@link DRepresentation} to refresh
+		 */
+		public void refreshRepresentations(
+				final TransactionalEditingDomain transactionalEditingDomain,
+				final List<DRepresentation> representations) {
+			// TODO prevent the editors from getting dirty
+			if (representations.size() != 0) {
+				final RefreshRepresentationsCommand refresh = new RefreshRepresentationsCommand(
+						transactionalEditingDomain,
+						new NullProgressMonitor(),
+						representations);
+				CommandExecution.execute(transactionalEditingDomain, refresh);
+			}
+		}
+
+		/**Gets the {@link List} of {@link DRepresentation} to refresh in the given {@link IEditingSession}.
+		 * @param toRefresh the representation names and layers to refresh
+		 * @param session the {@link IEditingSession}
+		 * @return the {@link List} of {@link DRepresentation} to refresh in the given {@link IEditingSession}
+		 */
+		private List<DRepresentation> getRepresentationsToRefresh(
+				final Map<String, Set<String>> toRefresh,
+				IEditingSession session) {
+			final List<DRepresentation> representations = new ArrayList<DRepresentation>();
+			for (DialectEditor editor : session.getEditors()) {
+				final DRepresentation representation = editor
+						.getRepresentation();
+				final RepresentationDescription description = DialectManager.INSTANCE
+						.getDescription(representation);
+				final String representationId = description.getName();
+				final Set<String> layerIDs = toRefresh
+						.get(representationId);
+				if (layerIDs == ANY_LAYER) {
+					representations.add(representation);
+				} else if (layerIDs != null
+						&& representation instanceof DDiagram
+						&& isActiveLayer((DDiagram) representation,
+								layerIDs)) {
+					representations.add(representation);
+				}
+			}
+			return representations;
+		}
+
+		/**Tells if at least one of the given instruction {@link URI} is present in the given {@link ResourceSet}.
+		 * @param instructionUris the {@link Set} of instructions {@link URI}
+		 * @param resourceSet the {@link ResourceSet}
+		 * @return <code>true</code> if at least one of the given instruction {@link URI} is present in the given {@link ResourceSet}, <code>false</code> otherwise
+		 */
+		private boolean isOneInstructionPresent(Set<URI> instructionUris,
+				final ResourceSet resourceSet) {
+			boolean instructionPresent = false;
+			for (URI instructionUri : instructionUris) {
+				if (resourceSet.getEObject(instructionUri, false) != null) {
+					instructionPresent = true;
+					break;
+				}
+			}
+			return instructionPresent;
 		}
 
 		/**
@@ -303,7 +330,8 @@ public abstract class AbstractGemocAnimatorServices {
 		}
 
 		@Override
-		public void aboutToSelectLogicalStep(IExecutionEngine engine) {
+		public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
+		{
 			// TODO Auto-generated method stub
 
 		}

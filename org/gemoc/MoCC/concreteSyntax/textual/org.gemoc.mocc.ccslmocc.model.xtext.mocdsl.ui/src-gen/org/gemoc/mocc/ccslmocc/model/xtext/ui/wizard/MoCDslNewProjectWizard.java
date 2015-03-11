@@ -12,7 +12,7 @@ public class MoCDslNewProjectWizard extends org.eclipse.xtext.ui.wizard.XtextNew
 	@Inject
 	public MoCDslNewProjectWizard(IProjectCreator projectCreator) {
 		super(projectCreator);
-		setWindowTitle("New MoCCML Project");
+		setWindowTitle("New MoCDsl Project");
 	}
 
 	/**
@@ -21,8 +21,8 @@ public class MoCDslNewProjectWizard extends org.eclipse.xtext.ui.wizard.XtextNew
 	 */
 	public void addPages() {
 		mainPage = new WizardNewProjectCreationPage("basicNewProjectPage");
-		mainPage.setTitle("MoCCML Project");
-		mainPage.setDescription("Create a new MoCCML project.");
+		mainPage.setTitle("MoCDsl Project");
+		mainPage.setDescription("Create a new MoCDsl project.");
 		addPage(mainPage);
 	}
 

@@ -3,7 +3,7 @@ package org.gemoc.execution.engine.commons.trace;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Collection;
 
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -251,7 +251,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		return choice;
 	}
 
-	private void updateTraceModelBeforeDeciding(final List<LogicalStep> possibleLogicalSteps) {
+	private void updateTraceModelBeforeDeciding(final Collection<LogicalStep> possibleLogicalSteps) {
 
 		RecordingCommand command = new RecordingCommand(getEditingDomain(), "update trace model") {
 
@@ -297,10 +297,10 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	
 	
 	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
 	{
 		setUp(engine);
-		updateTraceModelBeforeDeciding(engine.getPossibleLogicalSteps());
+		updateTraceModelBeforeDeciding(logicalSteps);
 	}
 	
 	@Override
@@ -336,4 +336,5 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		};
 	CommandExecution.execute(getEditingDomain(), command);
 	}
+
 }

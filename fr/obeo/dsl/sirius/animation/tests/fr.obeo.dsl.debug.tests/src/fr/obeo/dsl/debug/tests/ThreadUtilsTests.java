@@ -3657,11 +3657,8 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 
 		try {
 			ThreadUtils.popStackFrameReply(target.getThreads().get(suspendedThreadIndex));
-			fail();
 		} catch (IllegalStateException e) {
-			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
-					e.getMessage());
+			fail();
 		}
 
 		StackFrame newFrame = DebugPackage.eINSTANCE.getDebugFactory().createStackFrame();
@@ -3819,7 +3816,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 		assertEquals(false, ThreadUtils.canPopFrame(target.getThreads().get(steppingOverThreadIndex)));
 		assertEquals(false, ThreadUtils.canPopFrame(target.getThreads().get(steppingReturnThreadIndex)));
 
-		assertEquals(false, ThreadUtils.canPopFrame(target.getThreads().get(suspendedThreadIndex)));
+		assertEquals(true, ThreadUtils.canPopFrame(target.getThreads().get(suspendedThreadIndex)));
 
 		StackFrame newFrame = DebugPackage.eINSTANCE.getDebugFactory().createStackFrame();
 		newFrame.setName("new frame");

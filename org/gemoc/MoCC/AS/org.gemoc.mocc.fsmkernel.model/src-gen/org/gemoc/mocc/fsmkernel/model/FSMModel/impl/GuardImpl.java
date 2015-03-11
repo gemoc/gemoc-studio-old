@@ -19,6 +19,7 @@ import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClassicalE
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -42,7 +43,7 @@ import org.gemoc.mocc.fsmkernel.model.FSMModel.Guard;
  */
 public class GuardImpl extends AbstractGuardImpl implements Guard {
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getValue()
@@ -76,14 +77,6 @@ public class GuardImpl extends AbstractGuardImpl implements Guard {
 	 * @generated
 	 */
 	public BooleanExpression getValue() {
-		if (value != null && value.eIsProxy()) {
-			InternalEObject oldValue = (InternalEObject)value;
-			value = (BooleanExpression)eResolveProxy(oldValue);
-			if (value != oldValue) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FSMModelPackage.GUARD__VALUE, oldValue, value));
-			}
-		}
 		return value;
 	}
 
@@ -92,8 +85,14 @@ public class GuardImpl extends AbstractGuardImpl implements Guard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanExpression basicGetValue() {
-		return value;
+	public NotificationChain basicSetValue(BooleanExpression newValue, NotificationChain msgs) {
+		BooleanExpression oldValue = value;
+		value = newValue;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FSMModelPackage.GUARD__VALUE, oldValue, newValue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -102,10 +101,31 @@ public class GuardImpl extends AbstractGuardImpl implements Guard {
 	 * @generated
 	 */
 	public void setValue(BooleanExpression newValue) {
-		BooleanExpression oldValue = value;
-		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FSMModelPackage.GUARD__VALUE, oldValue, value));
+		if (newValue != value) {
+			NotificationChain msgs = null;
+			if (value != null)
+				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FSMModelPackage.GUARD__VALUE, null, msgs);
+			if (newValue != null)
+				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FSMModelPackage.GUARD__VALUE, null, msgs);
+			msgs = basicSetValue(newValue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FSMModelPackage.GUARD__VALUE, newValue, newValue));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case FSMModelPackage.GUARD__VALUE:
+				return basicSetValue(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -117,8 +137,7 @@ public class GuardImpl extends AbstractGuardImpl implements Guard {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case FSMModelPackage.GUARD__VALUE:
-				if (resolve) return getValue();
-				return basicGetValue();
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

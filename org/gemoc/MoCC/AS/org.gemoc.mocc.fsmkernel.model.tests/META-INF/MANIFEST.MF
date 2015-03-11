@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.gemoc.mocc.fsmkernel.model.tests;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.gemoc.mocc.fsmkernel.model.FSMModel.editionextension.tests,
+ org.gemoc.mocc.fsmkernel.model.FSMModel.tests
+Require-Bundle: org.eclipse.core.runtime,
+ org.gemoc.mocc.fsmkernel.model;visibility:=reexport,
+ fr.inria.aoste.timesquare.ccslkernel.model;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.junit;visibility:=reexport
+Bundle-ActivationPolicy: lazy

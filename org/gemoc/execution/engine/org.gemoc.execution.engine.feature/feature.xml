@@ -40,4 +40,32 @@ Gemoc Language Workbench.
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.gemoc.gemoc_language_workbench.extensions.k3"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.gemoc_language_workbench.extensions.sirius"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gemoc.gemoc_language_workbench.extensions.timesquare"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="fr.inria.aoste.timesquare.backend.vcdgenerator.gemocAdaptation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

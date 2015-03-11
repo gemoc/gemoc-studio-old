@@ -3,6 +3,7 @@ package org.gemoc.execution.engine.io.views.event;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.dse.DefaultMSEStateController;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
@@ -128,7 +129,7 @@ public class ModelSpecificEventContext
 		return _mseSet.getMSEs();
 	}
 	
-	public ExecutionEngine getEngine()
+	public AbstractExecutionEngine getEngine()
 	{
 		return _engine;
 	}

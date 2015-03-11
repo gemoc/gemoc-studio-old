@@ -1,6 +1,12 @@
 package org.gemoc.gemoc_modeling_workbench.ui.commands;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -12,6 +18,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorInput;
@@ -22,6 +30,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 
+import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 import fr.obeo.dsl.debug.ide.sirius.ui.DebugSiriusIdeUiPlugin;
 import fr.obeo.dsl.debug.ide.sirius.ui.SiriusEditorUtils;
 import fr.obeo.dsl.debug.ide.ui.EMFEditorUtils;
@@ -46,12 +55,15 @@ public class ShowCallerHandler extends AbstractHandler {
 						.getModel();
 				Object element = step.getPossibleStep();
 				if (element instanceof LogicalStep) {
-					for (MSEOccurrence mseOccurrence : ((LogicalStep)element).getMseOccurrences()) {
-						if (mseOccurrence.getMse().getCaller() != null)
-						{
-							openEditorAndShowInstruction(mseOccurrence.getMse().getCaller());
+					final Set<EObject> callers = new LinkedHashSet<EObject>();
+					for (MSEOccurrence mseOccurrence : ((LogicalStep) element)
+							.getMseOccurrences()) {
+						if (mseOccurrence.getMse().getCaller() != null) {
+							callers.add(mseOccurrence.getMse().getCaller());
 						}
 					}
+					openEditorsAndShowInstructions(new ArrayList<EObject>(
+							callers));
 				}
 			}
 		}
@@ -59,26 +71,65 @@ public class ShowCallerHandler extends AbstractHandler {
 		return null;
 	}
 
-	protected IEditorPart openEditorAndShowInstruction(EObject instruction) {
-		IEditorPart editor = null;
-		final URI instructionURI = EcoreUtil.getURI((EObject) instruction);
+	protected Map<IEditorPart, List<EObject>> openEditorsAndShowInstructions(
+			List<EObject> instructions) {
+		final Map<IEditorPart, List<EObject>> result = new LinkedHashMap<IEditorPart, List<EObject>>();
+
+		for (EObject instruction : instructions) {
+			final IEditorPart editor = openEditor(instruction);
+			List<EObject> eObjects = result.get(editor);
+			if (eObjects == null) {
+				eObjects = new ArrayList<EObject>();
+				result.put(editor, eObjects);
+			}
+			eObjects.add(instruction);
+		}
+
+		for (Entry<IEditorPart, List<EObject>> entry : result.entrySet()) {
+			if (entry.getKey() instanceof DialectEditor) {
+				SiriusEditorUtils.showInstructions(
+						(DialectEditor) entry.getKey(), instructions);
+			} else {
+				final List<URI> instructionURIs = new ArrayList<URI>();
+				for (EObject instruction : instructions) {
+					final URI instructionURI = EcoreUtil.getURI(instruction);
+					if (instructionURI != null) {
+						instructionURIs.add(instructionURI);
+					}
+				}
+				EMFEditorUtils.selectInstructions(entry.getKey(),
+						instructionURIs);
+			}
+		}
+
+		return result;
+	}
+
+	private IEditorPart openEditor(EObject instruction) {
+		final IEditorPart res;
+
+		final URI instructionURI = EcoreUtil.getURI(instruction);
 
 		if (instructionURI != null) {
-			List<Session> sessions = SiriusEditorUtils
-					.getSessions(instructionURI);
 
 			final Session session;
-			if (sessions.size() > 1) {
-				session = selectSession(sessions);
-			} else if (sessions.size() == 1) {
-				session = sessions.get(0);
+			final Session inSession = SessionManager.INSTANCE.getSession(instruction);
+			if (inSession != null) {
+				session = inSession;
 			} else {
-				session = null;
+				List<Session> sessions = SiriusEditorUtils.getSessions(instructionURI);
+				if (sessions.size() > 1) {
+					session = selectSession(sessions);
+				} else if (sessions.size() == 1) {
+					session = sessions.get(0);
+				} else {
+					session = null;
+				}
 			}
 
 			if (session != null) {
-				List<DRepresentation> representations = SiriusEditorUtils
-						.getRepresentations(session, instructionURI);
+				List<DRepresentation> representations = SiriusEditorUtils.getRepresentations(session,
+						instructionURI);
 
 				final DRepresentation representation;
 				if (representations.size() > 1) {
@@ -90,26 +141,30 @@ public class ShowCallerHandler extends AbstractHandler {
 				}
 
 				if (representation != null) {
-					editor = DialectUIManager.INSTANCE.openEditor(session,
-							representation, new NullProgressMonitor());
-					SiriusEditorUtils.showInstruction(editor, instruction);
+					res = DialectUIManager.INSTANCE.openEditor(session, representation,
+							new NullProgressMonitor());
 				} else {
-					editor = openEMFEditorAndShowInstruction(instruction,
-							instructionURI);
+					res = openEMFEditor(instruction);
 				}
 			} else {
-				editor = openEMFEditorAndShowInstruction(instruction,
-						instructionURI);
+				res = openEMFEditor(instruction);
 			}
 		} else {
-			editor = null;
+			return null;
 		}
 
-		return editor;
+		return res;
 	}
 
-	private IEditorPart openEMFEditorAndShowInstruction(EObject instruction,
-			final URI instructionURI) {
+	/**
+	 * Opens an EMF editor for the given instruction
+	 * 
+	 * @param instruction
+	 *            the instruction {@link EObject}
+	 * @returns the opened {@link IEditorPart} if any opened, <code>null</code>
+	 *          otherwise
+	 */
+	private IEditorPart openEMFEditor(EObject instruction) {
 		IEditorPart editor = null;
 
 		try {
@@ -120,7 +175,6 @@ public class ShowCallerHandler extends AbstractHandler {
 			if (input != null && editorId != null) {
 				editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 						.getActivePage().openEditor(input, editorId);
-				EMFEditorUtils.selectInstruction(editor, instructionURI);
 			} else {
 				editor = null;
 			}

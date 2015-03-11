@@ -1,15 +1,13 @@
 package org.gemoc.gemoc_language_workbench.extensions.timesquare;
 
-import org.eclipse.core.runtime.Status;
-import org.osgi.framework.BundleActivator;
+import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
+import org.gemoc.commons.eclipse.pde.GemocPlugin;
 import org.osgi.framework.BundleContext;
 
 import fr.inria.diverse.commons.eclipse.messagingsystem.api.MessagingSystemManager;
-import fr.inria.diverse.commons.eclipse.messagingsystem.ui.ConsoleLogLevel;
-import fr.inria.diverse.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem;
 import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 
-public class Activator implements BundleActivator {
+public class Activator extends GemocPlugin {
 
 	private static BundleContext context;
 
@@ -19,44 +17,8 @@ public class Activator implements BundleActivator {
 	
 	public static final String PLUGIN_ID = "org.gemoc.gemoc_language_workbench.extensions.timesquare"; //$NON-NLS-1$
 
-
-	protected static MessagingSystem messagingSystem = null;
-
-
 	// The shared instance
 	private static Activator plugin;
-	
-	public static MessagingSystem getMessagingSystem() {
-		if (messagingSystem == null) 
-		{
-			MessagingSystemManager msm = new MessagingSystemManager();
-			messagingSystem = msm.createBestPlatformMessagingSystem(PLUGIN_ID, "GEMOC extensions TimeSquare");
-			if (messagingSystem instanceof EclipseMessagingSystem)
-				((EclipseMessagingSystem) messagingSystem).setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
-		}
-		return messagingSystem;
-	}
-
-	public static void warn(String msg){
-		getMessagingSystem().warn(msg, "");
-	}
-	public static void warn(String msg, Throwable e){
-		getMessagingSystem().warn(msg, "", e);
-		/*Activator.getDefault().getLog().log(new Status(Status.WARNING, PLUGIN_ID,
-                Status.OK, 
-                msg, 
-                e));*/
-	}
-	public static void error(String msg){
-		getMessagingSystem().error(msg, "");
-	}
-	public static void error(String msg, Throwable e){
-		getMessagingSystem().error(msg, "", e);
-		/*Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID,
-                Status.OK, 
-                msg, 
-                e));*/
-	}
 	
 	/*
 	 * (non-Javadoc)
@@ -87,6 +49,27 @@ public class Activator implements BundleActivator {
 	 */
 	public static Activator getDefault() {
 		return plugin;
+	}
+
+	private DefaultLoggingBackend _loggingBackend;
+	
+	@Override
+	public DefaultLoggingBackend resolveLoggingBackend() 
+	{
+		if (_loggingBackend == null)
+		{
+			_loggingBackend = new DefaultLoggingBackend(this);
+			MessagingSystemManager msm = new MessagingSystemManager();
+			MessagingSystem ms = msm.createBestPlatformMessagingSystem(PLUGIN_ID, "Timesquare extensions plugin");
+			_loggingBackend.setMessagingSystem(ms);
+		}
+		return _loggingBackend;
+	}
+
+	@Override
+	public String getId() 
+	{
+		return PLUGIN_ID;
 	}
 
 }

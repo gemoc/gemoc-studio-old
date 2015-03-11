@@ -5,6 +5,7 @@
  * 
  * Contributors:
  *   Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
+ *   P. Issa Diallo - ENSTA Bretagne
  *   
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -17,6 +18,7 @@ package org.gemoc.mocc.fsmkernel.model.design.editor;
 
 
 import java.io.IOException;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
@@ -158,17 +160,33 @@ public class PopupXTextEditorHelper {
 	 * last stable text (without error or warning)
 	 */
 	private String textWithoutDandlingRefs; 
+	
+	// Modified by pihd
+	
+	/** X Location of the opened Workbench*/
+	private int xLocation;
+	
+	/** Y Location of the opened Workbench*/
+	private int yLocation;
+	
+	/** Bound of the window*/
+	private org.eclipse.swt.graphics.Rectangle winBound;
 
 	/**
 	 * Create new PopupXTextEditor on a given edit part to perform direct xtext edition
 	 * @param editPart : the host edit part
 	 * @param xtextInjector : the dependency tracker xtext injector
+	 * @param rectangle 
 	 * @wbp.parser.entryPoint
 	 */
-	public PopupXTextEditorHelper(IGraphicalEditPart editPart, EObject semanticElement,Injector xtextInjector) {
+	// Modified by pihd
+	public PopupXTextEditorHelper(IGraphicalEditPart editPart, EObject semanticElement,Injector xtextInjector, int xl, int yl, org.eclipse.swt.graphics.Rectangle rectangle) {
 		this.hostEditPartHelper = new GraphicalPartHelper(editPart,semanticElement);
 		this.xtextInjector = xtextInjector;
 		this.resourceHelper = new ResourceHelper(xtextInjector);
+		this.xLocation = xl;
+		this.yLocation = yl;
+		this.winBound = rectangle;
 	}
 	
 	/**
@@ -270,7 +288,8 @@ public class PopupXTextEditorHelper {
 		
 		Composite parentComposite = (Composite) diagramEditPart.getViewer().getControl();
 
-		xtextEditorComposite = new Decorations(parentComposite, SWT.RESIZE|SWT.CLOSE); //SWT.TITLE|SWT.CLOSE|SWT.RESIZE | SWT.ON_TOP | SWT.BORDER
+		xtextEditorComposite = new Shell(parentComposite.getDisplay()); //SWT.TITLE|SWT.CLOSE|SWT.RESIZE | SWT.ON_TOP | SWT.BORDER
+// SWT.ICON_WORKING|SWT.TITLE|SWT.CLOSE|SWT.BORDER|SWT.RESIZE
 		xtextEditorComposite.setLayout(new FillLayout());
 		
 		xtextEditorComposite.addDisposeListener(new DisposeListener() {
@@ -428,9 +447,18 @@ public class PopupXTextEditorHelper {
 
 		int width = Math.max(fontHeightInPixel * (numColumns + 3), MIN_EDITOR_WIDTH);
 		int height = Math.max(fontHeightInPixel * (numLines + 4), MIN_EDITOR_HEIGHT);
-		xtextEditorComposite.setBounds(bounds.x - 200, bounds.y - 120, width, height);
-		xtextEditorComposite.setBounds(bounds.x - 200, bounds.y - 120, width + 250, height + 50);
+		//xtextEditorComposite.setBounds(bounds.x - 200, bounds.y - 120, width, height);
+		//xtextEditorComposite.setBounds(bounds.x - 200, bounds.y - 120, width + 250, height + 50);
 		
+		int x = (int) ((winBound.width - bounds.width)/2);
+		int y = (int) ((winBound.height - bounds.height)/2);
+		
+		xtextEditorComposite.setBounds(x - 200, y - 100, width + 250, height + 50);
+		//System.out.println("==============================================================");
+		//System.out.println("[WindowBounds = (" +winBound.width+","+winBound.height+")" +", " + "EditHelperBounds = ("+bounds.x+","+bounds.y+"), position =("+xtextEditorComposite.getLocation().x+","+xtextEditorComposite.getLocation().y+"), page = ("+xLocation+","+yLocation+")]");
+		//System.out.println("x[" +xtextEditorComposite.getLocation().x+"/"+xLocation+ "]" + "------" + "y[" +xtextEditorComposite.getLocation().y+"/"+yLocation+ "]");
+		//System.out.println("==============================================================");
+		//xtextEditorComposite.setLocation(x, y);
 	}
 	
 	/**

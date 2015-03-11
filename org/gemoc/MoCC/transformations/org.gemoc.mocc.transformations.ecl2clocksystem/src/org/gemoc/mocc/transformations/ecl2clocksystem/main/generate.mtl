@@ -1,6 +1,6 @@
 [comment encoding = UTF-8 /]
 [module generate('http://fr.inria.aoste.timesquare.ecl',
-	'http://org.gemoc.mocc.ccslmocc/1.0',
+	'http://org.gemoc.moccml/1.0',
 	'http://www.eclipse.org/ocl/3.1.0/CompleteOCLCST',
 	'http://www.eclipse.org/ocl/3.1.0/BaseCST',
 	'http://www.eclipse.org/ocl/3.1.0/EssentialOCLCST')]

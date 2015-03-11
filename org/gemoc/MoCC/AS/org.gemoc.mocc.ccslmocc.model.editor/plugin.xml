@@ -25,9 +25,9 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="org.gemoc.mocc.ccslmoc.model.ccslmocc.editor.presentation.CcslmoccModelWizardID"
+            id="org.gemoc.mocc.ccslmoc.model.moccml.editor.presentation.CcslmoccModelWizardID"
             name="%_UI_CcslmoccModelWizard_label"
-            class="org.gemoc.mocc.ccslmoc.model.ccslmocc.editor.presentation.CcslmoccModelWizard"
+            class="org.gemoc.mocc.ccslmoc.model.moccml.editor.presentation.CcslmoccModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/CcslmoccModelFile.gif">
          <description>%_UI_CcslmoccModelWizard_description</description>
@@ -38,12 +38,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated Ccslmocc -->
       <editor
-            id="org.gemoc.mocc.ccslmoc.model.ccslmocc.editor.presentation.CcslmoccEditorID"
+            id="org.gemoc.mocc.ccslmoc.model.moccml.editor.presentation.CcslmoccEditorID"
             name="%_UI_CcslmoccEditor_label"
             icon="icons/full/obj16/CcslmoccModelFile.gif"
-            extensions="ccslmocc"
-            class="org.gemoc.mocc.ccslmoc.model.ccslmocc.editor.presentation.CcslmoccEditor"
-            contributorClass="org.gemoc.mocc.ccslmoc.model.ccslmocc.editor.presentation.CcslmoccActionBarContributor">
+            extensions="moccml"
+            class="org.gemoc.mocc.ccslmoc.model.moccml.editor.presentation.CcslmoccEditor"
+            contributorClass="org.gemoc.mocc.ccslmoc.model.moccml.editor.presentation.CcslmoccActionBarContributor">
       </editor>
    </extension>
 

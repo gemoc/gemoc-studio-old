@@ -23,7 +23,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated FSMModel -->
       <factory
-            uri="http://org.gemoc.mocc.fsmmodel/1.0"
+            uri="http://org.gemoc.moccml.fsmmodel/1.0"
             class="org.gemoc.mocc.fsmkernel.model.FSMModel.edit.provider.FSMModelItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

@@ -1,5 +1,7 @@
 package org.gemoc.gemoc_modeling_workbench.ui.debug;
 
+import java.util.Collection;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.gemoc.execution.engine.core.ExecutionEngine;
@@ -9,6 +11,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
+import org.gemoc.gemoc_modeling_workbench.ui.breakpoint.GemocBreakpoint;
 
 import fr.obeo.dsl.debug.ide.AbstractDSLDebugger;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
@@ -23,29 +26,24 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	/**
 	 * The {@link ExecutionEngine} to debug.
 	 */
-	private final ExecutionEngine engine;
+	private final IExecutionEngine engine;
 
 	/**
 	 * Tells if the logical step level stack frame is created.
 	 */
-	private boolean frameCreated;
+	private boolean logicalStepFrameCreated;
 
 	/**
 	 * Tells if the event level stack frame is created.
 	 */
-	private boolean stepIntoFrameCreated;
+	private boolean mseFrameCreated;
 
 	/**
-	 * Tells if we are stepping at the event level.
+	 * Tells if we should break at the next {@link LogicalStep}.
 	 */
-	private boolean steppingInto;
-
-	/**
-	 * Tells if we are stepping from the event level to the next logical step.
-	 */
-	private boolean steppingReturn;
+	private boolean breakNextLogicalStep;
 	
-	public GemocModelDebugger(IDSLDebugEventProcessor target, ExecutionEngine engine) {
+	public GemocModelDebugger(IDSLDebugEventProcessor target, IExecutionEngine engine) {
 		super(target);
 		this.engine = engine;
 	}
@@ -62,90 +60,107 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 
 	@Override
 	public boolean canStepInto(String threadName, EObject instruction) {
-		return instruction instanceof LogicalStep;
+		final boolean res;
+		
+		if (instruction instanceof LogicalStep) {
+			boolean hasActionMSE = false;
+			for (MSEOccurrence mseOccurence : ((LogicalStep) instruction).getMseOccurrences()) {
+				if (mseOccurence.getMse().getAction() != null) {
+					hasActionMSE = true;
+					break;
+				}
+			}
+			res = hasActionMSE;
+		} else {
+			res = false;
+		}
+		
+		return res;
 	}
 
 	@Override
 	public void updateData(String threadName, EObject instruction) {
-		if (!frameCreated) {
+		if (mseFrameCreated) {
+			popStackFrame(threadName);
+			mseFrameCreated = false;
+		}
+		if (logicalStepFrameCreated) {
+			popStackFrame(threadName);
+			logicalStepFrameCreated = false;
+		}
+		if (instruction instanceof LogicalStep) {
 			pushStackFrame(threadName, LogicalStepHelper.getLogicalStepName((LogicalStep) instruction), instruction, instruction);
-			frameCreated = true;
-		} else {
-			if (steppingInto) {
-				if (!stepIntoFrameCreated) {
-					pushStackFrame(threadName, instruction.toString(), instruction, instruction);
-					stepIntoFrameCreated = true;
-				}
-			} else {
-				if (stepIntoFrameCreated) {
-					popStackFrame(threadName);
-					stepIntoFrameCreated = false;
-				}
-			}
-			setCurrentInstruction(threadName, instruction);
+			logicalStepFrameCreated = true;
+		} else if (instruction instanceof MSEOccurrence) {
+			final LogicalStep logicalStep = ((MSEOccurrence) instruction).getLogicalstep();
+			pushStackFrame(threadName, LogicalStepHelper.getLogicalStepName(logicalStep), logicalStep, logicalStep);
+			logicalStepFrameCreated = true;
+			pushStackFrame(threadName, instruction.toString(), instruction, instruction);
+			mseFrameCreated = true;				
 		}
 
 		// TODO populate variables...
 		// variable(threadName, instruction.eClass().getName(), "instruction",
 		// instruction);
 	}
-
+	
 	@Override
 	public boolean shouldBreak(EObject instruction) {
 		boolean res = false;
+
 		if (instruction instanceof LogicalStep) {
-			steppingInto = false;
-			if (steppingReturn) {
-				steppingReturn = false;
-				res = true;
-			} else {
-				for (MSEOccurrence mseOccurrence : ((LogicalStep) instruction).getMseOccurrences())
-				{
-					res = super.shouldBreak(mseOccurrence.getMse()) 
-							|| (mseOccurrence.getMse().getCaller() != null && super.shouldBreak(mseOccurrence.getMse().getCaller()));
-					if (res) {
-						break;
-					}
-				}
-			}
-		} else if (steppingInto) {
-			res = instruction != null || super.shouldBreak(instruction);
+			res = breakNextLogicalStep || shouldBreakLogicalStep((LogicalStep) instruction);
+		} else if (instruction instanceof MSEOccurrence) {
+			res = shouldBreakMSEOccurence((MSEOccurrence) instruction);
 		}
+
 		return res;
 	}
 
-	@Override
-	public void steppingInto(String threadName) {
-		super.steppingInto(threadName);
-		steppingInto = true;
-	}
-
-	@Override
-	public void steppingReturn(String threadName) {
-		super.steppingReturn(threadName);
-		steppingReturn = true;
-	}
-
-	@Override
-	public boolean control(String threadName, EObject instruction) {
+	private boolean shouldBreakLogicalStep(LogicalStep logicalStep) {
 		final boolean res;
-
-		if (steppingInto || instruction instanceof LogicalStep) {
-			res = super.control(threadName, instruction);
+		
+		if (super.shouldBreak(logicalStep) && Boolean.valueOf((String)getBreakpointAttributes(logicalStep, GemocBreakpoint.BREAK_ON_LOGICAL_STEP))) {
+			res = true;
 		} else {
-			res = !isTerminated();
+			boolean hasMSEBreak = false;
+			for (MSEOccurrence mseOccurrence : logicalStep.getMseOccurrences()) {
+				hasMSEBreak = (super.shouldBreak(mseOccurrence.getMse()) && Boolean.valueOf((String)getBreakpointAttributes(mseOccurrence.getMse(), GemocBreakpoint.BREAK_ON_LOGICAL_STEP)));
+				hasMSEBreak = hasMSEBreak || (mseOccurrence.getMse().getCaller() != null && super.shouldBreak(mseOccurrence.getMse().getCaller()) && Boolean.valueOf((String)getBreakpointAttributes(mseOccurrence.getMse().getCaller(), GemocBreakpoint.BREAK_ON_LOGICAL_STEP)));
+				if (hasMSEBreak) {
+					break;
+				}
+			}
+			res = hasMSEBreak;
 		}
-
+		
+		return res;
+	}
+	
+	private boolean shouldBreakMSEOccurence(MSEOccurrence mseOccurrence) {
+		final boolean res;
+		
+		if ((super.shouldBreak(mseOccurrence.getMse()) && Boolean.valueOf((String)getBreakpointAttributes(mseOccurrence.getMse(), GemocBreakpoint.BREAK_ON_MSE_OCCURRENCE))) || (mseOccurrence.getMse().getCaller() != null && super.shouldBreak(mseOccurrence.getMse().getCaller()) && Boolean.valueOf((String)getBreakpointAttributes(mseOccurrence.getMse().getCaller(), GemocBreakpoint.BREAK_ON_MSE_OCCURRENCE)))) {
+			res = true;
+		} else {
+			LogicalStep locicalStep = mseOccurrence.getLogicalstep();
+			res = super.shouldBreak(locicalStep) && Boolean.valueOf((String)getBreakpointAttributes(locicalStep, GemocBreakpoint.BREAK_ON_MSE_OCCURRENCE));
+		}
+		
 		return res;
 	}
 
 	@Override
 	public EObject getNextInstruction(String threadName, EObject currentInstruction, Stepping stepping) {
 		final EObject res;
-		if (stepping == Stepping.STEP_RETURN) {
+		if (stepping == Stepping.STEP_RETURN && currentInstruction instanceof MSEOccurrence) {
 			res = FAKE_INSTRUCTION;
+			breakNextLogicalStep = true;
+		} else if (stepping == Stepping.STEP_OVER && currentInstruction instanceof LogicalStep) {
+			res = FAKE_INSTRUCTION;
+			breakNextLogicalStep = true;
 		} else {
-			res= super.getNextInstruction(threadName, currentInstruction, stepping);
+			res = super.getNextInstruction(threadName, currentInstruction, stepping);
 		}
 		return res;
 	}
@@ -163,7 +178,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 
 
 	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
 	{
 	}
 
@@ -193,7 +208,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	@Override
 	public void aboutToExecuteMSEOccurrence(IExecutionEngine executionEngine, MSEOccurrence mseOccurrence) 
 	{
-		if (!control(Thread.currentThread().getName(), mseOccurrence.getMse().getSolverEvent()))
+		if (!control(Thread.currentThread().getName(), mseOccurrence))
 		{
 			throw new RuntimeException("Debug thread has stopped.");			
 		}

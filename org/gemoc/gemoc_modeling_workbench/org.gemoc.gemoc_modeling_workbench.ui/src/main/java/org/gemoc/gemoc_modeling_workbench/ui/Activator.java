@@ -3,7 +3,7 @@ package org.gemoc.gemoc_modeling_workbench.ui;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.services.AbstractGemocDebuggerServices;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocDebuggerServices;
 import org.osgi.framework.BundleContext;
 
 import fr.inria.diverse.commons.eclipse.messagingsystem.api.MessagingSystemManager;
