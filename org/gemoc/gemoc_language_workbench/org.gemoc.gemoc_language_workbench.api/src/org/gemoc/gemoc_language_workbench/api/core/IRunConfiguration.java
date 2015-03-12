@@ -2,7 +2,6 @@ package org.gemoc.gemoc_language_workbench.api.core;
 
 import java.util.Collection;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 import org.gemoc.gemoc_language_workbench.api.extensions.engine_addon.EngineAddonSpecificationExtension;
 
@@ -15,8 +14,6 @@ public interface IRunConfiguration {
 	URI getAnimatorURI();
 
 	int getAnimationDelay();
-
-	boolean isTraceActive();
 	
 	int getDeadlockDetectionDepth();
 
