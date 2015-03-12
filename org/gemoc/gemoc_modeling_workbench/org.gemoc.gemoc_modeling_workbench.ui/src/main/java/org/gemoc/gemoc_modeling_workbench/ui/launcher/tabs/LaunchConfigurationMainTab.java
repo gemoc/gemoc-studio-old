@@ -50,6 +50,7 @@ import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecifi
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
+import org.gemoc.gemoc_language_workbench.extensions.k3.K3Solver;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAIRDIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
@@ -364,7 +365,14 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		{
 			try {
 				ISolver solver = extension.instanciateSolver();
-				_k3Area.setVisible(false);
+				if (solver instanceof K3Solver)
+				{
+					_k3Area.setVisible(true);
+				}
+				else
+				{
+					_k3Area.setVisible(false);
+				}
 			} catch (CoreException e) {
 				_k3Area.setVisible(true);
 			}					
