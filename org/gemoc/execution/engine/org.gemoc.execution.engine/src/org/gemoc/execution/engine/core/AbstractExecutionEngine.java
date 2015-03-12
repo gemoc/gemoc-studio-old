@@ -240,13 +240,16 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	@Override
 	public void stop() 
 	{
-		_isStopped = true;
-		setEngineStatus(EngineStatus.RunStatus.Stopped);
-		notifyEngineStopped();
-		setSelectedLogicalStep(null);
-		if (getExecutionContext().getLogicalStepDecider() != null)
+		if (!_isStopped)
 		{
-			getExecutionContext().getLogicalStepDecider().preempt();
+			_isStopped = true;
+			setEngineStatus(EngineStatus.RunStatus.Stopped);
+			notifyEngineStopped();
+			setSelectedLogicalStep(null);
+			if (getExecutionContext().getLogicalStepDecider() != null)
+			{
+				getExecutionContext().getLogicalStepDecider().preempt();
+			}
 		}
 	}
 	
@@ -302,16 +305,16 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		{
 			_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
 		}
-		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
-		{
-			addon.aboutToSelectLogicalStep(this, getPossibleLogicalSteps());
-		}
 	}
 	
 	public void recomputePossibleLogicalSteps()
 	{
 		getSolver().revertForceClockEffect();
 		updatePossibleLogicalSteps();
+		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
+		{
+			addon.proposedLogicalStepsChanged(this, getPossibleLogicalSteps());
+		}
 	}
 
 	private ISolver getSolver()

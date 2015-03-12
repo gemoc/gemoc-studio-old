@@ -240,4 +240,11 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) 
 	{
 	}
+
+	@Override
+	public void proposedLogicalStepsChanged(IExecutionEngine engine,
+			Collection<LogicalStep> logicalSteps) {
+		// TODO Auto-generated method stub
+		
+	}
 }

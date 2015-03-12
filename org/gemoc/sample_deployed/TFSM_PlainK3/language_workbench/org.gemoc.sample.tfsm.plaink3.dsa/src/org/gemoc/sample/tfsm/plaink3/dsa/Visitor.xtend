@@ -39,8 +39,8 @@ class TimedSystemVisitorAspect
 class TFSMVisitorAspect 
 {
 
-	private int stepNumber = 0
-	private int lastStateChangeStepNumber = 0
+	public int stepNumber = 0
+	public int lastStateChangeStepNumber = 0
 
 	def public void visit()
 	{

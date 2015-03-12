@@ -16,7 +16,7 @@ import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 
-import fr.inria.diverse.k3.ui.wizards.WizardNewProjectK3Plugin;
+//import fr.inria.diverse.k3.ui.wizards.WizardNewProjectK3Plugin;
 
 public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextBase {
 
@@ -43,7 +43,7 @@ public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextBas
 				IWizard wizard;
 				wizard = descriptor.createWizard();
 				// this wizard need some dedicated initialization
-				((WizardNewProjectK3Plugin)wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection());
+//				((WizardNewProjectK3Plugin)wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection());
 				
 				
 				WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
@@ -52,11 +52,11 @@ public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextBas
 				// set field as much as possible
 				ActiveFile activeFileEcore = new ActiveFileEcore(_gemocLanguageIProject);
 				IFile ecoreFile = activeFileEcore.getActiveFile();
-				if (ecoreFile != null) {
-					((WizardNewProjectK3Plugin)wizard).getPageProject().setEcoreLoaded(ecoreFile);
-				}
-				((WizardNewProjectK3Plugin)wizard).getPageProject().setProjectName(_gemocLanguageIProject.getName()+".k3dsa");
-				((WizardNewProjectK3Plugin)wizard).getPageProject().setProjectKind(fr.inria.diverse.k3.ui.tools.Context.KindsOfProject.PLUGIN);
+//				if (ecoreFile != null) {
+//					((WizardNewProjectK3Plugin)wizard).getPageProject().setEcoreLoaded(ecoreFile);
+//				}
+//				((WizardNewProjectK3Plugin)wizard).getPageProject().setProjectName(_gemocLanguageIProject.getName()+".k3dsa");
+//				((WizardNewProjectK3Plugin)wizard).getPageProject().setProjectKind(fr.inria.diverse.k3.ui.tools.Context.KindsOfProject.PLUGIN);
 				wd.setTitle("New Kermeta 3 project");
 				
 				

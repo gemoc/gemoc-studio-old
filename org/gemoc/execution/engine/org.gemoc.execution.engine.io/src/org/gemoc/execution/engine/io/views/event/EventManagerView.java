@@ -963,4 +963,11 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		
 	}
 
+	@Override
+	public void proposedLogicalStepsChanged(IExecutionEngine engine,
+			Collection<LogicalStep> logicalSteps) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

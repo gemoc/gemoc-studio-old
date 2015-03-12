@@ -67,4 +67,11 @@ public class DefaultEngineAddon implements IEngineAddon {
 	{
 	}
 
+	@Override
+	public void proposedLogicalStepsChanged(IExecutionEngine engine,
+			Collection<LogicalStep> logicalSteps) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
