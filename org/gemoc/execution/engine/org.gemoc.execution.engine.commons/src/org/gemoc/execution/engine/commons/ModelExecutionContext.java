@@ -41,12 +41,12 @@ public class ModelExecutionContext implements IExecutionContext
 			_executionWorkspace = new ExecutionWorkspace(_runConfiguration.getExecutedModelURI());
 			_executionWorkspace.copyFileToExecutionFolder(_executionWorkspace.getModelPath());
 			_languageDefinition = getLanguageDefinition(_runConfiguration.getLanguageName());
-			_executionPlatform = new DefaultExecutionPlatform(_languageDefinition);
+			_executionPlatform = new DefaultExecutionPlatform(_languageDefinition, runConfiguration);
 			_resourceModel = _executionPlatform.getModelLoader().loadModel(this);					
 			_logicalStepDecider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(), executionMode);
 			setUpEditingDomain();	
-			setUpFeedbackModel();
 			_executionPlatform.getSolver().setUp(this);
+			setUpFeedbackModel();
 		} 
 		catch (CoreException e)
 		{
@@ -83,7 +83,6 @@ public class ModelExecutionContext implements IExecutionContext
 	private void setUpFeedbackModel() 
 	{
 		URI feedbackPlatformURI = URI.createPlatformResourceURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
-//		URI feedbackMelangeURI = URI.createURI(feedbackPlatformURI.toString().replace("platform", "melange"));
 		try
 		{
 			Resource resource = getResourceSet().getResource(feedbackPlatformURI, true);

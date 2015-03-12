@@ -38,11 +38,11 @@ import org.gemoc.execution.engine.io.views.DependantViewPart;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.execution.engine.trace.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
-import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.dsl.debug.ide.ui.provider.DSLLabelDecorator;
 import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
 
@@ -51,15 +51,10 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.steps.LogicalStepsView";
 	
-	// TODO should use Launcher.MODEL_ID
-	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
-
 	private Color _representedEventColor;
 
 	private TreeViewer _viewer;
 
-	private DSLLabelDecorator _decorator;
-	
 	private ColumnLabelProvider _column1LabelProvider;
 
 	private ColumnLabelProvider _column2LabelProvider;
@@ -88,7 +83,6 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 		_viewer.setUseHashlookup(true);
 		_contentProvider = new LogicalStepsViewContentProvider();
 		_viewer.setContentProvider(_contentProvider);
-		_decorator = new DSLLabelDecorator(MODEL_ID);
 		Font mono = JFaceResources.getFont(JFaceResources.TEXT_FONT);
 		_viewer.getTree().setFont(mono);
 		createColumns();
@@ -100,7 +94,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 		TreeColumn column1 = new TreeColumn(_viewer.getTree(), SWT.LEFT);
 		column1.setText("Logical Steps");
 		TreeViewerColumn viewerColumn1 = new TreeViewerColumn(_viewer, column1);
-		_column1LabelProvider = new DecoratingColumLabelProvider(new ColumnLabelProvider()
+		_column1LabelProvider = new ColumnLabelProvider()
 		{
 			
 			@Override
@@ -110,10 +104,10 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 					LogicalStep ls = (LogicalStep)element;
 					return LogicalStepHelper.getLogicalStepName(ls);
 				}
-				else if (element instanceof ModelSpecificEvent)
+				else if (element instanceof MSEOccurrence)
 				{
-					ModelSpecificEvent event = (ModelSpecificEvent)element;
-					return event.getName();
+					MSEOccurrence event = (MSEOccurrence)element;
+					return event.getMse().getName();
 				}
 				return super.getText(element);
 			}
@@ -131,7 +125,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 						return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_ICON);					
 					}
 				}
-				else if (element instanceof ModelSpecificEvent)
+				else if (element instanceof MSEOccurrence)
 				{
 					return SharedIcons.getSharedImage(SharedIcons.VISIBLE_EVENT_ICON);
 				}
@@ -142,8 +136,8 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			public Color getBackground(Object element) {
 				final Color res;
 				
-				if (element instanceof ModelSpecificEvent 
-					&& _eventsToPresent.contains(EcoreUtil.getURI((ModelSpecificEvent)element))) {
+				if (element instanceof MSEOccurrence 
+					&& _eventsToPresent.contains(EcoreUtil.getURI(((MSEOccurrence)element).getMse()))) {
 					res = _representedEventColor;
 				} else {
 					res = super.getBackground(element);
@@ -152,21 +146,21 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 				return res;
 			}
 			
-		}, _decorator);
+		};
 		viewerColumn1.setLabelProvider(_column1LabelProvider);
 
 	
 		TreeColumn column2 = new TreeColumn(_viewer.getTree(), SWT.LEFT);
 		column1.setText("Logical Steps");
 		TreeViewerColumn viewerColumn2 = new TreeViewerColumn(_viewer, column2);
-		_column2LabelProvider = new DecoratingColumLabelProvider(new ColumnLabelProvider()
+		_column2LabelProvider = new ColumnLabelProvider()
 		{
 			
 			@Override
 			public String getText(Object element) {
-				if (element instanceof ModelSpecificEvent)
+				if (element instanceof MSEOccurrence)
 				{
-					String details = ViewUtils.eventToString((ModelSpecificEvent)element);
+					String details = ViewUtils.eventToString(((MSEOccurrence)element).getMse());
 					return "   " + details;
 				}
 				return "";
@@ -176,8 +170,8 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			public Color getBackground(Object element) {
 				final Color res;
 				
-				if (element instanceof ModelSpecificEvent 
-					&& _eventsToPresent.contains(EcoreUtil.getURI((ModelSpecificEvent)element))) {
+				if (element instanceof MSEOccurrence 
+					&& _eventsToPresent.contains(EcoreUtil.getURI(((MSEOccurrence)element).getMse()))) {
 					res = _representedEventColor;
 				} else {
 					res = super.getBackground(element);
@@ -186,7 +180,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 				return res;
 			}
 			
-		}, _decorator);
+		};
 		viewerColumn2.setLabelProvider(_column2LabelProvider);
 		}
 
@@ -225,7 +219,6 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			&&  engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation)) 
 		{
 			_currentEngine = engine;	
-			_decorator.setResourceSet(_currentEngine.getExecutionContext().getResourceModel().getResourceSet());
 			_viewer.setInput(_currentEngine);
 			if (_currentEngine != null
 				&& !_currentEngine.getRunningStatus().equals(RunStatus.Stopped))
@@ -268,7 +261,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 						{
 							_lastSelectedLogicalStep = (LogicalStep)path.getLastSegment();						
 						}
-						else if (path.getLastSegment() instanceof ModelSpecificEvent)
+						else if (path.getLastSegment() instanceof MSEOccurrence)
 						{
 							_lastSelectedLogicalStep = (LogicalStep) path.getFirstSegment();
 						}

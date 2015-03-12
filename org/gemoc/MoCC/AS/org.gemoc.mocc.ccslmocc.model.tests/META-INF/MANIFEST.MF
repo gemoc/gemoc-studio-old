@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.gemoc.mocc.ccslmoc.model.ccslmocc.tests
+Export-Package: org.gemoc.mocc.ccslmoc.model.moccml.tests
 Require-Bundle: org.eclipse.core.runtime,
  org.gemoc.mocc.ccslmocc.model;visibility:=reexport,
  org.gemoc.mocc.fsmkernel.model;visibility:=reexport,

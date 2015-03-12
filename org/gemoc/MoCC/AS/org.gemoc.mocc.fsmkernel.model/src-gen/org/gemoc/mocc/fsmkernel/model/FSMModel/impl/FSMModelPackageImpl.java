@@ -578,7 +578,7 @@ public class FSMModelPackageImpl extends EPackageImpl implements FSMModelPackage
 		initEClass(abstractGuardEClass, AbstractGuard.class, "AbstractGuard", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(guardEClass, Guard.class, "Guard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGuard_Value(), theClassicalExpressionPackage.getBooleanExpression(), null, "value", null, 1, 1, Guard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGuard_Value(), theClassicalExpressionPackage.getBooleanExpression(), null, "value", null, 1, 1, Guard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getGuard_Value().getEKeys().add(theTimeModelPackage.getNamedElement_Name());
 
 		initEClass(triggerEClass, Trigger.class, "Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -610,7 +610,7 @@ public class FSMModelPackageImpl extends EPackageImpl implements FSMModelPackage
 	 * @generated
 	 */
 	protected void createImportAnnotations() {
-		String source = "http://www.eclipse.org/OCL/Import";		
+		String source = "http://www.eclipse.org/OCL/Import";	
 		addAnnotation
 		  (this, 
 		   source, 
@@ -618,7 +618,7 @@ public class FSMModelPackageImpl extends EPackageImpl implements FSMModelPackage
 			 "fr.inria.aoste.timemodel", "../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#/",
 			 "fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation", "../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClockExpressionAndRelation",
 			 "fr.inria.aoste.timemodel.classicalexpression", "../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.ecore#//CCSLModel/ClassicalExpression"
-		   });					
+		   });
 	}
 
 } //FSMModelPackageImpl

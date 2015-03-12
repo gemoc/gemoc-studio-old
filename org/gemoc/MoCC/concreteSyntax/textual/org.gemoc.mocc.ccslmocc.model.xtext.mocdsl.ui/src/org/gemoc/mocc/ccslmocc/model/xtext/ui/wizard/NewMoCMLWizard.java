@@ -144,7 +144,7 @@ public class NewMoCMLWizard extends Wizard implements INewWizard {
 
 	private InputStream openContentStream(String fileName) {
 		String contents =
-			"StateRelationBasedLibrary "+fileName.substring(0, fileName.indexOf("."))+"{ \n\n}";
+			"AutomataConstraintLibrary "+fileName.substring(0, fileName.indexOf("."))+"{ \n\n}";
 		return new ByteArrayInputStream(contents.getBytes());
 	}
 

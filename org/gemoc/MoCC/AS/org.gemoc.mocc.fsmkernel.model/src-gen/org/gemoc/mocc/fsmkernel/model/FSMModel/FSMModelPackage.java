@@ -55,7 +55,7 @@ public interface FSMModelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://org.gemoc.mocc.fsmmodel/1.0";
+	String eNS_URI = "http://org.gemoc.moccml.fsmmodel/1.0";
 
 	/**
 	 * The package namespace name.
@@ -63,7 +63,7 @@ public interface FSMModelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "org.gemoc.mocc.fsmmodel";
+	String eNS_PREFIX = "org.gemoc.moccml.fsmmodel";
 
 	/**
 	 * The singleton instance of the package.
@@ -387,7 +387,7 @@ public interface FSMModelPackage extends EPackage {
 	int GUARD = 6;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -772,10 +772,10 @@ public interface FSMModelPackage extends EPackage {
 	EClass getGuard();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.mocc.fsmkernel.model.FSMModel.Guard#getValue <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.mocc.fsmkernel.model.FSMModel.Guard#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Value</em>'.
+	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see org.gemoc.mocc.fsmkernel.model.FSMModel.Guard#getValue()
 	 * @see #getGuard()
 	 * @generated
@@ -1046,7 +1046,7 @@ public interface FSMModelPackage extends EPackage {
 		EClass GUARD = eINSTANCE.getGuard();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

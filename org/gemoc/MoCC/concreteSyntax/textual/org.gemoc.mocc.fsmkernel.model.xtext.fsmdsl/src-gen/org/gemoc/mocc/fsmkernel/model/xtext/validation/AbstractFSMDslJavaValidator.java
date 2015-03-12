@@ -15,7 +15,7 @@ public class AbstractFSMDslJavaValidator extends fr.inria.aoste.timesquare.ccslk
 	@Override
 	protected List<EPackage> getEPackages() {
 	    List<EPackage> result = new ArrayList<EPackage>();
-	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://org.gemoc.mocc.fsmmodel/1.0"));
+	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://org.gemoc.moccml.fsmmodel/1.0"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://org.gemoc.mocc.fsmmodel/editionextension/1.0"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://fr.inria.aoste.timemodel.classicalexpression"));
 	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://fr.inria.aoste.timemodel.ccslmodel.clockexpressionandrelation"));

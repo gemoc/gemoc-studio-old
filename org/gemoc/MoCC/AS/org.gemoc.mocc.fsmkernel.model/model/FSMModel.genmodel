@@ -1,79 +1,156 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012-2016 GEMOC consortium.&#xD;&#xA;&#xD;&#xA;http://www.gemoc.org&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;  Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]&#xD;&#xA;  &#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;  &#xD;&#xA;$Id$"
-    modelDirectory="/org.gemoc.mocc.fsmkernel.model/src-gen" editDirectory="/org.gemoc.mocc.fsmkernel.model.edit/src-gen"
-    editorDirectory="/org.gemoc.mocc.fsmkernel.model.editor/src-gen" modelPluginID="org.gemoc.mocc.fsmkernel.model"
-    modelName="FSMModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    testsDirectory="/org.gemoc.mocc.fsmkernel.model.tests/src-gen" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" copyrightFields="false" usedGenPackages="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel#//TimeModel"
-    operationReflection="true" importOrganizing="true">
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012-2016 GEMOC consortium.&#xD;&#xA;&#xD;&#xA;http://www.gemoc.org&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;  Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]&#xD;&#xA;  &#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;  &#xD;&#xA;$Id$" modelDirectory="/org.gemoc.mocc.fsmkernel.model/src-gen" editDirectory="/org.gemoc.mocc.fsmkernel.model.edit/src-gen" editorDirectory="/org.gemoc.mocc.fsmkernel.model.editor/src-gen" modelPluginID="org.gemoc.mocc.fsmkernel.model" modelName="FSMModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory="/org.gemoc.mocc.fsmkernel.model.tests/src-gen" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>FSMModel.ecore</foreignModel>
   <foreignModel>EditionExtension.ecore</foreignModel>
-  <genPackages prefix="FSMModel" basePackage="org.gemoc.mocc.fsmkernel.model" disposableProviderFactory="true"
-      providerPackageSuffix="edit.provider" presentationPackageSuffix="editor.presentation"
-      ecorePackage="FSMModel.ecore#/">
-    <genClasses ecoreClass="FSMModel.ecore#//State">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSMModel.ecore#//State/inputTransitions"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSMModel.ecore#//State/outputTransitions"/>
+  <genPackages prefix="FSMModel" basePackage="org.gemoc.mocc.fsmkernel.model" disposableProviderFactory="true" providerPackageSuffix="edit.provider" presentationPackageSuffix="editor.presentation">
+    <ecorePackage href="FSMModel.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="FSMModel.ecore#//State"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//State/inputTransitions"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//State/outputTransitions"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="FSMModel.ecore#//Transition">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSMModel.ecore#//Transition/source"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSMModel.ecore#//Transition/target"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FSMModel.ecore#//Transition/guard"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FSMModel.ecore#//Transition/trigger"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FSMModel.ecore#//Transition/actions"/>
+    <genClasses>
+      <ecoreClass href="FSMModel.ecore#//Transition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//Transition/source"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//Transition/target"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//Transition/guard"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//Transition/trigger"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//Transition/actions"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="FSMModel.ecore#//StateMachineDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FSMModel.ecore#//StateMachineDefinition/declarationBlock"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FSMModel.ecore#//StateMachineDefinition/transitions"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FSMModel.ecore#//StateMachineDefinition/states"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSMModel.ecore#//StateMachineDefinition/initialState"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSMModel.ecore#//StateMachineDefinition/finalStates"/>
+    <genClasses>
+      <ecoreClass href="FSMModel.ecore#//StateMachineDefinition"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//StateMachineDefinition/declarationBlock"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//StateMachineDefinition/transitions"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//StateMachineDefinition/states"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//StateMachineDefinition/initialStates"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//StateMachineDefinition/finalStates"/>
+      </genFeatures>
     </genClasses>
-    <genClasses image="false" ecoreClass="FSMModel.ecore#//AbstractTrigger"/>
-    <genClasses image="false" ecoreClass="FSMModel.ecore#//AbstractAction"/>
-    <genClasses image="false" ecoreClass="FSMModel.ecore#//AbstractGuard"/>
-    <genClasses ecoreClass="FSMModel.ecore#//Guard">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSMModel.ecore#//Guard/value"/>
+    <genClasses image="false">
+      <ecoreClass href="FSMModel.ecore#//AbstractTrigger"/>
     </genClasses>
-    <genClasses ecoreClass="FSMModel.ecore#//Trigger">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSMModel.ecore#//Trigger/trueTriggers"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FSMModel.ecore#//Trigger/falseTriggers"/>
+    <genClasses image="false">
+      <ecoreClass href="FSMModel.ecore#//AbstractAction"/>
     </genClasses>
-    <genClasses ecoreClass="FSMModel.ecore#//IntegerAssignement"/>
-    <genClasses ecoreClass="FSMModel.ecore#//DeclarationBlock">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FSMModel.ecore#//DeclarationBlock/concreteEntities"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FSMModel.ecore#//DeclarationBlock/classicalExpressions"/>
+    <genClasses image="false">
+      <ecoreClass href="FSMModel.ecore#//AbstractGuard"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="FSMModel.ecore#//Guard"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//Guard/value"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="FSMModel.ecore#//Trigger"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//Trigger/trueTriggers"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//Trigger/falseTriggers"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="FSMModel.ecore#//IntegerAssignement"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="FSMModel.ecore#//DeclarationBlock"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//DeclarationBlock/concreteEntities"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="FSMModel.ecore#//DeclarationBlock/classicalExpressions"/>
+      </genFeatures>
     </genClasses>
   </genPackages>
-  <genPackages prefix="EditionExtension" basePackage="org.gemoc.mocc.fsmkernel.model.FSMModel"
-      disposableProviderFactory="true" providerPackageSuffix="edit.provider" presentationPackageSuffix="editor.presentation"
-      ecorePackage="EditionExtension.ecore#/">
-    <genClasses ecoreClass="EditionExtension.ecore#//IntegerAssignementBlock">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditionExtension.ecore#//IntegerAssignementBlock/actions"/>
+  <genPackages prefix="EditionExtension" basePackage="org.gemoc.mocc.fsmkernel.model.FSMModel" disposableProviderFactory="true" providerPackageSuffix="edit.provider" presentationPackageSuffix="editor.presentation">
+    <ecorePackage href="EditionExtension.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//IntegerAssignementBlock"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="EditionExtension.ecore#//IntegerAssignementBlock/actions"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="EditionExtension.ecore#//IntInfEqual">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditionExtension.ecore#//IntInfEqual/leftValue"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditionExtension.ecore#//IntInfEqual/rightValue"/>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//IntInfEqual"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="EditionExtension.ecore#//IntInfEqual/leftValue"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="EditionExtension.ecore#//IntInfEqual/rightValue"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="EditionExtension.ecore#//IntSupEqual">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditionExtension.ecore#//IntSupEqual/leftValue"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditionExtension.ecore#//IntSupEqual/rightValue"/>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//IntSupEqual"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="EditionExtension.ecore#//IntSupEqual/leftValue"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="EditionExtension.ecore#//IntSupEqual/rightValue"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="EditionExtension.ecore#//RealInfEqual">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditionExtension.ecore#//RealInfEqual/leftValue"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditionExtension.ecore#//RealInfEqual/rightValue"/>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//RealInfEqual"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="EditionExtension.ecore#//RealInfEqual/leftValue"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="EditionExtension.ecore#//RealInfEqual/rightValue"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="EditionExtension.ecore#//RealSupEqual">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditionExtension.ecore#//RealSupEqual/leftValue"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditionExtension.ecore#//RealSupEqual/rightValue"/>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//RealSupEqual"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="EditionExtension.ecore#//RealSupEqual/leftValue"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="EditionExtension.ecore#//RealSupEqual/rightValue"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="EditionExtension.ecore#//IntSelfPlusAssignement"/>
-    <genClasses ecoreClass="EditionExtension.ecore#//IntSelfMinusAssignement"/>
-    <genClasses ecoreClass="EditionExtension.ecore#//IntSelfMultiplyAssignement"/>
-    <genClasses ecoreClass="EditionExtension.ecore#//IntSelfDivideAssignement"/>
-    <genClasses ecoreClass="EditionExtension.ecore#//RealSelfPlusAssignement"/>
-    <genClasses ecoreClass="EditionExtension.ecore#//RealSelfMinusAssignement"/>
-    <genClasses ecoreClass="EditionExtension.ecore#//RealSelfMultiplyAssignement"/>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//IntSelfPlusAssignement"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//IntSelfMinusAssignement"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//IntSelfMultiplyAssignement"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//IntSelfDivideAssignement"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//RealSelfPlusAssignement"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//RealSelfMinusAssignement"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="EditionExtension.ecore#//RealSelfMultiplyAssignement"/>
+    </genClasses>
   </genPackages>
+  <usedGenPackages href="../../fr.inria.aoste.timesquare.ccslkernel.model/model/TimeModel.genmodel#//TimeModel"/>
 </genmodel:GenModel>

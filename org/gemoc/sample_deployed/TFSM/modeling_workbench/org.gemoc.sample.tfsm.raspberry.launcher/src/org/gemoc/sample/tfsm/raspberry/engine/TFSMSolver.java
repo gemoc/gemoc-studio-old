@@ -5,25 +5,27 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 import org.gemoc.sample.tfsm.single_traffic_light_sample.mocc.models.TrafficControlModel;
 
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.BasicType.Element;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockConstraintSystem;
+import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.impl.CCSLModelPackageImpl;
 import fr.inria.aoste.timesquare.ccslkernel.runtime.AbstractRuntimeModel;
 import fr.inria.aoste.timesquare.ccslkernel.runtime.elements.RuntimeClock;
 import fr.inria.aoste.timesquare.ccslkernel.runtime.exceptions.SimulationException;
 import fr.inria.aoste.timesquare.ccslkernel.runtime.simulation.CCSLSimulationEngine;
 import fr.inria.aoste.timesquare.ccslkernel.runtime.simulation.CCSLStepExecutionEngine;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.inria.aoste.timesquare.simulationpolicy.random.RandomSimulationPolicy;
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.ModelElementReference;
-import fr.inria.aoste.trace.TraceFactory;
 
 public class TFSMSolver implements ISolver{
 
@@ -31,6 +33,7 @@ public class TFSMSolver implements ISolver{
 	private CCSLSimulationEngine _solverEngine;
 	private CCSLStepExecutionEngine _executionStep;
 	private ClockConstraintSystem _timeModel;
+	private ActionModel _feedbackModel;
 
 	public TFSMSolver() {
 		_solverModel = new TrafficControlModel();
@@ -62,12 +65,6 @@ public class TFSMSolver implements ISolver{
 		
 	}
 
-	@Override
-	public LogicalStep getNextStep() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	private ArrayList<LogicalStep> _logicalSteps;
 	
 	@Override
@@ -89,19 +86,13 @@ public class TFSMSolver implements ISolver{
 			_logicalSteps.add(ls);
 			for (RuntimeClock rc : firedClocks)
 			{
-				for (Element element : _timeModel.getSubBlock().get(0).getElements())
+				for (ModelSpecificEvent mse : _feedbackModel.getEvents())
 				{
-					if (element instanceof Clock)
+					if (mse.getName().equals("MSE_" + rc.getName()))
 					{
-						Clock clock = (Clock)element;
-						if (clock.getName().equals(rc.getName()))
-						{
-							EventOccurrence eo = TraceFactory.eINSTANCE.createEventOccurrence();
-							ls.getEventOccurrences().add(eo);	
-							ModelElementReference mer = TraceFactory.eINSTANCE.createModelElementReference();
-							mer.getElementRef().add(clock);
-							eo.setReferedElement(mer);
-						}
+						MSEOccurrence occurrence = Gemoc_execution_traceFactory.eINSTANCE.createMSEOccurrence();
+						occurrence.setMse(mse);
+						ls.getMseOccurrences().add(occurrence);
 					}
 				}
 			}			
@@ -116,37 +107,24 @@ public class TFSMSolver implements ISolver{
 	}
 
 	@Override
-	public int proposeLogicalStepByIndex() 
+	public LogicalStep proposeLogicalStep() 
 	{
-		return 0;
+		if (_logicalSteps.size() < 1)
+		{
+			return null;
+		}
+		return _logicalSteps.get(0);
 	}
 
 	@Override
-	public void applyLogicalStepByIndex(int indexOfStepToApply) 
+	public void applyLogicalStep(LogicalStep logicalStep) 
 	{
+		int index = _logicalSteps.indexOf(logicalStep);
 		try {
-			_executionStep.applyLogicalStepByIndex(indexOfStepToApply);
+			_executionStep.applyLogicalStepByIndex(index);
 		} catch (SimulationException e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public URI prepareSolverInputFileForUserModel(URI userModelURI) 
-	{
-		return null;
-	}
-
-	@Override
-	public boolean isSolverInputFileReadyForUserModel(URI userModelURI) 
-	{
-		return false;
-	}
-
-	@Override
-	public void setSolverInputFile(ResourceSet rs, URI solverInputURI) 
-	{
-		_timeModel = (ClockConstraintSystem)rs.getResources().get(0).getContents().get(0);
 	}
 
 	@Override
@@ -168,9 +146,28 @@ public class TFSMSolver implements ISolver{
 	}
 
 	@Override
-	public void setUp(IExecutionContext context) {
+	public void setUp(IExecutionContext context) 
+	{
+		ResourceSet rs = context.getResourceModel().getResourceSet();
+		CCSLModelPackageImpl.init();
+		URI timeModelURI = URI.createPlatformPluginURI(context.getWorkspace().getMoCPath().toString(), true);
+		Resource r = rs.getResource(timeModelURI, true);
+		_timeModel = (ClockConstraintSystem)r.getContents().get(0);
+		URI feedbackURI = URI.createPlatformPluginURI(context.getWorkspace().getFeedbackModelPath().toString(), true);
+		Resource resource = rs.getResource(feedbackURI, true);
+		_feedbackModel = (ActionModel)resource.getContents().get(0);
+	}
+
+	@Override
+	public void dispose() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public ArrayList<ModelElementReference> getAllDiscreteClocks() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

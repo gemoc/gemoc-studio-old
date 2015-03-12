@@ -24,7 +24,7 @@ public class GemocBreakpoint extends DSLBreakpoint {
 	/**
 	 * The break on MSE.
 	 */
-	public static final String BREAK_ON_MSE = "org.gemoc.gemoc_modeling_workbench.ui.breakpoint.breakOnMSE";
+	public static final String BREAK_ON_MSE_OCCURRENCE = "org.gemoc.gemoc_modeling_workbench.ui.breakpoint.breakOnMSE";
 
 	/**
 	 * Should we break on {@link LogicalStep}.
@@ -105,7 +105,7 @@ public class GemocBreakpoint extends DSLBreakpoint {
 	public void setBreakOnMSE(boolean value) {
 		breakOnMSE = value;
 		try {
-			getMarker().setAttribute(GemocBreakpoint.BREAK_ON_MSE, String.valueOf(breakOnMSE)
+			getMarker().setAttribute(GemocBreakpoint.BREAK_ON_MSE_OCCURRENCE, String.valueOf(breakOnMSE)
 					);
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
@@ -127,7 +127,7 @@ public class GemocBreakpoint extends DSLBreakpoint {
 		super.setMarkerAttibutes(marker, resource, instruction, persistent);
 		setInstructionDefaultBreaks(instruction);
 		marker.setAttribute(GemocBreakpoint.BREAK_ON_LOGICAL_STEP, String.valueOf(breakOnLogicalStep));
-		marker.setAttribute(GemocBreakpoint.BREAK_ON_MSE, String.valueOf(breakOnMSE));
+		marker.setAttribute(GemocBreakpoint.BREAK_ON_MSE_OCCURRENCE, String.valueOf(breakOnMSE));
 	}
 
 	private void setInstructionDefaultBreaks(EObject instruction) {
@@ -144,6 +144,6 @@ public class GemocBreakpoint extends DSLBreakpoint {
 	public void setMarker(IMarker marker) throws CoreException {
 		super.setMarker(marker);
 		breakOnLogicalStep =Boolean.valueOf((String) marker.getAttribute(GemocBreakpoint.BREAK_ON_LOGICAL_STEP));
-		breakOnMSE = Boolean.valueOf((String)marker.getAttribute(GemocBreakpoint.BREAK_ON_MSE));
+		breakOnMSE = Boolean.valueOf((String)marker.getAttribute(GemocBreakpoint.BREAK_ON_MSE_OCCURRENCE));
 	}
 }

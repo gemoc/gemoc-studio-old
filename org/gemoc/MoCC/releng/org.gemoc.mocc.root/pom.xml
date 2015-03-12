@@ -7,6 +7,8 @@
     <packaging>pom</packaging>
     <modules>
         <!-- plugins -->
+        <module>../../solver/fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine</module>
+        
         <module>../../AS/org.gemoc.mocc.fsmkernel.model</module>
         <module>../../AS/org.gemoc.mocc.fsmkernel.model.edit</module>
         <module>../../AS/org.gemoc.mocc.fsmkernel.model.editor</module>

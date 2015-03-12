@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.gemoc.gemoc_language_workbench.engine_addon">
+      <Addon
+            Class="fr.inria.aoste.timesquare.backend.vcdgenerator.manager.VCDGeneratorManager"
+            Default="true"
+            Name="VCD visualization">
+      </Addon>
+   </extension>
+
+</plugin>

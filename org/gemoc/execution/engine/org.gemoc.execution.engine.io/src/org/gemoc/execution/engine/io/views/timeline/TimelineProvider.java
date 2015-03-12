@@ -1,5 +1,7 @@
 package org.gemoc.execution.engine.io.views.timeline;
 
+import java.util.Collection;
+
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
 import org.gemoc.execution.engine.io.views.ViewUtils;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
@@ -27,9 +29,9 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	
 	private ExecutionTraceModel getExecutionTrace() {
 		ExecutionTraceModel traceModel = null;;
-		if (_engine.hasCapability(ModelExecutionTracingAddon.class))
+		if (_engine.hasAddon(ModelExecutionTracingAddon.class))
 		{
-			_tracingAddon = _engine.getCapability(ModelExecutionTracingAddon.class);
+			_tracingAddon = _engine.getAddon(ModelExecutionTracingAddon.class);
 			traceModel = _tracingAddon.getExecutionTrace();			
 		}
 		else
@@ -224,6 +226,8 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	private void update(IExecutionEngine engine) 
 	{
 		if (engine == _engine
+			&& getExecutionTrace() != null
+			&& _tracingAddon != null
 			&& _tracingAddon.getCurrentBranch() != null)		
 		{
 			Branch branch = _tracingAddon.getCurrentBranch();
@@ -325,7 +329,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	}
 
 	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
 	{
 		update(engine);
 	}
@@ -353,6 +357,9 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	public void engineStatusChanged(IExecutionEngine engine, RunStatus newStatus) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	protected void setSelectedLogicalStep(LogicalStep ls) {
 	}
 
 

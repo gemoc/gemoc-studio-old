@@ -22,8 +22,8 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated Ccslmocc -->
       <factory
-            uri="http://org.gemoc.mocc.ccslmocc/1.0"
-            class="org.gemoc.mocc.ccslmoc.model.ccslmocc.edit.provider.CcslmoccItemProviderAdapterFactory"
+            uri="http://org.gemoc.moccml/1.0"
+            class="org.gemoc.mocc.ccslmoc.model.moccml.edit.provider.CcslmoccItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

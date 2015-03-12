@@ -162,7 +162,7 @@ public class DSLDebugModelPresentation extends fr.obeo.dsl.debug.ide.ui.DSLDebug
 			changeCurrentStackFrame(frame);
 			if (editorPart instanceof DialectEditor) {
 				final EObject instruction = ((DSLStackFrameAdapter)frame).getCurrentInstruction();
-				SiriusEditorUtils.showInstruction(editorPart, instruction);
+				SiriusEditorUtils.showInstruction((DialectEditor)editorPart, instruction);
 			} else {
 				super.addAnnotations(editorPart, frame);
 			}

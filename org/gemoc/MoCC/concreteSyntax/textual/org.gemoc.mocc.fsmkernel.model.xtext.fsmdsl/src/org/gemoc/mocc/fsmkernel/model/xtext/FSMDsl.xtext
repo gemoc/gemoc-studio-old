@@ -2,7 +2,7 @@
 //And hand modified!
 grammar org.gemoc.mocc.fsmkernel.model.xtext.FSMDsl with fr.inria.aoste.timesquare.ccslkernel.library.xtext.CCSLLibrary
 
-import "http://org.gemoc.mocc.fsmmodel/1.0" as fsmmodel  
+import "http://org.gemoc.moccml.fsmmodel/1.0" as fsmmodel  
 import "http://org.gemoc.mocc.fsmmodel/editionextension/1.0" as extension
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://fr.inria.aoste.timemodel" as timemodel  
@@ -13,7 +13,7 @@ import "http://fr.inria.aoste.timemodel.basicTypes" as BasicType
  
 StateMachineDefinition returns fsmmodel::StateMachineDefinition: 
 	{fsmmodel::StateMachineDefinition}
-	'StateMachineDefinition' name=EString
+	'AutomataDefinition' name=EString
 	'{'
 		(declarationBlock=DeclarationBlock)? 
 		('init: ' initialStates+= [fsmmodel::State|EString]) ( "," initialStates+=[fsmmodel::State|EString])*
@@ -22,11 +22,16 @@ StateMachineDefinition returns fsmmodel::StateMachineDefinition:
 		(transitions+=Transition))+
 		
     '}'; 
- 
+	//'AutomataDefinition'name=EString
+	//'{'
+	//	(declarationBlock=DeclarationBlock)?
+	//	('init: ' initialStates+= [fsmmodel::State|EString]) ( "," initialStates+=[fsmmodel::State|EString])*
+	//	('finals: ' finalStates+=[fsmmodel::State|EString] ( "," finalStates+=[fsmmodel::State|EString])* )?
+	//	( ('states: ' states+=State ( "," states+=State)*) | (transitions+=Transition)+)
+    //'}';
 DeclarationBlock returns fsmmodel::DeclarationBlock: 
    {fsmmodel::DeclarationBlock}
-    'Declarations {'(concreteEntities+=ConcreteEntity)*
-		(classicalExpressions+=BooleanExpression)* '}'
+    'variables {'(concreteEntities+=ConcreteEntity)* (classicalExpressions+=BooleanExpression)*'}'
 ; 
 
 Transition returns fsmmodel::Transition:
@@ -50,18 +55,18 @@ IntegerAssignementBlock returns extension::IntegerAssignementBlock:
 ;
 
 State returns fsmmodel::State:
-	{fsmmodel::State}
+	{fsmmodel::State} 
 	'State' name=EString '('
-		('in' ':' inputTransitions+=[fsmmodel::Transition|EString] ( "," inputTransitions+=[fsmmodel::Transition|EString])* )?
-		('out' ':' outputTransitions+=[fsmmodel::Transition|EString] ( "," outputTransitions+=[fsmmodel::Transition|EString])* )?
+	('in' ':' inputTransitions+=[fsmmodel::Transition|EString] ( "," inputTransitions+=[fsmmodel::Transition|EString])* )?
+	('out' ':' outputTransitions+=[fsmmodel::Transition|EString] ( "," outputTransitions+=[fsmmodel::Transition|EString])* )?
 	')';
 
-
+	
 Guard returns fsmmodel::Guard:
 	{fsmmodel::Guard}
-	('['(value=[ClassicalExpression::BooleanExpression|EString])']')?
+	(value=BooleanExpression)
 	;
-
+	
 Trigger returns fsmmodel::Trigger:
 	{fsmmodel::Trigger}
 	'Trigger'
@@ -75,49 +80,64 @@ BinaryIntegerExpression returns ClassicalExpression::BinaryIntegerExpression:
 
 IntSelfPlusAssign returns extension::IntSelfPlusAssignement:
 	{extension::IntSelfPlusAssignement}
-	('#ref'name=EString)? leftValue=IntegerRef '+=' rightValue=IntegerExpression
+	('#ref'name=EString '=')? leftValue=IntegerRef '+=' rightValue=IntegerExpression
 ;
 
 IntSelfMinusAssign returns extension::IntSelfMinusAssignement:
 	{extension::IntSelfMinusAssignement}
-	('#ref'name=EString)? leftValue=IntegerRef '-=' rightValue=IntegerExpression
+	('#ref'name=EString '=')? leftValue=IntegerRef '-=' rightValue=IntegerExpression
 ;
 
 IntSelfMultAssign returns extension::IntSelfMultiplyAssignement:
 	{extension::IntSelfMultiplyAssignement}
-	('#ref'name=EString)? leftValue=IntegerRef '*=' rightValue=IntegerExpression
+	('#ref'name=EString '=')? leftValue=IntegerRef '*=' rightValue=IntegerExpression
 ;
 
 IntSelfDivAssign returns extension::IntSelfDivideAssignement:
 	{extension::IntSelfDivideAssignement}
-	('#ref'name=EString)? leftValue=IntegerRef '/=' rightValue=IntegerExpression
+	('#ref'name=EString '=')? leftValue=IntegerRef '/=' rightValue=IntegerExpression
 ;
 	
 IntegerAssignement returns fsmmodel::IntegerAssignement:
 	{fsmmodel::IntegerAssignement}
-	('#ref'name=EString)? leftValue=IntegerRef '=' rightValue=IntegerExpression //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
+	('#ref'name=EString ':')? leftValue=IntegerRef '=' rightValue=IntegerExpression //';'//'Assign'  '('leftValue=IntegerRef ',' rightValue=IntegerExpression ')'
 ;
 
 IntegerExpression returns ClassicalExpression::IntegerExpression:
 	BinaryIntegerExpression | UnaryIntegerExpression |IntegerRef | SeqGetHead |IntegerVariableRef;
 
+
+IntegerVariableRef returns ClassicalExpression::IntegerVariableRef:
+	(referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString]".value")
+	|
+	("get("referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString]")") |
+	('IntegerVariableRef' (name=ID)? '['referencedVar=[ClockExpressionAndRelation::AbstractEntity|EString]']')
+	;
 	
+
+
 UnaryIntegerExpression returns ClassicalExpression::UnaryIntegerExpression: 
  UnaryIntPlus | UnaryIntMinus;
 
 IntEqual returns ClassicalExpression::IntEqual:
-	('('('#ref' name=String0)? leftValue=IntegerExpression '==' rightValue=IntegerExpression')')|
-	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=IntegerExpression '==' rightValue=IntegerExpression')');
+	//'('leftValue=IntegerExpression '==' rightValue=IntegerExpression')' |
+	('('('#ref' name=String0 ':')? leftValue=IntegerExpression '==' rightValue=IntegerExpression')')|
+	('('('#ref' name=String0 '::'type=[BasicType::Type|EString] ':')? leftValue=IntegerExpression '==' rightValue=IntegerExpression')');
     
 BooleanRef returns ClassicalExpression::BooleanRef:
-	'b['referencedBool=[BasicType::BooleanElement|EString]']'|'b#ref'name=ID'['referencedBool=[BasicType::BooleanElement|EString]']';
+	(referencedBool=[BasicType::BooleanElement|EString]) | 'b['referencedBool=[BasicType::BooleanElement|EString]']'|'b#ref'name=ID'['referencedBool=[BasicType::BooleanElement|EString]']';
 
 /*RealRef returns ClassicalExpression::RealRef:
 	'r['realElem=[BasicType::RealElement|EString]']'|'r#ref'name=ID'['realElem=[BasicType::RealElement|EString]']';*/
 
 IntegerRef returns ClassicalExpression::IntegerRef:
-	'i['integerElem=[BasicType::IntegerElement|EString]']'|'i#ref'name=ID'['integerElem=[BasicType::IntegerElement|EString]']';
+	(integerElem=[BasicType::IntegerElement|EString]) | 'i.'(integerElem=[BasicType::IntegerElement|EString])|('i#ref'name=ID'['integerElem=[BasicType::IntegerElement|EString]']');
+	//(integerElem=[BasicType::IntegerElement|EString])|('i#ref'name=ID'['integerElem=[BasicType::IntegerElement|EString]']');
+	//(('i#ref'name=ID'[')? integerElem=[BasicType::IntegerElement|EString](']')?);
 
+//IntegerRef returns ClassicalExpression::IntegerRef:
+//	integerElem=[BasicType::IntegerElement|EString]|'i#ref'name=ID'['integerElem=[BasicType::IntegerElement|EString]']';
+	
 /*UnaryRealPlus returns ClassicalExpression::UnaryRealPlus:
 	('+' 
 	'{'
@@ -180,20 +200,24 @@ UnaryIntMinus returns ClassicalExpression::UnaryIntMinus:
 	'})');
 
 IntPlus returns ClassicalExpression::IntPlus:
-		('('('#ref' name=String0)? leftValue=IntegerExpression '+' rightValue=IntegerExpression')')|
-	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=IntegerExpression '+' rightValue=IntegerExpression')');
+	//'(' leftValue=IntegerExpression '+' rightValue=IntegerExpression')' |
+		('('('#ref' name=String0 ':')? leftValue=IntegerExpression '+' rightValue=IntegerExpression')')|
+	('('('#ref' name=String0 '::'type=[BasicType::Type|EString] ':')? leftValue=IntegerExpression '+' rightValue=IntegerExpression')');
 
 IntMinus returns ClassicalExpression::IntMinus:
-		('('('#ref' name=String0)? leftValue=IntegerExpression '-' rightValue=IntegerExpression')')|
-	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=IntegerExpression '-' rightValue=IntegerExpression')');
+	//'(' leftValue=IntegerExpression '-' rightValue=IntegerExpression')' |
+		('('('#ref' name=String0 ':')? leftValue=IntegerExpression '-' rightValue=IntegerExpression')')|
+	('('('#ref' name=String0 '::'type=[BasicType::Type|EString] ':')? leftValue=IntegerExpression '-' rightValue=IntegerExpression')');
 
 IntMultiply returns ClassicalExpression::IntMultiply:
-		('('('#ref' name=String0)? leftValue=IntegerExpression '*' rightValue=IntegerExpression')')|
-	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=IntegerExpression '*' rightValue=IntegerExpression')');
+	//'(' leftValue=IntegerExpression '*' rightValue=IntegerExpression')' |
+		('('('#ref' name=String0 ':')? leftValue=IntegerExpression '*' rightValue=IntegerExpression')')|
+	('('('#ref' name=String0 '::'type=[BasicType::Type|EString] ':')? leftValue=IntegerExpression '*' rightValue=IntegerExpression')');
 
 IntDivide returns ClassicalExpression::IntDivide:
-		('('('#ref' name=String0)? leftValue=IntegerExpression '/' rightValue=IntegerExpression')')|
-	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=IntegerExpression '/' rightValue=IntegerExpression')');
+	//'(' leftValue=IntegerExpression '/' rightValue=IntegerExpression')' |
+		('('('#ref' name=String0 ':')? leftValue=IntegerExpression '/' rightValue=IntegerExpression')')|
+	('('('#ref' name=String0 '::'type=[BasicType::Type|EString] ':')? leftValue=IntegerExpression '/' rightValue=IntegerExpression')');
 
 Not returns ClassicalExpression::Not:
 	('!' operand=BooleanExpression)|
@@ -201,15 +225,15 @@ Not returns ClassicalExpression::Not:
 		operand=BooleanExpression)')';
 
 And returns ClassicalExpression::And:
-	'(' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
+	'and (' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
 	leftValue=BooleanExpression	'^' rightValue=BooleanExpression')';
 
 Or returns ClassicalExpression::Or:
-	'(' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
+	'or (' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
 	leftValue=BooleanExpression	'v' rightValue=BooleanExpression')';
 
 Xor returns ClassicalExpression::Xor:
-	'(' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
+	'xor (' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
 	leftValue=BooleanExpression	'v_' rightValue=BooleanExpression')';
 
 /*RealEqual returns ClassicalExpression::RealEqual:
@@ -226,12 +250,14 @@ RealSup returns ClassicalExpression::RealSup:
 
 
 IntInf returns ClassicalExpression::IntInf:
-	('('('#ref' name=String0)? leftValue=IntegerExpression '<' rightValue=IntegerExpression')')|
-	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=IntegerExpression '<' rightValue=IntegerExpression')');
+	//'(' leftValue=IntegerExpression '<' rightValue=IntegerExpression')' |
+	('('('#ref' name=String0 ':')? leftValue=IntegerExpression '<' rightValue=IntegerExpression')')|
+	('('('#ref' name=String0 '::'type=[BasicType::Type|EString] ':')? leftValue=IntegerExpression '<' rightValue=IntegerExpression')');
 
 IntSup returns ClassicalExpression::IntSup:
-	('('('#ref' name=String0)? leftValue=IntegerExpression '>' rightValue=IntegerExpression')')|
-	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=IntegerExpression '>' rightValue=IntegerExpression')');
+	//'(' leftValue=IntegerExpression '>' rightValue=IntegerExpression')' |
+	('('('#ref' name=String0 ':')? leftValue=IntegerExpression '>' rightValue=IntegerExpression')')|
+	('('('#ref' name=String0 '::'type=[BasicType::Type|EString] ':')? leftValue=IntegerExpression '>' rightValue=IntegerExpression')');
 
 SeqIsEmpty returns ClassicalExpression::SeqIsEmpty:
 	'SeqIsEmpty' ('#ref' name=String0 (':'type=[BasicType::Type|EString])?)?
@@ -252,10 +278,10 @@ SeqGetHead returns ClassicalExpression::SeqGetHead:
 	')';
 
 SeqDecr returns ClassicalExpression::SeqDecr:
-	'Seq--' ('#ref'name=ID)? '(' operand=SeqExpression')';
+	'Seq--' ('#ref'name=ID ':')? '(' operand=SeqExpression')';
 
 SeqSched returns ClassicalExpression::SeqSched:
-	'Seq++' ('#ref'name=ID)? '(' operand=SeqExpression ','integerExpr=IntegerExpression ')';
+	'Seq++' ('#ref'name=ID ':')? '(' operand=SeqExpression ','integerExpr=IntegerExpression ')';
 
 
 BooleanExpression returns ClassicalExpression::BooleanExpression:
@@ -272,13 +298,13 @@ BooleanExpression returns ClassicalExpression::BooleanExpression:
 
 
 IntSupEqual returns extension::IntSupEqual:
-	('('('#ref' name=String0)? leftValue=IntegerExpression '>=' rightValue=IntegerExpression')')|
-	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=IntegerExpression '>=' rightValue=IntegerExpression')');
+	('('('#ref' name=String0 ':')? leftValue=IntegerExpression '>=' rightValue=IntegerExpression')')|
+	('('('#ref' name=String0 '::'type=[BasicType::Type|EString] ':')? leftValue=IntegerExpression '>=' rightValue=IntegerExpression')');
 
 
 IntInfEqual returns extension::IntInfEqual:
-	('('('#ref' name=String0)? leftValue=IntegerExpression '<=' rightValue=IntegerExpression')')|
-	('('('#ref' name=String0 ':'type=[BasicType::Type|EString])? leftValue=IntegerExpression '<=' rightValue=IntegerExpression')');
+	('('('#ref' name=String0 ':')? leftValue=IntegerExpression '<=' rightValue=IntegerExpression')')|
+	('('('#ref' name=String0 '::'type=[BasicType::Type|EString] ':')? leftValue=IntegerExpression '<=' rightValue=IntegerExpression')');
 
 
 

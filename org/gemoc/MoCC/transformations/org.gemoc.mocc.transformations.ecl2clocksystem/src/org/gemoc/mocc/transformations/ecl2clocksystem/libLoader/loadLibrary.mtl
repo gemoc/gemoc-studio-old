@@ -6,7 +6,7 @@
 	'http://www.eclipse.org/ocl/3.1.0/Pivot', 
 	'http://www.eclipse.org/ocl/3.1.0/BaseCST', 
 	'http://www.eclipse.org/ocl/3.1.0/EssentialOCLCST', 
-	'http://org.gemoc.mocc.ccslmocc/1.0', 
+	'http://org.gemoc.moccml/1.0', 
 	'http://fr.inria.aoste.timemodel')]
 
 

@@ -210,11 +210,11 @@ public class TimelineWindow implements ITimelineListener {
 			}
 			this.provider = newProvider;
 			maxTimelineIndex = 0;
-			final int numberOfBranches = provider.getNumberOfBranches();
-			for (int branch = 0; branch < numberOfBranches; ++branch) {
-				maxTimelineIndex = Math.max(maxTimelineIndex, provider.getEnd(branch) - 1);
-			}
 			if (this.provider != null) {
+				final int numberOfBranches = provider.getNumberOfBranches();
+				for (int branch = 0; branch < numberOfBranches; ++branch) {
+					maxTimelineIndex = Math.max(maxTimelineIndex, provider.getEnd(branch) - 1);
+				}
 				this.provider.addTimelineListener(this);
 				for (ITimelineWindowListener listener : getListeners()) {
 					listener.providerChanged(newProvider);

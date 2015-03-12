@@ -1,5 +1,7 @@
 package org.gemoc.execution.engine.io.addons;
 
+import java.util.Collection;
+
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
@@ -39,7 +41,7 @@ public class PrepareViewFrontend extends DefaultEngineAddon
 	}
 
 	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine) 
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) 
 	{
 		_timelineView.update(engine);
 	}

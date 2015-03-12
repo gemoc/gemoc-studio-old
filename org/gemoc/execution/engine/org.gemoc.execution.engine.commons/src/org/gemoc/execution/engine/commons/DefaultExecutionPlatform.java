@@ -8,6 +8,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.gemoc.execution.engine.commons.solvers.ccsl.SolverMock;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionPlatform;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
+import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
@@ -24,7 +25,7 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 	private Collection<IEngineAddon> _addons;
 	private Collection<IMSEStateController> _clockControllers;
 	
-	public DefaultExecutionPlatform(LanguageDefinitionExtension _languageDefinition) throws CoreException 
+	public DefaultExecutionPlatform(LanguageDefinitionExtension _languageDefinition, IRunConfiguration runConfiguration) throws CoreException 
 	{
 		_modelLoader = _languageDefinition.instanciateModelLoader();
 		try
@@ -37,7 +38,8 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 		}
 		_codeExecutor = _languageDefinition.instanciateCodeExecutor();		
 		_addons = _languageDefinition.instanciateEngineAddons();
-		for (EngineAddonSpecificationExtension extension : EngineAddonSpecificationExtensionPoint.getSpecifications())
+		
+		for (EngineAddonSpecificationExtension extension : runConfiguration.getEngineAddonExtensions())
 		{
 			addEngineAddon(extension.instanciateComponent());
 		}
@@ -86,6 +88,7 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 	{
 		_clockControllers.clear();
 		_addons.clear();
+		_solver.dispose();
 	}
 
 	private Object _addonLock = new Object();

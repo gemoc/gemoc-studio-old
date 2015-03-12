@@ -106,7 +106,7 @@ public class CreateNewMoCProject extends Wizard implements INewWizard {
 					 }
 					
 					 String filePath = "mocc/" + _askMoCInfoPage.getTemplateMoCFileNameFile() + ".moccml";
-					 Project.createFile(createdProject, filePath, "StateRelationBasedLibrary "+_askMoCInfoPage.getTemplateMoCFileNameFile().toString()+"{ \n\n}", monitor);
+					 Project.createFile(createdProject, filePath, "AutomataConstraintLibrary "+_askMoCInfoPage.getTemplateMoCFileNameFile().toString()+"{ \n\n}", monitor);
 //						
 					
 					 // save some result for embedding this wizard in a process

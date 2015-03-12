@@ -7,6 +7,7 @@
  *
  * Contributors:
  *    Obeo  - initial API and implementation
+ * 
  ****************************************************************************/
 
 package org.gemoc.mocc.fsmkernel.model.design.actions;
@@ -21,6 +22,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DEdgeSpec;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -57,7 +59,7 @@ public abstract class OpenXtextEmbeddedEditor implements IExternalJavaAction {
 			}
 			if (editPart != null && (editPart instanceof IGraphicalEditPart)) {
 				PopupXTextEditorHelper embeddedEditorHelper = new PopupXTextEditorHelper(
-						(IGraphicalEditPart) editPart/*diagramEditPart*/, o, getInjector());
+						(IGraphicalEditPart) editPart/*diagramEditPart*/, o, getInjector(), getPageLocationX(), getPageLocationY(), getWindowBounds());
 				embeddedEditorHelper.showEditor();
 				break;
 			}
@@ -79,7 +81,46 @@ public abstract class OpenXtextEmbeddedEditor implements IExternalJavaAction {
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchPage page = workbench.getActiveWorkbenchWindow()
 				.getActivePage();
+		//System.out.println("==============================================================");
+		//System.out.println("ActiveWindow Location = " + page.getWorkbenchWindow().getShell().getLocation().x+"/"+page.getWorkbenchWindow().getShell().getLocation().y);
+		//System.out.println("==============================================================");
 		return page.getActiveEditor();
+	}
+	
+	// Added by pihd
+	protected int getPageLocationX()
+	{
+		int x=0;
+		
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchPage page = workbench.getActiveWorkbenchWindow()
+				.getActivePage();
+		x = page.getWorkbenchWindow().getShell().getLocation().x;
+		return x;
+	}
+	
+	protected int getPageLocationY()
+	{
+		int y = 0;
+		
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchPage page = workbench.getActiveWorkbenchWindow()
+				.getActivePage();
+		y = page.getWorkbenchWindow().getShell().getLocation().y;
+		
+		return y;
+	}
+	
+	protected Rectangle getWindowBounds()
+	{
+		Rectangle bound;
+		
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchPage page = workbench.getActiveWorkbenchWindow()
+				.getActivePage();
+		bound = page.getWorkbenchWindow().getShell().getBounds();
+		
+		return bound;
 	}
 
 }

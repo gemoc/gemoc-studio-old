@@ -19,6 +19,9 @@ package fr.obeo.dsl.debug.ide.ui;
 
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -155,6 +158,36 @@ public final class EMFEditorUtils {
 				} else {
 					DebugIdeUiPlugin.getPlugin().log(
 							new IllegalStateException("can't find source for " + instructionUri));
+				}
+			}
+		}
+	}
+
+	/**
+	 * Selects the given instruction in the given {@link IEditorPart}.
+	 * 
+	 * @param editorPart
+	 *            the {@link IEditorPart}
+	 * @param instructionUris
+	 *            the {@link List} of instruction {@link URI}
+	 */
+	public static void selectInstructions(IEditorPart editorPart, final List<URI> instructionUris) {
+		if (editorPart instanceof IViewerProvider) {
+			if (editorPart instanceof IEditingDomainProvider) {
+				final EditingDomain domain = ((IEditingDomainProvider)editorPart).getEditingDomain();
+				final List<EObject> selection = new ArrayList<EObject>();
+				for (URI uri : instructionUris) {
+					EObject eObject = domain.getResourceSet().getEObject(uri, false);
+					if (eObject != null) {
+						selection.add(eObject);
+					}
+				}
+				if (!selection.isEmpty()) {
+					((IViewerProvider)editorPart).getViewer().setSelection(
+							new StructuredSelection(selection), true);
+				} else {
+					DebugIdeUiPlugin.getPlugin().log(
+							new IllegalStateException("can't find source for " + instructionUris));
 				}
 			}
 		}
