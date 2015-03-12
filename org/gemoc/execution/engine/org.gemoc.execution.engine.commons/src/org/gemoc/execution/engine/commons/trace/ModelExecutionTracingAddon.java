@@ -337,4 +337,21 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	CommandExecution.execute(getEditingDomain(), command);
 	}
 
+	@Override
+	public void proposedLogicalStepsChanged(IExecutionEngine engine, final Collection<LogicalStep> logicalSteps) 
+	{
+		RecordingCommand command = new RecordingCommand(getEditingDomain(), "update trace model") {
+
+			@Override
+			protected void doExecute() {
+				if (_lastChoice != null)
+				{
+					_lastChoice.getPossibleLogicalSteps().clear();
+					_lastChoice.getPossibleLogicalSteps().addAll(logicalSteps);
+				}		
+				saveTraceModel(0);
+			}};
+		CommandExecution.execute(getEditingDomain(), command);
+	}
+	
 }
