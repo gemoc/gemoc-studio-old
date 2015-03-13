@@ -153,11 +153,6 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		ISolver solver = _executionContext.getExecutionPlatform().getSolver();
 		Activator.getDefault().debug("restoring solver state: " + choice.getContextState().getSolverState().getSerializableModel());
 		solver.setState(choice.getContextState().getSolverState().getSerializableModel());
-		boolean b = Arrays.equals(solver.getState(), choice.getContextState().getSolverState().getSerializableModel());
-		if (b)
-			Activator.getDefault().debug("new state does equal the restored state");
-		else
-			Activator.getDefault().debug("new state does NOT equal the restored state");
 	}
 
 	public boolean hasRewindHappened(boolean resetFlag) {

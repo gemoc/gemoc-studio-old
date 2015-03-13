@@ -12,7 +12,7 @@
         "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/R201309031307"
         ],
     "ecoretools": [
-        "http://download.eclipse.org/ecoretools/updates/nightly/3.0.x/luna"
+        "http://download.eclipse.org/ecoretools/updates/nightly/2.0.x/luna"
         ],
     "sirius": [
         "http://download.eclipse.org/sirius/updates/nightly/2.0.x/luna"
