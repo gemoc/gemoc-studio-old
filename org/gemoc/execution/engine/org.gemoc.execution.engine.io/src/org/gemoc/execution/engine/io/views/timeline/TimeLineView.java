@@ -141,6 +141,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 				if (engine.hasAddon(TimeLineProviderProvider.class)) {
 					TimeLineProviderProvider providerprovider = engine.getAddon(TimeLineProviderProvider.class);
 					_timelineProvider = providerprovider.getTimeLineProvider();
+					setTimelineProvider(_timelineProvider, start);
 				} else {
 					_timelineProvider = new TimelineProvider(engine);
 					setTimelineProvider(_timelineProvider, start);
