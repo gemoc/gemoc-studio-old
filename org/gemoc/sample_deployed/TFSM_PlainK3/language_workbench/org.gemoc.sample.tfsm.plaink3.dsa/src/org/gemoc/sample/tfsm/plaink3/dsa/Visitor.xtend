@@ -1,29 +1,25 @@
 package org.gemoc.sample.tfsm.plaink3.dsa
 
-import org.gemoc.sample.tfsm.TFSM
-import org.gemoc.sample.tfsm.State
-import org.gemoc.sample.tfsm.Transition
-import org.gemoc.sample.tfsm.TemporalGuard
-import org.gemoc.sample.tfsm.EventGuard
-import org.gemoc.sample.tfsm.EvaluateGuard
-import org.gemoc.sample.tfsm.TimedSystem
-import org.gemoc.sample.tfsm.FSMClock
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
-import static extension org.gemoc.sample.tfsm.plaink3.dsa.TimedSystemVisitorAspect.*
-import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
-import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
-import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
+import org.gemoc.sample.tfsm.EventGuard
+import org.gemoc.sample.tfsm.FSMClock
+import org.gemoc.sample.tfsm.Guard
+import org.gemoc.sample.tfsm.State
+import org.gemoc.sample.tfsm.TFSM
+import org.gemoc.sample.tfsm.TemporalGuard
+import org.gemoc.sample.tfsm.TimedSystem
+import org.gemoc.sample.tfsm.Transition
+
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMClockAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMClockVisitorAspect.*
+import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
+import static extension org.gemoc.sample.tfsm.plaink3.dsa.GuardVisitorAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.StateAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.StateVisitorAspect.*
+import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
+import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TransitionAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TransitionVisitorAspect.*
-import static extension org.gemoc.sample.tfsm.plaink3.dsa.GuardVisitorAspect.*
-import static extension org.gemoc.sample.tfsm.plaink3.dsa.TemporalGuardVisitorAspect.*
-import static extension org.gemoc.sample.tfsm.plaink3.dsa.EventGuardVisitorAspect.*
-import fr.inria.diverse.k3.al.annotationprocessor.TransactionSupport
-import org.gemoc.sample.tfsm.Guard
 
 @Aspect(className=TimedSystem)
 class TimedSystemVisitorAspect 
@@ -35,7 +31,7 @@ class TimedSystemVisitorAspect
 	}	
 }
 
-@Aspect(className=TFSM, transactionSupport = TransactionSupport.EMF)
+@Aspect(className=TFSM)
 class TFSMVisitorAspect 
 {
 
@@ -92,7 +88,7 @@ class StateVisitorAspect
 	}
 }
 
-@Aspect(className=Transition, transactionSupport=TransactionSupport.EMF)
+@Aspect(className=Transition)
 class TransitionVisitorAspect 
 {	
 	def public void visit()

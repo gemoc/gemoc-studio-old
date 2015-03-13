@@ -1,16 +1,16 @@
 package org.gemoc.sample.tfsm.plaink3.dsa
 
-import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
-import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.resource.impl.ResourceFactoryRegistryImpl
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.emf.ecore.impl.EcorePackageImpl
+import org.eclipse.emf.ecore.resource.impl.ResourceFactoryRegistryImpl
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.emf.transaction.TransactionalEditingDomain
 import tfsmextended.tfsmextended.TimedSystem
 import tfsmextended.tfsmextended.impl.TfsmextendedPackageImpl
-import org.gemoc.sample.tfsm.TFSM
+
+import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
+import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
 
 class Main  {
 
@@ -42,7 +42,6 @@ class Main  {
 			}
 
 			i++
-			Thread.sleep(1500)
 		}
 	}
 	
