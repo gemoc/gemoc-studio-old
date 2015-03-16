@@ -46,8 +46,6 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 		{
 			throw new RuntimeException(getName() + " is stopped");
 		}
-		notifyAboutToExecuteLogicalStep();
-		notifyLogicalStepExecuted();
 	}
 	
 	@Override

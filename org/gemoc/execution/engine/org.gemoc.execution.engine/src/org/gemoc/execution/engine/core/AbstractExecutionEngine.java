@@ -208,7 +208,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		if (!_started)
 		{
 			_started = true;
-			Activator.getDefault().gemocRunningEngineRegistry.registerEngine(getName(), this);
 			Runnable r = new Runnable() {
 				
 				@Override
@@ -217,6 +216,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 					try
 					{
 						notifyEngineAboutToStart();
+						Activator.getDefault().gemocRunningEngineRegistry.registerEngine(getName(), AbstractExecutionEngine.this);
 						setEngineStatus(EngineStatus.RunStatus.Running);
 						notifyEngineStarted();
 						getRunnable().run();
