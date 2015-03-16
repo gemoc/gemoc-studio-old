@@ -29,6 +29,8 @@ public interface IEngineAddon {
 	 */
 	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps);
 	
+	public void proposedLogicalStepsChanged(IExecutionEngine engine, Collection<LogicalStep> logicalSteps);
+	
 	/**
 	 * Operation called after the LogicalStep has been chosen
 	 * It also returns the chosen LogicalStep

@@ -387,6 +387,13 @@ public abstract class AbstractGemocAnimatorServices {
 			return res;
 		}
 
+		@Override
+		public void proposedLogicalStepsChanged(IExecutionEngine engine,
+				Collection<LogicalStep> logicalSteps) {
+			// TODO Auto-generated method stub
+			
+		}
+
 	}
 
 	/**

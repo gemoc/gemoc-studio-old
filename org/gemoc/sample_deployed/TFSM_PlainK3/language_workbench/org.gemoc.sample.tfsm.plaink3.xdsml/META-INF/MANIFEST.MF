@@ -1,8 +1,7 @@
 Bundle-SymbolicName: org.gemoc.sample.tfsm.plaink3;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Name: Tfsm
-Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
- org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.0.0";visibility:="reexport",
+Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.gemoc.gemoc_language_workbench.api,
  org.gemoc.execution.engine,
  org.gemoc.execution.engine.commons,
@@ -12,9 +11,11 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
  org.eclipse.swt;bundle-version="3.103.1",
  org.gemoc.gemoc_modeling_workbench.ui;bundle-version="0.1.0",
- org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.0.0";visibility:="reexport",
- org.gemoc.sample.tfsm.plaink3.model;bundle-version="0.0.0";visibility:="reexport",
- org.gemoc.sample.tfsm.plaink3.design;bundle-version="0.0.0";visibility:=reexport
+ org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.sample.tfsm.plaink3.model;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.sample.tfsm.plaink3.design;bundle-version="0.0.0";visibility:=reexport,
+ fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.1.0",
+ org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.1.0"
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Manifest-Version: 1.0

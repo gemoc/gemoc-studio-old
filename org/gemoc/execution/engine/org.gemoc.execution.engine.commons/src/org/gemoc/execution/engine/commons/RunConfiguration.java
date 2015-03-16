@@ -22,7 +22,6 @@ public class RunConfiguration implements IRunConfiguration
 	public static final String LAUNCH_DELAY = "GEMOC_ANIMATE_DELAY";
 	public static final String LAUNCH_SELECTED_LANGUAGE = "GEMOC_LAUNCH_SELECTED_LANGUAGE";
 	public static final String LAUNCH_SELECTED_DECIDER = "GEMOC_LAUNCH_SELECTED_DECIDER";
-	public static final String LAUNCH_ACTIVE_TRACE = "GEMOC_LAUNCH_ACTIVE_TRACE";
 	public static final String LAUNCH_ENTRY_POINT = "GEMOC_LAUNCH_ENTRY_POINT";
 	
 	// parameters that should be derived from the language in future version
@@ -55,7 +54,6 @@ public class RunConfiguration implements IRunConfiguration
 					true);
 			_animationDelay = getAttribute(LAUNCH_DELAY, 0);
 		}
-		_isTraceActive = getAttribute(LAUNCH_ACTIVE_TRACE, false);
 		_deciderName = getAttribute(LAUNCH_SELECTED_DECIDER, "");
 		_deadlockDetectionDepth = getAttribute(LAUNCH_DEADLOCK_DETECTION_DEPTH, 10);
 		_entryPoint = getAttribute(LAUNCH_ENTRY_POINT, "");
@@ -91,12 +89,6 @@ public class RunConfiguration implements IRunConfiguration
 	public int getAnimationDelay() 
 	{
 		return _animationDelay;
-	}
-	
-	private boolean _isTraceActive;
-	public boolean isTraceActive() 
-	{
-		return _isTraceActive;
 	}
 
 	private String _deciderName;	
