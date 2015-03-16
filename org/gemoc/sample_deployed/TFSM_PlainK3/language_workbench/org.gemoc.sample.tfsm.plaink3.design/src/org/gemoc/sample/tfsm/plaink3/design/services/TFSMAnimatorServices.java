@@ -11,7 +11,7 @@ public class TFSMAnimatorServices extends AbstractGemocAnimatorServices {
 	protected List<StringCouple> getRepresentationRefreshList() {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 		
-		res.add(new StringCouple("TFSM","Animatation"));
+		res.add(new StringCouple("TFSM","Animation"));
 		
 		return res;
 	}
