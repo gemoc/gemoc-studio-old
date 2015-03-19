@@ -4,16 +4,16 @@ import fr.inria.aoste.timesquare.ecl.EclQVToHelper;
 modeltype Ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 //modeltype pivot uses 'http://www.eclipse.org/ocl/3.1.0/Pivot';
 
-	modeltype inMM1 uses 'invalid';
+	modeltype inMM1 uses 'http://tfsm/mt';
 
 
-//modeltype inMM uses 'invalid';
+//modeltype inMM uses 'http://tfsm/mt';
 modeltype QVT uses 'http://www.eclipse.org/QVT/1.0.0/Operational';//http://www.eclipse.org/m2m/qvt/oml/1.0.0/Stdlib';//http://www.eclipse.org/qvt/1.0/ImperativeOCL'; 
 modeltype TimeModel uses 'http://fr.inria.aoste.timemodel';
 
 modeltype FeedBack uses 'http://timesquare.inria.fr/feedback';
 
-transformation do_To_CCSL(in inM : inMM, out ccsl : TimeModel, out feedback : FeedBack);
+transformation dotfsmextended_To_CCSL(in inM : inMM1, out ccsl : TimeModel, out feedback : FeedBack);
 property theFeedBackSpec		:FeedBack::ActionModel = null;
 property seqOfMSE :	Sequence(FeedBack::ModelSpecificEvent)    = Sequence{};
 
@@ -38,10 +38,10 @@ query identifyUserRelations() {
 	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
 	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
 	kernelTypes 					+= getLibObjects("platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib")[TimeModel::BasicType::Type];
-	seqOfRelationDeclaration		+= getLibObjects("platform:/resource/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
-	seqOfAbstractEntity				+= getLibObjects("platform:/resource/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
-	seqOfExpressionDeclaration		+= getLibObjects("platform:/resource/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
-	kernelTypes 					+= getLibObjects("platform:/resource/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib")[TimeModel::BasicType::Type];
+	seqOfRelationDeclaration		+= getLibObjects("platform:/plugin/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::RelationDeclaration];
+	seqOfAbstractEntity				+= getLibObjects("platform:/plugin/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity];
+	seqOfExpressionDeclaration		+= getLibObjects("platform:/plugin/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib")[TimeModel::CCSLModel::ClockExpressionAndRelation::ExpressionDeclaration];
+	kernelTypes 					+= getLibObjects("platform:/plugin/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib")[TimeModel::BasicType::Type];
 
 	Kernel_Integer 					:= kernelTypes[name='int']->asSequence()->first();
 	Kernel_Clock_Type				:= kernelTypes[name='clock']->asSequence()->first();	
@@ -62,13 +62,13 @@ query identifyUserRelations() {
 
 main() {
 	identifyUserRelations();
-	inM.rootObjects()[inMM::TimedSystem]->asSequence()->first()-> map tfsmextended2CCSL();
-	inM.rootObjects()[inMM::TimedSystem]->asSequence()->first()-> map tfsmextended2FeedBack();
+	inM.rootObjects()[inMM1::TimedSystem]->asSequence()->first()-> map tfsmextended2CCSL();
+	inM.rootObjects()[inMM1::TimedSystem]->asSequence()->first()-> map tfsmextended2FeedBack();
 
 	}
 
 			
-	mapping inMM::TimedSystem::tfsmextended2CCSL() : TimeModel::CCSLModel::ClockConstraintSystem {
+	mapping inMM1::TimedSystem::tfsmextended2CCSL() : TimeModel::CCSLModel::ClockConstraintSystem {
 	    theCCSLSpec := result;
 	    name := self.name;
 	    theMainBlock :=object TimeModel::CCSLModel::Block{
@@ -88,7 +88,7 @@ main() {
 			
 		}; 
 		imports+= object TimeModel::ImportStatement{
-			importURI := 'platform:/resource/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib';
+			importURI := 'platform:/plugin/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib';
 			alias := 'TFSMMoC';
 			
 		}; 
@@ -101,82 +101,56 @@ main() {
 
 		
 
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map ticks2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ FSMClock ]->map ticks2Clock();
 		
 
 
 		
 
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map fire2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fire2Clock();
 		
 
 
 		
 
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map evaluate2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ EvaluateGuard ]->map evaluate2Clock();
 		
 
 
 		
 
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map occurs2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ FSMEvent ]->map occurs2Clock();
 		
 
 
 		
 
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map entering2Clock();
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map leaving2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ State ]->map entering2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ State ]->map leaving2Clock();
 		
 
 
 		
 
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map evaluatedTrue2Clock();
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map evaluatedFalse2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ EvaluateGuard ]->map evaluatedTrue2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ EvaluateGuard ]->map evaluatedFalse2Clock();
 		
 
 
 		
 
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map start2Clock();
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map stall2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map start2Clock();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map stall2Clock();
 		
 
 
-		
-
-		
-
-
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map occursWhenSolicitate222occursWhenSolicitate();
-		
 		
 
 		
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map fireWhenRestrueOccursTransition502fireWhenRestrueOccursTransition();
-		
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map fireWhenRestrueOccursVariousTransition512fireWhenRestrueOccursVariousTransition();
-		
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map fireWhenEventOccursOneTransition522fireWhenEventOccursOneTransition();
-		
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map fireWhenEventOccursVariousTransition512fireWhenEventOccursVariousTransition();
-		
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map fireWhenTemporalGuardHoldsVariousTransition632fireWhenTemporalGuardHoldsVariousTransition();
-		
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map fireWhenTemporalGuardHoldsOneTransition652fireWhenTemporalGuardHoldsOneTransition();
-		
-		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map EvaluateGuardWhenEnteringState122EvaluateGuardWhenEnteringState();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ FSMEvent ]->map occursWhenSolicitate222occursWhenSolicitate();
 		
 		
 
@@ -184,13 +158,25 @@ main() {
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map enterOnceBeforeToLeave12enterOnceBeforeToLeave();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenRestrueOccursTransition502fireWhenRestrueOccursTransition();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map firingATransitionAlternatesWithLeavingState102firingATransitionAlternatesWithLeavingState();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenRestrueOccursVariousTransition512fireWhenRestrueOccursVariousTransition();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map stateEntering232stateEntering();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenEventOccursOneTransition522fireWhenEventOccursOneTransition();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenEventOccursVariousTransition512fireWhenEventOccursVariousTransition();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenTemporalGuardHoldsVariousTransition632fireWhenTemporalGuardHoldsVariousTransition();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map fireWhenTemporalGuardHoldsOneTransition652fireWhenTemporalGuardHoldsOneTransition();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ Transition ]->map EvaluateGuardWhenEnteringState122EvaluateGuardWhenEnteringState();
 		
 		
 
@@ -198,7 +184,13 @@ main() {
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map fireEvaluationAndResult12fireEvaluationAndResult();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ State ]->map enterOnceBeforeToLeave12enterOnceBeforeToLeave();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ State ]->map firingATransitionAlternatesWithLeavingState102firingATransitionAlternatesWithLeavingState();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ State ]->map stateEntering232stateEntering();
 		
 		
 
@@ -206,16 +198,24 @@ main() {
 
 
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map oneStateAtATime12oneStateAtATime();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ EvaluateGuard ]->map fireEvaluationAndResult12fireEvaluationAndResult();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map oneTransitionAtATime12oneTransitionAtATime();
+
+		
+
+
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map oneStateAtATime12oneStateAtATime();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map firstIsInitialState12firstIsInitialState();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map oneTransitionAtATime12oneTransitionAtATime();
 		
 		
-		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ OclInvalid ]->map firstOnlyOnce82firstOnlyOnce();
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map firstIsInitialState12firstIsInitialState();
+		
+		
+		getVeryAllElementsFromResourceSetOf(self.oclAsType(EObject))[ TFSM ]->map firstOnlyOnce82firstOnlyOnce();
 		
 	}
 
@@ -228,7 +228,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM1::OclInvalid::intermediate_AllTriggeringOccurrences2Expression(an1 : , an2 : , nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::FSMEvent::intermediate_AllTriggeringOccurrences2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_AllTriggeringOccurrences'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -246,7 +246,7 @@ main() {
 		}
 	}
 
-	mapping inMM1::OclInvalid::intermediate_AllTriggeringOccurrences2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : , nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::FSMEvent::intermediate_AllTriggeringOccurrences2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_AllTriggeringOccurrences'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -264,10 +264,10 @@ main() {
 		}
 	}
 	
-	mapping inMM1::OclInvalid::AllTriggeringOccurrences2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::FSMEvent::AllTriggeringOccurrences2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
-		var sources : Sequence() := self.sollicitingTransitions->asSequence();
+		var sources : Sequence(Transition) := self.sollicitingTransitions->asSequence();
 		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
 		var i : Integer := 3;
 		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
@@ -291,7 +291,7 @@ main() {
 		}
 	}
 
-	mapping inMM1::OclInvalid::restrueOccursAfterOrWhileStateEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::restrueOccursAfterOrWhileStateEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'_SampledOn_restrueOccursAfterOrWhileStateEntering';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "SampledOn")->first();
@@ -311,7 +311,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM1::OclInvalid::intermediate_otherFireFromTheSameState32Expression(an1 : t | (t, an2 : t | (t, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::intermediate_otherFireFromTheSameState32Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_otherFireFromTheSameState3'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -329,7 +329,7 @@ main() {
 		}
 	}
 
-	mapping inMM1::OclInvalid::intermediate_otherFireFromTheSameState32Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : t | (t, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::intermediate_otherFireFromTheSameState32Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_otherFireFromTheSameState3'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -347,10 +347,10 @@ main() {
 		}
 	}
 	
-	mapping inMM1::OclInvalid::otherFireFromTheSameState32Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::otherFireFromTheSameState32Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
-		var sources : Sequence(t | (t) := self.source.outgoingTransitions->select(t | (t) <> self)->asSequence();
+		var sources : Sequence(Transition) := self.source.outgoingTransitions->select(t | (t) <> self)->asSequence();
 		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
 		var i : Integer := 3;
 		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
@@ -374,7 +374,7 @@ main() {
 		}
 	}
 
-	mapping inMM1::OclInvalid::eventOccursAfterOrWhileStateEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::eventOccursAfterOrWhileStateEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'_SampledOn_eventOccursAfterOrWhileStateEntering';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "SampledOn")->first();
@@ -394,7 +394,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM1::OclInvalid::intermediate_otherFireFromTheSameState22Expression(an1 : t| (t, an2 : t| (t, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::intermediate_otherFireFromTheSameState22Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_otherFireFromTheSameState2'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -412,7 +412,7 @@ main() {
 		}
 	}
 
-	mapping inMM1::OclInvalid::intermediate_otherFireFromTheSameState22Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : t| (t, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::intermediate_otherFireFromTheSameState22Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_otherFireFromTheSameState2'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -430,10 +430,10 @@ main() {
 		}
 	}
 	
-	mapping inMM1::OclInvalid::otherFireFromTheSameState22Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::otherFireFromTheSameState22Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
-		var sources : Sequence(t| (t) := self.source.outgoingTransitions->select(t| (t) <> self)->asSequence();
+		var sources : Sequence(Transition) := self.source.outgoingTransitions->select(t| (t) <> self)->asSequence();
 		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
 		var i : Integer := 3;
 		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
@@ -461,7 +461,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM1::OclInvalid::intermediate_otherFireFromTheSameState2Expression(an1 : t| (t, an2 : t| (t, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::intermediate_otherFireFromTheSameState2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_otherFireFromTheSameState'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -479,7 +479,7 @@ main() {
 		}
 	}
 
-	mapping inMM1::OclInvalid::intermediate_otherFireFromTheSameState2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : t| (t, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::intermediate_otherFireFromTheSameState2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_otherFireFromTheSameState'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -497,10 +497,10 @@ main() {
 		}
 	}
 	
-	mapping inMM1::OclInvalid::otherFireFromTheSameState2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::otherFireFromTheSameState2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
-		var sources : Sequence(t| (t) := self.source.outgoingTransitions->select(t| (t) <> self)->asSequence();
+		var sources : Sequence(Transition) := self.source.outgoingTransitions->select(t| (t) <> self)->asSequence();
 		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
 		var i : Integer := 3;
 		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
@@ -524,7 +524,7 @@ main() {
 		}
 	}
 
-	mapping inMM1::OclInvalid::delayIsExpired_wrt_StateEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::Transition::delayIsExpired_wrt_StateEntering2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'_DelayFor_delayIsExpired_wrt_StateEntering';
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "DelayFor")->first();
@@ -548,7 +548,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM1::OclInvalid::intermediate_allFiredoutgoingTransition2Expression(an1 : , an2 : , nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::State::intermediate_allFiredoutgoingTransition2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_allFiredoutgoingTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -566,7 +566,7 @@ main() {
 		}
 	}
 
-	mapping inMM1::OclInvalid::intermediate_allFiredoutgoingTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : , nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::State::intermediate_allFiredoutgoingTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_allFiredoutgoingTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -584,10 +584,10 @@ main() {
 		}
 	}
 	
-	mapping inMM1::OclInvalid::allFiredoutgoingTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::State::allFiredoutgoingTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
-		var sources : Sequence() := self.outgoingTransitions->asSequence();
+		var sources : Sequence(Transition) := self.outgoingTransitions->asSequence();
 		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
 		var i : Integer := 3;
 		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
@@ -615,7 +615,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM1::OclInvalid::intermediate_allInputTransition2Expression(an1 : , an2 : , nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::State::intermediate_allInputTransition2Expression(an1 : Transition, an2 : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_allInputTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -633,7 +633,7 @@ main() {
 		}
 	}
 
-	mapping inMM1::OclInvalid::intermediate_allInputTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : , nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::State::intermediate_allInputTransition2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : Transition, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_allInputTransition'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "Union")->first();
@@ -651,10 +651,10 @@ main() {
 		}
 	}
 	
-	mapping inMM1::OclInvalid::allInputTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::State::allInputTransition2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
-		var sources : Sequence() := self.incomingTransitions->asSequence();
+		var sources : Sequence(Transition) := self.incomingTransitions->asSequence();
 		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
 		var i : Integer := 3;
 		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
@@ -682,7 +682,7 @@ main() {
 	
 //Create an intermediate expression
 //create the expressions... 
-	mapping inMM1::OclInvalid::intermediate_onlyOneFirst2Expression(an1 : , an2 : , nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::TFSM::intermediate_onlyOneFirst2Expression(an1 : TFSM, an2 : TFSM, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{ 
 		name := self.name+'intermediate_onlyOneFirst'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "OneTickAndNoMore")->first();
@@ -696,7 +696,7 @@ main() {
 		}
 	}
 
-	mapping inMM1::OclInvalid::intermediate_onlyOneFirst2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : , nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::TFSM::intermediate_onlyOneFirst2Expression(expr :TimeModel::CCSLModel::ClockExpressionAndRelation::Expression , an : TFSM, nb : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		name := self.name+'intermediate_onlyOneFirst'+nb.toString();
 		type := seqOfExpressionDeclaration->select(rd | rd.name = "OneTickAndNoMore")->first();
@@ -708,10 +708,10 @@ main() {
 		}
 	}
 	
-	mapping inMM1::OclInvalid::onlyOneFirst2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
+	mapping inMM1::TFSM::onlyOneFirst2Expression():TimeModel::CCSLModel::ClockExpressionAndRelation::Expression
 	{
 		init{
-		var sources : Sequence() := self->asSequence();
+		var sources : Sequence(TFSM) := self->asSequence();
 		var lastExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression :=null;
 		var i : Integer := 3;
 		var newExpr : TimeModel::CCSLModel::ClockExpressionAndRelation::Expression := lastExpr;
@@ -738,7 +738,7 @@ main() {
 
 
 
-	 	mapping inMM1::OclInvalid::ticks2Clock() :TimeModel::Clock 
+	 	mapping inMM1::FSMClock::ticks2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= self.name+'_ticks';
@@ -759,7 +759,7 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM1::OclInvalid::fire2Clock() :TimeModel::Clock 
+	 	mapping inMM1::Transition::fire2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= self.name+'_fire';
@@ -780,7 +780,7 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM1::OclInvalid::evaluate2Clock() :TimeModel::Clock 
+	 	mapping inMM1::EvaluateGuard::evaluate2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= self.name+'_evaluate';
@@ -801,7 +801,7 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM1::OclInvalid::occurs2Clock() :TimeModel::Clock 
+	 	mapping inMM1::FSMEvent::occurs2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= self.name+'_occurs';
@@ -820,7 +820,7 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM1::OclInvalid::entering2Clock() :TimeModel::Clock 
+	 	mapping inMM1::State::entering2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= self.name+'_entering';
@@ -837,7 +837,7 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM1::OclInvalid::leaving2Clock() :TimeModel::Clock 
+	 	mapping inMM1::State::leaving2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= self.name+'_leaving';
@@ -856,7 +856,7 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM1::OclInvalid::evaluatedTrue2Clock() :TimeModel::Clock 
+	 	mapping inMM1::EvaluateGuard::evaluatedTrue2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= self.name+'_evaluatedTrue';
@@ -873,7 +873,7 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM1::OclInvalid::evaluatedFalse2Clock() :TimeModel::Clock 
+	 	mapping inMM1::EvaluateGuard::evaluatedFalse2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= self.name+'_evaluatedFalse';
@@ -892,7 +892,7 @@ main() {
 		}
 
 //relation stuff		
-	 	mapping inMM1::OclInvalid::start2Clock() :TimeModel::Clock 
+	 	mapping inMM1::TFSM::start2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= self.name+'_start';
@@ -909,7 +909,7 @@ main() {
 				theMainBlock.elements += result;
 			}
 		}
-	 	mapping inMM1::OclInvalid::stall2Clock() :TimeModel::Clock 
+	 	mapping inMM1::TFSM::stall2Clock() :TimeModel::Clock 
 			when {  }
 		{
 			name:= self.name+'_stall';
@@ -931,7 +931,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM1::OclInvalid::occursWhenSolicitate222occursWhenSolicitate(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::FSMEvent::occursWhenSolicitate222occursWhenSolicitate(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.sollicitingTransitions->size() >0) 
 				
@@ -954,7 +954,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM1::OclInvalid::fireWhenRestrueOccursTransition502fireWhenRestrueOccursTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::Transition::fireWhenRestrueOccursTransition502fireWhenRestrueOccursTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedGuard.oclIsKindOf(EvaluateGuard) and self.source.outgoingTransitions->select(t | (t) <> self)->size() = 0) 
 				
@@ -975,7 +975,7 @@ main() {
 		}
 		
 	
-		mapping inMM1::OclInvalid::fireWhenRestrueOccursVariousTransition512fireWhenRestrueOccursVariousTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::Transition::fireWhenRestrueOccursVariousTransition512fireWhenRestrueOccursVariousTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedGuard.oclIsKindOf(EvaluateGuard) and self.source.outgoingTransitions->select(t | (t) <> self)->size() > 0) 
 				
@@ -1004,7 +1004,7 @@ main() {
 		}
 		
 	
-		mapping inMM1::OclInvalid::fireWhenEventOccursOneTransition522fireWhenEventOccursOneTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::Transition::fireWhenEventOccursOneTransition522fireWhenEventOccursOneTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedGuard.oclIsKindOf(EventGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() = 0) 
 				
@@ -1025,7 +1025,7 @@ main() {
 		}
 		
 	
-		mapping inMM1::OclInvalid::fireWhenEventOccursVariousTransition512fireWhenEventOccursVariousTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::Transition::fireWhenEventOccursVariousTransition512fireWhenEventOccursVariousTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedGuard.oclIsKindOf(EventGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() > 0) 
 				
@@ -1054,7 +1054,7 @@ main() {
 		}
 		
 	
-		mapping inMM1::OclInvalid::fireWhenTemporalGuardHoldsVariousTransition632fireWhenTemporalGuardHoldsVariousTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::Transition::fireWhenTemporalGuardHoldsVariousTransition632fireWhenTemporalGuardHoldsVariousTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedGuard.oclIsKindOf(TemporalGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() > 0) 
 				
@@ -1088,7 +1088,7 @@ main() {
 		}
 		
 	
-		mapping inMM1::OclInvalid::fireWhenTemporalGuardHoldsOneTransition652fireWhenTemporalGuardHoldsOneTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::Transition::fireWhenTemporalGuardHoldsOneTransition652fireWhenTemporalGuardHoldsOneTransition(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedGuard.oclIsKindOf(TemporalGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() = 0) 
 				
@@ -1110,7 +1110,7 @@ main() {
 		}
 		
 	
-		mapping inMM1::OclInvalid::EvaluateGuardWhenEnteringState122EvaluateGuardWhenEnteringState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::Transition::EvaluateGuardWhenEnteringState122EvaluateGuardWhenEnteringState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(self.ownedGuard.oclIsKindOf(EvaluateGuard)) 
 				
@@ -1133,7 +1133,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM1::OclInvalid::enterOnceBeforeToLeave12enterOnceBeforeToLeave(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::State::enterOnceBeforeToLeave12enterOnceBeforeToLeave(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
 		 	name := self.name+"Alternates_enterOnceBeforeToLeave";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Alternates")->first();
@@ -1150,7 +1150,7 @@ main() {
 		}
 		
 	
-		mapping inMM1::OclInvalid::firingATransitionAlternatesWithLeavingState102firingATransitionAlternatesWithLeavingState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::State::firingATransitionAlternatesWithLeavingState102firingATransitionAlternatesWithLeavingState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
 		 	name := self.name+"Coincides_firingATransitionAlternatesWithLeavingState";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
@@ -1167,7 +1167,7 @@ main() {
 		}
 		
 	
-		mapping inMM1::OclInvalid::stateEntering232stateEntering(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::State::stateEntering232stateEntering(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 			when { 
 				(not (self = self.owningFSM.initialState)) 
 				
@@ -1190,7 +1190,7 @@ main() {
 
 //relation stuff		
 	
-		mapping inMM1::OclInvalid::fireEvaluationAndResult12fireEvaluationAndResult(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::EvaluateGuard::fireEvaluationAndResult12fireEvaluationAndResult(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
 		 	name := self.name+"TransitionRule_fireEvaluationAndResult";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "TransitionRule")->first();
@@ -1215,7 +1215,7 @@ main() {
 	
 
 //Create an intermediate relation
-	mapping inMM1::OclInvalid::intermediate_oneStateAtATime12oneStateAtATime(an1 : , an2 : , nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	mapping inMM1::TFSM::intermediate_oneStateAtATime12oneStateAtATime(an1 : State, an2 : State, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 	{
 		name := self.name+'intermediate_oneStateAtATime'+nbi.toString()+"_"+nbj.toString();
 		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Exclusion']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Exclusion).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
@@ -1233,10 +1233,10 @@ main() {
 		}
 	}
 	
-	mapping inMM1::OclInvalid::oneStateAtATime12oneStateAtATime()
+	mapping inMM1::TFSM::oneStateAtATime12oneStateAtATime()
 	{
 		init{
-			var sources : Sequence() := self.ownedStates->asSequence();
+			var sources : Sequence(State) := self.ownedStates->asSequence();
 			var i : Integer := 1;
 			var j : Integer := 1;
 			var size : Integer = sources->size(); 
@@ -1255,7 +1255,7 @@ main() {
 	
 
 //Create an intermediate relation
-	mapping inMM1::OclInvalid::intermediate_oneTransitionAtATime12oneTransitionAtATime(an1 : , an2 : , nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+	mapping inMM1::TFSM::intermediate_oneTransitionAtATime12oneTransitionAtATime(an1 : Transition, an2 : Transition, nbi : Integer, nbj : Integer):TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 	{
 		name := self.name+'intermediate_oneTransitionAtATime'+nbi.toString()+"_"+nbj.toString();
 		var seqAbstract : Sequence(Stdlib::Element) := seqOfRelationDeclaration[name = 'Exclusion']->first().oclAsType(TimeModel::CCSLModel::ClockExpressionAndRelation::KernelRelation::Exclusion).allSubobjectsOfKind(TimeModel::CCSLModel::ClockExpressionAndRelation::AbstractEntity)->asSequence();
@@ -1273,10 +1273,10 @@ main() {
 		}
 	}
 	
-	mapping inMM1::OclInvalid::oneTransitionAtATime12oneTransitionAtATime()
+	mapping inMM1::TFSM::oneTransitionAtATime12oneTransitionAtATime()
 	{
 		init{
-			var sources : Sequence() := self.ownedStates.outgoingTransitions->asSequence();
+			var sources : Sequence(Transition) := self.ownedStates.outgoingTransitions->asSequence();
 			var i : Integer := 1;
 			var j : Integer := 1;
 			var size : Integer = sources->size(); 
@@ -1293,7 +1293,7 @@ main() {
 
 		
 	
-		mapping inMM1::OclInvalid::firstIsInitialState12firstIsInitialState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::TFSM::firstIsInitialState12firstIsInitialState(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
 		 	name := self.name+"Coincides_firstIsInitialState";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
@@ -1310,7 +1310,7 @@ main() {
 		}
 		
 	
-		mapping inMM1::OclInvalid::firstOnlyOnce82firstOnlyOnce(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
+		mapping inMM1::TFSM::firstOnlyOnce82firstOnlyOnce(): TimeModel::CCSLModel::ClockExpressionAndRelation::Relation
 		{
 		 	name := self.name+"Coincides_firstOnlyOnce";
 			type := seqOfRelationDeclaration->select(rd | rd.name = "Coincides")->first();
@@ -1347,59 +1347,59 @@ main() {
 
 
 
-mapping inMM::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
+mapping inMM1::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 	    theFeedBackSpec := result;
 		importStatements+= object FeedBack::ImportStatement{
 			importURI := getModelPath(ccsl.objectsOfType(Clock)->asSequence()->first().oclAsType(EObject));
 		}; 
 		
 
-	inM.rootObjects().allSubobjects()->including(self)[ OclInvalid ]->map ticks2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ FSMClock ]->map ticks2MSE();
 
 
 
 
 		
 
-	inM.rootObjects().allSubobjects()->including(self)[ OclInvalid ]->map fire2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ Transition ]->map fire2MSE();
 
 
 
 
 		
 
-	inM.rootObjects().allSubobjects()->including(self)[ OclInvalid ]->map evaluate2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ EvaluateGuard ]->map evaluate2MSE();
 
 
 
 
 		
 
-	inM.rootObjects().allSubobjects()->including(self)[ OclInvalid ]->map occurs2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ FSMEvent ]->map occurs2MSE();
 
 
 
 
 		
 
-	inM.rootObjects().allSubobjects()->including(self)[ OclInvalid ]->map entering2MSE();
-	inM.rootObjects().allSubobjects()->including(self)[ OclInvalid ]->map leaving2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ State ]->map entering2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ State ]->map leaving2MSE();
 
 
 
 
 		
 
-	inM.rootObjects().allSubobjects()->including(self)[ OclInvalid ]->map evaluatedTrue2MSE();
-	inM.rootObjects().allSubobjects()->including(self)[ OclInvalid ]->map evaluatedFalse2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ EvaluateGuard ]->map evaluatedTrue2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ EvaluateGuard ]->map evaluatedFalse2MSE();
 
 
 
 
 		
 
-	inM.rootObjects().allSubobjects()->including(self)[ OclInvalid ]->map start2MSE();
-	inM.rootObjects().allSubobjects()->including(self)[ OclInvalid ]->map stall2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ TFSM ]->map start2MSE();
+	inM.rootObjects().allSubobjects()->including(self)[ TFSM ]->map stall2MSE();
 
 
 
@@ -1438,7 +1438,7 @@ mapping inMM::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 	}		
 
 
-	 	mapping inMM1::OclInvalid::ticks2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM1::FSMClock::ticks2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+self.name+'_ticks';
@@ -1451,7 +1451,7 @@ mapping inMM::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM1::OclInvalid::fire2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM1::Transition::fire2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+self.name+'_fire';
@@ -1464,7 +1464,7 @@ mapping inMM::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM1::OclInvalid::evaluate2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM1::EvaluateGuard::evaluate2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+self.name+'_evaluate';
@@ -1477,7 +1477,7 @@ mapping inMM::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM1::OclInvalid::occurs2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM1::FSMEvent::occurs2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+self.name+'_occurs';
@@ -1488,7 +1488,7 @@ mapping inMM::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM1::OclInvalid::entering2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM1::State::entering2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+self.name+'_entering';
@@ -1499,7 +1499,7 @@ mapping inMM::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM1::OclInvalid::leaving2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM1::State::leaving2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+self.name+'_leaving';
@@ -1510,7 +1510,7 @@ mapping inMM::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM1::OclInvalid::evaluatedTrue2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM1::EvaluateGuard::evaluatedTrue2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+self.name+'_evaluatedTrue';
@@ -1521,7 +1521,7 @@ mapping inMM::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM1::OclInvalid::evaluatedFalse2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM1::EvaluateGuard::evaluatedFalse2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+self.name+'_evaluatedFalse';
@@ -1532,7 +1532,7 @@ mapping inMM::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM1::OclInvalid::start2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM1::TFSM::start2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+self.name+'_start';
@@ -1543,7 +1543,7 @@ mapping inMM::TimedSystem::tfsmextended2FeedBack() : FeedBack::ActionModel {
 				seqOfMSE += result
 			}
 		}
-	 	mapping inMM1::OclInvalid::stall2MSE() :FeedBack::ModelSpecificEvent 
+	 	mapping inMM1::TFSM::stall2MSE() :FeedBack::ModelSpecificEvent 
 			when {  }
 		{
 			name:= 'MSE_'+self.name+'_stall';
