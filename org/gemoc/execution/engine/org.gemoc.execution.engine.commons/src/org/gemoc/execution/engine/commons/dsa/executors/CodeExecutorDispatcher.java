@@ -47,13 +47,16 @@ public class CodeExecutorDispatcher implements ICodeExecutor
 	@Override
 	public Object execute(MSEOccurrence mseOccurrence) throws CodeExecutionException 
 	{		
+		int count = 0;
 		for (ICodeExecutor executor : _executors) 
 		{
+			count++;
 			try {
 				return executor.execute(mseOccurrence);
 			} catch (CodeExecutionException e) 
 			{
-				org.gemoc.execution.engine.commons.Activator.getDefault().error("", e);
+				org.gemoc.execution.engine.commons.Activator.getDefault().warn( "Code executor("+count+"/"+_executors.size()+") "+executor.getExcutorID()+" wasn't able to process the request. "+e.getMessage());
+				//org.gemoc.execution.engine.commons.Activator.getDefault().error("", e);
 			}
 		}
 		throw new CodeExecutionException("No code executor could perform the action call. (a commons mistake is : missing package export of the called class or aspect)", mseOccurrence);
@@ -72,5 +75,10 @@ public class CodeExecutorDispatcher implements ICodeExecutor
 			}
 		}
 		throw new CodeExecutionException("No code executor could perform the action call. (a commons mistake is : missing package export of the called class or aspect)", null);
+	}
+	
+	@Override
+	public String getExcutorID() {
+		return this.getClass().getSimpleName();
 	}
 }

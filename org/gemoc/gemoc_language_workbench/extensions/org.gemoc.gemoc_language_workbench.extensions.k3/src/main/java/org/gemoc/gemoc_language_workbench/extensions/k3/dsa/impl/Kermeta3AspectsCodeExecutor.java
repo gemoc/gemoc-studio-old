@@ -65,7 +65,7 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
 		}
 		Method bestApplicableMethod = getBestApplicableMethod(caller, methodName, staticParameters);
 		if (bestApplicableMethod == null)
-			throw new CodeExecutionException("No static class found or no method found call: " + mseOccurrence, mseOccurrence); 
+			throw new CodeExecutionException("static class not found or method not found when calling "+methodName+ " on "+caller+". MSEOccurence=" + mseOccurrence, mseOccurrence); 
 		
 		Object[] args = new Object[0];
 		if (staticParameters != null) 
@@ -278,6 +278,10 @@ public class Kermeta3AspectsCodeExecutor implements ICodeExecutor {
          }
      }
 
+    @Override
+	public String getExcutorID() {
+		return this.getClass().getSimpleName()+"["+bundleSymbolicName+"]";
+	}
 
 //	@Override
 //	public boolean canExecute(ActionCall call) 

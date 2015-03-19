@@ -55,4 +55,9 @@ public class JavaCodeExecutor implements ICodeExecutor {
 		return result;
 	}
 
+	@Override
+	public String getExcutorID() {
+		return this.getClass().getSimpleName();
+	}
+
 }
