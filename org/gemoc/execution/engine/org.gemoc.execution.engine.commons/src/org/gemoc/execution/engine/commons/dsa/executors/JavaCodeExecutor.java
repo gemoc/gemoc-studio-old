@@ -49,8 +49,10 @@ public class JavaCodeExecutor implements ICodeExecutor {
 		try {
 			method = caller.getClass().getMethod(methodName, parameterTypes);
 			result =  method.invoke(caller, mseoccurrence.getParameters());
-		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			throw new CodeExecutionException("Could not perform action call, see inner exception.", e, mseoccurrence);
+		} catch (NoSuchMethodException  e) {
+			throw new CodeExecutionException("No applicable method "+ methodName +"for this code executor. Could not perform action call, see inner exception.", e, mseoccurrence, false);		
+		} catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			throw new CodeExecutionException("Could not perform action call, see inner exception.", e, mseoccurrence, true);
 		}
 		return result;
 	}

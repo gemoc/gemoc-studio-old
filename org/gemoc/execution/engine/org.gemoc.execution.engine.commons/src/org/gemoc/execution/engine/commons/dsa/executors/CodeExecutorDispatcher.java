@@ -55,8 +55,13 @@ public class CodeExecutorDispatcher implements ICodeExecutor
 				return executor.execute(mseOccurrence);
 			} catch (CodeExecutionException e) 
 			{
-				org.gemoc.execution.engine.commons.Activator.getDefault().warn( "Code executor("+count+"/"+_executors.size()+") "+executor.getExcutorID()+" wasn't able to process the request. "+e.getMessage());
-				//org.gemoc.execution.engine.commons.Activator.getDefault().error("", e);
+				if (e.isCodeExecutionApplicable()){
+					org.gemoc.execution.engine.commons.Activator.getDefault().error( "Code executor("+count+"/"+_executors.size()+") "+executor.getExcutorID()+" wasn't able to process the request. "+e.getMessage(), e);
+					//org.gemoc.execution.engine.commons.Activator.getDefault().error("", e);
+					throw new CodeExecutionException("An applicable code executor was found but failed due to "+e.getMessage(), mseOccurrence);
+				}else{
+					org.gemoc.execution.engine.commons.Activator.getDefault().debug( "Code executor("+count+"/"+_executors.size()+") "+executor.getExcutorID()+" wasn't able to process the request. "+e.getMessage());
+				}
 			}
 		}
 		throw new CodeExecutionException("No code executor could perform the action call. (a commons mistake is : missing package export of the called class or aspect)", mseOccurrence);
