@@ -12,6 +12,10 @@ public interface IRunConfiguration {
 
 	URI getExecutedModelURI();
 	
+	URI getExecutedModelAsMelangeURI();
+	
+	String getMelangeQuery();
+	
 	URI getAnimatorURI();
 
 	int getAnimationDelay();

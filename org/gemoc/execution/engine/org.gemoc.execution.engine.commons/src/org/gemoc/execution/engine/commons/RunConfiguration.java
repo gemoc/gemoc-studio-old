@@ -21,6 +21,7 @@ public class RunConfiguration implements IRunConfiguration
 	public static final String LAUNCH_MODEL_PATH = "GEMOC_LAUNCH_MODEL_PATH";
 	public static final String LAUNCH_DELAY = "GEMOC_ANIMATE_DELAY";
 	public static final String LAUNCH_SELECTED_LANGUAGE = "GEMOC_LAUNCH_SELECTED_LANGUAGE";
+	public static final String LAUNCH_MELANGE_QUERY = "GEMOC_LAUNCH_MELANGE_QUERY";
 	public static final String LAUNCH_SELECTED_DECIDER = "GEMOC_LAUNCH_SELECTED_DECIDER";
 	public static final String LAUNCH_ACTIVE_TRACE = "GEMOC_LAUNCH_ACTIVE_TRACE";
 	public static final String LAUNCH_ENTRY_POINT = "GEMOC_LAUNCH_ENTRY_POINT";
@@ -46,6 +47,7 @@ public class RunConfiguration implements IRunConfiguration
 		_modelURI = URI.createPlatformResourceURI(
 				getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, ""),
 				true);
+		_melangeQuery = getAttribute(LAUNCH_MELANGE_QUERY, "");
 		String animatorURIAsString = getAttribute("airdResource", "");
 		if (animatorURIAsString != null
 			&& !animatorURIAsString.equals(""))
@@ -111,6 +113,19 @@ public class RunConfiguration implements IRunConfiguration
 	public URI getExecutedModelURI() 
 	{
 		return _modelURI;
+	}
+	
+	private String _melangeQuery;
+	@Override
+	public String getMelangeQuery(){
+		return _melangeQuery;
+	}
+	@Override
+	public URI getExecutedModelAsMelangeURI() 
+	{
+		if(_melangeQuery.isEmpty()) return _modelURI;
+		String melangeURIString = _modelURI.toString().replace("platform:/", "melange:/") + _melangeQuery;
+		return URI.createURI(melangeURIString);
 	}
 
 	private URI _animatorURI;
