@@ -49,7 +49,7 @@ public class ModelExecutionContext implements IExecutionContext
 			setUpFeedbackModel();
 			
 			// check that the initial resource hasn't been loaded more than once via melange
-			_runConfiguration.getExecutedModelURI().path();
+			
 			int resPos = 0;
 			for(Resource res : _resourceModel.getResourceSet().getResources()){
 				if(resPos!=0 && res.getURI().path().equals(_runConfiguration.getExecutedModelURI().path())){
