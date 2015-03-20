@@ -97,8 +97,9 @@ public class DefaultModelLoader implements IModelLoader {
 	private Session openNewSiriusSession(IExecutionContext context, URI sessionResourceURI)
 			throws CoreException 
 	{
+		boolean useMelange =context.getRunConfiguration().getMelangeQuery() != null && !context.getRunConfiguration().getMelangeQuery().isEmpty();	
 		// calculating model URI as MelangeURI
-		URI modelURI = context.getRunConfiguration().getExecutedModelAsMelangeURI();
+		URI modelURI = useMelange ? context.getRunConfiguration().getExecutedModelAsMelangeURI() : context.getRunConfiguration().getExecutedModelURI();
 
 		// create and configure resource set
 		HashMap<String, String> nsURIMapping = getnsURIMapping(context); 
@@ -108,7 +109,7 @@ public class DefaultModelLoader implements IModelLoader {
 		Resource r = rs.getResource(modelURI, true);
 		
 		// calculating aird URI
-		URI airdURI = URI.createURI(sessionResourceURI.toString().replace("platform:/", "melange:/"));		
+		URI airdURI = useMelange ? URI.createURI(sessionResourceURI.toString().replace("platform:/", "melange:/")): sessionResourceURI;		
 		//URI airdURI = sessionResourceURI;
 
 		// create and load sirius session
