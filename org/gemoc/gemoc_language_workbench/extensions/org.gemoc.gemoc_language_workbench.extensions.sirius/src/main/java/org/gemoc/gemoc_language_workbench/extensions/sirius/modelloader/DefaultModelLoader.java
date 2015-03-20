@@ -3,15 +3,19 @@ package org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIHandler;
@@ -38,12 +42,14 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.xtext.resource.XtextPlatformResourceURIHandler;
 import org.eclipse.xtext.util.StringInputStream;
+import org.gemoc.commons.eclipse.emf.EMFResource;
 import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.core.DebugURIHandler;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
+import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.debug.DebugSessionFactory;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocAnimatorServices;
 
@@ -91,13 +97,12 @@ public class DefaultModelLoader implements IModelLoader {
 	private Session openNewSiriusSession(IExecutionContext context, URI sessionResourceURI)
 			throws CoreException 
 	{
-		// calculating new model URI
-		String additionalInfo = "?mm=http://tfsmextended";		
-		String modelURIAsString = context.getRunConfiguration().getExecutedModelURI().toString().replace("platform:/", "melange:/") + additionalInfo;
-		URI modelURI = URI.createURI(modelURIAsString);
+		// calculating model URI as MelangeURI
+		URI modelURI = context.getRunConfiguration().getExecutedModelAsMelangeURI();
 
 		// create and configure resource set
-		final ResourceSet rs = createAndConfigureResourceSet(additionalInfo, modelURI);
+		HashMap<String, String> nsURIMapping = getnsURIMapping(context); 
+		final ResourceSet rs = createAndConfigureResourceSet(modelURI, nsURIMapping);
 		
 		// load model resource and resolve all proxies
 		Resource r = rs.getResource(modelURI, true);
@@ -162,28 +167,62 @@ public class DefaultModelLoader implements IModelLoader {
 		return session;
 	}
 
-	private ResourceSet createAndConfigureResourceSet(String additionalInfo, URI modelURI) 
+	private ResourceSet createAndConfigureResourceSet(URI modelURI, HashMap<String, String> nsURIMapping) 
 	{
 		final ResourceSet rs = ResourceSetFactory.createFactory().createResourceSet(modelURI);
 		// fix sirius to prevent non intentional model savings
 		rs.getURIConverter().getURIHandlers().add(0, new DebugURIHandler());
 		final String fileExtension = modelURI.fileExtension();
-		final XMLURIHandler handler = new XMLURIHandler(additionalInfo, fileExtension); // use to resolve cross ref URI during XMI parsing
+		// indicates which melange query should be added to the xml uri handler for a given extension 
+		final XMLURIHandler handler = new XMLURIHandler(modelURI.query(), fileExtension); // use to resolve cross ref URI during XMI parsing
 		handler.setResourceSet(rs);
 		rs.getLoadOptions().put(XMLResource.OPTION_URI_HANDLER, handler);
-		rs.setURIConverter(new MelangeURIConverter(fileExtension));
+		rs.setURIConverter(new MelangeURIConverter(fileExtension, nsURIMapping));
 		return rs;
 	}
 
+	
+	// TODO must be extended to support more complex mappings, currently use only the first package in the genmodel
+	// TODO actually, melange should produce the nsURI mapping and register it in some way so we can retreive it 
+	protected HashMap<String, String> getnsURIMapping(IExecutionContext context){
+		HashMap<String, String> nsURIMapping =  new HashMap<String, String>();
+		// dirty hack, simply open the original file in a separate ResourceSet and ask its root element class nsURI
+		String melangeQuery = context.getRunConfiguration().getExecutedModelAsMelangeURI().query();		
+		if(melangeQuery!= null && !melangeQuery.isEmpty()){
+			String targetNsUri = melangeQuery.substring(melangeQuery.indexOf('=')+1);
+			Object o = EMFResource.getFirstContent(context.getRunConfiguration().getExecutedModelURI());
+			if(o instanceof EObject){
+				// DIRTY, try to find best nsURI, need major refactoring in Melange, 
+				EPackage rootPackage = ((EObject)o).eClass().getEPackage();
+				while(rootPackage.getESuperPackage() != null){
+					rootPackage = rootPackage.getESuperPackage();
+				}
+				nsURIMapping.put(rootPackage.getNsURI(),targetNsUri);
+			}
+		}
+		// a better solution would be to add the relevant data in xdsml and look for the mapping there
+		/*
+		String xdsmluri = context.getLanguageDefinitionExtension().getXDSMLFilePath();
+		if (!xdsmluri.startsWith("platform:/plugin"))
+			xdsmluri = "platform:/plugin" + xdsmluri;
+		Object o = EMFResource.getFirstContent(xdsmluri);
+		if(o != null && o instanceof LanguageDefinition){
+			LanguageDefinition ld = (LanguageDefinition)o;			
+			...
+		}*/
+		return nsURIMapping;
+	}
 	
 	class MelangeURIConverter extends ExtensibleURIConverterImpl
 	{
 
 		private String _fileExtension;
+		private HashMap<String, String> _nsURIMapping;
 
-		public MelangeURIConverter(String fileExtension)
+		public MelangeURIConverter(String fileExtension, HashMap<String, String> nsURIMapping)
 		{
 			_fileExtension = fileExtension;
+			_nsURIMapping = nsURIMapping;
 		}
 
 		@Override
@@ -208,7 +247,10 @@ public class DefaultModelLoader implements IModelLoader {
 					{
 						originalInputStream = super.createInputStream(uriToUse, options);								
 						String originalContent = convertStreamToString(originalInputStream);
-						String modifiedContent = originalContent.replace("http://www.gemoc.org/sample/tfsm", "http://tfsmextended");
+						String modifiedContent = originalContent;
+						for(Entry<String, String> entry : _nsURIMapping.entrySet()){
+							modifiedContent = modifiedContent.replace(entry.getKey(), entry.getValue());
+						}
 						result = new StringInputStream(modifiedContent);
 					}
 					finally
@@ -276,6 +318,10 @@ public class DefaultModelLoader implements IModelLoader {
 		public XMLURIHandler(String queryParameters, String fileExtension) 
 		{
 			_queryParameters = queryParameters;
+			if(_queryParameters==null) 
+				_queryParameters=""; 
+			else 
+				_queryParameters = "?"+_queryParameters;
 			_fileExtension = fileExtension;
 		}
 		
@@ -299,4 +345,6 @@ public class DefaultModelLoader implements IModelLoader {
 		}
 	}
 		
+	
+	
 }

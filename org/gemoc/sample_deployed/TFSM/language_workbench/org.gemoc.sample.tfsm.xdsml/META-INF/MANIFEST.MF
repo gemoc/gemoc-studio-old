@@ -1,3 +1,4 @@
+Manifest-Version: 1.0
 Export-Package: tfsm.xdsml.api.impl
 Bundle-SymbolicName: org.gemoc.sample.tfsm.xdsml;singleton:=true
 Bundle-Version: 1.0.0.qualifier
@@ -26,4 +27,4 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.gemoc.sample.tfsm.tfsmextended.aspect;bundle-version="0.1.0"
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Manifest-Version: 1.0
+

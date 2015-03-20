@@ -12,9 +12,19 @@ public class CodeExecutionException extends Exception
 
 	private MSEOccurrence _mseOccurrence;
 	
+	private boolean codeExecutionApplicable = true;
+	
+	
+
 	public CodeExecutionException(String message, MSEOccurrence mseOccurrence)
 	{
 		this(message, null, mseOccurrence);
+	}
+	
+	public CodeExecutionException(String message, MSEOccurrence mseOccurrence, boolean codeExecutionApplicable)
+	{
+		this(message, null, mseOccurrence);
+		this.codeExecutionApplicable = codeExecutionApplicable;
 	}
 
 	public CodeExecutionException(String message, Exception innerException, MSEOccurrence mseOccurrence)
@@ -22,10 +32,25 @@ public class CodeExecutionException extends Exception
 		super(message, innerException);
 		_mseOccurrence = mseOccurrence;
 	}
+	
+	public CodeExecutionException(String message, Exception innerException, MSEOccurrence mseOccurrence, boolean codeExecutionApplicable)
+	{
+		super(message, innerException);
+		_mseOccurrence = mseOccurrence;
+		this.codeExecutionApplicable = codeExecutionApplicable;
+	}
 
 	public MSEOccurrence getMseOccurrence()
 	{		
 		return _mseOccurrence;
+	}
+	
+	public boolean isCodeExecutionApplicable() {
+		return codeExecutionApplicable;
+	}
+
+	public void setCodeExecutionApplicable(boolean codeExecutionApplicable) {
+		this.codeExecutionApplicable = codeExecutionApplicable;
 	}
 	
 }
