@@ -47,6 +47,21 @@ public class ModelExecutionContext implements IExecutionContext
 			setUpEditingDomain();	
 			_executionPlatform.getSolver().setUp(this);
 			setUpFeedbackModel();
+			
+			// check that the initial resource hasn't been loaded more than once via melange
+			_runConfiguration.getExecutedModelURI().path();
+			int resPos = 0;
+			for(Resource res : _resourceModel.getResourceSet().getResources()){
+				if(resPos!=0 && res.getURI().path().equals(_runConfiguration.getExecutedModelURI().path())){
+					Activator.getDefault().error("Error: found more than one resource in the resourceSet with the following path :"+_runConfiguration.getExecutedModelURI().path());
+					for(Resource r : _resourceModel.getResourceSet().getResources()) 
+					{
+						Activator.getDefault().info(r.getURI().toString());
+					}
+					break;
+				}
+				resPos++;
+			}
 		} 
 		catch (CoreException e)
 		{
