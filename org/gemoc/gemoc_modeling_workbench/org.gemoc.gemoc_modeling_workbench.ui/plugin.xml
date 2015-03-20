@@ -184,6 +184,14 @@
           name="New GEMOC Modeling Project"
           project="true">
     </wizard>
+    <wizard
+          category="org.gemoc.gemoc_language_workbench.ui"
+          class="org.gemoc.gemoc_modeling_workbench.ui.wizards.NewGemocDebugRepresentationWizard"
+          hasPages="true"
+          icon="icons/IconeGemocModel-16.png"
+          id="org.gemoc.gemoc_modeling_workbench.ui.wizards.NewGemocDebugRepresentationWizard"
+          name="Create GEMOC debug representation">
+    </wizard>
  </extension>
    <extension
          point="org.eclipse.sirius.externalJavaAction">
