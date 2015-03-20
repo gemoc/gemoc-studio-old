@@ -28,7 +28,8 @@ public class Activator extends GemocPlugin {
 	 * )
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
-		Activator.context = bundleContext;
+		super.start(bundleContext);
+		context = bundleContext;
 		plugin = this;
 	}
 
