@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="SigPML" version="8.1.0">
-  <ownedViewpoints name="SigPML" modelFileExtension="*.sigpml">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SigPML" domainClass="sigpmlextended.System">
+  <ownedViewpoints name="SigPML" modelFileExtension="sigpml xmi">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SigPML" domainClass="System">
       <metamodel href="../../org.gemoc.sigpml.sigpmlextended.model/model/SigPMLExtended.ecore#/"/>
       <defaultLayer name="SigPML">
-        <edgeMappings name="Place" sourceMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']" targetMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']" targetFinderExpression="[self.itsInputPort/]" sourceFinderExpression="[self.itsOutputPort/]" domainClass="sigpmlextended.Place" useDomainElement="true">
+        <edgeMappings name="Place" sourceMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']" targetMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']" targetFinderExpression="[self.itsInputPort/]" sourceFinderExpression="[self.itsOutputPort/]" domainClass="Place" useDomainElement="true">
           <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="[self.size/]">
@@ -28,8 +28,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="HWPlatform" domainClass="sigpml.HWPlatform">
-          <subNodeMappings name="HWComputationalResource" semanticCandidatesExpression="feature:eAllContents" domainClass="sigpmlextended.HWComputationalResource">
+        <containerMappings name="HWPlatform" domainClass="HWPlatform">
+          <subNodeMappings name="HWComputationalResource" semanticCandidatesExpression="feature:eAllContents" domainClass="HWComputationalResource">
             <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="2" showIcon="false" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -42,7 +42,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <subNodeMappings name="HWStorageResources" semanticCandidatesExpression="feature:eAllContents" domainClass="sigpmlextended.HWStorageResource">
+          <subNodeMappings name="HWStorageResources" semanticCandidatesExpression="feature:eAllContents" domainClass="HWStorageResource">
             <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="2" showIcon="false" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -55,7 +55,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <subNodeMappings name="HWCommunicationResource" semanticCandidatesExpression="feature:eAllContents" domainClass="sigpmlextended.HWCommunicationResource">
+          <subNodeMappings name="HWCommunicationResource" semanticCandidatesExpression="feature:eAllContents" domainClass="HWCommunicationResource">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -235,9 +235,9 @@
       <additionalLayers name="SigPMLAnimation" label="SigPML Animation">
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']/@style/@centerLabelStyleDescription" attributeName="labelExpression" value="[self.currentSize + ' / ' + self.size/]"/>
-            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@conditionnalStyles.0/@style" attributeName="labelExpression" value="[self.name + ' (' +self.sizeToread+')' /]"/>
-            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@conditionnalStyles.0/@style" attributeName="labelExpression" value="[self.name + ' (' +self.sizeWritten+')' /]"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='PlaceAllocation']/@style/@centerLabelStyleDescription" attributeName="labelExpression" value="thisEObject.currentSize + '/' + thisEObject.size"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']/@conditionnalStyles.0/@style" attributeName="labelExpression" value="thisEObject.name + ' (' +thisEObject.sizeToread+')' "/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']/@conditionnalStyles.0/@style" attributeName="labelExpression" value="thisEObject.name + ' (' +thisEObject.sizeWritten+')'"/>
           </vsmElementCustomizations>
         </customization>
       </additionalLayers>
