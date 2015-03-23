@@ -319,8 +319,9 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		{
 			QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
 			performer.run(
+						context.getResourceModel().getResourceSet(),
 						"platform:/plugin" + transformationPath, 
-						"platform:/resource" + workspace.getModelPath().toString(), 
+						context.getRunConfiguration().getExecutedModelAsMelangeURI().toString(), 
 						"platform:/resource" + workspace.getMoCPath().toString(),
 						"platform:/resource" + workspace.getFeedbackModelPath().toString());			
 		}		

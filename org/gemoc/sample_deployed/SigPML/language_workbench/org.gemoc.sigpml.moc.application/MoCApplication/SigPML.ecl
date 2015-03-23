@@ -1,6 +1,5 @@
-import 'platform:/resource/org.gemoc.sigpml.k3dsa/model/SigPMLExtended.ecore'
+import 'platform:/resource/org.gemoc.sigpml.sigpmlextended.model/model/SigPMLExtended.ecore'
 --import 'http://org.gemoc.sigpml.sigpml.model/1.0'
- 
 
 ECLimport "platform:/resource/org.gemoc.sigpml.moc.lib/MoCLib/SigPML.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" 

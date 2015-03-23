@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.gemoc.sample.tfsm.tfsmextended.aspect
+Bundle-SymbolicName: org.gemoc.sample.tfsm.tfsmextended.aspect;singleton:=true
+Bundle-Version: 0.1.0
+Require-Bundle: org.eclipse.emf.ecore,
+ org.eclipse.xtend2.lib,
+ org.gemoc.commons.eclipse.pde,
+ org.eclipse.emf.ecore.xmi,
+ fr.inria.diverse.commons.eclipse.messagingsystem.api,
+ org.gemoc.commons.eclipse,
+ fr.inria.diverse.k3.al.annotationprocessor.plugin,
+ org.eclipse.core.runtime,
+ org.gemoc.sample.tfsm.tfsmextended.model,
+ fr.inria.diverse.melange.lib,
+ org.eclipse.core.resources,
+ org.gemoc.sample.tfsm.model,
+ org.eclipse.emf.transaction,
+ org.codehaus.groovy;bundle-version="2.3.3",
+ org.eclipse.jdt.groovy.core;bundle-version="2.9.0"
+Export-Package: org.gemoc.sample.tfsm.tfsmextended.aspect,
+ tfsmextended.k3dsa
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+

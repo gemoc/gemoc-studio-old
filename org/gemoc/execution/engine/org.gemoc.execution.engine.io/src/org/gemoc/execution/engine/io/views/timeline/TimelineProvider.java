@@ -227,6 +227,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	{
 		if (engine == _engine
 			&& getExecutionTrace() != null
+			&& _tracingAddon != null
 			&& _tracingAddon.getCurrentBranch() != null)		
 		{
 			Branch branch = _tracingAddon.getCurrentBranch();

@@ -46,6 +46,8 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 		{
 			throw new RuntimeException(getName() + " is stopped");
 		}
+		notifyAboutToExecuteLogicalStep();
+		notifyLogicalStepExecuted();
 	}
 	
 	@Override
@@ -61,12 +63,18 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 		{
 			throw new RuntimeException("Execution stopped");
 		}
-		// before coming here, i is absolutely necessary to have visited the solver first.
+		// before coming here, it is absolutely necessary to have visited the solver first.
 		try {
 			performExecutionStep();
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Override
+	public void mseOccurenceAboutToBeRaised(MSEOccurrence occurrence) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

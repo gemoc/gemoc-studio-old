@@ -7,6 +7,9 @@ public class SigpmlCodeExecutor extends CodeExecutorDispatcher
 	public SigpmlCodeExecutor(){
 	    // add K3 DSA specific executor
 		addExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.Kermeta3AspectsCodeExecutor(this,
+			"org.gemoc.sigpmlextended.k3dsa"));
+	    // add K3 DSA specific executor
+		addExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.Kermeta3AspectsCodeExecutor(this,
 			"org.gemoc.sigpml.k3dsa"));
 		// fall back executor : search classic java method
 		addExecutor(new org.gemoc.execution.engine.commons.dsa.executors.JavaCodeExecutor());

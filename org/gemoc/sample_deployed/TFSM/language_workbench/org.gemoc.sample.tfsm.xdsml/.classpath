@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src/main/xdsml-java-gen"/>
 	<classpathentry excluding="k3_tfsm/" kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src-gen"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

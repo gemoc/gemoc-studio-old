@@ -47,6 +47,21 @@ public class ModelExecutionContext implements IExecutionContext
 			setUpEditingDomain();	
 			_executionPlatform.getSolver().setUp(this);
 			setUpFeedbackModel();
+			
+			// check that the initial resource hasn't been loaded more than once via melange
+			
+			int resPos = 0;
+			for(Resource res : _resourceModel.getResourceSet().getResources()){
+				if(resPos!=0 && res.getURI().path().equals(_runConfiguration.getExecutedModelURI().path())){
+					Activator.getDefault().error("Error: found more than one resource in the resourceSet with the following path :"+_runConfiguration.getExecutedModelURI().path());
+					for(Resource r : _resourceModel.getResourceSet().getResources()) 
+					{
+						Activator.getDefault().info(r.getURI().toString());
+					}
+					break;
+				}
+				resPos++;
+			}
 		} 
 		catch (CoreException e)
 		{
@@ -82,14 +97,15 @@ public class ModelExecutionContext implements IExecutionContext
 
 	private void setUpFeedbackModel() 
 	{
-		URI feedbackURI = URI.createPlatformResourceURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
-		for (Resource r : getResourceSet().getResources())
+		URI feedbackPlatformURI = URI.createPlatformResourceURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
+		try
 		{
-			if (r.getURI().equals(feedbackURI))
-			{				
-				_feedbackModel = (ActionModel)r.getContents().get(0);
-				break;
-			}
+			Resource resource = getResourceSet().getResource(feedbackPlatformURI, true);
+			_feedbackModel = (ActionModel)resource.getContents().get(0);
+		}
+		catch(Exception e)
+		{
+			//file will be created later
 		}
 	}
 

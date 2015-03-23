@@ -16,7 +16,10 @@ import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 
-//import fr.inria.diverse.k3.ui.wizards.WizardNewProjectK3Plugin;
+import fr.inria.diverse.commons.eclipse.pde.wizards.pages.pde.TemplateListSelectionPage;
+import fr.inria.diverse.k3.ui.wizards.NewK3ProjectWizard;
+import fr.inria.diverse.k3.ui.wizards.pages.NewK3ProjectWizardFields.KindsOfProject;
+
 
 public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextBase {
 
@@ -43,20 +46,30 @@ public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextBas
 				IWizard wizard;
 				wizard = descriptor.createWizard();
 				// this wizard need some dedicated initialization
-//				((WizardNewProjectK3Plugin)wizard).init(PlatformUI.getWorkbench(), (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection());
+				NewK3ProjectWizard k3Wizard = (NewK3ProjectWizard)wizard;
+				k3Wizard.init(PlatformUI.getWorkbench(), (IStructuredSelection) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection());
 				
+				ActiveFile activeFileEcore = new ActiveFileEcore(_gemocLanguageIProject);
+				IFile ecoreFile = activeFileEcore.getActiveFile();
+				
+				k3Wizard.getContext().ecoreIFile = activeFileEcore.getActiveFile();
 				
 				WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
 				
 				wd.create();
+
+				k3Wizard.getPageProject().setProjectName(_gemocLanguageIProject.getName()+".k3dsa");
+				k3Wizard.getPageProject().setProjectKind(KindsOfProject.PLUGIN);
 				// set field as much as possible
-				ActiveFile activeFileEcore = new ActiveFileEcore(_gemocLanguageIProject);
-				IFile ecoreFile = activeFileEcore.getActiveFile();
-//				if (ecoreFile != null) {
-//					((WizardNewProjectK3Plugin)wizard).getPageProject().setEcoreLoaded(ecoreFile);
-//				}
-//				((WizardNewProjectK3Plugin)wizard).getPageProject().setProjectName(_gemocLanguageIProject.getName()+".k3dsa");
-//				((WizardNewProjectK3Plugin)wizard).getPageProject().setProjectKind(fr.inria.diverse.k3.ui.tools.Context.KindsOfProject.PLUGIN);
+				
+				if (ecoreFile != null) {
+					TemplateListSelectionPage templatePage = k3Wizard.getTemplateListSelectionPage(k3Wizard.getContext());
+					templatePage.setUseTemplate(true);
+					templatePage.setInitialTemplateId("fr.inria.diverse.k3.ui.templates.projectContent.UserEcoreBasicAspect");
+					templatePage.selectTemplate("fr.inria.diverse.k3.ui.templates.projectContent.UserEcoreBasicAspect");
+					//((NewK3ProjectWizard)wizard).getPageProject().setEcoreLoaded(ecoreFile);
+					
+				}
 				wd.setTitle("New Kermeta 3 project");
 				
 				

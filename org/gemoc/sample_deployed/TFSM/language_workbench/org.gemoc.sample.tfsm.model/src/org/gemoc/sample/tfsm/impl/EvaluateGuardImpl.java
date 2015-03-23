@@ -90,17 +90,6 @@ public class EvaluateGuardImpl extends GuardImpl implements EvaluateGuard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean evaluate() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {

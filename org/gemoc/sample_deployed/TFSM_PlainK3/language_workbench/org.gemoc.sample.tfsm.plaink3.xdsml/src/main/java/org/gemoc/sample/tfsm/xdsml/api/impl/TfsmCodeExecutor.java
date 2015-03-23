@@ -11,11 +11,6 @@ import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 public class TfsmCodeExecutor implements ICodeExecutor  {
 
 	@Override
-	public Object execute(MSEOccurrence call) throws CodeExecutionException {
-		return null;
-	}
-
-	@Override
 	public Object execute(Object className, String methodName, List<Object> parameters) throws CodeExecutionException {
 		Class c;
 		try {
@@ -27,6 +22,19 @@ public class TfsmCodeExecutor implements ICodeExecutor  {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public Object execute(MSEOccurrence mseOccurrence)
+			throws CodeExecutionException 
+	{
+		return null;
+	}
+
+	@Override
+	public String getExcutorID() 
+	{
+		return getClass().getSimpleName();
 	}
 
 }

@@ -25,7 +25,7 @@ public class Activator implements BundleActivator {
 		if (messagingSystem == null) 
 		{
 			MessagingSystemManager msm = new MessagingSystemManager();
-			messagingSystem = msm.createBestPlatformMessagingSystem(PLUGIN_ID, "GEMOC extensions Sirius");
+			messagingSystem = msm.createBestPlatformMessagingSystem(org.gemoc.execution.engine.Activator.PLUGIN_ID, "Execution Engine");
 			if (messagingSystem instanceof EclipseMessagingSystem)
 				((EclipseMessagingSystem) messagingSystem).setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
 		}

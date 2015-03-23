@@ -10,7 +10,8 @@ Require-Bundle: fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version
  org.eclipse.jdt.groovy.core;bundle-version="2.8.0",
  org.codehaus.groovy;bundle-version="2.0.7",
  org.eclipse.osgi;bundle-version="3.9.1",
- org.eclipse.core.runtime;bundle-version="3.9.100"
+ org.eclipse.core.runtime;bundle-version="3.9.100",
+ org.gemoc.execution.engine.trace.model;bundle-version="0.1.0"
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -19,10 +20,7 @@ Bundle-Name: %pluginName
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.gemoc.sigpml.k3dsa;singleton:=true
 Export-Package: .,
- org.gemoc.sigpml.k3dsa,
- sigpmlextended,
- sigpmlextended.impl,
- sigpmlextended.util
+ org.gemoc.sigpml.k3dsa
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

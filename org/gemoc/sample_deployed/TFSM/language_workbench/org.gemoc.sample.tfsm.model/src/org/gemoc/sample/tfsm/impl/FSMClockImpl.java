@@ -36,15 +36,4 @@ public class FSMClockImpl extends NamedElementImpl implements FSMClock {
 		return TfsmPackage.Literals.FSM_CLOCK;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String ticks() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
 } //FSMClockImpl

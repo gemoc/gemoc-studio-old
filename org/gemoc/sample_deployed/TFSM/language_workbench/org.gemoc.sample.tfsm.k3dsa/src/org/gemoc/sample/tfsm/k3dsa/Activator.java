@@ -68,11 +68,24 @@ public class Activator extends GemocPlugin {
 		if (_loggingBackend == null)
 		{
 			_loggingBackend = new DefaultLoggingBackend(this);
-			MessagingSystemManager msm = new MessagingSystemManager();
-			MessagingSystem ms = msm.createBestPlatformMessagingSystem("org.gemoc.execution.engine", "Execution Engine");
-			_loggingBackend.setMessagingSystem(ms);
+			_loggingBackend.setMessagingSystem(getMessagingSystem());
 		}
 		return _loggingBackend;
 	}
 
+	protected static MessagingSystem messagingSystem = null;
+
+	public static MessagingSystem getMessagingSystem() {
+		if (messagingSystem == null) {
+			MessagingSystemManager msm = new MessagingSystemManager();
+			messagingSystem = msm.createBestPlatformMessagingSystem("org.gemoc.execution.engine", "Execution Engine");
+			//messagingSystem = new EclipseMessagingSystem(PLUGIN_ID,
+			//		"GEMOC Execution Engine");
+			//((EclipseMessagingSystem) messagingSystem)
+			//		.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
+		}
+		return messagingSystem;
+	}
+	
+	
 }

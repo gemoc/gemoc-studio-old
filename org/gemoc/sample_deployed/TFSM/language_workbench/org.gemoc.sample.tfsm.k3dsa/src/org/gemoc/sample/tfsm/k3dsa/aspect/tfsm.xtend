@@ -12,8 +12,11 @@ import org.gemoc.sample.tfsm.TFSM
 import org.gemoc.sample.tfsm.TemporalGuard
 import org.gemoc.sample.tfsm.TimedSystem
 import org.gemoc.sample.tfsm.Transition
+import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
+
+
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TFSMAspect.*
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.StateAspect.*
+/*import static extension org.gemoc.sample.tfsm.k3dsa.aspect.StateAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TransitionAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.NamedElementAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.GuardAspect.*
@@ -23,12 +26,12 @@ import static extension org.gemoc.sample.tfsm.k3dsa.aspect.FSMEventAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.FSMClockAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TimedSystemAspect.*
 import static extension org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect.*
-import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
+*/
 
 @Aspect(className=TFSM)
 class TFSMAspect extends NamedElementAspect {
 	// should be added automatically by the dsa, currently introduced directly in the ecore
-	// public State currentState;
+	public State currentState;
 
 	def public String Init() {
 		if (_self.currentState == null) {
@@ -59,7 +62,7 @@ class StateAspect extends NamedElementAspect {
 @Aspect(className=Transition)
 class TransitionAspect extends NamedElementAspect {
 	def public String fire() {
-//		GroovyRunner.executeScript(_self.action, _self);
+		GroovyRunner.executeScript(_self.action, _self);
 		_self.source.owningFSM.currentState = _self.target
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".fire()]Fired " + _self.name + " -> " +
 			_self.action)
@@ -88,17 +91,18 @@ class FSMEventAspect extends NamedElementAspect {
 
 @Aspect(className=FSMClock)
 class FSMClockAspect extends NamedElementAspect {
-	public Integer numberOfTicks;
+	//public Integer numberOfTicks;
+	public int numberOfTicks
 
 	// Clock tick
 	def public String ticks() {
 		//GroovyRunner.executeScript("doTick", _self);
 
-		if (_self.numberOfTicks == null) {
-			_self.numberOfTicks = 0
-		} else {
+		//if (_self.numberOfTicks == null) {
+		//	_self.numberOfTicks = 0
+		//} else {
 			_self.numberOfTicks = _self.numberOfTicks + 1
-		}
+		//}
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".ticks()]New number of ticks : " +
 			_self.numberOfTicks.toString())
 	}
@@ -110,7 +114,7 @@ class TimedSystemAspect extends NamedElementAspect {
 
 @Aspect(className=EvaluateGuard)
 class EvaluateGuardAspect extends GuardAspect {
-	def public Boolean evaluate() {
+	def public boolean evaluate() {
 		var Object res;
 //		res = GroovyRunner.executeScript(_self.condition, _self)
 
