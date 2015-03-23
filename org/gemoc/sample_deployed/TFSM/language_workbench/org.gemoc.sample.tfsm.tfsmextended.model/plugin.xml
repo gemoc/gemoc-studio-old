@@ -3,12 +3,6 @@
 
 <plugin>
 
-<extension point="org.eclipse.emf.ecore.generated_package">
-	<package
-		uri="http://tfsmextended/"
-		class="tfsmextended.TfsmExtendedPackage"
-		genModel="model/TfsmExtended.genmodel"/>
-</extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated TfsmExtended -->

@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.diagram;bundle-version="1.0.0",
  org.eclipse.emf.transaction;bundle-version="1.4.0",
  org.gemoc.sigpml.model;bundle-version="0.1.0",
- org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.1.0"
+ org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.1.0",
+ org.gemoc.sigpml.sigpmlextended.model;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.sigpml.concrete.design,
