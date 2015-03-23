@@ -31,6 +31,8 @@ public class SigPMLExampleWizard
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.model.zip", "org.gemoc.sigpml.model"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.model.edit.zip", "org.gemoc.sigpml.model.edit"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.model.editor.zip", "org.gemoc.sigpml.model.editor"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.sigpmlextended.model.zip", "org.gemoc.sigpml.sigpmlextended.model"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpmlextended.k3dsa.zip", "org.gemoc.sigpmlextended.k3dsa"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sigpml.xdsml.zip", "org.gemoc.sigpml.xdsml"));
 		return projects;
 	}
