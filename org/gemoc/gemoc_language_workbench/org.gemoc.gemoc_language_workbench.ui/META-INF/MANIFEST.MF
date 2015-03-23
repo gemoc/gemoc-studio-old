@@ -22,7 +22,6 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.aoste.timesquare.ccslkernel.parser.xtext,
  org.gemoc.gemoc_language_workbench.api;bundle-version="0.1.0",
  fr.inria.diverse.k3.ui;bundle-version="1.0.0",
- org.eclipse.emf.ecoretools.design;bundle-version="2.0.0",
  org.gemoc.commons.eclipse,
  org.eclipse.equinox.registry,
  fr.inria.aoste.timesquare.ccslkernel.model;bundle-version="1.0.0",
@@ -30,8 +29,10 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.commons.eclipse.jdt,
  org.gemoc.commons.eclipse.ui,
  org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.1.0",
+ org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.1.0",
  org.gemoc.gemoc_language_workbench.extensions.timesquare;bundle-version="0.1.0",
- org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.1.0"
+ org.eclipse.emf.ecoretools.design,
+ org.eclipse.emf.ecore.editor
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.filesystem
@@ -45,6 +46,8 @@ Export-Package: org.gemoc.gemoc_language_workbench.ui,
  org.gemoc.gemoc_language_workbench.ui.builder.pde,
  org.gemoc.gemoc_language_workbench.ui.commands,
  org.gemoc.gemoc_language_workbench.ui.dialogs,
+ org.gemoc.gemoc_language_workbench.ui.dse,
  org.gemoc.gemoc_language_workbench.ui.listeners,
  org.gemoc.gemoc_language_workbench.ui.wizards,
- org.gemoc.gemoc_language_workbench.ui.wizards.contextDSA
+ org.gemoc.gemoc_language_workbench.ui.wizards.contextDSA,
+ org.gemoc.gemoc_language_workbench.ui.wizards.pages

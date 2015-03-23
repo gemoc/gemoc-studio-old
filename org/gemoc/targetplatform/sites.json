@@ -12,7 +12,7 @@
         "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/R201309031307"
         ],
     "ecoretools": [
-        "http://download.eclipse.org/ecoretools/updates/nightly/3.0.x/luna"
+        "http://download.eclipse.org/ecoretools/updates/nightly/2.0.x/luna"
         ],
     "sirius": [
         "http://download.eclipse.org/sirius/updates/nightly/2.0.x/luna"
@@ -63,7 +63,7 @@
         ],
     "kermeta3": [
 		"http://www.kermeta.org/k3/update/",
-		"http://melange-lang.org/melange/update/"
+		"https://ci.inria.fr/k3al/job/melange-production_stable/lastSuccessfulBuild/artifact/plugins/fr.inria.diverse.melange.p2updatesite/target/site/"
         ],
     "devtools": [
         "http://community.polarion.com/projects/subversive/download/eclipse/4.0/luna-site/",

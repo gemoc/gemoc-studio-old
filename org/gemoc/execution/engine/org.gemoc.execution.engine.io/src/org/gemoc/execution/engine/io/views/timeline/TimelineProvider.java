@@ -362,5 +362,12 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	protected void setSelectedLogicalStep(LogicalStep ls) {
 	}
 
+	@Override
+	public void proposedLogicalStepsChanged(IExecutionEngine engine,
+			Collection<LogicalStep> logicalSteps) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

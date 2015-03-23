@@ -23,7 +23,6 @@ import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 public class LaunchConfigurationConfigurationTab extends LaunchConfigurationTab 
 {
 
-	protected Button _activeTraceCheckbox;
 	protected FormattedText _deadlockDetectionDepth;
 
 	
@@ -45,15 +44,6 @@ public class LaunchConfigurationConfigurationTab extends LaunchConfigurationTab
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		composite.setLayout(new GridLayout(3, false));
 
-		_activeTraceCheckbox = new Button(composite, SWT.CHECK);
-		_activeTraceCheckbox.setText("Active trace");
-		_activeTraceCheckbox.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				updateLaunchConfigurationDialog();
-			}
-		});
-		
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		// gd.horizontalSpan = 1;
 		gd.widthHint = 200;
@@ -81,9 +71,6 @@ public class LaunchConfigurationConfigurationTab extends LaunchConfigurationTab
 	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 		configuration.setAttribute(
-				RunConfiguration.LAUNCH_ACTIVE_TRACE,
-				true);
-		configuration.setAttribute(
 				RunConfiguration.LAUNCH_DEADLOCK_DETECTION_DEPTH,
 				10);
 	}
@@ -93,7 +80,6 @@ public class LaunchConfigurationConfigurationTab extends LaunchConfigurationTab
 		try 
 		{
 			RunConfiguration runConfiguration = new RunConfiguration(configuration);
-			_activeTraceCheckbox.setSelection(runConfiguration.isTraceActive());
 			_deadlockDetectionDepth.setValue(runConfiguration.getDeadlockDetectionDepth());		
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
@@ -102,9 +88,6 @@ public class LaunchConfigurationConfigurationTab extends LaunchConfigurationTab
 
 	@Override
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
-		configuration.setAttribute(
-				RunConfiguration.LAUNCH_ACTIVE_TRACE,
-				_activeTraceCheckbox.getSelection());
 		int depth = _deadlockDetectionDepth.getValue() == null ? 0 : Integer.valueOf(_deadlockDetectionDepth.getValue().toString());
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_DEADLOCK_DETECTION_DEPTH,

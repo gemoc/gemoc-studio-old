@@ -16,8 +16,8 @@ Require-Bundle: org.eclipse.xtend2.lib;bundle-version="2.4.3",
  org.gemoc.commons.eclipse.pde;bundle-version="0.1.0",
  org.gemoc.commons;bundle-version="0.1.0",
  org.gemoc.commons.eclipse;bundle-version="0.1.0",
- fr.inria.diverse.k3.al.annotationprocessor;bundle-version="1.0.0",
- org.gemoc.execution.engine;bundle-version="0.1.0"
+ org.gemoc.execution.engine;bundle-version="0.1.0",
+ fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.1.0"
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

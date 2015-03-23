@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.emf.ecoretools.design.wizard.EcoreModelerWizard;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -30,7 +29,7 @@ import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectEMFIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
 
-//import org.eclipse.emf.ecoretools.design.wizard.EcoreModelerWizard;
+import org.eclipse.emf.ecoretools.design.wizard.EcoreModelerWizard;
 
 
 /**
@@ -75,7 +74,7 @@ public class CreateDomainModelWizardContextAction {
 	protected void createNewEMFProject(){
 		// launch the appropriate wizard
 		
-		// "org.eclipse.emf.importer.ui.EMFProjectWizard" = create EMFProject from existing Ecore file
+		 //"org.eclipse.emf.importer.ui.EMFProjectWizard" = create EMFProject from existing Ecore file
 		
 		IWizardDescriptor descriptor = WizardFinder.findNewWizardDescriptor("org.eclipse.ecoretools.emf.design.wizardID");
 		

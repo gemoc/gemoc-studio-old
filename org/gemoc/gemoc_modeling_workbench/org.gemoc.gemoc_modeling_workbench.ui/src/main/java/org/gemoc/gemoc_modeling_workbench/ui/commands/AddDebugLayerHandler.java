@@ -33,6 +33,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.viewpoint.description.Customization;
@@ -84,10 +86,7 @@ public class AddDebugLayerHandler extends AbstractHandler {
 				final IProject project = descriptionFile.getProject();
 				final String projectName = project.getName();
 				final IFolder serviceFolder = project.getFolder(new Path("src/"
-						+ projectName.replaceAll("\\.", "/") + "/services"));
-				if (!serviceFolder.exists()) {
-					createFolder(serviceFolder, monitor);
-				}
+						+ projectName.replaceAll("\\.", "/").toLowerCase() + "/services"));
 				final String languageName = diagramDescription.getName();
 				final String qualifiedServiceClassName = getOrCreateServiceClass(
 						serviceFolder, projectName, languageName, layerName,
@@ -116,7 +115,7 @@ public class AddDebugLayerHandler extends AbstractHandler {
 		return null;
 	}
 
-	protected void emfModifications(final IProgressMonitor monitor,
+	public static void emfModifications(final IProgressMonitor monitor,
 			final String layerName, final DiagramDescription description,
 			final String languageName, final String qualifiedServiceClassName) {
 		final JavaExtension serviceImport = getOrCreateImport(description,
@@ -125,7 +124,20 @@ public class AddDebugLayerHandler extends AbstractHandler {
 				languageName, monitor);
 		final UserColor instructionColor = getOrCtreateInstructionColor(
 				palette, monitor);
-		final AdditionalLayer debugLayer = getOrCreateDebugLayer(description,
+		final Layer debugLayer = getOrCreateDebugLayer(description,
+				instructionColor, layerName, monitor);
+	}
+
+	public static void emfModifications(final IProgressMonitor monitor,
+			final String layerName, final DiagramExtensionDescription descriptionExtension,
+			final String languageName, final String qualifiedServiceClassName) {
+		final JavaExtension serviceImport = getOrCreateImport(descriptionExtension,
+				qualifiedServiceClassName, monitor);
+		final UserColorsPalette palette = getOrCreateColotPalette(descriptionExtension,
+				languageName, monitor);
+		final UserColor instructionColor = getOrCtreateInstructionColor(
+				palette, monitor);
+		final Layer debugLayer = getOrCreateDebugLayer(descriptionExtension,
 				instructionColor, layerName, monitor);
 	}
 
@@ -139,7 +151,7 @@ public class AddDebugLayerHandler extends AbstractHandler {
 	 * @throws CoreException
 	 *             if the folder creation fails
 	 */
-	private void createFolder(IFolder folder, IProgressMonitor monitor)
+	public static void createFolder(IFolder folder, IProgressMonitor monitor)
 			throws CoreException {
 		if (!folder.getParent().exists()) {
 			createFolder((IFolder) folder.getParent(), monitor);
@@ -147,13 +159,13 @@ public class AddDebugLayerHandler extends AbstractHandler {
 		folder.create(true, true, monitor);
 	}
 
-	private AdditionalLayer getOrCreateDebugLayer(
+	public static Layer getOrCreateDebugLayer(
 			DiagramDescription description, UserColor instructionColor,
 			String layerName, IProgressMonitor monitor) {
-		final AdditionalLayer res;
+		final Layer res;
 
-		AdditionalLayer existingLayer = null;
-		for (AdditionalLayer layer : description.getAdditionalLayers()) {
+		Layer existingLayer = null;
+		for (Layer layer : description.getAdditionalLayers()) {
 			if ("Debug".equals(layer.getName())) {
 				existingLayer = layer;
 				break;
@@ -169,7 +181,29 @@ public class AddDebugLayerHandler extends AbstractHandler {
 		return res;
 	}
 
-	private AdditionalLayer createLayer(DiagramDescription description,
+	public static Layer getOrCreateDebugLayer(
+			DiagramExtensionDescription descriptionExtension, UserColor instructionColor,
+			String layerName, IProgressMonitor monitor) {
+		final Layer res;
+
+		Layer existingLayer = null;
+		for (Layer layer : descriptionExtension.getLayers()) {
+			if ("Debug".equals(layer.getName())) {
+				existingLayer = layer;
+				break;
+			}
+		}
+
+		if (existingLayer != null) {
+			res = existingLayer;
+		} else {
+			res = createLayer(descriptionExtension, instructionColor, layerName, monitor);
+		}
+
+		return res;
+	}
+
+	public static Layer createLayer(DiagramDescription description,
 			UserColor instructionColor, String layerName,
 			IProgressMonitor monitor) {
 		final AdditionalLayer res = org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE
@@ -287,16 +321,134 @@ public class AddDebugLayerHandler extends AbstractHandler {
 		return res;
 	}
 
+	public static Layer createLayer(DiagramExtensionDescription descriptionExtension,
+			UserColor instructionColor, String layerName,
+			IProgressMonitor monitor) {
+		final AdditionalLayer res = org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE
+				.getDescriptionFactory().createAdditionalLayer();
+		res.setName("Debug");
+		res.setActiveByDefault(true);
+
+		ToolSection toolSection = org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE
+				.getToolFactory().createToolSection();
+		toolSection.setName("Debug");
+		res.getToolSections().add(toolSection);
+		PopupMenu popupMenu = ToolPackage.eINSTANCE.getToolFactory()
+				.createPopupMenu();
+		popupMenu.setName("Gemoc");
+		toolSection.getOwnedTools().add(popupMenu);
+		// Debug action
+		OperationAction debugAction = ToolPackage.eINSTANCE.getToolFactory()
+				.createOperationAction();
+		debugAction.setName("Debug");
+		debugAction
+				.setIcon("/org.gemoc.gemoc_modeling_workbench.ui/icons/debug_exc.gif");
+		popupMenu.getMenuItemDescription().add(debugAction);
+		ExternalJavaAction debugJavaAction = ToolPackage.eINSTANCE
+				.getToolFactory().createExternalJavaAction();
+		debugJavaAction.setName("Debug");
+		debugJavaAction
+				.setId("org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocDebugAs");
+		debugJavaAction
+				.setIcon("/org.gemoc.gemoc_modeling_workbench.ui/icons/debug_exc.gif");
+		InitialOperation initialOperation = ToolPackage.eINSTANCE
+				.getToolFactory().createInitialOperation();
+		initialOperation.setFirstModelOperations(debugJavaAction);
+		debugAction.setInitialOperation(initialOperation);
+		// Toggle breakpoint action
+		OperationAction toogleBreakpointAction = ToolPackage.eINSTANCE
+				.getToolFactory().createOperationAction();
+		toogleBreakpointAction.setName("Toggle breakpoint");
+		toogleBreakpointAction
+				.setIcon("/org.gemoc.gemoc_modeling_workbench.ui/icons/debug_exc.gif");
+		popupMenu.getMenuItemDescription().add(toogleBreakpointAction);
+		ExternalJavaAction toogleBreakpointJavaAction = ToolPackage.eINSTANCE
+				.getToolFactory().createExternalJavaAction();
+		toogleBreakpointJavaAction.setName("Toggle Gemoc breakpoint");
+		toogleBreakpointJavaAction
+				.setId("org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocToggleBreakpoint");
+		toogleBreakpointJavaAction
+				.setIcon("/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint.gif");
+		initialOperation = ToolPackage.eINSTANCE.getToolFactory()
+				.createInitialOperation();
+		initialOperation.setFirstModelOperations(toogleBreakpointJavaAction);
+		toogleBreakpointAction.setInitialOperation(initialOperation);
+
+		DecorationDescriptionsSet decorationSet = DescriptionPackage.eINSTANCE
+				.getDescriptionFactory().createDecorationDescriptionsSet();
+		res.setDecorationDescriptionsSet(decorationSet);
+
+		List<DiagramElementMapping> mappings = getAllMapping(descriptionExtension);
+		// enabled breakpoint decorator
+		MappingBasedDecoration enabledBreakpoint = org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE
+				.getDescriptionFactory().createMappingBasedDecoration();
+		enabledBreakpoint.setName("Enabled breakpoint");
+		enabledBreakpoint.setPosition(Position.WEST_LITERAL);
+		enabledBreakpoint
+				.setDecoratorPath("/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_enabled.gif");
+		enabledBreakpoint
+				.setPreconditionExpression("service:self.hasEnabledBreakpoint");
+		enabledBreakpoint.getMappings().addAll(mappings);
+		decorationSet.getDecorationDescriptions().add(enabledBreakpoint);
+		// enabled breakpoint decorator
+		MappingBasedDecoration disabledBreakpoint = org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE
+				.getDescriptionFactory().createMappingBasedDecoration();
+		disabledBreakpoint.setName("Disabled breakpoint");
+		disabledBreakpoint.setPosition(Position.WEST_LITERAL);
+		disabledBreakpoint
+				.setDecoratorPath("/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_disabled.gif");
+		disabledBreakpoint
+				.setPreconditionExpression("service:self.hasDisabledBreakpoint");
+		disabledBreakpoint.getMappings().addAll(mappings);
+		decorationSet.getDecorationDescriptions().add(disabledBreakpoint);
+
+		Customization customization = DescriptionPackage.eINSTANCE
+				.getDescriptionFactory().createCustomization();
+		res.setCustomization(customization);
+		VSMElementCustomization elementCustomization = DescriptionPackage.eINSTANCE
+				.getDescriptionFactory().createVSMElementCustomization();
+		elementCustomization
+				.setPredicateExpression("service:self.isCurrentInstruction");
+		customization.getVsmElementCustomizations().add(elementCustomization);
+		EReferenceCustomization borderColorCustomization = DescriptionPackage.eINSTANCE
+				.getDescriptionFactory().createEReferenceCustomization();
+		borderColorCustomization.setApplyOnAll(true);
+		borderColorCustomization.setReferenceName("borderColor");
+		borderColorCustomization.setValue(instructionColor);
+		elementCustomization.getFeatureCustomizations().add(
+				borderColorCustomization);
+
+		EReferenceCustomization strokeColorCustomization = DescriptionPackage.eINSTANCE
+				.getDescriptionFactory().createEReferenceCustomization();
+		strokeColorCustomization.setApplyOnAll(true);
+		strokeColorCustomization.setReferenceName("strokeColor");
+		strokeColorCustomization.setValue(instructionColor);
+		elementCustomization.getFeatureCustomizations().add(
+				strokeColorCustomization);
+
+		EReferenceCustomization labelColorCustomization = DescriptionPackage.eINSTANCE
+				.getDescriptionFactory().createEReferenceCustomization();
+		labelColorCustomization.setApplyOnAll(true);
+		labelColorCustomization.setReferenceName("labelColor");
+		labelColorCustomization.setValue(instructionColor);
+		elementCustomization.getFeatureCustomizations().add(
+				labelColorCustomization);
+
+		descriptionExtension.getLayers().add(res);
+
+		return res;
+	}
+
 	/**
 	 * Gets all {@link DiagramElementMapping} contained in the given
 	 * {@link DiagramDescription}.
 	 * 
 	 * @param description
-	 *            the {@link DiagramElementMapping}
+	 *            the {@link DiagramDescription}
 	 * @return all {@link DiagramElementMapping} contained in the given
 	 *         {@link DiagramDescription}
 	 */
-	private List<DiagramElementMapping> getAllMapping(
+	public static List<DiagramElementMapping> getAllMapping(
 			DiagramDescription description) {
 		final List<DiagramElementMapping> res = new ArrayList<DiagramElementMapping>();
 
@@ -311,7 +463,31 @@ public class AddDebugLayerHandler extends AbstractHandler {
 		return res;
 	}
 
-	private UserColor getOrCtreateInstructionColor(UserColorsPalette palette,
+	/**
+	 * Gets all {@link DiagramElementMapping} contained in the given
+	 * {@link DiagramDescription}.
+	 * 
+	 * @param descriptionExtension
+	 *            the {@link DiagramExtensionDescription}
+	 * @return all {@link DiagramElementMapping} contained in the given
+	 *         {@link DiagramExtensionDescription}
+	 */
+	public static List<DiagramElementMapping> getAllMapping(
+			DiagramExtensionDescription descriptionExtension) {
+		final List<DiagramElementMapping> res = new ArrayList<DiagramElementMapping>();
+
+		TreeIterator<EObject> it = descriptionExtension.eAllContents();
+		while (it.hasNext()) {
+			EObject eObj = it.next();
+			if (eObj instanceof DiagramElementMapping) {
+				res.add((DiagramElementMapping) eObj);
+			}
+		}
+
+		return res;
+	}
+
+	public static UserColor getOrCtreateInstructionColor(UserColorsPalette palette,
 			IProgressMonitor monitor) {
 		final UserColor res;
 
@@ -340,13 +516,42 @@ public class AddDebugLayerHandler extends AbstractHandler {
 		return res;
 	}
 
-	private UserColorsPalette getOrCreateColotPalette(
+	public static UserColorsPalette getOrCreateColotPalette(
 			DiagramDescription description, String languageName,
 			IProgressMonitor monitor) {
 		final UserColorsPalette res;
 		final String paletteName = languageName + " Palette";
 
 		final Group group = (Group) description.eContainer().eContainer();
+		UserColorsPalette existingPalette = null;
+		for (UserColorsPalette palette : group.getUserColorsPalettes()) {
+			if (paletteName.equals(palette.getName())) {
+				existingPalette = palette;
+				break;
+			}
+		}
+
+		if (existingPalette != null) {
+			res = existingPalette;
+		} else {
+			res = DescriptionPackage.eINSTANCE.getDescriptionFactory()
+					.createUserColorsPalette();
+
+			res.setName(paletteName);
+			group.getUserColorsPalettes().add(res);
+		}
+
+		return res;
+	}
+
+
+	public static UserColorsPalette getOrCreateColotPalette(
+			DiagramExtensionDescription descriptionExtension, String languageName,
+			IProgressMonitor monitor) {
+		final UserColorsPalette res;
+		final String paletteName = languageName + " Palette";
+
+		final Group group = (Group) descriptionExtension.eContainer().eContainer();
 		UserColorsPalette existingPalette = null;
 		for (UserColorsPalette palette : group.getUserColorsPalettes()) {
 			if (paletteName.equals(palette.getName())) {
@@ -380,11 +585,49 @@ public class AddDebugLayerHandler extends AbstractHandler {
 	 *            the {@link IProgressMonitor}
 	 * @return the {@link JavaExtension}
 	 */
-	private JavaExtension getOrCreateImport(DiagramDescription description,
+	public static JavaExtension getOrCreateImport(DiagramDescription description,
 			String qualifiedClassName, IProgressMonitor monitor) {
 		final JavaExtension res;
 
 		final Viewpoint viewPoint = (Viewpoint) description.eContainer();
+		JavaExtension existingExtension = null;
+		for (JavaExtension javaExt : viewPoint.getOwnedJavaExtensions()) {
+			if (qualifiedClassName.equals(javaExt.getQualifiedClassName())) {
+				existingExtension = javaExt;
+				break;
+			}
+		}
+
+		if (existingExtension != null) {
+			res = existingExtension;
+		} else {
+			res = DescriptionPackage.eINSTANCE.getDescriptionFactory()
+					.createJavaExtension();
+
+			res.setQualifiedClassName(qualifiedClassName);
+			viewPoint.getOwnedJavaExtensions().add(res);
+		}
+
+		return res;
+	}
+
+	/**
+	 * Gets or creates a {@link JavaExtension} for the given qualified class
+	 * name in the given {@link DiagramDescription}.
+	 * 
+	 * @param description
+	 *            the {@link DiagramDescription}
+	 * @param qualifiedClassName
+	 *            the qualified class name
+	 * @param monitor
+	 *            the {@link IProgressMonitor}
+	 * @return the {@link JavaExtension}
+	 */
+	public static JavaExtension getOrCreateImport(DiagramExtensionDescription descriptionExtension,
+			String qualifiedClassName, IProgressMonitor monitor) {
+		final JavaExtension res;
+
+		final Viewpoint viewPoint = (Viewpoint) descriptionExtension.eContainer();
 		JavaExtension existingExtension = null;
 		for (JavaExtension javaExt : viewPoint.getOwnedJavaExtensions()) {
 			if (qualifiedClassName.equals(javaExt.getQualifiedClassName())) {
@@ -423,7 +666,7 @@ public class AddDebugLayerHandler extends AbstractHandler {
 	 * @throws IOException
 	 * @throws CoreException
 	 */
-	private String getOrCreateServiceClass(IFolder serviceFolder,
+	public static String getOrCreateServiceClass(IFolder serviceFolder,
 			String projectName, String languageName, String layerName,
 			IProgressMonitor monitor) throws IOException, CoreException {
 		final String className = toCamelCase(languageName) + "DebugServices";
@@ -433,6 +676,10 @@ public class AddDebugLayerHandler extends AbstractHandler {
 		final String res = packageName + "." + className;
 
 		if (!classFile.exists()) {
+			if (!serviceFolder.exists()) {
+				AddDebugLayerHandler.createFolder(serviceFolder,
+						monitor);
+			}
 			createServiceClass(classFile, packageName, className, languageName,
 					layerName, monitor);
 		} else {
@@ -442,7 +689,7 @@ public class AddDebugLayerHandler extends AbstractHandler {
 		return res;
 	}
 
-	private void addStringCoupleIfNeeded(IFile classFile, String languageName,
+	public static void addStringCoupleIfNeeded(IFile classFile, String languageName,
 			String layerName, IProgressMonitor monitor) throws IOException,
 			CoreException {
 		String content = getContent(classFile.getContents(), "UTF8");
@@ -461,12 +708,12 @@ public class AddDebugLayerHandler extends AbstractHandler {
 				setContent(classFile.getFullPath().toFile(), "UTF8", newContent);
 				classFile.refreshLocal(1, monitor);
 			} else {
-				// TODO notify : add statement manualy
+				// TODO notify : add statement manually
 			}
 		}
 	}
 
-	private void createServiceClass(IFile classFile, String packageName,
+	public static void createServiceClass(IFile classFile, String packageName,
 			String className, String languageName, String layerName,
 			IProgressMonitor monitor) throws IOException, CoreException {
 
@@ -483,7 +730,7 @@ public class AddDebugLayerHandler extends AbstractHandler {
 						.forName("UTF8"))), true, monitor);
 	}
 
-	private String toCamelCase(String s) {
+	public static String toCamelCase(String s) {
 		String[] parts = s.split("_");
 		String camelCaseString = "";
 		for (String part : parts) {

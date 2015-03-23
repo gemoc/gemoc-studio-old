@@ -208,7 +208,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		if (!_started)
 		{
 			_started = true;
-			Activator.getDefault().gemocRunningEngineRegistry.registerEngine(getName(), this);
 			Runnable r = new Runnable() {
 				
 				@Override
@@ -217,6 +216,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 					try
 					{
 						notifyEngineAboutToStart();
+						Activator.getDefault().gemocRunningEngineRegistry.registerEngine(getName(), AbstractExecutionEngine.this);
 						setEngineStatus(EngineStatus.RunStatus.Running);
 						notifyEngineStarted();
 						getRunnable().run();
@@ -240,13 +240,16 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	@Override
 	public void stop() 
 	{
-		_isStopped = true;
-		setEngineStatus(EngineStatus.RunStatus.Stopped);
-		notifyEngineStopped();
-		setSelectedLogicalStep(null);
-		if (getExecutionContext().getLogicalStepDecider() != null)
+		if (!_isStopped)
 		{
-			getExecutionContext().getLogicalStepDecider().preempt();
+			_isStopped = true;
+			setEngineStatus(EngineStatus.RunStatus.Stopped);
+			notifyEngineStopped();
+			setSelectedLogicalStep(null);
+			if (getExecutionContext().getLogicalStepDecider() != null)
+			{
+				getExecutionContext().getLogicalStepDecider().preempt();
+			}
 		}
 	}
 	
@@ -302,16 +305,16 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		{
 			_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
 		}
-		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
-		{
-			addon.aboutToSelectLogicalStep(this, getPossibleLogicalSteps());
-		}
 	}
 	
 	public void recomputePossibleLogicalSteps()
 	{
 		getSolver().revertForceClockEffect();
 		updatePossibleLogicalSteps();
+		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
+		{
+			addon.proposedLogicalStepsChanged(this, getPossibleLogicalSteps());
+		}
 	}
 
 	private ISolver getSolver()

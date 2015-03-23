@@ -41,12 +41,6 @@ public class RunConfiguration implements IRunConfiguration
 	}
 
 	@Override
-	public boolean isTraceActive() 
-	{
-		return false;
-	}
-
-	@Override
 	public int getDeadlockDetectionDepth() 
 	{
 		return 10;
