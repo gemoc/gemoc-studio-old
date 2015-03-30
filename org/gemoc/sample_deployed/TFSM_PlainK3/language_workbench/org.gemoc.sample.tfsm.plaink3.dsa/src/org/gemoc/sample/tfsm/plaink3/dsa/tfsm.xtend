@@ -14,6 +14,7 @@ import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
 
 @Aspect(className=TFSM)
 class TFSMAspect {
+
 	// should be added automatically by the dsa, currently introduced directly in the ecore
 	// public State currentState;
 	public State currentState
@@ -41,8 +42,9 @@ class FSMClockAspect {
 	// Clock tick
 	def public Integer ticks() {
 		_self.numberOfTicks = _self.numberOfTicks + 1
-		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".ticks()]New number of ticks : " +
-			_self.numberOfTicks.toString)
+		println(
+			"[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".ticks()]New number of ticks : " +
+				_self.numberOfTicks.toString)
 		return _self.numberOfTicks
 	}
 
@@ -69,9 +71,17 @@ class TransitionAspect {
 	}
 }
 
-@Aspect(className=FSMEvent)
+@Aspect(className=FSMEvent, transactionSupport=TransactionSupport.EMF)
 class FSMEventAspect {
 
 	public boolean isTriggered = false
+
+	def public void trigger() {
+		_self.isTriggered = true
+	}
+
+	def public void unTrigger() {
+		_self.isTriggered = false
+	}
 
 }
