@@ -2,7 +2,8 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="TFSM" version="8.1.0">
   <ownedViewpoints name="TFSM_ViewPoint">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TimedSystem" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="TimedSystem">
-      <metamodel href="../../org.gemoc.sample.tfsm.model/model/tfsm.ecore#/"/>
+<!--      <metamodel href="../../org.gemoc.sample.tfsm.model/model/tfsm.ecore#/"/>-->
+      <metamodel href="../../org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore#/"/>
       <defaultLayer name="Default">
         <edgeMappingImports name="Transitions" importedMapping="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
         <containerMappings name="TimedSystem" labelDirectEdit="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self/]" domainClass="TimedSystem">
@@ -42,7 +43,7 @@
           </style>
         </containerMappings>
         <toolSections name="Node">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="TFSM" forceRefresh="true" containerMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']" iconPath="/fr.inria.aoste.gemoc.example.tfsm.design/icons/TFSM_small.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="TFSM" forceRefresh="true" containerMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']" iconPath="/org.gemoc.sample.tfsm.design/icons/TFSM_small.gif">
             <variable name="container"/>
             <viewVariable name="itsTFSM"/>
             <initialOperation>
@@ -51,7 +52,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="GlobalClockCreation" nodeMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']" iconPath="/fr.inria.aoste.gemoc.example.tfsm.design/icons/clock_global_small.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="GlobalClockCreation" nodeMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']" iconPath="/org.gemoc.sample.tfsm.design/icons/clock_global_small.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -108,7 +109,8 @@
       </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TFSM" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="TFSM">
-      <metamodel href="../../org.gemoc.sample.tfsm.model/model/tfsm.ecore#/"/>
+      <metamodel href="../../org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore#/"/>
+<!--      <metamodel href="../../org.gemoc.sample.tfsm.model/model/tfsm.ecore#/"/> -->
       <defaultLayer name="Default">
         <nodeMappings name="LocalEvents" labelDirectEdit="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self.localEvents/]" domainClass="FSMEvent">
           <style xsi:type="style:WorkspaceImageDescription" labelFormat="bold" showIcon="false" iconPath="event_small.png" sizeComputationExpression="-1" roundedCorner="true" workspacePath="/org.gemoc.sample.tfsm.design/icons/event_small.gif">
@@ -145,7 +147,7 @@
           </style>
         </edgeMappings>
         <toolSections name="Node">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Event Guarded Transition" edgeMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']" iconPath="/fr.inria.aoste.gemoc.example.tfsm.design/icons/eventTransition_small.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Event Guarded Transition" edgeMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']" iconPath="/org.gemoc.sample.tfsm.design/icons/eventTransition_small.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -163,7 +165,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="State" containerMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']" iconPath="/fr.inria.aoste.gemoc.example.tfsm.design/icons/state_small.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="State" containerMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']" iconPath="/org.gemoc.sample.tfsm.design/icons/state_small.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -172,7 +174,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="LocalClockCreation" nodeMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']" iconPath="/fr.inria.aoste.gemoc.example.tfsm.design/icons/clock_local_small.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="LocalClockCreation" nodeMappings="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']" iconPath="/org.gemoc.sample.tfsm.design/icons/clock_local_small.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

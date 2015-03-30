@@ -25,13 +25,11 @@ import org.gemoc.sigpml.Place
 import org.gemoc.sigpml.Port
 import org.gemoc.sigpml.System
 
-import org.eclipse.core.runtime.Platform
-
-import org.osgi.framework.wiring.BundleWiring
-
 import static extension org.gemoc.sigpml.k3dsa.InputPortAspect.*
 import static extension org.gemoc.sigpml.k3dsa.OutputPortAspect.*
 import static extension org.gemoc.sigpml.k3dsa.SystemAspect.*
+import org.eclipse.core.runtime.Platform
+import org.osgi.framework.wiring.BundleWiring
 
 @Aspect(className = HWComputationalResource)
 class HWComputationalResourceAspect {
@@ -57,7 +55,7 @@ class AgentAspect extends NamedElementAspect {
 
 	def public void execute() {
 		println(_self.name + "\n      execute (" + _self.currentExecCycle + ")")
-		println("@ : " + _self.currentExecCycle + " sharedMemory:" + _self.sharedMemory)
+		println("@ : " + _self.currentExecCycle + " sharedMemory:" + _self.system.sharedMemory)
 
 		val outputPortNames = newArrayList
 		_self.frame.setContentPane(_self.plotter)
@@ -76,13 +74,13 @@ class AgentAspect extends NamedElementAspect {
 				val params = newArrayList
 
 				for (i : 0 ..<  p.rate) {
-					println("start for rate params sharedMemory: " + _self.sharedMemory)
+					println("start for rate params sharedMemory: " + _self.system.sharedMemory)
 
-					val tmp = _self.sharedMemory.get(p.name).get(0)
+					val tmp = _self.system.sharedMemory.get(p.name).get(0)
 					params.add(tmp)
-					_self.sharedMemory.remove(p.name, tmp)
+					_self.system.sharedMemory.remove(p.name, tmp)
 
-					println("end for rate params sharedMemory: " + _self.sharedMemory)
+					println("end for rate params sharedMemory: " + _self.system.sharedMemory)
 				}
 
 				println("   in params: " + params)
@@ -100,22 +98,34 @@ class AgentAspect extends NamedElementAspect {
 			}
 		}
 
-		//val b = Platform.getBundle("org.gemoc.sigpml.k3dsa")
-		//val ucl = b.adapt(BundleWiring).getClassLoader()
-		val ucl = _self.class.classLoader
-		val shell = new GroovyShell(ucl,binding)
-
-		val res = shell.evaluate(_self.code) as Map<String, Object>
-
-		if (res.containsValue("figure")) {
-			_self.figure.addFigure(res.get("figure") as Figure)
+		
+		try{
+			//val ucl = _self.class.classLoader
+			//val b = Platform.getBundle("org.gemoc.sigpml.k3dsa")
+			//val ucl = b.adapt(BundleWiring).getClassLoader()			
+			val ucl = AgentAspect.classLoader
+			//val ucl = _self.class.classLoader	
+			val shell = new GroovyShell(ucl,binding)
+	
+			val res = shell.evaluate(_self.code) as Map<String, Object>
+	
+			if (res.containsValue("figure")) {
+				_self.figure.addFigure(res.get("figure") as Figure)
+			}
+	
+			for (String portName : outputPortNames) {
+				_self.system.sharedMemory.put(portName, res.get(portName))
+			}
+			println("sharedMemory: " + _self.system.sharedMemory)
+		} catch (org.codehaus.groovy.control.MultipleCompilationErrorsException cnfe){
+			println("Failed to call Groovy script"+cnfe.message)
+			println("figure not correctly updated")
+			println("using default values for system.sharedMemory instead of computed ones")
+			for (String portName : outputPortNames) {
+				_self.system.sharedMemory.put(portName, 0.0)
+			}
+			cnfe.printStackTrace
 		}
-
-		for (String portName : outputPortNames) {
-			_self.sharedMemory.put(portName, res.get(portName))
-		}
-
-		println("sharedMemory: " + _self.sharedMemory)
 	}
 }
 
@@ -175,18 +185,18 @@ class PlaceAspect extends NamedElementAspect {
 		_self.itsOutputPort.sizeWritten = _self.itsOutputPort.sizeWritten - 1 
 
 		println(_self.name + "push")
-		println("sharedMemory: " + _self.sharedMemory)
+		println("sharedMemory: " + _self.system.sharedMemory)
 
 		var fifo_view = _self.fifo
-		val objTowrite = _self.sharedMemory.get(_self.itsOutputPort.name).get(0)
+		val objTowrite = _self.system.sharedMemory.get(_self.itsOutputPort.name).get(0)
 
-		_self.sharedMemory.remove(_self.itsOutputPort.name, objTowrite)
+		_self.system.sharedMemory.remove(_self.itsOutputPort.name, objTowrite)
 		_self.fifo.add(objTowrite)
 		_self.currentSize = _self.fifo.size
 		fifo_view = _self.fifo
 
 		println(fifo_view)
-		println("sharedMemory: " + _self.sharedMemory)
+		println("sharedMemory: " + _self.system.sharedMemory)
 	}
 
 	def public void pop() {
@@ -196,15 +206,15 @@ class PlaceAspect extends NamedElementAspect {
 		}
 
 		println(_self.name + "pop")
-		println("sharedMemory: " + _self.sharedMemory)
+		println("sharedMemory: " + _self.system.sharedMemory)
 		println(_self.fifo)
 
 		val readedObject = _self.fifo.get(0)
 		_self.fifo.remove(0)
 		_self.currentSize = _self.fifo.size
-		_self.sharedMemory.put(_self.itsInputPort.name, readedObject)
+		_self.system.sharedMemory.put(_self.itsInputPort.name, readedObject)
 
-		println("sharedMemory: " + _self.sharedMemory)
+		println("sharedMemory: " + _self.system.sharedMemory)
 	}
 }
 
@@ -215,13 +225,13 @@ class SystemAspect {
 
 @Aspect(className=NamedElement)
 abstract class NamedElementAspect {
-	def public LinkedListMultimap sharedMemory() {
+	def System getSystem() {
 		var contents = _self.eResource.contents
 		val system = contents.findFirst[x | x instanceof org.gemoc.sigpml.System] as org.gemoc.sigpml.System
 		
-		if (system.sharedMemory == null)
+		if (system != null && system.sharedMemory == null)
 			system.sharedMemory = LinkedListMultimap.create
-
-		return system.sharedMemory
+			
+		return system
 	}
 }

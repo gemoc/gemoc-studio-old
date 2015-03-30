@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generate" name="org.gemoc.mocc.transformations.ecl2clocksystem">
-    <property name="ECLIPSE_HOME" value="../../../../../../../../../../../../../install/gemoc/gemoc_studio-linux.gtk.x86_64"/>
-    <property name="ECLIPSE_WORKSPACE" value="../../../../../../../../workspace_gemocDev"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../../../../eclipses/gemoc_studio-win32.win32.x86_64"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../../../../../../workspaces/gemoc_dev_luna"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="org.gemoc.mocc.transformations.ecl2clocksystem.libraryclasspath">
@@ -18,8 +18,8 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.preferences_3.5.200.v20140224-1527.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.contenttype_3.4.200.v20140207-1251.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.app_1.3.200.v20130910-1609.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ecl_1.0.0.201502181417.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ccslkernel.model_1.0.0.201502211047.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ecl_1.0.0.201412172152.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ccslkernel.model_1.0.0.201501091518.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore_2.10.2.v20150123-0348.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.common_2.10.1.v20150123-0348.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore.xmi_2.10.2.v20150123-0348.jar"/>
@@ -59,14 +59,14 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.xtend.lib_2.7.3.v201411190455.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.xtext.xbase.lib_2.7.3.v201411190455.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.xtend.lib.macro_2.7.3.v201411190455.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ccslkernel.library.xtext_1.0.0.201502211047.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ccslkernel.xtext.util_1.0.0.201502211047.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ccslkernel.parser.xtext_1.0.0.201502211047.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.utils.umlhelpers_1.0.0.201502211047.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ecl.xtext_1.0.0.201502181417.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ccslkernel.library.xtext_1.0.0.201501091518.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ccslkernel.xtext.util_1.0.0.201501091518.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ccslkernel.parser.xtext_1.0.0.201501091518.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.utils.umlhelpers_1.0.0.201501091518.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ecl.xtext_1.0.0.201412172152.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.apache.log4j_1.2.15.v201012070815.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ccslkernel.library.xtext.ui_1.0.0.201502211047.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/fr.inria.aoste.timesquare.ccslkernel.library.xtext.ui_1.0.0.201501091518.jar"/>
     </path>
 
     <path id="org.gemoc.mocc.transformations.ecl2clocksystem.classpath">

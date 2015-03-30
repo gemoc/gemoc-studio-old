@@ -98,6 +98,17 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 	@Override
 	public void mseOccurenceRaised(MSEOccurrence occurrence) 
 	{
+	}
+
+	@Override
+	public ArrayList<ModelElementReference> getAllDiscreteClocks() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void mseOccurenceAboutToBeRaised(MSEOccurrence occurrence) 
+	{
 		_lastOccurrence = occurrence;
 		String uri = _resourceModel.getURIFragment(occurrence.getMse().getCaller());
 //		String uri = engine.getExecutionContext().getResourceModel().getURIFragment(occurrence.getMse().getCaller());
@@ -106,13 +117,6 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 			ArrayList<LogicalStep> logicalSteps = new ArrayList<LogicalStep>();
 			logicalSteps.add(occurrence.getLogicalstep());
 		}
-
-	}
-
-	@Override
-	public ArrayList<ModelElementReference> getAllDiscreteClocks() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

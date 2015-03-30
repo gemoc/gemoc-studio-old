@@ -41,7 +41,7 @@ abstract public class GenerateExtendedCCSLFileAction implements IObjectActionDel
 		String outputMoCPath = "platform:/resource" + modelFile.getFullPath().toString().substring(0, numberOfCharToRemove) + "_executionModel." + getMoCFileExtension();
 		String outputFeedbackPath = "platform:/resource" + modelFile.getFullPath().toString().substring(0, numberOfCharToRemove) + "_executionModel." + getFeedbackFileExtension();
 		QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
-		performer.run(qvtoUriString, modelUriString, outputMoCPath, outputFeedbackPath);
+		performer.run(null, qvtoUriString, modelUriString, outputMoCPath, outputFeedbackPath);
 	}
 
 	/**

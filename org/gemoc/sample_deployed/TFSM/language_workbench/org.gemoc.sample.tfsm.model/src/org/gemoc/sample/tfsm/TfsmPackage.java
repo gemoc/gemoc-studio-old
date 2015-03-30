@@ -148,22 +148,13 @@ public interface TfsmPackage extends EPackage {
 	int TFSM__OWNED_TRANSITIONS = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Current State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM__CURRENT_STATE = NAMED_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
 	 * The number of structural features of the '<em>TFSM</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int TFSM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.StateImpl <em>State</em>}' class.
@@ -628,17 +619,6 @@ public interface TfsmPackage extends EPackage {
 	EReference getTFSM_OwnedTransitions();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.TFSM#getCurrentState <em>Current State</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Current State</em>'.
-	 * @see org.gemoc.sample.tfsm.TFSM#getCurrentState()
-	 * @see #getTFSM()
-	 * @generated
-	 */
-	EReference getTFSM_CurrentState();
-
-	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.State <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -996,14 +976,6 @@ public interface TfsmPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TFSM__OWNED_TRANSITIONS = eINSTANCE.getTFSM_OwnedTransitions();
-
-		/**
-		 * The meta object literal for the '<em><b>Current State</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TFSM__CURRENT_STATE = eINSTANCE.getTFSM_CurrentState();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.StateImpl <em>State</em>}' class.

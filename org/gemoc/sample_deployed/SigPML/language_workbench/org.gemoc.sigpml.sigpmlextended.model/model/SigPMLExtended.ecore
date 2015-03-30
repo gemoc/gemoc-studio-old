@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sigpmlextended" nsURI="http://sigpmlextended" nsPrefix="sigpmlextended">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Application" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAgents" upperBound="-1"
+        eType="#//Agent" containment="true" eOpposite="#//Agent/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPlaces" upperBound="-1"
+        eType="#//Place" containment="true" eOpposite="#//Place/owner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Agent" eSuperTypes="#//NamedElement">
+    <eOperations name="isExecuting">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eOperations name="execute">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPorts" upperBound="-1"
+        eType="#//Port" containment="true" eOpposite="#//Port/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cycles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Application"
+        eOpposite="#//Application/ownedAgents"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedTo" eType="#//HWComputationalResource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Agent"
+        eOpposite="#//Agent/ownedPorts"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="byteRate" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
+        transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//sizeType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputPort" eSuperTypes="#//Port">
+    <eOperations name="read" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eOperations name="logSizeToReadWhenZero">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eOperations name="logSizeToReadWhenNotZero">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeToread" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputPort" eSuperTypes="#//Port">
+    <eOperations name="write">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeWritten" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="matchRates"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="matchRates" value="if byteSize > 0 then byteSize >= itsOutputPort.byteRate and byteSize >= itsInputPort.byteRate else true endif"/>
+    </eAnnotations>
+    <eOperations name="push">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eOperations name="pop">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsOutputPort" lowerBound="1"
+        eType="#//OutputPort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsInputPort" lowerBound="1"
+        eType="#//InputPort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fifo" upperBound="-1" eType="#//Object">
+      <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitialized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Application"
+        eOpposite="#//Application/ownedPlaces"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//sizeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="byteSize" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
+        transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="delay" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="sizeType">
+    <eLiterals name="B" value="1"/>
+    <eLiterals name="kB" value="1024"/>
+    <eLiterals name="MB" value="1048576"/>
+    <eLiterals name="GB" value="1073741824"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eOperations name="getSystem" eType="#//System">
+      <eAnnotations source="aspect"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HWRessource" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//HWPlatform"
+        eOpposite="#//HWPlatform/ownedHWResources"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectedTo" upperBound="-1"
+        eType="#//HWRessource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HWComputationalResource" eSuperTypes="#//HWRessource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isUnderPreemptiveManagement"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedAgents" upperBound="-1"
+        eType="#//Agent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HWStorageResource" eSuperTypes="#//HWRessource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedPlaces" upperBound="-1"
+        eType="#//Place"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HWCommunicationResource" eSuperTypes="#//HWRessource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HWPlatform" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedHWResources" upperBound="-1"
+        eType="#//HWRessource" containment="true" eOpposite="#//HWRessource/owner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedApplication" eType="#//Application"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedHWPlatform" eType="#//HWPlatform"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sharedMemory" eType="#//LinkedListMultimap">
+      <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="LinkedListMultimap" instanceClassName="com.google.common.collect.LinkedListMultimap"/>
+</ecore:EPackage>

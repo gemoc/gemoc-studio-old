@@ -1,0 +1,32 @@
+package org.gemoc.sample.tfsm.xdsml
+
+import org.gemoc.sample.tfsm.k3dsa.aspect.*
+
+metamodel SimpleTfsm {
+	ecore "platform:/resource/org.gemoc.sample.tfsm.model/model/tfsm.ecore"
+	exactType SimpleTfsmMT 
+}
+
+metamodel TfsmExtended inherits SimpleTfsm {
+	exactType TfsmExtendedMT uri "http://tfsm/mt"
+	with TFSMAspect
+	with StateAspect
+	with TransitionAspect
+	with FSMClockAspect
+	with EvaluateGuardAspect
+}
+
+/*@Main
+transformation main() {
+	//val m1 = TfsmExtended.load("input/Simple.fsm",      TfsmExtendedMT)
+	val m1 = TfsmExtended.load("input/daynight_single_traffic_light_control.tfsm").toTfsmExtendedMT
+	println(m1.toString)
+	println(m1.contents.head.toString)
+	val tfsmextended.TimedSystem t = m1.contents.head as tfsmextended.TimedSystem
+	val org.gemoc.sample.tfsm.k3dsa.tfsmextendedmt.TimedSystem timedSystem = m1.contents.head as org.gemoc.sample.tfsm.k3dsa.tfsmextendedmt.TimedSystem
+	timedSystem.printHello
+	// execute.call(m2)
+	println("ho")
+}*/
+
+

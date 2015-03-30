@@ -27,13 +27,7 @@ import org.gemoc.sample.tfsm.TfsmPackage;
  * @generated
  */
 public class EventGuardItemProvider
-	extends GuardItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends GuardItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

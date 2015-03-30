@@ -31,13 +31,7 @@ import org.gemoc.sample.tfsm.TfsmPackage;
  * @generated
  */
 public class TFSMItemProvider
-	extends NamedElementItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends NamedElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -60,7 +54,6 @@ public class TFSMItemProvider
 			super.getPropertyDescriptors(object);
 
 			addInitialStatePropertyDescriptor(object);
-			addCurrentStatePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -79,28 +72,6 @@ public class TFSMItemProvider
 				 getString("_UI_TFSM_initialState_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_TFSM_initialState_feature", "_UI_TFSM_type"),
 				 TfsmPackage.Literals.TFSM__INITIAL_STATE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Current State feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCurrentStatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_TFSM_currentState_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TFSM_currentState_feature", "_UI_TFSM_type"),
-				 TfsmPackage.Literals.TFSM__CURRENT_STATE,
 				 true,
 				 false,
 				 true,

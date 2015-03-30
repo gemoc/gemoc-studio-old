@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ASCII"?>
+<feedback:ActionModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:feedback="http://timesquare.inria.fr/feedback">
+  <events name="MSE_minutes_ticks">
+    <caller href="daynight_single_traffic_light_control.tfsm#//@globalClocks.0"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//FSMClock/ticks"/>
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.0"/>
+  </events>
+  <events name="MSE_Night_to_Night_fire">
+    <caller href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.4"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//Transition/fire"/>
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.1"/>
+  </events>
+  <events name="MSE_Green0_to_Red0_fire">
+    <caller href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.2"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//Transition/fire"/>
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.2"/>
+  </events>
+  <events name="MSE_initSema0_to_Red0_fire">
+    <caller href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.0"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//Transition/fire"/>
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.3"/>
+  </events>
+  <events name="MSE_initControl_to_Day_fire">
+    <caller href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//Transition/fire"/>
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.4"/>
+  </events>
+  <events name="MSE_Day_to_Day_fire">
+    <caller href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//Transition/fire"/>
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.5"/>
+  </events>
+  <events name="MSE_Day_to_Night_fire">
+    <caller href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.3"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//Transition/fire"/>
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.6"/>
+  </events>
+  <events name="MSE_Red0_to_Green0_fire">
+    <caller href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.1"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//Transition/fire"/>
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.7"/>
+  </events>
+  <events name="MSE_Night_to_Day_fire">
+    <caller href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//Transition/fire"/>
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.8"/>
+  </events>
+  <events name="MSE_GuardIsNight_evaluate">
+    <caller href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.3/@ownedGuard"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//EvaluateGuard/evaluate"/>
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.9"/>
+  </events>
+  <events name="MSE_guardIsDay_evaluate">
+    <caller href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.1/@ownedGuard"/>
+    <action href="http://www.gemoc.org/sample/tfsm#//EvaluateGuard/evaluate"/>
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.10"/>
+  </events>
+  <events name="MSE_switch_occurs">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.11"/>
+  </events>
+  <events name="MSE_Green0_entering">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.12"/>
+  </events>
+  <events name="MSE_Red0_entering">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.13"/>
+  </events>
+  <events name="MSE_initSema0_entering">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.14"/>
+  </events>
+  <events name="MSE_Night_entering">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.15"/>
+  </events>
+  <events name="MSE_Day_entering">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.16"/>
+  </events>
+  <events name="MSE_initControl_entering">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.17"/>
+  </events>
+  <events name="MSE_Green0_leaving">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.18"/>
+  </events>
+  <events name="MSE_Red0_leaving">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.19"/>
+  </events>
+  <events name="MSE_initSema0_leaving">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.20"/>
+  </events>
+  <events name="MSE_Night_leaving">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.21"/>
+  </events>
+  <events name="MSE_Day_leaving">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.22"/>
+  </events>
+  <events name="MSE_initControl_leaving">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.23"/>
+  </events>
+  <events name="MSE_GuardIsNight_evaluatedTrue">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.24"/>
+  </events>
+  <events name="MSE_guardIsDay_evaluatedTrue">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.25"/>
+  </events>
+  <events name="MSE_GuardIsNight_evaluatedFalse">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.26"/>
+  </events>
+  <events name="MSE_guardIsDay_evaluatedFalse">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.27"/>
+  </events>
+  <events name="MSE_Semaphore0_start">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.28"/>
+  </events>
+  <events name="MSE_Control_start">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.29"/>
+  </events>
+  <events name="MSE_Semaphore0_stall">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.30"/>
+  </events>
+  <events name="MSE_Control_stall">
+    <solverEvent href="daynight_single_traffic_light_control_executionModel.extendedCCSL#//@subBlock.0/@elements.31"/>
+  </events>
+  <importStatements importURI="platform:/3"/>
+</feedback:ActionModel>

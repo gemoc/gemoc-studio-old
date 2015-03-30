@@ -46,6 +46,8 @@ Export-Package: org.gemoc.gemoc_language_workbench.ui,
  org.gemoc.gemoc_language_workbench.ui.builder.pde,
  org.gemoc.gemoc_language_workbench.ui.commands,
  org.gemoc.gemoc_language_workbench.ui.dialogs,
+ org.gemoc.gemoc_language_workbench.ui.dse,
  org.gemoc.gemoc_language_workbench.ui.listeners,
  org.gemoc.gemoc_language_workbench.ui.wizards,
- org.gemoc.gemoc_language_workbench.ui.wizards.contextDSA
+ org.gemoc.gemoc_language_workbench.ui.wizards.contextDSA,
+ org.gemoc.gemoc_language_workbench.ui.wizards.pages

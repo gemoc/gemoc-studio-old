@@ -118,7 +118,10 @@ public final class DebugSessionFactory {
 			throws CoreException {
 		ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
 		// Make ResourceSet aware of resource loading with progress monitor
-		ResourceSetUtil.setProgressMonitor(resourceSet, new SubProgressMonitor(monitor, 2));
+		
+		// !!! WARNING !!! 
+		// The following line is setting the URIConverter of the resource set.
+		//ResourceSetUtil.setProgressMonitor(resourceSet, new SubProgressMonitor(monitor, 2));
 
 		Session session = null;
 		try {

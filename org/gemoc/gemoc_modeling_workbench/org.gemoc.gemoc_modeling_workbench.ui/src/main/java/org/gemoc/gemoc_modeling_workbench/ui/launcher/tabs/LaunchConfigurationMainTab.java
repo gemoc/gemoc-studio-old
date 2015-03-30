@@ -66,6 +66,7 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 	protected Button _animateButton;
 	protected Text _delayText;
 	protected Combo _languageCombo;
+	protected Text _melangeQueryText;
 	protected Combo _deciderCombo;
 	
 	protected Group _k3Area;
@@ -96,6 +97,7 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 
 		_k3Area = createGroup(area, "Pure K3 execution:");
 		createK3Layout(_k3Area, null);
+		
 	}
 	
 	@Override
@@ -125,6 +127,7 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 				_siriusRepresentationLocationText.setText("");
 			_delayText.setText(Integer.toString(runConfiguration.getAnimationDelay()));
 			_languageCombo.setText(runConfiguration.getLanguageName());
+			_melangeQueryText.setText(runConfiguration.getMelangeQuery());
 			_deciderCombo.setText(runConfiguration.getDeciderName());
 			
 			_entryPointText.setText(runConfiguration.getExecutionEntryPoint());
@@ -149,6 +152,9 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_SELECTED_LANGUAGE,
 						this._languageCombo.getText());
+		configuration.setAttribute(
+				RunConfiguration.LAUNCH_MELANGE_QUERY,
+				this._melangeQueryText.getText());
 		configuration.setAttribute(
 						RunConfiguration.LAUNCH_SELECTED_DECIDER,
 						this._deciderCombo.getText());
@@ -295,6 +301,24 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		String[] empty = {};
 		_languageCombo.setItems(xdsmlNames.toArray(empty));
 		_languageCombo.addModifyListener(fBasicModifyListener);
+		createTextLabelLayout(parent, "");
+		
+		
+		//********* Melange support ****
+		// in a future version this should be extracted from the xdml itself
+		createTextLabelLayout(parent, "Melange URI query");
+		_melangeQueryText = new Text(parent, SWT.SINGLE | SWT.BORDER);
+		_melangeQueryText.setLayoutData(createStandardLayout());
+		_melangeQueryText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				updateLaunchConfigurationDialog();
+			}
+		});
+		createTextLabelLayout(parent, "ex: ?mm=http://yourmetamodelextended");
+
+		
 		/*
 		 * languageCombo.addListener (SWT.DefaultSelection, new Listener () {
 		 * public void handleEvent (Event e) { //System.out.println (e.widget +

@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.m2m.qvt.oml.BasicModelExtent;
 import org.eclipse.m2m.qvt.oml.ExecutionContextImpl;
 import org.eclipse.m2m.qvt.oml.ExecutionDiagnostic;
@@ -42,24 +43,25 @@ public class QvtoTransformationPerformer {
 		ExtendedCCSLStandaloneSetup.doSetup();
 	}
 	
-	public void run(String transformationPath, String modelPath, String outputMoCPath, String outputFeedbackPath) 
+	public void run(ResourceSet resourceSet, String transformationPath, String modelPath, String outputMoCPath, String outputFeedbackPath) 
 	{		
 	    URI transformationURI = URI.createURI(transformationPath, true);
 	    URI modelURI = URI.createURI(modelPath, true);
 		IResourceServiceProvider.Registry.INSTANCE.getResourceServiceProvider(modelURI);
 		initializeXtext();
 	    //model resource
-	    Resource modelResource = aModelResourceSet.getResource(modelURI, true);
+		//Resource modelResource = aModelResourceSet.getResource(modelURI, true);
+		Resource modelResource = resourceSet.getResource(modelURI, true);
 			   
-	    HashMap<Object, Object> saveOptions = new HashMap<Object, Object>();
-	    Builder aBuilder = SaveOptions.newBuilder();
-	    SaveOptions anOption = aBuilder.getOptions();
-	    anOption.addTo(saveOptions);
-	    try {
-	    	modelResource.load(saveOptions);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+//	    HashMap<Object, Object> saveOptions = new HashMap<Object, Object>();
+//	    Builder aBuilder = SaveOptions.newBuilder();
+//	    SaveOptions anOption = aBuilder.getOptions();
+//	    anOption.addTo(saveOptions);
+//	    try {
+//	    	modelResource.load(saveOptions);
+//		} catch (IOException e1) {
+//			e1.printStackTrace();
+//		}
 
 	    //transformationURI is the URI of qvto file
 		TransformationExecutor executor = new TransformationExecutor(transformationURI);

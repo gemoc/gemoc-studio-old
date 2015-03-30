@@ -70,6 +70,10 @@ public final class MSEManager
 			{
 				for (IMSEOccurrenceListener listener : _listeners)
 				{
+					listener.mseOccurenceAboutToBeRaised(occurrence);
+				}
+				for (IMSEOccurrenceListener listener : _listeners)
+				{
 					listener.mseOccurenceRaised(occurrence);
 				}
 			}

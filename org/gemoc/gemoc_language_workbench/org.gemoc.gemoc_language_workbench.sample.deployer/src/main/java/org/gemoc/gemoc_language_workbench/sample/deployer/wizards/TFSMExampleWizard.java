@@ -30,6 +30,8 @@ public class TFSMExampleWizard
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.model.zip", "org.gemoc.sample.tfsm.model"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.model.edit.zip", "org.gemoc.sample.tfsm.model.edit"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.model.editor.zip", "org.gemoc.sample.tfsm.model.editor"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.tfsmextended.model.zip", "org.gemoc.sample.tfsm.tfsmextended.model"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.tfsmextended.aspect.zip", "org.gemoc.sample.tfsm.tfsmextended.aspect"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.xdsml.zip", "org.gemoc.sample.tfsm.xdsml"));
 		return projects;
 	}

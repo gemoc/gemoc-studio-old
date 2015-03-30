@@ -16,5 +16,7 @@ public interface ICodeExecutor
 	
 	Object execute(MSEOccurrence mseOccurrence) throws CodeExecutionException;
 	Object execute(Object caller, String methodName, List<Object> parameters) throws CodeExecutionException;
+	
+	String getExcutorID();
 
 }
