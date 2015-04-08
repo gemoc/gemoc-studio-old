@@ -4,96 +4,96 @@
   PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <index>
    <entry keyword="Decider">
-      <topic href="ch02.html#d5e203"/>
+      <topic href="ch02.html#d5e286"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch02.html#d5e226"/>
+      <topic href="ch02.html#d5e309"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch02.html#d5e242"/>
+      <topic href="ch02.html#d5e325"/>
    </entry>
    <entry keyword="Event Manager">
-      <topic href="ch02.html#d5e252"/>
+      <topic href="ch02.html#d5e335"/>
    </entry>
    <entry keyword="Event Manager">
-      <topic href="ch02.html#d5e257"/>
+      <topic href="ch02.html#d5e340"/>
    </entry>
    <entry keyword="GEMOC">
-      <topic href="ch03.html#d5e464"/>
+      <topic href="ch03.html#d5e547"/>
       <entry keyword="process">
-         <topic href="ch03.html#d5e465"/>
+         <topic href="ch03.html#d5e548"/>
       </entry>
    </entry>
    <entry keyword="GEMOC">
-      <topic href="ch03.html#d5e424"/>
+      <topic href="ch03.html#d5e507"/>
       <entry keyword="process">
-         <topic href="ch03.html#d5e425"/>
+         <topic href="ch03.html#d5e508"/>
          <entry keyword="overview">
-            <topic href="ch03.html#d5e426"/>
+            <topic href="ch03.html#d5e509"/>
          </entry>
       </entry>
    </entry>
    <entry keyword="language designer">
-      <topic href="ch01.html#d5e31"/>
+      <topic href="ch01.html#d5e110"/>
    </entry>
    <entry keyword="Language workbench">
-      <topic href="ch01.html#d5e46"/>
+      <topic href="ch01.html#d5e125"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch02.html#d5e205"/>
+      <topic href="ch02.html#d5e288"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch02.html#d5e338"/>
+      <topic href="ch02.html#d5e421"/>
    </entry>
    <entry keyword="Modeling workbench">
-      <topic href="ch02.html#d5e184"/>
+      <topic href="ch02.html#d5e267"/>
    </entry>
    <entry keyword="overview">
-      <topic href="ch03.html#d5e431"/>
+      <topic href="ch03.html#d5e514"/>
    </entry>
    <entry keyword="process">
-      <topic href="ch03.html#d5e467"/>
+      <topic href="ch03.html#d5e550"/>
    </entry>
    <entry keyword="process">
-      <topic href="ch03.html#d5e428"/>
+      <topic href="ch03.html#d5e511"/>
       <entry keyword="overview">
-         <topic href="ch03.html#d5e429"/>
+         <topic href="ch03.html#d5e512"/>
       </entry>
    </entry>
    <entry keyword="Runtime Data">
-      <topic href="ch02.html#d5e265"/>
+      <topic href="ch02.html#d5e348"/>
    </entry>
    <entry keyword="Runtime Data">
-      <topic href="ch02.html#d5e343"/>
+      <topic href="ch02.html#d5e426"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01.html#d5e139"/>
+      <topic href="ch01.html#d5e220"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01.html#d5e160"/>
+      <topic href="ch01.html#d5e243"/>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch01.html#d5e41"/>
+      <topic href="ch01.html#d5e120"/>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch02.html#d5e179"/>
+      <topic href="ch02.html#d5e262"/>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch01.html#d5e43"/>
+      <topic href="ch01.html#d5e122"/>
       <entry keyword="Language workbench">
-         <topic href="ch01.html#d5e44"/>
+         <topic href="ch01.html#d5e123"/>
       </entry>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch02.html#d5e181"/>
+      <topic href="ch02.html#d5e264"/>
       <entry keyword="Modeling workbench">
-         <topic href="ch02.html#d5e182"/>
+         <topic href="ch02.html#d5e265"/>
       </entry>
    </entry>
    <entry keyword="Timeline">
-      <topic href="ch02.html#d5e231"/>
+      <topic href="ch02.html#d5e314"/>
    </entry>
    <entry keyword="Timeline">
-      <topic href="ch02.html#d5e247"/>
+      <topic href="ch02.html#d5e330"/>
    </entry>
 </index>

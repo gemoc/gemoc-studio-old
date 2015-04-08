@@ -3,9 +3,13 @@
 <!DOCTYPE toc
   PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <toc label="GEMOC Studio Guide" topic="index.html">
-   <topic label="Introduction" href="pr01.html"/>
+   <topic label="Introduction" href="pr01.html">
+      <topic label="Language Workbench overview" href="pr01.html#_language_workbench_overview"/>
+      <topic label="Modeling workbench overview" href="pr01.html#_modeling_workbench_overview"/>
+      <topic label="General concerns and prerequisite" href="pr01.html#_general_concerns_and_prerequisite"/>
+   </topic>
    <topic label="Gemoc Language workbench" href="ch01.html">
-      <topic label="Language Workbench overview" href="ch01.html#_language_workbench_overview"/>
+      <topic label="Language Workbench overview" href="ch01.html#_language_workbench_overview_2"/>
       <topic label="Gemoc Language project" href="ch01.html#section-gemoc-language-project"/>
       <topic label="Defining Abstract Syntax (or domain concepts)" href="ch01.html#section-define-AS-project">
          <topic label="Method 1 : Creation via xDSML popup" href="ch01.html#section-define-AS-project-method-1"/>
@@ -17,18 +21,18 @@
          <topic label="Defining the Execution Functions" href="ch01.html#_defining_the_execution_functions"/>
       </topic>
       <topic label="Defining Domain-Specific Constraints" href="ch01.html#_defining_domain_specific_constraints"/>
-      <topic label="Defining a concrete syntax" href="ch01.html#_defining_a_concrete_syntax">
-         <topic label="Defining a concrete syntax with xText" href="ch01.html#_defining_a_concrete_syntax_with_xtext"/>
-         <topic label="Defining a concrete syntax with Sirius" href="ch01.html#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"/>
+      <topic label="Defining a Concrete Syntax" href="ch01.html#_defining_a_concrete_syntax">
+         <topic label="Defining a Concrete Syntax with Xtext" href="ch01.html#_defining_a_concrete_syntax_with_xtext"/>
+         <topic label="Defining a Concrete Syntax with Sirius" href="ch01.html#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"/>
       </topic>
       <topic label="Defining a Model of Concurrency and Communication (MoCC)" href="ch01.html#_defining_a_model_of_concurrency_and_communication_mocc"/>
-      <topic label="Defining the Domain Specific Events (DSE)" href="ch01.html#_defining_the_domain_specific_events_dse"/>
+      <topic label="Defining the Domain-Specific Events (DSE)" href="ch01.html#_defining_the_domain_specific_events_dse"/>
       <topic label="Defining the Feedback Policies" href="ch01.html#_defining_the_feedback_policies"/>
       <topic label="Defining an animation view" href="ch01.html#_defining_an_animation_view"/>
       <topic label="Process support view" href="ch01.html#section-process-support-view"/>
    </topic>
    <topic label="Gemoc Modeling workbench" href="ch02.html">
-      <topic label="Modeling workbench overview" href="ch02.html#_modeling_workbench_overview"/>
+      <topic label="Modeling workbench overview" href="ch02.html#_modeling_workbench_overview_2"/>
       <topic label="Editing model" href="ch02.html#modeling-workbench-editing-model-section"/>
       <topic label="Executing model" href="ch02.html#modeling-workbench-executing-model-section">
          <topic label="Launch configuration" href="ch02.html#_launch_configuration">
@@ -90,7 +94,7 @@
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e927"/>
+      <topic label="Articles" href="bi01.html#d5e1010"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>

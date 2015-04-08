@@ -13,7 +13,74 @@ Creating and executing models conformant to executable DSMLs. This mode is inten
 </li></ul></div>
 <p>Each of these usage has it own set of tools that are referenced as <span class="strong"><strong>Gemoc Language workbench</strong></span> for the tools for <span class="emphasis"><em>language designers</em></span> and <span class="strong"><strong>Gemoc Modeling Workbench</strong></span> for the tools for <span class="emphasis"><em>domain designers</em></span>.</p>
 <p>TODO include figure here</p>
+<div class="section" title="1.&nbsp;Language Workbench overview"><div class="titlepage"><div><div><h2 class="title"><a name="_language_workbench_overview"></a>1.&nbsp;Language Workbench overview</h2></div></div></div>
+
+<p>The GEMOC Language Workbench allows building and composing new executable DSMLs.</p>
+<p>To acheive that, it offers appropriate tools and guidance for the underlying activities wich are grouped in categories.</p>
+<p>TODO: add icon of the workbench</p>
+<p title="Build executable language">
+<b>Build executable language.&nbsp;</b>
+The first main activity is to build an executable language. The language designer is assited by a dedicated Dashboard to guide him during his work.
+</p>
+<p>This first dashboard groups the activities as follow:</p>
+<div class="variablelist"><dl><dt><span class="term">Create a language</span></dt><dd>
+<p class="simpara">This activity can be decomposed in activities in two groups :</p>
+<div class="variablelist"><dl><dt><span class="term">Domain model (abstract syntax)</span></dt><dd>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Create the abstract syntax with EMF (incl., the ecore model and the genmodel)
+</li></ul></div>
+</dd><dt><span class="term">Model editors (concrete syntax)</span></dt><dd>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Create a graphical editor with Sirius Designer
+</li><li class="listitem">
+Create a textual editor with Xtext
+</li></ul></div>
+</dd></dl></div>
+</dd><dt><span class="term">Make your language executable</span></dt><dd>
+<p class="simpara">This activity is decomposed in 2 main parts:</p>
+<div class="variablelist"><dl><dt><span class="term">Sequential Execution semantics</span></dt><dd>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Create the execution semantics with Kermeta and Melange
+</li></ul></div>
+</dd><dt><span class="term">Concurrent Execution semantics</span></dt><dd>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Create the Domain-Specific Actions with Kermeta and Melange
+</li><li class="listitem">
+Create the Domain-Specific Events with ECL
+</li><li class="listitem">
+Create a library of Model of Computation with MoccML
+</li></ul></div>
+</dd></dl></div>
+</dd><dt><span class="term">Define the runtime environnement fot the language</span></dt><dd>
+<div class="variablelist"><dl><dt><span class="term">Model Debugger</span></dt><dd>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Select your breakpointable elements
+</li></ul></div>
+</dd><dt><span class="term">Model dynamic representation (for debugging, animation, monitoring)</span></dt><dd>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Create the graphical representation with Sirius Animator
+</li><li class="listitem">
+Plug your own add-ons
+</li></ul></div>
+</dd></dl></div>
+</dd></dl></div>
+<p>TODO: add snapshot of the dashboard</p>
+<p title="Compose executable languages">
+<b>Compose executable languages.&nbsp;</b>
+The second main activity is to define the composition between executable languages.
+The language integrator is also assisted by a dedicated dashboard that proposes the following activity groups:
+</p>
+<p>TODO: add a  the list of composition activities here</p>
+<p>TODO: add snapshot of the dashboard</p>
+</div>
+<div class="section" title="2.&nbsp;Modeling workbench overview"><div class="titlepage"><div><div><h2 class="title"><a name="_modeling_workbench_overview"></a>2.&nbsp;Modeling workbench overview</h2></div></div></div>
+
+<p>TODO: add icon of the workbench</p>
+</div>
+<div class="section" title="3.&nbsp;General concerns and prerequisite"><div class="titlepage"><div><div><h2 class="title"><a name="_general_concerns_and_prerequisite"></a>3.&nbsp;General concerns and prerequisite</h2></div></div></div>
+
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">In order to run, Eclipse workbench needs to run with additional memory. Use the following setting to start Eclipse: -Xms1024m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=512m</p>
+<p xmlns="">In order to run, Eclipse workbench work better with additional memory. Use the following setting to start Eclipse: -Xms1024m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=512m</p>
+</div>
 </div>
 </div><ul xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="index.html"><strong>Prev</strong>GEMOC Studio Guide</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch01.html"><strong>Next</strong>Chapter&nbsp;1.&nbsp;Gemoc Language workbench</a></li></ul></body></html>
