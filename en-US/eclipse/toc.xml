@@ -4,12 +4,12 @@
   PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <toc label="GEMOC Studio Guide" topic="index.html">
    <topic label="Introduction" href="pr01.html">
-      <topic label="Language Workbench overview" href="pr01.html#_language_workbench_overview"/>
-      <topic label="Modeling workbench overview" href="pr01.html#_modeling_workbench_overview"/>
+      <topic label="Language Workbench overview" href="pr01.html#_language_workbench_overview_inlinemediaobject_imageobject_imagedata_fileref_images_icons_iconegemoclanguage_png_contentwidth_30_imageobject_textobject_phrase_30_phrase_textobject_inlinemediaobject"/>
+      <topic label="Modeling workbench overview" href="pr01.html#_modeling_workbench_overview_inlinemediaobject_imageobject_imagedata_fileref_images_icons_iconegemocmodel_png_contentwidth_30_imageobject_textobject_phrase_30_phrase_textobject_inlinemediaobject"/>
       <topic label="General concerns and prerequisite" href="pr01.html#_general_concerns_and_prerequisite"/>
    </topic>
    <topic label="Gemoc Language workbench" href="ch01.html">
-      <topic label="Language Workbench overview" href="ch01.html#_language_workbench_overview_2"/>
+      <topic label="Language Workbench overview" href="ch01.html#_language_workbench_overview"/>
       <topic label="Gemoc Language project" href="ch01.html#section-gemoc-language-project"/>
       <topic label="Defining Abstract Syntax (or domain concepts)" href="ch01.html#section-define-AS-project">
          <topic label="Method 1 : Creation via xDSML popup" href="ch01.html#section-define-AS-project-method-1"/>
@@ -32,7 +32,7 @@
       <topic label="Process support view" href="ch01.html#section-process-support-view"/>
    </topic>
    <topic label="Gemoc Modeling workbench" href="ch02.html">
-      <topic label="Modeling workbench overview" href="ch02.html#_modeling_workbench_overview_2"/>
+      <topic label="Modeling workbench overview" href="ch02.html#_modeling_workbench_overview"/>
       <topic label="Editing model" href="ch02.html#modeling-workbench-editing-model-section"/>
       <topic label="Executing model" href="ch02.html#modeling-workbench-executing-model-section">
          <topic label="Launch configuration" href="ch02.html#_launch_configuration">
@@ -94,7 +94,7 @@
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e1021"/>
+      <topic label="Articles" href="bi01.html#d5e1030"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
