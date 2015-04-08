@@ -12,15 +12,19 @@
          <topic label="Method 2 : Manual creation and association to the xDSML" href="ch01.html#section-define-AS-project-method-2"/>
          <topic label="Method 3 : Creation or selection via Gemoc Guideline view" href="ch01.html#section-define-AS-project-method-3"/>
       </topic>
-      <topic label="Defining RunTime Data" href="ch01.html#_defining_runtime_data"/>
-      <topic label="Defining Domain-Specific Actions (DSAs)" href="ch01.html#_defining_domain_specific_actions_dsas"/>
+      <topic label="Defining Domain-Specific Actions (DSAs)" href="ch01.html#_defining_domain_specific_actions_dsas">
+         <topic label="Defining the Execution Data" href="ch01.html#_defining_the_execution_data"/>
+         <topic label="Defining the Execution Functions" href="ch01.html#_defining_the_execution_functions"/>
+      </topic>
       <topic label="Defining Domain-Specific Constraints" href="ch01.html#_defining_domain_specific_constraints"/>
       <topic label="Defining a concrete syntax" href="ch01.html#_defining_a_concrete_syntax">
          <topic label="Defining a concrete syntax with xText" href="ch01.html#_defining_a_concrete_syntax_with_xtext"/>
          <topic label="Defining a concrete syntax with Sirius" href="ch01.html#_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"/>
       </topic>
-      <topic label="Defining a Model of Concurrency (MoC)" href="ch01.html#_defining_a_model_of_concurrency_moc"/>
-      <topic label="Defining Domain Specific Events (DSE)" href="ch01.html#_defining_domain_specific_events_dse"/>
+      <topic label="Defining a Model of Concurrency and Communication (MoCC)" href="ch01.html#_defining_a_model_of_concurrency_and_communication_mocc"/>
+      <topic label="Defining the Domain Specific Events (DSE)" href="ch01.html#_defining_the_domain_specific_events_dse"/>
+      <topic label="Defining the Feedback Policies" href="ch01.html#_defining_the_feedback_policies"/>
+      <topic label="Defining an animation view" href="ch01.html#_defining_an_animation_view"/>
       <topic label="Process support view" href="ch01.html#section-process-support-view"/>
    </topic>
    <topic label="Gemoc Modeling workbench" href="ch02.html">
@@ -86,7 +90,7 @@
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e908"/>
+      <topic label="Articles" href="bi01.html#d5e927"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>

@@ -20,7 +20,7 @@
 <p>In the menu go to: File&gt; New&gt; Projects…​&gt; Gemoc Language project</p>
 <p>This project will be the aggregator of the other Eclipse projects that will constitute the components of a Language Unit of the xDSML.</p>
 <p>It mainly defines a project.xdsml file that references these other components.</p>
-<p>The xDSML file isn’t supposed to be edited manually. The pop up menu on the project (available on right click) or the <a class="xref" href="ch01.html#section-process-support-view" title="1.10. Process support view">Section 1.10, “Process support view”</a> provides a set of wizard to fill this file.</p>
+<p>The xDSML file isn’t supposed to be edited manually. The pop up menu on the project (available on right click) or the <a class="xref" href="ch01.html#section-process-support-view" title="1.11. Process support view">Section 1.11, “Process support view”</a> provides a set of wizard to fill this file.</p>
 <p>From these information, the project will generate additional code that will be used by the execution engine when the language will be deployed and used by the <a class="xref" href="ch02.html" title="Chapter 2. Gemoc Modeling workbench">Chapter 2, <em>Gemoc Modeling workbench</em></a>.</p>
 </div>
 <div class="section" title="1.3. Defining Abstract Syntax (or domain concepts)"><div class="titlepage"><div><div><h2 class="title"><a id="section-define-AS-project"/>1.3. Defining Abstract Syntax (or domain concepts)</h2></div></div></div>
@@ -65,11 +65,7 @@ TODO select existing project
 TODO Ecore editor</p>
 </div>
 </div>
-<div class="section" title="1.4. Defining RunTime Data"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_runtime_data"/>1.4. Defining RunTime Data</h2></div></div></div>
-
-
-</div>
-<div class="section" title="1.5. Defining Domain-Specific Actions (DSAs)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_actions_dsas"/>1.5. Defining Domain-Specific Actions (DSAs)</h2></div></div></div>
+<div class="section" title="1.4. Defining Domain-Specific Actions (DSAs)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_actions_dsas"/>1.4. Defining Domain-Specific Actions (DSAs)</h2></div></div></div>
 
 <p>In Gemoc, the DSAs are developped using Kermeta 3.</p>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
@@ -84,36 +80,61 @@ click on <span class="emphasis"><em>create DSA project</em></span>
 </li></ul></div>
 <p>In the wizard you can select an existing templates to help create the aspects classes that will extend the classes of the Domain model.</p>
 <p>You can manually create a Kermeta 3 project in the main eclipse menu, and then associate it to an xDSML project.</p>
-</div>
-<div class="section" title="1.6. Defining Domain-Specific Constraints"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_constraints"/>1.6. Defining Domain-Specific Constraints</h2></div></div></div>
+<div class="section" title="1.4.1. Defining the Execution Data"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_the_execution_data"/>1.4.1. Defining the Execution Data</h3></div></div></div>
 
-
+<p>The Execution Data consist in attributes and references weaved onto existing concepts (metaclasses) of the Abstract Syntax. They may also include new metaclasses.</p>
 </div>
-<div class="section" title="1.7. Defining a concrete syntax"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_a_concrete_syntax"/>1.7. Defining a concrete syntax</h2></div></div></div>
+<div class="section" title="1.4.2. Defining the Execution Functions"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_the_execution_functions"/>1.4.2. Defining the Execution Functions</h3></div></div></div>
+
+<p>The Execution Functions define how the Execution Data evolve during the execution of the model. Execution Functions can be implemented by defining the body of a method.</p>
+<div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
+<p>For now, Execution Functions are considered as <span class="strong"><strong>atomic, instantaneous and blocking</strong></span>. This means that any long computation will block the rest of the simulation, and concurrent Execution Functions are not executed in concurrence yet.</p>
+</div>
+</div>
+</div>
+<div class="section" title="1.5. Defining Domain-Specific Constraints"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_constraints"/>1.5. Defining Domain-Specific Constraints</h2></div></div></div>
+
+<p>TODO</p>
+</div>
+<div class="section" title="1.6. Defining a concrete syntax"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_a_concrete_syntax"/>1.6. Defining a concrete syntax</h2></div></div></div>
 
 <p>The xDSML can support different concrete syntaxes. Most EMF based editors should work however Gemoc provides additional support for some editors.
 Editors explictly supported are: EMF tree editor, xText editor, Sirius editor.</p>
-<div class="section" title="1.7.1. Defining a concrete syntax with xText"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_a_concrete_syntax_with_xtext"/>1.7.1. Defining a concrete syntax with xText</h3></div></div></div>
+<div class="section" title="1.6.1. Defining a concrete syntax with xText"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_a_concrete_syntax_with_xtext"/>1.6.1. Defining a concrete syntax with xText</h3></div></div></div>
 
 
 </div>
-<div class="section" title="1.7.2. Defining a concrete syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"/>1.7.2. Defining a concrete syntax with <a id="d5e130" class="indexterm"/>Sirius</h3></div></div></div>
+<div class="section" title="1.6.2. Defining a concrete syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"/>1.6.2. Defining a concrete syntax with <a id="d5e138" class="indexterm"/>Sirius</h3></div></div></div>
 
 <p>If you want to create a graphical concrete syntax you can use Sirius. The <a class="ulink" href="http://www.eclipse.org/sirius/doc/">Sirius documentation</a> provides information for <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a>.</p>
 </div>
 </div>
-<div class="section" title="1.8. Defining a Model of Concurrency (MoC)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_a_model_of_concurrency_moc"/>1.8. Defining a Model of Concurrency (MoC)</h2></div></div></div>
+<div class="section" title="1.7. Defining a Model of Concurrency and Communication (MoCC)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_a_model_of_concurrency_and_communication_mocc"/>1.7. Defining a Model of Concurrency and Communication (MoCC)</h2></div></div></div>
 
 
 </div>
-<div class="section" title="1.9. Defining Domain Specific Events (DSE)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_events_dse"/>1.9. Defining Domain Specific Events (DSE)</h2></div></div></div>
+<div class="section" title="1.8. Defining the Domain Specific Events (DSE)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_the_domain_specific_events_dse"/>1.8. Defining the Domain Specific Events (DSE)</h2></div></div></div>
 
-<p>nimporte quoi conflit
-=== Defining an animation view
-The animation layer is an extension on top of a graphical editor defined with <a id="d5e140" class="indexterm"/>Sirius.</p>
+<p>The DSE are defined using the <span class="strong"><strong>Gemoc Events Language</strong></span> (GEL). Create a new file with extension ".GEL" in your DSE project.
+The DSE define a mapping between MoccEvents from the MoCC and the Execution Functions (defined as methods in the DSA)</p>
+<p>[NOTE] For technical reasons, the Abstract Syntax (Ecore metamodel) must specify the signature of the Execution Functions.</p>
+<p>Therefore, the first step to designing the DSE in GEL is importing the ECL file and the Ecore file of the xDSML.</p>
+<p>Then, DSEs can be defined between the "DSE" and "end" keywords.
+After the 'upon' keyword, a MoccEvent from the ECL file can be referenced.
+After the 'triggers' keyword, a navigation path from the context of the MoccEvent to an EOperation can be defined to specify which Execution Function is triggered by the Domain-Specific Event being defined.</p>
+</div>
+<div class="section" title="1.9. Defining the Feedback Policies"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_the_feedback_policies"/>1.9. Defining the Feedback Policies</h2></div></div></div>
+
+<p>The Feedback Policies can be defined in GEL as well. A Feedback Policy is responsible for specifying the influence of a piece of data from the domain on the MoCC. A Feedback Policy can be defined as follows.
+First, give a name to the result of the Execution Function using the "returning" keyword. Then, between the "Feedback" and "end" keywords, the Feedback Rules can be defined as "[filter] ⇒ allow consequence".</p>
+<p>A Feedback Policy must be used when the MoCC needs runtime data from the domain without which it would otherwise realize an arbitrary decision. This is typically the case for any form of conditional-based control flow.</p>
+</div>
+<div class="section" title="1.10. Defining an animation view"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_an_animation_view"/>1.10. Defining an animation view</h2></div></div></div>
+
+<p>The animation layer is an extension on top of a graphical editor defined with <a id="d5e159" class="indexterm"/>Sirius.</p>
 <p>TODO Debug layer, Animation layer</p>
 </div>
-<div class="section" title="1.10. Process support view"><div class="titlepage"><div><div><h2 class="title"><a id="section-process-support-view"/>1.10. Process support view</h2></div></div></div>
+<div class="section" title="1.11. Process support view"><div class="titlepage"><div><div><h2 class="title"><a id="section-process-support-view"/>1.11. Process support view</h2></div></div></div>
 
 <p>TODO present process view</p>
 </div>
