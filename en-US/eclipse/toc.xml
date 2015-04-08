@@ -21,7 +21,6 @@
       </topic>
       <topic label="Defining a Model of Concurrency (MoC)" href="ch01.html#_defining_a_model_of_concurrency_moc"/>
       <topic label="Defining Domain Specific Events (DSE)" href="ch01.html#_defining_domain_specific_events_dse"/>
-      <topic label="Defining an animation view" href="ch01.html#_defining_an_animation_view"/>
       <topic label="Process support view" href="ch01.html#section-process-support-view"/>
    </topic>
    <topic label="Gemoc Modeling workbench" href="ch02.html">
@@ -87,7 +86,7 @@
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e910"/>
+      <topic label="Articles" href="bi01.html#d5e908"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
