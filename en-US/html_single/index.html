@@ -115,7 +115,7 @@ Editors explictly supported are: EMF tree editor, xText editor, Sirius editor.</
 </div>
 <div class="section" title="1.7.2. Defining a concrete syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"/>1.7.2. Defining a concrete syntax with <a id="d5e130" class="indexterm"/>Sirius</h3></div></div></div>
 
-
+<p>If you want to create a graphical concrete syntax you can use Sirius. The <a class="ulink" href="http://www.eclipse.org/sirius/doc/">Sirius documentation</a> provides information for <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a>.</p>
 </div>
 </div>
 <div class="section" title="1.8. Defining a Model of Concurrency (MoC)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_a_model_of_concurrency_moc"/>1.8. Defining a Model of Concurrency (MoC)</h2></div></div></div>
@@ -128,7 +128,7 @@ Editors explictly supported are: EMF tree editor, xText editor, Sirius editor.</
 </div>
 <div class="section" title="1.10. Defining an animation view"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_an_animation_view"/>1.10. Defining an animation view</h2></div></div></div>
 
-<p>The animation layer is an extension on top of a graphical editor defined with <a id="d5e139" class="indexterm"/>Sirius.</p>
+<p>The animation layer is an extension on top of a graphical editor defined with <a id="d5e142" class="indexterm"/>Sirius.</p>
 <p>TODO Debug layer, Animation layer</p>
 </div>
 <div class="section" title="1.11. Process support view"><div class="titlepage"><div><div><h2 class="title"><a id="section-process-support-view"/>1.11. Process support view</h2></div></div></div>
@@ -145,9 +145,9 @@ Editors explictly supported are: EMF tree editor, xText editor, Sirius editor.</
 
 <div class="mediaobject"><img src="./images/gemoc_modeling_workbench_TFSM_animation_screenshot.png" alt="Screenshot of GEMOC Studio Modeling Workbench on the TFSM example (execution and animation)"/></div>
 </div></div><br class="figure-break"/>
-<p><a id="d5e158" class="indexterm"/>
-<a id="d5e160" class="indexterm"/>
-<a id="d5e163" class="indexterm"/></p>
+<p><a id="d5e161" class="indexterm"/>
+<a id="d5e163" class="indexterm"/>
+<a id="d5e166" class="indexterm"/></p>
 <p><hr xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory"/></p>
 </div>
 <div class="section" title="2.2. Editing model"><div class="titlepage"><div><div><h2 class="title"><a id="modeling-workbench-editing-model-section"/>2.2. Editing model</h2></div></div></div>
@@ -166,7 +166,7 @@ Model to execute : this is the model that will be run
 </li><li class="listitem">
 xDSML : this field allows to select among the valid variants of the executable language that are available for the model (Ie. the combinaison of DSA, DSE and MoCC that can be used on the given domain model)
 </li><li class="listitem">
-<p class="simpara"><a id="d5e182" class="indexterm"/>Decider : this field allows to select the solver strategy used by the engine when several <a id="d5e184" class="indexterm"/>Logical Steps can be triggered. Possible choice are :</p>
+<p class="simpara"><a id="d5e185" class="indexterm"/>Decider : this field allows to select the solver strategy used by the engine when several <a id="d5e187" class="indexterm"/>Logical Steps can be triggered. Possible choice are :</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Solver proposition : the solver internal stategy will be used to selecton Logical Step
 </li><li class="listitem">
@@ -185,9 +185,9 @@ Ask user (Step by step) : (available only in Debug mode), this option is similar
 It cannot be paused. However, you can stop it.
 It offers a limited set of views :</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
-the <a class="link" href="#modeling-workbench-executing-model-engine-view-section" title="2.3.2. Engine View"/><a id="d5e205" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-engine-view-section" title="2.3.2. Engine View">Engine View</a> allows to stop a running model.
+the <a class="link" href="#modeling-workbench-executing-model-engine-view-section" title="2.3.2. Engine View"/><a id="d5e208" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-engine-view-section" title="2.3.2. Engine View">Engine View</a> allows to stop a running model.
 </li><li class="listitem">
-the <a class="link" href="#modeling-workbench-executing-model-timeline-view-section" title="2.3.4. Timeline View"/><a id="d5e210" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-timeline-view-section" title="2.3.4. Timeline View">Timeline View</a> is displayed at the end of the execution in order to control the resulting execution trace.
+the <a class="link" href="#modeling-workbench-executing-model-timeline-view-section" title="2.3.4. Timeline View"/><a id="d5e213" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-timeline-view-section" title="2.3.4. Timeline View">Timeline View</a> is displayed at the end of the execution in order to control the resulting execution trace.
 </li></ul></div>
 <p>If more feed back are required, please use one of the front end or back end available for the xDSML.</p>
 </div>
@@ -197,17 +197,17 @@ the <a class="link" href="#modeling-workbench-executing-model-timeline-view-sect
 It allows to pause, add break point, and run in a step by step mode.</p>
 <p>It reuses the Eclipse Debug perspective and some of its views and add some Gemoc specific views.</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
-the <a class="link" href="#modeling-workbench-executing-model-engine-view-section" title="2.3.2. Engine View"/><a id="d5e221" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-engine-view-section" title="2.3.2. Engine View">Engine View</a> allows to stop a running model.
+the <a class="link" href="#modeling-workbench-executing-model-engine-view-section" title="2.3.2. Engine View"/><a id="d5e224" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-engine-view-section" title="2.3.2. Engine View">Engine View</a> allows to stop a running model.
 </li><li class="listitem">
-the <a class="link" href="#modeling-workbench-executing-model-timeline-view-section" title="2.3.4. Timeline View"/><a id="d5e226" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-timeline-view-section" title="2.3.4. Timeline View">Timeline View</a> is displayed during all the simulation.
+the <a class="link" href="#modeling-workbench-executing-model-timeline-view-section" title="2.3.4. Timeline View"/><a id="d5e229" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-timeline-view-section" title="2.3.4. Timeline View">Timeline View</a> is displayed during all the simulation.
 </li><li class="listitem">
-the <a class="link" href="#modeling-workbench-executing-model-event-manager-view-section" title="2.3.5. Event Manager View"/><a id="d5e231" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-event-manager-view-section" title="2.3.5. Event Manager View">Event Manager View</a> is displayed during all the simulation.
+the <a class="link" href="#modeling-workbench-executing-model-event-manager-view-section" title="2.3.5. Event Manager View"/><a id="d5e234" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-event-manager-view-section" title="2.3.5. Event Manager View">Event Manager View</a> is displayed during all the simulation.
 </li><li class="listitem">
-the <a class="link" href="#modeling-workbench-executing-model-animation-view-section" title="2.3.6. Animation View"/><a id="d5e236" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-animation-view-section" title="2.3.6. Animation View">Event Manager View</a> is displayed during all the simulation. It can display both an animation layer and a debug layer.
+the <a class="link" href="#modeling-workbench-executing-model-animation-view-section" title="2.3.6. Animation View"/><a id="d5e239" class="indexterm"/><a class="link" href="#modeling-workbench-executing-model-animation-view-section" title="2.3.6. Animation View">Event Manager View</a> is displayed during all the simulation. It can display both an animation layer and a debug layer.
 </li><li class="listitem">
 the <a class="link" href="#modeling-workbench-executing-model-debug-view-section" title="2.3.7. Debug View">Debug View</a>. This view presents an interface for Step by Step execution at the Logical Step level or even at the DSA level.
 </li><li class="listitem">
-the <a class="link" href="#modeling-workbench-executing-model-variable-view-section" title="2.3.8. Variable View">Variable View</a>. This view presents the <a id="d5e244" class="indexterm"/>Runtime Data as a (EMF based) tree.
+the <a class="link" href="#modeling-workbench-executing-model-variable-view-section" title="2.3.8. Variable View">Variable View</a>. This view presents the <a id="d5e247" class="indexterm"/>Runtime Data as a (EMF based) tree.
 </li></ul></div>
 <p>When running a simulation in Debug mode, it is configured to activate automatically the Debug layer and the Animation layer in the Animation view.</p>
 </div>
@@ -277,12 +277,12 @@ Animation Layer
 <p>This view is part of the Debug perspective.
 It presents an interface for Step by Step execution at the Logical Step level or even at the DSA level.
 When an execution is paused, this view presents the current Logical Step.</p>
-<p>When paused on a <a id="d5e317" class="indexterm"/>Logical Step, the Step over command allows to go to the next Logical Step. The Step Into command allows to run separatly each of the internal DSA calls associated to the Logical Step.</p>
+<p>When paused on a <a id="d5e320" class="indexterm"/>Logical Step, the Step over command allows to go to the next Logical Step. The Step Into command allows to run separatly each of the internal DSA calls associated to the Logical Step.</p>
 </div>
 <div class="section" title="2.3.8. Variable View"><div class="titlepage"><div><div><h3 class="title"><a id="modeling-workbench-executing-model-variable-view-section"/>2.3.8. Variable View</h3></div></div></div>
 
 <p>This view is available on the Debug perspective.
-When an execution is paused, this view presents the current <a id="d5e322" class="indexterm"/>Runtime Data as an EMF based tree.</p>
+When an execution is paused, this view presents the current <a id="d5e325" class="indexterm"/>Runtime Data as an EMF based tree.</p>
 </div>
 </div>
 </div>
@@ -383,9 +383,9 @@ requirements are fulfilled.</p>
 
 <div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-overview.png" alt="Overview of the GEMOC process"/></div>
 </div></div><br class="figure-break"/>
-<p><a id="d5e403" class="indexterm"/>
-<a id="d5e407" class="indexterm"/>
-<a id="d5e410" class="indexterm"/></p>
+<p><a id="d5e406" class="indexterm"/>
+<a id="d5e410" class="indexterm"/>
+<a id="d5e413" class="indexterm"/></p>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p>For clarity, the iteration to choose the next increment is not
 represented of the diagram.</p>
@@ -448,8 +448,8 @@ domain (and could be considered as a kind of compound activity).</p>
 
 <div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-general.png" alt="Recommended GEMOC Process"/></div>
 </div></div><br class="figure-break"/>
-<p><a id="d5e443" class="indexterm"/>
-<a id="d5e446" class="indexterm"/></p>
+<p><a id="d5e446" class="indexterm"/>
+<a id="d5e449" class="indexterm"/></p>
 <div xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
 <p>This process is the recommanded one, and the one used in this
 tutorial.  Nevertheless, it is possible to define an xDSML with other
@@ -1360,8 +1360,8 @@ Add a Contract class for preconditions?
 
 <p>The bibliography lists some useful external documents. For a more complete list, please refer to the publications section on <a class="ulink" href="http://gemoc.org">http://gemoc.org</a> site.</p>
 <div class="bibliodiv" title="Articles">
-<h3 class="title"><a id="d5e907"/>Articles</h3>
-<div class="bibliomixed"><a id="d5e909"/><p class="bibliomixed">
+<h3 class="title"><a id="d5e910"/>Articles</h3>
+<div class="bibliomixed"><a id="d5e912"/><p class="bibliomixed">
 <span class="bibliomisc"><a id="globalizing-modeling-languages"/>[globalizing-modeling-languages] <a class="ulink" href="http://hal.inria.fr/hal-00994551">Globalizing Modeling Languages</a> (Benoit Combemale, Julien Deantoni, Benoit Baudry, Robert France, Jean-Marc Jezequel, Jeff Gray), In Computer, IEEE, 2014.</span>
 </p></div>
 </div>
