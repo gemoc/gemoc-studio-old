@@ -8,8 +8,8 @@
       <topic label="Modeling workbench overview" href="pr01.html#_modeling_workbench_overview_inlinemediaobject_imageobject_imagedata_fileref_images_icons_iconegemocmodel_16_png_contentwidth_16_contentdepth_16_imageobject_textobject_phrase_iconegemocmodel_16_phrase_textobject_inlinemediaobject"/>
       <topic label="General concerns and prerequisite" href="pr01.html#_general_concerns_and_prerequisite"/>
    </topic>
-   <topic label="Gemoc Language workbench" href="ch01.html">
-      <topic label="Language Workbench overview" href="ch01.html#_language_workbench_overview"/>
+   <topic label="GEMOC Language Workbench" href="ch01.html">
+      <topic label="Overview" href="ch01.html#_overview"/>
       <topic label="Gemoc Language project" href="ch01.html#section-gemoc-language-project"/>
       <topic label="Defining Abstract Syntax (or domain concepts)" href="ch01.html#section-define-AS-project">
          <topic label="Method 1 : Creation via xDSML popup" href="ch01.html#section-define-AS-project-method-1"/>
