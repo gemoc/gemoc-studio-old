@@ -27,6 +27,7 @@
             <topic label="Defining the Execution Data" href="ch01.html#_defining_the_execution_data"/>
             <topic label="Defining the Execution Functions" href="ch01.html#_defining_the_execution_functions"/>
          </topic>
+         <topic label="Testing the Domain-Specific Actions" href="ch01.html#_testing_the_domain_specific_actions"/>
       </topic>
       <topic label="Defining Domain-Specific Constraints" href="ch01.html#_defining_domain_specific_constraints"/>
       <topic label="Defining a Concrete Syntax" href="ch01.html#_defining_a_concrete_syntax">
@@ -46,7 +47,17 @@
          <topic label="Semantics of the Feedback Policy" href="ch01.html#_semantics_of_the_feedback_policy"/>
          <topic label="Example" href="ch01.html#_example_2"/>
       </topic>
-      <topic label="Defining an animation view" href="ch01.html#_defining_an_animation_view"/>
+      <topic label="Defining a debug view" href="ch01.html#_defining_a_debug_view">
+         <topic label="The debug representation wizard" href="ch01.html#_the_debug_representation_wizard">
+            <topic label="Create a debug diagram description" href="ch01.html#_create_a_debug_diagram_description"/>
+            <topic label="Extend an existing diagram description" href="ch01.html#_extend_an_existing_diagram_description"/>
+            <topic label="Add a debug layer to an existing diagram description" href="ch01.html#_add_a_debug_layer_to_an_existing_diagram_description"/>
+         </topic>
+         <topic label="Implementation details" href="ch01.html#_implementation_details">
+            <topic label="Debugger services" href="ch01.html#_debugger_services"/>
+            <topic label="Debug layer" href="ch01.html#_debug_layer"/>
+         </topic>
+      </topic>
       <topic label="Process support view" href="ch01.html#section-process-support-view"/>
    </topic>
    <topic label="Gemoc Modeling workbench" href="ch02.html">
@@ -113,7 +124,7 @@
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e1068"/>
+      <topic label="Articles" href="bi01.html#d5e1232"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>

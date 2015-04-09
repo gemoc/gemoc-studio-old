@@ -5,22 +5,25 @@
 
 <div class="section" title="1.1. Overview"><div class="titlepage"><div><div><h2 class="title"><a id="_overview"/>1.1. Overview</h2></div></div></div>
 
-<p>The <span class="strong"><strong><a id="d5e146" class="indexterm"/>GEMOC Language Workbench</strong></span> is intended to be used by the <a id="d5e148" class="indexterm"/>Language Designers. It provides the tools to create and composte Executable Domain-Specific Modeling Languages (xDSMLs).</p>
+<p>The <span class="strong"><strong><a id="d5e190" class="indexterm"/>GEMOC Language Workbench</strong></span> is intended to be used by the <a id="d5e192" class="indexterm"/>Language Designers and the <a id="d5e194" class="indexterm"/>Language Integrators. It provides the tools to create and compose eXecutable Domain-Specific Modeling Languages (xDSMLs) using the GEMOC approach.</p>
 <div class="figure"><a id="figure-glw-screenshot-of-language_workbench"/><p class="title"><strong>Figure 1.1. Screenshot of the GEMOC Language Workbench showing the design of a Timed Finite State Machine (TFSM) example.</strong></p><div class="figure-contents">
 
 <div class="mediaobject"><img src="./images/gemoc_language_workbench_TFSM_screenshot.png" alt="Screenshot of the GEMOC Language Workbench"/></div>
 </div></div><br class="figure-break"/>
-<p><a id="d5e158" class="indexterm"/>
-<a id="d5e161" class="indexterm"/></p>
+<p><a id="d5e204" class="indexterm"/>
+<a id="d5e207" class="indexterm"/></p>
 <p><hr xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory"/></p>
 </div>
 <div class="section" title="1.2. xDSML Project"><div class="titlepage"><div><div><h2 class="title"><a id="section-gemoc-language-project"/>1.2. xDSML Project</h2></div></div></div>
 
 <div class="section" title="1.2.1. Purpose"><div class="titlepage"><div><div><h3 class="title"><a id="_purpose"/>1.2.1. Purpose</h3></div></div></div>
 
-<p>The xDSML Project is the core project of languages created using the GEMOC Studio. It has two main purposes:
-* Referencing the different projects representing the various parts constituting an xDSML;
-* Guiding the <a id="d5e169" class="indexterm"/>Language Designer in the language creation process through the <a id="d5e171" class="indexterm"/>GEMOC Dashboard illustrating the workflow of creating an xDSML using the GEMOC Studio.</p>
+<p>The xDSML Project is the core project of languages created using the GEMOC Studio. It has two main purposes:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Referencing the different projects representing the various parts constituting an xDSML;
+</li><li class="listitem">
+Guiding the <a id="d5e220" class="indexterm"/>Language Designer in the language creation process through the <a id="d5e222" class="indexterm"/>GEMOC Dashboard illustrating the workflow of creating an xDSML using the GEMOC Studio.
+</li></ul></div>
 </div>
 <div class="section" title="1.2.2. Creating the xDSML Project"><div class="titlepage"><div><div><h3 class="title"><a id="_creating_the_xdsml_project"/>1.2.2. Creating the xDSML Project</h3></div></div></div>
 
@@ -40,8 +43,9 @@
 </div>
 <div class="section" title="1.3.2. Creating the Domain Model Project"><div class="titlepage"><div><div><h3 class="title"><a id="_creating_the_domain_model_project"/>1.3.2. Creating the Domain Model Project</h3></div></div></div>
 
-<p>The GEMOC Studio relies on the Eclipse Modeling Framework for its Domain Model Projects. See <a class="ulink" href="http://eclipse.org/modeling/emf/">the EMF website</a> for more information on how to create an EMF project in Eclipse.</p>
+<p>The GEMOC Studio relies on the Eclipse Modeling Framework for its Domain Model Projects. See <a class="ulink" href="http://eclipse.org/modeling/emf/">the EMF website</a> for more information on how to create an EMF project in Eclipse. The Domain Model is materialized as an Ecore metamodel.</p>
 <p>When your EMF Project is done, connect your xDSML Project to it by specifying in the <span class="emphasis"><em>project.xdsml</em></span> file the name of the EMF Project, the path to the genmodel of your Ecore metamodel and the name of the root element as <span class="emphasis"><em>package::root</em></span>.</p>
+<p>TODO: Melange?</p>
 </div>
 <div class="section" title="1.3.3. Editing the Domain Model Project"><div class="titlepage"><div><div><h3 class="title"><a id="_editing_the_domain_model_project"/>1.3.3. Editing the Domain Model Project</h3></div></div></div>
 
@@ -78,6 +82,10 @@ Then, connect the xDSML Project to the DSA Project by referencing the DSA Projec
 </div>
 </div>
 </div>
+<div class="section" title="1.4.4. Testing the Domain-Specific Actions"><div class="titlepage"><div><div><h3 class="title"><a id="_testing_the_domain_specific_actions"/>1.4.4. Testing the Domain-Specific Actions</h3></div></div></div>
+
+<p>It is possible to test the DSA (in particular the Execution Functions) by simply writing a simple program with a <span class="emphasis"><em>main</em></span> function (using Java or Xtend/Kermeta3). Create or load a model conform to your Domain Model and call the Execution Functions in the right order to verify there are no runtime exceptions or domain issues.</p>
+</div>
 </div>
 <div class="section" title="1.5. Defining Domain-Specific Constraints"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_domain_specific_constraints"/>1.5. Defining Domain-Specific Constraints</h2></div></div></div>
 
@@ -91,7 +99,7 @@ Don’t forget to link the xDSML Project to the concrete syntax project(s) you w
 
 <p>See <a class="ulink" href="http://www.eclipse.org/Xtext/">the Xtext website</a>.</p>
 </div>
-<div class="section" title="1.6.2. Defining a Concrete Syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"/>1.6.2. Defining a Concrete Syntax with <a id="d5e239" class="indexterm"/>Sirius</h3></div></div></div>
+<div class="section" title="1.6.2. Defining a Concrete Syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a id="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"/>1.6.2. Defining a Concrete Syntax with <a id="d5e295" class="indexterm"/>Sirius</h3></div></div></div>
 
 <p>If you want to create a graphical concrete syntax you can use Sirius. The <a class="ulink" href="http://www.eclipse.org/sirius/doc/">Sirius documentation</a> provides information for <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a>.</p>
 </div>
@@ -137,7 +145,7 @@ end</pre>
 <div class="section" title="1.9.1. Purpose"><div class="titlepage"><div><div><h3 class="title"><a id="_purpose_5"/>1.9.1. Purpose</h3></div></div></div>
 
 <p>In the GEMOC approach, the MoCC is independent from the domain. However, most languages need to be able to parameterize their control flow with their data flow. For instance, a conditional statement is a control flow construct which is conditioned by the result of its condition. Therefore, a form of communication between the MoCC and the DSA must be operated.
-In this context, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the Domain-Specific Events. Therefore, the Feedback Specification is also done using <a id="d5e273" class="indexterm"/>GEL.</p>
+In this context, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the Domain-Specific Events. Therefore, the Feedback Specification is also done using <a id="d5e329" class="indexterm"/>GEL.</p>
 </div>
 <div class="section" title="1.9.2. Creating a Feedback Policy"><div class="titlepage"><div><div><h3 class="title"><a id="_creating_a_feedback_policy"/>1.9.2. Creating a Feedback Policy</h3></div></div></div>
 
@@ -155,11 +163,16 @@ DSE &lt;name&gt;:
     default =&gt; allow &lt;PathToMoccEventDefaultConsequence&gt;
   end
 end</pre>
-<p>Where:
-* &lt;resultName&gt; is a local variable which will be affected with the value returned by the associated Execution Function;
-* Between the <span class="emphasis"><em>feedback</em></span> and <span class="emphasis"><em>end</em></span> keywords, a set of Feedback Rules are defined (including a default Feedback Rule, with the <span class="emphasis"><em>default</em></span> keyword). A Feedback Rule is composed of a filter and a consequence;
-* &lt;filterN&gt; are predicates, most likely using &lt;resultName&gt; which define whether or not this Feedback Rule must be applied;
-* &lt;PathToMoccEventConsequenceN&gt; is a navigation path to a MoccEvent which specifies which MoccEvent is allowed as a result of the data returned by the Execution Function.</p>
+<p>Where:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+&lt;resultName&gt; is a local variable which will be affected with the value returned by the associated Execution Function;
+</li><li class="listitem">
+Between the <span class="emphasis"><em>feedback</em></span> and <span class="emphasis"><em>end</em></span> keywords, a set of Feedback Rules are defined (including a default Feedback Rule, with the <span class="emphasis"><em>default</em></span> keyword). A Feedback Rule is composed of a filter and a consequence;
+</li><li class="listitem">
+&lt;filterN&gt; are predicates, most likely using &lt;resultName&gt; which define whether or not this Feedback Rule must be applied;
+</li><li class="listitem">
+&lt;PathToMoccEventConsequenceN&gt; is a navigation path to a MoccEvent which specifies which MoccEvent is allowed as a result of the data returned by the Execution Function.
+</li></ul></div>
 </div>
 <div class="section" title="1.9.3. Semantics of the Feedback Policy"><div class="titlepage"><div><div><h3 class="title"><a id="_semantics_of_the_feedback_policy"/>1.9.3. Semantics of the Feedback Policy</h3></div></div></div>
 
@@ -172,16 +185,84 @@ For each rule to apply, the associated consequence is allowed to have occurrence
 	upon mocc_evaluateGuard
 	triggers ActivityEdge.evaluateGuard returning result
 	feedback:
-		[ result ] =&gt; allow ActivityEdge.mocc_doExecuteTarget
-		default =&gt; allow ActivityEdge.mocc_doNotExecuteTarget
+		[ result ] =&gt; allow ActivityEdge.mocc_mayExecuteTarget
+		default =&gt; allow ActivityEdge.mocc_mayNotExecuteTarget
 	end
 end</pre>
 </div>
 </div>
-<div class="section" title="1.10. Defining an animation view"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_an_animation_view"/>1.10. Defining an animation view</h2></div></div></div>
+<div class="section" title="1.10. Defining a debug view"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_a_debug_view"/>1.10. Defining a debug view</h2></div></div></div>
 
-<p>The animation layer is an extension on top of a graphical editor defined with <a id="d5e292" class="indexterm"/>Sirius.</p>
-<p>TODO Debug layer, Animation layer</p>
+<p>The debug layer is an extension on top of a graphical editor defined with <a id="d5e357" class="indexterm"/>Sirius that represent runtime data and current instruction. See <a class="xref" href="">???</a> for more details about Sirius. This section will cover the debug representation creation wizard and technical implementation details. Technical implementation details are only useful for advanced use case and troubleshooting.</p>
+<div class="section" title="1.10.1. The debug representation wizard"><div class="titlepage"><div><div><h3 class="title"><a id="_the_debug_representation_wizard"/>1.10.1. The debug representation wizard</h3></div></div></div>
+
+<p>This wizard creates a layer to represent the current instruction and add commands to manage break points and launch a simulation in debug mode. This is a default implementation, it can be customized to represent runtime data for instance. The customization use the <a id="d5e363" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.
+The wizard present three ways of implementing this layer:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Create a debug diagram description
+</li><li class="listitem">
+Extends an existing diagram description
+</li><li class="listitem">
+Add a debug layer to an existing diagram description
+</li></ul></div>
+<div class="section" title="Create a debug diagram description"><div class="titlepage"><div><div><h4 class="title"><a id="_create_a_debug_diagram_description"/>Create a debug diagram description</h4></div></div></div>
+
+<p>It creates a diagram representation with a default debug layer. The representation do not depend on an other representation. A typical use case is a language where the runtime data representation is too far from the language graphical syntax.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/wizard.png" alt="Debug representation wizard"/></div>
+</div>
+</div>
+<div class="section" title="Extend an existing diagram description"><div class="titlepage"><div><div><h4 class="title"><a id="_extend_an_existing_diagram_description"/>Extend an existing diagram description</h4></div></div></div>
+
+<p>It creates a diagram representation with a default debug layer that extends an existing representation. This allow to have a debug layer based on the representation of the language concrete syntax. The language concrete syntax can be deployed without the debug representation. A typical use case is the reuse of an existing diagram definition that you can’t modify yourself. For instance if you want to use <a class="ulink" href="http://eclipse.org/modeling/mdt/?project=uml2">UML</a>, you can reuse the <a class="ulink" href="http://www.umldesigner.org/">UML Designer</a>.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/create/1.png" alt="Debug representation wizard"/></div>
+</div>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/create/2.png" alt="Debug representation wizard"/></div>
+</div>
+</div>
+<div class="section" title="Add a debug layer to an existing diagram description"><div class="titlepage"><div><div><h4 class="title"><a id="_add_a_debug_layer_to_an_existing_diagram_description"/>Add a debug layer to an existing diagram description</h4></div></div></div>
+
+<p>It creates a default debug layer in an existing diagram representation. This should be used if you are also in charge of the language concrete syntax.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/extend/1.png" alt="Debug representation wizard"/></div>
+</div>
+<p>You can select any diagram description.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/extend/2.png" alt="Debug representation wizard"/></div>
+</div>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/extend/3.png" alt="Debug representation wizard"/></div>
+</div>
+</div>
+</div>
+<div class="section" title="1.10.2. Implementation details"><div class="titlepage"><div><div><h3 class="title"><a id="_implementation_details"/>1.10.2. Implementation details</h3></div></div></div>
+
+<p>Implementation details are for advanced use and troubleshooting. It explains how the implementation works behind the scene. There are two main elements covered here are the debugger services class and the debug layer itself.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/add/1.png" alt="Debug representation wizard"/></div>
+</div>
+<p>You can only select a diagram description from the workspace.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/add/2.png" alt="Debug representation wizard"/></div>
+</div>
+<div class="section" title="Debugger services"><div class="titlepage"><div><div><h4 class="title"><a id="_debugger_services"/>Debugger services</h4></div></div></div>
+
+<p>The debugger services class is use to tell which representations should be activated and refreshed during debug (see the getRepresentationRefreshList() method). It also provide a method to know if an element of the diagram is the current instruction (see isCurrentInstruction() method).</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/debug_services.png" alt="Debug services"/></div>
+</div>
+</div>
+<div class="section" title="Debug layer"><div class="titlepage"><div><div><h4 class="title"><a id="_debug_layer"/>Debug layer</h4></div></div></div>
+
+<p>The default debug layer add action to start the simulation in debug mode and to toggle breakpoints (1). When a break point is present for an element of the diagram a visual feedback is displayed according to the breakpoint state (2). The current instruction is also highlighted in yellow by default (3)</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/debug_layer.png" alt="Debug layer"/></div>
+</div>
+<p>This is a default debug layer, it can be customized to fit your needs. The customization use the <a id="d5e456" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.</p>
+</div>
+</div>
 </div>
 <div class="section" title="1.11. Process support view"><div class="titlepage"><div><div><h2 class="title"><a id="section-process-support-view"/>1.11. Process support view</h2></div></div></div>
 
