@@ -138,6 +138,10 @@ DSE ExecuteActivityNode:
 	upon mocc_executeNode
 	triggers ActivityNode.execute
 end</pre>
+<div class="section" title="Semantics of the Domain-Specific Events"><div class="titlepage"><div><div><h4 class="title"><a id="_semantics_of_the_domain_specific_events"/>Semantics of the Domain-Specific Events</h4></div></div></div>
+
+<p>Upon an occurrence of the associated MoccEvent, an occurrence of the Domain-Specific Event is created and consumed by the GEMOC Execution Engine. Its consumption triggers the execution of the designated Execution Function.</p>
+</div>
 </div>
 </div>
 <div class="section" title="1.9. Defining the Feedback Specification"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_the_feedback_specification"/>1.9. Defining the Feedback Specification</h2></div></div></div>
@@ -145,7 +149,7 @@ end</pre>
 <div class="section" title="1.9.1. Purpose"><div class="titlepage"><div><div><h3 class="title"><a id="_purpose_5"/>1.9.1. Purpose</h3></div></div></div>
 
 <p>In the GEMOC approach, the MoCC is independent from the domain. However, most languages need to be able to parameterize their control flow with their data flow. For instance, a conditional statement is a control flow construct which is conditioned by the result of its condition. Therefore, a form of communication between the MoCC and the DSA must be operated.
-In this context, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the Domain-Specific Events. Therefore, the Feedback Specification is also done using <a id="d5e329" class="indexterm"/>GEL.</p>
+In this context, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the Domain-Specific Events. Therefore, the Feedback Specification is also done using <a id="d5e332" class="indexterm"/>GEL.</p>
 </div>
 <div class="section" title="1.9.2. Creating a Feedback Policy"><div class="titlepage"><div><div><h3 class="title"><a id="_creating_a_feedback_policy"/>1.9.2. Creating a Feedback Policy</h3></div></div></div>
 
@@ -193,10 +197,10 @@ end</pre>
 </div>
 <div class="section" title="1.10. Defining a debug view"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_a_debug_view"/>1.10. Defining a debug view</h2></div></div></div>
 
-<p>The debug layer is an extension on top of a graphical editor defined with <a id="d5e357" class="indexterm"/>Sirius that represent runtime data and current instruction. See <a class="xref" href="">???</a> for more details about Sirius. This section will cover the debug representation creation wizard and technical implementation details. Technical implementation details are only useful for advanced use case and troubleshooting.</p>
+<p>The debug layer is an extension on top of a graphical editor defined with <a id="d5e360" class="indexterm"/>Sirius that represent runtime data and current instruction. See <a class="xref" href="">???</a> for more details about Sirius. This section will cover the debug representation creation wizard and technical implementation details. Technical implementation details are only useful for advanced use case and troubleshooting.</p>
 <div class="section" title="1.10.1. The debug representation wizard"><div class="titlepage"><div><div><h3 class="title"><a id="_the_debug_representation_wizard"/>1.10.1. The debug representation wizard</h3></div></div></div>
 
-<p>This wizard creates a layer to represent the current instruction and add commands to manage break points and launch a simulation in debug mode. This is a default implementation, it can be customized to represent runtime data for instance. The customization use the <a id="d5e363" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.
+<p>This wizard creates a layer to represent the current instruction and add commands to manage break points and launch a simulation in debug mode. This is a default implementation, it can be customized to represent runtime data for instance. The customization use the <a id="d5e366" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.
 The wizard present three ways of implementing this layer:</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Create a debug diagram description
@@ -260,7 +264,7 @@ Add a debug layer to an existing diagram description
 <div class="informalfigure">
 <div class="mediaobject"><img src="./images/workbench/language/debug_layer.png" alt="Debug layer"/></div>
 </div>
-<p>This is a default debug layer, it can be customized to fit your needs. The customization use the <a id="d5e456" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.</p>
+<p>This is a default debug layer, it can be customized to fit your needs. The customization use the <a id="d5e459" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.</p>
 </div>
 </div>
 </div>

@@ -39,7 +39,9 @@
          <topic label="Purpose" href="ch01.html#_purpose_4"/>
          <topic label="Creating the DSE Project" href="ch01.html#_creating_the_dse_project"/>
          <topic label="Editing the DSE Project" href="ch01.html#_editing_the_dse_project"/>
-         <topic label="Example" href="ch01.html#_example"/>
+         <topic label="Example" href="ch01.html#_example">
+            <topic label="Semantics of the Domain-Specific Events" href="ch01.html#_semantics_of_the_domain_specific_events"/>
+         </topic>
       </topic>
       <topic label="Defining the Feedback Specification" href="ch01.html#_defining_the_feedback_specification">
          <topic label="Purpose" href="ch01.html#_purpose_5"/>
@@ -124,7 +126,7 @@
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e1232"/>
+      <topic label="Articles" href="bi01.html#d5e1235"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
