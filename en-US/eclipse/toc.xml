@@ -10,7 +10,11 @@
    </topic>
    <topic label="GEMOC Language Workbench" href="ch01.html">
       <topic label="Overview" href="ch01.html#_overview"/>
-      <topic label="Gemoc Language project" href="ch01.html#section-gemoc-language-project"/>
+      <topic label="xDSML Project" href="ch01.html#section-gemoc-language-project">
+         <topic label="Purpose" href="ch01.html#_purpose"/>
+         <topic label="How to create an xDSML Project" href="ch01.html#_how_to_create_an_xdsml_project"/>
+         <topic label="Editing an xDSML Project" href="ch01.html#_editing_an_xdsml_project"/>
+      </topic>
       <topic label="Defining Abstract Syntax (or domain concepts)" href="ch01.html#section-define-AS-project">
          <topic label="Method 1 : Creation via xDSML popup" href="ch01.html#section-define-AS-project-method-1"/>
          <topic label="Method 2 : Manual creation and association to the xDSML" href="ch01.html#section-define-AS-project-method-2"/>
@@ -94,7 +98,7 @@
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e1039"/>
+      <topic label="Articles" href="bi01.html#d5e1047"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>

@@ -13,17 +13,26 @@
 <div class="mediaobject"><img src="./images/gemoc_language_workbench_TFSM_screenshot.png" alt="Screenshot of the GEMOC Language Workbench"></div>
 </div></div><br class="figure-break">
 <p><a class="indexterm" name="d5e147"></a>
-<a class="indexterm" name="d5e149"></a>
-<a class="indexterm" name="d5e152"></a></p>
+<a class="indexterm" name="d5e150"></a></p>
 <p><hr xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory"></p>
 </div>
-<div class="section" title="1.2.&nbsp;Gemoc Language project"><div class="titlepage"><div><div><h2 class="title"><a name="section-gemoc-language-project"></a>1.2.&nbsp;Gemoc Language project</h2></div></div></div>
+<div class="section" title="1.2.&nbsp;xDSML Project"><div class="titlepage"><div><div><h2 class="title"><a name="section-gemoc-language-project"></a>1.2.&nbsp;xDSML Project</h2></div></div></div>
 
-<p>In the menu go to: File&gt; New&gt; Projects&#8230;&#8203;&gt; Gemoc Language project</p>
-<p>This project will be the aggregator of the other Eclipse projects that will constitute the components of a Language Unit of the xDSML.</p>
-<p>It mainly defines a project.xdsml file that references these other components.</p>
-<p>The xDSML file isn&#8217;t supposed to be edited manually. The pop up menu on the project (available on right click) or the <a class="xref" href="ch01.html#section-process-support-view" title="1.11.&nbsp;Process support view">Section&nbsp;1.11, &#8220;Process support view&#8221;</a> provides a set of wizard to fill this file.</p>
-<p>From these information, the project will generate additional code that will be used by the execution engine when the language will be deployed and used by the <a class="xref" href="ch02.html" title="Chapter&nbsp;2.&nbsp;Gemoc Modeling workbench">Chapter&nbsp;2, <i>Gemoc Modeling workbench</i></a>.</p>
+<div class="section" title="1.2.1.&nbsp;Purpose"><div class="titlepage"><div><div><h3 class="title"><a name="_purpose"></a>1.2.1.&nbsp;Purpose</h3></div></div></div>
+
+<p>The xDSML Project is the core project of languages created using the GEMOC Studio. It has two main purposes:
+* Referencing the different projects representing the various parts constituting an xDSML;
+* Guiding the <a class="indexterm" name="d5e158"></a>Language Designer in the language creation process through the <a class="indexterm" name="d5e160"></a>GEMOC Dashboard illustrating the workflow of creating an xDSML using the GEMOC Studio.</p>
+</div>
+<div class="section" title="1.2.2.&nbsp;How to create an xDSML Project"><div class="titlepage"><div><div><h3 class="title"><a name="_how_to_create_an_xdsml_project"></a>1.2.2.&nbsp;How to create an xDSML Project</h3></div></div></div>
+
+<p>In the main menu of the GEMOC Studio, go to: File &gt; New &gt; Project&#8230;&#8203; &gt; New GEMOC Language Project. This will create a new xDSML Project in your workspace.</p>
+</div>
+<div class="section" title="1.2.3.&nbsp;Editing an xDSML Project"><div class="titlepage"><div><div><h3 class="title"><a name="_editing_an_xdsml_project"></a>1.2.3.&nbsp;Editing an xDSML Project</h3></div></div></div>
+
+<p>The main file constituting an xDSML Project is the <span class="emphasis"><em>project.xdsml</em></span>. This file is not supposed to be edited manually although it is possible to. The pop-up menu of the project (available upon right click on the xDSML Project) or the <a class="xref" href="ch01.html#section-process-support-view" title="1.11.&nbsp;Process support view">Section&nbsp;1.11, &#8220;Process support view&#8221;</a> provide a set of wizards to edit this file.</p>
+<p>From the information specified in this file, the project generates additional code that is used by the Execution Engine during the execution of models conforming to the xDSML (see <a class="xref" href="ch02.html" title="Chapter&nbsp;2.&nbsp;Gemoc Modeling workbench">Chapter&nbsp;2, <i>Gemoc Modeling workbench</i></a>).</p>
+</div>
 </div>
 <div class="section" title="1.3.&nbsp;Defining Abstract Syntax (or domain concepts)"><div class="titlepage"><div><div><h2 class="title"><a name="section-define-AS-project"></a>1.3.&nbsp;Defining Abstract Syntax (or domain concepts)</h2></div></div></div>
 
@@ -106,7 +115,7 @@ Editors explictly supported are: EMF tree editor, Xtext editor, Sirius editor.</
 
 <p>See <a class="ulink" href="http://www.eclipse.org/Xtext/">the Xtext website</a>.</p>
 </div>
-<div class="section" title="1.6.2.&nbsp;Defining a Concrete Syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a name="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"></a>1.6.2.&nbsp;Defining a Concrete Syntax with <a class="indexterm" name="d5e247"></a>Sirius</h3></div></div></div>
+<div class="section" title="1.6.2.&nbsp;Defining a Concrete Syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a name="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"></a>1.6.2.&nbsp;Defining a Concrete Syntax with <a class="indexterm" name="d5e255"></a>Sirius</h3></div></div></div>
 
 <p>If you want to create a graphical concrete syntax you can use Sirius. The <a class="ulink" href="http://www.eclipse.org/sirius/doc/">Sirius documentation</a> provides information for <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a>.</p>
 </div>
@@ -136,7 +145,7 @@ First, give a name to the result of the Execution Function using the "returning"
 </div>
 <div class="section" title="1.10.&nbsp;Defining an animation view"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_an_animation_view"></a>1.10.&nbsp;Defining an animation view</h2></div></div></div>
 
-<p>The animation layer is an extension on top of a graphical editor defined with <a class="indexterm" name="d5e271"></a>Sirius.</p>
+<p>The animation layer is an extension on top of a graphical editor defined with <a class="indexterm" name="d5e279"></a>Sirius.</p>
 <p>TODO Debug layer, Animation layer</p>
 </div>
 <div class="section" title="1.11.&nbsp;Process support view"><div class="titlepage"><div><div><h2 class="title"><a name="section-process-support-view"></a>1.11.&nbsp;Process support view</h2></div></div></div>

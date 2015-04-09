@@ -4,34 +4,37 @@
   PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <index>
    <entry keyword="Decider">
-      <topic href="ch02.html#d5e315"/>
+      <topic href="ch02.html#d5e323"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch02.html#d5e338"/>
+      <topic href="ch02.html#d5e346"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch02.html#d5e354"/>
+      <topic href="ch02.html#d5e362"/>
    </entry>
    <entry keyword="Event Manager">
-      <topic href="ch02.html#d5e364"/>
+      <topic href="ch02.html#d5e372"/>
    </entry>
    <entry keyword="Event Manager">
-      <topic href="ch02.html#d5e369"/>
+      <topic href="ch02.html#d5e377"/>
    </entry>
    <entry keyword="GEMOC">
-      <topic href="ch03.html#d5e576"/>
+      <topic href="ch03.html#d5e584"/>
       <entry keyword="process">
-         <topic href="ch03.html#d5e577"/>
+         <topic href="ch03.html#d5e585"/>
       </entry>
    </entry>
    <entry keyword="GEMOC">
-      <topic href="ch03.html#d5e536"/>
+      <topic href="ch03.html#d5e544"/>
       <entry keyword="process">
-         <topic href="ch03.html#d5e537"/>
+         <topic href="ch03.html#d5e545"/>
          <entry keyword="overview">
-            <topic href="ch03.html#d5e538"/>
+            <topic href="ch03.html#d5e546"/>
          </entry>
       </entry>
+   </entry>
+   <entry keyword="GEMOC Dashboard">
+      <topic href="ch01.html#d5e161"/>
    </entry>
    <entry keyword="GEMOC Language Workbench">
       <topic href="ch01.html#d5e136"/>
@@ -39,64 +42,64 @@
    <entry keyword="Language Designer">
       <topic href="ch01.html#d5e138"/>
    </entry>
-   <entry keyword="Language workbench">
-      <topic href="ch01.html#d5e153"/>
+   <entry keyword="Language Designer">
+      <topic href="ch01.html#d5e159"/>
+   </entry>
+   <entry keyword="Language Workbench">
+      <topic href="ch01.html#d5e151"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch02.html#d5e317"/>
+      <topic href="ch02.html#d5e325"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch02.html#d5e450"/>
+      <topic href="ch02.html#d5e458"/>
    </entry>
    <entry keyword="Modeling workbench">
-      <topic href="ch02.html#d5e296"/>
+      <topic href="ch02.html#d5e304"/>
    </entry>
    <entry keyword="overview">
-      <topic href="ch03.html#d5e543"/>
+      <topic href="ch03.html#d5e551"/>
    </entry>
    <entry keyword="process">
-      <topic href="ch03.html#d5e579"/>
+      <topic href="ch03.html#d5e587"/>
    </entry>
    <entry keyword="process">
-      <topic href="ch03.html#d5e540"/>
+      <topic href="ch03.html#d5e548"/>
       <entry keyword="overview">
-         <topic href="ch03.html#d5e541"/>
+         <topic href="ch03.html#d5e549"/>
       </entry>
    </entry>
    <entry keyword="Runtime Data">
-      <topic href="ch02.html#d5e377"/>
+      <topic href="ch02.html#d5e385"/>
    </entry>
    <entry keyword="Runtime Data">
-      <topic href="ch02.html#d5e455"/>
+      <topic href="ch02.html#d5e463"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01.html#d5e248"/>
+      <topic href="ch01.html#d5e256"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01.html#d5e272"/>
+      <topic href="ch01.html#d5e280"/>
+   </entry>
+   <entry keyword="TFSM">
+      <topic href="ch02.html#d5e299"/>
    </entry>
    <entry keyword="TFSM">
       <topic href="ch01.html#d5e148"/>
-   </entry>
-   <entry keyword="TFSM">
-      <topic href="ch02.html#d5e291"/>
-   </entry>
-   <entry keyword="TFSM">
-      <topic href="ch01.html#d5e150"/>
-      <entry keyword="Language workbench">
-         <topic href="ch01.html#d5e151"/>
+      <entry keyword="Language Workbench">
+         <topic href="ch01.html#d5e149"/>
       </entry>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch02.html#d5e293"/>
+      <topic href="ch02.html#d5e301"/>
       <entry keyword="Modeling workbench">
-         <topic href="ch02.html#d5e294"/>
+         <topic href="ch02.html#d5e302"/>
       </entry>
    </entry>
    <entry keyword="Timeline">
-      <topic href="ch02.html#d5e343"/>
+      <topic href="ch02.html#d5e351"/>
    </entry>
    <entry keyword="Timeline">
-      <topic href="ch02.html#d5e359"/>
+      <topic href="ch02.html#d5e367"/>
    </entry>
 </index>
