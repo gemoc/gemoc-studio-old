@@ -65,7 +65,7 @@
          <topic label="Variable View" href="ch02.html#modeling-workbench-executing-model-variable-view-section"/>
       </topic>
    </topic>
-   <topic label="GEMOC xDSML definition tutorial" href="ch03.html">
+   <topic label="GEMOC xDSML definition tutorial with Automaton DSML" href="ch03.html">
       <topic label="Introduction" href="ch03.html#_introduction_2"/>
       <topic label="The GEMOC Approach for defining eXecutable DSML (xDSML)" href="ch03.html#sec-GEMOC-approach">
          <topic label="Architecture of a GEMOC xDSML" href="ch03.html#sec-GEMOC-architecture"/>
@@ -100,16 +100,17 @@
             <topic label="Testing and debugging the xDSML" href="ch03.html#_testing_and_debugging_the_xdsml"/>
          </topic>
       </topic>
-      <topic label="Increment 2: new MoCC and DSA for Automata (MoCC focused version)" href="ch03.html#sec-increment2"/>
-      <topic label="Increment 3: Graphical visualization" href="ch03.html#sec-visualization"/>
-      <topic label="Increment 4: Consider nondeterministic automata." href="ch03.html#sec-nondeterministic"/>
-      <topic label="Increment 5: Pushdown automaton" href="ch03.html#sec-pushdown"/>
-      <topic label="Increment 6: Call of user actions" href="ch03.html#sec-userCode"/>
+      <topic label="Increment 2: new MoCC and DSA for Automata (using State Machines of MoCCML)" href="ch03.html#sec-increment2"/>
+      <topic label="Increment 3: new MoCC and DSA for Automata (MoCC focused version)" href="ch03.html#sec-increment3"/>
+      <topic label="Increment 4: Graphical visualization" href="ch03.html#sec-visualization"/>
+      <topic label="Increment 5: Consider nondeterministic automata." href="ch03.html#sec-nondeterministic"/>
+      <topic label="Increment 6: Pushdown automaton" href="ch03.html#sec-pushdown"/>
+      <topic label="Increment 7: Call of user actions" href="ch03.html#sec-userCode"/>
       <topic label="Increment: TBD" href="ch03.html#sec-otherIncrements"/>
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e1049"/>
+      <topic label="Articles" href="bi01.html#d5e1057"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>

@@ -3,7 +3,7 @@
   PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html><head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <title>Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial</title><link rel="stylesheet" type="text/css" href="css/gemocorg.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="GEMOC Studio Guide"><link rel="up" href="index.html" title="GEMOC Studio Guide"><link rel="prev" href="ch02.html" title="Chapter&nbsp;2.&nbsp;Gemoc Modeling workbench"><link rel="next" href="bi01.html" title="Bibliography"><meta xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><p xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.gemoc.org" class="site_href"><strong>GEMOC.org</strong></a><a href="http://gemoc.github.io//" class="doc_href"><strong>Community Documentation</strong></a></p><ul xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="bi01.html"><strong>Next</strong></a></li></ul><div class="chapter" title="Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial"><div class="titlepage"><div><div><h2 class="title"><a name="_gemoc_xdsml_definition_tutorial"></a>Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial</h2></div></div></div>
+   <title>Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial with Automaton DSML</title><link rel="stylesheet" type="text/css" href="css/gemocorg.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="GEMOC Studio Guide"><link rel="up" href="index.html" title="GEMOC Studio Guide"><link rel="prev" href="ch02.html" title="Chapter&nbsp;2.&nbsp;Gemoc Modeling workbench"><link rel="next" href="bi01.html" title="Bibliography"><meta xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><p xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" id="title"><a href="http://www.gemoc.org" class="site_href"><strong>GEMOC.org</strong></a><a href="http://gemoc.github.io//" class="doc_href"><strong>Community Documentation</strong></a></p><ul xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="ch02.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="bi01.html"><strong>Next</strong></a></li></ul><div class="chapter" title="Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial with Automaton DSML"><div class="titlepage"><div><div><h2 class="title"><a name="_gemoc_xdsml_definition_tutorial_with_automaton_dsml"></a>Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial with Automaton DSML</h2></div></div></div>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
 <p xmlns="">This tutorial is a work in progress and is not yet finished.
@@ -28,19 +28,21 @@ illustrate different aspects of the GEMOC studio.</p>
 <a class="link" href="ch03.html#sec-increment1" title="3.5.&nbsp;Increment 1 : Deterministic Automata">First implementation</a> of the deterministic
 Automata xDSML with a focus on the DSA.
 </li><li class="listitem">
-<a class="link" href="ch03.html#sec-increment2" title="3.6.&nbsp;Increment 2: new MoCC and DSA for Automata (MoCC focused version)">Second implementation</a> with a focus on the MoCC
+<a class="link" href="ch03.html#sec-increment2" title="3.6.&nbsp;Increment 2: new MoCC and DSA for Automata (using State Machines of MoCCML)">Second implementation</a> with the same MoCC defined using MoCCML and a state machine
+</li><li class="listitem">
+<a class="link" href="ch03.html#sec-increment3" title="3.7.&nbsp;Increment 3: new MoCC and DSA for Automata (MoCC focused version)">Second implementation</a> with a focus on the MoCC
 (to show that a balance must be found)
 </li><li class="listitem">
-<a class="link" href="ch03.html#sec-visualization" title="3.7.&nbsp;Increment 3: Graphical visualization">Graphical visualization</a>.
+<a class="link" href="ch03.html#sec-visualization" title="3.8.&nbsp;Increment 4: Graphical visualization">Graphical visualization</a>.
 </li><li class="listitem">
-<a class="link" href="ch03.html#sec-nondeterministic" title="3.8.&nbsp;Increment 4: Consider nondeterministic automata.">Nondeterministic automata</a> (evolution of the previous example)
+<a class="link" href="ch03.html#sec-nondeterministic" title="3.9.&nbsp;Increment 5: Consider nondeterministic automata.">Nondeterministic automata</a> (evolution of the previous example)
 </li><li class="listitem">
-<a class="link" href="ch03.html#sec-pushdown" title="3.9.&nbsp;Increment 5: Pushdown automaton">Pushdown Automata</a> (demonstrate the feedback mechanism)
+<a class="link" href="ch03.html#sec-pushdown" title="3.10.&nbsp;Increment 6: Pushdown automaton">Pushdown Automata</a> (demonstrate the feedback mechanism)
 </li><li class="listitem">
-<a class="link" href="ch03.html#sec-userCode" title="3.10.&nbsp;Increment 6: Call of user actions">Integration of user defined code</a> (connect the
+<a class="link" href="ch03.html#sec-userCode" title="3.11.&nbsp;Increment 7: Call of user actions">Integration of user defined code</a> (connect the
 automata to a specific graphical interface).
 </li><li class="listitem">
-<p class="simpara"><a class="link" href="ch03.html#sec-otherIncrements" title="3.11.&nbsp;Increment: TBD">Other increments</a>:</p>
+<p class="simpara"><a class="link" href="ch03.html#sec-otherIncrements" title="3.12.&nbsp;Increment: TBD">Other increments</a>:</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Composite DSE
 </li><li class="listitem">
@@ -100,9 +102,9 @@ requirements are fulfilled.</p>
 
 <div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-overview.png" alt="Overview of the GEMOC process"></div>
 </div></div><br class="figure-break">
-<p><a class="indexterm" name="d5e545"></a>
-<a class="indexterm" name="d5e549"></a>
-<a class="indexterm" name="d5e552"></a></p>
+<p><a class="indexterm" name="d5e548"></a>
+<a class="indexterm" name="d5e552"></a>
+<a class="indexterm" name="d5e555"></a></p>
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p xmlns="">For clarity, the iteration to choose the next increment is not
 represented of the diagram.</p>
@@ -165,8 +167,8 @@ domain (and could be considered as a kind of compound activity).</p>
 
 <div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-general.png" alt="Recommended GEMOC Process"></div>
 </div></div><br class="figure-break">
-<p><a class="indexterm" name="d5e585"></a>
-<a class="indexterm" name="d5e588"></a></p>
+<p><a class="indexterm" name="d5e588"></a>
+<a class="indexterm" name="d5e591"></a></p>
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
 <p xmlns="">This process is the recommanded one, and the one used in this
 tutorial.  Nevertheless, it is possible to define an xDSML with other
@@ -421,8 +423,8 @@ In the corresponding field, place the path to the Ecore MetaModel
 and make sure the "Root container model element" is
 "automata::Automata" and name the file "automataDSE". Ignore the error
 that is displayed.</p>
-<p>Right click on the DSE project and make sure that in "configure", the
-"DSE builder" functionality is active.</p>
+<p>Right click on the <span class="emphasis"><em>ECL project</em></span> in the DSE definition part and make
+sure that in "configure", the "DSE builder" functionality is active.</p>
 <p>An error is indicated in the newly created project. To correct it,
 fill-in the "moc2as.properties" file by completing the property with
 the name of the root element. In our case, that is "rootElement =
@@ -867,8 +869,8 @@ it again to ensure modifications on the Ecore file are seen by ECL.</p>
 <p>A few workarounds are needed before you can launch the Modeling
 Workbench :</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
-TODO: Dans le projet xDSML, initialiser le champ Code executor class name
-with automata.xdsml.api.impl.AutomataCodeExecutor
+TODO: In the xDSML project, initialize  the field "Code executor
+class name" with automata.xdsml.api.impl.AutomataCodeExecutor
 </li><li class="listitem">
 In the DSA Project, MANIFEST.MF, runtime, export the non-Java package containing your .xtend DSAs
 </li><li class="listitem">
@@ -908,7 +910,12 @@ In the panel "Common", select "Shared file" and put the project path there: "/co
 </div>
 </div>
 </div>
-<div class="section" title="3.6.&nbsp;Increment 2: new MoCC and DSA for Automata (MoCC focused version)"><div class="titlepage"><div><div><h2 class="title"><a name="sec-increment2"></a>3.6.&nbsp;Increment 2: new MoCC and DSA for Automata (MoCC focused version)</h2></div></div></div>
+<div class="section" title="3.6.&nbsp;Increment 2: new MoCC and DSA for Automata (using State Machines of MoCCML)"><div class="titlepage"><div><div><h2 class="title"><a name="sec-increment2"></a>3.6.&nbsp;Increment 2: new MoCC and DSA for Automata (using State Machines of MoCCML)</h2></div></div></div>
+
+<p>Same DSA</p>
+<p>Same MoCC but expressed with a state machine and not CCSL relations.</p>
+</div>
+<div class="section" title="3.7.&nbsp;Increment 3: new MoCC and DSA for Automata (MoCC focused version)"><div class="titlepage"><div><div><h2 class="title"><a name="sec-increment3"></a>3.7.&nbsp;Increment 3: new MoCC and DSA for Automata (MoCC focused version)</h2></div></div></div>
 
 <p>In the previous version the MoCC is only responsible of ensuring that
 DSE events (input symbols and end of word event) arrive one at a time.
@@ -922,7 +929,7 @@ will be scheduled by the MoCC.   We add clock on state to know whether
 a state is current or not a simulation step.  To be defined.</p>
 <p>TODO: to be developed.</p>
 </div>
-<div class="section" title="3.7.&nbsp;Increment 3: Graphical visualization"><div class="titlepage"><div><div><h2 class="title"><a name="sec-visualization"></a>3.7.&nbsp;Increment 3: Graphical visualization</h2></div></div></div>
+<div class="section" title="3.8.&nbsp;Increment 4: Graphical visualization"><div class="titlepage"><div><div><h2 class="title"><a name="sec-visualization"></a>3.8.&nbsp;Increment 4: Graphical visualization</h2></div></div></div>
 
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 On the model (current states, the symbols already analyzed?)
@@ -933,7 +940,7 @@ A specific view as a Gantt
 </li></ul></div>
 <p>TODO: to be developed.</p>
 </div>
-<div class="section" title="3.8.&nbsp;Increment 4: Consider nondeterministic automata."><div class="titlepage"><div><div><h2 class="title"><a name="sec-nondeterministic"></a>3.8.&nbsp;Increment 4: Consider nondeterministic automata.</h2></div></div></div>
+<div class="section" title="3.9.&nbsp;Increment 5: Consider nondeterministic automata."><div class="titlepage"><div><div><h2 class="title"><a name="sec-nondeterministic"></a>3.9.&nbsp;Increment 5: Consider nondeterministic automata.</h2></div></div></div>
 
 <p>TODO: to be developed.</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
@@ -945,7 +952,7 @@ A transition with no label.
 all states that are accessible by the symbols already accepte by the
 automaton.</p>
 </div>
-<div class="section" title="3.9.&nbsp;Increment 5: Pushdown automaton"><div class="titlepage"><div><div><h2 class="title"><a name="sec-pushdown"></a>3.9.&nbsp;Increment 5: Pushdown automaton</h2></div></div></div>
+<div class="section" title="3.10.&nbsp;Increment 6: Pushdown automaton"><div class="titlepage"><div><div><h2 class="title"><a name="sec-pushdown"></a>3.10.&nbsp;Increment 6: Pushdown automaton</h2></div></div></div>
 
 <p>TODO: The purpose of Pushdown Automaton is to illustrate the Feedback
     mechanism.</p>
@@ -958,17 +965,17 @@ tutorial when the proposed approach to handle feedbacks will have been
 integrated to the GEMOC studio.</p>
 </div>
 </div>
-<div class="section" title="3.10.&nbsp;Increment 6: Call of user actions"><div class="titlepage"><div><div><h2 class="title"><a name="sec-userCode"></a>3.10.&nbsp;Increment 6: Call of user actions</h2></div></div></div>
+<div class="section" title="3.11.&nbsp;Increment 7: Call of user actions"><div class="titlepage"><div><div><h2 class="title"><a name="sec-userCode"></a>3.11.&nbsp;Increment 7: Call of user actions</h2></div></div></div>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p xmlns="">Will be added in a future version of this tutorial.</p>
 </div>
 </div>
-<div class="section" title="3.11.&nbsp;Increment: TBD"><div class="titlepage"><div><div><h2 class="title"><a name="sec-otherIncrements"></a>3.11.&nbsp;Increment: TBD</h2></div></div></div>
+<div class="section" title="3.12.&nbsp;Increment: TBD"><div class="titlepage"><div><div><h2 class="title"><a name="sec-otherIncrements"></a>3.12.&nbsp;Increment: TBD</h2></div></div></div>
 
 <p>TODO: Which other increments?</p>
 </div>
-<div class="section" title="3.12.&nbsp;TODO"><div class="titlepage"><div><div><h2 class="title"><a name="_todo"></a>3.12.&nbsp;TODO</h2></div></div></div>
+<div class="section" title="3.13.&nbsp;TODO"><div class="titlepage"><div><div><h2 class="title"><a name="_todo"></a>3.13.&nbsp;TODO</h2></div></div></div>
 
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Definition of AS should be part of this tutorial (correct NOTE: at the
