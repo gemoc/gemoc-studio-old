@@ -24,82 +24,60 @@
 * Referencing the different projects representing the various parts constituting an xDSML;
 * Guiding the <a class="indexterm" name="d5e158"></a>Language Designer in the language creation process through the <a class="indexterm" name="d5e160"></a>GEMOC Dashboard illustrating the workflow of creating an xDSML using the GEMOC Studio.</p>
 </div>
-<div class="section" title="1.2.2.&nbsp;How to create an xDSML Project"><div class="titlepage"><div><div><h3 class="title"><a name="_how_to_create_an_xdsml_project"></a>1.2.2.&nbsp;How to create an xDSML Project</h3></div></div></div>
+<div class="section" title="1.2.2.&nbsp;Creating the xDSML Project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_xdsml_project"></a>1.2.2.&nbsp;Creating the xDSML Project</h3></div></div></div>
 
-<p>In the main menu of the GEMOC Studio, go to: File &gt; New &gt; Project&#8230;&#8203; &gt; New GEMOC Language Project. This will create a new xDSML Project in your workspace.</p>
+<p>In the GEMOC Studio, go to: <span class="emphasis"><em>File &gt; New &gt; Project&#8230;&#8203; &gt; New GEMOC Language Project</em></span>. This will create a new xDSML Project in your workspace.</p>
 </div>
-<div class="section" title="1.2.3.&nbsp;Editing an xDSML Project"><div class="titlepage"><div><div><h3 class="title"><a name="_editing_an_xdsml_project"></a>1.2.3.&nbsp;Editing an xDSML Project</h3></div></div></div>
+<div class="section" title="1.2.3.&nbsp;Editing the xDSML Project"><div class="titlepage"><div><div><h3 class="title"><a name="_editing_the_xdsml_project"></a>1.2.3.&nbsp;Editing the xDSML Project</h3></div></div></div>
 
-<p>The main file constituting an xDSML Project is the <span class="emphasis"><em>project.xdsml</em></span>. This file is not supposed to be edited manually although it is possible to. The pop-up menu of the project (available upon right click on the xDSML Project) or the <a class="xref" href="ch01.html#section-process-support-view" title="1.11.&nbsp;Process support view">Section&nbsp;1.11, &#8220;Process support view&#8221;</a> provide a set of wizards to edit this file.</p>
+<p>The main file constituting the xDSML Project is the <span class="emphasis"><em>project.xdsml</em></span>. To edit this file, open it with the "XDSML Model Editor".</p>
 <p>From the information specified in this file, the project generates additional code that is used by the Execution Engine during the execution of models conforming to the xDSML (see <a class="xref" href="ch02.html" title="Chapter&nbsp;2.&nbsp;Gemoc Modeling workbench">Chapter&nbsp;2, <i>Gemoc Modeling workbench</i></a>).</p>
 </div>
 </div>
-<div class="section" title="1.3.&nbsp;Defining Abstract Syntax (or domain concepts)"><div class="titlepage"><div><div><h2 class="title"><a name="section-define-AS-project"></a>1.3.&nbsp;Defining Abstract Syntax (or domain concepts)</h2></div></div></div>
+<div class="section" title="1.3.&nbsp;Domain Model Project"><div class="titlepage"><div><div><h2 class="title"><a name="section-define-AS-project"></a>1.3.&nbsp;Domain Model Project</h2></div></div></div>
 
-<p>Defining the abstract syntax (AS) in the Language Workbench is done thanks to an EMF Ecore project that will be associated to the xDSML definition.</p>
-<p>All ecore editors can be used to edit the concepts in the ecore file.</p>
-<p>The EMF project can be created manually and then associated to the xDSML or directly created for the specific use of a given xDSML.</p>
-<div class="section" title="1.3.1.&nbsp;Method 1 : Creation via xDSML popup"><div class="titlepage"><div><div><h3 class="title"><a name="section-define-AS-project-method-1"></a>1.3.1.&nbsp;Method 1 : Creation via xDSML popup</h3></div></div></div>
+<div class="section" title="1.3.1.&nbsp;Purpose"><div class="titlepage"><div><div><h3 class="title"><a name="_purpose_2"></a>1.3.1.&nbsp;Purpose</h3></div></div></div>
 
-<p>To create the EMF project:</p>
-<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
-right click on the xDSML project
-</li><li class="listitem">
-navigate in the <span class="emphasis"><em>Gemoc Language</em></span> entry.
-</li><li class="listitem">
-click on <span class="emphasis"><em>create Domain Model project</em></span>
-</li></ul></div>
-<p>This will open a wizard asking either to create a new EMF project or select an existing one (usefull for <a class="link" href="ch01.html#section-define-AS-project-method-2" title="1.3.2.&nbsp;Method 2 : Manual creation and association to the xDSML">method 2</a>).
-Creating a new EMF project will ask for some</p>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">In future version of the studio, this method may disapear and be replaced by <a class="link" href="ch01.html#section-define-AS-project-method-3" title="1.3.3.&nbsp;Method 3 : Creation or selection via Gemoc Guideline view">method 3</a>.</p>
+<p>The Domain Model Project specifies the concepts of the domain at hand and the structural relations between the concepts.</p>
 </div>
-</div>
-<div class="section" title="1.3.2.&nbsp;Method 2 : Manual creation and association to the xDSML"><div class="titlepage"><div><div><h3 class="title"><a name="section-define-AS-project-method-2"></a>1.3.2.&nbsp;Method 2 : Manual creation and association to the xDSML</h3></div></div></div>
+<div class="section" title="1.3.2.&nbsp;Creating the Domain Model Project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_domain_model_project"></a>1.3.2.&nbsp;Creating the Domain Model Project</h3></div></div></div>
 
-<p>From eclipse menu:</p>
-<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
-<span class="emphasis"><em>File &gt; New &gt; Projects&#8230;&#8203; &gt; Ecore Modeling Project</em></span>
-</li><li class="listitem">
-in the Ecore diagram, define the concepts for your language as a class diagram.
-</li></ul></div>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Tip</h2>
-<p xmlns="">There are several other ways to create valid EMF projects. Amung them we can consider: <span class="emphasis"><em>File &gt; New &gt; Projects&#8230;&#8203; &gt; EMF Project</em></span>, <span class="emphasis"><em>File &gt; New &gt; Projects&#8230;&#8203; &gt; Empty EMF Project</em></span>,  <span class="emphasis"><em>File &gt; New &gt; Projects&#8230;&#8203; &gt; xText Project</em></span> &#8230;&#8203; However, this isn&#8217;t in the scope of this document to detail them or explain how to correctly configure them for being used by Gemoc.</p>
+<p>The GEMOC Studio relies on the Eclipse Modeling Framework for its Domain Model Projects. See <a class="ulink" href="http://eclipse.org/modeling/emf/">the EMF website</a> for more information on how to create an EMF project in Eclipse.</p>
+<p>When your EMF Project is done, connect your xDSML Project to it by specifying in the <span class="emphasis"><em>project.xdsml</em></span> file the name of the EMF Project, the path to the genmodel of your Ecore metamodel and the name of the root element as <span class="emphasis"><em>package::root</em></span>.</p>
 </div>
-<p>Then associate the EMF project to the xDSML. The association is done either with right click on the xDSML project, <span class="emphasis"><em>Gemoc Language</em></span> &gt; <span class="emphasis"><em>create Domain Model project</em></span> &gt; <span class="emphasis"><em>Select existing EMF project</em></span>; or via the Gemo Guideline view.</p>
-</div>
-<div class="section" title="1.3.3.&nbsp;Method 3 : Creation or selection via Gemoc Guideline view"><div class="titlepage"><div><div><h3 class="title"><a name="section-define-AS-project-method-3"></a>1.3.3.&nbsp;Method 3 : Creation or selection via Gemoc Guideline view</h3></div></div></div>
+<div class="section" title="1.3.3.&nbsp;Editing the Domain Model Project"><div class="titlepage"><div><div><h3 class="title"><a name="_editing_the_domain_model_project"></a>1.3.3.&nbsp;Editing the Domain Model Project</h3></div></div></div>
 
-<p>The Gemoc Guideline view offers an integrated vision of the most important steps of the xDSML creation process. When selecting the <span class="emphasis"><em>Define Domain Model</em></span> task, a button allows to launch the wizards of <a class="link" href="ch01.html#section-define-AS-project-method-1" title="1.3.1.&nbsp;Method 1 : Creation via xDSML popup">method 1</a>.</p>
-<p>TODO new project wizard (via popup, via process)
-TODO select existing project
-TODO Ecore editor</p>
+<p>If you wish to modify your Domain Model, do not forget to reload the associated genmodel and regenerate the EMF model code (and edit/editor code if you use them).</p>
 </div>
 </div>
-<div class="section" title="1.4.&nbsp;Defining Domain-Specific Actions (DSAs)"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_domain_specific_actions_dsas"></a>1.4.&nbsp;Defining Domain-Specific Actions (DSAs)</h2></div></div></div>
+<div class="section" title="1.4.&nbsp;Defining the Domain-Specific Actions (DSA) Project"><div class="titlepage"><div><div><h2 class="title"><a name="section-define-dsa-project"></a>1.4.&nbsp;Defining the Domain-Specific Actions (DSA) Project</h2></div></div></div>
 
-<p>In Gemoc, the DSAs are developped using Kermeta 3.</p>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">There may exist other ways to create DSAs, but these methods aren&#8217;t in the scope of this document.</p>
-</div>
-<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
-right click on the xDSML project
-</li><li class="listitem">
-navigate in the <span class="emphasis"><em>Gemoc Language</em></span> entry.
-</li><li class="listitem">
-click on <span class="emphasis"><em>create DSA project</em></span>
-</li></ul></div>
-<p>In the wizard you can select an existing templates to help create the aspects classes that will extend the classes of the Domain model.</p>
-<p>You can manually create a Kermeta 3 project in the main eclipse menu, and then associate it to an xDSML project.</p>
-<div class="section" title="1.4.1.&nbsp;Defining the Execution Data"><div class="titlepage"><div><div><h3 class="title"><a name="_defining_the_execution_data"></a>1.4.1.&nbsp;Defining the Execution Data</h3></div></div></div>
+<div class="section" title="1.4.1.&nbsp;Purpose"><div class="titlepage"><div><div><h3 class="title"><a name="_purpose_3"></a>1.4.1.&nbsp;Purpose</h3></div></div></div>
 
-<p>The Execution Data consist in attributes and references weaved onto existing concepts (metaclasses) of the Abstract Syntax. They may also include new metaclasses.</p>
+<p>The Domain-Specific Actions define the runtime state (<span class="strong"><strong>Execution Data</strong></span>) of the model and the operations (<span class="strong"><strong>Execution Functions</strong></span>) which modify the runtime state of the model.</p>
 </div>
-<div class="section" title="1.4.2.&nbsp;Defining the Execution Functions"><div class="titlepage"><div><div><h3 class="title"><a name="_defining_the_execution_functions"></a>1.4.2.&nbsp;Defining the Execution Functions</h3></div></div></div>
+<div class="section" title="1.4.2.&nbsp;Creating the DSA Project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_dsa_project"></a>1.4.2.&nbsp;Creating the DSA Project</h3></div></div></div>
+
+<p>In the GEMOC Studio, the DSA are implemented using <a class="ulink" href="https://github.com/diverse-project/k3/wiki">Kermeta 3</a>.
+To create a new DSA Project, in the main menu of the GEMOC Studio, go to: <span class="emphasis"><em>File &gt; New &gt; Project&#8230;&#8203; &gt; K3 Project</em></span>. In the wizard, create it as a Plug-in with EMF using the template of your choice.
+Then, connect the xDSML Project to the DSA Project by referencing the DSA Project in the <span class="emphasis"><em>project.xdsml</em></span> file.</p>
+</div>
+<div class="section" title="1.4.3.&nbsp;Editing the DSA Project"><div class="titlepage"><div><div><h3 class="title"><a name="_editing_the_dsa_project"></a>1.4.3.&nbsp;Editing the DSA Project</h3></div></div></div>
+
+<p>Kermeta 3 is based on <a class="ulink" href="http://www.eclipse.org/xtend/index.html">xTend</a>. The Execution Data and Execution Functions are defined through aspects weaved onto the metaclasses of the Domain Model.</p>
+<div class="section" title="Defining the Execution Data"><div class="titlepage"><div><div><h4 class="title"><a name="_defining_the_execution_data"></a>Defining the Execution Data</h4></div></div></div>
+
+<p>The Execution Data consist in attributes and references added to existing concepts (metaclasses) of the Abstract Syntax. They may also include new metaclasses which define the type of these new attributes and references.</p>
+</div>
+<div class="section" title="Defining the Execution Functions"><div class="titlepage"><div><div><h4 class="title"><a name="_defining_the_execution_functions"></a>Defining the Execution Functions</h4></div></div></div>
 
 <p>The Execution Functions define how the Execution Data evolve during the execution of the model. Execution Functions can be implemented by defining the body of a method.</p>
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p xmlns="">For now, Execution Functions are considered as <span class="strong"><strong>atomic, instantaneous and blocking</strong></span>. This means that any long computation will block the rest of the simulation, and concurrent Execution Functions are not executed in concurrence yet.</p>
+</div>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
+<p xmlns="">For technical reasons, the Domain Model (Ecore metamodel) must specify the signature of the Execution Functions as EOperations.</p>
+</div>
 </div>
 </div>
 </div>
@@ -115,7 +93,7 @@ Editors explictly supported are: EMF tree editor, Xtext editor, Sirius editor.</
 
 <p>See <a class="ulink" href="http://www.eclipse.org/Xtext/">the Xtext website</a>.</p>
 </div>
-<div class="section" title="1.6.2.&nbsp;Defining a Concrete Syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a name="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"></a>1.6.2.&nbsp;Defining a Concrete Syntax with <a class="indexterm" name="d5e255"></a>Sirius</h3></div></div></div>
+<div class="section" title="1.6.2.&nbsp;Defining a Concrete Syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a name="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"></a>1.6.2.&nbsp;Defining a Concrete Syntax with <a class="indexterm" name="d5e227"></a>Sirius</h3></div></div></div>
 
 <p>If you want to create a graphical concrete syntax you can use Sirius. The <a class="ulink" href="http://www.eclipse.org/sirius/doc/">Sirius documentation</a> provides information for <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a>.</p>
 </div>
@@ -128,9 +106,6 @@ Editors explictly supported are: EMF tree editor, Xtext editor, Sirius editor.</
 
 <p>The DSE can be defined using the <span class="strong"><strong>Gemoc Events Language</strong></span> (GEL). Create a new file with extension ".GEL" in your DSE project.
 The DSE define a mapping between MoccEvents from the MoCC and the Execution Functions (defined as methods in the DSA)</p>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
-<p xmlns="">For technical reasons, the Abstract Syntax (Ecore metamodel) must specify the signature of the Execution Functions.</p>
-</div>
 <p>Therefore, the first step to designing the DSE in GEL is importing the ECL file and the Ecore file of the xDSML. You can do using the "platform:/plugin" syntax.</p>
 <p>DSEs can be defined between the "DSE" and "end" keywords.
 After the 'upon' keyword, a MoccEvent from the ECL file can be referenced.
@@ -145,7 +120,7 @@ First, give a name to the result of the Execution Function using the "returning"
 </div>
 <div class="section" title="1.10.&nbsp;Defining an animation view"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_an_animation_view"></a>1.10.&nbsp;Defining an animation view</h2></div></div></div>
 
-<p>The animation layer is an extension on top of a graphical editor defined with <a class="indexterm" name="d5e279"></a>Sirius.</p>
+<p>The animation layer is an extension on top of a graphical editor defined with <a class="indexterm" name="d5e249"></a>Sirius.</p>
 <p>TODO Debug layer, Animation layer</p>
 </div>
 <div class="section" title="1.11.&nbsp;Process support view"><div class="titlepage"><div><div><h2 class="title"><a name="section-process-support-view"></a>1.11.&nbsp;Process support view</h2></div></div></div>

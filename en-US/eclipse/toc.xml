@@ -12,17 +12,21 @@
       <topic label="Overview" href="ch01.html#_overview"/>
       <topic label="xDSML Project" href="ch01.html#section-gemoc-language-project">
          <topic label="Purpose" href="ch01.html#_purpose"/>
-         <topic label="How to create an xDSML Project" href="ch01.html#_how_to_create_an_xdsml_project"/>
-         <topic label="Editing an xDSML Project" href="ch01.html#_editing_an_xdsml_project"/>
+         <topic label="Creating the xDSML Project" href="ch01.html#_creating_the_xdsml_project"/>
+         <topic label="Editing the xDSML Project" href="ch01.html#_editing_the_xdsml_project"/>
       </topic>
-      <topic label="Defining Abstract Syntax (or domain concepts)" href="ch01.html#section-define-AS-project">
-         <topic label="Method 1 : Creation via xDSML popup" href="ch01.html#section-define-AS-project-method-1"/>
-         <topic label="Method 2 : Manual creation and association to the xDSML" href="ch01.html#section-define-AS-project-method-2"/>
-         <topic label="Method 3 : Creation or selection via Gemoc Guideline view" href="ch01.html#section-define-AS-project-method-3"/>
+      <topic label="Domain Model Project" href="ch01.html#section-define-AS-project">
+         <topic label="Purpose" href="ch01.html#_purpose_2"/>
+         <topic label="Creating the Domain Model Project" href="ch01.html#_creating_the_domain_model_project"/>
+         <topic label="Editing the Domain Model Project" href="ch01.html#_editing_the_domain_model_project"/>
       </topic>
-      <topic label="Defining Domain-Specific Actions (DSAs)" href="ch01.html#_defining_domain_specific_actions_dsas">
-         <topic label="Defining the Execution Data" href="ch01.html#_defining_the_execution_data"/>
-         <topic label="Defining the Execution Functions" href="ch01.html#_defining_the_execution_functions"/>
+      <topic label="Defining the Domain-Specific Actions (DSA) Project" href="ch01.html#section-define-dsa-project">
+         <topic label="Purpose" href="ch01.html#_purpose_3"/>
+         <topic label="Creating the DSA Project" href="ch01.html#_creating_the_dsa_project"/>
+         <topic label="Editing the DSA Project" href="ch01.html#_editing_the_dsa_project">
+            <topic label="Defining the Execution Data" href="ch01.html#_defining_the_execution_data"/>
+            <topic label="Defining the Execution Functions" href="ch01.html#_defining_the_execution_functions"/>
+         </topic>
       </topic>
       <topic label="Defining Domain-Specific Constraints" href="ch01.html#_defining_domain_specific_constraints"/>
       <topic label="Defining a Concrete Syntax" href="ch01.html#_defining_a_concrete_syntax">
@@ -98,7 +102,7 @@
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e1047"/>
+      <topic label="Articles" href="bi01.html#d5e1017"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
