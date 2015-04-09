@@ -39,7 +39,10 @@
          <topic label="Creating the DSE Project" href="ch01.html#_creating_the_dse_project"/>
          <topic label="Editing the DSE Project" href="ch01.html#_editing_the_dse_project"/>
       </topic>
-      <topic label="Defining the Feedback Policies" href="ch01.html#_defining_the_feedback_policies"/>
+      <topic label="Defining the Feedback Specification" href="ch01.html#_defining_the_feedback_specification">
+         <topic label="Purpose" href="ch01.html#_purpose_5"/>
+         <topic label="Creating a Feedback Policy" href="ch01.html#_creating_a_feedback_policy"/>
+      </topic>
       <topic label="Defining an animation view" href="ch01.html#_defining_an_animation_view"/>
       <topic label="Process support view" href="ch01.html#section-process-support-view"/>
    </topic>
@@ -106,7 +109,7 @@
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e1040"/>
+      <topic label="Articles" href="bi01.html#d5e1049"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>

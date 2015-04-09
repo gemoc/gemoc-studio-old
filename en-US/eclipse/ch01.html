@@ -110,7 +110,7 @@ Don&#8217;t forget to link the xDSML Project to the concrete syntax project(s) y
 </div>
 <div class="section" title="1.8.2.&nbsp;Creating the DSE Project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_dse_project"></a>1.8.2.&nbsp;Creating the DSE Project</h3></div></div></div>
 
-<p>Create an empty Plug-in Project. In this project, create a new file with the ".GEL" extension. The DSE can be defined using the <span class="strong"><strong>Gemoc Events Language</strong></span> (GEL).</p>
+<p>Create an empty Plug-in Project. In this project, create a new file with the ".GEL" extension. The DSE can be defined using the <span class="strong"><strong>Gemoc Events Language</strong></span> <a class="indexterm" name="d5e256"></a>.</p>
 </div>
 <div class="section" title="1.8.3.&nbsp;Editing the DSE Project"><div class="titlepage"><div><div><h3 class="title"><a name="_editing_the_dse_project"></a>1.8.3.&nbsp;Editing the DSE Project</h3></div></div></div>
 
@@ -124,15 +124,23 @@ end</pre>
 <p>The implicit context of a Domain-Specific Event is inferred from the context in which its associated MoccEvent is defined in the MoCC2AS Mapping. Therefore, the DSE will be usable for any instance in the model of the context of the DSE. For instance if a DSE is mapped to a MoccEvent defined in the context of the metaclass <span class="emphasis"><em>Transition</em></span>, and there are 3 Transitions in the model being executed, this DSE will be usable for each of the 3 Transitions of the model.</p>
 </div>
 </div>
-<div class="section" title="1.9.&nbsp;Defining the Feedback Policies"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_the_feedback_policies"></a>1.9.&nbsp;Defining the Feedback Policies</h2></div></div></div>
+<div class="section" title="1.9.&nbsp;Defining the Feedback Specification"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_the_feedback_specification"></a>1.9.&nbsp;Defining the Feedback Specification</h2></div></div></div>
+
+<div class="section" title="1.9.1.&nbsp;Purpose"><div class="titlepage"><div><div><h3 class="title"><a name="_purpose_5"></a>1.9.1.&nbsp;Purpose</h3></div></div></div>
+
+<p>In the GEMOC approach, the MoCC is independent from the domain. However, most languages need to be able to parameterize their control flow with their data flow. For instance, a conditional statement is a control flow construct which is conditioned by the result of its condition. Therefore, a form of communication between the MoCC and the DSA must be operated.
+In this context, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the Domain-Specific Events. Therefore, the Feedback Specification is also done using <a class="indexterm" name="d5e272"></a>GEL.</p>
+</div>
+<div class="section" title="1.9.2.&nbsp;Creating a Feedback Policy"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_a_feedback_policy"></a>1.9.2.&nbsp;Creating a Feedback Policy</h3></div></div></div>
 
 <p>The Feedback Policies can be defined in GEL as well. A Feedback Policy is responsible for specifying the influence of a piece of data from the domain on the MoCC. A Feedback Policy can be defined as follows.
 First, give a name to the result of the Execution Function using the "returning" keyword. Then, between the "Feedback" and "end" keywords, the Feedback Rules can be defined as "[filter] &#8658; allow consequence".</p>
 <p>A Feedback Policy must be used when the MoCC needs runtime data from the domain without which it would otherwise realize an arbitrary decision. This is typically the case for any form of conditional-based control flow.</p>
 </div>
+</div>
 <div class="section" title="1.10.&nbsp;Defining an animation view"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_an_animation_view"></a>1.10.&nbsp;Defining an animation view</h2></div></div></div>
 
-<p>The animation layer is an extension on top of a graphical editor defined with <a class="indexterm" name="d5e272"></a>Sirius.</p>
+<p>The animation layer is an extension on top of a graphical editor defined with <a class="indexterm" name="d5e281"></a>Sirius.</p>
 <p>TODO Debug layer, Animation layer</p>
 </div>
 <div class="section" title="1.11.&nbsp;Process support view"><div class="titlepage"><div><div><h2 class="title"><a name="section-process-support-view"></a>1.11.&nbsp;Process support view</h2></div></div></div>
