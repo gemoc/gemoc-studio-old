@@ -123,18 +123,31 @@ end</pre>
 <p>After the <span class="emphasis"><em>upon</em></span> keyword, any MoccEvent from the MoCC2AS Mapping can be referenced. After the 'triggers' keyword, navigation path from the context of the MoccEvent to an EOperation can be defined to specify which Execution Function must be triggered by this Domain-Specific Event.</p>
 <p>The implicit context of a Domain-Specific Event is inferred from the context in which its associated MoccEvent is defined in the MoCC2AS Mapping. Therefore, the DSE will be usable for any instance in the model of the context of the DSE. For instance if a DSE is mapped to a MoccEvent defined in the context of the metaclass <span class="emphasis"><em>Transition</em></span>, and there are 3 Transitions in the model being executed, this DSE will be usable for each of the 3 Transitions of the model.</p>
 </div>
+<div class="section" title="1.8.4.&nbsp;Example"><div class="titlepage"><div><div><h3 class="title"><a name="_example"></a>1.8.4.&nbsp;Example</h3></div></div></div>
+
+<pre class="screen">import "platform:/plugin/org.gemoc.sample.fuml.model/model/fuml.ecore"
+import "platform:/plugin/org.gemoc.sample.fuml.mocc/ECL/fuml.ecl"
+
+DSE ExecuteActivityNode:
+	upon mocc_executeNode
+	triggers ActivityNode.execute
+end</pre>
+</div>
 </div>
 <div class="section" title="1.9.&nbsp;Defining the Feedback Specification"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_the_feedback_specification"></a>1.9.&nbsp;Defining the Feedback Specification</h2></div></div></div>
 
 <div class="section" title="1.9.1.&nbsp;Purpose"><div class="titlepage"><div><div><h3 class="title"><a name="_purpose_5"></a>1.9.1.&nbsp;Purpose</h3></div></div></div>
 
 <p>In the GEMOC approach, the MoCC is independent from the domain. However, most languages need to be able to parameterize their control flow with their data flow. For instance, a conditional statement is a control flow construct which is conditioned by the result of its condition. Therefore, a form of communication between the MoCC and the DSA must be operated.
-In this context, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the Domain-Specific Events. Therefore, the Feedback Specification is also done using <a class="indexterm" name="d5e270"></a>GEL.</p>
+In this context, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the Domain-Specific Events. Therefore, the Feedback Specification is also done using <a class="indexterm" name="d5e273"></a>GEL.</p>
 </div>
 <div class="section" title="1.9.2.&nbsp;Creating a Feedback Policy"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_a_feedback_policy"></a>1.9.2.&nbsp;Creating a Feedback Policy</h3></div></div></div>
 
 <p>A Feedback Policy can be associated to a DSE using the following syntax:</p>
-<pre class="screen">DSE &lt;name&gt;:
+<pre class="screen">import "platform:/plugin/org.gemoc.sample.fuml.model/model/fuml.ecore"
+import "platform:/plugin/org.gemoc.sample.fuml.mocc/ECL/fuml.ecl"
+
+DSE &lt;name&gt;:
   upon &lt;MoccEvent&gt;
   triggers &lt;Path-to-ExecutionFunction&gt; returning &lt;resultName&gt;
   feedback:
@@ -155,7 +168,7 @@ end</pre>
 <p>When the Execution Function associated to a DSE returns a result, it is passed through each filter of the Feedback Policy. If none of the filters is validated, then the default rule is applied. Else, the collection of rules for which the filter validated are applied.
 For each rule to apply, the associated consequence is allowed to have occurrences in upcoming steps of execution.</p>
 </div>
-<div class="section" title="1.9.4.&nbsp;Example"><div class="titlepage"><div><div><h3 class="title"><a name="_example"></a>1.9.4.&nbsp;Example</h3></div></div></div>
+<div class="section" title="1.9.4.&nbsp;Example"><div class="titlepage"><div><div><h3 class="title"><a name="_example_2"></a>1.9.4.&nbsp;Example</h3></div></div></div>
 
 <pre class="screen">DSE EvaluateGuard:
 	upon mocc_evaluateGuard
@@ -169,7 +182,7 @@ end</pre>
 </div>
 <div class="section" title="1.10.&nbsp;Defining an animation view"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_an_animation_view"></a>1.10.&nbsp;Defining an animation view</h2></div></div></div>
 
-<p>The animation layer is an extension on top of a graphical editor defined with <a class="indexterm" name="d5e289"></a>Sirius.</p>
+<p>The animation layer is an extension on top of a graphical editor defined with <a class="indexterm" name="d5e292"></a>Sirius.</p>
 <p>TODO Debug layer, Animation layer</p>
 </div>
 <div class="section" title="1.11.&nbsp;Process support view"><div class="titlepage"><div><div><h2 class="title"><a name="section-process-support-view"></a>1.11.&nbsp;Process support view</h2></div></div></div>
