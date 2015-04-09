@@ -120,7 +120,7 @@ Don’t forget to link the xDSML Project to the concrete syntax project(s) you w
 </div>
 <div class="section" title="1.8.3. Editing the DSE Project"><div class="titlepage"><div><div><h3 class="title"><a id="_editing_the_dse_project"/>1.8.3. Editing the DSE Project</h3></div></div></div>
 
-<p>The first step to designing the DSE in GEL consists in importing the MoCC2AS Mapping (ECL file) and the Domain Model (Ecore metamodel) of the xDSML. You can do so by using the "import platform:/plugin/…​" syntax at the beginning of the file.</p>
+<p>The first step to designing the DSE in GEL consists in importing the MoCC2AS Mapping (ECL file) and the Domain Model (Ecore metamodel) of the xDSML. You can do so by using the <span class="emphasis"><em>import platform:/resource/…​</em></span> syntax at the beginning of the file.</p>
 <p>Then a DSE is defined using the following syntax:</p>
 <pre class="screen">DSE &lt;name&gt;:
   upon &lt;MoccEvent&gt;
@@ -131,8 +131,8 @@ end</pre>
 </div>
 <div class="section" title="1.8.4. Example"><div class="titlepage"><div><div><h3 class="title"><a id="_example"/>1.8.4. Example</h3></div></div></div>
 
-<pre class="screen">import "platform:/plugin/org.gemoc.sample.fuml.model/model/fuml.ecore"
-import "platform:/plugin/org.gemoc.sample.fuml.mocc/ECL/fuml.ecl"
+<pre class="screen">import "platform:/resource/org.gemoc.sample.fuml.model/model/fuml.ecore"
+import "platform:/resource/org.gemoc.sample.fuml.mocc/ECL/fuml.ecl"
 
 DSE ExecuteActivityNode:
 	upon mocc_executeNode
@@ -149,13 +149,13 @@ end</pre>
 <div class="section" title="1.9.1. Purpose"><div class="titlepage"><div><div><h3 class="title"><a id="_purpose_5"/>1.9.1. Purpose</h3></div></div></div>
 
 <p>In the GEMOC approach, the MoCC is independent from the domain. However, most languages need to be able to parameterize their control flow with their data flow. For instance, a conditional statement is a control flow construct which is conditioned by the result of its condition. Therefore, a form of communication between the MoCC and the DSA must be operated.
-In this context, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the Domain-Specific Events. Therefore, the Feedback Specification is also done using <a id="d5e332" class="indexterm"/>GEL.</p>
+In this context, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the Domain-Specific Events. Therefore, the Feedback Specification is also done using <a id="d5e333" class="indexterm"/>GEL.</p>
 </div>
 <div class="section" title="1.9.2. Creating a Feedback Policy"><div class="titlepage"><div><div><h3 class="title"><a id="_creating_a_feedback_policy"/>1.9.2. Creating a Feedback Policy</h3></div></div></div>
 
 <p>A Feedback Policy can be associated to a DSE using the following syntax:</p>
-<pre class="screen">import "platform:/plugin/org.gemoc.sample.fuml.model/model/fuml.ecore"
-import "platform:/plugin/org.gemoc.sample.fuml.mocc/ECL/fuml.ecl"
+<pre class="screen">import "platform:/resource/org.gemoc.sample.fuml.model/model/fuml.ecore"
+import "platform:/resource/org.gemoc.sample.fuml.mocc/ECL/fuml.ecl"
 
 DSE &lt;name&gt;:
   upon &lt;MoccEvent&gt;
@@ -197,10 +197,10 @@ end</pre>
 </div>
 <div class="section" title="1.10. Defining a debug view"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_a_debug_view"/>1.10. Defining a debug view</h2></div></div></div>
 
-<p>The debug layer is an extension on top of a graphical editor defined with <a id="d5e360" class="indexterm"/>Sirius that represent runtime data and current instruction. See <a class="xref" href="">???</a> for more details about Sirius. This section will cover the debug representation creation wizard and technical implementation details. Technical implementation details are only useful for advanced use case and troubleshooting.</p>
+<p>The debug layer is an extension on top of a graphical editor defined with <a id="d5e361" class="indexterm"/>Sirius that represent runtime data and current instruction. See <a class="xref" href="">???</a> for more details about Sirius. This section will cover the debug representation creation wizard and technical implementation details. Technical implementation details are only useful for advanced use case and troubleshooting.</p>
 <div class="section" title="1.10.1. The debug representation wizard"><div class="titlepage"><div><div><h3 class="title"><a id="_the_debug_representation_wizard"/>1.10.1. The debug representation wizard</h3></div></div></div>
 
-<p>This wizard creates a layer to represent the current instruction and add commands to manage break points and launch a simulation in debug mode. This is a default implementation, it can be customized to represent runtime data for instance. The customization use the <a id="d5e366" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.
+<p>This wizard creates a layer to represent the current instruction and add commands to manage break points and launch a simulation in debug mode. This is a default implementation, it can be customized to represent runtime data for instance. The customization use the <a id="d5e367" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.
 The wizard present three ways of implementing this layer:</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Create a debug diagram description
@@ -264,7 +264,7 @@ Add a debug layer to an existing diagram description
 <div class="informalfigure">
 <div class="mediaobject"><img src="./images/workbench/language/debug_layer.png" alt="Debug layer"/></div>
 </div>
-<p>This is a default debug layer, it can be customized to fit your needs. The customization use the <a id="d5e459" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.</p>
+<p>This is a default debug layer, it can be customized to fit your needs. The customization use the <a id="d5e460" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.</p>
 </div>
 </div>
 </div>
