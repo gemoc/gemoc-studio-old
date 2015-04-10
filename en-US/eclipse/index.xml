@@ -4,35 +4,44 @@
   PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <index>
    <entry keyword="Decider">
-      <topic href="ch02.html#d5e506"/>
+      <topic href="ch02.html#d5e556"/>
+   </entry>
+   <entry keyword="EMF Tree Editor">
+      <topic href="ch02.html#d5e539"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch02.html#d5e529"/>
+      <topic href="ch02.html#d5e579"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch02.html#d5e545"/>
+      <topic href="ch02.html#d5e595"/>
    </entry>
    <entry keyword="Event Manager">
-      <topic href="ch02.html#d5e555"/>
+      <topic href="ch02.html#d5e605"/>
    </entry>
    <entry keyword="Event Manager">
-      <topic href="ch02.html#d5e560"/>
+      <topic href="ch02.html#d5e610"/>
+   </entry>
+   <entry keyword="Feedback Policy">
+      <topic href="ch01.html#d5e358"/>
+   </entry>
+   <entry keyword="Feedback Specification">
+      <topic href="ch01.html#d5e347"/>
    </entry>
    <entry keyword="GEL">
-      <topic href="ch01.html#d5e336"/>
+      <topic href="ch01.html#d5e354"/>
    </entry>
    <entry keyword="GEMOC">
-      <topic href="ch03.html#d5e770"/>
+      <topic href="ch03.html#d5e820"/>
       <entry keyword="process">
-         <topic href="ch03.html#d5e771"/>
+         <topic href="ch03.html#d5e821"/>
       </entry>
    </entry>
    <entry keyword="GEMOC">
-      <topic href="ch03.html#d5e730"/>
+      <topic href="ch03.html#d5e780"/>
       <entry keyword="process">
-         <topic href="ch03.html#d5e731"/>
+         <topic href="ch03.html#d5e781"/>
          <entry keyword="overview">
-            <topic href="ch03.html#d5e732"/>
+            <topic href="ch03.html#d5e782"/>
          </entry>
       </entry>
    </entry>
@@ -55,46 +64,58 @@
       <topic href="ch01.html#d5e209"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch02.html#d5e508"/>
+      <topic href="ch02.html#d5e558"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch02.html#d5e641"/>
+      <topic href="ch02.html#d5e691"/>
    </entry>
    <entry keyword="Modeling workbench">
-      <topic href="ch02.html#d5e487"/>
+      <topic href="ch02.html#d5e509"/>
    </entry>
    <entry keyword="overview">
-      <topic href="ch03.html#d5e737"/>
+      <topic href="ch03.html#d5e787"/>
    </entry>
    <entry keyword="process">
-      <topic href="ch03.html#d5e773"/>
+      <topic href="ch03.html#d5e823"/>
    </entry>
    <entry keyword="process">
-      <topic href="ch03.html#d5e734"/>
+      <topic href="ch03.html#d5e784"/>
       <entry keyword="overview">
-         <topic href="ch03.html#d5e735"/>
+         <topic href="ch03.html#d5e785"/>
       </entry>
    </entry>
    <entry keyword="Runtime Data">
-      <topic href="ch02.html#d5e568"/>
+      <topic href="ch02.html#d5e618"/>
    </entry>
    <entry keyword="Runtime Data">
-      <topic href="ch02.html#d5e646"/>
+      <topic href="ch02.html#d5e696"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01.html#d5e297"/>
+      <topic href="ch01.html#d5e298"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01.html#d5e364"/>
+      <topic href="ch01.html#d5e383"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01.html#d5e370"/>
+      <topic href="ch01.html#d5e386"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01.html#d5e463"/>
+      <topic href="ch01.html#d5e391"/>
+   </entry>
+   <entry keyword="Sirius">
+      <topic href="ch01.html#d5e485"/>
+   </entry>
+   <entry keyword="Sirius">
+      <topic href="ch02.html#d5e518"/>
+   </entry>
+   <entry keyword="Sirius">
+      <topic href="ch02.html#d5e521"/>
+   </entry>
+   <entry keyword="Sirius)">
+      <topic href="ch02.html#d5e524"/>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch02.html#d5e482"/>
+      <topic href="ch02.html#d5e504"/>
    </entry>
    <entry keyword="TFSM">
       <topic href="ch01.html#d5e206"/>
@@ -103,15 +124,15 @@
       </entry>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch02.html#d5e484"/>
+      <topic href="ch02.html#d5e506"/>
       <entry keyword="Modeling workbench">
-         <topic href="ch02.html#d5e485"/>
+         <topic href="ch02.html#d5e507"/>
       </entry>
    </entry>
    <entry keyword="Timeline">
-      <topic href="ch02.html#d5e534"/>
+      <topic href="ch02.html#d5e584"/>
    </entry>
    <entry keyword="Timeline">
-      <topic href="ch02.html#d5e550"/>
+      <topic href="ch02.html#d5e600"/>
    </entry>
 </index>

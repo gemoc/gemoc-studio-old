@@ -22,7 +22,7 @@
 
 <p>The xDSML Project is the core project of languages created using the GEMOC Studio. It has two main purposes:</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
-Referencing the different projects representing the various parts constituting an xDSML;
+Referencing the different projects implementing the various parts constituting an xDSML;
 </li><li class="listitem">
 Guiding the <a class="indexterm" name="d5e221"></a>Language Designer in the language creation process through the <a class="indexterm" name="d5e223"></a>GEMOC Dashboard illustrating the workflow of creating an xDSML using the GEMOC Studio.
 </li></ul></div>
@@ -33,8 +33,8 @@ Guiding the <a class="indexterm" name="d5e221"></a>Language Designer in the lang
 </div>
 <div class="section" title="1.2.3.&nbsp;Editing the xDSML Project"><div class="titlepage"><div><div><h3 class="title"><a name="_editing_the_xdsml_project"></a>1.2.3.&nbsp;Editing the xDSML Project</h3></div></div></div>
 
-<p>The main file constituting the xDSML Project is the <span class="emphasis"><em>project.xdsml</em></span>. To edit this file, open it with the "XDSML Model Editor".</p>
-<p>From the information specified in this file, the project generates additional code that is used by the Execution Engine during the execution of models conforming to the xDSML (see <a class="xref" href="ch02.html" title="Chapter&nbsp;2.&nbsp;Gemoc Modeling workbench">Chapter&nbsp;2, <i>Gemoc Modeling workbench</i></a>).</p>
+<p>The main file constituting the xDSML Project is the <span class="emphasis"><em>project.xdsml</em></span>. To edit this file, open it with the <span class="emphasis"><em>XDSML Model Editor</em></span>.</p>
+<p>From the information contained in this file, the project generates additional code that is used by the Execution Engine during the execution of models conforming to the xDSML (see <a class="xref" href="ch02.html" title="Chapter&nbsp;2.&nbsp;Gemoc Modeling workbench">Chapter&nbsp;2, <i>Gemoc Modeling workbench</i></a>).</p>
 </div>
 </div>
 <div class="section" title="1.3.&nbsp;Domain Model Project"><div class="titlepage"><div><div><h2 class="title"><a name="section-define-AS-project"></a>1.3.&nbsp;Domain Model Project</h2></div></div></div>
@@ -79,7 +79,7 @@ Then, connect the xDSML Project to the DSA Project by referencing the DSA Projec
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p xmlns="">For now, Execution Functions are considered as <span class="strong"><strong>atomic, instantaneous and blocking</strong></span>. This means that any long computation will block the rest of the simulation, and concurrent Execution Functions are not executed in concurrence yet.</p>
 </div>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2>
 <p xmlns="">For technical reasons, the Domain Model (Ecore metamodel) must specify the signature of the Execution Functions as EOperations.</p>
 </div>
 </div>
@@ -93,15 +93,15 @@ Then, connect the xDSML Project to the DSA Project by referencing the DSA Projec
 
 <p>TODO</p>
 </div>
-<div class="section" title="1.6.&nbsp;Defining a Concrete Syntax"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_a_concrete_syntax"></a>1.6.&nbsp;Defining a Concrete Syntax</h2></div></div></div>
+<div class="section" title="1.6.&nbsp;Defining a Concrete Syntax"><div class="titlepage"><div><div><h2 class="title"><a name="defining-a-concrete-syntax-section"></a>1.6.&nbsp;Defining a Concrete Syntax</h2></div></div></div>
 
 <p>An xDSML can support different concrete syntaxes. Most EMF-based editors should work with GEMOC, however the GEMOC Studio provides additional support for some specific editors. Thus, we recommend using: an EMF arborescent editor, an Xtext editor, and/or a Sirius editor.
 Don&#8217;t forget to link the xDSML Project to the concrete syntax project(s) you want to use by editing the <span class="emphasis"><em>project.xdsml</em></span> file.</p>
-<div class="section" title="1.6.1.&nbsp;Defining a Concrete Syntax with Xtext"><div class="titlepage"><div><div><h3 class="title"><a name="_defining_a_concrete_syntax_with_xtext"></a>1.6.1.&nbsp;Defining a Concrete Syntax with Xtext</h3></div></div></div>
+<div class="section" title="1.6.1.&nbsp;Defining a Concrete Syntax with Xtext"><div class="titlepage"><div><div><h3 class="title"><a name="defining-a-concrete-syntax-with-xtext-section"></a>1.6.1.&nbsp;Defining a Concrete Syntax with Xtext</h3></div></div></div>
 
 <p>See <a class="ulink" href="http://www.eclipse.org/Xtext/">the Xtext website</a>.</p>
 </div>
-<div class="section" title="1.6.2.&nbsp;Defining a Concrete Syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a name="_defining_a_concrete_syntax_with_indexterm_primary_sirius_primary_indexterm_sirius"></a>1.6.2.&nbsp;Defining a Concrete Syntax with <a class="indexterm" name="d5e296"></a>Sirius</h3></div></div></div>
+<div class="section" title="1.6.2.&nbsp;Defining a Concrete Syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a name="defining-a-concrete-syntax-with-sirius-section"></a>1.6.2.&nbsp;Defining a Concrete Syntax with <a class="indexterm" name="d5e297"></a>Sirius</h3></div></div></div>
 
 <p>If you want to create a graphical concrete syntax you can use Sirius. The <a class="ulink" href="http://www.eclipse.org/sirius/doc/">Sirius documentation</a> provides information for <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a>.</p>
 </div>
@@ -114,7 +114,8 @@ Don&#8217;t forget to link the xDSML Project to the concrete syntax project(s) y
 
 <div class="section" title="1.8.1.&nbsp;Purpose"><div class="titlepage"><div><div><h3 class="title"><a name="_purpose_4"></a>1.8.1.&nbsp;Purpose</h3></div></div></div>
 
-<p>The DSE define a mapping between MoccEvents from the MoCC and the Execution Functions. They specify the coordination between what happens in the MoCC, depending on its constraints, and which operations must be called in the model (thus resulting in changes in the Execution Data).</p>
+<p>The DSE define a mapping between MoccEvents from the MoCC and the Execution Functions. They specify the coordination between what happens in the MoCC, depending on its constraints, and which operations must be called in the model (thus resulting in changes in the Execution Data).
+They are also exposed as the behavioral interface of the xDSML, based on which the Behavioral COmposition Operator Language (BCOoL) defines the composition of xDSMLs.</p>
 </div>
 <div class="section" title="1.8.2.&nbsp;Creating the DSE Project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_dse_project"></a>1.8.2.&nbsp;Creating the DSE Project</h3></div></div></div>
 
@@ -123,45 +124,55 @@ Don&#8217;t forget to link the xDSML Project to the concrete syntax project(s) y
 <div class="section" title="1.8.3.&nbsp;Editing the DSE Project"><div class="titlepage"><div><div><h3 class="title"><a name="_editing_the_dse_project"></a>1.8.3.&nbsp;Editing the DSE Project</h3></div></div></div>
 
 <p>The first step to designing the DSE in GEL consists in importing the MoCC2AS Mapping (ECL file) and the Domain Model (Ecore metamodel) of the xDSML. You can do so by using the <span class="emphasis"><em>import platform:/resource/&#8230;&#8203;</em></span> syntax at the beginning of the file.</p>
-<p>Then a DSE is defined using the following syntax:</p>
+<div class="section" title="Defining an Atomic Domain-Specific Event"><div class="titlepage"><div><div><h4 class="title"><a name="_defining_an_atomic_domain_specific_event"></a>Defining an Atomic Domain-Specific Event</h4></div></div></div>
+
+<p>Atomic Domain-Specific Events realize a 1-to-1 mapping between the MoccEvents and the Execution Functions of the xDSML.
+An atomic DSE is defined using the following syntax:</p>
 <pre class="screen">DSE &lt;name&gt;:
   upon &lt;MoccEvent&gt;
   triggers &lt;Path-to-ExecutionFunction&gt;
 end</pre>
-<p>After the <span class="emphasis"><em>upon</em></span> keyword, any MoccEvent from the MoCC2AS Mapping can be referenced. After the 'triggers' keyword, navigation path from the context of the MoccEvent to an EOperation can be defined to specify which Execution Function must be triggered by this Domain-Specific Event.</p>
+<p>Where:</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+&lt;name&gt; is the name of the Domain-Specific Event;
+</li><li class="listitem">
+&lt;MoccEvent&gt; is any MoccEvent from the MoCC2AS Mapping. This will also automatically define the DSE in the same context as the MoccEvent referenced, thus defining the starting point of navigation expressions from this DSE;
+</li><li class="listitem">
+&lt;Path-to-ExecutionFunction&gt; is a navigation path from the context of this DSE to an Execution Function.
+</li></ul></div>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Tip</h2>
+<p xmlns="">In case of difficulty, make use of the auto-completion feature.</p>
+</div>
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2>
 <p xmlns="">The implicit context of a Domain-Specific Event is inferred from the context in which its associated MoccEvent is defined in the MoCC2AS Mapping. Therefore, the DSE will be usable for any instance in the model of the context of the DSE. For instance if a DSE is mapped to a MoccEvent defined in the context of the metaclass <span class="emphasis"><em>Transition</em></span>, and there are 3 Transitions in the model being executed, this DSE will be usable for each of the 3 Transitions of the model.</p>
 </div>
 </div>
-<div class="section" title="1.8.4.&nbsp;Example"><div class="titlepage"><div><div><h3 class="title"><a name="_example"></a>1.8.4.&nbsp;Example</h3></div></div></div>
-
-<pre class="screen">import "platform:/resource/org.gemoc.sample.fuml.model/model/fuml.ecore"
-import "platform:/resource/org.gemoc.sample.fuml.mocc/ECL/fuml.ecl"
-
-DSE ExecuteActivityNode:
-	upon mocc_executeNode
-	triggers ActivityNode.execute
-end</pre>
-<div class="section" title="Semantics of the Domain-Specific Events"><div class="titlepage"><div><div><h4 class="title"><a name="_semantics_of_the_domain_specific_events"></a>Semantics of the Domain-Specific Events</h4></div></div></div>
+<div class="section" title="Semantics of Atomic Domain-Specific Events"><div class="titlepage"><div><div><h4 class="title"><a name="_semantics_of_atomic_domain_specific_events"></a>Semantics of Atomic Domain-Specific Events</h4></div></div></div>
 
 <p>Upon an occurrence of the associated MoccEvent, an occurrence of the Domain-Specific Event is created and consumed by the GEMOC Execution Engine. Its consumption triggers the execution of the designated Execution Function.</p>
 </div>
+<div class="section" title="Defining a Composite Domain-Specific Events"><div class="titlepage"><div><div><h4 class="title"><a name="_defining_a_composite_domain_specific_events"></a>Defining a Composite Domain-Specific Events</h4></div></div></div>
+
+<p>TODO</p>
+</div>
+<div class="section" title="Semantics of Composite Domain-Specific Events"><div class="titlepage"><div><div><h4 class="title"><a name="_semantics_of_composite_domain_specific_events"></a>Semantics of Composite Domain-Specific Events</h4></div></div></div>
+
+<p>TODO</p>
 </div>
 </div>
-<div class="section" title="1.9.&nbsp;Defining the Feedback Specification"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_the_feedback_specification"></a>1.9.&nbsp;Defining the Feedback Specification</h2></div></div></div>
+</div>
+<div class="section" title="1.9.&nbsp;Defining the Feedback Specification"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_the_indexterm_primary_feedback_specification_primary_indexterm_feedback_specification"></a>1.9.&nbsp;Defining the <a class="indexterm" name="d5e346"></a>Feedback Specification</h2></div></div></div>
 
 <div class="section" title="1.9.1.&nbsp;Purpose"><div class="titlepage"><div><div><h3 class="title"><a name="_purpose_5"></a>1.9.1.&nbsp;Purpose</h3></div></div></div>
 
-<p>In the GEMOC approach, the MoCC is independent from the domain. However, most languages need to be able to parameterize their control flow with their data flow. For instance, a conditional statement is a control flow construct which is conditioned by the result of its condition. Therefore, a form of communication between the MoCC and the DSA must be operated.
-In this context, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the Domain-Specific Events. Therefore, the Feedback Specification is also done using <a class="indexterm" name="d5e335"></a>GEL.</p>
+<p>Many languages need to be able to parameterize their control flow with their data flow. For instance, conditional statements like <span class="emphasis"><em>if&#8230;&#8203;then&#8230;&#8203;else</em></span> or <span class="emphasis"><em>switch&#8230;&#8203;case</em></span> statements depend on the result of a boolean expression.
+Since the GEMOC approach at designing xDSMLs promotes the separation of the concurrency (MoCC from the domain-specific data (DSA), there needs to be a form of communication from the DSA to the MoCC. For instance, the MoCC of an xDSML with a conditional statement specifies that after evaluating the condition, either the 'then' or the 'else' branch will be taken (in exclusion from one another), while the DSA provide the Execution Function that evaluates the condition, returning a boolean value. Making the link between the 'true' value and the 'then' branch, and between the 'false' value and the 'else' branch is the role of the Feedback Specification.
+More formally, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the atomic Domain-Specific Events. Therefore, the Feedback Specification is also done using <a class="indexterm" name="d5e353"></a>GEL.</p>
 </div>
-<div class="section" title="1.9.2.&nbsp;Creating a Feedback Policy"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_a_feedback_policy"></a>1.9.2.&nbsp;Creating a Feedback Policy</h3></div></div></div>
+<div class="section" title="1.9.2.&nbsp;Creating a Feedback Policy"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_a_indexterm_primary_feedback_policy_primary_indexterm_feedback_policy"></a>1.9.2.&nbsp;Creating a <a class="indexterm" name="d5e357"></a>Feedback Policy</h3></div></div></div>
 
-<p>A Feedback Policy can be associated to a DSE using the following syntax:</p>
-<pre class="screen">import "platform:/resource/org.gemoc.sample.fuml.model/model/fuml.ecore"
-import "platform:/resource/org.gemoc.sample.fuml.mocc/ECL/fuml.ecl"
-
-DSE &lt;name&gt;:
+<p>A Feedback Policy is associated to an atomic DSE by extending the syntax for defining the atomic DSE as follows:</p>
+<pre class="screen">DSE &lt;name&gt;:
   upon &lt;MoccEvent&gt;
   triggers &lt;Path-to-ExecutionFunction&gt; returning &lt;resultName&gt;
   feedback:
@@ -175,54 +186,42 @@ end</pre>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 &lt;resultName&gt; is a local variable which will be affected with the value returned by the associated Execution Function;
 </li><li class="listitem">
-Between the <span class="emphasis"><em>feedback</em></span> and <span class="emphasis"><em>end</em></span> keywords, a set of Feedback Rules are defined (including a default Feedback Rule, with the <span class="emphasis"><em>default</em></span> keyword). A Feedback Rule is composed of a filter and a consequence;
+Between the <span class="emphasis"><em>feedback</em></span> and <span class="emphasis"><em>end</em></span> keywords, a set of Feedback Rules are defined (including a default Feedback Rule, with the <span class="emphasis"><em>default</em></span> keyword). A Feedback Rule is composed of a filter (between squared brackets) and a consequence;
 </li><li class="listitem">
 &lt;filterN&gt; are predicates, most likely using &lt;resultName&gt; which define whether or not this Feedback Rule must be applied;
 </li><li class="listitem">
-&lt;PathToMoccEventConsequenceN&gt; is a navigation path to a MoccEvent which specifies which MoccEvent is allowed as a result of the data returned by the Execution Function.
+&lt;PathToMoccEventConsequenceN&gt; is a navigation expression to a MoccEvent which specifies which MoccEvent is allowed as a result of the data returned by the Execution Function.
 </li></ul></div>
 </div>
 <div class="section" title="1.9.3.&nbsp;Semantics of the Feedback Policy"><div class="titlepage"><div><div><h3 class="title"><a name="_semantics_of_the_feedback_policy"></a>1.9.3.&nbsp;Semantics of the Feedback Policy</h3></div></div></div>
 
-<p>When the Execution Function associated to a DSE returns a result, it is passed through each filter of the Feedback Policy. If none of the filters is validated, then the default rule is applied. Else, the collection of rules for which the filter validated are applied.
-For each rule to apply, the associated consequence is allowed to have occurrences in upcoming steps of execution.</p>
+<p>When the Execution Function associated to a DSE returns a result, the filter of every Feedback Policy is evaluated. If none of the filters is validated, then the default rule is applied. Else, the collection of rules for which the filter validated are applied.
+For each rule to apply, the associated consequence is allowed to have occurrences in upcoming steps of execution. This is done by the Execution Engine by filtering out some solutions provided by the MoCC interpreter and only allowing the ones complying with the Feedback Specification.</p>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Caution</h2>
+<p xmlns="">Using the Feedback Specification implies the use of a certain design pattern in the MoCC. Make sure your MoCC is well-designed for using the Feedback Specification. Don&#8217;t forget to check the tutorial concerning the Feedback Specification.</p>
 </div>
-<div class="section" title="1.9.4.&nbsp;Example"><div class="titlepage"><div><div><h3 class="title"><a name="_example_2"></a>1.9.4.&nbsp;Example</h3></div></div></div>
+</div>
+</div>
+<div class="section" title="1.10.&nbsp;Defining a debug representation"><div class="titlepage"><div><div><h2 class="title"><a name="defining-a-debug-representation-section"></a>1.10.&nbsp;Defining a debug representation</h2></div></div></div>
 
-<pre class="screen">DSE EvaluateGuard:
-	upon mocc_evaluateGuard
-	triggers ActivityEdge.evaluateGuard returning result
-	feedback:
-		[ result ] =&gt; allow ActivityEdge.mocc_mayExecuteTarget
-		default =&gt; allow ActivityEdge.mocc_mayNotExecuteTarget
-	end
-end</pre>
-</div>
-</div>
-<div class="section" title="1.10.&nbsp;Defining a debug view"><div class="titlepage"><div><div><h2 class="title"><a name="_defining_a_debug_view"></a>1.10.&nbsp;Defining a debug view</h2></div></div></div>
-
-<p>The debug layer is an extension on top of a graphical editor defined with <a class="indexterm" name="d5e363"></a>Sirius that represent runtime data and current instruction. See <a class="xref" href="">???</a> for more details about Sirius. This section will cover the debug representation creation wizard and technical implementation details. Technical implementation details are only useful for advanced use case and troubleshooting.</p>
+<p>The debug layer is an extension on top of a graphical editor defined with <a class="indexterm" name="d5e382"></a>Sirius which represents runtime data and the current instruction. See <a class="xref" href="ch01.html#defining-a-concrete-syntax-with-sirius-section" title="1.6.2.&nbsp;Defining a Concrete Syntax with Sirius">Section&nbsp;1.6.2, &#8220;Defining a Concrete Syntax with Sirius&#8221;</a> for more details about <a class="indexterm" name="d5e385"></a>Sirius. This section covers the debug representation creation wizard and the technical implementation details. Technical implementation details are only useful for advanced use case and troubleshooting.</p>
 <div class="section" title="1.10.1.&nbsp;The debug representation wizard"><div class="titlepage"><div><div><h3 class="title"><a name="_the_debug_representation_wizard"></a>1.10.1.&nbsp;The debug representation wizard</h3></div></div></div>
 
-<p>This wizard creates a layer to represent the current instruction and add commands to manage break points and launch a simulation in debug mode. This is a default implementation, it can be customized to represent runtime data for instance. The customization use the <a class="indexterm" name="d5e369"></a>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.
-The wizard present three ways of implementing this layer:</p>
+<p>This wizard creates a layer to represent the current instruction and add commands in order to manage breakpoints and launch a simulation in debug mode. This is a default implementation, it can be customized to represent runtime data for instance. The customization uses the <a class="indexterm" name="d5e390"></a>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.
+The wizard presents three ways to implement this layer:</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Create a debug diagram description
 </li><li class="listitem">
-Extends an existing diagram description
+Extend an existing diagram description
 </li><li class="listitem">
 Add a debug layer to an existing diagram description
 </li></ul></div>
-<div class="section" title="Create a debug diagram description"><div class="titlepage"><div><div><h4 class="title"><a name="_create_a_debug_diagram_description"></a>Create a debug diagram description</h4></div></div></div>
-
-<p>It creates a diagram representation with a default debug layer. The representation do not depend on an other representation. A typical use case is a language where the runtime data representation is too far from the language graphical syntax.</p>
 <div class="informalfigure">
 <div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/wizard.png" alt="Debug representation wizard"></div>
 </div>
-</div>
-<div class="section" title="Extend an existing diagram description"><div class="titlepage"><div><div><h4 class="title"><a name="_extend_an_existing_diagram_description"></a>Extend an existing diagram description</h4></div></div></div>
+<div class="section" title="Create a debug diagram description"><div class="titlepage"><div><div><h4 class="title"><a name="_create_a_debug_diagram_description"></a>Create a debug diagram description</h4></div></div></div>
 
-<p>It creates a diagram representation with a default debug layer that extends an existing representation. This allow to have a debug layer based on the representation of the language concrete syntax. The language concrete syntax can be deployed without the debug representation. A typical use case is the reuse of an existing diagram definition that you can&#8217;t modify yourself. For instance if you want to use <a class="ulink" href="http://eclipse.org/modeling/mdt/?project=uml2">UML</a>, you can reuse the <a class="ulink" href="http://www.umldesigner.org/">UML Designer</a>.</p>
+<p>It creates a diagram representation with a default debug layer. The representation does not depend on another representation. A typical use case is a language where the runtime data representation is too far from the language graphical syntax.</p>
 <div class="informalfigure">
 <div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/create/1.png" alt="Debug representation wizard"></div>
 </div>
@@ -230,13 +229,14 @@ Add a debug layer to an existing diagram description
 <div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/create/2.png" alt="Debug representation wizard"></div>
 </div>
 </div>
-<div class="section" title="Add a debug layer to an existing diagram description"><div class="titlepage"><div><div><h4 class="title"><a name="_add_a_debug_layer_to_an_existing_diagram_description"></a>Add a debug layer to an existing diagram description</h4></div></div></div>
+<div class="section" title="Extend an existing diagram description"><div class="titlepage"><div><div><h4 class="title"><a name="_extend_an_existing_diagram_description"></a>Extend an existing diagram description</h4></div></div></div>
 
-<p>It creates a default debug layer in an existing diagram representation. This should be used if you are also in charge of the language concrete syntax.</p>
+<p>It creates a diagram representation with a default debug layer that extends an existing representation. This allows to have a debug layer based on the representation of the language concrete syntax. The language concrete syntax can be deployed without the debug representation. A typical use case is the reuse of an existing diagram definition that you cannot modify by yourself. For instance if you want to use <a class="ulink" href="http://eclipse.org/modeling/mdt/?project=uml2">UML</a>, you can reuse the <a class="ulink" href="http://www.umldesigner.org/">UML Designer</a>.</p>
+<p>You can select any diagram description.</p>
 <div class="informalfigure">
 <div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/extend/1.png" alt="Debug representation wizard"></div>
 </div>
-<p>You can select any diagram description.</p>
+<p>And then define the new diagram description which extends the one you previously selected.</p>
 <div class="informalfigure">
 <div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/extend/2.png" alt="Debug representation wizard"></div>
 </div>
@@ -244,31 +244,35 @@ Add a debug layer to an existing diagram description
 <div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/extend/3.png" alt="Debug representation wizard"></div>
 </div>
 </div>
-</div>
-<div class="section" title="1.10.2.&nbsp;Implementation details"><div class="titlepage"><div><div><h3 class="title"><a name="_implementation_details"></a>1.10.2.&nbsp;Implementation details</h3></div></div></div>
+<div class="section" title="Add a debug layer to an existing diagram description"><div class="titlepage"><div><div><h4 class="title"><a name="_add_a_debug_layer_to_an_existing_diagram_description"></a>Add a debug layer to an existing diagram description</h4></div></div></div>
 
-<p>Implementation details are for advanced use and troubleshooting. It explains how the implementation works behind the scene. There are two main elements covered here are the debugger services class and the debug layer itself.</p>
+<p>It creates a default debug layer in an existing diagram representation. This should be used if you are also in charge of the language concrete syntax.</p>
+<p>In this case, you can only select a diagram description from the workspace.</p>
 <div class="informalfigure">
 <div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/add/1.png" alt="Debug representation wizard"></div>
 </div>
-<p>You can only select a diagram description from the workspace.</p>
 <div class="informalfigure">
 <div class="mediaobject"><img src="./images/workbench/language/debug_representation_wizard/add/2.png" alt="Debug representation wizard"></div>
 </div>
+</div>
+</div>
+<div class="section" title="1.10.2.&nbsp;Implementation details"><div class="titlepage"><div><div><h3 class="title"><a name="_implementation_details"></a>1.10.2.&nbsp;Implementation details</h3></div></div></div>
+
+<p>Implementation details are for advanced use and troubleshooting. It explains how the implementation works behind the scene. There are two main elements covered here : the debugger services class and the debug layer itself.</p>
 <div class="section" title="Debugger services"><div class="titlepage"><div><div><h4 class="title"><a name="_debugger_services"></a>Debugger services</h4></div></div></div>
 
-<p>The debugger services class is use to tell which representations should be activated and refreshed during debug (see the getRepresentationRefreshList() method). It also provide a method to know if an element of the diagram is the current instruction (see isCurrentInstruction() method).</p>
+<p>The debugger services class is use to tell which representations should be activated and refreshed during debug (see the getRepresentationRefreshList() method). It also provides a method to know if an element of the diagram is the current instruction. This is provided by the isCurrentInstruction() method.</p>
 <div class="informalfigure">
 <div class="mediaobject"><img src="./images/workbench/language/debug_services.png" alt="Debug services"></div>
 </div>
 </div>
 <div class="section" title="Debug layer"><div class="titlepage"><div><div><h4 class="title"><a name="_debug_layer"></a>Debug layer</h4></div></div></div>
 
-<p>The default debug layer add action to start the simulation in debug mode and to toggle breakpoints (1). When a break point is present for an element of the diagram a visual feedback is displayed according to the breakpoint state (2). The current instruction is also highlighted in yellow by default (3)</p>
+<p>The default debug layer adds action to start the simulation in debug mode and to toggle breakpoints (1). When a breakpoint exists for an element of the diagram, a visual feedback is displayed according to the breakpoint state (2). The current instruction is also highlighted in yellow by default (3).</p>
 <div class="informalfigure">
 <div class="mediaobject"><img src="./images/workbench/language/debug_layer.png" alt="Debug layer"></div>
 </div>
-<p>This is a default debug layer, it can be customized to fit your needs. The customization use the <a class="indexterm" name="d5e462"></a>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.</p>
+<p>This is a default debug layer, it can be customized to fit your needs. The customization use the <a class="indexterm" name="d5e484"></a>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.</p>
 </div>
 </div>
 </div>

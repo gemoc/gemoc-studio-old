@@ -53,6 +53,47 @@
 	<array>
 		<dict>
 			<key>Bounds</key>
+			<string>{{448.23528154498604, 1235.1202465374158}, {89.411758422851562, 34}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>ID</key>
+			<integer>209</integer>
+			<key>ImageID</key>
+			<integer>24</integer>
+			<key>ManualSizeImage</key>
+			<string>YES</string>
+			<key>Scale</key>
+			<real>0.25974375009536743</real>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>image fill</key>
+				<dict>
+					<key>ImageSizing</key>
+					<integer>0</integer>
+					<key>Scale</key>
+					<real>0.25974375009536743</real>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
 			<string>{{1078.1383015853717, 917.49685986756936}, {63.654323577880859, 20.23457145690918}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
@@ -4784,9 +4825,10 @@ Code Executor}</string>
 	<key>HPages</key>
 	<integer>3</integer>
 	<key>ImageCounter</key>
-	<integer>24</integer>
+	<integer>25</integer>
 	<key>ImageLinkBack</key>
 	<array>
+		<dict/>
 		<dict/>
 		<dict/>
 		<dict/>
@@ -4809,6 +4851,7 @@ Code Executor}</string>
 	</array>
 	<key>ImageList</key>
 	<array>
+		<string>image24.png</string>
 		<string>image23.pdf</string>
 		<string>image22.png</string>
 		<string>image21.pdf</string>
@@ -4866,7 +4909,7 @@ Code Executor}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-04-09 16:03:19 +0000</string>
+	<string>2015-04-10 07:29:45 +0000</string>
 	<key>Modifier</key>
 	<string>Benoit Combemale</string>
 	<key>NotesVisible</key>
@@ -4942,7 +4985,7 @@ Code Executor}</string>
 		<key>ExpandedCanvases</key>
 		<array/>
 		<key>Frame</key>
-		<string>{{8, 4}, {1912, 1053}}</string>
+		<string>{{0, 4}, {1680, 1023}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -4956,7 +4999,7 @@ Code Executor}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{-207.00000000000003, 775.29409590064506}, {2090.5881766546986, 1071.7646758201633}}</string>
+		<string>{{-69.999999999999986, 775.29409590064506}, {1817.6470078399041, 1036.470559163078}}</string>
 		<key>Zoom</key>
 		<real>0.85000002384185791</real>
 		<key>ZoomValues</key>
