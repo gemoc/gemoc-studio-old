@@ -58,6 +58,7 @@ import org.eclipse.xtext.ui.editor.XtextSourceViewer;
 import org.eclipse.xtext.ui.editor.info.ResourceWorkingCopyFileEditorInput;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
+import org.gemoc.mocc.fsmkernel.model.FSMModel.Transition;
 import org.gemoc.mocc.fsmkernel.model.design.Activator;
 import org.gemoc.mocc.fsmkernel.model.design.services.ResourceHelper;
 import org.gemoc.mocc.fsmkernel.model.design.services.StringUtil;
@@ -198,6 +199,25 @@ public class PopupXTextEditorHelper {
 			EObject originalSemanticElement = hostEditPartHelper.resolveSemanticElement();
 			if (originalSemanticElement == null) {
 				return;
+			}
+			
+			if(originalSemanticElement instanceof Transition)
+			{
+				Transition t = (Transition)originalSemanticElement;
+				if(!t.getActions().isEmpty())
+				{
+					originalSemanticElement = t.getActions().get(t.getActions().size()-1);
+				}
+				
+				else if(t.getGuard()!=null)
+				{
+					originalSemanticElement = t.getGuard();
+				}
+				else if(t.getTrigger()!=null)
+				{
+					originalSemanticElement = t.getTrigger();
+				}
+				
 			}
 			this.originalResource = originalSemanticElement.eResource();
 			
@@ -447,13 +467,11 @@ public class PopupXTextEditorHelper {
 
 		int width = Math.max(fontHeightInPixel * (numColumns + 3), MIN_EDITOR_WIDTH);
 		int height = Math.max(fontHeightInPixel * (numLines + 4), MIN_EDITOR_HEIGHT);
-		//xtextEditorComposite.setBounds(bounds.x - 200, bounds.y - 120, width, height);
-		//xtextEditorComposite.setBounds(bounds.x - 200, bounds.y - 120, width + 250, height + 50);
 		
-		int x = (int) ((winBound.width - bounds.width)/2);
-		int y = (int) ((winBound.height - bounds.height)/2);
+		int x = (int) (xLocation + winBound.width/2);
+		int y = (int) (yLocation + winBound.height/2);
 		
-		xtextEditorComposite.setBounds(x - 200, y - 100, width + 250, height + 50);
+		xtextEditorComposite.setBounds(x, y, width + 250, height + 50);
 		//System.out.println("==============================================================");
 		//System.out.println("[WindowBounds = (" +winBound.width+","+winBound.height+")" +", " + "EditHelperBounds = ("+bounds.x+","+bounds.y+"), position =("+xtextEditorComposite.getLocation().x+","+xtextEditorComposite.getLocation().y+"), page = ("+xLocation+","+yLocation+")]");
 		//System.out.println("x[" +xtextEditorComposite.getLocation().x+"/"+xLocation+ "]" + "------" + "y[" +xtextEditorComposite.getLocation().y+"/"+yLocation+ "]");

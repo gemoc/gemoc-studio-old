@@ -44,4 +44,8 @@ which accompanies this distribution, and is available at http://www.eclipse.org/
          id="org.gemoc.mocc.text.editors.feature"
          version="0.0.0"/>
 
+   <includes
+         id="org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature"
+         version="0.0.0"/>
+
 </feature>

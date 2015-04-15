@@ -53,7 +53,7 @@ CCSLStateMachineRelationDefinition returns ccslmoc::StateMachineRelationDefiniti
 
 Transition returns fsmmodel::Transition:
 	{fsmmodel::Transition}
-	'from' source=[fsmmodel::State|EString] 'to' target=[fsmmodel::State|EString]':'name=EString '('
+	'from' source=[fsmmodel::State] 'to' target=[fsmmodel::State]':' (name = EString)?'->('
 		((('when' trigger=Trigger) ('if' guard=Guard)?)
 			|
 		 (('if' guard=Guard) ('when' trigger=Trigger)? ))?

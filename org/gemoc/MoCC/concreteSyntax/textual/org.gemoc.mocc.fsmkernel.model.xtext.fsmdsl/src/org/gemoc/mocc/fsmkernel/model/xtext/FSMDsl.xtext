@@ -36,7 +36,7 @@ DeclarationBlock returns fsmmodel::DeclarationBlock:
 
 Transition returns fsmmodel::Transition:
 	{fsmmodel::Transition}
-	'from' source=[fsmmodel::State|EString] 'to' target=[fsmmodel::State|EString]':'name=EString '('
+	'from' source=[fsmmodel::State|EString] 'to' target=[fsmmodel::State|EString]':' (name = EString)?'->('
 		('when' trigger=Trigger)?
 		('if' guard=Guard)?
 		('do' (actions+=Action))*
@@ -57,8 +57,8 @@ IntegerAssignementBlock returns extension::IntegerAssignementBlock:
 State returns fsmmodel::State:
 	{fsmmodel::State} 
 	'State' name=EString '('
-	('in' ':' inputTransitions+=[fsmmodel::Transition|EString] ( "," inputTransitions+=[fsmmodel::Transition|EString])* )?
-	('out' ':' outputTransitions+=[fsmmodel::Transition|EString] ( "," outputTransitions+=[fsmmodel::Transition|EString])* )?
+	('in' ':' inputTransitions+=[fsmmodel::Transition] ( "," inputTransitions+=[fsmmodel::Transition])* )?
+	('out' ':' outputTransitions+=[fsmmodel::Transition] ( "," outputTransitions+=[fsmmodel::Transition])* )?
 	')';
 
 	

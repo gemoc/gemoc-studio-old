@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.gemoc.mocc.timesquare.ccsl.solver.extenstion.automata.feature"
+      id="org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature"
       label="TimeSquare Solver Extension to Automata"
       version="0.1.1.qualifier"
       provider-name="AOSTE">

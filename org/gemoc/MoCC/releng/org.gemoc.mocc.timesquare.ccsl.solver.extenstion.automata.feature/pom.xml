@@ -9,7 +9,7 @@
     <version>0.1.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>org.gemoc.mocc.timesquare.ccsl.solver.extenstion.automata.feature</artifactId>
+  <artifactId>org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 
 </project> 
