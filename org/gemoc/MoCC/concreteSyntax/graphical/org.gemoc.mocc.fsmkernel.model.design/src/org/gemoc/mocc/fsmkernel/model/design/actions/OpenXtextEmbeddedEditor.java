@@ -58,6 +58,7 @@ public abstract class OpenXtextEmbeddedEditor implements IExternalJavaAction {
 						.findEditPart(diagramEditPart, o);
 			}
 			if (editPart != null && (editPart instanceof IGraphicalEditPart)) {
+				
 				PopupXTextEditorHelper embeddedEditorHelper = new PopupXTextEditorHelper(
 						(IGraphicalEditPart) editPart/*diagramEditPart*/, o, getInjector(), getPageLocationX(), getPageLocationY(), getWindowBounds());
 				embeddedEditorHelper.showEditor();
@@ -81,9 +82,6 @@ public abstract class OpenXtextEmbeddedEditor implements IExternalJavaAction {
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchPage page = workbench.getActiveWorkbenchWindow()
 				.getActivePage();
-		//System.out.println("==============================================================");
-		//System.out.println("ActiveWindow Location = " + page.getWorkbenchWindow().getShell().getLocation().x+"/"+page.getWorkbenchWindow().getShell().getLocation().y);
-		//System.out.println("==============================================================");
 		return page.getActiveEditor();
 	}
 	

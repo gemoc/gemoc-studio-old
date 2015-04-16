@@ -29,7 +29,7 @@
         <module>../org.gemoc.mocc.core.feature</module>
         <module>../org.gemoc.mocc.graphical.editors.feature</module>
         <module>../org.gemoc.mocc.text.editors.feature</module>
-        <module>../org.gemoc.mocc.timesquare.ccsl.solver.extenstion.automata.feature</module>
+        <module>../org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature</module>
         <module>../org.gemoc.mocc.p2updatesite</module>
     </modules>
 

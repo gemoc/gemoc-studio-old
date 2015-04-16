@@ -106,6 +106,7 @@ public class InternalFSMDslLexer extends Lexer {
     public static final int T__102=102;
     public static final int T__94=94;
     public static final int T__101=101;
+    public static final int T__184=184;
     public static final int T__183=183;
     public static final int T__90=90;
     public static final int T__180=180;
@@ -712,10 +713,11 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:35:7: ( '(' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:35:9: '('
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:35:7: ( '->(' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:35:9: '->('
             {
-            match('('); 
+            match("->("); 
+
 
             }
 
@@ -857,11 +859,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:42:7: ( 'in' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:42:9: 'in'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:42:7: ( '(' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:42:9: '('
             {
-            match("in"); 
-
+            match('('); 
 
             }
 
@@ -878,10 +879,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:43:7: ( 'out' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:43:9: 'out'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:43:7: ( 'in' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:43:9: 'in'
             {
-            match("out"); 
+            match("in"); 
 
 
             }
@@ -899,10 +900,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:44:7: ( 'Trigger' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:44:9: 'Trigger'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:44:7: ( 'out' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:44:9: 'out'
             {
-            match("Trigger"); 
+            match("out"); 
 
 
             }
@@ -920,10 +921,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:45:7: ( 'trueTriggers' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:45:9: 'trueTriggers'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:45:7: ( 'Trigger' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:45:9: 'Trigger'
             {
-            match("trueTriggers"); 
+            match("Trigger"); 
 
 
             }
@@ -941,10 +942,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:46:7: ( 'falseTriggers' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:46:9: 'falseTriggers'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:46:7: ( 'trueTriggers' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:46:9: 'trueTriggers'
             {
-            match("falseTriggers"); 
+            match("trueTriggers"); 
 
 
             }
@@ -962,10 +963,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:47:7: ( '+=' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:47:9: '+='
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:47:7: ( 'falseTriggers' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:47:9: 'falseTriggers'
             {
-            match("+="); 
+            match("falseTriggers"); 
 
 
             }
@@ -983,10 +984,11 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48:7: ( '=' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48:9: '='
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48:7: ( '+=' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:48:9: '+='
             {
-            match('='); 
+            match("+="); 
+
 
             }
 
@@ -1003,11 +1005,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:49:7: ( '-=' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:49:9: '-='
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:49:7: ( '=' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:49:9: '='
             {
-            match("-="); 
-
+            match('='); 
 
             }
 
@@ -1024,10 +1025,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:50:7: ( '*=' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:50:9: '*='
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:50:7: ( '-=' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:50:9: '-='
             {
-            match("*="); 
+            match("-="); 
 
 
             }
@@ -1045,10 +1046,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:51:7: ( '/=' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:51:9: '/='
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:51:7: ( '*=' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:51:9: '*='
             {
-            match("/="); 
+            match("*="); 
 
 
             }
@@ -1066,10 +1067,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:52:7: ( '.value' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:52:9: '.value'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:52:7: ( '/=' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:52:9: '/='
             {
-            match(".value"); 
+            match("/="); 
 
 
             }
@@ -1087,10 +1088,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:53:7: ( 'get(' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:53:9: 'get('
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:53:7: ( '.value' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:53:9: '.value'
             {
-            match("get("); 
+            match(".value"); 
 
 
             }
@@ -1108,10 +1109,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:54:7: ( 'IntegerVariableRef' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:54:9: 'IntegerVariableRef'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:54:7: ( 'get(' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:54:9: 'get('
             {
-            match("IntegerVariableRef"); 
+            match("get("); 
 
 
             }
@@ -1129,10 +1130,11 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:55:7: ( '[' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:55:9: '['
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:55:7: ( 'IntegerVariableRef' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:55:9: 'IntegerVariableRef'
             {
-            match('['); 
+            match("IntegerVariableRef"); 
+
 
             }
 
@@ -1149,10 +1151,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:56:7: ( ']' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:56:9: ']'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:56:7: ( '[' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:56:9: '['
             {
-            match(']'); 
+            match('['); 
 
             }
 
@@ -1169,11 +1171,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:57:7: ( '==' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:57:9: '=='
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:57:7: ( ']' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:57:9: ']'
             {
-            match("=="); 
-
+            match(']'); 
 
             }
 
@@ -1190,10 +1191,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:58:7: ( '::' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:58:9: '::'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:58:7: ( '==' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:58:9: '=='
             {
-            match("::"); 
+            match("=="); 
 
 
             }
@@ -1211,10 +1212,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:59:7: ( 'b[' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:59:9: 'b['
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:59:7: ( '::' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:59:9: '::'
             {
-            match("b["); 
+            match("::"); 
 
 
             }
@@ -1232,10 +1233,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:60:7: ( 'b#ref' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:60:9: 'b#ref'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:60:7: ( 'b[' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:60:9: 'b['
             {
-            match("b#ref"); 
+            match("b["); 
 
 
             }
@@ -1253,10 +1254,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:61:7: ( 'i.' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:61:9: 'i.'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:61:7: ( 'b#ref' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:61:9: 'b#ref'
             {
-            match("i."); 
+            match("b#ref"); 
 
 
             }
@@ -1274,10 +1275,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:62:7: ( 'i#ref' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:62:9: 'i#ref'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:62:7: ( 'i.' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:62:9: 'i.'
             {
-            match("i#ref"); 
+            match("i."); 
 
 
             }
@@ -1295,10 +1296,11 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:63:7: ( '+' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:63:9: '+'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:63:7: ( 'i#ref' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:63:9: 'i#ref'
             {
-            match('+'); 
+            match("i#ref"); 
+
 
             }
 
@@ -1315,11 +1317,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:64:7: ( 'value' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:64:9: 'value'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:64:7: ( '+' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:64:9: '+'
             {
-            match("value"); 
-
+            match('+'); 
 
             }
 
@@ -1336,10 +1337,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:65:7: ( 'operand' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:65:9: 'operand'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:65:7: ( 'value' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:65:9: 'value'
             {
-            match("operand"); 
+            match("value"); 
 
 
             }
@@ -1357,10 +1358,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:66:7: ( '(+' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:66:9: '(+'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:66:7: ( 'operand' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:66:9: 'operand'
             {
-            match("(+"); 
+            match("operand"); 
 
 
             }
@@ -1378,10 +1379,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__68;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:67:7: ( '})' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:67:9: '})'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:67:7: ( '(+' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:67:9: '(+'
             {
-            match("})"); 
+            match("(+"); 
 
 
             }
@@ -1399,10 +1400,11 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:68:7: ( '-' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:68:9: '-'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:68:7: ( '})' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:68:9: '})'
             {
-            match('-'); 
+            match("})"); 
+
 
             }
 
@@ -1419,11 +1421,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:69:7: ( '(-' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:69:9: '(-'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:69:7: ( '-' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:69:9: '-'
             {
-            match("(-"); 
-
+            match('-'); 
 
             }
 
@@ -1440,10 +1441,11 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:70:7: ( '*' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:70:9: '*'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:70:7: ( '(-' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:70:9: '(-'
             {
-            match('*'); 
+            match("(-"); 
+
 
             }
 
@@ -1460,10 +1462,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:71:7: ( '/' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:71:9: '/'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:71:7: ( '*' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:71:9: '*'
             {
-            match('/'); 
+            match('*'); 
 
             }
 
@@ -1480,10 +1482,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__73;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:72:7: ( '!' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:72:9: '!'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:72:7: ( '/' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:72:9: '/'
             {
-            match('!'); 
+            match('/'); 
 
             }
 
@@ -1500,11 +1502,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__74;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:73:7: ( '!(' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:73:9: '!('
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:73:7: ( '!' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:73:9: '!'
             {
-            match("!("); 
-
+            match('!'); 
 
             }
 
@@ -1521,10 +1522,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__75;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:74:7: ( 'and (' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:74:9: 'and ('
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:74:7: ( '!(' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:74:9: '!('
             {
-            match("and ("); 
+            match("!("); 
 
 
             }
@@ -1542,10 +1543,11 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__76;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:75:7: ( '^' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:75:9: '^'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:75:7: ( 'and (' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:75:9: 'and ('
             {
-            match('^'); 
+            match("and ("); 
+
 
             }
 
@@ -1562,11 +1564,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__77;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:76:7: ( 'or (' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:76:9: 'or ('
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:76:7: ( '^' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:76:9: '^'
             {
-            match("or ("); 
-
+            match('^'); 
 
             }
 
@@ -1583,10 +1584,11 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__78;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:77:7: ( 'v' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:77:9: 'v'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:77:7: ( 'or (' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:77:9: 'or ('
             {
-            match('v'); 
+            match("or ("); 
+
 
             }
 
@@ -1603,11 +1605,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__79;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:78:7: ( 'xor (' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:78:9: 'xor ('
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:78:7: ( 'v' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:78:9: 'v'
             {
-            match("xor ("); 
-
+            match('v'); 
 
             }
 
@@ -1624,10 +1625,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__80;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:79:7: ( 'v_' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:79:9: 'v_'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:79:7: ( 'xor (' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:79:9: 'xor ('
             {
-            match("v_"); 
+            match("xor ("); 
 
 
             }
@@ -1645,10 +1646,11 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__81;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:80:7: ( '<' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:80:9: '<'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:80:7: ( 'v_' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:80:9: 'v_'
             {
-            match('<'); 
+            match("v_"); 
+
 
             }
 
@@ -1665,10 +1667,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__82;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:81:7: ( '>' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:81:9: '>'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:81:7: ( '<' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:81:9: '<'
             {
-            match('>'); 
+            match('<'); 
 
             }
 
@@ -1685,11 +1687,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__83;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:82:7: ( 'SeqIsEmpty' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:82:9: 'SeqIsEmpty'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:82:7: ( '>' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:82:9: '>'
             {
-            match("SeqIsEmpty"); 
-
+            match('>'); 
 
             }
 
@@ -1706,10 +1707,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__84;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:83:7: ( 'Seq->Tail' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:83:9: 'Seq->Tail'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:83:7: ( 'SeqIsEmpty' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:83:9: 'SeqIsEmpty'
             {
-            match("Seq->Tail"); 
+            match("SeqIsEmpty"); 
 
 
             }
@@ -1727,10 +1728,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__85;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:84:7: ( 'Seq->Head' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:84:9: 'Seq->Head'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:84:7: ( 'Seq->Tail' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:84:9: 'Seq->Tail'
             {
-            match("Seq->Head"); 
+            match("Seq->Tail"); 
 
 
             }
@@ -1748,10 +1749,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__86;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:85:7: ( 'Seq--' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:85:9: 'Seq--'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:85:7: ( 'Seq->Head' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:85:9: 'Seq->Head'
             {
-            match("Seq--"); 
+            match("Seq->Head"); 
 
 
             }
@@ -1769,10 +1770,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__87;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:86:7: ( 'Seq++' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:86:9: 'Seq++'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:86:7: ( 'Seq--' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:86:9: 'Seq--'
             {
-            match("Seq++"); 
+            match("Seq--"); 
 
 
             }
@@ -1790,10 +1791,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__88;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:87:7: ( '>=' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:87:9: '>='
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:87:7: ( 'Seq++' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:87:9: 'Seq++'
             {
-            match(">="); 
+            match("Seq++"); 
 
 
             }
@@ -1811,10 +1812,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__89;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:88:7: ( '<=' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:88:9: '<='
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:88:7: ( '>=' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:88:9: '>='
             {
-            match("<="); 
+            match(">="); 
 
 
             }
@@ -1832,10 +1833,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__90;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:89:7: ( 'import' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:89:9: 'import'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:89:7: ( '<=' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:89:9: '<='
             {
-            match("import"); 
+            match("<="); 
 
 
             }
@@ -1853,10 +1854,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__91;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:90:7: ( 'as' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:90:9: 'as'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:90:7: ( 'import' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:90:9: 'import'
             {
-            match("as"); 
+            match("import"); 
 
 
             }
@@ -1874,10 +1875,11 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__92;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:91:7: ( ';' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:91:9: ';'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:91:7: ( 'as' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:91:9: 'as'
             {
-            match(';'); 
+            match("as"); 
+
 
             }
 
@@ -1894,11 +1896,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__93;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:92:7: ( 'ExpressionLibrary' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:92:9: 'ExpressionLibrary'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:92:7: ( ';' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:92:9: ';'
             {
-            match("ExpressionLibrary"); 
-
+            match(';'); 
 
             }
 
@@ -1915,10 +1916,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__94;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:93:7: ( 'RelationLibrary' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:93:9: 'RelationLibrary'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:93:7: ( 'ExpressionLibrary' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:93:9: 'ExpressionLibrary'
             {
-            match("RelationLibrary"); 
+            match("ExpressionLibrary"); 
 
 
             }
@@ -1936,10 +1937,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__95;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:94:7: ( 'ExpressionDeclaration' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:94:9: 'ExpressionDeclaration'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:94:7: ( 'RelationLibrary' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:94:9: 'RelationLibrary'
             {
-            match("ExpressionDeclaration"); 
+            match("RelationLibrary"); 
 
 
             }
@@ -1957,10 +1958,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__96;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:95:7: ( 'RelationDeclaration' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:95:9: 'RelationDeclaration'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:95:7: ( 'ExpressionDeclaration' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:95:9: 'ExpressionDeclaration'
             {
-            match("RelationDeclaration"); 
+            match("ExpressionDeclaration"); 
 
 
             }
@@ -1978,10 +1979,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__97;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:96:7: ( 'ExpressionDefinition' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:96:9: 'ExpressionDefinition'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:96:7: ( 'RelationDeclaration' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:96:9: 'RelationDeclaration'
             {
-            match("ExpressionDefinition"); 
+            match("RelationDeclaration"); 
 
 
             }
@@ -1999,10 +2000,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__98;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:97:7: ( 'root' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:97:9: 'root'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:97:7: ( 'ExpressionDefinition' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:97:9: 'ExpressionDefinition'
             {
-            match("root"); 
+            match("ExpressionDefinition"); 
 
 
             }
@@ -2020,10 +2021,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__99;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:98:7: ( 'ConditionalExpressionDefinition' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:98:9: 'ConditionalExpressionDefinition'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:98:7: ( 'root' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:98:9: 'root'
             {
-            match("ConditionalExpressionDefinition"); 
+            match("root"); 
 
 
             }
@@ -2041,10 +2042,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__100;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:99:8: ( 'switch' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:99:10: 'switch'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:99:8: ( 'ConditionalExpressionDefinition' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:99:10: 'ConditionalExpressionDefinition'
             {
-            match("switch"); 
+            match("ConditionalExpressionDefinition"); 
 
 
             }
@@ -2062,10 +2063,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__101;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:100:8: ( 'default' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:100:10: 'default'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:100:8: ( 'switch' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:100:10: 'switch'
             {
-            match("default"); 
+            match("switch"); 
 
 
             }
@@ -2083,10 +2084,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__102;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:101:8: ( 'ConditionalRelationDefinition' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:101:10: 'ConditionalRelationDefinition'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:101:8: ( 'default' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:101:10: 'default'
             {
-            match("ConditionalRelationDefinition"); 
+            match("default"); 
 
 
             }
@@ -2104,10 +2105,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__103;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:102:8: ( 'RelationDefinition' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:102:10: 'RelationDefinition'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:102:8: ( 'ConditionalRelationDefinition' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:102:10: 'ConditionalRelationDefinition'
             {
-            match("RelationDefinition"); 
+            match("ConditionalRelationDefinition"); 
 
 
             }
@@ -2125,10 +2126,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__104;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:103:8: ( 'Relation' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:103:10: 'Relation'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:103:8: ( 'RelationDefinition' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:103:10: 'RelationDefinition'
             {
-            match("Relation"); 
+            match("RelationDefinition"); 
 
 
             }
@@ -2146,10 +2147,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__105;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:104:8: ( 'Expression' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:104:10: 'Expression'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:104:8: ( 'Relation' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:104:10: 'Relation'
             {
-            match("Expression"); 
+            match("Relation"); 
 
 
             }
@@ -2167,10 +2168,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__106;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:105:8: ( '->' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:105:10: '->'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:105:8: ( 'Expression' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:105:10: 'Expression'
             {
-            match("->"); 
+            match("Expression"); 
 
 
             }
@@ -2188,10 +2189,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__107;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:106:8: ( 'Clock' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:106:10: 'Clock'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:106:8: ( '->' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:106:10: '->'
             {
-            match("Clock"); 
+            match("->"); 
 
 
             }
@@ -2209,10 +2210,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__108;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:107:8: ( 'case' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:107:10: 'case'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:107:8: ( 'Clock' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:107:10: 'Clock'
             {
-            match("case"); 
+            match("Clock"); 
 
 
             }
@@ -2230,10 +2231,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__109;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:108:8: ( 'String' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:108:10: 'String'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:108:8: ( 'case' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:108:10: 'case'
             {
-            match("String"); 
+            match("case"); 
 
 
             }
@@ -2251,10 +2252,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__110;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:109:8: ( 'RealRef' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:109:10: 'RealRef'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:109:8: ( 'String' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:109:10: 'String'
             {
-            match("RealRef"); 
+            match("String"); 
 
 
             }
@@ -2272,10 +2273,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__111;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:110:8: ( 'realElem' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:110:10: 'realElem'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:110:8: ( 'RealRef' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:110:10: 'RealRef'
             {
-            match("realElem"); 
+            match("RealRef"); 
 
 
             }
@@ -2293,10 +2294,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__112;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:111:8: ( 'name' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:111:10: 'name'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:111:8: ( 'realElem' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:111:10: 'realElem'
             {
-            match("name"); 
+            match("realElem"); 
 
 
             }
@@ -2314,10 +2315,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__113;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:112:8: ( 'UnaryRealPlus' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:112:10: 'UnaryRealPlus'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:112:8: ( 'name' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:112:10: 'name'
             {
-            match("UnaryRealPlus"); 
+            match("name"); 
 
 
             }
@@ -2335,10 +2336,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__114;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:113:8: ( 'UnaryRealMinus' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:113:10: 'UnaryRealMinus'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:113:8: ( 'UnaryRealPlus' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:113:10: 'UnaryRealPlus'
             {
-            match("UnaryRealMinus"); 
+            match("UnaryRealPlus"); 
 
 
             }
@@ -2356,10 +2357,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__115;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:114:8: ( 'RealPlus' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:114:10: 'RealPlus'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:114:8: ( 'UnaryRealMinus' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:114:10: 'UnaryRealMinus'
             {
-            match("RealPlus"); 
+            match("UnaryRealMinus"); 
 
 
             }
@@ -2377,10 +2378,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__116;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:115:8: ( 'leftValue' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:115:10: 'leftValue'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:115:8: ( 'RealPlus' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:115:10: 'RealPlus'
             {
-            match("leftValue"); 
+            match("RealPlus"); 
 
 
             }
@@ -2398,10 +2399,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__117;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:116:8: ( 'rightValue' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:116:10: 'rightValue'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:116:8: ( 'leftValue' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:116:10: 'leftValue'
             {
-            match("rightValue"); 
+            match("leftValue"); 
 
 
             }
@@ -2419,10 +2420,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__118;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:117:8: ( 'RealMinus' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:117:10: 'RealMinus'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:117:8: ( 'rightValue' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:117:10: 'rightValue'
             {
-            match("RealMinus"); 
+            match("rightValue"); 
 
 
             }
@@ -2440,10 +2441,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__119;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:118:8: ( 'RealMultiply' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:118:10: 'RealMultiply'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:118:8: ( 'RealMinus' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:118:10: 'RealMinus'
             {
-            match("RealMultiply"); 
+            match("RealMinus"); 
 
 
             }
@@ -2461,10 +2462,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__120;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:119:8: ( 'BooleanVariableRef' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:119:10: 'BooleanVariableRef'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:119:8: ( 'RealMultiply' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:119:10: 'RealMultiply'
             {
-            match("BooleanVariableRef"); 
+            match("RealMultiply"); 
 
 
             }
@@ -2482,10 +2483,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__121;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:120:8: ( 'RealVariableRef' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:120:10: 'RealVariableRef'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:120:8: ( 'BooleanVariableRef' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:120:10: 'BooleanVariableRef'
             {
-            match("RealVariableRef"); 
+            match("BooleanVariableRef"); 
 
 
             }
@@ -2503,10 +2504,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__122;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:121:8: ( 'SeqRef' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:121:10: 'SeqRef'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:121:8: ( 'RealVariableRef' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:121:10: 'RealVariableRef'
             {
-            match("SeqRef"); 
+            match("RealVariableRef"); 
 
 
             }
@@ -2524,10 +2525,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__123;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:122:8: ( 'SeqVarRef' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:122:10: 'SeqVarRef'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:122:8: ( 'SeqRef' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:122:10: 'SeqRef'
             {
-            match("SeqVarRef"); 
+            match("SeqRef"); 
 
 
             }
@@ -2545,10 +2546,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__124;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:123:8: ( 'Real' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:123:10: 'Real'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:123:8: ( 'SeqVarRef' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:123:10: 'SeqVarRef'
             {
-            match("Real"); 
+            match("SeqVarRef"); 
 
 
             }
@@ -2566,10 +2567,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__125;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:124:8: ( 'Integer' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:124:10: 'Integer'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:124:8: ( 'Real' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:124:10: 'Real'
             {
-            match("Integer"); 
+            match("Real"); 
 
 
             }
@@ -2587,10 +2588,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__126;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:125:8: ( 'BooleanElement' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:125:10: 'BooleanElement'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:125:8: ( 'Integer' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:125:10: 'Integer'
             {
-            match("BooleanElement"); 
+            match("Integer"); 
 
 
             }
@@ -2608,10 +2609,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__127;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:126:8: ( 'Sequence' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:126:10: 'Sequence'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:126:8: ( 'BooleanElement' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:126:10: 'BooleanElement'
             {
-            match("Sequence"); 
+            match("BooleanElement"); 
 
 
             }
@@ -2629,10 +2630,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__128;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:127:8: ( 'RecordElement' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:127:10: 'RecordElement'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:127:8: ( 'Sequence' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:127:10: 'Sequence'
             {
-            match("RecordElement"); 
+            match("Sequence"); 
 
 
             }
@@ -2650,10 +2651,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__129;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:128:8: ( 'box' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:128:10: 'box'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:128:8: ( 'RecordElement' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:128:10: 'RecordElement'
             {
-            match("box"); 
+            match("RecordElement"); 
 
 
             }
@@ -2671,10 +2672,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__130;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:129:8: ( 'type' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:129:10: 'type'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:129:8: ( 'box' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:129:10: 'box'
             {
-            match("type"); 
+            match("box"); 
 
 
             }
@@ -2692,10 +2693,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__131;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:130:8: ( 'Box' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:130:10: 'Box'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:130:8: ( 'type' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:130:10: 'type'
             {
-            match("Box"); 
+            match("type"); 
 
 
             }
@@ -2713,10 +2714,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__132;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:131:8: ( 'containment' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:131:10: 'containment'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:131:8: ( 'Box' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:131:10: 'Box'
             {
-            match("containment"); 
+            match("Box"); 
 
 
             }
@@ -2734,10 +2735,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__133;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:132:8: ( 'StringType' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:132:10: 'StringType'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:132:8: ( 'containment' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:132:10: 'containment'
             {
-            match("StringType"); 
+            match("containment"); 
 
 
             }
@@ -2755,10 +2756,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__134;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:133:8: ( 'BooleanType' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:133:10: 'BooleanType'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:133:8: ( 'StringType' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:133:10: 'StringType'
             {
-            match("BooleanType"); 
+            match("StringType"); 
 
 
             }
@@ -2776,10 +2777,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__135;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:134:8: ( 'IntegerType' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:134:10: 'IntegerType'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:134:8: ( 'BooleanType' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:134:10: 'BooleanType'
             {
-            match("IntegerType"); 
+            match("BooleanType"); 
 
 
             }
@@ -2797,10 +2798,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__136;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:135:8: ( 'RealType' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:135:10: 'RealType'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:135:8: ( 'IntegerType' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:135:10: 'IntegerType'
             {
-            match("RealType"); 
+            match("IntegerType"); 
 
 
             }
@@ -2818,10 +2819,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__137;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:136:8: ( 'CharType' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:136:10: 'CharType'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:136:8: ( 'RealType' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:136:10: 'RealType'
             {
-            match("CharType"); 
+            match("RealType"); 
 
 
             }
@@ -2839,10 +2840,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__138;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:137:8: ( 'RecordType' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:137:10: 'RecordType'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:137:8: ( 'CharType' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:137:10: 'CharType'
             {
-            match("RecordType"); 
+            match("CharType"); 
 
 
             }
@@ -2860,10 +2861,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__139;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:138:8: ( 'SequenceType' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:138:10: 'SequenceType'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:138:8: ( 'RecordType' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:138:10: 'RecordType'
             {
-            match("SequenceType"); 
+            match("RecordType"); 
 
 
             }
@@ -2881,10 +2882,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__140;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:139:8: ( 'DiscreteClockType' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:139:10: 'DiscreteClockType'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:139:8: ( 'SequenceType' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:139:10: 'SequenceType'
             {
-            match("DiscreteClockType"); 
+            match("SequenceType"); 
 
 
             }
@@ -2902,10 +2903,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__141;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:140:8: ( 'DenseClockType' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:140:10: 'DenseClockType'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:140:8: ( 'DiscreteClockType' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:140:10: 'DiscreteClockType'
             {
-            match("DenseClockType"); 
+            match("DiscreteClockType"); 
 
 
             }
@@ -2923,10 +2924,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__142;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:141:8: ( 'baseUnit' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:141:10: 'baseUnit'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:141:8: ( 'DenseClockType' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:141:10: 'DenseClockType'
             {
-            match("baseUnit"); 
+            match("DenseClockType"); 
 
 
             }
@@ -2944,10 +2945,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__143;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:142:8: ( 'physicalMagnitude' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:142:10: 'physicalMagnitude'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:142:8: ( 'baseUnit' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:142:10: 'baseUnit'
             {
-            match("physicalMagnitude"); 
+            match("baseUnit"); 
 
 
             }
@@ -2965,10 +2966,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__144;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:143:8: ( 'EnumerationType' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:143:10: 'EnumerationType'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:143:8: ( 'physicalMagnitude' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:143:10: 'physicalMagnitude'
             {
-            match("EnumerationType"); 
+            match("physicalMagnitude"); 
 
 
             }
@@ -2986,10 +2987,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__145;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:144:8: ( 'enumLiteral' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:144:10: 'enumLiteral'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:144:8: ( 'EnumerationType' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:144:10: 'EnumerationType'
             {
-            match("enumLiteral"); 
+            match("EnumerationType"); 
 
 
             }
@@ -3007,10 +3008,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__146;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:145:8: ( 'Field' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:145:10: 'Field'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:145:8: ( 'enumLiteral' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:145:10: 'enumLiteral'
             {
-            match("Field"); 
+            match("enumLiteral"); 
 
 
             }
@@ -3028,10 +3029,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__147;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:146:8: ( '_SubClock' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:146:10: '_SubClock'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:146:8: ( 'Field' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:146:10: 'Field'
             {
-            match("_SubClock"); 
+            match("Field"); 
 
 
             }
@@ -3049,10 +3050,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__148;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:147:8: ( 'rightEntity' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:147:10: 'rightEntity'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:147:8: ( '_SubClock' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:147:10: '_SubClock'
             {
-            match("rightEntity"); 
+            match("_SubClock"); 
 
 
             }
@@ -3070,10 +3071,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__149;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:148:8: ( 'leftEntity' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:148:10: 'leftEntity'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:148:8: ( 'rightEntity' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:148:10: 'rightEntity'
             {
-            match("leftEntity"); 
+            match("rightEntity"); 
 
 
             }
@@ -3091,10 +3092,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__150;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:149:8: ( '_Coincidence' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:149:10: '_Coincidence'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:149:8: ( 'leftEntity' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:149:10: 'leftEntity'
             {
-            match("_Coincidence"); 
+            match("leftEntity"); 
 
 
             }
@@ -3112,10 +3113,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__151;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:150:8: ( '_Exclusion' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:150:10: '_Exclusion'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:150:8: ( '_Coincidence' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:150:10: '_Coincidence'
             {
-            match("_Exclusion"); 
+            match("_Coincidence"); 
 
 
             }
@@ -3133,10 +3134,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__152;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:151:8: ( '_Precedence' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:151:10: '_Precedence'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:151:8: ( '_Exclusion' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:151:10: '_Exclusion'
             {
-            match("_Precedence"); 
+            match("_Exclusion"); 
 
 
             }
@@ -3154,10 +3155,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__153;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:152:8: ( '_NonStrictPrecedence' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:152:10: '_NonStrictPrecedence'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:152:8: ( '_Precedence' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:152:10: '_Precedence'
             {
-            match("_NonStrictPrecedence"); 
+            match("_Precedence"); 
 
 
             }
@@ -3175,10 +3176,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__154;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:153:8: ( '_UpTo' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:153:10: '_UpTo'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:153:8: ( '_NonStrictPrecedence' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:153:10: '_NonStrictPrecedence'
             {
-            match("_UpTo"); 
+            match("_NonStrictPrecedence"); 
 
 
             }
@@ -3196,10 +3197,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__155;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:154:8: ( 'returnType' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:154:10: 'returnType'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:154:8: ( '_UpTo' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:154:10: '_UpTo'
             {
-            match("returnType"); 
+            match("_UpTo"); 
 
 
             }
@@ -3217,10 +3218,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__156;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:155:8: ( 'clockToFollow' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:155:10: 'clockToFollow'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:155:8: ( 'returnType' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:155:10: 'returnType'
             {
-            match("clockToFollow"); 
+            match("returnType"); 
 
 
             }
@@ -3238,10 +3239,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__157;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:156:8: ( 'killerClock' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:156:10: 'killerClock'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:156:8: ( 'clockToFollow' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:156:10: 'clockToFollow'
             {
-            match("killerClock"); 
+            match("clockToFollow"); 
 
 
             }
@@ -3259,10 +3260,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__158;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:157:8: ( 'isPreemptive' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:157:10: 'isPreemptive'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:157:8: ( 'killerClock' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:157:10: 'killerClock'
             {
-            match("isPreemptive"); 
+            match("killerClock"); 
 
 
             }
@@ -3280,10 +3281,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__159;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:158:8: ( '_Defer' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:158:10: '_Defer'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:158:8: ( 'isPreemptive' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:158:10: 'isPreemptive'
             {
-            match("_Defer"); 
+            match("isPreemptive"); 
 
 
             }
@@ -3301,10 +3302,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__160;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:159:8: ( 'baseClock' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:159:10: 'baseClock'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:159:8: ( '_Defer' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:159:10: '_Defer'
             {
-            match("baseClock"); 
+            match("_Defer"); 
 
 
             }
@@ -3322,10 +3323,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__161;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:160:8: ( 'delayClock' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:160:10: 'delayClock'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:160:8: ( 'baseClock' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:160:10: 'baseClock'
             {
-            match("delayClock"); 
+            match("baseClock"); 
 
 
             }
@@ -3343,10 +3344,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__162;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:161:8: ( 'delayPattern' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:161:10: 'delayPattern'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:161:8: ( 'delayClock' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:161:10: 'delayClock'
             {
-            match("delayPattern"); 
+            match("delayClock"); 
 
 
             }
@@ -3364,10 +3365,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__163;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:162:8: ( '_StrictSampling' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:162:10: '_StrictSampling'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:162:8: ( 'delayPattern' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:162:10: 'delayPattern'
             {
-            match("_StrictSampling"); 
+            match("delayPattern"); 
 
 
             }
@@ -3385,10 +3386,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__164;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:163:8: ( 'sampledClock' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:163:10: 'sampledClock'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:163:8: ( '_StrictSampling' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:163:10: '_StrictSampling'
             {
-            match("sampledClock"); 
+            match("_StrictSampling"); 
 
 
             }
@@ -3406,10 +3407,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__165;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:164:8: ( 'samplingClock' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:164:10: 'samplingClock'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:164:8: ( 'sampledClock' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:164:10: 'sampledClock'
             {
-            match("samplingClock"); 
+            match("sampledClock"); 
 
 
             }
@@ -3427,10 +3428,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__166;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:165:8: ( '_Concatenation' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:165:10: '_Concatenation'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:165:8: ( 'samplingClock' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:165:10: 'samplingClock'
             {
-            match("_Concatenation"); 
+            match("samplingClock"); 
 
 
             }
@@ -3448,10 +3449,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__167;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:166:8: ( 'leftClock' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:166:10: 'leftClock'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:166:8: ( '_Concatenation' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:166:10: '_Concatenation'
             {
-            match("leftClock"); 
+            match("_Concatenation"); 
 
 
             }
@@ -3469,10 +3470,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__168;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:167:8: ( 'rightClock' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:167:10: 'rightClock'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:167:8: ( 'leftClock' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:167:10: 'leftClock'
             {
-            match("rightClock"); 
+            match("leftClock"); 
 
 
             }
@@ -3490,10 +3491,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__169;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:168:8: ( '_Union' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:168:10: '_Union'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:168:8: ( 'rightClock' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:168:10: 'rightClock'
             {
-            match("_Union"); 
+            match("rightClock"); 
 
 
             }
@@ -3511,10 +3512,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__170;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:169:8: ( 'clock1' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:169:10: 'clock1'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:169:8: ( '_Union' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:169:10: '_Union'
             {
-            match("clock1"); 
+            match("_Union"); 
 
 
             }
@@ -3532,10 +3533,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__171;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:170:8: ( 'clock2' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:170:10: 'clock2'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:170:8: ( 'clock1' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:170:10: 'clock1'
             {
-            match("clock2"); 
+            match("clock1"); 
 
 
             }
@@ -3553,10 +3554,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__172;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:171:8: ( '_Intersection' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:171:10: '_Intersection'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:171:8: ( 'clock2' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:171:10: 'clock2'
             {
-            match("_Intersection"); 
+            match("clock2"); 
 
 
             }
@@ -3574,10 +3575,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__173;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:172:8: ( '_Sup' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:172:10: '_Sup'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:172:8: ( '_Intersection' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:172:10: '_Intersection'
             {
-            match("_Sup"); 
+            match("_Intersection"); 
 
 
             }
@@ -3595,10 +3596,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__174;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:173:8: ( '_Inf' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:173:10: '_Inf'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:173:8: ( '_Sup' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:173:10: '_Sup'
             {
-            match("_Inf"); 
+            match("_Sup"); 
 
 
             }
@@ -3616,10 +3617,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__175;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:174:8: ( '_NonStrictSampling' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:174:10: '_NonStrictSampling'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:174:8: ( '_Inf' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:174:10: '_Inf'
             {
-            match("_NonStrictSampling"); 
+            match("_Inf"); 
 
 
             }
@@ -3637,10 +3638,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__176;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:175:8: ( '_Wait' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:175:10: '_Wait'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:175:8: ( '_NonStrictSampling' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:175:10: '_NonStrictSampling'
             {
-            match("_Wait"); 
+            match("_NonStrictSampling"); 
 
 
             }
@@ -3658,10 +3659,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__177;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:176:8: ( 'waitingClock' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:176:10: 'waitingClock'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:176:8: ( '_Wait' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:176:10: '_Wait'
             {
-            match("waitingClock"); 
+            match("_Wait"); 
 
 
             }
@@ -3679,10 +3680,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__178;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:177:8: ( 'waitingValue' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:177:10: 'waitingValue'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:177:8: ( 'waitingClock' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:177:10: 'waitingClock'
             {
-            match("waitingValue"); 
+            match("waitingClock"); 
 
 
             }
@@ -3700,10 +3701,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__179;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:178:8: ( '_Discretization' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:178:10: '_Discretization'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:178:8: ( 'waitingValue' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:178:10: 'waitingValue'
             {
-            match("_Discretization"); 
+            match("waitingValue"); 
 
 
             }
@@ -3721,10 +3722,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__180;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:179:8: ( 'denseClock' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:179:10: 'denseClock'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:179:8: ( '_Discretization' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:179:10: '_Discretization'
             {
-            match("denseClock"); 
+            match("_Discretization"); 
 
 
             }
@@ -3742,10 +3743,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__181;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:180:8: ( 'discretizationFactor' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:180:10: 'discretizationFactor'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:180:8: ( 'denseClock' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:180:10: 'denseClock'
             {
-            match("discretizationFactor"); 
+            match("denseClock"); 
 
 
             }
@@ -3763,10 +3764,10 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__182;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:181:8: ( '_Death' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:181:10: '_Death'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:181:8: ( 'discretizationFactor' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:181:10: 'discretizationFactor'
             {
-            match("_Death"); 
+            match("discretizationFactor"); 
 
 
             }
@@ -3784,8 +3785,29 @@ public class InternalFSMDslLexer extends Lexer {
         try {
             int _type = T__183;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:182:8: ( 'assert' )
-            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:182:10: 'assert'
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:182:8: ( '_Death' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:182:10: '_Death'
+            {
+            match("_Death"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__183"
+
+    // $ANTLR start "T__184"
+    public final void mT__184() throws RecognitionException {
+        try {
+            int _type = T__184;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:183:8: ( 'assert' )
+            // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:183:10: 'assert'
             {
             match("assert"); 
 
@@ -3798,7 +3820,7 @@ public class InternalFSMDslLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__183"
+    // $ANTLR end "T__184"
 
     // $ANTLR start "RULE_REAL0"
     public final void mRULE_REAL0() throws RecognitionException {
@@ -4397,8 +4419,8 @@ public class InternalFSMDslLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:8: ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | T__125 | T__126 | T__127 | T__128 | T__129 | T__130 | T__131 | T__132 | T__133 | T__134 | T__135 | T__136 | T__137 | T__138 | T__139 | T__140 | T__141 | T__142 | T__143 | T__144 | T__145 | T__146 | T__147 | T__148 | T__149 | T__150 | T__151 | T__152 | T__153 | T__154 | T__155 | T__156 | T__157 | T__158 | T__159 | T__160 | T__161 | T__162 | T__163 | T__164 | T__165 | T__166 | T__167 | T__168 | T__169 | T__170 | T__171 | T__172 | T__173 | T__174 | T__175 | T__176 | T__177 | T__178 | T__179 | T__180 | T__181 | T__182 | T__183 | RULE_REAL0 | RULE_INT | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt15=180;
+        // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:8: ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | T__125 | T__126 | T__127 | T__128 | T__129 | T__130 | T__131 | T__132 | T__133 | T__134 | T__135 | T__136 | T__137 | T__138 | T__139 | T__140 | T__141 | T__142 | T__143 | T__144 | T__145 | T__146 | T__147 | T__148 | T__149 | T__150 | T__151 | T__152 | T__153 | T__154 | T__155 | T__156 | T__157 | T__158 | T__159 | T__160 | T__161 | T__162 | T__163 | T__164 | T__165 | T__166 | T__167 | T__168 | T__169 | T__170 | T__171 | T__172 | T__173 | T__174 | T__175 | T__176 | T__177 | T__178 | T__179 | T__180 | T__181 | T__182 | T__183 | T__184 | RULE_REAL0 | RULE_INT | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt15=181;
         alt15 = dfa15.predict(input);
         switch (alt15) {
             case 1 :
@@ -5606,56 +5628,63 @@ public class InternalFSMDslLexer extends Lexer {
                 }
                 break;
             case 173 :
-                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1126: RULE_REAL0
+                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1126: T__184
+                {
+                mT__184(); 
+
+                }
+                break;
+            case 174 :
+                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1133: RULE_REAL0
                 {
                 mRULE_REAL0(); 
 
                 }
                 break;
-            case 174 :
-                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1137: RULE_INT
+            case 175 :
+                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1144: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 175 :
-                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1146: RULE_ID
+            case 176 :
+                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1153: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 176 :
-                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1154: RULE_STRING
+            case 177 :
+                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1161: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 177 :
-                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1166: RULE_ML_COMMENT
+            case 178 :
+                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1173: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 178 :
-                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1182: RULE_SL_COMMENT
+            case 179 :
+                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1189: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 179 :
-                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1198: RULE_WS
+            case 180 :
+                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1205: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 180 :
-                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1206: RULE_ANY_OTHER
+            case 181 :
+                // ../org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui/src-gen/org/gemoc/mocc/fsmkernel/model/xtext/ui/contentassist/antlr/internal/InternalFSMDsl.g:1:1213: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -5669,19 +5698,298 @@ public class InternalFSMDslLexer extends Lexer {
 
     protected DFA15 dfa15 = new DFA15(this);
     static final String DFA15_eotS =
-        "\1\uffff\13\75\1\uffff\1\127\1\75\1\uffff\1\141\1\75\1\146\1\151\1\uffff\2\75\1\72\2\75\1\167\1\171\1\175\1\177\1\u0083\1\72\2\75\2\uffff\1\75\1\u008e\1\u008f\1\75\1\u0092\1\u0094\1\uffff\12\75\1\174\1\uffff\2\72\2\uffff\2\75\1\uffff\24\75\1\u00cc\2\75\3\uffff\1\u00d0\1\u00d1\2\uffff\2\75\1\uffff\1\75\1\u00d6\1\uffff\1\u00d7\2\75\6\uffff\2\75\1\u00dc\2\75\1\uffff\5\75\17\uffff\2\75\4\uffff\2\75\3\uffff\1\75\5\uffff\25\75\1\uffff\1\174\2\uffff\31\75\1\u0122\1\75\1\u0124\1\75\1\uffff\3\75\2\uffff\4\75\2\uffff\4\75\1\uffff\7\75\1\u013d\1\75\1\uffff\2\75\1\u0141\14\75\1\u014e\23\75\1\u0166\4\75\1\u016b\1\u016c\4\75\1\u0171\3\75\1\u0175\6\75\1\u017c\1\75\3\uffff\11\75\1\u0187\1\u0188\10\75\2\uffff\3\75\1\uffff\1\75\1\uffff\1\75\1\uffff\1\75\1\uffff\1\75\1\u01a0\4\75\1\u01a5\3\75\1\uffff\4\75\1\u01af\14\75\1\u01bc\5\75\1\uffff\1\75\1\u01c3\1\u01c4\1\u01c5\2\uffff\4\75\1\uffff\3\75\1\uffff\6\75\1\uffff\4\75\1\uffff\3\75\1\u01df\1\75\2\uffff\5\75\1\u01e7\2\75\2\uffff\15\75\1\uffff\2\75\1\u01fc\1\75\1\uffff\11\75\1\uffff\6\75\1\u020d\5\75\1\uffff\1\u0213\1\75\1\u0216\3\75\3\uffff\1\u021a\2\75\1\u021d\5\75\1\u0223\1\u0224\10\75\1\u022d\2\75\1\u0230\2\75\1\uffff\7\75\1\uffff\1\u023b\1\75\2\uffff\1\u023d\17\75\1\uffff\20\75\1\uffff\1\u025e\1\u025f\1\u0260\2\75\1\uffff\2\75\1\uffff\2\75\1\u0267\1\uffff\2\75\2\uffff\1\75\1\u026b\2\75\2\uffff\1\u026e\1\75\1\u0270\5\75\1\uffff\2\75\1\uffff\4\75\1\u027d\5\75\1\uffff\1\75\1\uffff\2\75\1\u0286\1\u0289\3\75\1\u028d\30\75\3\uffff\3\75\1\u02ab\2\75\1\uffff\3\75\1\uffff\2\75\1\uffff\1\75\1\uffff\1\u02b4\13\75\1\uffff\7\75\1\u02c8\1\uffff\2\75\1\uffff\1\u02cb\1\75\1\u02cf\1\uffff\1\u02d0\3\75\1\u02d4\3\75\1\u02d8\24\75\1\uffff\10\75\1\uffff\4\75\1\u02f9\14\75\1\u0306\1\75\1\uffff\2\75\1\uffff\1\u030a\2\75\2\uffff\1\u030d\2\75\1\uffff\3\75\1\uffff\1\75\1\u0315\1\75\1\u0317\6\75\1\u031e\11\75\1\u032a\7\75\1\u0332\1\u0333\1\75\1\u0335\1\uffff\2\75\1\uffff\3\75\1\u033b\1\75\1\u033d\1\75\1\u033f\1\u0340\1\uffff\3\75\1\uffff\2\75\1\uffff\3\75\1\u034a\3\75\1\uffff\1\u034e\1\uffff\6\75\1\uffff\3\75\1\u0358\7\75\1\uffff\4\75\1\u0365\2\75\2\uffff\1\u0368\1\uffff\5\75\1\uffff\1\75\1\uffff\1\75\2\uffff\2\75\1\u0372\6\75\1\uffff\3\75\1\uffff\2\75\1\u037f\2\75\1\u0382\3\75\1\uffff\1\u0386\4\75\1\u038b\3\75\1\u0390\2\75\1\uffff\2\75\1\uffff\1\75\1\u0396\1\u0397\1\u0398\1\u0399\1\u039a\1\75\1\u039c\1\75\1\uffff\3\75\1\u03a1\10\75\1\uffff\2\75\1\uffff\1\75\1\u03ad\1\75\1\uffff\4\75\1\uffff\4\75\1\uffff\1\u03b7\1\u03b8\1\u03b9\2\75\5\uffff\1\75\1\uffff\4\75\1\uffff\1\75\1\u03c2\2\75\1\u03c5\6\75\1\uffff\4\75\1\u03d0\4\75\3\uffff\10\75\1\uffff\2\75\1\uffff\1\u03df\1\75\1\u03e1\1\75\1\u03e3\1\75\1\u03e5\3\75\1\uffff\3\75\1\u03ec\4\75\1\u03f1\2\75\1\u03f4\2\75\1\uffff\1\75\1\uffff\1\75\1\uffff\1\u03f9\1\uffff\2\75\1\u03fc\3\75\1\uffff\4\75\1\uffff\2\75\1\uffff\4\75\1\uffff\2\75\1\uffff\1\u040c\2\75\1\u040f\10\75\1\u0418\2\75\1\uffff\2\75\1\uffff\1\u041d\1\75\1\u041f\1\75\1\u0421\2\75\1\u0424\1\uffff\1\75\1\u0426\2\75\1\uffff\1\75\1\uffff\1\u042a\1\uffff\2\75\1\uffff\1\75\1\uffff\1\75\1\u042f\1\u0430\1\uffff\2\75\1\u0433\1\u0434\2\uffff\2\75\2\uffff\17\75\1\u0446\1\75\1\uffff\1\u0448\1\uffff";
+        "\1\uffff\13\75\1\uffff\1\127\1\75\1\uffff\1\141\1\75\1\146\1\152"+
+        "\1\uffff\2\75\1\72\1\75\1\166\1\75\1\173\1\175\1\177\1\u0083\1\72"+
+        "\2\75\2\uffff\1\75\1\u008e\1\u008f\1\75\1\u0092\1\u0094\1\uffff"+
+        "\12\75\1\151\1\uffff\2\72\2\uffff\2\75\1\uffff\24\75\1\u00cc\2\75"+
+        "\3\uffff\1\u00d0\1\u00d1\2\uffff\2\75\1\uffff\1\75\1\u00d6\1\uffff"+
+        "\1\u00d7\2\75\2\uffff\1\u00db\4\uffff\2\75\1\u00de\2\75\1\uffff"+
+        "\2\75\3\uffff\3\75\13\uffff\2\75\4\uffff\2\75\3\uffff\1\75\5\uffff"+
+        "\25\75\1\uffff\1\151\2\uffff\31\75\1\u0124\1\75\1\u0126\1\75\1\uffff"+
+        "\3\75\2\uffff\4\75\2\uffff\2\75\2\uffff\2\75\1\uffff\7\75\1\u013f"+
+        "\1\75\1\uffff\2\75\1\u0143\14\75\1\u0150\23\75\1\u0168\4\75\1\u016d"+
+        "\1\u016e\4\75\1\u0173\3\75\1\u0177\6\75\1\u017e\1\75\3\uffff\11"+
+        "\75\1\u0189\1\u018a\10\75\2\uffff\3\75\1\uffff\1\75\1\uffff\1\75"+
+        "\1\uffff\1\75\1\uffff\1\75\1\u01a2\4\75\1\u01a7\3\75\1\uffff\4\75"+
+        "\1\u01b1\14\75\1\u01be\5\75\1\uffff\1\75\1\u01c5\1\u01c6\1\u01c7"+
+        "\2\uffff\4\75\1\uffff\3\75\1\uffff\6\75\1\uffff\4\75\1\uffff\3\75"+
+        "\1\u01e1\1\75\2\uffff\5\75\1\u01e9\2\75\2\uffff\15\75\1\uffff\2"+
+        "\75\1\u01fe\1\75\1\uffff\11\75\1\uffff\6\75\1\u020f\5\75\1\uffff"+
+        "\1\u0215\1\75\1\u0218\3\75\3\uffff\1\u021c\2\75\1\u021f\5\75\1\u0225"+
+        "\1\u0226\10\75\1\u022f\2\75\1\u0232\2\75\1\uffff\7\75\1\uffff\1"+
+        "\u023d\1\75\2\uffff\1\u023f\17\75\1\uffff\20\75\1\uffff\1\u0260"+
+        "\1\u0261\1\u0262\2\75\1\uffff\2\75\1\uffff\2\75\1\u0269\1\uffff"+
+        "\2\75\2\uffff\1\75\1\u026d\2\75\2\uffff\1\u0270\1\75\1\u0272\5\75"+
+        "\1\uffff\2\75\1\uffff\4\75\1\u027f\5\75\1\uffff\1\75\1\uffff\2\75"+
+        "\1\u0288\1\u028b\3\75\1\u028f\30\75\3\uffff\3\75\1\u02ad\2\75\1"+
+        "\uffff\3\75\1\uffff\2\75\1\uffff\1\75\1\uffff\1\u02b6\13\75\1\uffff"+
+        "\7\75\1\u02ca\1\uffff\2\75\1\uffff\1\u02cd\1\75\1\u02d1\1\uffff"+
+        "\1\u02d2\3\75\1\u02d6\3\75\1\u02da\24\75\1\uffff\10\75\1\uffff\4"+
+        "\75\1\u02fb\14\75\1\u0308\1\75\1\uffff\2\75\1\uffff\1\u030c\2\75"+
+        "\2\uffff\1\u030f\2\75\1\uffff\3\75\1\uffff\1\75\1\u0317\1\75\1\u0319"+
+        "\6\75\1\u0320\11\75\1\u032c\7\75\1\u0334\1\u0335\1\75\1\u0337\1"+
+        "\uffff\2\75\1\uffff\3\75\1\u033d\1\75\1\u033f\1\75\1\u0341\1\u0342"+
+        "\1\uffff\3\75\1\uffff\2\75\1\uffff\3\75\1\u034c\3\75\1\uffff\1\u0350"+
+        "\1\uffff\6\75\1\uffff\3\75\1\u035a\7\75\1\uffff\4\75\1\u0367\2\75"+
+        "\2\uffff\1\u036a\1\uffff\5\75\1\uffff\1\75\1\uffff\1\75\2\uffff"+
+        "\2\75\1\u0374\6\75\1\uffff\3\75\1\uffff\2\75\1\u0381\2\75\1\u0384"+
+        "\3\75\1\uffff\1\u0388\4\75\1\u038d\3\75\1\u0392\2\75\1\uffff\2\75"+
+        "\1\uffff\1\75\1\u0398\1\u0399\1\u039a\1\u039b\1\u039c\1\75\1\u039e"+
+        "\1\75\1\uffff\3\75\1\u03a3\10\75\1\uffff\2\75\1\uffff\1\75\1\u03af"+
+        "\1\75\1\uffff\4\75\1\uffff\4\75\1\uffff\1\u03b9\1\u03ba\1\u03bb"+
+        "\2\75\5\uffff\1\75\1\uffff\4\75\1\uffff\1\75\1\u03c4\2\75\1\u03c7"+
+        "\6\75\1\uffff\4\75\1\u03d2\4\75\3\uffff\10\75\1\uffff\2\75\1\uffff"+
+        "\1\u03e1\1\75\1\u03e3\1\75\1\u03e5\1\75\1\u03e7\3\75\1\uffff\3\75"+
+        "\1\u03ee\4\75\1\u03f3\2\75\1\u03f6\2\75\1\uffff\1\75\1\uffff\1\75"+
+        "\1\uffff\1\u03fb\1\uffff\2\75\1\u03fe\3\75\1\uffff\4\75\1\uffff"+
+        "\2\75\1\uffff\4\75\1\uffff\2\75\1\uffff\1\u040e\2\75\1\u0411\10"+
+        "\75\1\u041a\2\75\1\uffff\2\75\1\uffff\1\u041f\1\75\1\u0421\1\75"+
+        "\1\u0423\2\75\1\u0426\1\uffff\1\75\1\u0428\2\75\1\uffff\1\75\1\uffff"+
+        "\1\u042c\1\uffff\2\75\1\uffff\1\75\1\uffff\1\75\1\u0431\1\u0432"+
+        "\1\uffff\2\75\1\u0435\1\u0436\2\uffff\2\75\2\uffff\17\75\1\u0448"+
+        "\1\75\1\uffff\1\u044a\1\uffff";
     static final String DFA15_eofS =
-        "\u0449\uffff";
+        "\u044b\uffff";
     static final String DFA15_minS =
-        "\1\0\1\156\1\162\4\141\1\150\1\145\1\154\1\156\1\165\1\uffff\1\51\1\43\1\uffff\1\60\1\157\1\72\1\53\1\uffff\1\141\1\145\1\162\1\145\1\160\2\75\1\60\1\75\1\52\1\166\1\145\1\156\2\uffff\1\43\1\50\1\101\1\157\2\75\1\uffff\1\145\1\150\1\141\1\156\1\145\1\157\1\145\1\156\1\103\1\151\1\56\1\uffff\2\0\2\uffff\1\160\1\165\1\uffff\1\151\1\154\1\145\1\141\1\156\1\151\1\155\1\156\1\157\1\154\1\156\1\163\2\157\1\171\1\141\1\157\1\147\1\144\1\154\1\60\1\144\1\164\3\uffff\2\60\2\uffff\1\160\1\120\1\uffff\1\154\1\60\1\uffff\1\60\1\165\1\160\6\uffff\1\145\1\151\1\60\1\146\1\163\1\uffff\1\141\1\161\1\164\1\145\1\40\17\uffff\2\164\4\uffff\1\170\1\163\3\uffff\1\162\5\uffff\1\141\1\156\1\157\1\141\1\155\1\141\1\146\1\157\1\163\1\156\1\165\1\164\1\157\1\170\1\162\1\157\1\156\1\145\1\156\1\141\1\154\1\uffff\1\56\2\uffff\1\145\1\162\1\155\1\145\1\147\1\163\1\154\1\162\1\160\1\144\1\164\1\160\1\141\1\155\2\163\1\145\1\143\1\144\1\163\1\145\1\154\1\165\1\164\1\150\1\60\1\40\1\60\1\145\1\uffff\1\145\1\157\1\164\2\uffff\1\157\1\162\1\151\1\165\2\uffff\2\145\1\156\1\164\1\uffff\2\141\1\163\1\143\1\164\1\151\1\53\1\60\1\162\1\uffff\1\50\1\145\1\60\1\145\1\40\1\141\1\154\1\157\1\144\1\143\1\162\1\145\1\162\1\164\1\154\1\60\1\143\1\163\1\155\1\142\1\162\1\151\1\143\1\145\1\156\1\124\1\151\1\141\1\163\1\146\1\151\1\154\1\162\2\145\1\60\1\147\1\145\1\144\1\164\2\60\1\143\1\154\1\163\1\154\1\60\1\145\1\165\1\141\1\60\1\153\1\165\2\151\1\105\1\162\1\60\1\164\3\uffff\1\162\1\146\1\155\1\72\1\162\1\145\1\141\1\145\1\124\2\60\1\151\1\165\1\171\1\145\1\162\1\145\1\156\1\163\1\55\1\uffff\1\145\1\141\1\145\1\uffff\1\141\1\uffff\1\147\1\uffff\1\103\1\uffff\1\164\1\60\1\162\1\151\1\153\1\124\1\60\1\171\1\103\1\145\1\uffff\1\162\1\145\1\114\1\103\1\60\1\151\1\156\1\143\1\154\1\143\1\123\2\157\1\145\1\164\1\143\1\145\1\60\1\164\1\145\1\156\1\163\1\162\1\uffff\1\145\3\60\2\uffff\1\150\1\145\1\150\1\163\1\uffff\1\124\1\155\1\151\1\uffff\1\61\2\143\1\166\1\154\1\156\1\uffff\1\103\1\164\1\151\1\141\1\uffff\1\164\1\145\1\142\1\60\1\162\2\uffff\1\156\1\154\2\103\1\145\1\60\1\147\1\105\1\110\1\uffff\1\146\1\162\2\156\1\145\1\156\1\154\1\151\1\145\1\154\1\151\1\141\1\171\1\uffff\1\144\1\164\1\60\1\171\1\uffff\1\122\1\141\1\156\1\154\1\141\1\145\1\103\1\151\1\154\1\uffff\2\143\1\141\1\165\1\145\1\164\1\60\1\156\1\162\1\150\2\162\1\uffff\1\60\1\162\1\60\1\163\1\141\1\162\3\uffff\1\60\1\144\1\156\1\60\1\72\1\162\1\145\1\156\1\157\2\60\1\145\1\141\2\145\1\124\1\141\1\156\1\154\1\60\1\156\1\164\1\60\1\155\1\154\1\uffff\1\151\1\147\1\164\1\154\1\141\1\154\1\164\1\uffff\1\60\1\155\2\uffff\1\60\1\122\1\143\1\144\1\162\1\151\2\157\1\146\1\165\1\156\1\154\1\162\1\160\1\105\1\151\1\uffff\1\160\1\145\1\154\1\164\1\157\1\156\1\164\1\154\1\164\1\157\1\164\1\151\1\164\1\163\1\144\1\162\1\uffff\3\60\1\145\1\163\1\uffff\1\103\1\154\1\uffff\1\151\1\164\1\60\1\uffff\1\103\1\147\2\uffff\1\151\1\60\1\155\1\106\2\uffff\1\60\1\154\1\60\1\155\1\171\1\154\1\164\1\157\1\uffff\1\145\1\141\1\uffff\1\160\1\145\1\147\1\103\1\60\1\157\1\164\1\157\1\151\1\171\1\uffff\1\160\1\uffff\2\145\2\60\1\164\1\143\1\156\1\60\1\163\1\165\1\164\1\151\1\145\1\154\1\171\1\157\1\145\1\141\1\165\1\151\1\143\1\105\1\145\1\157\1\145\1\143\1\123\1\144\1\145\1\151\1\145\1\151\3\uffff\1\164\1\145\1\154\1\60\1\157\1\151\1\uffff\1\154\1\103\1\147\1\uffff\1\145\1\157\1\uffff\1\115\1\uffff\1\60\1\160\1\165\1\151\1\143\1\144\1\104\1\164\1\163\1\147\1\154\1\141\1\uffff\1\143\1\164\1\143\1\172\1\160\1\164\1\146\1\60\1\uffff\1\141\1\171\1\uffff\1\60\1\153\1\60\1\uffff\1\60\1\163\1\151\1\141\1\60\1\145\1\160\1\156\1\60\1\154\1\145\1\164\1\153\1\141\1\154\1\171\1\103\1\143\1\162\1\153\1\141\1\145\1\156\1\157\1\156\1\143\1\151\1\143\1\157\1\uffff\1\156\2\157\1\154\1\147\1\156\1\154\1\141\1\uffff\2\145\1\164\1\153\1\60\1\145\1\151\1\40\1\145\1\157\1\154\1\153\1\145\1\153\1\141\1\145\1\171\1\60\1\171\1\uffff\1\162\1\160\1\uffff\1\60\1\151\1\145\2\uffff\1\60\1\160\1\142\1\uffff\1\155\1\145\1\141\1\uffff\1\115\1\60\1\171\1\60\1\162\1\145\1\160\1\154\1\153\1\141\1\60\1\155\1\156\1\141\1\156\1\143\1\164\1\172\1\164\1\143\1\60\1\156\1\143\1\157\1\145\1\164\1\154\1\147\2\60\1\171\1\60\1\uffff\1\146\1\166\1\uffff\1\162\1\143\1\165\1\60\1\162\1\60\1\164\2\60\1\uffff\1\160\1\151\1\145\1\uffff\1\142\1\143\1\uffff\2\154\1\145\1\60\2\154\1\151\1\uffff\1\60\1\uffff\1\151\1\155\1\145\1\157\1\124\1\154\1\uffff\1\160\1\143\1\164\1\60\1\145\1\120\1\141\1\151\1\153\1\151\1\145\1\uffff\1\124\1\153\1\143\1\162\1\60\1\157\1\156\2\uffff\1\60\1\uffff\1\151\1\145\1\163\1\153\1\145\1\uffff\1\156\1\uffff\1\151\2\uffff\1\145\1\141\1\60\1\162\1\154\1\151\1\171\1\145\1\156\1\uffff\1\105\1\165\1\156\1\uffff\1\141\1\145\1\60\1\143\1\171\1\60\1\154\1\145\1\151\1\uffff\1\60\1\162\1\141\1\164\1\157\1\60\1\142\1\143\1\171\1\60\1\153\1\163\1\uffff\1\167\1\151\1\uffff\1\156\5\60\1\157\1\60\1\142\1\uffff\2\141\1\156\1\60\1\122\1\164\1\170\1\145\1\163\1\165\1\142\1\156\1\uffff\1\153\1\160\1\uffff\1\151\1\60\1\157\1\uffff\1\145\1\155\1\151\1\156\1\uffff\1\162\1\154\1\151\1\160\1\uffff\3\60\1\164\1\151\5\uffff\1\156\1\uffff\1\154\2\162\1\151\1\uffff\1\145\1\60\1\160\1\154\1\60\1\163\1\154\1\164\1\124\1\145\1\156\1\uffff\1\156\1\143\1\160\1\157\1\60\2\141\1\156\1\145\3\uffff\1\165\1\164\1\106\1\145\1\171\1\141\1\164\1\146\1\uffff\1\162\1\141\1\uffff\1\60\1\145\1\60\1\171\1\60\1\147\1\60\1\145\1\154\1\156\1\uffff\2\162\1\151\1\60\1\144\1\151\1\141\1\122\1\60\1\164\1\151\1\60\1\145\1\164\1\uffff\1\122\1\uffff\1\160\1\uffff\1\60\1\uffff\1\144\1\151\1\60\1\171\1\141\1\164\1\uffff\1\145\1\157\1\143\1\145\1\uffff\1\151\1\157\1\uffff\1\163\1\151\2\145\1\uffff\1\145\1\156\1\uffff\1\60\1\164\1\151\1\60\1\156\1\164\1\146\1\157\1\156\1\163\1\157\1\146\1\60\1\156\1\147\1\uffff\1\151\1\157\1\uffff\1\60\1\157\1\60\1\156\1\60\1\151\1\156\1\60\1\uffff\1\143\1\60\1\157\1\156\1\uffff\1\162\1\uffff\1\60\1\uffff\1\157\1\104\1\uffff\1\145\1\uffff\1\156\2\60\1\uffff\1\156\1\145\2\60\2\uffff\1\104\1\146\2\uffff\1\145\1\151\1\146\1\156\2\151\1\156\1\164\2\151\1\164\1\157\1\151\1\156\1\157\1\60\1\156\1\uffff\1\60\1\uffff";
+        "\1\0\1\156\1\162\4\141\1\150\1\145\1\154\1\156\1\165\1\uffff\1"+
+        "\51\1\43\1\uffff\1\60\1\157\1\72\1\60\1\uffff\1\141\1\145\1\162"+
+        "\1\145\1\53\1\160\3\75\1\52\1\166\1\145\1\156\2\uffff\1\43\1\50"+
+        "\1\101\1\157\2\75\1\uffff\1\145\1\150\1\141\1\156\1\145\1\157\1"+
+        "\145\1\156\1\103\1\151\1\56\1\uffff\2\0\2\uffff\1\160\1\165\1\uffff"+
+        "\1\151\1\154\1\145\1\141\1\156\1\151\1\155\1\156\1\157\1\154\1\156"+
+        "\1\163\2\157\1\171\1\141\1\157\1\147\1\144\1\154\1\60\1\144\1\164"+
+        "\3\uffff\2\60\2\uffff\1\160\1\120\1\uffff\1\154\1\60\1\uffff\1\60"+
+        "\1\165\1\160\2\uffff\1\50\4\uffff\1\145\1\151\1\60\1\146\1\163\1"+
+        "\uffff\1\141\1\161\3\uffff\1\164\1\145\1\40\13\uffff\2\164\4\uffff"+
+        "\1\170\1\163\3\uffff\1\162\5\uffff\1\141\1\156\1\157\1\141\1\155"+
+        "\1\141\1\146\1\157\1\163\1\156\1\165\1\164\1\157\1\170\1\162\1\157"+
+        "\1\156\1\145\1\156\1\141\1\154\1\uffff\1\56\2\uffff\1\145\1\162"+
+        "\1\155\1\145\1\147\1\163\1\154\1\162\1\160\1\144\1\164\1\160\1\141"+
+        "\1\155\2\163\1\145\1\143\1\144\1\163\1\145\1\154\1\165\1\164\1\150"+
+        "\1\60\1\40\1\60\1\145\1\uffff\1\145\1\157\1\164\2\uffff\1\157\1"+
+        "\162\1\151\1\165\2\uffff\2\145\2\uffff\1\156\1\164\1\uffff\2\141"+
+        "\1\163\1\143\1\164\1\151\1\53\1\60\1\162\1\uffff\1\50\1\145\1\60"+
+        "\1\145\1\40\1\141\1\154\1\157\1\144\1\143\1\162\1\145\1\162\1\164"+
+        "\1\154\1\60\1\143\1\163\1\155\1\142\1\162\1\151\1\143\1\145\1\156"+
+        "\1\124\1\151\1\141\1\163\1\146\1\151\1\154\1\162\2\145\1\60\1\147"+
+        "\1\145\1\144\1\164\2\60\1\143\1\154\1\163\1\154\1\60\1\145\1\165"+
+        "\1\141\1\60\1\153\1\165\2\151\1\105\1\162\1\60\1\164\3\uffff\1\162"+
+        "\1\146\1\155\1\72\1\162\1\145\1\141\1\145\1\124\2\60\1\151\1\165"+
+        "\1\171\1\145\1\162\1\145\1\156\1\163\1\55\1\uffff\1\145\1\141\1"+
+        "\145\1\uffff\1\141\1\uffff\1\147\1\uffff\1\103\1\uffff\1\164\1\60"+
+        "\1\162\1\151\1\153\1\124\1\60\1\171\1\103\1\145\1\uffff\1\162\1"+
+        "\145\1\114\1\103\1\60\1\151\1\156\1\143\1\154\1\143\1\123\2\157"+
+        "\1\145\1\164\1\143\1\145\1\60\1\164\1\145\1\156\1\163\1\162\1\uffff"+
+        "\1\145\3\60\2\uffff\1\150\1\145\1\150\1\163\1\uffff\1\124\1\155"+
+        "\1\151\1\uffff\1\61\2\143\1\166\1\154\1\156\1\uffff\1\103\1\164"+
+        "\1\151\1\141\1\uffff\1\164\1\145\1\142\1\60\1\162\2\uffff\1\156"+
+        "\1\154\2\103\1\145\1\60\1\147\1\105\1\110\1\uffff\1\146\1\162\2"+
+        "\156\1\145\1\156\1\154\1\151\1\145\1\154\1\151\1\141\1\171\1\uffff"+
+        "\1\144\1\164\1\60\1\171\1\uffff\1\122\1\141\1\156\1\154\1\141\1"+
+        "\145\1\103\1\151\1\154\1\uffff\2\143\1\141\1\165\1\145\1\164\1\60"+
+        "\1\156\1\162\1\150\2\162\1\uffff\1\60\1\162\1\60\1\163\1\141\1\162"+
+        "\3\uffff\1\60\1\144\1\156\1\60\1\72\1\162\1\145\1\156\1\157\2\60"+
+        "\1\145\1\141\2\145\1\124\1\141\1\156\1\154\1\60\1\156\1\164\1\60"+
+        "\1\155\1\154\1\uffff\1\151\1\147\1\164\1\154\1\141\1\154\1\164\1"+
+        "\uffff\1\60\1\155\2\uffff\1\60\1\122\1\143\1\144\1\162\1\151\2\157"+
+        "\1\146\1\165\1\156\1\154\1\162\1\160\1\105\1\151\1\uffff\1\160\1"+
+        "\145\1\154\1\164\1\157\1\156\1\164\1\154\1\164\1\157\1\164\1\151"+
+        "\1\164\1\163\1\144\1\162\1\uffff\3\60\1\145\1\163\1\uffff\1\103"+
+        "\1\154\1\uffff\1\151\1\164\1\60\1\uffff\1\103\1\147\2\uffff\1\151"+
+        "\1\60\1\155\1\106\2\uffff\1\60\1\154\1\60\1\155\1\171\1\154\1\164"+
+        "\1\157\1\uffff\1\145\1\141\1\uffff\1\160\1\145\1\147\1\103\1\60"+
+        "\1\157\1\164\1\157\1\151\1\171\1\uffff\1\160\1\uffff\2\145\2\60"+
+        "\1\164\1\143\1\156\1\60\1\163\1\165\1\164\1\151\1\145\1\154\1\171"+
+        "\1\157\1\145\1\141\1\165\1\151\1\143\1\105\1\145\1\157\1\145\1\143"+
+        "\1\123\1\144\1\145\1\151\1\145\1\151\3\uffff\1\164\1\145\1\154\1"+
+        "\60\1\157\1\151\1\uffff\1\154\1\103\1\147\1\uffff\1\145\1\157\1"+
+        "\uffff\1\115\1\uffff\1\60\1\160\1\165\1\151\1\143\1\144\1\104\1"+
+        "\164\1\163\1\147\1\154\1\141\1\uffff\1\143\1\164\1\143\1\172\1\160"+
+        "\1\164\1\146\1\60\1\uffff\1\141\1\171\1\uffff\1\60\1\153\1\60\1"+
+        "\uffff\1\60\1\163\1\151\1\141\1\60\1\145\1\160\1\156\1\60\1\154"+
+        "\1\145\1\164\1\153\1\141\1\154\1\171\1\103\1\143\1\162\1\153\1\141"+
+        "\1\145\1\156\1\157\1\156\1\143\1\151\1\143\1\157\1\uffff\1\156\2"+
+        "\157\1\154\1\147\1\156\1\154\1\141\1\uffff\2\145\1\164\1\153\1\60"+
+        "\1\145\1\151\1\40\1\145\1\157\1\154\1\153\1\145\1\153\1\141\1\145"+
+        "\1\171\1\60\1\171\1\uffff\1\162\1\160\1\uffff\1\60\1\151\1\145\2"+
+        "\uffff\1\60\1\160\1\142\1\uffff\1\155\1\145\1\141\1\uffff\1\115"+
+        "\1\60\1\171\1\60\1\162\1\145\1\160\1\154\1\153\1\141\1\60\1\155"+
+        "\1\156\1\141\1\156\1\143\1\164\1\172\1\164\1\143\1\60\1\156\1\143"+
+        "\1\157\1\145\1\164\1\154\1\147\2\60\1\171\1\60\1\uffff\1\146\1\166"+
+        "\1\uffff\1\162\1\143\1\165\1\60\1\162\1\60\1\164\2\60\1\uffff\1"+
+        "\160\1\151\1\145\1\uffff\1\142\1\143\1\uffff\2\154\1\145\1\60\2"+
+        "\154\1\151\1\uffff\1\60\1\uffff\1\151\1\155\1\145\1\157\1\124\1"+
+        "\154\1\uffff\1\160\1\143\1\164\1\60\1\145\1\120\1\141\1\151\1\153"+
+        "\1\151\1\145\1\uffff\1\124\1\153\1\143\1\162\1\60\1\157\1\156\2"+
+        "\uffff\1\60\1\uffff\1\151\1\145\1\163\1\153\1\145\1\uffff\1\156"+
+        "\1\uffff\1\151\2\uffff\1\145\1\141\1\60\1\162\1\154\1\151\1\171"+
+        "\1\145\1\156\1\uffff\1\105\1\165\1\156\1\uffff\1\141\1\145\1\60"+
+        "\1\143\1\171\1\60\1\154\1\145\1\151\1\uffff\1\60\1\162\1\141\1\164"+
+        "\1\157\1\60\1\142\1\143\1\171\1\60\1\153\1\163\1\uffff\1\167\1\151"+
+        "\1\uffff\1\156\5\60\1\157\1\60\1\142\1\uffff\2\141\1\156\1\60\1"+
+        "\122\1\164\1\170\1\145\1\163\1\165\1\142\1\156\1\uffff\1\153\1\160"+
+        "\1\uffff\1\151\1\60\1\157\1\uffff\1\145\1\155\1\151\1\156\1\uffff"+
+        "\1\162\1\154\1\151\1\160\1\uffff\3\60\1\164\1\151\5\uffff\1\156"+
+        "\1\uffff\1\154\2\162\1\151\1\uffff\1\145\1\60\1\160\1\154\1\60\1"+
+        "\163\1\154\1\164\1\124\1\145\1\156\1\uffff\1\156\1\143\1\160\1\157"+
+        "\1\60\2\141\1\156\1\145\3\uffff\1\165\1\164\1\106\1\145\1\171\1"+
+        "\141\1\164\1\146\1\uffff\1\162\1\141\1\uffff\1\60\1\145\1\60\1\171"+
+        "\1\60\1\147\1\60\1\145\1\154\1\156\1\uffff\2\162\1\151\1\60\1\144"+
+        "\1\151\1\141\1\122\1\60\1\164\1\151\1\60\1\145\1\164\1\uffff\1\122"+
+        "\1\uffff\1\160\1\uffff\1\60\1\uffff\1\144\1\151\1\60\1\171\1\141"+
+        "\1\164\1\uffff\1\145\1\157\1\143\1\145\1\uffff\1\151\1\157\1\uffff"+
+        "\1\163\1\151\2\145\1\uffff\1\145\1\156\1\uffff\1\60\1\164\1\151"+
+        "\1\60\1\156\1\164\1\146\1\157\1\156\1\163\1\157\1\146\1\60\1\156"+
+        "\1\147\1\uffff\1\151\1\157\1\uffff\1\60\1\157\1\60\1\156\1\60\1"+
+        "\151\1\156\1\60\1\uffff\1\143\1\60\1\157\1\156\1\uffff\1\162\1\uffff"+
+        "\1\60\1\uffff\1\157\1\104\1\uffff\1\145\1\uffff\1\156\2\60\1\uffff"+
+        "\1\156\1\145\2\60\2\uffff\1\104\1\146\2\uffff\1\145\1\151\1\146"+
+        "\1\156\2\151\1\156\1\164\2\151\1\164\1\157\1\151\1\156\1\157\1\60"+
+        "\1\156\1\uffff\1\60\1\uffff";
     static final String DFA15_maxS =
-        "\1\uffff\1\170\1\162\1\151\1\167\1\162\1\157\1\162\1\157\1\163\1\156\1\165\1\uffff\1\51\1\163\1\uffff\1\172\1\171\1\72\1\55\1\uffff\1\150\1\157\1\162\1\164\1\165\2\75\1\76\2\75\1\166\1\145\1\156\2\uffff\1\157\1\50\1\172\1\157\2\75\1\uffff\1\145\1\157\1\141\1\156\1\145\1\157\1\151\1\156\1\127\1\151\1\71\1\uffff\2\uffff\2\uffff\1\164\1\165\1\uffff\1\165\1\154\1\145\1\157\1\156\1\151\1\155\1\156\1\157\1\154\1\156\1\163\2\157\1\171\1\164\1\157\1\147\1\171\1\154\1\172\1\144\1\164\3\uffff\2\172\2\uffff\1\160\1\120\1\uffff\1\162\1\172\1\uffff\1\172\1\165\1\160\6\uffff\1\145\1\151\1\172\1\156\1\163\1\uffff\1\162\1\161\1\164\1\145\1\40\17\uffff\2\164\4\uffff\1\170\1\163\3\uffff\1\162\5\uffff\1\154\1\156\1\157\1\141\1\155\1\141\1\146\1\170\1\163\1\156\2\165\1\157\1\170\1\162\1\157\1\160\1\151\1\156\1\141\1\154\1\uffff\1\71\2\uffff\1\145\1\162\1\155\1\145\1\147\1\163\1\154\1\162\1\160\1\144\1\164\1\160\1\151\1\155\1\163\1\164\1\145\1\143\1\144\1\163\1\145\1\154\1\165\1\164\1\150\1\172\1\40\1\172\1\145\1\uffff\1\145\1\157\1\164\2\uffff\1\157\1\162\1\151\1\165\2\uffff\2\145\1\156\1\164\1\uffff\2\141\1\163\1\143\1\164\1\151\1\165\1\172\1\162\1\uffff\1\50\1\145\1\172\1\145\1\40\1\141\1\154\1\157\1\144\1\143\1\162\1\145\1\162\1\164\1\154\1\172\1\143\1\163\1\155\1\160\1\162\1\156\1\143\1\145\1\156\1\124\1\151\1\146\1\163\1\164\1\151\1\154\1\162\2\145\1\172\1\147\1\145\1\144\1\164\2\172\1\143\1\154\1\163\1\154\1\172\1\145\1\165\1\141\1\172\1\153\1\165\2\151\1\105\1\162\1\172\1\164\3\uffff\1\162\1\146\1\155\1\72\1\162\1\145\1\141\1\145\1\124\2\172\1\151\1\165\1\171\1\145\1\162\1\145\1\156\1\163\1\76\1\uffff\1\145\1\141\1\145\1\uffff\1\141\1\uffff\1\147\1\uffff\1\125\1\uffff\1\164\1\172\1\162\1\151\1\153\1\124\1\172\1\171\1\126\1\145\1\uffff\1\162\1\145\1\114\1\103\1\172\1\151\1\156\1\143\1\154\1\143\1\123\2\157\1\145\1\164\1\143\1\145\1\172\1\164\1\145\1\156\1\163\1\162\1\uffff\1\145\3\172\2\uffff\1\150\1\151\1\150\1\163\1\uffff\1\124\1\155\1\151\1\uffff\1\124\2\143\1\166\1\154\1\156\1\uffff\1\126\1\164\1\151\1\141\1\uffff\1\164\1\145\1\142\1\172\1\162\2\uffff\1\156\1\154\1\120\1\103\1\145\1\172\1\147\1\105\1\124\1\uffff\1\146\1\162\2\156\1\145\1\156\1\154\1\151\1\145\1\154\1\165\1\141\1\171\1\uffff\1\144\1\164\1\172\1\171\1\uffff\1\122\1\141\1\156\1\154\1\141\1\145\1\103\1\151\1\154\1\uffff\2\143\1\141\1\165\1\145\1\164\1\172\1\156\1\162\1\150\2\162\1\uffff\1\172\1\162\1\172\1\163\1\141\1\162\3\uffff\1\172\1\144\1\156\1\172\1\72\1\162\1\145\1\156\1\157\2\172\1\145\1\141\2\145\1\124\1\141\1\156\1\154\1\172\1\156\1\164\1\172\1\155\1\154\1\uffff\1\151\1\147\1\164\1\154\1\141\1\154\1\164\1\uffff\1\172\1\155\2\uffff\1\172\1\122\1\143\1\144\1\162\1\151\2\157\1\146\1\165\1\156\1\154\1\162\1\160\1\124\1\151\1\uffff\1\160\1\145\1\154\1\164\1\157\1\156\1\164\1\154\1\164\1\157\1\164\1\151\1\164\1\163\1\144\1\162\1\uffff\3\172\1\145\1\163\1\uffff\1\103\1\154\1\uffff\1\151\1\164\1\172\1\uffff\1\103\1\147\2\uffff\1\151\1\172\1\155\1\106\2\uffff\1\172\1\154\1\172\1\155\1\171\1\154\1\164\1\157\1\uffff\1\145\1\141\1\uffff\1\160\1\145\1\147\1\126\1\172\1\157\1\164\1\157\1\151\1\171\1\uffff\1\160\1\uffff\2\145\2\172\1\164\1\143\1\156\1\172\1\163\1\165\1\164\1\151\1\145\1\154\1\171\1\157\1\145\1\141\1\165\1\151\1\143\1\126\1\145\1\157\1\145\1\143\1\123\1\144\1\145\1\151\1\145\1\151\3\uffff\1\164\1\145\1\154\1\172\1\157\1\151\1\uffff\1\154\1\103\1\147\1\uffff\1\145\1\157\1\uffff\1\115\1\uffff\1\172\1\160\1\165\1\151\1\143\1\144\1\104\1\164\1\163\1\147\1\154\1\141\1\uffff\1\143\1\164\1\143\1\172\1\160\1\164\1\146\1\172\1\uffff\1\141\1\171\1\uffff\1\172\1\153\1\172\1\uffff\1\172\1\163\1\151\1\141\1\172\1\145\1\160\1\156\1\172\1\154\1\145\1\164\1\153\1\141\1\154\1\171\1\103\1\143\1\162\1\153\1\141\1\145\1\156\1\157\1\156\1\143\1\151\1\143\1\157\1\uffff\1\156\2\157\1\154\1\147\1\156\1\154\1\141\1\uffff\2\145\1\164\1\153\1\172\1\145\1\151\1\40\1\145\1\157\1\154\1\153\1\145\1\153\1\141\1\145\1\171\1\172\1\171\1\uffff\1\162\1\160\1\uffff\1\172\1\151\1\145\2\uffff\1\172\1\160\1\142\1\uffff\1\155\1\145\1\141\1\uffff\1\120\1\172\1\171\1\172\1\162\1\145\1\160\1\154\1\153\1\141\1\172\1\155\1\156\1\141\1\156\1\143\1\164\1\172\1\164\1\143\1\172\1\156\1\143\1\157\1\145\1\164\1\154\1\147\2\172\1\171\1\172\1\uffff\1\146\1\166\1\uffff\1\162\1\143\1\165\1\172\1\162\1\172\1\164\2\172\1\uffff\1\160\1\151\1\145\1\uffff\1\142\1\146\1\uffff\2\154\1\145\1\172\2\154\1\151\1\uffff\1\172\1\uffff\1\151\1\155\1\145\1\157\1\124\1\154\1\uffff\1\160\1\143\1\164\1\172\1\145\1\123\1\141\1\151\1\153\1\151\1\145\1\uffff\1\124\1\153\1\143\1\162\1\172\1\157\1\156\2\uffff\1\172\1\uffff\1\151\1\145\1\163\1\153\1\145\1\uffff\1\156\1\uffff\1\151\2\uffff\1\145\1\141\1\172\1\162\1\154\1\151\1\171\1\145\1\156\1\uffff\1\122\1\165\1\156\1\uffff\1\141\1\145\1\172\1\143\1\171\1\172\1\154\1\145\1\151\1\uffff\1\172\1\162\1\141\1\164\1\157\1\172\1\142\1\146\1\171\1\172\1\153\1\163\1\uffff\1\167\1\151\1\uffff\1\156\5\172\1\157\1\172\1\142\1\uffff\2\141\1\156\1\172\1\122\1\164\1\170\1\145\1\163\1\165\1\142\1\156\1\uffff\1\153\1\160\1\uffff\1\151\1\172\1\157\1\uffff\1\145\1\155\1\151\1\156\1\uffff\1\162\1\154\1\151\1\160\1\uffff\3\172\1\164\1\151\5\uffff\1\156\1\uffff\1\154\2\162\1\151\1\uffff\1\145\1\172\1\160\1\154\1\172\1\163\1\154\1\164\1\124\1\145\1\156\1\uffff\1\156\1\143\1\160\1\157\1\172\2\141\1\156\1\145\3\uffff\1\165\1\164\1\106\1\145\1\171\1\141\1\164\1\146\1\uffff\1\162\1\141\1\uffff\1\172\1\145\1\172\1\171\1\172\1\147\1\172\1\145\1\154\1\156\1\uffff\2\162\1\151\1\172\1\144\1\151\1\141\1\122\1\172\1\164\1\151\1\172\1\145\1\164\1\uffff\1\122\1\uffff\1\160\1\uffff\1\172\1\uffff\1\144\1\151\1\172\1\171\1\141\1\164\1\uffff\1\145\1\157\1\143\1\145\1\uffff\1\151\1\157\1\uffff\1\163\1\151\2\145\1\uffff\1\145\1\156\1\uffff\1\172\1\164\1\151\1\172\1\156\1\164\1\146\1\157\1\156\1\163\1\157\1\146\1\172\1\156\1\147\1\uffff\1\151\1\157\1\uffff\1\172\1\157\1\172\1\156\1\172\1\151\1\156\1\172\1\uffff\1\143\1\172\1\157\1\156\1\uffff\1\162\1\uffff\1\172\1\uffff\1\157\1\104\1\uffff\1\145\1\uffff\1\156\2\172\1\uffff\1\156\1\145\2\172\2\uffff\1\104\1\146\2\uffff\1\145\1\151\1\146\1\156\2\151\1\156\1\164\2\151\1\164\1\157\1\151\1\156\1\157\1\172\1\156\1\uffff\1\172\1\uffff";
+        "\1\uffff\1\170\1\162\1\151\1\167\1\162\1\157\1\162\1\157\1\163"+
+        "\1\156\1\165\1\uffff\1\51\1\163\1\uffff\1\172\1\171\1\72\1\76\1"+
+        "\uffff\1\150\1\157\1\162\1\164\1\55\1\165\4\75\1\166\1\145\1\156"+
+        "\2\uffff\1\157\1\50\1\172\1\157\2\75\1\uffff\1\145\1\157\1\141\1"+
+        "\156\1\145\1\157\1\151\1\156\1\127\1\151\1\71\1\uffff\2\uffff\2"+
+        "\uffff\1\164\1\165\1\uffff\1\165\1\154\1\145\1\157\1\156\1\151\1"+
+        "\155\1\156\1\157\1\154\1\156\1\163\2\157\1\171\1\164\1\157\1\147"+
+        "\1\171\1\154\1\172\1\144\1\164\3\uffff\2\172\2\uffff\1\160\1\120"+
+        "\1\uffff\1\162\1\172\1\uffff\1\172\1\165\1\160\2\uffff\1\50\4\uffff"+
+        "\1\145\1\151\1\172\1\156\1\163\1\uffff\1\162\1\161\3\uffff\1\164"+
+        "\1\145\1\40\13\uffff\2\164\4\uffff\1\170\1\163\3\uffff\1\162\5\uffff"+
+        "\1\154\1\156\1\157\1\141\1\155\1\141\1\146\1\170\1\163\1\156\2\165"+
+        "\1\157\1\170\1\162\1\157\1\160\1\151\1\156\1\141\1\154\1\uffff\1"+
+        "\71\2\uffff\1\145\1\162\1\155\1\145\1\147\1\163\1\154\1\162\1\160"+
+        "\1\144\1\164\1\160\1\151\1\155\1\163\1\164\1\145\1\143\1\144\1\163"+
+        "\1\145\1\154\1\165\1\164\1\150\1\172\1\40\1\172\1\145\1\uffff\1"+
+        "\145\1\157\1\164\2\uffff\1\157\1\162\1\151\1\165\2\uffff\2\145\2"+
+        "\uffff\1\156\1\164\1\uffff\2\141\1\163\1\143\1\164\1\151\1\165\1"+
+        "\172\1\162\1\uffff\1\50\1\145\1\172\1\145\1\40\1\141\1\154\1\157"+
+        "\1\144\1\143\1\162\1\145\1\162\1\164\1\154\1\172\1\143\1\163\1\155"+
+        "\1\160\1\162\1\156\1\143\1\145\1\156\1\124\1\151\1\146\1\163\1\164"+
+        "\1\151\1\154\1\162\2\145\1\172\1\147\1\145\1\144\1\164\2\172\1\143"+
+        "\1\154\1\163\1\154\1\172\1\145\1\165\1\141\1\172\1\153\1\165\2\151"+
+        "\1\105\1\162\1\172\1\164\3\uffff\1\162\1\146\1\155\1\72\1\162\1"+
+        "\145\1\141\1\145\1\124\2\172\1\151\1\165\1\171\1\145\1\162\1\145"+
+        "\1\156\1\163\1\76\1\uffff\1\145\1\141\1\145\1\uffff\1\141\1\uffff"+
+        "\1\147\1\uffff\1\125\1\uffff\1\164\1\172\1\162\1\151\1\153\1\124"+
+        "\1\172\1\171\1\126\1\145\1\uffff\1\162\1\145\1\114\1\103\1\172\1"+
+        "\151\1\156\1\143\1\154\1\143\1\123\2\157\1\145\1\164\1\143\1\145"+
+        "\1\172\1\164\1\145\1\156\1\163\1\162\1\uffff\1\145\3\172\2\uffff"+
+        "\1\150\1\151\1\150\1\163\1\uffff\1\124\1\155\1\151\1\uffff\1\124"+
+        "\2\143\1\166\1\154\1\156\1\uffff\1\126\1\164\1\151\1\141\1\uffff"+
+        "\1\164\1\145\1\142\1\172\1\162\2\uffff\1\156\1\154\1\120\1\103\1"+
+        "\145\1\172\1\147\1\105\1\124\1\uffff\1\146\1\162\2\156\1\145\1\156"+
+        "\1\154\1\151\1\145\1\154\1\165\1\141\1\171\1\uffff\1\144\1\164\1"+
+        "\172\1\171\1\uffff\1\122\1\141\1\156\1\154\1\141\1\145\1\103\1\151"+
+        "\1\154\1\uffff\2\143\1\141\1\165\1\145\1\164\1\172\1\156\1\162\1"+
+        "\150\2\162\1\uffff\1\172\1\162\1\172\1\163\1\141\1\162\3\uffff\1"+
+        "\172\1\144\1\156\1\172\1\72\1\162\1\145\1\156\1\157\2\172\1\145"+
+        "\1\141\2\145\1\124\1\141\1\156\1\154\1\172\1\156\1\164\1\172\1\155"+
+        "\1\154\1\uffff\1\151\1\147\1\164\1\154\1\141\1\154\1\164\1\uffff"+
+        "\1\172\1\155\2\uffff\1\172\1\122\1\143\1\144\1\162\1\151\2\157\1"+
+        "\146\1\165\1\156\1\154\1\162\1\160\1\124\1\151\1\uffff\1\160\1\145"+
+        "\1\154\1\164\1\157\1\156\1\164\1\154\1\164\1\157\1\164\1\151\1\164"+
+        "\1\163\1\144\1\162\1\uffff\3\172\1\145\1\163\1\uffff\1\103\1\154"+
+        "\1\uffff\1\151\1\164\1\172\1\uffff\1\103\1\147\2\uffff\1\151\1\172"+
+        "\1\155\1\106\2\uffff\1\172\1\154\1\172\1\155\1\171\1\154\1\164\1"+
+        "\157\1\uffff\1\145\1\141\1\uffff\1\160\1\145\1\147\1\126\1\172\1"+
+        "\157\1\164\1\157\1\151\1\171\1\uffff\1\160\1\uffff\2\145\2\172\1"+
+        "\164\1\143\1\156\1\172\1\163\1\165\1\164\1\151\1\145\1\154\1\171"+
+        "\1\157\1\145\1\141\1\165\1\151\1\143\1\126\1\145\1\157\1\145\1\143"+
+        "\1\123\1\144\1\145\1\151\1\145\1\151\3\uffff\1\164\1\145\1\154\1"+
+        "\172\1\157\1\151\1\uffff\1\154\1\103\1\147\1\uffff\1\145\1\157\1"+
+        "\uffff\1\115\1\uffff\1\172\1\160\1\165\1\151\1\143\1\144\1\104\1"+
+        "\164\1\163\1\147\1\154\1\141\1\uffff\1\143\1\164\1\143\1\172\1\160"+
+        "\1\164\1\146\1\172\1\uffff\1\141\1\171\1\uffff\1\172\1\153\1\172"+
+        "\1\uffff\1\172\1\163\1\151\1\141\1\172\1\145\1\160\1\156\1\172\1"+
+        "\154\1\145\1\164\1\153\1\141\1\154\1\171\1\103\1\143\1\162\1\153"+
+        "\1\141\1\145\1\156\1\157\1\156\1\143\1\151\1\143\1\157\1\uffff\1"+
+        "\156\2\157\1\154\1\147\1\156\1\154\1\141\1\uffff\2\145\1\164\1\153"+
+        "\1\172\1\145\1\151\1\40\1\145\1\157\1\154\1\153\1\145\1\153\1\141"+
+        "\1\145\1\171\1\172\1\171\1\uffff\1\162\1\160\1\uffff\1\172\1\151"+
+        "\1\145\2\uffff\1\172\1\160\1\142\1\uffff\1\155\1\145\1\141\1\uffff"+
+        "\1\120\1\172\1\171\1\172\1\162\1\145\1\160\1\154\1\153\1\141\1\172"+
+        "\1\155\1\156\1\141\1\156\1\143\1\164\1\172\1\164\1\143\1\172\1\156"+
+        "\1\143\1\157\1\145\1\164\1\154\1\147\2\172\1\171\1\172\1\uffff\1"+
+        "\146\1\166\1\uffff\1\162\1\143\1\165\1\172\1\162\1\172\1\164\2\172"+
+        "\1\uffff\1\160\1\151\1\145\1\uffff\1\142\1\146\1\uffff\2\154\1\145"+
+        "\1\172\2\154\1\151\1\uffff\1\172\1\uffff\1\151\1\155\1\145\1\157"+
+        "\1\124\1\154\1\uffff\1\160\1\143\1\164\1\172\1\145\1\123\1\141\1"+
+        "\151\1\153\1\151\1\145\1\uffff\1\124\1\153\1\143\1\162\1\172\1\157"+
+        "\1\156\2\uffff\1\172\1\uffff\1\151\1\145\1\163\1\153\1\145\1\uffff"+
+        "\1\156\1\uffff\1\151\2\uffff\1\145\1\141\1\172\1\162\1\154\1\151"+
+        "\1\171\1\145\1\156\1\uffff\1\122\1\165\1\156\1\uffff\1\141\1\145"+
+        "\1\172\1\143\1\171\1\172\1\154\1\145\1\151\1\uffff\1\172\1\162\1"+
+        "\141\1\164\1\157\1\172\1\142\1\146\1\171\1\172\1\153\1\163\1\uffff"+
+        "\1\167\1\151\1\uffff\1\156\5\172\1\157\1\172\1\142\1\uffff\2\141"+
+        "\1\156\1\172\1\122\1\164\1\170\1\145\1\163\1\165\1\142\1\156\1\uffff"+
+        "\1\153\1\160\1\uffff\1\151\1\172\1\157\1\uffff\1\145\1\155\1\151"+
+        "\1\156\1\uffff\1\162\1\154\1\151\1\160\1\uffff\3\172\1\164\1\151"+
+        "\5\uffff\1\156\1\uffff\1\154\2\162\1\151\1\uffff\1\145\1\172\1\160"+
+        "\1\154\1\172\1\163\1\154\1\164\1\124\1\145\1\156\1\uffff\1\156\1"+
+        "\143\1\160\1\157\1\172\2\141\1\156\1\145\3\uffff\1\165\1\164\1\106"+
+        "\1\145\1\171\1\141\1\164\1\146\1\uffff\1\162\1\141\1\uffff\1\172"+
+        "\1\145\1\172\1\171\1\172\1\147\1\172\1\145\1\154\1\156\1\uffff\2"+
+        "\162\1\151\1\172\1\144\1\151\1\141\1\122\1\172\1\164\1\151\1\172"+
+        "\1\145\1\164\1\uffff\1\122\1\uffff\1\160\1\uffff\1\172\1\uffff\1"+
+        "\144\1\151\1\172\1\171\1\141\1\164\1\uffff\1\145\1\157\1\143\1\145"+
+        "\1\uffff\1\151\1\157\1\uffff\1\163\1\151\2\145\1\uffff\1\145\1\156"+
+        "\1\uffff\1\172\1\164\1\151\1\172\1\156\1\164\1\146\1\157\1\156\1"+
+        "\163\1\157\1\146\1\172\1\156\1\147\1\uffff\1\151\1\157\1\uffff\1"+
+        "\172\1\157\1\172\1\156\1\172\1\151\1\156\1\172\1\uffff\1\143\1\172"+
+        "\1\157\1\156\1\uffff\1\162\1\uffff\1\172\1\uffff\1\157\1\104\1\uffff"+
+        "\1\145\1\uffff\1\156\2\172\1\uffff\1\156\1\145\2\172\2\uffff\1\104"+
+        "\1\146\2\uffff\1\145\1\151\1\146\1\156\2\151\1\156\1\164\2\151\1"+
+        "\164\1\157\1\151\1\156\1\157\1\172\1\156\1\uffff\1\172\1\uffff";
     static final String DFA15_acceptS =
-        "\14\uffff\1\20\2\uffff\1\23\4\uffff\1\32\15\uffff\1\55\1\56\6\uffff\1\121\13\uffff\1\u00af\2\uffff\1\u00b3\1\u00b4\2\uffff\1\u00af\27\uffff\1\20\1\71\1\21\2\uffff\1\63\1\64\2\uffff\1\23\2\uffff\1\103\3\uffff\1\60\1\30\1\70\1\73\1\31\1\32\5\uffff\1\36\5\uffff\1\45\1\65\1\57\1\46\1\47\1\137\1\u00ae\1\72\1\50\1\74\1\51\1\u00b1\1\u00b2\1\75\1\52\2\uffff\1\55\1\56\1\61\1\62\2\uffff\1\77\1\76\1\101\1\uffff\1\116\1\106\1\115\1\107\1\121\25\uffff\1\u00ad\1\uffff\1\u00b0\1\u00b3\35\uffff\1\120\3\uffff\1\40\1\34\4\uffff\1\105\1\27\4\uffff\1\35\11\uffff\1\102\73\uffff\1\14\1\100\1\15\24\uffff\1\114\3\uffff\1\41\1\uffff\1\53\1\uffff\1\166\1\uffff\1\104\12\uffff\1\170\27\uffff\1\3\4\uffff\1\7\1\13\4\uffff\1\26\3\uffff\1\141\6\uffff\1\127\4\uffff\1\22\5\uffff\1\167\1\33\11\uffff\1\113\15\uffff\1\161\4\uffff\1\145\11\uffff\1\u00a2\14\uffff\1\u00a3\6\uffff\1\4\1\u0087\1\5\31\uffff\1\66\7\uffff\1\37\2\uffff\1\111\1\112\20\uffff\1\140\20\uffff\1\u008f\5\uffff\1\u00a5\2\uffff\1\1\3\uffff\1\131\2\uffff\1\6\1\24\4\uffff\1\u009f\1\u00a0\10\uffff\1\u00ac\2\uffff\1\117\12\uffff\1\142\1\uffff\1\157\40\uffff\1\u009e\1\u0094\1\u00ab\6\uffff\1\42\3\uffff\1\10\2\uffff\1\11\1\uffff\1\12\14\uffff\1\132\10\uffff\1\67\2\uffff\1\162\3\uffff\1\143\35\uffff\1\2\10\uffff\1\144\23\uffff\1\164\2\uffff\1\u0083\3\uffff\1\135\1\150\3\uffff\1\175\3\uffff\1\176\40\uffff\1\16\2\uffff\1\25\11\uffff\1\160\3\uffff\1\u0095\2\uffff\1\153\7\uffff\1\151\1\uffff\1\u009c\6\uffff\1\u0088\13\uffff\1\136\7\uffff\1\u0090\1\152\1\uffff\1\u009d\5\uffff\1\u0096\1\uffff\1\u00a9\1\uffff\1\172\1\110\11\uffff\1\177\3\uffff\1\u008a\11\uffff\1\u008c\14\uffff\1\171\2\uffff\1\u0089\11\uffff\1\174\14\uffff\1\173\2\uffff\1\u0086\3\uffff\1\u008d\4\uffff\1\u0092\4\uffff\1\u0099\5\uffff\1\u0093\1\43\1\u00a6\1\u00a7\1\u0097\1\uffff\1\u0080\4\uffff\1\154\13\uffff\1\u008b\11\uffff\1\u009a\1\44\1\u0091\10\uffff\1\165\2\uffff\1\146\12\uffff\1\u00a1\16\uffff\1\147\1\uffff\1\163\1\uffff\1\u0082\1\uffff\1\u009b\6\uffff\1\u0085\4\uffff\1\123\2\uffff\1\156\4\uffff\1\u0098\2\uffff\1\u00a8\17\uffff\1\122\2\uffff\1\u0084\10\uffff\1\u0081\4\uffff\1\17\1\uffff\1\54\1\uffff\1\134\2\uffff\1\155\1\uffff\1\u00a4\3\uffff\1\125\4\uffff\1\126\1\u00aa\2\uffff\1\u008e\1\124\21\uffff\1\133\1\uffff\1\130";
+        "\14\uffff\1\20\2\uffff\1\23\4\uffff\1\32\15\uffff\1\56\1\57\6\uffff"+
+        "\1\122\13\uffff\1\u00b0\2\uffff\1\u00b4\1\u00b5\2\uffff\1\u00b0"+
+        "\27\uffff\1\20\1\72\1\21\2\uffff\1\64\1\65\2\uffff\1\23\2\uffff"+
+        "\1\104\3\uffff\1\61\1\30\1\uffff\1\50\1\u00af\1\73\1\32\5\uffff"+
+        "\1\36\2\uffff\1\71\1\74\1\40\3\uffff\1\46\1\66\1\60\1\47\1\51\1"+
+        "\75\1\52\1\u00b2\1\u00b3\1\76\1\53\2\uffff\1\56\1\57\1\62\1\63\2"+
+        "\uffff\1\100\1\77\1\102\1\uffff\1\117\1\107\1\116\1\110\1\122\25"+
+        "\uffff\1\u00ae\1\uffff\1\u00b1\1\u00b4\35\uffff\1\121\3\uffff\1"+
+        "\41\1\34\4\uffff\1\106\1\27\2\uffff\1\31\1\140\2\uffff\1\35\11\uffff"+
+        "\1\103\73\uffff\1\14\1\101\1\15\24\uffff\1\115\3\uffff\1\42\1\uffff"+
+        "\1\54\1\uffff\1\167\1\uffff\1\105\12\uffff\1\171\27\uffff\1\3\4"+
+        "\uffff\1\7\1\13\4\uffff\1\26\3\uffff\1\142\6\uffff\1\130\4\uffff"+
+        "\1\22\5\uffff\1\170\1\33\11\uffff\1\114\15\uffff\1\162\4\uffff\1"+
+        "\146\11\uffff\1\u00a3\14\uffff\1\u00a4\6\uffff\1\4\1\u0088\1\5\31"+
+        "\uffff\1\67\7\uffff\1\37\2\uffff\1\112\1\113\20\uffff\1\141\20\uffff"+
+        "\1\u0090\5\uffff\1\u00a6\2\uffff\1\1\3\uffff\1\132\2\uffff\1\6\1"+
+        "\24\4\uffff\1\u00a0\1\u00a1\10\uffff\1\u00ad\2\uffff\1\120\12\uffff"+
+        "\1\143\1\uffff\1\160\40\uffff\1\u009f\1\u0095\1\u00ac\6\uffff\1"+
+        "\43\3\uffff\1\10\2\uffff\1\11\1\uffff\1\12\14\uffff\1\133\10\uffff"+
+        "\1\70\2\uffff\1\163\3\uffff\1\144\35\uffff\1\2\10\uffff\1\145\23"+
+        "\uffff\1\165\2\uffff\1\u0084\3\uffff\1\136\1\151\3\uffff\1\176\3"+
+        "\uffff\1\177\40\uffff\1\16\2\uffff\1\25\11\uffff\1\161\3\uffff\1"+
+        "\u0096\2\uffff\1\154\7\uffff\1\152\1\uffff\1\u009d\6\uffff\1\u0089"+
+        "\13\uffff\1\137\7\uffff\1\u0091\1\153\1\uffff\1\u009e\5\uffff\1"+
+        "\u0097\1\uffff\1\u00aa\1\uffff\1\173\1\111\11\uffff\1\u0080\3\uffff"+
+        "\1\u008b\11\uffff\1\u008d\14\uffff\1\172\2\uffff\1\u008a\11\uffff"+
+        "\1\175\14\uffff\1\174\2\uffff\1\u0087\3\uffff\1\u008e\4\uffff\1"+
+        "\u0093\4\uffff\1\u009a\5\uffff\1\u0094\1\44\1\u00a7\1\u00a8\1\u0098"+
+        "\1\uffff\1\u0081\4\uffff\1\155\13\uffff\1\u008c\11\uffff\1\u009b"+
+        "\1\45\1\u0092\10\uffff\1\166\2\uffff\1\147\12\uffff\1\u00a2\16\uffff"+
+        "\1\150\1\uffff\1\164\1\uffff\1\u0083\1\uffff\1\u009c\6\uffff\1\u0086"+
+        "\4\uffff\1\124\2\uffff\1\157\4\uffff\1\u0099\2\uffff\1\u00a9\17"+
+        "\uffff\1\123\2\uffff\1\u0085\10\uffff\1\u0082\4\uffff\1\17\1\uffff"+
+        "\1\55\1\uffff\1\135\2\uffff\1\156\1\uffff\1\u00a5\3\uffff\1\126"+
+        "\4\uffff\1\127\1\u00ab\2\uffff\1\u008f\1\125\21\uffff\1\134\1\uffff"+
+        "\1\131";
     static final String DFA15_specialS =
-        "\1\2\66\uffff\1\0\1\1\u0410\uffff}>";
+        "\1\2\66\uffff\1\0\1\1\u0412\uffff}>";
     static final String[] DFA15_transitionS = {
-            "\11\72\2\71\2\72\1\71\22\72\1\71\1\45\1\67\1\27\3\72\1\70\1\23\1\24\1\35\1\32\1\17\1\34\1\37\1\36\12\65\1\22\1\52\1\50\1\33\1\51\2\72\1\13\1\60\1\54\1\61\1\1\1\3\2\66\1\41\10\66\1\53\1\30\1\2\1\56\5\66\1\42\1\72\1\43\1\46\1\63\1\72\1\11\1\44\1\6\1\26\1\62\1\5\1\40\1\66\1\16\1\66\1\64\1\57\1\66\1\55\1\31\1\7\1\66\1\10\1\4\1\21\1\12\1\20\1\25\1\47\2\66\1\14\1\72\1\15\uff82\72",
+            "\11\72\2\71\2\72\1\71\22\72\1\71\1\45\1\67\1\27\3\72\1\70\1"+
+            "\31\1\24\1\35\1\33\1\17\1\23\1\37\1\36\12\65\1\22\1\52\1\50"+
+            "\1\34\1\51\2\72\1\13\1\60\1\54\1\61\1\1\1\3\2\66\1\41\10\66"+
+            "\1\53\1\30\1\2\1\56\5\66\1\42\1\72\1\43\1\46\1\63\1\72\1\11"+
+            "\1\44\1\6\1\26\1\62\1\5\1\40\1\66\1\16\1\66\1\64\1\57\1\66\1"+
+            "\55\1\32\1\7\1\66\1\10\1\4\1\21\1\12\1\20\1\25\1\47\2\66\1\14"+
+            "\1\72\1\15\uff82\72",
             "\1\74\11\uffff\1\73",
             "\1\76",
             "\1\77\7\uffff\1\100",
@@ -5695,21 +6003,22 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\124",
             "",
             "\1\126",
-            "\1\133\12\uffff\1\132\67\uffff\1\131\6\uffff\1\134\1\130\4\uffff\1\135",
+            "\1\133\12\uffff\1\132\67\uffff\1\131\6\uffff\1\134\1\130\4"+
+            "\uffff\1\135",
             "",
             "\12\75\7\uffff\32\75\4\uffff\1\140\1\uffff\1\137\31\75",
             "\1\142\2\uffff\1\143\6\uffff\1\144",
             "\1\145",
-            "\1\147\1\uffff\1\150",
+            "\12\151\3\uffff\1\150\1\147",
             "",
-            "\1\154\6\uffff\1\153",
-            "\1\156\3\uffff\1\157\5\uffff\1\155",
-            "\1\160",
-            "\1\162\16\uffff\1\161",
-            "\1\164\1\uffff\1\165\2\uffff\1\163",
-            "\1\166",
-            "\1\170",
-            "\12\174\3\uffff\1\172\1\173",
+            "\1\155\6\uffff\1\154",
+            "\1\157\3\uffff\1\160\5\uffff\1\156",
+            "\1\161",
+            "\1\163\16\uffff\1\162",
+            "\1\164\1\uffff\1\165",
+            "\1\170\1\uffff\1\171\2\uffff\1\167",
+            "\1\172",
+            "\1\174",
             "\1\176",
             "\1\u0081\4\uffff\1\u0082\15\uffff\1\u0080",
             "\1\u0084",
@@ -5732,7 +6041,8 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u009d",
             "\1\u009f\3\uffff\1\u009e",
             "\1\u00a0",
-            "\1\u00a2\1\u00a7\1\u00a3\3\uffff\1\u00a8\4\uffff\1\u00a5\1\uffff\1\u00a4\2\uffff\1\u00a1\1\uffff\1\u00a6\1\uffff\1\u00a9",
+            "\1\u00a2\1\u00a7\1\u00a3\3\uffff\1\u00a8\4\uffff\1\u00a5\1"+
+            "\uffff\1\u00a4\2\uffff\1\u00a1\1\uffff\1\u00a6\1\uffff\1\u00a9",
             "\1\u00aa",
             "\1\u00ab\1\uffff\12\u00ac",
             "",
@@ -5763,13 +6073,15 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u00c7",
             "\1\u00c9\24\uffff\1\u00c8",
             "\1\u00ca",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\22\75\1\u00cb\7\75",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\22\75\1\u00cb\7"+
+            "\75",
             "\1\u00cd",
             "\1\u00ce",
             "",
             "",
             "",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\10\75\1\u00cf\21\75",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\10\75\1\u00cf\21"+
+            "\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "",
             "",
@@ -5784,38 +6096,32 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u00d9",
             "",
             "",
-            "",
-            "",
-            "",
-            "",
             "\1\u00da",
-            "\1\u00db",
+            "",
+            "",
+            "",
+            "",
+            "\1\u00dc",
+            "\1\u00dd",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u00dd\5\uffff\1\u00de\1\uffff\1\u00df",
-            "\1\u00e0",
+            "\1\u00df\5\uffff\1\u00e0\1\uffff\1\u00e1",
+            "\1\u00e2",
             "",
-            "\1\u00e1\20\uffff\1\u00e2",
-            "\1\u00e3",
-            "\1\u00e4",
+            "\1\u00e3\20\uffff\1\u00e4",
             "\1\u00e5",
+            "",
+            "",
+            "",
             "\1\u00e6",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\u00e7",
             "\1\u00e8",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             "",
@@ -5825,39 +6131,43 @@ public class InternalFSMDslLexer extends Lexer {
             "",
             "",
             "",
+            "",
             "\1\u00eb",
+            "\1\u00ec",
+            "",
+            "",
+            "",
+            "\1\u00ed",
             "",
             "",
             "",
             "",
             "",
-            "\1\u00ed\1\uffff\1\u00ee\10\uffff\1\u00ec",
-            "\1\u00ef",
-            "\1\u00f0",
+            "\1\u00ef\1\uffff\1\u00f0\10\uffff\1\u00ee",
             "\1\u00f1",
             "\1\u00f2",
             "\1\u00f3",
             "\1\u00f4",
-            "\1\u00f5\10\uffff\1\u00f6",
-            "\1\u00f7",
-            "\1\u00f8",
+            "\1\u00f5",
+            "\1\u00f6",
+            "\1\u00f7\10\uffff\1\u00f8",
             "\1\u00f9",
-            "\1\u00fb\1\u00fa",
-            "\1\u00fc",
-            "\1\u00fd",
+            "\1\u00fa",
+            "\1\u00fb",
+            "\1\u00fd\1\u00fc",
             "\1\u00fe",
             "\1\u00ff",
-            "\1\u0101\1\uffff\1\u0100",
-            "\1\u0102\3\uffff\1\u0103",
-            "\1\u0104",
-            "\1\u0105",
+            "\1\u0100",
+            "\1\u0101",
+            "\1\u0103\1\uffff\1\u0102",
+            "\1\u0104\3\uffff\1\u0105",
             "\1\u0106",
+            "\1\u0107",
+            "\1\u0108",
             "",
             "\1\u00ab\1\uffff\12\u00ac",
             "",
             "",
-            "\1\u0107",
-            "\1\u0108",
             "\1\u0109",
             "\1\u010a",
             "\1\u010b",
@@ -5868,12 +6178,12 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u0110",
             "\1\u0111",
             "\1\u0112",
-            "\1\u0114\7\uffff\1\u0113",
-            "\1\u0115",
-            "\1\u0116",
-            "\1\u0117\1\u0118",
-            "\1\u0119",
-            "\1\u011a",
+            "\1\u0113",
+            "\1\u0114",
+            "\1\u0116\7\uffff\1\u0115",
+            "\1\u0117",
+            "\1\u0118",
+            "\1\u0119\1\u011a",
             "\1\u011b",
             "\1\u011c",
             "\1\u011d",
@@ -5881,42 +6191,45 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u011f",
             "\1\u0120",
             "\1\u0121",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0122",
             "\1\u0123",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0125",
-            "",
-            "\1\u0126",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0127",
+            "",
             "\1\u0128",
-            "",
-            "",
             "\1\u0129",
             "\1\u012a",
+            "",
+            "",
             "\1\u012b",
             "\1\u012c",
-            "",
-            "",
             "\1\u012d",
             "\1\u012e",
+            "",
+            "",
             "\1\u012f",
             "\1\u0130",
             "",
+            "",
             "\1\u0131",
             "\1\u0132",
+            "",
             "\1\u0133",
             "\1\u0134",
             "\1\u0135",
             "\1\u0136",
-            "\1\u0139\1\uffff\1\u0138\33\uffff\1\u0137\10\uffff\1\u013a\3\uffff\1\u013b\36\uffff\1\u013c",
+            "\1\u0137",
+            "\1\u0138",
+            "\1\u013b\1\uffff\1\u013a\33\uffff\1\u0139\10\uffff\1\u013c"+
+            "\3\uffff\1\u013d\36\uffff\1\u013e",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u013e",
-            "",
-            "\1\u013f",
             "\1\u0140",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "",
+            "\1\u0141",
             "\1\u0142",
-            "\1\u0143",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0144",
             "\1\u0145",
             "\1\u0146",
@@ -5927,55 +6240,55 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u014b",
             "\1\u014c",
             "\1\u014d",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u014e",
             "\1\u014f",
-            "\1\u0150",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0151",
-            "\1\u0152\15\uffff\1\u0153",
-            "\1\u0154",
-            "\1\u0155\4\uffff\1\u0156",
-            "\1\u0157",
-            "\1\u0158",
+            "\1\u0152",
+            "\1\u0153",
+            "\1\u0154\15\uffff\1\u0155",
+            "\1\u0156",
+            "\1\u0157\4\uffff\1\u0158",
             "\1\u0159",
             "\1\u015a",
             "\1\u015b",
-            "\1\u015d\4\uffff\1\u015c",
-            "\1\u015e",
-            "\1\u0160\15\uffff\1\u015f",
-            "\1\u0161",
-            "\1\u0162",
+            "\1\u015c",
+            "\1\u015d",
+            "\1\u015f\4\uffff\1\u015e",
+            "\1\u0160",
+            "\1\u0162\15\uffff\1\u0161",
             "\1\u0163",
             "\1\u0164",
             "\1\u0165",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0166",
             "\1\u0167",
-            "\1\u0168",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0169",
             "\1\u016a",
+            "\1\u016b",
+            "\1\u016c",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u016d",
-            "\1\u016e",
             "\1\u016f",
             "\1\u0170",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0171",
             "\1\u0172",
-            "\1\u0173",
-            "\1\u0174",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0174",
+            "\1\u0175",
             "\1\u0176",
-            "\1\u0177",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0178",
             "\1\u0179",
             "\1\u017a",
             "\1\u017b",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u017c",
             "\1\u017d",
-            "",
-            "",
-            "",
-            "\1\u017e",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u017f",
+            "",
+            "",
+            "",
             "\1\u0180",
             "\1\u0181",
             "\1\u0182",
@@ -5983,46 +6296,47 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u0184",
             "\1\u0185",
             "\1\u0186",
+            "\1\u0187",
+            "\1\u0188",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u0189",
-            "\1\u018a",
             "\1\u018b",
             "\1\u018c",
             "\1\u018d",
             "\1\u018e",
             "\1\u018f",
             "\1\u0190",
-            "\1\u0192\20\uffff\1\u0191",
+            "\1\u0191",
+            "\1\u0192",
+            "\1\u0194\20\uffff\1\u0193",
             "",
-            "\1\u0193",
-            "\1\u0194",
             "\1\u0195",
-            "",
             "\1\u0196",
-            "",
             "\1\u0197",
             "",
-            "\1\u0199\21\uffff\1\u0198",
+            "\1\u0198",
             "",
-            "\1\u019a",
-            "\12\75\7\uffff\14\75\1\u019d\2\75\1\u019c\1\75\1\u019b\1\75\1\u019f\1\75\1\u019e\4\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u01a1",
-            "\1\u01a2",
+            "\1\u0199",
+            "",
+            "\1\u019b\21\uffff\1\u019a",
+            "",
+            "\1\u019c",
+            "\12\75\7\uffff\14\75\1\u019f\2\75\1\u019e\1\75\1\u019d\1\75"+
+            "\1\u01a1\1\75\1\u01a0\4\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u01a3",
             "\1\u01a4",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u01a5",
             "\1\u01a6",
-            "\1\u01a9\1\uffff\1\u01a8\20\uffff\1\u01a7",
-            "\1\u01aa",
-            "",
-            "\1\u01ab",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u01a8",
+            "\1\u01ab\1\uffff\1\u01aa\20\uffff\1\u01a9",
             "\1\u01ac",
+            "",
             "\1\u01ad",
             "\1\u01ae",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u01af",
             "\1\u01b0",
-            "\1\u01b1",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u01b2",
             "\1\u01b3",
             "\1\u01b4",
@@ -6033,59 +6347,59 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u01b9",
             "\1\u01ba",
             "\1\u01bb",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u01bc",
             "\1\u01bd",
-            "\1\u01be",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u01bf",
             "\1\u01c0",
             "\1\u01c1",
-            "",
             "\1\u01c2",
+            "\1\u01c3",
+            "",
+            "\1\u01c4",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "",
             "",
-            "\1\u01c6",
-            "\1\u01c7\3\uffff\1\u01c8",
-            "\1\u01c9",
-            "\1\u01ca",
-            "",
+            "\1\u01c8",
+            "\1\u01c9\3\uffff\1\u01ca",
             "\1\u01cb",
             "\1\u01cc",
-            "\1\u01cd",
             "",
-            "\1\u01cf\1\u01d0\41\uffff\1\u01ce",
-            "\1\u01d1",
-            "\1\u01d2",
+            "\1\u01cd",
+            "\1\u01ce",
+            "\1\u01cf",
+            "",
+            "\1\u01d1\1\u01d2\41\uffff\1\u01d0",
             "\1\u01d3",
             "\1\u01d4",
             "\1\u01d5",
+            "\1\u01d6",
+            "\1\u01d7",
             "",
-            "\1\u01d8\1\uffff\1\u01d7\20\uffff\1\u01d6",
-            "\1\u01d9",
-            "\1\u01da",
+            "\1\u01da\1\uffff\1\u01d9\20\uffff\1\u01d8",
             "\1\u01db",
-            "",
             "\1\u01dc",
             "\1\u01dd",
+            "",
             "\1\u01de",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u01df",
             "\1\u01e0",
-            "",
-            "",
-            "\1\u01e1",
-            "\1\u01e2",
-            "\1\u01e3\14\uffff\1\u01e4",
-            "\1\u01e5",
-            "\1\u01e6",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u01e8",
-            "\1\u01e9",
-            "\1\u01eb\13\uffff\1\u01ea",
+            "\1\u01e2",
             "",
-            "\1\u01ec",
-            "\1\u01ed",
+            "",
+            "\1\u01e3",
+            "\1\u01e4",
+            "\1\u01e5\14\uffff\1\u01e6",
+            "\1\u01e7",
+            "\1\u01e8",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u01ea",
+            "\1\u01eb",
+            "\1\u01ed\13\uffff\1\u01ec",
+            "",
             "\1\u01ee",
             "\1\u01ef",
             "\1\u01f0",
@@ -6094,17 +6408,17 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u01f3",
             "\1\u01f4",
             "\1\u01f5",
-            "\1\u01f6\13\uffff\1\u01f7",
-            "\1\u01f8",
-            "\1\u01f9",
-            "",
+            "\1\u01f6",
+            "\1\u01f7",
+            "\1\u01f8\13\uffff\1\u01f9",
             "\1\u01fa",
             "\1\u01fb",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u01fd",
             "",
-            "\1\u01fe",
+            "\1\u01fc",
+            "\1\u01fd",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u01ff",
+            "",
             "\1\u0200",
             "\1\u0201",
             "\1\u0202",
@@ -6112,70 +6426,71 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u0204",
             "\1\u0205",
             "\1\u0206",
-            "",
             "\1\u0207",
             "\1\u0208",
+            "",
             "\1\u0209",
             "\1\u020a",
             "\1\u020b",
             "\1\u020c",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u020d",
             "\1\u020e",
-            "\1\u020f",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0210",
             "\1\u0211",
             "\1\u0212",
-            "",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0213",
             "\1\u0214",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\1\u0215\31\75",
-            "\1\u0217",
-            "\1\u0218",
+            "",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0216",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\1\u0217\31\75",
             "\1\u0219",
-            "",
-            "",
-            "",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u021a",
             "\1\u021b",
-            "\1\u021c",
+            "",
+            "",
+            "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u021d",
             "\1\u021e",
-            "\1\u021f",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0220",
             "\1\u0221",
             "\1\u0222",
+            "\1\u0223",
+            "\1\u0224",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u0225",
-            "\1\u0226",
             "\1\u0227",
             "\1\u0228",
             "\1\u0229",
             "\1\u022a",
             "\1\u022b",
             "\1\u022c",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u022d",
             "\1\u022e",
-            "\1\u022f",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0230",
             "\1\u0231",
-            "\1\u0232",
-            "",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0233",
             "\1\u0234",
+            "",
             "\1\u0235",
             "\1\u0236",
             "\1\u0237",
             "\1\u0238",
             "\1\u0239",
+            "\1\u023a",
+            "\1\u023b",
             "",
-            "\12\75\7\uffff\23\75\1\u023a\6\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u023c",
+            "\12\75\7\uffff\23\75\1\u023c\6\75\4\uffff\1\75\1\uffff\32"+
+            "\75",
+            "\1\u023e",
             "",
             "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u023e",
-            "\1\u023f",
             "\1\u0240",
             "\1\u0241",
             "\1\u0242",
@@ -6187,11 +6502,11 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u0248",
             "\1\u0249",
             "\1\u024a",
-            "\1\u024b\16\uffff\1\u024c",
-            "\1\u024d",
-            "",
-            "\1\u024e",
+            "\1\u024b",
+            "\1\u024c",
+            "\1\u024d\16\uffff\1\u024e",
             "\1\u024f",
+            "",
             "\1\u0250",
             "\1\u0251",
             "\1\u0252",
@@ -6206,65 +6521,66 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u025b",
             "\1\u025c",
             "\1\u025d",
+            "\1\u025e",
+            "\1\u025f",
             "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u0261",
-            "\1\u0262",
-            "",
             "\1\u0263",
             "\1\u0264",
             "",
             "\1\u0265",
             "\1\u0266",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "",
+            "\1\u0267",
             "\1\u0268",
-            "\1\u0269",
-            "",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "",
             "\1\u026a",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u026b",
+            "",
+            "",
             "\1\u026c",
-            "\1\u026d",
-            "",
-            "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u026e",
             "\1\u026f",
+            "",
+            "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0271",
-            "\1\u0272",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0273",
             "\1\u0274",
             "\1\u0275",
-            "",
             "\1\u0276",
             "\1\u0277",
             "",
             "\1\u0278",
             "\1\u0279",
+            "",
             "\1\u027a",
-            "\1\u027b\22\uffff\1\u027c",
+            "\1\u027b",
+            "\1\u027c",
+            "\1\u027d\22\uffff\1\u027e",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u027e",
-            "\1\u027f",
             "\1\u0280",
             "\1\u0281",
             "\1\u0282",
-            "",
             "\1\u0283",
-            "",
             "\1\u0284",
+            "",
             "\1\u0285",
+            "",
+            "\1\u0286",
+            "\1\u0287",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\12\75\7\uffff\23\75\1\u0288\1\75\1\u0287\4\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u028a",
-            "\1\u028b",
+            "\12\75\7\uffff\23\75\1\u028a\1\75\1\u0289\4\75\4\uffff\1\75"+
+            "\1\uffff\32\75",
             "\1\u028c",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u028d",
             "\1\u028e",
-            "\1\u028f",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0290",
             "\1\u0291",
             "\1\u0292",
@@ -6276,9 +6592,9 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u0298",
             "\1\u0299",
             "\1\u029a",
-            "\1\u029c\16\uffff\1\u029d\1\uffff\1\u029b",
-            "\1\u029e",
-            "\1\u029f",
+            "\1\u029b",
+            "\1\u029c",
+            "\1\u029e\16\uffff\1\u029f\1\uffff\1\u029d",
             "\1\u02a0",
             "\1\u02a1",
             "\1\u02a2",
@@ -6287,28 +6603,28 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u02a5",
             "\1\u02a6",
             "\1\u02a7",
-            "",
-            "",
-            "",
             "\1\u02a8",
             "\1\u02a9",
-            "\1\u02aa",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u02ac",
-            "\1\u02ad",
             "",
+            "",
+            "",
+            "\1\u02aa",
+            "\1\u02ab",
+            "\1\u02ac",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u02ae",
             "\1\u02af",
-            "\1\u02b0",
             "",
+            "\1\u02b0",
             "\1\u02b1",
             "\1\u02b2",
             "",
             "\1\u02b3",
+            "\1\u02b4",
+            "",
+            "\1\u02b5",
             "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u02b5",
-            "\1\u02b6",
             "\1\u02b7",
             "\1\u02b8",
             "\1\u02b9",
@@ -6318,34 +6634,36 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u02bd",
             "\1\u02be",
             "\1\u02bf",
-            "",
             "\1\u02c0",
             "\1\u02c1",
+            "",
             "\1\u02c2",
             "\1\u02c3",
             "\1\u02c4",
             "\1\u02c5",
             "\1\u02c6",
-            "\12\75\7\uffff\23\75\1\u02c7\6\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u02c7",
+            "\1\u02c8",
+            "\12\75\7\uffff\23\75\1\u02c9\6\75\4\uffff\1\75\1\uffff\32"+
+            "\75",
             "",
-            "\1\u02c9",
-            "\1\u02ca",
-            "",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u02cb",
             "\1\u02cc",
-            "\12\75\7\uffff\3\75\1\u02ce\7\75\1\u02cd\16\75\4\uffff\1\75\1\uffff\32\75",
             "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u02d1",
-            "\1\u02d2",
+            "\1\u02ce",
+            "\12\75\7\uffff\3\75\1\u02d0\7\75\1\u02cf\16\75\4\uffff\1\75"+
+            "\1\uffff\32\75",
+            "",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u02d3",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u02d4",
             "\1\u02d5",
-            "\1\u02d6",
-            "\1\u02d7",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u02d7",
+            "\1\u02d8",
             "\1\u02d9",
-            "\1\u02da",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u02db",
             "\1\u02dc",
             "\1\u02dd",
@@ -6364,23 +6682,23 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u02ea",
             "\1\u02eb",
             "\1\u02ec",
-            "",
             "\1\u02ed",
             "\1\u02ee",
+            "",
             "\1\u02ef",
             "\1\u02f0",
             "\1\u02f1",
             "\1\u02f2",
             "\1\u02f3",
             "\1\u02f4",
-            "",
             "\1\u02f5",
             "\1\u02f6",
+            "",
             "\1\u02f7",
             "\1\u02f8",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u02f9",
             "\1\u02fa",
-            "\1\u02fb",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u02fc",
             "\1\u02fd",
             "\1\u02fe",
@@ -6391,38 +6709,38 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u0303",
             "\1\u0304",
             "\1\u0305",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0306",
             "\1\u0307",
-            "",
-            "\1\u0308",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0309",
             "",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u030a",
             "\1\u030b",
-            "\1\u030c",
+            "",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u030d",
+            "\1\u030e",
             "",
             "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u030e",
-            "\1\u030f",
-            "",
             "\1\u0310",
             "\1\u0311",
-            "\1\u0312",
             "",
-            "\1\u0314\2\uffff\1\u0313",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u0316",
+            "\1\u0312",
+            "\1\u0313",
+            "\1\u0314",
+            "",
+            "\1\u0316\2\uffff\1\u0315",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0318",
-            "\1\u0319",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u031a",
             "\1\u031b",
             "\1\u031c",
             "\1\u031d",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u031e",
             "\1\u031f",
-            "\1\u0320",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0321",
             "\1\u0322",
             "\1\u0323",
@@ -6430,336 +6748,337 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u0325",
             "\1\u0326",
             "\1\u0327",
-            "\12\75\7\uffff\3\75\1\u0329\7\75\1\u0328\16\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u032b",
-            "\1\u032c",
+            "\1\u0328",
+            "\1\u0329",
+            "\12\75\7\uffff\3\75\1\u032b\7\75\1\u032a\16\75\4\uffff\1\75"+
+            "\1\uffff\32\75",
             "\1\u032d",
             "\1\u032e",
             "\1\u032f",
             "\1\u0330",
             "\1\u0331",
+            "\1\u0332",
+            "\1\u0333",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u0334",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "",
             "\1\u0336",
-            "\1\u0337",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "",
             "\1\u0338",
             "\1\u0339",
+            "",
             "\1\u033a",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u033b",
             "\1\u033c",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u033e",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0340",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "",
-            "\1\u0341",
-            "\1\u0342",
             "\1\u0343",
-            "",
             "\1\u0344",
-            "\1\u0345\2\uffff\1\u0346",
+            "\1\u0345",
             "",
-            "\1\u0347",
-            "\1\u0348",
+            "\1\u0346",
+            "\1\u0347\2\uffff\1\u0348",
+            "",
             "\1\u0349",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u034a",
             "\1\u034b",
-            "\1\u034c",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u034d",
+            "\1\u034e",
+            "\1\u034f",
             "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "",
-            "\1\u034f",
-            "\1\u0350",
             "\1\u0351",
             "\1\u0352",
             "\1\u0353",
             "\1\u0354",
-            "",
             "\1\u0355",
             "\1\u0356",
+            "",
             "\1\u0357",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0358",
             "\1\u0359",
-            "\1\u035a\2\uffff\1\u035b",
-            "\1\u035c",
-            "\1\u035d",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u035b",
+            "\1\u035c\2\uffff\1\u035d",
             "\1\u035e",
             "\1\u035f",
             "\1\u0360",
-            "",
             "\1\u0361",
             "\1\u0362",
+            "",
             "\1\u0363",
             "\1\u0364",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0365",
             "\1\u0366",
-            "\1\u0367",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0368",
+            "\1\u0369",
             "",
             "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "",
-            "\1\u0369",
-            "\1\u036a",
             "\1\u036b",
             "\1\u036c",
             "\1\u036d",
-            "",
             "\1\u036e",
-            "",
             "\1\u036f",
             "",
-            "",
             "\1\u0370",
+            "",
             "\1\u0371",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "",
+            "",
+            "\1\u0372",
             "\1\u0373",
-            "\1\u0374",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0375",
             "\1\u0376",
             "\1\u0377",
             "\1\u0378",
+            "\1\u0379",
+            "\1\u037a",
             "",
-            "\1\u0379\14\uffff\1\u037a",
-            "\1\u037b",
-            "\1\u037c",
-            "",
+            "\1\u037b\14\uffff\1\u037c",
             "\1\u037d",
             "\1\u037e",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "",
+            "\1\u037f",
             "\1\u0380",
-            "\1\u0381",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0382",
             "\1\u0383",
-            "\1\u0384",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0385",
+            "\1\u0386",
+            "\1\u0387",
             "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u0387",
-            "\1\u0388",
             "\1\u0389",
             "\1\u038a",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u038b",
             "\1\u038c",
-            "\1\u038d\2\uffff\1\u038e",
-            "\1\u038f",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u038e",
+            "\1\u038f\2\uffff\1\u0390",
             "\1\u0391",
-            "\1\u0392",
-            "",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0393",
             "\1\u0394",
             "",
             "\1\u0395",
+            "\1\u0396",
+            "",
+            "\1\u0397",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u039b",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u039d",
-            "",
-            "\1\u039e",
-            "\1\u039f",
-            "\1\u03a0",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u039f",
+            "",
+            "\1\u03a0",
+            "\1\u03a1",
             "\1\u03a2",
-            "\1\u03a3",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u03a4",
             "\1\u03a5",
             "\1\u03a6",
             "\1\u03a7",
             "\1\u03a8",
             "\1\u03a9",
-            "",
             "\1\u03aa",
             "\1\u03ab",
             "",
             "\1\u03ac",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u03ae",
+            "\1\u03ad",
             "",
-            "\1\u03af",
+            "\1\u03ae",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u03b0",
+            "",
             "\1\u03b1",
             "\1\u03b2",
-            "",
             "\1\u03b3",
             "\1\u03b4",
+            "",
             "\1\u03b5",
             "\1\u03b6",
+            "\1\u03b7",
+            "\1\u03b8",
             "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u03ba",
-            "\1\u03bb",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\u03bc",
-            "",
             "\1\u03bd",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\u03be",
+            "",
             "\1\u03bf",
             "\1\u03c0",
-            "",
             "\1\u03c1",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u03c2",
+            "",
             "\1\u03c3",
-            "\1\u03c4",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u03c5",
             "\1\u03c6",
-            "\1\u03c7",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u03c8",
             "\1\u03c9",
             "\1\u03ca",
             "\1\u03cb",
-            "",
             "\1\u03cc",
             "\1\u03cd",
+            "",
             "\1\u03ce",
             "\1\u03cf",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u03d0",
             "\1\u03d1",
-            "\1\u03d2",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u03d3",
             "\1\u03d4",
-            "",
-            "",
-            "",
             "\1\u03d5",
             "\1\u03d6",
+            "",
+            "",
+            "",
             "\1\u03d7",
             "\1\u03d8",
             "\1\u03d9",
             "\1\u03da",
             "\1\u03db",
             "\1\u03dc",
-            "",
             "\1\u03dd",
             "\1\u03de",
             "",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u03df",
             "\1\u03e0",
+            "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u03e2",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u03e4",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u03e6",
-            "\1\u03e7",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u03e8",
-            "",
             "\1\u03e9",
             "\1\u03ea",
+            "",
             "\1\u03eb",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u03ec",
             "\1\u03ed",
-            "\1\u03ee",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u03ef",
             "\1\u03f0",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u03f1",
             "\1\u03f2",
-            "\1\u03f3",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u03f4",
             "\1\u03f5",
-            "\1\u03f6",
-            "",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u03f7",
-            "",
             "\1\u03f8",
             "",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u03f9",
             "",
             "\1\u03fa",
-            "\1\u03fb",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "\1\u03fd",
-            "\1\u03fe",
-            "\1\u03ff",
             "",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "",
+            "\1\u03fc",
+            "\1\u03fd",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u03ff",
             "\1\u0400",
             "\1\u0401",
+            "",
             "\1\u0402",
             "\1\u0403",
-            "",
             "\1\u0404",
             "\1\u0405",
             "",
             "\1\u0406",
             "\1\u0407",
+            "",
             "\1\u0408",
             "\1\u0409",
-            "",
             "\1\u040a",
             "\1\u040b",
             "",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u040c",
             "\1\u040d",
-            "\1\u040e",
+            "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u040f",
             "\1\u0410",
-            "\1\u0411",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0412",
             "\1\u0413",
             "\1\u0414",
             "\1\u0415",
             "\1\u0416",
             "\1\u0417",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0418",
             "\1\u0419",
-            "\1\u041a",
-            "",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u041b",
             "\1\u041c",
             "",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u041d",
             "\1\u041e",
+            "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0420",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\1\u0422",
-            "\1\u0423",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "",
+            "\1\u0424",
             "\1\u0425",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "",
             "\1\u0427",
-            "\1\u0428",
-            "",
-            "\1\u0429",
-            "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0429",
+            "\1\u042a",
             "",
             "\1\u042b",
-            "\1\u042c",
+            "",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "",
             "\1\u042d",
-            "",
             "\1\u042e",
+            "",
+            "\1\u042f",
+            "",
+            "\1\u0430",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "",
-            "\1\u0431",
-            "\1\u0432",
+            "\1\u0433",
+            "\1\u0434",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
-            "",
-            "",
-            "\1\u0435",
-            "\1\u0436",
             "",
             "",
             "\1\u0437",
             "\1\u0438",
+            "",
+            "",
             "\1\u0439",
             "\1\u043a",
             "\1\u043b",
@@ -6773,8 +7092,10 @@ public class InternalFSMDslLexer extends Lexer {
             "\1\u0443",
             "\1\u0444",
             "\1\u0445",
-            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0446",
             "\1\u0447",
+            "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
+            "\1\u0449",
             "",
             "\12\75\7\uffff\32\75\4\uffff\1\75\1\uffff\32\75",
             ""
@@ -6810,7 +7131,7 @@ public class InternalFSMDslLexer extends Lexer {
             this.transition = DFA15_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | T__125 | T__126 | T__127 | T__128 | T__129 | T__130 | T__131 | T__132 | T__133 | T__134 | T__135 | T__136 | T__137 | T__138 | T__139 | T__140 | T__141 | T__142 | T__143 | T__144 | T__145 | T__146 | T__147 | T__148 | T__149 | T__150 | T__151 | T__152 | T__153 | T__154 | T__155 | T__156 | T__157 | T__158 | T__159 | T__160 | T__161 | T__162 | T__163 | T__164 | T__165 | T__166 | T__167 | T__168 | T__169 | T__170 | T__171 | T__172 | T__173 | T__174 | T__175 | T__176 | T__177 | T__178 | T__179 | T__180 | T__181 | T__182 | T__183 | RULE_REAL0 | RULE_INT | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | T__125 | T__126 | T__127 | T__128 | T__129 | T__130 | T__131 | T__132 | T__133 | T__134 | T__135 | T__136 | T__137 | T__138 | T__139 | T__140 | T__141 | T__142 | T__143 | T__144 | T__145 | T__146 | T__147 | T__148 | T__149 | T__150 | T__151 | T__152 | T__153 | T__154 | T__155 | T__156 | T__157 | T__158 | T__159 | T__160 | T__161 | T__162 | T__163 | T__164 | T__165 | T__166 | T__167 | T__168 | T__169 | T__170 | T__171 | T__172 | T__173 | T__174 | T__175 | T__176 | T__177 | T__178 | T__179 | T__180 | T__181 | T__182 | T__183 | T__184 | RULE_REAL0 | RULE_INT | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
@@ -6876,7 +7197,7 @@ public class InternalFSMDslLexer extends Lexer {
 
                         else if ( (LA15_0==':') ) {s = 18;}
 
-                        else if ( (LA15_0=='(') ) {s = 19;}
+                        else if ( (LA15_0=='-') ) {s = 19;}
 
                         else if ( (LA15_0==')') ) {s = 20;}
 
@@ -6888,13 +7209,13 @@ public class InternalFSMDslLexer extends Lexer {
 
                         else if ( (LA15_0=='S') ) {s = 24;}
 
-                        else if ( (LA15_0=='o') ) {s = 25;}
+                        else if ( (LA15_0=='(') ) {s = 25;}
 
-                        else if ( (LA15_0=='+') ) {s = 26;}
+                        else if ( (LA15_0=='o') ) {s = 26;}
 
-                        else if ( (LA15_0=='=') ) {s = 27;}
+                        else if ( (LA15_0=='+') ) {s = 27;}
 
-                        else if ( (LA15_0=='-') ) {s = 28;}
+                        else if ( (LA15_0=='=') ) {s = 28;}
 
                         else if ( (LA15_0=='*') ) {s = 29;}
 

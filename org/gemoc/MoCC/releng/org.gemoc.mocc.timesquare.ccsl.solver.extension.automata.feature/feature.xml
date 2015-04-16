@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature"
+      label="TimeSquare Solver Extension to Automata"
+      version="0.1.1.qualifier"
+      provider-name="AOSTE">
+
+   <description>
+      This feature provides an extension of the CCSL TimeSquare Solver to take into account MoCCML constraints automata definitions
+   </description>
+
+   <copyright>
+      Copyright (c) 2012-2016 GEMOC consortium.
+http://www.gemoc.org
+   </copyright>
+
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://eclipse.org/legal/epl-v10.html
+   </license>
+
+   <plugin
+         id="fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

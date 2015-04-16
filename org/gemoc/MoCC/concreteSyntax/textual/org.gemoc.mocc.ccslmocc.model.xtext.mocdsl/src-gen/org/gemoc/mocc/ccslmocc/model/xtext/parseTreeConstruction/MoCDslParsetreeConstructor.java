@@ -1704,15 +1704,13 @@ protected class CCSLStateMachineRelationDefinition_RightCurlyBracketKeyword_12 e
  * //		( ('states: ' states+=State ( "," states+=State)*) | (transitions+=Transition)+)
  * //    '}';
  * Transition returns fsmmodel::Transition:
- * 	{fsmmodel::Transition} "from" source=[fsmmodel::State|EString] "to" target=[fsmmodel::State|EString] ":" name=EString
- * 	"(" (("when" trigger=Trigger) ("if" guard=Guard)? | ("if" guard=Guard) ("when" trigger=Trigger)?)? ("do"
- * 	actions+=Action)* ")";
+ * 	{fsmmodel::Transition} "from" source=[fsmmodel::State] "to" target=[fsmmodel::State] ":" name=EString? "->(" (("when"
+ * 	trigger=Trigger) ("if" guard=Guard)? | ("if" guard=Guard) ("when" trigger=Trigger)?)? ("do" actions+=Action)* ")";
  *
  **/
 
-// {fsmmodel::Transition} "from" source=[fsmmodel::State|EString] "to" target=[fsmmodel::State|EString] ":" name=EString
-// "(" (("when" trigger=Trigger) ("if" guard=Guard)? | ("if" guard=Guard) ("when" trigger=Trigger)?)? ("do"
-// actions+=Action)* ")"
+// {fsmmodel::Transition} "from" source=[fsmmodel::State] "to" target=[fsmmodel::State] ":" name=EString? "->(" (("when"
+// trigger=Trigger) ("if" guard=Guard)? | ("if" guard=Guard) ("when" trigger=Trigger)?)? ("do" actions+=Action)* ")"
 protected class Transition_Group extends GroupToken {
 	
 	public Transition_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1789,7 +1787,7 @@ protected class Transition_FromKeyword_1 extends KeywordToken  {
 
 }
 
-// source=[fsmmodel::State|EString]
+// source=[fsmmodel::State]
 protected class Transition_SourceAssignment_2 extends AssignmentToken  {
 	
 	public Transition_SourceAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1848,7 +1846,7 @@ protected class Transition_ToKeyword_3 extends KeywordToken  {
 
 }
 
-// target=[fsmmodel::State|EString]
+// target=[fsmmodel::State]
 protected class Transition_TargetAssignment_4 extends AssignmentToken  {
 	
 	public Transition_TargetAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1907,7 +1905,7 @@ protected class Transition_ColonKeyword_5 extends KeywordToken  {
 
 }
 
-// name=EString
+// name=EString?
 protected class Transition_NameAssignment_6 extends AssignmentToken  {
 	
 	public Transition_NameAssignment_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1929,7 +1927,7 @@ protected class Transition_NameAssignment_6 extends AssignmentToken  {
 
     @Override	
 	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
+		if((value = eObjectConsumer.getConsumable("name",false)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
 		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getTransitionAccess().getNameEStringParserRuleCall_6_0(), value, null)) {
 			type = AssignmentType.DATATYPE_RULE_CALL;
@@ -1941,22 +1939,23 @@ protected class Transition_NameAssignment_6 extends AssignmentToken  {
 
 }
 
-// "("
-protected class Transition_LeftParenthesisKeyword_7 extends KeywordToken  {
+// "->("
+protected class Transition_HyphenMinusGreaterThanSignLeftParenthesisKeyword_7 extends KeywordToken  {
 	
-	public Transition_LeftParenthesisKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Transition_HyphenMinusGreaterThanSignLeftParenthesisKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getTransitionAccess().getLeftParenthesisKeyword_7();
+		return grammarAccess.getTransitionAccess().getHyphenMinusGreaterThanSignLeftParenthesisKeyword_7();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
 			case 0: return new Transition_NameAssignment_6(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new Transition_ColonKeyword_5(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -2046,7 +2045,7 @@ protected class Transition_WhenKeyword_8_0_0_0 extends KeywordToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Transition_LeftParenthesisKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Transition_HyphenMinusGreaterThanSignLeftParenthesisKeyword_7(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2252,7 +2251,7 @@ protected class Transition_IfKeyword_8_1_0_0 extends KeywordToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Transition_LeftParenthesisKeyword_7(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new Transition_HyphenMinusGreaterThanSignLeftParenthesisKeyword_7(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2438,7 +2437,7 @@ protected class Transition_DoKeyword_9_0 extends KeywordToken  {
 		switch(index) {
 			case 0: return new Transition_Group_9(lastRuleCallOrigin, this, 0, inst);
 			case 1: return new Transition_Alternatives_8(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new Transition_LeftParenthesisKeyword_7(lastRuleCallOrigin, this, 2, inst);
+			case 2: return new Transition_HyphenMinusGreaterThanSignLeftParenthesisKeyword_7(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -2509,7 +2508,7 @@ protected class Transition_RightParenthesisKeyword_10 extends KeywordToken  {
 		switch(index) {
 			case 0: return new Transition_Group_9(lastRuleCallOrigin, this, 0, inst);
 			case 1: return new Transition_Alternatives_8(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new Transition_LeftParenthesisKeyword_7(lastRuleCallOrigin, this, 2, inst);
+			case 2: return new Transition_HyphenMinusGreaterThanSignLeftParenthesisKeyword_7(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}
@@ -4707,15 +4706,15 @@ protected class IntegerAssignementBlock_RightCurlyBracketKeyword_6 extends Keywo
 /************ begin Rule State ****************
  *
  * State returns fsmmodel::State:
- * 	{fsmmodel::State} "State" name=EString "(" ("in" ":" inputTransitions+=[fsmmodel::Transition|EString] (","
- * 	inputTransitions+=[fsmmodel::Transition|EString])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition|EString] (","
- * 	outputTransitions+=[fsmmodel::Transition|EString])*)? ")";
+ * 	{fsmmodel::State} "State" name=EString "(" ("in" ":" inputTransitions+=[fsmmodel::Transition] (","
+ * 	inputTransitions+=[fsmmodel::Transition])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition] (","
+ * 	outputTransitions+=[fsmmodel::Transition])*)? ")";
  *
  **/
 
-// {fsmmodel::State} "State" name=EString "(" ("in" ":" inputTransitions+=[fsmmodel::Transition|EString] (","
-// inputTransitions+=[fsmmodel::Transition|EString])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition|EString] (","
-// outputTransitions+=[fsmmodel::Transition|EString])*)? ")"
+// {fsmmodel::State} "State" name=EString "(" ("in" ":" inputTransitions+=[fsmmodel::Transition] (","
+// inputTransitions+=[fsmmodel::Transition])*)? ("out" ":" outputTransitions+=[fsmmodel::Transition] (","
+// outputTransitions+=[fsmmodel::Transition])*)? ")"
 protected class State_Group extends GroupToken {
 	
 	public State_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4848,7 +4847,7 @@ protected class State_LeftParenthesisKeyword_3 extends KeywordToken  {
 
 }
 
-// ("in" ":" inputTransitions+=[fsmmodel::Transition|EString] ("," inputTransitions+=[fsmmodel::Transition|EString])*)?
+// ("in" ":" inputTransitions+=[fsmmodel::Transition] ("," inputTransitions+=[fsmmodel::Transition])*)?
 protected class State_Group_4 extends GroupToken {
 	
 	public State_Group_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4915,7 +4914,7 @@ protected class State_ColonKeyword_4_1 extends KeywordToken  {
 
 }
 
-// inputTransitions+=[fsmmodel::Transition|EString]
+// inputTransitions+=[fsmmodel::Transition]
 protected class State_InputTransitionsAssignment_4_2 extends AssignmentToken  {
 	
 	public State_InputTransitionsAssignment_4_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4952,7 +4951,7 @@ protected class State_InputTransitionsAssignment_4_2 extends AssignmentToken  {
 
 }
 
-// ("," inputTransitions+=[fsmmodel::Transition|EString])*
+// ("," inputTransitions+=[fsmmodel::Transition])*
 protected class State_Group_4_3 extends GroupToken {
 	
 	public State_Group_4_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4997,7 +4996,7 @@ protected class State_CommaKeyword_4_3_0 extends KeywordToken  {
 
 }
 
-// inputTransitions+=[fsmmodel::Transition|EString]
+// inputTransitions+=[fsmmodel::Transition]
 protected class State_InputTransitionsAssignment_4_3_1 extends AssignmentToken  {
 	
 	public State_InputTransitionsAssignment_4_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5036,7 +5035,7 @@ protected class State_InputTransitionsAssignment_4_3_1 extends AssignmentToken  
 
 
 
-// ("out" ":" outputTransitions+=[fsmmodel::Transition|EString] ("," outputTransitions+=[fsmmodel::Transition|EString])*)?
+// ("out" ":" outputTransitions+=[fsmmodel::Transition] ("," outputTransitions+=[fsmmodel::Transition])*)?
 protected class State_Group_5 extends GroupToken {
 	
 	public State_Group_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5104,7 +5103,7 @@ protected class State_ColonKeyword_5_1 extends KeywordToken  {
 
 }
 
-// outputTransitions+=[fsmmodel::Transition|EString]
+// outputTransitions+=[fsmmodel::Transition]
 protected class State_OutputTransitionsAssignment_5_2 extends AssignmentToken  {
 	
 	public State_OutputTransitionsAssignment_5_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5141,7 +5140,7 @@ protected class State_OutputTransitionsAssignment_5_2 extends AssignmentToken  {
 
 }
 
-// ("," outputTransitions+=[fsmmodel::Transition|EString])*
+// ("," outputTransitions+=[fsmmodel::Transition])*
 protected class State_Group_5_3 extends GroupToken {
 	
 	public State_Group_5_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5186,7 +5185,7 @@ protected class State_CommaKeyword_5_3_0 extends KeywordToken  {
 
 }
 
-// outputTransitions+=[fsmmodel::Transition|EString]
+// outputTransitions+=[fsmmodel::Transition]
 protected class State_OutputTransitionsAssignment_5_3_1 extends AssignmentToken  {
 	
 	public State_OutputTransitionsAssignment_5_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5750,7 +5749,8 @@ protected class BinaryIntegerExpression_IntSelfDivAssignParserRuleCall_8 extends
 /************ begin Rule IntSelfPlusAssign ****************
  *
  * IntSelfPlusAssign returns extension::IntSelfPlusAssignement:
- * 	{extension::IntSelfPlusAssignement} ("#ref" name=EString "=")? leftValue=IntegerRef "+=" rightValue=IntegerExpression;
+ * 	{extension::IntSelfPlusAssignement} ("#ref" name=EString "=")? leftValue=IntegerRef "+="
+ * 	rightValue=IntegerExpression;
  *
  **/
 
@@ -22778,8 +22778,8 @@ protected class ExternalExpressionDefinition_RightSquareBracketKeyword_5 extends
  **/
 
 // "ConditionalRelationDefinition" name=ID "[" declaration=[ClockExpressionAndRelation::RelationDeclaration|EString] "]"
-// "{" ((concreteEntities+=ConcreteEntity | classicalExpressions+=ClassicalExpression0)* & ("switch" "{" relCases+=RelCase
-// relCases+=RelCase* "}" "default" defaultRelation+=Relation*)?) "}"
+// "{" ((concreteEntities+=ConcreteEntity | classicalExpressions+=ClassicalExpression0)* & ("switch" "{"
+// relCases+=RelCase relCases+=RelCase* "}" "default" defaultRelation+=Relation*)?) "}"
 protected class ConditionalRelationDefinition_Group extends GroupToken {
 	
 	public ConditionalRelationDefinition_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -23616,8 +23616,8 @@ protected class ExternalRelationDefinition_RightSquareBracketKeyword_5 extends K
 /************ begin Rule Relation ****************
  *
  * Relation returns ClockExpressionAndRelation::Relation:
- * 	isAnAssertion?="assert"? "Relation" (name=ID "[")? type=[ClockExpressionAndRelation::RelationDeclaration|EString] "]"?
- * 	"(" (bindings+=Binding ("," bindings+=Binding)*)? ")";
+ * 	isAnAssertion?="assert"? "Relation" (name=ID "[")? type=[ClockExpressionAndRelation::RelationDeclaration|EString]
+ * 	"]"? "(" (bindings+=Binding ("," bindings+=Binding)*)? ")";
  *
  **/
 
@@ -27146,7 +27146,7 @@ protected class SeqExpression_NumberSeqVariableRefParserRuleCall_4 extends RuleC
 /************ begin Rule PrimitiveElement ****************
  *
  * //| CharElement;
- * PrimitiveElement returns BasicType::PrimitiveElement:
+ *  PrimitiveElement returns BasicType::PrimitiveElement:
  * 	StringElement | BooleanElement | IntegerElement | IntegerVariableRef | RealElement;
  *
  **/
@@ -29092,8 +29092,8 @@ protected class UnaryRealPlus_RightCurlyBracketKeyword_7 extends KeywordToken  {
 /************ begin Rule UnaryRealMinus ****************
  *
  * UnaryRealMinus returns ClassicalExpression::UnaryRealMinus:
- * 	"UnaryRealMinus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand" operand=RealExpression
- * 	"}";
+ * 	"UnaryRealMinus" "{" ("name" name=ID)? "value" value=[BasicType::RealElement|EString] "operand"
+ * 	operand=RealExpression "}";
  *
  **/
 
@@ -32364,8 +32364,9 @@ protected class RealElement_ValueAssignment_4 extends AssignmentToken  {
 /************ begin Rule IntegerElement ****************
  *
  * //Real0 returns Real:
- * //	'Real' / * TODO: implement this rule and an appropriate IValueConverter * /;
- * IntegerElement returns BasicType::IntegerElement:
+ *  //	'Real' / * TODO: implement this rule and an appropriate IValueConverter * /;
+ *  IntegerElement
+ * returns BasicType::IntegerElement:
  * 	"Integer" name=ID (":" type=[BasicType::Type|EString])? "=" value=INT | name=ID "=" value=INT | value=INT;
  *
  **/
@@ -33782,16 +33783,19 @@ protected class StringElement_ValueAssignment_3 extends AssignmentToken  {
 /************ begin Rule RecordElement ****************
  *
  * //		('type' type=[BasicType::Type|EString])?
- * //CharElement returns BasicType::CharElement:
- * //	'CharElement'
- * //	'{'
+ *  //CharElement returns BasicType::CharElement:
+ *  //	'CharElement'
+ *  //	'{'
+ * 
  * //		('name' name=ID)?
- * //		'value' value=Char0
- * //		('type' type=[BasicType::Type|EString])?
- * //    '}';
+ *  //		'value' value=Char0
+ *  //		('type' type=[BasicType::Type|EString])?
+ *  //    '}';
+ * 
  * //Char0 returns Char:
- * //	'Char' / * TODO: implement this rule and an appropriate IValueConverter * /;
- * RecordElement returns BasicType::RecordElement:
+ *  //	'Char' / * TODO: implement this rule and an appropriate IValueConverter * /;
+ *  RecordElement
+ * returns BasicType::RecordElement:
  * 	"RecordElement" "{" ("name" name=ID)? ("type" type=[BasicType::Type|EString])? "box" "{" box+=Box ("," box+=Box)* "}"
  * 	"}";
  *
@@ -36354,8 +36358,9 @@ protected class Field_RightCurlyBracketKeyword_5 extends KeywordToken  {
 /************ begin Rule SubClock ****************
  *
  * //This is only for the kernel.ccslLib !!!
- * SubClock returns KernelRelation::SubClock:
- * 	"_SubClock" "{" ("name" name=ID)? "rightEntity" rightEntity=AbstractEntity "leftEntity" leftEntity=AbstractEntity "}";
+ *  SubClock returns KernelRelation::SubClock:
+ * 	"_SubClock" "{" ("name" name=ID)? "rightEntity" rightEntity=AbstractEntity "leftEntity" leftEntity=AbstractEntity
+ * 	"}";
  *
  **/
 
@@ -39999,8 +40004,8 @@ protected class Union_RightCurlyBracketKeyword_9 extends KeywordToken  {
 /************ begin Rule Intersection ****************
  *
  * Intersection returns KernelExpression::Intersection:
- * 	"_Intersection" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
- * 	"clock2" clock2=AbstractEntity "}";
+ * 	"_Intersection" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1"
+ * 	clock1=AbstractEntity "clock2" clock2=AbstractEntity "}";
  *
  **/
 
@@ -40381,8 +40386,8 @@ protected class Intersection_RightCurlyBracketKeyword_9 extends KeywordToken  {
 /************ begin Rule Sup ****************
  *
  * Sup returns KernelExpression::Sup:
- * 	"_Sup" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity "clock2"
- * 	clock2=AbstractEntity "}";
+ * 	"_Sup" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
+ * 	"clock2" clock2=AbstractEntity "}";
  *
  **/
 
@@ -40763,8 +40768,8 @@ protected class Sup_RightCurlyBracketKeyword_9 extends KeywordToken  {
 /************ begin Rule Inf ****************
  *
  * Inf returns KernelExpression::Inf:
- * 	"_Inf" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity "clock2"
- * 	clock2=AbstractEntity "}";
+ * 	"_Inf" "{" ("name" name=ID)? "returnType" returnType=[BasicType::Type|EString] "clock1" clock1=AbstractEntity
+ * 	"clock2" clock2=AbstractEntity "}";
  *
  **/
 

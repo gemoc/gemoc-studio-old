@@ -394,7 +394,7 @@ public class MoCMLServices {
 
 		return sb.toString();
 	}
-	
+		
 	public String newComputeLabel(Transition element)
 	{
 			StringBuilder sb = new StringBuilder(16);

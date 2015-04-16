@@ -437,9 +437,9 @@ ruleTransition returns [EObject current=null]
 	    }
 
 )
-)	otherlv_7='(' 
+)?	otherlv_7='->(' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getTransitionAccess().getLeftParenthesisKeyword_7());
+    	newLeafNode(otherlv_7, grammarAccess.getTransitionAccess().getHyphenMinusGreaterThanSignLeftParenthesisKeyword_7());
     }
 (	otherlv_8='when' 
     {
@@ -731,12 +731,10 @@ ruleState returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getStateRule());
 	        }
         }
-		{ 
-	        newCompositeNode(grammarAccess.getStateAccess().getInputTransitionsTransitionCrossReference_4_2_0()); 
-	    }
-		ruleEString		{ 
-	        afterParserOrEnumRuleCall();
-	    }
+	otherlv_6=RULE_ID
+	{
+		newLeafNode(otherlv_6, grammarAccess.getStateAccess().getInputTransitionsTransitionCrossReference_4_2_0()); 
+	}
 
 )
 )(	otherlv_7=',' 
@@ -753,12 +751,10 @@ ruleState returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getStateRule());
 	        }
         }
-		{ 
-	        newCompositeNode(grammarAccess.getStateAccess().getInputTransitionsTransitionCrossReference_4_3_1_0()); 
-	    }
-		ruleEString		{ 
-	        afterParserOrEnumRuleCall();
-	    }
+	otherlv_8=RULE_ID
+	{
+		newLeafNode(otherlv_8, grammarAccess.getStateAccess().getInputTransitionsTransitionCrossReference_4_3_1_0()); 
+	}
 
 )
 ))*)?(	otherlv_9='out' 
@@ -779,12 +775,10 @@ ruleState returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getStateRule());
 	        }
         }
-		{ 
-	        newCompositeNode(grammarAccess.getStateAccess().getOutputTransitionsTransitionCrossReference_5_2_0()); 
-	    }
-		ruleEString		{ 
-	        afterParserOrEnumRuleCall();
-	    }
+	otherlv_11=RULE_ID
+	{
+		newLeafNode(otherlv_11, grammarAccess.getStateAccess().getOutputTransitionsTransitionCrossReference_5_2_0()); 
+	}
 
 )
 )(	otherlv_12=',' 
@@ -801,12 +795,10 @@ ruleState returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getStateRule());
 	        }
         }
-		{ 
-	        newCompositeNode(grammarAccess.getStateAccess().getOutputTransitionsTransitionCrossReference_5_3_1_0()); 
-	    }
-		ruleEString		{ 
-	        afterParserOrEnumRuleCall();
-	    }
+	otherlv_13=RULE_ID
+	{
+		newLeafNode(otherlv_13, grammarAccess.getStateAccess().getOutputTransitionsTransitionCrossReference_5_3_1_0()); 
+	}
 
 )
 ))*)?	otherlv_14=')' 

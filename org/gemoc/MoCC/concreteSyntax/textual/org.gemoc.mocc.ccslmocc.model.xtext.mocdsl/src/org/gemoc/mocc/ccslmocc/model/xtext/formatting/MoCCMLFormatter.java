@@ -90,6 +90,10 @@ public class MoCCMLFormatter extends AbstractDeclarativeFormatter {
 			c.setLinewrap(1).before(reldec);
 		}
 		
+		for(Keyword transcon: f.findKeywords("->(")) {
+			c.setLinewrap(1).before(transcon);
+		}
+		
 		for(Keyword point: f.findKeywords(".")) {
 			c.setNoLinewrap().before(point);
 			c.setNoSpace().before(point);
