@@ -58,8 +58,12 @@ public class DefaultModelLoader implements IModelLoader {
 		Resource resource = null;
 		ResourceSet resourceSet;
 		resourceSet = new ResourceSetImpl();
-		resource = resourceSet.createResource(context.getRunConfiguration().getExecutedModelURI());
-		resource = resourceSet.getResources().get(0);
+		resource = resourceSet.createResource(context.getRunConfiguration().getExecutedModelURI());		
+		try {
+			resource.load(null);
+		} catch (IOException e) {
+			new RuntimeException(e);
+		}
 		return resource;
 	}
 	
