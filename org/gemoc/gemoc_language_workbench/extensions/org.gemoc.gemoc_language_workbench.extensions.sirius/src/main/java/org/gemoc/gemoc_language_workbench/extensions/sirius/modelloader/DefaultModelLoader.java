@@ -11,17 +11,13 @@ import java.util.Map.Entry;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
-import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.URIHandler;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.resource.impl.URIHandlerImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -46,10 +42,8 @@ import org.gemoc.commons.eclipse.emf.EMFResource;
 import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.core.DebugURIHandler;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
-import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.debug.DebugSessionFactory;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocAnimatorServices;
 
@@ -59,8 +53,17 @@ public class DefaultModelLoader implements IModelLoader {
 
 	public final static String MODEL_ID = "org.gemoc.gemoc_modeling_workbench.ui.debugModel";
 
-	@Override
 	public Resource loadModel(IExecutionContext context)
+			throws RuntimeException {
+		Resource resource = null;
+		ResourceSet resourceSet;
+		resourceSet = new ResourceSetImpl();
+		resource = resourceSet.createResource(context.getRunConfiguration().getExecutedModelURI());
+		resource = resourceSet.getResources().get(0);
+		return resource;
+	}
+	
+	public Resource loadModelForAnimation(IExecutionContext context)
 			throws RuntimeException {
 		Resource resource = null;
 		ResourceSet resourceSet;
@@ -77,12 +80,14 @@ public class DefaultModelLoader implements IModelLoader {
 			} catch (CoreException e) {
 				throw new RuntimeException(e);
 			}
+
+			resource = resourceSet.getResources().get(0);
+			return resource;
 		} else 
-		{			
-			resourceSet = new ResourceSetImpl();
+		{	
+			//animator not available; fall back to normal run
+			return loadModel(context);
 		}
-		resource = resourceSet.getResources().get(0);
-		return resource;
 	}
 
 	private void killPreviousSiriusSession(URI sessionResourceURI) {

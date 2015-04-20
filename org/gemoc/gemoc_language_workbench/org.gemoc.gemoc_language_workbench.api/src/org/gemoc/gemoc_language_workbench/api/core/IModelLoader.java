@@ -11,5 +11,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 public interface IModelLoader {
 
 	Resource loadModel(IExecutionContext context);
+	Resource loadModelForAnimation(IExecutionContext context);
 
 }

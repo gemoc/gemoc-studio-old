@@ -1,7 +1,5 @@
 package org.gemoc.execution.engine.commons;
 
-import java.io.IOException;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -42,7 +40,12 @@ public class ModelExecutionContext implements IExecutionContext
 			_executionWorkspace.copyFileToExecutionFolder(_executionWorkspace.getModelPath());
 			_languageDefinition = getLanguageDefinition(_runConfiguration.getLanguageName());
 			_executionPlatform = new DefaultExecutionPlatform(_languageDefinition, runConfiguration);
-			_resourceModel = _executionPlatform.getModelLoader().loadModel(this);					
+			if(executionMode.equals(ExecutionMode.Animation)){
+				_resourceModel = _executionPlatform.getModelLoader().loadModelForAnimation(this);
+			}
+			else{
+				_resourceModel = _executionPlatform.getModelLoader().loadModel(this);
+			}
 			_logicalStepDecider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(), executionMode);
 			setUpEditingDomain();	
 			_executionPlatform.getSolver().setUp(this);
