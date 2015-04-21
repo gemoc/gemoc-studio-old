@@ -8,5 +8,7 @@ public interface IMSEOccurrenceListener
 	void mseOccurenceRaised(MSEOccurrence occurrence);
 
 	void mseOccurenceAboutToBeRaised(MSEOccurrence occurrence);
+
+	void mseOccurenceEnded(MSEOccurrence occurrence);
 	
 }

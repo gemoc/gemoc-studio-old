@@ -119,4 +119,10 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 		}
 	}
 
+	@Override
+	public void mseOccurenceEnded(MSEOccurrence occurrence) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
