@@ -3,6 +3,7 @@ package org.gemoc.execution.engine.io.views.timeline;
 import java.util.WeakHashMap;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -242,6 +243,13 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 							branchIfPossible(choiceToRestore);							
 						}
 					}
+				} else {
+					for (ITraceAddon traceAddon :_currentEngine.getAddonsTypedBy(ITraceAddon.class)) {
+						if (o1 instanceof EObject)
+							traceAddon.goTo((EObject)o1);
+					}
+					
+					
 				}
 			}
 		}
