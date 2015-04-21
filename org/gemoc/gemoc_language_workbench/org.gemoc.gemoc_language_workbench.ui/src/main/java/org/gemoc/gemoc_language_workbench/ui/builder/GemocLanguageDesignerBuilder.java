@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.gemoc.commons.eclipse.core.resources.FileFinderVisitor;
 import org.gemoc.commons.eclipse.core.resources.GFile;
-import org.gemoc.commons.eclipse.pde.ManifestChanger;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DSEProject;
@@ -45,6 +44,8 @@ import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
 import org.jdom2.Element;
 import org.osgi.framework.BundleException;
+
+import fr.inria.diverse.commons.eclipse.pde.manifest.ManifestChanger;
 
 public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
