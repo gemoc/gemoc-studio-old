@@ -1,7 +1,12 @@
 package org.gemoc.execution.engine.core;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
@@ -133,12 +138,24 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	}
 
 	@SuppressWarnings("all")
+	@Override
 	public <T extends IEngineAddon> T getAddon(Class<T> type) {
 		for (IEngineAddon c : getExecutionContext().getExecutionPlatform().getEngineAddons()) {
 			if (c.getClass().equals(type))
 				return (T) c;
 		}
 		return null;
+	}
+	
+	@SuppressWarnings("all")
+	@Override
+	public <T extends IEngineAddon> Set<T> getAddonsTypedBy(Class<T> type) {
+		Set<T> result = new HashSet<T>();
+		for (IEngineAddon c : getExecutionContext().getExecutionPlatform().getEngineAddons()) {
+			if (type.isAssignableFrom(c.getClass()))
+				result.add((T)c);
+		}
+		return result;
 	}
 	
 	protected void setEngineStatus(RunStatus newStatus) {
@@ -223,6 +240,11 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 					} catch (Throwable e) {
 						e.printStackTrace();
 						Activator.getDefault().error("Exception received " + e.getMessage() + ", stopping engine.", e);
+						StringWriter sw = new StringWriter();
+						e.printStackTrace(new PrintWriter(sw));
+						String exceptionAsString = sw.toString();
+
+						Activator.getDefault().error(exceptionAsString);
 					}
 					finally
 					{
