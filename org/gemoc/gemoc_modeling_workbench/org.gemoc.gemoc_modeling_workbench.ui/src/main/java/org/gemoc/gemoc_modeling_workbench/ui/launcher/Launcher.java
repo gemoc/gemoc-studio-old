@@ -39,6 +39,7 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
+import org.gemoc.gemoc_language_workbench.extensions.k3.K3Solver;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocDebuggerServices;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
@@ -83,7 +84,8 @@ public class Launcher
 			final ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, executionMode);			
 			throwExceptionIfEngineAlreadyRunning(executionContext);
 
-			if (executionContext.getFeedbackModel() != null) // hack to find out if execution involves a solver
+			
+			if (!(executionContext.getExecutionPlatform().getSolver() instanceof K3Solver)) // hack to find out if execution involves a solver
 			{
 				_executionEngine = new ExecutionEngine(executionContext);		
 				// delegate for debug mode
