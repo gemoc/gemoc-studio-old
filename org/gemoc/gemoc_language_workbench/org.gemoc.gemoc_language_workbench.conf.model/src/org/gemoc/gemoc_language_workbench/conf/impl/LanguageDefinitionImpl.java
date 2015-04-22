@@ -43,6 +43,8 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getAnimatorProjects <em>Animator Projects</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getDSEProject <em>DSE Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getMelangeURI <em>Melange URI</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#isNeedMelangeSynchronization <em>Need Melange Synchronization</em>}</li>
  * </ul>
  * </p>
  *
@@ -128,6 +130,46 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMelangeURI() <em>Melange URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMelangeURI()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MELANGE_URI_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMelangeURI() <em>Melange URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMelangeURI()
+	 * @generated
+	 * @ordered
+	 */
+	protected String melangeURI = MELANGE_URI_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isNeedMelangeSynchronization() <em>Need Melange Synchronization</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNeedMelangeSynchronization()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean NEED_MELANGE_SYNCHRONIZATION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isNeedMelangeSynchronization() <em>Need Melange Synchronization</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNeedMelangeSynchronization()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean needMelangeSynchronization = NEED_MELANGE_SYNCHRONIZATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -368,6 +410,48 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getMelangeURI() {
+		return melangeURI;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMelangeURI(String newMelangeURI) {
+		String oldMelangeURI = melangeURI;
+		melangeURI = newMelangeURI;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__MELANGE_URI, oldMelangeURI, melangeURI));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isNeedMelangeSynchronization() {
+		return needMelangeSynchronization;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNeedMelangeSynchronization(boolean newNeedMelangeSynchronization) {
+		boolean oldNeedMelangeSynchronization = needMelangeSynchronization;
+		needMelangeSynchronization = newNeedMelangeSynchronization;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION, oldNeedMelangeSynchronization, needMelangeSynchronization));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList<String> getFileExtensions() {
@@ -455,6 +539,10 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 				return getDSEProject();
 			case confPackage.LANGUAGE_DEFINITION__NAME:
 				return getName();
+			case confPackage.LANGUAGE_DEFINITION__MELANGE_URI:
+				return getMelangeURI();
+			case confPackage.LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION:
+				return isNeedMelangeSynchronization();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -491,6 +579,12 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 			case confPackage.LANGUAGE_DEFINITION__NAME:
 				setName((String)newValue);
 				return;
+			case confPackage.LANGUAGE_DEFINITION__MELANGE_URI:
+				setMelangeURI((String)newValue);
+				return;
+			case confPackage.LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION:
+				setNeedMelangeSynchronization((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -524,6 +618,12 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 			case confPackage.LANGUAGE_DEFINITION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case confPackage.LANGUAGE_DEFINITION__MELANGE_URI:
+				setMelangeURI(MELANGE_URI_EDEFAULT);
+				return;
+			case confPackage.LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION:
+				setNeedMelangeSynchronization(NEED_MELANGE_SYNCHRONIZATION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -550,6 +650,10 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 				return dSEProject != null;
 			case confPackage.LANGUAGE_DEFINITION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case confPackage.LANGUAGE_DEFINITION__MELANGE_URI:
+				return MELANGE_URI_EDEFAULT == null ? melangeURI != null : !MELANGE_URI_EDEFAULT.equals(melangeURI);
+			case confPackage.LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION:
+				return needMelangeSynchronization != NEED_MELANGE_SYNCHRONIZATION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -566,6 +670,10 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", melangeURI: ");
+		result.append(melangeURI);
+		result.append(", needMelangeSynchronization: ");
+		result.append(needMelangeSynchronization);
 		result.append(')');
 		return result.toString();
 	}

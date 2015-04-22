@@ -307,6 +307,24 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLanguageDefinition_MelangeURI() {
+		return (EAttribute)languageDefinitionEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLanguageDefinition_NeedMelangeSynchronization() {
+		return (EAttribute)languageDefinitionEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEditorProject() {
 		return editorProjectEClass;
 	}
@@ -491,6 +509,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__ANIMATOR_PROJECTS);
 		createEReference(languageDefinitionEClass, LANGUAGE_DEFINITION__DSE_PROJECT);
 		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__NAME);
+		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__MELANGE_URI);
+		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION);
 
 		projectResourceEClass = createEClass(PROJECT_RESOURCE);
 		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_NAME);
@@ -576,6 +596,8 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEReference(getLanguageDefinition_AnimatorProjects(), this.getAnimatorProject(), null, "animatorProjects", null, 0, -1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLanguageDefinition_DSEProject(), this.getDSEProject(), null, "dSEProject", null, 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLanguageDefinition_Name(), ecorePackage.getEString(), "name", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLanguageDefinition_MelangeURI(), ecorePackage.getEString(), "melangeURI", null, 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLanguageDefinition_NeedMelangeSynchronization(), ecorePackage.getEBoolean(), "needMelangeSynchronization", "false", 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(languageDefinitionEClass, ecorePackage.getEString(), "getFileExtensions", 0, -1, IS_UNIQUE, IS_ORDERED);
 

@@ -150,13 +150,31 @@ public interface confPackage extends EPackage {
 	int LANGUAGE_DEFINITION__NAME = 6;
 
 	/**
+	 * The feature id for the '<em><b>Melange URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANGUAGE_DEFINITION__MELANGE_URI = 7;
+
+	/**
+	 * The feature id for the '<em><b>Need Melange Synchronization</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION = 8;
+
+	/**
 	 * The number of structural features of the '<em>Language Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LANGUAGE_DEFINITION_FEATURE_COUNT = 7;
+	int LANGUAGE_DEFINITION_FEATURE_COUNT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -796,6 +814,28 @@ public interface confPackage extends EPackage {
 	EAttribute getLanguageDefinition_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMelangeURI <em>Melange URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Melange URI</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMelangeURI()
+	 * @see #getLanguageDefinition()
+	 * @generated
+	 */
+	EAttribute getLanguageDefinition_MelangeURI();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#isNeedMelangeSynchronization <em>Need Melange Synchronization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Need Melange Synchronization</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#isNeedMelangeSynchronization()
+	 * @see #getLanguageDefinition()
+	 * @generated
+	 */
+	EAttribute getLanguageDefinition_NeedMelangeSynchronization();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.EditorProject <em>Editor Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1103,6 +1143,22 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LANGUAGE_DEFINITION__NAME = eINSTANCE.getLanguageDefinition_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Melange URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LANGUAGE_DEFINITION__MELANGE_URI = eINSTANCE.getLanguageDefinition_MelangeURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Need Melange Synchronization</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION = eINSTANCE.getLanguageDefinition_NeedMelangeSynchronization();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EditorProjectImpl <em>Editor Project</em>}' class.
