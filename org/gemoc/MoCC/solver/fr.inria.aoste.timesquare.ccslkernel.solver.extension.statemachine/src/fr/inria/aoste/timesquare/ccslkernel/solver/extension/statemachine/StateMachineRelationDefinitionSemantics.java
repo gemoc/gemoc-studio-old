@@ -277,8 +277,8 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 		IntegerExpression leftExpr = ia.getLeftValue();
 		IntegerExpression rightExpr = ia.getRightValue();
 							
-		if (!(rightExpr instanceof IntPlus |rightExpr instanceof IntMinus | rightExpr instanceof IntegerVariableRef)){
-			throw new IllegalArgumentException("only integer plus/minus and integer variable ref expressions are supported as right value of assignment");
+		if (!(rightExpr instanceof IntPlus |rightExpr instanceof IntMinus | rightExpr instanceof IntegerVariableRef | rightExpr instanceof IntegerRef)){
+			throw new IllegalArgumentException("only integer plus/minus, integer ref and integer variable ref expressions are supported as right value of assignment");
 		}
 		if(rightExpr instanceof IntPlus){
 			IntPlus plus = (IntPlus)rightExpr;
@@ -325,6 +325,26 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 			IntegerElement localLeftElement = _localInteger.get(leftElement);
 			localLeftElement.setValue(iToAssign);
 		}
+		
+		if(rightExpr instanceof IntegerRef){
+			IntegerRef varRef = (IntegerRef)rightExpr;
+
+			//int iToAssign = ((IntegerElement) _abstract2concreteMap.get(varRef.getIntegerElem()).getModelElement()).getValue().intValue();
+			int iToAssign;
+			if(_localInteger.get(varRef.getIntegerElem())!=null)
+				iToAssign =  _localInteger.get(varRef.getIntegerElem()).getValue().intValue();
+			else
+				iToAssign = varRef.getIntegerElem().getValue().intValue();
+			
+			if (! (leftExpr instanceof IntegerRef)){
+				throw new IllegalArgumentException("left value of assignment should be integerRef (to a local integer !)");
+			}
+			
+			IntegerElement leftElement = ((IntegerRef)leftExpr).getIntegerElem();
+			IntegerElement localLeftElement = _localInteger.get(leftElement);
+			localLeftElement.setValue(iToAssign);
+		}
+		
 		return;
 	}
 
