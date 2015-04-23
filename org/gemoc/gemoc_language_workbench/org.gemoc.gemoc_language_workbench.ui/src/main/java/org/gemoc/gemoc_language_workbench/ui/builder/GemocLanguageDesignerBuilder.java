@@ -146,7 +146,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 				// Create the resource
 				Resource modelresource = resSet.getResource(URI.createURI(file.getLocationURI().toString()), true);
 				LanguageDefinition languageDef =  (LanguageDefinition) modelresource.getContents().get(0);
-				// get buil option first
+				// get build option first
 //				GemocLanguageWorkbenchConfiguration gemocLanguageWorkbenchConfiguration = (GemocLanguageWorkbenchConfiguration) modelresource.getContents().get(0);
 //			    BuildOptions buildOptions = gemocLanguageWorkbenchConfiguration.getBuildOptions();
 //			    if(buildOptions == null) buildOptions = confFactoryImpl.eINSTANCE.createBuildOptions();
@@ -180,6 +180,15 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 			String languageRootElement,
 			ManifestChanger manifestChanger, EObject eObject)
 			throws BundleException, IOException, CoreException {
+		
+		if (eObject instanceof LanguageDefinition) {
+			LanguageDefinition languageDefinition =  (LanguageDefinition) eObject;
+			if(languageDefinition.isNeedMelangeSynchronization()){
+				MelangeGenerator melangeGenerator = new MelangeGenerator(project, languageDefinition);
+				melangeGenerator.updateGeneratedMelange(manifestChanger);
+			}
+		}
+		
 		if (eObject instanceof DomainModelProject) {
 			DomainModelProject domainModelProject = (DomainModelProject) eObject;
 			updateDependenciesWithProject(manifestChanger, domainModelProject.getProjectName());
@@ -221,6 +230,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		}
 		return languageRootElement;
 	}
+	
 	
 	/**
 	 * create or replace existing CodeExecutorClass by an implementation that is
