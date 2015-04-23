@@ -77,47 +77,35 @@ public class MelangeGenerator {
 			fileContent = fileContent.replaceAll(
 					Pattern.quote("${base.language.metamodel.section}"), sb.toString());
 			
+			// let's create the modeltype for our executable language
+			sb = new StringBuilder();
+			// grab the original language name from the ecore
+			sb.append("metamodel "+ languageDefinition.getName()+" {\n");
+			for(GenPackage genpackage : genModel.getGenPackages()){
+				//genpackage.getEcoreModelElement().eIsProxy();
+				//genpackage.getEcorePackage().eResource().getURI().toString();
+				sb.append("   ecore \""+genpackage.getEcorePackage().eResource().getURI().toString()+"\"\n");
+				break; // currently melange doesn't support multiple ecore file as metmaodel definition
+				// so just grab the first one
+			}
+			sb.append("   withGenmodel \""+languageDefinition.getDomainModelProject().getGenmodeluri()+"\"\n");
+			sb.append("   exactType "+ languageDefinition.getName()+"_MT\n");
 			
 			if(languageDefinition.getDsaProject() != null && languageDefinition.getDsaProject().getProjectName() != null && 
 					!languageDefinition.getDsaProject().getProjectName().isEmpty()){
-				// let's create the modeltype for our executable language
-				sb = new StringBuilder();
-				// grab the original language name from the ecore
-				sb.append("metamodel "+ languageDefinition.getName()+" {\n");
-				for(GenPackage genpackage : genModel.getGenPackages()){
-					//genpackage.getEcoreModelElement().eIsProxy();
-					//genpackage.getEcorePackage().eResource().getURI().toString();
-					sb.append("   ecore \""+genpackage.getEcorePackage().eResource().getURI().toString()+"\"\n");
-					break; // currently melange doesn't support multiple ecore file as metmaodel definition
-					// so just grab the first one
-				}
-				sb.append("   withGenmodel \""+languageDefinition.getDomainModelProject().getGenmodeluri()+"\"\n");
-				sb.append("   exactType "+ languageDefinition.getName()+"_MT\n");
-				
 				// aspects from dsa				
 				IProject k3DSAIProject = ResourcesPlugin.getWorkspace().getRoot().getProject(languageDefinition.getDsaProject().getProjectName());
 				Set<String> aspectClasses = getAspectClassesList(k3DSAIProject);
 				for(String aspectClass : aspectClasses){
 					sb.append("   with "+aspectClass+"\n");
 				}
-				sb.append("}\n");
-				fileContent = fileContent.replaceAll(
-						Pattern.quote("${executable.language.metamodel.section}"), sb.toString());
-				
-				
-				// deal with the import section
-				fileContent = fileContent.replaceAll(
-						Pattern.quote("${import.section}"), "");
-				
 			}
-			else {
-				// no modeltype for the executable language
-				fileContent = fileContent.replaceAll(
-						Pattern.quote("${executable.language.metamodel.section}"), "// No valid DSA in xdsml, so do not create metamodel for "+languageDefinition.getName());
-				fileContent = fileContent.replaceAll(
-						Pattern.quote("${import.section}"), "// No valid DSA in xdsml, so do not need import section");
-				
-			}
+			sb.append("}\n");
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${executable.language.metamodel.section}"), sb.toString());
+			// deal with the import section, currently nothing
+			fileContent = fileContent.replaceAll(
+					Pattern.quote("${import.section}"), "");
 			
 			// if file doesn't exist, create it with this content
 			// else if buffer is different from existing, replace it
