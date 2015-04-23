@@ -174,7 +174,7 @@ public class CreateDomainModelWizardContextAction {
 			emfProject.accept(ecoreProjectVisitor);
 			IFile genmodelIFile = ecoreProjectVisitor.getFile();
 			if(genmodelIFile != null){
-				emfEcoreProject.setGenmodeluri(genmodelIFile.getFullPath().toString());
+				emfEcoreProject.setGenmodeluri("platform:/resource"+genmodelIFile.getFullPath().toString());
 			}
 		} catch (CoreException e) {
 			Activator.error(e.getMessage(), e);
