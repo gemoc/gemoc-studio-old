@@ -1,0 +1,66 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <title>3.2.&nbsp;The GEMOC Approach for defining eXecutable DSML (xDSML)</title><link rel="stylesheet" href="css/docbook.css" type="text/css"><meta name="generator" content="DocBook XSL-NS Stylesheets V1.75.2"><link rel="home" href="Guide.html" title="GEMOC Studio Guide"><link rel="up" href="ch03.html" title="Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial with Automaton DSML"><link rel="prev" href="ch03.html" title="Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial with Automaton DSML"><link rel="next" href="ch03s03.html" title="3.3.&nbsp;Definition of the requirements/expectations on the xDSML"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.2.&nbsp;The GEMOC Approach for defining eXecutable DSML (xDSML)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial with Automaton DSML</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch03s03.html">Next</a></td></tr></table><hr></div><div class="section" title="3.2.&nbsp;The GEMOC Approach for defining eXecutable DSML (xDSML)"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec-GEMOC-approach"></a>3.2.&nbsp;The GEMOC Approach for defining eXecutable DSML (xDSML)</h2></div></div></div><div class="section" title="3.2.1.&nbsp;Architecture of a GEMOC xDSML"><div class="titlepage"><div><div><h3 class="title"><a name="sec-GEMOC-architecture"></a>3.2.1.&nbsp;Architecture of a GEMOC xDSML</h3></div></div></div><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p xmlns="">We consider that the Abstract Syntax (AS) of the DSML is already
+defined and thus that its design is not part of the GEMOC xDSML process.
+Nevertheless, the process could easily be extended with a new step
+which consists in defining the AS and its Concrete Syntaxes (CS).</p></div><p>Once the AS is defined&#8201;&#8212;&#8201;and possibly the CS ---, the execution
+semantics of the DSML can be defined.   It includes the definition
+of:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">the <span class="strong"><strong>DSA</strong></span> (Domain Specific Actions) which includes EF (Execution
+Functions) and ED (Execution Data): it defines the runtime data
+and the actions to handle them,</li><li class="listitem">the <span class="strong"><strong>MOCC</strong></span> (Model of Concurrency and Communication) which deals with
+concurrency aspects,</li><li class="listitem">the <span class="strong"><strong>DSE</strong></span> which maps DSA and MOCC,</li><li class="listitem">the <span class="strong"><strong>visualization</strong></span> which provides views to control and monitor the
+execution of models conforming to the xDSML.</li></ul></div><p>There is no mandatory order in which these different parts have to be
+built.  Thus, a first description of the process can focus on this
+characteristic (<a class="link" href="ch03s02.html#GEMOC-process-overview" title="Figure&nbsp;3.1.&nbsp;Overview of the GEMOC process">see overview process</a>).
+The xDSML parts may be built in any order.
+This process stresses a first step which consists in eliciting the
+requirements on the expected execution semantics.  This
+elicitation is not always easy to achieve for the system engineers,
+thus we believe that providing samples of models as well as some
+scenarios describing their execution is a good way
+for system engineers to describe they expectations.</p><p>Furthermore, it is recommended to built the xDSML using increments and
+iterations.  Increments address requirements the ones after the
+others.  Iterations allow to rework the different components until the
+requirements are fulfilled.</p><div class="figure"><a name="GEMOC-process-overview"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-overview.png" alt="Overview of the GEMOC process"></div></div><p class="title"><b>Figure&nbsp;3.1.&nbsp;Overview of the GEMOC process</b></p></div><br class="figure-break"><p><a class="indexterm" name="d0e1890"></a>
+<a class="indexterm" name="d0e1898"></a>
+<a class="indexterm" name="d0e1904"></a></p><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p xmlns="">For clarity, the iteration to choose the next increment is not
+represented of the diagram.</p></div></div><div class="section" title="3.2.2.&nbsp;Main Characteristics of the GEMOC Process."><div class="titlepage"><div><div><h3 class="title"><a name="sec-GEMOC-characteristics"></a>3.2.2.&nbsp;Main Characteristics of the GEMOC Process.</h3></div></div></div><p>The main characteristics of the definition of an \xdsml according to \gemoc
+are the following:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">It is <span class="strong"><strong>user-oriented</strong></span>.  Indeed, we believe that to build the right
+xDSML, the end-users' expectations have to be handled in the first
+place.  As GEMOC targets simulation of models, it is important to
+elicit the expectations of the end-users, i.e. the system engineers,
+in term of simulation of its models.</li><li class="listitem">It is <span class="strong"><strong>incremental</strong></span>.  All end-users expectations will not be
+handled all at the same time but we recommend to define several increments
+that will progressively includes these expectations seen as requirements.
+The purpose is to make the definition of the execution semantics simpler
+by gradually integrating the requirements, and thus the difficulties.</li><li class="listitem">It is <span class="strong"><strong>iterative</strong></span>.  For an increment, all the components will
+certainly not be done right and complete at the first time.  Thus,
+iterations will be necessary to tweak the definitions of the xDSML.
+Examples provided by the end users will help in deciding whether an
+iteration is finished or not.</li><li class="listitem">It is <span class="strong"><strong>highly concurrent</strong></span>.  Indeed, the main steps can be run at
+the same time, possibly by different persons (even if it not always very
+easy using Eclipse).  We can imagine that the DSE model and mappings can
+be first defined to specify the overall architecture of the xDSML
+semantics, including requirements on DSA as specification of the expected
+execution functions and requirements on the MoCC as expected MoCC events
+and relations on them.  The MoCC libraries, the DSA implementation and the
+animator can then be developed at the same time, by different persons.
+Of course the DSE model can still be changed and the others updated.</li></ul></div></div><div class="section" title="3.2.3.&nbsp;Recommanded GEMOC Process"><div class="titlepage"><div><div><h3 class="title"><a name="sec-GEMOC-process"></a>3.2.3.&nbsp;Recommanded GEMOC Process</h3></div></div></div><p>An xDSML is a language that targets a specific purpose. When defining
+such a language it is important to first identify that purpose so as
+to build the right language.  Thus, we propose a methodology which
+focuses on the end-user expectations --- why models are animated? ---
+and then build the different parts of the xDSML to fulfill these
+expectations.</p><p>In the context of the GEMOC project, the main aim is to be able to
+animate and simulate heterogeneous models based on different xDSMLs.
+Thus the end-user expectations will encompass the different xDSML
+involved in the model to build.  This global process which includes
+the dispatch of expectations on the different parts of a model will be
+addressed in a future revision of this document when all constituents
+will be further defined.</p><p>The main steps to achieve the definition of an xDSML according to the
+GEMOC approach are described hereafter. They are summarized as a UML
+activity diagram.  Package notation is used to group activities by
+domain (and could be considered as a kind of compound activity).</p><div class="figure"><a name="GEMOC-process"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/tutorial/xDSML-definition-process-general.png" alt="Recommended GEMOC Process"></div></div><p class="title"><b>Figure&nbsp;3.2.&nbsp;Recommended GEMOC Process</b></p></div><br class="figure-break"><p><a class="indexterm" name="d0e1959"></a>
+<a class="indexterm" name="d0e1965"></a></p><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2><p xmlns="">This process is the recommanded one, and the one used in this
+tutorial.  Nevertheless, it is possible to define an xDSML with other
+processes depending on the background of the language designer, his
+knowledge of the GEMOC approach, the considered DSML, etc.</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch03s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;3.&nbsp;GEMOC xDSML definition tutorial with Automaton DSML&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Guide.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;3.3.&nbsp;Definition of the requirements/expectations on the xDSML</td></tr></table></div></body></html>
