@@ -5,13 +5,13 @@
 
 <div class="section" title="1.1. Overview"><div class="titlepage"><div><div><h2 class="title"><a id="_overview"/>1.1. Overview</h2></div></div></div>
 
-<p>The <span class="strong"><strong><a id="d5e191" class="indexterm"/>GEMOC Language Workbench</strong></span> is intended to be used by the <a id="d5e193" class="indexterm"/>Language Designers and the <a id="d5e195" class="indexterm"/>Language Integrators. It provides the tools to create and compose eXecutable Domain-Specific Modeling Languages (xDSMLs) using the GEMOC approach.</p>
+<p>The <span class="strong"><strong><a id="d5e193" class="indexterm"/>GEMOC Language Workbench</strong></span> is intended to be used by the <a id="d5e195" class="indexterm"/>Language Designers and the <a id="d5e197" class="indexterm"/>Language Integrators. It provides the tools to create and compose eXecutable Domain-Specific Modeling Languages (xDSMLs) using the GEMOC approach.</p>
 <div class="figure"><a id="figure-glw-screenshot-of-language_workbench"/><p class="title"><strong>Figure 1.1. Screenshot of the GEMOC Language Workbench showing the design of a Timed Finite State Machine (TFSM) example.</strong></p><div class="figure-contents">
 
 <div class="mediaobject"><img src="./images/gemoc_language_workbench_TFSM_screenshot.png" alt="Screenshot of the GEMOC Language Workbench"/></div>
 </div></div><br class="figure-break"/>
-<p><a id="d5e205" class="indexterm"/>
-<a id="d5e208" class="indexterm"/></p>
+<p><a id="d5e207" class="indexterm"/>
+<a id="d5e210" class="indexterm"/></p>
 <p><hr xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory"/></p>
 </div>
 <div class="section" title="1.2. xDSML Project"><div class="titlepage"><div><div><h2 class="title"><a id="section-gemoc-language-project"/>1.2. xDSML Project</h2></div></div></div>
@@ -22,7 +22,7 @@
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Referencing the different projects implementing the various parts constituting an xDSML;
 </li><li class="listitem">
-Guiding the <a id="d5e221" class="indexterm"/>Language Designer in the language creation process through the <a id="d5e223" class="indexterm"/>GEMOC Dashboard illustrating the workflow of creating an xDSML using the GEMOC Studio.
+Guiding the <a id="d5e223" class="indexterm"/>Language Designer in the language creation process through the <a id="d5e225" class="indexterm"/>GEMOC Dashboard illustrating the workflow of creating an xDSML using the GEMOC Studio.
 </li></ul></div>
 </div>
 <div class="section" title="1.2.2. Creating the xDSML Project"><div class="titlepage"><div><div><h3 class="title"><a id="_creating_the_xdsml_project"/>1.2.2. Creating the xDSML Project</h3></div></div></div>
@@ -99,12 +99,12 @@ Don’t forget to link the xDSML Project to the concrete syntax project(s) you w
 
 <p>See <a class="ulink" href="http://www.eclipse.org/Xtext/">the Xtext website</a>.</p>
 </div>
-<div class="section" title="1.6.2. Defining a Concrete Syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a id="defining-a-concrete-syntax-with-sirius-section"/>1.6.2. Defining a Concrete Syntax with <a id="d5e297" class="indexterm"/>Sirius</h3></div></div></div>
+<div class="section" title="1.6.2. Defining a Concrete Syntax with Sirius"><div class="titlepage"><div><div><h3 class="title"><a id="defining-a-concrete-syntax-with-sirius-section"/>1.6.2. Defining a Concrete Syntax with <a id="d5e299" class="indexterm"/>Sirius</h3></div></div></div>
 
 <p>If you want to create a graphical concrete syntax you can use Sirius. The <a class="ulink" href="http://www.eclipse.org/sirius/doc/">Sirius documentation</a> provides information for <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a>.</p>
 </div>
 </div>
-<div class="section" title="1.7. Defining a Model of Concurrency and Communication (MoCC)"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_a_model_of_concurrency_and_communication_mocc"/>1.7. Defining a Model of Concurrency and Communication (MoCC)</h2></div></div></div>
+<div class="section" title="1.7. Defining a Model of Concurrency and Communication (MoCC)"><div class="titlepage"><div><div><h2 class="title"><a id="section-defining-a-mocc"/>1.7. Defining a Model of Concurrency and Communication (MoCC)</h2></div></div></div>
 
 <p>TODO: MoccML + ECL</p>
 <div class="section" title="1.7.1. Introduction"><div class="titlepage"><div><div><h3 class="title"><a id="_introduction_2"/>1.7.1. Introduction</h3></div></div></div>
@@ -115,9 +115,9 @@ Don’t forget to link the xDSML Project to the concrete syntax project(s) you w
  The execution engine of the <span class="emphasis"><em>GEMOC Studio</em></span> is based on an event-based semantics, which means that events are used to activate the EF actions that can change the state of a model.</p>
 <p>To describe and integrate the model of concurrency, we must 1) have a description of the useful events allowing activation of the <span class="emphasis"><em>EF</em></span>, 2) a mechanism to express the <span class="emphasis"><em>MoCC</em></span> constraints that apply on these events.</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
-1) is realized using the <span class="strong"><strong><a id="d5e321" class="indexterm"/>ECL</strong></span> language whose description and use is provided below
+1) is realized using the <span class="strong"><strong><a id="d5e323" class="indexterm"/>ECL</strong></span> language whose description and use is provided below
 </li><li class="listitem">
-2) Is achieved through the <span class="strong"><strong><a id="d5e326" class="indexterm"/>MoCCML</strong></span> language whose description and use is described below
+2) Is achieved through the <span class="strong"><strong><a id="d5e328" class="indexterm"/>MoCCML</strong></span> language whose description and use is described below
 </li></ul></div>
 </div>
 <div class="section" title="1.7.2. The ECL approach to Identify DSE and constraints"><div class="titlepage"><div><div><h3 class="title"><a id="_the_ecl_approach_to_identify_dse_and_constraints"/>1.7.2. The ECL approach to Identify DSE and constraints</h3></div></div></div>
@@ -135,7 +135,7 @@ Don’t forget to link the xDSML Project to the concrete syntax project(s) you w
 <p>In this section, we show an exemplified way to use ECL. The required steps to go from a given language to the integration of its concurrency model are presented.</p>
 <div class="section" title="Import Language"><div class="titlepage"><div><div><h5 class="title"><a id="_import_language"/>Import Language</h5></div></div></div>
 
-<p>As shown in Listing <a class="xref" href="ch01.html#eclimport">???</a>, an <span class="emphasis"><em>ECL</em></span> file imports the extended language that contains the language metaclasses, the <span class="emphasis"><em>EF</em></span> and <span class="emphasis"><em>ED</em></span>. The <span class="emphasis"><em>ECL</em></span> language defines the notion of <span class="strong"><strong><a id="d5e352" class="indexterm"/>import</strong></span> to import the extended metamodel (see import of <span class="emphasis"><em>dplExtended.ecore</em></span> in Listing <a class="xref" href="ch01.html#eclimport">???</a>).
+<p>As shown in Listing <a class="xref" href="ch01.html#eclimport">???</a>, an <span class="emphasis"><em>ECL</em></span> file imports the extended language that contains the language metaclasses, the <span class="emphasis"><em>EF</em></span> and <span class="emphasis"><em>ED</em></span>. The <span class="emphasis"><em>ECL</em></span> language defines the notion of <span class="strong"><strong><a id="d5e354" class="indexterm"/>import</strong></span> to import the extended metamodel (see import of <span class="emphasis"><em>dplExtended.ecore</em></span> in Listing <a class="xref" href="ch01.html#eclimport">???</a>).
 The import is used to load all the concepts of language that are used to clarify: the <span class="emphasis"><em>EF</em></span> activation events; static properties numeric or Boolean values, and constraints associated with concepts.</p>
 <pre xmlns="" xmlns:d="http://docbook.org/ns/docbook" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="PYTHON">import "platform:/resource/org.gemoc.model.dpl.dplextended/model/dplExtended.ecore"</pre>
 </div>
@@ -191,7 +191,7 @@ The first level of representation contains elements as illustrated in Figure <a 
 </li><li class="listitem">
 The second level of graphical representation defines the graphical syntax for the modeling of the Automata constraints.
 </li><li class="listitem">
-The overall <span class="emphasis"><em>MoCC</em></span> models are serialized to a textual syntax, which means that the graphical models are transformed into their equivalent representation in a textual formal. <span class="strong"><strong><a id="d5e434" class="indexterm"/>Both representations (graphical or textual) can be used for edition of models</strong></span>.
+The overall <span class="emphasis"><em>MoCC</em></span> models are serialized to a textual syntax, which means that the graphical models are transformed into their equivalent representation in a textual formal. <span class="strong"><strong><a id="d5e436" class="indexterm"/>Both representations (graphical or textual) can be used for edition of models</strong></span>.
 Moreover, we define the integration of an embedded textual editor in the graphical representation to focus on specific parts of the <span class="emphasis"><em>MoCC</em></span> model that are better edited using a textual syntax (eg trigger, the guards and the actions on transitions). Embedded editors are called by double-clic, and are placed on specific graphical edition elements (Relation Declaration, Relation Definition, DeclarationBlock, Transition).
 </li></ul></div>
 </div>
@@ -319,15 +319,15 @@ end</pre>
 </div>
 </div>
 </div>
-<div class="section" title="1.9. Defining the Feedback Specification"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_the_indexterm_primary_feedback_specification_primary_indexterm_feedback_specification"/>1.9. Defining the <a id="d5e558" class="indexterm"/>Feedback Specification</h2></div></div></div>
+<div class="section" title="1.9. Defining the Feedback Specification"><div class="titlepage"><div><div><h2 class="title"><a id="_defining_the_indexterm_primary_feedback_specification_primary_indexterm_feedback_specification"/>1.9. Defining the <a id="d5e560" class="indexterm"/>Feedback Specification</h2></div></div></div>
 
 <div class="section" title="1.9.1. Purpose"><div class="titlepage"><div><div><h3 class="title"><a id="_purpose_5"/>1.9.1. Purpose</h3></div></div></div>
 
 <p>Many languages need to be able to parameterize their control flow with their data flow. For instance, conditional statements like <span class="emphasis"><em>if…​then…​else</em></span> or <span class="emphasis"><em>switch…​case</em></span> statements depend on the result of a boolean expression.
 Since the GEMOC approach at designing xDSMLs promotes the separation of the concurrency (MoCC from the domain-specific data (DSA), there needs to be a form of communication from the DSA to the MoCC. For instance, the MoCC of an xDSML with a conditional statement specifies that after evaluating the condition, either the 'then' or the 'else' branch will be taken (in exclusion from one another), while the DSA provide the Execution Function that evaluates the condition, returning a boolean value. Making the link between the 'true' value and the 'then' branch, and between the 'false' value and the 'else' branch is the role of the Feedback Specification.
-More formally, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the atomic Domain-Specific Events. Therefore, the Feedback Specification is also done using <a id="d5e565" class="indexterm"/>GEL.</p>
+More formally, the Feedback Specification specifies how domain data returned by an Execution Function must be interpreted to parameterize the MoCC. The Feedback Specification consists in a set of Feedback Policies which are associated to the atomic Domain-Specific Events. Therefore, the Feedback Specification is also done using <a id="d5e567" class="indexterm"/>GEL.</p>
 </div>
-<div class="section" title="1.9.2. Creating a Feedback Policy"><div class="titlepage"><div><div><h3 class="title"><a id="_creating_a_indexterm_primary_feedback_policy_primary_indexterm_feedback_policy"/>1.9.2. Creating a <a id="d5e569" class="indexterm"/>Feedback Policy</h3></div></div></div>
+<div class="section" title="1.9.2. Creating a Feedback Policy"><div class="titlepage"><div><div><h3 class="title"><a id="_creating_a_indexterm_primary_feedback_policy_primary_indexterm_feedback_policy"/>1.9.2. Creating a <a id="d5e571" class="indexterm"/>Feedback Policy</h3></div></div></div>
 
 <p>A Feedback Policy is associated to an atomic DSE by extending the syntax for defining the atomic DSE as follows:</p>
 <pre class="screen">DSE &lt;name&gt;:
@@ -362,10 +362,10 @@ For each rule to apply, the associated consequence is allowed to have occurrence
 </div>
 <div class="section" title="1.10. Defining a debug representation"><div class="titlepage"><div><div><h2 class="title"><a id="defining-a-debug-representation-section"/>1.10. Defining a debug representation</h2></div></div></div>
 
-<p>The debug layer is an extension on top of a graphical editor defined with <a id="d5e594" class="indexterm"/>Sirius which represents runtime data and the current instruction. See <a class="xref" href="ch01.html#defining-a-concrete-syntax-with-sirius-section" title="1.6.2. Defining a Concrete Syntax with Sirius">Section 1.6.2, “Defining a Concrete Syntax with Sirius”</a> for more details about <a id="d5e597" class="indexterm"/>Sirius. This section covers the debug representation creation wizard and the technical implementation details. Technical implementation details are only useful for advanced use case and troubleshooting.</p>
+<p>The debug layer is an extension on top of a graphical editor defined with <a id="d5e596" class="indexterm"/>Sirius which represents runtime data and the current instruction. See <a class="xref" href="ch01.html#defining-a-concrete-syntax-with-sirius-section" title="1.6.2. Defining a Concrete Syntax with Sirius">Section 1.6.2, “Defining a Concrete Syntax with Sirius”</a> for more details about <a id="d5e599" class="indexterm"/>Sirius. This section covers the debug representation creation wizard and the technical implementation details. Technical implementation details are only useful for advanced use case and troubleshooting.</p>
 <div class="section" title="1.10.1. The debug representation wizard"><div class="titlepage"><div><div><h3 class="title"><a id="_the_debug_representation_wizard"/>1.10.1. The debug representation wizard</h3></div></div></div>
 
-<p>This wizard creates a layer to represent the current instruction and add commands in order to manage breakpoints and launch a simulation in debug mode. This is a default implementation, it can be customized to represent runtime data for instance. The customization uses the <a id="d5e602" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.
+<p>This wizard creates a layer to represent the current instruction and add commands in order to manage breakpoints and launch a simulation in debug mode. This is a default implementation, it can be customized to represent runtime data for instance. The customization uses the <a id="d5e604" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.
 The wizard presents three ways to implement this layer:</p>
 <div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
 Create a debug diagram description
@@ -430,12 +430,90 @@ Add a debug layer to an existing diagram description
 <div class="informalfigure">
 <div class="mediaobject"><img src="./images/workbench/language/debug_layer.png" alt="Debug layer"/></div>
 </div>
-<p>This is a default debug layer, it can be customized to fit your needs. The customization use the <a id="d5e696" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.</p>
+<p>This is a default debug layer, it can be customized to fit your needs. The customization use the <a id="d5e698" class="indexterm"/>Sirius description definition, see the <a class="ulink" href="http://www.eclipse.org/sirius/doc/specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a> for more details.</p>
 </div>
 </div>
 </div>
-<div class="section" title="1.11. Process support view"><div class="titlepage"><div><div><h2 class="title"><a id="section-process-support-view"/>1.11. Process support view</h2></div></div></div>
+<div class="section" title="1.11. Language workbench dashboard"><div class="titlepage"><div><div><h2 class="title"><a id="language-workbench-dashboard-section"/>1.11. Language workbench dashboard</h2></div></div></div>
 
-<p>TODO present process view</p>
+<div class="section" title="1.11.1. Open the dashboard"><div class="titlepage"><div><div><h3 class="title"><a id="_open_the_dashboard"/>1.11.1. Open the dashboard</h3></div></div></div>
+
+<p>The dashboard is available on .xdsml files from the Project Explorer or the Model Explorer views. See <a class="xref" href="ch01.html#section-gemoc-language-project" title="1.2. xDSML Project">Section 1.2, “xDSML Project”</a> to view how to create an xDSML project.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/dashboard/open_dashboard_menu.png" alt="Dashboard menu"/></div>
+</div>
+<p>When the <code class="literal">Gemoc Dashboard</code> menu is selected a new editor opens.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/dashboard/dashboard_create_language.png" alt="Dashboard"/></div>
+</div>
+<p>This editor is divided in three main parts:</p>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+Overview part
+</li><li class="listitem">
+Sections part
+</li><li class="listitem">
+Projects view
+</li></ol></div>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/dashboard/dashboard_parts.png" alt="Dashboard parts"/></div>
+</div>
+</div>
+<div class="section" title="1.11.2. Overview"><div class="titlepage"><div><div><h3 class="title"><a id="_overview_2"/>1.11.2. Overview</h3></div></div></div>
+
+<p>The overview allows to access to the different parts of the <a class="xref" href="ch01.html" title="Chapter 1. GEMOC Language Workbench">Chapter 1, <em>GEMOC Language Workbench <span class="inlinemediaobject"><img src="./images/icons/IconeGemocLanguage_16.png" alt="IconeGemocLanguage_16"/></span></em></a> process :</p>
+<div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+Create your language
+</li><li class="listitem">
+Make your language executable
+</li><li class="listitem">
+Define your runtime environment
+</li></ul></div>
+<p>When you click on a step in the overview the related actions are automatically presented in the sections part.</p>
+</div>
+<div class="section" title="1.11.3. Sections"><div class="titlepage"><div><div><h3 class="title"><a id="_sections"/>1.11.3. Sections</h3></div></div></div>
+
+<p>This part provides sections which depends on the selected overview. The sections contain links that can be used to activate the different actions : create the domain model project, edit the DSA project, define a concrete syntax…​</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/dashboard/dashboard_create_language_sections.png" alt="Dashboard sections"/></div>
+</div>
+<div class="section" title="Description"><div class="titlepage"><div><div><h4 class="title"><a id="_description"/>Description</h4></div></div></div>
+
+<p>Each section provides a help button which shows the description associated to the section and explains the process step and which actions are available.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/dashboard/section_description.png" alt="Section description"/></div>
+</div>
+</div>
+<div class="section" title="Links"><div class="titlepage"><div><div><h4 class="title"><a id="_links"/>Links</h4></div></div></div>
+
+<p>When a link is selected, the corresponding action is launched : open a wizard, open the documentation…​</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/dashboard/link.png" alt="Link"/></div>
+</div>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/dashboard/link_open_wizard.png" alt="Open wizard"/></div>
+</div>
+</div>
+</div>
+<div class="section" title="1.11.4. Projects view"><div class="titlepage"><div><div><h3 class="title"><a id="_projects_view"/>1.11.4. Projects view</h3></div></div></div>
+
+<p>On the right side of the dashboard, a tree viewer shows the projects associated to the current xDSML project.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/dashboard/projects_viewer.png" alt="Projects viewer"/></div>
+</div>
+<div class="section" title="Synchronize"><div class="titlepage"><div><div><h4 class="title"><a id="_synchronize"/>Synchronize</h4></div></div></div>
+
+<p>The section toolbar provides a <code class="literal">synchronize</code> action. This action filters the content of the tree viewer to keep only projects relevant according to the current process step represented by the section.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/dashboard/synchronize.png" alt="Synchronize projects"/></div>
+</div>
+</div>
+<div class="section" title="Open existing projects"><div class="titlepage"><div><div><h4 class="title"><a id="_open_existing_projects"/>Open existing projects</h4></div></div></div>
+
+<p>By double-clicking on a projet in the tree viewer, it is possible to open and update the corresponding file.</p>
+<div class="informalfigure">
+<div class="mediaobject"><img src="./images/workbench/language/dashboard/edit_project.png" alt="Edit project"/></div>
+</div>
+</div>
+</div>
 </div>
 </div><ul xmlns:d="http://docbook.org/ns/docbook" class="docnav"><li class="previous"><a accesskey="p" href="pr01.html"><strong>Prev</strong>Introduction</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="ch02.html"><strong>Next</strong>Chapter 2. Gemoc Modeling workbench</a></li></ul></body></html>

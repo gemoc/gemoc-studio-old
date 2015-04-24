@@ -34,7 +34,7 @@
          <topic label="Defining a Concrete Syntax with Xtext" href="ch01.html#defining-a-concrete-syntax-with-xtext-section"/>
          <topic label="Defining a Concrete Syntax with Sirius" href="ch01.html#defining-a-concrete-syntax-with-sirius-section"/>
       </topic>
-      <topic label="Defining a Model of Concurrency and Communication (MoCC)" href="ch01.html#_defining_a_model_of_concurrency_and_communication_mocc">
+      <topic label="Defining a Model of Concurrency and Communication (MoCC)" href="ch01.html#section-defining-a-mocc">
          <topic label="Introduction" href="ch01.html#_introduction_2"/>
          <topic label="The ECL approach to Identify DSE and constraints" href="ch01.html#_the_ecl_approach_to_identify_dse_and_constraints">
             <topic label="Overview of ECL" href="ch01.html#_overview_of_ecl"/>
@@ -82,7 +82,18 @@
             <topic label="Debug layer" href="ch01.html#_debug_layer"/>
          </topic>
       </topic>
-      <topic label="Process support view" href="ch01.html#section-process-support-view"/>
+      <topic label="Language workbench dashboard" href="ch01.html#language-workbench-dashboard-section">
+         <topic label="Open the dashboard" href="ch01.html#_open_the_dashboard"/>
+         <topic label="Overview" href="ch01.html#_overview_2"/>
+         <topic label="Sections" href="ch01.html#_sections">
+            <topic label="Description" href="ch01.html#_description"/>
+            <topic label="Links" href="ch01.html#_links"/>
+         </topic>
+         <topic label="Projects view" href="ch01.html#_projects_view">
+            <topic label="Synchronize" href="ch01.html#_synchronize"/>
+            <topic label="Open existing projects" href="ch01.html#_open_existing_projects"/>
+         </topic>
+      </topic>
    </topic>
    <topic label="Gemoc Modeling workbench" href="ch02.html">
       <topic label="Modeling workbench overview" href="ch02.html#_modeling_workbench_overview"/>
@@ -90,7 +101,7 @@
          <topic label="Editing model with Sirius" href="ch02.html#modeling-workbench-editing-model-with-sirius-section">
             <topic label="Debug specific" href="ch02.html#_debug_specific"/>
          </topic>
-         <topic label="Editing model with EMF Tree Editor" href="ch02.html#modeling-workbench-editing-model-with-emf-tree-editor-section"/>
+         <topic label="Editing model with EMF Tree Editor" href="ch02.html#section-modeling-workbench-editing-model-with-emf-tree-editor"/>
       </topic>
       <topic label="Executing model" href="ch02.html#modeling-workbench-executing-model-section">
          <topic label="Launch configuration" href="ch02.html#_launch_configuration">
@@ -153,7 +164,7 @@
       <topic label="TODO" href="ch03.html#_todo"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d5e1500"/>
+      <topic label="Articles" href="bi01.html#d5e1606"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
