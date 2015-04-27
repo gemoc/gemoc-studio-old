@@ -81,7 +81,6 @@ public class DefaultModelLoader implements IModelLoader {
 						.getAnimatorURI());
 				resourceSet = session.getTransactionalEditingDomain()
 						.getResourceSet();
-				resource = resourceSet.getResources().get(0);
 			} catch (CoreException e) {
 				throw new RuntimeException(e);
 			}
