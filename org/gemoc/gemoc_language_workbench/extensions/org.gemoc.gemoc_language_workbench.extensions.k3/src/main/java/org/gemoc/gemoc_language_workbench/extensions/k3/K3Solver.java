@@ -9,7 +9,10 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.core.IMSEOccurrenceListener;
 import org.gemoc.execution.engine.core.MSEManager;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
@@ -70,8 +73,6 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 	{
 	}
 
-	private Resource _resourceModel;
-
 	@Override
 	public byte[] getState() 
 	{
@@ -93,7 +94,6 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 	public void setUp(IExecutionContext context) 
 	{
 		Resource resourceFeedback = generateFeedback(context);
-		_resourceModel = context.getResourceModel();
 		MSEManager.getInstance().addListener(this);
 		MSEManager.getInstance().setActiveActionModel((ActionModel) resourceFeedback.getContents().get(0));
 		
@@ -114,7 +114,6 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 
 	@Override
 	public ArrayList<ModelElementReference> getAllDiscreteClocks() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -122,13 +121,6 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 	public void mseOccurenceAboutToBeRaised(MSEOccurrence occurrence) 
 	{
 		_lastOccurrence = occurrence;
-		String uri = _resourceModel.getURIFragment(occurrence.getMse().getCaller());
-//		String uri = engine.getExecutionContext().getResourceModel().getURIFragment(occurrence.getMse().getCaller());
-		if (uri != null)
-		{
-			ArrayList<LogicalStep> logicalSteps = new ArrayList<LogicalStep>();
-			logicalSteps.add(occurrence.getLogicalstep());
-		}
 	}
 	
 	private Resource generateFeedback(IExecutionContext context) 
@@ -146,8 +138,17 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 		{
 			// generate an empty feedback model. It will be filled on the fly when running the model using this k3 solver
 			ResourceSet resourceSet = context.getResourceModel().getResourceSet();
-			Resource resource = resourceSet.createResource(URI.createPlatformResourceURI(workspace.getFeedbackModelPath().toString().toString(), true));
-			resource.getContents().add(FeedbackFactory.eINSTANCE.createActionModel());
+			final Resource resource = resourceSet.createResource(URI.createPlatformResourceURI(workspace.getFeedbackModelPath().toString().toString(), true));
+			
+			TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(resource);
+			RecordingCommand command = new RecordingCommand(editingDomain, "Editing the feedback model") {
+				@Override
+				protected void doExecute() {
+					resource.getContents().add(FeedbackFactory.eINSTANCE.createActionModel());
+				}
+			};
+			CommandExecution.execute(editingDomain, command);
+			
 			try {
 				resource.save(null);
 			} catch (IOException e) {
@@ -165,8 +166,7 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 
 	@Override
 	public void mseOccurenceEnded(MSEOccurrence occurrence) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
 }
