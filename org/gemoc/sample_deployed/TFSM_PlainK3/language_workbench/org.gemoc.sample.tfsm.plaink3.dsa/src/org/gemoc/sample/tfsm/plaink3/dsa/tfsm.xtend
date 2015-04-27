@@ -22,7 +22,7 @@ class TFSMAspect
 
 	def public void init()
 	{
-		if(_self.currentState == null)
+		if (_self.currentState == null)
 		{
 			_self.currentState = _self.initialState;
 		}

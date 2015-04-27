@@ -25,10 +25,10 @@ class Main
 	{
 		val tfsm = system.tfsms.get(0)
 		var i = 0
-		while(i != 20)
+		while (i != 20)
 		{
 
-			if(i == 10)
+			if (i == 10)
 			{
 				tfsm.localEvents.forEach [ e |
 					e.trigger
@@ -37,7 +37,7 @@ class Main
 
 			tfsm.visit
 
-			if(i == 10)
+			if (i == 10)
 			{
 				tfsm.localEvents.forEach[e|e.unTrigger]
 			}
