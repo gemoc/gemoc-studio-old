@@ -61,7 +61,9 @@ public final class MSEManager {
 		LogicalStep logicalStep = Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep();
 		MSEOccurrence occurrence = Gemoc_execution_traceFactory.eINSTANCE.createMSEOccurrence();
 		occurrence.setLogicalstep(logicalStep);
-		ModelSpecificEvent mse = findOrCreateMSE(caller, operation);
+		ModelSpecificEvent mse = null;
+		if (operation != null)
+			mse = findOrCreateMSE(caller, operation);
 		occurrence.setMse(mse);
 		synchronized (_listenersLock) {
 			for (IMSEOccurrenceListener listener : _listeners) {
