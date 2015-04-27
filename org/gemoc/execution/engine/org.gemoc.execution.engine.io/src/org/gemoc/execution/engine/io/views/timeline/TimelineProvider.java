@@ -160,7 +160,9 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	}
 
 	private void appendToolTipTextToBuilder(StringBuilder builder, MSEOccurrence mseOccurrence) {
-		String s = String.format("%-50s%s", mseOccurrence.getMse().getName(), ViewUtils.eventToString(mseOccurrence.getMse()));
+		String s = "";
+		if (mseOccurrence.getMse() != null)
+			s = String.format("%-50s%s", mseOccurrence.getMse().getName(), ViewUtils.eventToString(mseOccurrence.getMse()));
 		builder.append(s);
 	}
 	
