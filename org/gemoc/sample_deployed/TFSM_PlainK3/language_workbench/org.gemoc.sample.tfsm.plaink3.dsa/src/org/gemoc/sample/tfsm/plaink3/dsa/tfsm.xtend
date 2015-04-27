@@ -13,19 +13,24 @@ import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMClockAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
 
 @Aspect(className=TFSM)
-class TFSMAspect {
+class TFSMAspect
+{
 
 	// should be added automatically by the dsa, currently introduced directly in the ecore
 	// public State currentState;
 	public State currentState
 
-	def public void init() {
-		if (_self.currentState == null) {
+	def public void init()
+	{
+		if(_self.currentState == null)
+		{
 			_self.currentState = _self.initialState;
 		}
 
-		for (o : _self.eAllContents.toSet) {
-			if (o instanceof FSMClock) {
+		for (o : _self.eAllContents.toSet)
+		{
+			if(o instanceof FSMClock)
+			{
 				o.numberOfTicks = 0
 			}
 		}
@@ -36,11 +41,13 @@ class TFSMAspect {
 }
 
 @Aspect(className=FSMClock, transactionSupport=TransactionSupport.EMF)
-class FSMClockAspect {
+class FSMClockAspect
+{
 	public Integer numberOfTicks = 0;
 
 	// Clock tick
-	def public Integer ticks() {
+	def public Integer ticks()
+	{
 		_self.numberOfTicks = _self.numberOfTicks + 1
 		println(
 			"[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".ticks()]New number of ticks : " +
@@ -51,19 +58,24 @@ class FSMClockAspect {
 }
 
 @Aspect(className=State)
-class StateAspect {
-	def public void onEnter() {
+class StateAspect
+{
+	def public void onEnter()
+	{
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".onEnter()]Entering " + _self.name)
 	}
 
-	def public void onLeave() {
+	def public void onLeave()
+	{
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".onLeave()]Leaving " + _self.name)
 	}
 }
 
 @Aspect(className=Transition, transactionSupport=TransactionSupport.EMF)
-class TransitionAspect {
-	def public void fire() {
+class TransitionAspect
+{
+	def public void fire()
+	{
 		_self.source.owningFSM.currentState = _self.target
 		println(
 			"[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".fire()]Fired " + _self.name + " -> " +
@@ -72,15 +84,18 @@ class TransitionAspect {
 }
 
 @Aspect(className=FSMEvent, transactionSupport=TransactionSupport.EMF)
-class FSMEventAspect {
+class FSMEventAspect
+{
 
 	public boolean isTriggered = false
 
-	def public void trigger() {
+	def public void trigger()
+	{
 		_self.isTriggered = true
 	}
 
-	def public void unTrigger() {
+	def public void unTrigger()
+	{
 		_self.isTriggered = false
 	}
 

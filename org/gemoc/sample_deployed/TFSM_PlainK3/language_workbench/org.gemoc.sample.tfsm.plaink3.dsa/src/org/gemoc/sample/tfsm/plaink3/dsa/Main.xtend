@@ -6,25 +6,30 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryRegistryImpl
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.emf.transaction.TransactionalEditingDomain
-import tfsmextended.tfsmextended.TimedSystem
-import tfsmextended.tfsmextended.impl.TfsmextendedPackageImpl
 
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
+import tfsmextended.tfsmextended.TimedSystem
+import tfsmextended.tfsmextended.impl.TfsmextendedPackageImpl
 
-class Main {
+class Main
+{
 
-	static def public void main(String[] args) {
+	static def public void main(String[] args)
+	{
 		val system = loadModel
 		main(system)
 	}
 
-	static def public void main(TimedSystem system) {
+	static def public void main(TimedSystem system)
+	{
 		val tfsm = system.tfsms.get(0)
 		var i = 0
-		while (i != 20) {
+		while(i != 20)
+		{
 
-			if (i == 10) {
+			if(i == 10)
+			{
 				tfsm.localEvents.forEach [ e |
 					e.trigger
 				]
@@ -32,7 +37,8 @@ class Main {
 
 			tfsm.visit
 
-			if (i == 10) {
+			if(i == 10)
+			{
 				tfsm.localEvents.forEach[e|e.unTrigger]
 			}
 
@@ -40,7 +46,8 @@ class Main {
 		}
 	}
 
-	static def private TimedSystem loadModel() {
+	static def private TimedSystem loadModel()
+	{
 		ResourceFactoryRegistryImpl.INSTANCE.getExtensionToFactoryMap().put("tfsm", new XMIResourceFactoryImpl());
 		EcorePackageImpl.init();
 		TfsmextendedPackageImpl.init();
@@ -54,7 +61,8 @@ class Main {
 		return system
 	}
 
-	static def private URI createModelURI() {
+	static def private URI createModelURI()
+	{
 		val directory = System.getProperty("user.dir").replace("\\", "/");
 		val modelURIAsString = directory + "/../../modeling_workbench" +
 			"/org.gemoc.tfsm.plaink3.single_traffic_light_sample/single_traffic_light.tfsm"

@@ -20,15 +20,16 @@ import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TransitionAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TransitionVisitorAspect.*
+import fr.inria.diverse.k3.al.annotationprocessor.TransactionSupport
 
 @Aspect(className=TimedSystem)
 class TimedSystemVisitorAspect {
 	def public void visit() {
-		_self.globalClocks.forEach[e|e.visit()]
+		_self.globalClocks.forEach[e|e.visit()] 
 		_self.tfsms.forEach[t|t.visit()]
 	}
 }
-
+ 
 @Aspect(className=TFSM)
 class TFSMVisitorAspect {
 
@@ -43,7 +44,7 @@ class TFSMVisitorAspect {
 		} else {
 			if (_self.localClock != null) {
 				_self.localClock.visit()
-			}
+			} 
 			_self.currentState.visit()
 		}
 		_self.stepNumber = _self.stepNumber + 1
@@ -65,7 +66,7 @@ class FSMClockVisitorAspect {
 	}
 }
 
-@Aspect(className=State)
+@Aspect(className=State, transactionSupport=TransactionSupport.EMF)
 class StateVisitorAspect {
 	def public void visit() {
 		_self.onEnter
@@ -74,7 +75,7 @@ class StateVisitorAspect {
 	}
 }
 
-@Aspect(className=Transition)
+@Aspect(className=Transition, transactionSupport=TransactionSupport.EMF)
 class TransitionVisitorAspect {
 	def public void visit() {
 		if (_self.ownedGuard != null) {
