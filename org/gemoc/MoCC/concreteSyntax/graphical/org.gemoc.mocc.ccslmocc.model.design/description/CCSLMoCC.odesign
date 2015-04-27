@@ -337,8 +337,8 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <containerMappings name="TypeContainer" semanticCandidatesExpression="[predefinedTypes->first()/]" domainClass="BasicType.Type" childrenPresentation="List">
-          <subNodeMappings name="TypeDeclaration" labelDirectEdit="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.2/@ownedTools[name='LabelType']" semanticCandidatesExpression="[eContainer().oclAsType(StateRelationBasedLibrary).predefinedTypes/]" domainClass="BasicType.Type">
+        <containerMappings name="TypeContainer" deletionDescription="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.1/@ownedTools[name='DelPredefinedTypesID']" semanticCandidatesExpression="[predefinedTypes->first()/]" domainClass="BasicType.Type" childrenPresentation="List">
+          <subNodeMappings name="TypeDeclaration" deletionDescription="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.1/@ownedTools[name='DelPredefinedTypesID']" labelDirectEdit="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.2/@ownedTools[name='LabelType']" semanticCandidatesExpression="[eContainer().oclAsType(StateRelationBasedLibrary).predefinedTypes/]" domainClass="BasicType.Type">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.eClass().name+': '+self.name/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -551,6 +551,16 @@
         <toolSections name="LibraryBasicsToolsModification">
           <ownedTools xsi:type="tool_1:ExternalJavaAction" name="DeleteNotAllowed" precondition="[self.oclIsTypeOf(BasicType::Type)/]" forceRefresh="true" id="org.gemoc.mocc.ccslmocc.model.design.actions.DeleteNotAllowedID"/>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteImportedTypes" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ExternalJavaActionCall" name="CantDeleteElement" forceRefresh="true" action="//@ownedViewpoints[name='MoCCML']/@ownedRepresentations[name='State-Based%20Library%20Diagram']/@additionalLayers[name='LibraryDefinition']/@toolSections.1/@ownedTools[name='DeleteNotAllowed']"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DelPredefinedTypesID" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>

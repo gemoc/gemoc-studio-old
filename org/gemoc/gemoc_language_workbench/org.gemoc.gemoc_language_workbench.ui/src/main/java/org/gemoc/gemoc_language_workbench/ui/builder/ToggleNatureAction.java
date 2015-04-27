@@ -32,13 +32,14 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.gemoc.commons.eclipse.core.resources.NatureToggling;
 import org.gemoc.commons.eclipse.core.resources.Project;
 import org.gemoc.commons.eclipse.pde.JavaProject;
-import org.gemoc.commons.eclipse.pde.ManifestChanger;
 import org.gemoc.commons.eclipse.pde.ui.PluginConverter;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
 import org.osgi.framework.BundleException;
+
+import fr.inria.diverse.commons.eclipse.pde.manifest.ManifestChanger;
 
 public class ToggleNatureAction implements IObjectActionDelegate {
 

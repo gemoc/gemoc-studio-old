@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getAnimatorProjects <em>Animator Projects</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getDSEProject <em>DSE Project</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getName <em>Name</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMelangeURI <em>Melange URI</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#isNeedMelangeSynchronization <em>Need Melange Synchronization</em>}</li>
  * </ul>
  * </p>
  *
@@ -190,6 +192,59 @@ public interface LanguageDefinition extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Melange URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Melange URI</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Melange URI</em>' attribute.
+	 * @see #setMelangeURI(String)
+	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_MelangeURI()
+	 * @model
+	 * @generated
+	 */
+	String getMelangeURI();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMelangeURI <em>Melange URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Melange URI</em>' attribute.
+	 * @see #getMelangeURI()
+	 * @generated
+	 */
+	void setMelangeURI(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Need Melange Synchronization</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Need Melange Synchronization</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Need Melange Synchronization</em>' attribute.
+	 * @see #setNeedMelangeSynchronization(boolean)
+	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_NeedMelangeSynchronization()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isNeedMelangeSynchronization();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#isNeedMelangeSynchronization <em>Need Melange Synchronization</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Need Melange Synchronization</em>' attribute.
+	 * @see #isNeedMelangeSynchronization()
+	 * @generated
+	 */
+	void setNeedMelangeSynchronization(boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->
