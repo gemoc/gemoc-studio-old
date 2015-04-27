@@ -27,14 +27,6 @@ class TFSMAspect
 			_self.currentState = _self.initialState;
 		}
 
-		for (o : _self.eAllContents.toSet)
-		{
-			if(o instanceof FSMClock)
-			{
-				o.numberOfTicks = 0
-			}
-		}
-
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".Init()]Initialized " + _self.name)
 	}
 
