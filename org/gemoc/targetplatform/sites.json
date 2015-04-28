@@ -79,6 +79,9 @@
     	],
     "patches": [
     	"http://gemoc.org/pub/studio/patch_osgi_luna/"
-    	]
+    	],
+    "lastragen": [
+        "https://ci.inria.fr/lastragen/job/lastragen%20complete%20build/lastSuccessfulBuild/artifact/fr.inria.diverse.trace.updatesite/target/repository/"
+    ]
 
 }
