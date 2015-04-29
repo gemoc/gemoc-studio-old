@@ -160,7 +160,9 @@ public class K3Solver implements ISolver, IMSEOccurrenceListener
 			Resource resource = context.getResourceModel().getResourceSet().getResource(feedbackPlatformURI, true);
 			return resource;				
 			 
-		}
+		}				
+			 
+		
 		
 	}
 
