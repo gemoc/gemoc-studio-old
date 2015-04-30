@@ -351,7 +351,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	}
 	protected void updateDependenciesWithDSEProject(ManifestChanger connection, DSEProject dsePoject) throws BundleException, IOException, CoreException {
 		String dseProjectName = dsePoject.getProjectName();		
-		if(!dseProjectName.isEmpty()){
+		if(dseProjectName != null && !dseProjectName.isEmpty()){
 			updateDependenciesWithProject(connection, dsePoject.getProjectName());
 			String solverClassName = dsePoject.getSolverClass();
 			if(solverClassName == null || solverClassName.isEmpty()){
@@ -411,7 +411,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 	 */
 	protected void updateSolverClass(IProject project, String solverClassName, String dseProjectName) {
 		String computedSolverClassName = "";
-		if(!dseProjectName.isEmpty()){
+		if(dseProjectName!= null && !dseProjectName.isEmpty()){
 			if(solverClassName == null || solverClassName.isEmpty()){
 				computedSolverClassName = "org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl.CcslSolver";
 			}
@@ -433,7 +433,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 
 	protected void updateQVTO(final IProject project, final String qvtoFileLocationUri, String dseProjectName) {
 		String computedQVTOLocationURI = "";
-		if(!dseProjectName.isEmpty()){
+		if(dseProjectName!= null && !dseProjectName.isEmpty()){
 			if(qvtoFileLocationUri == null || qvtoFileLocationUri.isEmpty()){
 				
 				// search the relevant qvto in the dse project
