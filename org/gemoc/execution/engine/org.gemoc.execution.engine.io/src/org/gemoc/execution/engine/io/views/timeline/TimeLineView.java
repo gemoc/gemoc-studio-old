@@ -2,10 +2,6 @@ package org.gemoc.execution.engine.io.views.timeline;
 
 import java.util.WeakHashMap;
 
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -150,7 +146,8 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 					TimeLineProviderProvider providerprovider = engine.getAddon(TimeLineProviderProvider.class);
 					_timelineProvider = providerprovider.getTimeLineProvider();
 					setTimelineProvider(_timelineProvider, start);
-				} else
+				} 
+				if (_timelineProvider == null)
 				{
 					_timelineProvider = new TimelineProvider(engine);
 					setTimelineProvider(_timelineProvider, start);
