@@ -6,7 +6,6 @@ import java.util.Stack;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
@@ -69,8 +68,8 @@ public final class MSEManager
 		MSEOccurrence occurrence = Gemoc_execution_traceFactory.eINSTANCE.createMSEOccurrence();
 		occurrence.setLogicalstep(logicalStep);
 		ModelSpecificEvent mse = null;
-		if (operation != null)
-			mse = findOrCreateMSE(caller, operation);
+		//if (operation != null)
+		mse = findOrCreateMSE(caller, operation);
 		occurrence.setMse(mse);
 		synchronized (_listenersLock)
 		{
@@ -95,10 +94,12 @@ public final class MSEManager
 		// If the operation is null, is means it's not an operation added as
 		// aspect
 		MSEOccurrence occurrence = null;
-		if (operation != null)
-		{
+		
+		//TODO was this required?
+		//if (operation != null) 
+		//{
 			occurrence = createMSEOccurrenceAndNotify(caller, operation);
-		}
+		//}
 		_mseOccurences.push(occurrence);
 	}
 
@@ -147,7 +148,7 @@ public final class MSEManager
 		{
 			for (ModelSpecificEvent existingMSE : _actionModel.getEvents())
 			{
-				if (existingMSE.getCaller().equals(caller) && existingMSE.getAction().equals(operation))
+				if (existingMSE.getCaller().equals(caller) && ((existingMSE.getAction() != null && existingMSE.getAction().equals(operation))||(existingMSE.getAction() == null && operation == null) ))
 				{
 					// no need to create one, we already have it
 					return existingMSE;
@@ -158,7 +159,10 @@ public final class MSEManager
 		final ModelSpecificEvent mse = FeedbackFactory.eINSTANCE.createModelSpecificEvent();
 		mse.setCaller(caller);
 		mse.setAction(operation);
-		mse.setName("MSE_" + caller.getClass().getSimpleName() + "_" + operation.getName());
+		if (operation!= null)
+			mse.setName("MSE_" + caller.getClass().getSimpleName() + "_" + operation.getName());
+		else
+			mse.setName("MSE_" + caller.getClass().getSimpleName() + "_NO_EOPERATION");
 		// and add it for possible reuse
 		if (_actionModel != null)
 		{
