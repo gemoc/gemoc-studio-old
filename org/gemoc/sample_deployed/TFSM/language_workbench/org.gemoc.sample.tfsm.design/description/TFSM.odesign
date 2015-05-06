@@ -2,7 +2,6 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="TFSM" version="8.1.0">
   <ownedViewpoints name="TFSM_ViewPoint">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TimedSystem" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="TimedSystem">
-<!--      <metamodel href="../../org.gemoc.sample.tfsm.model/model/tfsm.ecore#/"/>-->
       <metamodel href="../../org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore#/"/>
       <defaultLayer name="Default">
         <edgeMappingImports name="Transitions" importedMapping="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
@@ -110,7 +109,6 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TFSM" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="TFSM">
       <metamodel href="../../org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore#/"/>
-<!--      <metamodel href="../../org.gemoc.sample.tfsm.model/model/tfsm.ecore#/"/> -->
       <defaultLayer name="Default">
         <nodeMappings name="LocalEvents" labelDirectEdit="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self.localEvents/]" domainClass="FSMEvent">
           <style xsi:type="style:WorkspaceImageDescription" labelFormat="bold" showIcon="false" iconPath="event_small.png" sizeComputationExpression="-1" roundedCorner="true" workspacePath="/org.gemoc.sample.tfsm.design/icons/event_small.gif">
@@ -188,7 +186,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="editName" inputLabelExpression="&lt;%name%>">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[$0/]"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="editEventTransition" forceRefresh="true" inputLabelExpression="when &lt;%self.ownedGuard.triggeringEvent.name%> / &lt;%self.action%>  &lt;%for (self.generatedEvents){%>!&lt;%self.name+&quot;;&quot;%>&lt;%}%>">
