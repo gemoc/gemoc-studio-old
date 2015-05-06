@@ -298,18 +298,6 @@
             <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xmi:type="description:UserFixedColor" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@userColorsPalettes[name='MyPalette']/@entries[name='veryPaleYellow']"/>
           </computedStyleDescriptions>
-          <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_sh-8k_P8EeSN3qvZHWB0tQ" sizeComputationExpression="2" routingStyle="manhattan">
-            <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
-            <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_sh-8lPP8EeSN3qvZHWB0tQ" labelSize="9" showIcon="false" labelExpression="0 / 6">
-              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </computedStyleDescriptions>
-          <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_siEcIfP8EeSN3qvZHWB0tQ" sizeComputationExpression="2" routingStyle="manhattan">
-            <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
-            <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_siEcIvP8EeSN3qvZHWB0tQ" labelSize="9" showIcon="false" labelExpression="0 / 1">
-              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </computedStyleDescriptions>
           <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_siM_A_P8EeSN3qvZHWB0tQ" lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_siM_BPP8EeSN3qvZHWB0tQ">
@@ -331,6 +319,18 @@
           <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_silZgvP8EeSN3qvZHWB0tQ" sizeComputationExpression="2">
             <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_silZg_P8EeSN3qvZHWB0tQ">
+              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </computedStyleDescriptions>
+          <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_Xs5_kPQGEeSN3qvZHWB0tQ" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_Xs5_kfQGEeSN3qvZHWB0tQ" labelSize="9" showIcon="false" labelExpression="1 / 1">
+              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </computedStyleDescriptions>
+          <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_XvwfQPQGEeSN3qvZHWB0tQ" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_XvwfQfQGEeSN3qvZHWB0tQ" labelSize="9" showIcon="false" labelExpression="1 / 6">
               <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </computedStyleDescriptions>
@@ -462,7 +462,7 @@
             <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_sh-8kfP8EeSN3qvZHWB0tQ">
               <key xmi:type="sigpmlextended:Place" href="Simple.sigpml#//@ownedApplication/@ownedPlaces.0"/>
               <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_sh-8kvP8EeSN3qvZHWB0tQ" key="_nOLgBbtBEeS4he5IJELsSg">
-                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_sh-8lfP8EeSN3qvZHWB0tQ" value="_sh-8k_P8EeSN3qvZHWB0tQ">
+                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_sh-8lfP8EeSN3qvZHWB0tQ" value="_XvwfQPQGEeSN3qvZHWB0tQ">
                   <key xmi:type="sigpmlextended:System" href="Simple.sigpml#/"/>
                 </value>
               </value>
@@ -470,7 +470,7 @@
             <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_siD1EPP8EeSN3qvZHWB0tQ">
               <key xmi:type="sigpmlextended:Place" href="Simple.sigpml#//@ownedApplication/@ownedPlaces.1"/>
               <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_siEcIPP8EeSN3qvZHWB0tQ" key="_nOLgCrtBEeS4he5IJELsSg">
-                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_siEcI_P8EeSN3qvZHWB0tQ" value="_siEcIfP8EeSN3qvZHWB0tQ">
+                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_siEcI_P8EeSN3qvZHWB0tQ" value="_Xs5_kPQGEeSN3qvZHWB0tQ">
                   <key xmi:type="sigpmlextended:System" href="Simple.sigpml#/"/>
                 </value>
               </value>
@@ -581,9 +581,6 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nOLf-7tBEeS4he5IJELsSg" name="A2&#xA; execTime:3" incomingEdges="_3DTMNNE_EeSb49KClGy6jw" width="8" height="8" resizeKind="NSEW">
           <target xmi:type="sigpmlextended:Agent" href="Simple.sigpml#//@ownedApplication/@ownedAgents.1"/>
           <semanticElements xmi:type="sigpmlextended:Agent" href="Simple.sigpml#//@ownedApplication/@ownedAgents.1"/>
-          <decorations xmi:type="viewpoint:Decoration" xmi:id="_u1KgIPP8EeSN3qvZHWB0tQ">
-            <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@additionalLayers[name='SigPMLDebug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
-          </decorations>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_nOLf_LtBEeS4he5IJELsSg" name="pA2in" incomingEdges="_nOLgBbtBEeS4he5IJELsSg" width="2" height="2" resizeKind="NSEW">
             <target xmi:type="sigpmlextended:InputPort" href="Simple.sigpml#//@ownedApplication/@ownedAgents.1/@ownedPorts.0"/>
             <semanticElements xmi:type="sigpmlextended:InputPort" href="Simple.sigpml#//@ownedApplication/@ownedAgents.1/@ownedPorts.0"/>
@@ -608,27 +605,24 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nOLgBbtBEeS4he5IJELsSg" name="0 / 6" incomingEdges="_3DYrwNE_EeSb49KClGy6jw" sourceNode="_nOLf7btBEeS4he5IJELsSg" targetNode="_nOLf_LtBEeS4he5IJELsSg">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nOLgBbtBEeS4he5IJELsSg" name="1 / 6" incomingEdges="_3DYrwNE_EeSb49KClGy6jw" sourceNode="_nOLf7btBEeS4he5IJELsSg" targetNode="_nOLf_LtBEeS4he5IJELsSg">
         <target xmi:type="sigpmlextended:Place" href="Simple.sigpml#//@ownedApplication/@ownedPlaces.0"/>
         <semanticElements xmi:type="sigpmlextended:Place" href="Simple.sigpml#//@ownedApplication/@ownedPlaces.0"/>
-        <decorations xmi:type="viewpoint:Decoration" xmi:id="_vl6noPP8EeSN3qvZHWB0tQ">
-          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@additionalLayers[name='SigPMLDebug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
-        </decorations>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_sh-8lvP8EeSN3qvZHWB0tQ" description="_sh-8k_P8EeSN3qvZHWB0tQ" size="2" routingStyle="manhattan">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_sh-8l_P8EeSN3qvZHWB0tQ" red="138" green="226" blue="52"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_sh_joPP8EeSN3qvZHWB0tQ" labelSize="9" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sh_jofP8EeSN3qvZHWB0tQ"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_XvwfQvQGEeSN3qvZHWB0tQ" description="_XvwfQPQGEeSN3qvZHWB0tQ" size="2" routingStyle="manhattan">
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_XvwfQ_QGEeSN3qvZHWB0tQ" red="138" green="226" blue="52"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_XvwfRPQGEeSN3qvZHWB0tQ" labelSize="9" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XvwfRfQGEeSN3qvZHWB0tQ"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nOLgCrtBEeS4he5IJELsSg" name="0 / 1" sourceNode="_nOLf8rtBEeS4he5IJELsSg" targetNode="_nOLf6LtBEeS4he5IJELsSg">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nOLgCrtBEeS4he5IJELsSg" name="1 / 1" sourceNode="_nOLf8rtBEeS4he5IJELsSg" targetNode="_nOLf6LtBEeS4he5IJELsSg">
         <target xmi:type="sigpmlextended:Place" href="Simple.sigpml#//@ownedApplication/@ownedPlaces.1"/>
         <semanticElements xmi:type="sigpmlextended:Place" href="Simple.sigpml#//@ownedApplication/@ownedPlaces.1"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_siEcJPP8EeSN3qvZHWB0tQ" description="_siEcIfP8EeSN3qvZHWB0tQ" size="2" routingStyle="manhattan">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_siEcJfP8EeSN3qvZHWB0tQ" red="138" green="226" blue="52"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_siEcJvP8EeSN3qvZHWB0tQ" labelSize="9" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_siEcJ_P8EeSN3qvZHWB0tQ"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Xs6moPQGEeSN3qvZHWB0tQ" description="_Xs5_kPQGEeSN3qvZHWB0tQ" size="2" routingStyle="manhattan">
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_Xs6mofQGEeSN3qvZHWB0tQ" red="138" green="226" blue="52"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_Xs6movQGEeSN3qvZHWB0tQ" labelSize="9" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Xs6mo_QGEeSN3qvZHWB0tQ"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']"/>
@@ -648,9 +642,6 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_3CfT4NE_EeSb49KClGy6jw" name="CPU1&#xA;(is preemptive=true) " outgoingEdges="_3DSlINE_EeSb49KClGy6jw _3DTMNNE_EeSb49KClGy6jw _siZMQPP8EeSN3qvZHWB0tQ" width="-1" height="-1" resizeKind="NSEW">
           <target xmi:type="sigpmlextended:HWComputationalResource" href="Simple.sigpml#//@ownedHWPlatform/@ownedHWResources.0"/>
           <semanticElements xmi:type="sigpmlextended:HWComputationalResource" href="Simple.sigpml#//@ownedHWPlatform/@ownedHWResources.0"/>
-          <decorations xmi:type="viewpoint:Decoration" xmi:id="_dTp-8PQBEeSN3qvZHWB0tQ">
-            <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@additionalLayers[name='SigPMLDebug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
-          </decorations>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -687,9 +678,6 @@
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3DSlINE_EeSb49KClGy6jw" sourceNode="_3CfT4NE_EeSb49KClGy6jw" targetNode="_nOLf57tBEeS4he5IJELsSg">
         <target xmi:type="sigpmlextended:HWComputationalResource" href="Simple.sigpml#//@ownedHWPlatform/@ownedHWResources.0"/>
-        <decorations xmi:type="viewpoint:Decoration" xmi:id="_dT0-EPQBEeSN3qvZHWB0tQ">
-          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@additionalLayers[name='SigPMLDebug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
-        </decorations>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_siM_BvP8EeSN3qvZHWB0tQ" description="_siM_A_P8EeSN3qvZHWB0tQ" lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" size="2">
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_siM_B_P8EeSN3qvZHWB0tQ" red="136" green="136" blue="136"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_siM_CPP8EeSN3qvZHWB0tQ">
@@ -700,9 +688,6 @@
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3DTMNNE_EeSb49KClGy6jw" sourceNode="_3CfT4NE_EeSb49KClGy6jw" targetNode="_nOLf-7tBEeS4he5IJELsSg">
         <target xmi:type="sigpmlextended:HWComputationalResource" href="Simple.sigpml#//@ownedHWPlatform/@ownedHWResources.0"/>
-        <decorations xmi:type="viewpoint:Decoration" xmi:id="_dT3aUPQBEeSN3qvZHWB0tQ">
-          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@additionalLayers[name='SigPMLDebug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
-        </decorations>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_siTFpPP8EeSN3qvZHWB0tQ" description="_siTFofP8EeSN3qvZHWB0tQ" lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" size="2">
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_siTFpfP8EeSN3qvZHWB0tQ" red="136" green="136" blue="136"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_siTFpvP8EeSN3qvZHWB0tQ">
