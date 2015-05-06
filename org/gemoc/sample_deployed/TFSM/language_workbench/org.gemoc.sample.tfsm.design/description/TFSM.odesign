@@ -25,7 +25,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings xsi:type="description_1:NodeMappingImport" name="States" importedMapping="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
+            <subNodeMappings xsi:type="description_1:NodeMappingImport" name="States" semanticCandidatesExpression="[self.ownedStates/]" importedMapping="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
             <subNodeMappings xsi:type="description_1:NodeMappingImport" name="Clocks" semanticCandidatesExpression="[self.localClock/]" importedMapping="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']"/>
             <style xsi:type="style:FlatContainerStyleDescription">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
