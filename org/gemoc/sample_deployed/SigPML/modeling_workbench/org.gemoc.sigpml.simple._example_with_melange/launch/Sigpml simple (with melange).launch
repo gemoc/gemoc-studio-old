@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.gemoc.gemoc_modeling_workbench.ui.launcher">
+<booleanAttribute key="Console Backend" value="false"/>
+<booleanAttribute key="Execution tracing" value="true"/>
+<booleanAttribute key="GEMOC Perspective" value="true"/>
+<booleanAttribute key="GEMOC_ANIMATE" value="false"/>
+<intAttribute key="GEMOC_ANIMATE_DELAY" value="0"/>
+<booleanAttribute key="GEMOC_LAUNCH_ACTIVE_TRACE" value="true"/>
+<intAttribute key="GEMOC_LAUNCH_DEADLOCK_DETECTION_DEPTH" value="10"/>
+<stringAttribute key="GEMOC_LAUNCH_ENTRY_POINT" value=""/>
+<stringAttribute key="GEMOC_LAUNCH_MELANGE_QUERY" value="?mm=http://sigpmlextended"/>
+<stringAttribute key="GEMOC_LAUNCH_MODELOFEXECUTION_GLML_FILE_PATH" value=""/>
+<stringAttribute key="GEMOC_LAUNCH_SELECTED_DECIDER" value="Step by step user decider"/>
+<stringAttribute key="GEMOC_LAUNCH_SELECTED_LANGUAGE" value="sigpml"/>
+<booleanAttribute key="Open Views" value="true"/>
+<stringAttribute key="Resource" value="/org.gemoc.sigpml.simple._example_with_melange/Simple.sigpml"/>
+<booleanAttribute key="TimeLineProviderProvider" value="true"/>
+<booleanAttribute key="VCD visualization" value="true"/>
+<stringAttribute key="airdResource" value="/org.gemoc.sigpml.simple._example_with_melange/Simple.aird"/>
+</launchConfiguration>
