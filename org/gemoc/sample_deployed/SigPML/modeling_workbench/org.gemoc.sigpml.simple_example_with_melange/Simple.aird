@@ -529,6 +529,9 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nOLf57tBEeS4he5IJELsSg" name="A1&#xA; execTime:1" incomingEdges="_3DSlINE_EeSb49KClGy6jw" width="8" height="8" resizeKind="NSEW">
           <target xmi:type="sigpml:Agent" href="Simple.sigpml#//@ownedApplication/@ownedAgents.0"/>
           <semanticElements xmi:type="sigpml:Agent" href="Simple.sigpml#//@ownedApplication/@ownedAgents.0"/>
+          <decorations xmi:type="viewpoint:Decoration" xmi:id="_iv09oPQKEeSN3qvZHWB0tQ">
+            <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@additionalLayers[name='SigPMLDebug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
+          </decorations>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_nOLf6LtBEeS4he5IJELsSg" name="pA1inState" incomingEdges="_nOLgCrtBEeS4he5IJELsSg" width="2" height="2" resizeKind="NSEW">
             <target xmi:type="sigpml:InputPort" href="Simple.sigpml#//@ownedApplication/@ownedAgents.0/@ownedPorts.1"/>
             <semanticElements xmi:type="sigpml:InputPort" href="Simple.sigpml#//@ownedApplication/@ownedAgents.0/@ownedPorts.1"/>
@@ -581,7 +584,7 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nOLf-7tBEeS4he5IJELsSg" name="A2&#xA; execTime:3" incomingEdges="_3DTMNNE_EeSb49KClGy6jw" width="8" height="8" resizeKind="NSEW">
           <target xmi:type="sigpml:Agent" href="Simple.sigpml#//@ownedApplication/@ownedAgents.1"/>
           <semanticElements xmi:type="sigpml:Agent" href="Simple.sigpml#//@ownedApplication/@ownedAgents.1"/>
-          <decorations xmi:type="viewpoint:Decoration" xmi:id="_hw_BsPQIEeSN3qvZHWB0tQ">
+          <decorations xmi:type="viewpoint:Decoration" xmi:id="_uC8mQPewEeSPV-9e-wGbaA">
             <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sigpml.model.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@additionalLayers[name='SigPMLDebug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
           </decorations>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_nOLf_LtBEeS4he5IJELsSg" name="pA2in" incomingEdges="_nOLgBbtBEeS4he5IJELsSg" width="2" height="2" resizeKind="NSEW">
