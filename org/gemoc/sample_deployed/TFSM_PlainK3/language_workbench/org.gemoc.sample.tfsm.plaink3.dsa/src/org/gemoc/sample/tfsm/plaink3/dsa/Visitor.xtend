@@ -43,18 +43,11 @@ class TFSMVisitorAspect
 	{
 		println()
 		println("Step " + _self.stepNumber + " - current state: " + _self.getCurrentStateName())
-		if (_self.currentState == null)
-		{
-			_self.init()
-		}
-		else
-		{
 			if (_self.localClock != null)
 			{
 				_self.localClock.visit()
 			}
 			_self.currentState.visit()
-		}
 		_self.stepNumber = _self.stepNumber + 1
 	}
 

@@ -10,7 +10,9 @@ import org.gemoc.sample.tfsm.Transition
 
 import static extension fr.inria.diverse.k3.al.annotationprocessor.TransactionSupport.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMClockAspect.*
+import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
+import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
 
 @Aspect(className=TFSM)
 class TFSMAspect
@@ -22,10 +24,12 @@ class TFSMAspect
 
 	def public void init()
 	{
-		if (_self.currentState == null)
-		{
-			_self.currentState = _self.initialState;
-		}
+		
+		_self.currentState = _self.initialState;
+		_self.localClock.numberOfTicks = 0
+		_self.localEvents.forEach[e|e.isTriggered = false]
+		_self.stepNumber = 0
+		_self.lastStateChangeStepNumber = 0
 
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".Init()]Initialized " + _self.name)
 	}

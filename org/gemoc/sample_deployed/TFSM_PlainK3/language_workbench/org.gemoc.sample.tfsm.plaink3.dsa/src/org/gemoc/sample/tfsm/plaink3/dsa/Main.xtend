@@ -9,6 +9,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain
 
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
+import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
 import tfsmextended.tfsmextended.TimedSystem
 import tfsmextended.tfsmextended.impl.TfsmextendedPackageImpl
 
@@ -24,6 +25,7 @@ class Main
 	static def public void main(TimedSystem system)
 	{
 		val tfsm = system.tfsms.get(0)
+		tfsm.init
 		var i = 0
 		while (i != 20)
 		{
