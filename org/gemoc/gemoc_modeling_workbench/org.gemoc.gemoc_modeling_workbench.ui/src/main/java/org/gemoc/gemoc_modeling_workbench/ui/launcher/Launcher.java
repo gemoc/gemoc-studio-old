@@ -106,8 +106,10 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 					job.schedule();
 				}
 			} else
-			{
-				Job job = new Job("exec") {
+			{				
+				Job job = new Job(getDebugJobName(configuration,
+						getFirstInstruction(configuration))+" (running in plainK3 mode)")
+				{
 
 					@Override
 					protected IStatus run(IProgressMonitor monitor)
