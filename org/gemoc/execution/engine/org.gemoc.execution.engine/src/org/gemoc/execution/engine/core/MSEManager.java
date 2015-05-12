@@ -6,6 +6,7 @@ import java.util.Stack;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
@@ -67,9 +68,7 @@ public final class MSEManager
 		LogicalStep logicalStep = Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep();
 		MSEOccurrence occurrence = Gemoc_execution_traceFactory.eINSTANCE.createMSEOccurrence();
 		occurrence.setLogicalstep(logicalStep);
-		ModelSpecificEvent mse = null;
-		//if (operation != null)
-		mse = findOrCreateMSE(caller, operation);
+		ModelSpecificEvent mse = findOrCreateMSE(caller, operation);
 		occurrence.setMse(mse);
 		synchronized (_listenersLock)
 		{
@@ -94,13 +93,23 @@ public final class MSEManager
 		// If the operation is null, is means it's not an operation added as
 		// aspect
 		MSEOccurrence occurrence = null;
-		
-		//TODO was this required?
-		//if (operation != null) 
-		//{
+
+		boolean isNotStruturalFeature = true;
+		for (EStructuralFeature p : caller.eClass().getEAllStructuralFeatures())
+		{
+			if (p.getName().equals(methodName))
+			{
+				isNotStruturalFeature = false;
+				break;
+			}
+		}
+
+		if (operation != null || isNotStruturalFeature)
+		{
 			occurrence = createMSEOccurrenceAndNotify(caller, operation);
-		//}
+		}
 		_mseOccurences.push(occurrence);
+
 	}
 
 	public void endMSEOccurrence()
@@ -119,7 +128,18 @@ public final class MSEManager
 			// If we are still "inside an mse", then we have a "fill mse" to
 			// raise. This MSE has no operation, so that it isn't handled in the
 			// trace manager.
-			if (!_mseOccurences.isEmpty())
+
+			boolean containsNotNull = false;
+			for (MSEOccurrence mseocc : _mseOccurences)
+			{
+				if (mseocc != null)
+				{
+					containsNotNull = true;
+					break;
+				}
+			}
+
+			if (!_mseOccurences.isEmpty() && containsNotNull)
 			{
 				ModelSpecificEvent mse = occurrence.getMse();
 				createMSEOccurrenceAndNotify(mse.getCaller(), null);
@@ -148,7 +168,9 @@ public final class MSEManager
 		{
 			for (ModelSpecificEvent existingMSE : _actionModel.getEvents())
 			{
-				if (existingMSE.getCaller().equals(caller) && ((existingMSE.getAction() != null && existingMSE.getAction().equals(operation))||(existingMSE.getAction() == null && operation == null) ))
+				if (existingMSE.getCaller().equals(caller)
+						&& ((existingMSE.getAction() != null && existingMSE.getAction().equals(operation)) || (existingMSE
+								.getAction() == null && operation == null)))
 				{
 					// no need to create one, we already have it
 					return existingMSE;
@@ -159,7 +181,7 @@ public final class MSEManager
 		final ModelSpecificEvent mse = FeedbackFactory.eINSTANCE.createModelSpecificEvent();
 		mse.setCaller(caller);
 		mse.setAction(operation);
-		if (operation!= null)
+		if (operation != null)
 			mse.setName("MSE_" + caller.getClass().getSimpleName() + "_" + operation.getName());
 		else
 			mse.setName("MSE_" + caller.getClass().getSimpleName() + "_NO_EOPERATION");
