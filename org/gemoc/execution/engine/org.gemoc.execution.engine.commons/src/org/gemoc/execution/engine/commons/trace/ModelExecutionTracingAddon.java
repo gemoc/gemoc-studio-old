@@ -53,6 +53,11 @@ import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
  */
 public class ModelExecutionTracingAddon extends DefaultEngineAddon
 {
+	
+	private boolean shouldSave = true;
+	public void disableTraceSaving() {
+		shouldSave = false;
+	}
 
 	private TransactionalEditingDomain getEditingDomain()
 	{
@@ -108,7 +113,6 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 				}
 			};
 			CommandExecution.execute(getEditingDomain(), command);
-			System.out.println("yay");
 		}
 	}
 
@@ -206,7 +210,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 				contextState.setSolverState(solverState);
 				traceModel.getChoices().get(traceModel.getChoices().size() - 1).setContextState(contextState);
 
-				if (!_cannotSaveTrace)
+				if (!_cannotSaveTrace && shouldSave)
 				{
 					try
 					{
