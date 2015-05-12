@@ -242,10 +242,13 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 					LogicalStep logicalStep = (LogicalStep) o2;
 					if (_currentEngine.getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection))
 					{
+						// If this choice has never been executed, we execute the chosen logical step
 						if (choice.getSelectedNextChoice() == null)
 						{
 							performExecutionStep(logicalStep);
-						} else
+						}
+						// Otherwise, we branch at the *next choice* of the chosen one
+						else
 						{
 							Choice choiceToRestore = choice.getSelectedNextChoice();
 							branchIfPossible(choiceToRestore);
