@@ -18,46 +18,59 @@ import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefin
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 
-
 public class ModelExecutionContext implements IExecutionContext
 {
-	
+
 	private IRunConfiguration _runConfiguration;
-	
+
 	private Resource _resourceModel;
 
-	private ExecutionMode _executionMode;	
-	
+	private ExecutionMode _executionMode;
+
 	private LanguageDefinitionExtension _languageDefinition;
 
-	
-	public ModelExecutionContext(IRunConfiguration runConfiguration, ExecutionMode executionMode) throws EngineContextException {
+	public ModelExecutionContext(IRunConfiguration runConfiguration, ExecutionMode executionMode)
+			throws EngineContextException
+	{
 		_runConfiguration = runConfiguration;
 		_executionMode = executionMode;
-		try 
+		try
 		{
 			_executionWorkspace = new ExecutionWorkspace(_runConfiguration.getExecutedModelURI());
-			_executionWorkspace.copyFileToExecutionFolder(_executionWorkspace.getModelPath());
+			try
+			{
+				_executionWorkspace.copyFileToExecutionFolder(_executionWorkspace.getModelPath());
+			} catch (CoreException e)
+			{
+				// TODO throw warning that we couldn't copy the model
+			}
 			_languageDefinition = getLanguageDefinition(_runConfiguration.getLanguageName());
 			_executionPlatform = new DefaultExecutionPlatform(_languageDefinition, runConfiguration);
-			if(executionMode.equals(ExecutionMode.Animation)){
+			if (executionMode.equals(ExecutionMode.Animation))
+			{
 				_resourceModel = _executionPlatform.getModelLoader().loadModelForAnimation(this);
-			}
-			else{
+			} else
+			{
 				_resourceModel = _executionPlatform.getModelLoader().loadModel(this);
 			}
-			_logicalStepDecider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(), executionMode);
-			setUpEditingDomain();	
+			_logicalStepDecider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(),
+					executionMode);
+			setUpEditingDomain();
 			_executionPlatform.getSolver().setUp(this);
 			setUpFeedbackModel();
-			
-			// check that the initial resource hasn't been loaded more than once via melange
-			
+
+			// check that the initial resource hasn't been loaded more than once
+			// via melange
+
 			int resPos = 0;
-			for(Resource res : _resourceModel.getResourceSet().getResources()){
-				if(resPos!=0 && res.getURI().path().equals(_runConfiguration.getExecutedModelURI().path())){
-					Activator.getDefault().error("Error: found more than one resource in the resourceSet with the following path :"+_runConfiguration.getExecutedModelURI().path());
-					for(Resource r : _resourceModel.getResourceSet().getResources()) 
+			for (Resource res : _resourceModel.getResourceSet().getResources())
+			{
+				if (resPos != 0 && res.getURI().path().equals(_runConfiguration.getExecutedModelURI().path()))
+				{
+					Activator.getDefault().error(
+							"Error: found more than one resource in the resourceSet with the following path :"
+									+ _runConfiguration.getExecutedModelURI().path());
+					for (Resource r : _resourceModel.getResourceSet().getResources())
 					{
 						Activator.getDefault().info(r.getURI().toString());
 					}
@@ -65,112 +78,121 @@ public class ModelExecutionContext implements IExecutionContext
 				}
 				resPos++;
 			}
-		} 
-		catch (CoreException e)
+		} catch (CoreException e)
 		{
-			EngineContextException exception = new EngineContextException("Cannot initialize the execution context, see inner exception.", e);
+			EngineContextException exception = new EngineContextException(
+					"Cannot initialize the execution context, see inner exception.", e);
 			throw exception;
 		}
 	}
 
-	private LanguageDefinitionExtension getLanguageDefinition(String languageName) throws EngineContextException 
+	private LanguageDefinitionExtension getLanguageDefinition(String languageName) throws EngineContextException
 	{
-		LanguageDefinitionExtension languageDefinition = LanguageDefinitionExtensionPoint.findDefinition(_runConfiguration.getLanguageName());
+		LanguageDefinitionExtension languageDefinition = LanguageDefinitionExtensionPoint
+				.findDefinition(_runConfiguration.getLanguageName());
 		if (languageDefinition == null)
-		{			
-			String message = "Cannot find xdsml definition for the language " + _runConfiguration.getLanguageName() + ", please verify that is is correctly deployed.";
+		{
+			String message = "Cannot find xdsml definition for the language " + _runConfiguration.getLanguageName()
+					+ ", please verify that is is correctly deployed.";
 			EngineContextException exception = new EngineContextException(message);
 			throw exception;
-		}		
+		}
 		return languageDefinition;
 	}
 
-	private ResourceSet getResourceSet() {
+	private ResourceSet getResourceSet()
+	{
 		return _resourceModel.getResourceSet();
 	}
 
-	private void setUpEditingDomain() 
+	private void setUpEditingDomain()
 	{
 		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(getResourceSet());
 		if (editingDomain == null)
 		{
-			editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain(getResourceSet());			
+			editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain(getResourceSet());
 		}
 	}
 
-	private void setUpFeedbackModel() 
+	private void setUpFeedbackModel()
 	{
-		URI feedbackPlatformURI = URI.createPlatformResourceURI(_executionWorkspace.getFeedbackModelPath().toString(), true);
+		URI feedbackPlatformURI = URI.createPlatformResourceURI(_executionWorkspace.getFeedbackModelPath().toString(),
+				true);
 		try
 		{
 			Resource resource = getResourceSet().getResource(feedbackPlatformURI, true);
-			_feedbackModel = (ActionModel)resource.getContents().get(0);
-		}
-		catch(Exception e)
+			_feedbackModel = (ActionModel) resource.getContents().get(0);
+		} catch (Exception e)
 		{
-			//file will be created later
+			// file will be created later
 		}
 	}
 
 	@Override
-	public IRunConfiguration getRunConfiguration() 
+	public IRunConfiguration getRunConfiguration()
 	{
 		return _runConfiguration;
 	}
 
 	@Override
-	public Resource getResourceModel() 
+	public Resource getResourceModel()
 	{
 		return _resourceModel;
 	}
 
 	@Override
-	public void dispose() 
+	public void dispose()
 	{
 		_executionPlatform.dispose();
 		_logicalStepDecider.dispose();
 	}
 
 	private IExecutionWorkspace _executionWorkspace;
+
 	@Override
-	public IExecutionWorkspace getWorkspace() 
+	public IExecutionWorkspace getWorkspace()
 	{
 		return _executionWorkspace;
 	}
 
 	@Override
-	public ExecutionMode getExecutionMode() {
+	public ExecutionMode getExecutionMode()
+	{
 		return _executionMode;
 	}
 
 	private ActionModel _feedbackModel;
+
 	@Override
-	public ActionModel getFeedbackModel() 
+	public ActionModel getFeedbackModel()
 	{
 		return _feedbackModel;
 	}
 
-	private IExecutionPlatform _executionPlatform;	
+	private IExecutionPlatform _executionPlatform;
+
 	@Override
-	public IExecutionPlatform getExecutionPlatform() {
+	public IExecutionPlatform getExecutionPlatform()
+	{
 		return _executionPlatform;
 	}
 
 	@Override
-	public LanguageDefinitionExtension getLanguageDefinitionExtension() 
+	public LanguageDefinitionExtension getLanguageDefinitionExtension()
 	{
 		return _languageDefinition;
 	}
 
 	protected ILogicalStepDecider _logicalStepDecider;
+
 	@Override
-	public ILogicalStepDecider getLogicalStepDecider() 
+	public ILogicalStepDecider getLogicalStepDecider()
 	{
 		return _logicalStepDecider;
 	}
 
 	@Override
-	public void changeLogicalStepDecider(ILogicalStepDecider newDecider) 
+	public void changeLogicalStepDecider(ILogicalStepDecider newDecider)
 	{
 		_logicalStepDecider = newDecider;
 	}
