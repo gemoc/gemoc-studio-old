@@ -18,7 +18,7 @@ public class PrepareViewFrontend extends DefaultEngineAddon
 	private TimeLineView _timelineView;
 	
 	@Override
-	public void engineAboutToStart(final IExecutionEngine engine) 
+	public void engineStarted(final IExecutionEngine engine) 
 	{
 		if (PlatformUI.isWorkbenchRunning())
 		{

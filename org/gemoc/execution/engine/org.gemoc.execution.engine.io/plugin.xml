@@ -118,11 +118,6 @@
             Default="true"
             Name="Execution tracing">
       </Addon>
-      <Addon
-            Class="org.gemoc.execution.engine.io.views.timeline.TimeLineProviderProvider"
-            Default="true"
-            Name="TimeLineProviderProvider">
-      </Addon>
    </extension>
 
 
