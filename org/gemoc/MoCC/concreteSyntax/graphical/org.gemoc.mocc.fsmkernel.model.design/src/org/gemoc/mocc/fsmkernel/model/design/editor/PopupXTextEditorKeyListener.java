@@ -64,9 +64,9 @@ public class PopupXTextEditorKeyListener extends KeyAdapter implements VerifyKey
 	@Override
 	public void keyPressed(KeyEvent e) {
 		
-		synchronized (popupXtextEditorHelper) {
+		/*synchronized (popupXtextEditorHelper) {
 			this.popupXtextEditorHelper.check4DandlingCrossReferences();
-		}
+		}*/
 		this.popupXtextEditorHelper.setStableText();
 		
 		if((((e.stateMask & SWT.CTRL) == SWT.CTRL) && (e.keyCode == 's'))||
@@ -83,15 +83,15 @@ public class PopupXTextEditorKeyListener extends KeyAdapter implements VerifyKey
 		}
 		
 		if (e.keyCode == SWT.ESC){
-			try {
-				this.popupXtextEditorHelper.saveModifications(false);
-			} catch (IOException e1) {
+			//try {
+				this.popupXtextEditorHelper.closeEditor(false);
+			/*} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (BadLocationException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}
+			}*/
 		}
 	}
 
