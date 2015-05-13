@@ -46,7 +46,7 @@ public class ModelExecutionContext implements IExecutionContext
 			}
 			_languageDefinition = getLanguageDefinition(_runConfiguration.getLanguageName());
 			_executionPlatform = new DefaultExecutionPlatform(_languageDefinition, runConfiguration);
-			if (executionMode.equals(ExecutionMode.Animation))
+			if(_runConfiguration.getAnimatorURI() != null) // TODO maybe add a toggle in the launcher tab to temporarily enable or disable the use of the animation
 			{
 				_resourceModel = _executionPlatform.getModelLoader().loadModelForAnimation(this);
 			} else
