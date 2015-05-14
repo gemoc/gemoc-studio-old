@@ -71,8 +71,7 @@ public class DefaultModelLoader implements IModelLoader {
 			throws RuntimeException {
 		Resource resource = null;
 		ResourceSet resourceSet;
-		if (context.getExecutionMode().equals(ExecutionMode.Animation)
-				&& context.getRunConfiguration().getAnimatorURI() != null) {
+		if ( context.getRunConfiguration().getAnimatorURI() != null) {
 			killPreviousSiriusSession(context.getRunConfiguration()
 					.getAnimatorURI());
 			Session session;
@@ -89,7 +88,7 @@ public class DefaultModelLoader implements IModelLoader {
 			return resource;
 		} else 
 		{	
-			//animator not available; fall back to normal run
+			//animator not available; fall back to classic load
 			return loadModel(context);
 		}
 	}

@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.gemoc_studio.branding.feature"
       label="Gemoc Studio Main Features"
-      version="0.1.4.qualifier"
+      version="1.0.0.qualifier"
       provider-name="GEMOC"
       plugin="org.gemoc.gemoc_studio.branding">
 
@@ -60,6 +60,8 @@
       <import feature="org.eclipse.e4.rcp.patch" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.e4.rcp" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.melange.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.diverse.trace.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.diverse.trace.gemoc.feature" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

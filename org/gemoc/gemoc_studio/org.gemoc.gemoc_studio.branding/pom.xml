@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.gemoc.gemoc_studio</groupId>
 		<artifactId>org.gemoc.gemoc_studio.root</artifactId>
-		<version>0.1.4-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../org.gemoc.gemoc_studio.root</relativePath>
 	</parent>
 

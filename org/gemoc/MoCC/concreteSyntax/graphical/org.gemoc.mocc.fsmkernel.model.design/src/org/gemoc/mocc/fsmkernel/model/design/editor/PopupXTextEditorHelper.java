@@ -317,12 +317,18 @@ public class PopupXTextEditorHelper {
 			//@Override
 			public void widgetDisposed(DisposeEvent e) {
 
-				final IXtextDocument xtextDocument = xtextEditor.getDocument();
-				if (isDocumentHasErrorsOrWarnings(xtextDocument)) {
-					showDocumentErrorsOrWarnings(xtextDocument);
-					closeEditor(false);
-				}else {
-					closeEditor(true);
+				if(xtextEditor !=null)
+				{
+					final IXtextDocument xtextDocument = xtextEditor.getDocument();
+					if (isDocumentHasErrorsOrWarnings(xtextDocument)) 
+					{
+						showDocumentErrorsOrWarnings(xtextDocument);
+						closeEditor(false);
+					}
+					else 
+					{
+						closeEditor(true);
+					}
 				}
 			}
 		});
@@ -500,9 +506,9 @@ public class PopupXTextEditorHelper {
 	/**
 	 * ui cpt to reduce warning message occurences
 	 */
-	private int cpt=0;
+	/*private int cpt=0;
 	
-	synchronized public void check4DandlingCrossReferences(){
+		synchronized public void check4DandlingCrossReferences(){
 		final IXtextDocument xtextDocument = xtextEditor.getDocument();
 		EList<Diagnostic> warnings = getWarnings(xtextDocument);
 		if (!warnings.isEmpty()) {
@@ -523,7 +529,9 @@ public class PopupXTextEditorHelper {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else {
+		}
+		else 
+		{
 			try {
 				int documentGrowth = xtextDocument.getLength() - initialDocumentSize;
 				textWithoutDandlingRefs = xtextDocument.get(editorOffset, initialEditorSize + documentGrowth);
@@ -532,7 +540,7 @@ public class PopupXTextEditorHelper {
 				e.printStackTrace();
 			}
 		}
-	}	
+	}	*/
 	
 
 }

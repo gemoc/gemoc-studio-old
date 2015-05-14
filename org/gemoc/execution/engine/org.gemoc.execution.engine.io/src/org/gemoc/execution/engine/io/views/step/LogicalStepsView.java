@@ -1,6 +1,5 @@
 package org.gemoc.execution.engine.io.views.step;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +42,7 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
+import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.dsl.debug.ide.ui.provider.DSLLabelDecorator;
 import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
 
@@ -50,7 +50,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 {
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.steps.LogicalStepsView";
-	
+
 	private Color _representedEventColor;
 
 	private TreeViewer _viewer;
@@ -59,26 +59,27 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 
 	private ColumnLabelProvider _column2LabelProvider;
 
-	private List<URI> _eventsToPresent = new ArrayList<URI>(); 
+	private List<URI> _eventsToPresent = new ArrayList<URI>();
 
-	public LogicalStepsView() 
+	public LogicalStepsView()
 	{
 	}
 
 	private LogicalStepsViewContentProvider _contentProvider;
 
 	private MenuManager _menuManager;
-	
+
 	@Override
-	public void createPartControl(Composite parent) 
+	public void createPartControl(Composite parent)
 	{
 		_representedEventColor = new Color(parent.getDisplay(), 255, 235, 174);
 		createTreeViewer(parent);
-	    createMenuManager();
-	    Activator.getDefault().getEventPresenters().add(this);
+		createMenuManager();
+		Activator.getDefault().getEventPresenters().add(this);
 	}
 
-	private void createTreeViewer(Composite parent) {
+	private void createTreeViewer(Composite parent)
+	{
 		_viewer = new TreeViewer(parent, SWT.FULL_SELECTION | SWT.SINGLE);
 		_viewer.setUseHashlookup(true);
 		_contentProvider = new LogicalStepsViewContentProvider();
@@ -87,154 +88,173 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 		_viewer.getTree().setFont(mono);
 		createColumns();
 	}
-	
 
-	private void createColumns() 
+	private void createColumns()
 	{
 		TreeColumn column1 = new TreeColumn(_viewer.getTree(), SWT.LEFT);
 		column1.setText("Logical Steps");
 		TreeViewerColumn viewerColumn1 = new TreeViewerColumn(_viewer, column1);
-		_column1LabelProvider = new ColumnLabelProvider()
-		{
-			
+		_column1LabelProvider = new ColumnLabelProvider() {
+
 			@Override
-			public String getText(Object element) {
+			public String getText(Object element)
+			{
 				if (element instanceof LogicalStep)
 				{
-					LogicalStep ls = (LogicalStep)element;
+					LogicalStep ls = (LogicalStep) element;
 					return LogicalStepHelper.getLogicalStepName(ls);
-				}
-				else if (element instanceof MSEOccurrence)
+				} else if (element instanceof MSEOccurrence)
 				{
-					MSEOccurrence event = (MSEOccurrence)element;
-					return event.getMse().getName();
+					MSEOccurrence event = (MSEOccurrence) element;
+					if (event.getMse() != null)
+						return event.getMse().getName();
+					else
+						return "No EOperation";
 				}
 				return super.getText(element);
 			}
-		
+
 			@Override
-			public Image getImage(Object element) {
+			public Image getImage(Object element)
+			{
 				if (element instanceof LogicalStep)
 				{
-					LogicalStep ls = (LogicalStep)element;
-					if(ls == _currentEngine.getSelectedLogicalStep())
+					LogicalStep ls = (LogicalStep) element;
+					if (ls == _currentEngine.getSelectedLogicalStep())
 					{
 						return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_RUNNING_ICON);
+					} else
+					{
+						return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_ICON);
 					}
-					else {
-						return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_ICON);					
-					}
-				}
-				else if (element instanceof MSEOccurrence)
+				} else if (element instanceof MSEOccurrence)
 				{
 					return SharedIcons.getSharedImage(SharedIcons.VISIBLE_EVENT_ICON);
 				}
 				return null;
 			}
-			
+
 			@Override
-			public Color getBackground(Object element) {
+			public Color getBackground(Object element)
+			{
 				final Color res;
-				
-				if (element instanceof MSEOccurrence 
-					&& _eventsToPresent.contains(EcoreUtil.getURI(((MSEOccurrence)element).getMse()))) {
-					res = _representedEventColor;
-				} else {
+
+				if (element instanceof MSEOccurrence)
+				{
+					ModelSpecificEvent mse = ((MSEOccurrence) element).getMse();
+					if (mse != null && _eventsToPresent.contains(EcoreUtil.getURI(mse)))
+						res = _representedEventColor;
+					else
+						res = super.getBackground(element);
+
+				} else
+				{
 					res = super.getBackground(element);
 				}
-				
+
 				return res;
 			}
-			
+
 		};
 		viewerColumn1.setLabelProvider(_column1LabelProvider);
 
-	
 		TreeColumn column2 = new TreeColumn(_viewer.getTree(), SWT.LEFT);
 		column1.setText("Logical Steps");
 		TreeViewerColumn viewerColumn2 = new TreeViewerColumn(_viewer, column2);
-		_column2LabelProvider = new ColumnLabelProvider()
-		{
-			
+		_column2LabelProvider = new ColumnLabelProvider() {
+
 			@Override
-			public String getText(Object element) {
+			public String getText(Object element)
+			{
 				if (element instanceof MSEOccurrence)
 				{
-					String details = ViewUtils.eventToString(((MSEOccurrence)element).getMse());
-					return "   " + details;
+					ModelSpecificEvent mse = ((MSEOccurrence) element).getMse();
+					if (mse != null)
+						return "   " + ViewUtils.eventToString(mse);
+					else
+						return "    (no MSE)";
+
 				}
 				return "";
 			}
-		
+
 			@Override
-			public Color getBackground(Object element) {
+			public Color getBackground(Object element)
+			{
 				final Color res;
-				
-				if (element instanceof MSEOccurrence 
-					&& _eventsToPresent.contains(EcoreUtil.getURI(((MSEOccurrence)element).getMse()))) {
-					res = _representedEventColor;
-				} else {
+
+				if (element instanceof MSEOccurrence)
+				{
+					ModelSpecificEvent mse = ((MSEOccurrence) element).getMse();
+					if (mse != null && _eventsToPresent.contains(EcoreUtil.getURI(mse)))
+						res = _representedEventColor;
+					else
+						res = super.getBackground(element);
+
+				} else
+				{
 					res = super.getBackground(element);
 				}
-				
+
 				return res;
 			}
-			
+
 		};
 		viewerColumn2.setLabelProvider(_column2LabelProvider);
-		}
+	}
 
-	private void createMenuManager() {
+	private void createMenuManager()
+	{
 		MenuManager menuManager = new MenuManager();
 		_menuManager = menuManager;
 		_menuManager.setRemoveAllWhenShown(true);
 		_menuManager.addMenuListener(new IMenuListener() {
-			public void menuAboutToShow(IMenuManager mgr) {
+			public void menuAboutToShow(IMenuManager mgr)
+			{
 				fillContextMenu(mgr);
 			}
 		});
-	    Menu menu = _menuManager.createContextMenu(_viewer.getControl());
-	    _viewer.getControl().setMenu(menu);
-	    getSite().registerContextMenu(_menuManager, _viewer);
-	    // make the selection available
-	    getSite().setSelectionProvider(_viewer);
+		Menu menu = _menuManager.createContextMenu(_viewer.getControl());
+		_viewer.getControl().setMenu(menu);
+		getSite().registerContextMenu(_menuManager, _viewer);
+		// make the selection available
+		getSite().setSelectionProvider(_viewer);
 	}
 
-	private void fillContextMenu(IMenuManager mgr) {
+	private void fillContextMenu(IMenuManager mgr)
+	{
 		mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
-	
+
 	@Override
-	public void setFocus() 
+	public void setFocus()
 	{
 		_viewer.getControl().setFocus();
 	}
 
-	
 	private IExecutionEngine _currentEngine;
-	
+
 	@Override
-	public void motorSelectionChanged(IExecutionEngine engine) {
-		if (engine != null
-			&&  engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation)) 
+	public void motorSelectionChanged(IExecutionEngine engine)
+	{
+		if (engine != null && engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation))
 		{
-			_currentEngine = engine;	
+			_currentEngine = engine;
 			_viewer.setInput(_currentEngine);
-			if (_currentEngine != null
-				&& !_currentEngine.getRunningStatus().equals(RunStatus.Stopped))
+			if (_currentEngine != null && !_currentEngine.getRunningStatus().equals(RunStatus.Stopped))
 			{
 				_viewer.expandAll();
-				TreeViewerHelper.resizeColumns(_viewer);				
-			}
-			else 
+				TreeViewerHelper.resizeColumns(_viewer);
+			} else
 			{
-				_viewer.setInput(null);				
+				_viewer.setInput(null);
 			}
 		}
 	}
 
 	@Override
-	public void dispose() {
+	public void dispose()
+	{
 		Activator.getDefault().getEventPresenters().remove(this);
 		super.dispose();
 		_column1LabelProvider.dispose();
@@ -246,12 +266,15 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 	}
 
 	private LogicalStep _lastSelectedLogicalStep;
-	public LogicalStep getSelectedLogicalStep() 
+
+	public LogicalStep getSelectedLogicalStep()
 	{
-		try{
+		try
+		{
 			Display.getDefault().syncExec(new Runnable() {
 				@Override
-				public void run() {
+				public void run()
+				{
 					TreeSelection selection = (TreeSelection) _viewer.getSelection();
 					if (selection.getPaths().length > 0)
 					{
@@ -259,31 +282,31 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 						_lastSelectedLogicalStep = null;
 						if (path.getLastSegment() instanceof LogicalStep)
 						{
-							_lastSelectedLogicalStep = (LogicalStep)path.getLastSegment();						
-						}
-						else if (path.getLastSegment() instanceof MSEOccurrence)
+							_lastSelectedLogicalStep = (LogicalStep) path.getLastSegment();
+						} else if (path.getLastSegment() instanceof MSEOccurrence)
 						{
 							_lastSelectedLogicalStep = (LogicalStep) path.getFirstSegment();
 						}
 					}
 				}
 			});
-		} catch(Exception e){
+		} catch (Exception e)
+		{
 			Activator.getDefault().error(e.getMessage(), e);
-		} 
-		return _lastSelectedLogicalStep;			
+		}
+		return _lastSelectedLogicalStep;
 	}
 
-	public void addMenuListener(IMenuListener2 menuListener) 
+	public void addMenuListener(IMenuListener2 menuListener)
 	{
-		 _menuManager.addMenuListener(menuListener);	
+		_menuManager.addMenuListener(menuListener);
 	}
 
-	public void addDoubleClickListener(IDoubleClickListener doubleClickListener) 
+	public void addDoubleClickListener(IDoubleClickListener doubleClickListener)
 	{
 		_viewer.addDoubleClickListener(doubleClickListener);
 	}
-	
+
 	public void addSelectionChangedListener(ISelectionChangedListener listener)
 	{
 		_viewer.addSelectionChangedListener(listener);
@@ -294,7 +317,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 		_viewer.removeSelectionChangedListener(listener);
 	}
 
-	public void removeMenuListener(IMenuListener2 menuListener) 
+	public void removeMenuListener(IMenuListener2 menuListener)
 	{
 		_menuManager.removeMenuListener(menuListener);
 	}
@@ -303,19 +326,24 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 	{
 		_viewer.removeDoubleClickListener(doubleClickListener);
 	}
-	
-	public TreeViewer getTreeViewer(){
+
+	public TreeViewer getTreeViewer()
+	{
 		return _viewer;
 	}
 
 	@Override
-	public void present(List<URI> events) {
+	public void present(List<URI> events)
+	{
 		_eventsToPresent = events;
-		if (_currentEngine != null) {
+		if (_currentEngine != null)
+		{
 			ResourceSet rs = _currentEngine.getExecutionContext().getResourceModel().getResourceSet();
-			for (URI uri : _eventsToPresent) {
+			for (URI uri : _eventsToPresent)
+			{
 				final EObject event = rs.getEObject(uri, false);
-				if (event != null) {
+				if (event != null)
+				{
 					_viewer.refresh(event);
 				}
 			}

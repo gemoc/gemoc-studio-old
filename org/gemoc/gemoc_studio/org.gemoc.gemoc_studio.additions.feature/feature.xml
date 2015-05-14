@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.gemoc_studio.additions.feature"
       label="Gemoc Studio Additional Features"
-      version="0.1.4.qualifier"
+      version="1.0.0.qualifier"
       provider-name="GEMOC">
 
    <description url="http://www.gemoc.org">
@@ -18,7 +18,7 @@
    </license>
 
    <requires>
-   	  <import feature="fr.inria.diverse.commons.provisionner4eclipse.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.diverse.commons.provisionner4eclipse.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.mylyn.github.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.team.svn.mylyn" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.team.svn.resource.ignore.rules.jdt" version="0.0.0" match="greaterOrEqual"/>

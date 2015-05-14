@@ -60,6 +60,8 @@ public class LanguageDefinitionItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addMelangeURIPropertyDescriptor(object);
+			addNeedMelangeSynchronizationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -82,6 +84,50 @@ public class LanguageDefinitionItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Melange URI feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMelangeURIPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LanguageDefinition_melangeURI_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LanguageDefinition_melangeURI_feature", "_UI_LanguageDefinition_type"),
+				 confPackage.Literals.LANGUAGE_DEFINITION__MELANGE_URI,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Need Melange Synchronization feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNeedMelangeSynchronizationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LanguageDefinition_needMelangeSynchronization_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LanguageDefinition_needMelangeSynchronization_feature", "_UI_LanguageDefinition_type"),
+				 confPackage.Literals.LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -159,6 +205,8 @@ public class LanguageDefinitionItemProvider
 
 		switch (notification.getFeatureID(LanguageDefinition.class)) {
 			case confPackage.LANGUAGE_DEFINITION__NAME:
+			case confPackage.LANGUAGE_DEFINITION__MELANGE_URI:
+			case confPackage.LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case confPackage.LANGUAGE_DEFINITION__DSA_PROJECT:

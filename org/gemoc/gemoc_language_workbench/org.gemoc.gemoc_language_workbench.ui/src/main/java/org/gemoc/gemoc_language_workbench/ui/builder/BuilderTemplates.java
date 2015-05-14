@@ -61,4 +61,13 @@ public class BuilderTemplates {
 "	}\n"+
 "}";
 	
+	
+	public static final String MELANGE_TEMPLATE =
+"/* GENERATED FILE, do not modify manually                                                    *\n" +
+" * If you need to modify it, disable the needMelangeSynchronization flag in the project.xdsml */\n" +
+"package ${package.name}\n"+
+"${import.section}\n"+
+"${base.language.metamodel.section}\n"+
+"${executable.language.metamodel.section}";
+	
 }

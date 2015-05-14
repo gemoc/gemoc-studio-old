@@ -52,7 +52,7 @@ public class ASynchroneExecution extends OperationExecution
 		
 		
 		boolean shouldBeLaunchInAThread= false;
-		
+		 
 		for (Entry<Force, When> entry : _forces.entrySet())
 		{
 			Condition condition = entry.getValue().getCondition();

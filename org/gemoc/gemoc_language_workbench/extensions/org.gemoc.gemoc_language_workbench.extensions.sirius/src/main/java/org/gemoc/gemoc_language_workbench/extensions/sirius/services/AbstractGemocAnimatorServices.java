@@ -258,10 +258,16 @@ public abstract class AbstractGemocAnimatorServices {
 			final Set<URI> instructionURIs = new HashSet<URI>();
 			for (MSEOccurrence mseOccurrence : step.getMseOccurrences())
 			{
-				instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse().getSolverEvent()));
-				if (mseOccurrence.getMse().getCaller() != null)
+				if (mseOccurrence.getMse() != null)
 				{
-					instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse().getCaller()));
+					if(mseOccurrence.getMse().getSolverEvent() != null)
+					{
+					instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse().getSolverEvent()));
+					}
+					if (mseOccurrence.getMse().getCaller() != null)
+					{
+						instructionURIs.add(EcoreUtil.getURI(mseOccurrence.getMse().getCaller()));
+					}
 				}
 			}
 			clear(context);
