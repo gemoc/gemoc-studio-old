@@ -105,7 +105,7 @@
             <topic label="General options" href="ch02s03.html#_general_options"/>
             <topic label="Run mode" href="ch02s03.html#_run_mode"/>
             <topic label="Debug mode" href="ch02s03.html#_debug_mode"/>
-            <topic label="Backends and frontends" href="ch02s03.html#_backends_and_frontends"/>
+            <topic label="Backends and frontends" href="ch02s03.html#modeling-workbench-backends-frontends-section"/>
          </topic>
          <topic label="Engine View" href="ch02s03.html#modeling-workbench-executing-model-engine-view-section"/>
          <topic label="Logical Steps View" href="ch02s03.html#modeling-workbench-executing-model-logical-step-view-section"/>
@@ -161,7 +161,7 @@
       <topic label="TODO" href="ch03s13.html"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d0e2729"/>
+      <topic label="Articles" href="bi01.html#d0e2815"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
