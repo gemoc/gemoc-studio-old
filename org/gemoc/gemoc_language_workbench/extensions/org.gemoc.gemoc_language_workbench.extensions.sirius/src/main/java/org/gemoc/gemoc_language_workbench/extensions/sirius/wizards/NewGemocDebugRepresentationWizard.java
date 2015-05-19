@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.wizards;
+package org.gemoc.gemoc_language_workbench.extensions.sirius.wizards;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -34,12 +34,12 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.gemoc.gemoc_modeling_workbench.ui.Activator;
-import org.gemoc.gemoc_modeling_workbench.ui.commands.AddDebugLayerHandler;
-import org.gemoc.gemoc_modeling_workbench.ui.wizards.debugpages.AddDebugRepresentationPage;
-import org.gemoc.gemoc_modeling_workbench.ui.wizards.debugpages.DebugRepresentationSelectionPage;
-import org.gemoc.gemoc_modeling_workbench.ui.wizards.debugpages.NewViewPointProjectPage;
-import org.gemoc.gemoc_modeling_workbench.ui.wizards.debugpages.SelectDiagramDefinitionPage;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.Activator;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.command.AddDebugLayerHandler;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.wizards.pages.AddDebugRepresentationPage;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.wizards.pages.DebugRepresentationSelectionPage;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.wizards.pages.NewViewPointProjectPage;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.wizards.pages.SelectDiagramDefinitionPage;
 
 /**
  * Wizard to create a new debug representation.
@@ -86,10 +86,10 @@ public class NewGemocDebugRepresentationWizard extends Wizard implements
 							diagramDescription, languageName,
 							qualifiedServiceClassName);
 				} catch (CoreException e) {
-					Activator.error(e.getMessage(), e);
+					Activator.getMessagingSystem().error(e.getMessage(), Activator.PLUGIN_ID, e);
 					result = false;
 				} catch (IOException e) {
-					Activator.error(e.getMessage(), e);
+					Activator.getMessagingSystem().error(e.getMessage(), Activator.PLUGIN_ID, e);
 					result = false;
 				}
 			} else if (getDebugRepresentationSelectionPage().getSelected() == DebugRepresentationSelectionPage.CREATE_VIEWPOINT_EXTENSION) {
@@ -124,10 +124,10 @@ public class NewGemocDebugRepresentationWizard extends Wizard implements
 							diagramExtensionDescription, languageName,
 							qualifiedServiceClassName);
 				} catch (CoreException e) {
-					Activator.error(e.getMessage(), e);
+					Activator.getMessagingSystem().error(e.getMessage(), Activator.PLUGIN_ID, e);
 					result = false;
 				} catch (IOException e) {
-					Activator.error(e.getMessage(), e);
+					Activator.getMessagingSystem().error(e.getMessage(), Activator.PLUGIN_ID, e);
 					result = false;
 				}
 			} else if (getDebugRepresentationSelectionPage().getSelected() == DebugRepresentationSelectionPage.ADD_DEBUG_LAYER) {
@@ -179,10 +179,10 @@ public class NewGemocDebugRepresentationWizard extends Wizard implements
 							diagramDescription, languageName,
 							qualifiedServiceClassName);
 				} catch (IOException e) {
-					Activator.error(e.getMessage(), e);
+					Activator.getMessagingSystem().error(e.getMessage(), Activator.PLUGIN_ID, e);
 					result = false;
 				} catch (CoreException e) {
-					Activator.error(e.getMessage(), e);
+					Activator.getMessagingSystem().error(e.getMessage(), Activator.PLUGIN_ID, e);
 					result = false;
 				}
 			}
@@ -349,9 +349,9 @@ public class NewGemocDebugRepresentationWizard extends Wizard implements
 		try {
 			getContainer().run(false, true, finisher);
 		} catch (InvocationTargetException e) {
-			Activator.error(e.getMessage(), e);
+			Activator.getMessagingSystem().error(e.getMessage(), Activator.PLUGIN_ID, e);
 		} catch (InterruptedException e) {
-			Activator.error(e.getMessage(), e);
+			Activator.getMessagingSystem().error(e.getMessage(), Activator.PLUGIN_ID, e);
 		}
 
 		return finisher.getResult();

@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.wizards.debugpages;
+package org.gemoc.gemoc_language_workbench.extensions.sirius.wizards.pages;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
-import org.gemoc.gemoc_modeling_workbench.ui.wizards.NewGemocDebugRepresentationWizard;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.wizards.NewGemocDebugRepresentationWizard;
 
 /**
  * The representation selection page.
@@ -104,7 +104,7 @@ public class DebugRepresentationSelectionPage extends WizardPage {
 				});
 
 		radio[ADD_DEBUG_LAYER] = new Button(composite, SWT.RADIO);
-		radio[ADD_DEBUG_LAYER].setText("Create a debug diagram description.");
+		radio[ADD_DEBUG_LAYER].setText("Add a debug layer to an existing diagram description.");
 		radio[ADD_DEBUG_LAYER].setLayoutData(new GridData(
 				GridData.FILL_HORIZONTAL));
 		radio[ADD_DEBUG_LAYER].addListener(SWT.Selection, new Listener() {
