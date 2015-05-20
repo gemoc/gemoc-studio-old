@@ -51,42 +51,36 @@ import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
  * @author ftanguy
  *
  */
-public class ModelExecutionTracingAddon extends DefaultEngineAddon
-{
-	
+public class ModelExecutionTracingAddon extends DefaultEngineAddon {
+
 	private boolean shouldSave = true;
+
 	public void disableTraceSaving() {
 		shouldSave = false;
 	}
 
-	private TransactionalEditingDomain getEditingDomain()
-	{
+	private TransactionalEditingDomain getEditingDomain() {
 		return TransactionUtil.getEditingDomain(_executionContext.getResourceModel());
 	}
 
 	private boolean _backToPastHappened = false;
 
-	public void branch(Choice choice) throws ModelExecutionTracingException
-	{
+	public void branch(Choice choice) throws ModelExecutionTracingException {
 		internalBranch(choice);
 		_backToPastHappened = true;
-		if (_executionContext.getLogicalStepDecider() != null)
-		{
+		if (_executionContext.getLogicalStepDecider() != null) {
 			_executionContext.getLogicalStepDecider().preempt();
 		}
 	}
 
 	private Choice _lastChoice;
 
-	private void internalBranch(final Choice choice)
-	{
+	private void internalBranch(final Choice choice) {
 		final int index = _executionTraceModel.getChoices().indexOf(choice);
-		if (index != -1 && index != _executionTraceModel.getChoices().size())
-		{
+		if (index != -1 && index != _executionTraceModel.getChoices().size()) {
 			RecordingCommand command = new RecordingCommand(getEditingDomain(), "Back to " + index) {
 				@Override
-				protected void doExecute()
-				{
+				protected void doExecute() {
 					Branch previousBranch = choice.getPreviousChoice().getBranch();
 					Branch newBranch = Gemoc_execution_traceFactory.eINSTANCE.createBranch();
 					int previousChoiceIndex = previousBranch.getChoices().indexOf(choice.getPreviousChoice());
@@ -94,20 +88,16 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 					newBranch.setStartIndex(index);
 					_currentBranch = newBranch;
 					_executionTraceModel.getBranches().add(newBranch);
-					if (_executionTraceModel.getChoices().size() > 0)
-					{
+					if (_executionTraceModel.getChoices().size() > 0) {
 						_lastChoice = choice.getPreviousChoice();
-						if (_lastChoice != null)
-						{
+						if (_lastChoice != null) {
 							_lastChoice.setSelectedNextChoice(null);
 						}
 					}
-					try
-					{
+					try {
 						restoreModelState(choice);
 						restoreSolverState(choice);
-					} catch (Exception e)
-					{
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
@@ -116,8 +106,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 		}
 	}
 
-	private void restoreModelState(Choice choice)
-	{
+	private void restoreModelState(Choice choice) {
 
 		EObject left = choice.getContextState().getModelState().getModel();
 		EObject right = _executionContext.getResourceModel().getContents().get(0);
@@ -128,12 +117,11 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 		List<Diff> differences = comparison.getDifferences();
 
 		Merger merger = new Merger();
-		BasicMonitor monitor = new BasicMonitor();
-		for (Diff diff : differences)
-		{
 
-			if (diff instanceof AttributeChangeSpec)
-			{
+		BasicMonitor monitor = new BasicMonitor();
+		for (Diff diff : differences) {
+
+			if (diff instanceof AttributeChangeSpec) {
 				// if attribute, modify value on the aspect side that will
 				// modify the model in return.
 				AttributeChangeSpec asc = (AttributeChangeSpec) diff;
@@ -142,19 +130,16 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 				String methodName = asc.getAttribute().getName();
 				ArrayList<Object> parameters = new ArrayList<Object>();
 				parameters.add(asc.getValue());
-				try
-				{
+				try {
 					System.out
 							.println("Begin setting " + target.toString() + "." + methodName + " = " + asc.getValue());
 					codeExecutor.execute(target, methodName, parameters);
 					System.out.println("End setting " + target.toString() + "." + methodName + " = " + asc.getValue());
-				} catch (CodeExecutionException e)
-				{
+				} catch (CodeExecutionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else
-			{
+			} else {
 				// if reference, use the merger.
 				merger.copyLeftToRight(diff, monitor);
 				diff.setState(DifferenceState.UNRESOLVED);
@@ -164,16 +149,14 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 
 	byte[] _lastRestoredSolverState;
 
-	private void restoreSolverState(Choice choice)
-	{
+	private void restoreSolverState(Choice choice) {
 		ISolver solver = _executionContext.getExecutionPlatform().getSolver();
 		Activator.getDefault().debug(
 				"restoring solver state: " + choice.getContextState().getSolverState().getSerializableModel());
 		solver.setState(choice.getContextState().getSolverState().getSerializableModel());
 	}
 
-	public boolean hasRewindHappened(boolean resetFlag)
-	{
+	public boolean hasRewindHappened(boolean resetFlag) {
 		boolean result = _backToPastHappened;
 		if (resetFlag)
 			_backToPastHappened = false;
@@ -182,19 +165,16 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 
 	private boolean _cannotSaveTrace = false;
 
-	private void saveTraceModel(long stepNumber)
-	{
+	private void saveTraceModel(long stepNumber) {
 		Resource traceResource = _executionTraceModel.eResource();
-		if (traceResource.getContents().size() > 0)
-		{
+		if (traceResource.getContents().size() > 0) {
 			// copy the model
 			Copier copier = new GCopier();
 			EObject result = copier.copy(_executionContext.getResourceModel().getContents().get(0));
 			copier.copyReferences();
 
 			ExecutionTraceModel traceModel = (ExecutionTraceModel) traceResource.getContents().get(0);
-			if (traceModel.getChoices().size() > 0)
-			{
+			if (traceModel.getChoices().size() > 0) {
 				// link it to the trace model
 				ModelState modelState = Gemoc_execution_traceFactory.eINSTANCE.createModelState();
 				traceResource.getContents().add(result);
@@ -210,13 +190,10 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 				contextState.setSolverState(solverState);
 				traceModel.getChoices().get(traceModel.getChoices().size() - 1).setContextState(contextState);
 
-				if (!_cannotSaveTrace && shouldSave)
-				{
-					try
-					{
+				if (!_cannotSaveTrace && shouldSave) {
+					try {
 						traceResource.save(null);
-					} catch (IOException e)
-					{
+					} catch (IOException e) {
 						e.printStackTrace();
 						_cannotSaveTrace = true;
 					}
@@ -228,15 +205,12 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 	private ExecutionTraceModel _executionTraceModel;
 	private Branch _currentBranch;
 
-	public Branch getCurrentBranch()
-	{
+	public Branch getCurrentBranch() {
 		return _currentBranch;
 	}
 
-	private void setUp(IExecutionEngine engine)
-	{
-		if (_executionContext == null)
-		{
+	private void setUp(IExecutionEngine engine) {
+		if (_executionContext == null) {
 			_executionTraceModel = Gemoc_execution_traceFactory.eINSTANCE.createExecutionTraceModel();
 			_currentBranch = Gemoc_execution_traceFactory.eINSTANCE.createBranch();
 			_currentBranch.setStartIndex(0);
@@ -247,8 +221,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 
 	private IExecutionContext _executionContext;
 
-	private void setModelExecutionContext(IExecutionContext executionContext)
-	{
+	private void setModelExecutionContext(IExecutionContext executionContext) {
 		_executionContext = executionContext;
 		ResourceSet rs = _executionContext.getResourceModel().getResourceSet();
 		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getWorkspace().getExecutionPath()
@@ -258,33 +231,28 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 
 		RecordingCommand command = new RecordingCommand(getEditingDomain(), "set model execution context") {
 			@Override
-			protected void doExecute()
-			{
+			protected void doExecute() {
 				modelResource.getContents().add(_executionTraceModel);
 			}
 		};
 		CommandExecution.execute(getEditingDomain(), command);
 	}
 
-	private Choice createChoice()
-	{
+	private Choice createChoice() {
 		Choice choice = Gemoc_execution_traceFactory.eINSTANCE.createChoice();
 		return choice;
 	}
 
-	private void updateTraceModelBeforeDeciding(final Collection<LogicalStep> possibleLogicalSteps)
-	{
+	private void updateTraceModelBeforeDeciding(final Collection<LogicalStep> possibleLogicalSteps) {
 
 		RecordingCommand command = new RecordingCommand(getEditingDomain(), "update trace model") {
 
 			@Override
-			protected void doExecute()
-			{
+			protected void doExecute() {
 				Choice choice = createChoice();
 				_executionTraceModel.getChoices().add(choice);
 				_currentBranch.getChoices().add(choice);
-				if (_lastChoice != null)
-				{
+				if (_lastChoice != null) {
 					_lastChoice.getNextChoices().add(choice);
 					_lastChoice.setSelectedNextChoice(choice);
 				}
@@ -296,18 +264,14 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 		CommandExecution.execute(getEditingDomain(), command);
 	}
 
-	private void updateTraceModelAfterExecution(final LogicalStep selectedLogicalStep)
-	{
+	private void updateTraceModelAfterExecution(final LogicalStep selectedLogicalStep) {
 		RecordingCommand command = new RecordingCommand(getEditingDomain(), "update trace model after deciding") {
 			@Override
-			protected void doExecute()
-			{
-				if (_lastChoice != null)
-				{
+			protected void doExecute() {
+				if (_lastChoice != null) {
 					if (_lastChoice.getPossibleLogicalSteps().size() == 0)
 						return;
-					if (_lastChoice.getPossibleLogicalSteps().contains(selectedLogicalStep))
-					{
+					if (_lastChoice.getPossibleLogicalSteps().contains(selectedLogicalStep)) {
 						_lastChoice.setChosenLogicalStep(selectedLogicalStep);
 					}
 				}
@@ -316,46 +280,38 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 		CommandExecution.execute(getEditingDomain(), command);
 	}
 
-	public ExecutionTraceModel getExecutionTrace()
-	{
+	public ExecutionTraceModel getExecutionTrace() {
 		return _executionTraceModel;
 	}
 
 	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps)
-	{
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) {
 		setUp(engine);
 		updateTraceModelBeforeDeciding(logicalSteps);
 	}
 
 	@Override
-	public void logicalStepExecuted(IExecutionEngine engine, LogicalStep logicalStepExecuted)
-	{
+	public void logicalStepExecuted(IExecutionEngine engine, LogicalStep logicalStepExecuted) {
 		setUp(engine);
 		updateTraceModelAfterExecution(logicalStepExecuted);
 	}
 
-	public void reintegrateBranch(final Choice choice)
-	{
+	public void reintegrateBranch(final Choice choice) {
 		RecordingCommand command = new RecordingCommand(getEditingDomain(), "Reintegrate branch") {
 			@Override
-			protected void doExecute()
-			{
+			protected void doExecute() {
 				_currentBranch = choice.getBranch();
 				_lastChoice = choice.getPreviousChoice();
 				choice.setPreviousChoice(null);
 				_lastChoice.setSelectedNextChoice(null);
 				_currentBranch.getChoices().remove(choice);
-				try
-				{
+				try {
 					restoreModelState(choice);
 					restoreSolverState(choice);
-					if (_executionContext.getLogicalStepDecider() != null)
-					{
+					if (_executionContext.getLogicalStepDecider() != null) {
 						_executionContext.getLogicalStepDecider().preempt();
 					}
-				} catch (Exception e)
-				{
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -364,15 +320,12 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon
 	}
 
 	@Override
-	public void proposedLogicalStepsChanged(IExecutionEngine engine, final Collection<LogicalStep> logicalSteps)
-	{
+	public void proposedLogicalStepsChanged(IExecutionEngine engine, final Collection<LogicalStep> logicalSteps) {
 		RecordingCommand command = new RecordingCommand(getEditingDomain(), "update trace model") {
 
 			@Override
-			protected void doExecute()
-			{
-				if (_lastChoice != null)
-				{
+			protected void doExecute() {
+				if (_lastChoice != null) {
 					_lastChoice.getPossibleLogicalSteps().clear();
 					_lastChoice.getPossibleLogicalSteps().addAll(logicalSteps);
 				}
