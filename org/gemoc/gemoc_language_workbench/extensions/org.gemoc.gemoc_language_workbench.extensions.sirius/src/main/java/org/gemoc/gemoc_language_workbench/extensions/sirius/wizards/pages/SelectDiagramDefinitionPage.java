@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.wizards.debugpages;
+package org.gemoc.gemoc_language_workbench.extensions.sirius.wizards.pages;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.gemoc.gemoc_modeling_workbench.ui.wizards.NewGemocDebugRepresentationWizard;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.wizards.NewGemocDebugRepresentationWizard;
 
 /**
  * The diagram selection page.

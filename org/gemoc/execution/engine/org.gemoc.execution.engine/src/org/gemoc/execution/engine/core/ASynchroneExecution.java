@@ -35,23 +35,65 @@ public class ASynchroneExecution extends OperationExecution
 	{
 		collectForces();
 		// forbid
+		//why forcing absence by default ?
 		for (Force force : _forces.keySet())
 		{						
 			if (force.getKind().equals(ForceKind.PRESENCE))
 			{
+				//should force presence ?
 				_clockController.forceAbsenceTickInTheFuture(force.getEventToBeForced());
 			}
 		}
-		Runnable runnable = new Runnable() {
-			
-			@Override
-			public void run() 
+		
+//		il y avait un problème de course dans le cas d'un feedback qui devait etre immédiat. L'idée de François 
+//		c'etait on interdit tout en attendant de la réponse de l'exécution asynchrone de la méthode.
+//		dans certains exemples il n'est pas possible de "faire autre chose en attendant" et donc on doit forcément attendre le retour de la
+//		fonction associée pour éviter les deadlocks... Je propose avant de mieux faire de ne rendre asynchrone que les futurs et pas les feedbacks...
+		
+		
+		boolean shouldBeLaunchInAThread= false;
+		 
+		for (Entry<Force, When> entry : _forces.entrySet())
+		{
+			Condition condition = entry.getValue().getCondition();
+			if (condition instanceof ActionFinishedCondition)
 			{
-				internalRun();
+				shouldBeLaunchInAThread = true;
 			}
-		};
-		Thread t = new Thread(runnable);
-		t.start();
+		}
+		
+		
+		
+		if(shouldBeLaunchInAThread){
+			Runnable runnable = new Runnable() {
+				
+				@Override
+				public void run() 
+				{
+					internalRun();
+				}
+			};
+			Thread t = new Thread(runnable);
+			t.start();
+		}else{
+			try
+			{	
+				executeMSESynchronously();
+				// free
+				for (Entry<Force, When> entry : _forces.entrySet())
+				{						
+					Condition condition = entry.getValue().getCondition();
+					dealWithExecutionResult(entry, condition);
+				}
+			}
+			catch (Exception e)
+			{
+				Activator.getDefault().error("Exception received " + e.getMessage(), e);
+			}
+		}
+		
+		
+		
 	}
 
 	private void collectForces() 
@@ -83,35 +125,8 @@ public class ASynchroneExecution extends OperationExecution
 				{
 					_clockController.freeInTheFuture(entry.getKey().getEventToBeForced());					
 				}
-				else if (condition instanceof ActionResultCondition)
-				{
-					ActionResultCondition resultCondition = (ActionResultCondition)condition;
-					boolean goOn = false;
-					
-					switch(resultCondition.getOperator().getValue())
-					{
-						case ComparisonOperator.DIFFERENT_VALUE:
-							goOn = getResult() != resultCondition.getComparisonValue();
-							break;
-						case ComparisonOperator.EQUALS_VALUE:
-							goOn = getResult().equals(resultCondition.getComparisonValue());
-							break;
-						default:
-							goOn = tryNumber(resultCondition.getOperator(), getResult(), resultCondition.getComparisonValue());
-							break;
-					}
-					if (goOn)
-					{
-						if (entry.getKey().getOnTrigger() == null)
-						{
-							_clockController.freeInTheFuture(entry.getKey().getEventToBeForced());						
-						}
-						else
-						{
-							FreeClockFutureAction action = new FreeClockFutureAction(entry.getKey().getEventToBeForced(), entry.getKey().getOnTrigger(), _clockController);
-							getEngine().addFutureAction(action);
-						}
-					}
+				else{
+					dealWithExecutionResult(entry, condition);
 				}
 			}
 		}
@@ -119,6 +134,39 @@ public class ASynchroneExecution extends OperationExecution
 		{
 			Activator.getDefault().error("Exception received " + e.getMessage(), e);
 		}
+	}
+
+	private void dealWithExecutionResult(Entry<Force, When> entry, Condition condition) throws Exception {
+		if (condition instanceof ActionResultCondition)
+		{
+		ActionResultCondition resultCondition = (ActionResultCondition)condition;
+		boolean goOn = false;
+		
+		switch(resultCondition.getOperator().getValue())
+		{
+			case ComparisonOperator.DIFFERENT_VALUE:
+				goOn = getResult() != resultCondition.getComparisonValue();
+				break;
+			case ComparisonOperator.EQUALS_VALUE:
+				goOn = getResult().equals(resultCondition.getComparisonValue());
+				break;
+			default:
+				goOn = tryNumber(resultCondition.getOperator(), getResult(), resultCondition.getComparisonValue());
+				break;
+		}
+		if (goOn)
+		{
+			if (entry.getKey().getOnTrigger() == null)
+			{
+				_clockController.freeInTheFuture(entry.getKey().getEventToBeForced());						
+			}
+			else
+			{
+				FreeClockFutureAction action = new FreeClockFutureAction(entry.getKey().getEventToBeForced(), entry.getKey().getOnTrigger(), _clockController);
+				getEngine().addFutureAction(action);
+			}
+		}
+}
 	}
 
 	private boolean  tryNumber(ComparisonOperator operator, Object result, Object comparisonValue) throws Exception 

@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.wizards.debugpages;
+package org.gemoc.gemoc_language_workbench.extensions.sirius.wizards.pages;
 
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
@@ -11,7 +11,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.gemoc.gemoc_modeling_workbench.ui.wizards.NewGemocDebugRepresentationWizard;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.wizards.NewGemocDebugRepresentationWizard;
 
 public class NewViewPointProjectPage extends WizardPage {
 

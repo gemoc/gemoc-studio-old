@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.commands;
+package org.gemoc.gemoc_language_workbench.extensions.sirius.command;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -59,7 +59,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 public class AddDebugLayerHandler extends AbstractHandler {
 
-	private static final String DEBUG_SERVICE_TEMPLATE_PATH = "org/gemoc/gemoc_modeling_workbench/ui/commands/debug_services_template.txt";
+	private static final String DEBUG_SERVICE_TEMPLATE_PATH = "org/gemoc/gemoc_language_workbench/extensions/sirius/command/debug_services_template.txt";
 
 	private static final String PACKAGE_TAG = "PACKAGE";
 
@@ -118,26 +118,26 @@ public class AddDebugLayerHandler extends AbstractHandler {
 	public static void emfModifications(final IProgressMonitor monitor,
 			final String layerName, final DiagramDescription description,
 			final String languageName, final String qualifiedServiceClassName) {
-		final JavaExtension serviceImport = getOrCreateImport(description,
+		getOrCreateImport(description,
 				qualifiedServiceClassName, monitor);
 		final UserColorsPalette palette = getOrCreateColotPalette(description,
 				languageName, monitor);
 		final UserColor instructionColor = getOrCtreateInstructionColor(
 				palette, monitor);
-		final Layer debugLayer = getOrCreateDebugLayer(description,
+		getOrCreateDebugLayer(description,
 				instructionColor, layerName, monitor);
 	}
 
 	public static void emfModifications(final IProgressMonitor monitor,
 			final String layerName, final DiagramExtensionDescription descriptionExtension,
 			final String languageName, final String qualifiedServiceClassName) {
-		final JavaExtension serviceImport = getOrCreateImport(descriptionExtension,
+		getOrCreateImport(descriptionExtension,
 				qualifiedServiceClassName, monitor);
 		final UserColorsPalette palette = getOrCreateColotPalette(descriptionExtension,
 				languageName, monitor);
 		final UserColor instructionColor = getOrCtreateInstructionColor(
 				palette, monitor);
-		final Layer debugLayer = getOrCreateDebugLayer(descriptionExtension,
+		getOrCreateDebugLayer(descriptionExtension,
 				instructionColor, layerName, monitor);
 	}
 
