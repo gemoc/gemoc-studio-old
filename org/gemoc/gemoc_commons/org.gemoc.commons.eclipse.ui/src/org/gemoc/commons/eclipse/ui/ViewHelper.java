@@ -17,7 +17,27 @@ public class ViewHelper {
 	@SuppressWarnings("unchecked")
 	public static <ViewType> ViewType retrieveView(String viewId) 
 	{
-		IViewPart viewPart = ViewHelper.retrieveViewPart(viewId);
+		IViewPart viewPart = ViewHelper.retrieveViewPart(viewId, false);
+		ViewType view = null;
+		try {
+			view = (ViewType)viewPart;
+		} 
+		catch(Exception e) {
+			
+		}
+		return view;
+	}
+	
+	/***
+	 * Will look after the view.
+	 * If not found, will try to show and focus on it.
+	 * If showing view not possible, return null.
+	 * @param viewId
+	 * @return The view part if found or null otherwise
+	 */
+	public static <ViewType> ViewType showView(String viewId) 
+	{
+		IViewPart viewPart = ViewHelper.retrieveViewPart(viewId, true);
 		ViewType view = null;
 		try {
 			view = (ViewType)viewPart;
@@ -36,9 +56,9 @@ public class ViewHelper {
 	 * @param viewId
 	 * @return The view part if found or null otherwise
 	 */
-	public static IViewPart retrieveViewPart(final String viewId) 
+	public static IViewPart retrieveViewPart(final String viewId, final boolean forceFocus) 
 	{
-		RetrieveViewPartRunnable runnable = new RetrieveViewPartRunnable(viewId);
+		RetrieveViewPartRunnable runnable = new RetrieveViewPartRunnable(viewId, forceFocus);
 		PlatformUI.getWorkbench()
 			.getDisplay()
 			.syncExec(runnable);
@@ -48,10 +68,13 @@ public class ViewHelper {
 	private static class RetrieveViewPartRunnable implements Runnable 
 	{
 
-		public RetrieveViewPartRunnable(String viewId)
+		public RetrieveViewPartRunnable(String viewId, boolean forceFocus)
 		{
 			_viewId = viewId;
+			_forceFocus = forceFocus;
 		}
+		
+		private boolean _forceFocus = false;
 		
 		private String _viewId;
 		private IViewPart _viewPart = null;
@@ -63,7 +86,7 @@ public class ViewHelper {
 		@Override
 		public void run() {
 			_viewPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView(_viewId);
-			if (_viewPart == null) 
+			if (_viewPart == null || _forceFocus) 
 			{
 				try {
 					_viewPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(_viewId);
