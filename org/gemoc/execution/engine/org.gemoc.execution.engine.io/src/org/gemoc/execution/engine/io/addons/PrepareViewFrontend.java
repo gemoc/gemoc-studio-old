@@ -30,11 +30,11 @@ public class PrepareViewFrontend extends DefaultEngineAddon
 						{
 							@Override
 							public void run() {
-								ViewHelper.retrieveView(EnginesStatusView.ID);
-								ViewHelper.retrieveView(LogicalStepsView.ID);
 								ViewHelper.retrieveView(EventManagerView.ID);
-								_timelineView = ViewHelper.retrieveView(TimeLineView.ID);		
+								ViewHelper.retrieveView(EnginesStatusView.ID);
+								_timelineView = ViewHelper.retrieveView(TimeLineView.ID);
 								_timelineView.configure(engine);
+								ViewHelper.retrieveView(LogicalStepsView.ID);
 							}			
 						});	
 		}
