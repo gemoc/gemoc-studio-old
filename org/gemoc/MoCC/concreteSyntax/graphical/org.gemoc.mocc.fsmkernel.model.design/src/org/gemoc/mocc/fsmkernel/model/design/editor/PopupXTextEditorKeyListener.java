@@ -12,6 +12,7 @@
  * 
  * Contributors:
  *   Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
+ *   P. Issa Diallo - ENSTA Bretagne [papa_issa.diallo@ensta-bretagne.fr]
  *   
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -25,7 +26,10 @@ package org.gemoc.mocc.fsmkernel.model.design.editor;
 import java.io.IOException;
 
 import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.jface.text.contentassist.ContentAssistEvent;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
+import org.eclipse.jface.text.contentassist.ICompletionListener;
+import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.contentassist.IContentAssistant;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.VerifyKeyListener;
@@ -93,6 +97,30 @@ public class PopupXTextEditorKeyListener extends KeyAdapter implements VerifyKey
 				e1.printStackTrace();
 			}*/
 		}
+		
+		if ((e.stateMask & SWT.CTRL) != 0 && (e.keyCode == ' ')) {
+		    this.contentAssistant.setRepeatedInvocationMode(true);
+		    this.contentAssistant.showPossibleCompletions();
+		    //this.isIgnoreNextESC=true;
+		    contentAssistant.addCompletionListener(new ICompletionListener(){
+		      public void selectionChanged(      ICompletionProposal proposal,      boolean smartToggle){
+		      }
+		      public void assistSessionStarted(      ContentAssistEvent event){
+		      }
+		      public void assistSessionEnded(      ContentAssistEvent event){
+		       // try {
+		        //  popupXtextEditorHelper.getSourceViewerHandle().getViewer().getTextWidget().setFocus();
+		        //}
+		 //catch (        Exception e) {
+		   //     }
+		      }
+		    }
+		);
+		  }
+		
+		if ((e.stateMask & SWT.CTRL) != 0 && ((e.keyCode == SWT.KEYPAD_CR) || (e.keyCode == SWT.CR))) {
+		    this.popupXtextEditorHelper.closeEditor(true);
+		  }
 	}
 
 	public void verifyKey(VerifyEvent e) {

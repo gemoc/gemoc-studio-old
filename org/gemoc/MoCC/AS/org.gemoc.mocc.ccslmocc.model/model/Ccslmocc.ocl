@@ -5,7 +5,7 @@
  * 
  * Contributors:
  *   Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
- *   
+ *   Papa Issa Diallo - ENSTA Bretagne [papa_issa.diallo@ensta-bretagne.fr]
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,8 @@
   * This file provides additional validation constraints on ccslmocc ecore metamodel
   * for timesquare validation.
  */
- import 'http://org.gemoc.moccml/1.0' 
+ import moccml : 'http://org.gemoc.moccml/1.0' 
+ import 'http://fr.inria.aoste.timemodel'
  /*import '/resource/org.gemoc.mocc.ccslmocc.model/model/Ccslmocc.ecore'*/
  
  package  moccml
@@ -29,16 +30,16 @@
   * The specific state machine library must contain state machine relation definitions
  */
  inv LibraryUsesStateMachineRelationDefinition(
- 	'State machine relation definition library ' +self.name+' must contain a state machine'): 
+ 	'State machine relation definition library ' + self.name+' must contain a state machine'): 
  	self.relationLibraries.relationDefinitions->includes(oclIsTypeOf(StateMachineRelationDefinition))
  	
  	 
- context ccslmocc::StrictStateRelationBasedLibrary 
+/* context moccml::StrictStateRelationBasedLibrary 
   /*
   * The specific strict state machine library must only contain state machine relation definitions
- */
+ *
  inv StrictLibraryUsesStateMachineRelationDefinition(
  	'State machine relation definition library ' +self.name+' must only contain state machines'): 
  	self.relationLibraries.relationDefinitions->forAll(oclIsTypeOf(StateMachineRelationDefinition))
- 
+ */
  endpackage

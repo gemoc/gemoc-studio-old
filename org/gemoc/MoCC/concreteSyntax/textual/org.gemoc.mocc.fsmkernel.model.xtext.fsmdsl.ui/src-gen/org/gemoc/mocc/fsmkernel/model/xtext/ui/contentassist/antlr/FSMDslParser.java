@@ -95,6 +95,7 @@ public class FSMDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStateMachineDefinitionAccess().getGroup_7_2(), "rule__StateMachineDefinition__Group_7_2__0");
 					put(grammarAccess.getDeclarationBlockAccess().getGroup(), "rule__DeclarationBlock__Group__0");
 					put(grammarAccess.getTransitionAccess().getGroup(), "rule__Transition__Group__0");
+					put(grammarAccess.getTransitionAccess().getGroup_6(), "rule__Transition__Group_6__0");
 					put(grammarAccess.getTransitionAccess().getGroup_8(), "rule__Transition__Group_8__0");
 					put(grammarAccess.getTransitionAccess().getGroup_9(), "rule__Transition__Group_9__0");
 					put(grammarAccess.getTransitionAccess().getGroup_10(), "rule__Transition__Group_10__0");
@@ -338,7 +339,7 @@ public class FSMDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDeclarationBlockAccess().getClassicalExpressionsAssignment_3(), "rule__DeclarationBlock__ClassicalExpressionsAssignment_3");
 					put(grammarAccess.getTransitionAccess().getSourceAssignment_2(), "rule__Transition__SourceAssignment_2");
 					put(grammarAccess.getTransitionAccess().getTargetAssignment_4(), "rule__Transition__TargetAssignment_4");
-					put(grammarAccess.getTransitionAccess().getNameAssignment_6(), "rule__Transition__NameAssignment_6");
+					put(grammarAccess.getTransitionAccess().getNameAssignment_6_0(), "rule__Transition__NameAssignment_6_0");
 					put(grammarAccess.getTransitionAccess().getTriggerAssignment_8_1(), "rule__Transition__TriggerAssignment_8_1");
 					put(grammarAccess.getTransitionAccess().getGuardAssignment_9_1(), "rule__Transition__GuardAssignment_9_1");
 					put(grammarAccess.getTransitionAccess().getActionsAssignment_10_1(), "rule__Transition__ActionsAssignment_10_1");

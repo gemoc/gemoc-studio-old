@@ -101,6 +101,7 @@ public class MoCDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getGroup_10(), "rule__CCSLStateMachineRelationDefinition__Group_10__0");
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getGroup_10_2(), "rule__CCSLStateMachineRelationDefinition__Group_10_2__0");
 					put(grammarAccess.getTransitionAccess().getGroup(), "rule__Transition__Group__0");
+					put(grammarAccess.getTransitionAccess().getGroup_6(), "rule__Transition__Group_6__0");
 					put(grammarAccess.getTransitionAccess().getGroup_8_0(), "rule__Transition__Group_8_0__0");
 					put(grammarAccess.getTransitionAccess().getGroup_8_0_0(), "rule__Transition__Group_8_0_0__0");
 					put(grammarAccess.getTransitionAccess().getGroup_8_0_1(), "rule__Transition__Group_8_0_1__0");
@@ -361,7 +362,7 @@ public class MoCDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCCSLStateMachineRelationDefinitionAccess().getTransitionsAssignment_11_1(), "rule__CCSLStateMachineRelationDefinition__TransitionsAssignment_11_1");
 					put(grammarAccess.getTransitionAccess().getSourceAssignment_2(), "rule__Transition__SourceAssignment_2");
 					put(grammarAccess.getTransitionAccess().getTargetAssignment_4(), "rule__Transition__TargetAssignment_4");
-					put(grammarAccess.getTransitionAccess().getNameAssignment_6(), "rule__Transition__NameAssignment_6");
+					put(grammarAccess.getTransitionAccess().getNameAssignment_6_0(), "rule__Transition__NameAssignment_6_0");
 					put(grammarAccess.getTransitionAccess().getTriggerAssignment_8_0_0_1(), "rule__Transition__TriggerAssignment_8_0_0_1");
 					put(grammarAccess.getTransitionAccess().getGuardAssignment_8_0_1_1(), "rule__Transition__GuardAssignment_8_0_1_1");
 					put(grammarAccess.getTransitionAccess().getGuardAssignment_8_1_0_1(), "rule__Transition__GuardAssignment_8_1_0_1");

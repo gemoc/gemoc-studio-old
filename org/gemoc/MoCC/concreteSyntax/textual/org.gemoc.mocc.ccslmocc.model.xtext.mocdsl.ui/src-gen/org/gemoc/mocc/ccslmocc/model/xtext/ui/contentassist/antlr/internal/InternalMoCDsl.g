@@ -6399,9 +6399,9 @@ rule__Transition__Group__6__Impl
     }
 :
 (
-{ before(grammarAccess.getTransitionAccess().getNameAssignment_6()); }
-(rule__Transition__NameAssignment_6)?
-{ after(grammarAccess.getTransitionAccess().getNameAssignment_6()); }
+{ before(grammarAccess.getTransitionAccess().getGroup_6()); }
+(rule__Transition__Group_6__0)?
+{ after(grammarAccess.getTransitionAccess().getGroup_6()); }
 )
 
 ;
@@ -6428,11 +6428,11 @@ rule__Transition__Group__7__Impl
     }
 :
 (
-{ before(grammarAccess.getTransitionAccess().getHyphenMinusGreaterThanSignLeftParenthesisKeyword_7()); }
+{ before(grammarAccess.getTransitionAccess().getLeftParenthesisKeyword_7()); }
 
-	'->(' 
+	'(' 
 
-{ after(grammarAccess.getTransitionAccess().getHyphenMinusGreaterThanSignLeftParenthesisKeyword_7()); }
+{ after(grammarAccess.getTransitionAccess().getLeftParenthesisKeyword_7()); }
 )
 
 ;
@@ -6545,6 +6545,69 @@ finally {
 
 
 
+
+
+
+
+
+
+rule__Transition__Group_6__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Transition__Group_6__0__Impl
+	rule__Transition__Group_6__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Transition__Group_6__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getTransitionAccess().getNameAssignment_6_0()); }
+(rule__Transition__NameAssignment_6_0)
+{ after(grammarAccess.getTransitionAccess().getNameAssignment_6_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Transition__Group_6__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Transition__Group_6__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Transition__Group_6__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getTransitionAccess().getHyphenMinusGreaterThanSignKeyword_6_1()); }
+
+	'->' 
+
+{ after(grammarAccess.getTransitionAccess().getHyphenMinusGreaterThanSignKeyword_6_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 
@@ -38544,14 +38607,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Transition__NameAssignment_6
+rule__Transition__NameAssignment_6_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getTransitionAccess().getNameEStringParserRuleCall_6_0()); }
-	ruleEString{ after(grammarAccess.getTransitionAccess().getNameEStringParserRuleCall_6_0()); }
+{ before(grammarAccess.getTransitionAccess().getNameEStringParserRuleCall_6_0_0()); }
+	ruleEString{ after(grammarAccess.getTransitionAccess().getNameEStringParserRuleCall_6_0_0()); }
 )
 
 ;

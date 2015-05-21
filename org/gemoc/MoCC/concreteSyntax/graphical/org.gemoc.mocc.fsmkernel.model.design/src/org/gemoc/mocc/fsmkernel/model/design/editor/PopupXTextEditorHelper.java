@@ -5,7 +5,7 @@
  * 
  * Contributors:
  *   Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
- *   P. Issa Diallo - ENSTA Bretagne
+ *   P. Issa Diallo - ENSTA Bretagne [papa_issa.diallo@ensta-bretagne.fr]
  *   
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0

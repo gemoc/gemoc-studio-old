@@ -7,7 +7,7 @@ import org.eclipse.swt.widgets.Shell;
 public class SelectMoCCIProjectDialog extends SelectPluginIProjectWithFileExtensionDialog {
 
 	public SelectMoCCIProjectDialog(Shell parentShell) {
-		super(parentShell, Arrays.asList("mocc","ccslLib"));
+		super(parentShell, Arrays.asList("mocc","ccslLib","moccml"));
 	}
 
 }

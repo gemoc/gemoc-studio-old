@@ -5,7 +5,7 @@
  * 
  * Contributors:
  *   Stephen Creff - ENSTA Bretagne [stephen.creff@ensta-bretagne.fr]
- *   
+ *   Papa Issa Diallo - ENSTA Bretagne [papa_issa.diallo@ensta-bretagne.fr]
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -328,6 +328,11 @@ public class MoCMLServices {
 		Injector injector = Guice.createInjector(new MoCDslRuntimeModule());
 		Serializer serializer = injector.getInstance(Serializer.class);
 		boolean changed = false;
+		
+		if((element.getTrigger()==null) && (element.getGuard()==null) && (element.getActions().isEmpty()))
+		{
+			sb.append("{Empty Transition}");
+		}
 		if (element.getTrigger()!=null) {
 			sb.append("when {" +serializer.serialize(element.getTrigger())+"}\n");
 //			if (!((Trigger)element.getTrigger()).getTrueTriggers().isEmpty()) {

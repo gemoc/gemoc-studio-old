@@ -230,9 +230,11 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cTargetStateCrossReference_4_0 = (CrossReference)cTargetAssignment_4.eContents().get(0);
 		private final RuleCall cTargetStateEStringParserRuleCall_4_0_1 = (RuleCall)cTargetStateCrossReference_4_0.eContents().get(1);
 		private final Keyword cColonKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cNameEStringParserRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
-		private final Keyword cHyphenMinusGreaterThanSignLeftParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Assignment cNameAssignment_6_0 = (Assignment)cGroup_6.eContents().get(0);
+		private final RuleCall cNameEStringParserRuleCall_6_0_0 = (RuleCall)cNameAssignment_6_0.eContents().get(0);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
 		private final Keyword cWhenKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
 		private final Assignment cTriggerAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
@@ -249,11 +251,11 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Transition returns fsmmodel::Transition:
 		//	{fsmmodel::Transition} "from" source=[fsmmodel::State|EString] "to" target=[fsmmodel::State|EString] ":"
-		//	name=EString? "->(" ("when" trigger=Trigger)? ("if" guard=Guard)? ("do" actions+=Action)* ")";
+		//	(name=EString "->")? "(" ("when" trigger=Trigger)? ("if" guard=Guard)? ("do" actions+=Action)* ")";
 		public ParserRule getRule() { return rule; }
 
-		//{fsmmodel::Transition} "from" source=[fsmmodel::State|EString] "to" target=[fsmmodel::State|EString] ":" name=EString?
-		//"->(" ("when" trigger=Trigger)? ("if" guard=Guard)? ("do" actions+=Action)* ")"
+		//{fsmmodel::Transition} "from" source=[fsmmodel::State|EString] "to" target=[fsmmodel::State|EString] ":" (name=EString
+		//"->")? "(" ("when" trigger=Trigger)? ("if" guard=Guard)? ("do" actions+=Action)* ")"
 		public Group getGroup() { return cGroup; }
 
 		//{fsmmodel::Transition}
@@ -286,14 +288,20 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 		//":"
 		public Keyword getColonKeyword_5() { return cColonKeyword_5; }
 
-		//name=EString?
-		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
+		//(name=EString "->")?
+		public Group getGroup_6() { return cGroup_6; }
+
+		//name=EString
+		public Assignment getNameAssignment_6_0() { return cNameAssignment_6_0; }
 
 		//EString
-		public RuleCall getNameEStringParserRuleCall_6_0() { return cNameEStringParserRuleCall_6_0; }
+		public RuleCall getNameEStringParserRuleCall_6_0_0() { return cNameEStringParserRuleCall_6_0_0; }
 
-		//"->("
-		public Keyword getHyphenMinusGreaterThanSignLeftParenthesisKeyword_7() { return cHyphenMinusGreaterThanSignLeftParenthesisKeyword_7; }
+		//"->"
+		public Keyword getHyphenMinusGreaterThanSignKeyword_6_1() { return cHyphenMinusGreaterThanSignKeyword_6_1; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_7() { return cLeftParenthesisKeyword_7; }
 
 		//("when" trigger=Trigger)?
 		public Group getGroup_8() { return cGroup_8; }
@@ -3876,7 +3884,7 @@ public class FSMDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Transition returns fsmmodel::Transition:
 	//	{fsmmodel::Transition} "from" source=[fsmmodel::State|EString] "to" target=[fsmmodel::State|EString] ":"
-	//	name=EString? "->(" ("when" trigger=Trigger)? ("if" guard=Guard)? ("do" actions+=Action)* ")";
+	//	(name=EString "->")? "(" ("when" trigger=Trigger)? ("if" guard=Guard)? ("do" actions+=Action)* ")";
 	public TransitionElements getTransitionAccess() {
 		return pTransition;
 	}

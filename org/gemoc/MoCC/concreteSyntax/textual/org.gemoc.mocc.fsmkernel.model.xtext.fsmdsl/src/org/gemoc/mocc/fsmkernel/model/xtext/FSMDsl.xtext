@@ -36,7 +36,7 @@ DeclarationBlock returns fsmmodel::DeclarationBlock:
 
 Transition returns fsmmodel::Transition:
 	{fsmmodel::Transition}
-	'from' source=[fsmmodel::State|EString] 'to' target=[fsmmodel::State|EString]':' (name = EString)?'->('
+	'from' source=[fsmmodel::State|EString] 'to' target=[fsmmodel::State|EString]':' (name = EString '->')?'('
 		('when' trigger=Trigger)?
 		('if' guard=Guard)?
 		('do' (actions+=Action))*
