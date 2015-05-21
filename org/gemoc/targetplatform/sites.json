@@ -18,7 +18,7 @@
         "http://download.eclipse.org/sirius/updates/nightly/2.0.x/luna"
         ],    
     "umldesigner": [
-        "http://marketplace.obeonetwork.com/updates/nightly/uml/repository"
+        "http://www.obeo.fr/download/release/uml/4.0.1/repository/"
         ],
     "xtext": [
          "http://download.eclipse.org/modeling/emft/mwe/updates/releases/", 
