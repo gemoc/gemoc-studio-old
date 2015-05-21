@@ -77,9 +77,6 @@
     "nebula": [
 		"http://download.eclipse.org/technology/nebula/incubation/snapshot"
     	],
-    "patches": [
-    	"http://gemoc.org/pub/studio/patch_osgi_luna/"
-    	],
     "lastragen": [
         "https://ci.inria.fr/lastragen/job/lastragen/lastSuccessfulBuild/artifact/fr.inria.diverse.trace.updatesite/target/repository/"
     ]
