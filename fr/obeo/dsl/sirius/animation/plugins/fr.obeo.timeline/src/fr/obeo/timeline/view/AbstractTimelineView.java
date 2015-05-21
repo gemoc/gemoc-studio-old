@@ -72,6 +72,67 @@ import org.eclipse.ui.part.ViewPart;
 public abstract class AbstractTimelineView extends ViewPart {
 
 	/**
+	 * The timeline {@link MouseWheelListener}.
+	 * 
+	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
+	 */
+	private final class TimelineMouseWheelListener implements MouseWheelListener {
+		@Override
+		public void mouseScrolled(MouseEvent e) {
+			if ((e.stateMask & SWT.MOD1) != 0) {
+				zoom(e);
+			} else {
+				scroll(e);
+			}
+		}
+
+		/**
+		 * Scrolls according to the given {@link MouseEvent}.
+		 * 
+		 * @param e
+		 *            the {@link MouseEvent}
+		 */
+		private void scroll(MouseEvent e) {
+			final FigureCanvas canvas = (FigureCanvas)timelineViewer.getControl();
+			if (canvas.getVerticalBar() != null) {
+				int offsetY = canvas.getVerticalBar().getSelection();
+				if (e.count > 0) {
+					int destinationY = offsetY + 10;
+					if (destinationY <= canvas.getVerticalBar().getMinimum()) {
+						canvas.scrollTo(0, destinationY);
+					}
+				} else {
+					int destinationY = offsetY - 10;
+					if (destinationY >= canvas.getVerticalBar().getMaximum()) {
+						canvas.scrollTo(0, destinationY);
+					}
+				}
+			}
+		}
+
+		/**
+		 * Zooms according to the given {@link MouseEvent}.
+		 * 
+		 * @param e
+		 *            the {@link MouseEvent}
+		 */
+		private void zoom(MouseEvent e) {
+			if (e.count > 0) {
+				rootEditPart.getZoomManager().zoomIn();
+			} else {
+				rootEditPart.getZoomManager().zoomOut();
+				final int length = getWindowLength();
+				if (provider != null
+						&& timelineWindow.getStart() + length > timelineWindow.getMaxTimelineIndex()
+								+ nbVirtualChoices
+						&& timelineWindow.getMaxTimelineIndex() + nbVirtualChoices - length >= 0) {
+					timelineWindow.setStart(timelineWindow.getMaxTimelineIndex() + nbVirtualChoices - length);
+				}
+			}
+		}
+	}
+
+	/**
 	 * {@link KeyListener} for the timeline viewer.
 	 * 
 	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
@@ -450,25 +511,7 @@ public abstract class AbstractTimelineView extends ViewPart {
 		final TimelineMouseListener listener = new TimelineMouseListener();
 		timelineViewer.getControl().addMouseListener(listener);
 		timelineViewer.getControl().addMouseMoveListener(listener);
-		timelineViewer.getControl().addMouseWheelListener(new MouseWheelListener() {
-
-			@Override
-			public void mouseScrolled(MouseEvent e) {
-				if (e.count > 0) {
-					rootEditPart.getZoomManager().zoomIn();
-				} else {
-					rootEditPart.getZoomManager().zoomOut();
-					final int length = getWindowLength();
-					if (provider != null
-							&& timelineWindow.getStart() + length > timelineWindow.getMaxTimelineIndex()
-									+ nbVirtualChoices
-							&& timelineWindow.getMaxTimelineIndex() + nbVirtualChoices - length >= 0) {
-						timelineWindow.setStart(timelineWindow.getMaxTimelineIndex() + nbVirtualChoices
-								- length);
-					}
-				}
-			}
-		});
+		timelineViewer.getControl().addMouseWheelListener(new TimelineMouseWheelListener());
 		rootEditPart.getZoomManager().addZoomListener(new ZoomListener() {
 
 			@Override
