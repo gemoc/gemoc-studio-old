@@ -72,7 +72,7 @@ public class LaunchConfigurationConfigurationTab extends LaunchConfigurationTab
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_DEADLOCK_DETECTION_DEPTH,
-				10);
+				1000000000);
 	}
 
 	@Override
