@@ -19,15 +19,10 @@
 
    <requires>
       <import feature="fr.inria.diverse.commons.provisionner4eclipse.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.mylyn.github.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.team.svn.mylyn" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.team.svn.resource.ignore.rules.jdt" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.team.svn" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.egit" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.egit.mylyn" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.jgit" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.mylyn.wikitext_feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.mylyn.hudson" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.query.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.compare" version="2.0.0" match="greaterOrEqual"/>
@@ -37,10 +32,6 @@
       <import feature="org.polarion.eclipse.team.svn.connector" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2e.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2e.logback.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.mylyn.context_feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.mylyn.monitor" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.mylyn.team_feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.mylyn_feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.codehaus.groovy.eclipse.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.1.1" match="greaterOrEqual"/>
       <import feature="org.eclipse.epp.mpc" version="1.2.1.v20140219-1000" match="greaterOrEqual"/>
