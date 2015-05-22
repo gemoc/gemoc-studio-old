@@ -34,9 +34,6 @@
     "workspace": [
         "https://ci.inria.fr/gemoc/job/fr.obeo.dsl.workspace/lastSuccessfulBuild/artifact/fr/obeo/dsl/workspace/releng/fr.obeo.dsl.workspace.repository/target/repository/"
         ],
-    "modhelx_tesl": [
-    	"http://wwwdi.supelec.fr/gemoc-supelec-update_site"
-    	],
     "diverse-commons": [
         "https://ci.inria.fr/diverse-commons/job/diverse-commons.eclipse.root/lastSuccessfulBuild/artifact/commons-eclipse/fr.inria.diverse.commons.eclipse.root/p2updatesite/target/repository/"
         ],
