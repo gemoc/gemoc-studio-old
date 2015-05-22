@@ -5,7 +5,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.ISharedImages;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.Activator;
-import org.gemoc.execution.engine.io.views.event.EventManagerView;
+import org.gemoc.execution.engine.io.views.event.StimuliManagerView;
 
 public class StopAction extends Action
 {
@@ -21,7 +21,7 @@ public class StopAction extends Action
 	@Override
 	public void run() 
 	{
-		EventManagerView eventView = ViewHelper.retrieveView(EventManagerView.ID);
+		StimuliManagerView eventView = ViewHelper.retrieveView(StimuliManagerView.ID);
 		eventView.stopPlayScenario();
 		eventView.stopRecordScenario();
 	}

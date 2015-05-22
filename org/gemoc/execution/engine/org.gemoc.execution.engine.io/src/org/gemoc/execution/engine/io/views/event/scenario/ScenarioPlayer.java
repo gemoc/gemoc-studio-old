@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.core.ExecutionEngine;
 import org.gemoc.execution.engine.io.views.event.ClockStatus;
-import org.gemoc.execution.engine.io.views.event.EventManagerView;
+import org.gemoc.execution.engine.io.views.event.StimuliManagerView;
 import org.gemoc.execution.engine.io.views.event.ModelSpecificEventContext;
 import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
 import org.gemoc.execution.engine.scenario.EventState;
@@ -21,12 +21,12 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
 public class ScenarioPlayer extends ScenarioTool
 {
-	private EventManagerView _eventView;
+	private StimuliManagerView _eventView;
 
 	public ScenarioPlayer(ModelSpecificEventContext mseContext)
 	{
 		super(mseContext);
-		_eventView = ViewHelper.retrieveView(EventManagerView.ID);
+		_eventView = ViewHelper.retrieveView(StimuliManagerView.ID);
 	}
 
 	/**

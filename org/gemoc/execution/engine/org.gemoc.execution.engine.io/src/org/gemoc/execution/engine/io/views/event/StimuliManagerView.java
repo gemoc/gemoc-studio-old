@@ -79,7 +79,7 @@ import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
  * @author lguillem
  * @version 1.6
  */
-public class EventManagerView extends ViewPart implements IMotorSelectionListener, IEngineAddon, IEvenPresenter {
+public class StimuliManagerView extends ViewPart implements IMotorSelectionListener, IEngineAddon, IEvenPresenter {
 
 	private static final class GemocLabelDecorator extends DSLLabelDecorator {
 
@@ -142,7 +142,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 		}
 	}
 	
-	public static final String ID = "org.gemoc.execution.engine.io.views.event.EventManagerView";
+	public static final String ID = "org.gemoc.execution.engine.io.views.event.StimuliManagerView";
 
 	private Color notForcedSetColor;
 	private Color forcedSetColor;
@@ -169,7 +169,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	/**
 	 * The constructor.
 	 */
-	public EventManagerView() 
+	public StimuliManagerView() 
 	{
 		super();
 		_strategyFilterSelected = new NoFilter();
@@ -825,7 +825,7 @@ public class EventManagerView extends ViewPart implements IMotorSelectionListene
 	}
 
 	public void informationMsg(final String title, final String msg){
-		final EventManagerView eventView = this;
+		final StimuliManagerView eventView = this;
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {

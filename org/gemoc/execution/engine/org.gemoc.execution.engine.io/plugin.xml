@@ -30,10 +30,10 @@
       </view>
       <view
             category="org.gemoc.execution.engine.io.category"
-            class="org.gemoc.execution.engine.io.views.event.EventManagerView"
+            class="org.gemoc.execution.engine.io.views.event.StimuliManagerView"
             icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.execution.engine.io.views.event.EventManagerView"
-            name="Event Manager">
+            id="org.gemoc.execution.engine.io.views.event.StimuliManagerView"
+            name="Stimuli Manager">
       </view>
 	</extension>
    <extension
@@ -56,7 +56,7 @@
                relative="org.eclipse.ui.views.ContentOutline">
          </view>
          <view
-               id="org.gemoc.execution.engine.io.views.event.EventManagerView"
+               id="org.gemoc.execution.engine.io.views.event.StimuliManagerView"
                minimized="false"
                relationship="stack"
                relative="org.eclipse.ui.views.ContentOutline"
@@ -88,7 +88,7 @@
                visible="true">
          </view>
          <view
-               id="org.gemoc.execution.engine.io.views.event.EventManagerView"
+               id="org.gemoc.execution.engine.io.views.event.StimuliManagerView"
                minimized="false"
                relationship="stack"
                relative="org.eclipse.ui.views.ContentOutline"

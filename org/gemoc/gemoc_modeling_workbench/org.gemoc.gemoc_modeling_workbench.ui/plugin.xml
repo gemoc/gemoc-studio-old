@@ -299,7 +299,7 @@
          </menuContribution>
          <menuContribution
                allPopups="false"
-               locationURI="popup:org.gemoc.execution.engine.io.views.event.EventManagerView">
+               locationURI="popup:org.gemoc.execution.engine.io.views.event.StimuliManagerView">
             <command
                   commandId="org.gemoc.gemoc_modeling_workbench.ui.ToggleBreapointCommand"
                   icon="icons/breakpoint.gif"

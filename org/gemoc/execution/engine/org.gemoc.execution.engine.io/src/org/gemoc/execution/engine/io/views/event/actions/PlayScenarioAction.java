@@ -6,7 +6,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.Activator;
-import org.gemoc.execution.engine.io.views.event.EventManagerView;
+import org.gemoc.execution.engine.io.views.event.StimuliManagerView;
 import org.gemoc.execution.engine.io.views.event.SelectScenarioFileDialog;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioException;
 
@@ -24,7 +24,7 @@ public class PlayScenarioAction extends Action
 	@Override
 	public void run() 
 	{
-		EventManagerView eventView = ViewHelper.retrieveView(EventManagerView.ID);
+		StimuliManagerView eventView = ViewHelper.retrieveView(StimuliManagerView.ID);
 		if (eventView.getEngine() != null)
 		{
 			try {
