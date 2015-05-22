@@ -73,9 +73,6 @@
     	],
     "nebula": [
 		"http://download.eclipse.org/technology/nebula/incubation/snapshot"
-    	],
-    "lastragen": [
-        "https://ci.inria.fr/lastragen/job/lastragen/lastSuccessfulBuild/artifact/fr.inria.diverse.trace.updatesite/target/repository/"
-    ]
+    	]
 
 }
