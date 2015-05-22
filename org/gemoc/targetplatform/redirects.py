@@ -82,7 +82,7 @@ def generate_redirects(sitejsonfile='sites.json'):
       <packaging>pom</packaging>\n\
   \n\
       <properties>\n\
-	  <tycho-version>0.18.1</tycho-version>\n\
+	  <tycho-version>0.22.0</tycho-version>\n\
 	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n\
       </properties>\n\
   \n\
@@ -97,6 +97,7 @@ def generate_redirects(sitejsonfile='sites.json'):
 	      <plugin>\n\
 		  <groupId>org.eclipse.tycho.extras</groupId>\n\
 		  <artifactId>tycho-p2-extras-plugin</artifactId>\n\
+		  <version>${tycho-version}</version>\n\
 		  <executions>\n'
 
   for name,urls in sites.iteritems():
