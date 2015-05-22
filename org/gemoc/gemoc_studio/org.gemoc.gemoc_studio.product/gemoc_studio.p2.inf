@@ -13,8 +13,8 @@ addRepository(type:0,location:http${#58}//download.eclipse.org/sirius/updates/mi
 addRepository(type:1,location:http${#58}//download.eclipse.org/sirius/updates/milestones/1.0.0M5/kepler,name:Sirius 1.0.0M5);\
 addRepository(type:0,location:https${#58}//ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/,name:All Gemoc - composite update site);\
 addRepository(type:1,location:https${#58}//ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/,name:All Gemoc - composite update site);\
-addRepository(type:0,location:https${#58}//hudson.polarsys.org/kitalpha/job/Kitalpha_Nightly/lastSuccessfulBuild/artifact/result/publish/kitalpha/site.p2/,name:KitAlpha);\
-addRepository(type:1,location:https${#58}//hudson.polarsys.org/kitalpha/job/Kitalpha_Nightly/lastSuccessfulBuild/artifact/result/publish/kitalpha/site.p2/,name:KitAlpha);\
+addRepository(type:0,location:https${#58}//hudson.polarsys.org/kitalpha/job/Kitalpha_Nightly/380/artifact/result/publish/kitalpha/site.p2/,name:KitAlpha);\
+addRepository(type:1,location:https${#58}//hudson.polarsys.org/kitalpha/job/Kitalpha_Nightly/380/artifact/result/publish/kitalpha/site.p2/,name:KitAlpha);\
 addRepository(type:0,location:https${#58}//hudson.eclipse.org/hudson/view/Modeling/job/buckminster-emf-diffmerge-master/lastSuccessfulBuild/artifact/result/publish/org.eclipse.emf.diffmerge.sdk.feature/site.p2/,name:DiffMerge);\
 addRepository(type:1,location:https${#58}//hudson.eclipse.org/hudson/view/Modeling/job/buckminster-emf-diffmerge-master/lastSuccessfulBuild/artifact/result/publish/org.eclipse.emf.diffmerge.sdk.feature/site.p2/,name:DiffMerge);\
 addRepository(type:0,location:http${#58}//download.eclipse.org/sirius/updates/legacy,name:Acceleo for Sirius 2.0.1);\
