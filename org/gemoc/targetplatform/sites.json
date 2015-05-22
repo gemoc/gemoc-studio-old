@@ -55,9 +55,6 @@
     "gemoc-modeling-workbench": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_modeling_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_modeling_workbench/org.gemoc.gemoc_modeling_workbench.p2updatesite/target/repository/"
         ],
-    "gemoc-exec-engine": [
-        "https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine/org.gemoc.execution.engine.p2updatesite/target/repository"
-        ],
     "gemoc-mocc": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.mocc.root/lastSuccessfulBuild/artifact/org/gemoc/MoCC/releng/org.gemoc.mocc.p2updatesite/target/repository/"
         ],
