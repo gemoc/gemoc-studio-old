@@ -9,8 +9,8 @@ addRepository(type:0,location:http${#58}//www.kermeta.org/k3/update/,name:Kermet
 addRepository(type:1,location:http${#58}//www.kermeta.org/k3/update/,name:Kermeta 3);\
 addRepository(type:0,location:http${#58}//melange-lang.org/melange/update/,name:Melange);\
 addRepository(type:1,location:http${#58}//melange-lang.org/melange/update/,name:Melange);\
-addRepository(type:0,location:http${#58}//download.eclipse.org/sirius/updates/milestones/1.0.0M5/kepler,name:Sirius 1.0.0M5);\
-addRepository(type:1,location:http${#58}//download.eclipse.org/sirius/updates/milestones/1.0.0M5/kepler,name:Sirius 1.0.0M5);\
+addRepository(type:0,location:http${#58}//download.eclipse.org/sirius/updates/nightly/2.0.x/luna,name:Sirius 2.0.x);\
+addRepository(type:1,location:http${#58}//download.eclipse.org/sirius/updates/nightly/2.0.x/luna,name:Sirius 2.0.x);\
 addRepository(type:0,location:https${#58}//ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/,name:All Gemoc - composite update site);\
 addRepository(type:1,location:https${#58}//ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/,name:All Gemoc - composite update site);\
 addRepository(type:0,location:https${#58}//hudson.polarsys.org/kitalpha/job/Kitalpha_Nightly/380/artifact/result/publish/kitalpha/site.p2/,name:KitAlpha);\
