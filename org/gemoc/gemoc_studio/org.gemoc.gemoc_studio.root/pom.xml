@@ -104,14 +104,15 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/m2t/xpand/updates/releases/</url>
         </repository>
-        
+      -->
+    
         <repository>
-            <id>xtext</id>
+            <id>xtext all releases</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/</url>
         </repository>
         
-        
+      <!--       
         <repository>
             <id>animation</id>
             <layout>p2</layout>
