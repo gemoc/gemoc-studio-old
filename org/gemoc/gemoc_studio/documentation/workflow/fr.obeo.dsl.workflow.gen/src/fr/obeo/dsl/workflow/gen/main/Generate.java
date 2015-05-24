@@ -24,6 +24,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
+import fr.obeo.dsl.workflow.WorkflowPackage;
+
 /**
  * Entry point of the 'Generate' generation module.
  *
@@ -42,7 +44,7 @@ public class Generate extends AbstractAcceleoGenerator {
      *
      * @generated
      */
-    public static final String[] TEMPLATE_NAMES = { "generateLatex" };
+    public static final String[] TEMPLATE_NAMES = { "generateAll" };
     
     /**
      * The list of properties files from the launch parameters (Launch configuration).
@@ -335,14 +337,11 @@ public class Generate extends AbstractAcceleoGenerator {
      * 
      * @param resourceSet
      *            The resource set which registry has to be updated.
-     * @generated
+     * @generated NOT
      */
     @Override
     public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
-        if (!isInWorkspace(fr.obeo.dsl.workflow.WorkflowPackage.class)) {
-            resourceSet.getPackageRegistry().put(fr.obeo.dsl.workflow.WorkflowPackage.eINSTANCE.getNsURI(), fr.obeo.dsl.workflow.WorkflowPackage.eINSTANCE);
-        }
         
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
@@ -375,6 +374,10 @@ public class Generate extends AbstractAcceleoGenerator {
          * 
          * To learn more about Package Registration, have a look at the Acceleo documentation (Help -> Help Contents).
          */
+        if (!isInWorkspace(WorkflowPackage.class)) {
+            // The normal package registration if your metamodel is in a plugin.
+            resourceSet.getPackageRegistry().put(WorkflowPackage.eNS_URI, WorkflowPackage.eINSTANCE);
+        }
     }
 
     /**

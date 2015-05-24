@@ -1,9 +1,16 @@
 [comment encoding = UTF-8 /]
 [module generate('http://www.example.org/workflow')]
 
+[template public generateAll(workflow : Workflow)]
+[comment @main/]
+[workflow.generateWorkflowToDot() /]
+[for (step : Step | workflow.categories.steps)]
+	[step.generateToDot(workflow)/]
+[/for]
+[generateLatex(workflow) /]
+[/template]
 
 [template public generateLatex(workflow : Workflow)]
-[comment @main/]
 [file ('gemoc-workflow.tex', false, 'UTF-8')]
 % [protected ('protected header')]
 \documentclass{gemoc} %% no option needed, default is : 10pt, twoside, babel['['/] english[']'/] , graphicx
@@ -42,16 +49,16 @@
 
 %[/protected]
 %[protected ('summary')]
-The figure \ref{fig:gemoc_worflow} presents the global view of the workflow of the different activities of the Language Workbench.
+The figure \ref{fig:[workflow.getID() /]} presents the global view of the workflow of the different activities of the Language Workbench.
 
 
 In further sections each activity will be detailled by also presenting the major concrete artefacts resulting from the Commands.
 %[/protected]
 \begin{figure}['['/]h![']'/]
 		\center
-		\includegraphics*['['/]trim=0.0cm 0.0cm 0cm 0.0cm, clip=true[']'/]{fig/Gemoc_workflow}
+		\includegraphics*['['/]trim=0.0cm 0.0cm 0cm 0.0cm, clip=true[']'/]{fig/[workflow.getID() /]}
 		\caption{Gemoc Language Workbench workflow activities and supported tools}
-		\label{fig:gemoc_worflow}
+		\label{fig:[workflow.getID() /]}
 \end{figure}
 
 % [protected ('protected summary_legend')]
@@ -76,19 +83,19 @@ Legend:
 
 [template private generate(step : Step)]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:[step.name.replaceAll(' ', '_').replaceAll('\'', '_')/]}
+\label{sec:[step.getID()/]}
 % [protected ('protected '+step.name)]
 %[/protected]
 \begin{figure}['['/]h![']'/]
 		\center
-		\includegraphics*['['/]trim=0.0cm 0.0cm 0cm 0.0cm, clip=true[']'/]{fig/[step.name.replaceAll(' ', '_')/]}
+		\includegraphics*['['/]trim=0.0cm 0.0cm 0cm 0.0cm, clip=true[']'/]{fig/[step.getID()/]}
 		\caption{[step.name/] activity}
-		\label{fig:[step.name.replaceAll(' ', '_')/]}
+		\label{fig:[step.getID()/]}
 \end{figure}
 
 [step.description/]
 
-The figure \ref{fig:[step.name.replaceAll(' ', '_')/]} presents the activity and its supporting Commands.
+The figure \ref{fig:[step.getID()/]} presents the activity and its supporting Commands.
 [step.commands.generate()/]
 [/template]
 
@@ -114,3 +121,127 @@ Artifacts updated by the [command.name/] Command:
 \paragraph{[artifact.name/]} 
 [artifact.description/]
 [/template]
+
+[template public generateWorkflowToDot(workflow : Workflow)]
+[file ('fig/' + workflow.getID() + '.dot', false, 'UTF-8')]
+[preambule() /]
+[workflow.toDot() /]
+[for (step : Step | workflow.categories.steps)]
+	[step.generateDot(workflow, false)/]
+	[workflow.linkTo(step, '') /]
+[/for]
+
+[fin() /]	
+[/file]
+[/template]
+
+
+[template private generateToDot(step : Step, workflow: Workflow)]
+[file ('fig/' + step.getID() + '.dot', false, 'UTF-8')]
+[preambule() /]
+[step.generateDot(workflow, true) /]
+[fin() /]
+[/file]
+[/template]
+
+[template private generateDot(step : Step, workflow: Workflow, withArtifact: Boolean)]
+// Step: [step.name/] -- [step.description/]
+[step.toDot(workflow) /]
+[for (cmd: Command | step.commands) ]
+	[cmd.generateToDot(step, withArtifact) /]
+	[step.linkTo(cmd, 'style="dashed,setlinewidth(3)"') /]
+[/for]
+[/template]
+
+[template private generateToDot(command : Command, step: Step, withArtifact: Boolean)]
+// [command.name/]
+// [command.description/]
+[command.toDot(step) /]
+[if (withArtifact)]
+[for (art: Artifact | command.artifacts->select(a | a.type = UpdateType::add ))]
+	[art.toDot(command) /]
+	[command.linkTo(art, 'color=gray') /]
+[/for]
+[for (art: Artifact | command.artifacts->select(a | a.type = UpdateType::update ))]
+	[art.toDot(command) /]
+	[command.linkTo(art, 'color=gray') /]
+[/for]
+[/if]
+[/template]
+
+[template private generateToDot(artifact : Artifact, imageFile: String)]
+	[artifact.getID() /] ['['/] image="[imageFile/]", label="[artifact.name/]" ['['/]
+[/template]
+
+[template preambule()]
+// [protected ('protected header')]
+// Automatically generated thanks to fr.obeo.dsl.workflow.gen/.../toDot
+// from a Workflow model
+digraph G {
+	graph ['['/] layout=dot rankdir=LR ranksep="2.0"[']'/]
+	edge [ '['/] style="setlinewidth(3)" [ ']'/]
+	node [ '['/] shape=none fontsize="24" labelloc=b margin="0,1.0" [']'/]
+//[/protected]
+[/template]
+
+[template fin()]
+}
+[/template]
+
+[query public getID(c: NamedElement): String =
+    c.name.replaceAll(' ', '_').replaceAll('\\.', '_').replaceAll('\'', '_')
+/]
+
+[query public getID(c: NamedElement, ctx: NamedElement): String =
+    ctx.getID() + '___' + c.getID()
+/]
+
+
+
+[query public linkTo(from: NamedElement, to: NamedElement, params: String): String =
+	from.getID() + ' -> '
+	    +
+	    if to.oclIsTypeOf(Artifact) then
+		to.getID(from)
+	    else
+		to.getID()
+	    endif
+	    + '[ ' + params + ' ]'
+/]
+
+[query public toDot(w: Workflow): String =
+	w.getID() + ' ['
+	    + ' label="' + w.name + '"'
+	    + ' image="step.png"'
+		+ ' margin="0,0.8"'
+	    + ' ]'
+/]
+
+[query public toDot(s: Step, ctx: NamedElement): String =
+	s.getID() + ' ['
+	    + ' label="' + s.name + '"'
+	    + ' image="step.png"'
+		+ ' margin="0,0.8"'
+	    + ' ]'
+/]
+
+[query public toDot(c: Command, ctx: NamedElement): String =
+	c.getID() + ' ['
+	    + ' label="' + c.name + '"'
+	    + ' image="command.png"'
+	    + ' ]'
+/]
+
+[query public toDot(a: Artifact, ctx: NamedElement): String =
+	a.getID(ctx) + ' ['
+	    + ' label="' + a.name + '"'
+	    + ' image="'
+	    +
+	    if a.type = UpdateType::update then
+			'artifact_update.png'
+	    else
+			'artifact_add.png'
+	    endif
+	    + '"'
+	    + ' ]'
+/]
