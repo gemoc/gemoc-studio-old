@@ -3,6 +3,7 @@
   <ownedViewpoints name="TFSM_ViewPoint">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TimedSystem" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="TimedSystem">
       <metamodel href="../../org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore#/"/>
+      <layout xsi:type="description_1:CompositeLayout"/>
       <defaultLayer name="Default">
         <edgeMappingImports name="Transitions" importedMapping="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
         <containerMappings name="TimedSystem" labelDirectEdit="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self/]" domainClass="TimedSystem">
@@ -119,6 +120,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TFSM" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="TFSM">
       <metamodel href="../../org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore#/"/>
+      <layout xsi:type="description_1:CompositeLayout"/>
       <defaultLayer name="Default">
         <nodeMappings name="LocalEvents" labelDirectEdit="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self.localEvents/]" domainClass="FSMEvent">
           <style xsi:type="style:WorkspaceImageDescription" labelFormat="bold" showIcon="false" iconPath="event_small.png" sizeComputationExpression="-1" roundedCorner="true" workspacePath="/org.gemoc.sample.tfsm.design/icons/event_small.gif">
