@@ -96,7 +96,7 @@ class FSMClockAspect extends NamedElementAspect {
 
 	// Clock tick
 	def public String ticks() {
-		//GroovyRunner.executeScript("doTick", _self);
+		GroovyRunner.executeScript("doTick", _self);
 
 		//if (_self.numberOfTicks == null) {
 		//	_self.numberOfTicks = 0
@@ -116,7 +116,7 @@ class TimedSystemAspect extends NamedElementAspect {
 class EvaluateGuardAspect extends GuardAspect {
 	def public boolean evaluate() {
 		var Object res;
-//		res = GroovyRunner.executeScript(_self.condition, _self)
+		res = GroovyRunner.executeScript(_self.condition, _self)
 
 		return res as Boolean;
 	}

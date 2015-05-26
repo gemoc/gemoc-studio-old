@@ -148,13 +148,22 @@ public interface TfsmPackage extends EPackage {
 	int TFSM__OWNED_TRANSITIONS = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Current State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM__CURRENT_STATE = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>TFSM</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int TFSM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.StateImpl <em>State</em>}' class.
@@ -452,13 +461,22 @@ public interface TfsmPackage extends EPackage {
 	int FSM_CLOCK__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Number Of Ticks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_CLOCK__NUMBER_OF_TICKS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>FSM Clock</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int FSM_CLOCK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.TimedSystemImpl <em>Timed System</em>}' class.
@@ -617,6 +635,17 @@ public interface TfsmPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTFSM_OwnedTransitions();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.TFSM#getCurrentState <em>Current State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Current State</em>'.
+	 * @see org.gemoc.sample.tfsm.TFSM#getCurrentState()
+	 * @see #getTFSM()
+	 * @generated
+	 */
+	EReference getTFSM_CurrentState();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.State <em>State</em>}'.
@@ -842,6 +871,17 @@ public interface TfsmPackage extends EPackage {
 	EClass getFSMClock();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm.FSMClock#getNumberOfTicks <em>Number Of Ticks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number Of Ticks</em>'.
+	 * @see org.gemoc.sample.tfsm.FSMClock#getNumberOfTicks()
+	 * @see #getFSMClock()
+	 * @generated
+	 */
+	EAttribute getFSMClock_NumberOfTicks();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.TimedSystem <em>Timed System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -976,6 +1016,14 @@ public interface TfsmPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TFSM__OWNED_TRANSITIONS = eINSTANCE.getTFSM_OwnedTransitions();
+
+		/**
+		 * The meta object literal for the '<em><b>Current State</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TFSM__CURRENT_STATE = eINSTANCE.getTFSM_CurrentState();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.StateImpl <em>State</em>}' class.
@@ -1160,6 +1208,14 @@ public interface TfsmPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FSM_CLOCK = eINSTANCE.getFSMClock();
+
+		/**
+		 * The meta object literal for the '<em><b>Number Of Ticks</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FSM_CLOCK__NUMBER_OF_TICKS = eINSTANCE.getFSMClock_NumberOfTicks();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.TimedSystemImpl <em>Timed System</em>}' class.

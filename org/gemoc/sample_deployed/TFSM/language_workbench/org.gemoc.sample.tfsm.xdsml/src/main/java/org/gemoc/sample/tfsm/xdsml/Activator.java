@@ -4,27 +4,28 @@ import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 import org.osgi.framework.BundleContext;
 
+import fr.inria.diverse.commons.eclipse.messagingsystem.api.MessagingSystemManager;
+import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
+
 /**
  * The activator class controls the plug-in life cycle
  */
 public class Activator extends Plugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.sample.tfsm.feedback"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.gemoc.sample.tfsm.xdsml"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;
-//	protected static EclipseMessagingSystem messagingSystem = null;
+	protected static MessagingSystem messagingSystem = null;
 
-//	public static EclipseMessagingSystem getMessagingSystem() {
-//		if (messagingSystem == null) {
-//			messagingSystem = new EclipseMessagingSystem(PLUGIN_ID,
-//					"GEMOC Execution Engine Feedback");
-//			((EclipseMessagingSystem) messagingSystem)
-//					.setConsoleLogLevel(ConsoleLogLevel.DEV_DEBUG);
-//		}
-//		return messagingSystem;
-//	}
+	public static MessagingSystem getMessagingSystem() {
+		if (messagingSystem == null) {
+			MessagingSystemManager msm = new MessagingSystemManager();
+			messagingSystem = msm.createBestPlatformMessagingSystem("org.gemoc.execution.engine", "Execution Engine");
+		}
+		return messagingSystem;
+	}
 
 	public static void warnEclipse(String msg, Throwable e) {
 		Activator.getDefault().getLog()

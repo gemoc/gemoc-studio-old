@@ -149,4 +149,12 @@ public interface Transition extends NamedElement {
 	 */
 	void setAction(String value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	String fire();
+
 } // Transition

@@ -2,7 +2,7 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="TFSM" version="8.1.0">
   <ownedViewpoints name="TFSM_ViewPoint">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TimedSystem" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="TimedSystem">
-      <metamodel href="../../org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore#/"/>
+      <metamodel href="../../org.gemoc.sample.tfsm.model/model/tfsm.ecore#/"/>
       <layout xsi:type="description_1:CompositeLayout"/>
       <defaultLayer name="Default">
         <edgeMappingImports name="Transitions" importedMapping="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
@@ -119,7 +119,7 @@
       </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TFSM" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="TFSM">
-      <metamodel href="../../org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore#/"/>
+      <metamodel href="../../org.gemoc.sample.tfsm.model/model/tfsm.ecore#/"/>
       <layout xsi:type="description_1:CompositeLayout"/>
       <defaultLayer name="Default">
         <nodeMappings name="LocalEvents" labelDirectEdit="//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self.localEvents/]" domainClass="FSMEvent">

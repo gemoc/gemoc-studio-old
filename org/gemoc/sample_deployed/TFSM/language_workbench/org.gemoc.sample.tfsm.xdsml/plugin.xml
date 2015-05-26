@@ -1,48 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
-   <extension
-         name=""
-         point="org.gemoc.gemoc_language_workbench.xdsml">
-      <XDSML_Definition
-            feedbackPolicy_class="org.gemoc.sample.tfsm.xdsml.feedback.TfsmFeedbackPolicy"
-            name="tfsm"
-            toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto"
-            xdsmlFilePath="/org.gemoc.sample.tfsm.xdsml/project.xdsml"
-            codeExecutor_class="org.gemoc.sample.tfsm.xdsml.api.impl.TfsmCodeExecutor"
-            solver_class="org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl.CcslSolver"
-            modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader"
-            domainSpecificEventsResourcePath="/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl"
-            eventExecutor_class="org.gemoc.sample.tfsm.xdsml.executor.TfsmEventExecutor">
-         <EngineAddon_Definition
-               engineAddon_class="org.gemoc.sample.tfsm.xdsml.engineAddon.TfsmEngineAddon">
-         </EngineAddon_Definition>
-      </XDSML_Definition>
-   </extension>
-   <extension
-         point="fr.inria.diverse.melange.adapter">
-      <adapter
-            metamodel_uri="http://www.gemoc.org/sample/tfsm"
-            class="org.gemoc.sample.tfsm.xdsml.simpletfsm.adapters.simpletfsmmt.SimpleTfsmAdapter"
-            modeltype_name="SimpleTfsmMT">
-      </adapter>
-   </extension>
-   <extension
-         point="fr.inria.diverse.melange.adapter">
-      <adapter
-            metamodel_uri="http://tfsmextended"
-            class="org.gemoc.sample.tfsm.xdsml.tfsmextended.adapters.simpletfsmmt.TfsmExtendedAdapter"
-            modeltype_name="SimpleTfsmMT">
-      </adapter>
-   </extension>
-   <extension
-         point="fr.inria.diverse.melange.adapter">
-      <adapter
-            metamodel_uri="http://tfsmextended"
-            class="org.gemoc.sample.tfsm.xdsml.tfsmextended.adapters.tfsmextendedmt.TfsmExtendedAdapter"
-            modeltype_name="TfsmExtendedMT">
-      </adapter>
-   </extension>
-
+  <extension name="" point="org.gemoc.gemoc_language_workbench.xdsml">
+    <XDSML_Definition name="tfsm" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto" xdsmlFilePath="/org.gemoc.sample.tfsm.xdsml/project.xdsml" codeExecutor_class="org.gemoc.sample.tfsm.xdsml.api.impl.TfsmCodeExecutor" solver_class="org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl.CcslSolver" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader">
+      <EngineAddon_Definition engineAddon_class="org.gemoc.sample.tfsm.xdsml.engineAddon.TfsmEngineAddon" />
+    </XDSML_Definition>
+  </extension>
 </plugin>

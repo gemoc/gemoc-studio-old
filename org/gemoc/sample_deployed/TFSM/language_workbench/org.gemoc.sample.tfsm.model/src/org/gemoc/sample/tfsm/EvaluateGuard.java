@@ -46,4 +46,12 @@ public interface EvaluateGuard extends Guard {
 	 */
 	void setCondition(String value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean evaluate();
+
 } // EvaluateGuard

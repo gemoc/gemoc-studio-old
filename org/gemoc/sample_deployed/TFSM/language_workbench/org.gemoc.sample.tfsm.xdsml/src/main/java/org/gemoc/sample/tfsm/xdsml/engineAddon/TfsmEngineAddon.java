@@ -25,29 +25,30 @@ public class TfsmEngineAddon extends org.gemoc.gemoc_language_workbench.api.engi
 		// Use the engine hook to start a groovy script that is referenced in a property file co-located with the model that will be run
 		// this groovy script can start a model specifiv GUI for example
 		Properties properties = new Properties();
-//		String propertyPath = engine.getExecutionContext().getResourceModel().getURI().trimFileExtension().toPlatformString(true).toString()+".properties";
-//		IFile propertyFile = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(propertyPath);
-//		if(propertyFile != null && propertyFile.exists()){
-//			InputStream inStream;
-//			try {
-//				inStream = propertyFile.getContents();
-//			
-//				properties.load(inStream);
-//				
-//				String groovyScript = properties.getProperty(PRE_START_PREFIX+GROOVY_SCRIPT_FILE);
-//				String methodName =  properties.getProperty(PRE_START_PREFIX+GROOVY_OPERATION);
-//				if(groovyScript != null && !groovyScript.isEmpty() && methodName!= null && !methodName.isEmpty()){
-//					String groovyScriptAbsolutePath = groovyScript.startsWith("platform") ? ResourcesPlugin.getWorkspace().getRoot().findMember(URI.createURI(groovyScript).toPlatformString(true)).getLocation().toString() : groovyScript;
-//					executeScript(methodName, groovyScriptAbsolutePath);
-//				}
-//				
-//			} catch (Exception e) {
-//				String errorMessage = e.getClass().getSimpleName() + " when trying to execute a Groovy expression. "+e.getMessage();
-////				 Activator.getMessagingSystem().error(errorMessage,
-////				 Activator.PLUGIN_ID);
-////				 Activator.error(errorMessage, e);
-//			}
-//		}
+		String propertyPath = engine.getExecutionContext().getResourceModel().getURI().trimFileExtension().toPlatformString(true).toString()+".properties";
+		IFile propertyFile = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(propertyPath);
+		if(propertyFile != null && propertyFile.exists()){
+			InputStream inStream;
+			try {
+				inStream = propertyFile.getContents();
+			
+				properties.load(inStream);
+				
+				String groovyScript = properties.getProperty(PRE_START_PREFIX+GROOVY_SCRIPT_FILE);
+				String methodName =  properties.getProperty(PRE_START_PREFIX+GROOVY_OPERATION);
+
+				Activator.getMessagingSystem().debug("Using grovvy script "+groovyScript +" method "+methodName,	 Activator.PLUGIN_ID);
+				if(groovyScript != null && !groovyScript.isEmpty() && methodName!= null && !methodName.isEmpty()){
+					String groovyScriptAbsolutePath = groovyScript.startsWith("platform") ? ResourcesPlugin.getWorkspace().getRoot().findMember(URI.createURI(groovyScript).toPlatformString(true)).getLocation().toString() : groovyScript;
+					executeScript(methodName, groovyScriptAbsolutePath);
+				}
+				
+			} catch (Exception e) {
+				String errorMessage = e.getClass().getSimpleName() + " when trying to execute a Groovy expression. "+e.getMessage();
+				 Activator.getMessagingSystem().error(errorMessage,	 Activator.PLUGIN_ID);
+//				 Activator.error(errorMessage, e);
+			}
+		}
 		
 	}
 	
@@ -65,8 +66,7 @@ public class TfsmEngineAddon extends org.gemoc.gemoc_language_workbench.api.engi
 			return r;
 		} catch (Exception e) {
 			String errorMessage = e.getClass().getSimpleName() + " when trying to execute a Groovy expression";
-//			 Activator.getMessagingSystem().error(errorMessage,
-//			 Activator.PLUGIN_ID);
+			 Activator.getMessagingSystem().error(errorMessage,	 Activator.PLUGIN_ID);
 //			 Activator.error(errorMessage, e);
 		}
 		return null;

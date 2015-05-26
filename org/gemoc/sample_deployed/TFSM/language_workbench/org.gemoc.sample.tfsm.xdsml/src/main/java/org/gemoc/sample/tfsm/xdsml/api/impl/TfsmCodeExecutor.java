@@ -7,8 +7,6 @@ public class TfsmCodeExecutor extends CodeExecutorDispatcher
 	public TfsmCodeExecutor(){
 	    // add K3 DSA specific executor
 		addExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.Kermeta3AspectsCodeExecutor(this,
-				"org.gemoc.sample.tfsm.tfsmextended.aspect"));
-		addExecutor(new org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.Kermeta3AspectsCodeExecutor(this,
 			"org.gemoc.sample.tfsm.k3dsa"));
 		// fall back executor : search classic java method
 		addExecutor(new org.gemoc.execution.engine.commons.dsa.executors.JavaCodeExecutor());
