@@ -29,20 +29,21 @@ public class GroovyRunner {
 		IFile propertyFile = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(propertyPath);
 		if(propertyFile != null && propertyFile.exists()){
 			InputStream inStream;
+			String groovyScript ="";
 			try {
 				inStream = propertyFile.getContents();
 			
 				properties.load(inStream);
 				
-				String groovyScript = properties.getProperty(DSA_PREFIX+GROOVY_SCRIPT_FILE);
+				groovyScript = properties.getProperty(DSA_PREFIX+GROOVY_SCRIPT_FILE);
 				String groovyScriptAbsolutePath = groovyScript.startsWith("platform") ? ResourcesPlugin.getWorkspace().getRoot().findMember(URI.createURI(groovyScript).toPlatformString(true)).getLocation().toString() : groovyScript;
 				
 				return groovyScriptAbsolutePath;
 			} catch (Exception e) {
-				String errorMessage = e.getClass().getSimpleName() + " when trying to property file referencing the groovy script. "+e.getMessage();
-				 Activator.getMessagingSystem().error(errorMessage,
-				 Activator.PLUGIN_ID);
-				 Activator.getDefault().error(errorMessage, e);
+				Activator.getMessagingSystem().error("problem calling script "+groovyScript+". Please check your "+propertyPath, Activator.PLUGIN_ID);
+				String errorMessage = e.getClass().getSimpleName() + " when trying to use the property file referencing the groovy script. "+e.getMessage();
+				Activator.getMessagingSystem().error(errorMessage, Activator.PLUGIN_ID, e);
+				 //Activator.getDefault().error(errorMessage, e);
 			}
 		}
 		return null;	
