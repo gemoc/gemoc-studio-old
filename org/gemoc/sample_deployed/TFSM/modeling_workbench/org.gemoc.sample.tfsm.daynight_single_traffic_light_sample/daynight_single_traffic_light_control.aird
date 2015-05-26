@@ -1,898 +1,897 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tfsmextended="http://tfsmextended" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_nCDxAPPMEeSePe1SK9_66Q" selectedViews="_nswT0PPMEeSePe1SK9_66Q" version="8.1.1">
-  <models xmi:type="tfsmextended:TimedSystem" href="daynight_single_traffic_light_control.tfsm#/"/>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_nswT0PPMEeSePe1SK9_66Q" initialized="true">
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_nuGXoPPMEeSePe1SK9_66Q" name="TrafficControl">
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_nuGYAvPMEeSePe1SK9_66Q" source="GMF_DIAGRAMS">
-        <data xmi:type="notation:Diagram" xmi:id="_nuGYA_PMEeSePe1SK9_66Q" type="Sirius" element="_nuGXoPPMEeSePe1SK9_66Q" measurementUnit="Pixel">
-          <children xmi:type="notation:Node" xmi:id="_nuGYBfPMEeSePe1SK9_66Q" type="2002" element="_nuGXofPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nuPhkPPMEeSePe1SK9_66Q" type="5006"/>
-            <children xmi:type="notation:Node" xmi:id="_nuPhkfPMEeSePe1SK9_66Q" type="7001">
-              <children xmi:type="notation:Node" xmi:id="_nuPhlPPMEeSePe1SK9_66Q" type="3008" element="_nuGXp_PMEeSePe1SK9_66Q">
-                <children xmi:type="notation:Node" xmi:id="_nuPhl_PMEeSePe1SK9_66Q" type="5005"/>
-                <children xmi:type="notation:Node" xmi:id="_nuPhmPPMEeSePe1SK9_66Q" type="7002">
-                  <children xmi:type="notation:Node" xmi:id="_nuZSkvPMEeSePe1SK9_66Q" type="3007" element="_nuGXrfPMEeSePe1SK9_66Q">
-                    <children xmi:type="notation:Node" xmi:id="_nuZSlfPMEeSePe1SK9_66Q" type="5003">
-                      <layoutConstraint xmi:type="notation:Location" xmi:id="_nuZSlvPMEeSePe1SK9_66Q" x="21"/>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.gemoc.sample.tfsm="http://www.gemoc.org/sample/tfsm" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_5A2qcAOGEeWTvrlIIWR60w" selectedViews="_5qjuwAOGEeWTvrlIIWR60w" version="8.1.1">
+  <models xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="daynight_single_traffic_light_control.tfsm#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_5qjuwAOGEeWTvrlIIWR60w" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_5ryd0AOGEeWTvrlIIWR60w" name="TrafficControl">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_5r5ykAOGEeWTvrlIIWR60w" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_5r5ykQOGEeWTvrlIIWR60w" type="Sirius" element="_5ryd0AOGEeWTvrlIIWR60w" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_5r8O0AOGEeWTvrlIIWR60w" type="2002" element="_5ryd0QOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5r-rEAOGEeWTvrlIIWR60w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_5r_SIAOGEeWTvrlIIWR60w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_5r_5MAOGEeWTvrlIIWR60w" type="3008" element="_5ryd1wOGEeWTvrlIIWR60w">
+                <children xmi:type="notation:Node" xmi:id="_5sAgQAOGEeWTvrlIIWR60w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_5sAgQQOGEeWTvrlIIWR60w" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_5sJDIAOGEeWTvrlIIWR60w" type="3007" element="_5ryd3QOGEeWTvrlIIWR60w">
+                    <children xmi:type="notation:Node" xmi:id="_5sJDIwOGEeWTvrlIIWR60w" type="5003">
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_5sJDJAOGEeWTvrlIIWR60w" x="21"/>
                     </children>
-                    <children xmi:type="notation:Node" xmi:id="_nuZSofPMEeSePe1SK9_66Q" type="3002" element="_nuGXrvPMEeSePe1SK9_66Q">
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSovPMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSo_PMEeSePe1SK9_66Q"/>
+                    <children xmi:type="notation:Node" xmi:id="_5sK4UAOGEeWTvrlIIWR60w" type="3002" element="_5ryd3gOGEeWTvrlIIWR60w">
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_5sK4UQOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sK4UgOGEeWTvrlIIWR60w"/>
                     </children>
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSk_PMEeSePe1SK9_66Q" fontColor="8947848" fontName="Segoe UI" fontHeight="8"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSlPPMEeSePe1SK9_66Q" x="50" y="33" width="20" height="20"/>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_5sJDIQOGEeWTvrlIIWR60w" fontColor="8947848" fontName="Segoe UI" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sJDIgOGEeWTvrlIIWR60w" x="55" y="33" width="20" height="20"/>
                   </children>
-                  <children xmi:type="notation:Node" xmi:id="_nuZSl_PMEeSePe1SK9_66Q" type="3007" element="_nuGXsvPMEeSePe1SK9_66Q">
-                    <children xmi:type="notation:Node" xmi:id="_nuZSmvPMEeSePe1SK9_66Q" type="5003">
-                      <layoutConstraint xmi:type="notation:Location" xmi:id="_nuZSm_PMEeSePe1SK9_66Q" y="5"/>
+                  <children xmi:type="notation:Node" xmi:id="_5sJqMAOGEeWTvrlIIWR60w" type="3007" element="_5ryd4gOGEeWTvrlIIWR60w">
+                    <children xmi:type="notation:Node" xmi:id="_5sJqMwOGEeWTvrlIIWR60w" type="5003">
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_5sJqNAOGEeWTvrlIIWR60w" y="5"/>
                     </children>
-                    <children xmi:type="notation:Node" xmi:id="_nuZSpPPMEeSePe1SK9_66Q" type="3002" element="_nuGXs_PMEeSePe1SK9_66Q">
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSpfPMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSpvPMEeSePe1SK9_66Q"/>
+                    <children xmi:type="notation:Node" xmi:id="_5sK4UwOGEeWTvrlIIWR60w" type="3002" element="_5ryd4wOGEeWTvrlIIWR60w">
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_5sK4VAOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sK4VQOGEeWTvrlIIWR60w"/>
                     </children>
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSmPPMEeSePe1SK9_66Q" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSmfPMEeSePe1SK9_66Q" x="35" y="98" width="50" height="50"/>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_5sJqMQOGEeWTvrlIIWR60w" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sJqMgOGEeWTvrlIIWR60w" x="49" y="113" width="50" height="50"/>
                   </children>
-                  <children xmi:type="notation:Node" xmi:id="_nuZSnPPMEeSePe1SK9_66Q" type="3007" element="_nuGXt_PMEeSePe1SK9_66Q">
-                    <children xmi:type="notation:Node" xmi:id="_nuZSn_PMEeSePe1SK9_66Q" type="5003">
-                      <layoutConstraint xmi:type="notation:Location" xmi:id="_nuZSoPPMEeSePe1SK9_66Q" y="5"/>
+                  <children xmi:type="notation:Node" xmi:id="_5sJqNQOGEeWTvrlIIWR60w" type="3007" element="_5ryd5wOGEeWTvrlIIWR60w">
+                    <children xmi:type="notation:Node" xmi:id="_5sKRQAOGEeWTvrlIIWR60w" type="5003">
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_5sKRQQOGEeWTvrlIIWR60w" y="5"/>
                     </children>
-                    <children xmi:type="notation:Node" xmi:id="_nuZSp_PMEeSePe1SK9_66Q" type="3002" element="_nuGXuPPMEeSePe1SK9_66Q">
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSqPPMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSqfPMEeSePe1SK9_66Q"/>
+                    <children xmi:type="notation:Node" xmi:id="_5sLfYAOGEeWTvrlIIWR60w" type="3002" element="_5ryd6AOGEeWTvrlIIWR60w">
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_5sLfYQOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sLfYgOGEeWTvrlIIWR60w"/>
                     </children>
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSnfPMEeSePe1SK9_66Q" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSnvPMEeSePe1SK9_66Q" x="25" y="228" width="70" height="70"/>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_5sJqNgOGEeWTvrlIIWR60w" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sJqNwOGEeWTvrlIIWR60w" x="30" y="208" width="70" height="70"/>
                   </children>
-                  <styles xmi:type="notation:SortingStyle" xmi:id="_nuPhmfPMEeSePe1SK9_66Q"/>
-                  <styles xmi:type="notation:FilteringStyle" xmi:id="_nuPhmvPMEeSePe1SK9_66Q"/>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_5sAgQgOGEeWTvrlIIWR60w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_5sAgQwOGEeWTvrlIIWR60w"/>
                 </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_nuPhlfPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuPhlvPMEeSePe1SK9_66Q" x="30" y="30" height="332"/>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_5r_5MQOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5r_5MgOGEeWTvrlIIWR60w" x="30" y="30" height="307"/>
               </children>
-              <children xmi:type="notation:Node" xmi:id="_nuPhm_PMEeSePe1SK9_66Q" type="3008" element="_nuGXvPPMEeSePe1SK9_66Q">
-                <children xmi:type="notation:Node" xmi:id="_nuPhnvPMEeSePe1SK9_66Q" type="5005"/>
-                <children xmi:type="notation:Node" xmi:id="_nuPhn_PMEeSePe1SK9_66Q" type="7002">
-                  <children xmi:type="notation:Node" xmi:id="_nuZSqvPMEeSePe1SK9_66Q" type="3007" element="_nuGXwvPMEeSePe1SK9_66Q">
-                    <children xmi:type="notation:Node" xmi:id="_nuZSrfPMEeSePe1SK9_66Q" type="5003">
-                      <layoutConstraint xmi:type="notation:Location" xmi:id="_nuZSrvPMEeSePe1SK9_66Q" x="21"/>
+              <children xmi:type="notation:Node" xmi:id="_5sBHUAOGEeWTvrlIIWR60w" type="3008" element="_5ryd7AOGEeWTvrlIIWR60w">
+                <children xmi:type="notation:Node" xmi:id="_5sCVcAOGEeWTvrlIIWR60w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_5sCVcQOGEeWTvrlIIWR60w" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_5sLfYwOGEeWTvrlIIWR60w" type="3007" element="_5rzE4AOGEeWTvrlIIWR60w">
+                    <children xmi:type="notation:Node" xmi:id="_5sMGcAOGEeWTvrlIIWR60w" type="5003">
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_5sMGcQOGEeWTvrlIIWR60w" x="21"/>
                     </children>
-                    <children xmi:type="notation:Node" xmi:id="_nuZSufPMEeSePe1SK9_66Q" type="3002" element="_nuGXw_PMEeSePe1SK9_66Q">
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSuvPMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSu_PMEeSePe1SK9_66Q"/>
+                    <children xmi:type="notation:Node" xmi:id="_5sNUkgOGEeWTvrlIIWR60w" type="3002" element="_5rzE4QOGEeWTvrlIIWR60w">
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_5sNUkwOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sNUlAOGEeWTvrlIIWR60w"/>
                     </children>
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSq_PMEeSePe1SK9_66Q" fontColor="8947848" fontName="Segoe UI" fontHeight="8"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSrPPMEeSePe1SK9_66Q" x="85" y="28" width="20" height="20"/>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_5sLfZAOGEeWTvrlIIWR60w" fontColor="8947848" fontName="Segoe UI" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sLfZQOGEeWTvrlIIWR60w" x="70" y="29" width="20" height="20"/>
                   </children>
-                  <children xmi:type="notation:Node" xmi:id="_nuZSr_PMEeSePe1SK9_66Q" type="3007" element="_nuGXx_PMEeSePe1SK9_66Q">
-                    <children xmi:type="notation:Node" xmi:id="_nuZSsvPMEeSePe1SK9_66Q" type="5003">
-                      <layoutConstraint xmi:type="notation:Location" xmi:id="_nuZSs_PMEeSePe1SK9_66Q" y="5"/>
+                  <children xmi:type="notation:Node" xmi:id="_5sMGcgOGEeWTvrlIIWR60w" type="3007" element="_5rzE5QOGEeWTvrlIIWR60w">
+                    <children xmi:type="notation:Node" xmi:id="_5sMtgAOGEeWTvrlIIWR60w" type="5003">
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_5sMtgQOGEeWTvrlIIWR60w" y="5"/>
                     </children>
-                    <children xmi:type="notation:Node" xmi:id="_nuZSvPPMEeSePe1SK9_66Q" type="3002" element="_nuGXyPPMEeSePe1SK9_66Q">
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSvfPMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSvvPMEeSePe1SK9_66Q"/>
+                    <children xmi:type="notation:Node" xmi:id="_5sN7oAOGEeWTvrlIIWR60w" type="3002" element="_5rzE5gOGEeWTvrlIIWR60w">
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_5sN7oQOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sN7ogOGEeWTvrlIIWR60w"/>
                     </children>
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSsPPMEeSePe1SK9_66Q" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSsfPMEeSePe1SK9_66Q" x="75" y="103" width="60" height="60"/>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_5sMGcwOGEeWTvrlIIWR60w" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sMGdAOGEeWTvrlIIWR60w" x="50" y="113" width="60" height="60"/>
                   </children>
-                  <children xmi:type="notation:Node" xmi:id="_nuZStPPMEeSePe1SK9_66Q" type="3007" element="_nuGXzPPMEeSePe1SK9_66Q">
-                    <children xmi:type="notation:Node" xmi:id="_nuZSt_PMEeSePe1SK9_66Q" type="5003">
-                      <layoutConstraint xmi:type="notation:Location" xmi:id="_nuZSuPPMEeSePe1SK9_66Q" y="5"/>
+                  <children xmi:type="notation:Node" xmi:id="_5sMtggOGEeWTvrlIIWR60w" type="3007" element="_5rzE6gOGEeWTvrlIIWR60w">
+                    <children xmi:type="notation:Node" xmi:id="_5sNUkAOGEeWTvrlIIWR60w" type="5003">
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_5sNUkQOGEeWTvrlIIWR60w" y="5"/>
                     </children>
-                    <children xmi:type="notation:Node" xmi:id="_nuZSv_PMEeSePe1SK9_66Q" type="3002" element="_nuGXzfPMEeSePe1SK9_66Q">
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSwPPMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSwfPMEeSePe1SK9_66Q"/>
+                    <children xmi:type="notation:Node" xmi:id="_5sN7owOGEeWTvrlIIWR60w" type="3002" element="_5rzE6wOGEeWTvrlIIWR60w">
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_5sN7pAOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sN7pQOGEeWTvrlIIWR60w"/>
                     </children>
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZStfPMEeSePe1SK9_66Q" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZStvPMEeSePe1SK9_66Q" x="61" y="239" width="80" height="80"/>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_5sMtgwOGEeWTvrlIIWR60w" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sMthAOGEeWTvrlIIWR60w" x="50" y="208" width="80" height="80"/>
                   </children>
-                  <styles xmi:type="notation:SortingStyle" xmi:id="_nuPhoPPMEeSePe1SK9_66Q"/>
-                  <styles xmi:type="notation:FilteringStyle" xmi:id="_nuPhofPMEeSePe1SK9_66Q"/>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_5sCVcgOGEeWTvrlIIWR60w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_5sCVcwOGEeWTvrlIIWR60w"/>
                 </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_nuPhnPPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuPhnfPMEeSePe1SK9_66Q" x="210" y="30" width="188" height="382"/>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_5sBHUQOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sBHUgOGEeWTvrlIIWR60w" x="240" y="30" height="307"/>
               </children>
-              <children xmi:type="notation:Node" xmi:id="_nuPhovPMEeSePe1SK9_66Q" type="3007" element="_nuGX0fPMEeSePe1SK9_66Q">
-                <children xmi:type="notation:Node" xmi:id="_nuPhpfPMEeSePe1SK9_66Q" type="5003">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_nuPhpvPMEeSePe1SK9_66Q" x="31"/>
+              <children xmi:type="notation:Node" xmi:id="_5sC8gAOGEeWTvrlIIWR60w" type="3007" element="_5rzE7wOGEeWTvrlIIWR60w">
+                <children xmi:type="notation:Node" xmi:id="_5sDjkAOGEeWTvrlIIWR60w" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_5sDjkQOGEeWTvrlIIWR60w" x="31"/>
                 </children>
-                <children xmi:type="notation:Node" xmi:id="_nuZSwvPMEeSePe1SK9_66Q" type="3005" element="_nuGX0vPMEeSePe1SK9_66Q">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSw_PMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSxPPMEeSePe1SK9_66Q"/>
+                <children xmi:type="notation:Node" xmi:id="_5sOisAOGEeWTvrlIIWR60w" type="3005" element="_5rzE8AOGEeWTvrlIIWR60w">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_5sOisQOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sOisgOGEeWTvrlIIWR60w"/>
                 </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_nuPho_PMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8" bold="true"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuPhpPPMEeSePe1SK9_66Q" x="479" y="30" width="30" height="27"/>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_5sC8gQOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8" bold="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sC8ggOGEeWTvrlIIWR60w" x="490" y="30" width="30" height="27"/>
               </children>
-              <children xmi:type="notation:Node" xmi:id="_nuPhp_PMEeSePe1SK9_66Q" type="3007" element="_nuGX1fPMEeSePe1SK9_66Q">
-                <children xmi:type="notation:Node" xmi:id="_nuZSkPPMEeSePe1SK9_66Q" type="5003">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_nuZSkfPMEeSePe1SK9_66Q" x="20"/>
+              <children xmi:type="notation:Node" xmi:id="_5sH1AAOGEeWTvrlIIWR60w" type="3007" element="_5rzE8wOGEeWTvrlIIWR60w">
+                <children xmi:type="notation:Node" xmi:id="_5sH1AwOGEeWTvrlIIWR60w" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_5sH1BAOGEeWTvrlIIWR60w" x="20"/>
                 </children>
-                <children xmi:type="notation:Node" xmi:id="_nuZSxfPMEeSePe1SK9_66Q" type="3005" element="_nuGX1vPMEeSePe1SK9_66Q">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_nuZSxvPMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSx_PMEeSePe1SK9_66Q"/>
+                <children xmi:type="notation:Node" xmi:id="_5sOiswOGEeWTvrlIIWR60w" type="3005" element="_5rzE9AOGEeWTvrlIIWR60w">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_5sOitAOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sOitQOGEeWTvrlIIWR60w"/>
                 </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_nuPhqPPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8" bold="true"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuPhqfPMEeSePe1SK9_66Q" x="569" y="30" width="19" height="27"/>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_5sH1AQOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8" bold="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sH1AgOGEeWTvrlIIWR60w" x="580" y="30" width="19" height="27"/>
               </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_nuPhkvPMEeSePe1SK9_66Q"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_nuPhk_PMEeSePe1SK9_66Q"/>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_5r_SIQOGEeWTvrlIIWR60w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_5r_SIgOGEeWTvrlIIWR60w"/>
             </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_nuGYBvPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuGYB_PMEeSePe1SK9_66Q"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_5r8O0QOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5r8O0gOGEeWTvrlIIWR60w" height="403"/>
           </children>
-          <styles xmi:type="notation:DiagramStyle" xmi:id="_nuGYBPPMEeSePe1SK9_66Q"/>
-          <edges xmi:type="notation:Edge" xmi:id="_nuZSyPPMEeSePe1SK9_66Q" type="4001" element="_nuGX2fPMEeSePe1SK9_66Q" source="_nuZSkvPMEeSePe1SK9_66Q" target="_nuZSl_PMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nuZSzPPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSzfPMEeSePe1SK9_66Q" y="-10"/>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_5r5ykgOGEeWTvrlIIWR60w"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5sQX4AOGEeWTvrlIIWR60w" type="4001" element="_5rzE9wOGEeWTvrlIIWR60w" source="_5sJDIAOGEeWTvrlIIWR60w" target="_5sJqMAOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5sQ-8AOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sQ-8QOGEeWTvrlIIWR60w" y="-10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nuZSzvPMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuZSz_PMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sQ-8gOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sQ-8wOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujDkPPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDkfPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sRmAAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sRmAQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nuZSyfPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nuZSyvPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nuZSy_PMEeSePe1SK9_66Q" points="[-5, 20, -5, -95]$[-16, 65, -16, -50]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDkvPMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDk_PMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5sQX4QOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5sQX4gOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5sQX4wOGEeWTvrlIIWR60w" points="[0, 0, -9, -60]$[9, 60, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sTbMAOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sTbMQOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nujDlPPMEeSePe1SK9_66Q" type="4001" element="_nuGX3vPMEeSePe1SK9_66Q" source="_nuZSnPPMEeSePe1SK9_66Q" target="_nuZSl_PMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nujDmPPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDmfPMEeSePe1SK9_66Q" x="-9" y="-13"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5sTbMgOGEeWTvrlIIWR60w" type="4001" element="_5rzE_AOGEeWTvrlIIWR60w" source="_5sJqNQOGEeWTvrlIIWR60w" target="_5sJqMAOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5sUCQAOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sUCQQOGEeWTvrlIIWR60w" x="-10" y="-35"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujDmvPMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDm_PMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sUCQgOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sUCQwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujDnPPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDnfPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sUCRAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sUCRQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nujDlfPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nujDlvPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nujDl_PMEeSePe1SK9_66Q" points="[28, -70, 28, 130]$[40, -100, 40, 100]$[20, -150, 20, 50]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDnvPMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDn_PMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5sTbMwOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5sTbNAOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5sTbNQOGEeWTvrlIIWR60w" points="[-32, -70, -41, 95]$[-40, -90, -49, 75]$[-16, -127, -25, 38]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sUCRgOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sUCRwOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nujDoPPMEeSePe1SK9_66Q" type="4001" element="_nuGX4_PMEeSePe1SK9_66Q" source="_nuZSl_PMEeSePe1SK9_66Q" target="_nuZSl_PMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nujDpPPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDpfPMEeSePe1SK9_66Q" y="-10"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5sUCSAOGEeWTvrlIIWR60w" type="4001" element="_5rzFAQOGEeWTvrlIIWR60w" source="_5sJqMAOGEeWTvrlIIWR60w" target="_5sJqMAOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5sUpUAOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sUpUQOGEeWTvrlIIWR60w" x="-6" y="-23"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujDpvPMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDp_PMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sUpUgOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sUpUwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujDqPPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDqfPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sUpVAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sUpVQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nujDofPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nujDovPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nujDo_PMEeSePe1SK9_66Q" points="[25, -8, 25, -8]$[65, -20, 65, -20]$[65, 45, 65, 45]$[25, 17, 25, 17]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDqvPMEeSePe1SK9_66Q" id="(0.5,0.5)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDq_PMEeSePe1SK9_66Q" id="(0.5,0.5)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5sUCSQOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5sUCSgOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5sUCSwOGEeWTvrlIIWR60w" points="[25, -14, 25, -14]$[55, -29, 55, -29]$[55, 40, 55, 40]$[25, 18, 25, 18]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sUpVgOGEeWTvrlIIWR60w" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sVQYAOGEeWTvrlIIWR60w" id="(0.5,0.5)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nujDrPPMEeSePe1SK9_66Q" type="4001" element="_nuGX6PPMEeSePe1SK9_66Q" source="_nuZSl_PMEeSePe1SK9_66Q" target="_nuZSnPPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nujDsPPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDsfPMEeSePe1SK9_66Q" y="-10"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5sVQYQOGEeWTvrlIIWR60w" type="4001" element="_5rzFBgOGEeWTvrlIIWR60w" source="_5sJqMAOGEeWTvrlIIWR60w" target="_5sJqNQOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5sVQZQOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sVQZgOGEeWTvrlIIWR60w" x="11" y="-43"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujDsvPMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDs_PMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sVQZwOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sVQaAOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujDtPPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDtfPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sVQaQOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sVQagOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nujDrfPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nujDrvPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nujDr_PMEeSePe1SK9_66Q" points="[-25, 45, -25, -155]$[-50, 90, -50, -110]$[-32, 130, -32, -70]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDtvPMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDt_PMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5sVQYgOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5sVQYwOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5sVQZAOGEeWTvrlIIWR60w" points="[25, 50, 34, -115]$[45, 89, 54, -76]$[26, 115, 35, -50]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sV3cAOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sV3cQOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nujDuPPMEeSePe1SK9_66Q" type="4001" element="_nuGX7fPMEeSePe1SK9_66Q" source="_nuZSnPPMEeSePe1SK9_66Q" target="_nuZSnPPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nujDvPPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDvfPMEeSePe1SK9_66Q" y="-10"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5sV3cgOGEeWTvrlIIWR60w" type="4001" element="_5rzFCwOGEeWTvrlIIWR60w" source="_5sJqNQOGEeWTvrlIIWR60w" target="_5sJqNQOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5sV3dgOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sV3dwOGEeWTvrlIIWR60w" x="-2" y="-27"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujDvvPMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDv_PMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sV3eAOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sV3eQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujDwPPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDwfPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sV3egOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sV3ewOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nujDufPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nujDuvPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nujDu_PMEeSePe1SK9_66Q" points="[35, -11, 35, -11]$[65, -20, 65, -20]$[65, 40, 65, 40]$[35, 21, 35, 21]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDwvPMEeSePe1SK9_66Q" id="(0.5,0.5)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDw_PMEeSePe1SK9_66Q" id="(0.5,0.5)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5sV3cwOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5sV3dAOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5sV3dQOGEeWTvrlIIWR60w" points="[35, -6, 35, -6]$[67, -6, 67, -6]$[67, 45, 67, 45]$[35, 23, 35, 23]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sWegAOGEeWTvrlIIWR60w" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sWegQOGEeWTvrlIIWR60w" id="(0.5,0.5)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nujDxPPMEeSePe1SK9_66Q" type="4001" element="_nuGX8vPMEeSePe1SK9_66Q" source="_nuZSqvPMEeSePe1SK9_66Q" target="_nuZSr_PMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nujDyPPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDyfPMEeSePe1SK9_66Q" y="-10"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5sWeggOGEeWTvrlIIWR60w" type="4001" element="_5rzFEAOGEeWTvrlIIWR60w" source="_5sLfYwOGEeWTvrlIIWR60w" target="_5sMGcgOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5sWehgOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sWehwOGEeWTvrlIIWR60w" y="-10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujDyvPMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDy_PMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sWeiAOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sWeiQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujDzPPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujDzfPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sWeigOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sWeiwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nujDxfPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nujDxvPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nujDx_PMEeSePe1SK9_66Q" points="[6, 20, -4, -115]$[25, 75, 15, -60]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDzvPMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujDz_PMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5sWegwOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5sWehAOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5sWehQOGEeWTvrlIIWR60w" points="[0, 0, 0, -64]$[0, 64, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sXFkAOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sXFkQOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nujD0PPMEeSePe1SK9_66Q" type="4001" element="_nuGX9_PMEeSePe1SK9_66Q" source="_nuZSr_PMEeSePe1SK9_66Q" target="_nuZStPPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nujD1PPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujD1fPMEeSePe1SK9_66Q" y="-10"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5sXFkgOGEeWTvrlIIWR60w" type="4001" element="_5rzFFQOGEeWTvrlIIWR60w" source="_5sMGcgOGEeWTvrlIIWR60w" target="_5sMtggOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5sXFlgOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sXFlwOGEeWTvrlIIWR60w" x="-24" y="-45"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujD1vPMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujD1_PMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sXFmAOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sXFmQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujD2PPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujD2fPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sXFmgOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sXFmwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nujD0fPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nujD0vPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nujD0_PMEeSePe1SK9_66Q" points="[-30, 38, -26, -178]$[-74, 96, -70, -120]$[-44, 147, -40, -69]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujD2vPMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujD2_PMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5sXFkwOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5sXFlAOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5sXFlQOGEeWTvrlIIWR60w" points="[30, 45, 20, -130]$[50, 75, 40, -100]$[42, 95, 32, -80]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sXsoAOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sXsoQOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nujD3PPMEeSePe1SK9_66Q" type="4001" element="_nuGX_PPMEeSePe1SK9_66Q" source="_nuZStPPMEeSePe1SK9_66Q" target="_nuZSr_PMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nujD4PPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujD4fPMEeSePe1SK9_66Q" y="-10"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5sXsogOGEeWTvrlIIWR60w" type="4001" element="_5rzFGgOGEeWTvrlIIWR60w" source="_5sMtggOGEeWTvrlIIWR60w" target="_5sMGcgOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5sXspgOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sXspwOGEeWTvrlIIWR60w" x="9" y="-49"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujD4vPMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujD4_PMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sXsqAOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sXsqQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nujD5PPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nujD5fPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sYTsAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sYTsQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nujD3fPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nujD3vPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nujD3_PMEeSePe1SK9_66Q" points="[32, -80, 28, 136]$[48, -120, 44, 96]$[31, -156, 27, 60]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujD5vPMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nujD5_PMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5sXsowOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5sXspAOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5sXspQOGEeWTvrlIIWR60w" points="[-40, -50, -30, 125]$[-68, -84, -58, 91]$[-40, -128, -30, 47]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sYTsgOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sYTswOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
           </edges>
         </data>
       </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_nuGXofPMEeSePe1SK9_66Q" name="TrafficControl">
-        <target xmi:type="tfsmextended:TimedSystem" href="daynight_single_traffic_light_control.tfsm#/"/>
-        <semanticElements xmi:type="tfsmextended:TimedSystem" href="daynight_single_traffic_light_control.tfsm#/"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nuGXovPMEeSePe1SK9_66Q" showIcon="false">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXo_PMEeSePe1SK9_66Q"/>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_5ryd0QOGEeWTvrlIIWR60w" name="TrafficControl">
+        <target xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="daynight_single_traffic_light_control.tfsm#/"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="daynight_single_traffic_light_control.tfsm#/"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_5ryd0gOGEeWTvrlIIWR60w" showIcon="false">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd0wOGEeWTvrlIIWR60w"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXpPPMEeSePe1SK9_66Q"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXpfPMEeSePe1SK9_66Q" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXpvPMEeSePe1SK9_66Q" red="224" green="133" blue="3"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd1AOGEeWTvrlIIWR60w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd1QOGEeWTvrlIIWR60w" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd1gOGEeWTvrlIIWR60w" red="224" green="133" blue="3"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']"/>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_nuGXp_PMEeSePe1SK9_66Q" name="Control">
-          <target xmi:type="tfsmextended:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0"/>
-          <semanticElements xmi:type="tfsmextended:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nuGXqPPMEeSePe1SK9_66Q">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXqfPMEeSePe1SK9_66Q"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_5ryd1wOGEeWTvrlIIWR60w" name="Control">
+          <target xmi:type="org.gemoc.sample.tfsm:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0"/>
+          <semanticElements xmi:type="org.gemoc.sample.tfsm:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_5ryd2AOGEeWTvrlIIWR60w">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd2QOGEeWTvrlIIWR60w"/>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXqvPMEeSePe1SK9_66Q"/>
-            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXq_PMEeSePe1SK9_66Q" red="255" green="255" blue="255"/>
-            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXrPPMEeSePe1SK9_66Q" red="204" green="242" blue="166"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd2gOGEeWTvrlIIWR60w"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd2wOGEeWTvrlIIWR60w" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd3AOGEeWTvrlIIWR60w" red="204" green="242" blue="166"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']"/>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nuGXrfPMEeSePe1SK9_66Q" name="initControl" outgoingEdges="_nuGX2fPMEeSePe1SK9_66Q" width="2" height="2" resizeKind="NSEW">
-            <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.0"/>
-            <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.0"/>
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5ryd3QOGEeWTvrlIIWR60w" name="initControl" outgoingEdges="_5rzE9wOGEeWTvrlIIWR60w" width="2" height="2" resizeKind="NSEW">
+            <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.0"/>
+            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.0"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_nuGXrvPMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXr_PMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_5ryd3gOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd3wOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
               <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@conditionnalStyles.0/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXsPPMEeSePe1SK9_66Q"/>
-              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXsfPMEeSePe1SK9_66Q"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd4AOGEeWTvrlIIWR60w"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd4QOGEeWTvrlIIWR60w"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nuGXsvPMEeSePe1SK9_66Q" name="Day" outgoingEdges="_nuGX4_PMEeSePe1SK9_66Q _nuGX6PPMEeSePe1SK9_66Q" incomingEdges="_nuGX2fPMEeSePe1SK9_66Q _nuGX3vPMEeSePe1SK9_66Q _nuGX4_PMEeSePe1SK9_66Q" width="5" height="5" resizeKind="NSEW">
-            <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.1"/>
-            <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.1"/>
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5ryd4gOGEeWTvrlIIWR60w" name="Day" outgoingEdges="_5rzFAQOGEeWTvrlIIWR60w _5rzFBgOGEeWTvrlIIWR60w" incomingEdges="_5rzE9wOGEeWTvrlIIWR60w _5rzE_AOGEeWTvrlIIWR60w _5rzFAQOGEeWTvrlIIWR60w" width="5" height="5" resizeKind="NSEW">
+            <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.1"/>
+            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.1"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_nuGXs_PMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXtPPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_5ryd4wOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd5AOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
               <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXtfPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
-              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXtvPMEeSePe1SK9_66Q" red="255" green="255" blue="255"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd5QOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd5gOGEeWTvrlIIWR60w" red="255" green="255" blue="255"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nuGXt_PMEeSePe1SK9_66Q" name="Night" outgoingEdges="_nuGX3vPMEeSePe1SK9_66Q _nuGX7fPMEeSePe1SK9_66Q" incomingEdges="_nuGX6PPMEeSePe1SK9_66Q _nuGX7fPMEeSePe1SK9_66Q" width="7" height="7" resizeKind="NSEW">
-            <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.2"/>
-            <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.2"/>
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5ryd5wOGEeWTvrlIIWR60w" name="Night" outgoingEdges="_5rzE_AOGEeWTvrlIIWR60w _5rzFCwOGEeWTvrlIIWR60w" incomingEdges="_5rzFBgOGEeWTvrlIIWR60w _5rzFCwOGEeWTvrlIIWR60w" width="7" height="7" resizeKind="NSEW">
+            <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.2"/>
+            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.2"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_nuGXuPPMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXufPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_5ryd6AOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd6QOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
               <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXuvPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
-              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXu_PMEeSePe1SK9_66Q" red="255" green="255" blue="255"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd6gOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd6wOGEeWTvrlIIWR60w" red="255" green="255" blue="255"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_nuGXvPPMEeSePe1SK9_66Q" name="Semaphore0">
-          <target xmi:type="tfsmextended:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1"/>
-          <semanticElements xmi:type="tfsmextended:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_nuGXvfPMEeSePe1SK9_66Q">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXvvPMEeSePe1SK9_66Q"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_5ryd7AOGEeWTvrlIIWR60w" name="Semaphore0">
+          <target xmi:type="org.gemoc.sample.tfsm:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1"/>
+          <semanticElements xmi:type="org.gemoc.sample.tfsm:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_5ryd7QOGEeWTvrlIIWR60w">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd7gOGEeWTvrlIIWR60w"/>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXv_PMEeSePe1SK9_66Q"/>
-            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXwPPMEeSePe1SK9_66Q" red="255" green="255" blue="255"/>
-            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXwfPMEeSePe1SK9_66Q" red="204" green="242" blue="166"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd7wOGEeWTvrlIIWR60w"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd8AOGEeWTvrlIIWR60w" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5ryd8QOGEeWTvrlIIWR60w" red="204" green="242" blue="166"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']"/>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nuGXwvPMEeSePe1SK9_66Q" name="initSema0" outgoingEdges="_nuGX8vPMEeSePe1SK9_66Q" width="2" height="2" resizeKind="NSEW">
-            <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.0"/>
-            <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.0"/>
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5rzE4AOGEeWTvrlIIWR60w" name="initSema0" outgoingEdges="_5rzFEAOGEeWTvrlIIWR60w" width="2" height="2" resizeKind="NSEW">
+            <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.0"/>
+            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.0"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_nuGXw_PMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXxPPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_5rzE4QOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE4gOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
               <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@conditionnalStyles.0/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXxfPMEeSePe1SK9_66Q"/>
-              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXxvPMEeSePe1SK9_66Q"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE4wOGEeWTvrlIIWR60w"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE5AOGEeWTvrlIIWR60w"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nuGXx_PMEeSePe1SK9_66Q" name="Red0" outgoingEdges="_nuGX9_PMEeSePe1SK9_66Q" incomingEdges="_nuGX8vPMEeSePe1SK9_66Q _nuGX_PPMEeSePe1SK9_66Q" width="6" height="6" resizeKind="NSEW">
-            <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.1"/>
-            <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.1"/>
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5rzE5QOGEeWTvrlIIWR60w" name="Red0" outgoingEdges="_5rzFFQOGEeWTvrlIIWR60w" incomingEdges="_5rzFEAOGEeWTvrlIIWR60w _5rzFGgOGEeWTvrlIIWR60w" width="6" height="6" resizeKind="NSEW">
+            <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.1"/>
+            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.1"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_nuGXyPPMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXyfPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_5rzE5gOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE5wOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
               <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXyvPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
-              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXy_PMEeSePe1SK9_66Q" red="255" green="255" blue="255"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE6AOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE6QOGEeWTvrlIIWR60w" red="255" green="255" blue="255"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nuGXzPPMEeSePe1SK9_66Q" name="Green0" outgoingEdges="_nuGX_PPMEeSePe1SK9_66Q" incomingEdges="_nuGX9_PMEeSePe1SK9_66Q" width="8" height="8" resizeKind="NSEW">
-            <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.2"/>
-            <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.2"/>
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5rzE6gOGEeWTvrlIIWR60w" name="Green0" outgoingEdges="_5rzFGgOGEeWTvrlIIWR60w" incomingEdges="_5rzFFQOGEeWTvrlIIWR60w" width="8" height="8" resizeKind="NSEW">
+            <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.2"/>
+            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.2"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_nuGXzfPMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXzvPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_5rzE6wOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE7AOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
               <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGXz_PMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
-              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX0PPMEeSePe1SK9_66Q" red="255" green="255" blue="255"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE7QOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE7gOGEeWTvrlIIWR60w" red="255" green="255" blue="255"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nuGX0fPMEeSePe1SK9_66Q" name="minutes" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="tfsmextended:FSMClock" href="daynight_single_traffic_light_control.tfsm#//@globalClocks.0"/>
-          <semanticElements xmi:type="tfsmextended:FSMClock" href="daynight_single_traffic_light_control.tfsm#//@globalClocks.0"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_nuGX0vPMEeSePe1SK9_66Q" labelFormat="bold" showIcon="false" workspacePath="/org.gemoc.sample.tfsm.design/icons/clock_global_small.gif">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX0_PMEeSePe1SK9_66Q"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5rzE7wOGEeWTvrlIIWR60w" name="minutes" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="org.gemoc.sample.tfsm:FSMClock" href="daynight_single_traffic_light_control.tfsm#//@globalClocks.0"/>
+          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMClock" href="daynight_single_traffic_light_control.tfsm#//@globalClocks.0"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_5rzE8AOGEeWTvrlIIWR60w" labelFormat="bold" showIcon="false" workspacePath="/org.gemoc.sample.tfsm.design/icons/clock_global_small.gif">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE8QOGEeWTvrlIIWR60w"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX1PPMEeSePe1SK9_66Q"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE8gOGEeWTvrlIIWR60w"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']"/>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nuGX1fPMEeSePe1SK9_66Q" name="switch" width="-1" height="-1">
-          <target xmi:type="tfsmextended:FSMEvent" href="daynight_single_traffic_light_control.tfsm#//@globalEvents.0"/>
-          <semanticElements xmi:type="tfsmextended:FSMEvent" href="daynight_single_traffic_light_control.tfsm#//@globalEvents.0"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_nuGX1vPMEeSePe1SK9_66Q" labelFormat="bold" showIcon="false" iconPath="event_small.png" workspacePath="/org.gemoc.sample.tfsm.design/icons/event_small.gif">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX1_PMEeSePe1SK9_66Q"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5rzE8wOGEeWTvrlIIWR60w" name="switch" width="-1" height="-1">
+          <target xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="daynight_single_traffic_light_control.tfsm#//@globalEvents.0"/>
+          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="daynight_single_traffic_light_control.tfsm#//@globalEvents.0"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_5rzE9AOGEeWTvrlIIWR60w" labelFormat="bold" showIcon="false" iconPath="event_small.png" workspacePath="/org.gemoc.sample.tfsm.design/icons/event_small.gif">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE9QOGEeWTvrlIIWR60w"/>
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX2PPMEeSePe1SK9_66Q"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE9gOGEeWTvrlIIWR60w"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nuGX2fPMEeSePe1SK9_66Q" name="after 1 on minutes&#xA; / &#xA;dosomething&#xA;" sourceNode="_nuGXrfPMEeSePe1SK9_66Q" targetNode="_nuGXsvPMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.0"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.0"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nuGX2vPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5rzE9wOGEeWTvrlIIWR60w" name="after 1 on minutes&#xA; / &#xA;dosomething&#xA;" sourceNode="_5ryd3QOGEeWTvrlIIWR60w" targetNode="_5ryd4gOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5rzE-AOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX2_PMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nuGX3PPMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX3fPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE-QOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5rzE-gOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE-wOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nuGX3vPMEeSePe1SK9_66Q" name="when isDay&#xA; / &#xA;doDay&#xA;" sourceNode="_nuGXt_PMEeSePe1SK9_66Q" targetNode="_nuGXsvPMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.1"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.1"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nuGX3_PMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5rzE_AOGEeWTvrlIIWR60w" name="when isDay&#xA; / &#xA;doDay&#xA;" sourceNode="_5ryd5wOGEeWTvrlIIWR60w" targetNode="_5ryd4gOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5rzE_QOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX4PPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nuGX4fPMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX4vPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzE_gOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5rzE_wOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFAAOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nuGX4_PMEeSePe1SK9_66Q" name="after 4 on minutes&#xA; / &#xA;dosomething&#xA;  !switch;" sourceNode="_nuGXsvPMEeSePe1SK9_66Q" targetNode="_nuGXsvPMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.2"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.2"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nuGX5PPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5rzFAQOGEeWTvrlIIWR60w" name="after 4 on minutes&#xA; / &#xA;dosomething&#xA;  !switch;" sourceNode="_5ryd4gOGEeWTvrlIIWR60w" targetNode="_5ryd4gOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5rzFAgOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX5fPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nuGX5vPMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX5_PMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFAwOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5rzFBAOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFBQOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nuGX6PPMEeSePe1SK9_66Q" name="when isNight&#xA; / &#xA;doNight&#xA;" sourceNode="_nuGXsvPMEeSePe1SK9_66Q" targetNode="_nuGXt_PMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.3"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.3"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nuGX6fPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5rzFBgOGEeWTvrlIIWR60w" name="when isNight&#xA; / &#xA;doNight&#xA;" sourceNode="_5ryd4gOGEeWTvrlIIWR60w" targetNode="_5ryd5wOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.3"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.3"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5rzFBwOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX6vPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nuGX6_PMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX7PPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFCAOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5rzFCQOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFCgOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nuGX7fPMEeSePe1SK9_66Q" name="after 6 on minutes&#xA; / &#xA;dosomething&#xA;  !switch;" sourceNode="_nuGXt_PMEeSePe1SK9_66Q" targetNode="_nuGXt_PMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.4"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.4"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nuGX7vPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5rzFCwOGEeWTvrlIIWR60w" name="after 6 on minutes&#xA; / &#xA;dosomething&#xA;  !switch;" sourceNode="_5ryd5wOGEeWTvrlIIWR60w" targetNode="_5ryd5wOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.4"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.4"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5rzFDAOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX7_PMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nuGX8PPMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX8fPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFDQOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5rzFDgOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFDwOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nuGX8vPMEeSePe1SK9_66Q" name="after 1 on minutes&#xA; / &#xA;dosomething&#xA;" sourceNode="_nuGXwvPMEeSePe1SK9_66Q" targetNode="_nuGXx_PMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.0"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.0"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nuGX8_PMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5rzFEAOGEeWTvrlIIWR60w" name="after 1 on minutes&#xA; / &#xA;dosomething&#xA;" sourceNode="_5rzE4AOGEeWTvrlIIWR60w" targetNode="_5rzE5QOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.0"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5rzFEQOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX9PPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nuGX9fPMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX9vPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFEgOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5rzFEwOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFFAOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nuGX9_PMEeSePe1SK9_66Q" name="after 2 on minutes&#xA; / &#xA;doGreen&#xA;" sourceNode="_nuGXx_PMEeSePe1SK9_66Q" targetNode="_nuGXzPPMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.1"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.1"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nuGX-PPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5rzFFQOGEeWTvrlIIWR60w" name="after 2 on minutes&#xA; / &#xA;doGreen&#xA;" sourceNode="_5rzE5QOGEeWTvrlIIWR60w" targetNode="_5rzE6gOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.1"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5rzFFgOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX-fPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nuGX-vPMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX-_PMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFFwOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5rzFGAOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFGQOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nuGX_PPMEeSePe1SK9_66Q" name="when switch&#xA; / &#xA;doRed&#xA;" sourceNode="_nuGXzPPMEeSePe1SK9_66Q" targetNode="_nuGXx_PMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.2"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.2"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nuGX_fPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5rzFGgOGEeWTvrlIIWR60w" name="when switch&#xA; / &#xA;doRed&#xA;" sourceNode="_5rzE6gOGEeWTvrlIIWR60w" targetNode="_5rzE5QOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.2"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5rzFGwOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGX_vPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nuGX__PMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nuGYAPPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFHAOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5rzFHQOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5rzFHgOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']"/>
-      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_nuGYAfPMEeSePe1SK9_66Q"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_5rzFHwOGEeWTvrlIIWR60w"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer"/>
       <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@additionalLayers[name='Debug']"/>
-      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@additionalLayers[name='Animation']"/>
-      <target xmi:type="tfsmextended:TimedSystem" href="daynight_single_traffic_light_control.tfsm#/"/>
+      <target xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="daynight_single_traffic_light_control.tfsm#/"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_nu1-gPPMEeSePe1SK9_66Q" name="Control">
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_nu1-qvPMEeSePe1SK9_66Q" source="GMF_DIAGRAMS">
-        <data xmi:type="notation:Diagram" xmi:id="_nu1-q_PMEeSePe1SK9_66Q" type="Sirius" element="_nu1-gPPMEeSePe1SK9_66Q" measurementUnit="Pixel">
-          <children xmi:type="notation:Node" xmi:id="_nu1-rfPMEeSePe1SK9_66Q" type="2001" element="_nu1-gfPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu1-sPPMEeSePe1SK9_66Q" type="5002">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_nu1-sfPMEeSePe1SK9_66Q" x="21"/>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_5srOoAOGEeWTvrlIIWR60w" name="Control">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_5sscwAOGEeWTvrlIIWR60w" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_5sscwQOGEeWTvrlIIWR60w" type="Sirius" element="_5srOoAOGEeWTvrlIIWR60w" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_5sscwwOGEeWTvrlIIWR60w" type="2001" element="_5srOoQOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5stD0AOGEeWTvrlIIWR60w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_5stD0QOGEeWTvrlIIWR60w" x="21"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu1-vPPMEeSePe1SK9_66Q" type="3002" element="_nu1-gvPMEeSePe1SK9_66Q">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_nu1-vfPMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-vvPMEeSePe1SK9_66Q"/>
+            <children xmi:type="notation:Node" xmi:id="_5suR8AOGEeWTvrlIIWR60w" type="3002" element="_5srOogOGEeWTvrlIIWR60w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_5suR8QOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5suR8gOGEeWTvrlIIWR60w"/>
             </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_nu1-rvPMEeSePe1SK9_66Q" fontColor="8947848" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-r_PMEeSePe1SK9_66Q" x="215" y="35" width="20" height="20"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_5sscxAOGEeWTvrlIIWR60w" fontColor="8947848" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sscxQOGEeWTvrlIIWR60w" x="80" y="10" width="20" height="20"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_nu1-svPMEeSePe1SK9_66Q" type="2001" element="_nu1-hvPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu1-tfPMEeSePe1SK9_66Q" type="5002">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_nu1-tvPMEeSePe1SK9_66Q" y="5"/>
+          <children xmi:type="notation:Node" xmi:id="_5stD0gOGEeWTvrlIIWR60w" type="2001" element="_5srOpgOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5stq4AOGEeWTvrlIIWR60w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_5stq4QOGEeWTvrlIIWR60w" y="5"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu1-v_PMEeSePe1SK9_66Q" type="3002" element="_nu1-h_PMEeSePe1SK9_66Q">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_nu1-wPPMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-wfPMEeSePe1SK9_66Q"/>
+            <children xmi:type="notation:Node" xmi:id="_5suR8wOGEeWTvrlIIWR60w" type="3002" element="_5srOpwOGEeWTvrlIIWR60w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_5suR9AOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5suR9QOGEeWTvrlIIWR60w"/>
             </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_nu1-s_PMEeSePe1SK9_66Q" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-tPPMEeSePe1SK9_66Q" x="200" y="145" width="50" height="50"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_5stD0wOGEeWTvrlIIWR60w" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5stD1AOGEeWTvrlIIWR60w" x="90" y="130" width="50" height="50"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_nu1-t_PMEeSePe1SK9_66Q" type="2001" element="_nu1-i_PMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu1-uvPMEeSePe1SK9_66Q" type="5002">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_nu1-u_PMEeSePe1SK9_66Q" y="5"/>
+          <children xmi:type="notation:Node" xmi:id="_5stq4gOGEeWTvrlIIWR60w" type="2001" element="_5srOqwOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5stq5QOGEeWTvrlIIWR60w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_5stq5gOGEeWTvrlIIWR60w" y="5"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu1-wvPMEeSePe1SK9_66Q" type="3002" element="_nu1-jPPMEeSePe1SK9_66Q">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_nu1-w_PMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-xPPMEeSePe1SK9_66Q"/>
+            <children xmi:type="notation:Node" xmi:id="_5su5AAOGEeWTvrlIIWR60w" type="3002" element="_5srOrAOGEeWTvrlIIWR60w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_5su5AQOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5su5AgOGEeWTvrlIIWR60w"/>
             </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_nu1-uPPMEeSePe1SK9_66Q" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-ufPMEeSePe1SK9_66Q" x="200" y="305" width="70" height="70"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_5stq4wOGEeWTvrlIIWR60w" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5stq5AOGEeWTvrlIIWR60w" x="90" y="275" width="70" height="70"/>
           </children>
-          <styles xmi:type="notation:DiagramStyle" xmi:id="_nu1-rPPMEeSePe1SK9_66Q"/>
-          <edges xmi:type="notation:Edge" xmi:id="_nu1-xfPMEeSePe1SK9_66Q" type="4001" element="_nu1-kPPMEeSePe1SK9_66Q" source="_nu1-rfPMEeSePe1SK9_66Q" target="_nu1-svPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu1-yfPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-yvPMEeSePe1SK9_66Q" y="-10"/>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_5sscwgOGEeWTvrlIIWR60w"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5su5AwOGEeWTvrlIIWR60w" type="4001" element="_5srOsAOGEeWTvrlIIWR60w" source="_5sscwwOGEeWTvrlIIWR60w" target="_5stD0gOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5svgEAOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5svgEQOGEeWTvrlIIWR60w" y="-10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu1-y_PMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-zPPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5svgEgOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5svgEwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu1-zfPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-zvPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5svgFAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5svgFQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nu1-xvPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nu1-x_PMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nu1-yPPMEeSePe1SK9_66Q" points="[0, 20, 0, -140]$[4, 110, 4, -50]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu1-z_PMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu1-0PPMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5su5BAOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5su5BQOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5su5BgOGEeWTvrlIIWR60w" points="[0, 0, -25, -100]$[25, 100, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5svgFgOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5svgFwOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nu1-0fPMEeSePe1SK9_66Q" type="4001" element="_nu1-lfPMEeSePe1SK9_66Q" source="_nu1-t_PMEeSePe1SK9_66Q" target="_nu1-svPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu1-1fPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-1vPMEeSePe1SK9_66Q" y="-10"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5svgGAOGEeWTvrlIIWR60w" type="4001" element="_5srOtQOGEeWTvrlIIWR60w" source="_5stq4gOGEeWTvrlIIWR60w" target="_5stD0gOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5swHIAOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5swHIQOGEeWTvrlIIWR60w" y="-10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu1-1_PMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-2PPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5swHIgOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5swHIwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu1-2fPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-2vPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5swHJAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5swHJQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nu1-0vPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nu1-0_PMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nu1-1PPMEeSePe1SK9_66Q" points="[-30, -70, -20, 160]$[-50, -120, -40, 110]$[-29, -180, -19, 50]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu1-2_PMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu1-3PPMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5svgGQOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5svgGgOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5svgGwOGEeWTvrlIIWR60w" points="[-35, -41, -25, 174]$[-95, -110, -85, 105]$[-35, -185, -25, 30]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5swHJgOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5swHJwOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nu1-3fPMEeSePe1SK9_66Q" type="4001" element="_nu1-mvPMEeSePe1SK9_66Q" source="_nu1-svPMEeSePe1SK9_66Q" target="_nu1-svPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu1-4fPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-4vPMEeSePe1SK9_66Q" y="-10"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5swHKAOGEeWTvrlIIWR60w" type="4001" element="_5srOugOGEeWTvrlIIWR60w" source="_5stD0gOGEeWTvrlIIWR60w" target="_5stD0gOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5swuMAOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5swuMQOGEeWTvrlIIWR60w" y="-10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu1-4_PMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-5PPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5swuMgOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5swuMwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu1-5fPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-5vPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5swuNAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5swuNQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nu1-3vPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nu1-3_PMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nu1-4PPMEeSePe1SK9_66Q" points="[25, -14, 25, -14]$[95, -50, 95, -50]$[95, 50, 95, 50]$[25, 13, 25, 13]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu1-5_PMEeSePe1SK9_66Q" id="(0.5,0.5)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu1-6PPMEeSePe1SK9_66Q" id="(0.5,0.5)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5swHKQOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5swHKgOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5swHKwOGEeWTvrlIIWR60w" points="[25, -16, 25, -16]$[87, -55, 87, -55]$[87, 70, 87, 70]$[25, 20, 25, 20]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5swuNgOGEeWTvrlIIWR60w" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5swuNwOGEeWTvrlIIWR60w" id="(0.5,0.5)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nu1-6fPMEeSePe1SK9_66Q" type="4001" element="_nu1-n_PMEeSePe1SK9_66Q" source="_nu1-svPMEeSePe1SK9_66Q" target="_nu1-t_PMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu1-7fPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-7vPMEeSePe1SK9_66Q" y="-10"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5swuOAOGEeWTvrlIIWR60w" type="4001" element="_5srOvwOGEeWTvrlIIWR60w" source="_5stD0gOGEeWTvrlIIWR60w" target="_5stq4gOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5sxVQAOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sxVQQOGEeWTvrlIIWR60w" y="-10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu1-7_PMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-8PPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sxVQgOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sxVQwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu1-8fPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1-8vPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sxVRAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sxVRQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nu1-6vPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nu1-6_PMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nu1-7PPMEeSePe1SK9_66Q" points="[20, 50, 10, -180]$[44, 110, 34, -120]$[29, 160, 19, -70]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu1-8_PMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu1-9PPMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5swuOQOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5swuOgOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5swuOwOGEeWTvrlIIWR60w" points="[-9, 50, -19, -165]$[1, 145, -9, -70]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sxVRgOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sxVRwOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nu1-9fPMEeSePe1SK9_66Q" type="4001" element="_nu1-pPPMEeSePe1SK9_66Q" source="_nu1-t_PMEeSePe1SK9_66Q" target="_nu1-t_PMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu1--fPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu1--vPMEeSePe1SK9_66Q" y="-10"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5sxVSAOGEeWTvrlIIWR60w" type="4001" element="_5srOxAOGEeWTvrlIIWR60w" source="_5stq4gOGEeWTvrlIIWR60w" target="_5stq4gOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5sx8UAOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sx8UQOGEeWTvrlIIWR60w" y="-10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu_IcPPMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_IcfPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sx8UgOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sx8UwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu_IcvPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_Ic_PMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5sx8VAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5sx8VQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nu1-9vPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nu1-9_PMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nu1--PPMEeSePe1SK9_66Q" points="[35, -20, 35, -20]$[90, -50, 90, -50]$[90, 55, 90, 55]$[35, 21, 35, 21]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu_IdPPMEeSePe1SK9_66Q" id="(0.5,0.5)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu_IdfPMEeSePe1SK9_66Q" id="(0.5,0.5)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5sxVSQOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5sxVSgOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5sxVSwOGEeWTvrlIIWR60w" points="[35, -22, 35, -22]$[80, -50, 80, -50]$[80, 75, 80, 75]$[35, 32, 35, 32]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sx8VgOGEeWTvrlIIWR60w" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5sx8VwOGEeWTvrlIIWR60w" id="(0.5,0.5)"/>
           </edges>
         </data>
       </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nu1-gfPMEeSePe1SK9_66Q" name="initControl" outgoingEdges="_nu1-kPPMEeSePe1SK9_66Q" width="2" height="2" resizeKind="NSEW">
-        <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.0"/>
-        <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.0"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5srOoQOGEeWTvrlIIWR60w" name="initControl" outgoingEdges="_5srOsAOGEeWTvrlIIWR60w" width="2" height="2" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.0"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_nu1-gvPMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-g_PMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_5srOogOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOowOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
           <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@conditionnalStyles.0/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-hPPMEeSePe1SK9_66Q"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-hfPMEeSePe1SK9_66Q"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOpAOGEeWTvrlIIWR60w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOpQOGEeWTvrlIIWR60w"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nu1-hvPMEeSePe1SK9_66Q" name="Day" outgoingEdges="_nu1-mvPMEeSePe1SK9_66Q _nu1-n_PMEeSePe1SK9_66Q" incomingEdges="_nu1-kPPMEeSePe1SK9_66Q _nu1-lfPMEeSePe1SK9_66Q _nu1-mvPMEeSePe1SK9_66Q" width="5" height="5" resizeKind="NSEW">
-        <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.1"/>
-        <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.1"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5srOpgOGEeWTvrlIIWR60w" name="Day" outgoingEdges="_5srOugOGEeWTvrlIIWR60w _5srOvwOGEeWTvrlIIWR60w" incomingEdges="_5srOsAOGEeWTvrlIIWR60w _5srOtQOGEeWTvrlIIWR60w _5srOugOGEeWTvrlIIWR60w" width="5" height="5" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.1"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.1"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_HdSiAAOLEeWTvrlIIWR60w">
+          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Animation']/@decorationDescriptionsSet/@decorationDescriptions[name='Current%20State']"/>
+        </decorations>
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_5srOpwOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOqAOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOqQOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOqgOGEeWTvrlIIWR60w" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5srOqwOGEeWTvrlIIWR60w" name="Night" outgoingEdges="_5srOtQOGEeWTvrlIIWR60w _5srOxAOGEeWTvrlIIWR60w" incomingEdges="_5srOvwOGEeWTvrlIIWR60w _5srOxAOGEeWTvrlIIWR60w" width="7" height="7" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.2"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.2"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_nu1-h_PMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-iPPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_5srOrAOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOrQOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
           <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-ifPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-ivPMEeSePe1SK9_66Q" red="255" green="255" blue="255"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOrgOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOrwOGEeWTvrlIIWR60w" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nu1-i_PMEeSePe1SK9_66Q" name="Night" outgoingEdges="_nu1-lfPMEeSePe1SK9_66Q _nu1-pPPMEeSePe1SK9_66Q" incomingEdges="_nu1-n_PMEeSePe1SK9_66Q _nu1-pPPMEeSePe1SK9_66Q" width="7" height="7" resizeKind="NSEW">
-        <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.2"/>
-        <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedStates.2"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_nu1-jPPMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-jfPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
-          <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-jvPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-j_PMEeSePe1SK9_66Q" red="255" green="255" blue="255"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nu1-kPPMEeSePe1SK9_66Q" name="after 1 on minutes&#xA; / &#xA;dosomething&#xA;" sourceNode="_nu1-gfPMEeSePe1SK9_66Q" targetNode="_nu1-hvPMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.0"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.0"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nu1-kfPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5srOsAOGEeWTvrlIIWR60w" name="after 1 on minutes&#xA; / &#xA;dosomething&#xA;" sourceNode="_5srOoQOGEeWTvrlIIWR60w" targetNode="_5srOpgOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5srOsQOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-kvPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nu1-k_PMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-lPPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOsgOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5srOswOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOtAOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nu1-lfPMEeSePe1SK9_66Q" name="when isDay&#xA; / &#xA;doDay&#xA;" sourceNode="_nu1-i_PMEeSePe1SK9_66Q" targetNode="_nu1-hvPMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.1"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.1"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nu1-lvPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5srOtQOGEeWTvrlIIWR60w" name="when isDay&#xA; / &#xA;doDay&#xA;" sourceNode="_5srOqwOGEeWTvrlIIWR60w" targetNode="_5srOpgOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5srOtgOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-l_PMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nu1-mPPMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-mfPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOtwOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5srOuAOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOuQOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nu1-mvPMEeSePe1SK9_66Q" name="after 4 on minutes&#xA; / &#xA;dosomething&#xA;  !switch;" sourceNode="_nu1-hvPMEeSePe1SK9_66Q" targetNode="_nu1-hvPMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.2"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.2"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nu1-m_PMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5srOugOGEeWTvrlIIWR60w" name="after 4 on minutes&#xA; / &#xA;dosomething&#xA;  !switch;" sourceNode="_5srOpgOGEeWTvrlIIWR60w" targetNode="_5srOpgOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5srOuwOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-nPPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nu1-nfPMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-nvPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOvAOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5srOvQOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOvgOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nu1-n_PMEeSePe1SK9_66Q" name="when isNight&#xA; / &#xA;doNight&#xA;" sourceNode="_nu1-hvPMEeSePe1SK9_66Q" targetNode="_nu1-i_PMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.3"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.3"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nu1-oPPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5srOvwOGEeWTvrlIIWR60w" name="when isNight&#xA; / &#xA;doNight&#xA;" sourceNode="_5srOpgOGEeWTvrlIIWR60w" targetNode="_5srOqwOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.3"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.3"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5srOwAOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-ofPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nu1-ovPMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-o_PMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOwQOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5srOwgOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOwwOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nu1-pPPMEeSePe1SK9_66Q" name="after 6 on minutes&#xA; / &#xA;dosomething&#xA;  !switch;" sourceNode="_nu1-i_PMEeSePe1SK9_66Q" targetNode="_nu1-i_PMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.4"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.4"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nu1-pfPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5srOxAOGEeWTvrlIIWR60w" name="after 6 on minutes&#xA; / &#xA;dosomething&#xA;  !switch;" sourceNode="_5srOqwOGEeWTvrlIIWR60w" targetNode="_5srOqwOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.4"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0/@ownedTransitions.4"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5srOxQOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-pvPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nu1-p_PMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu1-qPPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOxgOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5srOxwOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5srOyAOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']"/>
-      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_nu1-qfPMEeSePe1SK9_66Q"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_5srOyQOGEeWTvrlIIWR60w"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer"/>
       <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Debug']"/>
       <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Animation']"/>
-      <target xmi:type="tfsmextended:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0"/>
+      <target xmi:type="org.gemoc.sample.tfsm:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.0"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_nu_IdvPMEeSePe1SK9_66Q" name="Semaphore0">
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_nu_IlvPMEeSePe1SK9_66Q" source="GMF_DIAGRAMS">
-        <data xmi:type="notation:Diagram" xmi:id="_nu_Il_PMEeSePe1SK9_66Q" type="Sirius" element="_nu_IdvPMEeSePe1SK9_66Q" measurementUnit="Pixel">
-          <children xmi:type="notation:Node" xmi:id="_nu_ImfPMEeSePe1SK9_66Q" type="2001" element="_nu_Id_PMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu_InPPMEeSePe1SK9_66Q" type="5002">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_nu_InfPMEeSePe1SK9_66Q" x="21"/>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_5s4qAAOGEeWTvrlIIWR60w" name="Semaphore0">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_5s5REAOGEeWTvrlIIWR60w" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_5s5REQOGEeWTvrlIIWR60w" type="Sirius" element="_5s4qAAOGEeWTvrlIIWR60w" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_5s5REwOGEeWTvrlIIWR60w" type="2001" element="_5s4qAQOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5s54IAOGEeWTvrlIIWR60w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_5s54IQOGEeWTvrlIIWR60w" x="21"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu_IqPPMEeSePe1SK9_66Q" type="3002" element="_nu_IePPMEeSePe1SK9_66Q">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_nu_IqfPMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_IqvPMEeSePe1SK9_66Q"/>
+            <children xmi:type="notation:Node" xmi:id="_5s7GQgOGEeWTvrlIIWR60w" type="3002" element="_5s4qAgOGEeWTvrlIIWR60w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_5s7GQwOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s7GRAOGEeWTvrlIIWR60w"/>
             </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_nu_ImvPMEeSePe1SK9_66Q" fontColor="8947848" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_Im_PMEeSePe1SK9_66Q" x="185" y="75" width="20" height="20"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_5s5RFAOGEeWTvrlIIWR60w" fontColor="8947848" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s5RFQOGEeWTvrlIIWR60w" x="105" y="20" width="20" height="20"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_nu_InvPMEeSePe1SK9_66Q" type="2001" element="_nu_IfPPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu_IofPMEeSePe1SK9_66Q" type="5002">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_nu_IovPMEeSePe1SK9_66Q" y="5"/>
+          <children xmi:type="notation:Node" xmi:id="_5s54IgOGEeWTvrlIIWR60w" type="2001" element="_5s4qBgOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5s6fMAOGEeWTvrlIIWR60w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_5s6fMQOGEeWTvrlIIWR60w" y="5"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu_Iq_PMEeSePe1SK9_66Q" type="3002" element="_nu_IffPMEeSePe1SK9_66Q">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_nu_IrPPMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_IrfPMEeSePe1SK9_66Q"/>
+            <children xmi:type="notation:Node" xmi:id="_5s7tUAOGEeWTvrlIIWR60w" type="3002" element="_5s4qBwOGEeWTvrlIIWR60w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_5s7tUQOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s7tUgOGEeWTvrlIIWR60w"/>
             </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_nu_In_PMEeSePe1SK9_66Q" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_IoPPMEeSePe1SK9_66Q" x="155" y="160" width="60" height="60"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_5s54IwOGEeWTvrlIIWR60w" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s54JAOGEeWTvrlIIWR60w" x="90" y="140" width="60" height="60"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_nu_Io_PMEeSePe1SK9_66Q" type="2001" element="_nu_IgfPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu_IpvPMEeSePe1SK9_66Q" type="5002">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_nu_Ip_PMEeSePe1SK9_66Q" y="5"/>
+          <children xmi:type="notation:Node" xmi:id="_5s6fMgOGEeWTvrlIIWR60w" type="2001" element="_5s4qCwOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5s7GQAOGEeWTvrlIIWR60w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_5s7GQQOGEeWTvrlIIWR60w" y="5"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu_IrvPMEeSePe1SK9_66Q" type="3002" element="_nu_IgvPMEeSePe1SK9_66Q">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_nu_Ir_PMEeSePe1SK9_66Q" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_IsPPMEeSePe1SK9_66Q"/>
+            <children xmi:type="notation:Node" xmi:id="_5s7tUwOGEeWTvrlIIWR60w" type="3002" element="_5s4qDAOGEeWTvrlIIWR60w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_5s7tVAOGEeWTvrlIIWR60w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s7tVQOGEeWTvrlIIWR60w"/>
             </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_nu_IpPPMEeSePe1SK9_66Q" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_IpfPMEeSePe1SK9_66Q" x="150" y="275" width="80" height="80"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_5s6fMwOGEeWTvrlIIWR60w" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s6fNAOGEeWTvrlIIWR60w" x="80" y="255" width="80" height="80"/>
           </children>
-          <styles xmi:type="notation:DiagramStyle" xmi:id="_nu_ImPPMEeSePe1SK9_66Q"/>
-          <edges xmi:type="notation:Edge" xmi:id="_nu_IsfPMEeSePe1SK9_66Q" type="4001" element="_nu_IhvPMEeSePe1SK9_66Q" source="_nu_ImfPMEeSePe1SK9_66Q" target="_nu_InvPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu_ItfPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_ItvPMEeSePe1SK9_66Q" y="-10"/>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_5s5REgOGEeWTvrlIIWR60w"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5s7tVgOGEeWTvrlIIWR60w" type="4001" element="_5s4qEAOGEeWTvrlIIWR60w" source="_5s5REwOGEeWTvrlIIWR60w" target="_5s54IgOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5s8UYAOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s8UYQOGEeWTvrlIIWR60w" y="-10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu_It_PMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_IuPPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5s8UYgOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s8UYwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu_IufPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_IuvPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5s8UZAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s8UZQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nu_IsvPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nu_Is_PMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nu_ItPPMEeSePe1SK9_66Q" points="[-10, 8, 0, -137]$[-10, 85, 0, -60]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu_Iu_PMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu_IvPPMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5s7tVwOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5s7tWAOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5s7tWQOGEeWTvrlIIWR60w" points="[0, 0, -5, -100]$[5, 100, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5s8UZgOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5s8UZwOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nu_IvfPMEeSePe1SK9_66Q" type="4001" element="_nu_Ii_PMEeSePe1SK9_66Q" source="_nu_InvPMEeSePe1SK9_66Q" target="_nu_Io_PMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nu_IwfPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_IwvPMEeSePe1SK9_66Q" x="-9" y="5"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5s87cAOGEeWTvrlIIWR60w" type="4001" element="_5s4qFQOGEeWTvrlIIWR60w" source="_5s54IgOGEeWTvrlIIWR60w" target="_5s6fMgOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5s87dAOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s87dQOGEeWTvrlIIWR60w" y="-10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu_Iw_PMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_IxPPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5s87dgOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s87dwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nu_IxfPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nu_IxvPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5s87eAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s87eQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nu_IvvPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nu_Iv_PMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nu_IwPPMEeSePe1SK9_66Q" points="[30, 36, 25, -159]$[75, 90, 70, -105]$[45, 135, 40, -60]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu_Ix_PMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nu_IyPPMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5s87cQOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5s87cgOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5s87cwOGEeWTvrlIIWR60w" points="[30, 42, 30, -153]$[60, 85, 60, -110]$[40, 121, 40, -74]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5s87egOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5s87ewOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
           </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_nvI5cPPMEeSePe1SK9_66Q" type="4001" element="_nu_IkPPMEeSePe1SK9_66Q" source="_nu_Io_PMEeSePe1SK9_66Q" target="_nu_InvPMEeSePe1SK9_66Q">
-            <children xmi:type="notation:Node" xmi:id="_nvI5dPPMEeSePe1SK9_66Q" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nvI5dfPMEeSePe1SK9_66Q" y="-10"/>
+          <edges xmi:type="notation:Edge" xmi:id="_5s9igAOGEeWTvrlIIWR60w" type="4001" element="_5s4qGgOGEeWTvrlIIWR60w" source="_5s6fMgOGEeWTvrlIIWR60w" target="_5s54IgOGEeWTvrlIIWR60w">
+            <children xmi:type="notation:Node" xmi:id="_5s-JkAOGEeWTvrlIIWR60w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s-JkQOGEeWTvrlIIWR60w" y="-10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nvI5dvPMEeSePe1SK9_66Q" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nvI5d_PMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5s-JkgOGEeWTvrlIIWR60w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s-JkwOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nvI5ePPMEeSePe1SK9_66Q" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nvI5efPMEeSePe1SK9_66Q" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_5s-woAOGEeWTvrlIIWR60w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5s-woQOGEeWTvrlIIWR60w" y="10"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_nvI5cfPMEeSePe1SK9_66Q"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_nvI5cvPMEeSePe1SK9_66Q" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nvI5c_PMEeSePe1SK9_66Q" points="[-40, -58, -35, 137]$[-80, -115, -75, 80]$[-35, -163, -30, 32]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nvI5evPMEeSePe1SK9_66Q" id="(0.5,1.0)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nvI5e_PMEeSePe1SK9_66Q" id="(0.5,0.0)"/>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_5s9igQOGEeWTvrlIIWR60w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_5s9iggOGEeWTvrlIIWR60w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5s9igwOGEeWTvrlIIWR60w" points="[-40, -63, -40, 132]$[-70, -110, -70, 85]$[-30, -159, -30, 36]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5s-wogOGEeWTvrlIIWR60w" id="(0.5,1.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5s-wowOGEeWTvrlIIWR60w" id="(0.5,0.0)"/>
           </edges>
         </data>
       </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nu_Id_PMEeSePe1SK9_66Q" name="initSema0" outgoingEdges="_nu_IhvPMEeSePe1SK9_66Q" width="2" height="2" resizeKind="NSEW">
-        <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.0"/>
-        <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.0"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5s4qAQOGEeWTvrlIIWR60w" name="initSema0" outgoingEdges="_5s4qEAOGEeWTvrlIIWR60w" width="2" height="2" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.0"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_nu_IePPMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_IefPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_5s4qAgOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qAwOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
           <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@conditionnalStyles.0/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_IevPMEeSePe1SK9_66Q"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_Ie_PMEeSePe1SK9_66Q"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qBAOGEeWTvrlIIWR60w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qBQOGEeWTvrlIIWR60w"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nu_IfPPMEeSePe1SK9_66Q" name="Red0" outgoingEdges="_nu_Ii_PMEeSePe1SK9_66Q" incomingEdges="_nu_IhvPMEeSePe1SK9_66Q _nu_IkPPMEeSePe1SK9_66Q" width="6" height="6" resizeKind="NSEW">
-        <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.1"/>
-        <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.1"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5s4qBgOGEeWTvrlIIWR60w" name="Red0" outgoingEdges="_5s4qFQOGEeWTvrlIIWR60w" incomingEdges="_5s4qEAOGEeWTvrlIIWR60w _5s4qGgOGEeWTvrlIIWR60w" width="6" height="6" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.1"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.1"/>
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_5s4qBwOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qCAOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qCQOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qCgOGEeWTvrlIIWR60w" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5s4qCwOGEeWTvrlIIWR60w" name="Green0" outgoingEdges="_5s4qGgOGEeWTvrlIIWR60w" incomingEdges="_5s4qFQOGEeWTvrlIIWR60w" width="8" height="8" resizeKind="NSEW">
+        <target xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.2"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.2"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_IFlREAOLEeWTvrlIIWR60w">
+          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Animation']/@decorationDescriptionsSet/@decorationDescriptions[name='Current%20State']"/>
+        </decorations>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_nu_IffPMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_IfvPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_5s4qDAOGEeWTvrlIIWR60w" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qDQOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
           <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_If_PMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_IgPPMEeSePe1SK9_66Q" red="255" green="255" blue="255"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qDgOGEeWTvrlIIWR60w" red="39" green="76" blue="114"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qDwOGEeWTvrlIIWR60w" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_nu_IgfPMEeSePe1SK9_66Q" name="Green0" outgoingEdges="_nu_IkPPMEeSePe1SK9_66Q" incomingEdges="_nu_Ii_PMEeSePe1SK9_66Q" width="8" height="8" resizeKind="NSEW">
-        <target xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.2"/>
-        <semanticElements xmi:type="tfsmextended:State" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedStates.2"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_nu_IgvPMEeSePe1SK9_66Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_Ig_PMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
-          <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_IhPPMEeSePe1SK9_66Q" red="39" green="76" blue="114"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_IhfPMEeSePe1SK9_66Q" red="255" green="255" blue="255"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nu_IhvPMEeSePe1SK9_66Q" name="after 1 on minutes&#xA; / &#xA;dosomething&#xA;" sourceNode="_nu_Id_PMEeSePe1SK9_66Q" targetNode="_nu_IfPPMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.0"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.0"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nu_Ih_PMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5s4qEAOGEeWTvrlIIWR60w" name="after 1 on minutes&#xA; / &#xA;dosomething&#xA;" sourceNode="_5s4qAQOGEeWTvrlIIWR60w" targetNode="_5s4qBgOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.0"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5s4qEQOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_IiPPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nu_IifPMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_IivPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qEgOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5s4qEwOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qFAOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nu_Ii_PMEeSePe1SK9_66Q" name="after 2 on minutes&#xA; / &#xA;doGreen&#xA;" sourceNode="_nu_IfPPMEeSePe1SK9_66Q" targetNode="_nu_IgfPMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.1"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.1"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nu_IjPPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5s4qFQOGEeWTvrlIIWR60w" name="after 2 on minutes&#xA; / &#xA;doGreen&#xA;" sourceNode="_5s4qBgOGEeWTvrlIIWR60w" targetNode="_5s4qCwOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.1"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5s4qFgOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_IjfPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nu_IjvPMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_Ij_PMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qFwOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5s4qGAOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qGQOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nu_IkPPMEeSePe1SK9_66Q" name="when switch&#xA; / &#xA;doRed&#xA;" sourceNode="_nu_IgfPMEeSePe1SK9_66Q" targetNode="_nu_IfPPMEeSePe1SK9_66Q">
-        <target xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.2"/>
-        <semanticElements xmi:type="tfsmextended:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.2"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_nu_IkfPMEeSePe1SK9_66Q" size="2">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5s4qGgOGEeWTvrlIIWR60w" name="when switch&#xA; / &#xA;doRed&#xA;" sourceNode="_5s4qCwOGEeWTvrlIIWR60w" targetNode="_5s4qBgOGEeWTvrlIIWR60w">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.2"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1/@ownedTransitions.2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5s4qGwOGEeWTvrlIIWR60w" size="2">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_IkvPMEeSePe1SK9_66Q" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_nu_Ik_PMEeSePe1SK9_66Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_nu_IlPPMEeSePe1SK9_66Q"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qHAOGEeWTvrlIIWR60w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_5s4qHQOGEeWTvrlIIWR60w" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5s4qHgOGEeWTvrlIIWR60w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']"/>
-      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_nu_IlfPMEeSePe1SK9_66Q"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_5s4qHwOGEeWTvrlIIWR60w"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer"/>
       <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Debug']"/>
       <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Animation']"/>
-      <target xmi:type="tfsmextended:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1"/>
+      <target xmi:type="org.gemoc.sample.tfsm:TFSM" href="daynight_single_traffic_light_control.tfsm#//@tfsms.1"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']"/>
   </ownedViews>
