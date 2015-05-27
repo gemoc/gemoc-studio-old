@@ -325,8 +325,8 @@ public class GemocOverviewDashboardPage extends FormPage {
 	}
 
 	private void createMakeLanguageExecutableSection(final Composite sectionContainer) {
-		createSequentialExecutionSemanticsSection(sectionContainer);
 		createConcurrentExecutionSemanticsSection(sectionContainer);
+		createSequentialExecutionSemanticsSection(sectionContainer);
 	}
 
 	private void createDefineDebuggerSection(final Composite sectionContainer) {
