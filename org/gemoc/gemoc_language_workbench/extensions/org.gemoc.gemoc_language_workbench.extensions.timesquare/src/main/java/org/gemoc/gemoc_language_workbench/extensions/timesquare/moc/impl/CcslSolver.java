@@ -2,9 +2,11 @@ package org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -12,6 +14,8 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
@@ -25,6 +29,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
 import org.gemoc.gemoc_language_workbench.extensions.timesquare.Activator;
 import org.gemoc.gemoc_language_workbench.utils.ccsl.QvtoTransformationPerformer;
+import org.osgi.framework.Bundle;
 
 import fr.inria.aoste.timesquare.ccslkernel.explorer.CCSLConstraintState;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event;
@@ -316,6 +321,28 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		{
 			mustGenerate = true;
 		}
+		
+		final int bundleNameEnd=transformationPath.indexOf('/', 1);
+	    final String bundleName=transformationPath.substring(1,bundleNameEnd);
+	    Bundle bundle=Platform.getBundle(bundleName);
+	    if (bundle != null) {
+		    final URL bundleFileURL=bundle.getEntry(transformationPath.substring(bundleNameEnd));
+			try {
+				URL fileURL = FileLocator.toFileURL(bundleFileURL);
+			    File transformationFile =new File(fileURL.getFile());
+			    if (	feedbackFile.exists() &&
+			    		transformationFile.lastModified() > 
+						ResourcesPlugin.getWorkspace().getRoot().getFile(workspace.getFeedbackModelPath()).getLocalTimeStamp()) 
+				{
+					mustGenerate = true;
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	      
+	    }
+		
 		
 		if (mustGenerate)
 		{
