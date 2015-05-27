@@ -40,6 +40,9 @@
 								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample.zip">
 									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample/" />
 								</zip>
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample.zip">
+									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample/" />
+								</zip>
 
 								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.single_traffic_light_sample.zip">
 									<fileset dir="${tfsm_plaink3_sample_modeling_root}/org.gemoc.sample.tfsm.plaink3.single_traffic_light_sample/" />
