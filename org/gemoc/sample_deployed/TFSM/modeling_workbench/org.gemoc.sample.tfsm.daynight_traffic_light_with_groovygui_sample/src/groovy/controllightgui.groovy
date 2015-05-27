@@ -1,17 +1,23 @@
-package groovy
+
 
 import javax.swing.WindowConstants as WC
+
 import java.awt.BorderLayout as BL
 import java.awt.FlowLayout;
+
+
 import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.*
 import org.eclipse.swt.layout.RowLayout as Layout
 import org.eclipse.swt.graphics.Image
 import org.eclipse.swt.events.*
+
 import java.net.ServerSocket
 import java.awt.BorderLayout
 import java.awt.FlowLayout
 import java.awt.Font
+
+import org.eclipse.core.internal.runtime.PrintStackUtil;
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.emf.common.util.URI
 
@@ -23,18 +29,14 @@ class controllightgui {
 	
 	
 	
-	def crossredday = new Image(display, ResourcesPlugin.getWorkspace().getRoot()
-		.findMember("/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample/groovy/cross0-day.png").getLocation().toString())
-	def crossrednight = new Image(display, ResourcesPlugin.getWorkspace().getRoot()
-		.findMember("/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample/groovy/cross0-night.png").getLocation().toString())
-	def crossgreenday = new Image(display, ResourcesPlugin.getWorkspace().getRoot()
-		.findMember("/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample/groovy/cross1-day.png").getLocation().toString())
-	def crossgreennight = new Image(display, ResourcesPlugin.getWorkspace().getRoot()
-		.findMember("/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample/groovy/cross1-night.png").getLocation().toString())
+	def crossredday
+	def crossrednight
+	def crossgreenday
+	def crossgreennight
 	
 	
 	
-	def server = new ServerSocket(4444)
+	def server
 	def boolean needRefresh = true
 	def boolean isDay = true
 	def boolean isNight = false
@@ -51,6 +53,24 @@ class controllightgui {
 	//
 	// Semaphore GUI initialization
     void initControlLight() { 
+		try{
+			crossredday = new Image(display, ResourcesPlugin.getWorkspace().getRoot()
+				.findMember("/org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample/src/groovy/cross0-day.png").getLocation().toString())
+			crossrednight = new Image(display, ResourcesPlugin.getWorkspace().getRoot()
+				.findMember("/org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample/src/groovy/cross0-night.png").getLocation().toString())
+			crossgreenday = new Image(display, ResourcesPlugin.getWorkspace().getRoot()
+				.findMember("/org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample/src/groovy/cross1-day.png").getLocation().toString())
+			crossgreennight = new Image(display, ResourcesPlugin.getWorkspace().getRoot()
+				.findMember("/org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample/src/groovy/cross1-night.png").getLocation().toString())
+		} catch(e){
+			println "Problem finding images for the GUI, please check the path"
+			throw e
+		}	
+		server = new ServerSocket(4444)
+		
+		internalInitControlLight()
+	}
+	void internalInitControlLight() {
 		def displayThread = Thread.start {
 			def display = new Display(); // display must be created in the thread that wait for the  readAndDispatch()
 			def shell = new Shell(display)
