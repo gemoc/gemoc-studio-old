@@ -302,15 +302,17 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		IExecutionWorkspace workspace = context.getWorkspace();
 		String transformationPath = context.getLanguageDefinitionExtension().getQVTOPath();
 		boolean mustGenerate = false;
-		IFile mocFile = ResourcesPlugin.getWorkspace().getRoot().getFile(workspace.getMoCPath());
+		IFile mocFile = ResourcesPlugin.getWorkspace().getRoot().getFile(workspace.getMoCPath());		
 		if (!mocFile.exists()
-			|| workspace.getModelPath().toFile().lastModified() > workspace.getMoCPath().toFile().lastModified()) 
+			|| 	ResourcesPlugin.getWorkspace().getRoot().getFile(workspace.getModelPath()).getLocalTimeStamp() > 
+				ResourcesPlugin.getWorkspace().getRoot().getFile(workspace.getMoCPath()).getLocalTimeStamp()) 
 		{
 			mustGenerate = true;
 		}
 		IFile feedbackFile = ResourcesPlugin.getWorkspace().getRoot().getFile(workspace.getFeedbackModelPath());
 		if (!feedbackFile.exists()
-				|| workspace.getModelPath().toFile().lastModified() > workspace.getFeedbackModelPath().toFile().lastModified()) 
+				|| 	ResourcesPlugin.getWorkspace().getRoot().getFile(workspace.getModelPath()).getLocalTimeStamp() > 
+					ResourcesPlugin.getWorkspace().getRoot().getFile(workspace.getFeedbackModelPath()).getLocalTimeStamp()) 
 		{
 			mustGenerate = true;
 		}
