@@ -29,7 +29,7 @@ package tfsm
 	 */ 
 	-- The user should be allowed to inject events whenever needed.
 	context FSMEvent
-    def: occurs : Event = self
+     def: occurs : Event = self
     context State
      --def : entering : Event = StartEvent
      --def : entering : Event = self.onEnter()
@@ -44,8 +44,11 @@ package tfsm
 	 def : evaluatedTrue : Event  = self
 	 def : evaluatedFalse : Event = self
 	context TFSM
-	 def: start : Event = self
+	 def: start : Event = self.init()
 	 def: stall : Event = self
+	context TimedSystem
+	 def: start : Event = self.init() 
+	
 
 /**
  * MoC Constraints to AS association
@@ -143,4 +146,16 @@ package tfsm
 		inv firstOnlyOnce:
 			let onlyOneFirst : Event = Expression OneTickAndNoMore(self.start) in
 			Relation Coincides(self.start,onlyOneFirst)	
+		
+		
+	
+	context TimedSystem	
+		
+		inv startTimedSystemBeforeAllStartTFSM:
+			let allStartTFSM : Event = Expression Union(self.tfsms.start) in
+			Relation Precedes(self.start, allStartTFSM)
+		
+		inv firstOnlyOnce:
+			let onlyOneFirst : Event = Expression OneTickAndNoMore(self.start) in
+			Relation Coincides(self.start,onlyOneFirst)
 endpackage

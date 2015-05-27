@@ -160,7 +160,7 @@ public interface TFSM extends NamedElement {
 	 * @model
 	 * @generated
 	 */
-	String Init();
+	String init();
 
 	/**
 	 * <!-- begin-user-doc -->

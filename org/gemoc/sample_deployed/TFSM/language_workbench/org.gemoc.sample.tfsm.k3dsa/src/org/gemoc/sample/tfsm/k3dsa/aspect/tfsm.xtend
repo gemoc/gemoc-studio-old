@@ -33,7 +33,7 @@ class TFSMAspect extends NamedElementAspect {
 	// should be added automatically by the dsa, currently introduced directly in the ecore
 	public State currentState;
 
-	def public String Init() {
+	def public String init() {
 		if (_self.currentState == null) {
 
 			_self.currentState = _self.initialState;
@@ -110,6 +110,12 @@ class FSMClockAspect extends NamedElementAspect {
 
 @Aspect(className=TimedSystem)
 class TimedSystemAspect extends NamedElementAspect {
+	def public String init() {
+		_self.tfsms.forEach[tfsm | tfsm.currentState = null]
+		_self.globalClocks.forEach[globalClock | globalClock.numberOfTicks = 0]
+		
+		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".Init()]Initialized " + _self.name);
+	}
 }
 
 @Aspect(className=EvaluateGuard)

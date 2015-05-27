@@ -71,4 +71,12 @@ public interface TimedSystem extends NamedElement {
 	 */
 	EList<FSMEvent> getGlobalEvents();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void init();
+
 } // TimedSystem
