@@ -64,7 +64,13 @@ public class CreateNewGemocLanguageProject extends Wizard implements INewWizard 
 	@Override
 	public IWizardPage getNextPage(IWizardPage page) {
 		if (page == _askProjectNamePage) {
-			_askLanguageNamePage.setLanguageName(_askProjectNamePage.getProjectName());
+			int index = _askProjectNamePage.getProjectName().indexOf(".xdsml");
+			if(index != -1){
+				_askLanguageNamePage.setLanguageName(_askProjectNamePage.getProjectName().substring(0, index));		
+			}
+			else{
+				_askLanguageNamePage.setLanguageName(_askProjectNamePage.getProjectName());
+			}
 		}
 		return super.getNextPage(page);
 	}
