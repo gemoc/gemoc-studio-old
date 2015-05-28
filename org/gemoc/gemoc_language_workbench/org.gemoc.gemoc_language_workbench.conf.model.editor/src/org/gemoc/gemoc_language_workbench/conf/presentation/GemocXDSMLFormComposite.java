@@ -55,6 +55,8 @@ import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectMoCCIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectODesignIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectPluginIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectXtextIProjectDialog;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateAnimatorProjectWizardContextAction;
+import org.gemoc.gemoc_language_workbench.ui.wizards.CreateAnimatorProjectWizardContextAction.CreateAnimatorProjectAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDSEWizardContextAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDSEWizardContextAction.CreateDSEAction;
 import org.gemoc.gemoc_language_workbench.ui.wizards.CreateDomainModelWizardContextAction;
@@ -785,9 +787,9 @@ public class GemocXDSMLFormComposite extends AbstractGemocFormComposite {
 				editingDomain.getCommandStack().execute(
 						new RecordingCommand(teditingDomain) {
 							public void doExecute() {
-								CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(
+								CreateAnimatorProjectWizardContextAction action = new CreateAnimatorProjectWizardContextAction(
 										rootModelElement);
-								action.actionToExecute = CreateEditorProjectAction.CREATE_NEW_SIRIUS_PROJECT;
+								action.actionToExecute = CreateAnimatorProjectAction.CREATE_NEW_SIRIUS_PROJECT;
 								action.execute();
 								initControlFromWrappedObject();
 							}
