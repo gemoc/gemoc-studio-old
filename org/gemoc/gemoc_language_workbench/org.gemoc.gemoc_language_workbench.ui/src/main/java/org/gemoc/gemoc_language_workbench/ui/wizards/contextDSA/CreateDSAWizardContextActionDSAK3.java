@@ -15,6 +15,7 @@ import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFile;
 import org.gemoc.gemoc_language_workbench.ui.activeFile.ActiveFileEcore;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
+import org.gemoc.gemoc_language_workbench.ui.wizards.XDSMLProjectHelper;
 
 import fr.inria.diverse.commons.eclipse.pde.wizards.pages.pde.TemplateListSelectionPage;
 import fr.inria.diverse.k3.ui.wizards.NewK3ProjectWizard;
@@ -58,7 +59,7 @@ public class CreateDSAWizardContextActionDSAK3 extends CreateDSAWizardContextBas
 				
 				wd.create();
 
-				k3Wizard.getPageProject().setProjectName(_gemocLanguageIProject.getName()+".k3dsa");
+				k3Wizard.getPageProject().setProjectName(XDSMLProjectHelper.baseProjectName(_gemocLanguageIProject)+".k3dsa");
 				k3Wizard.getPageProject().setProjectKind(KindsOfProject.PLUGIN);
 				// set field as much as possible
 				

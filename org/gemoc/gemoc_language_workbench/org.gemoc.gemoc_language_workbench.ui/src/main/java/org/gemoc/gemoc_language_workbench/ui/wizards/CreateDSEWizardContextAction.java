@@ -78,7 +78,7 @@ public class CreateDSEWizardContextAction {
 				// fine initialization
 				LanguageDefinition languageDefinition = getLanguageDefinition();
 				if(languageDefinition != null){
-					createNewDSEProjectWizard._askProjectNamePage.setInitialProjectName(gemocLanguageIProject.getName()+".dse");
+					createNewDSEProjectWizard._askProjectNamePage.setInitialProjectName(XDSMLProjectHelper.baseProjectName(gemocLanguageIProject)+".dse");
 					createNewDSEProjectWizard._askDSEInfoPage.initialTemplateECLFileFieldValue = languageDefinition.getName();
 					if(languageDefinition.getDomainModelProject() != null){
 						createNewDSEProjectWizard._askDSEInfoPage.initialRootContainerFieldValue = languageDefinition.getDomainModelProject().getDefaultRootEObjectQualifiedName();

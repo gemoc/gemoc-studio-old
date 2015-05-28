@@ -12,6 +12,20 @@ import org.gemoc.gemoc_language_workbench.ui.Activator;
 
 public class XDSMLProjectHelper {
 
+	/**
+	 * Computer the base name for a project base on xdsml project
+	 * ie. if it ends with .xdsml this suffix is removed
+	 * @param xdsmlProject
+	 * @return
+	 */
+	public static String baseProjectName(IProject xdsmlProject){
+		int index = xdsmlProject.getName().indexOf(".xdsml");
+		if(index != -1){
+			return xdsmlProject.getName().substring(0, index);		
+		}
+		return xdsmlProject.getName();
+	}
+	
 	public static LanguageDefinition getLanguageDefinition(IProject searchedProject){
 
 		if(searchedProject != null){

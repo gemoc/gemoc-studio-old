@@ -64,7 +64,7 @@ public class CreateMOCCWizardContextAction {
 				// fine initialization
 				LanguageDefinition languageDefinition = getLanguageDefinition();
 				if(languageDefinition != null){
-					createNewMoCCProjectWizard._askProjectNamePage.setInitialProjectName(gemocLanguageIProject.getName()+".mocc");
+					createNewMoCCProjectWizard._askProjectNamePage.setInitialProjectName(XDSMLProjectHelper.baseProjectName(gemocLanguageIProject)+".mocc");
 					createNewMoCCProjectWizard._askMoCInfoPage.initialTemplateMoCFileFieldValue = languageDefinition.getName().replaceAll(" ", "_");
 				}
 				wizard.init(workbench, null);
