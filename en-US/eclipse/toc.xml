@@ -113,7 +113,7 @@
          <topic label="Variable View" href="ch02s03.html#modeling-workbench-executing-model-variable-view-section"/>
       </topic>
    </topic>
-   <topic label="Make Marked Graph models executable with the GEMOC Studio" href="ch03.html">
+   <topic label="Tutorial: Make Marked Graph models executable with the GEMOC Studio" href="ch03.html">
       <topic label="What is expected at the end of this tutorial" href="ch03.html#_what_is_expected_at_the_end_of_this_tutorial"/>
       <topic label="Install the projects defining the Marked Graph AS and CS" href="ch03s02.html">
          <topic label="Import the Marked Graph AS and CS" href="ch03s02.html#_import_the_marked_graph_as_and_cs"/>
