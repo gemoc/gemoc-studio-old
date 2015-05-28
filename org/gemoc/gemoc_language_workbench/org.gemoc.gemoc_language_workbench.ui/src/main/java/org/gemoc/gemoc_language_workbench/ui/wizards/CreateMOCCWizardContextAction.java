@@ -1,14 +1,8 @@
 package org.gemoc.gemoc_language_workbench.ui.wizards;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IWorkbench;
@@ -16,7 +10,6 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.gemoc.commons.eclipse.ui.WizardFinder;
-import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.MoCCProject;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
@@ -138,23 +131,8 @@ public class CreateMOCCWizardContextAction {
 		if(this.gemocLanguageModel != null){
 			return this.gemocLanguageModel;
 		}
-		if(this.gemocLanguageIProject != null){
-			IFile configFile = gemocLanguageIProject.getFile(new Path(
-					Activator.GEMOC_PROJECT_CONFIGURATION_FILE));
-			if (configFile.exists()) {
-				// Obtain a new resource set
-				ResourceSet resSet = new ResourceSetImpl();
-				// get the resource
-				Resource resource = resSet
-						.getResource(URI.createURI(configFile.getLocationURI()
-								.toString()), true);
-				
-				
-				return (LanguageDefinition) resource
-						.getContents().get(0);
-			}
-		}
-		return null;
+
+		return XDSMLProjectHelper.getLanguageDefinition(gemocLanguageIProject);
 	}
 
 

@@ -9,7 +9,7 @@ public class CreateDSAWizardContextAction {
 
 	public enum CreateDSAAction {CREATE_NEW_K2_DSA_PROJECT, CREATE_NEW_K3_DSA_PROJECT, SELECT_EXISTING_DSA_PROJECT};
 	
-	public CreateDSAAction actionToExecute = CreateDSAAction.CREATE_NEW_K2_DSA_PROJECT;
+	public CreateDSAAction actionToExecute = CreateDSAAction.CREATE_NEW_K3_DSA_PROJECT;
 	
 	protected IProject gemocLanguageIProject; 
 	

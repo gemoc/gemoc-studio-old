@@ -179,25 +179,9 @@ public class CreateMoCWizardContextAction {
 	}
 
 	protected LanguageDefinition getLanguageDefinition(){
-		if(this.gemocLanguageIProject != null){
-			IFile configFile = gemocLanguageIProject.getFile(new Path(
-					Activator.GEMOC_PROJECT_CONFIGURATION_FILE));
-			if (configFile.exists()) {
-				// Obtain a new resource set
-				ResourceSet resSet = new ResourceSetImpl();
-				// get the resource
-				Resource resource = resSet
-						.getResource(URI.createURI(configFile.getLocationURI()
-								.toString()), true);
-				
-				
-				return (LanguageDefinition) resource
-						.getContents().get(0);
-			}
-		}
 		if(this.gemocLanguageModel != null){
 			return this.gemocLanguageModel;
 		}
-		return null;
+		return XDSMLProjectHelper.getLanguageDefinition(gemocLanguageIProject);
 	}
 }
