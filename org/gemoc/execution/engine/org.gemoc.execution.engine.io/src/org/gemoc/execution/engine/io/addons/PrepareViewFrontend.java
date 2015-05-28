@@ -52,4 +52,11 @@ public class PrepareViewFrontend extends DefaultEngineAddon
 		_timelineView.update(engine);
 	}
 
+	@Override
+	public void proposedLogicalStepsChanged(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) {
+		_timelineView.update(engine);
+	}
+	
+	
+
 }

@@ -100,6 +100,12 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		}
 	}
 
+	protected void notifyProposedLogicalStepsChanged(){
+		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
+		{
+			addon.proposedLogicalStepsChanged(this, getPossibleLogicalSteps());
+		}
+	}
 	protected void notifyLogicalStepSelected() {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
 		{
@@ -331,11 +337,8 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	public void recomputePossibleLogicalSteps()
 	{
 		getSolver().revertForceClockEffect();
-		updatePossibleLogicalSteps();
-		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
-		{
-			addon.proposedLogicalStepsChanged(this, getPossibleLogicalSteps());
-		}
+		updatePossibleLogicalSteps();	
+		notifyProposedLogicalStepsChanged();
 	}
 
 	private ISolver getSolver()

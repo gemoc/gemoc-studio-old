@@ -457,7 +457,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 	@Override
 	public void proposedLogicalStepsChanged(IExecutionEngine engine,
 			Collection<LogicalStep> logicalSteps) {
-		// TODO Auto-generated method stub
+		reselectEngine(engine);
 		
 	}
 }

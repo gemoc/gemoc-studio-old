@@ -367,7 +367,7 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	@Override
 	public void proposedLogicalStepsChanged(IExecutionEngine engine,
 			Collection<LogicalStep> logicalSteps) {
-		// TODO Auto-generated method stub
+		update(engine);
 		
 	}
 
