@@ -37,6 +37,7 @@ public class CreateNewGemocLanguageProject extends Wizard implements INewWizard 
 		_askProjectNamePage = new WizardNewProjectCreationPage("NewGemocLanguageProjectName");
 		_askProjectNamePage.setTitle("Project");
 		_askProjectNamePage.setDescription("Create a new Gemoc Language Project");
+		_askProjectNamePage.setInitialProjectName("org.company.my_language.xdsml");
 		addPage(_askProjectNamePage);
 
 		_askLanguageNamePage = new AskLanguageNameWizardPage("NewGemocLanguageName");
