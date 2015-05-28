@@ -173,7 +173,7 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 		Map<EObject, Collection<Setting>>  unresolvedProxies = EcoreUtil.UnresolvedProxyCrossReferencer.find(resourceSet);
 		if(unresolvedProxies.size() != 0){
 			Activator.getDefault().warn("There are unresolved proxies in "+solverInputURI+ ", the first is "+unresolvedProxies.entrySet().toArray()[0]);
-			Activator.getDefault().warn("Please verify your extendedCCSL file, (it must not contain resolve warning).");
+			Activator.getDefault().warn("Please verify that you don't have the modeling nature for your project so that the aird indexed all the resources, (it must not contain resolve warning).");
 		}
 	}
 
