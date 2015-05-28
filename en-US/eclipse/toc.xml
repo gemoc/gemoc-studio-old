@@ -113,52 +113,40 @@
          <topic label="Variable View" href="ch02s03.html#modeling-workbench-executing-model-variable-view-section"/>
       </topic>
    </topic>
-   <topic label="GEMOC xDSML definition tutorial with Automaton DSML" href="ch03.html">
-      <topic label="Introduction" href="ch03.html#_introduction_3"/>
-      <topic label="The GEMOC Approach for defining eXecutable DSML (xDSML)" href="ch03s02.html">
-         <topic label="Architecture of a GEMOC xDSML" href="ch03s02.html#sec-GEMOC-architecture"/>
-         <topic label="Main Characteristics of the GEMOC Process." href="ch03s02.html#sec-GEMOC-characteristics"/>
-         <topic label="Recommanded GEMOC Process" href="ch03s02.html#sec-GEMOC-process"/>
+   <topic label="Make Marked Graph models executable with the GEMOC Studio" href="ch03.html">
+      <topic label="What is expected at the end of this tutorial" href="ch03.html#_what_is_expected_at_the_end_of_this_tutorial"/>
+      <topic label="Install the projects defining the Marked Graph AS and CS" href="ch03s02.html">
+         <topic label="Import the Marked Graph AS and CS" href="ch03s02.html#_import_the_marked_graph_as_and_cs"/>
+         <topic label="Abstract Syntax" href="ch03s02.html#_abstract_syntax"/>
+         <topic label="Concrete Syntax and Sample Model" href="ch03s02.html#_concrete_syntax_and_sample_model"/>
       </topic>
-      <topic label="Definition of the requirements/expectations on the xDSML" href="ch03s03.html">
-         <topic label="Application Domain: Automata" href="ch03s03.html#automata-domain"/>
-         <topic label="Description of automata" href="ch03s03.html#_description_of_automata"/>
-         <topic label="Informal behavior" href="ch03s03.html#_informal_behavior"/>
-         <topic label="Scenarios" href="ch03s03.html#_scenarios"/>
-         <topic label="Examples of models" href="ch03s03.html#_examples_of_models"/>
+      <topic label="Set up an xDSML project" href="ch03s03.html">
+         <topic label="Create an xDSML Project" href="ch03s03.html#_create_an_xdsml_project"/>
+         <topic label="Open xDSML View" href="ch03s03.html#_open_xdsml_view"/>
+         <topic label="Select the AS" href="ch03s03.html#_select_the_as"/>
+         <topic label="Select the Graphical Editor" href="ch03s03.html#_select_the_graphical_editor"/>
       </topic>
-      <topic label="Creating an xDSML Project" href="ch03s04.html"/>
-      <topic label="Increment 1 : Deterministic Automata" href="ch03s05.html">
-         <topic label="Specification of the xDSML interface" href="ch03s05.html#_specification_of_the_xdsml_interface"/>
-         <topic label="Define the Abstract Syntax (AS)" href="ch03s05.html#_define_the_abstract_syntax_as"/>
-         <topic label="Define concrete syntaxes (CS)" href="ch03s05.html#_define_concrete_syntaxes_cs"/>
-         <topic label="Identifying DSE" href="ch03s05.html#_identifying_dse"/>
-         <topic label="Defining Domain-Specific Actions (DSA)" href="ch03s05.html#_defining_domain_specific_actions_dsa">
-            <topic label="Execution Data (ED)" href="ch03s05.html#_execution_data_ed"/>
-            <topic label="Execution Functions (EFs)" href="ch03s05.html#_execution_functions_efs"/>
-            <topic label="Testing DSA" href="ch03s05.html#_testing_dsa"/>
+      <topic label="Define the Execution Semantics" href="ch03s04.html">
+         <topic label="Define DSA" href="ch03s04.html#_define_dsa">
+            <topic label="Extend the AS with ED and EF" href="ch03s04.html#_extend_the_as_with_ed_and_ef"/>
+            <topic label="Create the DSA Project" href="ch03s04.html#_create_the_dsa_project"/>
+            <topic label="Implement the DSA" href="ch03s04.html#_implement_the_dsa"/>
          </topic>
-         <topic label="Model of Concurrency and Communication (MoCC)" href="ch03s05.html#_model_of_concurrency_and_communication_mocc">
-            <topic label="Reusable part of the MoCC: MoCCML" href="ch03s05.html#_reusable_part_of_the_mocc_moccml"/>
-            <topic label="Specific part of the MoCC" href="ch03s05.html#_specific_part_of_the_mocc"/>
-            <topic label="Testing the MoCC" href="ch03s05.html#_testing_the_mocc"/>
-         </topic>
-         <topic label="Using the Modeling Workbench" href="ch03s05.html#_using_the_modeling_workbench">
-            <topic label="Technical Workarounds" href="ch03s05.html#_technical_workarounds"/>
-            <topic label="Testing and debugging the xDSML" href="ch03s05.html#_testing_and_debugging_the_xdsml"/>
+         <topic label="Define DSE" href="ch03s04.html#_define_dse">
+            <topic label="Create the DSE Project" href="ch03s04.html#_create_the_dse_project"/>
+            <topic label="Define DSE" href="ch03s04.html#_define_dse_2"/>
          </topic>
       </topic>
-      <topic label="Increment 2: new MoCC and DSA for Automata (using State Machines of MoCCML)" href="ch03s06.html"/>
-      <topic label="Increment 3: new MoCC and DSA for Automata (MoCC focused version)" href="ch03s07.html"/>
-      <topic label="Increment 4: Graphical visualization" href="ch03s08.html"/>
-      <topic label="Increment 5: Consider nondeterministic automata." href="ch03s09.html"/>
-      <topic label="Increment 6: Pushdown automaton" href="ch03s10.html"/>
-      <topic label="Increment 7: Call of user actions" href="ch03s11.html"/>
-      <topic label="Increment: TBD" href="ch03s12.html"/>
-      <topic label="TODO" href="ch03s13.html"/>
+      <topic label="Animate a Model" href="ch03s05.html">
+         <topic label="Launch the Modelling WorkBench" href="ch03s05.html#_launch_the_modelling_workbench"/>
+         <topic label="Import the project with a sample model" href="ch03s05.html#_import_the_project_with_a_sample_model"/>
+         <topic label="Create a Launch Configuration" href="ch03s05.html#_create_a_launch_configuration"/>
+         <topic label="Start the model" href="ch03s05.html#_start_the_model"/>
+         <topic label="Select a logical step" href="ch03s05.html#_select_a_logical_step"/>
+      </topic>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d0e2802"/>
+      <topic label="Articles" href="bi01.html#d0e2304"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
