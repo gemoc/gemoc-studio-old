@@ -1,0 +1,27 @@
+// Start of user code protected header
+// Automatically generated thanks to fr.obeo.dsl.workflow.gen/.../generate.mtl
+// from a Workflow model
+digraph G {
+	graph [ layout=dot rankdir=LR ranksep="2.0"]
+	edge [ style="setlinewidth(3)" ]
+	node [ shape=none fontsize="24" labelloc=b margin="0,1.0" ]
+//End of user code
+// Step: Execution Function and Data definition (DSA) -- TODO
+Execution_Function_and_Data_definition__DSA_ [ label="Execution Function and Data definition (DSA)" image="step.png" margin="0,0.8" ]
+	// Command: New Kermeta 3 project -- TODO
+	New_Kermeta_3_project [ label="New Kermeta 3 project" image="command.png" ]
+		New_Kermeta_3_project___K3_project [ label="K3 project" image="artifact_add.png" ]
+		New_Kermeta_3_project -> New_Kermeta_3_project___K3_project[ color=gray ]
+		New_Kermeta_3_project___xdsml [ label="xdsml" image="artifact_update.png" ]
+		New_Kermeta_3_project -> New_Kermeta_3_project___xdsml[ color=gray ]
+	// EndCommand: New Kermeta 3 project
+	Execution_Function_and_Data_definition__DSA_ -> New_Kermeta_3_project[ style="dashed,setlinewidth(5)" ]
+	// Command: Select existing Kermeta 3 project -- 
+	Select_existing_Kermeta_3_project [ label="Select existing Kermeta 3 project" image="command.png" ]
+		Select_existing_Kermeta_3_project___xdsml [ label="xdsml" image="artifact_update.png" ]
+		Select_existing_Kermeta_3_project -> Select_existing_Kermeta_3_project___xdsml[ color=gray ]
+	// EndCommand: Select existing Kermeta 3 project
+	Execution_Function_and_Data_definition__DSA_ -> Select_existing_Kermeta_3_project[ style="dashed,setlinewidth(5)" ]
+// EndStep: Execution Function and Data definition (DSA)
+}
+//

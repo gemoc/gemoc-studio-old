@@ -1,0 +1,13 @@
+// Start of user code protected header
+// Automatically generated thanks to fr.obeo.dsl.workflow.gen/.../generate.mtl
+// from a Workflow model
+digraph G {
+	graph [ layout=dot rankdir=LR ranksep="2.0"]
+	edge [ style="setlinewidth(3)" ]
+	node [ shape=none fontsize="24" labelloc=b margin="0,1.0" ]
+//End of user code
+// Step: Animators definition -- TODO
+Animators_definition [ label="Animators definition" image="step.png" margin="0,0.8" ]
+// EndStep: Animators definition
+}
+//

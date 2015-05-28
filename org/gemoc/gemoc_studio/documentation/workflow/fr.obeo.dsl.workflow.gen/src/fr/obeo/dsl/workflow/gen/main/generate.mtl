@@ -125,11 +125,14 @@ Artifacts updated by the [command.name/] Command:
 [template public generateWorkflowToDot(workflow : Workflow)]
 [file ('fig/' + workflow.getID() + '.dot', false, 'UTF-8')]
 [preambule() /]
+[comment]
 [workflow.toDot() /]
 [for (step : Step | workflow.categories.steps)]
-	[step.generateDot(workflow, false)/]
+	[step.generateDot(workflow, false, true)/]
 	[workflow.linkTo(step, '') /]
 [/for]
+[/comment]
+[workflow.categories->asSequence()->first().steps->asSequence()->first().generateDot(workflow, false, false, true) /]
 
 [fin() /]	
 [/file]
@@ -139,43 +142,48 @@ Artifacts updated by the [command.name/] Command:
 [template private generateToDot(step : Step, workflow: Workflow)]
 [file ('fig/' + step.getID() + '.dot', false, 'UTF-8')]
 [preambule() /]
-[step.generateDot(workflow, true) /]
+[step.generateDot(workflow, true, true, false) /]
 [fin() /]
 [/file]
 [/template]
 
-[template private generateDot(step : Step, workflow: Workflow, withArtifact: Boolean)]
+[template private generateDot(step : Step, parent: NamedElement, withArtifact: Boolean, withCommand: Boolean, withNextSteps: Boolean)]
 // Step: [step.name/] -- [step.description/]
-[step.toDot(workflow) /]
-[for (cmd: Command | step.commands) ]
-	[cmd.generateToDot(step, withArtifact) /]
-	[step.linkTo(cmd, 'style="dashed,setlinewidth(3)"') /]
+[step.toDot(parent) /]
+[if (withNextSteps)]
+[for (subStep: Step | step.next) ]
+	[subStep.generateDot(step, withArtifact, withCommand, withNextSteps) /]
+	[step.linkTo(subStep, 'style="dashed,setlinewidth(5)"') /]
 [/for]
+[/if]
+[if (withCommand) ]
+[for (command: Command | step.commands) ]
+	[command.generateToDot(step, withArtifact) /]
+	[step.linkTo(command, 'style="dashed,setlinewidth(5)"') /]
+[/for]
+[/if]
+// EndStep: [step.name/]
 [/template]
 
 [template private generateToDot(command : Command, step: Step, withArtifact: Boolean)]
-// [command.name/]
-// [command.description/]
+// Command: [command.name/] -- [command.description/]
 [command.toDot(step) /]
 [if (withArtifact)]
-[for (art: Artifact | command.artifacts->select(a | a.type = UpdateType::add ))]
-	[art.toDot(command) /]
-	[command.linkTo(art, 'color=gray') /]
-[/for]
-[for (art: Artifact | command.artifacts->select(a | a.type = UpdateType::update ))]
+[for (art: Artifact | command.artifacts)]
 	[art.toDot(command) /]
 	[command.linkTo(art, 'color=gray') /]
 [/for]
 [/if]
+// EndCommand: [command.name/]
 [/template]
 
 [template private generateToDot(artifact : Artifact, imageFile: String)]
 	[artifact.getID() /] ['['/] image="[imageFile/]", label="[artifact.name/]" ['['/]
 [/template]
 
-[template preambule()]
+[template private preambule()]
 // [protected ('protected header')]
-// Automatically generated thanks to fr.obeo.dsl.workflow.gen/.../toDot
+// Automatically generated thanks to fr.obeo.dsl.workflow.gen/.../generate.mtl
 // from a Workflow model
 digraph G {
 	graph ['['/] layout=dot rankdir=LR ranksep="2.0"[']'/]
@@ -184,12 +192,15 @@ digraph G {
 //[/protected]
 [/template]
 
-[template fin()]
+[template private fin()]
 }
+//
 [/template]
 
 [query public getID(c: NamedElement): String =
-    c.name.replaceAll(' ', '_').replaceAll('\\.', '_').replaceAll('\'', '_')
+    c.name.replaceAll(' ', '_').replaceAll('\\.', '_')
+		.replaceAll('\'', '_').replaceAll('\\(', '_')
+		.replaceAll('\\)', '_').replaceAll('\\/', '_')
 /]
 
 [query public getID(c: NamedElement, ctx: NamedElement): String =
@@ -202,9 +213,9 @@ digraph G {
 	from.getID() + ' -> '
 	    +
 	    if to.oclIsTypeOf(Artifact) then
-		to.getID(from)
+			to.getID(from)
 	    else
-		to.getID()
+			to.getID()
 	    endif
 	    + '[ ' + params + ' ]'
 /]

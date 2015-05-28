@@ -1,0 +1,31 @@
+// Start of user code protected header
+// Automatically generated thanks to fr.obeo.dsl.workflow.gen/.../generate.mtl
+// from a Workflow model
+digraph G {
+	graph [ layout=dot rankdir=LR ranksep="2.0"]
+	edge [ style="setlinewidth(3)" ]
+	node [ shape=none fontsize="24" labelloc=b margin="0,1.0" ]
+//End of user code
+// Step: Domain Model definition (AS) -- TODO
+Domain_Model_definition__AS_ [ label="Domain Model definition (AS)" image="step.png" margin="0,0.8" ]
+	// Command: Create EMF Project -- TODO
+	Create_EMF_Project [ label="Create EMF Project" image="command.png" ]
+		Create_EMF_Project___EMF_project [ label="EMF project" image="artifact_add.png" ]
+		Create_EMF_Project -> Create_EMF_Project___EMF_project[ color=gray ]
+		Create_EMF_Project___ecore [ label="ecore" image="artifact_add.png" ]
+		Create_EMF_Project -> Create_EMF_Project___ecore[ color=gray ]
+		Create_EMF_Project___genmodel [ label="genmodel" image="artifact_add.png" ]
+		Create_EMF_Project -> Create_EMF_Project___genmodel[ color=gray ]
+		Create_EMF_Project___xdsml [ label="xdsml" image="artifact_update.png" ]
+		Create_EMF_Project -> Create_EMF_Project___xdsml[ color=gray ]
+	// EndCommand: Create EMF Project
+	Domain_Model_definition__AS_ -> Create_EMF_Project[ style="dashed,setlinewidth(5)" ]
+	// Command: Select existing EMF project -- 
+	Select_existing_EMF_project [ label="Select existing EMF project" image="command.png" ]
+		Select_existing_EMF_project___xdsml [ label="xdsml" image="artifact_update.png" ]
+		Select_existing_EMF_project -> Select_existing_EMF_project___xdsml[ color=gray ]
+	// EndCommand: Select existing EMF project
+	Domain_Model_definition__AS_ -> Select_existing_EMF_project[ style="dashed,setlinewidth(5)" ]
+// EndStep: Domain Model definition (AS)
+}
+//

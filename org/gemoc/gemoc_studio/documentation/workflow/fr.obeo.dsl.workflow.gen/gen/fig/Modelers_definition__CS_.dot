@@ -1,0 +1,59 @@
+// Start of user code protected header
+// Automatically generated thanks to fr.obeo.dsl.workflow.gen/.../generate.mtl
+// from a Workflow model
+digraph G {
+	graph [ layout=dot rankdir=LR ranksep="2.0"]
+	edge [ style="setlinewidth(3)" ]
+	node [ shape=none fontsize="24" labelloc=b margin="0,1.0" ]
+//End of user code
+// Step: Modelers definition (CS) -- TODO
+Modelers_definition__CS_ [ label="Modelers definition (CS)" image="step.png" margin="0,0.8" ]
+	// Command: Select existing Tree editor -- 
+	Select_existing_Tree_editor [ label="Select existing Tree editor" image="command.png" ]
+		Select_existing_Tree_editor___xdsml [ label="xdsml" image="artifact_update.png" ]
+		Select_existing_Tree_editor -> Select_existing_Tree_editor___xdsml[ color=gray ]
+	// EndCommand: Select existing Tree editor
+	Modelers_definition__CS_ -> Select_existing_Tree_editor[ style="dashed,setlinewidth(5)" ]
+	// Command: New Tree editor -- TODO
+	New_Tree_editor [ label="New Tree editor" image="command.png" ]
+		New_Tree_editor___Edit_project [ label="Edit project" image="artifact_add.png" ]
+		New_Tree_editor -> New_Tree_editor___Edit_project[ color=gray ]
+		New_Tree_editor___Editor_project [ label="Editor project" image="artifact_add.png" ]
+		New_Tree_editor -> New_Tree_editor___Editor_project[ color=gray ]
+		New_Tree_editor___xdsml [ label="xdsml" image="artifact_update.png" ]
+		New_Tree_editor -> New_Tree_editor___xdsml[ color=gray ]
+	// EndCommand: New Tree editor
+	Modelers_definition__CS_ -> New_Tree_editor[ style="dashed,setlinewidth(5)" ]
+	// Command: New Xtext editor -- TODO
+	New_Xtext_editor [ label="New Xtext editor" image="command.png" ]
+		New_Xtext_editor___Xtext_project [ label="Xtext project" image="artifact_add.png" ]
+		New_Xtext_editor -> New_Xtext_editor___Xtext_project[ color=gray ]
+		New_Xtext_editor___Xtext_ui_project [ label="Xtext.ui project" image="artifact_add.png" ]
+		New_Xtext_editor -> New_Xtext_editor___Xtext_ui_project[ color=gray ]
+		New_Xtext_editor___xdsml [ label="xdsml" image="artifact_update.png" ]
+		New_Xtext_editor -> New_Xtext_editor___xdsml[ color=gray ]
+	// EndCommand: New Xtext editor
+	Modelers_definition__CS_ -> New_Xtext_editor[ style="dashed,setlinewidth(5)" ]
+	// Command: Select existing Xtext editor -- 
+	Select_existing_Xtext_editor [ label="Select existing Xtext editor" image="command.png" ]
+		Select_existing_Xtext_editor___xdsml [ label="xdsml" image="artifact_update.png" ]
+		Select_existing_Xtext_editor -> Select_existing_Xtext_editor___xdsml[ color=gray ]
+	// EndCommand: Select existing Xtext editor
+	Modelers_definition__CS_ -> Select_existing_Xtext_editor[ style="dashed,setlinewidth(5)" ]
+	// Command: Select existing Sirius editor -- 
+	Select_existing_Sirius_editor [ label="Select existing Sirius editor" image="command.png" ]
+		Select_existing_Sirius_editor___xdsml [ label="xdsml" image="artifact_update.png" ]
+		Select_existing_Sirius_editor -> Select_existing_Sirius_editor___xdsml[ color=gray ]
+	// EndCommand: Select existing Sirius editor
+	Modelers_definition__CS_ -> Select_existing_Sirius_editor[ style="dashed,setlinewidth(5)" ]
+	// Command: New Sirius editor -- TODO
+	New_Sirius_editor [ label="New Sirius editor" image="command.png" ]
+		New_Sirius_editor___Sirius_specification_project [ label="Sirius specification project" image="artifact_add.png" ]
+		New_Sirius_editor -> New_Sirius_editor___Sirius_specification_project[ color=gray ]
+		New_Sirius_editor___xdsml [ label="xdsml" image="artifact_update.png" ]
+		New_Sirius_editor -> New_Sirius_editor___xdsml[ color=gray ]
+	// EndCommand: New Sirius editor
+	Modelers_definition__CS_ -> New_Sirius_editor[ style="dashed,setlinewidth(5)" ]
+// EndStep: Modelers definition (CS)
+}
+//

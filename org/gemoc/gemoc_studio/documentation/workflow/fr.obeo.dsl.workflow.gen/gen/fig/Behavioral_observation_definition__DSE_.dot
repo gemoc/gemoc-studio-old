@@ -1,0 +1,31 @@
+// Start of user code protected header
+// Automatically generated thanks to fr.obeo.dsl.workflow.gen/.../generate.mtl
+// from a Workflow model
+digraph G {
+	graph [ layout=dot rankdir=LR ranksep="2.0"]
+	edge [ style="setlinewidth(3)" ]
+	node [ shape=none fontsize="24" labelloc=b margin="0,1.0" ]
+//End of user code
+// Step: Behavioral observation definition (DSE) -- TODO
+Behavioral_observation_definition__DSE_ [ label="Behavioral observation definition (DSE)" image="step.png" margin="0,0.8" ]
+	// Command: New ECL file -- TODO
+	New_ECL_file [ label="New ECL file" image="command.png" ]
+		New_ECL_file___ecl_file [ label="ecl file" image="artifact_add.png" ]
+		New_ECL_file -> New_ECL_file___ecl_file[ color=gray ]
+		New_ECL_file___xdsml [ label="xdsml" image="artifact_update.png" ]
+		New_ECL_file -> New_ECL_file___xdsml[ color=gray ]
+	// EndCommand: New ECL file
+	Behavioral_observation_definition__DSE_ -> New_ECL_file[ style="dashed,setlinewidth(5)" ]
+	// Command: New Modelh'x project -- TODO
+	New_Modelh_x_project [ label="New Modelh'x project" image="command.png" ]
+	// EndCommand: New Modelh'x project
+	Behavioral_observation_definition__DSE_ -> New_Modelh_x_project[ style="dashed,setlinewidth(5)" ]
+	// Command: Select existing ECL project -- 
+	Select_existing_ECL_project [ label="Select existing ECL project" image="command.png" ]
+		Select_existing_ECL_project___xdsml [ label="xdsml" image="artifact_update.png" ]
+		Select_existing_ECL_project -> Select_existing_ECL_project___xdsml[ color=gray ]
+	// EndCommand: Select existing ECL project
+	Behavioral_observation_definition__DSE_ -> Select_existing_ECL_project[ style="dashed,setlinewidth(5)" ]
+// EndStep: Behavioral observation definition (DSE)
+}
+//
