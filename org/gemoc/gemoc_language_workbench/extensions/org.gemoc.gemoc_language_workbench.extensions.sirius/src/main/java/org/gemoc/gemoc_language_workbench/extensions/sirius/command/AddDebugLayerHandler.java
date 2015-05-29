@@ -669,7 +669,7 @@ public class AddDebugLayerHandler extends AbstractHandler {
 	public static String getOrCreateServiceClass(IFolder serviceFolder,
 			String projectName, String languageName, String layerName,
 			IProgressMonitor monitor) throws IOException, CoreException {
-		final String className = toCamelCase(languageName) + "DebugServices";
+		final String className = toCamelCase(languageName.replaceAll("\\W", "")) + "DebugServices";
 		final IFile classFile = serviceFolder.getFile(new Path(className
 				+ ".java"));
 		final String packageName = projectName + ".services";
@@ -734,10 +734,12 @@ public class AddDebugLayerHandler extends AbstractHandler {
 		String[] parts = s.split("_");
 		String camelCaseString = "";
 		for (String part : parts) {
+			if (part.length() > 0) {
 			camelCaseString = camelCaseString
 					+ part.substring(0, 1).toUpperCase()
 					+ part.substring(1).toLowerCase();
 		}
+			}
 		return camelCaseString;
 	}
 
