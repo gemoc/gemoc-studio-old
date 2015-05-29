@@ -174,6 +174,25 @@
       </commands>
     </steps>
     <steps name="Animators definition"
-        description="TODO"/>
+        description="TODO">
+      <commands
+          name="New Animation Viewpoint project">
+        <artifacts
+            name="xdsml"
+            type="update"/>
+        <artifacts
+            name="Sirius specification project"
+            description="TODO"/>
+        <artifacts
+            name="CS Sirius specificaiton project"
+            type="update"/>
+      </commands>
+      <commands
+          name="Select existing Animation Viewpoint project">
+        <artifacts
+            name="xdsml"
+            type="update"/>
+      </commands>
+    </steps>
   </categories>
 </workflow:Workflow>

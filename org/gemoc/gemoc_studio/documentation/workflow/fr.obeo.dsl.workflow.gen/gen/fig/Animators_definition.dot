@@ -8,6 +8,22 @@ digraph G {
 //End of user code
 // Step: Animators definition -- TODO
 Animators_definition [ label="Animators definition" image="step.png" margin="0,0.8" ]
+	// Command: New Animation Viewpoint project -- 
+	New_Animation_Viewpoint_project [ label="New Animation Viewpoint project" image="command.png" ]
+		New_Animation_Viewpoint_project___xdsml [ label="xdsml" image="artifact_update.png" ]
+		New_Animation_Viewpoint_project -> New_Animation_Viewpoint_project___xdsml[ color=gray ]
+		New_Animation_Viewpoint_project___Sirius_specification_project [ label="Sirius specification project" image="artifact_add.png" ]
+		New_Animation_Viewpoint_project -> New_Animation_Viewpoint_project___Sirius_specification_project[ color=gray ]
+		New_Animation_Viewpoint_project___CS_Sirius_specificaiton_project [ label="CS Sirius specificaiton project" image="artifact_update.png" ]
+		New_Animation_Viewpoint_project -> New_Animation_Viewpoint_project___CS_Sirius_specificaiton_project[ color=gray ]
+	// EndCommand: New Animation Viewpoint project
+	Animators_definition -> New_Animation_Viewpoint_project[ style="dashed,setlinewidth(5)" ]
+	// Command: Select existing Animation Viewpoint project -- 
+	Select_existing_Animation_Viewpoint_project [ label="Select existing Animation Viewpoint project" image="command.png" ]
+		Select_existing_Animation_Viewpoint_project___xdsml [ label="xdsml" image="artifact_update.png" ]
+		Select_existing_Animation_Viewpoint_project -> Select_existing_Animation_Viewpoint_project___xdsml[ color=gray ]
+	// EndCommand: Select existing Animation Viewpoint project
+	Animators_definition -> Select_existing_Animation_Viewpoint_project[ style="dashed,setlinewidth(5)" ]
 // EndStep: Animators definition
 }
 //
