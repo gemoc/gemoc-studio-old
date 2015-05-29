@@ -23,6 +23,7 @@ import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 public class LaunchConfigurationConfigurationTab extends LaunchConfigurationTab 
 {
 
+	public static final int DEFAULT_DEADLOCK_DETECTION_DEPTH = 0;
 	protected FormattedText _deadlockDetectionDepth;
 
 	
@@ -35,7 +36,7 @@ public class LaunchConfigurationConfigurationTab extends LaunchConfigurationTab
 		area.layout();
 		setControl(area);
 
-		Group motorArea = createGroup(area, "Motor configuration:");
+		Group motorArea = createGroup(area, "Engine configuration:");
 		createMotorLayout(motorArea, null);
 	}
 
@@ -48,13 +49,13 @@ public class LaunchConfigurationConfigurationTab extends LaunchConfigurationTab
 		// gd.horizontalSpan = 1;
 		gd.widthHint = 200;
 		
-		createTextLabelLayout(parent, "Deadlock detection depth");
+		createTextLabelLayout(parent, "Deadlock detection depth (0 to disable it)", "when this number of step is executed and all of them produce similar LogicalSteps, then the engine will stop");
 		Text underlyingText = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		underlyingText.setLayoutData(gd);
 		underlyingText.setFont(font);
 		underlyingText.addModifyListener(fBasicModifyListener);
 		_deadlockDetectionDepth = new FormattedText(underlyingText);
-		_deadlockDetectionDepth.setFormatter(new NumberFormatter("#####"));
+		_deadlockDetectionDepth.setFormatter(new NumberFormatter("#####0"));
 
 	}
 
@@ -72,7 +73,7 @@ public class LaunchConfigurationConfigurationTab extends LaunchConfigurationTab
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 		configuration.setAttribute(
 				RunConfiguration.LAUNCH_DEADLOCK_DETECTION_DEPTH,
-				1000000000);
+				DEFAULT_DEADLOCK_DETECTION_DEPTH);
 	}
 
 	@Override

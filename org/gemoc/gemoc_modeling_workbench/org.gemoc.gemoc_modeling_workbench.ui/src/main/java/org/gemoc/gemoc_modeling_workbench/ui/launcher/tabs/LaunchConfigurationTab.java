@@ -32,14 +32,31 @@ public abstract class LaunchConfigurationTab extends AbstractLaunchConfiguration
 	 *            the Parent of this argument tab
 	 * @param labelString
 	 *            the label of the input text to create
-	 * @param adapter
-	 *            the event that is triggered when clicking on OK button
 	 */
 	protected void createTextLabelLayout(Composite parent, String labelString) {
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		parent.setLayoutData(gd);
 		Label inputLabel = new Label(parent, SWT.NONE);
 		inputLabel.setText(labelString); //$NON-NLS-1$
+		//gd = new GridData();
+		//gd.horizontalSpan = 2;
+		//inputLabel.setLayoutData(gd);
+	}
+	/**
+	 * 
+	 * @param parent
+	 *            the Parent of this argument tab
+	 * @param labelString
+	 *            the label of the input text to create
+	 * @param toolTipText
+	 * 			  the text for tool tip
+	 */
+	protected void createTextLabelLayout(Composite parent, String labelString, String toolTipText) {
+		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		parent.setLayoutData(gd);
+		Label inputLabel = new Label(parent, SWT.NONE);
+		inputLabel.setText(labelString); //$NON-NLS-1$
+		inputLabel.setToolTipText(toolTipText);
 		//gd = new GridData();
 		//gd.horizontalSpan = 2;
 		//inputLabel.setLayoutData(gd);

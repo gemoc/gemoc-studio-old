@@ -90,7 +90,9 @@ public class ExecutionEngine extends AbstractExecutionEngine implements IDisposa
 	public ExecutionEngine(IExecutionContext executionContext) 
 	{
 		super(executionContext);
-		_lastStepsRun = new ArrayDeque<LogicalStep>(getDeadlockDetectionDepth());
+		if(isDeadlockDetectionEnabled()){
+			_lastStepsRun = new ArrayDeque<LogicalStep>(getDeadlockDetectionDepth());
+		}
 		_mseStateController = new DefaultMSEStateController();
 		_executionContext.getExecutionPlatform().getMSEStateControllers().add(_mseStateController);
 		Activator.getDefault().info("*** Engine initialization done. ***");
@@ -138,7 +140,7 @@ public class ExecutionEngine extends AbstractExecutionEngine implements IDisposa
 		private void terminateIfLastStepsSimilar(LogicalStep logicalStepToApply) {
 			// if all lastStepsRun are the same, then we may have reached the
 			// end of the simulation
-			if (logicalStepToApply != null)
+			if (logicalStepToApply != null && isDeadlockDetectionEnabled() )
 			{
 				_lastStepsRun.add(logicalStepToApply);
 				boolean allLastLogicalStepAreTheSame = true;
@@ -159,6 +161,10 @@ public class ExecutionEngine extends AbstractExecutionEngine implements IDisposa
 	private int getDeadlockDetectionDepth() 
 	{
 		return _executionContext.getRunConfiguration().getDeadlockDetectionDepth();
+	}
+	private boolean isDeadlockDetectionEnabled() 
+	{
+		return getDeadlockDetectionDepth() > 0;
 	}
 	
 	/**
