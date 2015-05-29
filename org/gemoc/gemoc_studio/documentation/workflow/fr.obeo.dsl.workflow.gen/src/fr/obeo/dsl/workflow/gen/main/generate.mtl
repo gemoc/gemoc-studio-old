@@ -3,7 +3,7 @@
 
 [template public generateAll(workflow : Workflow)]
 [comment @main/]
-[workflow.generateWorkflowToDot() /]
+[workflow.generateWorkflowToDot(false) /]
 [for (step : Step | workflow.categories.steps)]
 	[step.generateToDot(workflow)/]
 [/for]
@@ -122,18 +122,12 @@ Artifacts updated by the [command.name/] Command:
 [artifact.description/]
 [/template]
 
-[template public generateWorkflowToDot(workflow : Workflow)]
+[template public generateWorkflowToDot(workflow : Workflow, withCommand: Boolean)]
 [file ('fig/' + workflow.getID() + '.dot', false, 'UTF-8')]
-[preambule() /]
-[comment]
-[workflow.toDot() /]
-[for (step : Step | workflow.categories.steps)]
-	[step.generateDot(workflow, false, true)/]
-	[workflow.linkTo(step, '') /]
+[preambule('') /]
+[for (step: Step | workflow.categories.steps)]
+	[step.generateDot(workflow, false, false, true) /]
 [/for]
-[/comment]
-[workflow.categories->asSequence()->first().steps->asSequence()->first().generateDot(workflow, false, false, true) /]
-
 [fin() /]	
 [/file]
 [/template]
@@ -141,7 +135,7 @@ Artifacts updated by the [command.name/] Command:
 
 [template private generateToDot(step : Step, workflow: Workflow)]
 [file ('fig/' + step.getID() + '.dot', false, 'UTF-8')]
-[preambule() /]
+[preambule('rankdir=LR') /]
 [step.generateDot(workflow, true, true, false) /]
 [fin() /]
 [/file]
@@ -152,7 +146,6 @@ Artifacts updated by the [command.name/] Command:
 [step.toDot(parent) /]
 [if (withNextSteps)]
 [for (subStep: Step | step.next) ]
-	[subStep.generateDot(step, withArtifact, withCommand, withNextSteps) /]
 	[step.linkTo(subStep, 'style="dashed,setlinewidth(5)"') /]
 [/for]
 [/if]
@@ -181,12 +174,12 @@ Artifacts updated by the [command.name/] Command:
 	[artifact.getID() /] ['['/] image="[imageFile/]", label="[artifact.name/]" ['['/]
 [/template]
 
-[template private preambule()]
+[template private preambule(graphOptions: String)]
 // [protected ('protected header')]
 // Automatically generated thanks to fr.obeo.dsl.workflow.gen/.../generate.mtl
 // from a Workflow model
 digraph G {
-	graph ['['/] layout=dot rankdir=LR ranksep="2.0"[']'/]
+	graph ['['/] layout=dot [graphOptions /] ranksep="2.0"[']'/]
 	edge [ '['/] style="setlinewidth(3)" [ ']'/]
 	node [ '['/] shape=none fontsize="24" labelloc=b margin="0,1.0" [']'/]
 //[/protected]
