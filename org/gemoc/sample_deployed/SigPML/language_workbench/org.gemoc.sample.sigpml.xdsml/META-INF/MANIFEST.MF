@@ -1,0 +1,61 @@
+Export-Package: org.gemoc.sigpml.xdsml,org.gemoc.sigpml.xdsml.executor
+Bundle-SymbolicName: org.gemoc.sigpml.xdsml;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Name: Xdsml
+Bundle-ClassPath: .
+Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:="reexport",
+ 
+ fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0",
+ 
+ org.gemoc.gemoc_language_workbench.api,
+ 
+ org.gemoc.execution.engine,
+ 
+ org.gemoc.execution.engine.commons,
+ 
+ fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.0.0",
+ 
+ org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.0.0";visibility:="reexport",
+ 
+ org.eclipse.ui,
+ 
+ org.eclipse.ui.workbench,
+ 
+ org.gemoc.sample.sigpml.k3dsa;bundle-version="0.0.0";visibility:="reexport",
+ 
+ org.gemoc.sample.sigpml.model;bundle-version="0.0.0";visibility:="reexport",
+ 
+ fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
+ 
+ fr.inria.diverse.commons.eclipse.messagingsystem.ui;bundle-version="1.0.0",
+ 
+ org.eclipse.core.runtime;bundle-version="3.9.100",
+ 
+ org.gemoc.commons.eclipse,
+ 
+ org.gemoc.commons.eclipse.ui,
+ 
+ fr.inria.aoste.timesquare.ecl.feedback.model,
+ 
+ org.gemoc.gemoc_modeling_workbench.ui;bundle-version="0.1.0",
+ 
+ org.gemoc.sample.sigpml.model.design;bundle-version="0.0.0";visibility:="reexport",
+ 
+ org.gemoc.sample.sigpml.moc.lib;bundle-version="0.0.0";visibility:="reexport",
+ 
+ org.gemoc.sample.sigpml.moc.application;bundle-version="0.0.0";visibility:="reexport",
+ 
+ org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.0.0";visibility:="reexport",
+ 
+ org.gemoc.gemoc_language_workbench.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport,
+ 
+ fr.inria.diverse.melange.lib;bundle-version="0.1.0",
+ 
+ org.gemoc.sample.sigpmlextended.k3dsa,
+ 
+ org.gemoc.sample.sigpml.sigpmlextended.model
+Bundle-ActivationPolicy: lazy
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.gemoc.sigpml.xdsml.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Manifest-Version: 1.0

@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SigPML MoC Application
+Bundle-SymbolicName: org.gemoc.sample.sigpml.moc.application;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: INRIA/I3S AOSTE
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.1"
