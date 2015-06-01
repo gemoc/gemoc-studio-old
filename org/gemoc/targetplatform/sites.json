@@ -1,7 +1,7 @@
 {
     "platform": [
         "http://download.eclipse.org/mpc/luna",
-        "http://download.eclipse.org/releases/luna/201502271000"
+        "http://download.eclipse.org/releases/luna"
         ],
     "modeling-base": [
         "http://download.eclipse.org/modeling/mdt/ocl/updates/maintenance/4.1.2/M201401201522",
