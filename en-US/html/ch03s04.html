@@ -69,17 +69,11 @@ class TransitionAspect {
 	}
 }</pre><div class="figure"><a name="d0e2179"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MG-K3-Defined.png" alt="Definition of the DSA (ED and EF)"></div></div><p class="title"><b>Figure&nbsp;3.15.&nbsp;Definition of the DSA (ED and EF)</b></p></div><br class="figure-break"></div></div><div class="section" title="3.4.2.&nbsp;Define DSE"><div class="titlepage"><div><div><h3 class="title"><a name="_define_dse"></a>3.4.2.&nbsp;Define DSE</h3></div></div></div><p>The purpose of the DSE project is to define events (called DSE) on AS
 elements that will trigger EF calls when they occurs.  Furthermore,
-constraints can be defined on these events to ensure they occur in the
-right order.</p><div class="section" title="3.4.2.1.&nbsp;Create the DSE Project"><div class="titlepage"><div><div><h4 class="title"><a name="_create_the_dse_project"></a>3.4.2.1.&nbsp;Create the DSE Project</h4></div></div></div><p>To create the DSE Project, click on the "ECL Project" in the
+constraints can be defined on these events to define when they may occur.</p><div class="section" title="3.4.2.1.&nbsp;Create the DSE Project"><div class="titlepage"><div><div><h4 class="title"><a name="_create_the_dse_project"></a>3.4.2.1.&nbsp;Create the DSE Project</h4></div></div></div><p>To create the DSE Project, click on the "ECL Project" in the
 <span class="emphasis"><em>project.xdsml</em></span> editor ("Behavior definition / DSE definition").
 Check that the name is <span class="emphasis"><em>org.gemoc.sample.markedgraph.dse</em></span>.</p><div class="figure"><a name="d0e2204"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MG-DSE-Create.png" alt="Create a DSE Project"></div></div><p class="title"><b>Figure&nbsp;3.16.&nbsp;Create a DSE Project</b></p></div><br class="figure-break"><p>Click "finish" and the project is created.</p><p>Click on "ECL Project" to edit the "markedgraph.ecl" file and replace
-its content with the following:</p><div class="figure"><a name="d0e2217"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MG-DSE-Template.png" alt="Template of the ECL file"></div></div><p class="title"><b>Figure&nbsp;3.17.&nbsp;Template of the ECL file</b></p></div><br class="figure-break"></div><div class="section" title="3.4.2.2.&nbsp;Define DSE"><div class="titlepage"><div><div><h4 class="title"><a name="_define_dse_2"></a>3.4.2.2.&nbsp;Define DSE</h4></div></div></div><p>This step has three main purposes:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">First, it specifies DSE in the context of metaclasses of the AS.</li><li class="listitem">Then, it links them to EF form DSA --- when a DSE will occurs the
-associated EF will be executed.</li><li class="listitem">Finally, it defines constraints on the DSE to rule the possible
-scheduling.  Constraints generally rely on relations which are defined
-in the MoCC.</li></ul></div><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p xmlns="">Please notice that, as often, DSE are defined at the language
-level, but at runtime they are instantiated as MSE on each object
-instance of the metaclasse they are defined on.  In the same way,
-constraints apply to the MSE.</p></div><p>Replace the content of the ECL file with the following code:</p><p title="The file markedgraph.ecl"><b>The file markedgraph.ecl.&nbsp;</b>
+its content with the following:</p><div class="figure"><a name="d0e2217"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MG-DSE-Template.png" alt="Template of the ECL file"></div></div><p class="title"><b>Figure&nbsp;3.17.&nbsp;Template of the ECL file</b></p></div><br class="figure-break"></div><div class="section" title="3.4.2.2.&nbsp;Define DSE"><div class="titlepage"><div><div><h4 class="title"><a name="_define_dse_2"></a>3.4.2.2.&nbsp;Define DSE</h4></div></div></div><p>Replace the content of the ECL file with the following code (explanations
+are given bellow):</p><p title="The file markedgraph.ecl"><b>The file markedgraph.ecl.&nbsp;</b>
 </p><pre class="screen">import 'platform:/resource/org.gemoc.sample.markedgraph.model/model/markedgraph.ecore'
 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
@@ -116,7 +110,26 @@ package markedgraph
                 Relation Coincides(self.initIt, firstInit2)
 
 endpackage</pre><p title="The file markedgraph.ecl">
-</p><div class="figure"><a name="d0e2254"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MG-DSE-Defined.png" alt="Definition of the DSE (events and constraints)"></div></div><p class="title"><b>Figure&nbsp;3.18.&nbsp;Definition of the DSE (events and constraints)</b></p></div><br class="figure-break"><p>TODO: Give some rationals on the relation and their instancitions. In
-particular the delay.</p><p>What should be explained?</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">The main principles (we can fire as much transition has the initial
-token count of a place, thus a delayed is introduce)</li><li class="listitem">We want to ensure that one init is done before any fire (and only
-once)</li></ul></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch03s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.3.&nbsp;Set up an xDSML project&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Guide.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;3.5.&nbsp;Define Animation Viewpoint</td></tr></table></div></body></html>
+</p><div class="figure"><a name="d0e2239"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MG-DSE-Defined.png" alt="Definition of the DSE (events and constraints)"></div></div><p class="title"><b>Figure&nbsp;3.18.&nbsp;Definition of the DSE (events and constraints)</b></p></div><br class="figure-break"><p>This step has three main purposes:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">First, it specifies DSE in the context of metaclasses of the AS.
+For Marked Graph xDSML, we identify 2 DSE:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">fireIt: defined in the context of a Transition</li><li class="listitem">initIt: defined in the context of a MarkedGraph</li></ul></div></li><li class="listitem"><p class="simpara">Then, it links them to EF form DSA --- when a DSE will occurs the
+associated EF will be executed.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">fireIt is linked to the EF 'fire' of Transition</li><li class="listitem">initIt is linked to the EF 'initialize' of MarkedGraph</li></ul></div></li><li class="listitem"><p class="simpara">Finally, it defines constraints on the DSE to rule the possible
+scheduling.  Constraints generally rely on relations which are defined
+in MoCC libraries. Here constraints are expressed in CCSL and only relies
+on relations and expression from the CCSL core library.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">A first constraint applies on the fireIt events.  It is depends on
+the number of token in a place.  Indeed, if there is no tokens, then
+the fireIt of the output transition can only occur after the fireIt
+event of the input transition has occured. It is expressed by the first
+invariant defined in the context of a Place.
+If there is some tokens in a place, then the fireIt event of the output
+transition may occur as many times as there is tokens in this place.
+After, it will only occur when the fireIt on the input transition of the
+place has occured.  It is expressed using the DelayFor expression in the
+second envariant of Place.</li><li class="listitem">Two other constraints are defined in the context of the MarkedGraph
+element.  The first one expresses that the first initIt event must occur
+before any fireIt event.  The second one expresses that the initIt event
+can occur only one time.</li></ul></div></li></ol></div><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p xmlns="">Please notice that, as often, DSE are defined at the language
+level, but at runtime they are instantiated as MSE on each object
+instance of the metaclasse they are defined on.  For example, there will be
+one fireIt MSE for each Transition element of MarkedGraph model.  For the
+wikipedia example, there will a fireIt event for transitions t1, t2, t3 and
+t4. In the same way, constraints apply to the MSE.</p></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch03s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.3.&nbsp;Set up an xDSML project&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Guide.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;3.5.&nbsp;Define Animation Viewpoint</td></tr></table></div></body></html>

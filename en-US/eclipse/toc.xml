@@ -151,9 +151,8 @@
             <topic label="Create the Animation Layer" href="ch03s05.html#_create_the_animation_layer"/>
             <topic label="Display the firable transition with a green background color" href="ch03s05.html#_display_the_firable_transition_with_a_green_background_color"/>
             <topic label="Set the background color of a place to light_yellow" href="ch03s05.html#_set_the_background_color_of_a_place_to_light_yellow"/>
-            <topic label="Display the runtime token count in a place" href="ch03s05.html#_display_the_runtime_token_count_in_a_place">
-               <topic label="Add the Animation service !" href="ch03s05.html#_add_the_animation_service"/>
-            </topic>
+            <topic label="Display the runtime token count in a place" href="ch03s05.html#_display_the_runtime_token_count_in_a_place"/>
+            <topic label="Add the Animation service" href="ch03s05.html#_add_the_animation_service"/>
          </topic>
       </topic>
       <topic label="Animate a Model" href="ch03s06.html">
@@ -165,9 +164,10 @@
          <topic label="Select a logical step" href="ch03s06.html#_select_a_logical_step"/>
          <topic label="Stop the execution" href="ch03s06.html#_stop_the_execution"/>
       </topic>
+      <topic label="To go gurther…​" href="ch03s07.html"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d0e2646"/>
+      <topic label="Articles" href="bi01.html#d0e2666"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
