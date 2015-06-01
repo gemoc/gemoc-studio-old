@@ -127,7 +127,7 @@ public class RunConfiguration implements IRunConfiguration
 		return _animatorURI;
 	}
 	
-	private int _deadlockDetectionDepth = 10;
+	private int _deadlockDetectionDepth = 0;
 	@Override
 	public int getDeadlockDetectionDepth() 
 	{

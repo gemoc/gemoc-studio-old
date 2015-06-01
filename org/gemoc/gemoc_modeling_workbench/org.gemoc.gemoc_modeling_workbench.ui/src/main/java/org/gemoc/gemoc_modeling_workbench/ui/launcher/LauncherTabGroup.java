@@ -5,7 +5,6 @@ import org.eclipse.debug.ui.CommonTab;
 import org.eclipse.debug.ui.ILaunchConfigurationDialog;
 import org.eclipse.debug.ui.ILaunchConfigurationTab;
 import org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs.LaunchConfigurationBackendsTab;
-import org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs.LaunchConfigurationConfigurationTab;
 import org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs.LaunchConfigurationMainTab;
 
 public class LauncherTabGroup extends
@@ -19,7 +18,6 @@ public class LauncherTabGroup extends
 	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
 		ILaunchConfigurationTab[] tabs = new ILaunchConfigurationTab[] { 
 				new LaunchConfigurationMainTab(),
-                new LaunchConfigurationConfigurationTab(),
                 new LaunchConfigurationBackendsTab(),
                 new CommonTab()
 		};

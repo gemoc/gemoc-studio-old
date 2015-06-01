@@ -90,9 +90,6 @@ public class ExecutionEngine extends AbstractExecutionEngine implements IDisposa
 	public ExecutionEngine(IExecutionContext executionContext) 
 	{
 		super(executionContext);
-		if(isDeadlockDetectionEnabled()){
-			_lastStepsRun = new ArrayDeque<LogicalStep>(getDeadlockDetectionDepth());
-		}
 		_mseStateController = new DefaultMSEStateController();
 		_executionContext.getExecutionPlatform().getMSEStateControllers().add(_mseStateController);
 		Activator.getDefault().info("*** Engine initialization done. ***");
@@ -129,43 +126,15 @@ public class ExecutionEngine extends AbstractExecutionEngine implements IDisposa
 			{
 				while (!_isStopped) 
 				{					
-					performExecutionStep();
-					terminateIfLastStepsSimilar(getSelectedLogicalStep());							
+					performExecutionStep();							
 				} 
 			} catch (Throwable e) {
 				throw new RuntimeException(e);
 			}
 		}
 
-		private void terminateIfLastStepsSimilar(LogicalStep logicalStepToApply) {
-			// if all lastStepsRun are the same, then we may have reached the
-			// end of the simulation
-			if (logicalStepToApply != null && isDeadlockDetectionEnabled() )
-			{
-				_lastStepsRun.add(logicalStepToApply);
-				boolean allLastLogicalStepAreTheSame = true;
-				for (LogicalStep logicalStep : _lastStepsRun) {
-					allLastLogicalStepAreTheSame = allLastLogicalStepAreTheSame && areLogicalStepSimilar(logicalStep, logicalStepToApply);
-				}
-				if ((_lastStepsRun.size() >= getDeadlockDetectionDepth()) && allLastLogicalStepAreTheSame) {
-					Activator.getDefault().debug("Detected " + getDeadlockDetectionDepth() + " identical LogicalStep, stopping engine");
-					stop();
-				}
-				// if queue is full, remove one
-				if (_lastStepsRun.size() > getDeadlockDetectionDepth())
-					_lastStepsRun.poll();
-			}
-		}
-
 	}
-	private int getDeadlockDetectionDepth() 
-	{
-		return _executionContext.getRunConfiguration().getDeadlockDetectionDepth();
-	}
-	private boolean isDeadlockDetectionEnabled() 
-	{
-		return getDeadlockDetectionDepth() > 0;
-	}
+	
 	
 	/**
 	 * run all the event occurrences of this logical step
