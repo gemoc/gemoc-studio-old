@@ -96,8 +96,8 @@
 								<zip destfile="${basedir}/zips/org.gemoc.sample.sigpml.model.edit.zip">
 									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sample.sigpml.model.edit/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sigpml.model.editor.zip">
-									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sigpml.model.editor/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.sigpml.model.editor.zip">
+									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sample.sigpml.model.editor/" />
 								</zip>								
 								<zip destfile="${basedir}/zips/org.gemoc.sample.sigpml.xdsml.zip">
 									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sample.sigpml.xdsml/" />
