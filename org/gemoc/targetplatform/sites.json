@@ -59,6 +59,9 @@
 		"http://www.kermeta.org/k3/update/",
 		"https://ci.inria.fr/k3al/job/melange-production_stable/lastSuccessfulBuild/artifact/plugins/fr.inria.diverse.melange.p2updatesite/target/site/"
         ],
+    "AspectJ": [
+		"http://download.eclipse.org/tools/ajdt/44/dev/update"
+        ],    
     "devtools": [
         "http://community.polarion.com/projects/subversive/download/eclipse/4.0/luna-site/",
         "http://download.eclipse.org/egit/updates",

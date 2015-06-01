@@ -46,6 +46,7 @@
       <import feature="org.eclipse.m2m.qvt.oml.editor" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml.examples" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml.runtime" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.ajdt" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
 </feature>
