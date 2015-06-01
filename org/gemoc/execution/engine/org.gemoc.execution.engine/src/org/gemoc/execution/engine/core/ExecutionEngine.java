@@ -2,7 +2,6 @@ package org.gemoc.execution.engine.core;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.dse.DefaultMSEStateController;
@@ -93,29 +92,6 @@ public class ExecutionEngine extends AbstractExecutionEngine implements IDisposa
 		_mseStateController = new DefaultMSEStateController();
 		_executionContext.getExecutionPlatform().getMSEStateControllers().add(_mseStateController);
 		Activator.getDefault().info("*** Engine initialization done. ***");
-	}
-
-	private static boolean areLogicalStepSimilar(LogicalStep ls1, LogicalStep ls2) {
-		if (ls1 == ls2)
-			return true;
-
-		List<String> ls1TickedEventOccurences = new ArrayList<String>();
-		for (MSEOccurrence mseOccurence : ls1.getMseOccurrences())
-		{
-			ls1TickedEventOccurences.add(mseOccurence.getMse().getName());
-		}
-		List<String> ls2TickedEventOccurences = new ArrayList<String>();
-		for (MSEOccurrence mseOccurence : ls2.getMseOccurrences())
-		{
-			ls2TickedEventOccurences.add(mseOccurence.getMse().getName());
-		}
-
-		if (ls1TickedEventOccurences.size() == ls2TickedEventOccurences.size()) {
-			if (ls1TickedEventOccurences.containsAll(ls2TickedEventOccurences)) {
-				return true;
-			}
-		}
-		return false;
 	}
 	
 	class EngineRunnable implements Runnable {
