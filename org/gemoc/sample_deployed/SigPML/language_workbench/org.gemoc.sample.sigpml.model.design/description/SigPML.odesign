@@ -2,7 +2,7 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="SigPML" version="8.1.0">
   <ownedViewpoints name="SigPML" modelFileExtension="*.sigpml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SigPML" initialisation="true" showOnStartup="true" domainClass="System">
-      <metamodel href="../../org.gemoc.sigpml.sigpmlextended.model/model/SigPMLExtended.ecore#/"/>
+      <metamodel href="../../org.gemoc.sample.sigpml.model/model/sigpml.ecore#/"/>
       <defaultLayer name="SigPML">
         <edgeMappings name="Place" sourceMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']" targetMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']" targetFinderExpression="[self.itsInputPort/]" sourceFinderExpression="[self.itsOutputPort/]" domainClass="Place" useDomainElement="true">
           <style sizeComputationExpression="2" routingStyle="manhattan">
@@ -197,7 +197,7 @@
       </additionalLayers>
       <additionalLayers name="SigPMLAnimation" label="SigPML Animation">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="isExecuting" position="SOUTH" decoratorPath="/org.gemoc.sample.sigpml.model.design/icons/play2_small.jpeg" preconditionExpression="[self.isCurrentlyExecuting/]" domainClass="sigpmlextended.Agent"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="isExecuting" position="SOUTH" decoratorPath="/org.gemoc.sample.sigpml.model.design/icons/play2_small.jpeg" preconditionExpression="[self.isCurrentlyExecuting/]" domainClass="sigpml.Agent"/>
         </decorationDescriptionsSet>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization">

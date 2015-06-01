@@ -6,7 +6,7 @@
       <!-- @generated sigpml -->
       <package
             uri="http://org.gemoc.sigpml.model/1.0"
-            class="org.gemoc.sigpml.SigpmlPackage"
+            class="org.gemoc.sample.sigpml.SigpmlPackage"
             genModel="model/sigpml.genmodel"/>
    </extension>
 

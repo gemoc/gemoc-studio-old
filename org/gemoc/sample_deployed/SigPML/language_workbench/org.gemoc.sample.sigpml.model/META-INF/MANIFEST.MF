@@ -8,9 +8,10 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7,
  JavaSE-1.6
-Export-Package: org.gemoc.sigpml,
- org.gemoc.sigpml.impl,
- org.gemoc.sigpml.util
+Export-Package: org.gemoc.sample.sigpml,
+ org.gemoc.sample.sigpml.impl,
+ org.gemoc.sample.sigpml.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore
+ org.eclipse.emf.ecore;visibility:=reexport,
+ com.google.guava;bundle-version="15.0.0"
 Bundle-ActivationPolicy: lazy

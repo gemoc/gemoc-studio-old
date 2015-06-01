@@ -12,9 +12,9 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="org.gemoc.sigpml.presentation.SigpmlModelWizardID"
+            id="org.gemoc.sample.sigpml.presentation.SigpmlModelWizardID"
             name="%_UI_SigpmlModelWizard_label"
-            class="org.gemoc.sigpml.presentation.SigpmlModelWizard"
+            class="org.gemoc.sample.sigpml.presentation.SigpmlModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/SigpmlModelFile.gif">
          <description>%_UI_SigpmlModelWizard_description</description>
@@ -25,13 +25,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated sigpml -->
       <editor
-            id="org.gemoc.sigpml.presentation.SigpmlEditorID"
+            id="org.gemoc.sample.sigpml.presentation.SigpmlEditorID"
             name="%_UI_SigpmlEditor_label"
             icon="icons/full/obj16/SigpmlModelFile.gif"
             extensions="sigpml"
-            class="org.gemoc.sigpml.presentation.SigpmlEditor"
-            contributorClass="org.gemoc.sigpml.presentation.SigpmlActionBarContributor">
+            class="org.gemoc.sample.sigpml.presentation.SigpmlEditor"
+            contributorClass="org.gemoc.sample.sigpml.presentation.SigpmlActionBarContributor">
       </editor>
    </extension>
-
 </plugin>

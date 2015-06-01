@@ -20,7 +20,7 @@ Bundle-Name: %pluginName
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.gemoc.sample.sigpml.k3dsa;singleton:=true
 Export-Package: .,
- org.gemoc.sigpml.k3dsa
+ org.gemoc.sample.sigpml.k3dsa
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

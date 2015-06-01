@@ -4,12 +4,12 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.gemoc.sample.sigpml.model.editor;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.gemoc.sigpml.presentation.SigpmlEditorPlugin$Implementation
+Bundle-Activator: org.gemoc.sample.sigpml.presentation.SigpmlEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7,
  JavaSE-1.6
-Export-Package: org.gemoc.sigpml.presentation
+Export-Package: org.gemoc.sample.sigpml.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.gemoc.sample.sigpml.model.edit;visibility:=reexport,

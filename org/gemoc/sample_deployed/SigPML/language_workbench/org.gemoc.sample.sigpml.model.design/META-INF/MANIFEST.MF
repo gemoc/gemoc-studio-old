@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.gemoc.sigpml.model.design
+Bundle-Name: org.gemoc.sample.sigpml.model.design
 Bundle-SymbolicName: org.gemoc.sample.sigpml.model.design;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.gemoc.sample.sigpml.concrete.design.Activator
@@ -19,8 +19,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.diagram;bundle-version="1.0.0",
  org.eclipse.emf.transaction;bundle-version="1.4.0",
  org.gemoc.sample.sigpml.model;bundle-version="0.1.0",
- org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.1.0",
- org.gemoc.sample.sigpml.sigpmlextended.model;bundle-version="0.1.0"
+ org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.gemoc.sample.sigpml.concrete.design,

@@ -1,11 +1,11 @@
-import 'platform:/resource/org.gemoc.sample.sigpml.sigpmlextended.model/model/SigPMLExtended.ecore'
+import 'platform:/resource/org.gemoc.sample.sigpml.model/model/sigpml.ecore'
 --import 'http://org.gemoc.sigpml.sigpml.model/1.0'
 
 ECLimport "platform:/resource/org.gemoc.sample.sigpml.moc.lib/MoCLib/SigPML.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" 
 
-package sigpmlextended
+package sigpml
 
 	context Agent 
 	def : start: Event= self.execute()

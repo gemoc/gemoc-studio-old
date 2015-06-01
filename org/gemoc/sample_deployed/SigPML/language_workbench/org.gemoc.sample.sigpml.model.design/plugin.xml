@@ -3,7 +3,7 @@
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
     <component class="org.gemoc.sample.sigpml.concrete.design.Activator"
-               id="org.gemoc.sigpml.model.design"
+               id="org.gemoc.sample.sigpml.model.design"
 	       name="SigPML">
     </component>
   </extension>
