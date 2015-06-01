@@ -1,120 +1,120 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <index>
    <entry keyword="Both representations (graphical or textual) can be used for edition of models">
-      <topic href="ch01s06.html#d0e775"/>
+      <topic href="ch01s06.html#d0e780"/>
    </entry>
    <entry keyword="Decider">
-      <topic href="ch02s03.html#d0e1510"/>
+      <topic href="ch02s03.html#d0e1515"/>
    </entry>
    <entry keyword="ECL">
-      <topic href="ch01s06.html#d0e525"/>
+      <topic href="ch01s06.html#d0e530"/>
    </entry>
    <entry keyword="EMF Tree Editor">
-      <topic href="ch02s02.html#d0e1475"/>
+      <topic href="ch02s02.html#d0e1480"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch02s03.html#d0e1549"/>
+      <topic href="ch02s03.html#d0e1554"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch02s03.html#d0e1580"/>
+      <topic href="ch02s03.html#d0e1585"/>
    </entry>
    <entry keyword="Event Manager">
-      <topic href="ch02s03.html#d0e1598"/>
+      <topic href="ch02s03.html#d0e1603"/>
    </entry>
    <entry keyword="Event Manager">
-      <topic href="ch02s03.html#d0e1607"/>
+      <topic href="ch02s03.html#d0e1612"/>
    </entry>
    <entry keyword="Feedback Policy">
-      <topic href="ch01s08.html#d0e1049"/>
+      <topic href="ch01s08.html#d0e1054"/>
    </entry>
    <entry keyword="Feedback Specification">
-      <topic href="ch01s08.html#d0e1027"/>
+      <topic href="ch01s08.html#d0e1032"/>
    </entry>
    <entry keyword="GEL">
-      <topic href="ch01s08.html#d0e1042"/>
+      <topic href="ch01s08.html#d0e1047"/>
    </entry>
    <entry keyword="GEMOC Dashboard">
-      <topic href="ch01s02.html#d0e335"/>
+      <topic href="ch01s02.html#d0e340"/>
    </entry>
    <entry keyword="GEMOC Language Workbench">
-      <topic href="ch01.html#d0e282"/>
-   </entry>
-   <entry keyword="import">
-      <topic href="ch01s06.html#d0e586"/>
-   </entry>
-   <entry keyword="Language Designer">
       <topic href="ch01.html#d0e287"/>
    </entry>
+   <entry keyword="import">
+      <topic href="ch01s06.html#d0e591"/>
+   </entry>
    <entry keyword="Language Designer">
-      <topic href="ch01s02.html#d0e331"/>
+      <topic href="ch01.html#d0e292"/>
+   </entry>
+   <entry keyword="Language Designer">
+      <topic href="ch01s02.html#d0e336"/>
    </entry>
    <entry keyword="Language Integrator">
-      <topic href="ch01.html#d0e291"/>
+      <topic href="ch01.html#d0e296"/>
    </entry>
    <entry keyword="Language Workbench">
-      <topic href="ch01.html#d0e311"/>
+      <topic href="ch01.html#d0e316"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch02s03.html#d0e1514"/>
+      <topic href="ch02s03.html#d0e1519"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch02s03.html#d0e1800"/>
+      <topic href="ch02s03.html#d0e1805"/>
    </entry>
    <entry keyword="MoCCML">
-      <topic href="ch01s06.html#d0e534"/>
+      <topic href="ch01s06.html#d0e539"/>
    </entry>
    <entry keyword="Modeling workbench">
-      <topic href="ch02.html#d0e1424"/>
+      <topic href="ch02.html#d0e1429"/>
    </entry>
    <entry keyword="Runtime Data">
-      <topic href="ch02s03.html#d0e1624"/>
+      <topic href="ch02s03.html#d0e1629"/>
    </entry>
    <entry keyword="Runtime Data">
-      <topic href="ch02s03.html#d0e1816"/>
+      <topic href="ch02s03.html#d0e1821"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01s05.html#d0e475"/>
+      <topic href="ch01s05.html#d0e480"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01s09.html#d0e1094"/>
+      <topic href="ch01s09.html#d0e1099"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01s09.html#d0e1100"/>
+      <topic href="ch01s09.html#d0e1105"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01s09.html#d0e1109"/>
+      <topic href="ch01s09.html#d0e1114"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch01s09.html#d0e1240"/>
+      <topic href="ch01s09.html#d0e1245"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch02s02.html#d0e1439"/>
+      <topic href="ch02s02.html#d0e1444"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch02s02.html#d0e1445"/>
+      <topic href="ch02s02.html#d0e1450"/>
    </entry>
    <entry keyword="Sirius)">
-      <topic href="ch02s02.html#d0e1451"/>
+      <topic href="ch02s02.html#d0e1456"/>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch02.html#d0e1414"/>
+      <topic href="ch02.html#d0e1419"/>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch01.html#d0e305"/>
+      <topic href="ch01.html#d0e310"/>
       <entry keyword="Language Workbench">
-         <topic href="ch01.html#d0e307"/>
+         <topic href="ch01.html#d0e312"/>
       </entry>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch02.html#d0e1418"/>
+      <topic href="ch02.html#d0e1423"/>
       <entry keyword="Modeling workbench">
-         <topic href="ch02.html#d0e1420"/>
+         <topic href="ch02.html#d0e1425"/>
       </entry>
    </entry>
    <entry keyword="Timeline">
-      <topic href="ch02s03.html#d0e1558"/>
+      <topic href="ch02s03.html#d0e1563"/>
    </entry>
    <entry keyword="Timeline">
-      <topic href="ch02s03.html#d0e1589"/>
+      <topic href="ch02s03.html#d0e1594"/>
    </entry>
 </index>
