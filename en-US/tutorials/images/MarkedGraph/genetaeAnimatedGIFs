@@ -1,0 +1,16 @@
+#!/bin/sh
+# MGE0 : état initial
+# MGE1 : t1 fired
+# MGE2 : t2 fired
+# MGE3 : t2 and t3 fired
+# MGE4 : t3 fired
+
+options="-delay 120"
+
+convert ${options} MGE0.png MGE1.png MGE2.png MGE3.png	\
+	MarkedGraph-wikipedia-anim-short.gif
+
+convert ${options} MGE0.png MGE1.png MGE2.png MGE3.png	\
+	MGE0.png MGE1.png MGE3.png	\
+	MGE0.png MGE1.png MGE4.png MGE3.png	\
+	MarkedGraph-wikipedia-anim-all.gif

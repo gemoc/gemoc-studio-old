@@ -163,11 +163,11 @@
          <topic label="Create a Launch Configuration" href="ch03s05.html#_create_a_launch_configuration"/>
          <topic label="Start the model" href="ch03s05.html#_start_the_model"/>
          <topic label="Select a logical step" href="ch03s05.html#_select_a_logical_step"/>
-         <topic label="Stop the engine" href="ch03s05.html#_stop_the_engine"/>
+         <topic label="Stop the execution" href="ch03s05.html#_stop_the_execution"/>
       </topic>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d0e2631"/>
+      <topic label="Articles" href="bi01.html#d0e2643"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>

@@ -1,0 +1,26 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>GEMOC xDSML tutorial</title><link rel="stylesheet" href="css/docbook.css" type="text/css"><meta name="generator" content="DocBook XSL-NS Stylesheets V1.75.2"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div lang="en" class="book" title="GEMOC xDSML tutorial"><div class="titlepage"><div><div><h1 class="title"><a name="d0e3"></a>GEMOC xDSML tutorial</h1></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="preface"><a href="#d0e9"></a></span></dt><dt><span class="chapter"><a href="#_introduction">1. Introduction</a></span></dt><dt><span class="chapter"><a href="#sec-GEMOC-approach">2. The GEMOC Approach for defining eXecutable DSML</a></span></dt><dt><span class="chapter"><a href="#_tutorials">3. Tutorials</a></span></dt></dl></div><div class="preface"><div class="titlepage"><div><div><h2 class="title"><a name="d0e9"></a></h2></div></div></div><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2><p xmlns="">This part is a work in progress and is not yet finished.
+It still contains TODO and must be polished.</p></div></div><div class="chapter" title="Chapter&nbsp;1.&nbsp;Introduction"><div class="titlepage"><div><div><h2 class="title"><a name="_introduction"></a>Chapter&nbsp;1.&nbsp;Introduction</h2></div></div></div><p>The purpose of these tutorials is to explain on simple examples with
+different features, how to define an eXecutable Domain Specific Modeling
+Language (xDSML). Based on an existing DSML definition (abstract and concrete
+syntaxes), we define a concurrent semantics.</p><p>This part is structured as follows.  First, we give an overview of
+<a class="link" href="#sec-GEMOC-approach" title="Chapter&nbsp;2.&nbsp;The GEMOC Approach for defining eXecutable DSML">GEMOC approach</a> and then we list the main tutorials and
+their objectives.  The starting point of the tutorials is generally the
+abstract and concrete syntaxes of a DSML so that the focus is put on the
+definition of the execution semantics using the Gemoc Studio.</p></div><div class="chapter" title="Chapter&nbsp;2.&nbsp;The GEMOC Approach for defining eXecutable DSML"><div class="titlepage"><div><div><h2 class="title"><a name="sec-GEMOC-approach"></a>Chapter&nbsp;2.&nbsp;The GEMOC Approach for defining eXecutable DSML</h2></div></div></div><p>The Gemoc approach aims to add execution semantics on an existing DSML
+definition.  It consists in extending the abstract syntax (metamodel) of a DSML
+with several concerns:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">the <span class="strong"><strong>DSA</strong></span> --Domain Specific Actions-- defines the data dedicated to the
+runtime updates (Execution Data&#8201;&#8212;&#8201;ED) and the functions to handle these
+datas (Execution Functions&#8201;&#8212;&#8201;EF). DSA and DSML abstract syntax define the
+extended asbstract syntax.</li><li class="listitem">the <span class="strong"><strong>MoCC</strong></span> (Model of Concurrency and Communication) which includes the
+mapping definition on the extended abstract syntax and the schedule
+constraints of the semantics definition.</li><li class="listitem">the <span class="strong"><strong>DSE</strong></span> (Domain Specific Event): a two-way protocole between the DSA and
+the MoCC.</li><li class="listitem">the <span class="strong"><strong>animator</strong></span> which provides views to control and monitor the execution of
+the models conforming to the xDSML.</li></ul></div><p>The next figure gives an overview of the requested definitions to obtain an
+xDSML.</p><p title="Gemoc overview and tutorial focus"><b>Gemoc overview and tutorial focus.&nbsp;</b><span class="inlinemediaobject"><img src="./images/quickTutorial/gemoc_bigPicture_tutorial_trimed.jpg" alt="Gemoc overview and tutorial focus"></span></p></div><div class="chapter" title="Chapter&nbsp;3.&nbsp;Tutorials"><div class="titlepage"><div><div><h2 class="title"><a name="_tutorials"></a>Chapter&nbsp;3.&nbsp;Tutorials</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><a class="link" href="GuideTutorialMarkedGraph.html" target="_top">Marked Graph tutorial</a>: quick example to
+demonstrate how to define an
+execution semantics and graphical animation for a highly concurrent language,
+Marked Graph.</li><li class="listitem"><a class="link" href="sigpml.html" target="_top">SigPML tutorial</a></li><li class="listitem"><a class="link" href="GuideTutorialAutomata.html" target="_top">Automata tutorial</a>: The used DSML is automata
+used to recognize words built on an alphabet.   Its focus is on a possible
+methodology to make a DSML executable.</li></ul></div></div></div></body></html>
