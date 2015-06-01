@@ -136,38 +136,38 @@
             <topic label="Create the DSE Project" href="ch03s04.html#_create_the_dse_project"/>
             <topic label="Define DSE" href="ch03s04.html#_define_dse_2"/>
          </topic>
-         <topic label="Define Animation Viewpoint" href="ch03s04.html#_define_animation_viewpoint">
-            <topic label="Create a debug representation (as an extension of the graphical editor viewpoint)" href="ch03s04.html#_create_a_debug_representation_as_an_extension_of_the_graphical_editor_viewpoint">
-               <topic label="Run the wizard" href="ch03s04.html#_run_the_wizard"/>
-               <topic label="Open the markedgraph-animation.odesign" href="ch03s04.html#_open_the_markedgraph_animation_odesign"/>
-               <topic label="Load markedgraph.odesign as a resource." href="ch03s04.html#_load_markedgraph_odesign_as_a_resource"/>
-               <topic label="Add markedgraph.ecore to the metamodels" href="ch03s04.html#_add_markedgraph_ecore_to_the_metamodels"/>
-               <topic label="Complete the debug representation" href="ch03s04.html#_complete_the_debug_representation"/>
-               <topic label="Complete the dependencies of the project" href="ch03s04.html#_complete_the_dependencies_of_the_project"/>
-               <topic label="Set the animation viewpoint in project.xml" href="ch03s04.html#_set_the_animation_viewpoint_in_project_xml"/>
-            </topic>
-            <topic label="Create an animation representation" href="ch03s04.html#_create_an_animation_representation">
-               <topic label="Create the Animation Layer" href="ch03s04.html#_create_the_animation_layer"/>
-               <topic label="Display the firable transition with a green background color" href="ch03s04.html#_display_the_firable_transition_with_a_green_background_color"/>
-               <topic label="Set the background color of a place to light_yellow" href="ch03s04.html#_set_the_background_color_of_a_place_to_light_yellow"/>
-               <topic label="Display the runtime token count in a place" href="ch03s04.html#_display_the_runtime_token_count_in_a_place">
-                  <topic label="Add the Animation service !" href="ch03s04.html#_add_the_animation_service"/>
-               </topic>
+      </topic>
+      <topic label="Define Animation Viewpoint" href="ch03s05.html">
+         <topic label="Create a debug representation (as an extension of the graphical editor viewpoint)" href="ch03s05.html#_create_a_debug_representation_as_an_extension_of_the_graphical_editor_viewpoint">
+            <topic label="Run the wizard" href="ch03s05.html#_run_the_wizard"/>
+            <topic label="Open the markedgraph-animation.odesign" href="ch03s05.html#_open_the_markedgraph_animation_odesign"/>
+            <topic label="Load markedgraph.odesign as a resource." href="ch03s05.html#_load_markedgraph_odesign_as_a_resource"/>
+            <topic label="Add markedgraph.ecore to the metamodels" href="ch03s05.html#_add_markedgraph_ecore_to_the_metamodels"/>
+            <topic label="Complete the debug representation" href="ch03s05.html#_complete_the_debug_representation"/>
+            <topic label="Complete the dependencies of the project" href="ch03s05.html#_complete_the_dependencies_of_the_project"/>
+            <topic label="Set the animation viewpoint in project.xml" href="ch03s05.html#_set_the_animation_viewpoint_in_project_xml"/>
+         </topic>
+         <topic label="Create an animation representation" href="ch03s05.html#_create_an_animation_representation">
+            <topic label="Create the Animation Layer" href="ch03s05.html#_create_the_animation_layer"/>
+            <topic label="Display the firable transition with a green background color" href="ch03s05.html#_display_the_firable_transition_with_a_green_background_color"/>
+            <topic label="Set the background color of a place to light_yellow" href="ch03s05.html#_set_the_background_color_of_a_place_to_light_yellow"/>
+            <topic label="Display the runtime token count in a place" href="ch03s05.html#_display_the_runtime_token_count_in_a_place">
+               <topic label="Add the Animation service !" href="ch03s05.html#_add_the_animation_service"/>
             </topic>
          </topic>
       </topic>
-      <topic label="Animate a Model" href="ch03s05.html">
-         <topic label="Launch the Modelling WorkBench" href="ch03s05.html#_launch_the_modelling_workbench"/>
-         <topic label="Import the project with a sample model" href="ch03s05.html#_import_the_project_with_a_sample_model"/>
-         <topic label="Select the Modeling perspective" href="ch03s05.html#_select_the_modeling_perspective"/>
-         <topic label="Create a Launch Configuration" href="ch03s05.html#_create_a_launch_configuration"/>
-         <topic label="Start the model" href="ch03s05.html#_start_the_model"/>
-         <topic label="Select a logical step" href="ch03s05.html#_select_a_logical_step"/>
-         <topic label="Stop the execution" href="ch03s05.html#_stop_the_execution"/>
+      <topic label="Animate a Model" href="ch03s06.html">
+         <topic label="Launch the Modelling WorkBench" href="ch03s06.html#_launch_the_modelling_workbench"/>
+         <topic label="Import the project with a sample model" href="ch03s06.html#_import_the_project_with_a_sample_model"/>
+         <topic label="Select the Modeling perspective" href="ch03s06.html#_select_the_modeling_perspective"/>
+         <topic label="Create a Launch Configuration" href="ch03s06.html#_create_a_launch_configuration"/>
+         <topic label="Start the model" href="ch03s06.html#_start_the_model"/>
+         <topic label="Select a logical step" href="ch03s06.html#_select_a_logical_step"/>
+         <topic label="Stop the execution" href="ch03s06.html#_stop_the_execution"/>
       </topic>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d0e2643"/>
+      <topic label="Articles" href="bi01.html#d0e2646"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
