@@ -393,6 +393,7 @@ public class GemocOverviewDashboardPage extends FormPage {
 
 					public void linkActivated(HyperlinkEvent e) {
 						CreateAnimatorProjectWizardContextAction action = new CreateAnimatorProjectWizardContextAction(
+								((GemocDashboardEditorInput)getEditorInput()).getFile().getProject(),
 								languageDefinition);
 						action.actionToExecute = CreateAnimatorProjectAction.CREATE_NEW_SIRIUS_PROJECT;
 						action.execute();
@@ -465,6 +466,7 @@ public class GemocOverviewDashboardPage extends FormPage {
 						editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
 							public void doExecute() {
 								CreateDomainModelWizardContextAction action = new CreateDomainModelWizardContextAction(
+										((GemocDashboardEditorInput)getEditorInput()).getFile().getProject(),
 										languageDefinition);
 								action.execute();
 							}
@@ -516,6 +518,7 @@ public class GemocOverviewDashboardPage extends FormPage {
 
 					public void linkActivated(HyperlinkEvent e) {
 						CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(
+								((GemocDashboardEditorInput)getEditorInput()).getFile().getProject(),
 								languageDefinition);
 						action.actionToExecute = CreateEditorProjectWizardContextAction.CreateEditorProjectAction.CREATE_NEW_SIRIUS_PROJECT;
 						action.execute();
@@ -551,6 +554,7 @@ public class GemocOverviewDashboardPage extends FormPage {
 
 					public void linkActivated(HyperlinkEvent e) {
 						CreateEditorProjectWizardContextAction action = new CreateEditorProjectWizardContextAction(
+								((GemocDashboardEditorInput)getEditorInput()).getFile().getProject(),
 								languageDefinition);
 						action.actionToExecute = CreateEditorProjectAction.CREATE_NEW_XTEXT_PROJECT;
 						action.execute();

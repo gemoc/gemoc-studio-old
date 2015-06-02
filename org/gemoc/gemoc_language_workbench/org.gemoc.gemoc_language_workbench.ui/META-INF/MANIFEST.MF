@@ -32,7 +32,8 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.1.0",
  org.gemoc.gemoc_language_workbench.extensions.timesquare;bundle-version="0.1.0",
  org.eclipse.emf.ecoretools.design,
- org.eclipse.emf.ecore.editor
+ org.eclipse.emf.ecore.editor,
+ org.eclipse.sirius.editor
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.filesystem
