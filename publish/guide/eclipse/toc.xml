@@ -32,7 +32,7 @@
       </topic>
       <topic label="Defining a Model of Concurrency and Communication (MoCC)" href="ch01s06.html">
          <topic label="Introduction" href="ch01s06.html#_introduction_2"/>
-         <topic label="The ECL approach to Identify DSE and constraints" href="ch01s06.html#_the_ecl_approach_to_identify_dse_and_constraints">
+         <topic label="The ECL approach to identify DSE and constraints" href="ch01s06.html#_the_ecl_approach_to_identify_dse_and_constraints">
             <topic label="Overview of ECL" href="ch01s06.html#_overview_of_ecl"/>
             <topic label="Creation of an ECL model GEMOC Studio" href="ch01s06.html#_creation_of_an_ecl_model_gemoc_studio"/>
             <topic label="How to use ECL" href="ch01s06.html#_how_to_use_ecl">
@@ -167,7 +167,7 @@
       <topic label="To go gurther…​" href="ch03s07.html"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d0e2702"/>
+      <topic label="Articles" href="bi01.html#d0e2707"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
