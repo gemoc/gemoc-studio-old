@@ -1,0 +1,70 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <title>Chapter&nbsp;4.&nbsp;Define the Execution Semantics</title><link rel="stylesheet" href="css/docbook.css" type="text/css"><meta name="generator" content="DocBook XSL-NS Stylesheets V1.75.2"><link rel="home" href="GuideTutorialMarkedGraph.html" title="Tutorial"><link rel="up" href="pt01.html" title="Part&nbsp;I.&nbsp;Tutorial: Make Marked Graph models executable with the GEMOC Studio"><link rel="prev" href="ch03s04.html" title="3.4.&nbsp;Select the Graphical Editor"><link rel="next" href="ch04s02.html" title="4.2.&nbsp;Define DSE"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter&nbsp;4.&nbsp;Define the Execution Semantics</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s04.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;I.&nbsp;Tutorial: Make Marked Graph models executable with the GEMOC Studio</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch04s02.html">Next</a></td></tr></table><hr></div><div class="chapter" title="Chapter&nbsp;4.&nbsp;Define the Execution Semantics"><div class="titlepage"><div><div><h2 class="title"><a name="_define_the_execution_semantics"></a>Chapter&nbsp;4.&nbsp;Define the Execution Semantics</h2></div></div></div><p>A transition can be fired if there is at least one token in every of
+each input place.  When fired, one token is removed from each of its
+input places and one token is added to each of its output places.
+Several transitions can be fired as the same time.</p><p>Defining the execution semantics consists in implementing the previous
+behavior.  In the GEMOC approach, it is split in different concerns:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">The definition of Execution Data (ED) like the runtime count of
+tokens in a place and Execution Functions (EF) like fire a transition.
+ED and EF constitute <span class="strong"><strong>the DSA</strong></span>.</li><li class="listitem">The definition of the model of concurrency as a set of events and
+constraints on these events.  It is <span class="strong"><strong>the MoCC</strong></span> concern that is
+defined in a DSE project (using ECL, Event Constraint Language)
+possibly completed with MoCCML projects  to define libraries of
+constraints.</li><li class="listitem">The <span class="strong"><strong>mapping</strong></span> between the DSA and the MoCC.</li></ul></div><p>In the current version of the GEMOC studio, the MoCC and the mapping
+are tightly coupled and described in ECL (Event Constraint Language).</p><div class="section" title="4.1.&nbsp;Define DSA"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_define_dsa"></a>4.1.&nbsp;Define DSA</h2></div></div></div><p>During execution of a MarkedGraph, the number of tokens of a place has
+to be recorded and changed according to the fired transitions.  Thus,
+we have to manage an execution data (ED) called runtimeTokenCount and
+an execution function (EF) on Transition called fire().  Furthermore,
+the runtimeTokenCount of each place must be initialized at the start
+of the execution. It is the purpose of the EF called initialize() on
+the MarkedGraph element.</p><p>The DSA of Marked Graph is composed of :</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">one ED called  <span class="emphasis"><em>runtimeTokenCount</em></span>
+defined on <span class="emphasis"><em>Place</em></span> . It represents the number of token in a place when the
+model is executed.</li><li class="listitem">one EF called initialize() defined
+on <span class="emphasis"><em>MarkedGraph</em></span>. It initializes the runtime token count of each
+place with the initial token count.</li><li class="listitem">one ED called <span class="emphasis"><em>fire()</em></span> on
+<span class="emphasis"><em>Transition</em></span>. It to remove one token from each of its input places
+and add one token to all its output places.</li></ul></div><div class="section" title="4.1.1.&nbsp;Extend the AS with ED and EF"><div class="titlepage"><div><div><h3 class="title"><a name="_extend_the_as_with_ed_and_ef"></a>4.1.1.&nbsp;Extend the AS with ED and EF</h3></div></div></div><p>At the moment, we need to complete the AS (markedgraph.ecore) with the
+ED and EF.  In the next release of the GEMOC Studio this steps will
+disappear and extended the AS will be done automatically thanks to
+<a class="link" href="http://melange-lang.org/" target="_top">Melange</a></p><p>Add the 'runtimeTokenCount' ED on Place, 'fire()' on Transition and
+'initialize()' on MarkedGraph.</p><div class="figure"><a name="d0e332"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MarkedGraph-AS-DSA.png" alt="Abstract Syntax of MarkedGraph extended with Execution Data (ED) and Execution Functions (EF)"></div></div><p class="title"><b>Figure&nbsp;4.1.&nbsp;Abstract Syntax of MarkedGraph extended with Execution Data (ED) and Execution Functions (EF)</b></p></div><br class="figure-break"></div><div class="section" title="4.1.2.&nbsp;Create the DSA Project"><div class="titlepage"><div><div><h3 class="title"><a name="_create_the_dsa_project"></a>4.1.2.&nbsp;Create the DSA Project</h3></div></div></div><p>Click on <span class="emphasis"><em>K3 project</em></span> in the project.xdml editor (Behavioral definition / DSA
+definition).  The wizard to create of new Kermeta 3 project is
+launched with the name of the project initialized (k3dsa is the last
+name). Click "Finish".  The project has been created.</p><div class="figure"><a name="d0e349"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MG-K3-Create.png" alt="Create a K3 Project"></div></div><p class="title"><b>Figure&nbsp;4.2.&nbsp;Create a K3 Project</b></p></div><br class="figure-break"></div><div class="section" title="4.1.3.&nbsp;Implement the DSA"><div class="titlepage"><div><div><h3 class="title"><a name="_implement_the_dsa"></a>4.1.3.&nbsp;Implement the DSA</h3></div></div></div><p>Click again on <span class="emphasis"><em>K3 project</em></span> to open <span class="emphasis"><em>markedgraph.xtend</em></span>.  It
+has been initialized with a template that can be discarded and
+replaced with the following text.</p><pre class="screen">package markedgraph
+
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect
+import markedgraph.MarkedGraph
+import markedgraph.Place
+import markedgraph.Transition
+
+import static extension markedgraph.PlaceAspect.*
+
+@Aspect(className=MarkedGraph)
+class MarkedGraphAspect {
+	def public void initialize() {
+		println("Graph " + _self.name + " initialized.")
+		_self.places.forEach [ pl | pl.initialize ]
+	}
+}
+
+@Aspect(className=Place)
+class PlaceAspect {
+	public int runtimeTokenCount
+
+	// @Helper
+	def public void initialize() {
+		println("Place " + _self.name + ": initialized.")
+		_self.runtimeTokenCount = _self.tokenCount
+	}
+}
+
+@Aspect(className=Transition)
+class TransitionAspect {
+	def public void fire() {
+		println("Transition " + _self.name + ": fired.")
+		_self.inputs.forEach[ runtimeTokenCount = runtimeTokenCount - 1 ]
+		_self.outputs.forEach[ runtimeTokenCount = runtimeTokenCount + 1 ]
+	}
+}</pre><div class="figure"><a name="d0e371"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MG-K3-Defined.png" alt="Definition of the DSA (ED and EF)"></div></div><p class="title"><b>Figure&nbsp;4.3.&nbsp;Definition of the DSA (ED and EF)</b></p></div><br class="figure-break"></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s04.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="pt01.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch04s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.4.&nbsp;Select the Graphical Editor&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="GuideTutorialMarkedGraph.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;4.2.&nbsp;Define DSE</td></tr></table></div></body></html>

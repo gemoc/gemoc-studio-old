@@ -1,0 +1,9 @@
+digraph aSbaS {
+    rankdir="LR"
+    init -> 1
+    1 -> 1 [label=A]
+    1 -> 2 [label=B]
+    2 -> 2 [label=A]
+    2 [peripheries=2]
+    init [shape=point, label=""]
+}

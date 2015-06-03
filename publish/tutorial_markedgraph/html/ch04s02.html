@@ -1,0 +1,68 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <title>4.2.&nbsp;Define DSE</title><link rel="stylesheet" href="css/docbook.css" type="text/css"><meta name="generator" content="DocBook XSL-NS Stylesheets V1.75.2"><link rel="home" href="GuideTutorialMarkedGraph.html" title="Tutorial"><link rel="up" href="ch04.html" title="Chapter&nbsp;4.&nbsp;Define the Execution Semantics"><link rel="prev" href="ch04.html" title="Chapter&nbsp;4.&nbsp;Define the Execution Semantics"><link rel="next" href="ch05.html" title="Chapter&nbsp;5.&nbsp;Define Animation Viewpoint"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.2.&nbsp;Define DSE</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;4.&nbsp;Define the Execution Semantics</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch05.html">Next</a></td></tr></table><hr></div><div class="section" title="4.2.&nbsp;Define DSE"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_define_dse"></a>4.2.&nbsp;Define DSE</h2></div></div></div><p>The purpose of the DSE project is to define events (called DSE) on AS
+elements that will trigger EF calls when they occurs.  Furthermore,
+constraints can be defined on these events to define when they may occur.</p><div class="section" title="4.2.1.&nbsp;Create the DSE Project"><div class="titlepage"><div><div><h3 class="title"><a name="_create_the_dse_project"></a>4.2.1.&nbsp;Create the DSE Project</h3></div></div></div><p>To create the DSE Project, click on the "ECL Project" in the
+<span class="emphasis"><em>project.xdsml</em></span> editor ("Behavior definition / DSE definition").
+Check that the name is <span class="emphasis"><em>org.gemoc.sample.markedgraph.dse</em></span>.</p><div class="figure"><a name="d0e396"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MG-DSE-Create.png" alt="Create a DSE Project"></div></div><p class="title"><b>Figure&nbsp;4.4.&nbsp;Create a DSE Project</b></p></div><br class="figure-break"><p>Click "finish" and the project is created.</p><p>Click on "ECL Project" to edit the "markedgraph.ecl" file and replace
+its content with the following:</p><div class="figure"><a name="d0e409"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MG-DSE-Template.png" alt="Template of the ECL file"></div></div><p class="title"><b>Figure&nbsp;4.5.&nbsp;Template of the ECL file</b></p></div><br class="figure-break"></div><div class="section" title="4.2.2.&nbsp;Define DSE"><div class="titlepage"><div><div><h3 class="title"><a name="_define_dse_2"></a>4.2.2.&nbsp;Define DSE</h3></div></div></div><p>Replace the content of the ECL file with the following code (explanations
+are given bellow):</p><p title="The file markedgraph.ecl"><b>The file markedgraph.ecl.&nbsp;</b>
+</p><pre class="screen">import 'platform:/resource/org.gemoc.sample.markedgraph.model/model/markedgraph.ecore'
+
+ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
+ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
+
+package markedgraph
+
+	context MarkedGraph
+		def: initIt: Event = self.initialize()
+
+	context Transition
+		def: fireIt: Event = self.fire()
+
+	context Place
+		inv tokenCountIsNull:
+			(self.tokenCount = 0) implies
+				(Relation Precedes(self.input.fireIt, self.output.fireIt))
+		inv tokenCountIsNotNullDelayRequired:
+			(self.tokenCount &gt; 0) implies
+				let delay: Integer = self.tokenCount in
+				let outputDelayed: Event =
+					Expression DelayFor(self.output.fireIt, self.output.fireIt, delay) in
+						Relation Precedes(self.input.fireIt, outputDelayed)
+
+	context MarkedGraph
+        inv initFirst:
+                let firstInit : Event = Expression OneTickAndNoMore(self.initIt) in
+                let allFire : Event = Expression Union(self.transitions.fireIt) in
+                let firstOfAllFire : Event = Expression OneTickAndNoMore(allFire) in
+                Relation Precedes(firstInit, firstOfAllFire)
+
+        inv onlyOneInit:
+                let firstInit2 : Event = Expression OneTickAndNoMore(self.initIt) in
+                Relation Coincides(self.initIt, firstInit2)
+
+endpackage</pre><p title="The file markedgraph.ecl">
+</p><div class="figure"><a name="d0e431"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/MarkedGraph/MG-DSE-Defined.png" alt="Definition of the DSE (events and constraints)"></div></div><p class="title"><b>Figure&nbsp;4.6.&nbsp;Definition of the DSE (events and constraints)</b></p></div><br class="figure-break"><p>This step has three main purposes:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">First, it specifies DSE in the context of metaclasses of the AS.
+For Marked Graph xDSML, we identify 2 DSE:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">fireIt: defined in the context of a Transition</li><li class="listitem">initIt: defined in the context of a MarkedGraph</li></ul></div></li><li class="listitem"><p class="simpara">Then, it links them to EF form DSA --- when a DSE will occurs the
+associated EF will be executed.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">fireIt is linked to the EF 'fire' of Transition</li><li class="listitem">initIt is linked to the EF 'initialize' of MarkedGraph</li></ul></div></li><li class="listitem"><p class="simpara">Finally, it defines constraints on the DSE to rule the possible
+scheduling.  Constraints generally rely on relations which are defined
+in MoCC libraries. Here constraints are expressed in CCSL and only relies
+on relations and expression from the CCSL core library.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">A first constraint applies on the fireIt events.  It is depends on
+the number of token in a place.  Indeed, if there is no tokens, then
+the fireIt of the output transition can only occur after the fireIt
+event of the input transition has occured. It is expressed by the first
+invariant defined in the context of a Place.
+If there is some tokens in a place, then the fireIt event of the output
+transition may occur as many times as there is tokens in this place.
+After, it will only occur when the fireIt on the input transition of the
+place has occured.  It is expressed using the DelayFor expression in the
+second envariant of Place.</li><li class="listitem">Two other constraints are defined in the context of the MarkedGraph
+element.  The first one expresses that the first initIt event must occur
+before any fireIt event.  The second one expresses that the initIt event
+can occur only one time.</li></ul></div></li></ol></div><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p xmlns="">Please notice that, as often, DSE are defined at the language
+level, but at runtime they are instantiated as MSE on each object
+instance of the metaclasse they are defined on.  For example, there will be
+one fireIt MSE for each Transition element of MarkedGraph model.  For the
+wikipedia example, there will a fireIt event for transitions t1, t2, t3 and
+t4. In the same way, constraints apply to the MSE.</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;4.&nbsp;Define the Execution Semantics&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="GuideTutorialMarkedGraph.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;5.&nbsp;Define Animation Viewpoint</td></tr></table></div></body></html>

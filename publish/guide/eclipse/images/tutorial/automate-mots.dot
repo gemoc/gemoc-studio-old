@@ -1,0 +1,20 @@
+digraph mots {
+    rankdir="LR"
+
+    init -> 1 [label=I]
+    1 -> 2 [label=L]
+    2 -> 3 [label=E]
+    3 -> 8 [label=S]
+    2 -> 4 [label=S]
+    2 -> 5 [label=O]
+    5 -> 6 [label=T]
+    6 -> 7 [label=S]
+
+    2 [peripheries=2]
+    3 [peripheries=2]
+    4 [peripheries=2]
+    6 [peripheries=2]
+    7 [peripheries=2]
+    8 [peripheries=2]
+    init [shape=point, label=""]
+}

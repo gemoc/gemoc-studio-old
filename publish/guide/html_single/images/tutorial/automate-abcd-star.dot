@@ -1,0 +1,13 @@
+digraph abcdStar {
+    rankdir="LR"
+
+    init -> WaitingForA -> WaitingForB [label=A]
+    WaitingForB -> WaitingForC [label=B]
+    WaitingForC -> WaitingForD [label=C]
+    WaitingForD -> WaitingForA [label=D]
+    WaitingForA [peripheries=2]
+    WaitingForB
+    WaitingForC
+    WaitingForD
+    init [shape=point, label=""]
+}
