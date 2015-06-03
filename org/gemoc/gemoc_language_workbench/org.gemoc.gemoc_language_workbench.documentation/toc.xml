@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 
-<toc label="Sample Table of Contents">	
- <link toc="eclipse_help/eclipse/toc.xml"></link>
+<toc label="Gemoc workbench" topic="html/toc.html">
+	<link toc="eclipse_help/eclipse/toc.xml" ></link>
 </toc>
