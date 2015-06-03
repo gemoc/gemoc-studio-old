@@ -58,13 +58,13 @@
 								<mkdir dir="${project.build.outputDirectory}/zips" />
 								<mkdir dir="eclipse_help" />
 								<get
-									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/en-US/eclipse/*zip*/eclipse.zip"
+									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/guide/eclipse/*zip*/eclipse.zip"
 									dest="${project.build.outputDirectory}/zips/eclipse.zip" />
 								<unzip src="${project.build.outputDirectory}/zips/eclipse.zip"
 									dest="eclipse_help" />
 								<!-- override eclipse html by html version wich is cleaner -->
 								<get
-									src="https://ci.inria.fr/gemoc/view/Documentation/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/en-US/html/*zip*/html.zip"
+									src="https://ci.inria.fr/gemoc/view/Documentation/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/guide/html/*zip*/html.zip"
 									dest="${project.build.outputDirectory}/zips/html.zip" />
 								<unzip src="${project.build.outputDirectory}/zips/html.zip"
 									dest="eclipse_help" />
