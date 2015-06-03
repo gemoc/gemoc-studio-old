@@ -97,6 +97,21 @@
          </topic>
          <topic label="Editing model with EMF Tree Editor" href="ch02s02.html#section-modeling-workbench-editing-model-with-emf-tree-editor"/>
       </topic>
+      <topic label="Executing model" href="ch02s03.html">
+         <topic label="Launch configuration" href="ch02s03.html#_launch_configuration">
+            <topic label="General options" href="ch02s03.html#_general_options"/>
+            <topic label="Run mode" href="ch02s03.html#_run_mode"/>
+            <topic label="Debug mode" href="ch02s03.html#_debug_mode"/>
+            <topic label="Backends and frontends" href="ch02s03.html#modeling-workbench-backends-frontends-section"/>
+         </topic>
+         <topic label="Engine View" href="ch02s03.html#modeling-workbench-executing-model-engine-view-section"/>
+         <topic label="Logical Steps View" href="ch02s03.html#modeling-workbench-executing-model-logical-step-view-section"/>
+         <topic label="Timeline View" href="ch02s03.html#modeling-workbench-executing-model-timeline-view-section"/>
+         <topic label="Stimuli Manager View" href="ch02s03.html#modeling-workbench-executing-model-event-manager-view-section"/>
+         <topic label="Animation View" href="ch02s03.html#modeling-workbench-executing-model-animation-view-section"/>
+         <topic label="Debug View" href="ch02s03.html#modeling-workbench-executing-model-debug-view-section"/>
+         <topic label="Variable View" href="ch02s03.html#modeling-workbench-executing-model-variable-view-section"/>
+      </topic>
    </topic>
    <topic label="Tutorial: Make Marked Graph models executable with the GEMOC Studio" href="ch03.html">
       <topic label="What is expected at the end of this tutorial" href="ch03.html#_what_is_expected_at_the_end_of_this_tutorial"/>
@@ -152,7 +167,7 @@
       <topic label="To go gurther…​" href="ch03s07.html"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d0e2330"/>
+      <topic label="Articles" href="bi01.html#d0e2698"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
