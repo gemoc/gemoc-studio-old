@@ -269,6 +269,10 @@ Full-Width Styles
   margin: 0 auto;
 }
 
+#outline_map_image {
+  max-width: 960px;
+}
+
 #forkme_banner {
   display: block;
   position: absolute;
