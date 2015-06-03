@@ -290,7 +290,7 @@ public class GemocXDSMLFormComposite extends AbstractGemocFormComposite {
 
 		Link linkSiriusAnimatorProject = new Link(grpAnimationDefinition, 0);
 		linkSiriusAnimatorProject
-				.setText("<a>Sirius viewpoint design project</a>");
+				.setText("<a>Sirius animator project</a>");
 		toolkit.adapt(linkSiriusAnimatorProject, true, true);
 
 		txtSiriusAnimationProject = new Text(grpAnimationDefinition, SWT.BORDER);

@@ -27,6 +27,7 @@ import org.gemoc.gemoc_language_workbench.conf.AnimatorProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.SiriusAnimatorProject;
 import org.gemoc.gemoc_language_workbench.conf.impl.confFactoryImpl;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.wizards.NewGemocDebugRepresentationWizard;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectODesignIProjectDialog;
 import org.gemoc.gemoc_language_workbench.ui.listeners.NewProjectWorkspaceListener;
@@ -83,7 +84,7 @@ public class CreateAnimatorProjectWizardContextAction {
 
 	protected void createNewODProject() {
 		final IWizardDescriptor descriptor = WizardFinder
-				.findNewWizardDescriptor("org.eclipse.sirius.ui.specificationproject.wizard");
+				.findNewWizardDescriptor("org.gemoc.gemoc_modeling_workbench.ui.wizards.NewGemocDebugRepresentationWizard");
 		// Then if we have a wizard, open it.
 		if (descriptor != null) {
 			NewProjectWorkspaceListener workspaceListener = new NewProjectWorkspaceListener();
@@ -98,10 +99,6 @@ public class CreateAnimatorProjectWizardContextAction {
 						.getActiveWorkbenchWindow().getShell(), wizard);
 				wd.create();
 				wd.setTitle(wizard.getWindowTitle());
-				((WizardNewProjectCreationPage) wd.getCurrentPage())
-						.setInitialProjectName(XDSMLProjectHelper
-								.baseProjectName(gemocLanguageIProject)
-								+ ".design");
 				int res = wd.open();
 				if (res == WizardDialog.OK) {
 					ResourcesPlugin.getWorkspace()
@@ -129,7 +126,7 @@ public class CreateAnimatorProjectWizardContextAction {
 			}
 		} else {
 			Activator
-					.error("wizard with id=org.eclipse.sirius.ui.specificationproject.wizard not found",
+					.error("wizard with id=org.gemoc.gemoc_modeling_workbench.ui.wizards.NewGemocDebugRepresentationWizard not found",
 							null);
 		}
 	}
