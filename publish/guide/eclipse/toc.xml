@@ -89,7 +89,7 @@
          </topic>
       </topic>
    </topic>
-   <topic label="Gemoc Modeling workbench" href="ch02.html">
+   <topic label="GEMOC Modeling workbench" href="ch02.html">
       <topic label="Modeling workbench overview" href="ch02.html#_modeling_workbench_overview"/>
       <topic label="Editing model" href="ch02s02.html">
          <topic label="Editing model with Sirius" href="ch02s02.html#modeling-workbench-editing-model-with-sirius-section">
@@ -105,7 +105,7 @@
             <topic label="Backends and frontends" href="ch02s03.html#modeling-workbench-backends-frontends-section"/>
          </topic>
          <topic label="Engine View" href="ch02s03.html#modeling-workbench-executing-model-engine-view-section"/>
-         <topic label="Logical Steps View" href="ch02s03.html#modeling-workbench-executing-model-logical-step-view-section"/>
+         <topic label="Logical Steps View" href="ch02s03.html#_logical_steps_view"/>
          <topic label="Timeline View" href="ch02s03.html#modeling-workbench-executing-model-timeline-view-section"/>
          <topic label="Stimuli Manager View" href="ch02s03.html#modeling-workbench-executing-model-event-manager-view-section"/>
          <topic label="Animation View" href="ch02s03.html#modeling-workbench-executing-model-animation-view-section"/>
@@ -167,7 +167,7 @@
       <topic label="To go gurther…​" href="ch03s07.html"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d0e2698"/>
+      <topic label="Articles" href="bi01.html#d0e2713"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
