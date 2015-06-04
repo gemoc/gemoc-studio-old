@@ -160,14 +160,14 @@
          <topic label="Import the project with a sample model" href="ch03s06.html#_import_the_project_with_a_sample_model"/>
          <topic label="Select the Modeling perspective" href="ch03s06.html#_select_the_modeling_perspective"/>
          <topic label="Create a Launch Configuration" href="ch03s06.html#_create_a_launch_configuration"/>
-         <topic label="Start the model" href="ch03s06.html#_start_the_model"/>
+         <topic label="Launch the execution of the model" href="ch03s06.html#_launch_the_execution_of_the_model"/>
          <topic label="Select a logical step" href="ch03s06.html#_select_a_logical_step"/>
          <topic label="Stop the execution" href="ch03s06.html#_stop_the_execution"/>
       </topic>
       <topic label="To go gurther…​" href="ch03s07.html"/>
    </topic>
    <topic label="Bibliography" href="bi01.html">
-      <topic label="Articles" href="bi01.html#d0e2765"/>
+      <topic label="Articles" href="bi01.html#d0e2804"/>
    </topic>
    <topic label="Glossary" href="go01.html"/>
    <topic label="Index" href="ix01.html"/>
