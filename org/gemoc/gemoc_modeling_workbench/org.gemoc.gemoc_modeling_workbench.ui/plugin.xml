@@ -59,7 +59,7 @@
       <launchConfigurationType
             delegate="org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher"
             id="org.gemoc.gemoc_modeling_workbench.ui.launcher"
-            modes="run, debug"
+            modes="debug"
             name="Gemoc eXecutable Model"
             public="true"
             sourceLocatorId="org.gemoc.gemoc_modeling_workbench.ui.sourceLocator">
