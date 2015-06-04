@@ -1,0 +1,18 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <title>3.3.&nbsp;Informal behavior</title><link rel="stylesheet" href="css/docbook.css" type="text/css"><meta name="generator" content="DocBook XSL-NS Stylesheets V1.75.2"><link rel="home" href="Tutorial_Automata.html" title="GEMOC xDSML definition tutorial with Automaton DSML"><link rel="up" href="ch03.html" title="Chapter&nbsp;3.&nbsp;Definition of the requirements/expectations on the xDSML"><link rel="prev" href="ch03s02.html" title="3.2.&nbsp;Description of automata"><link rel="next" href="ch03s04.html" title="3.4.&nbsp;Scenarios"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.3.&nbsp;Informal behavior</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;3.&nbsp;Definition of the requirements/expectations on the xDSML</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch03s04.html">Next</a></td></tr></table><hr></div><div class="section" title="3.3.&nbsp;Informal behavior"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_informal_behavior"></a>3.3.&nbsp;Informal behavior</h2></div></div></div><p>An automaton is used to decide whether a word&#8201;&#8212;&#8201;a sequence of symbols&#8201;&#8212;&#8201;is part of a language (the word is accepted by the automaton) or
+not (the word is rejected).
+An automaton gets one input at a time.
+When run, an automaton has a current state which is the initial state
+at the beginning.  Then, at each step, on input symbol is received. If
+there is no transition labelled with this symbol outgoing from the
+current state, then the word is rejected.  If it exists such a
+transition, the symbol is accepted and the current state of the
+automaton becomes the state targeted by the transition.
+A work is accepted if all its symbols have been accepted and the last
+current state of the automaton is an accept state.  Otherwise the work
+is rejected.</p><p>An automaton is nondeterministic if it contains a transition with no
+symbol (it may be fired as soon as its source state is the current
+state) or if it contains two transitions with the same source state
+and the same symbol.  An automaton is either deterministic or
+nondeterministic.</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch03s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.2.&nbsp;Description of automata&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Tutorial_Automata.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;3.4.&nbsp;Scenarios</td></tr></table></div></body></html>

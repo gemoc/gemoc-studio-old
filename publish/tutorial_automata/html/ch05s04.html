@@ -1,0 +1,41 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <title>5.4.&nbsp;Identifying DSE</title><link rel="stylesheet" href="css/docbook.css" type="text/css"><meta name="generator" content="DocBook XSL-NS Stylesheets V1.75.2"><link rel="home" href="Tutorial_Automata.html" title="GEMOC xDSML definition tutorial with Automaton DSML"><link rel="up" href="ch05.html" title="Chapter&nbsp;5.&nbsp;Increment 1 : Deterministic Automata"><link rel="prev" href="ch05s03.html" title="5.3.&nbsp;Define concrete syntaxes (CS)"><link rel="next" href="ch05s05.html" title="5.5.&nbsp;Defining Domain-Specific Actions (DSA)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.4.&nbsp;Identifying DSE</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s03.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;5.&nbsp;Increment 1 : Deterministic Automata</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch05s05.html">Next</a></td></tr></table><hr></div><div class="section" title="5.4.&nbsp;Identifying DSE"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_identifying_dse"></a>5.4.&nbsp;Identifying DSE</h2></div></div></div><p>Domain Specific Events are part of the interface of the language and
+allow communication with the system engineer and the other models of
+the system.</p><p>For our Automata xDSML, we decide that there are 3 events
+which are of relevant interest to the environment (user through a GUI
+or another xDSML through language composition operators):</p><div class="variablelist"><dl><dt><span class="term">Initializing the automata</span></dt><dd>occurs only once at the start of the simulation</dd><dt><span class="term">Injecting a symbol</span></dt><dd>occurs when the user gives a new symbol of the work to test</dd><dt><span class="term">Terminating the automata</span></dt><dd>occurs when the user has given all the symbols of the word.  It is
+used to indicate the end on the word.</dd></dl></div><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Tip</h2><p xmlns="">Other DSE may be of interest, for example firing a transition,
+rejecting a symbol, etc. They would be output events (the already
+identified ones being input events).</p></div><div class="informalexample"><p>At this moment, DSE are defined in an ECL (Event Constraint Language) file.
+In the xDSML view, click on <span class="emphasis"><em>ECL Project</em></span> to create a DSE Project.
+Let us name it "com.example.automata.dse" (it is the proposed name).
+In the corresponding field, place the path to the Ecore MetaModel
+("platform:/resource/com.example.automata.model/model/automata.ecore")
+and make sure the "Root container model element" is
+"automata::Automata" and name the file "automataDSE". Ignore the error
+that is displayed.</p><p>Right click on the <span class="emphasis"><em>ECL project</em></span> in the DSE definition part and make
+sure that in "configure", the "DSE builder" functionality is active.</p><p>An error is indicated in the newly created project. To correct it,
+fill-in the "moc2as.properties" file by completing the property with
+the name of the root element. In our case, that is "rootElement =
+Automata".</p></div><div class="informalexample"><p>For now, we will complete the ECL file with the following elements:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><span class="strong"><strong>Metamodel import:</strong></span> (already initialized) Domain-Specific Events
+and MoCC constraints are defined in the context of a concept from
+the AS, so the first thing we need is to import the metamodel.</li></ul></div><pre class="screen">import 'platform:/resource/com.example.automata.model/model/automata.ecore'</pre><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><span class="strong"><strong>Domain-Specific Events specification:</strong></span> here we can define MoccEvents
+and a mapping towards EOperations present in the Metamodel (XXX). The
+first step is to identify which behaviors should be schedulable by
+the MoCC, and which should be seen as part of the behavioral
+interface of the xDSML.</li></ul></div><p>Therefore, we define three Domain-Specific Events by defining three MoccEvents each referencing an Execution Function (implemented later).</p><pre class="screen">package automata
+	context Automata
+		def: mocc_initialize : Event = self.initialize()
+		def: mocc_terminate : Event = self.terminate()
+
+	context Symbol
+		def: mocc_occur : Event = self.occur()
+endpackage</pre></div><p>TODO: Write DSE without mapping them to DSA.</p><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Warning</h2><p xmlns="">The signature of the Execution Functions needs to be present in the
+MetaModel. Therefore, we need to modify the Ecore MetaModel and add
+the three following operations:</p><div xmlns="" class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">Automata.initialize()</li><li class="listitem">Automata.terminate()</li><li class="listitem">Symbol.occur()</li></ul></div><p xmlns="">To represent methods with Void as return type in EMF, do not complete
+the field "EType" of the EOperations.</p></div><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Tip</h2><p xmlns="">If the AS is changed (automata.ecore), we have to do "Reload&#8230;&#8203;"
+on the genmodel, generate again the Model, Edit and Editor, and
+re-register the ecore.  Nevertheless, the ECL is not always able to
+see the changes.  In such a case close the editor and open it again.
+It should work.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch05s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.3.&nbsp;Define concrete syntaxes (CS)&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Tutorial_Automata.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;5.5.&nbsp;Defining Domain-Specific Actions (DSA)</td></tr></table></div></body></html>

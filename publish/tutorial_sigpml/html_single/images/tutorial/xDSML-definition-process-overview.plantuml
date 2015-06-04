@@ -1,0 +1,26 @@
+@startuml
+(*) --> "Define Models, Scenarios,\nobservable informations, \nexpected vizulations"
+--> "Define increment's purpose" as DefIncrement
+--> === StartGEMOC ===
+--> MoCC
+--> === EnDxDSML ===
+=== StartGEMOC === --> DSA
+--> === EnDxDSML ===
+=== StartGEMOC === --> DSE
+--> === EnDxDSML ===
+=== StartGEMOC === --> Mappings
+--> === EnDxDSML ===
+=== StartGEMOC === --> "ODesign" as Animation
+--> === EnDxDSML ===
+if "Examples OK?" then
+    -right->[no] "Analyze errors"
+    -up->  === StartGEMOC ===
+else
+    -down->[yes] (*)
+endif
+@enduml
+    if "Finished?" then
+	-left->[No] DefIncrement
+    else
+	-down->[yes] (*)
+    endif

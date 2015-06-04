@@ -1,0 +1,76 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <title>5.6.&nbsp;Model of Concurrency and Communication (MoCC)</title><link rel="stylesheet" href="css/docbook.css" type="text/css"><meta name="generator" content="DocBook XSL-NS Stylesheets V1.75.2"><link rel="home" href="Tutorial_Automata.html" title="GEMOC xDSML definition tutorial with Automaton DSML"><link rel="up" href="ch05.html" title="Chapter&nbsp;5.&nbsp;Increment 1 : Deterministic Automata"><link rel="prev" href="ch05s05.html" title="5.5.&nbsp;Defining Domain-Specific Actions (DSA)"><link rel="next" href="ch05s07.html" title="5.7.&nbsp;Using the Modeling Workbench"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.6.&nbsp;Model of Concurrency and Communication (MoCC)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s05.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;5.&nbsp;Increment 1 : Deterministic Automata</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch05s07.html">Next</a></td></tr></table><hr></div><div class="section" title="5.6.&nbsp;Model of Concurrency and Communication (MoCC)"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_model_of_concurrency_and_communication_mocc"></a>5.6.&nbsp;Model of Concurrency and Communication (MoCC)</h2></div></div></div><p>At the moment the MoCC is defined using MoCCML, a superset of CCSL.
+It is composed of two parts.  The first one is the reusable one,
+defined in a MoCCML project. It contains the declaration and
+definition of relations on clocks (MoCC events).  At the top level, a
+state machine can be used to specify the relations.  The second one
+explains how to use those relations according to the abstract syntax
+of the DSML.  Is part of the DSE/ECL project.</p><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Note</h2><p xmlns="">We will use the term clock as a synonym of MoCC event, that is
+events that are managed by the MoCC.  The purpose is to avoid
+confusion with domain specific events (DSE).</p></div><p>We have already identify DSE and we have defined them in the ECL file
+(DSE project).  Implicitly, these DSE events are mapped to
+corresponding clock at the MoCC level.  So, we have three clocks,
+initialize, occur and terminate.</p><p>We want that the 'initialize' clock clicks only once and before all
+other clocks.  Then we can have any occurrences of the 'occur' clock
+and, eventually, one occurrence of the 'terminate' clock.</p><p>TODO: It could be defined using a state machine : initialize, then
+occur *, then terminate.</p><div class="section" title="5.6.1.&nbsp;Reusable part of the MoCC: MoCCML"><div class="titlepage"><div><div><h3 class="title"><a name="_reusable_part_of_the_mocc_moccml"></a>5.6.1.&nbsp;Reusable part of the MoCC: MoCCML</h3></div></div></div><p>Here, we want that 'initialize()' DSE occurs only once before any other
+event.  Thus we define a <span class="strong"><strong>relation</strong></span> called 'FirstAndOnlyOnce' whose
+purpose is specify that a first clock will happen only once, before all
+the others clocks. Thus, it takes two arguments, the first clock, the collection
+of other clock.  Its prototype is as follows:</p><pre class="programlisting">RelationDeclaration FirstAndOnlyOnce(first : clock, other : clock)</pre><p>Then, we have to provide the definition <span class="strong"><strong>(RelationDefinition</strong></span>) which
+satisfies the this specification. The mocclib file hereafter provides
+both the declaration and the definition of this relation.</p><p title="automata.mocclib"><a name="automata.mocclib"></a><b>automata.mocclib.&nbsp;</b>
+</p><pre class="screen">StateRelationBasedLibrary automataLib{
+	imports{
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as ccsl;
+	}
+
+	RelationLibrary basicautomataRelations{
+		RelationDeclaration FirstAndOnlyOnce(first : clock, other : clock)
+		RelationDefinition FirstAndOnlyOnceImplem[FirstAndOnlyOnce]{
+			Expression firstTickOfFirstEvent = OneTickAndNoMore(OneTickAndNoMoreClock -&gt; first)
+			Expression firstTickOfOtherEvents = OneTickAndNoMore(OneTickAndNoMoreClock -&gt; other)
+			Relation Precedes(
+				LeftClock -&gt; first,
+				RightClock -&gt; firstTickOfOtherEvents
+			)
+			Relation Coincides(
+				Clock1 -&gt; first,
+				Clock2 -&gt; firstTickOfFirstEvent
+			)
+		}
+	}
+}</pre><p title="automata.mocclib">
+</p><div class="informalexample"><p>First, we create a new MoCCML project (right click on the xDSML
+project &gt; GEMOC Language &gt; Create MoC Project) --- this action is not
+yet available from the xDSML view --- and place a library of custom
+MoCCML relations and expressions there. Let us call this project
+"com.example.automata.mocc.lib".  We can now complete the
+<a class="link" href="">automat.mocclib</a> file.</p></div></div><div class="section" title="5.6.2.&nbsp;Specific part of the MoCC"><div class="titlepage"><div><div><h3 class="title"><a name="_specific_part_of_the_mocc"></a>5.6.2.&nbsp;Specific part of the MoCC</h3></div></div></div><p>Next, we can define the actual constraints on the clock of an Automata
+model.  It is described in the ECL file (SDE project) using AS
+concepts and the relations defined in the MoCCML project as well as
+the standard libraries relations.
+Thus, we start to import the lib and the ecore files (at top of the
+ECL file).</p><pre class="screen">import 'platform:/resource/com.example.automata.as/model/automata.ecore'
+ECLimport "platform:/resource/com.example.automata.mocc.lib/mocc/automata.moccml"
+ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
+ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"</pre><p>The main part of the ECL file specify how to instantiate clocks ('def'
+keyword and 'Expression' construction) and which constraints to put on
+them thanks to the 'Relation' concept.</p><p>First, we want to make sure that we do the initialization
+('initialize' clock) of the Automata before anything else. Therefore,
+we will use the relation "FirstAndOnlyOnce" defined in our custom
+MoCCML library.</p><pre class="screen">context Automata
+	inv InitBeforeAnythingElse:
+		let allOccurEvents : Event = Expression Union(self.symbols.mocc_occur) in
+		let allOtherEvents : Event = Expression Union(allOccurEvents, self.mocc_terminate) in
+		Relation FirstAndOnlyOnce(self.mocc_initialize, allOtherEvents)</pre><p>Now, we also want to make sure that we can only inject one symbol at a time. This is modelled by a relation of exclusion between the MoccEvents corresponding to the injection of the symbols. Therefore we add the following constraint:</p><pre class="screen">inv ExclusivityOfSymbolOccurrences:
+	Relation Exclusion(self.symbols.mocc_occur)</pre><p>However we cannot both inject a symbol and terminate at the same time. Therefore we also need to add the following exclusion:</p><pre class="screen">inv ExclusivityOfSymbolsAndTerminate:
+	let allSymbolOccurEvents : Event = Expression Union(self.symbols.mocc_occur) in
+	Relation Exclusion(self.mocc_terminate, allSymbolOccurEvents)</pre><p>As soon as you save the ECL file, a .qvto file should be generated in
+the folders qvto-gen/language and qvto-gen/modeling. Make sure that
+your xDSML project references the .qvto file that is available in
+qvto-gen/modeling.</p><div xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h2>Tip</h2><p xmlns="">If the Ecore file describing the syntax is changed while the ECL
+file is opened, it may be required to close the ECL file and to open
+it again to ensure modifications on the Ecore file are seen by ECL.</p></div></div><div class="section" title="5.6.3.&nbsp;Testing the MoCC"><div class="titlepage"><div><div><h3 class="title"><a name="_testing_the_mocc"></a>5.6.3.&nbsp;Testing the MoCC</h3></div></div></div><p>TODO: To be completed</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s05.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch05s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.5.&nbsp;Defining Domain-Specific Actions (DSA)&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Tutorial_Automata.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;5.7.&nbsp;Using the Modeling Workbench</td></tr></table></div></body></html>

@@ -1,0 +1,27 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <title>5.2.&nbsp;Define the Abstract Syntax (AS)</title><link rel="stylesheet" href="css/docbook.css" type="text/css"><meta name="generator" content="DocBook XSL-NS Stylesheets V1.75.2"><link rel="home" href="Tutorial_Automata.html" title="GEMOC xDSML definition tutorial with Automaton DSML"><link rel="up" href="ch05.html" title="Chapter&nbsp;5.&nbsp;Increment 1 : Deterministic Automata"><link rel="prev" href="ch05.html" title="Chapter&nbsp;5.&nbsp;Increment 1 : Deterministic Automata"><link rel="next" href="ch05s03.html" title="5.3.&nbsp;Define concrete syntaxes (CS)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.2.&nbsp;Define the Abstract Syntax (AS)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;5.&nbsp;Increment 1 : Deterministic Automata</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch05s03.html">Next</a></td></tr></table><hr></div><div class="section" title="5.2.&nbsp;Define the Abstract Syntax (AS)"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_define_the_abstract_syntax_as"></a>5.2.&nbsp;Define the Abstract Syntax (AS)</h2></div></div></div><div class="informalexample"><p>To define the AS we can either select an existing project (Browse
+button) or create a new one.  To create a new one, we click on "EMF
+project" on the xDSML view of project.xdsml.
+Let us call it "org.example.automata.model".
+Let us call our package "automata". We will use the default ns URI and ns
+Prefix. We may then edit the Ecore MetaModel either with the graphical
+editor or with the tree editor.</p></div><div class="figure"><a name="fig-automata-classDiagram"></a><div class="figure-contents"><div class="mediaobject"><img src="./images/tutorial/automata-as.png" alt="Automata Abstract Syntax (Metamodel)"></div></div><p class="title"><b>Figure&nbsp;5.1.&nbsp;Automata Metamodel</b></p></div><br class="figure-break"><p>An Automaton is a composed of States (at least one), Transitions and
+Symbols.  An automaton has an initial state (reference).  A state can
+be a final state (attribute).   A Transition must have a source and a
+target, both of type State. A Transition is fired upon occurrence of
+one of its associated Symbol.
+For practical reasons, we also add EOpposite references whenever
+possible.
+Therefore States, Transitions and Symbols know which Automata they
+belong to.
+Symbols know which Transition(s) they are referenced by.
+States know their outgoing and incoming Transitions.  Automatas,
+States, Transitions and Symbols all have a name (factorized in the
+NamedElement metaclass).</p><div class="informalexample"><p>Once the Ecore MetaModel is done, we can come back to the xDSML view.
+The "EMF project" and the  "Genmodel URI" have been updated.</p><p>Set the "Root container model element" to "automata::Automata".</p><p>Open the associated Genmodel (click on Genmodel URI) to generate the
+Model Code, Edit Code and Editor Code by right clicking on the root of
+the Genmodel (right-click on root element). The packages "automata",
+"automata.impl" and "automata.util" as well as the plug-ins
+"com.example.automata.model.edit" and
+"com.example.automata.model.editor" are generated.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch05s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;5.&nbsp;Increment 1 : Deterministic Automata&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Tutorial_Automata.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;5.3.&nbsp;Define concrete syntaxes (CS)</td></tr></table></div></body></html>
