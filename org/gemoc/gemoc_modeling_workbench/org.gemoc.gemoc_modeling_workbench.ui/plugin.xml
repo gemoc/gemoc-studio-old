@@ -148,11 +148,11 @@
 		     </with>
             </enablement>
             <contextLabel
-                  label="Gemoc executable Model"
+                  label="Gemoc eXecutable Model"
                   mode="run">
             </contextLabel>
             <contextLabel
-                  label="Gemoc executable Model"
+                  label="Gemoc eXecutable Model"
                   mode="debug">
             </contextLabel>
          </contextualLaunch>
@@ -226,7 +226,7 @@
          <menu
                icon="icons/IconeGemocModel-16.png"
                id="org.gemoc.modeling.menu"
-               label="GEMOC"
+               label="GEMOC advanced tools"
                path="additions">
             <separator
                   name="group1">
