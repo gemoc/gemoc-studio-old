@@ -162,16 +162,18 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 				if (configuration.hasAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI)) {
 					final String pathString = configuration.getAttribute(
 							AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, "");
-					IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(pathString));
-					if (resource != null && resource.equals(file)) {
-						configurations.add(configuration);
+					try {
+						IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(pathString));
+						if (resource != null && resource.equals(file)) {
+							configurations.add(configuration);
+						}
+					} catch (IllegalArgumentException e) {
 					}
 				}
 			}
-		} catch (IllegalArgumentException r) {
-			// could not load configurations, ignore
 		} catch (CoreException e) {
 			// could not load configurations, ignore
+			e.toString();
 		}
 
 		return configurations.toArray(new ILaunchConfiguration[configurations.size()]);
