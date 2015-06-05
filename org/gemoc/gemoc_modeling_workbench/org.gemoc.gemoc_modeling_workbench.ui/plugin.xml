@@ -148,11 +148,11 @@
 		     </with>
             </enablement>
             <contextLabel
-                  label="Run as Gemoc executable Model"
+                  label="Gemoc executable Model"
                   mode="run">
             </contextLabel>
             <contextLabel
-                  label="Debug as Gemoc executable Model"
+                  label="Gemoc executable Model"
                   mode="debug">
             </contextLabel>
          </contextualLaunch>
@@ -311,6 +311,12 @@
                   style="push">
             </command>
          </menuContribution>
+      </extension>
+      <extension
+            point="org.eclipse.ui.startup">
+         <startup
+               class="org.gemoc.gemoc_modeling_workbench.ui.ModelingWorkbenchEarlyStartup">
+         </startup>
       </extension>
    
 </plugin>
