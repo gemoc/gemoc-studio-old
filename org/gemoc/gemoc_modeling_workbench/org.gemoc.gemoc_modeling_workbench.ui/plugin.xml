@@ -59,7 +59,7 @@
       <launchConfigurationType
             delegate="org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher"
             id="org.gemoc.gemoc_modeling_workbench.ui.launcher"
-            modes="debug"
+            modes="run, debug"
             name="Gemoc eXecutable Model"
             public="true"
             sourceLocatorId="org.gemoc.gemoc_modeling_workbench.ui.sourceLocator">
@@ -111,10 +111,21 @@
            type="org.gemoc.gemoc_modeling_workbench.ui.launcher">
 	    </launchConfigurationTabGroup>
 	</extension>
+    <extension
+          point="org.eclipse.core.expressions.propertyTesters">
+       <propertyTester
+             class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocLaunchableTester"
+             id="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocLaunchableTester"
+             namespace="org.gemoc.gemoc_modeling_workbench.ui.launcher"
+             properties="isModel"
+             type="org.eclipse.core.runtime.IAdaptable">
+       </propertyTester>
+    </extension>
 	<extension
          point="org.eclipse.debug.ui.launchShortcuts">
       <shortcut
             class="org.gemoc.gemoc_modeling_workbench.ui.launcher.Launcher"
+            description="Create a configuration to launch an Eclipse application in debug mode."
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.gemoc_modeling_workbench.ui.GemocExecutableReflectiveModel"
             label="Gemoc eXecutable Model"
@@ -124,31 +135,24 @@
          </configurationType>
          <contextualLaunch>
             <enablement>
-               <count
-                     value="1">
-               </count>
-               <iterate
-                     operator="or">
-                  <or>
-                     <test
-                           property="org.eclipse.debug.ui.matchesPattern"
-                           value="*.xmi">
-                     </test>
-                     <adapt type="org.eclipse.core.resources.IResource">
-                     	<test
-                           property="org.eclipse.core.resources.projectNature"
-                           value="org.kermeta.language.texteditor.eclipse.nature.KermetaNatureID">
-                     	</test>
-                     </adapt>
-                  </or>
-               </iterate>
+            	<with variable="selection">
+		     		<count value="1"/>
+	      			<iterate>
+	       				<or>
+	        				<test property="org.gemoc.gemoc_modeling_workbench.ui.launcher.isModel"/>
+	        				<test property="org.eclipse.debug.ui.matchesPattern"
+	                        	value="*.xmi">
+	                     	</test>
+	        			</or>
+	      			</iterate>
+		     </with>
             </enablement>
             <contextLabel
-                  label="Run as Gemoc eXecutable Reflective Model"
+                  label="Run as Gemoc executable Model"
                   mode="run">
             </contextLabel>
             <contextLabel
-                  label="Debug as Gemoc eXecutable Reflective Model"
+                  label="Debug as Gemoc executable Model"
                   mode="debug">
             </contextLabel>
          </contextualLaunch>
