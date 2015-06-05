@@ -8,9 +8,15 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.gemoc.commons.eclipse.emf.EMFResource;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
+import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 
 /**
  * Property tester for context launching menu.
+ * 
+ * Note: this PropertyTester seems to be fully activated only when the containing plugin is started
  */
 public class GemocLaunchableTester extends PropertyTester {
 
@@ -19,8 +25,60 @@ public class GemocLaunchableTester extends PropertyTester {
 	 */
 	private static final String PROPERTY_IS_MODEL = "isModel"; //$NON-NLS-1$
 	
+	/**
+	 * name for the "is executable domain specific model" property
+	 */
+	private static final String PROPERTY_IS_EXECUTABLE_DOMAIN_SPECIFIC_MODEL = "isExecutableDomainSpecicModel"; //$NON-NLS-1$
 	
 	
+	protected boolean isModel(IAdaptable receiver){
+		IFile modelFile = (IFile)(receiver).getAdapter(IFile.class);
+		if(modelFile !=null){
+			ResourceSet rs = new ResourceSetImpl();
+			URI modelURI = URI.createURI("platform:/resource/"+modelFile.getFullPath().toString());
+			try{
+				Resource resource = rs.getResource(modelURI, true);
+			if (resource != null) {
+				return true;
+			}
+			} catch (Exception e){
+				// not a valid model, simply ignore
+				return false;
+			}
+		}
+		return false;
+	}
+	
+	protected boolean isExecutableDomainSpecicModel(IAdaptable receiver){
+		IFile modelFile = (IFile)(receiver).getAdapter(IFile.class);
+		if(modelFile !=null){
+			
+			return existsDSMLWithFileExtension(modelFile.getFileExtension());
+		}
+		return false;
+	}
+	
+	
+	protected boolean existsDSMLWithFileExtension(String fileExtension){
+		for(LanguageDefinitionExtension lde : LanguageDefinitionExtensionPoint.getSpecifications()){
+			try{
+				String xdsmluri = lde.getXDSMLFilePath();
+				if (!xdsmluri.startsWith("platform:/plugin"))
+					xdsmluri = "platform:/plugin" + xdsmluri;
+				Object o = EMFResource.getFirstContent(xdsmluri);
+				if(o != null && o instanceof LanguageDefinition){
+					LanguageDefinition ld = (LanguageDefinition)o;
+					if(ld.getFileExtensions().contains(fileExtension)){
+						return true;
+					}
+				}
+			}
+			catch(Exception e){}
+		}
+		
+		
+		return false;
+	}
 	
 	/**
 	 * Method runs the tests defined from extension points for Run As... and Debug As... menu items.
@@ -33,24 +91,16 @@ public class GemocLaunchableTester extends PropertyTester {
 
 		if(PROPERTY_IS_MODEL.equals(property)) {
 			if (receiver instanceof IAdaptable) {
-				IFile modelFile = (IFile)((IAdaptable)receiver).getAdapter(IFile.class);
-				if(modelFile !=null){
-					ResourceSet rs = new ResourceSetImpl();
-					URI modelURI = URI.createURI("platform:/resource/"+modelFile.getFullPath().toString());
-					try{
-						Resource resource = rs.getResource(modelURI, true);
-					if (resource != null) {
-						return true;
-					}
-					} catch (Exception e){
-						// not a valid model, simply ignore
-						return false;
-					}
-				}
+				return isModel((IAdaptable)receiver);
 			}
 			return false;
 		}
-		
+		if(PROPERTY_IS_EXECUTABLE_DOMAIN_SPECIFIC_MODEL.equals(property)) {
+			if (receiver instanceof IAdaptable) {
+				return isExecutableDomainSpecicModel((IAdaptable)receiver);
+			}
+			return false;
+		}
 		return false;
 	}
 	

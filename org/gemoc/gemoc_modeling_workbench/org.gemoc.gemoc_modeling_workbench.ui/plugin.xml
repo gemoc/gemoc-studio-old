@@ -117,7 +117,7 @@
              class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocLaunchableTester"
              id="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocLaunchableTester"
              namespace="org.gemoc.gemoc_modeling_workbench.ui.launcher"
-             properties="isModel"
+             properties="isModel, isExecutableDomainSpecicModel"
              type="org.eclipse.core.runtime.IAdaptable">
        </propertyTester>
     </extension>
@@ -139,7 +139,7 @@
 		     		<count value="1"/>
 	      			<iterate>
 	       				<or>
-	        				<test property="org.gemoc.gemoc_modeling_workbench.ui.launcher.isModel"/>
+	        				<test property="org.gemoc.gemoc_modeling_workbench.ui.launcher.isExecutableDomainSpecicModel"/>
 	        				<test property="org.eclipse.debug.ui.matchesPattern"
 	                        	value="*.xmi">
 	                     	</test>
