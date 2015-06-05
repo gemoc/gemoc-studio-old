@@ -46,6 +46,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
@@ -203,17 +204,24 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 				}
 
 				// launch
-				if (configurations.length != 0) {
+				if (configurations.length == 1) {
 					configurations[0].launch(mode, new NullProgressMonitor());
+				} else {
+					// more than one configuration applies
+					// open launch dialog for selection
+					final ILaunchGroup group = DebugUITools.getLaunchGroup(configurations[0], mode);
+					DebugUITools.openLaunchConfigurationDialogOnGroup(PlatformUI.getWorkbench()
+							.getActiveWorkbenchWindow().getShell(),
+							new StructuredSelection(configurations[0]), group.getIdentifier(), null);
 				}
 
 			} catch (CoreException e) {
 				// could not create launch configuration, run file directly
-				try {
-					launch(firstInstruction, null, mode, null, new NullProgressMonitor());
-				} catch (CoreException e1) {
-					Activator.getDefault().error(e1);
-				}
+				// try {
+				// launch(firstInstruction, null, mode, null, new NullProgressMonitor());
+				// } catch (CoreException e1) {
+				Activator.getDefault().error(e);
+				// }
 			}
 		}
 	}

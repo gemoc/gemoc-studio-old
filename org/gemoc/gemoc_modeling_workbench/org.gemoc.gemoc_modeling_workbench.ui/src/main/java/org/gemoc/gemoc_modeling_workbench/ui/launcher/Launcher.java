@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -15,7 +16,10 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.debug.ui.DebugUITools;
+import org.eclipse.debug.ui.ILaunchGroup;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -29,7 +33,9 @@ import org.eclipse.jdt.core.search.SearchParticipant;
 import org.eclipse.jdt.core.search.SearchPattern;
 import org.eclipse.jdt.core.search.SearchRequestor;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 import org.gemoc.execution.engine.commons.ModelExecutionContext;
 import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
@@ -346,4 +352,40 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 		}
 
 	}
+
+	
+	@Override
+	protected ILaunchConfiguration[] createLaunchConfiguration(IResource file,
+			EObject firstInstruction, String mode) throws CoreException {
+		ILaunchConfiguration[] launchConfigs = super.createLaunchConfiguration(file, firstInstruction, mode);
+		
+		if(launchConfigs.length == 1){
+			// open configuration for further editing
+			if(launchConfigs[0] instanceof ILaunchConfigurationWorkingCopy){
+				ILaunchConfigurationWorkingCopy configuration = (ILaunchConfigurationWorkingCopy)launchConfigs[0];
+				
+				String selectedLanguage = configuration.getAttribute(RunConfiguration.LAUNCH_SELECTED_LANGUAGE, "");
+				if(selectedLanguage.equals("")){
+				
+					// TODO try to infer possible language and other attribute from project content and environment
+					configuration.setAttribute(
+							RunConfiguration.LAUNCH_SELECTED_DECIDER,
+							RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP);
+					final ILaunchGroup group = DebugUITools.getLaunchGroup(configuration, mode);
+					if (group != null) {
+						ILaunchConfiguration savedLaunchConfig = configuration.doSave();
+						// open configuration for user validation and inputs
+						DebugUITools.openLaunchConfigurationDialogOnGroup(PlatformUI.getWorkbench()
+								.getActiveWorkbenchWindow().getShell(),
+								new StructuredSelection(savedLaunchConfig), group.getIdentifier(), null);
+						//DebugUITools.openLaunchConfigurationDialog(PlatformUI.getWorkbench()
+						//		.getActiveWorkbenchWindow().getShell(), savedLaunchConfig, group.getIdentifier(), null);
+					}
+				}
+			}
+		}
+		return launchConfigs;
+		
+	}
+	
 }

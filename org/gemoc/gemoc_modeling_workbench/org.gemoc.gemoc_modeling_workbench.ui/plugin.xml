@@ -131,7 +131,7 @@
             label="Gemoc eXecutable Model"
             modes="run, debug">
          <configurationType
-               id="org.gemoc.gemoc_modeling_workbench.ui.GemocReflectiveModelLauncherID">
+               id="org.gemoc.gemoc_modeling_workbench.ui.launcher">
          </configurationType>
          <contextualLaunch>
             <enablement>
