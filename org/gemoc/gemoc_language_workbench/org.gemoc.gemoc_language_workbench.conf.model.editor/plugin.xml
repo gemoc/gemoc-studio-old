@@ -8,13 +8,13 @@
 
    <extension point="org.eclipse.ui.newWizards">
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
+            id="org.gemoc.gemoc_language_workbench.ui"
+            name="GEMOC"/>
       <wizard
             id="org.gemoc.gemoc_language_workbench.conf.presentation.confModelWizardID"
             name="%_UI_confModelWizard_label"
             class="org.gemoc.gemoc_language_workbench.conf.presentation.confModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="org.gemoc.gemoc_language_workbench.ui"
             icon="icons/full/obj16/confModelFile.gif">
          <description>%_UI_confModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
