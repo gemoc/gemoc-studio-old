@@ -20,6 +20,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +31,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tr
  * <ul>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl#getChoices <em>Choices</em>}</li>
  *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl#getBranches <em>Branches</em>}</li>
+ *   <li>{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.ExecutionTraceModelImpl#getReachedStates <em>Reached States</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,6 +57,16 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected EList<Branch> branches;
+
+	/**
+	 * The cached value of the '{@link #getReachedStates() <em>Reached States</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReachedStates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ModelState> reachedStates;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,6 +116,18 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ModelState> getReachedStates() {
+		if (reachedStates == null) {
+			reachedStates = new EObjectContainmentEList<ModelState>(ModelState.class, this, Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__REACHED_STATES);
+		}
+		return reachedStates;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -111,6 +135,8 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 				return ((InternalEList<?>)getChoices()).basicRemove(otherEnd, msgs);
 			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES:
 				return ((InternalEList<?>)getBranches()).basicRemove(otherEnd, msgs);
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__REACHED_STATES:
+				return ((InternalEList<?>)getReachedStates()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -127,6 +153,8 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 				return getChoices();
 			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES:
 				return getBranches();
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__REACHED_STATES:
+				return getReachedStates();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -148,6 +176,10 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 				getBranches().clear();
 				getBranches().addAll((Collection<? extends Branch>)newValue);
 				return;
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__REACHED_STATES:
+				getReachedStates().clear();
+				getReachedStates().addAll((Collection<? extends ModelState>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -166,6 +198,9 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES:
 				getBranches().clear();
 				return;
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__REACHED_STATES:
+				getReachedStates().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -182,6 +217,8 @@ public class ExecutionTraceModelImpl extends MinimalEObjectImpl.Container implem
 				return choices != null && !choices.isEmpty();
 			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__BRANCHES:
 				return branches != null && !branches.isEmpty();
+			case Gemoc_execution_tracePackage.EXECUTION_TRACE_MODEL__REACHED_STATES:
+				return reachedStates != null && !reachedStates.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

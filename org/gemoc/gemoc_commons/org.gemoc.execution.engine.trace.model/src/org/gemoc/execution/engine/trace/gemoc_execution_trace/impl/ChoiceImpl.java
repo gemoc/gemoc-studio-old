@@ -223,9 +223,9 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 		if (newContextState != contextState) {
 			NotificationChain msgs = null;
 			if (contextState != null)
-				msgs = ((InternalEObject)contextState).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Gemoc_execution_tracePackage.CHOICE__CONTEXT_STATE, null, msgs);
+				msgs = ((InternalEObject)contextState).eInverseRemove(this, Gemoc_execution_tracePackage.CONTEXT_STATE__CHOICE, ContextState.class, msgs);
 			if (newContextState != null)
-				msgs = ((InternalEObject)newContextState).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - Gemoc_execution_tracePackage.CHOICE__CONTEXT_STATE, null, msgs);
+				msgs = ((InternalEObject)newContextState).eInverseAdd(this, Gemoc_execution_tracePackage.CONTEXT_STATE__CHOICE, ContextState.class, msgs);
 			msgs = basicSetContextState(newContextState, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -402,6 +402,10 @@ public class ChoiceImpl extends MinimalEObjectImpl.Container implements Choice {
 		switch (featureID) {
 			case Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getNextChoices()).basicAdd(otherEnd, msgs);
+			case Gemoc_execution_tracePackage.CHOICE__CONTEXT_STATE:
+				if (contextState != null)
+					msgs = ((InternalEObject)contextState).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Gemoc_execution_tracePackage.CHOICE__CONTEXT_STATE, null, msgs);
+				return basicSetContextState((ContextState)otherEnd, msgs);
 			case Gemoc_execution_tracePackage.CHOICE__PREVIOUS_CHOICE:
 				if (previousChoice != null)
 					msgs = ((InternalEObject)previousChoice).eInverseRemove(this, Gemoc_execution_tracePackage.CHOICE__NEXT_CHOICES, Choice.class, msgs);

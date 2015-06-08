@@ -9,7 +9,7 @@
         eType="#//LogicalStep" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="chosenLogicalStep" eType="#//LogicalStep"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contextState" eType="#//ContextState"
-        containment="true"/>
+        containment="true" eOpposite="#//ContextState/choice"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="previousChoice" eType="#//Choice"
         eOpposite="#//Choice/nextChoices"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="selectedNextChoice" eType="#//Choice"/>
@@ -21,6 +21,8 @@
         eType="#//Choice" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
         eType="#//Branch" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reachedStates" upperBound="-1"
+        eType="#//ModelState" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SolverState">
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
@@ -28,12 +30,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelState">
     <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contextState" upperBound="-1"
+        eType="#//ContextState" eOpposite="#//ContextState/modelState"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContextState">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modelState" lowerBound="1"
-        eType="#//ModelState" containment="true"/>
+        eType="#//ModelState" eOpposite="#//ModelState/contextState"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="solverState" lowerBound="1"
         eType="#//SolverState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="choice" eType="#//Choice"
+        eOpposite="#//Choice/contextState"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="ISerializable" instanceClassName="byte[]"/>
   <eClassifiers xsi:type="ecore:EClass" name="LogicalStep">
@@ -43,15 +49,15 @@
   <eClassifiers xsi:type="ecore:EClass" name="MSEOccurrence">
     <eStructuralFeatures xsi:type="ecore:EReference" name="mse" lowerBound="1" eType="ecore:EClass ../../fr.inria.aoste.timesquare.ecl.feedback.model/model/feedback.ecore#//ModelSpecificEvent"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameters" upperBound="-1"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="result" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="logicalstep" lowerBound="1"
         eType="#//LogicalStep" eOpposite="#//LogicalStep/mseOccurrences"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Branch">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startIndex" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stopIndex" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startIndex" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stopIndex" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="choices" upperBound="-1"
         eType="#//Choice" eOpposite="#//Choice/branch"/>
   </eClassifiers>

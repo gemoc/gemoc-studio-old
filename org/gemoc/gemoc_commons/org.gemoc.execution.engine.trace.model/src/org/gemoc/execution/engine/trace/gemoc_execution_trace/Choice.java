@@ -90,6 +90,7 @@ public interface Choice extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Context State</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState#getChoice <em>Choice</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Context State</em>' containment reference isn't clear,
@@ -99,7 +100,8 @@ public interface Choice extends EObject {
 	 * @return the value of the '<em>Context State</em>' containment reference.
 	 * @see #setContextState(ContextState)
 	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tracePackage#getChoice_ContextState()
-	 * @model containment="true"
+	 * @see org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState#getChoice
+	 * @model opposite="choice" containment="true"
 	 * @generated
 	 */
 	ContextState getContextState();
