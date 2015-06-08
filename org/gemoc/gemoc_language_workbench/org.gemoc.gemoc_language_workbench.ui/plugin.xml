@@ -208,6 +208,22 @@
           </newWizardShortcut>
        </perspectiveExtension>
     </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonWizard
+            menuGroupId="org.gemoc.gemoc_language_workbench.ui"
+            type="new"
+            wizardId="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject">
+         <enablement>
+            <with
+                  variable="activeWorkbenchWindow.activePerspective">
+               <equals
+                     value="org.eclipse.sirius.ui.tools.perspective.design">
+               </equals>
+            </with>
+         </enablement>
+      </commonWizard>
+   </extension>
     
     
     <!-- DSE extensions -->

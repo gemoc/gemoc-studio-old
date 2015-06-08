@@ -180,12 +180,16 @@
  </extension>
  <extension
        point="org.eclipse.ui.newWizards">
+    <category
+          id="org.gemoc.gemoc_modeling_workbench.ui.category"
+          name="GEMOC">
+    </category>
     <wizard
           category="org.gemoc.gemoc_language_workbench.ui"
           class="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject"
           icon="icons/IconeGemocModel-16.png"
           id="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject"
-          name="New GEMOC Modeling Project"
+          name="GEMOC Modeling Project"
           project="true">
     </wizard>
  </extension>
@@ -222,6 +226,22 @@
                id="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject">
          </newWizardShortcut>
       </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonWizard
+            menuGroupId="org.gemoc.gemoc_modeling_workbench.ui.category"
+            type="new"
+            wizardId="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject">
+         <enablement>
+            <with
+                  variable="activeWorkbenchWindow.activePerspective">
+               <equals
+                     value="org.eclipse.sirius.ui.tools.perspective.modeling">
+               </equals>
+            </with>
+         </enablement>
+      </commonWizard>
    </extension>
    
       <extension
