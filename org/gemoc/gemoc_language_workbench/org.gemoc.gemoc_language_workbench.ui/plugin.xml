@@ -161,7 +161,7 @@
             icon="icons/IconeGemocLanguage-16.png"
             finalPerspective="org.eclipse.sirius.ui.tools.perspective.design"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
-            name="New GEMOC Language Project"
+            name="GEMOC Language Project"
             project="true">
       </wizard>
       <wizard
@@ -170,7 +170,7 @@
             finalPerspective="org.eclipse.sirius.ui.tools.perspective.design"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewDSEProject"
-            name="New DSE Project"
+            name="DSE Project"
             project="true">
       </wizard>
       <wizard
@@ -179,7 +179,7 @@
             finalPerspective="org.eclipse.sirius.ui.tools.perspective.design"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewMoCProject"
-            name="New MoCCML Project"
+            name="MoCCML Project"
             project="true">
       </wizard>
       <category
