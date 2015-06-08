@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.compare.Comparison;
@@ -22,6 +27,7 @@ import org.eclipse.emf.compare.scope.IComparisonScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -34,6 +40,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceModel;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
@@ -54,6 +61,18 @@ import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 	private boolean shouldSave = true;
+
+	private void modifyTrace(final Runnable r) {
+		RecordingCommand command = new RecordingCommand(getEditingDomain(), "update trace model") {
+
+			@Override
+			protected void doExecute() {
+				r.run();
+			}
+		};
+
+		CommandExecution.execute(getEditingDomain(), command);
+	}
 
 	public void disableTraceSaving() {
 		shouldSave = false;
@@ -164,21 +183,41 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	}
 
 	private boolean _cannotSaveTrace = false;
+	private ModelState currentState = null;
+
+	public int nbAddState = 0;
+	public int nbReadlAddState = 0;
 
 	private void saveTraceModel(long stepNumber) {
+
+		nbAddState++;
+
 		Resource traceResource = _executionTraceModel.eResource();
 		if (traceResource.getContents().size() > 0) {
-			// copy the model
-			Copier copier = new GCopier();
-			EObject result = copier.copy(_executionContext.getResourceModel().getContents().get(0));
-			copier.copyReferences();
 
 			ExecutionTraceModel traceModel = (ExecutionTraceModel) traceResource.getContents().get(0);
 			if (traceModel.getChoices().size() > 0) {
 				// link it to the trace model
-				ModelState modelState = Gemoc_execution_traceFactory.eINSTANCE.createModelState();
-				traceResource.getContents().add(result);
-				modelState.setModel(result);
+
+				ModelState modelState = null;
+				// Either we have to create a new clone
+				if (stateChanged || currentState == null) {
+					nbReadlAddState++;
+					// copy the model
+					Copier copier = new GCopier();
+					EObject result = copier.copy(_executionContext.getResourceModel().getContents().get(0));
+					copier.copyReferences();
+					modelState = Gemoc_execution_traceFactory.eINSTANCE.createModelState();
+					traceModel.getReachedStates().add(modelState);
+					modelState.setModel(result);
+					currentState = modelState;
+					traceResource.getContents().add(result);
+					stateChanged = false;
+				}
+				// Or not, and we use the current one
+				else {
+					modelState = currentState;
+				}
 
 				SolverState solverState = Gemoc_execution_traceFactory.eINSTANCE.createSolverState();
 				solverState.setSerializableModel(_executionContext.getExecutionPlatform().getSolver().getState());
@@ -199,6 +238,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 					}
 				}
 			}
+
 		}
 	}
 
@@ -209,6 +249,8 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		return _currentBranch;
 	}
 
+	private boolean stateChanged = false;
+
 	private void setUp(IExecutionEngine engine) {
 		if (_executionContext == null) {
 			_executionTraceModel = Gemoc_execution_traceFactory.eINSTANCE.createExecutionTraceModel();
@@ -216,6 +258,18 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 			_currentBranch.setStartIndex(0);
 			_executionTraceModel.getBranches().add(_currentBranch);
 			setModelExecutionContext(engine.getExecutionContext());
+
+			_executionContext.getResourceModel().eAdapters().add(new EContentAdapter() {
+
+				@Override
+				public void notifyChanged(Notification notification) {
+					super.notifyChanged(notification);
+					stateChanged = true;
+
+				}
+
+			});
+
 		}
 	}
 
@@ -335,4 +389,49 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		CommandExecution.execute(getEditingDomain(), command);
 	}
 
+	@Override
+	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) {
+
+		if (stateChanged || currentState == null) {
+
+			modifyTrace(new Runnable() {
+
+				@Override
+				public void run() {
+					// Adding a dummy choice
+					Choice choice = createChoice();
+					_executionTraceModel.getChoices().add(choice);
+					_currentBranch.getChoices().add(choice);
+					if (_lastChoice != null) {
+						_lastChoice.getNextChoices().add(choice);
+						_lastChoice.setSelectedNextChoice(choice);
+					}
+					// Adding a dummy logical step
+					choice.getPossibleLogicalSteps().add(Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep());
+					_lastChoice = choice;
+
+					// Adding a state (not dummy :))
+					saveTraceModel(0);
+
+				}
+			});
+		}
+
+		else {
+			nbAddState++;
+		}
+	}
+
+	@Override
+	public void engineStopped(IExecutionEngine engine) {
+		modifyTrace(new Runnable() {
+
+			@Override
+			public void run() {
+				saveTraceModel(0);
+
+			}
+		});
+
+	}
 }
