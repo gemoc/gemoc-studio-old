@@ -15,8 +15,8 @@ addRepository(type:0,location:https${#58}//ci.inria.fr/gemoc/job/org.gemoc.targe
 addRepository(type:1,location:https${#58}//ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/,name:All Gemoc - composite update site);\
 addRepository(type:0,location:https${#58}//hudson.polarsys.org/kitalpha/job/Kitalpha_Nightly/380/artifact/result/publish/kitalpha/site.p2/,name:KitAlpha);\
 addRepository(type:1,location:https${#58}//hudson.polarsys.org/kitalpha/job/Kitalpha_Nightly/380/artifact/result/publish/kitalpha/site.p2/,name:KitAlpha);\
-addRepository(type:0,location:https${#58}//hudson.eclipse.org/hudson/view/Modeling/job/buckminster-emf-diffmerge-master/lastSuccessfulBuild/artifact/result/publish/org.eclipse.emf.diffmerge.sdk.feature/site.p2/,name:DiffMerge);\
-addRepository(type:1,location:https${#58}//hudson.eclipse.org/hudson/view/Modeling/job/buckminster-emf-diffmerge-master/lastSuccessfulBuild/artifact/result/publish/org.eclipse.emf.diffmerge.sdk.feature/site.p2/,name:DiffMerge);\
+addRepository(type:0,location:http${#58}//download.eclipse.org/diffmerge/releases/0.4.0/emf-diffmerge-site,name:DiffMerge 0.4.0);\
+addRepository(type:1,location:http${#58}//download.eclipse.org/diffmerge/releases/0.4.0/emf-diffmerge-site,name:DiffMerge 0.4.0);\
 addRepository(type:0,location:http${#58}//download.eclipse.org/sirius/updates/legacy,name:Acceleo for Sirius 2.0.1);\
 addRepository(type:1,location:http${#58}//download.eclipse.org/sirius/updates/legacy,name:Acceleo for Sirius 2.0.1);\
 addRepository(type:0,location:https${#58}//hudson.polarsys.org/capella/job/capella-gerrit/113/artifact/result/publish/org.polarsys.capella/site.p2/,name:Capella for luna);\
