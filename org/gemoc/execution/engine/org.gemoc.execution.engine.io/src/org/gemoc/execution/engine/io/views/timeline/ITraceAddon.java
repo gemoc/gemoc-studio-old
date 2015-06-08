@@ -9,6 +9,8 @@ public interface ITraceAddon extends IEngineAddon{
 
 	void goTo(EObject o1);
 	
+	void goToNoTimelineNotification(int i);
+	
 	void goTo(int i);
 
 	ITimelineProvider getTimeLineProvider();
