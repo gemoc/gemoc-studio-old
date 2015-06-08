@@ -24,7 +24,7 @@
    <extension
           point="org.eclipse.ui.perspectiveExtensions">
        <perspectiveExtension
-             targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
+             targetID="org.eclipse.sirius.ui.tools.perspective.design">
           <newWizardShortcut
                 id="org.gemoc.gemoc_language_workbench.conf.presentation.confModelWizardID">
           </newWizardShortcut>

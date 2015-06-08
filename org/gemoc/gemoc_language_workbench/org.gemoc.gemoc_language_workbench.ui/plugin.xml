@@ -159,7 +159,7 @@
             category="org.gemoc.gemoc_language_workbench.ui"
             class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
             icon="icons/IconeGemocLanguage-16.png"
-            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.design"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject"
             name="New GEMOC Language Project"
             project="true">
@@ -167,7 +167,7 @@
       <wizard
             category="org.gemoc.gemoc_language_workbench.ui.category.ecl"
             class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewDSEProject"
-            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.design"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewDSEProject"
             name="New DSE Project"
@@ -176,7 +176,7 @@
       <wizard
             category="org.gemoc.gemoc_language_workbench.ui.category.moccml"
             class="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewMoCProject"
-            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.design"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewMoCProject"
             name="New MoCCML Project"
@@ -196,7 +196,7 @@
    <extension
           point="org.eclipse.ui.perspectiveExtensions">
        <perspectiveExtension
-             targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
+             targetID="org.eclipse.sirius.ui.tools.perspective.design">
           <newWizardShortcut
                 id="org.gemoc.gemoc_language_workbench.ui.wizards.CreateNewGemocLanguageProject">
           </newWizardShortcut>

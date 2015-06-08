@@ -216,6 +216,12 @@
                id="org.eclipse.debug.ui.launchActionSet">
          </actionSet>
       </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
+         <newWizardShortcut
+               id="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject">
+         </newWizardShortcut>
+      </perspectiveExtension>
    </extension>
    
       <extension
