@@ -179,14 +179,15 @@ public class DefaultModelLoader implements IModelLoader {
 	private ResourceSet createAndConfigureResourceSet(URI modelURI, HashMap<String, String> nsURIMapping) 
 	{
 		final ResourceSet rs = ResourceSetFactory.createFactory().createResourceSet(modelURI);
-		// fix sirius to prevent non intentional model savings
-		rs.getURIConverter().getURIHandlers().add(0, new DebugURIHandler());
 		final String fileExtension = modelURI.fileExtension();
 		// indicates which melange query should be added to the xml uri handler for a given extension 
 		final XMLURIHandler handler = new XMLURIHandler(modelURI.query(), fileExtension); // use to resolve cross ref URI during XMI parsing
 		handler.setResourceSet(rs);
 		rs.getLoadOptions().put(XMLResource.OPTION_URI_HANDLER, handler);
-		rs.setURIConverter(new MelangeURIConverter(fileExtension, nsURIMapping));
+		final MelangeURIConverter converter = new MelangeURIConverter(fileExtension, nsURIMapping);
+		rs.setURIConverter(converter);
+		// fix sirius to prevent non intentional model savings
+		converter.getURIHandlers().add(0, new DebugURIHandler());
 		return rs;
 	}
 
