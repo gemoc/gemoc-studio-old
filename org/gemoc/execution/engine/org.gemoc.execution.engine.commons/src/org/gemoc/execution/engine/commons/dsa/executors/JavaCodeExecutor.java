@@ -17,30 +17,18 @@ public class JavaCodeExecutor implements ICodeExecutor {
 	}
 
 	@Override
-	public Object execute(MSEOccurrence mseOccurrence) throws CodeExecutionException
-	{
-		return execute(mseOccurrence.getMse().getCaller(), 
-				mseOccurrence.getMse().getAction().getName(), 
-				mseOccurrence.getParameters(), 
-				mseOccurrence);
+	public Object execute(MSEOccurrence mseOccurrence) throws CodeExecutionException {
+		return execute(mseOccurrence.getMse().getCaller(), mseOccurrence.getMse().getAction().getName(),
+				mseOccurrence.getParameters(), mseOccurrence);
 	}
 
 	@Override
-	public Object execute(Object caller, String methodName,
-			List<Object> parameters) throws CodeExecutionException {
-		return execute(caller,
-						methodName, 
-						parameters, 
-						null);
-	}
-	
-	private Object execute(Object caller, String methodName, Collection<Object> parameters, MSEOccurrence mseoccurrence) throws CodeExecutionException {
+	public Object execute(Object caller, String methodName, List<Object> parameters) throws CodeExecutionException {
+
 		Class<?>[] parameterTypes = null;
 		ArrayList<Class<?>> parameterTypesList = new ArrayList<Class<?>>();
-		if (mseoccurrence.getParameters() != null) 
-		{
-			for (Object param : mseoccurrence.getParameters()) 
-			{
+		if (parameters != null) {
+			for (Object param : parameters) {
 				parameterTypesList.add(param.getClass());
 			}
 		}
@@ -48,11 +36,38 @@ public class JavaCodeExecutor implements ICodeExecutor {
 		Object result = null;
 		try {
 			method = caller.getClass().getMethod(methodName, parameterTypes);
-			result =  method.invoke(caller, mseoccurrence.getParameters());
-		} catch (NoSuchMethodException  e) {
-			throw new CodeExecutionException("No applicable method "+ methodName +"for this code executor. Could not perform action call, see inner exception.", e, mseoccurrence, false);		
+			result = method.invoke(caller, parameters);
+		} catch (NoSuchMethodException e) {
+			throw new CodeExecutionException("No applicable method " + methodName
+					+ "for this code executor. Could not perform action call, see inner exception.", e, null, false);
 		} catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			throw new CodeExecutionException("Could not perform action call, see inner exception.", e, mseoccurrence, true);
+			throw new CodeExecutionException("Could not perform action call, see inner exception.", e, null, true);
+		}
+		return result;
+
+	}
+
+	private Object execute(Object caller, String methodName, Collection<Object> parameters, MSEOccurrence mseoccurrence)
+			throws CodeExecutionException {
+		Class<?>[] parameterTypes = null;
+		ArrayList<Class<?>> parameterTypesList = new ArrayList<Class<?>>();
+		if (mseoccurrence.getParameters() != null) {
+			for (Object param : mseoccurrence.getParameters()) {
+				parameterTypesList.add(param.getClass());
+			}
+		}
+		Method method;
+		Object result = null;
+		try {
+			method = caller.getClass().getMethod(methodName, parameterTypes);
+			result = method.invoke(caller, mseoccurrence.getParameters());
+		} catch (NoSuchMethodException e) {
+			throw new CodeExecutionException("No applicable method " + methodName
+					+ "for this code executor. Could not perform action call, see inner exception.", e, mseoccurrence,
+					false);
+		} catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			throw new CodeExecutionException("Could not perform action call, see inner exception.", e, mseoccurrence,
+					true);
 		}
 		return result;
 	}
