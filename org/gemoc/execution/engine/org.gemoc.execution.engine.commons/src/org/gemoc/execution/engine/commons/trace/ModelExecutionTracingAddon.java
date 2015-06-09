@@ -2,26 +2,17 @@ package org.gemoc.execution.engine.commons.trace;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Function;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.compare.Comparison;
 import org.eclipse.emf.compare.Diff;
 import org.eclipse.emf.compare.DifferenceState;
 import org.eclipse.emf.compare.EMFCompare;
-import org.eclipse.emf.compare.EMFCompare.Builder;
 import org.eclipse.emf.compare.internal.spec.AttributeChangeSpec;
-import org.eclipse.emf.compare.match.IMatchEngine;
-import org.eclipse.emf.compare.postprocessor.IPostProcessor;
-import org.eclipse.emf.compare.rcp.EMFCompareRCPPlugin;
 import org.eclipse.emf.compare.scope.DefaultComparisonScope;
 import org.eclipse.emf.compare.scope.IComparisonScope;
 import org.eclipse.emf.ecore.EObject;
@@ -274,6 +265,8 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	}
 
 	private IExecutionContext _executionContext;
+	
+	//private static class GemocTraceResource extends ResourceImpl 
 
 	private void setModelExecutionContext(IExecutionContext executionContext) {
 		_executionContext = executionContext;
