@@ -76,7 +76,7 @@ public class CodeExecutorDispatcher implements ICodeExecutor
 				return executor.execute(caller, methodName, parameters);
 			} catch (CodeExecutionException e) 
 			{
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 		throw new CodeExecutionException("No code executor could perform the action call. (a commons mistake is : missing package export of the called class or aspect)", null);
