@@ -49,6 +49,7 @@ import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
  * @author ftanguy
  *
  */
+@SuppressWarnings("restriction")
 public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 	private boolean shouldSave = true;
@@ -117,8 +118,22 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	}
 
 	private void restoreModelState(Choice choice) {
+		ModelState state = choice.getContextState().getModelState();
+		restoreModelState(state, true);
+	}
 
-		EObject left = choice.getContextState().getModelState().getModel();
+	public void jump(final ModelState state) {
+		modifyTrace(new Runnable() {
+			@Override
+			public void run() {
+				restoreModelState(state, false);
+			}
+		});
+	}
+
+	private void restoreModelState(ModelState state, boolean restoreAspects) {
+
+		EObject left = state.getModel();
 		EObject right = _executionContext.getResourceModel().getContents().get(0);
 
 		IComparisonScope scope = new DefaultComparisonScope(left, right, null);
@@ -140,14 +155,29 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 				String methodName = asc.getAttribute().getName();
 				ArrayList<Object> parameters = new ArrayList<Object>();
 				parameters.add(asc.getValue());
-				try {
-					System.out
-							.println("Begin setting " + target.toString() + "." + methodName + " = " + asc.getValue());
-					codeExecutor.execute(target, methodName, parameters);
-					System.out.println("End setting " + target.toString() + "." + methodName + " = " + asc.getValue());
-				} catch (CodeExecutionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				if (restoreAspects) {
+					try {
+						System.out.println("Begin setting " + target.toString() + "." + methodName + " = "
+								+ asc.getValue());
+						codeExecutor.execute(target, methodName, parameters);
+						System.out.println("End setting " + target.toString() + "." + methodName + " = "
+								+ asc.getValue());
+					} catch (CodeExecutionException e) {
+						// TODO Auto-generated catch block
+						// e.printStackTrace();
+						System.out.println("Coudln't set value with aspects, using normal setter.");
+						try {
+							target.eSet(asc.getAttribute(), asc.getValue());
+						} catch (IllegalArgumentException e2) {
+							System.out.println("Didn't work either...");
+						}
+					}
+				} else {
+					try {
+						target.eSet(asc.getAttribute(), asc.getValue());
+					} catch (IllegalArgumentException e2) {
+						System.out.println("WARNING - Couldn't set value.");
+					}
 				}
 			} else {
 				// if reference, use the merger.
@@ -176,39 +206,40 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	private boolean _cannotSaveTrace = false;
 	private ModelState currentState = null;
 
-	public int nbAddState = 0;
-	public int nbReadlAddState = 0;
+	private void addModelStateIfChanged() {
+		Resource traceResource = _executionTraceModel.eResource();
+		if (traceResource.getContents().size() > 0) {
+
+			ExecutionTraceModel traceModel = (ExecutionTraceModel) traceResource.getContents().get(0);
+
+			if (stateChanged || currentState == null) {
+				ModelState modelState = null;
+				// copy the model
+				Copier copier = new GCopier();
+				EObject result = copier.copy(_executionContext.getResourceModel().getContents().get(0));
+				copier.copyReferences();
+				result.eAdapters().clear();
+				modelState = Gemoc_execution_traceFactory.eINSTANCE.createModelState();
+				traceModel.getReachedStates().add(modelState);
+				modelState.setModel(result);
+				currentState = modelState;
+				traceResource.getContents().add(result);
+				stateChanged = false;
+
+			}
+		}
+	}
 
 	private void saveTraceModel(long stepNumber) {
-
-		nbAddState++;
 
 		Resource traceResource = _executionTraceModel.eResource();
 		if (traceResource.getContents().size() > 0) {
 
 			ExecutionTraceModel traceModel = (ExecutionTraceModel) traceResource.getContents().get(0);
 			if (traceModel.getChoices().size() > 0) {
-				// link it to the trace model
 
-				ModelState modelState = null;
-				// Either we have to create a new clone
-				if (stateChanged || currentState == null) {
-					nbReadlAddState++;
-					// copy the model
-					Copier copier = new GCopier();
-					EObject result = copier.copy(_executionContext.getResourceModel().getContents().get(0));
-					copier.copyReferences();
-					modelState = Gemoc_execution_traceFactory.eINSTANCE.createModelState();
-					traceModel.getReachedStates().add(modelState);
-					modelState.setModel(result);
-					currentState = modelState;
-					traceResource.getContents().add(result);
-					stateChanged = false;
-				}
-				// Or not, and we use the current one
-				else {
-					modelState = currentState;
-				}
+				addModelStateIfChanged();
+				ModelState modelState = currentState;
 
 				SolverState solverState = Gemoc_execution_traceFactory.eINSTANCE.createSolverState();
 				solverState.setSerializableModel(_executionContext.getExecutionPlatform().getSolver().getState());
@@ -265,8 +296,8 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	}
 
 	private IExecutionContext _executionContext;
-	
-	//private static class GemocTraceResource extends ResourceImpl 
+
+	// private static class GemocTraceResource extends ResourceImpl
 
 	private void setModelExecutionContext(IExecutionContext executionContext) {
 		_executionContext = executionContext;
@@ -391,28 +422,16 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 				@Override
 				public void run() {
-					// Adding a dummy choice
-					Choice choice = createChoice();
-					_executionTraceModel.getChoices().add(choice);
-					_currentBranch.getChoices().add(choice);
-					if (_lastChoice != null) {
-						_lastChoice.getNextChoices().add(choice);
-						_lastChoice.setSelectedNextChoice(choice);
-					}
-					// Adding a dummy logical step
-					choice.getPossibleLogicalSteps().add(Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep());
-					_lastChoice = choice;
 
-					// Adding a state (not dummy :))
-					saveTraceModel(0);
-
+					// We store the states when MSE ends, to be able to
+					// distinguish precisely changes made by a single MSE
+					// Not used by any tool for not
+					// Can be used with "jump" programmatically
+					addModelStateIfChanged();
 				}
 			});
 		}
 
-		else {
-			nbAddState++;
-		}
 	}
 
 	@Override
@@ -421,8 +440,9 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 			@Override
 			public void run() {
-				saveTraceModel(0);
 
+				// Same as in "mseOccurrenceExecuted", and probably redundant
+				addModelStateIfChanged();
 			}
 		});
 
