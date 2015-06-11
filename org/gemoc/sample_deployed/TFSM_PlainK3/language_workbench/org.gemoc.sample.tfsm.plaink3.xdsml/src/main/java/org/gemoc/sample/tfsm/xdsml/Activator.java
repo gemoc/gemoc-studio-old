@@ -13,7 +13,7 @@ import fr.inria.diverse.commons.messagingsystem.api.impl.StdioSimpleMessagingSys
 public class Activator extends Plugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.sample.tfsm.feedback"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.gemoc.sample.tfsm.plaink3.xdsml"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;
