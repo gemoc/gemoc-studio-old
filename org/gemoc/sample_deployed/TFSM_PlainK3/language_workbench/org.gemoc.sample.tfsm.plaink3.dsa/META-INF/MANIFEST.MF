@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: org.gemoc.sample.tfsm.plaink3.dsa
 Bundle-SymbolicName: org.gemoc.sample.tfsm.plaink3.dsa;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Require-Bundle: org.eclipse.xtend2.lib;bundle-version="2.4.3",

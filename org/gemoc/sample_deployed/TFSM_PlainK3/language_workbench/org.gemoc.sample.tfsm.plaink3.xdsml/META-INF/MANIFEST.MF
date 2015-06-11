@@ -1,7 +1,7 @@
 Bundle-SymbolicName: org.gemoc.sample.tfsm.plaink3.xdsml;singleton:=true
 Export-Package: tfsmplainK3.xdsml.api.impl
 Bundle-Version: 1.0.0.qualifier
-Bundle-Name: Tfsm plain k3 xDSML
+Bundle-Name: org.gemoc.sample.tfsm.plaink3.xdsml
 Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
  org.gemoc.gemoc_language_workbench.api,

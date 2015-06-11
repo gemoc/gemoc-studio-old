@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated tfsm -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.gemoc.sample.tfsm.presentation.TfsmModelWizardID"
+            name="%_UI_TfsmModelWizard_label"
+            class="org.gemoc.sample.tfsm.presentation.TfsmModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/TfsmModelFile.gif">
+         <description>%_UI_TfsmModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated tfsm -->
+      <editor
+            id="org.gemoc.sample.tfsm.presentation.TfsmEditorID"
+            name="%_UI_TfsmEditor_label"
+            icon="icons/full/obj16/TfsmModelFile.gif"
+            extensions="tfsm"
+            class="org.gemoc.sample.tfsm.presentation.TfsmEditor"
+            contributorClass="org.gemoc.sample.tfsm.presentation.TfsmActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
