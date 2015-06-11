@@ -12,6 +12,9 @@ public class SharedIcons {
 	public static ImageDescriptor STOPPED_ENGINE_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/services-16-red.png");
 	public static ImageDescriptor WAITING_ENGINE_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/services-16-blue.png");
 	
+	public static ImageDescriptor RESUME_ENGINE_DECIDER_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/resume_co.png");
+	public static ImageDescriptor SUSPEND_ENGINE_DECIDER_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/suspend_co.png");
+	
 	public static ImageDescriptor LOGICALSTEP_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/footprints-cat-16.png");
 	
 	public static ImageDescriptor LOGICALSTEP_RUNNING_ICON = ImageDescriptor.createFromFile(SharedIcons.class, "/icons/footprints-running-cat-16.png");

@@ -11,7 +11,9 @@ import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecifi
 public class DeciderAction extends Action 
 {
 	
-	private DeciderSpecificationExtension _specification;
+	protected DeciderSpecificationExtension _specification;
+
+	
 
 	public DeciderAction(DeciderSpecificationExtension specification)
 	{
@@ -34,9 +36,13 @@ public class DeciderAction extends Action
 		}
 	}
 
-	private IExecutionEngine _engine;
+	protected IExecutionEngine _engine;
 	public void setEngine(IExecutionEngine engine) {
 		_engine = engine;
+	}
+	
+	public DeciderSpecificationExtension getSpecification() {
+		return _specification;
 	}
 	
 }
