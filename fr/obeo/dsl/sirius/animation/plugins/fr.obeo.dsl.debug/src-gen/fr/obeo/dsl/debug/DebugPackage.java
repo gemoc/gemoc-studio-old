@@ -381,13 +381,22 @@ public interface DebugPackage extends EPackage {
 	int VARIABLE__DECLARATION_TYPE = 4;
 
 	/**
+	 * The feature id for the '<em><b>Support Modifications</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__SUPPORT_MODIFICATIONS = 5;
+
+	/**
 	 * The number of structural features of the '<em>Variable</em>' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = 5;
+	int VARIABLE_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.dsl.debug.impl.CurrentSessionImpl <em>Current Session</em>}'
@@ -505,6 +514,15 @@ public interface DebugPackage extends EPackage {
 	 * @ordered
 	 */
 	int REGISTER__DECLARATION_TYPE = VARIABLE__DECLARATION_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Support Modifications</b></em>' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int REGISTER__SUPPORT_MODIFICATIONS = VARIABLE__SUPPORT_MODIFICATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Register Group</b></em>' container reference. <!-- begin-user-doc -->
@@ -851,6 +869,17 @@ public interface DebugPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getVariable_DeclarationType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.obeo.dsl.debug.Variable#isSupportModifications
+	 * <em>Support Modifications</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Support Modifications</em>'.
+	 * @see fr.obeo.dsl.debug.Variable#isSupportModifications()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_SupportModifications();
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.dsl.debug.CurrentSession <em>Current Session</em>}'.
@@ -1208,6 +1237,14 @@ public interface DebugPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VARIABLE__DECLARATION_TYPE = eINSTANCE.getVariable_DeclarationType();
+
+		/**
+		 * The meta object literal for the '<em><b>Support Modifications</b></em>' attribute feature. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EAttribute VARIABLE__SUPPORT_MODIFICATIONS = eINSTANCE.getVariable_SupportModifications();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.dsl.debug.impl.CurrentSessionImpl

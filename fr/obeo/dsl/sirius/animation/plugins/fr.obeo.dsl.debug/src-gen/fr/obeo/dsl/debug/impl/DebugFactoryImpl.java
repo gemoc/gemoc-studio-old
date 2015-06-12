@@ -57,7 +57,7 @@ public class DebugFactoryImpl extends EFactoryImpl implements DebugFactory {
 	public static DebugFactory init() {
 		try {
 			DebugFactory theDebugFactory = (DebugFactory)EPackage.Registry.INSTANCE
-					.getEFactory("http://www.obeo.fr/dsl/debug");
+					.getEFactory(DebugPackage.eNS_URI);
 			if (theDebugFactory != null) {
 				return theDebugFactory;
 			}

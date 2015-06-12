@@ -23,12 +23,14 @@ import fr.obeo.dsl.debug.ide.event.IDSLDebugEvent;
 import fr.obeo.dsl.debug.ide.event.debugger.TerminatedReply;
 import fr.obeo.dsl.debug.ide.event.model.DisconnectRequest;
 import fr.obeo.dsl.debug.ide.event.model.ResumeRequest;
+import fr.obeo.dsl.debug.ide.event.model.SetVariableValueRequest;
 import fr.obeo.dsl.debug.ide.event.model.StartRequest;
 import fr.obeo.dsl.debug.ide.event.model.StepIntoRequest;
 import fr.obeo.dsl.debug.ide.event.model.StepOverRequest;
 import fr.obeo.dsl.debug.ide.event.model.StepReturnRequest;
 import fr.obeo.dsl.debug.ide.event.model.SuspendRequest;
 import fr.obeo.dsl.debug.ide.event.model.TerminateRequest;
+import fr.obeo.dsl.debug.ide.event.model.ValidateVariableValueRequest;
 import fr.obeo.dsl.debug.ide.tests.event.TestEventProcessor;
 
 import org.junit.Test;
@@ -215,6 +217,42 @@ public class DSLDebuggerTests {
 		debugger.handleEvent(new DisconnectRequest());
 
 		assertTrue(debugger.hasDisconnectCall());
+	}
+
+	/**
+	 * Tests
+	 * {@link fr.obeo.dsl.debug.ide.IDSLDebugger#handleEvent(fr.obeo.dsl.debug.ide.event.IDSLDebugEvent)}.
+	 */
+	@Test
+	public void handleEventSetVariableValueRequest() {
+		final TestEventProcessor target = new TestEventProcessor();
+		final TestDSLDebugger debugger = new TestDSLDebugger(target);
+
+		final Variable instruction = DebugPackage.eINSTANCE.getDebugFactory().createVariable();
+		debugger.spawnRunningThread("thread", instruction);
+		debugger.pushStackFrame("thread", "frame", instruction, instruction);
+		debugger.variable("thread", "frame", "int", "variable", "value", false);
+		debugger.handleEvent(new SetVariableValueRequest("thread", "frame", "variable", "value2"));
+
+		assertTrue(debugger.hasSetVariableValueCall());
+	}
+
+	/**
+	 * Tests
+	 * {@link fr.obeo.dsl.debug.ide.IDSLDebugger#handleEvent(fr.obeo.dsl.debug.ide.event.IDSLDebugEvent)}.
+	 */
+	@Test
+	public void handleEventValidateVariableValueRequest() {
+		final TestEventProcessor target = new TestEventProcessor();
+		final TestDSLDebugger debugger = new TestDSLDebugger(target);
+
+		final Variable instruction = DebugPackage.eINSTANCE.getDebugFactory().createVariable();
+		debugger.spawnRunningThread("thread", instruction);
+		debugger.pushStackFrame("thread", "frame", instruction, instruction);
+		debugger.variable("thread", "frame", "int", "variable", "value", false);
+		debugger.handleEvent(new ValidateVariableValueRequest("thread", "frame", "variable", "value2"));
+
+		assertTrue(debugger.hasValidateVariableValueCall());
 	}
 
 }

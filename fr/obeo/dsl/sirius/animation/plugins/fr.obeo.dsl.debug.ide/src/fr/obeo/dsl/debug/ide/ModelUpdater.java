@@ -22,6 +22,7 @@ import fr.obeo.dsl.debug.DebugTargetUtils;
 import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.Thread;
 import fr.obeo.dsl.debug.ThreadUtils;
+import fr.obeo.dsl.debug.Variable;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -165,12 +166,24 @@ public class ModelUpdater implements IModelUpdater {
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see fr.obeo.dsl.debug.ide.IModelUpdater#setVariableReply(fr.obeo.dsl.debug.Thread, java.lang.String,
-	 *      java.lang.String, java.lang.Object)
+	 *
+	 * @see fr.obeo.dsl.debug.ide.IModelUpdater#setVariableReply(fr.obeo.dsl.debug.StackFrame,
+	 *      java.lang.String, java.lang.String, java.lang.Object, boolean)
 	 */
-	public void setVariableReply(Thread thread, String declarationTypeName, String name, Object value) {
-		ThreadUtils.setVariableReply(thread, declarationTypeName, name, value);
+	public void setVariableReply(StackFrame stackFrame, String declarationTypeName, String variableName,
+			Object value, boolean supportModifications) {
+		ThreadUtils.setVariableReply(stackFrame, declarationTypeName, variableName, value,
+				supportModifications);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see fr.obeo.dsl.debug.ide.IModelUpdater#setVariableValueReply(fr.obeo.dsl.debug.Variable,
+	 *      java.lang.Object)
+	 */
+	public void setVariableValueReply(Variable variable, Object value) {
+		ThreadUtils.setVariableValueReply(variable, value);
 	}
 
 	/**

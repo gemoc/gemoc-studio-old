@@ -15,23 +15,43 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.dsl.debug.ide.event;
-
+package fr.obeo.dsl.debug.ide.event.debugger;
 
 /**
- * A processor for {@link IDSLDebugEvent}.
+ * Reply sent when the thread has a new variable.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public interface IDSLDebugEventProcessor {
+public class ValidateVariableValueReply extends AbstractVariableReply {
 
 	/**
-	 * Handles the given {@link IDSLDebugEvent} event.
-	 * 
-	 * @param event
-	 *            the {@link IDSLDebugEvent}
-	 * @return an {@link Object} if any result is needed, <code>null</code> otherwise
+	 * Tells if the value is valid.
 	 */
-	Object handleEvent(IDSLDebugEvent event);
+	boolean valid;
 
+	/**
+	 * Constructor for {@link fr.obeo.dsl.debug.Thread Thread}.
+	 * 
+	 * @param threadName
+	 *            the {@link fr.obeo.dsl.debug.Thread#getName() thread name}
+	 * @param stackName
+	 *            the {@link fr.obeo.dsl.debug.StackFrame#getName() stack frame name}
+	 * @param variableName
+	 *            the {@link fr.obeo.dsl.debug.Variable#getName() variable name}
+	 * @param valid
+	 *            tells if the value is valid
+	 */
+	public ValidateVariableValueReply(String threadName, String stackName, String variableName, boolean valid) {
+		super(threadName, stackName, variableName);
+		this.valid = valid;
+	}
+
+	/**
+	 * Tells if the value is valid.
+	 * 
+	 * @return <code>true</code> if the value is valid, <code>false</code> otherwise
+	 */
+	public boolean isValid() {
+		return valid;
+	}
 }

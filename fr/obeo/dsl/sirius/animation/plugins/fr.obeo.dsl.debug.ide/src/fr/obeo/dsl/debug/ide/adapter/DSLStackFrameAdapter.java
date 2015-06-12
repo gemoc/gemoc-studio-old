@@ -274,6 +274,11 @@ public class DSLStackFrameAdapter extends AbstractDSLDebugElementAdapter impleme
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.debug.core.model.IStackFrame#hasRegisterGroups()
+	 */
 	public boolean hasRegisterGroups() throws DebugException {
 		return getHost().getRegisterGroups().size() > 0;
 	}

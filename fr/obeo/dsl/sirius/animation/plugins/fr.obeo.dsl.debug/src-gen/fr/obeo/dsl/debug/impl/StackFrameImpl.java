@@ -55,7 +55,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <li>{@link fr.obeo.dsl.debug.impl.StackFrameImpl#getRegisterGroups <em>Register Groups</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class StackFrameImpl extends EObjectImpl implements StackFrame {
@@ -372,7 +372,7 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	public StackFrame getParentFrame() {
 		if (eContainerFeatureID() != DebugPackage.STACK_FRAME__PARENT_FRAME)
 			return null;
-		return (StackFrame)eContainer();
+		return (StackFrame)eInternalContainer();
 	}
 
 	/**

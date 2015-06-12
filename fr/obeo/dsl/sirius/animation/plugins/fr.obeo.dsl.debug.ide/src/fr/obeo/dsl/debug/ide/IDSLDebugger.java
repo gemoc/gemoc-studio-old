@@ -292,14 +292,19 @@ public interface IDSLDebugger extends IDSLDebugEventProcessor {
 	 * 
 	 * @param threadName
 	 *            the thread name
+	 * @param stackName
+	 *            the stack frame name
 	 * @param declarationTypeName
 	 *            the variable declaration type name
-	 * @param name
+	 * @param variableName
 	 *            the name of the variable
 	 * @param value
 	 *            the value
+	 * @param supportModifications
+	 *            tells if the value can be changed
 	 */
-	void variable(String threadName, String declarationTypeName, String name, Object value);
+	void variable(String threadName, String stackName, String declarationTypeName, String variableName,
+			Object value, boolean supportModifications);
 
 	/**
 	 * Deletes the variable with the given name for the given thread.
@@ -351,7 +356,7 @@ public interface IDSLDebugger extends IDSLDebugEventProcessor {
 	void popStackFrame(String threadName);
 
 	/**
-	 * Sets the current instrcution for the given thread.
+	 * Sets the current instruction for the given thread.
 	 * 
 	 * @param threadName
 	 *            the thread name
@@ -376,5 +381,49 @@ public interface IDSLDebugger extends IDSLDebugEventProcessor {
 	 * @return <code>true</code> if the given thread is terminated, <code>false</code> otherwise
 	 */
 	boolean isTerminated(String threadName);
+
+	/**
+	 * Validates a variable value.
+	 * 
+	 * @param threadName
+	 *            the thread name
+	 * @param variableName
+	 *            the variable name
+	 * @param value
+	 *            the value to validate
+	 * @return <code>true</code> if the value is valid, <code>false</code> otherwise
+	 */
+	boolean validateVariableValue(String threadName, String variableName, String value);
+
+	/**
+	 * Gets the variable value after {@link IDSLDebugger#validateVariableValue(String, String, String)
+	 * validation} returned <code>true</code>.
+	 * 
+	 * @param threadName
+	 *            the thread name
+	 * @param stackName
+	 *            the stack frame name
+	 * @param variableName
+	 *            the variable name
+	 * @param value
+	 *            the value to validate
+	 * @return the variable value
+	 */
+	Object getVariableValue(String threadName, String stackName, String variableName, String value);
+
+	/**
+	 * Sets the variable value after {@link IDSLDebugger#validateVariableValue(String, String, String)
+	 * validation} returned <code>true</code>.
+	 * 
+	 * @param threadName
+	 *            the thread name
+	 * @param stackName
+	 *            the stack frame name
+	 * @param variableName
+	 *            the variable name
+	 * @param value
+	 *            the value to validate
+	 */
+	void setVariableValue(String threadName, String stackName, String variableName, Object value);
 
 }

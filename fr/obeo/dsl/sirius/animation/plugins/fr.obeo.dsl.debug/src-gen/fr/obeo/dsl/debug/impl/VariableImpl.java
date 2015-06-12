@@ -132,6 +132,26 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	protected String declarationType = DECLARATION_TYPE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #isSupportModifications() <em>Support Modifications</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #isSupportModifications()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SUPPORT_MODIFICATIONS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isSupportModifications() <em>Support Modifications</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #isSupportModifications()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean supportModifications = SUPPORT_MODIFICATIONS_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
@@ -223,7 +243,7 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	public StackFrame getFrame() {
 		if (eContainerFeatureID() != DebugPackage.VARIABLE__FRAME)
 			return null;
-		return (StackFrame)eContainer();
+		return (StackFrame)eInternalContainer();
 	}
 
 	/**
@@ -280,6 +300,29 @@ public class VariableImpl extends EObjectImpl implements Variable {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DebugPackage.VARIABLE__DECLARATION_TYPE,
 					oldDeclarationType, declarationType));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public boolean isSupportModifications() {
+		return supportModifications;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setSupportModifications(boolean newSupportModifications) {
+		boolean oldSupportModifications = supportModifications;
+		supportModifications = newSupportModifications;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					DebugPackage.VARIABLE__SUPPORT_MODIFICATIONS, oldSupportModifications,
+					supportModifications));
 	}
 
 	/**
@@ -345,6 +388,8 @@ public class VariableImpl extends EObjectImpl implements Variable {
 				return getFrame();
 			case DebugPackage.VARIABLE__DECLARATION_TYPE:
 				return getDeclarationType();
+			case DebugPackage.VARIABLE__SUPPORT_MODIFICATIONS:
+				return isSupportModifications();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -373,6 +418,9 @@ public class VariableImpl extends EObjectImpl implements Variable {
 			case DebugPackage.VARIABLE__DECLARATION_TYPE:
 				setDeclarationType((String)newValue);
 				return;
+			case DebugPackage.VARIABLE__SUPPORT_MODIFICATIONS:
+				setSupportModifications((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -400,6 +448,9 @@ public class VariableImpl extends EObjectImpl implements Variable {
 			case DebugPackage.VARIABLE__DECLARATION_TYPE:
 				setDeclarationType(DECLARATION_TYPE_EDEFAULT);
 				return;
+			case DebugPackage.VARIABLE__SUPPORT_MODIFICATIONS:
+				setSupportModifications(SUPPORT_MODIFICATIONS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -423,6 +474,8 @@ public class VariableImpl extends EObjectImpl implements Variable {
 			case DebugPackage.VARIABLE__DECLARATION_TYPE:
 				return DECLARATION_TYPE_EDEFAULT == null ? declarationType != null
 						: !DECLARATION_TYPE_EDEFAULT.equals(declarationType);
+			case DebugPackage.VARIABLE__SUPPORT_MODIFICATIONS:
+				return supportModifications != SUPPORT_MODIFICATIONS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -446,6 +499,8 @@ public class VariableImpl extends EObjectImpl implements Variable {
 		result.append(valueChanged);
 		result.append(", declarationType: ");
 		result.append(declarationType);
+		result.append(", supportModifications: ");
+		result.append(supportModifications);
 		result.append(')');
 		return result.toString();
 	}

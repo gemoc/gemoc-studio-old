@@ -15,23 +15,44 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.dsl.debug.ide.event;
-
+package fr.obeo.dsl.debug.ide.event.model;
 
 /**
- * A processor for {@link IDSLDebugEvent}.
+ * Request sent to validate a variable value.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public interface IDSLDebugEventProcessor {
+public class ValidateVariableValueRequest extends AbstractVariableRequest {
 
 	/**
-	 * Handles the given {@link IDSLDebugEvent} event.
-	 * 
-	 * @param event
-	 *            the {@link IDSLDebugEvent}
-	 * @return an {@link Object} if any result is needed, <code>null</code> otherwise
+	 * The variable value.
 	 */
-	Object handleEvent(IDSLDebugEvent event);
+	private final String value;
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param threadName
+	 *            the {@link fr.obeo.dsl.debug.Thread#getName() thread name}
+	 * @param stackName
+	 *            the {@link fr.obeo.dsl.debug.StackFrame#getName() thread name}
+	 * @param variableName
+	 *            the {@link fr.obeo.dsl.debug.Variable#getName() variable name}
+	 * @param value
+	 *            the value to set
+	 */
+	public ValidateVariableValueRequest(String threadName, String stackName, String variableName, String value) {
+		super(threadName, stackName, variableName);
+		this.value = value;
+	}
+
+	/**
+	 * Gets the variable value.
+	 * 
+	 * @return the variable value
+	 */
+	public String getValue() {
+		return value;
+	}
 
 }

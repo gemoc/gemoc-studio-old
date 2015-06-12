@@ -75,6 +75,7 @@ public class VariableItemProvider extends ItemProviderAdapter implements IEditin
 			addValuePropertyDescriptor(object);
 			addValueChangedPropertyDescriptor(object);
 			addDeclarationTypePropertyDescriptor(object);
+			addSupportModificationsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -136,6 +137,21 @@ public class VariableItemProvider extends ItemProviderAdapter implements IEditin
 	}
 
 	/**
+	 * This adds a property descriptor for the Support Modifications feature. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected void addSupportModificationsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+				.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_Variable_supportModifications_feature"), getString(
+						"_UI_PropertyDescriptor_description", "_UI_Variable_supportModifications_feature",
+						"_UI_Variable_type"), DebugPackage.Literals.VARIABLE__SUPPORT_MODIFICATIONS, true,
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This returns Variable.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
@@ -173,6 +189,7 @@ public class VariableItemProvider extends ItemProviderAdapter implements IEditin
 			case DebugPackage.VARIABLE__VALUE:
 			case DebugPackage.VARIABLE__VALUE_CHANGED:
 			case DebugPackage.VARIABLE__DECLARATION_TYPE:
+			case DebugPackage.VARIABLE__SUPPORT_MODIFICATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false,
 						true));
 				return;

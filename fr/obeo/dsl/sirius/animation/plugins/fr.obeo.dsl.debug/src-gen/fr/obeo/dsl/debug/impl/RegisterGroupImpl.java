@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <li>{@link fr.obeo.dsl.debug.impl.RegisterGroupImpl#getRegisters <em>Registers</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class RegisterGroupImpl extends EObjectImpl implements RegisterGroup {

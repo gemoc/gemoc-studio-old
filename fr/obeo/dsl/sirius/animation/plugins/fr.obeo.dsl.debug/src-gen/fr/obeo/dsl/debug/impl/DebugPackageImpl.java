@@ -438,6 +438,15 @@ public class DebugPackageImpl extends EPackageImpl implements DebugPackage {
 	 * 
 	 * @generated
 	 */
+	public EAttribute getVariable_SupportModifications() {
+		return (EAttribute)variableEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public EClass getCurrentSession() {
 		return currentSessionEClass;
 	}
@@ -582,6 +591,7 @@ public class DebugPackageImpl extends EPackageImpl implements DebugPackage {
 		createEAttribute(variableEClass, VARIABLE__VALUE_CHANGED);
 		createEReference(variableEClass, VARIABLE__FRAME);
 		createEAttribute(variableEClass, VARIABLE__DECLARATION_TYPE);
+		createEAttribute(variableEClass, VARIABLE__SUPPORT_MODIFICATIONS);
 
 		currentSessionEClass = createEClass(CURRENT_SESSION);
 		createEReference(currentSessionEClass, CURRENT_SESSION__DEBUG_TARGETS);
@@ -717,6 +727,9 @@ public class DebugPackageImpl extends EPackageImpl implements DebugPackage {
 		initEAttribute(getVariable_DeclarationType(), ecorePackage.getEString(), "declarationType", null, 1,
 				1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_SupportModifications(), ecorePackage.getEBoolean(),
+				"supportModifications", null, 1, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(currentSessionEClass, CurrentSession.class, "CurrentSession", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

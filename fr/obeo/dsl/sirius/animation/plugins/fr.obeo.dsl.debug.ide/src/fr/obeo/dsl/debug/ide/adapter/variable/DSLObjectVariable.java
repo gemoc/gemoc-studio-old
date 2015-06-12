@@ -90,7 +90,7 @@ public class DSLObjectVariable extends AbstractDSLDebugElementAdapter implements
 	 * @see org.eclipse.debug.core.model.IValueModification#supportsValueModification()
 	 */
 	public boolean supportsValueModification() {
-		return false;
+		return true;
 	}
 
 	/**

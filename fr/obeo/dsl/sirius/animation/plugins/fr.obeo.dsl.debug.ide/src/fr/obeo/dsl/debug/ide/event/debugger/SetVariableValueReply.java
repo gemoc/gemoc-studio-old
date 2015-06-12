@@ -15,23 +15,43 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.dsl.debug.ide.event;
-
+package fr.obeo.dsl.debug.ide.event.debugger;
 
 /**
- * A processor for {@link IDSLDebugEvent}.
+ * Reply sent when the value of a variable has been changed after a request.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public interface IDSLDebugEventProcessor {
+public class SetVariableValueReply extends AbstractVariableReply {
 
 	/**
-	 * Handles the given {@link IDSLDebugEvent} event.
-	 * 
-	 * @param event
-	 *            the {@link IDSLDebugEvent}
-	 * @return an {@link Object} if any result is needed, <code>null</code> otherwise
+	 * The value to set.
 	 */
-	Object handleEvent(IDSLDebugEvent event);
+	Object value;
 
+	/**
+	 * Constructor for {@link fr.obeo.dsl.debug.Thread Thread}.
+	 * 
+	 * @param threadName
+	 *            the {@link fr.obeo.dsl.debug.Thread#getName() thread name}
+	 * @param stackName
+	 *            the {@link fr.obeo.dsl.debug.StackFrame#getName() stack frame name}
+	 * @param variableName
+	 *            the {@link fr.obeo.dsl.debug.Variable#getName() variable name}
+	 * @param value
+	 *            the value to set
+	 */
+	public SetVariableValueReply(String threadName, String stackName, String variableName, Object value) {
+		super(threadName, stackName, variableName);
+		this.value = value;
+	}
+
+	/**
+	 * Gets the value to set.
+	 * 
+	 * @return the value to set
+	 */
+	public Object getValue() {
+		return value;
+	}
 }

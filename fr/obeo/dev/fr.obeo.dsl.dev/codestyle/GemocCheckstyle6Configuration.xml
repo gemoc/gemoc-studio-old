@@ -5,35 +5,31 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: Gemoc
-    Description: none
+    Checkstyle-Configuration: Gemoc Checkstyle 6
+    Description: 
+Acceleo Checkstyle 6 configuration.
 -->
 <module name="Checker">
   <property name="severity" value="warning"/>
   <module name="TreeWalker">
-    <property name="cacheFile" value="$\{cachefile\}"/>
     <module name="FileContentsHolder"/>
     <module name="JavadocMethod">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="error"/>
       <property name="allowMissingPropertyJavadoc" value="true"/>
       <property name="suppressLoadErrors" value="true"/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
     </module>
     <module name="JavadocStyle">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="error"/>
       <property name="checkEmptyJavadoc" value="true"/>
       <property name="checkHtml" value="false"/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
     </module>
     <module name="JavadocType">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="error"/>
       <property name="authorFormat" value="(&lt;a href=&quot;mailto:[a-z.]+@[a-z.]+\.[a-z]{2,4}\&quot;&gt;)?[A-Z][a-z]+\s[A-Z][a-z]+(&lt;/a&gt;)?"/>
       <property name="allowUnknownTags" value="true"/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
     </module>
     <module name="JavadocVariable">
-      <property name="severity" value="warning"/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
+      <property name="severity" value="error"/>
     </module>
     <module name="ConstantName">
       <property name="severity" value="error"/>
@@ -100,36 +96,42 @@
       <property name="severity" value="error"/>
     </module>
     <module name="EmptyForInitializerPad">
-      <property name="severity" value="error"/>
-      <property name="option" value="space"/>
-    </module>
-    <module name="EmptyForIteratorPad">
       <property name="severity" value="ignore"/>
       <property name="option" value="space"/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
+    </module>
+    <module name="EmptyForIteratorPad">
+      <property name="severity" value="error"/>
+      <property name="option" value="space"/>
     </module>
     <module name="NoWhitespaceBefore">
       <property name="severity" value="error"/>
       <property name="allowLineBreaks" value="true"/>
       <property name="tokens" value="SEMI,DOT,POST_DEC,POST_INC"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
     </module>
     <module name="MethodParamPad">
       <property name="severity" value="error"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
     </module>
     <module name="ParenPad">
       <property name="severity" value="error"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
     </module>
     <module name="TypecastParenPad">
       <property name="severity" value="error"/>
       <property name="tokens" value="RPAREN,TYPECAST"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
     </module>
     <module name="WhitespaceAfter">
       <property name="severity" value="error"/>
       <property name="tokens" value="COMMA,SEMI"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
     </module>
     <module name="WhitespaceAround">
       <property name="severity" value="error"/>
-      <property name="tokens" value="ASSIGN,BAND,BAND_ASSIGN,BOR,BOR_ASSIGN,BSR,BSR_ASSIGN,BXOR,BXOR_ASSIGN,COLON,DIV,DIV_ASSIGN,EQUAL,GE,GT,LAND,LCURLY,LE,LITERAL_ASSERT,LITERAL_CATCH,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_FOR,LITERAL_IF,LITERAL_RETURN,LITERAL_TRY,LITERAL_WHILE,LOR,LT,MINUS,MINUS_ASSIGN,MOD,MOD_ASSIGN,NOT_EQUAL,PLUS,PLUS_ASSIGN,QUESTION,RCURLY,SL,SLIST,SL_ASSIGN,SR,SR_ASSIGN,STAR,STAR_ASSIGN,LITERAL_ASSERT,TYPE_EXTENSION_AND,WILDCARD_TYPE"/>
+      <property name="tokens" value="ASSIGN,BAND,BAND_ASSIGN,BOR,BOR_ASSIGN,BSR,BSR_ASSIGN,BXOR,BXOR_ASSIGN,COLON,DIV,DIV_ASSIGN,EQUAL,GE,GT,LAND,LCURLY,LE,LITERAL_ASSERT,LITERAL_CATCH,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_FOR,LITERAL_IF,LITERAL_RETURN,LITERAL_TRY,LITERAL_WHILE,LOR,LT,MINUS,MINUS_ASSIGN,MOD,MOD_ASSIGN,NOT_EQUAL,PLUS,PLUS_ASSIGN,QUESTION,RCURLY,SL,SLIST,SL_ASSIGN,SR,SR_ASSIGN,STAR,STAR_ASSIGN,TYPE_EXTENSION_AND"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
     </module>
     <module name="ModifierOrder">
       <property name="severity" value="error"/>
@@ -206,9 +208,6 @@
     <module name="InnerAssignment">
       <property name="severity" value="error"/>
     </module>
-    <module name="JUnitTestCase">
-      <property name="severity" value="error"/>
-    </module>
     <module name="MagicNumber">
       <property name="severity" value="error"/>
       <property name="ignoreNumbers" value="-100, -10, -1, -0.75, -0.5, -0.1, 0, 0.1, 0.5, 0.75, 1, 2, 3, 4, 5, 6, 10, 11, 13, 100, 1000, 10000"/>
@@ -249,12 +248,6 @@
     </module>
     <module name="ParameterAssignment">
       <property name="severity" value="error"/>
-    </module>
-    <module name="RedundantThrows">
-      <property name="severity" value="error"/>
-      <property name="allowUnchecked" value="true"/>
-      <property name="allowSubclasses" value="true"/>
-      <property name="suppressLoadErrors" value="true"/>
     </module>
     <module name="ReturnCount">
       <property name="severity" value="error"/>

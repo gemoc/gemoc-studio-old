@@ -18,26 +18,21 @@
 package fr.obeo.dsl.debug.ide.event.debugger;
 
 /**
- * Reply sent when the thread has a new variable.
+ * A {@link fr.obeo.dsl.debug.Varaible variable} contextual {@link IDSLDebuggerReply reply}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class VariableReply extends AbstractVariableReply {
+public abstract class AbstractVariableReply extends AbstractThreadReply {
 
 	/**
-	 * The declaration type name.
+	 * The {@link fr.obeo.dsl.debug.StackFrame#getName() stack frame name}.
 	 */
-	private final String declarationTypeName;
+	private final String stackName;
 
 	/**
-	 * The variable values.
+	 * The variable name.
 	 */
-	private final Object value;
-
-	/**
-	 * Tells if the value can be changed.
-	 */
-	private final boolean supportModifications;
+	private final String variableName;
 
 	/**
 	 * Constructor for {@link fr.obeo.dsl.debug.Thread Thread}.
@@ -46,48 +41,31 @@ public class VariableReply extends AbstractVariableReply {
 	 *            the {@link fr.obeo.dsl.debug.Thread#getName() thread name}
 	 * @param stackName
 	 *            the {@link fr.obeo.dsl.debug.StackFrame#getName() stack frame name}
-	 * @param declarationTypeName
-	 *            the declaration type name
 	 * @param variableName
-	 *            the variable name
-	 * @param value
-	 *            the variable value
-	 * @param supportModifications
-	 *            tells if the value can be changed
+	 *            the {@link fr.obeo.dsl.debug.Variable#getName() variable name}
 	 */
-	public VariableReply(String threadName, String stackName, String declarationTypeName,
-			String variableName, Object value, boolean supportModifications) {
-		super(threadName, stackName, variableName);
-		this.declarationTypeName = declarationTypeName;
-		this.value = value;
-		this.supportModifications = supportModifications;
+	public AbstractVariableReply(String threadName, String stackName, String variableName) {
+		super(threadName);
+		this.stackName = stackName;
+		this.variableName = variableName;
 	}
 
 	/**
-	 * Gets the declaration type name.
+	 * Gets the {@link fr.obeo.dsl.debug.StackFrame#getName() stack frame name}.
 	 * 
-	 * @return the declaration type name
+	 * @return the {@link fr.obeo.dsl.debug.StackFrame#getName() stack frame name}
 	 */
-	public String getDeclarationTypeName() {
-		return declarationTypeName;
+	public String getStackName() {
+		return stackName;
 	}
 
 	/**
-	 * Gets the variable value.
+	 * Gets the {@link fr.obeo.dsl.debug.Variable#getName() variable name}.
 	 * 
-	 * @return the variable value
+	 * @return the {@link fr.obeo.dsl.debug.Variable#getName() variable name}
 	 */
-	public Object getValue() {
-		return value;
-	}
-
-	/**
-	 * Tells if the value can be changed.
-	 * 
-	 * @return <code>true</code> if the value can be changed, <code>false</code> otherwise
-	 */
-	public boolean supportModifications() {
-		return supportModifications;
+	public String getVariableName() {
+		return variableName;
 	}
 
 }

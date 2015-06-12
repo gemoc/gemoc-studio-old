@@ -306,7 +306,7 @@ public class ThreadImpl extends EObjectImpl implements fr.obeo.dsl.debug.Thread 
 	public DebugTarget getDebugTarget() {
 		if (eContainerFeatureID() != DebugPackage.THREAD__DEBUG_TARGET)
 			return null;
-		return (DebugTarget)eContainer();
+		return (DebugTarget)eInternalContainer();
 	}
 
 	/**

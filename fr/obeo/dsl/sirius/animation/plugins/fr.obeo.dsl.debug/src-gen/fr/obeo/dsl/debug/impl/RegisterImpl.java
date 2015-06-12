@@ -76,7 +76,7 @@ public class RegisterImpl extends VariableImpl implements Register {
 	public RegisterGroup getRegisterGroup() {
 		if (eContainerFeatureID() != DebugPackage.REGISTER__REGISTER_GROUP)
 			return null;
-		return (RegisterGroup)eContainer();
+		return (RegisterGroup)eInternalContainer();
 	}
 
 	/**

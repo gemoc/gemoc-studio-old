@@ -41,8 +41,9 @@ public class TestEventProcessor implements IDSLDebugEventProcessor {
 	 * 
 	 * @see fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor#handleEvent(fr.obeo.dsl.debug.ide.event.IDSLDebugEvent)
 	 */
-	public void handleEvent(IDSLDebugEvent event) {
+	public Object handleEvent(IDSLDebugEvent event) {
 		events.add(event);
+		return null;
 	}
 
 	public List<IDSLDebugEvent> getEvents() {
