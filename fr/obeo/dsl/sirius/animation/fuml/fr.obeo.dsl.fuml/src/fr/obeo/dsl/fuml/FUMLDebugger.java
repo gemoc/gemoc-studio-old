@@ -89,4 +89,28 @@ public class FUMLDebugger extends AbstractDSLDebugger {
 		variable(threadName, instruction.eClass().getName(), "instruction", instruction);
 	}
 
+	public fr.obeo.dsl.debug.ide.EObject getNextInstruction(String threadName,
+			fr.obeo.dsl.debug.ide.EObject currentInstruction, Stepping stepping) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean validateVariableValue(String threadName,
+			String variableName, String value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Object getVariableValue(String threadName, String stackName,
+			String variableName, String value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setVariableValue(String threadName, String stackName,
+			String variableName, Object value) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
