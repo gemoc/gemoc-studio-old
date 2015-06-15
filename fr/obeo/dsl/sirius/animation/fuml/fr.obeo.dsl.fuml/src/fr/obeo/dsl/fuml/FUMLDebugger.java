@@ -81,16 +81,16 @@ public class FUMLDebugger extends AbstractDSLDebugger {
 		for (FeatureValue value : context.getFeatureValues()) {
 			final FeatureValue lastValue = lastValues.get(value.feature);
 			if (lastValue == null || !lastValue.hasEqualValues(value)) {
-				variable(threadName, value.feature.getType().getName(),
-						value.feature.getName(), value.values);
+				variable(threadName, FUMLExecutionEngineForDSL.main.getName(), value.feature.getType().getName(),
+						value.feature.getName(), value.values, false);
 				lastValues.put(value.feature, value.copy());
 			}
 		}
-		variable(threadName, instruction.eClass().getName(), "instruction", instruction);
+		variable(threadName, FUMLExecutionEngineForDSL.main.getName(), instruction.eClass().getName(), "instruction", instruction, false);
 	}
 
-	public fr.obeo.dsl.debug.ide.EObject getNextInstruction(String threadName,
-			fr.obeo.dsl.debug.ide.EObject currentInstruction, Stepping stepping) {
+	public EObject getNextInstruction(String threadName,
+			EObject currentInstruction, Stepping stepping) {
 		// TODO Auto-generated method stub
 		return null;
 	}
