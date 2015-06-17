@@ -213,11 +213,16 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 			ExecutionTraceModel traceModel = (ExecutionTraceModel) traceResource.getContents().get(0);
 
 			if (stateChanged || currentState == null) {
+
+				Activator.getDefault().debug("saving model state " + traceModel.getReachedStates().size());
+
 				ModelState modelState = null;
 				// copy the model
 				Copier copier = new GCopier();
 				EObject result = copier.copy(_executionContext.getResourceModel().getContents().get(0));
 				copier.copyReferences();
+
+				// No one needs to observe the clone
 				result.eAdapters().clear();
 				modelState = Gemoc_execution_traceFactory.eINSTANCE.createModelState();
 				traceModel.getReachedStates().add(modelState);
@@ -243,8 +248,9 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 				SolverState solverState = Gemoc_execution_traceFactory.eINSTANCE.createSolverState();
 				solverState.setSerializableModel(_executionContext.getExecutionPlatform().getSolver().getState());
-				Activator.getDefault().debug(
-						"step" + stepNumber + ", saving solver state: " + solverState.getSerializableModel());
+				// Activator.getDefault().debug(
+				// "step" + stepNumber + ", saving solver state: " +
+				// solverState.getSerializableModel());
 
 				ContextState contextState = Gemoc_execution_traceFactory.eINSTANCE.createContextState();
 				contextState.setModelState(modelState);
@@ -273,6 +279,8 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 	private boolean stateChanged = false;
 
+	private EContentAdapter adapter;
+
 	private void setUp(IExecutionEngine engine) {
 		if (_executionContext == null) {
 			_executionTraceModel = Gemoc_execution_traceFactory.eINSTANCE.createExecutionTraceModel();
@@ -281,7 +289,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 			_executionTraceModel.getBranches().add(_currentBranch);
 			setModelExecutionContext(engine.getExecutionContext());
 
-			_executionContext.getResourceModel().eAdapters().add(new EContentAdapter() {
+			adapter = new EContentAdapter() {
 
 				@Override
 				public void notifyChanged(Notification notification) {
@@ -290,7 +298,9 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 				}
 
-			});
+			};
+
+			_executionContext.getResourceModel().eAdapters().add(adapter);
 
 		}
 	}
@@ -442,9 +452,11 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 			public void run() {
 
 				// Same as in "mseOccurrenceExecuted", and probably redundant
-				addModelStateIfChanged();
+				//addModelStateIfChanged();
+
+				// No need to observe changes in the model anymore
+				_executionContext.getResourceModel().eAdapters().remove(adapter);
 			}
 		});
-
 	}
 }
