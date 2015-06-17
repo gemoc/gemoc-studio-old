@@ -21,6 +21,7 @@
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated debug -->
       <factory
             uri="http://www.obeo.fr/dsl/debug"
             class="fr.obeo.dsl.debug.provider.CustomDebugItemProviderAdapterFactory"

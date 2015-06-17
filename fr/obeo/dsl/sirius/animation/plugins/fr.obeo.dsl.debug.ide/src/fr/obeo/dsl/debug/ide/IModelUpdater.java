@@ -20,6 +20,7 @@ package fr.obeo.dsl.debug.ide;
 import fr.obeo.dsl.debug.DebugTarget;
 import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.Thread;
+import fr.obeo.dsl.debug.Variable;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -189,16 +190,29 @@ public interface IModelUpdater {
 	 * {@link fr.obeo.dsl.debug.Variable#getName() name} from the {@link Thread#getTopStackFrame() top stack
 	 * frame} of the given {@link Thread} to the given {@link EObject value}.
 	 * 
-	 * @param thread
-	 *            the {@link Thread}
+	 * @param stackFrame
+	 *            the {@link StackFrame}
 	 * @param declarationTypeName
 	 *            the {@link fr.obeo.dsl.debug.Variable#getDeclarationType() declaration type name}
-	 * @param name
+	 * @param variableName
 	 *            the {@link fr.obeo.dsl.debug.Variable#getName() variable name}
 	 * @param value
 	 *            the {@link Object value} to set
+	 * @param supportModifications
+	 *            tells if the value can be changed
 	 */
-	void setVariableReply(Thread thread, String declarationTypeName, String name, Object value);
+	void setVariableReply(StackFrame stackFrame, String declarationTypeName, String variableName,
+			Object value, boolean supportModifications);
+
+	/**
+	 * Notifies a value change for the given {@link Variable} after a request.
+	 * 
+	 * @param variable
+	 *            the {@link Variable}
+	 * @param value
+	 *            the {@link Object value} to set
+	 */
+	void setVariableValueReply(Variable variable, Object value);
 
 	/**
 	 * Requests the termination the given {@link Thread}.

@@ -10,8 +10,8 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
-import tfsmextended.tfsmextended.TimedSystem
-import tfsmextended.tfsmextended.impl.TfsmextendedPackageImpl
+import org.gemoc.sample.tfsm.TimedSystem
+import org.gemoc.sample.tfsm.impl.TfsmPackageImpl
 
 class Main
 {
@@ -52,7 +52,7 @@ class Main
 	{
 		ResourceFactoryRegistryImpl.INSTANCE.getExtensionToFactoryMap().put("tfsm", new XMIResourceFactoryImpl());
 		EcorePackageImpl.init();
-		TfsmextendedPackageImpl.init();
+		TfsmPackageImpl.init();
 
 		val resourceSet = new ResourceSetImpl
 		TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain(resourceSet);

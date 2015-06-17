@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <li>{@link fr.obeo.dsl.debug.impl.CurrentSessionImpl#getDebugTargets <em>Debug Targets</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CurrentSessionImpl extends EObjectImpl implements CurrentSession {

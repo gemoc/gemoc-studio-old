@@ -327,6 +327,31 @@ public final class DebugTargetUtils {
 	}
 
 	/**
+	 * Gets the {@link StackFrame} with the given {@link StackFrame#getName() name} from the given
+	 * {@link Thread}.
+	 * 
+	 * @param thread
+	 *            the {@link Thread}
+	 * @param name
+	 *            the {@link StackFrame#getName() name}
+	 * @return the {@link StackFrame} with the given {@link StackFrame#getName() name} from the given
+	 *         {@link Thread} if any, <code>null</code> otherwise
+	 */
+	public static StackFrame getStackFrame(Thread thread, String name) {
+		StackFrame res = null;
+
+		StackFrame currentFrame = thread.getBottomStackFrame();
+		while (currentFrame != null) {
+			if (name.equals(currentFrame.getName())) {
+				res = currentFrame;
+				break;
+			}
+		}
+
+		return res;
+	}
+
+	/**
 	 * Gets the {@link Variable} with the given {@link Variable#getName() name} from the given
 	 * {@link StackFrame}.
 	 * 
@@ -363,13 +388,17 @@ public final class DebugTargetUtils {
 	 *            the {@link Variable#getName() variable name}
 	 * @param value
 	 *            the {@link Object value} to set
+	 * @param supportModifications
+	 *            tells if the value can be changed
 	 */
-	public static void setVariable(StackFrame frame, String declarationTypeName, String name, Object value) {
+	public static void setVariable(StackFrame frame, String declarationTypeName, String name, Object value,
+			boolean supportModifications) {
 		Variable variable = getVariable(frame, name);
 		if (variable == null) {
 			variable = DebugPackage.eINSTANCE.getDebugFactory().createVariable();
 			variable.setDeclarationType(declarationTypeName);
 			variable.setName(name);
+			variable.setSupportModifications(supportModifications);
 			frame.getVariables().add(variable);
 		} else {
 			variable.setValueChanged(true);

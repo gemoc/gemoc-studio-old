@@ -22,7 +22,7 @@ package fr.obeo.dsl.debug.ide.event.debugger;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class VariableReply extends AbstractThreadReply {
+public class VariableReply extends AbstractVariableReply {
 
 	/**
 	 * The declaration type name.
@@ -30,32 +30,37 @@ public class VariableReply extends AbstractThreadReply {
 	private final String declarationTypeName;
 
 	/**
-	 * The variable name.
-	 */
-	private final String name;
-
-	/**
 	 * The variable values.
 	 */
 	private final Object value;
+
+	/**
+	 * Tells if the value can be changed.
+	 */
+	private final boolean supportModifications;
 
 	/**
 	 * Constructor for {@link fr.obeo.dsl.debug.Thread Thread}.
 	 * 
 	 * @param threadName
 	 *            the {@link fr.obeo.dsl.debug.Thread#getName() thread name}
+	 * @param stackName
+	 *            the {@link fr.obeo.dsl.debug.StackFrame#getName() stack frame name}
 	 * @param declarationTypeName
 	 *            the declaration type name
-	 * @param name
+	 * @param variableName
 	 *            the variable name
 	 * @param value
 	 *            the variable value
+	 * @param supportModifications
+	 *            tells if the value can be changed
 	 */
-	public VariableReply(String threadName, String declarationTypeName, String name, Object value) {
-		super(threadName);
+	public VariableReply(String threadName, String stackName, String declarationTypeName,
+			String variableName, Object value, boolean supportModifications) {
+		super(threadName, stackName, variableName);
 		this.declarationTypeName = declarationTypeName;
-		this.name = name;
 		this.value = value;
+		this.supportModifications = supportModifications;
 	}
 
 	/**
@@ -68,21 +73,21 @@ public class VariableReply extends AbstractThreadReply {
 	}
 
 	/**
-	 * Gets the variable name.
-	 * 
-	 * @return the variable name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
 	 * Gets the variable value.
 	 * 
 	 * @return the variable value
 	 */
 	public Object getValue() {
 		return value;
+	}
+
+	/**
+	 * Tells if the value can be changed.
+	 * 
+	 * @return <code>true</code> if the value can be changed, <code>false</code> otherwise
+	 */
+	public boolean supportModifications() {
+		return supportModifications;
 	}
 
 }

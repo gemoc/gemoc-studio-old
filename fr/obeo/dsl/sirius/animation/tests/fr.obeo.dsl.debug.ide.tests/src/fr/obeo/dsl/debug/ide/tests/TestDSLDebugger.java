@@ -153,6 +153,24 @@ public class TestDSLDebugger extends AbstractDSLDebugger {
 	private boolean getNextInstructionCall;
 
 	/**
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#validateVariableValue(String, String, String)} call
+	 * has been made.
+	 */
+	private boolean validateVariableValueCall;
+
+	/**
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#getVariableValue(String, String, String, String)}
+	 * call has been made.
+	 */
+	private boolean getVariableValueCall;
+
+	/**
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#setVariableValue(String, String, String, Object)}
+	 * call has been made.
+	 */
+	private boolean setVariableValueCall;
+
+	/**
 	 * Constructor.
 	 * 
 	 * @param target
@@ -262,6 +280,20 @@ public class TestDSLDebugger extends AbstractDSLDebugger {
 	public EObject getNextInstruction(String threadName, EObject currentInstruction, Stepping stepping) {
 		getNextInstructionCall = true;
 		return super.getNextInstruction(threadName, currentInstruction, stepping);
+	}
+
+	public boolean validateVariableValue(String threadName, String variableName, String value) {
+		validateVariableValueCall = true;
+		return false;
+	}
+
+	public Object getVariableValue(String threadName, String stackName, String variableName, String value) {
+		getVariableValueCall = true;
+		return null;
+	}
+
+	public void setVariableValue(String threadName, String stackName, String variableName, Object value) {
+		setVariableValueCall = true;
 	}
 
 	/**
@@ -378,7 +410,7 @@ public class TestDSLDebugger extends AbstractDSLDebugger {
 	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#updateData(String, EObject)} call has been made.
 	 * 
 	 * @return <code>true</code> if a call to
-	 *         {@link fr.obeo.dsl.debug.ide.IDSLDebugger#updateData(String, EObject)} has been made.
+	 *         {@link fr.obeo.dsl.debug.ide.IDSLDebugger#updateData(String, EObject)} has been made
 	 */
 	public boolean hasUpdateDataCall() {
 		return updateDataCall;
@@ -391,10 +423,38 @@ public class TestDSLDebugger extends AbstractDSLDebugger {
 	 * 
 	 * @return <code>true</code> if a call to
 	 *         {@link fr.obeo.dsl.debug.ide.IDSLDebugger#getNextInstruction(String, EObject, fr.obeo.dsl.debug.ide.IDSLDebugger.Stepping)}
-	 *         has been made.
+	 *         has been made
 	 */
 	public boolean hasGetNextInstructionCall() {
 		return getNextInstructionCall;
+	}
+
+	/**
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#validateVariableValue(String, String, String)} call
+	 * has been made.
+	 * 
+	 * @return <code>true</code> if a call to
+	 *         {@link fr.obeo.dsl.debug.ide.IDSLDebugger#validateVariableValue(String, String, String)} call
+	 *         has been made
+	 */
+	public boolean hasValidateVariableValueCall() {
+		return validateVariableValueCall;
+	}
+
+	/**
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#getVariableValue(String, String, String, String)}
+	 * call has been made.
+	 */
+	public boolean hasGetVariableValueCall() {
+		return getVariableValueCall;
+	}
+
+	/**
+	 * A call to {@link fr.obeo.dsl.debug.ide.IDSLDebugger#setVariableValue(String, String, String, Object)}
+	 * call has been made.
+	 */
+	public boolean hasSetVariableValueCall() {
+		return setVariableValueCall;
 	}
 
 }

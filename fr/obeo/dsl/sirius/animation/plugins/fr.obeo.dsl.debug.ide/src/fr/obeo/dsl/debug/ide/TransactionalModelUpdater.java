@@ -22,6 +22,7 @@ import fr.obeo.dsl.debug.DebugTargetUtils;
 import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.Thread;
 import fr.obeo.dsl.debug.ThreadUtils;
+import fr.obeo.dsl.debug.Variable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -328,17 +329,31 @@ public class TransactionalModelUpdater extends ModelUpdater {
 
 	/**
 	 * {@inheritDoc}
-	 * 
-	 * @see fr.obeo.dsl.debug.ide.IModelUpdater#setVariableReply(fr.obeo.dsl.debug.Thread, java.lang.String,
-	 *      java.lang.String, java.lang.Object)
+	 *
+	 * @see fr.obeo.dsl.debug.ide.ModelUpdater#setVariableReply(fr.obeo.dsl.debug.StackFrame,
+	 *      java.lang.String, java.lang.String, java.lang.Object, boolean)
 	 */
-	public void setVariableReply(final Thread thread, final String declarationTypeName, final String name,
-			final Object value) {
+	public void setVariableReply(final StackFrame stackFrame, final String declarationTypeName,
+			final String name, final Object value, final boolean supportModifications) {
 		final Command command = new RecordingCommand(domain, "Set Variable Reply") {
 
 			@Override
 			protected void doExecute() {
-				ThreadUtils.setVariableReply(thread, declarationTypeName, name, value);
+				ThreadUtils.setVariableReply(stackFrame, declarationTypeName, name, value,
+						supportModifications);
+			}
+
+		};
+		doExecute(command);
+	}
+
+	@Override
+	public void setVariableValueReply(final Variable variable, final Object value) {
+		final Command command = new RecordingCommand(domain, "Set Variable Reply") {
+
+			@Override
+			protected void doExecute() {
+				ThreadUtils.setVariableValueReply(variable, value);
 			}
 
 		};

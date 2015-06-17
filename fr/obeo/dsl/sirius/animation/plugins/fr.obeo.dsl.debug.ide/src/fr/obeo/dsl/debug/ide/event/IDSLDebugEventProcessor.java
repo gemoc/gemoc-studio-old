@@ -17,6 +17,7 @@
  *******************************************************************************/
 package fr.obeo.dsl.debug.ide.event;
 
+
 /**
  * A processor for {@link IDSLDebugEvent}.
  * 
@@ -29,7 +30,8 @@ public interface IDSLDebugEventProcessor {
 	 * 
 	 * @param event
 	 *            the {@link IDSLDebugEvent}
+	 * @return an {@link Object} if any result is needed, <code>null</code> otherwise
 	 */
-	void handleEvent(IDSLDebugEvent event);
+	Object handleEvent(IDSLDebugEvent event);
 
 }

@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link fr.obeo.dsl.debug.RegisterGroup#getRegisters <em>Registers</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see fr.obeo.dsl.debug.DebugPackage#getRegisterGroup()
  * @model
  * @generated

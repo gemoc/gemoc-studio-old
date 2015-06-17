@@ -247,4 +247,25 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean validateVariableValue(String threadName,
+			String variableName, String value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Object getVariableValue(String threadName, String stackName,
+			String variableName, String value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setVariableValue(String threadName, String stackName,
+			String variableName, Object value) {
+		// TODO Auto-generated method stub
+	}
+
 }

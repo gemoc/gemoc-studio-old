@@ -17,8 +17,11 @@
  *******************************************************************************/
 package fr.obeo.dsl.debug.ide.adapter;
 
+import fr.obeo.dsl.debug.ThreadUtils;
 import fr.obeo.dsl.debug.Variable;
 import fr.obeo.dsl.debug.ide.DSLEclipseDebugIntegration;
+import fr.obeo.dsl.debug.ide.event.model.SetVariableValueRequest;
+import fr.obeo.dsl.debug.ide.event.model.ValidateVariableValueRequest;
 
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IValue;
@@ -62,7 +65,9 @@ public class DSLVariableAdapter extends AbstractDSLDebugElementAdapter implement
 	 * @see org.eclipse.debug.core.model.IValueModification#setValue(java.lang.String)
 	 */
 	public void setValue(String expression) throws DebugException {
-		throw new UnsupportedOperationException("Not implemented yet.");
+		factory.getDebugger().handleEvent(
+				new SetVariableValueRequest(ThreadUtils.getThread(getHost().getFrame()).getName(), getHost()
+						.getFrame().getName(), getHost().getName(), expression));
 	}
 
 	/**
@@ -71,7 +76,9 @@ public class DSLVariableAdapter extends AbstractDSLDebugElementAdapter implement
 	 * @see org.eclipse.debug.core.model.IValueModification#setValue(org.eclipse.debug.core.model.IValue)
 	 */
 	public void setValue(IValue value) throws DebugException {
-		throw new UnsupportedOperationException("Not implemented yet.");
+		factory.getDebugger().handleEvent(
+				new SetVariableValueRequest(ThreadUtils.getThread(getHost().getFrame()).getName(), getHost()
+						.getFrame().getName(), getHost().getName(), value.getValueString()));
 	}
 
 	/**
@@ -80,7 +87,7 @@ public class DSLVariableAdapter extends AbstractDSLDebugElementAdapter implement
 	 * @see org.eclipse.debug.core.model.IValueModification#supportsValueModification()
 	 */
 	public boolean supportsValueModification() {
-		return false;
+		return getHost().isSupportModifications();
 	}
 
 	/**
@@ -89,7 +96,11 @@ public class DSLVariableAdapter extends AbstractDSLDebugElementAdapter implement
 	 * @see org.eclipse.debug.core.model.IValueModification#verifyValue(java.lang.String)
 	 */
 	public boolean verifyValue(String expression) throws DebugException {
-		return false;
+		Object response = factory.getDebugger().handleEvent(
+				new ValidateVariableValueRequest(ThreadUtils.getThread(getHost().getFrame()).getName(),
+						getHost().getFrame().getName(), getHost().getName(), expression));
+
+		return Boolean.TRUE == response;
 	}
 
 	/**
@@ -98,7 +109,11 @@ public class DSLVariableAdapter extends AbstractDSLDebugElementAdapter implement
 	 * @see org.eclipse.debug.core.model.IValueModification#verifyValue(org.eclipse.debug.core.model.IValue)
 	 */
 	public boolean verifyValue(IValue value) throws DebugException {
-		return false;
+		Object response = factory.getDebugger().handleEvent(
+				new ValidateVariableValueRequest(ThreadUtils.getThread(getHost().getFrame()).getName(),
+						getHost().getFrame().getName(), getHost().getName(), value.getValueString()));
+
+		return Boolean.TRUE == response;
 	}
 
 	/**

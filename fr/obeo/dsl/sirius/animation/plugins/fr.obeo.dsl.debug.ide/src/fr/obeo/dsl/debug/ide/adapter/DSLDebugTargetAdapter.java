@@ -22,6 +22,7 @@ import fr.obeo.dsl.debug.DebugTargetState;
 import fr.obeo.dsl.debug.DebugTargetUtils;
 import fr.obeo.dsl.debug.StackFrame;
 import fr.obeo.dsl.debug.Thread;
+import fr.obeo.dsl.debug.Variable;
 import fr.obeo.dsl.debug.ide.Activator;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;
 import fr.obeo.dsl.debug.ide.DSLEclipseDebugIntegration;
@@ -33,6 +34,7 @@ import fr.obeo.dsl.debug.ide.event.debugger.PopStackFrameReply;
 import fr.obeo.dsl.debug.ide.event.debugger.PushStackFrameReply;
 import fr.obeo.dsl.debug.ide.event.debugger.ResumingReply;
 import fr.obeo.dsl.debug.ide.event.debugger.SetCurrentInstructionReply;
+import fr.obeo.dsl.debug.ide.event.debugger.SetVariableValueReply;
 import fr.obeo.dsl.debug.ide.event.debugger.SpawnRunningThreadReply;
 import fr.obeo.dsl.debug.ide.event.debugger.StepIntoResumingReply;
 import fr.obeo.dsl.debug.ide.event.debugger.StepOverResumingReply;
@@ -368,7 +370,9 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 	 * 
 	 * @see fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor#handleEvent(fr.obeo.dsl.debug.ide.event.IDSLDebugEvent)
 	 */
-	public void handleEvent(IDSLDebugEvent event) {
+	public Object handleEvent(IDSLDebugEvent event) {
+		Object res = null;
+
 		if (event instanceof SuspendedReply) {
 			handleSuspendReply((SuspendedReply)event);
 		} else if (event instanceof TerminatedReply) {
@@ -387,7 +391,27 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 			handlePopStackFrameReply((PopStackFrameReply)event);
 		} else if (event instanceof SetCurrentInstructionReply) {
 			handleSetCurrentInstructionReply((SetCurrentInstructionReply)event);
+		} else if (event instanceof SetVariableValueReply) {
+			handleSetVariableValueReply((SetVariableValueReply)event);
 		}
+
+		return res;
+	}
+
+	/**
+	 * Handles the given {@link SetVariableValueReply}.
+	 * 
+	 * @param variableValueReply
+	 *            the given {@link SetVariableValueReply}
+	 */
+	private void handleSetVariableValueReply(SetVariableValueReply variableValueReply) {
+		final Thread eThread = DebugTargetUtils.getThread(getHost(), variableValueReply.getThreadName());
+		final StackFrame eFrame = DebugTargetUtils.getStackFrame(eThread, variableValueReply.getStackName());
+		final Variable eVariable = DebugTargetUtils.getVariable(eFrame, variableValueReply.getVariableName());
+		// EMF model change
+		factory.getModelUpdater().setVariableValueReply(eVariable, variableValueReply.getValue());
+		// Eclipse change
+		factory.getThread(eThread).fireChangeEvent(DebugEvent.CONTENT);
 	}
 
 	/**
@@ -464,9 +488,11 @@ public class DSLDebugTargetAdapter extends AbstractDSLDebugElementAdapter implem
 	 */
 	private void handleVariableReply(VariableReply variableReply) {
 		final Thread eThread = DebugTargetUtils.getThread(getHost(), variableReply.getThreadName());
+		final StackFrame eStackFrame = DebugTargetUtils.getStackFrame(eThread, variableReply.getStackName());
 		// EMF model change
-		factory.getModelUpdater().setVariableReply(eThread, variableReply.getDeclarationTypeName(),
-				variableReply.getName(), variableReply.getValue());
+		factory.getModelUpdater().setVariableReply(eStackFrame, variableReply.getDeclarationTypeName(),
+				variableReply.getVariableName(), variableReply.getValue(),
+				variableReply.supportModifications());
 		// Eclipse change
 		factory.getThread(eThread).fireChangeEvent(DebugEvent.CONTENT);
 	}

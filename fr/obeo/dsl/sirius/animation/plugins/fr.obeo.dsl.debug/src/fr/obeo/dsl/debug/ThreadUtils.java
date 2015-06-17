@@ -343,19 +343,24 @@ public final class ThreadUtils {
 	 * {@link Thread#getTopStackFrame() top stack frame} of the given {@link Thread} to the given
 	 * {@link EObject value}.
 	 * 
-	 * @param thread
-	 *            the {@link Thread}
+	 * @param stackFrame
+	 *            the {@link StackFrame}
 	 * @param declarationTypeName
 	 *            the {@link Variable#getDeclarationType() declaration type name}
 	 * @param name
 	 *            the {@link Variable#getName() variable name}
 	 * @param value
 	 *            the {@link Object value} to set
+	 * @param supportModifications
+	 *            tells if the value can be changed
 	 */
-	public static void setVariableReply(Thread thread, String declarationTypeName, String name, Object value) {
+	public static void setVariableReply(StackFrame stackFrame, String declarationTypeName, String name,
+			Object value, boolean supportModifications) {
+		final Thread thread = getThread(stackFrame);
 		if (canSetVariable(thread)) {
 			if (thread.getTopStackFrame() != null) {
-				DebugTargetUtils.setVariable(thread.getTopStackFrame(), declarationTypeName, name, value);
+				DebugTargetUtils.setVariable(stackFrame, declarationTypeName, name, value,
+						supportModifications);
 			} else {
 				throw new IllegalStateException("can't set a variable when there is not stack frame.");
 			}
@@ -363,6 +368,18 @@ public final class ThreadUtils {
 			throw new IllegalStateException(
 					"can't set a variable when the debug target is not connected or the thread is not suspended.");
 		}
+	}
+
+	/**
+	 * Notifies a value change for the given {@link Variable}.
+	 * 
+	 * @param variable
+	 *            the {@link Variable}
+	 * @param value
+	 *            the {@link Object value} to set
+	 */
+	public static void setVariableValueReply(Variable variable, Object value) {
+		variable.setValue(value);
 	}
 
 	/**

@@ -1,10 +1,7 @@
 package org.gemoc.gemoc_language_workbench.ui.builder;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
@@ -18,7 +15,6 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -32,13 +28,10 @@ import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefin
 import org.gemoc.gemoc_language_workbench.conf.DSAProject;
 import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
-import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.gemoc.gemoc_language_workbench.conf.MoCCProject;
-import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
 import org.gemoc.gemoc_language_workbench.conf.SiriusAnimatorProject;
 import org.gemoc.gemoc_language_workbench.conf.SiriusEditorProject;
-import org.gemoc.gemoc_language_workbench.conf.TreeEditorProject;
 import org.gemoc.gemoc_language_workbench.conf.XTextEditorProject;
 import org.gemoc.gemoc_language_workbench.ui.Activator;
 import org.gemoc.gemoc_language_workbench.ui.builder.pde.PluginXMLHelper;
@@ -414,6 +407,14 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		if(dseProjectName!= null && !dseProjectName.isEmpty()){
 			if(solverClassName == null || solverClassName.isEmpty()){
 				computedSolverClassName = "org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl.CcslSolver";
+			}
+			else{
+				computedSolverClassName = solverClassName;
+			}
+		} else {
+			// case of PlainK3
+			if(solverClassName == null || solverClassName.isEmpty()){
+				computedSolverClassName = "org.gemoc.gemoc_language_workbench.extensions.k3.K3Solver";
 			}
 			else{
 				computedSolverClassName = solverClassName;

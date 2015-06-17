@@ -209,6 +209,12 @@
         <details key="documentation" value="The {@link Variable} declaration type."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supportModifications" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tells if the {@link Variable#getValue() value} can be changed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CurrentSession">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

@@ -30,6 +30,7 @@ import fr.obeo.dsl.debug.ide.event.debugger.PopStackFrameReply;
 import fr.obeo.dsl.debug.ide.event.debugger.PushStackFrameReply;
 import fr.obeo.dsl.debug.ide.event.debugger.ResumingReply;
 import fr.obeo.dsl.debug.ide.event.debugger.SetCurrentInstructionReply;
+import fr.obeo.dsl.debug.ide.event.debugger.SetVariableValueReply;
 import fr.obeo.dsl.debug.ide.event.debugger.SpawnRunningThreadReply;
 import fr.obeo.dsl.debug.ide.event.debugger.StepIntoResumingReply;
 import fr.obeo.dsl.debug.ide.event.debugger.StepOverResumingReply;
@@ -679,7 +680,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		DebugPlugin.getDefault().addDebugEventListener(listener);
 		try {
 			debugTarget.handleEvent(new VariableReply(eDebugTarget.getThreads().get(suspendedThreadIndex)
-					.getName(), "Object", "variable", null));
+					.getName(), eDebugTarget.getThreads().get(suspendedThreadIndex).getTopStackFrame()
+					.getName(), "Object", "variable", null, false));
 			listener.waitForEvent();
 		} finally {
 			DebugPlugin.getDefault().removeDebugEventListener(listener);
@@ -717,8 +719,8 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 		createThreads(eDebugTarget);
 		debugTarget.getThreads(); // force adapter creation to avoid create event
 
-		ThreadUtils.setVariableReply(eDebugTarget.getThreads().get(suspendedThreadIndex), "Object",
-				"variable", null);
+		ThreadUtils.setVariableReply(eDebugTarget.getThreads().get(suspendedThreadIndex).getTopStackFrame(),
+				"Object", "variable", null, false);
 		DebugPlugin.getDefault().addDebugEventListener(listener);
 		try {
 			debugTarget.handleEvent(new DeleteVariableReply(eDebugTarget.getThreads().get(
@@ -860,6 +862,51 @@ public class DSLDebugTargetAdapterTests extends AbstractDebugTests {
 
 		assertEquals(instruction, eDebugTarget.getThreads().get(suspendedThreadIndex).getTopStackFrame()
 				.getCurrentInstruction());
+
+		assertEquals(1, listener.getEventsList().size());
+		DebugEvent[] events = listener.getEventsList().get(0);
+		assertEquals(1, events.length);
+		DebugEvent event = events[0];
+		assertTrue(event.getSource() == integration.getThread(eDebugTarget.getThreads().get(
+				suspendedThreadIndex)));
+		assertEquals(DebugEvent.CHANGE, event.getKind());
+		assertEquals(DebugEvent.CONTENT, event.getDetail());
+	}
+
+	/**
+	 * Test {@link DSLDebugTargetAdapter#handleEvent(fr.obeo.dsl.debug.ide.event.IDSLDebugEvent)}.
+	 * 
+	 * @throws DebugException
+	 *             if fail
+	 */
+	@Test
+	public void handleEventSetVariableValueReply() throws DebugException {
+		DebugTarget eDebugTarget = DebugPackage.eINSTANCE.getDebugFactory().createDebugTarget();
+		eDebugTarget.setName("Debug target");
+		final TestEventProcessor testEventProcessor = new TestEventProcessor();
+		final DSLEclipseDebugIntegration integration = new DSLEclipseDebugIntegration("id", null,
+				eDebugTarget, new ModelUpdater(), testEventProcessor);
+		final DSLDebugTargetAdapter debugTarget = integration.getDebugTarget();
+		TestDebugEventSetListener listener = new TestDebugEventSetListener();
+
+		createThreads(eDebugTarget);
+		debugTarget.getThreads(); // force adapter creation to avoid create event
+		debugTarget.handleEvent(new VariableReply(eDebugTarget.getThreads().get(suspendedThreadIndex)
+				.getName(), eDebugTarget.getThreads().get(suspendedThreadIndex).getTopStackFrame().getName(),
+				"Object", "variable", null, false));
+
+		DebugPlugin.getDefault().addDebugEventListener(listener);
+		try {
+			debugTarget.handleEvent(new SetVariableValueReply(eDebugTarget.getThreads().get(
+					suspendedThreadIndex).getName(), eDebugTarget.getThreads().get(suspendedThreadIndex)
+					.getTopStackFrame().getName(), "variable", "value"));
+			listener.waitForEvent();
+		} finally {
+			DebugPlugin.getDefault().removeDebugEventListener(listener);
+		}
+
+		assertEquals(1, eDebugTarget.getThreads().get(suspendedThreadIndex).getTopStackFrame().getVariables()
+				.size());
 
 		assertEquals(1, listener.getEventsList().size());
 		DebugEvent[] events = listener.getEventsList().get(0);

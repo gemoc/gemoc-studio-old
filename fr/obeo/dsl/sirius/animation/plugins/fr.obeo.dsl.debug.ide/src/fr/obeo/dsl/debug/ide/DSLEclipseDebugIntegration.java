@@ -265,12 +265,12 @@ public class DSLEclipseDebugIntegration extends DebugAdapterFactory {
 	/**
 	 * Gets an {@link IVariable} form a {@link Variable}.
 	 * 
-	 * @param frame
+	 * @param variable
 	 *            the {@link Variable}
 	 * @return the {@link IVariable}
 	 */
-	public DSLVariableAdapter getVariable(Variable frame) {
-		final DSLVariableAdapter res = (DSLVariableAdapter)adapt(frame, IVariable.class);
+	public DSLVariableAdapter getVariable(Variable variable) {
+		final DSLVariableAdapter res = (DSLVariableAdapter)adapt(variable, IVariable.class);
 		if (res == null) {
 			throw new IllegalStateException("can't addapt Variable to IVariable.");
 		}

@@ -125,7 +125,7 @@ public class DefaultModelLoader implements IModelLoader {
 		final IProgressMonitor monitor = new NullProgressMonitor();
 		final TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
 		session.open(monitor);
-		EcoreUtil.resolveAll(rs);
+		//EcoreUtil.resolveAll(rs);
 		// activating layers
 		for (DView view : session.getSelectedViews()) {
 			for (DRepresentation representation : view

@@ -28,14 +28,19 @@ public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorS
 		super("fake", AS_DROP_DOWN_MENU);
 		setMenuCreator(this);
 				
-		for (DeciderSpecificationExtension spec : DeciderSpecificationExtensionPoint.getSpecifications())
-		{
-			DeciderAction action = new DeciderAction(spec);
-			if (spec.getName().contains("step"))
-				_mainAction = action;
-			_subActions.add(action);	
+//		for (DeciderSpecificationExtension spec : DeciderSpecificationExtensionPoint.getSpecifications())
+//		{
+//			DeciderAction action = new DeciderAction(spec);
+//			if (spec.getName().contains("step"))
+//				_mainAction = action;
+//			_subActions.add(action);	
+//		}
+		_mainAction = DeciderManager.getStepByStepDeciderAction();
+		for(DeciderAction action : DeciderManager.getAllDeciderActions()){
+			_subActions.add(action);
+			
 		}
-				
+		
 		updateThis();
 		
 		setEnabled(false);
@@ -99,7 +104,8 @@ public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorS
 	public void motorSelectionChanged(IExecutionEngine engine) 
 	{
 		_currentSelectedEngine = engine;
-		for (DeciderAction action : _subActions)
+		for (DeciderAction action : DeciderManager.getAllDeciderActions())
+		//for (DeciderAction action : _subActions)
 		{
 			action.setEngine(_currentSelectedEngine);
 		}

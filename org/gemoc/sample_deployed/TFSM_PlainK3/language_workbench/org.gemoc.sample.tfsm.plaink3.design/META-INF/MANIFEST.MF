@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bundle-Name: org.gemoc.sample.tfsm.design
+Bundle-Name: org.gemoc.sample.tfsm.plaink3.design
 Bundle-SymbolicName: org.gemoc.sample.tfsm.plaink3.design;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.gemoc.sample.tfsm.plaink3.design.Activator

@@ -81,12 +81,36 @@ public class FUMLDebugger extends AbstractDSLDebugger {
 		for (FeatureValue value : context.getFeatureValues()) {
 			final FeatureValue lastValue = lastValues.get(value.feature);
 			if (lastValue == null || !lastValue.hasEqualValues(value)) {
-				variable(threadName, value.feature.getType().getName(),
-						value.feature.getName(), value.values);
+				variable(threadName, FUMLExecutionEngineForDSL.main.getName(), value.feature.getType().getName(),
+						value.feature.getName(), value.values, false);
 				lastValues.put(value.feature, value.copy());
 			}
 		}
-		variable(threadName, instruction.eClass().getName(), "instruction", instruction);
+		variable(threadName, FUMLExecutionEngineForDSL.main.getName(), instruction.eClass().getName(), "instruction", instruction, false);
+	}
+
+	public EObject getNextInstruction(String threadName,
+			EObject currentInstruction, Stepping stepping) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean validateVariableValue(String threadName,
+			String variableName, String value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Object getVariableValue(String threadName, String stackName,
+			String variableName, String value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setVariableValue(String threadName, String stackName,
+			String variableName, Object value) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

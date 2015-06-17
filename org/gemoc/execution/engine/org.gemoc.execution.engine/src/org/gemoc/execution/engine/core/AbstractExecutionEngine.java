@@ -310,9 +310,13 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 			if (selectedLogicalStep != null)
 			{
 				getSolver().applyLogicalStep(selectedLogicalStep);
+				engineStatus.incrementNbLogicalStepRun();
+			} else {
+				// no logical step was selected, this is most probably due to a preempt on the LogicalStepDecider  and a change of Decider, 
+				//notify Addons that we'll rerun this ExecutionStep
+				//recomputePossibleLogicalSteps();
 			}
 		}
-		engineStatus.incrementNbLogicalStepRun();
 	}
 	
 	private ILogicalStepDecider _logicalStepDecider;

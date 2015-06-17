@@ -22,8 +22,15 @@ public abstract class AbstractGemocFormComposite extends Composite {
 	abstract public void initControlFromWrappedObject();
 	
 	protected IFile getCurrentIFile() {
-		String platformString = rootModelElement.eResource().getURI()
+		String platformString;
+		if(rootModelElement.eResource() != null){
+			platformString = rootModelElement.eResource().getURI()
 				.toPlatformString(true);
+		} else {
+			// maybe freshly created and the element doesn't have its eResource set
+			// trying using the editingDomain
+			platformString = editingDomain.getResourceSet().getResources().get(0).getURI().toPlatformString(true);
+		}
 		return ResourcesPlugin.getWorkspace().getRoot()
 				.getFile(new Path(platformString));
 

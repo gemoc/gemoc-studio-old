@@ -109,15 +109,18 @@ public class DSLDebugEventDispatcher extends Job implements IDSLDebugEventProces
 	 * 
 	 * @see fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor#handleEvent(fr.obeo.dsl.debug.ide.event.IDSLDebugEvent)
 	 */
-	public void handleEvent(final IDSLDebugEvent event) {
+	public Object handleEvent(final IDSLDebugEvent event) {
+		final Object res;
 		// forward event handling to target
 		if (event instanceof IDSLDebuggerReply) {
-			model.handleEvent(event);
+			res = model.handleEvent(event);
 		} else if (event instanceof IDSLModelRequest) {
-			debugger.handleEvent(event);
+			res = debugger.handleEvent(event);
 		} else {
 			throw new RuntimeException("Unknown event detected: " + event);
 		}
+
+		return res;
 	}
 
 	/**

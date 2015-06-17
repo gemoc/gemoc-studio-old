@@ -25,6 +25,7 @@ import fr.obeo.dsl.debug.ide.event.debugger.PopStackFrameReply;
 import fr.obeo.dsl.debug.ide.event.debugger.PushStackFrameReply;
 import fr.obeo.dsl.debug.ide.event.debugger.ResumingReply;
 import fr.obeo.dsl.debug.ide.event.debugger.SetCurrentInstructionReply;
+import fr.obeo.dsl.debug.ide.event.debugger.SetVariableValueReply;
 import fr.obeo.dsl.debug.ide.event.debugger.SpawnRunningThreadReply;
 import fr.obeo.dsl.debug.ide.event.debugger.StepIntoResumingReply;
 import fr.obeo.dsl.debug.ide.event.debugger.StepOverResumingReply;
@@ -40,12 +41,14 @@ import fr.obeo.dsl.debug.ide.event.model.ChangeBreakPointRequest;
 import fr.obeo.dsl.debug.ide.event.model.DisconnectRequest;
 import fr.obeo.dsl.debug.ide.event.model.RemoveBreakpointRequest;
 import fr.obeo.dsl.debug.ide.event.model.ResumeRequest;
+import fr.obeo.dsl.debug.ide.event.model.SetVariableValueRequest;
 import fr.obeo.dsl.debug.ide.event.model.StartRequest;
 import fr.obeo.dsl.debug.ide.event.model.StepIntoRequest;
 import fr.obeo.dsl.debug.ide.event.model.StepOverRequest;
 import fr.obeo.dsl.debug.ide.event.model.StepReturnRequest;
 import fr.obeo.dsl.debug.ide.event.model.SuspendRequest;
 import fr.obeo.dsl.debug.ide.event.model.TerminateRequest;
+import fr.obeo.dsl.debug.ide.event.model.ValidateVariableValueRequest;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -108,7 +111,9 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 	 * 
 	 * @see fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor#handleEvent(fr.obeo.dsl.debug.ide.event.IDSLDebugEvent)
 	 */
-	public void handleEvent(IDSLDebugEvent event) {
+	public Object handleEvent(IDSLDebugEvent event) {
+		Object res = null;
+
 		if (event instanceof DisconnectRequest) {
 			disconnect();
 		} else if (event instanceof AbstractStepRequest) {
@@ -121,9 +126,41 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 			handleTerminateRequest((TerminateRequest)event);
 		} else if (event instanceof AbstractBreakpointRequest) {
 			handleBreakpointRequest((AbstractBreakpointRequest)event);
+		} else if (event instanceof ValidateVariableValueRequest) {
+			res = handleValidateVariableValueRequest((ValidateVariableValueRequest)event);
+		} else if (event instanceof SetVariableValueRequest) {
+			handleSetVariableValueRequest((SetVariableValueRequest)event);
 		} else if (event instanceof StartRequest) {
 			start();
 		}
+
+		return res;
+	}
+
+	/**
+	 * Handles {@link SetVariableValueRequest}.
+	 * 
+	 * @param event
+	 *            the {@link SetVariableValueRequest}
+	 */
+	private void handleSetVariableValueRequest(SetVariableValueRequest event) {
+		final Object value = getVariableValue(event.getThreadName(), event.getStackName(), event
+				.getVariableName(), event.getValue());
+		setVariableValue(event.getThreadName(), event.getStackName(), event.getVariableName(), value);
+		target.handleEvent(new SetVariableValueReply(event.getThreadName(), event.getStackName(), event
+				.getVariableName(), value));
+	}
+
+	/**
+	 * Handles {@link ValidateVariableValueRequest}.
+	 * 
+	 * @param event
+	 *            the {@link ValidateVariableValueRequest}
+	 * @return <code>true</code> if the value is valid, <code>false</code> otherwise
+	 */
+	private Object handleValidateVariableValueRequest(ValidateVariableValueRequest event) {
+		return Boolean.valueOf(validateVariableValue(event.getThreadName(), event.getVariableName(), event
+				.getValue()));
 	}
 
 	/**
@@ -507,12 +544,14 @@ public abstract class AbstractDSLDebugger implements IDSLDebugger {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#variable(java.lang.String, java.lang.String, java.lang.String,
-	 *      java.lang.Object)
+	 *      java.lang.Object, boolean)
 	 */
-	public void variable(String threadName, String declarationTypeName, String name, Object value) {
-		target.handleEvent(new VariableReply(threadName, declarationTypeName, name, value));
+	public void variable(String threadName, String stackName, String declarationTypeName,
+			String variableName, Object value, boolean supportModifications) {
+		target.handleEvent(new VariableReply(threadName, stackName, declarationTypeName, variableName, value,
+				supportModifications));
 	}
 
 	/**

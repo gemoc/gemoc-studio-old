@@ -171,4 +171,28 @@ public interface Variable extends EObject {
 	 */
 	void setDeclarationType(String value);
 
+	/**
+	 * Returns the value of the '<em><b>Support Modifications</b></em>' attribute. <!-- begin-user-doc -->
+	 * <!-- end-user-doc --> <!-- begin-model-doc --> Tells if the {@link Variable#getValue() value} can be
+	 * changed <!-- end-model-doc -->
+	 * 
+	 * @return the value of the '<em>Support Modifications</em>' attribute.
+	 * @see #setSupportModifications(boolean)
+	 * @see fr.obeo.dsl.debug.DebugPackage#getVariable_SupportModifications()
+	 * @model required="true"
+	 * @generated
+	 */
+	boolean isSupportModifications();
+
+	/**
+	 * Sets the value of the '{@link fr.obeo.dsl.debug.Variable#isSupportModifications
+	 * <em>Support Modifications</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Support Modifications</em>' attribute.
+	 * @see #isSupportModifications()
+	 * @generated
+	 */
+	void setSupportModifications(boolean value);
+
 } // Variable

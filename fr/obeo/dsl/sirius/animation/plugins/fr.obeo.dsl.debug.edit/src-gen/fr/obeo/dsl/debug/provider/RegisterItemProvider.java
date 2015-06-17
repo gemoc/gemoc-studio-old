@@ -23,12 +23,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
  * This is the item provider adapter for a {@link fr.obeo.dsl.debug.Register} object. <!-- begin-user-doc -->
@@ -36,7 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * 
  * @generated
  */
-public class RegisterItemProvider extends VariableItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class RegisterItemProvider extends VariableItemProvider {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 

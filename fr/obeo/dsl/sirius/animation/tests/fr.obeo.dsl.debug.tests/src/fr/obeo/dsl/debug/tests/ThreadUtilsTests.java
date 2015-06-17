@@ -3429,7 +3429,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3437,7 +3437,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3445,7 +3445,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3453,7 +3453,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3461,7 +3461,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3469,7 +3469,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3477,7 +3477,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3485,7 +3485,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 	}
@@ -3506,7 +3506,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3514,7 +3514,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3522,7 +3522,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3530,7 +3530,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3538,7 +3538,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3546,7 +3546,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3554,7 +3554,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3562,7 +3562,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 	}
@@ -3583,7 +3583,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3591,7 +3591,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3599,7 +3599,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3607,7 +3607,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3615,7 +3615,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3623,7 +3623,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3631,7 +3631,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3639,7 +3639,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 	}
@@ -3674,7 +3674,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3682,7 +3682,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3690,7 +3690,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 
@@ -3699,7 +3699,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 
@@ -3708,7 +3708,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3716,7 +3716,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3724,7 +3724,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 		try {
@@ -3732,7 +3732,7 @@ public class ThreadUtilsTests extends AbstractDebugTests {
 			fail();
 		} catch (IllegalStateException e) {
 			assertEquals(
-					"can't pop a stack frame when the debug target is not connected or the thread is not suspended or the current top frame has no parent.",
+					"can't pop a stack frame when the debug target is not connected or the thread is not suspended.",
 					e.getMessage());
 		}
 	}
