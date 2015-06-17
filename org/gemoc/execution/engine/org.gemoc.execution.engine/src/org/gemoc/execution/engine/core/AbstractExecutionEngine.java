@@ -224,6 +224,16 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	
 	abstract protected Runnable getRunnable();
 
+	private Thread thread;
+	public void joinThread() {
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void start() 
 	{
@@ -259,8 +269,8 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 					}
 				}
 			};
-			Thread t = new Thread(r, "Gemoc engine " + _executionContext.getRunConfiguration().getExecutedModelURI());
-			t.start();
+			thread = new Thread(r, "Gemoc engine " + _executionContext.getRunConfiguration().getExecutedModelURI());
+			thread.start();
 		}
 	}
 	
@@ -271,7 +281,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		{
 			_isStopped = true;
 			setEngineStatus(EngineStatus.RunStatus.Stopped);
-			notifyEngineStopped();
 			setSelectedLogicalStep(null);
 			if (getExecutionContext().getLogicalStepDecider() != null)
 			{
