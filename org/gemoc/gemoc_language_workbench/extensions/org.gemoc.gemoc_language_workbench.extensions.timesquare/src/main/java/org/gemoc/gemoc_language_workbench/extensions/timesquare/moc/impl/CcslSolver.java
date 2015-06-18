@@ -61,6 +61,10 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 	{
 	}
 
+	public CCSLKernelSolverWrapper getSolverWrapper() {
+		return solverWrapper;
+	}
+	
 	@Override
 	public ArrayList<ModelElementReference> getAllDiscreteClocks(){
 		return solverWrapper.getClockList();
