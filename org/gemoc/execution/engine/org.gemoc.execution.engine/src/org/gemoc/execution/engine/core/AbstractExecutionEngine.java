@@ -229,8 +229,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		try {
 			thread.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Activator.getDefault().warn("InterruptedException received",e);
 		}
 	}
 	
