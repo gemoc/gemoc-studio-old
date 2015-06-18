@@ -3,6 +3,7 @@ package org.gemoc.gemoc_modeling_workbench.ui.actions;
 import java.util.Iterator;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
@@ -41,7 +42,7 @@ abstract public class GenerateExtendedCCSLFileAction implements IObjectActionDel
 		String outputMoCPath = "platform:/resource" + modelFile.getFullPath().toString().substring(0, numberOfCharToRemove) + "_executionModel." + getMoCFileExtension();
 		String outputFeedbackPath = "platform:/resource" + modelFile.getFullPath().toString().substring(0, numberOfCharToRemove) + "_executionModel." + getFeedbackFileExtension();
 		QvtoTransformationPerformer performer = new QvtoTransformationPerformer();
-		performer.run(null, qvtoUriString, modelUriString, outputMoCPath, outputFeedbackPath);
+		performer.run(new ResourceSetImpl(), qvtoUriString, modelUriString, outputMoCPath, outputFeedbackPath);
 	}
 
 	/**
