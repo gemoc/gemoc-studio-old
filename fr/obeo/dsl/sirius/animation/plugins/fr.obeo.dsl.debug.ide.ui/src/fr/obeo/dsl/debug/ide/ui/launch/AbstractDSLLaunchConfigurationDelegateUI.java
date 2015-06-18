@@ -169,6 +169,7 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 							configurations.add(configuration);
 						}
 					} catch (IllegalArgumentException e) {
+						Activator.getDefault().error(e);
 					}
 				}
 			}
@@ -193,8 +194,7 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 	public void launch(final IResource file, EObject firstInstruction, final String mode) {
 
 		if (file instanceof IFile) {
-			// try to save dirty editors
-			PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().saveAllEditors(true);
+			prepareLaunch(file, firstInstruction, mode);
 
 			try {
 				ILaunchConfiguration[] configurations = getLaunchConfigurations(file);
@@ -224,6 +224,21 @@ public abstract class AbstractDSLLaunchConfigurationDelegateUI extends AbstractD
 				// }
 			}
 		}
+	}
+
+	/**
+	 * Prepares the launch of the given {@link IResource}.
+	 * 
+	 * @param file
+	 *            source file
+	 * @param firstInstruction
+	 *            the first {@link EObject instruction}
+	 * @param mode
+	 *            launch mode
+	 */
+	protected void prepareLaunch(final IResource file, EObject firstInstruction, final String mode) {
+		// try to save dirty editors
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().saveAllEditors(true);
 	}
 
 	/**
