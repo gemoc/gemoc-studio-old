@@ -34,7 +34,7 @@ import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.engine.actions.PauseResumeEngineDeciderAction;
-import org.gemoc.execution.engine.io.views.engine.actions.StopAllEngineAction;
+import org.gemoc.execution.engine.io.views.engine.actions.DisposeAllStoppedEnginesAction;
 import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
@@ -105,7 +105,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 	{
 		addActionToToolbar(new PauseResumeEngineDeciderAction());
 		addActionToToolbar(new StopEngineAction());
-		addActionToToolbar(new StopAllEngineAction());
+		addActionToToolbar(new DisposeAllStoppedEnginesAction());
 		addSeparatorToToolbar();
 		addActionToToolbar(new SwitchDeciderAction());
 	}
@@ -320,12 +320,12 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 			public void run() {
 		    // we may be triggered by a registry change or by an engine change
 		    // if registry changes, then may need to observe the new engine
-//			List<String> engineStopped = new ArrayList<String>();
 		    for (Entry<String, IExecutionEngine> engineEntry : org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.getRunningEngines().entrySet())
 		    {		    	  
 		    	switch(engineEntry.getValue().getRunningStatus())
 		    	{
 		    		case Stopped:
+		    			engineEntry.getValue().dispose();
 		    			org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry.unregisterEngine(engineEntry.getKey());		    			
 		    			break;
 		    		default:
@@ -415,8 +415,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 
 	@Override
 	public void engineAboutToStop(IExecutionEngine engine) {
-		// TODO Auto-generated method stub
-		
+		reselectEngine(engine);
 	}
 
 	@Override
@@ -462,4 +461,12 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 		reselectEngine(engine);
 		
 	}
+
+	@Override
+	public void engineAboutToDispose(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }

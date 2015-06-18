@@ -318,21 +318,12 @@ public abstract class AbstractGemocAnimatorServices {
 
 		@Override
 		public void engineAboutToStop(IExecutionEngine engine) {
-			// TODO Auto-generated method stub
 
 		}
 
 		@Override
 		public void engineStopped(IExecutionEngine engine) {
 			clear(engine);
-			if (engine.getExecutionContext().getRunConfiguration()
-					.getAnimatorURI() != null) {
-				Session session = SessionManager.INSTANCE.getSession(engine
-						.getExecutionContext().getRunConfiguration()
-						.getAnimatorURI(), new NullProgressMonitor());
-				session.close(new NullProgressMonitor());
-				SessionManager.INSTANCE.remove(session);
-			}
 		}
 
 		@Override
@@ -399,6 +390,19 @@ public abstract class AbstractGemocAnimatorServices {
 			// TODO Auto-generated method stub
 			
 		}
+
+		@Override
+		public void engineAboutToDispose(IExecutionEngine engine) {
+			if (engine.getExecutionContext().getRunConfiguration()
+					.getAnimatorURI() != null) {
+				Session session = SessionManager.INSTANCE.getSession(engine
+						.getExecutionContext().getRunConfiguration()
+						.getAnimatorURI(), new NullProgressMonitor());
+				session.close(new NullProgressMonitor());
+				SessionManager.INSTANCE.remove(session);
+			}
+		}
+
 
 	}
 

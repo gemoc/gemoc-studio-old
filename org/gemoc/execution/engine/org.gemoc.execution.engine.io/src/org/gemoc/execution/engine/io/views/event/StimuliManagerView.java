@@ -300,26 +300,33 @@ public class StimuliManagerView extends ViewPart implements IMotorSelectionListe
 	}
 
 	private void updateActionsVisibility() {
-		_stopAction.setEnabled(false);
-		_recordAction.setEnabled(false);
-		_playAction.setEnabled(false);
+		
 		if (_currentSelectedEngine != null
-			&& !isEngineStopped())
+			&& !isEngineStopped() && getScenarioManager() !=null)
 		{
 			ScenarioManager sm = getScenarioManager();
 			if (sm.getState().equals(ScenarioManagerState.Recording))
 			{
 				_stopAction.setEnabled(true);
+				_recordAction.setEnabled(false);
+				_playAction.setEnabled(false);
 			} 
 			else if (sm.getState().equals(ScenarioManagerState.Playing))
 			{
 				_stopAction.setEnabled(true);
+				_recordAction.setEnabled(false);
+				_playAction.setEnabled(false);
 			}
 			else
 			{
+				_stopAction.setEnabled(false);
 				_recordAction.setEnabled(true);
 				_playAction.setEnabled(true);					
 			}
+		} else {
+			_stopAction.setEnabled(false);
+			_recordAction.setEnabled(false);
+			_playAction.setEnabled(false);
 		}
 	}
 	
@@ -622,8 +629,7 @@ public class StimuliManagerView extends ViewPart implements IMotorSelectionListe
 		{
 			int engineStep = (int)_currentSelectedEngine.getEngineStatus().getNbLogicalStepRun();
 			//We check when the engine reach a new step
-			if(engineStep > getMSEContext().getCacheStep()
-				&& !isEngineStopped())
+			if(!isEngineStopped() && engineStep > getMSEContext().getCacheStep())
 			{
 				ScenarioManager sm = getScenarioManager();
 				if(sm.getState().equals(ScenarioManagerState.Recording))
@@ -969,5 +975,10 @@ public class StimuliManagerView extends ViewPart implements IMotorSelectionListe
 		update(engine);
 		
 	}
+
+	@Override
+	public void engineAboutToDispose(IExecutionEngine engine) {
+	}
+
 
 }

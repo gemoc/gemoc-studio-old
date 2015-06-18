@@ -49,8 +49,10 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	@Override
 	public void dispose() 
 	{
+		
 		try
 		{
+			notifyEngineAboutToDispose();
 			getExecutionContext().dispose();
 		}
 		finally
@@ -93,6 +95,13 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		}
 	}
 
+	protected void notifyEngineAboutToDispose() {
+		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons())
+		{
+			addon.engineAboutToDispose(this);
+		}
+	}
+	
 	protected void notifyAboutToSelectLogicalStep() {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
 		{
@@ -262,8 +271,10 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 					}
 					finally
 					{
-						notifyAboutToStop();
-						stop();
+						// make sure to notify the stop if this wasn't an external call to stop() that lead us here. 
+						// ie. normal end of the mode execution
+						stop(); 
+
 						notifyEngineStopped();
 					}
 				}
@@ -278,15 +289,19 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	{
 		if (!_isStopped)
 		{
+			notifyAboutToStop(); // notification occurs only if not already stopped
 			_isStopped = true;
 			setEngineStatus(EngineStatus.RunStatus.Stopped);
 			setSelectedLogicalStep(null);
 			if (getExecutionContext().getLogicalStepDecider() != null)
 			{
+				// unlock decider if this is a user decider
 				getExecutionContext().getLogicalStepDecider().preempt();
 			}
 		}
 	}
+	
+	
 	
 	private boolean _started = false;
 	protected boolean _isStopped = false;

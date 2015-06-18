@@ -268,4 +268,12 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public void engineAboutToDispose(IExecutionEngine engine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
 }

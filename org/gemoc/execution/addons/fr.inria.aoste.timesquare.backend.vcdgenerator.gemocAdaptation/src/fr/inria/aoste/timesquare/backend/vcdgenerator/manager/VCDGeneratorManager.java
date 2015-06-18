@@ -595,6 +595,19 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 		super.engineStopped(engine);
 	}
 
+	
+	
+	@Override
+	public void engineAboutToDispose(IExecutionEngine engine) {
+		super.engineAboutToDispose(engine);
+		if (_vcdEditor != null){
+			_vcdEditor.dispose();
+		}
+	}
+
+
+
+
 	/**
 	 * 
 	 * UpdateThread class<BR>

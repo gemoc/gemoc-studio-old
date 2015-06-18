@@ -345,20 +345,14 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	@Override
 	public void logicalStepExecuted(IExecutionEngine engine,
 			LogicalStep logicalStepExecuted) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void engineStatusChanged(IExecutionEngine engine, RunStatus newStatus) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	protected void setSelectedLogicalStep(LogicalStep ls) {
@@ -368,8 +362,12 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	public void proposedLogicalStepsChanged(IExecutionEngine engine,
 			Collection<LogicalStep> logicalSteps) {
 		update(engine);
-		
 	}
+
+	@Override
+	public void engineAboutToDispose(IExecutionEngine engine) {
+	}
+
 
 
 }

@@ -13,7 +13,9 @@ public interface IEngineAddon {
 	 * Operation called before the engine starts
 	 */
 	public void engineAboutToStart(IExecutionEngine engine);
-	
+	/**
+	 * Operation called after the engine have started
+	 */
 	public void engineStarted(IExecutionEngine executionEngine);
 
 	
@@ -22,6 +24,11 @@ public interface IEngineAddon {
 	 * Operation called after the engine has been stopped
 	 */
 	public void engineStopped(IExecutionEngine engine);
+	
+	/**
+	 * Operation before the engine has been disposed (and after the engine has been stopped)
+	 */
+	public void engineAboutToDispose(IExecutionEngine engine);
 	
 	
 	/**

@@ -7,13 +7,13 @@ import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
 
-public class StopAllEngineAction extends Action 
+public class DisposeAllStoppedEnginesAction extends Action 
 {
 
-	public StopAllEngineAction()
+	public DisposeAllStoppedEnginesAction()
 	{
-		setText("Stop all engine");
-		setToolTipText("Stop and remove all engine");
+		setText("Dispose stopped engines");
+		setToolTipText("Dispose all stopped engines");
 		ImageDescriptor id = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, ISharedImages.IMG_ELCL_REMOVEALL);
 		setImageDescriptor(id);
 	}
