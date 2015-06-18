@@ -9,7 +9,6 @@ import java.util.Set;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.impl.Gemoc_execution_traceFactoryImpl;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
@@ -280,21 +279,15 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	{
 		if (!_isStopped)
 		{
-			LogicalStep endLogicalStep =  Gemoc_execution_traceFactoryImpl.eINSTANCE.createLogicalStep();
-			notifyAboutToSelectLogicalStep();
-			setSelectedLogicalStep(endLogicalStep);
-			notifyLogicalStepSelected();
 			_isStopped = true;
 			setEngineStatus(EngineStatus.RunStatus.Stopped);
 			setSelectedLogicalStep(null);
-			notifyEngineStopped();
 			if (getExecutionContext().getLogicalStepDecider() != null)
 			{
 				getExecutionContext().getLogicalStepDecider().preempt();
 			}
 		}
 	}
-	
 	
 	private boolean _started = false;
 	protected boolean _isStopped = false;
@@ -319,7 +312,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 				getSolver().applyLogicalStep(selectedLogicalStep);
 				engineStatus.incrementNbLogicalStepRun();
 			} else {
-				Activator.getDefault().debug("No logical step was selected");
 				// no logical step was selected, this is most probably due to a preempt on the LogicalStepDecider  and a change of Decider, 
 				//notify Addons that we'll rerun this ExecutionStep
 				//recomputePossibleLogicalSteps();
