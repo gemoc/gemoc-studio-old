@@ -32,6 +32,7 @@ import org.eclipse.jdt.core.search.SearchMatch;
 import org.eclipse.jdt.core.search.SearchParticipant;
 import org.eclipse.jdt.core.search.SearchPattern;
 import org.eclipse.jdt.core.search.SearchRequestor;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IEditorPart;
@@ -85,8 +86,10 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 			{
 				executionMode = ExecutionMode.Run;
 			}
+			if( isEngineAlreadyRunning(runConfiguration.getExecutedModelURI())){
+				return;
+			}
 			final ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, executionMode);
-			throwExceptionIfEngineAlreadyRunning(executionContext);
 
 			// hack to find out if execution involves a solver
 			if (!(executionContext.getExecutionPlatform().getSolver() instanceof K3Solver))
@@ -226,7 +229,7 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 		}
 	}
 
-	private void throwExceptionIfEngineAlreadyRunning(ModelExecutionContext executionContext) throws CoreException
+	private boolean isEngineAlreadyRunning(URI launchedModelURI) throws CoreException
 	{
 		// make sure there is no other running engine on this model
 		Collection<IExecutionEngine> engines = org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry
@@ -239,16 +242,16 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 							.getExecutionContext()
 							.getResourceModel()
 							.getURI()
-							.equals(URI.createPlatformResourceURI(executionContext.getWorkspace().getModelPath()
-									.toString(), true)))
+							.equals(launchedModelURI))
 			{
 				String message = "An engine is already running on this model, please stop it first";
-				warn(message);
-				throw new CoreException(new Status(Status.ERROR, Activator.PLUGIN_ID, message));
+				warn(message);				
+				return true;
 			}
 		}
+		return false;
 	}
-
+	
 	private void debug(String message)
 	{
 		getMessagingSystem().debug(message, getPluginID());
@@ -259,14 +262,30 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 		getMessagingSystem().info(message, getPluginID());
 	}
 
-	private void warn(String message)
+	private void warn(final String message)
 	{
 		getMessagingSystem().warn(message, getPluginID());
+		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+		    public void run() {
+		    	MessageDialog.openWarning(
+						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+						"GEMOC Engine Launcher",
+						message);
+		    }
+		});
 	}
 
-	private void error(String message)
+	private void error(final String message)
 	{
 		getMessagingSystem().error(message, getPluginID());
+		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+		    public void run() {
+		    	MessageDialog.openError(
+						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+						"GEMOC Engine Launcher",
+						message);
+		    }
+		});
 	}
 
 	private MessagingSystem getMessagingSystem()
