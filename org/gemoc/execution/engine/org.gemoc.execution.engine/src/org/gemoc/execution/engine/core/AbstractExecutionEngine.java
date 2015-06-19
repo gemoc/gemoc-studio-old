@@ -274,7 +274,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 						// make sure to notify the stop if this wasn't an external call to stop() that lead us here. 
 						// ie. normal end of the mode execution
 						stop(); 
-
+						setEngineStatus(EngineStatus.RunStatus.Stopped);
 						notifyEngineStopped();
 					}
 				}
@@ -291,7 +291,6 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 		{
 			notifyAboutToStop(); // notification occurs only if not already stopped
 			_isStopped = true;
-			setEngineStatus(EngineStatus.RunStatus.Stopped);
 			setSelectedLogicalStep(null);
 			if (getExecutionContext().getLogicalStepDecider() != null)
 			{
