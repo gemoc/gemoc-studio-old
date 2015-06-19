@@ -7,6 +7,11 @@ import org.gemoc.execution.engine.io.Activator;
 
 public class ScenarioException extends CoreException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3981364089352382257L;
+
 	public ScenarioException(String message)
 	{
 		this(new Status(IStatus.ERROR, Activator.PLUGIN_ID, message));

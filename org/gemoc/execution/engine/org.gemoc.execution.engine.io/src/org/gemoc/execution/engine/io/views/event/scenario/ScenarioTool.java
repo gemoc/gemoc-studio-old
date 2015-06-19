@@ -10,7 +10,6 @@ import org.gemoc.execution.engine.scenario.Fragment;
 import org.gemoc.execution.engine.scenario.Scenario;
 import org.gemoc.execution.engine.scenario.ScenarioFactory;
 import org.gemoc.execution.engine.scenario.impl.ScenarioFactoryImpl;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 
 public class ScenarioTool 
 {

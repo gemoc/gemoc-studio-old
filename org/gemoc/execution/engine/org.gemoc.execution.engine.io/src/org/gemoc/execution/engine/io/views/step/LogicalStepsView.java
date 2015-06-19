@@ -43,8 +43,6 @@ import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
-import fr.obeo.dsl.debug.ide.ui.provider.DSLLabelDecorator;
-import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
 
 public class LogicalStepsView extends DependantViewPart implements IEvenPresenter
 {

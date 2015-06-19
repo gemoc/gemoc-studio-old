@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
@@ -17,7 +15,6 @@ import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
-import fr.inria.aoste.trace.LogicalStep;
 
 
 public abstract class Filter implements IEventFilterStrategy
