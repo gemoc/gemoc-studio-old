@@ -4,19 +4,11 @@ import java.util.ArrayList;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
-import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
-import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
-import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
-import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
-import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 
-public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorSelectionListener
+public class SwitchDeciderAction extends AbstractEngineAction
 {
 	
 	private ArrayList<DeciderAction> _subActions = new ArrayList<>();
@@ -25,30 +17,20 @@ public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorS
 	
 	public SwitchDeciderAction()
 	{
-		super("fake", AS_DROP_DOWN_MENU);
-		setMenuCreator(this);
-				
-//		for (DeciderSpecificationExtension spec : DeciderSpecificationExtensionPoint.getSpecifications())
-//		{
-//			DeciderAction action = new DeciderAction(spec);
-//			if (spec.getName().contains("step"))
-//				_mainAction = action;
-//			_subActions.add(action);	
-//		}
+		super();
+	}
+	
+	@Override
+	protected void init(){
 		_mainAction = DeciderManager.getStepByStepDeciderAction();
+		_subActions = new ArrayList<>();
 		for(DeciderAction action : DeciderManager.getAllDeciderActions()){
 			_subActions.add(action);
 			
 		}
-		
-		updateThis();
-		
-		setEnabled(false);
-		EnginesStatusView view = ViewHelper.retrieveView(EnginesStatusView.ID);
-		view.addMotorSelectionListener(this);
 	}
-	
-	private void updateThis() {
+	@Override
+	protected void updateButton() {
 		if (_mainAction != null)
 		{
 			setText(_mainAction.getText());
@@ -60,7 +42,7 @@ public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorS
 	@Override
 	public void run()
 	{
-		if (_currentSelectedEngine != null
+		if (getCurrentSelectedEngine() != null
 			&& _mainAction != null)
 		{
 			_mainAction.run();
@@ -83,42 +65,25 @@ public class SwitchDeciderAction extends Action implements IMenuCreator, IMotorS
 		return _menu;
 	}
 
-	@Override
-	public Menu getMenu(Menu parent) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public void dispose() 
 	{
-		EnginesStatusView view = ViewHelper.retrieveView(EnginesStatusView.ID);
-		view.removeMotorSelectionListener(this);
+		super.dispose();
 		if (_menu != null)
 			_menu.dispose();
 	}
 
-	private IExecutionEngine _currentSelectedEngine;
 	
 	@Override
 	public void motorSelectionChanged(IExecutionEngine engine) 
 	{
-		_currentSelectedEngine = engine;
+		super.motorSelectionChanged(engine);
 		for (DeciderAction action : DeciderManager.getAllDeciderActions())
-		//for (DeciderAction action : _subActions)
 		{
-			action.setEngine(_currentSelectedEngine);
-		}
-		if (_currentSelectedEngine == null)
-		{
-			setEnabled(false);			
-		}
-		else
-		{
-			setEnabled(
-					!_currentSelectedEngine.getRunningStatus().equals(RunStatus.Stopped)
-					&& _currentSelectedEngine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation));			
-		}
+			action.setEngine(getCurrentSelectedEngine());
+		}		
 	}
 
 }

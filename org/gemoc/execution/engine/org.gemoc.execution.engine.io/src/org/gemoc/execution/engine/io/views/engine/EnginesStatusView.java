@@ -33,6 +33,7 @@ import org.gemoc.execution.engine.core.IEngineRegistrationListener;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
+import org.gemoc.execution.engine.io.views.engine.actions.DisposeStoppedEngineAction;
 import org.gemoc.execution.engine.io.views.engine.actions.PauseResumeEngineDeciderAction;
 import org.gemoc.execution.engine.io.views.engine.actions.DisposeAllStoppedEnginesAction;
 import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
@@ -105,6 +106,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 	{
 		addActionToToolbar(new PauseResumeEngineDeciderAction());
 		addActionToToolbar(new StopEngineAction());
+		addActionToToolbar(new DisposeStoppedEngineAction());
 		addActionToToolbar(new DisposeAllStoppedEnginesAction());
 		addSeparatorToToolbar();
 		addActionToToolbar(new SwitchDeciderAction());
