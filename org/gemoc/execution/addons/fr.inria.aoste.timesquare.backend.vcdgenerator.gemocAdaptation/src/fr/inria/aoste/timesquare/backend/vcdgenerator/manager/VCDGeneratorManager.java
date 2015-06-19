@@ -10,10 +10,8 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.activities.NotDefinedException;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -28,7 +26,6 @@ import fr.inria.aoste.timesquare.backend.vcdgenerator.ScoreBoard;
 import fr.inria.aoste.timesquare.backend.vcdgenerator.behaviors.AbstractVCDClockBehavior;
 import fr.inria.aoste.timesquare.backend.vcdgenerator.behaviors.VCDGeneratorClockBehavior;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Clock;
-import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.NamedElement;
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.ConcreteEntity;
 import fr.inria.aoste.timesquare.trace.util.HelperFactory;
 import fr.inria.aoste.timesquare.trace.util.TimeBase;
@@ -418,7 +415,6 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 			lsstep.clear();
 			hmism = null;
 			lsstep = null;
-			_vcdEditor = null;
 		}
 	}
 
@@ -434,7 +430,7 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 	 */
 	@Override
 	public void logicalStepExecuted(IExecutionEngine engine, LogicalStep logicalStepExecuted){
-		if (_scoreBoard == null)
+		if (_scoreBoard == null || logicalStepExecuted == null)
 			return;
 		
 		_currentStep++;
@@ -601,7 +597,8 @@ public class VCDGeneratorManager extends DefaultEngineAddon{
 	public void engineAboutToDispose(IExecutionEngine engine) {
 		super.engineAboutToDispose(engine);
 		if (_vcdEditor != null){
-			_vcdEditor.dispose();
+			_vcdEditor.getEditorSite().getPage().closeEditor(_vcdEditor, true);		
+			_vcdEditor = null;
 		}
 	}
 
