@@ -184,7 +184,7 @@ public final class MSEManager
 		if (operation != null)
 			mse.setName("MSE_" + caller.getClass().getSimpleName() + "_" + operation.getName());
 		else
-			mse.setName("MSE_" + caller.getClass().getSimpleName() + "_NO_EOPERATION");
+			mse.setName("MSE_" + caller.getClass().getSimpleName() + "_nextStep");
 		// and add it for possible reuse
 		if (_actionModel != null)
 		{
