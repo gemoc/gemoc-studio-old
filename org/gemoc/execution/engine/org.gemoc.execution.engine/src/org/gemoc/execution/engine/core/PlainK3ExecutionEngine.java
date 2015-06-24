@@ -1,8 +1,10 @@
 package org.gemoc.execution.engine.core;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
@@ -26,6 +28,12 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 				{
 					MSEManager.getInstance().addListener(PlainK3ExecutionEngine.this);
 					method.invoke(caller, parameters.get(0));
+				} catch (InvocationTargetException ite){
+					if(ite.getTargetException() instanceof EngineStoppedException){
+						Activator.getDefault().debug(ite.getTargetException().getMessage());
+					} else {
+						throw new RuntimeException(ite);
+					}
 				} catch (Exception e)
 				{
 					throw new RuntimeException(e);
@@ -47,7 +55,7 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 	{
 		if (_isStopped)
 		{
-			throw new RuntimeException(getName() + " is stopped");
+			throw new EngineStoppedException(getName() + " is stopped");
 		}
 	}
 
@@ -62,7 +70,7 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 	{
 		if (_isStopped)
 		{
-			throw new RuntimeException("Execution stopped");
+			throw new EngineStoppedException("Execution stopped");
 		}
 		// before coming here, it is absolutely necessary to have visited the
 		// solver first.
