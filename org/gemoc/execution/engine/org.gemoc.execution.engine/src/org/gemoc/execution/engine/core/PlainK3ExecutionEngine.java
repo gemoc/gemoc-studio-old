@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
@@ -40,6 +41,8 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 				} finally
 				{
 					MSEManager.getInstance().removeListener(PlainK3ExecutionEngine.this);
+					setEngineStatus(EngineStatus.RunStatus.Stopped);
+					notifyEngineStopped();
 				}
 			}
 		};
@@ -55,6 +58,7 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 	{
 		if (_isStopped)
 		{
+			notifyAboutToStop(); // notification occurs only if not already stopped
 			throw new EngineStoppedException(getName() + " is stopped");
 		}
 	}
@@ -70,6 +74,7 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 	{
 		if (_isStopped)
 		{
+			notifyAboutToStop(); // notification occurs only if not already stopped
 			throw new EngineStoppedException("Execution stopped");
 		}
 		// before coming here, it is absolutely necessary to have visited the
