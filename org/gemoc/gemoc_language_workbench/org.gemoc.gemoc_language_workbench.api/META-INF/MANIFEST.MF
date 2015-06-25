@@ -18,5 +18,6 @@ Export-Package: org.gemoc.gemoc_language_workbench.api,
  org.gemoc.gemoc_language_workbench.api.extensions,
  org.gemoc.gemoc_language_workbench.api.extensions.deciders,
  org.gemoc.gemoc_language_workbench.api.extensions.engine_addon,
+ org.gemoc.gemoc_language_workbench.api.extensions.engine_addon_group,
  org.gemoc.gemoc_language_workbench.api.extensions.languages,
  org.gemoc.gemoc_language_workbench.api.moc

@@ -168,17 +168,36 @@
       </DeciderSpecification>
    </extension>
    <extension
-         point="org.gemoc.gemoc_language_workbench.engine_addon">
+         point="org.gemoc.gemoc_language_workbench.engine_addon">      
       <Addon
+            AddonGroupId="General.AddonGroup"
             Class="org.gemoc.execution.engine.io.addons.PrepareViewFrontend"
             Default="true"
-            Name="Open Views">
+            Name="Open Views"
+            ShortDesccription="Automatically opens the default views when starting the animation."
+            ShortDescription="Automatically opens the default views  that are usefull for animation."
+            id="OpenViews.Addon">
       </Addon>
       <Addon
+            AddonGroupId="General.AddonGroup"
             Class="org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon"
             Default="true"
-            Name="Execution tracing">
+            Name="Execution tracing"
+            ShortDesccription="Trace the LogicalStep decisions. Will open the timeline view to allow navigation in the trace and present the decision branches."
+            ShortDescription="Trace the LogicalStep decisions. Will open the timeline view to allow navigation in the trace and present the decision branches."
+            id="ExecutionTracing.Addon">
       </Addon>
+   </extension>
+   <extension
+         point="org.gemoc.gemoc_language_workbench.engine_addon_group">
+         <AddonGroup
+            Name="General"
+            id="General.AddonGroup">
+      </AddonGroup>
+      <AddonGroup
+            Name="Concurrent"
+            id="Concurrent.AddonGroup">
+      </AddonGroup>
    </extension>
 
 

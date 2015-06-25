@@ -15,6 +15,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.gemoc.gemoc_language_workbench.api.extensions.engine_addon.EngineAddonSpecificationExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.engine_addon_group.EngineAddonGroupSpecificationExtension;
 
 public abstract class LaunchConfigurationDataProcessingTab extends LaunchConfigurationTab
 {
@@ -31,6 +32,7 @@ public abstract class LaunchConfigurationDataProcessingTab extends LaunchConfigu
 	}
 
 	protected abstract Collection<EngineAddonSpecificationExtension> getExtensionSpecifications();
+	protected abstract Collection<EngineAddonGroupSpecificationExtension> getGroupExtensionSpecifications();
 
 	@Override
 	public void createControl(Composite parent) 
@@ -42,15 +44,36 @@ public abstract class LaunchConfigurationDataProcessingTab extends LaunchConfigu
 		content.layout();
 		setControl(content);
 
-		Group area2 = createGroup(content, "");
-		createLayout(area2);
+		createLayout(content);
 	}
 	
 	private void createLayout(Composite parent) 
 	{
+		HashMap<String, Group> groupmap = new HashMap<String, Group>();
+		
+		
+		for(EngineAddonGroupSpecificationExtension extension : getGroupExtensionSpecifications()){
+			groupmap.put(extension.getId(),  createGroup(parent, extension.getName()));
+		}
+
+		groupmap.put("",  createGroup(parent, ""));
+		
 		for (EngineAddonSpecificationExtension extension : _components.keySet())
 		{
-			Button checkbox = createCheckButton(parent, extension.getName());
+			Group parentGroup = groupmap.get("");
+			if(extension.getAddonGroupId() != null){
+				// refine the parentGroup if specified
+				parentGroup = groupmap.get(extension.getAddonGroupId());
+				if(parentGroup == null){
+					// back to the unsorted group
+					parentGroup = groupmap.get("");
+				}
+			} 
+			
+			Button checkbox = createCheckButton(parentGroup, extension.getName());
+			if(extension.getShortDescription() != null){
+				checkbox.setToolTipText(extension.getShortDescription());
+			}
 			//checkbox.setSelection(extension.getDefaultActivationValue());
 			checkbox.addSelectionListener(new SelectionListener() {
 				

@@ -8,9 +8,12 @@ public class EngineAddonSpecificationExtensionPoint extends ExtensionPoint<Engin
 {
 
 	public static final String GEMOC_ENGINE_ADDON_EXTENSION_POINT = "org.gemoc.gemoc_language_workbench.engine_addon";
+	public static final String GEMOC_ENGINE_ADDON_EXTENSION_POINT_ID = "id";
 	public static final String GEMOC_ENGINE_ADDON_EXTENSION_POINT_NAME = "Name";
+	public static final String GEMOC_ENGINE_ADDON_EXTENSION_POINT_SHORTDESCRIPTION = "ShortDescription";
 	public static final String GEMOC_ENGINE_ADDON_EXTENSION_POINT_CLASS = "Class";
 	public static final String GEMOC_ENGINE_ADDON_EXTENSION_POINT_DEFAULT = "Default";
+	public static final String GEMOC_ENGINE_ADDON_EXTENSION_POINT_ADDONGROUPID = "AddonGroupId";
 
 	protected EngineAddonSpecificationExtensionPoint() 
 	{
