@@ -9,7 +9,8 @@ Require-Bundle: org.gemoc.gemoc_language_workbench.api,
  org.eclipse.emf.transaction;bundle-version="1.8.0",
  fr.inria.diverse.commons.eclipse.messagingsystem.api,
  org.gemoc.execution.engine.trace.model;visibility:=reexport,
- org.gemoc.commons.eclipse.pde;bundle-version="0.1.0"
+ org.gemoc.commons.eclipse.pde;bundle-version="0.1.0",
+ fr.inria.diverse.k3.al.annotationprocessor.plugin
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine,
