@@ -5,15 +5,12 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 
-public final class CommandExecution 
-{
-	
-	private CommandExecution() 
-	{
+public final class CommandExecution {
+
+	private CommandExecution() {
 	}
-	
-	public static Object execute(TransactionalEditingDomain editingDomain, RecordingCommand command)
-	{
+
+	public static Object execute(TransactionalEditingDomain editingDomain, RecordingCommand command) {
 		final CommandStack commandStack = editingDomain.getCommandStack();
 		IExecutionCheckpoint checkpoint = IExecutionCheckpoint.CHECKPOINTS.get(editingDomain.getResourceSet());
 		Object result = null;
@@ -22,9 +19,7 @@ public final class CommandExecution
 				checkpoint.allow(true);
 			}
 			commandStack.execute(command);
-			if (command.getResult() != null
-				&& command.getResult().size() == 1)
-			{
+			if (command.getResult() != null && command.getResult().size() == 1) {
 				result = command.getResult().iterator().next();
 			}
 		} finally {
@@ -34,5 +29,6 @@ public final class CommandExecution
 		}
 		return result;
 	}
+
 
 }
