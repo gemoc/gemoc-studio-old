@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.gemoc_language_workbench.extensions.k3;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,161 +17,104 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.FeedbackFactory;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
-public final class MSEManager
-{
+/**
+ * This class contains the complete MSE management for PlainK3ExecutionEngine.
+ * All this code could be withing PlainK3ExecutionEngine.
+ * 
+ * @author ebousse
+ *
+ */
+public final class PlainK3MSEManager {
 
-	private MSEManager()
-	{
+	public PlainK3MSEManager(K3Solver solver) {
+		this.solver = solver;
+		this._actionModel = solver.getActionModel();
 	}
 
-	private static MSEManager _instance;
+	private K3Solver solver;
 
 	private ActionModel _actionModel;
 
-	public static MSEManager getInstance()
-	{
-		if (_instance == null)
-		{
-			_instance = new MSEManager();
-		}
-		return _instance;
-	}
-
-	public void reset()
-	{
-		_mseOccurences.clear();
-	}
-
-	private ArrayList<IMSEOccurrenceListener> _listeners = new ArrayList<>();
-
-	private Object _listenersLock = new Object();
-
-	public void removeListener(IMSEOccurrenceListener listener)
-	{
-		synchronized (_listenersLock)
-		{
-			_listeners.remove(listener);
-		}
-	}
-
-	public void addListener(IMSEOccurrenceListener listener)
-	{
-		synchronized (_listenersLock)
-		{
-			_listeners.add(listener);
-		}
-	}
-
-	private MSEOccurrence createMSEOccurrenceAndNotify(EObject caller, EOperation operation)
-	{
+	private MSEOccurrence createMSEOccurrenceAndNotify(EObject caller, EOperation operation) {
 
 		LogicalStep logicalStep = Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep();
 		MSEOccurrence occurrence = Gemoc_execution_traceFactory.eINSTANCE.createMSEOccurrence();
 		occurrence.setLogicalstep(logicalStep);
 		ModelSpecificEvent mse = findOrCreateMSE(caller, operation);
 		occurrence.setMse(mse);
-		synchronized (_listenersLock)
-		{
-			for (IMSEOccurrenceListener listener : _listeners)
-			{
-				listener.mseOccurenceAboutToBeRaised(occurrence);
-			}
-			for (IMSEOccurrenceListener listener : _listeners)
-			{
-				listener.mseOccurenceRaised(occurrence);
-			}
-		}
+
+		solver.setNextMSEOccurrence(occurrence);
+
 		return occurrence;
 
 	}
 
-	Stack<MSEOccurrence> _mseOccurences = new Stack<MSEOccurrence>();
+	private Stack<MSEOccurrence> _mseOccurences = new Stack<MSEOccurrence>();
 
-	public void raiseMSEOccurrence(EObject caller, String methodName)
-	{
+	public MSEOccurrence raiseMSEOccurrence(EObject caller, String methodName) {
 		EOperation operation = findOperation(caller, methodName);
 		// If the operation is null, is means it's not an operation added as
 		// aspect
 		MSEOccurrence occurrence = null;
 
+		// We don't want to stop on getters/setters of structural features
 		boolean isNotStruturalFeature = true;
-		for (EStructuralFeature p : caller.eClass().getEAllStructuralFeatures())
-		{
-			if (p.getName().equals(methodName))
-			{
+		for (EStructuralFeature p : caller.eClass().getEAllStructuralFeatures()) {
+			if (p.getName().equals(methodName)) {
 				isNotStruturalFeature = false;
 				break;
 			}
 		}
 
-		if (operation != null || isNotStruturalFeature)
-		{
+		if (operation != null || isNotStruturalFeature) {
 			occurrence = createMSEOccurrenceAndNotify(caller, operation);
 		}
 		_mseOccurences.push(occurrence);
+		return occurrence;
 
 	}
 
-	public void endMSEOccurrence()
-	{
+	public boolean endMSEOccurrence() {
 		MSEOccurrence occurrence = _mseOccurences.pop();
 
-		if (occurrence != null)
-		{
-			synchronized (_listenersLock)
-			{
-				for (IMSEOccurrenceListener listener : _listeners)
-				{
-					listener.mseOccurenceEnded(occurrence);
-				}
-			}
+		if (occurrence != null) {
 			// If we are still "inside an mse", then we have a "fill mse" to
 			// raise. This MSE has no operation, so that it isn't handled in the
 			// trace manager.
 
 			boolean containsNotNull = false;
-			for (MSEOccurrence mseocc : _mseOccurences)
-			{
-				if (mseocc != null)
-				{
+			for (MSEOccurrence mseocc : _mseOccurences) {
+				if (mseocc != null) {
 					containsNotNull = true;
 					break;
 				}
 			}
 
-			if (!_mseOccurences.isEmpty() && containsNotNull)
-			{
+			if (!_mseOccurences.isEmpty() && containsNotNull) {
 				ModelSpecificEvent mse = occurrence.getMse();
 				createMSEOccurrenceAndNotify(mse.getCaller(), null);
+				return true;
 			}
 		}
+		return false;
 	}
 
-	private EOperation findOperation(EObject object, String methodName)
-	{
-		for (EOperation operation : object.eClass().getEAllOperations())
-		{
+	private EOperation findOperation(EObject object, String methodName) {
+		for (EOperation operation : object.eClass().getEAllOperations()) {
 			// !!! this is not super correct yet as polyphormism allows the
 			// definition of 2 methods with the same name !!!
-			if (operation.getName().equals(methodName))
-			{
+			if (operation.getName().equals(methodName)) {
 				return operation;
 			}
 		}
 		return null;
 	}
 
-	private ModelSpecificEvent findOrCreateMSE(EObject caller, EOperation operation)
-	{
+	private ModelSpecificEvent findOrCreateMSE(EObject caller, EOperation operation) {
 
-		if (_actionModel != null)
-		{
-			for (ModelSpecificEvent existingMSE : _actionModel.getEvents())
-			{
-				if (existingMSE.getCaller().equals(caller)
-						&& ((existingMSE.getAction() != null && existingMSE.getAction().equals(operation)) || (existingMSE
-								.getAction() == null && operation == null)))
-				{
+		if (_actionModel != null) {
+			for (ModelSpecificEvent existingMSE : _actionModel.getEvents()) {
+				if (existingMSE.getCaller().equals(caller) && ((existingMSE.getAction() != null && existingMSE.getAction().equals(operation)) || (existingMSE.getAction() == null && operation == null))) {
 					// no need to create one, we already have it
 					return existingMSE;
 				}
@@ -186,24 +129,18 @@ public final class MSEManager
 		else
 			mse.setName("MSE_" + caller.getClass().getSimpleName() + "_nextStep");
 		// and add it for possible reuse
-		if (_actionModel != null)
-		{
+		if (_actionModel != null) {
 
-			if (_actionModel.eResource() != null)
-			{
+			if (_actionModel.eResource() != null) {
 				TransactionUtil.getEditingDomain(_actionModel.eResource());
-				RecordingCommand command = new RecordingCommand(TransactionUtil.getEditingDomain(_actionModel
-						.eResource()), "Saving new MSE ") {
+				RecordingCommand command = new RecordingCommand(TransactionUtil.getEditingDomain(_actionModel.eResource()), "Saving new MSE ") {
 					@Override
-					protected void doExecute()
-					{
+					protected void doExecute() {
 						_actionModel.getEvents().add(mse);
 
-						try
-						{
+						try {
 							_actionModel.eResource().save(null);
-						} catch (IOException e)
-						{
+						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
@@ -216,14 +153,8 @@ public final class MSEManager
 		return mse;
 	}
 
-	public ActionModel getActiveActionModel()
-	{
+	public ActionModel getActiveActionModel() {
 		return _actionModel;
-	}
-
-	public void setActiveActionModel(ActionModel actionModel)
-	{
-		_actionModel = actionModel;
 	}
 
 }

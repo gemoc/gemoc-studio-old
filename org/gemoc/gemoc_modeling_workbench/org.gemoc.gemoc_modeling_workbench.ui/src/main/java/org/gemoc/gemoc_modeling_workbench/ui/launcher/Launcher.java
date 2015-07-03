@@ -41,7 +41,6 @@ import org.gemoc.execution.engine.commons.ModelExecutionContext;
 import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.core.ExecutionEngine;
-import org.gemoc.execution.engine.core.PlainK3ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -211,7 +210,7 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 							return new Status(IStatus.ERROR, getPluginID(), "Could not instanciate class "
 									+ executionContext.getRunConfiguration().getExecutionEntryPoint() + ".");
 						}
-						_executionEngine = new PlainK3ExecutionEngine(executionContext, o, method, parameters);
+						_executionEngine = new org.gemoc.gemoc_language_workbench.extensions.k3.PlainK3ExecutionEngine(executionContext, o, method, parameters);
 						_executionEngine.start();
 						return new Status(IStatus.OK, getPluginID(), "Execution was launched successfully");
 					}

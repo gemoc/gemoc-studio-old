@@ -1,7 +1,8 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.gemoc_language_workbench.extensions.k3;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Stack;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -10,6 +11,7 @@ import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.impl.EMFCommandTransaction;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
+import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
@@ -19,28 +21,27 @@ import fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager;
 import fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand;
 import fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry;
 
-public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements IMSEOccurrenceListener, IStepManager {
+public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements IStepManager {
 
 	private Runnable _runnable;
 
 	private org.eclipse.emf.transaction.TransactionalEditingDomain editingDomain;
 
+	private PlainK3MSEManager mseManager;
+
 	public PlainK3ExecutionEngine(final IExecutionContext context, final Object caller, final Method method, final ArrayList<Object> parameters) {
 		super(context);
-		MSEManager.getInstance().reset();
+		this.mseManager = new PlainK3MSEManager((K3Solver) context.getExecutionPlatform().getSolver());
 		this.editingDomain = getEditingDomain(context.getResourceModel().getResourceSet());
-		this.reset();
 		StepManagerRegistry.getInstance().registerManager(this);
 		_runnable = new Runnable() {
 			@Override
 			public void run() {
 				try {
-					MSEManager.getInstance().addListener(PlainK3ExecutionEngine.this);
 					method.invoke(caller, parameters.get(0));
 				} catch (Exception e) {
 					throw new RuntimeException(e);
 				} finally {
-					MSEManager.getInstance().removeListener(PlainK3ExecutionEngine.this);
 					// We always try to commit the current transaction, if one
 					// remains
 					try {
@@ -62,10 +63,6 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 	}
 
 	@Override
-	public void addFutureAction(IFutureAction action) {
-	}
-
-	@Override
 	protected void executeSelectedLogicalStep() {
 		if (_isStopped) {
 			throw new RuntimeException(getName() + " is stopped");
@@ -77,38 +74,19 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 		return _runnable;
 	}
 
-	@Override
-	public void mseOccurenceRaised(MSEOccurrence occurrence) {
-		if (_isStopped) {
-			throw new RuntimeException("Execution stopped");
-		}
-		// before coming here, it is absolutely necessary to have visited the
-		// solver first.
-		try {
-			performExecutionStep();
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@Override
-	public void mseOccurenceAboutToBeRaised(MSEOccurrence occurrence) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mseOccurenceEnded(MSEOccurrence occurrence) {
+	private void notifyMSEOccurenceExecuted(MSEOccurrence occurrence) {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) {
 			addon.mseOccurrenceExecuted(this, occurrence);
 		}
 	}
 
-	private EMFCommandTransaction currentTransaction;
-
-	public void reset() {
-		currentTransaction = null;
+	private void notifyMSEOccurrenceAboutToStart(MSEOccurrence occurrence) {
+		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) {
+			addon.aboutToExecuteMSEOccurrence(this, occurrence);
+		}
 	}
+
+	private EMFCommandTransaction currentTransaction;
 
 	public EMFCommandTransaction createTransaction(InternalTransactionalEditingDomain editingDomain, RecordingCommand command) {
 
@@ -127,8 +105,14 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 		currentTransaction.start();
 	}
 
+	Stack<MSEOccurrence> _mseOccurences = new Stack<MSEOccurrence>();
+
 	@Override
 	public Object execute(Object caller, final StepCommand command, String methodName) {
+		if (_isStopped) {
+			throw new RuntimeException("Execution stopped");
+		}
+
 		if (caller != null && command != null && caller instanceof EObject) {
 			EObject caller_cast = (EObject) caller;
 			RecordingCommand rc = new RecordingCommand(editingDomain) {
@@ -144,13 +128,16 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 					// We end any running transaction
 					commitCurrentTransaction();
 
-					// Notification start mse
-					// This is where the engine might be pause with the current
-					// design (ie. using StepByStepUserDecider)
-					// And we clearly are in between two transactions, so no
-					// more
-					// annoying window :)
-					org.gemoc.execution.engine.core.MSEManager.getInstance().raiseMSEOccurrence(caller_cast, methodName);
+					// We raise a MSE, ie we put an MSE in the K3 "Solver"
+					MSEOccurrence occurrenceRaised = mseManager.raiseMSEOccurrence(caller_cast, methodName);
+
+					// We notify addons
+					notifyMSEOccurrenceAboutToStart(occurrenceRaised);
+					
+					// Then we do the normal call to performExecutionStep
+					// This is where it might pause, since the engine will
+					// ask the K3Solver for the next step
+					performExecutionStep();
 
 					// We start a new transaction
 					startNewTransaction(editingDomain_cast, rc);
@@ -167,21 +154,22 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 					commitCurrentTransaction();
 
 					// Notification end mse
-					org.gemoc.execution.engine.core.MSEManager.getInstance().endMSEOccurrence();
+					boolean hasFakeMSE = mseManager.endMSEOccurrence();
+					
+					// Maybe we have a fake mse to pause the execution at the end of a step
+					if (hasFakeMSE)
+						performExecutionStep();
+					
+					// We notify addons
+					notifyMSEOccurenceExecuted(occurrenceRaised);
 
 					// And we start a new transaction
 					startNewTransaction(editingDomain_cast, rc);
 				}
 
-			} catch (RollbackException e) {
-				// TODO what to do here? Maybe the exception should be sent
-				// upstream
-				// But not possible if we don't generate a "throws" in the java
-				// code
+			} catch (Exception e) {
 				rc.dispose();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new RuntimeException(e);
 			}
 		}
 		return null;
@@ -196,6 +184,10 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 
 		}
 		return false;
+	}
+
+	@Override
+	public void addFutureAction(IFutureAction action) {
 	}
 
 }
