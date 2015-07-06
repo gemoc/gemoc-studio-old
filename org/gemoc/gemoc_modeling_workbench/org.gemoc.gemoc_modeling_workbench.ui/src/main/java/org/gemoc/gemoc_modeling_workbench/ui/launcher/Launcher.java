@@ -68,7 +68,7 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 	private IExecutionEngine _executionEngine;
 
 	@Override
-	public void launch(ILaunchConfiguration configuration,final String mode, ILaunch launch, IProgressMonitor monitor)
+	public void launch(final ILaunchConfiguration configuration,final String mode, final ILaunch launch, IProgressMonitor monitor)
 			throws CoreException
 	{
 		try
@@ -216,8 +216,18 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 						{
 							IEngineAddon animator = AbstractGemocAnimatorServices.getAnimator();
 							_executionEngine.getExecutionContext().getExecutionPlatform().addEngineAddon(animator);
+							try {
+								Launcher.super.launch(configuration, mode, launch, monitor);
+							} catch (CoreException e) {
+								e.printStackTrace();
+								return new Status(IStatus.ERROR, getPluginID(),
+										"Could not  start debugger.");
+							}
 						}
 
+						
+					
+						
 						_executionEngine.start();
 						return new Status(IStatus.OK, getPluginID(), "Execution was launched successfully");
 					}
