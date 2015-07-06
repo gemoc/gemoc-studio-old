@@ -1,8 +1,8 @@
 package org.gemoc.gemoc_language_workbench.extensions.k3;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
@@ -27,15 +27,15 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 public final class PlainK3MSEManager {
 
 	public PlainK3MSEManager(K3Solver solver) {
-		this.solver = solver;
+		this._solver = solver;
 		this._actionModel = solver.getActionModel();
 	}
 
-	private K3Solver solver;
+	private K3Solver _solver;
 
 	private ActionModel _actionModel;
 
-	private MSEOccurrence createMSEOccurrenceAndNotify(EObject caller, EOperation operation) {
+	private MSEOccurrence createMSEOccurrenceAndTellSolver(EObject caller, EOperation operation) {
 
 		LogicalStep logicalStep = Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep();
 		MSEOccurrence occurrence = Gemoc_execution_traceFactory.eINSTANCE.createMSEOccurrence();
@@ -43,13 +43,13 @@ public final class PlainK3MSEManager {
 		ModelSpecificEvent mse = findOrCreateMSE(caller, operation);
 		occurrence.setMse(mse);
 
-		solver.setNextMSEOccurrence(occurrence);
+		_solver.setNextMSEOccurrence(occurrence);
 
 		return occurrence;
 
 	}
 
-	private Stack<MSEOccurrence> _mseOccurences = new Stack<MSEOccurrence>();
+	private Deque<MSEOccurrence> _mseOccurences = new ArrayDeque<MSEOccurrence>();
 
 	public MSEOccurrence raiseMSEOccurrence(EObject caller, String methodName) {
 		EOperation operation = findOperation(caller, methodName);
@@ -67,13 +67,20 @@ public final class PlainK3MSEManager {
 		}
 
 		if (operation != null || isNotStruturalFeature) {
-			occurrence = createMSEOccurrenceAndNotify(caller, operation);
+			occurrence = createMSEOccurrenceAndTellSolver(caller, operation);
 		}
 		_mseOccurences.push(occurrence);
 		return occurrence;
 
 	}
 
+	/**
+	 * Handles the end of an step by potentially creating a fake MSE to pause the
+	 * engine. If such mse is created, then a corresponding "performExecutionStep" must be done.
+	 * 
+	 * @return true if we are still within a step and if there is a new (fake) mse given to the solver, 
+	 * 		   false otherwise.
+	 */
 	public boolean endMSEOccurrence() {
 		MSEOccurrence occurrence = _mseOccurences.pop();
 
@@ -92,7 +99,7 @@ public final class PlainK3MSEManager {
 
 			if (!_mseOccurences.isEmpty() && containsNotNull) {
 				ModelSpecificEvent mse = occurrence.getMse();
-				createMSEOccurrenceAndNotify(mse.getCaller(), null);
+				createMSEOccurrenceAndTellSolver(mse.getCaller(), null);
 				return true;
 			}
 		}
@@ -114,7 +121,9 @@ public final class PlainK3MSEManager {
 
 		if (_actionModel != null) {
 			for (ModelSpecificEvent existingMSE : _actionModel.getEvents()) {
-				if (existingMSE.getCaller().equals(caller) && ((existingMSE.getAction() != null && existingMSE.getAction().equals(operation)) || (existingMSE.getAction() == null && operation == null))) {
+				if (existingMSE.getCaller().equals(caller)
+						&& ((existingMSE.getAction() != null && existingMSE.getAction().equals(operation)) || (existingMSE
+								.getAction() == null && operation == null))) {
 					// no need to create one, we already have it
 					return existingMSE;
 				}
@@ -133,7 +142,8 @@ public final class PlainK3MSEManager {
 
 			if (_actionModel.eResource() != null) {
 				TransactionUtil.getEditingDomain(_actionModel.eResource());
-				RecordingCommand command = new RecordingCommand(TransactionUtil.getEditingDomain(_actionModel.eResource()), "Saving new MSE ") {
+				RecordingCommand command = new RecordingCommand(TransactionUtil.getEditingDomain(_actionModel
+						.eResource()), "Saving new MSE ") {
 					@Override
 					protected void doExecute() {
 						_actionModel.getEvents().add(mse);
