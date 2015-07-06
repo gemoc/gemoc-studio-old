@@ -110,6 +110,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 
 		if (instruction instanceof LogicalStep) {
 			res = breakNextLogicalStep || shouldBreakLogicalStep((LogicalStep) instruction);
+			breakNextLogicalStep = false;
 		} else if (instruction instanceof MSEOccurrence) {
 			res = shouldBreakMSEOccurence((MSEOccurrence) instruction);
 		}
@@ -273,7 +274,5 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 		// TODO Auto-generated method stub
 		
 	}
-
-	
 
 }
