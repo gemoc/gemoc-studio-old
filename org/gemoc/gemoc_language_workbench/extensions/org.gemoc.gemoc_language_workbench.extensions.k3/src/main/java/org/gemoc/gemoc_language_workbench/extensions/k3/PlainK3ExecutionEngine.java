@@ -2,7 +2,6 @@ package org.gemoc.gemoc_language_workbench.extensions.k3;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Stack;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -25,11 +24,12 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 
 	private Runnable _runnable;
 
-	private org.eclipse.emf.transaction.TransactionalEditingDomain editingDomain;
+	private InternalTransactionalEditingDomain editingDomain;
 
 	private PlainK3MSEManager mseManager;
 
-	public PlainK3ExecutionEngine(final IExecutionContext context, final Object caller, final Method method, final ArrayList<Object> parameters) {
+	public PlainK3ExecutionEngine(final IExecutionContext context, final Object caller, final Method method,
+			final ArrayList<Object> parameters) {
 		super(context);
 		this.mseManager = new PlainK3MSEManager((K3Solver) context.getExecutionPlatform().getSolver());
 		this.editingDomain = getEditingDomain(context.getResourceModel().getResourceSet());
@@ -58,8 +58,13 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 		return getEditingDomain(o.eResource().getResourceSet());
 	}
 
-	private static TransactionalEditingDomain getEditingDomain(ResourceSet rs) {
-		return org.eclipse.emf.transaction.TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(rs);
+	private static InternalTransactionalEditingDomain getEditingDomain(ResourceSet rs) {
+		TransactionalEditingDomain edomain = org.eclipse.emf.transaction.TransactionalEditingDomain.Factory.INSTANCE
+				.getEditingDomain(rs);
+		if (edomain instanceof InternalTransactionalEditingDomain)
+			return (InternalTransactionalEditingDomain) edomain;
+		else
+			return null;
 	}
 
 	@Override
@@ -88,7 +93,8 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 
 	private EMFCommandTransaction currentTransaction;
 
-	public EMFCommandTransaction createTransaction(InternalTransactionalEditingDomain editingDomain, RecordingCommand command) {
+	public EMFCommandTransaction createTransaction(InternalTransactionalEditingDomain editingDomain,
+			RecordingCommand command) {
 
 		return new EMFCommandTransaction(command, editingDomain, null);
 	}
@@ -100,79 +106,93 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 		}
 	}
 
-	public void startNewTransaction(InternalTransactionalEditingDomain editingDomain, RecordingCommand command) throws InterruptedException {
+	public void startNewTransaction(InternalTransactionalEditingDomain editingDomain, RecordingCommand command)
+			throws InterruptedException {
 		currentTransaction = createTransaction(editingDomain, command);
 		currentTransaction.start();
 	}
 
-	Stack<MSEOccurrence> _mseOccurences = new Stack<MSEOccurrence>();
-
 	@Override
-	public Object execute(Object caller, final StepCommand command, String methodName) {
+	public void executeStep(Object caller, final StepCommand command, String methodName) {
+
+		// If the engine is stopped, we use this call to executeStep to stop the
+		// execution
 		if (_isStopped) {
 			throw new RuntimeException("Execution stopped");
 		}
 
-		if (caller != null && command != null && caller instanceof EObject) {
+		// We only work with calls from non-null EObjects, with non-null
+		// commands
+		if (caller != null && command != null && caller instanceof EObject && editingDomain != null) {
+
+			// The call is expected to be done from an EMF model, so we cast to
+			// EObject
 			EObject caller_cast = (EObject) caller;
+
+			// The StepCommand is "transformed" into a "RecordingCommand" for
+			// the EMF transaction
 			RecordingCommand rc = new RecordingCommand(editingDomain) {
 				@Override
 				protected void doExecute() {
 					command.execute();
 				}
 			};
+
 			try {
-				if (editingDomain instanceof InternalTransactionalEditingDomain) {
-					InternalTransactionalEditingDomain editingDomain_cast = (InternalTransactionalEditingDomain) editingDomain;
+				// We end any running transaction
+				commitCurrentTransaction();
 
-					// We end any running transaction
-					commitCurrentTransaction();
+				// We raise a MSE, ie we put an MSE in the K3 "Solver"
+				MSEOccurrence occurrenceRaised = mseManager.raiseMSEOccurrence(caller_cast, methodName);
 
-					// We raise a MSE, ie we put an MSE in the K3 "Solver"
-					MSEOccurrence occurrenceRaised = mseManager.raiseMSEOccurrence(caller_cast, methodName);
+				// We notify addons
+				notifyMSEOccurrenceAboutToStart(occurrenceRaised);
 
-					// We notify addons
-					notifyMSEOccurrenceAboutToStart(occurrenceRaised);
-					
-					// Then we do the normal call to performExecutionStep
-					// This is where it might pause, since the engine will
-					// ask the K3Solver for the next step
+				// Then we do the normal call to performExecutionStep
+				// This is where it might pause, since the engine will
+				// ask the K3Solver for the next step
+				performExecutionStep();
+
+				// We start a new transaction
+				startNewTransaction(editingDomain, rc);
+
+				// We run the command (which might start steps)
+				command.execute();
+
+				// We commit the transaction (which might be a different one
+				// than the one created earlier, or null if two operations
+				// end successively)
+				commitCurrentTransaction();
+
+				// Handling the ending of an MSE, which might create a fake
+				// one to stop the engine again
+				boolean isStillInStep = mseManager.endMSEOccurrence();
+
+				// Maybe we have a fake mse to pause the execution at the
+				// end of a step
+				if (isStillInStep)
 					performExecutionStep();
 
-					// We start a new transaction
-					startNewTransaction(editingDomain_cast, rc);
+				// We notify addons that the (real) MSE ended.
+				notifyMSEOccurenceExecuted(occurrenceRaised);
 
-					// We run the command
-					// This might trigger new transaction beginnings/endings in
-					// between
-					command.execute();
-
-					// We commit the transaction (which might be a different one
-					// than the one created earlier, or null if two operations
-					// end
-					// successively)
-					commitCurrentTransaction();
-
-					// Notification end mse
-					boolean hasFakeMSE = mseManager.endMSEOccurrence();
-					
-					// Maybe we have a fake mse to pause the execution at the end of a step
-					if (hasFakeMSE)
-						performExecutionStep();
-					
-					// We notify addons
-					notifyMSEOccurenceExecuted(occurrenceRaised);
-
-					// And we start a new transaction
-					startNewTransaction(editingDomain_cast, rc);
-				}
+				// And we start a new transaction, since we might still be
+				// in the middle of
+				// a step.
+				if (isStillInStep)
+					startNewTransaction(editingDomain, rc);
 
 			} catch (Exception e) {
+				// We dispose to remove adapters
 				rc.dispose();
+
+				// We transform everything into a RuntimeException.
+				// This is required because executeStep cannot throw any
+				// (non-Runtime) exception, since it is used within K3AL
+				// generated Java code.
 				throw new RuntimeException(e);
 			}
 		}
-		return null;
 	}
 
 	@Override
