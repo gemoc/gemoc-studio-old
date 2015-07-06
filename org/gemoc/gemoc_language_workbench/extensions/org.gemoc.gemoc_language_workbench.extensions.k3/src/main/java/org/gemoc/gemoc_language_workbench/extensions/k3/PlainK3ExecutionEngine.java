@@ -11,7 +11,9 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.impl.EMFCommandTransaction;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.core.EngineStoppedException;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
@@ -42,8 +44,10 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 				} catch (Exception e) {
 					throw new RuntimeException(e);
 				} finally {
-					// We always try to commit the current transaction, if one
-					// remains
+					setEngineStatus(EngineStatus.RunStatus.Stopped);
+					notifyEngineStopped();
+					
+					// We always try to commit the current transaction
 					try {
 						commitCurrentTransaction();
 					} catch (RollbackException e) {
@@ -70,7 +74,8 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 	@Override
 	protected void executeSelectedLogicalStep() {
 		if (_isStopped) {
-			throw new RuntimeException(getName() + " is stopped");
+			notifyAboutToStop(); // notification occurs only if not already stopped
+			throw new EngineStoppedException(getName() + " is stopped");
 		}
 	}
 
@@ -118,7 +123,8 @@ public class PlainK3ExecutionEngine extends AbstractExecutionEngine implements I
 		// If the engine is stopped, we use this call to executeStep to stop the
 		// execution
 		if (_isStopped) {
-			throw new RuntimeException("Execution stopped");
+			notifyAboutToStop(); // notification occurs only if not already stopped
+			throw new EngineStoppedException("Execution stopped");
 		}
 
 		// We only work with calls from non-null EObjects, with non-null

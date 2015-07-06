@@ -70,76 +70,120 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	{
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons())
 		{
-			addon.engineAboutToStart(this);
+			try {
+				addon.engineAboutToStart(this);
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
 		}		
 	}
 	
 	protected void notifyEngineStarted() {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons())
 		{
-			addon.engineStarted(this);
+			try {
+				addon.engineStarted(this);
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
 		}
 	}
 
 	protected void notifyAboutToStop() {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons())
 		{
-			addon.engineAboutToStop(this);
+			try {
+				addon.engineAboutToStop(this);
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
 		}
 	}
 
 	protected void notifyEngineStopped() {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.engineStopped(this);
+			try {
+				addon.engineStopped(this);
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
 		}
 	}
 
 	protected void notifyEngineAboutToDispose() {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons())
 		{
-			addon.engineAboutToDispose(this);
+			try {	
+				addon.engineAboutToDispose(this);
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
 		}
 	}
 	
 	protected void notifyAboutToSelectLogicalStep() {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.aboutToSelectLogicalStep(this, getPossibleLogicalSteps());
+			try {
+				addon.aboutToSelectLogicalStep(this, getPossibleLogicalSteps());
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
 		}
 	}
 
 	protected void notifyProposedLogicalStepsChanged(){
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.proposedLogicalStepsChanged(this, getPossibleLogicalSteps());
+			try {
+				addon.proposedLogicalStepsChanged(this, getPossibleLogicalSteps());
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
 		}
 	}
 	protected void notifyLogicalStepSelected() {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.logicalStepSelected(this, getSelectedLogicalStep());
+			try {
+				addon.logicalStepSelected(this, getSelectedLogicalStep());
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
 		}
 	}
 
 	protected void notifyEngineStatusChanged(RunStatus newStatus) {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons())
 		{
-			addon.engineStatusChanged(this, newStatus);
+			try {
+				addon.engineStatusChanged(this, newStatus);
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
 		}
 	}
 
 	protected void notifyAboutToExecuteLogicalStep() {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.aboutToExecuteLogicalStep(this, getSelectedLogicalStep());
+			try {
+				addon.aboutToExecuteLogicalStep(this, getSelectedLogicalStep());
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
 		}
 	}
 
 	protected void notifyLogicalStepExecuted() {
 		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
 		{
-			addon.logicalStepExecuted(this, getSelectedLogicalStep());
+			try {
+				addon.logicalStepExecuted(this, getSelectedLogicalStep());
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
 		}
 	}
 

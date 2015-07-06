@@ -3,7 +3,7 @@
 <schema targetNamespace="org.gemoc.gemoc_language_workbench.api" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.gemoc.gemoc_language_workbench.api" id="org.gemoc.gemoc_language_workbench.engine_addon" name="Engine Addon"/>
+         <meta.schema plugin="org.gemoc.gemoc_language_workbench.api" id="org.gemoc.gemoc_language_workbench.engine_addon_group" name="Engine AddonGroup"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <sequence minOccurs="0" maxOccurs="unbounded">
-            <element ref="Addon"/>
+            <element ref="AddonGroup"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,55 +47,20 @@
       </complexType>
    </element>
 
-   <element name="Addon">
+   <element name="AddonGroup">
       <complexType>
          <attribute name="id" type="string" use="required">
             <annotation>
                <documentation>
-                  Unique ID of the AddOn
-can be used to specify addon exclusion
+                  
                </documentation>
             </annotation>
          </attribute>
          <attribute name="Name" type="string" use="required">
             <annotation>
                <documentation>
-                  Name of the Addon as it will be displayed to the end user when he will select it in the Launcher GUI
+                  Name of the group of Addon as it will be displayed to the end user when he will select it in the Launcher GUI
                </documentation>
-            </annotation>
-         </attribute>
-         <attribute name="ShortDescription" type="string">
-            <annotation>
-               <documentation>
-                  A short description that will be presented in the launch tab
-               </documentation>
-            </annotation>
-         </attribute>
-         <attribute name="Class" type="string" use="required">
-            <annotation>
-               <documentation>
-                  
-               </documentation>
-               <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon"/>
-               </appinfo>
-            </annotation>
-         </attribute>
-         <attribute name="Default" type="boolean">
-            <annotation>
-               <documentation>
-                  
-               </documentation>
-            </annotation>
-         </attribute>
-         <attribute name="AddonGroupId" type="string">
-            <annotation>
-               <documentation>
-                  If specified, the addon will be presented in a dedicated group in the launcher tab.
-               </documentation>
-               <appinfo>
-                  <meta.attribute kind="identifier" basedOn="org.gemoc.gemoc_language_workbench.engine_addon/AddonGroup/@id"/>
-               </appinfo>
             </annotation>
          </attribute>
       </complexType>
