@@ -63,11 +63,6 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.When;
  */
 public class ExecutionEngine extends AbstractExecutionEngine implements IDisposable {
 
-	/**
-	 * used to detect
-	 */
-	protected ArrayDeque<LogicalStep> _lastStepsRun;
-
 	private IMSEStateController _mseStateController;
 	
 	/**
