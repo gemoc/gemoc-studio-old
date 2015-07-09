@@ -1,6 +1,9 @@
 package org.gemoc.gemoc_modeling_workbench.ui.debug;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.BiPredicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -104,6 +107,9 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 		// instruction);
 	}
 	
+	
+	
+	
 	@Override
 	public boolean shouldBreak(EObject instruction) {
 		boolean res = false;
@@ -117,11 +123,47 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 
 		return res;
 	}
+	
+	private Set<BiPredicate<IExecutionEngine, LogicalStep>> predicateBreakPoints = new HashSet<BiPredicate<IExecutionEngine, LogicalStep>>();
+	private Set<BiPredicate<IExecutionEngine, LogicalStep>> predicateBreaks = new HashSet<BiPredicate<IExecutionEngine, LogicalStep>>();
+
+	public void addPredicateBreakpoint(BiPredicate<IExecutionEngine, LogicalStep> predicate) {
+		predicateBreakPoints.add(predicate);
+	}
+	
+	public void addPredicateBreak(BiPredicate<IExecutionEngine, LogicalStep> predicate) {
+		predicateBreaks.add(predicate);
+	}
 
 	private boolean shouldBreakLogicalStep(LogicalStep logicalStep) {
+		
+		
+	
+		// We look at predicate breaks to remove the ones that are true
+		boolean hasPredicateBreakTrue = false;
+		Set<BiPredicate<IExecutionEngine, LogicalStep>> toRemove = new HashSet<BiPredicate<IExecutionEngine, LogicalStep>>();
+		for (BiPredicate<IExecutionEngine, LogicalStep> pred : predicateBreaks) {
+			if (pred.test(engine, logicalStep)) {
+				hasPredicateBreakTrue = true;
+				toRemove.add(pred);
+			}
+		}
+		predicateBreaks.removeAll(toRemove);
+		
+		// If no break yet, we look at predicate breakpoints
+		boolean hasPredicateBreakpointTrue = false;
+		if (!hasPredicateBreakTrue) {
+			for (BiPredicate<IExecutionEngine, LogicalStep> pred : predicateBreakPoints) {
+				if (pred.test(engine, logicalStep)) {
+					hasPredicateBreakpointTrue = true;
+					break;
+				}
+			}
+		}
+		
 		final boolean res;
 		
-		if (super.shouldBreak(logicalStep) && Boolean.valueOf((String)getBreakpointAttributes(logicalStep, GemocBreakpoint.BREAK_ON_LOGICAL_STEP))) {
+		if (hasPredicateBreakTrue || hasPredicateBreakpointTrue || (super.shouldBreak(logicalStep) && Boolean.valueOf((String)getBreakpointAttributes(logicalStep, GemocBreakpoint.BREAK_ON_LOGICAL_STEP)))) {
 			res = true;
 		} else {
 			boolean hasMSEBreak = false;
