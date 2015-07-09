@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.BiPredicate;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -41,6 +42,7 @@ import org.gemoc.execution.engine.commons.ModelExecutionContext;
 import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.core.ExecutionEngine;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -58,8 +60,7 @@ import fr.obeo.dsl.debug.ide.IDSLDebugger;
 import fr.obeo.dsl.debug.ide.adapter.IDSLCurrentInstructionListener;
 import fr.obeo.dsl.debug.ide.event.DSLDebugEventDispatcher;
 
-public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI
-{
+public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSLLaunchConfigurationDelegateUI {
 
 	public final static String TYPE_ID = "org.gemoc.gemoc_modeling_workbench.ui.launcher";
 
@@ -68,11 +69,9 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 	private IExecutionEngine _executionEngine;
 
 	@Override
-	public void launch(final ILaunchConfiguration configuration,final String mode, final ILaunch launch, IProgressMonitor monitor)
-			throws CoreException
-	{
-		try
-		{
+	public void launch(final ILaunchConfiguration configuration, final String mode, final ILaunch launch,
+			IProgressMonitor monitor) throws CoreException {
+		try {
 			final RunConfiguration runConfiguration = new RunConfiguration(configuration);
 			debug("About to initialize and run the GEMOC Execution Engine...");
 
@@ -81,47 +80,39 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 			// && runConfiguration.getAnimatorURI() != null)
 			{
 				executionMode = ExecutionMode.Animation;
-			} else
-			{
+			} else {
 				executionMode = ExecutionMode.Run;
 			}
-			if( isEngineAlreadyRunning(runConfiguration.getExecutedModelURI())){
+			if (isEngineAlreadyRunning(runConfiguration.getExecutedModelURI())) {
 				return;
 			}
 			final ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, executionMode);
 
 			// hack to find out if execution involves a solver
-			if (!(executionContext.getExecutionPlatform().getSolver() instanceof K3Solver))
-			{
+			if (!(executionContext.getExecutionPlatform().getSolver() instanceof K3Solver)) {
 				_executionEngine = new ExecutionEngine(executionContext);
 				// delegate for debug mode
-				if (ILaunchManager.DEBUG_MODE.equals(mode))
-				{
+				if (ILaunchManager.DEBUG_MODE.equals(mode)) {
 					IEngineAddon animator = AbstractGemocAnimatorServices.getAnimator();
 					_executionEngine.getExecutionContext().getExecutionPlatform().addEngineAddon(animator);
 					super.launch(configuration, mode, launch, monitor);
-				} else
-				{
+				} else {
 					Job job = new Job(getDebugJobName(configuration, getFirstInstruction(configuration))) {
 
 						@Override
-						protected IStatus run(IProgressMonitor monitor)
-						{
+						protected IStatus run(IProgressMonitor monitor) {
 							_executionEngine.start();
 							return new Status(IStatus.OK, getPluginID(), "Execution was successfull");
 						}
 					};
 					job.schedule();
 				}
-			} else
-			{				
-				Job job = new Job(getDebugJobName(configuration,
-						getFirstInstruction(configuration))+" (running in plainK3 mode)")
-				{
+			} else {
+				Job job = new Job(getDebugJobName(configuration, getFirstInstruction(configuration))
+						+ " (running in plainK3 mode)") {
 
 					@Override
-					protected IStatus run(IProgressMonitor monitor)
-					{
+					protected IStatus run(IProgressMonitor monitor) {
 
 						String className = executionContext.getRunConfiguration().getExecutionEntryPoint();
 						SearchPattern pattern = SearchPattern.createPattern(className, IJavaSearchConstants.CLASS,
@@ -129,13 +120,11 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 						IJavaSearchScope scope = SearchEngine.createWorkspaceScope();
 						DefaultSearchRequestor requestor = new DefaultSearchRequestor();
 						SearchEngine engine = new SearchEngine();
-						try
-						{
+						try {
 							engine.search(pattern,
 									new SearchParticipant[] { SearchEngine.getDefaultSearchParticipant() }, scope,
 									requestor, null);
-						} catch (CoreException e)
-						{
+						} catch (CoreException e) {
 							return new Status(IStatus.ERROR, getPluginID(), "Execution was not successfull");
 						}
 
@@ -155,18 +144,15 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 
 						// If this doesn't work, we use the provisioner to load
 						// the corresponding project
-						if (bundle == null)
-						{
+						if (bundle == null) {
 
 							String projectName = requestor._binaryType.getJavaProject().getElementName();
 							IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 							if (project != null && project.exists()
-									&& !project.getFullPath().equals(executionContext.getWorkspace().getProjectPath()))
-							{
+									&& !project.getFullPath().equals(executionContext.getWorkspace().getProjectPath())) {
 								Provisionner p = new Provisionner();
 								IStatus status = p.provisionFromProject(project, monitor);
-								if (!status.isOK())
-								{
+								if (!status.isOK()) {
 									return status;
 								}
 							}
@@ -180,63 +166,64 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 										+ ".");
 						}
 
-						try
-						{
+						try {
 							c = bundle.loadClass(executionContext.getRunConfiguration().getExecutionEntryPoint());
-						} catch (ClassNotFoundException e)
-						{
+						} catch (ClassNotFoundException e) {
 							e.printStackTrace();
 							return new Status(IStatus.ERROR, getPluginID(), "Could not find class "
 									+ executionContext.getRunConfiguration().getExecutionEntryPoint() + " in bundle "
 									+ bundleName + ".");
 						}
 						Method method;
-						try
-						{
+						try {
 							method = c.getMethod("main", parameters.get(0).getClass().getInterfaces()[0]);
-						} catch (Exception e)
-						{
+						} catch (Exception e) {
 							e.printStackTrace();
 							return new Status(IStatus.ERROR, getPluginID(),
 									"Could not find method main with correct parameters.");
 						}
 						Object o;
-						try
-						{
+						try {
 							o = c.newInstance();
-						} catch (Exception e)
-						{
+						} catch (Exception e) {
 							e.printStackTrace();
 							return new Status(IStatus.ERROR, getPluginID(), "Could not instanciate class "
 									+ executionContext.getRunConfiguration().getExecutionEntryPoint() + ".");
 						}
-						
-						_executionEngine = new org.gemoc.gemoc_language_workbench.extensions.k3.PlainK3ExecutionEngine(executionContext, o, method, parameters);
-						if (ILaunchManager.DEBUG_MODE.equals(mode))
-						{
+
+						_executionEngine = new org.gemoc.gemoc_language_workbench.extensions.k3.PlainK3ExecutionEngine(
+								executionContext, o, method, parameters);
+
+						// If we are debugging, we add the animator and we start
+						// the execution using the super class
+						// AbstractDSLLaunchConfigurationDelegateUI
+						// This will start yet another job and eventually start
+						// the engine
+						if (ILaunchManager.DEBUG_MODE.equals(mode)) {
 							IEngineAddon animator = AbstractGemocAnimatorServices.getAnimator();
 							_executionEngine.getExecutionContext().getExecutionPlatform().addEngineAddon(animator);
 							try {
 								Launcher.super.launch(configuration, mode, launch, monitor);
+								return new Status(IStatus.OK, getPluginID(), "Execution was launched successfully");
 							} catch (CoreException e) {
 								e.printStackTrace();
-								return new Status(IStatus.ERROR, getPluginID(),
-										"Could not  start debugger.");
+								return new Status(IStatus.ERROR, getPluginID(), "Could not start debugger.");
 							}
 						}
 
-						
-					
-						
-						_executionEngine.start();
-						return new Status(IStatus.OK, getPluginID(), "Execution was launched successfully");
+						// If we are not debugging, we simply start the engine
+						// from the current job
+						else {
+							_executionEngine.start();
+							return new Status(IStatus.OK, getPluginID(), "Execution was launched successfully");
+						}
+
 					}
 
 				};
 				job.schedule();
 			}
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			String message = "Error occured when starting execution engine: " + e.getMessage()
 					+ " (see inner exception).";
 			// error(message);
@@ -245,182 +232,170 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 		}
 	}
 
-	private boolean isEngineAlreadyRunning(URI launchedModelURI) throws CoreException
-	{
+	private boolean isEngineAlreadyRunning(URI launchedModelURI) throws CoreException {
 		// make sure there is no other running engine on this model
 		Collection<IExecutionEngine> engines = org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry
 				.getRunningEngines().values();
-		for (IExecutionEngine engine : engines)
-		{
+		for (IExecutionEngine engine : engines) {
 			AbstractExecutionEngine observable = (AbstractExecutionEngine) engine;
 			if (observable.getRunningStatus() != RunStatus.Stopped
-					&& observable
-							.getExecutionContext()
-							.getResourceModel()
-							.getURI()
-							.equals(launchedModelURI))
-			{
+					&& observable.getExecutionContext().getResourceModel().getURI().equals(launchedModelURI)) {
 				String message = "An engine is already running on this model, please stop it first";
-				warn(message);				
+				warn(message);
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	private void debug(String message)
-	{
+
+	private void debug(String message) {
 		getMessagingSystem().debug(message, getPluginID());
 	}
 
-	private void info(String message)
-	{
+	private void info(String message) {
 		getMessagingSystem().info(message, getPluginID());
 	}
 
-	private void warn(final String message)
-	{
+	private void warn(final String message) {
 		getMessagingSystem().warn(message, getPluginID());
 		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-		    public void run() {
-		    	MessageDialog.openWarning(
-						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-						"GEMOC Engine Launcher",
-						message);
-		    }
+			public void run() {
+				MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+						"GEMOC Engine Launcher", message);
+			}
 		});
 	}
 
-	private void error(final String message)
-	{
+	private void error(final String message) {
 		getMessagingSystem().error(message, getPluginID());
 		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-		    public void run() {
-		    	MessageDialog.openError(
-						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-						"GEMOC Engine Launcher",
-						message);
-		    }
+			public void run() {
+				MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+						"GEMOC Engine Launcher", message);
+			}
 		});
 	}
 
-	private MessagingSystem getMessagingSystem()
-	{
+	private MessagingSystem getMessagingSystem() {
 		return Activator.getDefault().getMessaggingSystem();
 	}
 
 	@Override
-	protected String getLaunchConfigurationTypeID()
-	{
+	protected String getLaunchConfigurationTypeID() {
 		return TYPE_ID;
 	}
 
 	@Override
-	protected EObject getFirstInstruction(ISelection selection)
-	{
+	protected EObject getFirstInstruction(ISelection selection) {
 		return EcorePackage.eINSTANCE;
 	}
 
 	@Override
-	protected EObject getFirstInstruction(IEditorPart editor)
-	{
+	protected EObject getFirstInstruction(IEditorPart editor) {
 		return EcorePackage.eINSTANCE;
 	}
 
 	@Override
-	protected EObject getFirstInstruction(ILaunchConfiguration configuration)
-	{
+	protected EObject getFirstInstruction(ILaunchConfiguration configuration) {
 		return EcorePackage.eINSTANCE;
 	}
 
 	@Override
 	protected IDSLDebugger getDebugger(ILaunchConfiguration configuration, DSLDebugEventDispatcher dispatcher,
-			EObject firstInstruction, IProgressMonitor monitor)
-	{
+			EObject firstInstruction, IProgressMonitor monitor) {
 		GemocModelDebugger res = new GemocModelDebugger(dispatcher, _executionEngine);
+		
+		// If in the launch configuration it is asked to pause at the start, we add this dummy break
+		try {
+			if (configuration.getAttribute(RunConfiguration.LAUNCH_BREAK_START, false)) {
+				res.addPredicateBreak(new BiPredicate<IExecutionEngine, LogicalStep>()  {
+					@Override
+					public boolean test(IExecutionEngine t, LogicalStep u) {
+						return true;
+					}
+				});
+			}
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
+		
+		
 		_executionEngine.getExecutionContext().getExecutionPlatform().addEngineAddon(res);
 		return res;
 	}
 
 	@Override
-	protected String getDebugTargetName(ILaunchConfiguration configuration, EObject firstInstruction)
-	{
+	protected String getDebugTargetName(ILaunchConfiguration configuration, EObject firstInstruction) {
 		return "Gemoc debug target";
 	}
 
 	@Override
-	protected List<IDSLCurrentInstructionListener> getCurrentInstructionListeners()
-	{
+	protected List<IDSLCurrentInstructionListener> getCurrentInstructionListeners() {
 		List<IDSLCurrentInstructionListener> result = super.getCurrentInstructionListeners();
 		result.add(AbstractGemocDebuggerServices.LISTENER);
 		return result;
 	}
 
 	@Override
-	protected String getDebugJobName(ILaunchConfiguration configuration, EObject firstInstruction)
-	{
+	protected String getDebugJobName(ILaunchConfiguration configuration, EObject firstInstruction) {
 		return "Gemoc debug job";
 	}
 
 	@Override
-	protected String getPluginID()
-	{
+	protected String getPluginID() {
 		return Activator.PLUGIN_ID;
 	}
 
 	@Override
-	protected String getModelIdentifier()
-	{
+	protected String getModelIdentifier() {
 		return MODEL_ID;
 	}
 
-	class DefaultSearchRequestor extends SearchRequestor
-	{
+	class DefaultSearchRequestor extends SearchRequestor {
 
 		public IType _binaryType;
 
 		@Override
-		public void acceptSearchMatch(SearchMatch match) throws CoreException
-		{
+		public void acceptSearchMatch(SearchMatch match) throws CoreException {
 			_binaryType = (IType) match.getElement();
 			System.out.println(match.getElement());
 		}
 
 	}
 
-	
 	@Override
-	protected ILaunchConfiguration[] createLaunchConfiguration(IResource file,
-			EObject firstInstruction, String mode) throws CoreException {
+	protected ILaunchConfiguration[] createLaunchConfiguration(IResource file, EObject firstInstruction, String mode)
+			throws CoreException {
 		ILaunchConfiguration[] launchConfigs = super.createLaunchConfiguration(file, firstInstruction, mode);
-		
-		if(launchConfigs.length == 1){
+
+		if (launchConfigs.length == 1) {
 			// open configuration for further editing
-			if(launchConfigs[0] instanceof ILaunchConfigurationWorkingCopy){
-				ILaunchConfigurationWorkingCopy configuration = (ILaunchConfigurationWorkingCopy)launchConfigs[0];
-				
+			if (launchConfigs[0] instanceof ILaunchConfigurationWorkingCopy) {
+				ILaunchConfigurationWorkingCopy configuration = (ILaunchConfigurationWorkingCopy) launchConfigs[0];
+
 				String selectedLanguage = configuration.getAttribute(RunConfiguration.LAUNCH_SELECTED_LANGUAGE, "");
-				if(selectedLanguage.equals("")){
-				
-					// TODO try to infer possible language and other attribute from project content and environment
-					configuration.setAttribute(
-							RunConfiguration.LAUNCH_SELECTED_DECIDER,
+				if (selectedLanguage.equals("")) {
+
+					// TODO try to infer possible language and other attribute
+					// from project content and environment
+					configuration.setAttribute(RunConfiguration.LAUNCH_SELECTED_DECIDER,
 							RunConfiguration.DECIDER_ASKUSER_STEP_BY_STEP);
 					final ILaunchGroup group = DebugUITools.getLaunchGroup(configuration, mode);
 					if (group != null) {
 						ILaunchConfiguration savedLaunchConfig = configuration.doSave();
 						// open configuration for user validation and inputs
 						DebugUITools.openLaunchConfigurationDialogOnGroup(PlatformUI.getWorkbench()
-								.getActiveWorkbenchWindow().getShell(),
-								new StructuredSelection(savedLaunchConfig), group.getIdentifier(), null);
-						//DebugUITools.openLaunchConfigurationDialog(PlatformUI.getWorkbench()
-						//		.getActiveWorkbenchWindow().getShell(), savedLaunchConfig, group.getIdentifier(), null);
+								.getActiveWorkbenchWindow().getShell(), new StructuredSelection(savedLaunchConfig),
+								group.getIdentifier(), null);
+						// DebugUITools.openLaunchConfigurationDialog(PlatformUI.getWorkbench()
+						// .getActiveWorkbenchWindow().getShell(),
+						// savedLaunchConfig, group.getIdentifier(), null);
 					}
 				}
 			}
 		}
 		return launchConfigs;
-		
+
 	}
-	
+
 }

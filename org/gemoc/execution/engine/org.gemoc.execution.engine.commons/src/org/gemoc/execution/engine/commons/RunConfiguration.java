@@ -14,9 +14,8 @@ import org.gemoc.gemoc_language_workbench.api.extensions.engine_addon.EngineAddo
 
 import fr.obeo.dsl.debug.ide.launch.AbstractDSLLaunchConfigurationDelegate;
 
-public class RunConfiguration implements IRunConfiguration
-{
-	
+public class RunConfiguration implements IRunConfiguration {
+
 	// main launch parameters
 	public static final String LAUNCH_MODEL_PATH = "GEMOC_LAUNCH_MODEL_PATH";
 	public static final String LAUNCH_DELAY = "GEMOC_ANIMATE_DELAY";
@@ -24,136 +23,131 @@ public class RunConfiguration implements IRunConfiguration
 	public static final String LAUNCH_MELANGE_QUERY = "GEMOC_LAUNCH_MELANGE_QUERY";
 	public static final String LAUNCH_SELECTED_DECIDER = "GEMOC_LAUNCH_SELECTED_DECIDER";
 	public static final String LAUNCH_ENTRY_POINT = "GEMOC_LAUNCH_ENTRY_POINT";
-	
+	public static final String LAUNCH_BREAK_START = "GEMOC_LAUNCH_BREAK_START";
+
 	// parameters that should be derived from the language in future version
 	public static final String LAUNCH_DEADLOCK_DETECTION_DEPTH = "GEMOC_LAUNCH_DEADLOCK_DETECTION_DEPTH";
 	public static final String DECIDER_SOLVER = "Solver decider";
 	public static final String DECIDER_ASKUSER_STEP_BY_STEP = "Step by step user decider";
-	
-	
+
 	private ILaunchConfiguration _launchConfiguration;
-	
-	public RunConfiguration(ILaunchConfiguration launchConfiguration) throws CoreException
-	{
+
+	public RunConfiguration(ILaunchConfiguration launchConfiguration) throws CoreException {
 		_launchConfiguration = launchConfiguration;
 		extractInformation();
 	}
 
-
-	private void extractInformation() throws CoreException 
-	{
+	private void extractInformation() throws CoreException {
 		_languageName = getAttribute(LAUNCH_SELECTED_LANGUAGE, "");
 		_modelURI = URI.createPlatformResourceURI(
-				getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, ""),
-				true);
+				getAttribute(AbstractDSLLaunchConfigurationDelegate.RESOURCE_URI, ""), true);
 		_melangeQuery = getAttribute(LAUNCH_MELANGE_QUERY, "");
 		String animatorURIAsString = getAttribute("airdResource", "");
-		if (animatorURIAsString != null
-			&& !animatorURIAsString.equals(""))
-		{
-			_animatorURI = URI.createPlatformResourceURI(
-					animatorURIAsString,
-					true);
+		if (animatorURIAsString != null && !animatorURIAsString.equals("")) {
+			_animatorURI = URI.createPlatformResourceURI(animatorURIAsString, true);
 			_animationDelay = getAttribute(LAUNCH_DELAY, 0);
 		}
 		_deciderName = getAttribute(LAUNCH_SELECTED_DECIDER, "");
 		_deadlockDetectionDepth = getAttribute(LAUNCH_DEADLOCK_DETECTION_DEPTH, 10);
 		_entryPoint = getAttribute(LAUNCH_ENTRY_POINT, "");
-		
-		for (EngineAddonSpecificationExtension extension : EngineAddonSpecificationExtensionPoint.getSpecifications())
-		{
-			_engineAddonExtensions.put(extension, getAttribute(extension.getName(), false));			
+
+		for (EngineAddonSpecificationExtension extension : EngineAddonSpecificationExtensionPoint.getSpecifications()) {
+			_engineAddonExtensions.put(extension, getAttribute(extension.getName(), false));
 		}
+
+		_breakStart = getAttribute(LAUNCH_BREAK_START, Boolean.FALSE);
 	}
 
-	private String getAttribute(String attributeName, String defaultValue) throws CoreException
-	{
+	private String getAttribute(String attributeName, String defaultValue) throws CoreException {
 		return _launchConfiguration.getAttribute(attributeName, defaultValue);
 	}
 
-	private Integer getAttribute(String attributeName, Integer defaultValue) throws CoreException
-	{
+	private Integer getAttribute(String attributeName, Integer defaultValue) throws CoreException {
 		return _launchConfiguration.getAttribute(attributeName, defaultValue);
 	}
 
-	private Boolean getAttribute(String attributeName, Boolean defaultValue) throws CoreException
-	{
+	private Boolean getAttribute(String attributeName, Boolean defaultValue) throws CoreException {
 		return _launchConfiguration.getAttribute(attributeName, defaultValue);
 	}
 
 	private String _languageName;
-	public String getLanguageName() 
-	{
+
+	public String getLanguageName() {
 		return _languageName;
 	}
-	
+
 	private int _animationDelay = 0;
-	public int getAnimationDelay() 
-	{
+
+	public int getAnimationDelay() {
 		return _animationDelay;
 	}
 
-	private String _deciderName;	
+	private String _deciderName;
+
 	@Override
-	public String getDeciderName()
-	{
+	public String getDeciderName() {
 		return _deciderName;
 	}
 
 	private URI _modelURI;
+
 	@Override
-	public URI getExecutedModelURI() 
-	{
+	public URI getExecutedModelURI() {
 		return _modelURI;
 	}
-	
+
 	private String _melangeQuery;
+
 	@Override
-	public String getMelangeQuery(){
+	public String getMelangeQuery() {
 		return _melangeQuery;
 	}
+
 	@Override
-	public URI getExecutedModelAsMelangeURI() 
-	{
-		if(_melangeQuery.isEmpty()) return _modelURI;
+	public URI getExecutedModelAsMelangeURI() {
+		if (_melangeQuery.isEmpty())
+			return _modelURI;
 		String melangeURIString = _modelURI.toString().replace("platform:/", "melange:/") + _melangeQuery;
 		return URI.createURI(melangeURIString);
 	}
 
 	private URI _animatorURI;
+
 	@Override
-	public URI getAnimatorURI() 
-	{
+	public URI getAnimatorURI() {
 		return _animatorURI;
 	}
-	
+
 	private int _deadlockDetectionDepth = 0;
+
 	@Override
-	public int getDeadlockDetectionDepth() 
-	{
+	public int getDeadlockDetectionDepth() {
 		return _deadlockDetectionDepth;
 	}
 
 	private HashMap<EngineAddonSpecificationExtension, Boolean> _engineAddonExtensions = new HashMap<>();
 
 	@Override
-	public Collection<EngineAddonSpecificationExtension> getEngineAddonExtensions() 
-	{
+	public Collection<EngineAddonSpecificationExtension> getEngineAddonExtensions() {
 		ArrayList<EngineAddonSpecificationExtension> result = new ArrayList<EngineAddonSpecificationExtension>();
-		for (Entry<EngineAddonSpecificationExtension, Boolean> e : _engineAddonExtensions.entrySet())
-		{
+		for (Entry<EngineAddonSpecificationExtension, Boolean> e : _engineAddonExtensions.entrySet()) {
 			if (e.getValue())
 				result.add(e.getKey());
 		}
-		return result;	
+		return result;
 	}
 
-
 	private String _entryPoint;
+
 	@Override
-	public String getExecutionEntryPoint() 
-	{
+	public String getExecutionEntryPoint() {
 		return _entryPoint;
+	}
+
+	private boolean _breakStart;
+
+	public boolean getBreakStart() {
+		return _breakStart;
 	}
 
 }
