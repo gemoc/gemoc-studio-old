@@ -47,7 +47,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.core.ExecutionEngine;
+import org.gemoc.execution.engine.core.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;
@@ -150,8 +150,8 @@ public class StimuliManagerView extends ViewPart implements IMotorSelectionListe
 	private Color representedEventColor;
 	private TableViewer _viewer;
 	private ViewContentProvider _contentProvider;
-	private ExecutionEngine _currentSelectedEngine;
-	private Map<ExecutionEngine, ModelSpecificEventContext> _mseContextMap = new HashMap<ExecutionEngine, ModelSpecificEventContext>();
+	private NonDeterministicExecutionEngine _currentSelectedEngine;
+	private Map<NonDeterministicExecutionEngine, ModelSpecificEventContext> _mseContextMap = new HashMap<NonDeterministicExecutionEngine, ModelSpecificEventContext>();
 	private Filter _strategyFilterSelected;
 	private ISelectionChangedListener _decisionViewListener;
 	private SelectionListener _menuAndButtonListener;
@@ -653,9 +653,9 @@ public class StimuliManagerView extends ViewPart implements IMotorSelectionListe
 	@Override
 	public void motorSelectionChanged(IExecutionEngine engine) {
 		if (engine != null
-			&& engine instanceof ExecutionEngine) 
+			&& engine instanceof NonDeterministicExecutionEngine) 
 		{
-			_currentSelectedEngine = (ExecutionEngine) engine;
+			_currentSelectedEngine = (NonDeterministicExecutionEngine) engine;
 			// if the selected engine is stopped we clean its cache and disable all commands
 			if (isEngineStopped())
 			{

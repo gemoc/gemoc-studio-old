@@ -44,7 +44,6 @@ import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecifi
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
-import org.gemoc.gemoc_language_workbench.extensions.k3.K3Solver;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAIRDIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 
@@ -339,11 +338,6 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		Button javaMethodBrowseButton = createPushButton(parent, "Browse", null);
 		javaMethodBrowseButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				// List<IResource> resources=
-				// JarPackagerUtil.asResources(fJarPackage.getElements());
-				List<IResource> resources = new ArrayList<>();
-				IPath path = new Path(_modelLocationText.getText());
-				resources.add(ResourcesPlugin.getWorkspace().getRoot().getFile(path).getProject());
 				IJavaSearchScope searchScope = SearchEngine.createWorkspaceScope();
 				IRunnableContext c = new BusyIndicatorRunnableContext();
 				SelectionDialog dialog;
@@ -372,7 +366,7 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		if (extension != null) {
 			try {
 				ISolver solver = extension.instanciateSolver();
-				if (solver instanceof K3Solver) {
+				if (solver != null ) {
 					_k3Area.setVisible(true);
 				} else {
 					_k3Area.setVisible(false);

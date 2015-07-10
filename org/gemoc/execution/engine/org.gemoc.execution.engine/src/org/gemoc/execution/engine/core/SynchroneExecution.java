@@ -8,14 +8,14 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 public class SynchroneExecution extends OperationExecution 
 {
 
-	protected SynchroneExecution(MSEOccurrence mseOccurrence, IExecutionEngine engine) 
+	protected SynchroneExecution(MSEOccurrence mseOccurrence, INonDeterministicExecutionEngine engine) 
 	{
 		super(mseOccurrence, engine);
 	}

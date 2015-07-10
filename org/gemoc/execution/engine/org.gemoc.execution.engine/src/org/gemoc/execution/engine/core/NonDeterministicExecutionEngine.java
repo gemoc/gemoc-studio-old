@@ -1,17 +1,22 @@
 package org.gemoc.execution.engine.core;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.dse.DefaultMSEStateController;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
+import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
+import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
@@ -61,9 +66,9 @@ import fr.inria.aoste.timesquare.ecl.feedback.feedback.When;
  * @param <T>
  * 
  */
-public class ExecutionEngine extends AbstractExecutionEngine implements IDisposable {
+public class NonDeterministicExecutionEngine extends AbstractExecutionEngine implements IDisposable,INonDeterministicExecutionEngine {
 
-	private IMSEStateController _mseStateController;
+	private IMSEStateController _mseStateController; 
 	
 	/**
 	 * The constructor takes in all the language-specific elements. Creates the
@@ -81,13 +86,189 @@ public class ExecutionEngine extends AbstractExecutionEngine implements IDisposa
 	 * @param isTraceActive 
 	 * @param _executionContext
 	 */
-	public ExecutionEngine(IExecutionContext executionContext) 
+	public NonDeterministicExecutionEngine(IExecutionContext executionContext) 
 	{
 		super(executionContext);
 		_mseStateController = new DefaultMSEStateController();
 		_executionContext.getExecutionPlatform().getMSEStateControllers().add(_mseStateController);
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
+	
+	private void switchDeciderIfNecessary()
+	{
+		if (getLogicalStepDecider() != null
+			&& getLogicalStepDecider() != _logicalStepDecider)
+		{
+			_logicalStepDecider = getLogicalStepDecider();
+		}
+	}
+	
+
+	private ILogicalStepDecider _logicalStepDecider;
+
+	
+	@Override
+	public ILogicalStepDecider getLogicalStepDecider()
+	{
+		return _logicalStepDecider;
+	}
+
+	@Override
+	public void changeLogicalStepDecider(ILogicalStepDecider newDecider)
+	{
+		_logicalStepDecider = newDecider;
+	}
+	
+	
+	private void computePossibleLogicalSteps() 
+	{
+		_possibleLogicalSteps = getSolver().computeAndGetPossibleLogicalSteps();
+	}
+	
+
+	private void updatePossibleLogicalSteps()
+	{
+		for(IMSEStateController c : getExecutionContext().getExecutionPlatform().getMSEStateControllers())
+		{
+			c.applyMSEFutureStates(getSolver());
+		}
+		synchronized(this)
+		{
+			_possibleLogicalSteps = getSolver().updatePossibleLogicalSteps();
+		}
+	}
+	
+	@Override
+	public void recomputePossibleLogicalSteps()
+	{
+		getSolver().revertForceClockEffect();
+		updatePossibleLogicalSteps();	
+		notifyProposedLogicalStepsChanged();
+	}
+	
+
+	protected List<LogicalStep> _possibleLogicalSteps = new ArrayList<>();
+	
+	
+	@Override
+	public List<LogicalStep> getPossibleLogicalSteps() 
+	{
+		synchronized (this)
+		{
+			return new ArrayList<LogicalStep>(_possibleLogicalSteps);
+		}
+	}
+	
+	@Override
+	public void stop() 
+	{
+		if (!_isStopped)
+		{
+			notifyAboutToStop(); // notification occurs only if not already stopped
+			_isStopped = true;
+			setSelectedLogicalStep(null);
+			if (getLogicalStepDecider() != null)
+			{
+				// unlock decider if this is a user decider
+				getLogicalStepDecider().preempt();
+			}
+		}
+	}
+	
+	protected void notifyLogicalStepSelected() {
+		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
+		{
+			try {
+				addon.logicalStepSelected(this, getSelectedLogicalStep());
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
+		}
+	}
+	
+	protected void notifyAboutToSelectLogicalStep() {
+		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
+		{
+			try {
+				addon.aboutToSelectLogicalStep(this, getPossibleLogicalSteps());
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
+		}
+	}
+
+
+	
+	protected LogicalStep _selectedLogicalStep;
+
+	@Override
+	public LogicalStep getSelectedLogicalStep() 
+	{
+		synchronized (this) {
+			return _selectedLogicalStep;
+		}
+	}
+	
+	protected void setSelectedLogicalStep(LogicalStep ls)
+	{
+		synchronized (this) {
+			_selectedLogicalStep = ls;
+		}
+	}
+	
+
+	private ISolver _solver;
+
+	@Override
+	public ISolver getSolver() 
+	{
+		return _solver;
+	}
+
+	
+	protected void notifyProposedLogicalStepsChanged(){
+		for (IEngineAddon addon : getExecutionContext().getExecutionPlatform().getEngineAddons()) 
+		{
+			try {
+				addon.proposedLogicalStepsChanged(this, getPossibleLogicalSteps());
+			} catch (Exception e) {
+				Activator.getDefault().error("Exception in Addon "+addon+", "+e.getMessage(), e);
+			}
+		}
+	}
+	
+	@Override
+	public String toString() {
+		return this.getClass().getName() + "@[Executor=" + getCodeExecutor() + " ; Solver=" + getSolver() + " ; ModelResource=" + _executionContext.getResourceModel()+ "]";
+	}
+	
+	protected void performExecutionStep() throws InterruptedException {
+		switchDeciderIfNecessary();
+						
+		computePossibleLogicalSteps();
+		updatePossibleLogicalSteps();
+		// 2- select one solution from available logical step /
+		// select interactive vs batch
+		if (_possibleLogicalSteps.size() == 0) {
+			Activator.getDefault().debug("No more LogicalStep to run");
+			stop();
+		} else {
+			//Activator.getDefault().debug("\t\t ---------------- LogicalStep " + count);
+			LogicalStep selectedLogicalStep = selectAndExecuteLogicalStep();						
+			// 3 - run the selected logical step
+			// inform the solver that we will run this step
+			if (selectedLogicalStep != null)
+			{
+				getSolver().applyLogicalStep(selectedLogicalStep);
+				engineStatus.incrementNbLogicalStepRun();
+			} else {
+				// no logical step was selected, this is most probably due to a preempt on the LogicalStepDecider  and a change of Decider, 
+				//notify Addons that we'll rerun this ExecutionStep
+				//recomputePossibleLogicalSteps();
+			}
+		}
+	}
+	
 	
 	class EngineRunnable implements Runnable {
 		
@@ -106,13 +287,32 @@ public class ExecutionEngine extends AbstractExecutionEngine implements IDisposa
 
 	}
 	
+	private LogicalStep selectAndExecuteLogicalStep() throws InterruptedException 
+	{
+		LogicalStep selectedLogicalStep;
+		setEngineStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
+		notifyAboutToSelectLogicalStep();
+		selectedLogicalStep = getLogicalStepDecider().decide(this, getPossibleLogicalSteps());
+		if (selectedLogicalStep != null)
+		{
+			setSelectedLogicalStep(selectedLogicalStep);
+			setEngineStatus(EngineStatus.RunStatus.Running);
+			notifyLogicalStepSelected();
+			// run all the event occurrences of this logical
+			// step
+			notifyAboutToExecuteLogicalStep(selectedLogicalStep);
+			executeSelectedLogicalStep();
+			notifyLogicalStepExecuted(selectedLogicalStep);
+		}
+		return selectedLogicalStep;
+	}
+	
 	
 	/**
 	 * run all the event occurrences of this logical step
 	 * 
 	 * @param logicalStepToApply
 	 */
-	@Override
 	protected void executeSelectedLogicalStep() {
 		// = step in debug mode, goes to next logical step
 		// -> run all event occurrences of the logical step
@@ -188,6 +388,18 @@ public class ExecutionEngine extends AbstractExecutionEngine implements IDisposa
 	protected Runnable getRunnable() 
 	{
 		return new EngineRunnable();
+	}
+
+	@Override
+	public void setSolver(ISolver solver) {
+		_solver = solver;
+		
+	}
+	
+	@Override
+	public void dispose() {
+		super.dispose();
+		_solver.dispose();
 	}
 	
 }

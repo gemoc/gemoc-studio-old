@@ -3,8 +3,8 @@ package org.gemoc.execution.engine.commons.deciders;
 import java.util.List;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 
 /**
  * Decider that will delegate its choice to the solver
@@ -13,8 +13,8 @@ import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 public class CcslSolverDecider implements ILogicalStepDecider {
 
 	@Override
-	public LogicalStep decide(IExecutionEngine engine, List<LogicalStep> possibleLogicalSteps) {
-		return engine.getExecutionContext().getExecutionPlatform().getSolver().proposeLogicalStep();
+	public LogicalStep decide(INonDeterministicExecutionEngine engine, List<LogicalStep> possibleLogicalSteps) {
+		return engine.getSolver().proposeLogicalStep();
 	}
 
 	@Override
@@ -24,6 +24,6 @@ public class CcslSolverDecider implements ILogicalStepDecider {
 
 	@Override
 	public void preempt() {
-		// not possible
+		// no
 	}
 }

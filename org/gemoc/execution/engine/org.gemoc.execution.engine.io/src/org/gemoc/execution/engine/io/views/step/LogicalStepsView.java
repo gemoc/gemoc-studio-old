@@ -41,6 +41,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
@@ -118,7 +119,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 				if (element instanceof LogicalStep)
 				{
 					LogicalStep ls = (LogicalStep) element;
-					if (ls == _currentEngine.getSelectedLogicalStep())
+					if (_currentEngine != null && ls == _currentEngine.getSelectedLogicalStep())
 					{
 						return SharedIcons.getSharedImage(SharedIcons.LOGICALSTEP_RUNNING_ICON);
 					} else
@@ -230,14 +231,14 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 		_viewer.getControl().setFocus();
 	}
 
-	private IExecutionEngine _currentEngine;
+	private INonDeterministicExecutionEngine _currentEngine;
 
 	@Override
 	public void motorSelectionChanged(IExecutionEngine engine)
 	{
-		if (engine != null && engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation))
+		if (engine != null && engine instanceof INonDeterministicExecutionEngine && engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation))
 		{
-			_currentEngine = engine;
+			_currentEngine = (INonDeterministicExecutionEngine)engine;
 			_viewer.setInput(_currentEngine);
 			if (_currentEngine != null && !_currentEngine.getRunningStatus().equals(RunStatus.Stopped))
 			{

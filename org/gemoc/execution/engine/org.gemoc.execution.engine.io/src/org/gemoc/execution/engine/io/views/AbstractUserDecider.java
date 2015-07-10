@@ -12,8 +12,8 @@ import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 
 public abstract class AbstractUserDecider implements ILogicalStepDecider 
 {
@@ -28,7 +28,7 @@ public abstract class AbstractUserDecider implements ILogicalStepDecider
 	private Semaphore _semaphore = null;
 
 	@Override
-	public LogicalStep decide(final IExecutionEngine engine, final List<LogicalStep> possibleLogicalSteps)
+	public LogicalStep decide(final INonDeterministicExecutionEngine engine, final List<LogicalStep> possibleLogicalSteps)
 			throws InterruptedException {
 		_preemptionHappened = false;
 		_semaphore = new Semaphore(0);

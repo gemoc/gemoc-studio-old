@@ -31,6 +31,7 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
 import fr.obeo.timeline.editpart.TimelineEditPartFactory;
@@ -234,10 +235,13 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	}
 
 	private void performExecutionStep(LogicalStep logicalStep) {
-		if (_currentEngine.getExecutionContext().getLogicalStepDecider() instanceof AbstractUserDecider) {
-			AbstractUserDecider decider = (AbstractUserDecider) _currentEngine.getExecutionContext()
+		if (_currentEngine instanceof INonDeterministicExecutionEngine) {
+			INonDeterministicExecutionEngine engine_cast = (INonDeterministicExecutionEngine) _currentEngine;
+		if (engine_cast.getLogicalStepDecider() instanceof AbstractUserDecider) {
+			AbstractUserDecider decider = (AbstractUserDecider) engine_cast
 					.getLogicalStepDecider();
 			decider.decideFromTimeLine(logicalStep);
+		}
 		}
 		return;
 	}

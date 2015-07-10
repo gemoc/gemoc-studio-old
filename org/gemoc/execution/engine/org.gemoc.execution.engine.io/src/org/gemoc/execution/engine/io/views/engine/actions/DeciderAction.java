@@ -4,8 +4,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.gemoc.execution.engine.io.Activator;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
 
 public class DeciderAction extends Action 
@@ -29,15 +29,15 @@ public class DeciderAction extends Action
 		ILogicalStepDecider newDecider;
 		try {
 			newDecider = _specification.instanciateDecider();
-			_engine.getExecutionContext().changeLogicalStepDecider(newDecider);
+			_engine.changeLogicalStepDecider(newDecider);
 		} catch (CoreException e) {
 			Activator.getDefault().error(e.getMessage(), e);
 			e.printStackTrace();
 		}
 	}
 
-	protected IExecutionEngine _engine;
-	public void setEngine(IExecutionEngine engine) {
+	protected INonDeterministicExecutionEngine _engine;
+	public void setEngine(INonDeterministicExecutionEngine engine) {
 		_engine = engine;
 	}
 	

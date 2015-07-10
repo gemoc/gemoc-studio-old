@@ -2,16 +2,16 @@ package org.gemoc.execution.engine.core;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 
 public abstract class OperationExecution 
 {
 
 	private MSEOccurrence _mseOccurrence;
-	private IExecutionEngine _engine;
+	private INonDeterministicExecutionEngine _engine;
 	private Object _result;
 	
-	protected OperationExecution(MSEOccurrence mseOccurrence, IExecutionEngine engine)
+	protected OperationExecution(MSEOccurrence mseOccurrence, INonDeterministicExecutionEngine engine)
 	{
 		_mseOccurrence = mseOccurrence;
 		_engine = engine;
@@ -24,7 +24,7 @@ public abstract class OperationExecution
 		return _engine.getExecutionContext();
 	}
 	
-	protected IExecutionEngine getEngine()
+	protected INonDeterministicExecutionEngine getEngine()
 	{
 		return _engine;
 	}

@@ -414,7 +414,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 		} else {
 			// case of PlainK3
 			if(solverClassName == null || solverClassName.isEmpty()){
-				computedSolverClassName = "org.gemoc.gemoc_language_workbench.extensions.k3.K3Solver";
+				computedSolverClassName = "";
 			}
 			else{
 				computedSolverClassName = solverClassName;

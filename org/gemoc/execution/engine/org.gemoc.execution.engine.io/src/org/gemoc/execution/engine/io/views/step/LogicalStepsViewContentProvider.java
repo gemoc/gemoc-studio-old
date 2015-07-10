@@ -4,7 +4,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 
 public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 
@@ -20,9 +20,9 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		if (inputElement instanceof IExecutionEngine)
+		if (inputElement instanceof INonDeterministicExecutionEngine)
 		{
-			IExecutionEngine engine = (IExecutionEngine)inputElement;
+			INonDeterministicExecutionEngine engine = (INonDeterministicExecutionEngine)inputElement;
 			if (engine.getRunningStatus().equals(RunStatus.Stopped))
 			{
 				String message = "Engine is not running";
@@ -52,9 +52,9 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		if (parentElement instanceof IExecutionEngine)
+		if (parentElement instanceof INonDeterministicExecutionEngine)
 		{
-			IExecutionEngine engine = (IExecutionEngine)parentElement;
+			INonDeterministicExecutionEngine engine = (INonDeterministicExecutionEngine)parentElement;
 			return engine.getPossibleLogicalSteps().toArray();
 		}
 		else if (parentElement instanceof LogicalStep)
@@ -74,9 +74,9 @@ public class LogicalStepsViewContentProvider implements ITreeContentProvider {
 	@Override
 	public boolean hasChildren(Object element) 
 	{
-		if (element instanceof IExecutionEngine)
+		if (element instanceof INonDeterministicExecutionEngine)
 		{
-			IExecutionEngine engine = (IExecutionEngine)element;
+			INonDeterministicExecutionEngine engine = (INonDeterministicExecutionEngine)element;
 			return engine.getPossibleLogicalSteps().size() > 0;
 		}
 		else if (element instanceof LogicalStep)

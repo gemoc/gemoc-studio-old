@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionFinishedCondition;
@@ -24,7 +24,7 @@ public class ASynchroneExecution extends OperationExecution
 	private IMSEStateController _clockController;
 	private HashMap<Force, When> _forces;
 	
-	public ASynchroneExecution(MSEOccurrence mseOccurrence, Collection<When> whenStatements, IMSEStateController clockController, IExecutionEngine engine) 
+	public ASynchroneExecution(MSEOccurrence mseOccurrence, Collection<When> whenStatements, IMSEStateController clockController, INonDeterministicExecutionEngine engine) 
 	{
 		super(mseOccurrence, engine);
 		_whenStatements = whenStatements;

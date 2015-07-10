@@ -5,6 +5,7 @@ import org.gemoc.execution.engine.io.views.AbstractUserDecider;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 
 public class PauseResumeEngineDeciderAction extends AbstractEngineAction
 {
@@ -42,13 +43,16 @@ public class PauseResumeEngineDeciderAction extends AbstractEngineAction
 				setEnabled(	true);
 				
 				// find the decider opposed to the one currently used by the engine
-				_currentAction = DeciderManager.getSwitchDeciderAction(getCurrentSelectedEngine().getExecutionContext().getLogicalStepDecider());
+				if (getCurrentSelectedEngine() instanceof INonDeterministicExecutionEngine) {
+					INonDeterministicExecutionEngine engine_cast = (INonDeterministicExecutionEngine) getCurrentSelectedEngine();
+				_currentAction = DeciderManager.getSwitchDeciderAction(engine_cast.getLogicalStepDecider());
 				if(_currentAction.equals(_stepByStepDeciderAction)){
 					setToolTipText("Suspend selected engine using "+ _currentAction.getText());
 					setImageDescriptor(SharedIcons.SUSPEND_ENGINE_DECIDER_ICON);
 				} else {
 					setToolTipText("Resume selected engine using "+ _currentAction.getText());
 					setImageDescriptor(SharedIcons.RESUME_ENGINE_DECIDER_ICON);
+				}
 				}
 			}
 			
@@ -60,10 +64,10 @@ public class PauseResumeEngineDeciderAction extends AbstractEngineAction
 	public void run()
 	{
 		if (getCurrentSelectedEngine() != null
-			&& _currentAction != null)
+			&& _currentAction != null && getCurrentSelectedEngine() instanceof INonDeterministicExecutionEngine)
 		{
-			
-			ILogicalStepDecider savedDecider = getCurrentSelectedEngine().getExecutionContext().getLogicalStepDecider();
+			INonDeterministicExecutionEngine engine_cast = (INonDeterministicExecutionEngine) getCurrentSelectedEngine();
+			ILogicalStepDecider savedDecider = engine_cast.getLogicalStepDecider();
 			// apply the decider change
 			_currentAction.run();			
 			// now switch UI to the alternative Action by  refreshing UI
@@ -73,7 +77,8 @@ public class PauseResumeEngineDeciderAction extends AbstractEngineAction
 				// get the equivalent decision from the new Decider
 				org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep selectedlogicalStep;
 				try {
-					selectedlogicalStep = getCurrentSelectedEngine().getExecutionContext().getLogicalStepDecider().decide(getCurrentSelectedEngine(), getCurrentSelectedEngine().getPossibleLogicalSteps());
+
+					selectedlogicalStep = engine_cast.getLogicalStepDecider().decide(engine_cast, engine_cast.getPossibleLogicalSteps());
 					((AbstractUserDecider) savedDecider).decideFromTimeLine(selectedlogicalStep);
 				} catch (InterruptedException e) {
 				}
@@ -85,7 +90,8 @@ public class PauseResumeEngineDeciderAction extends AbstractEngineAction
 	public void motorSelectionChanged(IExecutionEngine engine) {
 		super.motorSelectionChanged(engine);
 		if(engine != null){
-			_currentAction.setEngine(engine);
+			if (engine instanceof INonDeterministicExecutionEngine)
+				_currentAction.setEngine((INonDeterministicExecutionEngine)engine);
 			updateButton();
 		}
 	}

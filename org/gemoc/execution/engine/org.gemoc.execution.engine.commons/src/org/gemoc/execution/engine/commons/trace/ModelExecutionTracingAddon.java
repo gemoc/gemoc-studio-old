@@ -25,6 +25,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.CommandExecution;
+import org.gemoc.execution.engine.core.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
@@ -36,6 +37,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon;
@@ -52,7 +54,18 @@ import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 @SuppressWarnings("restriction")
 public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
+	private IExecutionContext _executionContext;
+	private IExecutionEngine _executionEngine;
+	private ExecutionTraceModel _executionTraceModel;
+	private Choice _lastChoice;
+	private Branch _currentBranch;
+	private ModelState currentState = null;
+	byte[] _lastRestoredSolverState;
+	private EContentAdapter adapter;
 	private boolean shouldSave = true;
+	private boolean stateChanged = false;
+	private boolean _backToPastHappened = false;
+	private boolean _cannotSaveTrace = false;
 
 	private void modifyTrace(final Runnable r) {
 		RecordingCommand command = new RecordingCommand(getEditingDomain(), "update trace model") {
@@ -74,17 +87,13 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		return TransactionUtil.getEditingDomain(_executionContext.getResourceModel());
 	}
 
-	private boolean _backToPastHappened = false;
-
 	public void branch(Choice choice) throws ModelExecutionTracingException {
 		internalBranch(choice);
 		_backToPastHappened = true;
-		if (_executionContext.getLogicalStepDecider() != null) {
-			_executionContext.getLogicalStepDecider().preempt();
+		if (_executionEngine instanceof NonDeterministicExecutionEngine) {
+			((NonDeterministicExecutionEngine) _executionEngine).getLogicalStepDecider().preempt();
 		}
 	}
-
-	private Choice _lastChoice;
 
 	private void internalBranch(final Choice choice) {
 		final int index = _executionTraceModel.getChoices().indexOf(choice);
@@ -187,13 +196,15 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		}
 	}
 
-	byte[] _lastRestoredSolverState;
-
 	private void restoreSolverState(Choice choice) {
-		ISolver solver = _executionContext.getExecutionPlatform().getSolver();
-		Activator.getDefault().debug(
-				"restoring solver state: " + choice.getContextState().getSolverState().getSerializableModel());
-		solver.setState(choice.getContextState().getSolverState().getSerializableModel());
+
+		if (_executionEngine instanceof INonDeterministicExecutionEngine) {
+			INonDeterministicExecutionEngine engine_cast = (INonDeterministicExecutionEngine) _executionEngine;
+			ISolver solver = engine_cast.getSolver();
+			Activator.getDefault().debug(
+					"restoring solver state: " + choice.getContextState().getSolverState().getSerializableModel());
+			solver.setState(choice.getContextState().getSolverState().getSerializableModel());
+		}
 	}
 
 	public boolean hasRewindHappened(boolean resetFlag) {
@@ -202,9 +213,6 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 			_backToPastHappened = false;
 		return result;
 	}
-
-	private boolean _cannotSaveTrace = false;
-	private ModelState currentState = null;
 
 	private void addModelStateIfChanged() {
 		Resource traceResource = _executionTraceModel.eResource();
@@ -244,17 +252,18 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 			if (traceModel.getChoices().size() > 0) {
 
 				addModelStateIfChanged();
-				ModelState modelState = currentState;
-
-				SolverState solverState = Gemoc_execution_traceFactory.eINSTANCE.createSolverState();
-				solverState.setSerializableModel(_executionContext.getExecutionPlatform().getSolver().getState());
-				// Activator.getDefault().debug(
-				// "step" + stepNumber + ", saving solver state: " +
-				// solverState.getSerializableModel());
 
 				ContextState contextState = Gemoc_execution_traceFactory.eINSTANCE.createContextState();
+				ModelState modelState = currentState;
 				contextState.setModelState(modelState);
-				contextState.setSolverState(solverState);
+
+				if (_executionEngine instanceof INonDeterministicExecutionEngine) {
+					INonDeterministicExecutionEngine engine_cast = (INonDeterministicExecutionEngine) _executionEngine;
+					SolverState solverState = Gemoc_execution_traceFactory.eINSTANCE.createSolverState();
+					solverState.setSerializableModel(engine_cast.getSolver().getState());
+					contextState.setSolverState(solverState);
+				}
+
 				traceModel.getChoices().get(traceModel.getChoices().size() - 1).setContextState(contextState);
 
 				if (!_cannotSaveTrace && shouldSave) {
@@ -270,19 +279,13 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 		}
 	}
 
-	private ExecutionTraceModel _executionTraceModel;
-	private Branch _currentBranch;
-
 	public Branch getCurrentBranch() {
 		return _currentBranch;
 	}
 
-	private boolean stateChanged = false;
-
-	private EContentAdapter adapter;
-
 	private void setUp(IExecutionEngine engine) {
 		if (_executionContext == null) {
+			_executionEngine = engine;
 			_executionTraceModel = Gemoc_execution_traceFactory.eINSTANCE.createExecutionTraceModel();
 			_currentBranch = Gemoc_execution_traceFactory.eINSTANCE.createBranch();
 			_currentBranch.setStartIndex(0);
@@ -304,8 +307,6 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 		}
 	}
-
-	private IExecutionContext _executionContext;
 
 	// private static class GemocTraceResource extends ResourceImpl
 
@@ -396,8 +397,8 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 				try {
 					restoreModelState(choice);
 					restoreSolverState(choice);
-					if (_executionContext.getLogicalStepDecider() != null) {
-						_executionContext.getLogicalStepDecider().preempt();
+					if (_executionEngine instanceof NonDeterministicExecutionEngine) {
+						((NonDeterministicExecutionEngine) _executionEngine).getLogicalStepDecider().preempt();
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -452,7 +453,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 			public void run() {
 
 				// Same as in "mseOccurrenceExecuted", and probably redundant
-				//addModelStateIfChanged();
+				// addModelStateIfChanged();
 
 				// No need to observe changes in the model anymore
 				_executionContext.getResourceModel().eAdapters().remove(adapter);

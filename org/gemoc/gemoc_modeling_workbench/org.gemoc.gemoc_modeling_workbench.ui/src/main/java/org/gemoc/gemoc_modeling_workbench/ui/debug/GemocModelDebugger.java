@@ -7,7 +7,7 @@ import java.util.function.BiPredicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.gemoc.execution.engine.core.ExecutionEngine;
+import org.gemoc.execution.engine.core.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.trace.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
@@ -27,7 +27,7 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	private static final EObject FAKE_INSTRUCTION = EcorePackage.eINSTANCE;
 
 	/**
-	 * The {@link ExecutionEngine} to debug.
+	 * The {@link NonDeterministicExecutionEngine} to debug.
 	 */
 	private final IExecutionEngine engine;
 

@@ -7,6 +7,7 @@ import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 
 public class SwitchDeciderAction extends AbstractEngineAction
 {
@@ -80,10 +81,12 @@ public class SwitchDeciderAction extends AbstractEngineAction
 	public void motorSelectionChanged(IExecutionEngine engine) 
 	{
 		super.motorSelectionChanged(engine);
-		for (DeciderAction action : DeciderManager.getAllDeciderActions())
-		{
-			action.setEngine(getCurrentSelectedEngine());
-		}		
+		if (engine instanceof INonDeterministicExecutionEngine) {
+			for (DeciderAction action : DeciderManager.getAllDeciderActions())
+			{
+				action.setEngine((INonDeterministicExecutionEngine)getCurrentSelectedEngine());
+			}		
+		}
 	}
 
 }

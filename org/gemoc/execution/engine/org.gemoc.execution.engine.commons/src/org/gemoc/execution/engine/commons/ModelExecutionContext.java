@@ -15,7 +15,6 @@ import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
-
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 
 public class ModelExecutionContext implements IExecutionContext
@@ -28,7 +27,7 @@ public class ModelExecutionContext implements IExecutionContext
 	private ExecutionMode _executionMode;
 
 	private LanguageDefinitionExtension _languageDefinition;
-
+	
 	public ModelExecutionContext(IRunConfiguration runConfiguration, ExecutionMode executionMode)
 			throws EngineContextException
 	{
@@ -56,7 +55,7 @@ public class ModelExecutionContext implements IExecutionContext
 			_logicalStepDecider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(),
 					executionMode);
 			setUpEditingDomain();
-			_executionPlatform.getSolver().setUp(this);
+			
 			setUpFeedbackModel();
 
 			// check that the initial resource hasn't been loaded more than once
@@ -145,6 +144,7 @@ public class ModelExecutionContext implements IExecutionContext
 	{
 		_executionPlatform.dispose();
 		_logicalStepDecider.dispose();
+		//
 	}
 
 	private IExecutionWorkspace _executionWorkspace;
@@ -185,16 +185,7 @@ public class ModelExecutionContext implements IExecutionContext
 
 	protected ILogicalStepDecider _logicalStepDecider;
 
-	@Override
-	public ILogicalStepDecider getLogicalStepDecider()
-	{
-		return _logicalStepDecider;
-	}
 
-	@Override
-	public void changeLogicalStepDecider(ILogicalStepDecider newDecider)
-	{
-		_logicalStepDecider = newDecider;
-	}
+
 
 }

@@ -1,9 +1,7 @@
 package org.gemoc.gemoc_language_workbench.api.core;
 
-import java.util.List;
 import java.util.Set;
 
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
@@ -48,11 +46,7 @@ public interface IExecutionEngine extends IDisposable {
 
 	IExecutionContext getExecutionContext();
 
-	List<LogicalStep> getPossibleLogicalSteps();
 
-	LogicalStep getSelectedLogicalStep();
-	
-	void addFutureAction(IFutureAction action);
 	
 	RunStatus getRunningStatus();
 	

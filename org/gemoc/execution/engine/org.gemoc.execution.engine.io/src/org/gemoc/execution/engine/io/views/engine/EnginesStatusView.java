@@ -42,6 +42,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
@@ -214,12 +215,12 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 				{
 					Image result = null;
 					ImageDescriptor imageDescriptor = null;
-					if (element instanceof IExecutionEngine)
+					if (element instanceof INonDeterministicExecutionEngine)
 					{
-						IExecutionEngine engine = (IExecutionEngine)element;
+						INonDeterministicExecutionEngine engine = (INonDeterministicExecutionEngine)element;
 						for (DeciderSpecificationExtension spec : DeciderSpecificationExtensionPoint.getSpecifications())
 						{
-							if (engine.getExecutionContext().getLogicalStepDecider().getClass().getName().equals(spec.getDeciderClassName()))
+							if (engine.getLogicalStepDecider().getClass().getName().equals(spec.getDeciderClassName()))
 							{
 								imageDescriptor = ImageDescriptor.createFromURL(spec.getIconURL());
 								break;
