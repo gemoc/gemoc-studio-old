@@ -24,6 +24,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="melangeURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="needMelangeSynchronization"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="languageKind" eType="#//LanguageKind"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectResource" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -36,6 +37,7 @@
         <details key="documentation" value="URI of the class that implement the code excutor required by the engine.&#xD;&#xA;If null or empty, a default K3 code executor will be generated and used."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="entryPoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EditorProject" abstract="true" eSuperTypes="#//ProjectResource">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" upperBound="-1"
@@ -66,4 +68,8 @@
     <eLiterals name="mavenJar" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TreeEditorProject" eSuperTypes="#//EditorProject"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="LanguageKind">
+    <eLiterals name="deterministic"/>
+    <eLiterals name="nonDeterministic" value="1"/>
+  </eClassifiers>
 </ecore:EPackage>

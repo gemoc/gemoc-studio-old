@@ -81,6 +81,8 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 		switch (eDataType.getClassifierID()) {
 			case confPackage.PROJECT_KIND:
 				return createProjectKindFromString(eDataType, initialValue);
+			case confPackage.LANGUAGE_KIND:
+				return createLanguageKindFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -96,6 +98,8 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 		switch (eDataType.getClassifierID()) {
 			case confPackage.PROJECT_KIND:
 				return convertProjectKindToString(eDataType, instanceValue);
+			case confPackage.LANGUAGE_KIND:
+				return convertLanguageKindToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -208,6 +212,26 @@ public class confFactoryImpl extends EFactoryImpl implements confFactory {
 	 * @generated
 	 */
 	public String convertProjectKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LanguageKind createLanguageKindFromString(EDataType eDataType, String initialValue) {
+		LanguageKind result = LanguageKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLanguageKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

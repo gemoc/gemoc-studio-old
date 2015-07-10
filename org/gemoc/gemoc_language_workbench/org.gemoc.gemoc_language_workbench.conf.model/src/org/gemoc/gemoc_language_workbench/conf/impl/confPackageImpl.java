@@ -16,6 +16,7 @@ import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.LanguageKind;
 import org.gemoc.gemoc_language_workbench.conf.MoCCProject;
 import org.gemoc.gemoc_language_workbench.conf.ProjectKind;
 import org.gemoc.gemoc_language_workbench.conf.ProjectResource;
@@ -123,6 +124,13 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * @generated
 	 */
 	private EEnum projectKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum languageKindEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -235,6 +243,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDSAProject_EntryPoint() {
+		return (EAttribute)dsaProjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLanguageDefinition() {
 		return languageDefinitionEClass;
 	}
@@ -318,6 +335,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 */
 	public EAttribute getLanguageDefinition_NeedMelangeSynchronization() {
 		return (EAttribute)languageDefinitionEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLanguageDefinition_LanguageKind() {
+		return (EAttribute)languageDefinitionEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -478,6 +504,15 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getLanguageKind() {
+		return languageKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public confFactory getconfFactory() {
 		return (confFactory)getEFactoryInstance();
 	}
@@ -511,6 +546,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__NAME);
 		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__MELANGE_URI);
 		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION);
+		createEAttribute(languageDefinitionEClass, LANGUAGE_DEFINITION__LANGUAGE_KIND);
 
 		projectResourceEClass = createEClass(PROJECT_RESOURCE);
 		createEAttribute(projectResourceEClass, PROJECT_RESOURCE__PROJECT_NAME);
@@ -518,6 +554,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		dsaProjectEClass = createEClass(DSA_PROJECT);
 		createEAttribute(dsaProjectEClass, DSA_PROJECT__CODE_EXECUTOR_CLASS);
+		createEAttribute(dsaProjectEClass, DSA_PROJECT__ENTRY_POINT);
 
 		editorProjectEClass = createEClass(EDITOR_PROJECT);
 		createEAttribute(editorProjectEClass, EDITOR_PROJECT__FILE_EXTENSION);
@@ -546,6 +583,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		// Create enums
 		projectKindEEnum = createEEnum(PROJECT_KIND);
+		languageKindEEnum = createEEnum(LANGUAGE_KIND);
 	}
 
 	/**
@@ -598,6 +636,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEAttribute(getLanguageDefinition_Name(), ecorePackage.getEString(), "name", null, 1, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLanguageDefinition_MelangeURI(), ecorePackage.getEString(), "melangeURI", null, 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLanguageDefinition_NeedMelangeSynchronization(), ecorePackage.getEBoolean(), "needMelangeSynchronization", "false", 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLanguageDefinition_LanguageKind(), this.getLanguageKind(), "languageKind", null, 0, 1, LanguageDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(languageDefinitionEClass, ecorePackage.getEString(), "getFileExtensions", 0, -1, IS_UNIQUE, IS_ORDERED);
 
@@ -607,6 +646,7 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 
 		initEClass(dsaProjectEClass, DSAProject.class, "DSAProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDSAProject_CodeExecutorClass(), ecorePackage.getEString(), "codeExecutorClass", null, 0, 1, DSAProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDSAProject_EntryPoint(), ecorePackage.getEString(), "entryPoint", null, 0, 1, DSAProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(editorProjectEClass, EditorProject.class, "EditorProject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEditorProject_FileExtension(), ecorePackage.getEString(), "fileExtension", null, 0, -1, EditorProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -641,6 +681,10 @@ public class confPackageImpl extends EPackageImpl implements confPackage {
 		initEEnum(projectKindEEnum, ProjectKind.class, "ProjectKind");
 		addEEnumLiteral(projectKindEEnum, ProjectKind.ECLIPSE_PLUGIN);
 		addEEnumLiteral(projectKindEEnum, ProjectKind.MAVEN_JAR);
+
+		initEEnum(languageKindEEnum, LanguageKind.class, "LanguageKind");
+		addEEnumLiteral(languageKindEEnum, LanguageKind.DETERMINISTIC);
+		addEEnumLiteral(languageKindEEnum, LanguageKind.NON_DETERMINISTIC);
 
 		// Create resource
 		createResource(eNS_URI);

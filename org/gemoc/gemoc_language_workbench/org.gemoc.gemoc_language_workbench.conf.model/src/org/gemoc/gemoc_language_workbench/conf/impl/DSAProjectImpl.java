@@ -17,6 +17,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.DSAProjectImpl#getCodeExecutorClass <em>Code Executor Class</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.DSAProjectImpl#getEntryPoint <em>Entry Point</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,6 +42,25 @@ public class DSAProjectImpl extends ProjectResourceImpl implements DSAProject {
 	 * @ordered
 	 */
 	protected String codeExecutorClass = CODE_EXECUTOR_CLASS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getEntryPoint() <em>Entry Point</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntryPoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ENTRY_POINT_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getEntryPoint() <em>Entry Point</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntryPoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected String entryPoint = ENTRY_POINT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,11 +107,34 @@ public class DSAProjectImpl extends ProjectResourceImpl implements DSAProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getEntryPoint() {
+		return entryPoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEntryPoint(String newEntryPoint) {
+		String oldEntryPoint = entryPoint;
+		entryPoint = newEntryPoint;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.DSA_PROJECT__ENTRY_POINT, oldEntryPoint, entryPoint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case confPackage.DSA_PROJECT__CODE_EXECUTOR_CLASS:
 				return getCodeExecutorClass();
+			case confPackage.DSA_PROJECT__ENTRY_POINT:
+				return getEntryPoint();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -106,6 +149,9 @@ public class DSAProjectImpl extends ProjectResourceImpl implements DSAProject {
 		switch (featureID) {
 			case confPackage.DSA_PROJECT__CODE_EXECUTOR_CLASS:
 				setCodeExecutorClass((String)newValue);
+				return;
+			case confPackage.DSA_PROJECT__ENTRY_POINT:
+				setEntryPoint((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,6 +168,9 @@ public class DSAProjectImpl extends ProjectResourceImpl implements DSAProject {
 			case confPackage.DSA_PROJECT__CODE_EXECUTOR_CLASS:
 				setCodeExecutorClass(CODE_EXECUTOR_CLASS_EDEFAULT);
 				return;
+			case confPackage.DSA_PROJECT__ENTRY_POINT:
+				setEntryPoint(ENTRY_POINT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -136,6 +185,8 @@ public class DSAProjectImpl extends ProjectResourceImpl implements DSAProject {
 		switch (featureID) {
 			case confPackage.DSA_PROJECT__CODE_EXECUTOR_CLASS:
 				return CODE_EXECUTOR_CLASS_EDEFAULT == null ? codeExecutorClass != null : !CODE_EXECUTOR_CLASS_EDEFAULT.equals(codeExecutorClass);
+			case confPackage.DSA_PROJECT__ENTRY_POINT:
+				return ENTRY_POINT_EDEFAULT == null ? entryPoint != null : !ENTRY_POINT_EDEFAULT.equals(entryPoint);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -152,6 +203,8 @@ public class DSAProjectImpl extends ProjectResourceImpl implements DSAProject {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (codeExecutorClass: ");
 		result.append(codeExecutorClass);
+		result.append(", entryPoint: ");
+		result.append(entryPoint);
 		result.append(')');
 		return result.toString();
 	}

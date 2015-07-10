@@ -168,13 +168,22 @@ public interface confPackage extends EPackage {
 	int LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION = 8;
 
 	/**
+	 * The feature id for the '<em><b>Language Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LANGUAGE_DEFINITION__LANGUAGE_KIND = 9;
+
+	/**
 	 * The number of structural features of the '<em>Language Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LANGUAGE_DEFINITION_FEATURE_COUNT = 9;
+	int LANGUAGE_DEFINITION_FEATURE_COUNT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Project Name</b></em>' attribute.
@@ -231,13 +240,22 @@ public interface confPackage extends EPackage {
 	int DSA_PROJECT__CODE_EXECUTOR_CLASS = PROJECT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Entry Point</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DSA_PROJECT__ENTRY_POINT = PROJECT_RESOURCE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>DSA Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DSA_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 1;
+	int DSA_PROJECT_FEATURE_COUNT = PROJECT_RESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EditorProjectImpl <em>Editor Project</em>}' class.
@@ -674,6 +692,17 @@ public interface confPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageKind <em>Language Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageKind
+	 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getLanguageKind()
+	 * @generated
+	 */
+	int LANGUAGE_KIND = 13;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.ProjectResource <em>Project Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -725,6 +754,17 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDSAProject_CodeExecutorClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.DSAProject#getEntryPoint <em>Entry Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Entry Point</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.DSAProject#getEntryPoint()
+	 * @see #getDSAProject()
+	 * @generated
+	 */
+	EAttribute getDSAProject_EntryPoint();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition <em>Language Definition</em>}'.
@@ -834,6 +874,17 @@ public interface confPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLanguageDefinition_NeedMelangeSynchronization();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getLanguageKind <em>Language Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Language Kind</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getLanguageKind()
+	 * @see #getLanguageDefinition()
+	 * @generated
+	 */
+	EAttribute getLanguageDefinition_LanguageKind();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.gemoc_language_workbench.conf.EditorProject <em>Editor Project</em>}'.
@@ -1013,6 +1064,16 @@ public interface confPackage extends EPackage {
 	EEnum getProjectKind();
 
 	/**
+	 * Returns the meta object for enum '{@link org.gemoc.gemoc_language_workbench.conf.LanguageKind <em>Language Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Language Kind</em>'.
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageKind
+	 * @generated
+	 */
+	EEnum getLanguageKind();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1077,6 +1138,14 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DSA_PROJECT__CODE_EXECUTOR_CLASS = eINSTANCE.getDSAProject_CodeExecutorClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Entry Point</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DSA_PROJECT__ENTRY_POINT = eINSTANCE.getDSAProject_EntryPoint();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl <em>Language Definition</em>}' class.
@@ -1159,6 +1228,14 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION = eINSTANCE.getLanguageDefinition_NeedMelangeSynchronization();
+
+		/**
+		 * The meta object literal for the '<em><b>Language Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LANGUAGE_DEFINITION__LANGUAGE_KIND = eINSTANCE.getLanguageDefinition_LanguageKind();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.impl.EditorProjectImpl <em>Editor Project</em>}' class.
@@ -1315,6 +1392,16 @@ public interface confPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum PROJECT_KIND = eINSTANCE.getProjectKind();
+
+		/**
+		 * The meta object literal for the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageKind <em>Language Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.gemoc.gemoc_language_workbench.conf.LanguageKind
+		 * @see org.gemoc.gemoc_language_workbench.conf.impl.confPackageImpl#getLanguageKind()
+		 * @generated
+		 */
+		EEnum LANGUAGE_KIND = eINSTANCE.getLanguageKind();
 
 	}
 

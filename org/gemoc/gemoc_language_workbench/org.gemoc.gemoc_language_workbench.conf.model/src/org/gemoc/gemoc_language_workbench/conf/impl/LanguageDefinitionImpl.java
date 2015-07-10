@@ -10,14 +10,10 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.gemoc.gemoc_language_workbench.conf.AnimatorProject;
@@ -26,6 +22,7 @@ import org.gemoc.gemoc_language_workbench.conf.DSEProject;
 import org.gemoc.gemoc_language_workbench.conf.DomainModelProject;
 import org.gemoc.gemoc_language_workbench.conf.EditorProject;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+import org.gemoc.gemoc_language_workbench.conf.LanguageKind;
 import org.gemoc.gemoc_language_workbench.conf.MoCCProject;
 import org.gemoc.gemoc_language_workbench.conf.confPackage;
 
@@ -45,6 +42,7 @@ import org.gemoc.gemoc_language_workbench.conf.confPackage;
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getMelangeURI <em>Melange URI</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#isNeedMelangeSynchronization <em>Need Melange Synchronization</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.impl.LanguageDefinitionImpl#getLanguageKind <em>Language Kind</em>}</li>
  * </ul>
  * </p>
  *
@@ -170,6 +168,26 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	 * @ordered
 	 */
 	protected boolean needMelangeSynchronization = NEED_MELANGE_SYNCHRONIZATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLanguageKind() <em>Language Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLanguageKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final LanguageKind LANGUAGE_KIND_EDEFAULT = LanguageKind.DETERMINISTIC;
+
+	/**
+	 * The cached value of the '{@link #getLanguageKind() <em>Language Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLanguageKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected LanguageKind languageKind = LANGUAGE_KIND_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -452,6 +470,27 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LanguageKind getLanguageKind() {
+		return languageKind;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLanguageKind(LanguageKind newLanguageKind) {
+		LanguageKind oldLanguageKind = languageKind;
+		languageKind = newLanguageKind == null ? LANGUAGE_KIND_EDEFAULT : newLanguageKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, confPackage.LANGUAGE_DEFINITION__LANGUAGE_KIND, oldLanguageKind, languageKind));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList<String> getFileExtensions() {
@@ -543,6 +582,8 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 				return getMelangeURI();
 			case confPackage.LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION:
 				return isNeedMelangeSynchronization();
+			case confPackage.LANGUAGE_DEFINITION__LANGUAGE_KIND:
+				return getLanguageKind();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -585,6 +626,9 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 			case confPackage.LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION:
 				setNeedMelangeSynchronization((Boolean)newValue);
 				return;
+			case confPackage.LANGUAGE_DEFINITION__LANGUAGE_KIND:
+				setLanguageKind((LanguageKind)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -624,6 +668,9 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 			case confPackage.LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION:
 				setNeedMelangeSynchronization(NEED_MELANGE_SYNCHRONIZATION_EDEFAULT);
 				return;
+			case confPackage.LANGUAGE_DEFINITION__LANGUAGE_KIND:
+				setLanguageKind(LANGUAGE_KIND_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -654,6 +701,8 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 				return MELANGE_URI_EDEFAULT == null ? melangeURI != null : !MELANGE_URI_EDEFAULT.equals(melangeURI);
 			case confPackage.LANGUAGE_DEFINITION__NEED_MELANGE_SYNCHRONIZATION:
 				return needMelangeSynchronization != NEED_MELANGE_SYNCHRONIZATION_EDEFAULT;
+			case confPackage.LANGUAGE_DEFINITION__LANGUAGE_KIND:
+				return languageKind != LANGUAGE_KIND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -674,6 +723,8 @@ public class LanguageDefinitionImpl extends EObjectImpl implements LanguageDefin
 		result.append(melangeURI);
 		result.append(", needMelangeSynchronization: ");
 		result.append(needMelangeSynchronization);
+		result.append(", languageKind: ");
+		result.append(languageKind);
 		result.append(')');
 		return result.toString();
 	}

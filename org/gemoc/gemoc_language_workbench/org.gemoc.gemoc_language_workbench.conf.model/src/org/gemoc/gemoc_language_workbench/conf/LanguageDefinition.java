@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getName <em>Name</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getMelangeURI <em>Melange URI</em>}</li>
  *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#isNeedMelangeSynchronization <em>Need Melange Synchronization</em>}</li>
+ *   <li>{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getLanguageKind <em>Language Kind</em>}</li>
  * </ul>
  * </p>
  *
@@ -245,6 +246,35 @@ public interface LanguageDefinition extends EObject {
 	 * @generated
 	 */
 	void setNeedMelangeSynchronization(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Language Kind</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.gemoc.gemoc_language_workbench.conf.LanguageKind}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Language Kind</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Language Kind</em>' attribute.
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageKind
+	 * @see #setLanguageKind(LanguageKind)
+	 * @see org.gemoc.gemoc_language_workbench.conf.confPackage#getLanguageDefinition_LanguageKind()
+	 * @model
+	 * @generated
+	 */
+	LanguageKind getLanguageKind();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.gemoc_language_workbench.conf.LanguageDefinition#getLanguageKind <em>Language Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Language Kind</em>' attribute.
+	 * @see org.gemoc.gemoc_language_workbench.conf.LanguageKind
+	 * @see #getLanguageKind()
+	 * @generated
+	 */
+	void setLanguageKind(LanguageKind value);
 
 	/**
 	 * <!-- begin-user-doc -->
