@@ -3,8 +3,6 @@ package org.gemoc.execution.engine.commons.solvers.ccsl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
