@@ -289,10 +289,9 @@ public class NonDeterministicExecutionEngine extends AbstractExecutionEngine imp
 	
 	private LogicalStep selectAndExecuteLogicalStep() throws InterruptedException 
 	{
-		LogicalStep selectedLogicalStep;
 		setEngineStatus(EngineStatus.RunStatus.WaitingLogicalStepSelection);
 		notifyAboutToSelectLogicalStep();
-		selectedLogicalStep = getLogicalStepDecider().decide(this, getPossibleLogicalSteps());
+		LogicalStep selectedLogicalStep = getLogicalStepDecider().decide(this, getPossibleLogicalSteps());
 		if (selectedLogicalStep != null)
 		{
 			setSelectedLogicalStep(selectedLogicalStep);
