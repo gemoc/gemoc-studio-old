@@ -103,11 +103,12 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 			final String entryPointClass = entryPointClass_nonFinal;
 			
 			
-			// hack to find out if execution involves a solver
+			// Case solver: we instantiate a NonDeterministicExecutionEngine
 			if (solver != null) {
 				solver.setUp(executionContext);
 				_executionEngine = new NonDeterministicExecutionEngine(executionContext);
 				((INonDeterministicExecutionEngine)_executionEngine).setSolver(solver);
+				((INonDeterministicExecutionEngine)_executionEngine).changeLogicalStepDecider(executionContext.getLogicalStepDecider());
 				// delegate for debug mode
 				if (ILaunchManager.DEBUG_MODE.equals(mode)) {
 					IEngineAddon animator = AbstractGemocAnimatorServices.getAnimator();
@@ -124,7 +125,10 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 					};
 					job.schedule();
 				}
-			} else {
+			} 
+			
+			// Case no solver, we instantiate a DeterministicExecutionEngine
+			else {
 				Job job = new Job(getDebugJobName(configuration, getFirstInstruction(configuration))
 						+ " (running in plainK3 mode)") {
 
