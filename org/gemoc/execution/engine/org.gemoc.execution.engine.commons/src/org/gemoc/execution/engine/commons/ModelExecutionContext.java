@@ -185,6 +185,11 @@ public class ModelExecutionContext implements IExecutionContext
 
 	protected ILogicalStepDecider _logicalStepDecider;
 
+	@Override
+	public ILogicalStepDecider getLogicalStepDecider() {
+		return _logicalStepDecider;
+	}
+
 
 
 
