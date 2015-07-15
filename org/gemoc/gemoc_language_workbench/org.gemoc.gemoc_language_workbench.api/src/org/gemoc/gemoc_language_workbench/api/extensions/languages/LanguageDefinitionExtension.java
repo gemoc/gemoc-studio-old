@@ -97,8 +97,7 @@ public class LanguageDefinitionExtension extends Extension {
 
 			// Loading languagedef model
 			ResourceSet rs = new ResourceSetImpl();
-			URI uri = URI.createPlatformResourceURI(getXDSMLFilePath(), true);
-
+			URI uri = URI.createPlatformPluginURI(getXDSMLFilePath(), true);
 			Resource res = rs.createResource(uri);
 			try {
 				res.load(null);
