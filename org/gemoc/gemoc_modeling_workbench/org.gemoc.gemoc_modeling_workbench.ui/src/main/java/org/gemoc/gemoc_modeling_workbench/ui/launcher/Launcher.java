@@ -42,7 +42,7 @@ import org.gemoc.execution.engine.commons.ModelExecutionContext;
 import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.core.NonDeterministicExecutionEngine;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -52,7 +52,9 @@ import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocDebuggerServices;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
+import org.gemoc.gemoc_modeling_workbench.ui.debug.AbstractGemocDebugger;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.GemocModelDebugger;
+import org.gemoc.gemoc_modeling_workbench.ui.debug.PlainK3ModelDebugger;
 import org.kermeta.utils.provisionner4eclipse.Provisionner;
 import org.osgi.framework.Bundle;
 
@@ -92,23 +94,21 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 			// We get solver/entrypoint information from the language definition
 			ISolver solver = null;
 			String entryPointClass_nonFinal = null;
-			try
-			{
-				solver = executionContext.getLanguageDefinitionExtension().instanciateSolver();			
-			}
-			catch (CoreException e)
-			{
-				entryPointClass_nonFinal = executionContext.getLanguageDefinitionExtension().getLanguageDefinition().getDsaProject().getEntryPoint();	
+			try {
+				solver = executionContext.getLanguageDefinitionExtension().instanciateSolver();
+			} catch (CoreException e) {
+				entryPointClass_nonFinal = executionContext.getLanguageDefinitionExtension().getLanguageDefinition()
+						.getDsaProject().getEntryPoint();
 			}
 			final String entryPointClass = entryPointClass_nonFinal;
-			
-			
+
 			// Case solver: we instantiate a NonDeterministicExecutionEngine
 			if (solver != null) {
 				solver.setUp(executionContext);
 				_executionEngine = new NonDeterministicExecutionEngine(executionContext);
-				((INonDeterministicExecutionEngine)_executionEngine).setSolver(solver);
-				((INonDeterministicExecutionEngine)_executionEngine).changeLogicalStepDecider(executionContext.getLogicalStepDecider());
+				((INonDeterministicExecutionEngine) _executionEngine).setSolver(solver);
+				((INonDeterministicExecutionEngine) _executionEngine).changeLogicalStepDecider(executionContext
+						.getLogicalStepDecider());
 				// delegate for debug mode
 				if (ILaunchManager.DEBUG_MODE.equals(mode)) {
 					IEngineAddon animator = AbstractGemocAnimatorServices.getAnimator();
@@ -125,8 +125,8 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 					};
 					job.schedule();
 				}
-			} 
-			
+			}
+
 			// Case no solver, we instantiate a DeterministicExecutionEngine
 			else {
 				Job job = new Job(getDebugJobName(configuration, getFirstInstruction(configuration))
@@ -136,13 +136,13 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 					protected IStatus run(IProgressMonitor monitor) {
 
 						String className = executionContext.getRunConfiguration().getExecutionEntryPoint();
-						
-						// If nothing is declared in the launch configuration, we use the value given in the xDSML
+
+						// If nothing is declared in the launch configuration,
+						// we use the value given in the xDSML
 						if (className == null || className.equals("")) {
 							className = entryPointClass;
 						}
-						
-						
+
 						SearchPattern pattern = SearchPattern.createPattern(className, IJavaSearchConstants.CLASS,
 								IJavaSearchConstants.DECLARATIONS, SearchPattern.R_EXACT_MATCH);
 						IJavaSearchScope scope = SearchEngine.createWorkspaceScope();
@@ -331,14 +331,24 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 	@Override
 	protected IDSLDebugger getDebugger(ILaunchConfiguration configuration, DSLDebugEventDispatcher dispatcher,
 			EObject firstInstruction, IProgressMonitor monitor) {
-		GemocModelDebugger res = new GemocModelDebugger(dispatcher, _executionEngine);
-		
-		// If in the launch configuration it is asked to pause at the start, we add this dummy break
+
+		AbstractGemocDebugger res = null;
+
+		if (_executionEngine instanceof INonDeterministicExecutionEngine) {
+
+			res = new GemocModelDebugger(dispatcher, _executionEngine);
+
+		} else {
+			res = new PlainK3ModelDebugger(dispatcher, _executionEngine);
+		}
+
+		// If in the launch configuration it is asked to pause at the start,
+		// we add this dummy break
 		try {
 			if (configuration.getAttribute(RunConfiguration.LAUNCH_BREAK_START, false)) {
-				res.addPredicateBreak(new BiPredicate<IExecutionEngine, LogicalStep>()  {
+				res.addPredicateBreak(new BiPredicate<IExecutionEngine, MSEOccurrence>() {
 					@Override
-					public boolean test(IExecutionEngine t, LogicalStep u) {
+					public boolean test(IExecutionEngine t, MSEOccurrence u) {
 						return true;
 					}
 				});
@@ -346,8 +356,7 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		_executionEngine.getExecutionContext().getExecutionPlatform().addEngineAddon(res);
 		return res;
 	}

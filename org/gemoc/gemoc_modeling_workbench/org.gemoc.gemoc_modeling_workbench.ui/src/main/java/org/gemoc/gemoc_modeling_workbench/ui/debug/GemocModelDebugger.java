@@ -1,9 +1,6 @@
 package org.gemoc.gemoc_modeling_workbench.ui.debug;
 
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.BiPredicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -16,10 +13,9 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_modeling_workbench.ui.breakpoint.GemocBreakpoint;
 
-import fr.obeo.dsl.debug.ide.AbstractDSLDebugger;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
-public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAddon {
+public class GemocModelDebugger extends AbstractGemocDebugger implements IEngineAddon {
 
 	/**
 	 * A fake instruction to prevent the stepping return to stop on each event.
@@ -124,52 +120,18 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 		return res;
 	}
 	
-	private Set<BiPredicate<IExecutionEngine, LogicalStep>> predicateBreakPoints = new HashSet<BiPredicate<IExecutionEngine, LogicalStep>>();
-	private Set<BiPredicate<IExecutionEngine, LogicalStep>> predicateBreaks = new HashSet<BiPredicate<IExecutionEngine, LogicalStep>>();
-
-	public void addPredicateBreakpoint(BiPredicate<IExecutionEngine, LogicalStep> predicate) {
-		predicateBreakPoints.add(predicate);
-	}
-	
-	public void addPredicateBreak(BiPredicate<IExecutionEngine, LogicalStep> predicate) {
-		predicateBreaks.add(predicate);
-	}
-
 	private boolean shouldBreakLogicalStep(LogicalStep logicalStep) {
-		
-		
-	
-		// We look at predicate breaks to remove the ones that are true
-		boolean hasPredicateBreakTrue = false;
-		Set<BiPredicate<IExecutionEngine, LogicalStep>> toRemove = new HashSet<BiPredicate<IExecutionEngine, LogicalStep>>();
-		for (BiPredicate<IExecutionEngine, LogicalStep> pred : predicateBreaks) {
-			if (pred.test(engine, logicalStep)) {
-				hasPredicateBreakTrue = true;
-				toRemove.add(pred);
-			}
-		}
-		predicateBreaks.removeAll(toRemove);
-		
-		// If no break yet, we look at predicate breakpoints
-		boolean hasPredicateBreakpointTrue = false;
-		if (!hasPredicateBreakTrue) {
-			for (BiPredicate<IExecutionEngine, LogicalStep> pred : predicateBreakPoints) {
-				if (pred.test(engine, logicalStep)) {
-					hasPredicateBreakpointTrue = true;
-					break;
-				}
-			}
-		}
 		
 		final boolean res;
 		
-		if (hasPredicateBreakTrue || hasPredicateBreakpointTrue || (super.shouldBreak(logicalStep) && Boolean.valueOf((String)getBreakpointAttributes(logicalStep, GemocBreakpoint.BREAK_ON_LOGICAL_STEP)))) {
+		if ((super.shouldBreak(logicalStep) && Boolean.valueOf((String)getBreakpointAttributes(logicalStep, GemocBreakpoint.BREAK_ON_LOGICAL_STEP)))) {
 			res = true;
 		} else {
 			boolean hasMSEBreak = false;
 			for (MSEOccurrence mseOccurrence : logicalStep.getMseOccurrences()) {
 				hasMSEBreak = (super.shouldBreak(mseOccurrence.getMse()) && Boolean.valueOf((String)getBreakpointAttributes(mseOccurrence.getMse(), GemocBreakpoint.BREAK_ON_LOGICAL_STEP)));
 				hasMSEBreak = hasMSEBreak || (mseOccurrence.getMse().getCaller() != null && super.shouldBreak(mseOccurrence.getMse().getCaller()) && Boolean.valueOf((String)getBreakpointAttributes(mseOccurrence.getMse().getCaller(), GemocBreakpoint.BREAK_ON_LOGICAL_STEP)));
+				hasMSEBreak = hasMSEBreak || shouldBreakPredicates(engine, mseOccurrence);				
 				if (hasMSEBreak) {
 					break;
 				}
@@ -183,7 +145,9 @@ public class GemocModelDebugger extends AbstractDSLDebugger implements IEngineAd
 	private boolean shouldBreakMSEOccurence(MSEOccurrence mseOccurrence) {
 		final boolean res;
 		
-		if ((super.shouldBreak(mseOccurrence.getMse()) && Boolean.valueOf((String)getBreakpointAttributes(mseOccurrence.getMse(), GemocBreakpoint.BREAK_ON_MSE_OCCURRENCE))) || (mseOccurrence.getMse().getCaller() != null && super.shouldBreak(mseOccurrence.getMse().getCaller()) && Boolean.valueOf((String)getBreakpointAttributes(mseOccurrence.getMse().getCaller(), GemocBreakpoint.BREAK_ON_MSE_OCCURRENCE)))) {
+		if (shouldBreakPredicates(engine, mseOccurrence))
+			res = true;
+		else if ((super.shouldBreak(mseOccurrence.getMse()) && Boolean.valueOf((String)getBreakpointAttributes(mseOccurrence.getMse(), GemocBreakpoint.BREAK_ON_MSE_OCCURRENCE))) || (mseOccurrence.getMse().getCaller() != null && super.shouldBreak(mseOccurrence.getMse().getCaller()) && Boolean.valueOf((String)getBreakpointAttributes(mseOccurrence.getMse().getCaller(), GemocBreakpoint.BREAK_ON_MSE_OCCURRENCE)))) {
 			res = true;
 		} else {
 			LogicalStep locicalStep = mseOccurrence.getLogicalstep();
