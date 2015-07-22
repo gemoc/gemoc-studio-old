@@ -19,6 +19,9 @@
     <eOperations name="execute">
       <eAnnotations source="aspect"/>
     </eOperations>
+    <eOperations name="stop">
+      <eAnnotations source="aspect"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPorts" upperBound="-1"
         eType="#//Port" containment="true" eOpposite="#//Port/owner"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cycles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -26,6 +29,11 @@
         eOpposite="#//Application/ownedAgents"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedTo" eType="#//HWComputationalResource"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentExecCycle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isCurrentlyExecuting" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="aspect"/>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Agent"
@@ -78,7 +86,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fifo" upperBound="-1" eType="#//Object">
       <eAnnotations source="aspect"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitialized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitialized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false">
       <eAnnotations source="aspect"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

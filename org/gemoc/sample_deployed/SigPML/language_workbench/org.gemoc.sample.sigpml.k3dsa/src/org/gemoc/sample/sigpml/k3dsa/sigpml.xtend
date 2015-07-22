@@ -46,14 +46,23 @@ class AgentAspect extends NamedElementAspect {
 	private SwingPlotter plotter = new InteractiveSwingPlotter
 	private JFrame frame = new JFrame
 	private Figure figure = new Figure
-	public int currentExecCycle = 0
+	private boolean hasBeenStopped = false
 
 	def public void isExecuting() {
 		println(_self.name+'\n      isExecuting ('+_self.currentExecCycle+')')
-		_self.currentExecCycle = _self.currentExecCycle + 1
+		if(_self.currentExecCycle <= _self.cycles && (!_self.hasBeenStopped) ){
+			_self.currentExecCycle = _self.currentExecCycle + 1
+		}
+	}
+
+	def public void stop() {
+		println(_self.name+'\n      stop('+_self.currentExecCycle+')')
+		_self.currentExecCycle = 0
+		_self.hasBeenStopped = true
 	}
 
 	def public void execute() {
+		_self.hasBeenStopped = false
 		println(_self.name + "\n      execute (" + _self.currentExecCycle + ")")
 		println("@ : " + _self.currentExecCycle + " sharedMemory:" + _self.system.sharedMemory)
 
@@ -162,7 +171,6 @@ class OutputPortAspect extends NamedElementAspect {
 @Aspect(className = Place)
 class PlaceAspect extends NamedElementAspect {
 	public ArrayList<Object> fifo
-	public boolean isInitialized = false
 	public int currentSize = 0
 
 	def private void initialize() {

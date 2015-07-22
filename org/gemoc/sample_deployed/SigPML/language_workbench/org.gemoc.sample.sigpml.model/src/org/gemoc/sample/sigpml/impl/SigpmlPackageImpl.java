@@ -308,6 +308,24 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAgent_CurrentExecCycle() {
+		return (EAttribute)agentEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAgent_IsCurrentlyExecuting() {
+		return (EAttribute)agentEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getAgent__IsExecuting() {
 		return agentEClass.getEOperations().get(0);
 	}
@@ -319,6 +337,15 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 */
 	public EOperation getAgent__Execute() {
 		return agentEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAgent__Stop() {
+		return agentEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -773,8 +800,11 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		createEReference(agentEClass, AGENT__OWNER);
 		createEAttribute(agentEClass, AGENT__CODE);
 		createEReference(agentEClass, AGENT__ALLOCATED_TO);
+		createEAttribute(agentEClass, AGENT__CURRENT_EXEC_CYCLE);
+		createEAttribute(agentEClass, AGENT__IS_CURRENTLY_EXECUTING);
 		createEOperation(agentEClass, AGENT___IS_EXECUTING);
 		createEOperation(agentEClass, AGENT___EXECUTE);
+		createEOperation(agentEClass, AGENT___STOP);
 
 		portEClass = createEClass(PORT);
 		createEReference(portEClass, PORT__OWNER);
@@ -890,10 +920,14 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		initEReference(getAgent_Owner(), this.getApplication(), this.getApplication_OwnedAgents(), "owner", null, 1, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAgent_Code(), ecorePackage.getEString(), "code", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAgent_AllocatedTo(), this.getHWComputationalResource(), null, "allocatedTo", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAgent_CurrentExecCycle(), ecorePackage.getEInt(), "currentExecCycle", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAgent_IsCurrentlyExecuting(), ecorePackage.getEBoolean(), "isCurrentlyExecuting", "false", 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getAgent__IsExecuting(), null, "isExecuting", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getAgent__Execute(), null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getAgent__Stop(), null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPort_Owner(), this.getAgent(), this.getAgent_OwnedPorts(), "owner", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -919,7 +953,7 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		initEReference(getPlace_ItsOutputPort(), this.getOutputPort(), null, "itsOutputPort", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlace_ItsInputPort(), this.getInputPort(), null, "itsInputPort", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlace_Fifo(), this.getObject(), "fifo", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlace_IsInitialized(), ecorePackage.getEBoolean(), "isInitialized", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlace_IsInitialized(), ecorePackage.getEBoolean(), "isInitialized", "false", 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlace_Size(), ecorePackage.getEInt(), "size", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlace_Owner(), this.getApplication(), this.getApplication_OwnedPlaces(), "owner", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlace_Type(), this.getsizeType(), "type", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1017,6 +1051,16 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		   });	
 		addAnnotation
 		  (getAgent__Execute(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getAgent__Stop(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getAgent_IsCurrentlyExecuting(), 
 		   source, 
 		   new String[] {
 		   });	

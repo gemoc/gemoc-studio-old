@@ -101,6 +101,7 @@ public interface Place extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Is Initialized</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Initialized</em>' attribute isn't clear,
@@ -110,7 +111,7 @@ public interface Place extends NamedElement {
 	 * @return the value of the '<em>Is Initialized</em>' attribute.
 	 * @see #setIsInitialized(boolean)
 	 * @see org.gemoc.sample.sigpml.SigpmlPackage#getPlace_IsInitialized()
-	 * @model
+	 * @model default="false"
 	 * @generated
 	 */
 	boolean isIsInitialized();

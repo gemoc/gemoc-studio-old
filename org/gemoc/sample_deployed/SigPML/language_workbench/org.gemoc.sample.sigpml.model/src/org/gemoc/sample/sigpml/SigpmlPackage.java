@@ -217,13 +217,31 @@ public interface SigpmlPackage extends EPackage {
 	int AGENT__ALLOCATED_TO = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Current Exec Cycle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGENT__CURRENT_EXEC_CYCLE = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Is Currently Executing</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGENT__IS_CURRENTLY_EXECUTING = NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Agent</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int AGENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>Is Executing</em>' operation.
@@ -244,13 +262,22 @@ public interface SigpmlPackage extends EPackage {
 	int AGENT___EXECUTE = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGENT___STOP = NAMED_ELEMENT_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Agent</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 2;
+	int AGENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.PortImpl <em>Port</em>}' class.
@@ -1156,6 +1183,28 @@ public interface SigpmlPackage extends EPackage {
 	EReference getAgent_AllocatedTo();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.sigpml.Agent#getCurrentExecCycle <em>Current Exec Cycle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Current Exec Cycle</em>'.
+	 * @see org.gemoc.sample.sigpml.Agent#getCurrentExecCycle()
+	 * @see #getAgent()
+	 * @generated
+	 */
+	EAttribute getAgent_CurrentExecCycle();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.sigpml.Agent#isIsCurrentlyExecuting <em>Is Currently Executing</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Currently Executing</em>'.
+	 * @see org.gemoc.sample.sigpml.Agent#isIsCurrentlyExecuting()
+	 * @see #getAgent()
+	 * @generated
+	 */
+	EAttribute getAgent_IsCurrentlyExecuting();
+
+	/**
 	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Agent#isExecuting() <em>Is Executing</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1174,6 +1223,16 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getAgent__Execute();
+
+	/**
+	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Agent#stop() <em>Stop</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Stop</em>' operation.
+	 * @see org.gemoc.sample.sigpml.Agent#stop()
+	 * @generated
+	 */
+	EOperation getAgent__Stop();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.Port <em>Port</em>}'.
@@ -1763,6 +1822,22 @@ public interface SigpmlPackage extends EPackage {
 		EReference AGENT__ALLOCATED_TO = eINSTANCE.getAgent_AllocatedTo();
 
 		/**
+		 * The meta object literal for the '<em><b>Current Exec Cycle</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AGENT__CURRENT_EXEC_CYCLE = eINSTANCE.getAgent_CurrentExecCycle();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Currently Executing</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AGENT__IS_CURRENTLY_EXECUTING = eINSTANCE.getAgent_IsCurrentlyExecuting();
+
+		/**
 		 * The meta object literal for the '<em><b>Is Executing</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1777,6 +1852,14 @@ public interface SigpmlPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation AGENT___EXECUTE = eINSTANCE.getAgent__Execute();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation AGENT___STOP = eINSTANCE.getAgent__Stop();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.PortImpl <em>Port</em>}' class.
