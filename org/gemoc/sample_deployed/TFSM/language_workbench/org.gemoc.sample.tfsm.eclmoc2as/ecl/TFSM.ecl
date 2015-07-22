@@ -129,17 +129,18 @@ package tfsm
 		inv stateEntering1:
 			(not (self = self.owningFSM.initialState)) implies
 			let allInputTransition : Event = Expression Union(self.incomingTransitions.fire) in
-			Relation Precedes(allInputTransition,self.entering)
+			Relation Alternates(allInputTransition,self.entering)
 			
-		--no time elapsed between the fire and the entering (micro step)
+		--no time elapsed between the fire and the entering (micro step) (also no other events, kind of RTC)
 		inv stateEntering2:
 			(not (self = self.owningFSM.initialState)) and (self.owningFSM.localClock = null) implies --case of no local time
 			let allInputTransition2 : Event = Expression Union(self.incomingTransitions.fire) in
-			let allInputsSampledOnMinutes : Event = Expression SampledOn(allInputTransition2, self.owningFSM.oclAsType(ecore::EObject).eContainer().oclAsType(TimedSystem).globalClocks->first().ticks) in
-			Relation Precedes(self.entering, allInputsSampledOnMinutes)
+			let allEvents : Event = Expression Union(self.owningFSM.oclAsType(ecore::EObject).eContainer().oclAsType(TimedSystem).globalEvents.occurs ) in
+			let eventsOrTime : Event = Expression Union(self.owningFSM.oclAsType(ecore::EObject).eContainer().oclAsType(TimedSystem).globalClocks->first().ticks, allEvents) in
+			let allInputsSampledOneventsOrTime : Event = Expression SampledOn(allInputTransition2, eventsOrTime) in
+			Relation Alternates(self.entering, allInputsSampledOneventsOrTime)
 
-		
-	context EvaluateGuard
+	context EvaluateGuard 
 		inv fireEvaluationAndResult:
 			Relation BooleanGuardedTransitionRule (self.evaluate, self.evaluatedTrue, self.evaluatedFalse)	
 			
@@ -165,6 +166,8 @@ package tfsm
 		inv startTimedSystemBeforeAllStartTFSM:
 			let allStartTFSM : Event = Expression Union(self.tfsms.start) in
 			Relation Precedes(self.start, allStartTFSM)
+		inv allStartsTogether:
+			Relation Coincides(self.tfsms.start)
 		
 		inv firstOnlyOnce:
 			let onlyOneFirst : Event = Expression OneTickAndNoMore(self.start) in
