@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <org.gemoc.sample.tfsm:TimedSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.gemoc.sample.tfsm="http://www.gemoc.org/sample/tfsm" name="TrafficControl">
-  <tfsms name="Control" initialState="//@tfsms.0/@ownedStates.0" currentState="//@tfsms.0/@ownedStates.1">
+  <tfsms name="Control" initialState="//@tfsms.0/@ownedStates.0">
     <ownedStates name="initControl" outgoingTransitions="//@tfsms.0/@ownedTransitions.0"/>
     <ownedStates name="Day" outgoingTransitions="//@tfsms.0/@ownedTransitions.2 //@tfsms.0/@ownedTransitions.3" incomingTransitions="//@tfsms.0/@ownedTransitions.0 //@tfsms.0/@ownedTransitions.2 //@tfsms.0/@ownedTransitions.1"/>
     <ownedStates name="Night" outgoingTransitions="//@tfsms.0/@ownedTransitions.4 //@tfsms.0/@ownedTransitions.1" incomingTransitions="//@tfsms.0/@ownedTransitions.3 //@tfsms.0/@ownedTransitions.4"/>
@@ -20,7 +20,7 @@
       <ownedGuard xsi:type="org.gemoc.sample.tfsm:TemporalGuard" name="guardNightNight" onClock="//@globalClocks.0" afterDuration="6"/>
     </ownedTransitions>
   </tfsms>
-  <tfsms name="Semaphore0" initialState="//@tfsms.1/@ownedStates.0" currentState="//@tfsms.1/@ownedStates.2">
+  <tfsms name="Semaphore0" initialState="//@tfsms.1/@ownedStates.0">
     <ownedStates name="initSema0" outgoingTransitions="//@tfsms.1/@ownedTransitions.0"/>
     <ownedStates name="Red0" outgoingTransitions="//@tfsms.1/@ownedTransitions.1" incomingTransitions="//@tfsms.1/@ownedTransitions.0 //@tfsms.1/@ownedTransitions.2"/>
     <ownedStates name="Green0" outgoingTransitions="//@tfsms.1/@ownedTransitions.2" incomingTransitions="//@tfsms.1/@ownedTransitions.1"/>
@@ -34,7 +34,7 @@
       <ownedGuard xsi:type="org.gemoc.sample.tfsm:EventGuard" name="guardGreen0Red0" triggeringEvent="//@globalEvents.0"/>
     </ownedTransitions>
   </tfsms>
-  <globalClocks name="minutes" numberOfTicks="7"/>
+  <globalClocks name="minutes"/>
   <globalEvents name="switch" sollicitingTransitions="//@tfsms.0/@ownedTransitions.4 //@tfsms.0/@ownedTransitions.2"/>
   <globalEvents name="dayLightSensor"/>
   <globalEvents name="obscuritySensor"/>
