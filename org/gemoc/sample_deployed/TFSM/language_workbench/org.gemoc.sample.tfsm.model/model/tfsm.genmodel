@@ -48,6 +48,7 @@
     </genClasses>
     <genClasses ecoreClass="tfsm.ecore#//FSMEvent">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tfsm.ecore#//FSMEvent/sollicitingTransitions"/>
+      <genOperations ecoreOperation="tfsm.ecore#//FSMEvent/occurs"/>
     </genClasses>
     <genClasses ecoreClass="tfsm.ecore#//FSMClock">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tfsm.ecore#//FSMClock/numberOfTicks"/>

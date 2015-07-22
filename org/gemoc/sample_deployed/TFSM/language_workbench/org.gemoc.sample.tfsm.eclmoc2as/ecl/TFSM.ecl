@@ -1,11 +1,14 @@
 import 'http://www.gemoc.org/sample/tfsm'
 --import 'platform:/resource/org.gemoc.sample.tfsm.model/model/tfsm.ecore'
 --import 'platform:/resource/org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore'
+import _'http://www.eclipse.org/emf/2002/Ecore'
+
 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
 --ECLimport "platform:/plugin/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib"
 ECLimport "platform:/resource/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib"
+ECLimport "platform:/resource/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoCC.moccml"
 
 package tfsm
 /**
@@ -22,19 +25,19 @@ package tfsm
     
   	-- Mapped to the evaluation of the guard
   	context EvaluateGuard
-     def : evaluate : Event = self.evaluate()
+     def : evaluate : Event = self.evaluate()--[result] switch case (true) force evaluatedTrue  ;
+     											--			 case (false) force evaluatedFalse;
+     														 
     
 	/**
 	 * DSE with no associated DSA
 	 */ 
 	-- The user should be allowed to inject events whenever needed.
 	context FSMEvent
-     def: occurs : Event = self
+     def: occurs : Event = self.occurs()
     context State
-     --def : entering : Event = StartEvent
-     --def : entering : Event = self.onEnter()
      -- these events are tracked by the debugger thanks to the reference to self
-     def : entering : Event = self
+     def : entering : Event = self.onEnter()
      def : leaving : Event = self
     
 /**
@@ -45,7 +48,6 @@ package tfsm
 	 def : evaluatedFalse : Event = self
 	context TFSM
 	 def: start : Event = self.init()
-	 def: stall : Event = self
 	context TimedSystem
 	 def: start : Event = self.init() 
 	
@@ -68,7 +70,7 @@ package tfsm
 	    inv fireWhenRestrueOccursVariousTransition:
 			(self.ownedGuard.oclIsKindOf(EvaluateGuard) and self.source.outgoingTransitions->select(t | (t) <> self)->size() > 0) implies
 			let otherFireFromTheSameState3: Event = Expression Union (self.source.outgoingTransitions->select(t | (t) <> self).fire) in
-		 	Relation EventTransition(self.source.entering,
+		 	Relation EventGuardedTransition(self.source.entering,
 		 							self.ownedGuard.oclAsType(EvaluateGuard).evaluatedTrue,
 		 							otherFireFromTheSameState3,
 		 							self.fire
@@ -83,7 +85,7 @@ package tfsm
 		inv fireWhenEventOccursVariousTransition:
 			(self.ownedGuard.oclIsKindOf(EventGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() > 0) implies
 			let otherFireFromTheSameState2: Event = Expression Union (self.source.outgoingTransitions->select(t| (t) <> self).fire) in
-		 	Relation EventTransition(self.source.entering,
+		 	Relation EventGuardedTransition(self.source.entering,
 		 							self.ownedGuard.oclAsType(EventGuard).triggeringEvent.occurs,
 		 							otherFireFromTheSameState2,
 		 							self.fire
@@ -93,7 +95,7 @@ package tfsm
 			(self.ownedGuard.oclIsKindOf(TemporalGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() > 0) implies
 			let guardDelay : Integer = self.ownedGuard.oclAsType(TemporalGuard).afterDuration in
 			let otherFireFromTheSameState: Event = Expression Union (self.source.outgoingTransitions->select(t| (t) <> self).fire) in
-			Relation TemporalTransition(self.source.entering,
+			Relation TemporalGuardedTransition(self.source.entering,
 									   self.ownedGuard.oclAsType(TemporalGuard).onClock.ticks,
 									   otherFireFromTheSameState,
 									   guardDelay,
@@ -117,28 +119,37 @@ package tfsm
 			
 	context State
 		inv enterOnceBeforeToLeave:
-			Relation Alternates(self.entering, self.leaving) 
+			Relation WeakAlternates(self.entering, self.leaving)  
 		
 		inv firingATransitionAlternatesWithLeavingState:
+			(self.outgoingTransitions->size() > 0) implies
 			let allFiredoutgoingTransition : Event = Expression Union(self.outgoingTransitions.fire) in
 			Relation Coincides(allFiredoutgoingTransition, self.leaving)
 		
-		inv stateEntering:
+		inv stateEntering1:
 			(not (self = self.owningFSM.initialState)) implies
 			let allInputTransition : Event = Expression Union(self.incomingTransitions.fire) in
-			Relation Causes(allInputTransition,self.entering)
+			Relation Precedes(allInputTransition,self.entering)
+			
+		--no time elapsed between the fire and the entering (micro step)
+		inv stateEntering2:
+			(not (self = self.owningFSM.initialState)) and (self.owningFSM.localClock = null) implies --case of no local time
+			let allInputTransition2 : Event = Expression Union(self.incomingTransitions.fire) in
+			let allInputsSampledOnMinutes : Event = Expression SampledOn(allInputTransition2, self.owningFSM.oclAsType(ecore::EObject).eContainer().oclAsType(TimedSystem).globalClocks->first().ticks) in
+			Relation Precedes(self.entering, allInputsSampledOnMinutes)
 
 		
 	context EvaluateGuard
 		inv fireEvaluationAndResult:
-			Relation TransitionRule (self.evaluate, self.evaluatedTrue, self.evaluatedFalse)	
+			Relation BooleanGuardedTransitionRule (self.evaluate, self.evaluatedTrue, self.evaluatedFalse)	
 			
 	context TFSM
 		inv oneStateAtATime:
 			Relation Exclusion(self.ownedStates.entering)
 			
 		inv oneTransitionAtATime:
-			Relation Exclusion(self.ownedStates.outgoingTransitions.fire)
+			(self.ownedStates.outgoingTransitions->size() > 1) implies
+			(Relation Exclusion(self.ownedStates.outgoingTransitions.fire))
 			
 		inv firstIsInitialState:
 			Relation Coincides(self.start, self.initialState.entering)

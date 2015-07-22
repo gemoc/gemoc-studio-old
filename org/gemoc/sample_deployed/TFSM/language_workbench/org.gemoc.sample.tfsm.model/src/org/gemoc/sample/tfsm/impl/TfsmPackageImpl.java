@@ -644,6 +644,8 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		initEClass(fsmEventEClass, FSMEvent.class, "FSMEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFSMEvent_SollicitingTransitions(), this.getTransition(), null, "sollicitingTransitions", null, 0, -1, FSMEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(fsmEventEClass, ecorePackage.getEString(), "occurs", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(fsmClockEClass, FSMClock.class, "FSMClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFSMClock_NumberOfTicks(), ecorePackage.getEInt(), "numberOfTicks", null, 0, 1, FSMClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -704,6 +706,11 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		   });	
 		addAnnotation
 		  (transitionEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (fsmEventEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });	

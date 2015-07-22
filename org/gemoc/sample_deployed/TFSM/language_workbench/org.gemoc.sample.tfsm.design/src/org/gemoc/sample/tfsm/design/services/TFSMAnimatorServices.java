@@ -12,7 +12,8 @@ public class TFSMAnimatorServices extends AbstractGemocAnimatorServices {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 		
 		res.add(new StringCouple("TFSM","Animation"));
-
+		res.add(new StringCouple("TimedSystem","Animation"));
+		
 		return res;
 	}
 

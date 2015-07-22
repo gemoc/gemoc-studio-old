@@ -51,7 +51,9 @@ class TFSMAspect extends NamedElementAspect {
 @Aspect(className=State)
 class StateAspect extends NamedElementAspect {
 	def public String onEnter() {
+		_self.owningFSM.currentState = _self;
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".onEnter()]Entering " + _self.name);
+		
 	}
 
 	def public String onLeave() {
@@ -63,7 +65,7 @@ class StateAspect extends NamedElementAspect {
 class TransitionAspect extends NamedElementAspect {
 	def public String fire() {
 		GroovyRunner.executeScript(_self.action, _self);
-		_self.source.owningFSM.currentState = _self.target
+		_self.source.owningFSM.currentState = null
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".fire()]Fired " + _self.name + " -> " +
 			_self.action)
 	}
@@ -87,6 +89,9 @@ class EventGuardAspect extends GuardAspect {
 
 @Aspect(className=FSMEvent)
 class FSMEventAspect extends NamedElementAspect {
+	def public String occurs() {
+		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".occurs()]Occured " )
+	}
 }
 
 @Aspect(className=FSMClock)
