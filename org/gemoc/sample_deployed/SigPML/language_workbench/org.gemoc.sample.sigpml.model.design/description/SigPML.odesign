@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="SigPML" version="8.1.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="SigPML" version="9.0.0">
   <ownedViewpoints name="SigPML" modelFileExtension="*.sigpml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SigPML" initialisation="true" showOnStartup="true" domainClass="System">
       <metamodel href="../../org.gemoc.sample.sigpml.model/model/sigpml.ecore#/"/>
@@ -202,16 +202,18 @@
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']/@style/@centerLabelStyleDescription" attributeName="labelExpression" value="[self.oclAsType(Place).currentSize + ' / ' + self.oclAsType(Place).size/]"/>
-            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@style //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='AgentAllocation']/@style/@centerLabelStyleDescription //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='PlaceAllocation']/@style/@centerLabelStyleDescription //@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='']/@style/@centerLabelStyleDescription" applyOnAll="true" attributeName="labelExpression" value="[self.name + '\n'+ (self.currentExecCycle) +' on ' + (self.cycles-1)/]"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@style" attributeName="labelExpression" value="[self.name + '\n'+ (self.currentExecCycle) +' on ' + (self.cycles-1)/]"/>
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
-            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@style" referenceName="color" value="//@userColorsPalettes[name='MyPalette']/@entries[name='current%20instruction']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@style" referenceName="borderColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </featureCustomizations>
           </vsmElementCustomizations>
         </customization>
       </additionalLayers>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.gemoc.sample.sigpml.concrete.design.services.SigPMLDebuggerServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.gemoc.sample.sigpml.concrete.design.services.SigPMLAnimationServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.gemoc.sample.sigpml.concrete.design.services.SigPMLAnimatorServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="MyPalette">
     <entries xsi:type="description:UserFixedColor" red="201" green="219" blue="236" name="current instruction"/>

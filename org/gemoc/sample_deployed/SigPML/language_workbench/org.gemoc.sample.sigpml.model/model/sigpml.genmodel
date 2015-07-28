@@ -1,89 +1,199 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.sample.sigpml.model/src" editDirectory="/org.gemoc.sample.sigpml.model.edit/src"
-    editorDirectory="/org.gemoc.sample.sigpml.model.editor/src" modelPluginID="org.gemoc.sample.sigpml.model"
-    modelName="Sigpml" editPluginClass="org.gemoc.sample.sigpml.provider.SigpmlEditPlugin"
-    editorPluginClass="org.gemoc.sample.sigpml.presentation.SigpmlEditorPlugin" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    testSuiteClass="org.gemoc.sample.sigpml.tests.SigpmlAllTests" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" copyrightFields="false" editPluginID="org.gemoc.sample.sigpml.model.edit"
-    editorPluginID="org.gemoc.sample.sigpml.model.editor" operationReflection="true"
-    importOrganizing="true">
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.sample.sigpml.model/src" editDirectory="/org.gemoc.sample.sigpml.model.edit/src" editorDirectory="/org.gemoc.sample.sigpml.model.editor/src" modelPluginID="org.gemoc.sample.sigpml.model" modelName="Sigpml" editPluginClass="org.gemoc.sample.sigpml.provider.SigpmlEditPlugin" editorPluginClass="org.gemoc.sample.sigpml.presentation.SigpmlEditorPlugin" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testSuiteClass="org.gemoc.sample.sigpml.tests.SigpmlAllTests" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false" editPluginID="org.gemoc.sample.sigpml.model.edit" editorPluginID="org.gemoc.sample.sigpml.model.editor" operationReflection="true" importOrganizing="true">
   <foreignModel>sigpml.ecore</foreignModel>
-  <genPackages prefix="Sigpml" basePackage="org.gemoc.sample" disposableProviderFactory="true"
-      ecorePackage="sigpml.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="sigpml.ecore#//sizeType">
-      <genEnumLiterals ecoreEnumLiteral="sigpml.ecore#//sizeType/B"/>
-      <genEnumLiterals ecoreEnumLiteral="sigpml.ecore#//sizeType/kB"/>
-      <genEnumLiterals ecoreEnumLiteral="sigpml.ecore#//sizeType/MB"/>
-      <genEnumLiterals ecoreEnumLiteral="sigpml.ecore#//sizeType/GB"/>
+  <genPackages prefix="Sigpml" basePackage="org.gemoc.sample" disposableProviderFactory="true">
+    <ecorePackage href="sigpml.ecore#/"/>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="sigpml.ecore#//sizeType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="sigpml.ecore#//sizeType/B"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="sigpml.ecore#//sizeType/kB"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="sigpml.ecore#//sizeType/MB"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="sigpml.ecore#//sizeType/GB"/>
+      </genEnumLiterals>
     </genEnums>
-    <genDataTypes ecoreDataType="sigpml.ecore#//Object"/>
-    <genDataTypes ecoreDataType="sigpml.ecore#//LinkedListMultimap"/>
-    <genClasses ecoreClass="sigpml.ecore#//Application">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sigpml.ecore#//Application/ownedAgents"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sigpml.ecore#//Application/ownedPlaces"/>
+    <genDataTypes>
+      <ecoreDataType href="sigpml.ecore#//Object"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="sigpml.ecore#//LinkedListMultimap"/>
+    </genDataTypes>
+    <genClasses>
+      <ecoreClass href="sigpml.ecore#//Application"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//Application/ownedAgents"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//Application/ownedPlaces"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="sigpml.ecore#//Agent">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sigpml.ecore#//Agent/ownedPorts"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//Agent/cycles"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference sigpml.ecore#//Agent/owner"/>
-      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute sigpml.ecore#//Agent/code"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sigpml.ecore#//Agent/allocatedTo"/>
-      <genOperations ecoreOperation="sigpml.ecore#//Agent/isExecuting"/>
-      <genOperations ecoreOperation="sigpml.ecore#//Agent/execute"/>
+    <genClasses>
+      <ecoreClass href="sigpml.ecore#//Agent"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//Agent/ownedPorts"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Agent/cycles"/>
+      </genFeatures>
+      <genFeatures property="None" notify="false" createChild="false">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//Agent/owner"/>
+      </genFeatures>
+      <genFeatures createChild="false" propertyMultiLine="true">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Agent/code"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//Agent/allocatedTo"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Agent/currentExecCycle"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Agent/isCurrentlyExecuting"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="sigpml.ecore#//Agent/isExecuting"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="sigpml.ecore#//Agent/execute"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="sigpml.ecore#//Agent/stop"/>
+      </genOperations>
     </genClasses>
-    <genClasses image="false" ecoreClass="sigpml.ecore#//Port">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference sigpml.ecore#//Port/owner"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//Port/rate"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//Port/byteRate"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//Port/type"/>
+    <genClasses image="false">
+      <ecoreClass href="sigpml.ecore#//Port"/>
+      <genFeatures property="None" notify="false" createChild="false">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//Port/owner"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Port/rate"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Port/byteRate"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Port/type"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="sigpml.ecore#//InputPort">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//InputPort/sizeToread"/>
-      <genOperations ecoreOperation="sigpml.ecore#//InputPort/read"/>
-      <genOperations ecoreOperation="sigpml.ecore#//InputPort/logSizeToReadWhenZero"/>
-      <genOperations ecoreOperation="sigpml.ecore#//InputPort/logSizeToReadWhenNotZero"/>
+    <genClasses>
+      <ecoreClass href="sigpml.ecore#//InputPort"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//InputPort/sizeToread"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="sigpml.ecore#//InputPort/read"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="sigpml.ecore#//InputPort/logSizeToReadWhenZero"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="sigpml.ecore#//InputPort/logSizeToReadWhenNotZero"/>
+      </genOperations>
     </genClasses>
-    <genClasses ecoreClass="sigpml.ecore#//OutputPort">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//OutputPort/sizeWritten"/>
-      <genOperations ecoreOperation="sigpml.ecore#//OutputPort/write"/>
+    <genClasses>
+      <ecoreClass href="sigpml.ecore#//OutputPort"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//OutputPort/sizeWritten"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="sigpml.ecore#//OutputPort/write"/>
+      </genOperations>
     </genClasses>
-    <genClasses ecoreClass="sigpml.ecore#//Place">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sigpml.ecore#//Place/itsOutputPort"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sigpml.ecore#//Place/itsInputPort"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//Place/fifo"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//Place/isInitialized"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//Place/size"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference sigpml.ecore#//Place/owner"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//Place/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//Place/byteSize"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//Place/delay"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//Place/currentSize"/>
-      <genOperations ecoreOperation="sigpml.ecore#//Place/push"/>
-      <genOperations ecoreOperation="sigpml.ecore#//Place/pop"/>
+    <genClasses>
+      <ecoreClass href="sigpml.ecore#//Place"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//Place/itsOutputPort"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//Place/itsInputPort"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/fifo"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/isInitialized"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/size"/>
+      </genFeatures>
+      <genFeatures property="None" notify="false" createChild="false">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//Place/owner"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/type"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/byteSize"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/delay"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/currentSize"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="sigpml.ecore#//Place/push"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="sigpml.ecore#//Place/pop"/>
+      </genOperations>
     </genClasses>
-    <genClasses image="false" ecoreClass="sigpml.ecore#//NamedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//NamedElement/name"/>
+    <genClasses image="false">
+      <ecoreClass href="sigpml.ecore#//NamedElement"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//NamedElement/name"/>
+      </genFeatures>
     </genClasses>
-    <genClasses image="false" ecoreClass="sigpml.ecore#//HWRessource">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference sigpml.ecore#//HWRessource/owner"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sigpml.ecore#//HWRessource/connectedTo"/>
+    <genClasses image="false">
+      <ecoreClass href="sigpml.ecore#//HWRessource"/>
+      <genFeatures property="None" notify="false" createChild="false">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//HWRessource/owner"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//HWRessource/connectedTo"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="sigpml.ecore#//HWComputationalResource">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//HWComputationalResource/isUnderPreemptiveManagement"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sigpml.ecore#//HWComputationalResource/allocatedAgents"/>
+    <genClasses>
+      <ecoreClass href="sigpml.ecore#//HWComputationalResource"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//HWComputationalResource/isUnderPreemptiveManagement"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//HWComputationalResource/allocatedAgents"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="sigpml.ecore#//HWStorageResource">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sigpml.ecore#//HWStorageResource/allocatedPlaces"/>
+    <genClasses>
+      <ecoreClass href="sigpml.ecore#//HWStorageResource"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//HWStorageResource/allocatedPlaces"/>
+      </genFeatures>
     </genClasses>
-    <genClasses ecoreClass="sigpml.ecore#//HWCommunicationResource"/>
-    <genClasses ecoreClass="sigpml.ecore#//HWPlatform">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sigpml.ecore#//HWPlatform/ownedHWResources"/>
+    <genClasses>
+      <ecoreClass href="sigpml.ecore#//HWCommunicationResource"/>
     </genClasses>
-    <genClasses ecoreClass="sigpml.ecore#//System">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sigpml.ecore#//System/ownedApplication"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sigpml.ecore#//System/ownedHWPlatform"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sigpml.ecore#//System/sharedMemory"/>
+    <genClasses>
+      <ecoreClass href="sigpml.ecore#//HWPlatform"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//HWPlatform/ownedHWResources"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="sigpml.ecore#//System"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//System/ownedApplication"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//System/ownedHWPlatform"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//System/sharedMemory"/>
+      </genFeatures>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

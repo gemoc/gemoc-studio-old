@@ -38,6 +38,8 @@ import org.gemoc.sample.sigpml.SigpmlPackage;
  *   <li>{@link org.gemoc.sample.sigpml.impl.AgentImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.impl.AgentImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.impl.AgentImpl#getAllocatedTo <em>Allocated To</em>}</li>
+ *   <li>{@link org.gemoc.sample.sigpml.impl.AgentImpl#getCurrentExecCycle <em>Current Exec Cycle</em>}</li>
+ *   <li>{@link org.gemoc.sample.sigpml.impl.AgentImpl#isIsCurrentlyExecuting <em>Is Currently Executing</em>}</li>
  * </ul>
  * </p>
  *
@@ -103,6 +105,46 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 	 * @ordered
 	 */
 	protected HWComputationalResource allocatedTo;
+
+	/**
+	 * The default value of the '{@link #getCurrentExecCycle() <em>Current Exec Cycle</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentExecCycle()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CURRENT_EXEC_CYCLE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getCurrentExecCycle() <em>Current Exec Cycle</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentExecCycle()
+	 * @generated
+	 * @ordered
+	 */
+	protected int currentExecCycle = CURRENT_EXEC_CYCLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsCurrentlyExecuting() <em>Is Currently Executing</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsCurrentlyExecuting()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_CURRENTLY_EXECUTING_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsCurrentlyExecuting() <em>Is Currently Executing</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsCurrentlyExecuting()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isCurrentlyExecuting = IS_CURRENTLY_EXECUTING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -261,6 +303,48 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getCurrentExecCycle() {
+		return currentExecCycle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCurrentExecCycle(int newCurrentExecCycle) {
+		int oldCurrentExecCycle = currentExecCycle;
+		currentExecCycle = newCurrentExecCycle;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlPackage.AGENT__CURRENT_EXEC_CYCLE, oldCurrentExecCycle, currentExecCycle));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isIsCurrentlyExecuting() {
+		return isCurrentlyExecuting;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsCurrentlyExecuting(boolean newIsCurrentlyExecuting) {
+		boolean oldIsCurrentlyExecuting = isCurrentlyExecuting;
+		isCurrentlyExecuting = newIsCurrentlyExecuting;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlPackage.AGENT__IS_CURRENTLY_EXECUTING, oldIsCurrentlyExecuting, isCurrentlyExecuting));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void isExecuting() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -273,6 +357,17 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 	 * @generated
 	 */
 	public void execute() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void stop() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -346,6 +441,10 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 			case SigpmlPackage.AGENT__ALLOCATED_TO:
 				if (resolve) return getAllocatedTo();
 				return basicGetAllocatedTo();
+			case SigpmlPackage.AGENT__CURRENT_EXEC_CYCLE:
+				return getCurrentExecCycle();
+			case SigpmlPackage.AGENT__IS_CURRENTLY_EXECUTING:
+				return isIsCurrentlyExecuting();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -375,6 +474,12 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 			case SigpmlPackage.AGENT__ALLOCATED_TO:
 				setAllocatedTo((HWComputationalResource)newValue);
 				return;
+			case SigpmlPackage.AGENT__CURRENT_EXEC_CYCLE:
+				setCurrentExecCycle((Integer)newValue);
+				return;
+			case SigpmlPackage.AGENT__IS_CURRENTLY_EXECUTING:
+				setIsCurrentlyExecuting((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -402,6 +507,12 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 			case SigpmlPackage.AGENT__ALLOCATED_TO:
 				setAllocatedTo((HWComputationalResource)null);
 				return;
+			case SigpmlPackage.AGENT__CURRENT_EXEC_CYCLE:
+				setCurrentExecCycle(CURRENT_EXEC_CYCLE_EDEFAULT);
+				return;
+			case SigpmlPackage.AGENT__IS_CURRENTLY_EXECUTING:
+				setIsCurrentlyExecuting(IS_CURRENTLY_EXECUTING_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -424,6 +535,10 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 				return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
 			case SigpmlPackage.AGENT__ALLOCATED_TO:
 				return allocatedTo != null;
+			case SigpmlPackage.AGENT__CURRENT_EXEC_CYCLE:
+				return currentExecCycle != CURRENT_EXEC_CYCLE_EDEFAULT;
+			case SigpmlPackage.AGENT__IS_CURRENTLY_EXECUTING:
+				return isCurrentlyExecuting != IS_CURRENTLY_EXECUTING_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -441,6 +556,9 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 				return null;
 			case SigpmlPackage.AGENT___EXECUTE:
 				execute();
+				return null;
+			case SigpmlPackage.AGENT___STOP:
+				stop();
 				return null;
 		}
 		return super.eInvoke(operationID, arguments);
@@ -460,6 +578,10 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 		result.append(cycles);
 		result.append(", code: ");
 		result.append(code);
+		result.append(", currentExecCycle: ");
+		result.append(currentExecCycle);
+		result.append(", isCurrentlyExecuting: ");
+		result.append(isCurrentlyExecuting);
 		result.append(')');
 		return result.toString();
 	}

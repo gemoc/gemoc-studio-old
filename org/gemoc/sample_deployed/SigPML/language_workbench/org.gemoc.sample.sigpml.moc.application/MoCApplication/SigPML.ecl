@@ -8,8 +8,8 @@ ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibra
 package sigpml
 
 	context Agent 
-	def : start: Event= self.execute()
-	def : stop: Event = self
+	def : startAgent: Event= self.execute()
+	def : stopAgent: Event = self.stop()
 	def : isExecuting :Event = self.isExecuting()
 	
 	context InputPort
@@ -62,7 +62,7 @@ package sigpml
 		--it Should be possible to 'let' rate +1 here !!
 		let itsRate : Integer = self.rate in
 		Relation Input(
-			self.owner.oclAsType(Agent).start,
+			self.owner.oclAsType(Agent).startAgent,
 			self.read,
 			self.ratePlusOne,
 			itsRate
@@ -76,7 +76,7 @@ package sigpml
 	inv AgentOutputConstraint:
 		let itsORate : Integer = self.rate in
 		Relation Output(
-			self.owner.oclAsType(Agent).stop,
+			self.owner.oclAsType(Agent).stopAgent,
 			self.write,
 			itsORate
 		)
@@ -88,10 +88,10 @@ package sigpml
 	context Agent 
 	inv ComputationDelay:
 		let itsExecTime : Integer = self.cycles in
-		Relation AgentExecution(self.start, self.stop, self.isExecuting, itsExecTime)
+		Relation AgentExecution(self.startAgent, self.stopAgent, self.isExecuting, itsExecTime)
 		
 	inv NonReentrantAgent:
-		Relation Alternates(self.start, self.stop)
+		Relation Alternates(self.startAgent, self.stopAgent)
 
 		
 	context HWComputationalResource
@@ -109,8 +109,8 @@ package sigpml
 		
 	inv NonPreemptiveExecution:
 		(self.isUnderPreemptiveManagement) implies
-		let allAgentStarts : Event = Expression Union(self.allocatedAgents.oclAsType(Agent).start) in
-		let allAgentStops : Event = Expression Union(self.allocatedAgents.oclAsType(Agent).stop) in
+		let allAgentStarts : Event = Expression Union(self.allocatedAgents.oclAsType(Agent).startAgent) in
+		let allAgentStops : Event = Expression Union(self.allocatedAgents.oclAsType(Agent).stopAgent) in
 		Relation Alternates(allAgentStarts, allAgentStops)
 		
 	

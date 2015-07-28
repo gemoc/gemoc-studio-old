@@ -17,6 +17,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.gemoc.sample.sigpml.Agent#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Agent#getCode <em>Code</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Agent#getAllocatedTo <em>Allocated To</em>}</li>
+ *   <li>{@link org.gemoc.sample.sigpml.Agent#getCurrentExecCycle <em>Current Exec Cycle</em>}</li>
+ *   <li>{@link org.gemoc.sample.sigpml.Agent#isIsCurrentlyExecuting <em>Is Currently Executing</em>}</li>
  * </ul>
  * </p>
  *
@@ -150,6 +152,59 @@ public interface Agent extends NamedElement {
 	void setAllocatedTo(HWComputationalResource value);
 
 	/**
+	 * Returns the value of the '<em><b>Current Exec Cycle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Current Exec Cycle</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Current Exec Cycle</em>' attribute.
+	 * @see #setCurrentExecCycle(int)
+	 * @see org.gemoc.sample.sigpml.SigpmlPackage#getAgent_CurrentExecCycle()
+	 * @model
+	 * @generated
+	 */
+	int getCurrentExecCycle();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.sample.sigpml.Agent#getCurrentExecCycle <em>Current Exec Cycle</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Current Exec Cycle</em>' attribute.
+	 * @see #getCurrentExecCycle()
+	 * @generated
+	 */
+	void setCurrentExecCycle(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Is Currently Executing</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Is Currently Executing</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Currently Executing</em>' attribute.
+	 * @see #setIsCurrentlyExecuting(boolean)
+	 * @see org.gemoc.sample.sigpml.SigpmlPackage#getAgent_IsCurrentlyExecuting()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isIsCurrentlyExecuting();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.sample.sigpml.Agent#isIsCurrentlyExecuting <em>Is Currently Executing</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Currently Executing</em>' attribute.
+	 * @see #isIsCurrentlyExecuting()
+	 * @generated
+	 */
+	void setIsCurrentlyExecuting(boolean value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
@@ -164,5 +219,13 @@ public interface Agent extends NamedElement {
 	 * @generated
 	 */
 	void execute();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void stop();
 
 } // Agent

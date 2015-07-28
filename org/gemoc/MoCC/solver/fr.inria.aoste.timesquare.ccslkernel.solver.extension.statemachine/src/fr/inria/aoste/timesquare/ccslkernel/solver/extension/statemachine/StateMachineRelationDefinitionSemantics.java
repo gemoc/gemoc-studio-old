@@ -75,14 +75,16 @@ public class StateMachineRelationDefinitionSemantics extends AbstractWrappedRela
 
 		_orderedLocalInteger = new ArrayList<IntegerElement>();
 		_localInteger = new HashMap<ConcreteEntity, IntegerElement>();
-		for (ConcreteEntity ce : _modelSTS.getDeclarationBlock().getConcreteEntities()) {
-			if (ce instanceof IntegerElement){
-				IntegerElement ie  = BasicTypeFactory.eINSTANCE.createIntegerElement();
-				ie.setName(((IntegerElement)ce).getName());
-				ie.setValue(((IntegerElement)ce).getValue());
-				
-				_orderedLocalInteger.add(ie);
-				_localInteger.put(ce, ie);
+		if (_modelSTS.getDeclarationBlock() != null){
+			for (ConcreteEntity ce : _modelSTS.getDeclarationBlock().getConcreteEntities()) {
+				if (ce instanceof IntegerElement){
+					IntegerElement ie  = BasicTypeFactory.eINSTANCE.createIntegerElement();
+					ie.setName(((IntegerElement)ce).getName());
+					ie.setValue(((IntegerElement)ce).getValue());
+					
+					_orderedLocalInteger.add(ie);
+					_localInteger.put(ce, ie);
+				}
 			}
 		}
 		

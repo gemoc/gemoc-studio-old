@@ -51,6 +51,8 @@ public class AgentItemProvider extends NamedElementItemProvider {
 			addCyclesPropertyDescriptor(object);
 			addCodePropertyDescriptor(object);
 			addAllocatedToPropertyDescriptor(object);
+			addCurrentExecCyclePropertyDescriptor(object);
+			addIsCurrentlyExecutingPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -117,6 +119,50 @@ public class AgentItemProvider extends NamedElementItemProvider {
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Current Exec Cycle feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCurrentExecCyclePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Agent_currentExecCycle_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Agent_currentExecCycle_feature", "_UI_Agent_type"),
+				 SigpmlPackage.Literals.AGENT__CURRENT_EXEC_CYCLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Currently Executing feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsCurrentlyExecutingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Agent_isCurrentlyExecuting_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Agent_isCurrentlyExecuting_feature", "_UI_Agent_type"),
+				 SigpmlPackage.Literals.AGENT__IS_CURRENTLY_EXECUTING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -191,6 +237,8 @@ public class AgentItemProvider extends NamedElementItemProvider {
 		switch (notification.getFeatureID(Agent.class)) {
 			case SigpmlPackage.AGENT__CYCLES:
 			case SigpmlPackage.AGENT__CODE:
+			case SigpmlPackage.AGENT__CURRENT_EXEC_CYCLE:
+			case SigpmlPackage.AGENT__IS_CURRENTLY_EXECUTING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case SigpmlPackage.AGENT__OWNED_PORTS:
