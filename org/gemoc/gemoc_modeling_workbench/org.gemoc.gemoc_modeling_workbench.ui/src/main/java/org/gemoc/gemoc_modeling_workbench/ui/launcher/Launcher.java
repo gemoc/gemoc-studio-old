@@ -50,6 +50,7 @@ import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
+import org.gemoc.gemoc_language_workbench.extensions.k3.PlainK3ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocDebuggerServices;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
@@ -339,8 +340,8 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 
 			res = new GemocModelDebugger(dispatcher, _executionEngine);
 
-		} else if (_executionEngine instanceof IDeterministicExecutionEngine){
-			res = new PlainK3ModelDebugger(dispatcher, (IDeterministicExecutionEngine)_executionEngine);
+		} else if (_executionEngine instanceof IDeterministicExecutionEngine) {
+			res = new PlainK3ModelDebugger(dispatcher, (IDeterministicExecutionEngine) _executionEngine);
 		}
 
 		// If in the launch configuration it is asked to pause at the start,
@@ -386,7 +387,10 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 
 	@Override
 	protected String getModelIdentifier() {
-		return MODEL_ID;
+		if (_executionEngine instanceof PlainK3ExecutionEngine)
+			return "org.gemoc.gemoc_modeling_workbench.ui.plainK3debugModel";
+		else
+			return MODEL_ID;
 	}
 
 	class DefaultSearchRequestor extends SearchRequestor {

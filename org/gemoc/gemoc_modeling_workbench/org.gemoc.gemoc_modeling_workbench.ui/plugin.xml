@@ -72,6 +72,13 @@
              id="org.gemoc.gemoc_modeling_workbench.ui.debugModel">
        </debugModelPresentation>
     </extension>
+       <extension
+          point="org.eclipse.debug.ui.debugModelPresentations">
+       <debugModelPresentation
+             class="org.gemoc.gemoc_modeling_workbench.ui.launcher.PlainK3DebugModelPresentation"
+             id="org.gemoc.gemoc_modeling_workbench.ui.plainK3debugModel">
+       </debugModelPresentation>
+    </extension>
     <extension
           id="org.gemoc.gemoc_modeling_workbench.ui.breakpoint.breakpointMarker"
           point="org.eclipse.core.resources.markers">
