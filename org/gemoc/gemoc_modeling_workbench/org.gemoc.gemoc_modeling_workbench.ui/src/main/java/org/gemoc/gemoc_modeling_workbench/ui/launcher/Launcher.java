@@ -45,6 +45,7 @@ import org.gemoc.execution.engine.core.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
+import org.gemoc.gemoc_language_workbench.api.core.IDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
@@ -338,8 +339,8 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 
 			res = new GemocModelDebugger(dispatcher, _executionEngine);
 
-		} else {
-			res = new PlainK3ModelDebugger(dispatcher, _executionEngine);
+		} else if (_executionEngine instanceof IDeterministicExecutionEngine){
+			res = new PlainK3ModelDebugger(dispatcher, (IDeterministicExecutionEngine)_executionEngine);
 		}
 
 		// If in the launch configuration it is asked to pause at the start,

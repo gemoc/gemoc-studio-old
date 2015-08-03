@@ -1,6 +1,8 @@
 package org.gemoc.gemoc_modeling_workbench.ui.debug;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.function.BiPredicate;
 
 import org.eclipse.emf.ecore.EObject;
@@ -9,14 +11,16 @@ import org.gemoc.execution.engine.core.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
+import org.gemoc.gemoc_language_workbench.api.core.IDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IStackListener;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_modeling_workbench.ui.breakpoint.GemocBreakpoint;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
-public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngineAddon, IGemocDebugger {
+public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngineAddon, IGemocDebugger, IStackListener {
 
 	/**
 	 * A fake instruction to prevent the stepping return to stop on each event.
@@ -26,14 +30,21 @@ public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngi
 	/**
 	 * The {@link NonDeterministicExecutionEngine} to debug.
 	 */
-	private final IExecutionEngine engine;
+	private final IDeterministicExecutionEngine engine;
 
-	public PlainK3ModelDebugger(IDSLDebugEventProcessor target, IExecutionEngine engine) {
+	public PlainK3ModelDebugger(IDSLDebugEventProcessor target, IDeterministicExecutionEngine engine) {
 		super(target);
 		this.engine = engine;
+		engine.addStackListener(this);
 	}
 
 	@Override
+	/*
+	 * This method is eventually called within a new engine thread.
+	 * (non-Javadoc)
+	 * 
+	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#start()
+	 */
 	public void start() {
 		engine.start();
 	}
@@ -44,48 +55,97 @@ public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngi
 	}
 
 	@Override
+	/*
+	 * For this debugger, instructions should only be MSEOcurrences
+	 * (non-Javadoc)
+	 * 
+	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#canStepInto(java.lang.String,
+	 * org.eclipse.emf.ecore.EObject)
+	 */
 	public boolean canStepInto(String threadName, EObject instruction) {
 		// TODO generate code to test small/big step
-		return false;
+		return true;
 	}
-	
+
 	@Override
 	public void steppingOver(String threadName) {
 		// To send notifications, but probably useless
 		super.steppingOver(threadName);
-		
-		// TODO change this, it's simply to do step by step with stepover for now
+
+		// We add a future break as soon as the step is over
 		addPredicateBreak(new BiPredicate<IExecutionEngine, MSEOccurrence>() {
+
+			// The operation we want to step over
+			private MSEOccurrence steppedOver = engine.getCurrentMSEOccurrence();
+
 			@Override
 			public boolean test(IExecutionEngine t, MSEOccurrence u) {
-				return true;
+				// We finished stepping over once the mseoccurrence is not there
+				// anymore
+				return !engine.getCurrentStack().contains(steppedOver);
 			}
 		});
 	}
 
-	
-	boolean initFakeStackFrame = false;
-	
 	@Override
+	public void steppingInto(String threadName) {
+		// To send notifications, but probably useless
+		super.steppingInto(threadName);
+
+		// We add a future break asap
+		addPredicateBreak(new BiPredicate<IExecutionEngine, MSEOccurrence>() {
+			@Override
+			public boolean test(IExecutionEngine t, MSEOccurrence u) {
+				// We finished stepping as soon as we encounter a new step
+				return true;
+			}
+		});
+
+	}
+
+	boolean initFakeStackFrame = false;
+	String threadName = "a6tIIuOOz8Ir1ppWaAxAtKKoH";
+
+	@Override
+	/*
+	 * This operation is called lots of time to update the stackframe view. We
+	 * have to call "pushStackFrame" and "popStackFrame" to construct the
+	 * stackframe.
+	 * 
+	 * TODO When using "pushStackFrame", we give the big step MSEOcc as
+	 * the context, and the small step MSEOcc as the currentInstruction
+	 * (non-Javadoc)
+	 * 
+	 * @see fr.obeo.dsl.debug.ide.IDSLDebugger#updateData(java.lang.String,
+	 * org.eclipse.emf.ecore.EObject)
+	 */
 	public void updateData(String threadName, EObject instruction) {
-		// TODO display in which bigstep we are in
+ 
+		// This initial frame will in ANY case display the root element of the model, because the first context is the one of the Thread, which is the root
 		if (!initFakeStackFrame) {
-			pushStackFrame(threadName, "Fake stack frame", instruction, instruction);
+			pushStackFrame(threadName, "Root frame", instruction, instruction);
 			initFakeStackFrame = true;
+			this.threadName = threadName;
 		}
-			
-		
+
+		for (ToPushPop m : toPushPop) {
+			if (m.push) {
+				pushStackFrame(threadName, m.mseOccurrence.getMse().getName(), m.mseOccurrence, m.mseOccurrence);
+			} else {
+				popStackFrame(threadName);
+			}
+		}
+
+		toPushPop.clear();
+
 	}
 
 	@Override
 	public boolean shouldBreak(EObject instruction) {
-		boolean res = false;
-
 		if (instruction instanceof MSEOccurrence) {
-			res = shouldBreakMSEOccurence((MSEOccurrence) instruction);
+			return shouldBreakMSEOccurence((MSEOccurrence) instruction);
 		}
-
-		return res;
+		return false;
 	}
 
 	private boolean hasRegularBreakpointTrue(EObject o) {
@@ -124,21 +184,9 @@ public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngi
 	}
 
 	@Override
-	public void engineAboutToStart(IExecutionEngine engine) {
-	}
-
-	@Override
 	public void engineStarted(IExecutionEngine executionEngine) {
 		spawnRunningThread(Thread.currentThread().getName(), engine.getExecutionContext().getResourceModel()
 				.getContents().get(0));
-	}
-
-	@Override
-	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) {
-	}
-
-	@Override
-	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) {
 	}
 
 	@Override
@@ -169,26 +217,6 @@ public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngi
 	}
 
 	@Override
-	public void engineStatusChanged(IExecutionEngine engineRunnable, RunStatus newStatus) {
-	}
-
-	@Override
-	public void engineAboutToStop(IExecutionEngine engine) {
-	}
-
-	@Override
-	public void logicalStepExecuted(IExecutionEngine engine, LogicalStep logicalStepExecuted) {
-	}
-
-	@Override
-	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) {
-	}
-
-	@Override
-	public void proposedLogicalStepsChanged(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) {
-	}
-
-	@Override
 	public boolean validateVariableValue(String threadName, String variableName, String value) {
 		// TODO Auto-generated method stub
 		return false;
@@ -205,8 +233,68 @@ public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngi
 		// TODO Auto-generated method stub
 	}
 
+	private static class ToPushPop {
+		public MSEOccurrence mseOccurrence;
+		public boolean push;
+
+		ToPushPop(MSEOccurrence mseOccurrence, boolean push) {
+			this.mseOccurrence = mseOccurrence;
+			this.push = push;
+		}
+	}
+
+	List<ToPushPop> toPushPop = new ArrayList<>();
+
+	@Override
+	public void notifyPushMSEOccurrence(MSEOccurrence mseOccurrence) {
+		ToPushPop aaa = new ToPushPop(mseOccurrence, true);
+		toPushPop.add(aaa);
+	}
+
+	@Override
+	public void notifyPopMSEOccurrence(MSEOccurrence mseOccurrence) {
+		ToPushPop aaa = new ToPushPop(mseOccurrence, false);
+		toPushPop.add(aaa);
+	}
+
+	/* --------------------------------------------------------- */
+	/* We don't care about all the remaining addon notifications */
+	/* --------------------------------------------------------- */
+
+	@Override
+	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) {
+	}
+
+	@Override
+	public void engineAboutToStart(IExecutionEngine engine) {
+	}
+
+	@Override
+	public void proposedLogicalStepsChanged(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) {
+	}
+
 	@Override
 	public void engineAboutToDispose(IExecutionEngine engine) {
+	}
+
+	@Override
+	public void aboutToSelectLogicalStep(IExecutionEngine engine, Collection<LogicalStep> logicalSteps) {
+	}
+
+	@Override
+	public void logicalStepSelected(IExecutionEngine engine, LogicalStep selectedLogicalStep) {
+	}
+
+	@Override
+	public void engineStatusChanged(IExecutionEngine engineRunnable, RunStatus newStatus) {
+	}
+
+	@Override
+	public void engineAboutToStop(IExecutionEngine engine) {
+	}
+
+	@Override
+	public void logicalStepExecuted(IExecutionEngine engine, LogicalStep logicalStepExecuted) {
 	}
 
 }

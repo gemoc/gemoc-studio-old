@@ -3,6 +3,8 @@ package org.gemoc.execution.engine.core;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
@@ -17,20 +19,23 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_tr
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
+import org.gemoc.gemoc_language_workbench.api.core.IDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
+import org.gemoc.gemoc_language_workbench.api.core.IStackListener;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.FeedbackFactory;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
-public abstract class AbstractDeterministicExecutionEngine extends AbstractExecutionEngine {
+public abstract class AbstractDeterministicExecutionEngine extends AbstractExecutionEngine implements IDeterministicExecutionEngine {
 
 	private Runnable _runnable;
 	private ActionModel _actionModel;
 	private EMFCommandTransaction currentTransaction;
 	private Deque<MSEOccurrence> _mseOccurences = new ArrayDeque<MSEOccurrence>();
 	protected InternalTransactionalEditingDomain editingDomain;
+	private Set<IStackListener> stackListeners;
 
 	public AbstractDeterministicExecutionEngine(final IExecutionContext context) {
 		super(context);
@@ -46,7 +51,8 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 					setEngineStatus(EngineStatus.RunStatus.Stopped);
 					notifyEngineStopped();
 
-					// We always try to commit the current transaction
+					// We always try to commit the last remaining current
+					// transaction
 					try {
 						commitCurrentTransaction();
 					} catch (RollbackException e) {
@@ -57,7 +63,38 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 		};
 	}
 
-	public abstract Runnable getEntryPoint();
+	@Override
+	public void addStackListener(IStackListener stackListener) {
+		if (stackListeners == null) {
+			stackListeners = new HashSet<>();
+		}
+		stackListeners.add(stackListener);
+	}
+
+	private void notifyPushMSEOccurrence(MSEOccurrence mseOccurrence) {
+		for (IStackListener l : stackListeners) {
+			l.notifyPushMSEOccurrence(mseOccurrence);
+		}
+	}
+
+	private void notifyPopMSEOccurrence(MSEOccurrence mseOccurrence) {
+		for (IStackListener l : stackListeners) {
+			l.notifyPopMSEOccurrence(mseOccurrence);
+		}
+	}
+
+	@Override
+	public Deque<MSEOccurrence> getCurrentStack() {
+		return new ArrayDeque<>(_mseOccurences);
+	}
+
+	@Override
+	public MSEOccurrence getCurrentMSEOccurrence() {
+		if (_mseOccurences.size() > 0)
+			return _mseOccurences.getFirst();
+		else
+			return null;
+	}
 
 	private static InternalTransactionalEditingDomain getEditingDomain(ResourceSet rs) {
 		TransactionalEditingDomain edomain = org.eclipse.emf.transaction.TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(rs);
@@ -106,9 +143,10 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 		LogicalStep logicalStep = Gemoc_execution_traceFactory.eINSTANCE.createLogicalStep();
 		MSEOccurrence occurrence = Gemoc_execution_traceFactory.eINSTANCE.createMSEOccurrence();
 		occurrence.setLogicalstep(logicalStep);
-		ModelSpecificEvent mse = findOrCreateMSE(caller, operation);
+		ModelSpecificEvent mse = findOrCreateMSE(caller, operation, methodName);
 		occurrence.setMse(mse);
 		_mseOccurences.push(occurrence);
+		notifyPushMSEOccurrence(occurrence);
 		return logicalStep;
 
 	}
@@ -120,6 +158,7 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 	 */
 	private boolean endMSEOccurrence() {
 		MSEOccurrence occurrence = _mseOccurences.pop();
+		notifyPopMSEOccurrence(occurrence);
 		boolean containsNotNull = false;
 
 		if (occurrence != null) {
@@ -145,7 +184,7 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 		return null;
 	}
 
-	private ModelSpecificEvent findOrCreateMSE(EObject caller, EOperation operation) {
+	private ModelSpecificEvent findOrCreateMSE(EObject caller, EOperation operation, String methodName) {
 
 		if (_actionModel != null) {
 			for (ModelSpecificEvent existingMSE : _actionModel.getEvents()) {
@@ -162,7 +201,7 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 		if (operation != null)
 			mse.setName("MSE_" + caller.getClass().getSimpleName() + "_" + operation.getName());
 		else
-			mse.setName("MSE_" + caller.getClass().getSimpleName() + "_nextStep");
+			mse.setName("MSE_" + caller.getClass().getSimpleName() + "_" + methodName);
 		// and add it for possible reuse
 		if (_actionModel != null) {
 
@@ -201,7 +240,8 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 		// If the engine is stopped, we use this call to executeStep to stop the
 		// execution
 		if (_isStopped) {
-			notifyAboutToStop(); // notification occurs only if not already stopped
+			notifyAboutToStop(); // notification occurs only if not already
+									// stopped
 			throw new EngineStoppedException("Execution stopped");
 		}
 
