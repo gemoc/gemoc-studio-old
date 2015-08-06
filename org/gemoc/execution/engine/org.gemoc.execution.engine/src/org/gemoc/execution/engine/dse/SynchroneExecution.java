@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.execution.engine.dse;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,6 +7,7 @@ import java.util.List;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;

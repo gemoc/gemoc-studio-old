@@ -7,7 +7,6 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionProvider;
-import org.gemoc.execution.engine.core.DebugURIHandler;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionCheckpoint;
 
 public class DebugPermissionProvider implements IPermissionProvider {

@@ -41,7 +41,7 @@ import org.eclipse.ui.PlatformUI;
 import org.gemoc.execution.engine.commons.ModelExecutionContext;
 import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
-import org.gemoc.execution.engine.core.NonDeterministicExecutionEngine;
+import org.gemoc.execution.engine.dse.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;

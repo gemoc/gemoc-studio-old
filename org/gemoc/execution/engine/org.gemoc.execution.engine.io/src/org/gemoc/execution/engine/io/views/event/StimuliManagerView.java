@@ -47,7 +47,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.core.NonDeterministicExecutionEngine;
+import org.gemoc.execution.engine.dse.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;

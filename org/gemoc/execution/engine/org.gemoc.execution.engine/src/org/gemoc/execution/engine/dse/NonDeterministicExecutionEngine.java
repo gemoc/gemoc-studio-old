@@ -1,10 +1,10 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.execution.engine.dse;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.dse.DefaultMSEStateController;
+import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;

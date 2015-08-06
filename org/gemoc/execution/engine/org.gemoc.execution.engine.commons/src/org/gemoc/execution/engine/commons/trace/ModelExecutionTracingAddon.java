@@ -25,7 +25,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.CommandExecution;
-import org.gemoc.execution.engine.core.NonDeterministicExecutionEngine;
+import org.gemoc.execution.engine.dse.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;

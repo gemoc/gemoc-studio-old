@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.execution.engine.dse;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;

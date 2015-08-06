@@ -7,7 +7,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.core.NonDeterministicExecutionEngine;
+import org.gemoc.execution.engine.dse.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.io.views.event.ClockStatus;
 import org.gemoc.execution.engine.io.views.event.StimuliManagerView;
 import org.gemoc.execution.engine.io.views.event.ModelSpecificEventContext;

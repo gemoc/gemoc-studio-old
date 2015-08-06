@@ -7,7 +7,7 @@ import java.util.function.BiPredicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.gemoc.execution.engine.core.NonDeterministicExecutionEngine;
+import org.gemoc.execution.engine.dse.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;

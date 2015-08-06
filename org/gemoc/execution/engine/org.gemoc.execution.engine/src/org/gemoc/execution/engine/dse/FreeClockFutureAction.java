@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.execution.engine.dse;
 
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;

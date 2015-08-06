@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.execution.engine.dse;
 
 import java.util.Collection;
 import java.util.HashMap;

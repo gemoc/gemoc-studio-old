@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.core;
+package org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader;
 
 import java.io.IOException;
 import java.io.InputStream;
