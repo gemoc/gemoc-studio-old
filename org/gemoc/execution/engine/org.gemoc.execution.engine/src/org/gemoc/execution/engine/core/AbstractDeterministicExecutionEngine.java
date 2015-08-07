@@ -37,9 +37,10 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 	protected InternalTransactionalEditingDomain editingDomain;
 	private Set<IStackListener> stackListeners;
 
-	public AbstractDeterministicExecutionEngine(final IExecutionContext context) {
-		super(context);
-		this.editingDomain = getEditingDomain(context.getResourceModel().getResourceSet());
+	@Override
+	public void initialize(IExecutionContext executionContext) {
+		super.initialize(executionContext);
+		this.editingDomain = getEditingDomain(executionContext.getResourceModel().getResourceSet());
 		_runnable = new Runnable() {
 			@Override
 			public void run() {
@@ -51,8 +52,7 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 					setEngineStatus(EngineStatus.RunStatus.Stopped);
 					notifyEngineStopped();
 
-					// We always try to commit the last remaining current
-					// transaction
+					// We always try to commit the last remaining transaction
 					try {
 						commitCurrentTransaction();
 					} catch (RollbackException e) {

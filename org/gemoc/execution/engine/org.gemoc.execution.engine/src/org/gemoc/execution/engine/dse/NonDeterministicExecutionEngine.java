@@ -3,6 +3,7 @@ package org.gemoc.execution.engine.dse;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.CoreException;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
@@ -70,28 +71,10 @@ public class NonDeterministicExecutionEngine extends AbstractExecutionEngine imp
 
 	private IMSEStateController _mseStateController; 
 	
-	/**
-	 * The constructor takes in all the language-specific elements. Creates the
-	 * internal map of Domain-Specific Events and initializes the languages used
-	 * for execution.
-	 * 
-	 * @param domainSpecificEventsResource
-	 *            cannot be null
-	 * @param solver
-	 *            cannot be null
-	 * @param executor
-	 *            cannot be null
-	 * @param feedbackPolicy
-	 *            can be null (for now).
-	 * @param isTraceActive 
-	 * @param _executionContext
-	 */
-	public NonDeterministicExecutionEngine(IExecutionContext executionContext) 
+	
+	public NonDeterministicExecutionEngine() 
 	{
-		super(executionContext);
-		_mseStateController = new DefaultMSEStateController();
-		_executionContext.getExecutionPlatform().getMSEStateControllers().add(_mseStateController);
-		Activator.getDefault().info("*** Engine initialization done. ***");
+		super();
 	}
 	
 	private void switchDeciderIfNecessary()
@@ -399,6 +382,30 @@ public class NonDeterministicExecutionEngine extends AbstractExecutionEngine imp
 	public void dispose() {
 		super.dispose();
 		_solver.dispose();
+	}
+
+	@Override
+	public void initialize(IExecutionContext executionContext){
+		
+		super.initialize(executionContext);
+		
+		_mseStateController = new DefaultMSEStateController();
+		_executionContext.getExecutionPlatform().getMSEStateControllers().add(_mseStateController);
+		
+		
+		ISolver solver;
+		//TODO very ugly
+		try {
+			solver = executionContext.getLanguageDefinitionExtension().instanciateSolver();
+		} catch (CoreException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		solver.setUp(executionContext);
+		this.setSolver(solver);
+		this.changeLogicalStepDecider(executionContext.getLogicalStepDecider());
+		
+		
+		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
 	
 }

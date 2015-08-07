@@ -51,4 +51,6 @@ public interface IExecutionEngine extends IDisposable {
 	RunStatus getRunningStatus();
 	
 	<T extends IEngineAddon> Set<T> getAddonsTypedBy(Class<T> type);
+	
+	void initialize (IExecutionContext executionContext);
 }

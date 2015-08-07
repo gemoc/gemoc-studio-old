@@ -16,7 +16,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.transaction;bundle-version="1.8.0",
  org.gemoc.execution.engine.commons;bundle-version="0.1.0",
  fr.inria.diverse.k3.al.annotationprocessor.plugin,
- org.gemoc.execution.engine
+ org.gemoc.execution.engine,
+ org.eclipse.jdt.core;bundle-version="3.10.0",
+ fr.inria.diverse.commons.provisionner4eclipse;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.gemoc_language_workbench.extensions.k3,

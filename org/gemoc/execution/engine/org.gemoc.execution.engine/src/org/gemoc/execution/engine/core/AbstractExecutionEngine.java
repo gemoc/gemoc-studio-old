@@ -22,14 +22,14 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 	protected EngineStatus engineStatus = new EngineStatus();
 
 	protected IExecutionContext _executionContext;
-
-	public AbstractExecutionEngine(IExecutionContext executionContext) {
-		super();
+	
+	@Override
+	public void initialize(IExecutionContext executionContext)  {
 		if (executionContext == null)
 			throw new IllegalArgumentException("executionContext");
 		_executionContext = executionContext;
 		setEngineStatus(EngineStatus.RunStatus.Initializing);
-	}
+	};
 
 	@Override
 	public IExecutionContext getExecutionContext() {
