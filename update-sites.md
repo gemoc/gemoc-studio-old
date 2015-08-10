@@ -72,4 +72,4 @@
 	* VCD (MW)			(external?)
 
 * http://gemoc.org/updatesite/
-	* if possible, all we need to get the GEMOC Studio from an Eclipse Modeling :)
+	* if possible, all we need to get the GEMOC Studio from an Eclipse Modeling: xdsml, modelexecution and modeldebug (incl., all externals) :)
