@@ -154,9 +154,6 @@
 	        <id>use_CI_repositories</id>
 	        <activation>
 	            <activeByDefault>true</activeByDefault>
-<!-- 	            <property> -->
-<!-- 	                <name>!ignore_CI_repositories</name> -->
-<!-- 	            </property> -->
 	        </activation>
 	        <repositories>
 		        <repository>
