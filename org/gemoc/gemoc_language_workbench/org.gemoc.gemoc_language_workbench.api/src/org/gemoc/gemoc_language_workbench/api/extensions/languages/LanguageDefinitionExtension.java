@@ -1,24 +1,24 @@
 package org.gemoc.gemoc_language_workbench.api.extensions.languages;
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+//import org.eclipse.emf.common.util.URI;
+//import org.eclipse.emf.ecore.EObject;
+//import org.eclipse.emf.ecore.resource.Resource;
+//import org.eclipse.emf.ecore.resource.ResourceSet;
+//import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+//import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
-import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
+//import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 
 public class LanguageDefinitionExtension extends Extension {
 
@@ -90,33 +90,33 @@ public class LanguageDefinitionExtension extends Extension {
 		return getAttribute(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_XDSML_FILE_PATH_ATT);
 	}
 
-	private LanguageDefinition _languageDefinitionCache;
-
-	public LanguageDefinition getLanguageDefinition() {
-		if (_languageDefinitionCache == null) {
-
-			// Loading languagedef model
-			ResourceSet rs = new ResourceSetImpl();
-			URI uri = URI.createPlatformPluginURI(getXDSMLFilePath(), true);
-			Resource res = rs.createResource(uri);
-			try {
-				res.load(null);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			EcoreUtil.resolveAll(rs);// IMPORTANT
-
-			if (res != null) {
-				EObject first = res.getContents().get(0);
-
-				// Follow-up in other operation...
-				if (first instanceof LanguageDefinition) {
-					_languageDefinitionCache = (LanguageDefinition) first;
-				}
-			}
-		}
-		return _languageDefinitionCache;
-	}
+//	private LanguageDefinition _languageDefinitionCache;
+//
+//	public LanguageDefinition getLanguageDefinition() {
+//		if (_languageDefinitionCache == null) {
+//
+//			// Loading languagedef model
+//			ResourceSet rs = new ResourceSetImpl();
+//			URI uri = URI.createPlatformPluginURI(getXDSMLFilePath(), true);
+//			Resource res = rs.createResource(uri);
+//			try {
+//				res.load(null);
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			EcoreUtil.resolveAll(rs);// IMPORTANT
+//
+//			if (res != null) {
+//				EObject first = res.getContents().get(0);
+//
+//				// Follow-up in other operation...
+//				if (first instanceof LanguageDefinition) {
+//					_languageDefinitionCache = (LanguageDefinition) first;
+//				}
+//			}
+//		}
+//		return _languageDefinitionCache;
+//	}
 
 }

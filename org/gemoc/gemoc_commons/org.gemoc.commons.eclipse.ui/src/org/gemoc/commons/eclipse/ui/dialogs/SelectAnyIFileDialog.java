@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ResourceListSelectionDialog;
-import org.gemoc.gemoc_language_workbench.utils.Activator;
+import org.gemoc.commons.eclipse.ui.Activator;
 
 /**
  * Dialog that allows to select any IProject

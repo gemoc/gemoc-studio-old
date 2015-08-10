@@ -1,5 +1,6 @@
 package org.gemoc.gemoc_language_workbench.extensions.k3;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
@@ -8,8 +9,12 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
@@ -23,6 +28,7 @@ import org.eclipse.jdt.core.search.SearchPattern;
 import org.eclipse.jdt.core.search.SearchRequestor;
 import org.gemoc.execution.engine.core.AbstractDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
+import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 import org.kermeta.utils.provisionner4eclipse.Provisionner;
 import org.osgi.framework.Bundle;
 
@@ -63,7 +69,7 @@ public class PlainK3ExecutionEngine extends AbstractDeterministicExecutionEngine
 		// If nothing is declared in the launch configuration,
 		// we use the value given in the xDSML
 		if (className == null || className.equals("")) {
-			className = executionContext.getLanguageDefinitionExtension().getLanguageDefinition().getDsaProject()
+			className = getLanguageDefinition(executionContext.getLanguageDefinitionExtension().getXDSMLFilePath()).getDsaProject()
 					.getEntryPoint();
 		}
 
@@ -215,5 +221,31 @@ public class PlainK3ExecutionEngine extends AbstractDeterministicExecutionEngine
 		else
 			return null;
 	}
+	
+	protected LanguageDefinition getLanguageDefinition(String xDSMLFilePath) {
+	
+
+		// Loading languagedef model
+		ResourceSet rs = new ResourceSetImpl();
+		URI uri = URI.createPlatformPluginURI(xDSMLFilePath, true);
+		Resource res = rs.createResource(uri);
+		try {
+			res.load(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		EcoreUtil.resolveAll(rs);// IMPORTANT
+
+		if (res != null) {
+			EObject first = res.getContents().get(0);
+
+			// Follow-up in other operation...
+			if (first instanceof LanguageDefinition) {
+				return (LanguageDefinition) first;
+			}
+		}
+	return null;
+}
 
 }

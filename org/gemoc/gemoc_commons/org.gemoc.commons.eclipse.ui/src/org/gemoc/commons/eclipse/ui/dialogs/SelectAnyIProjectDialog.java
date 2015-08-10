@@ -1,6 +1,7 @@
 package org.gemoc.commons.eclipse.ui.dialogs;
 
 import java.lang.reflect.Field;
+
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.swt.widgets.Composite;
@@ -8,7 +9,8 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ResourceListSelectionDialog;
-import org.gemoc.gemoc_language_workbench.utils.Activator;
+import org.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
+import org.gemoc.commons.eclipse.ui.Activator;
 
 /**
  * Dialog that allows to select any IProject

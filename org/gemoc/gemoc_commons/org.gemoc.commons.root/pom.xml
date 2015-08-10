@@ -30,16 +30,6 @@
         <project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>Gemoc TP without me</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-gemoc-commons</url>
-        </repository>
-
-
-    </repositories>
-
     <build>
         <plugins>
             <plugin>
@@ -158,5 +148,62 @@
             </plugin>
         </plugins>
     </build>
-
+	<profiles>
+    <!-- Profiles are used for switching the repositories used for the build so they either use the CI update sites or local repositories -->
+	    <profile>
+	        <id>use_CI_repositories</id>
+	        <activation>
+	            <activeByDefault>true</activeByDefault>
+<!-- 	            <property> -->
+<!-- 	                <name>!ignore_CI_repositories</name> -->
+<!-- 	            </property> -->
+	        </activation>
+	        <repositories>
+		        <repository>
+		            <id>Gemoc Target Platform all-except-gemoc-commons</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-gemoc-commons</url>
+		        </repository>
+		    </repositories>
+	    </profile>
+    	<profile>
+	    	<!-- use this command line to activate this profile -->
+	    	<!-- mvn clean install -Dignore_CI_repositories -->
+	    	<!-- or directly with the ID using the eclipse UI -->
+	    	<id>ignore_CI_repositories</id>
+	    	<activation>
+		      <property>
+		        <name>ignore_CI_repositories</name>
+		      </property>
+		    </activation>
+    		<repositories>
+		        <repository>
+		            <id>Luna release</id>
+		            <layout>p2</layout>
+		            <url>http://download.eclipse.org/releases/luna/201502271000</url>
+		        </repository>
+		        <repository>
+		            <id>timesquare</id>
+		            <layout>p2</layout>
+		            <url>http://timesquare.inria.fr/update_site/experimental</url>
+		        </repository>
+		        <repository>
+		            <id>timesquare-ecl</id>
+		            <layout>p2</layout>
+		            <url>http://timesquare.inria.fr/ecl/update_site/experimental</url>
+		        </repository>
+		        <repository>
+		            <id>diverse-commons</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/diverse-commons/job/diverse-commons.eclipse.root/lastSuccessfulBuild/artifact/commons-eclipse/fr.inria.diverse.commons.eclipse.root/p2updatesite/target/repository/</url>
+		        </repository>
+		        <repository>
+		            <id>nebula</id>
+		            <layout>p2</layout>
+		            <url>http://download.eclipse.org/technology/nebula/incubation/snapshot</url>
+		        </repository>
+		    </repositories>
+    	</profile>
+    	
+    </profiles>
 </project>
