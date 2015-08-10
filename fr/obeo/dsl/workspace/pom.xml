@@ -53,50 +53,7 @@
         <module>fr.obeo.dsl.workspace.listener.tests</module>  
     </modules>
 
-    <repositories>
-        <repository>
-            <id>Gemoc Consolidated Target Platform</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-workspace</url>
-        </repository>
-        <!--
-    <repository>
-      <id>Eclipse 3.8 release</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/releases/juno</url>
-    </repository>
-    <repository>
-      <id>Eclipse 3.8.x update</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/eclipse/updates/3.8</url>
-    </repository>
-    <repository>
-      <id>Sirius 1.0.0M4</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/juno</url>
-    </repository>
-    <repository>
-      <id>Orbit</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/tools/orbit/downloads/drops/S20131024145017/repository/</url>
-    </repository>
-    <repository>
-      <id>Guava</id>
-      <layout>p2</layout>
-      <url>http://guava-osgi.googlecode.com/svn/trunk/repository/</url>
-    </repository>
-    <repository>
-      <id>EEF</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R201311221533</url>
-    </repository>
-    <repository>
-      <id>Acceleo 3.4.1</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/R201309031307</url>
-    </repository>
-    -->
-  </repositories>
+ 
 
   <build>
       <plugins>
@@ -180,5 +137,42 @@
               </plugins>
           </build>
       </profile>
+            <!-- Profiles used for switching the repositories used for the build so they either use the CI update sites or local repositories -->
+	<profile>
+		<id>use_CI_repositories</id>
+		<activation>
+			<activeByDefault>true</activeByDefault>
+		</activation>
+		<repositories>
+			<repository>
+				<id>Gemoc Target Platform all-except-workspace</id>
+				<layout>p2</layout>
+				<url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-workspace</url>
+			</repository>
+		</repositories>
+	</profile>
+	<profile>
+		<!-- use this command line to activate this profile -->
+		<!-- mvn clean install -Dignore_CI_repositories -->
+		<!-- or directly with the ID using the eclipse UI -->
+		<id>ignore_CI_repositories</id>
+		<activation>
+			<property>
+				<name>ignore_CI_repositories</name>
+			</property>
+		</activation>
+		<repositories>
+			<repository>
+				<id>Luna release</id>
+				<layout>p2</layout>
+				<url>http://download.eclipse.org/releases/luna/201502271000</url>
+			</repository>
+			<repository>
+				<id>Sirius</id>
+				<layout>p2</layout>
+				<url>http://download.eclipse.org/sirius/updates/nightly/2.0.x/luna</url>
+			</repository>
+		</repositories>
+	</profile>
   </profiles>
 </project>
