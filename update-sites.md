@@ -1,6 +1,6 @@
 ## Technical update sites (for development only)
 
-* http://melange-lang.org/updatesite/
+* h  ttp://melange-lang.org/updatesite/
   * Melange
   * K3
   
