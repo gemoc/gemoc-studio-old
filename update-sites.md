@@ -5,41 +5,52 @@
   * K3
 
 * http://gemoc.org/updatesites/executionframework/
-  * ExecutionFramework
-  * ControlPanel **(to discuss)**
+  * ExecutionFramework (metamodel, generic part for initialisation, execution and bridge with addons) (runtime)
+  * EngineManager (runtime)
 
 * http://gemoc.org/updatesites/executionengine/java
-  * JavaExecutionEngine
+  * JavaxDSML Metamodel (runtime)
+  * JavaxDSML editor
+  * JavaExecutionEngine (runtime)
 
 * http://gemoc.org/updatesites/executionengine/ccsl-java
-  * GEMOCConcurrentExecutionEngine
+  * ConcurrentxDSML Metamodel (runtime)
+  * ConcurrentxDSML editor + dashboard 
+  * ConcurrentAddonSpecification (runtime)
+  * ConcurrentExecutionEngine (runtime)
 
 * http://gemoc.org/updatesites/executionengine/heterogeneous *(soon!)*
-  * GEMOCCoordinationExecutionEngine
+  * CoordinationExecutionEngine (runtime)
 
 * http://gemoc.org/updatesites/modelanimation/
   * SiriusAnimation Designer
-  * SiriusAnimation Runtime
+  * SiriusAnimation (runtime)
 
 * http://gemoc.org/updatesites/tracemanager/
   * TraceManager Generator
-  * TraceManager Runtime
+  * TraceManager (runtime)
+  
+* http://gemoc.org/updatesites/stepmanager/
+  * StepAnnotation (??)
+  * StepManager (??)
 
-* http://gemoc.org/updatesites/omniscientdebugging/
-  * Multi-dimensional Timeline (MW)
+* http://gemoc.org/updatesites/debugging/
+  * Multi-dimensional Timeline (runtime)
+  * ControlPanel (pause, step forward/backward, breakpoint management) (runtime)
 
 * http://gemoc.org/updatesites/moccml/
   * MoccML Metamodel
   * MoccML Editor
+  * MoccML Compiler
 
-* http://gemoc.org/updatesites/logicalsteps/
-  * LogicalSteps View
+* http://gemoc.org/updatesites/concurrentviews/
+  * LogicalSteps View (runtime)
+  * Concurrent Timeline (runtime)
 
-* http://gemoc.org/updatesites/timeline/
-  * Multi-branch Timeline
-
-* http://gemoc.org/updatesites/bcool/ *(soon!)*
+* http://gemoc.org/updatesites/bcool/ *(soon!)* 
+  * BCOoL Metamodel
   * BCOoL Editor
+  * BCOoL Compiler
 
 ## Update sites for end-users (to be diffused)
 
@@ -50,26 +61,20 @@
 	* http://gemoc.org/updatesites/tracemanager/
 	* http://gemoc.org/updatesites/omniscientdebugging/
 
-* http://gemoc.org/updatesites/xdsml
+* http://gemoc.org/updatesites/
 	* http://gemoc.org/updatesites/moccml/
 	* http://gemoc.org/updatesites/gel/ *(soon!)*
 	* http://gemoc.org/updatesites/bcool/ *(soon!)*
-	* Melange (LW)			(external?)
-	* ECL (LW)			(external?)
-
-* http://gemoc.org/updatesites/modelexecution/
+	* Melange
+	* ECL 
 	* http://gemoc.org/updatesites/executionframework/
 	* http://gemoc.org/updatesites/executionengine/java
 	* http://gemoc.org/updatesites/executionengine/ccsl-java
 	* http://gemoc.org/updatesites/logicalsteps/
-	* Timesquare (MW)		(external?)
-
-* http://gemoc.org/updatesites/modeldebug/ 
+	* Timesquare
 	* http://gemoc.org/updatesites/modelanimation/
 	* http://gemoc.org/updatesites/tracemanager/
 	* http://gemoc.org/updatesites/omniscientdebugging/
 	* http://gemoc.org/updatesites/timeline/
-	* VCD (MW)			(external?)
-
-* http://gemoc.org/updatesites/
-	* if possible, all we need to get the GEMOC Studio from an Eclipse Modeling: xdsml, modelexecution and modeldebug (incl., all externals) :)
+	* VCD
+	
