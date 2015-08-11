@@ -22,6 +22,7 @@
   * ConcurrentxDSML Metamodel (runtime)
   * ConcurrentxDSML editor + dashboard 
   * ConcurrentAddonSpecification (runtime)
+  * DeciderSpecification (runtime)
   * ConcurrentExecutionEngine (runtime)
 
 * http://gemoc.org/updatesites/executionengine/heterogeneous *(soon!)*
