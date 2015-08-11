@@ -3,7 +3,12 @@
 * http://melange-lang.org/updatesite/
   * Melange
   * K3
-
+  
+* http://gemoc.org/updatesites/commons/
+  * reusable libs 
+  * reusable libs (runtime)
+  * (+ DiverSE commons ??)
+  
 * http://gemoc.org/updatesites/executionframework/
   * ExecutionFramework (metamodel, generic part for initialisation, execution and bridge with addons) (runtime)
   * EngineManager (runtime)
