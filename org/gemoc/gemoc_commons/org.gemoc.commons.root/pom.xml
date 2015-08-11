@@ -4,7 +4,13 @@
     <groupId>org.gemoc.commons</groupId>
     <artifactId>org.gemoc.commons.root</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>pom</packaging>    
+	<parent>
+		<groupId>org.gemoc</groupId>
+		<artifactId>org.gemoc.root</artifactId>
+    	<version>0.1.0-SNAPSHOT</version>
+		<relativePath>../../org.gemoc.root</relativePath>
+	</parent>
     <modules>
         <!-- plugins -->
         <module>../../gemoc_language_workbench/org.gemoc.gemoc_language_workbench.api</module>
@@ -25,131 +31,17 @@
         <module>p2updatesite</module>
     </modules>
 
-    <properties>
-        <tycho-version>0.21.0</tycho-version>
-        <project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
-    </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.eclipse.tycho</groupId>
-                <artifactId>tycho-maven-plugin</artifactId>
-                <version>${tycho-version}</version>
-                <extensions>true</extensions>
-            </plugin>
-			<!-- enable source bundle generation -->
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-source-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>plugin-source</id>
-						<goals>
-							<goal>plugin-source</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- enable source feature generation -->
-			<plugin>
-		      <groupId>org.eclipse.tycho.extras</groupId>
-		      <artifactId>tycho-source-feature-plugin</artifactId>
-		      <version>${tycho-version}</version>
-		      <executions>
-		        <execution>
-		          <id>source-feature</id>
-		          <phase>package</phase>
-		          <goals>
-		            <goal>source-feature</goal>
-		          </goals>
-		        </execution>
-		      </executions>
-		    </plugin>
-		    <plugin>
-		     <groupId>org.eclipse.tycho</groupId>
-		     <artifactId>tycho-p2-plugin</artifactId>
-		     <version>${tycho-version}</version>
-		     <executions>
-		       <execution>
-		         <id>attach-p2-metadata</id>
-		         <phase>package</phase>
-		         <goals>
-		           <goal>p2-metadata</goal>
-		         </goals>
-		       </execution>
-		     </executions>
-		    </plugin>
-            <!--<plugin>
-                <groupId>org.eclipse.tycho</groupId>
-                <artifactId>tycho-p2-director-plugin</artifactId>
-                <version>${tycho-version}</version>
-                <executions>
-                    <execution>
-                        <id>materialize-products</id>
-                        <goals>
-                            <goal>materialize-products</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>archive-products</id>
-                        <goals>
-                            <goal>archive-products</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
-            <plugin>
-                <groupId>org.eclipse.tycho</groupId>
-                <artifactId>target-platform-configuration</artifactId>
-                <version>${tycho-version}</version>
-                <configuration>
-                    <!-- environments that will be built -->
-                    <environments>
-                        <environment>
-                            <os>linux</os>
-                            <ws>gtk</ws>
-                            <arch>x86_64</arch>
-                        </environment>
-                        <environment>
-                            <os>linux</os>
-                            <ws>gtk</ws>
-                            <arch>x86</arch>
-                        </environment>
-                        <environment>
-                            <os>win32</os>
-                            <ws>win32</ws>
-                            <arch>x86</arch>
-                        </environment>
-                        <environment>
-                            <os>win32</os>
-                            <ws>win32</ws>
-                            <arch>x86_64</arch>
-                        </environment>
-                        <environment>
-                            <os>macosx</os>
-                            <ws>cocoa</ws>
-                            <arch>x86_64</arch>
-                        </environment>
-                    </environments>
-                </configuration>
-            </plugin>
-            <!-- Java compiler plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+ 
 	<profiles>
     <!-- Profiles are used for switching the repositories used for the build so they either use the CI update sites or local repositories -->
+    	<profile>
+	        <id>ignore_CI_repositories</id>
+	        <activation>
+	            <activeByDefault>true</activeByDefault>
+	        </activation>
+	        <repositories>
+		    </repositories>
+	    </profile>
 	    <profile>
 	        <id>use_CI_repositories</id>
 	        <activation>
@@ -163,44 +55,6 @@
 		        </repository>
 		    </repositories>
 	    </profile>
-    	<profile>
-	    	<!-- use this command line to activate this profile -->
-	    	<!-- mvn clean install -Dignore_CI_repositories -->
-	    	<!-- or directly with the ID using the eclipse UI -->
-	    	<id>ignore_CI_repositories</id>
-	    	<activation>
-		      <property>
-		        <name>ignore_CI_repositories</name>
-		      </property>
-		    </activation>
-    		<repositories>
-		        <repository>
-		            <id>Luna release</id>
-		            <layout>p2</layout>
-		            <url>http://download.eclipse.org/releases/luna/201502271000</url>
-		        </repository>
-		        <repository>
-		            <id>timesquare</id>
-		            <layout>p2</layout>
-		            <url>http://timesquare.inria.fr/update_site/experimental</url>
-		        </repository>
-		        <repository>
-		            <id>timesquare-ecl</id>
-		            <layout>p2</layout>
-		            <url>http://timesquare.inria.fr/ecl/update_site/experimental</url>
-		        </repository>
-		        <repository>
-		            <id>diverse-commons</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/diverse-commons/job/diverse-commons.eclipse.root/lastSuccessfulBuild/artifact/commons-eclipse/fr.inria.diverse.commons.eclipse.root/p2updatesite/target/repository/</url>
-		        </repository>
-		        <repository>
-		            <id>nebula</id>
-		            <layout>p2</layout>
-		            <url>http://download.eclipse.org/technology/nebula/incubation/snapshot</url>
-		        </repository>
-		    </repositories>
-    	</profile>
     	
     </profiles>
 </project>

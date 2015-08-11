@@ -28,7 +28,12 @@
     <packaging>pom</packaging>
 
     <name>DSL Debugger Parent</name>
-
+	<parent>
+		<groupId>org.gemoc</groupId>
+		<artifactId>org.gemoc.root</artifactId>
+    	<version>0.1.0-SNAPSHOT</version>
+		<relativePath>../../../../../org/gemoc/org.gemoc.root</relativePath>
+	</parent>
     <licenses>
         <license>
             <name>TODO</name>
@@ -173,24 +178,7 @@
 		      <property>
 		        <name>ignore_CI_repositories</name>
 		      </property>
-		    </activation>
-    		<repositories>
-		        <repository>
-		            <id>Luna release</id>
-		            <layout>p2</layout>
-		            <url>http://download.eclipse.org/releases/luna/201502271000</url>
-		        </repository>
-		        <repository>
-		            <id>Sirius</id>
-		            <layout>p2</layout>
-		            <url>http://download.eclipse.org/sirius/updates/nightly/2.0.x/luna</url>
-		        </repository>
-		        <repository>
-		            <id>umldesigner</id>
-		            <layout>p2</layout>
-		            <url>http://marketplace.obeonetwork.com/updates/nightly/uml/repository</url>
-		        </repository>
-		    </repositories>
+		    </activation>    		
     	</profile>
     	
     </profiles>
