@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.gemoc.executionframework</groupId>
+    <artifactId>org.gemoc.executionframework.root</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>    
+	<parent>
+		<groupId>org.gemoc</groupId>
+		<artifactId>org.gemoc.root</artifactId>
+    	<version>0.1.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+    <modules>
+        <!-- plugins -->
+        <!-- plugins in executionframework -->
+<!--         <module>../../org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.api</module> -->
+        <!-- plugins in executioncontext -->       
+<!--         <module>../../org/gemoc/gemoc_commons/org.gemoc.execution.engine.trace.model</module> -->
+<!--         <module>../../org/gemoc/gemoc_commons/org.gemoc.execution.engine.trace.model.edit</module> -->
+<!--         <module>../../org/gemoc/gemoc_commons/org.gemoc.execution.engine.trace.model.editor</module> -->
+<!--         <module>../../org/gemoc/gemoc_commons/org.gemoc.execution.engine.scenario.model</module> -->
+<!--         <module>../org.gemoc.execution.engine.scenario.model.edit</module> -->
+<!--         <module>../org.gemoc.execution.engine.scenario.model.editor</module> -->
+
+        <!-- feature and update site -->
+        <module>releng/org.gemoc.executionframework.feature</module>
+        <module>releng/org.gemoc.executionframework.executioncontext.feature</module>
+        <module>releng/org.gemoc.executionframework.repository</module>
+    </modules>
+
+ 
+	<profiles>
+    <!-- Profiles are used for switching the repositories used for the build so they either use the CI update sites or local repositories -->
+    	<profile>
+	        <id>ignore_CI_repositories</id>
+	        <activation>
+	            <activeByDefault>true</activeByDefault>
+	        </activation>
+	        <repositories>
+		    </repositories>
+	    </profile>
+	    <profile>
+	        <id>use_CI_repositories</id>
+	        <activation>
+	            <activeByDefault>true</activeByDefault>
+	        </activation>
+	        <repositories>
+		        <repository>
+		            <id>Gemoc Target Platform all-except-gemoc-executionframework</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-gemoc-executionframework</url>
+		        </repository>
+		    </repositories>
+	    </profile>
+    	
+    </profiles>
+</project>

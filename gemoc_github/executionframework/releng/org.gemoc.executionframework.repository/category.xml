@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.gemoc.executionframework.feature_0.1.0.qualifier.jar" id="org.gemoc.executionframework.feature" version="0.1.0.qualifier">
+      <category name="executionframework"/>
+   </feature>
+   <feature url="features/org.gemoc.executionframework.feature.source_0.1.0.qualifier.jar" id="org.gemoc.executionframework.feature.source" version="0.1.0.qualifier">
+      <category name="executionframework"/>
+   </feature>
+   <feature url="features/org.gemoc.executionframework.executioncontext.feature_0.1.0.qualifier.jar" id="org.gemoc.executionframework.executioncontext.feature" version="0.1.0.qualifier">
+      <category name="executionframework"/>
+   </feature>
+   <feature url="features/org.gemoc.executionframework.executioncontext.feature.source_0.1.0.qualifier.jar" id="org.gemoc.executionframework.executioncontext.feature.source" version="0.1.0.qualifier">
+      <category name="executionframework"/>
+   </feature>
+   <category-def name="executionframework" label="ExecutionFramework"/>
+</site>
