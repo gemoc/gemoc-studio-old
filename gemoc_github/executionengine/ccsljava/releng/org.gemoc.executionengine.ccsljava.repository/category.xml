@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.gemoc.executionengine.ccsljava.feature_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature" version="0.1.0.qualifier">
+      <category name="executionengine.ccsljava"/>
+   </feature>
+   <feature url="features/org.gemoc.executionengine.ccsljava.feature.source_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature.source" version="0.1.0.qualifier">
+      <category name="executionengine.ccsljava"/>
+   </feature>
+   
+   <category-def name="executionengine.ccsljava" label="CCSL Java Execution Engine (concurrent)"/>
+</site>
