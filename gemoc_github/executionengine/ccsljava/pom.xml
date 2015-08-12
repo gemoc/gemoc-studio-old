@@ -13,7 +13,7 @@
 	</parent>
     <modules>
         <!-- plugins -->
-        <module>plugins/org.gemoc.execution.engine.io</module>
+        
         
         <!-- feature and update site -->
         <module>releng/org.gemoc.executionengine.ccsljava.feature</module>
