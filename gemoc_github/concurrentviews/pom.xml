@@ -13,6 +13,7 @@
 	</parent>
     <modules>
         <!-- plugins -->
+        <module>plugins/fr.obeo.timeline</module>
         
         <!-- feature and update site -->
         <module>releng/org.gemoc.concurrentviews.feature</module>

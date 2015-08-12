@@ -19,12 +19,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-  	<artifactId>fr.obeo.dsl.debug.parent</artifactId>
-  	<groupId>DSLDebugger</groupId>
-  	<version>1.0.0-SNAPSHOT</version>	
+  	<artifactId>org.gemoc.concurrentviews.root</artifactId>
+  	<groupId>org.gemoc.concurrentviews</groupId>
+  	<version>0.1.0-SNAPSHOT</version>	
   	<relativePath>../../</relativePath>
   </parent>
-  <groupId>DSLDebugger</groupId>
+  <groupId>org.gemoc.concurrentviews</groupId>
   <artifactId>fr.obeo.timeline</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>

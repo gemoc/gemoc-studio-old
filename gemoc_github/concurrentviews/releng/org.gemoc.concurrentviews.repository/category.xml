@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.gemoc.legacy.feature_0.1.0.qualifier.jar" id="org.gemoc.legacy.feature" version="0.1.0.qualifier">
-      <category name="gemoc.legacy"/>
+   <feature url="features/org.gemoc.concurrentviews.feature_0.1.0.qualifier.jar" id="org.gemoc.concurrentviews.feature" version="0.1.0.qualifier">
+      <category name="gemoc.concurrentviews"/>
    </feature>
-   <feature url="features/org.gemoc.legacy.feature.source_0.1.0.qualifier.jar" id="org.gemoc.legacy.feature.source" version="0.1.0.qualifier">
-      <category name="gemoc.legacy"/>
+   <feature url="features/org.gemoc.concurrentviews.feature.source_0.1.0.qualifier.jar" id="org.gemoc.concurrentviews.feature.source" version="0.1.0.qualifier">
+      <category name="gemoc.concurrentviews"/>
    </feature>
    
-   <category-def name="gemoc.legacy" label="GEMOC legacy"/>
+   <category-def name="gemoc.concurrentviews" label="GEMOC Concurrent views"/>
 </site>
