@@ -14,7 +14,8 @@
     <modules>
         <!-- plugins -->
         <!-- plugins in executionframework -->
-<!--         <module>../../org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.api</module> -->
+        <module>plugins/org.gemoc.gemoc_language_workbench.api</module>
+        
         <!-- plugins in executioncontext -->       
         <module>plugins/org.gemoc.execution.engine.trace.model</module>
 <!--         <module>../../org/gemoc/gemoc_commons/org.gemoc.execution.engine.trace.model.edit</module> -->
