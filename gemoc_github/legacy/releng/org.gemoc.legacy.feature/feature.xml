@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.gemoc.executionengine.ccsljava.feature"
+      id="org.gemoc.legacy.feature"
       label="Execution Engine CCSL Java"
       version="0.1.0.qualifier"
       provider-name="GEMOC">
 
    <description url="http://gemoc.org/studio/">
-      List of plugins that are part of the CCSL Java Execution Engine
+      List of plugins that haven't been sorted out in their definitive location and that must disapear at the end of the refactoring
    </description>
 
    <copyright url="http://www.example.com/copyright">
