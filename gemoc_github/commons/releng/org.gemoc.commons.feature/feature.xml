@@ -18,37 +18,6 @@
    </license>
 
    <plugin
-         id="org.gemoc.gemoc_language_workbench.api"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.execution.engine.trace.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.gemoc.execution.engine.trace.model.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.gemoc.execution.engine.trace.model.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.gemoc.execution.engine.scenario.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
          id="org.gemoc.commons.eclipse"
          download-size="0"
          install-size="0"
