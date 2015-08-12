@@ -13,6 +13,7 @@
 	</parent>
     <modules>
         <!-- plugins -->
+        <module>plugins/org.gemoc.execution.engine.commons</module>
         <module>plugins/org.gemoc.execution.engine.io</module>
         
         <!-- feature and update site -->
