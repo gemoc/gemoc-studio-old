@@ -6,7 +6,7 @@
       provider-name="GEMOC">
 
    <description url="http://gemoc.org/studio/">
-      List of plugins that are part of Gemoc core (API, exchanged metamodels, ....)
+      List of plugins that are used as part of the excution context of the Execution framework
    </description>
 
    <copyright url="http://www.example.com/copyright">
@@ -16,5 +16,11 @@
    <license url="http://www.example.com/license">
       [Enter License Description here.]
    </license>
+
+   <plugin
+         id="org.gemoc.execution.engine.trace.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>
