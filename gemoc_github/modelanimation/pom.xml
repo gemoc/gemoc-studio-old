@@ -22,17 +22,17 @@
         <maven>3.0</maven>
     </prerequisites>
 
-    <groupId>DSLDebugger</groupId>
-    <artifactId>fr.obeo.dsl.debug.parent</artifactId>
+    <groupId>org.gemoc.modelanimation</groupId>
+    <artifactId>org.gemoc.modelanimation.root</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>DSL Debugger Parent</name>
+    <name>org.gemoc.modelanimation.root</name>
 	<parent>
 		<groupId>org.gemoc</groupId>
 		<artifactId>org.gemoc.root</artifactId>
     	<version>0.1.0-SNAPSHOT</version>
-		<relativePath>../../../../../org/gemoc/org.gemoc.root</relativePath>
+		<relativePath>..</relativePath>
 	</parent>
     <licenses>
         <license>
@@ -48,29 +48,24 @@
     </properties>
 
     <modules>
-        <module>releng/fr.obeo.dsl.debug.feature</module>
-        <module>releng/fr.obeo.dsl.debug.ui.feature</module>
-        <module>releng/fr.obeo.dsl.debug.sirius.ui.feature</module>
-        <module>releng/fr.obeo.dsl.debug.repository</module>
-
-        <module>plugins/fr.obeo.timeline</module>
-
+		<!-- plugins -->
         <module>plugins/fr.obeo.dsl.debug</module>
         <module>plugins/fr.obeo.dsl.debug.edit</module>
         <module>plugins/fr.obeo.dsl.debug.ide</module>
         <module>plugins/fr.obeo.dsl.debug.ide.sirius.ui</module>
         <module>plugins/fr.obeo.dsl.debug.ide.ui</module>
 
+		<!-- tests -->
         <module>tests/fr.obeo.dsl.debug.tests</module>
         <module>tests/fr.obeo.dsl.debug.ide.tests</module>
 
-        <module>fuml/fr.obeo.dsl.fuml</module>
-        <module>fuml/fr.obeo.dsl.fuml.feature</module>
-        <module>fuml/fr.obeo.dsl.fuml.standardlibrary</module>
-        <module>fuml/fr.obeo.dsl.fuml.sirius.ui</module>
-        <module>fuml/fr.obeo.dsl.fuml.sirius.ui.feature</module>
-        <module>fuml/fr.obeo.dsl.fuml.ui</module>
-        <module>fuml/fr.obeo.dsl.fuml.ui.feature</module>
+        <!-- features and update sites -->
+        <module>releng/fr.obeo.dsl.debug.feature</module>
+        <module>releng/fr.obeo.dsl.debug.ui.feature</module>
+        <module>releng/fr.obeo.dsl.debug.sirius.ui.feature</module>
+        <module>releng/org.gemoc.modelanimation.repository</module>
+        
+        
     </modules>
 
   <build>

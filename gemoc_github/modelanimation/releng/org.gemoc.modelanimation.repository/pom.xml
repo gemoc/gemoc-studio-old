@@ -23,13 +23,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-        <artifactId>fr.obeo.dsl.debug.parent</artifactId>
-        <groupId>DSLDebugger</groupId>
+        <artifactId>org.gemoc.modelanimation.root</artifactId>
+        <groupId>org.gemoc.modelanimation</groupId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
   </parent>
-  <groupId>DSLDebugger</groupId>
-  <artifactId>fr.obeo.dsl.debug.repository</artifactId>
+  <groupId>org.gemoc.modelanimation</groupId>
+  <artifactId>org.gemoc.modelanimation.repository</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
 
