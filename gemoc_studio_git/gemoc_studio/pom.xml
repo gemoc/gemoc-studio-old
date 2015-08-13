@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <name>Gemoc Studio root build</name>
     <groupId>org.gemoc.gemoc_studio</groupId>
-    <artifactId>org.gemoc.gemoc_studio.root</artifactId>
+    <artifactId>org.gemoc.gemoc_studio.parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
