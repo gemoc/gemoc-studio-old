@@ -6,230 +6,75 @@
     <artifactId>org.gemoc.gemoc_studio.parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-
+	<parent>
+		<groupId>org.gemoc</groupId>
+		<artifactId>org.gemoc.gemoc_studio.root</artifactId>
+    	<version>0.1.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
     <properties>
         <tycho-version>0.21.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <modules>
-        <module>../org.gemoc.gemoc_studio.product</module>
-        <module>../org.gemoc.gemoc_studio.branding</module>
-        <module>../org.gemoc.gemoc_studio.branding.feature</module>	
-        <module>../org.gemoc.gemoc_studio.branding.source.feature</module>		
-        <module>../org.gemoc.gemoc_studio.additions.feature</module>	
+        <module>plugins/org.gemoc.gemoc_studio.branding</module>
+        <module>releng/org.gemoc.gemoc_studio.product</module>
+        <module>releng/org.gemoc.gemoc_studio.branding.feature</module>	
+        <module>releng/org.gemoc.gemoc_studio.branding.source.feature</module>		
+        <module>releng/org.gemoc.gemoc_studio.additions.feature</module>	
     </modules>
 
     <repositories>
-    	<!-- *****************************************
-		     *  External Repositories for product from project partners 
-		     ***************************************** -->
-        <repository>
-            <id>Gemoc Consolidated Target Platform</id>
+    	<repository>
+            <id>Lastragen (should be removed when Multi-dimensional Timeline and trace is included)</id>
             <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update</url>
+            <url>https://ci.inria.fr/lastragen/job/lastragen/lastSuccessfulBuild/artifact/fr.inria.diverse.trace.updatesite/target/repository/</url>
         </repository>
-        
-     <!-- 
-        <repository>
-            <id>download.eclipse.org_mpc</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/mpc/luna</url>
-        </repository> 
-        
-        <repository>
-            <id>Luna</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/releases/luna</url>
-        </repository>
-        
-        <repository>
-            <id>modeling_mdt_ocl</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/mdt/ocl/updates/maintenance/4.1.2/M201401201522</url>
-        </repository>
-        
-        <repository>
-            <id>download.eclipse.org_tools_gef</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/tools/gef/updates/milestones</url>
-        </repository>
-        
-       
-        
-        <repository>
-            <id>download.eclipse.org_mmt_qvto</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/mmt/qvto/updates/releases/3.3.0</url>
-        </repository>
-        
-       
-        
-        <repository>
-            <id>download.eclipse.org_modeling_m2t_acceleo</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/R201309031307</url>
-        </repository>
-        
-        <repository>
-            <id>download.eclipse.org_ecoretools</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/ecoretools/updates/releases/2.0.1/luna/</url>
-        </repository>
-        
-        <repository>
-            <id>download.eclipse.org_sirius</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/sirius/updates/releases/1.0.0/luna/</url>
-        </repository>
-        
-        
-        
-        <repository>
-            <id>www.obeo.fr_uml</id>
-            <layout>p2</layout>
-            <url>http://www.obeo.fr/download/release/uml/4.0.1/repository</url>
-        </repository>
-        
-      
-        
-        <repository>
-            <id>download.eclipse.org_modeling_mwe_xtext</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/emft/mwe/updates/releases/</url>
-        </repository>
-        
-        <repository>
-            <id>xpand</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/m2t/xpand/updates/releases/</url>
-        </repository>
-      -->
     
-        <repository>
-            <id>xtext all releases</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/</url>
-        </repository>
-        
-      <!--       
-        <repository>
-            <id>animation</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/fr.obeo.dsl.sirius.animation/lastSuccessfulBuild/artifact/fr/obeo/dsl/sirius/animation/releng/fr.obeo.dsl.debug.repository/target/repository/</url>
-        </repository>
-        
-        <repository>
-            <id>process</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/fr.obeo.dsl.process/lastSuccessfulBuild/artifact/fr/obeo/dsl/process/releng/fr.obeo.dsl.process.repository/target/repository/</url>
-        </repository>
-        
-        <repository>
-            <id>workspace</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/fr.obeo.dsl.workspace/lastSuccessfulBuild/artifact/fr/obeo/dsl/workspace/releng/fr.obeo.dsl.workspace.repository/target/repository/</url>
-        </repository>
-        
-        <repository>
-            <id>supelec</id>
-            <layout>p2</layout>
-            <url>http://wwwdi.supelec.fr/gemoc-supelec-update_site</url>
-        </repository>
-        
-        <repository>
-            <id>diverse_comons</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/diverse-commons/job/diverse-commons.eclipse.root/lastSuccessfulBuild/artifact/commons-eclipse/fr.inria.diverse.commons.eclipse.root/p2updatesite/target/repository/</url>
-        </repository>
-        
-        <repository>
-            <id>timesquare</id>
-            <layout>p2</layout>
-            <url>http://timesquare.inria.fr/update_site/experimental</url>
-        </repository>
-        
-        <repository>
-            <id>ecl</id>
-            <layout>p2</layout>
-            <url>http://timesquare.inria.fr/ecl/update_site</url>
-        </repository>
-        
-        <repository>
-            <id>gemoc_commons</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.commons.root/p2updatesite/target/repository/</url>
-        </repository>
-        
-        <repository>
-            <id>gemoc_language_workbench</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_language_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.p2updatesite/target/repository</url>
-        </repository>
-        
-        <repository>
-            <id>gemoc_modeling_workbench</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_modeling_workbench.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_modeling_workbench/org.gemoc.gemoc_modeling_workbench.p2updatesite/target/repository/</url>
-        </repository>
-        
-        <repository>
-            <id>execution.engine</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine/org.gemoc.execution.engine.p2updatesite/target/repository</url>
-        </repository>
-        
-        <repository>
-            <id>mocc</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/gemoc/job/org.gemoc.mocc.root/lastSuccessfulBuild/artifact/org/gemoc/MoCC/releng/org.gemoc.mocc.p2updatesite/target/repository/</url>
-        </repository>
-        
-        <repository>
-            <id>k3</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/k3al/job/k3.eclipse/lastSuccessfulBuild/artifact/k3.eclipse/fr.inria.diverse.k3.p2updatesite/target/site/</url>
-        </repository>
-        
-             
-        <repository>
-            <id>subversive</id>
+    
+    	<!-- Repositories specific for the studio (typically refered by the additional feature) -->
+    	<repository>
+            <id>Subversive</id>
             <layout>p2</layout>
             <url>http://community.polarion.com/projects/subversive/download/eclipse/4.0/luna-site/</url>
-        </repository>
-        
+        </repository> 
         <repository>
-            <id>egit</id>
+            <id>Groovy</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/egit/updates</url>
+            <url>http://dist.springsource.org/milestone/GRECLIPSE/e4.4/</url>
         </repository>
-        
         <repository>
-            <id>m2e</id>
+            <id>M2E connectors</id>
             <layout>p2</layout>
             <url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.7.0/N/0.7.0.201309291400/</url>
         </repository>
         
+        <!-- *********** Xtext related update site -->
+<!--         <repository> -->
+<!--             <id>xtext all releases</id> -->
+<!--             <layout>p2</layout> -->
+<!--             <url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/</url> -->
+<!--         </repository> -->
+        <!-- refinement from "xtext all releases" -->
         <repository>
-            <id>eclipsecs</id>
+            <id>xtext releases 2.8.4</id>
             <layout>p2</layout>
-            <url>http://eclipse-cs.sf.net/update/</url>
+            <url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.8.4/</url>
         </repository>
         
+        <!-- *********** -->
         <repository>
-            <id>Ggroovy</id>
+            <id>Checkstyle</id>
             <layout>p2</layout>
-            <url>http://dist.springsource.org/milestone/GRECLIPSE/e4.4/</url>
+            <url>http://sourceforge.net/projects/eclipse-cs/files/updatesite/5.7.0/</url>
         </repository>
-        
         <repository>
-            <id>nebula</id>
+            <id>AspectJ</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/technology/nebula/incubation/snapshot</url>
+            <url>http://download.eclipse.org/tools/ajdt/44/dev/update</url>
         </repository>
-        
-        -->
-	
+    
     </repositories>
 
     <build>
@@ -430,5 +275,27 @@
     			</plugins>
     		</build>
     	</profile>
+    	
+    	<!-- Profiles are used for switching the repositories used for the build so they either use the CI update sites or local repositories -->
+    	<profile>
+	        <id>ignore_CI_repositories</id>
+	        <activation>
+	        </activation>
+	        <repositories>
+		    </repositories>
+	    </profile>
+	    <profile>
+	        <id>use_CI_repositories</id>
+	        <activation>
+	            <activeByDefault>true</activeByDefault>
+	        </activation>
+	        <repositories>
+		        <repository>
+		            <id>Gemoc Target Platform all-except-gemoc-executionengine_ccsljava</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-gemoc-executionengine_ccsljava</url>
+		        </repository>
+		    </repositories>
+	    </profile>
     </profiles>
 </project> 

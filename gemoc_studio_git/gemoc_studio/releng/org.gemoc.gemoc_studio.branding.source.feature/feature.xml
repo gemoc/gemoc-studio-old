@@ -18,10 +18,12 @@
    </license>
 
    <requires>
-      <import feature="org.gemoc.execution.engine.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.commons.feature.source" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.gemoc_modeling_workbench.feature.source" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.gemoc_modeling_workbench.feature.source" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.concurrentviews.feature.source" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.executionengine.ccsljava.feature.source" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.executionengine.ccsljava.runtime.feature.source" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.executionengine.ccsljava.runtime.ui.feature.source" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.legacy.feature.source" version="0.1.0.qualifier"/>
       
    </requires>
 

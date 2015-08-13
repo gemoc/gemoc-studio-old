@@ -23,10 +23,15 @@
       <import feature="org.eclipse.xtend.sdk" version="2.5.4" match="greaterOrEqual"/>
       <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.ecoretools.sdk" version="2.0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.gemoc_language_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.gemoc_modeling_workbench.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.concurrentviews.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.commons.feature" version="0.1.0.qualifier"/>
+      <import feature="org.gemoc.executionengine.ccsljava.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.executionengine.ccsljava.runtime.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.executionengine.ccsljava.runtime.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.executionframework.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.executionframework.executioncontext.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.legacy.feature" version="0.1.0.qualifier"/>
       <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.execution.engine.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.ui.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.sirius.ui.feature" version="0.0.0" match="greaterOrEqual"/>
@@ -50,10 +55,9 @@
       <import feature="org.eclipse.sirius.specifier.ide.ui" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.gemoc.mocc.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.commons.feature" version="0.1.0.qualifier"/>
-      <import feature="fr.obeo.dsl.process.feature" version="0.0.0" match="greaterOrEqual"/>
+<!--      <import feature="fr.obeo.dsl.process.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.process.ui.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.workspace.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.workspace.feature" version="0.0.0" match="greaterOrEqual"/> -->
       <import feature="org.eclipse.e4.rcp" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.melange.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.trace.feature" version="0.0.0" match="greaterOrEqual"/>
