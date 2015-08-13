@@ -61,6 +61,12 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/technology/nebula/incubation/snapshot</url>
         </repository>
+        <repository>
+            <id>GEF</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/tools/gef/updates/milestones</url>
+        </repository>
+        
     </repositories>
 
 

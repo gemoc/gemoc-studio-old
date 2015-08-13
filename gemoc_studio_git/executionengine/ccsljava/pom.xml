@@ -22,6 +22,7 @@
         <module>plugins/org.gemoc.gemoc_language_workbench.extensions.timesquare</module>
         <module>plugins/org.gemoc.gemoc_language_workbench.ui</module>
         <module>plugins/org.gemoc.gemoc_language_workbench.utils</module>
+        <module>plugins/org.gemoc.gemoc_modeling_workbench.ui</module>
         
         <!-- feature and update site -->
         <module>releng/org.gemoc.executionengine.ccsljava.feature</module>

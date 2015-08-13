@@ -21,4 +21,11 @@
       <import feature="org.gemoc.executionengine.ccsljava.runtime.feature" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
+   <plugin
+         id="org.gemoc.gemoc_modeling_workbench.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
