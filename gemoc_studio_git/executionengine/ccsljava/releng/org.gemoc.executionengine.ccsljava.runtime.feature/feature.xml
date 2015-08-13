@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.gemoc.executionengine.ccsljava.feature"
-      label="Execution Engine CCSL Java"
+      id="org.gemoc.executionengine.ccsljava.runtime.feature"
+      label="Execution Engine CCSL Java Runtime"
       version="0.1.0.qualifier"
       provider-name="GEMOC">
 
@@ -19,27 +19,6 @@
 
    <plugin
          id="org.gemoc.gemoc_language_workbench.conf.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.gemoc_language_workbench.conf.model.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.gemoc_language_workbench.conf.model.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.gemoc.gemoc_language_workbench.dashboard"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -65,12 +44,6 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-   <plugin
-         id="org.gemoc.gemoc_language_workbench.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
 
    <plugin
          id="org.gemoc.gemoc_language_workbench.utils"

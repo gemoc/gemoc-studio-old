@@ -25,6 +25,8 @@
         
         <!-- feature and update site -->
         <module>releng/org.gemoc.executionengine.ccsljava.feature</module>
+        <module>releng/org.gemoc.executionengine.ccsljava.runtime.feature</module>
+        <module>releng/org.gemoc.executionengine.ccsljava.runtime.ui.feature</module>
         <module>releng/org.gemoc.executionengine.ccsljava.repository</module>
     </modules>
 
