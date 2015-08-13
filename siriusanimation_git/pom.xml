@@ -2,7 +2,7 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.gemoc</groupId>
-	<artifactId>org.gemoc.root</artifactId>
+	<artifactId>org.gemoc.siriusanimation.root</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
