@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <relativePath>../../releng/org.gemoc.mocc.root/pom.xml</relativePath>
+    <relativePath>../../..</relativePath>
     <groupId>org.gemoc.mocc</groupId>
     <artifactId>org.gemoc.mocc.root</artifactId>
     <version>0.1.1-SNAPSHOT</version>
