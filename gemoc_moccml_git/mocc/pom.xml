@@ -7,30 +7,30 @@
     <packaging>pom</packaging>
     <modules>
         <!-- plugins -->
-        <module>../../solver/fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine</module>
+        <module>plugins/solver/fr.inria.aoste.timesquare.ccslkernel.solver.extension.statemachine</module>
 
-        <module>../../AS/org.gemoc.mocc.fsmkernel.model</module>
-        <module>../../AS/org.gemoc.mocc.fsmkernel.model.edit</module>
-        <module>../../AS/org.gemoc.mocc.fsmkernel.model.editor</module>
-        <module>../../AS/org.gemoc.mocc.ccslmocc.model</module>
-        <module>../../AS/org.gemoc.mocc.ccslmocc.model.edit</module>
-        <module>../../AS/org.gemoc.mocc.ccslmocc.model.editor</module>
+        <module>plugins/AS/org.gemoc.mocc.fsmkernel.model</module>
+        <module>plugins/editors/tree/org.gemoc.mocc.fsmkernel.model.edit</module>
+        <module>plugins/editors/tree/org.gemoc.mocc.fsmkernel.model.editor</module>
+        <module>plugins/AS/org.gemoc.mocc.ccslmocc.model</module>
+        <module>plugins/editors/tree/org.gemoc.mocc.ccslmocc.model.edit</module>
+        <module>plugins/editors/tree/org.gemoc.mocc.ccslmocc.model.editor</module>
         
-        <module>../../concreteSyntax/textual/org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl</module>
-        <module>../../concreteSyntax/textual/org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui</module>
-        <module>../../concreteSyntax/textual/org.gemoc.mocc.ccslmocc.model.xtext.mocdsl</module>
-        <module>../../concreteSyntax/textual/org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui</module>
+        <module>plugins/editors/textual/org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl</module>
+        <module>plugins/editors/textual/org.gemoc.mocc.fsmkernel.model.xtext.fsmdsl.ui</module>
+        <module>plugins/editors/textual/org.gemoc.mocc.ccslmocc.model.xtext.mocdsl</module>
+        <module>plugins/editors/textual/org.gemoc.mocc.ccslmocc.model.xtext.mocdsl.ui</module>
         
-        <module>../../concreteSyntax/graphical/org.gemoc.mocc.fsmkernel.model.design</module>
-        <module>../../concreteSyntax/graphical/org.gemoc.mocc.ccslmocc.model.design</module>
+        <module>plugins/editors/graphical/org.gemoc.mocc.fsmkernel.model.design</module>
+        <module>plugins/editors/graphical/org.gemoc.mocc.ccslmocc.model.design</module>
 
         <!-- feature and update site -->
-        <module>../org.gemoc.mocc.feature</module>
-        <module>../org.gemoc.mocc.core.feature</module>
-        <module>../org.gemoc.mocc.graphical.editors.feature</module>
-        <module>../org.gemoc.mocc.text.editors.feature</module>
-        <module>../org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature</module>
-        <module>../org.gemoc.mocc.p2updatesite</module>
+        <module>releng/org.gemoc.mocc.feature</module>
+        <module>releng/org.gemoc.mocc.core.feature</module>
+        <module>releng/org.gemoc.mocc.graphical.editors.feature</module>
+        <module>releng/org.gemoc.mocc.text.editors.feature</module>
+        <module>releng/org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature</module>
+        <module>releng/org.gemoc.mocc.p2updatesite</module>
     </modules>
 
     <properties>
