@@ -3,9 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <relativePath>../../../gemoc_language_workbench/org.gemoc.gemoc_language_workbench.root/pom.xml</relativePath>
-    <groupId>org.gemoc.gemoc_language_workbench</groupId>
-    <artifactId>org.gemoc.gemoc_language_workbench.root</artifactId>
+    <relativePath>../..</relativePath>
+    <groupId>org.gemoc.concurrentviews</groupId>
+    <artifactId>org.gemoc.concurrentviews.root</artifactId>
     <version>0.1.0-SNAPSHOT</version>
   </parent>
 
