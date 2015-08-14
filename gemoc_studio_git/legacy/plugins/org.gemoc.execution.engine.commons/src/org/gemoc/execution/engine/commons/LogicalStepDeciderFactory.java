@@ -1,10 +1,10 @@
 package org.gemoc.execution.engine.commons;
 
 import org.eclipse.core.runtime.CoreException;
+import org.gemoc.executionengine.ccsljava.api.core.ILogicalStepDecider;
+import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecificationExtension;
+import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
-import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 
 public class LogicalStepDeciderFactory {
 

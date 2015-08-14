@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.dse;
+package org.gemoc.executionengine.ccsljava.engine.dse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,15 +6,17 @@ import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
+import org.gemoc.execution.engine.dse.DefaultMSEStateController;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
+import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionContext;
+import org.gemoc.executionengine.ccsljava.api.core.ILogicalStepDecider;
+import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
-import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
@@ -402,8 +404,9 @@ public class NonDeterministicExecutionEngine extends AbstractExecutionEngine imp
 		}
 		solver.setUp(executionContext);
 		this.setSolver(solver);
-		this.changeLogicalStepDecider(executionContext.getLogicalStepDecider());
-		
+		if(executionContext instanceof IConcurrentExecutionContext){
+			this.changeLogicalStepDecider(((IConcurrentExecutionContext)executionContext).getLogicalStepDecider());
+		}
 		
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}

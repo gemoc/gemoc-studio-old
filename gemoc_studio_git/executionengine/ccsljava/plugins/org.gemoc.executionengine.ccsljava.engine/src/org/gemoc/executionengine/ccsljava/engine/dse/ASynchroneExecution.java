@@ -1,12 +1,13 @@
-package org.gemoc.execution.engine.dse;
+package org.gemoc.executionengine.ccsljava.engine.dse;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
 import org.gemoc.execution.engine.Activator;
+import org.gemoc.execution.engine.dse.FreeClockFutureAction;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
-import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionFinishedCondition;

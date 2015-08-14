@@ -1,8 +1,10 @@
-package org.gemoc.gemoc_language_workbench.api.core;
+package org.gemoc.executionengine.ccsljava.api.core;
 
 import java.util.List;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 public interface INonDeterministicExecutionEngine extends IExecutionEngine{

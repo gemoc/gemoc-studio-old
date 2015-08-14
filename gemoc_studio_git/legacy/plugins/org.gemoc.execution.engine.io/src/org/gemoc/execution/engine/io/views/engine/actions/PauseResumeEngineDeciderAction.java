@@ -2,10 +2,10 @@ package org.gemoc.execution.engine.io.views.engine.actions;
 
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.AbstractUserDecider;
+import org.gemoc.executionengine.ccsljava.api.core.ILogicalStepDecider;
+import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
-import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 
 public class PauseResumeEngineDeciderAction extends AbstractEngineAction
 {

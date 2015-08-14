@@ -43,7 +43,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.ext.base;bundle-version="2.0.4",
  org.eclipse.ui.navigator,
  fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="1.0.0",
- org.gemoc.execution.engine.trace.model
+ org.gemoc.execution.engine.trace.model,
+ org.gemoc.executionengine.ccsljava.api;bundle-version="1.0.0",
+ org.gemoc.executionengine.ccsljava.engine;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.gemoc_modeling_workbench.ui,

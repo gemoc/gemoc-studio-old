@@ -1,10 +1,10 @@
-package org.gemoc.gemoc_language_workbench.api.extensions.deciders;
+package org.gemoc.executionengine.ccsljava.api.extensions.deciders;
 
 import java.net.URL;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Platform;
-import org.gemoc.gemoc_language_workbench.api.core.ILogicalStepDecider;
+import org.gemoc.executionengine.ccsljava.api.core.ILogicalStepDecider;
 import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
 import org.osgi.framework.Bundle;
 

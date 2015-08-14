@@ -26,7 +26,8 @@ Require-Bundle: org.gemoc.gemoc_language_workbench.api,
  org.eclipse.ui.ide;bundle-version="3.10.0",
  fr.inria.aoste.timesquare.ecl.feedback.model,
  fr.obeo.dsl.debug.ide.ui,
- fr.obeo.dsl.debug.ide
+ fr.obeo.dsl.debug.ide,
+ org.gemoc.executionengine.ccsljava.api;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.io,

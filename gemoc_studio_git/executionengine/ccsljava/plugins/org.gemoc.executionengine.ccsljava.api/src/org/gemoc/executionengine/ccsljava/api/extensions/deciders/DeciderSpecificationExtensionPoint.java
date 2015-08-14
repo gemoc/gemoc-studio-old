@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.api.extensions.deciders;
+package org.gemoc.executionengine.ccsljava.api.extensions.deciders;
 
 import java.util.Collection;
 

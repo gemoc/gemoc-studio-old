@@ -47,7 +47,6 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.dse.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;
@@ -65,6 +64,7 @@ import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManagerState;
 import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
+import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -150,8 +150,8 @@ public class StimuliManagerView extends ViewPart implements IMotorSelectionListe
 	private Color representedEventColor;
 	private TableViewer _viewer;
 	private ViewContentProvider _contentProvider;
-	private NonDeterministicExecutionEngine _currentSelectedEngine;
-	private Map<NonDeterministicExecutionEngine, ModelSpecificEventContext> _mseContextMap = new HashMap<NonDeterministicExecutionEngine, ModelSpecificEventContext>();
+	private INonDeterministicExecutionEngine _currentSelectedEngine;
+	private Map<INonDeterministicExecutionEngine, ModelSpecificEventContext> _mseContextMap = new HashMap<INonDeterministicExecutionEngine, ModelSpecificEventContext>();
 	private Filter _strategyFilterSelected;
 	private ISelectionChangedListener _decisionViewListener;
 	private SelectionListener _menuAndButtonListener;
@@ -653,9 +653,9 @@ public class StimuliManagerView extends ViewPart implements IMotorSelectionListe
 	@Override
 	public void motorSelectionChanged(IExecutionEngine engine) {
 		if (engine != null
-			&& engine instanceof NonDeterministicExecutionEngine) 
+			&& engine instanceof INonDeterministicExecutionEngine) 
 		{
-			_currentSelectedEngine = (NonDeterministicExecutionEngine) engine;
+			_currentSelectedEngine = (INonDeterministicExecutionEngine) engine;
 			// if the selected engine is stopped we clean its cache and disable all commands
 			if (isEngineStopped())
 			{

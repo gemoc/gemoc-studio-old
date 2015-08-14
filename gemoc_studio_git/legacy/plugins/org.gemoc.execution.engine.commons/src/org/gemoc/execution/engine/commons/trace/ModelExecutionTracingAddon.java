@@ -25,7 +25,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.CommandExecution;
-import org.gemoc.execution.engine.dse.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ContextState;
@@ -35,9 +34,9 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
+import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon;
@@ -90,8 +89,8 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 	public void branch(Choice choice) throws ModelExecutionTracingException {
 		internalBranch(choice);
 		_backToPastHappened = true;
-		if (_executionEngine instanceof NonDeterministicExecutionEngine) {
-			((NonDeterministicExecutionEngine) _executionEngine).getLogicalStepDecider().preempt();
+		if (_executionEngine instanceof INonDeterministicExecutionEngine) {
+			((INonDeterministicExecutionEngine) _executionEngine).getLogicalStepDecider().preempt();
 		}
 	}
 
@@ -397,8 +396,8 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 				try {
 					restoreModelState(choice);
 					restoreSolverState(choice);
-					if (_executionEngine instanceof NonDeterministicExecutionEngine) {
-						((NonDeterministicExecutionEngine) _executionEngine).getLogicalStepDecider().preempt();
+					if (_executionEngine instanceof INonDeterministicExecutionEngine) {
+						((INonDeterministicExecutionEngine) _executionEngine).getLogicalStepDecider().preempt();
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

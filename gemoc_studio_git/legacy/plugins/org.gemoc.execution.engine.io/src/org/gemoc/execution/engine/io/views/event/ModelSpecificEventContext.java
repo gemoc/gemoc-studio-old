@@ -3,16 +3,15 @@ package org.gemoc.execution.engine.io.views.event;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.dse.DefaultMSEStateController;
-import org.gemoc.execution.engine.dse.NonDeterministicExecutionEngine;
 import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
 import org.gemoc.execution.engine.scenario.Future;
+import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 
 public class ModelSpecificEventContext 
 {
 
-	private NonDeterministicExecutionEngine _engine;
+	private INonDeterministicExecutionEngine _engine;
 	
 	private ModelSpecificEventSet _mseSet;
 	
@@ -21,7 +20,7 @@ public class ModelSpecificEventContext
 	private ScenarioManager _scenarioManager;
 
 	
-	public ModelSpecificEventContext(NonDeterministicExecutionEngine engine)
+	public ModelSpecificEventContext(INonDeterministicExecutionEngine engine)
 	{
 		_engine = engine;
 		_executionStep = (int) engine.getEngineStatus().getNbLogicalStepRun();
@@ -129,7 +128,7 @@ public class ModelSpecificEventContext
 		return _mseSet.getMSEs();
 	}
 	
-	public AbstractExecutionEngine getEngine()
+	public INonDeterministicExecutionEngine getEngine()
 	{
 		return _engine;
 	}
