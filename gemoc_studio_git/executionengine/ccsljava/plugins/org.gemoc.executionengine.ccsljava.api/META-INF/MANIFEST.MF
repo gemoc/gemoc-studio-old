@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Api
-Bundle-SymbolicName: org.gemoc.executionengine.ccsljava.api
+Bundle-SymbolicName: org.gemoc.executionengine.ccsljava.api;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.core.runtime,
@@ -10,3 +10,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.gemoc.execution.engine.trace.model
 Export-Package: org.gemoc.executionengine.ccsljava.api.core,
  org.gemoc.executionengine.ccsljava.api.extensions.deciders
+Bundle-ActivationPolicy: lazy
