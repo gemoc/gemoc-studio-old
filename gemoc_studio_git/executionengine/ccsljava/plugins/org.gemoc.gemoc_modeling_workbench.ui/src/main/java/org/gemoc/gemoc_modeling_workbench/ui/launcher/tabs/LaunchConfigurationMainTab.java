@@ -359,17 +359,14 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 	@Override
 	protected void updateLaunchConfigurationDialog() {
 		super.updateLaunchConfigurationDialog();
-		LanguageDefinitionExtension extension = LanguageDefinitionExtensionPoint.findDefinition(_languageCombo
+		ConcurrentLanguageDefinitionExtension concurrentextension = ConcurrentLanguageDefinitionExtensionPoint.findDefinition(_languageCombo
 				.getText());
-		if (extension != null) {
-			ConcurrentLanguageDefinitionExtension concurrentextension = ConcurrentLanguageDefinitionExtensionPoint.findDefinition(_languageCombo
-					.getText());
-			// if we find that the language is a concurrent language, hide the purek3 widgets
-			if (concurrentextension == null) {				
-				_k3Area.setVisible(true);
-			} else {
-				_k3Area.setVisible(false);
-			}
+		// if we find that the language is a concurrent language, hide the purek3 widgets
+		if (concurrentextension == null) {				
+			_k3Area.setVisible(true);
+		} else {
+			_k3Area.setVisible(false);
 		}
+		
 	}
 }
