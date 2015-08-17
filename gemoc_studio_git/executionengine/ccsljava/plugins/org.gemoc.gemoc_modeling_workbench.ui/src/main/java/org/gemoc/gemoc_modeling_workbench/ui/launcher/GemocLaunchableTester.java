@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.commons.eclipse.emf.EMFResource;
-import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
-import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
+import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtension;
+import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 
 /**
@@ -28,7 +28,7 @@ public class GemocLaunchableTester extends PropertyTester {
 	/**
 	 * name for the "is executable domain specific model" property
 	 */
-	private static final String PROPERTY_IS_EXECUTABLE_DOMAIN_SPECIFIC_MODEL = "isExecutableDomainSpecicModel"; //$NON-NLS-1$
+	private static final String PROPERTY_IS_EXECUTABLE_DOMAIN_SPECIFIC_MODEL = "isExecutableDomainSpecificModel"; //$NON-NLS-1$
 	
 	
 	protected boolean isModel(IAdaptable receiver){
@@ -49,7 +49,7 @@ public class GemocLaunchableTester extends PropertyTester {
 		return false;
 	}
 	
-	protected boolean isExecutableDomainSpecicModel(IAdaptable receiver){
+	protected boolean isExecutableDomainSpecificModel(IAdaptable receiver){
 		IFile modelFile = (IFile)(receiver).getAdapter(IFile.class);
 		if(modelFile !=null){
 			
@@ -60,7 +60,7 @@ public class GemocLaunchableTester extends PropertyTester {
 	
 	
 	protected boolean existsDSMLWithFileExtension(String fileExtension){
-		for(LanguageDefinitionExtension lde : LanguageDefinitionExtensionPoint.getSpecifications()){
+		for(ConcurrentLanguageDefinitionExtension lde : ConcurrentLanguageDefinitionExtensionPoint.getSpecifications()){
 			try{
 				String xdsmluri = lde.getXDSMLFilePath();
 				if (!xdsmluri.startsWith("platform:/plugin"))
@@ -97,7 +97,7 @@ public class GemocLaunchableTester extends PropertyTester {
 		}
 		if(PROPERTY_IS_EXECUTABLE_DOMAIN_SPECIFIC_MODEL.equals(property)) {
 			if (receiver instanceof IAdaptable) {
-				return isExecutableDomainSpecicModel((IAdaptable)receiver);
+				return isExecutableDomainSpecificModel((IAdaptable)receiver);
 			}
 			return false;
 		}

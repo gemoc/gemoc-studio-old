@@ -274,7 +274,7 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 
 		ArrayList<String> xdsmlNames = new ArrayList<String>();
 		IConfigurationElement[] confElements = Platform.getExtensionRegistry().getConfigurationElementsFor(
-				LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT);
+				ConcurrentLanguageDefinitionExtensionPoint.GEMOC_CONCURRENT_LANGUAGE_EXTENSION_POINT);
 		for (int i = 0; i < confElements.length; i++) {
 			xdsmlNames.add(confElements[i].getAttribute("name"));
 		}
