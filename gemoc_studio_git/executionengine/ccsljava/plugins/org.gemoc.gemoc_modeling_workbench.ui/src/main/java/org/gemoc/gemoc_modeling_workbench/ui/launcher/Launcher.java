@@ -29,6 +29,7 @@ import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionengine.ccsljava.engine.commons.ConcurrentModelExecutionContext;
 import org.gemoc.executionengine.ccsljava.engine.dse.NonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
@@ -79,25 +80,27 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 			}
 			
 			// Depending on the parsed launch conf and the mode, we create the execution context 
-			final ModelExecutionContext executionContext = new ModelExecutionContext(runConfiguration, executionMode);
-
-			// Then we see if we have a solver in the language def...
+			// Then we see if we have a solver in the language def by trying to create a concurrent context
+			final ConcurrentModelExecutionContext concurrentexecutionContext = new ConcurrentModelExecutionContext(runConfiguration, executionMode);
 			ISolver solver = null;
 			try {
-				solver = executionContext.getLanguageDefinitionExtension().instanciateSolver();
+				solver = concurrentexecutionContext.getConcurrentLanguageDefinitionExtension().instanciateSolver();
 			} catch (CoreException e) {}
-
+			
 			// This allows us to decide which kind of engine to create
 			// Eventually, this would either be decided in the launch conf... or in the xDSML file? not clear
 			// Or we would automatically find the appropriate engine...
 			if (solver != null) {
 				_executionEngine = new NonDeterministicExecutionEngine();
+				// In any case we initialize the engine
+				_executionEngine.initialize(concurrentexecutionContext);
 			} else {
 				_executionEngine = new PlainK3ExecutionEngine();
+
+				// In any case we initialize the engine
+				_executionEngine.initialize(new ModelExecutionContext(runConfiguration, executionMode));
 			}
 
-			// In any case we initialize the engine
-			_executionEngine.initialize(executionContext);
 			
 			// And we start it within a dedicated job
 			Job job = new Job(getDebugJobName(configuration, getFirstInstruction(configuration))) {

@@ -37,6 +37,8 @@ import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIFileDialog;
 import org.gemoc.execution.engine.commons.RunConfiguration;
 import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecificationExtension;
 import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecificationExtensionPoint;
+import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtension;
+import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
@@ -360,15 +362,13 @@ public class LaunchConfigurationMainTab extends LaunchConfigurationTab {
 		LanguageDefinitionExtension extension = LanguageDefinitionExtensionPoint.findDefinition(_languageCombo
 				.getText());
 		if (extension != null) {
-			try {
-				ISolver solver = extension.instanciateSolver();
-				if (solver != null ) {
-					_k3Area.setVisible(true);
-				} else {
-					_k3Area.setVisible(false);
-				}
-			} catch (CoreException e) {
+			ConcurrentLanguageDefinitionExtension concurrentextension = ConcurrentLanguageDefinitionExtensionPoint.findDefinition(_languageCombo
+					.getText());
+			// if we find that the language is a concurrent language, hide the purek3 widgets
+			if (concurrentextension == null) {				
 				_k3Area.setVisible(true);
+			} else {
+				_k3Area.setVisible(false);
 			}
 		}
 	}

@@ -6,19 +6,11 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-//import org.eclipse.emf.common.util.URI;
-//import org.eclipse.emf.ecore.EObject;
-//import org.eclipse.emf.ecore.resource.Resource;
-//import org.eclipse.emf.ecore.resource.ResourceSet;
-//import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-//import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
-//import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
 
 public class LanguageDefinitionExtension extends Extension {
 
@@ -31,14 +23,6 @@ public class LanguageDefinitionExtension extends Extension {
 		return null;
 	}
 
-	final public ISolver instanciateSolver() throws CoreException {
-		Object instance = instanciate(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);
-		if (instance instanceof ISolver) {
-			return (ISolver) instance;
-		}
-		throwInstanciationCoreException();
-		return null;
-	}
 
 	final public IModelLoader instanciateModelLoader() throws CoreException {
 		Object instance = instanciate(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_LOADMODEL_ATT);
@@ -49,10 +33,6 @@ public class LanguageDefinitionExtension extends Extension {
 		return null;
 	}
 
-	final public String getQVTOPath() {
-		return _configurationElement
-				.getAttribute(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_TO_CCSL_QVTO_FILE_PATH_ATT);
-	}
 
 	final public Collection<IEngineAddon> instanciateEngineAddons() throws CoreException {
 		ArrayList<IEngineAddon> addons = new ArrayList<IEngineAddon>();
@@ -68,19 +48,6 @@ public class LanguageDefinitionExtension extends Extension {
 		return addons;
 	}
 
-	final public Collection<IMSEStateController> instanciateMSEStateControllers() throws CoreException {
-		ArrayList<IMSEStateController> controllers = new ArrayList<IMSEStateController>();
-		for (IConfigurationElement childConfElement : _configurationElement
-				.getChildren(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_MSE_STATE_CONTROLLER_DEFINITION)) {
-			childConfElement.getName();
-			final Object c = childConfElement
-					.createExecutableExtension(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_MSE_STATE_CONTROLLER_CLASS_DEFINITION);
-			if (c instanceof IMSEStateController) {
-				controllers.add((IMSEStateController) c);
-			}
-		}
-		return controllers;
-	}
 
 	public String getName() {
 		return getAttribute(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_NAME_ATT);

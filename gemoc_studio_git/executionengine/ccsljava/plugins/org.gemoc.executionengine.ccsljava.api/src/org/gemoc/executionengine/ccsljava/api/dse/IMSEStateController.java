@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.api.dse;
+package org.gemoc.executionengine.ccsljava.api.dse;
 
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 

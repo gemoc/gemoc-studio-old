@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.gemoc.gemoc_language_workbench.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.gemoc.executionengine.ccsljava.api" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.gemoc.gemoc_language_workbench.ui" id="org.gemoc.gemoc_language_workbench.xdsml" name="Gemoc Language Definition"/>
+         <meta.schema plugin="org.gemoc.executionengine.ccsljava.api" id="org.gemoc.gemoc_language_workbench.concurrent.xdsml" name="Gemoc Concurrent Language Definition"/>
       </appinfo>
       <documentation>
-         [Enter description of this extension point.]
+         Extension for Gemoc concurrent executable language. It is designed to be compatible with the &quot;org.gemoc.gemoc_language_workbench.xdsml&quot; extension point and reproduce all its contents + concurrent specific fields.
       </documentation>
    </annotation>
 
@@ -51,6 +51,7 @@
       <complexType>
          <sequence minOccurs="0" maxOccurs="unbounded">
             <element ref="EngineAddon_Definition"/>
+            <element ref="MSE_State_Controller_Definition"/>
          </sequence>
          <attribute name="name" type="string" use="required">
             <annotation>
@@ -76,6 +77,16 @@
                </appinfo>
             </annotation>
          </attribute>
+         <attribute name="solver_class" type="string">
+            <annotation>
+               <documentation>
+                  A Solver implementation, which has a facility to &quot;compile&quot; the Domain-Specific Events specification file into its own input file format. It should be able to produce a scheduling trace conforming to the RT-Simex Trace Metamodel (fr.inria.aoste.trace).
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.moc.ISolver"/>
+               </appinfo>
+            </annotation>
+         </attribute>
          <attribute name="modelLoader_class" type="string">
             <annotation>
                <documentation>
@@ -84,6 +95,13 @@
                <appinfo>
                   <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.core.IModelLoader"/>
                </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="toCCSLQVTOFilePath" type="string">
+            <annotation>
+               <documentation>
+                  path to the QVTO file that is responsible for doing the ECL to CCSL transformation
+               </documentation>
             </annotation>
          </attribute>
       </complexType>
@@ -98,10 +116,24 @@
 The hooked code will be run at the appropriate time by the engine.
 This can be used for example to initialize some dsl specific GUI or to monitor the engine.
 This is optional, if not set, the engine will ignore it.
-Addons defined there are available for this language only.
                </documentation>
                <appinfo>
                   <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="MSE_State_Controller_Definition">
+      <complexType>
+         <attribute name="MSE_State_Controller_Class" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController"/>
                </appinfo>
             </annotation>
          </attribute>

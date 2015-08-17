@@ -15,5 +15,4 @@ Require-Bundle: org.gemoc.gemoc_language_workbench.api,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine,
- org.gemoc.execution.engine.core,
- org.gemoc.execution.engine.dse
+ org.gemoc.execution.engine.core

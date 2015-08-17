@@ -5,10 +5,9 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import org.gemoc.execution.engine.Activator;
-import org.gemoc.execution.engine.dse.FreeClockFutureAction;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
+import org.gemoc.executionengine.ccsljava.api.dse.IMSEStateController;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionFinishedCondition;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionResultCondition;

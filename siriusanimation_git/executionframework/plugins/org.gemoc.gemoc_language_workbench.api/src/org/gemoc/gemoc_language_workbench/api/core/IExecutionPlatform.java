@@ -3,7 +3,6 @@ package org.gemoc.gemoc_language_workbench.api.core;
 import java.util.Collection;
 
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 public interface IExecutionPlatform extends IDisposable
@@ -23,6 +22,5 @@ public interface IExecutionPlatform extends IDisposable
 	void removeEngineAddon(IEngineAddon addon);
 	Iterable<IEngineAddon> getEngineAddons();
 	
-	Collection<IMSEStateController> getMSEStateControllers();
 
 }

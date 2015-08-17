@@ -5,21 +5,20 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.CoreException;
+import org.gemoc.executionengine.ccsljava.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionPlatform;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
-import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.extensions.engine_addon.EngineAddonSpecificationExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 
 public class DefaultExecutionPlatform implements IExecutionPlatform {
 	
-	private IModelLoader _modelLoader;
-	private ICodeExecutor _codeExecutor;
-	private Collection<IEngineAddon> _addons;
-	private Collection<IMSEStateController> _clockControllers;
+	protected IModelLoader _modelLoader;
+	protected ICodeExecutor _codeExecutor;
+	protected Collection<IEngineAddon> _addons;
 	
 	public DefaultExecutionPlatform(LanguageDefinitionExtension _languageDefinition, IRunConfiguration runConfiguration) throws CoreException 
 	{
@@ -35,7 +34,6 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 		{
 			addEngineAddon(addon);			
 		}
-		_clockControllers = _languageDefinition.instanciateMSEStateControllers();
 	}
 
 	@Override
@@ -59,16 +57,11 @@ public class DefaultExecutionPlatform implements IExecutionPlatform {
 		}
 	}
 
-	@Override
-	public Collection<IMSEStateController> getMSEStateControllers() 
-	{
-		return _clockControllers;
-	}
+	
 
 	@Override
 	public void dispose() 
 	{
-		_clockControllers.clear();
 		_addons.clear();
 	}
 

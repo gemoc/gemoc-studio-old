@@ -1,10 +1,10 @@
-package org.gemoc.execution.engine.dse;
+package org.gemoc.executionengine.ccsljava.engine.dse;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
+import org.gemoc.executionengine.ccsljava.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;

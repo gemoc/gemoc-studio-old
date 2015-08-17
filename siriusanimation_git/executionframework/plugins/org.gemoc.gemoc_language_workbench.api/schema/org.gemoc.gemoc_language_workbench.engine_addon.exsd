@@ -48,6 +48,11 @@
    </element>
 
    <element name="Addon">
+      <annotation>
+         <documentation>
+            allows to define Engine addons that will be made available to all execution engines
+         </documentation>
+      </annotation>
       <complexType>
          <attribute name="id" type="string" use="required">
             <annotation>

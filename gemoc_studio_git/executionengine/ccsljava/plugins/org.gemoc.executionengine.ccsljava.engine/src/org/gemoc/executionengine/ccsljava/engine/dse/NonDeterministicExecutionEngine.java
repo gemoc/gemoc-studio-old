@@ -6,18 +6,17 @@ import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.AbstractExecutionEngine;
-import org.gemoc.execution.engine.dse.DefaultMSEStateController;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionContext;
 import org.gemoc.executionengine.ccsljava.api.core.ILogicalStepDecider;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionengine.ccsljava.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
-import org.gemoc.gemoc_language_workbench.api.dse.IMSEStateController;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
@@ -113,7 +112,7 @@ public class NonDeterministicExecutionEngine extends AbstractExecutionEngine imp
 
 	private void updatePossibleLogicalSteps()
 	{
-		for(IMSEStateController c : getExecutionContext().getExecutionPlatform().getMSEStateControllers())
+		for(IMSEStateController c : getConcurrentExecutionContext().getConcurrentExecutionPlatform().getMSEStateControllers())
 		{
 			c.applyMSEFutureStates(getSolver());
 		}
@@ -201,6 +200,18 @@ public class NonDeterministicExecutionEngine extends AbstractExecutionEngine imp
 		}
 	}
 	
+	/**
+	 * 
+	 * @return the IConcurrenExecutionContext or null if no such context is available
+	 */
+	public IConcurrentExecutionContext getConcurrentExecutionContext(){
+		
+		IExecutionContext context = getExecutionContext();
+		if(context instanceof IConcurrentExecutionContext){
+			return (IConcurrentExecutionContext) context;
+		}
+		else return null;
+	}
 
 	private ISolver _solver;
 

@@ -13,6 +13,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.ui.dialogs.ListDialog;
 import org.gemoc.commons.eclipse.emf.EMFResource;
+import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtension;
+import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
@@ -35,8 +37,8 @@ public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 												modelUriString.lastIndexOf('.') + 1, 
 												modelUriString.length());
 			
-		List<LanguageDefinitionExtension> applicableLanguageDefinitions = new ArrayList<LanguageDefinitionExtension>();
-		for(LanguageDefinitionExtension lde : LanguageDefinitionExtensionPoint.getSpecifications()){
+		List<ConcurrentLanguageDefinitionExtension> applicableLanguageDefinitions = new ArrayList<ConcurrentLanguageDefinitionExtension>();
+		for(ConcurrentLanguageDefinitionExtension lde : ConcurrentLanguageDefinitionExtensionPoint.getSpecifications()){
 			try{
 				String xdsmluri = lde.getXDSMLFilePath();
 				if (!xdsmluri.startsWith("platform:/plugin"))
@@ -52,7 +54,7 @@ public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 			catch(Exception e){}
 		}
 		
-		LanguageDefinitionExtension selectedLanguageDefinition= null;
+		ConcurrentLanguageDefinitionExtension selectedLanguageDefinition= null;
 		if (applicableLanguageDefinitions.size() == 0)
 		{
 			MessageDialog dialog = new MessageDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), 
@@ -98,7 +100,7 @@ public class GenerateExtendedCCSLFile extends GenerateExtendedCCSLFileAction {
 				return null;
 			}
 			Object[] selected = ((Object[])result[0]);
-			selectedLanguageDefinition = (LanguageDefinitionExtension) selected[1];
+			selectedLanguageDefinition = (ConcurrentLanguageDefinitionExtension) selected[1];
 		}
 		
 		String uri = selectedLanguageDefinition.getQVTOPath();

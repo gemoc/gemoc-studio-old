@@ -19,16 +19,16 @@ import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefin
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 
-public class ModelExecutionContext implements IExecutionContext, IConcurrentExecutionContext
+public class ModelExecutionContext implements IExecutionContext
 {
 
-	private IRunConfiguration _runConfiguration;
+	protected IRunConfiguration _runConfiguration;
 
-	private Resource _resourceModel;
+	protected Resource _resourceModel;
 
-	private ExecutionMode _executionMode;
+	protected ExecutionMode _executionMode;
 
-	private LanguageDefinitionExtension _languageDefinition;
+	protected LanguageDefinitionExtension _languageDefinition;
 	
 	public ModelExecutionContext(IRunConfiguration runConfiguration, ExecutionMode executionMode)
 			throws EngineContextException
@@ -46,7 +46,7 @@ public class ModelExecutionContext implements IExecutionContext, IConcurrentExec
 				// TODO throw warning that we couldn't copy the model
 			}
 			_languageDefinition = getLanguageDefinition(_runConfiguration.getLanguageName());
-			_executionPlatform = new DefaultExecutionPlatform(_languageDefinition, runConfiguration);
+			_executionPlatform = createExecutionPlatform(); //new DefaultExecutionPlatform(_languageDefinition, _runConfiguration);
 			if(_runConfiguration.getAnimatorURI() != null) // TODO maybe add a toggle in the launcher tab to temporarily enable or disable the use of the animation
 			{
 				_resourceModel = _executionPlatform.getModelLoader().loadModelForAnimation(this);
@@ -54,8 +54,7 @@ public class ModelExecutionContext implements IExecutionContext, IConcurrentExec
 			{
 				_resourceModel = _executionPlatform.getModelLoader().loadModel(this);
 			}
-			_logicalStepDecider = LogicalStepDeciderFactory.createDecider(runConfiguration.getDeciderName(),
-					executionMode);
+			
 			setUpEditingDomain();
 			
 			setUpFeedbackModel();
@@ -87,6 +86,10 @@ public class ModelExecutionContext implements IExecutionContext, IConcurrentExec
 		}
 	}
 
+	protected IExecutionPlatform createExecutionPlatform() throws CoreException{
+		return new DefaultExecutionPlatform(_languageDefinition, _runConfiguration);
+	}
+	
 	private LanguageDefinitionExtension getLanguageDefinition(String languageName) throws EngineContextException
 	{
 		LanguageDefinitionExtension languageDefinition = LanguageDefinitionExtensionPoint
@@ -145,7 +148,6 @@ public class ModelExecutionContext implements IExecutionContext, IConcurrentExec
 	public void dispose()
 	{
 		_executionPlatform.dispose();
-		_logicalStepDecider.dispose();
 		//
 	}
 
@@ -163,7 +165,7 @@ public class ModelExecutionContext implements IExecutionContext, IConcurrentExec
 		return _executionMode;
 	}
 
-	private ActionModel _feedbackModel;
+	protected ActionModel _feedbackModel;
 
 	@Override
 	public ActionModel getFeedbackModel()
@@ -171,7 +173,7 @@ public class ModelExecutionContext implements IExecutionContext, IConcurrentExec
 		return _feedbackModel;
 	}
 
-	private IExecutionPlatform _executionPlatform;
+	protected IExecutionPlatform _executionPlatform;
 
 	@Override
 	public IExecutionPlatform getExecutionPlatform()
@@ -185,12 +187,7 @@ public class ModelExecutionContext implements IExecutionContext, IConcurrentExec
 		return _languageDefinition;
 	}
 
-	protected ILogicalStepDecider _logicalStepDecider;
-
-	@Override
-	public ILogicalStepDecider getLogicalStepDecider() {
-		return _logicalStepDecider;
-	}
+	
 
 
 

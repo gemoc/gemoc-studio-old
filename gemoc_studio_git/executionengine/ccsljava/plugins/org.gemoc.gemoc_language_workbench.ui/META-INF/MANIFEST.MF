@@ -34,7 +34,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecoretools.design,
  org.eclipse.emf.ecore.editor,
  org.eclipse.sirius.editor,
- org.eclipse.ui.navigator
+ org.eclipse.ui.navigator,
+ org.gemoc.executionengine.ccsljava.api
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.filesystem
