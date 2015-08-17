@@ -8,9 +8,12 @@ import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionContext;
 import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionPlatform;
 import org.gemoc.executionengine.ccsljava.api.core.ILogicalStepDecider;
 import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtension;
+import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionPlatform;
 import org.gemoc.gemoc_language_workbench.api.core.IRunConfiguration;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
+import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
 
 public class ConcurrentModelExecutionContext extends ModelExecutionContext implements IConcurrentExecutionContext
 {
@@ -42,7 +45,20 @@ public class ConcurrentModelExecutionContext extends ModelExecutionContext imple
 		}
 	}
 	
-	
+	@Override
+	protected LanguageDefinitionExtension getLanguageDefinition(String languageName) throws EngineContextException
+	{
+		ConcurrentLanguageDefinitionExtension languageDefinition = ConcurrentLanguageDefinitionExtensionPoint
+				.findDefinition(_runConfiguration.getLanguageName());
+		if (languageDefinition == null)
+		{
+			String message = "Cannot find concurrent xdsml definition for the language " + _runConfiguration.getLanguageName()
+					+ ", please verify that is is correctly deployed.";
+			EngineContextException exception = new EngineContextException(message);
+			throw exception;
+		}
+		return languageDefinition;
+	}
 
 	@Override
 	public void dispose()

@@ -90,7 +90,7 @@ public class ModelExecutionContext implements IExecutionContext
 		return new DefaultExecutionPlatform(_languageDefinition, _runConfiguration);
 	}
 	
-	private LanguageDefinitionExtension getLanguageDefinition(String languageName) throws EngineContextException
+	protected LanguageDefinitionExtension getLanguageDefinition(String languageName) throws EngineContextException
 	{
 		LanguageDefinitionExtension languageDefinition = LanguageDefinitionExtensionPoint
 				.findDefinition(_runConfiguration.getLanguageName());
