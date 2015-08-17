@@ -10,7 +10,6 @@ import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
 import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
-import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 public class LanguageDefinitionExtension extends Extension {
 

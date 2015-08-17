@@ -12,13 +12,13 @@ import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionContext;
 import org.gemoc.executionengine.ccsljava.api.core.ILogicalStepDecider;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.executionengine.ccsljava.api.dse.IMSEStateController;
+import org.gemoc.executionengine.ccsljava.api.moc.ISolver;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
-import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
@@ -204,6 +204,7 @@ public class NonDeterministicExecutionEngine extends AbstractExecutionEngine imp
 	 * 
 	 * @return the IConcurrenExecutionContext or null if no such context is available
 	 */
+	@Override
 	public IConcurrentExecutionContext getConcurrentExecutionContext(){
 		
 		IExecutionContext context = getExecutionContext();
@@ -400,24 +401,27 @@ public class NonDeterministicExecutionEngine extends AbstractExecutionEngine imp
 	@Override
 	public void initialize(IExecutionContext executionContext){
 		
+		if (!(executionContext instanceof IConcurrentExecutionContext))
+			throw new IllegalArgumentException("executionContext must be an IConcurrentExecutionContext when used in NonDeterministicExecutionEngine");
 		super.initialize(executionContext);
 		
+		IConcurrentExecutionContext concurrentExecutionContext = getConcurrentExecutionContext();
+		
 		_mseStateController = new DefaultMSEStateController();
-		_executionContext.getExecutionPlatform().getMSEStateControllers().add(_mseStateController);
+		concurrentExecutionContext.getConcurrentExecutionPlatform().getMSEStateControllers().add(_mseStateController);
 		
 		
 		ISolver solver;
 		//TODO very ugly
 		try {
-			solver = executionContext.getLanguageDefinitionExtension().instanciateSolver();
+			solver = concurrentExecutionContext.getConcurrentLanguageDefinitionExtension().instanciateSolver();
 		} catch (CoreException e) {
 			throw new RuntimeException(e.getMessage());
 		}
-		solver.setUp(executionContext);
+		solver.setUp(concurrentExecutionContext);
 		this.setSolver(solver);
-		if(executionContext instanceof IConcurrentExecutionContext){
-			this.changeLogicalStepDecider(((IConcurrentExecutionContext)executionContext).getLogicalStepDecider());
-		}
+		this.changeLogicalStepDecider(concurrentExecutionContext.getLogicalStepDecider());
+		
 		
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}

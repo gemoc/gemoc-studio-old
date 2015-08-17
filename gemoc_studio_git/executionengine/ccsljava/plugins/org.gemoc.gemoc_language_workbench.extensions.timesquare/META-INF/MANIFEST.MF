@@ -24,7 +24,8 @@ Require-Bundle: org.eclipse.core.runtime,
  fr.inria.aoste.timesquare.simulationpolicy;bundle-version="1.1.0",
  org.gemoc.execution.engine.trace.model,
  fr.inria.aoste.timesquare.launcher.core;bundle-version="1.4.1",
- org.gemoc.commons.eclipse.pde
+ org.gemoc.commons.eclipse.pde,
+ org.gemoc.executionengine.ccsljava.api
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.gemoc_language_workbench.extensions.timesquare,

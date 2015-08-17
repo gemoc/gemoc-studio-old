@@ -1,6 +1,6 @@
 package org.gemoc.executionengine.ccsljava.api.dse;
 
-import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
+import org.gemoc.executionengine.ccsljava.api.moc.ISolver;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 

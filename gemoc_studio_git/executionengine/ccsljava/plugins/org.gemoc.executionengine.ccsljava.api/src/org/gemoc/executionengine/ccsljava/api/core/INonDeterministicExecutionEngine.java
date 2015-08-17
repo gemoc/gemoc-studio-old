@@ -3,12 +3,14 @@ package org.gemoc.executionengine.ccsljava.api.core;
 import java.util.List;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.executionengine.ccsljava.api.moc.ISolver;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IFutureAction;
-import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 public interface INonDeterministicExecutionEngine extends IExecutionEngine{
 
+	IConcurrentExecutionContext getConcurrentExecutionContext();
+	
 	void recomputePossibleLogicalSteps();
 
 	List<LogicalStep> getPossibleLogicalSteps();

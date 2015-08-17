@@ -6,8 +6,8 @@ import java.util.Collection;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.gemoc.executionengine.ccsljava.api.dse.IMSEStateController;
+import org.gemoc.executionengine.ccsljava.api.moc.ISolver;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
-import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 public class ConcurrentLanguageDefinitionExtension extends LanguageDefinitionExtension {
 

@@ -11,5 +11,6 @@ Require-Bundle: org.eclipse.core.runtime,
 Export-Package: org.gemoc.executionengine.ccsljava.api.core,
  org.gemoc.executionengine.ccsljava.api.dse,
  org.gemoc.executionengine.ccsljava.api.extensions.deciders,
- org.gemoc.executionengine.ccsljava.api.extensions.languages
+ org.gemoc.executionengine.ccsljava.api.extensions.languages,
+ org.gemoc.executionengine.ccsljava.api.moc
 Bundle-ActivationPolicy: lazy

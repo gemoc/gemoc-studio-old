@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
-import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
+import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionContext;
+import org.gemoc.executionengine.ccsljava.api.moc.ISolver;
 
 import fr.inria.aoste.trace.EventOccurrence;
 import fr.inria.aoste.trace.ModelElementReference;
@@ -67,7 +67,7 @@ public class SolverMock implements ISolver {
 	}
 
 	@Override
-	public void setUp(IExecutionContext context) {
+	public void setUp(IConcurrentExecutionContext context) {
 		// TODO Auto-generated method stub
 		
 	}

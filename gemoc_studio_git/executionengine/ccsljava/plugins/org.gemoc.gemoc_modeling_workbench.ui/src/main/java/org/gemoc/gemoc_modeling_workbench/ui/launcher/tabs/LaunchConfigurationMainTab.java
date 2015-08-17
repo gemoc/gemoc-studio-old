@@ -39,9 +39,9 @@ import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecifi
 import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtension;
 import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtensionPoint;
+import org.gemoc.executionengine.ccsljava.api.moc.ISolver;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtensionPoint;
-import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 import org.gemoc.gemoc_language_workbench.ui.dialogs.SelectAIRDIFileDialog;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 

@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
+import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionWorkspace;
 import org.gemoc.gemoc_language_workbench.extensions.timesquare.Activator;
@@ -50,7 +51,7 @@ import fr.inria.aoste.trace.Reference;
  * Implementation of the ISolver dedicated to CCSL.
  * 
  */
-public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.ISolver {
+public class CcslSolver implements org.gemoc.executionengine.ccsljava.api.moc.ISolver {
 
 	private CCSLKernelSolverWrapper solverWrapper = null;
 	private URI solverInputURI = null;
@@ -300,16 +301,16 @@ public class CcslSolver implements org.gemoc.gemoc_language_workbench.api.moc.IS
 	
 	
 	@Override
-	public void setUp(IExecutionContext context) 
+	public void setUp(IConcurrentExecutionContext context) 
 	{
 		generateMoC(context);
 		createSolver(context);
 	}
 	
-	private void generateMoC(IExecutionContext context) 
+	private void generateMoC(IConcurrentExecutionContext context) 
 	{
 		IExecutionWorkspace workspace = context.getWorkspace();
-		String transformationPath = context.getLanguageDefinitionExtension().getQVTOPath();
+		String transformationPath = context.getConcurrentLanguageDefinitionExtension().getQVTOPath();
 		boolean mustGenerate = false;
 		IFile mocFile = ResourcesPlugin.getWorkspace().getRoot().getFile(workspace.getMoCPath());		
 		if (!mocFile.exists()

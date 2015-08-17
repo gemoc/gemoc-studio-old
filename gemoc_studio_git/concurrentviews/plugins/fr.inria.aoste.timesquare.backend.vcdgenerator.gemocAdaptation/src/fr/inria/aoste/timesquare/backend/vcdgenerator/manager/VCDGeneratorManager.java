@@ -15,9 +15,9 @@ import org.eclipse.swt.widgets.Display;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionengine.ccsljava.api.moc.ISolver;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon;
-import org.gemoc.gemoc_language_workbench.api.moc.ISolver;
 
 import fr.inria.aoste.timesquare.backend.manager.visible.ClockEntity;
 import fr.inria.aoste.timesquare.backend.manager.visible.ConfigurationHelper;

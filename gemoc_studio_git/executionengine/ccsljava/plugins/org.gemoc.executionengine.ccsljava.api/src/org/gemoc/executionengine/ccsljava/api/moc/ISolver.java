@@ -1,9 +1,10 @@
-package org.gemoc.gemoc_language_workbench.api.moc;
+package org.gemoc.executionengine.ccsljava.api.moc;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 
@@ -73,5 +74,5 @@ public interface ISolver extends IDisposable {
 
 	public void revertForceClockEffect();
 
-	public void setUp(IExecutionContext context);
+	public void setUp(IConcurrentExecutionContext context);
 }
