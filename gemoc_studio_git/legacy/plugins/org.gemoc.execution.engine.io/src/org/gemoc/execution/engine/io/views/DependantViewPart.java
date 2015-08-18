@@ -4,11 +4,11 @@ import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
-import org.gemoc.execution.engine.io.views.engine.IMotorSelectionListener;
+import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
+import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 
 public abstract class DependantViewPart extends ViewPart implements
-		IMotorSelectionListener {
+		IEngineSelectionListener {
 
 	
 	public DependantViewPart()
@@ -32,13 +32,13 @@ public abstract class DependantViewPart extends ViewPart implements
 	private void startListeningToMotorSelectionChange() {
 		_enginesStatusView = ViewHelper.retrieveView(EnginesStatusView.ID);
 		if (_enginesStatusView != null) {
-			_enginesStatusView.addMotorSelectionListener(this);
+			_enginesStatusView.addEngineSelectionListener(this);
 		}
 	}
 
 	private void stopListeningToMotorSelectionChange() {
 		if (_enginesStatusView != null) {
-			_enginesStatusView.removeMotorSelectionListener(this);
+			_enginesStatusView.removeEngineSelectionListener(this);
 		}
 	}
 

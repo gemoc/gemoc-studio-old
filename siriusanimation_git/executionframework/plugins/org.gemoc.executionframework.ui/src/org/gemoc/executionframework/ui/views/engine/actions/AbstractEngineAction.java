@@ -55,7 +55,7 @@ public abstract class AbstractEngineAction extends Action  implements IMenuCreat
 	}
 	
 	@Override
-	public void motorSelectionChanged(IExecutionEngine engine) 
+	public void engineSelectionChanged(IExecutionEngine engine) 
 	{
 		_currentSelectedEngine = engine;
 		

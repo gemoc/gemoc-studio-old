@@ -234,7 +234,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 	private INonDeterministicExecutionEngine _currentEngine;
 
 	@Override
-	public void motorSelectionChanged(IExecutionEngine engine)
+	public void engineSelectionChanged(IExecutionEngine engine)
 	{
 		if (engine != null && engine instanceof INonDeterministicExecutionEngine && engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Animation))
 		{

@@ -79,9 +79,9 @@ public class SwitchDeciderAction extends AbstractEngineAction
 
 	
 	@Override
-	public void motorSelectionChanged(IExecutionEngine engine) 
+	public void engineSelectionChanged(IExecutionEngine engine) 
 	{
-		super.motorSelectionChanged(engine);
+		super.engineSelectionChanged(engine);
 		if (engine instanceof INonDeterministicExecutionEngine) {
 			for (DeciderAction action : DeciderManager.getAllDeciderActions())
 			{

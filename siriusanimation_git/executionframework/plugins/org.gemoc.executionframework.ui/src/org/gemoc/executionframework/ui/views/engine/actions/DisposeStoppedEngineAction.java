@@ -38,9 +38,9 @@ public class DisposeStoppedEngineAction extends AbstractEngineAction
 
 	
 	@Override
-	public void motorSelectionChanged(IExecutionEngine engine) 
+	public void engineSelectionChanged(IExecutionEngine engine) 
 	{
-		super.motorSelectionChanged(engine);
+		super.engineSelectionChanged(engine);
 		if (getCurrentSelectedEngine() != null)
 		{
 			setEnabled(	getCurrentSelectedEngine().getRunningStatus().equals(RunStatus.Stopped));

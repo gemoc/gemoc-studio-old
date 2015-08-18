@@ -22,12 +22,12 @@ import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingAddon;
 import org.gemoc.execution.engine.commons.trace.ModelExecutionTracingException;
 import org.gemoc.execution.engine.io.views.AbstractUserDecider;
-import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
-import org.gemoc.execution.engine.io.views.engine.IMotorSelectionListener;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
+import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
@@ -38,7 +38,7 @@ import fr.obeo.timeline.editpart.TimelineEditPartFactory;
 import fr.obeo.timeline.view.AbstractTimelineView;
 import fr.obeo.timeline.view.ITimelineProvider;
 
-public class TimeLineView extends AbstractTimelineView implements IMotorSelectionListener {
+public class TimeLineView extends AbstractTimelineView implements IEngineSelectionListener {
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.timeline.TimeLineView";
 
@@ -107,13 +107,13 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	private void startListeningToMotorSelectionChange() {
 		_enginesStatusView = ViewHelper.retrieveView(EnginesStatusView.ID);
 		if (_enginesStatusView != null) {
-			_enginesStatusView.addMotorSelectionListener(this);
+			_enginesStatusView.addEngineSelectionListener(this);
 		}
 	}
 
 	private void stopListeningToMotorSelectionChange() {
 		if (_enginesStatusView != null) {
-			_enginesStatusView.removeMotorSelectionListener(this);
+			_enginesStatusView.removeEngineSelectionListener(this);
 		}
 	}
 
@@ -173,7 +173,7 @@ public class TimeLineView extends AbstractTimelineView implements IMotorSelectio
 	}
 
 	@Override
-	public void motorSelectionChanged(IExecutionEngine engine) {
+	public void engineSelectionChanged(IExecutionEngine engine) {
 		update(engine);
 	}
 

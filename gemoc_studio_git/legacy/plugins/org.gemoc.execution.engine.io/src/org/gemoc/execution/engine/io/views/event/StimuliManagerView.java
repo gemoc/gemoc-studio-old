@@ -50,8 +50,6 @@ import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;
-import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
-import org.gemoc.execution.engine.io.views.engine.IMotorSelectionListener;
 import org.gemoc.execution.engine.io.views.event.actions.PlayScenarioAction;
 import org.gemoc.execution.engine.io.views.event.actions.RecordScenarioAction;
 import org.gemoc.execution.engine.io.views.event.actions.StopAction;
@@ -65,6 +63,8 @@ import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
+import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -79,7 +79,7 @@ import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
  * @author lguillem
  * @version 1.6
  */
-public class StimuliManagerView extends ViewPart implements IMotorSelectionListener, IEngineAddon, IEvenPresenter {
+public class StimuliManagerView extends ViewPart implements IEngineSelectionListener, IEngineAddon, IEvenPresenter {
 
 	private static final class GemocLabelDecorator extends DSLLabelDecorator {
 
@@ -651,7 +651,7 @@ public class StimuliManagerView extends ViewPart implements IMotorSelectionListe
 	 * Listen the engine selection in the enginesStatusView
 	 */
 	@Override
-	public void motorSelectionChanged(IExecutionEngine engine) {
+	public void engineSelectionChanged(IExecutionEngine engine) {
 		if (engine != null
 			&& engine instanceof INonDeterministicExecutionEngine) 
 		{
@@ -709,7 +709,7 @@ public class StimuliManagerView extends ViewPart implements IMotorSelectionListe
 		EnginesStatusView enginesStatusView = getEngineStatusView();
 		if (enginesStatusView != null) 
 		{
-			enginesStatusView.addMotorSelectionListener(this);
+			enginesStatusView.addEngineSelectionListener(this);
 		}
 	}
 
@@ -717,7 +717,7 @@ public class StimuliManagerView extends ViewPart implements IMotorSelectionListe
 		EnginesStatusView enginesStatusView = getEngineStatusView();
 		if (enginesStatusView != null) 
 		{
-			enginesStatusView.removeMotorSelectionListener(this);
+			enginesStatusView.removeEngineSelectionListener(this);
 		}
 	}
 

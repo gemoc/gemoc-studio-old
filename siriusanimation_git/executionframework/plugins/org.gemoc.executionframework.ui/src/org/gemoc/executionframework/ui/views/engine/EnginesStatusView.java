@@ -352,7 +352,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 	private void fireEngineSelectionChanged() {
 		IExecutionEngine engine = getSelectedEngine();
 		for(IEngineSelectionListener listener: _engineSelectionListeners) {
-			listener.motorSelectionChanged(engine);
+			listener.engineSelectionChanged(engine);
 		}
 	}
 

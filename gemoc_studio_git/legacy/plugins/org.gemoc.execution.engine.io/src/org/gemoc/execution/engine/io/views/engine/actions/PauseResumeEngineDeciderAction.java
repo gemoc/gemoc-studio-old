@@ -88,8 +88,8 @@ public class PauseResumeEngineDeciderAction extends AbstractEngineAction
 	}
 
 	@Override
-	public void motorSelectionChanged(IExecutionEngine engine) {
-		super.motorSelectionChanged(engine);
+	public void engineSelectionChanged(IExecutionEngine engine) {
+		super.engineSelectionChanged(engine);
 		if(engine != null){
 			if (engine instanceof INonDeterministicExecutionEngine)
 				_currentAction.setEngine((INonDeterministicExecutionEngine)engine);

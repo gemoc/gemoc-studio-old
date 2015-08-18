@@ -28,7 +28,8 @@ Require-Bundle: org.gemoc.gemoc_language_workbench.api,
  fr.obeo.dsl.debug.ide.ui,
  fr.obeo.dsl.debug.ide,
  org.gemoc.executionengine.ccsljava.api;bundle-version="1.0.0",
- org.gemoc.executionengine.ccsljava.engine
+ org.gemoc.executionengine.ccsljava.engine,
+ org.gemoc.executionframework.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.io,
