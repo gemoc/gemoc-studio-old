@@ -32,16 +32,16 @@ import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
 import org.gemoc.execution.engine.core.IEngineRegistrationListener;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
-import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
-import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecificationExtension;
-import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecificationExtensionPoint;
+//import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+//import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecificationExtension;
+//import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecificationExtensionPoint;
 import org.gemoc.executionframework.ui.Activator;
 import org.gemoc.executionframework.ui.SharedIcons;
 import org.gemoc.executionframework.ui.views.engine.actions.DisposeAllStoppedEnginesAction;
 import org.gemoc.executionframework.ui.views.engine.actions.DisposeStoppedEngineAction;
-import org.gemoc.executionframework.ui.views.engine.actions.PauseResumeEngineDeciderAction;
+//import org.gemoc.executionframework.ui.views.engine.actions.PauseResumeEngineDeciderAction;
 import org.gemoc.executionframework.ui.views.engine.actions.StopEngineAction;
-import org.gemoc.executionframework.ui.views.engine.actions.SwitchDeciderAction;
+//import org.gemoc.executionframework.ui.views.engine.actions.SwitchDeciderAction;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
@@ -104,12 +104,12 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 
 	private void buildMenu()
 	{
-		addActionToToolbar(new PauseResumeEngineDeciderAction());
+		//addActionToToolbar(new PauseResumeEngineDeciderAction());
 		addActionToToolbar(new StopEngineAction());
 		addActionToToolbar(new DisposeStoppedEngineAction());
 		addActionToToolbar(new DisposeAllStoppedEnginesAction());
-		addSeparatorToToolbar();
-		addActionToToolbar(new SwitchDeciderAction());
+		//addSeparatorToToolbar();
+		//addActionToToolbar(new SwitchDeciderAction());
 	}
 	
 	private void addActionToToolbar(Action action)
@@ -214,18 +214,19 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 				{
 					Image result = null;
 					ImageDescriptor imageDescriptor = null;
-					if (element instanceof INonDeterministicExecutionEngine)
-					{
-						INonDeterministicExecutionEngine engine = (INonDeterministicExecutionEngine)element;
-						for (DeciderSpecificationExtension spec : DeciderSpecificationExtensionPoint.getSpecifications())
-						{
-							if (engine.getLogicalStepDecider().getClass().getName().equals(spec.getDeciderClassName()))
-							{
-								imageDescriptor = ImageDescriptor.createFromURL(spec.getIconURL());
-								break;
-							}							
-						}
-					}
+// DVK note: we could replace that by a better api in the engine context so it could offer an icon dedicated to the engine kind					
+//					if (element instanceof INonDeterministicExecutionEngine)
+//					{
+//						INonDeterministicExecutionEngine engine = (INonDeterministicExecutionEngine)element;
+//						for (DeciderSpecificationExtension spec : DeciderSpecificationExtensionPoint.getSpecifications())
+//						{
+//							if (engine.getLogicalStepDecider().getClass().getName().equals(spec.getDeciderClassName()))
+//							{
+//								imageDescriptor = ImageDescriptor.createFromURL(spec.getIconURL());
+//								break;
+//							}							
+//						}
+//					}
 					if (imageDescriptor != null)
 					{
 						result = imageDescriptor.createImage();
