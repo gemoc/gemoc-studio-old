@@ -7,11 +7,14 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuListener2;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -28,6 +31,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TreeColumn;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.gemoc.commons.eclipse.ui.TreeViewerHelper;
 import org.gemoc.execution.engine.io.Activator;
@@ -35,10 +39,15 @@ import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.DependantViewPart;
 import org.gemoc.execution.engine.io.views.ViewUtils;
+import org.gemoc.execution.engine.io.views.engine.actions.PauseResumeEngineDeciderAction;
+import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
 import org.gemoc.execution.engine.trace.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionframework.ui.views.engine.actions.DisposeAllStoppedEnginesAction;
+import org.gemoc.executionframework.ui.views.engine.actions.DisposeStoppedEngineAction;
+import org.gemoc.executionframework.ui.views.engine.actions.StopEngineAction;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -74,6 +83,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 		_representedEventColor = new Color(parent.getDisplay(), 255, 235, 174);
 		createTreeViewer(parent);
 		createMenuManager();
+		buildActioToolbar();
 		Activator.getDefault().getEventPresenters().add(this);
 	}
 
@@ -225,6 +235,27 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 		mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
 
+	private void buildActioToolbar()
+	{
+		addActionToToolbar(new PauseResumeEngineDeciderAction());
+		addActionToToolbar(new StopEngineAction());
+		addSeparatorToToolbar();
+		addActionToToolbar(new SwitchDeciderAction());
+	}
+	private void addSeparatorToToolbar()
+	{
+		IActionBars actionBars = getViewSite().getActionBars();
+		IToolBarManager toolBar = actionBars.getToolBarManager();
+		toolBar.add(new Separator());		
+	}
+	
+	private void addActionToToolbar(Action action)
+	{
+		IActionBars actionBars = getViewSite().getActionBars();
+		IToolBarManager toolBar = actionBars.getToolBarManager();
+		toolBar.add(action);	
+	}
+	
 	@Override
 	public void setFocus()
 	{
