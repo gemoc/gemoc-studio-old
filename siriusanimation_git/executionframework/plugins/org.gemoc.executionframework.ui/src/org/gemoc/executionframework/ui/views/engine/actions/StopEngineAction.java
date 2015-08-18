@@ -1,10 +1,10 @@
-package org.gemoc.execution.engine.io.views.engine.actions;
+package org.gemoc.executionframework.ui.views.engine.actions;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.ISharedImages;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.Activator;
-import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
+import org.gemoc.executionframework.ui.Activator;
+import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
 
 public class StopEngineAction extends AbstractEngineAction 
 {

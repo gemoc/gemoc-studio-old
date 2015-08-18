@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.engine.actions;
+package org.gemoc.executionframework.ui.views.engine.actions;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuCreator;
@@ -7,13 +7,13 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
-import org.gemoc.execution.engine.io.views.engine.IMotorSelectionListener;
+import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
+import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 
-public abstract class AbstractEngineAction extends Action  implements IMenuCreator, IMotorSelectionListener{
+public abstract class AbstractEngineAction extends Action  implements IMenuCreator, IEngineSelectionListener{
 
 	public AbstractEngineAction(){	
 		super("fake", AS_PUSH_BUTTON);
@@ -24,7 +24,7 @@ public abstract class AbstractEngineAction extends Action  implements IMenuCreat
 		updateButton();
 		
 		EnginesStatusView view = ViewHelper.retrieveView(EnginesStatusView.ID);
-		view.addMotorSelectionListener(this);
+		view.addEngineSelectionListener(this);
 	}
 	
 	protected void init(){
@@ -38,7 +38,7 @@ public abstract class AbstractEngineAction extends Action  implements IMenuCreat
 	public void dispose() 
 	{
 		EnginesStatusView view = ViewHelper.retrieveView(EnginesStatusView.ID);
-		view.removeMotorSelectionListener(this);
+		view.removeEngineSelectionListener(this);
 	}
 	
 	protected void showMessage(IWorkbenchPartSite partSite, String message) {

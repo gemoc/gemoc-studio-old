@@ -7,6 +7,7 @@ import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionframework.ui.views.engine.actions.AbstractEngineAction;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 public class SwitchDeciderAction extends AbstractEngineAction
