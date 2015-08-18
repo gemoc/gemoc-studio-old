@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Execution framework UI
+Bundle-SymbolicName: org.gemoc.executionframework.ui;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: org.gemoc.executionframework.ui.Activator
+Require-Bundle: org.gemoc.gemoc_language_workbench.api,
+ org.gemoc.commons.eclipse,
+ fr.inria.diverse.commons.eclipse.messagingsystem.api,
+ org.gemoc.execution.engine.trace.model;visibility:=reexport,
+ org.gemoc.commons.eclipse.pde;bundle-version="0.1.0",
+ org.eclipse.core.runtime;bundle-version="3.10.0",
+ org.eclipse.core.resources;bundle-version="3.9.1",
+ org.eclipse.ui.workbench,
+ org.eclipse.jface
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: GEMOC
+
