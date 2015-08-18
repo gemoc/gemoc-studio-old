@@ -3,8 +3,6 @@ package org.gemoc.execution.engine.core;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
