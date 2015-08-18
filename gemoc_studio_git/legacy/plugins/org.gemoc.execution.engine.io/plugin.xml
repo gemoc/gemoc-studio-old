@@ -156,16 +156,6 @@
             Icon="icons/user-shield-black-16.png"
             Name="User decider">
       </DeciderSpecification>
-      <DeciderSpecification
-            Class="org.gemoc.execution.engine.commons.deciders.RandomDecider"
-            Icon="icons/question-shield-black-16.png"
-            Name="Random decider">
-      </DeciderSpecification>
-      <DeciderSpecification
-            Class="org.gemoc.execution.engine.commons.deciders.CcslSolverDecider"
-            Icon="icons/app-shield-black-16.png"
-            Name="Solver decider">
-      </DeciderSpecification>
    </extension>
    <extension
          point="org.gemoc.gemoc_language_workbench.engine_addon">      

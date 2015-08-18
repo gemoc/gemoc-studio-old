@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.gemoc.gemoc_language_workbench.deciders">
+      <DeciderSpecification
+            Class="org.gemoc.executionengine.ccsljava.engine.deciders.RandomDecider"
+            Icon="icons/question-shield-black-16.png"
+            Name="Random decider">
+      </DeciderSpecification>
+      <DeciderSpecification
+            Class="org.gemoc.executionengine.ccsljava.engine.deciders.CcslSolverDecider"
+            Icon="icons/app-shield-black-16.png"
+            Name="Solver decider">
+      </DeciderSpecification>
+   </extension>
+
+</plugin>
