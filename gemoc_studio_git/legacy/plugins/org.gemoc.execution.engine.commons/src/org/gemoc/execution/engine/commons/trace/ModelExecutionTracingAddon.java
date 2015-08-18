@@ -459,4 +459,9 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 			}
 		});
 	}
+
+	@Override
+	public void engineAboutToStart(IExecutionEngine engine) {
+		setUp(engine);
+	}
 }
