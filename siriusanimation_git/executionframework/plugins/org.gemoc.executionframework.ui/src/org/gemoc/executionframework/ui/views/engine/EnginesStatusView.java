@@ -51,7 +51,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 	/**
 	 * The ID of the view as specified by the extension.
 	 */
-	public static final String ID = "org.gemoc.execution.engine.io.views.engine.EnginesStatusView";
+	public static final String ID = "org.gemoc.executionframework.ui.views.engine.EnginesStatusView";
 
 	public TreeViewer _viewer;
 	private ViewContentProvider _contentProvider;
