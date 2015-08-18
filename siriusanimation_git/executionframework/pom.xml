@@ -16,6 +16,7 @@
         <!-- plugins in executionframework -->
         <module>plugins/org.gemoc.gemoc_language_workbench.api</module>
         <module>plugins/org.gemoc.execution.engine</module>
+        <module>plugins/org.gemoc.executionframework.ui</module>
         
         <!-- plugins in executioncontext -->       
         <module>plugins/org.gemoc.execution.engine.trace.model</module>
