@@ -20,6 +20,7 @@ class TFSMAspect {
 	// public State currentState;
 	public State currentState
 
+	@Step
 	def public void init() {
 
 		_self.currentState = _self.initialState;
