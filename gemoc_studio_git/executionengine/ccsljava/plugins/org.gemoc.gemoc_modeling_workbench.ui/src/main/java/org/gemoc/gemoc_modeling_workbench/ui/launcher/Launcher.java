@@ -36,7 +36,9 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.extensions.k3.PlainK3ExecutionEngine;
+import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocDebuggerServices;
 import org.gemoc.gemoc_modeling_workbench.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.AbstractGemocDebugger;
@@ -61,34 +63,38 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 			IProgressMonitor monitor) throws CoreException {
 		try {
 			debug("About to initialize and run the GEMOC Execution Engine...");
-			
+
 			// We parse the run configuration
 			final RunConfiguration runConfiguration = new RunConfiguration(configuration);
-			
+
 			// We detect if we are running in debug mode or not
 			ExecutionMode executionMode = null;
-			if (ILaunchManager.DEBUG_MODE.equals(mode))
-			{
+			if (ILaunchManager.DEBUG_MODE.equals(mode)) {
 				executionMode = ExecutionMode.Animation;
 			} else {
 				executionMode = ExecutionMode.Run;
 			}
-			
+
 			// We stop the launch if an engine is already running for this model
 			if (isEngineAlreadyRunning(runConfiguration.getExecutedModelURI())) {
 				return;
 			}
-			
-			// Depending on the parsed launch conf and the mode, we create the execution context 
-			// Then we see if we have a solver in the language def by trying to create a concurrent context
-			final ConcurrentModelExecutionContext concurrentexecutionContext = new ConcurrentModelExecutionContext(runConfiguration, executionMode);
+
+			// Depending on the parsed launch conf and the mode, we create the
+			// execution context
+			// Then we see if we have a solver in the language def by trying to
+			// create a concurrent context
+			final ConcurrentModelExecutionContext concurrentexecutionContext = new ConcurrentModelExecutionContext(
+					runConfiguration, executionMode);
 			ISolver solver = null;
 			try {
 				solver = concurrentexecutionContext.getConcurrentLanguageDefinitionExtension().instanciateSolver();
-			} catch (CoreException e) {}
-			
+			} catch (CoreException e) {
+			}
+
 			// This allows us to decide which kind of engine to create
-			// Eventually, this would either be decided in the launch conf... or in the xDSML file? not clear
+			// Eventually, this would either be decided in the launch conf... or
+			// in the xDSML file? not clear
 			// Or we would automatically find the appropriate engine...
 			if (solver != null) {
 				_executionEngine = new NonDeterministicExecutionEngine();
@@ -101,15 +107,37 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 				_executionEngine.initialize(new ModelExecutionContext(runConfiguration, executionMode));
 			}
 
-			
 			// And we start it within a dedicated job
 			Job job = new Job(getDebugJobName(configuration, getFirstInstruction(configuration))) {
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
-					_executionEngine.start();
-					return new Status(IStatus.OK, getPluginID(), "Execution was successfull");
+					// If we are debugging, we add the animator and we start
+					// the execution using the super class
+					// AbstractDSLLaunchConfigurationDelegateUI
+					// This will start yet another job and eventually start
+					// the engine
+					if (ILaunchManager.DEBUG_MODE.equals(mode)) {
+						IEngineAddon animator = AbstractGemocAnimatorServices.getAnimator();
+						_executionEngine.getExecutionContext().getExecutionPlatform().addEngineAddon(animator);
+						try {
+							Launcher.super.launch(configuration, mode, launch, monitor);
+							return new Status(IStatus.OK, getPluginID(), "Execution was launched successfully");
+						} catch (CoreException e) {
+							e.printStackTrace();
+							return new Status(IStatus.ERROR, getPluginID(), "Could not start debugger.");
+						}
+					}
+
+					// If we are not debugging, we simply start the engine
+					// from the current job
+					else {
+						_executionEngine.start();
+						debug("Execution finished.");
+						return new Status(IStatus.OK, getPluginID(), "Execution was launched successfully");
+					}
 				}
 			};
+			debug("Initialization done, starting engine...");
 			job.schedule();
 
 		} catch (Exception e) {
@@ -251,7 +279,6 @@ public class Launcher extends fr.obeo.dsl.debug.ide.sirius.ui.launch.AbstractDSL
 		else
 			return MODEL_ID;
 	}
-
 
 	@Override
 	protected ILaunchConfiguration[] createLaunchConfiguration(IResource file, EObject firstInstruction, String mode)
