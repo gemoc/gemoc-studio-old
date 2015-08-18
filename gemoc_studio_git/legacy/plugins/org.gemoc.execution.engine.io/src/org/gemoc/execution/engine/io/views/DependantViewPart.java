@@ -5,6 +5,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.views.engine.EnginesStatusView;
+import org.gemoc.execution.engine.io.views.engine.IMotorSelectionListener;
 
 public abstract class DependantViewPart extends ViewPart implements
 		IMotorSelectionListener {
