@@ -12,5 +12,4 @@ public interface IDeterministicExecutionEngine extends IExecutionEngine {
 
 	public MSEOccurrence getCurrentMSEOccurrence();
 
-	public void addStackListener(IStackListener stackListener);
 }

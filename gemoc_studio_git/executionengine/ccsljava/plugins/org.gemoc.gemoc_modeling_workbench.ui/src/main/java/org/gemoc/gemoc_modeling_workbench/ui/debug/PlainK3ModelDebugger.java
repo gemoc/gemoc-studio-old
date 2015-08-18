@@ -13,14 +13,13 @@ import org.gemoc.executionengine.ccsljava.engine.dse.NonDeterministicExecutionEn
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.IStackListener;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_modeling_workbench.ui.breakpoint.GemocBreakpoint;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.dsl.debug.ide.event.IDSLDebugEventProcessor;
 
-public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngineAddon, IGemocDebugger, IStackListener {
+public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngineAddon, IGemocDebugger {
 
 	/**
 	 * A fake instruction to prevent the stepping return to stop on each event.
@@ -35,7 +34,6 @@ public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngi
 	public PlainK3ModelDebugger(IDSLDebugEventProcessor target, IDeterministicExecutionEngine engine) {
 		super(target);
 		this.engine = engine;
-		engine.addStackListener(this);
 	}
 
 	@Override
@@ -205,9 +203,17 @@ public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngi
 
 	@Override
 	public void aboutToExecuteMSEOccurrence(IExecutionEngine executionEngine, MSEOccurrence mseOccurrence) {
+		ToPushPop aaa = new ToPushPop(mseOccurrence, true);
+		toPushPop.add(aaa);
 		if (!control(Thread.currentThread().getName(), mseOccurrence)) {
 			throw new RuntimeException("Debug thread has stopped.");
 		}
+	}
+	
+	@Override
+	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) {
+		ToPushPop aaa = new ToPushPop(mseOccurrence, false);
+		toPushPop.add(aaa);
 	}
 
 	@Override
@@ -245,25 +251,9 @@ public class PlainK3ModelDebugger extends AbstractGemocDebugger implements IEngi
 
 	List<ToPushPop> toPushPop = new ArrayList<>();
 
-	@Override
-	public void notifyPushMSEOccurrence(MSEOccurrence mseOccurrence) {
-		ToPushPop aaa = new ToPushPop(mseOccurrence, true);
-		toPushPop.add(aaa);
-	}
-
-	@Override
-	public void notifyPopMSEOccurrence(MSEOccurrence mseOccurrence) {
-		ToPushPop aaa = new ToPushPop(mseOccurrence, false);
-		toPushPop.add(aaa);
-	}
-
 	/* --------------------------------------------------------- */
 	/* We don't care about all the remaining addon notifications */
 	/* --------------------------------------------------------- */
-
-	@Override
-	public void mseOccurrenceExecuted(IExecutionEngine engine, MSEOccurrence mseOccurrence) {
-	}
 
 	@Override
 	public void engineAboutToStart(IExecutionEngine engine) {

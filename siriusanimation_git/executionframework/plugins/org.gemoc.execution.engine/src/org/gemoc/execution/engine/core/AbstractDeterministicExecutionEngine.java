@@ -21,7 +21,6 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
-import org.gemoc.gemoc_language_workbench.api.core.IStackListener;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;
@@ -35,8 +34,7 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 	private EMFCommandTransaction currentTransaction;
 	private Deque<MSEOccurrence> _mseOccurences = new ArrayDeque<MSEOccurrence>();
 	protected InternalTransactionalEditingDomain editingDomain;
-	private Set<IStackListener> stackListeners;
-
+	
 	@Override
 	public void initialize(IExecutionContext executionContext) {
 		super.initialize(executionContext);
@@ -63,26 +61,7 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 		};
 	}
 
-	@Override
-	public void addStackListener(IStackListener stackListener) {
-		if (stackListeners == null) {
-			stackListeners = new HashSet<>();
-		}
-		stackListeners.add(stackListener);
-	}
-
-	private void notifyPushMSEOccurrence(MSEOccurrence mseOccurrence) {
-		for (IStackListener l : stackListeners) {
-			l.notifyPushMSEOccurrence(mseOccurrence);
-		}
-	}
-
-	private void notifyPopMSEOccurrence(MSEOccurrence mseOccurrence) {
-		for (IStackListener l : stackListeners) {
-			l.notifyPopMSEOccurrence(mseOccurrence);
-		}
-	}
-
+	
 	@Override
 	public Deque<MSEOccurrence> getCurrentStack() {
 		return new ArrayDeque<>(_mseOccurences);
@@ -146,7 +125,6 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 		ModelSpecificEvent mse = findOrCreateMSE(caller, operation, methodName);
 		occurrence.setMse(mse);
 		_mseOccurences.push(occurrence);
-		notifyPushMSEOccurrence(occurrence);
 		return logicalStep;
 
 	}
@@ -158,7 +136,6 @@ public abstract class AbstractDeterministicExecutionEngine extends AbstractExecu
 	 */
 	private boolean endMSEOccurrence() {
 		MSEOccurrence occurrence = _mseOccurences.pop();
-		notifyPopMSEOccurrence(occurrence);
 		boolean containsNotNull = false;
 
 		if (occurrence != null) {
