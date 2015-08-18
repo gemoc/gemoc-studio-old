@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.engine;
+package org.gemoc.executionframework.ui.views.engine;
 
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 

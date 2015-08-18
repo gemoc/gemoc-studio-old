@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.engine;
+package org.gemoc.executionframework.ui.views.engine;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,19 +30,19 @@ import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.TreeViewerHelper;
 import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
 import org.gemoc.execution.engine.core.IEngineRegistrationListener;
-import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.views.IMotorSelectionListener;
-import org.gemoc.execution.engine.io.views.engine.actions.DisposeStoppedEngineAction;
-import org.gemoc.execution.engine.io.views.engine.actions.PauseResumeEngineDeciderAction;
-import org.gemoc.execution.engine.io.views.engine.actions.DisposeAllStoppedEnginesAction;
-import org.gemoc.execution.engine.io.views.engine.actions.StopEngineAction;
-import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecificationExtension;
 import org.gemoc.executionengine.ccsljava.api.extensions.deciders.DeciderSpecificationExtensionPoint;
+import org.gemoc.executionframework.ui.Activator;
 import org.gemoc.executionframework.ui.SharedIcons;
+import org.gemoc.executionframework.ui.views.engine.actions.DisposeAllStoppedEnginesAction;
+import org.gemoc.executionframework.ui.views.engine.actions.DisposeStoppedEngineAction;
+import org.gemoc.executionframework.ui.views.engine.actions.PauseResumeEngineDeciderAction;
+import org.gemoc.executionframework.ui.views.engine.actions.StopEngineAction;
+import org.gemoc.executionframework.ui.views.engine.actions.SwitchDeciderAction;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
@@ -313,7 +313,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 			IStructuredSelection selection = (IStructuredSelection) _viewer.getSelection();
 			return (IExecutionEngine)selection.getFirstElement();
 		} catch(Exception e){
-			Activator.getDefault().error(e.getMessage(), e);
+			Activator.error(e.getMessage(), e);
 		}
 		return null;
 	}

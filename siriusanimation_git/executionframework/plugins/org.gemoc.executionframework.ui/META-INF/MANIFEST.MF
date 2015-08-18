@@ -18,4 +18,6 @@ Require-Bundle: org.gemoc.gemoc_language_workbench.api,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: GEMOC
+Export-Package: org.gemoc.executionframework.ui,
+ org.gemoc.executionframework.ui.views.engine
 
