@@ -15,4 +15,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.executionengine.ccsljava.engine,
  org.gemoc.executionengine.ccsljava.engine.commons,
+ org.gemoc.executionengine.ccsljava.engine.deciders,
  org.gemoc.executionengine.ccsljava.engine.dse
