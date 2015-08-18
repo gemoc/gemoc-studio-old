@@ -9,13 +9,6 @@
       </category>
       <view
             category="org.gemoc.execution.engine.io.category"
-            class="org.gemoc.execution.engine.io.views.engine.EnginesStatusView"
-            icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.execution.engine.io.views.engine.EnginesStatusView"
-            name="Gemoc Engines Status">
-      </view>
-      <view
-            category="org.gemoc.execution.engine.io.category"
             class="org.gemoc.execution.engine.io.views.step.LogicalStepsView"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
@@ -39,22 +32,7 @@
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
-            targetID="org.eclipse.jdt.ui.JavaPerspective">
-         <view
-               id="org.gemoc.execution.engine.io.views.engine.EnginesStatusView"
-               ratio="0.5"
-               relationship="right"
-               relative="org.eclipse.ui.views.ProblemView">
-         </view>
-      </perspectiveExtension>
-      <perspectiveExtension
             targetID="org.eclipse.debug.ui.DebugPerspective">
-         <view
-               id="org.gemoc.execution.engine.io.views.engine.EnginesStatusView"
-               ratio="0.5"
-               relationship="stack"
-               relative="org.eclipse.ui.views.ContentOutline">
-         </view>
          <view
                id="org.gemoc.execution.engine.io.views.event.StimuliManagerView"
                minimized="false"
@@ -89,13 +67,6 @@
          </view>
          <view
                id="org.gemoc.execution.engine.io.views.event.StimuliManagerView"
-               minimized="false"
-               relationship="stack"
-               relative="org.eclipse.ui.views.ContentOutline"
-               visible="true">
-         </view>
-         <view
-               id="org.gemoc.execution.engine.io.views.engine.EnginesStatusView"
                minimized="false"
                relationship="stack"
                relative="org.eclipse.ui.views.ContentOutline"
