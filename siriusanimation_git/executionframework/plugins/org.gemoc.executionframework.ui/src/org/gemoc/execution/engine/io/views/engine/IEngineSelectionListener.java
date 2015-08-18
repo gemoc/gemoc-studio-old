@@ -2,7 +2,7 @@ package org.gemoc.execution.engine.io.views.engine;
 
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
-public interface IMotorSelectionListener {
+public interface IEngineSelectionListener {
 
 	/***
 	 * Notify when engine is selected by user.
