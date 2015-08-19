@@ -10,7 +10,7 @@ import org.gemoc.execution.engine.Activator;
 import org.gemoc.execution.engine.core.CommandExecution;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
+import org.gemoc.executionengine.ccsljava.api.dsa.executors.CodeExecutionException;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 public class SynchroneExecution extends OperationExecution 
@@ -60,7 +60,7 @@ public class SynchroneExecution extends OperationExecution
 				@Override
 				protected void doExecute() {
 					try {
-						result.add(getExecutionContext().getExecutionPlatform().getCodeExecutor().execute(getMSEOccurrence()));
+						result.add(getExecutionContext().getConcurrentExecutionPlatform().getCodeExecutor().execute(getMSEOccurrence()));
 					} catch (CodeExecutionException e) {
 						Activator.getDefault().error("Exception received " + e.getMessage(), e);
 					}
@@ -74,7 +74,7 @@ public class SynchroneExecution extends OperationExecution
 			res = CommandExecution.execute(editingDomain, command);
 		} else {
 			try {
-				res = getExecutionContext().getExecutionPlatform().getCodeExecutor().execute(getMSEOccurrence());
+				res = getExecutionContext().getConcurrentExecutionPlatform().getCodeExecutor().execute(getMSEOccurrence());
 			} catch (CodeExecutionException e) { 
 				Activator.getDefault().error("Exception received " + e.getMessage(), e);
 			}

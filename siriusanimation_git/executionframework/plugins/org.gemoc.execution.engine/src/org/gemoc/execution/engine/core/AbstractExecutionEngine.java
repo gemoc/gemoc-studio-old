@@ -12,7 +12,6 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisposable {
@@ -234,9 +233,5 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 
 	private boolean _started = false;
 	protected boolean _isStopped = false;
-
-	protected ICodeExecutor getCodeExecutor() {
-		return _executionContext.getExecutionPlatform().getCodeExecutor();
-	}
 
 }

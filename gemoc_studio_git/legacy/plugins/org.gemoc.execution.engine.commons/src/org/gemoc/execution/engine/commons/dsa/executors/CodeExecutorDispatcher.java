@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
-import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
+import org.gemoc.executionengine.ccsljava.api.dsa.executors.CodeExecutionException;
+import org.gemoc.executionengine.ccsljava.api.dsa.executors.ICodeExecutor;
 
 /**
  * An aggregation of several CodeExecutors.

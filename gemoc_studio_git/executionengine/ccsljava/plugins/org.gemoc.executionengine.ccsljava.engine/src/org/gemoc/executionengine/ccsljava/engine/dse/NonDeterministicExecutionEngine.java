@@ -11,6 +11,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionContext;
 import org.gemoc.executionengine.ccsljava.api.core.ILogicalStepDecider;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionengine.ccsljava.api.dsa.executors.ICodeExecutor;
 import org.gemoc.executionengine.ccsljava.api.dse.IMSEStateController;
 import org.gemoc.executionengine.ccsljava.api.moc.ISolver;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus;
@@ -390,6 +391,11 @@ public class NonDeterministicExecutionEngine extends AbstractExecutionEngine imp
 	public void setSolver(ISolver solver) {
 		_solver = solver;
 		
+	}
+	
+	@Override
+	public ICodeExecutor getCodeExecutor() {
+		return getConcurrentExecutionContext().getConcurrentExecutionPlatform().getCodeExecutor();
 	}
 	
 	@Override

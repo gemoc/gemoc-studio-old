@@ -9,6 +9,7 @@ Require-Bundle: org.eclipse.core.runtime,
  fr.inria.aoste.trace,
  org.gemoc.execution.engine.trace.model
 Export-Package: org.gemoc.executionengine.ccsljava.api.core,
+ org.gemoc.executionengine.ccsljava.api.dsa.executors,
  org.gemoc.executionengine.ccsljava.api.dse,
  org.gemoc.executionengine.ccsljava.api.extensions.deciders,
  org.gemoc.executionengine.ccsljava.api.extensions.languages,

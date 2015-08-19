@@ -5,20 +5,21 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.gemoc.executionengine.ccsljava.api.dsa.executors.ICodeExecutor;
 import org.gemoc.executionengine.ccsljava.api.dse.IMSEStateController;
 import org.gemoc.executionengine.ccsljava.api.moc.ISolver;
 import org.gemoc.gemoc_language_workbench.api.extensions.languages.LanguageDefinitionExtension;
 
 public class ConcurrentLanguageDefinitionExtension extends LanguageDefinitionExtension {
 
-//	final public ICodeExecutor instanciateCodeExecutor() throws CoreException {
-//		Object instance = instanciate(ConcurrentLanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
-//		if (instance instanceof ICodeExecutor) {
-//			return (ICodeExecutor) instance;
-//		}
-//		throwInstanciationCoreException();
-//		return null;
-//	}
+	final public ICodeExecutor instanciateCodeExecutor() throws CoreException {
+		Object instance = instanciate(ConcurrentLanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
+		if (instance instanceof ICodeExecutor) {
+			return (ICodeExecutor) instance;
+		}
+		throwInstanciationCoreException();
+		return null;
+	}
 
 	final public ISolver instanciateSolver() throws CoreException {
 		Object instance = instanciate(ConcurrentLanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_SOLVER_ATT);

@@ -1,6 +1,7 @@
 package org.gemoc.executionengine.ccsljava.engine.dse;
 
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
+import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionContext;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 
@@ -19,9 +20,9 @@ public abstract class OperationExecution
 	
 	abstract public void run();
 	
-	protected IExecutionContext getExecutionContext() 
+	protected IConcurrentExecutionContext getExecutionContext() 
 	{
-		return _engine.getExecutionContext();
+		return _engine.getConcurrentExecutionContext();
 	}
 	
 	protected INonDeterministicExecutionEngine getEngine()

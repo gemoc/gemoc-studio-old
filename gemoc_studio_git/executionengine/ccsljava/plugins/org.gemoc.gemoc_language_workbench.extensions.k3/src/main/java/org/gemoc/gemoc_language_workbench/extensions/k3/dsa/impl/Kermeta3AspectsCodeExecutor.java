@@ -14,8 +14,8 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
-import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
+import org.gemoc.executionengine.ccsljava.api.dsa.executors.CodeExecutionException;
+import org.gemoc.executionengine.ccsljava.api.dsa.executors.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.extensions.k3.Activator;
 import org.gemoc.gemoc_language_workbench.extensions.k3.dsa.api.IK3DSAExecutorClassLoader;
 

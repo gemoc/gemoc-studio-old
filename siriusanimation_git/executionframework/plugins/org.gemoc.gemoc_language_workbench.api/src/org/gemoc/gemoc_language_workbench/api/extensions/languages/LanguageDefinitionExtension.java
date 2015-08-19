@@ -6,21 +6,21 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+//import org.gemoc.executionengine.ccsljava.api.dsa.executors.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.core.IModelLoader;
-import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.api.extensions.Extension;
 
 public class LanguageDefinitionExtension extends Extension {
 
-	final public ICodeExecutor instanciateCodeExecutor() throws CoreException {
-		Object instance = instanciate(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
-		if (instance instanceof ICodeExecutor) {
-			return (ICodeExecutor) instance;
-		}
-		throwInstanciationCoreException();
-		return null;
-	}
+//	final public ICodeExecutor instanciateCodeExecutor() throws CoreException {
+//		Object instance = instanciate(LanguageDefinitionExtensionPoint.GEMOC_LANGUAGE_EXTENSION_POINT_XDSML_DEF_CODEEXECUTOR_ATT);
+//		if (instance instanceof ICodeExecutor) {
+//			return (ICodeExecutor) instance;
+//		}
+//		throwInstanciationCoreException();
+//		return null;
+//	}
 
 
 	final public IModelLoader instanciateModelLoader() throws CoreException {
