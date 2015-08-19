@@ -24,7 +24,6 @@ Require-Bundle: fr.inria.aoste.trace,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.execution.engine.commons,
- org.gemoc.execution.engine.commons.dsa.executors,
  org.gemoc.execution.engine.commons.solvers.ccsl
 Bundle-ClassPath: .
 Import-Package: fr.inria.aoste.timesquare.launcher.core.inter

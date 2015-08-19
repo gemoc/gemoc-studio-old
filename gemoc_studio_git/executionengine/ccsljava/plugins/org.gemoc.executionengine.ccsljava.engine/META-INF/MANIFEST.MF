@@ -19,5 +19,6 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.executionengine.ccsljava.engine,
  org.gemoc.executionengine.ccsljava.engine.commons,
  org.gemoc.executionengine.ccsljava.engine.deciders,
+ org.gemoc.executionengine.ccsljava.engine.dsa.executors,
  org.gemoc.executionengine.ccsljava.engine.dse,
  org.gemoc.executionengine.ccsljava.engine.trace
