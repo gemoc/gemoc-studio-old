@@ -129,17 +129,7 @@
       </DeciderSpecification>
    </extension>
    
-   <extension
-         point="org.gemoc.gemoc_language_workbench.engine_addon_group">
-         <AddonGroup
-            Name="General"
-            id="General.AddonGroup">
-      </AddonGroup>
-      <AddonGroup
-            Name="Concurrent"
-            id="Concurrent.AddonGroup">
-      </AddonGroup>
-   </extension>
+
    <extension
          point="org.gemoc.gemoc_language_workbench.engine_addon">      
       <Addon
@@ -147,7 +137,6 @@
             Class="org.gemoc.execution.engine.io.addons.PrepareViewFrontend"
             Default="true"
             Name="Open Views"
-            ShortDesccription="Automatically opens the default views when starting the animation."
             ShortDescription="Automatically opens the default views  that are usefull for animation."
             id="OpenViews.Addon">
       </Addon>

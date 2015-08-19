@@ -38,7 +38,7 @@ public class BuilderTemplates {
 "/* GENERATED FILE, do not modify manually                                                    *\n" +
 " * If you need to modify it, disable the generation in the BuildOptions of the project.xdsml */\n" +
 "package ${package.name};\n"+
-"import org.gemoc.execution.engine.commons.dsa.executors.CodeExecutorDispatcher;\n"+
+"import org.gemoc.executionengine.ccsljava.engine.dsa.executors.CodeExecutorDispatcher;\n"+
 "public class ${language.name.toupperfirst}CodeExecutor extends CodeExecutorDispatcher ${implements.content} {\n"+
 "	public ${language.name.toupperfirst}CodeExecutor(){\n"+
 "	    ${constructor.content}\n"+

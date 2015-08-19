@@ -99,7 +99,7 @@ can be used to specify addon exclusion
                   If specified, the addon will be presented in a dedicated group in the launcher tab.
                </documentation>
                <appinfo>
-                  <meta.attribute kind="identifier" basedOn="org.gemoc.gemoc_language_workbench.engine_addon/AddonGroup/@id"/>
+                  <meta.attribute kind="identifier" basedOn="org.gemoc.gemoc_language_workbench.engine_addon_group/@id"/>
                </appinfo>
             </annotation>
          </attribute>

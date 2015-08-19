@@ -7,4 +7,11 @@
    <extension-point id="org.gemoc.gemoc_language_workbench.engine_addon" name="Engine Addon" schema="schema/org.gemoc.gemoc_language_workbench.engine_addon.exsd"/>
    <extension-point id="org.gemoc.gemoc_language_workbench.engine_addon_group" name="Engine AddonGroup" schema="schema/org.gemoc.gemoc_language_workbench.engine_addon_group.exsd"/>
 
+   <extension
+         point="org.gemoc.gemoc_language_workbench.engine_addon_group">
+         <AddonGroup
+            Name="General"
+            id="General.AddonGroup">
+      </AddonGroup>
+   </extension>
 </plugin>

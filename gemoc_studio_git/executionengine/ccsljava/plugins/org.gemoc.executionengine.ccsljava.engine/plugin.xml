@@ -15,11 +15,23 @@
       </DeciderSpecification>
    </extension>
    <extension
+         point="org.gemoc.gemoc_language_workbench.engine_addon_group">
+         <AddonGroup
+            Name="General"
+            id="General.AddonGroup">
+      </AddonGroup>
+      <AddonGroup
+            Name="Concurrent"
+            id="Concurrent.AddonGroup">
+      </AddonGroup>
+   </extension>
+   <extension
          point="org.gemoc.gemoc_language_workbench.engine_addon">
       <Addon
+            AddonGroupId="Concurrent.AddonGroup"
             Class="org.gemoc.executionengine.ccsljava.engine.trace.ModelExecutionTracingAddon"
             Default="true"
-            Name="Execution tracing"
+            Name="Concurrent Execution tracing"
             ShortDescription="Trace the LogicalStep decisions. Will open the concurrent timeline view to allow navigation in the trace and present the decision branches."
             id="ExecutionTracing.Addon">
       </Addon>

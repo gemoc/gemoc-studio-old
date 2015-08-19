@@ -21,7 +21,9 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.gemoc.gemoc_language_workbench.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.gemoc_language_workbench.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.commons.eclipse.pde,
- fr.inria.diverse.commons.eclipse.messagingsystem.ui
+ fr.inria.diverse.commons.eclipse.messagingsystem.ui,
+ org.gemoc.executionengine.ccsljava.api;bundle-version="1.0.0",
+ org.gemoc.executionengine.ccsljava.engine;bundle-version="1.0.0"
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Manifest-Version: 1.0

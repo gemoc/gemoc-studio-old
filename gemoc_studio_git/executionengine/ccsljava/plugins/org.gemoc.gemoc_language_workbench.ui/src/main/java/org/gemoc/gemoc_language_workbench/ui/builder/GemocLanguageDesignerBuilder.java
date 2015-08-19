@@ -275,7 +275,7 @@ public class GemocLanguageDesignerBuilder extends IncrementalProjectBuilder {
 "	}");
 					
 				sbContent.append("\t\t// fall back executor : search classic java method\n");
-				sbContent.append("\t\taddExecutor(new org.gemoc.execution.engine.commons.dsa.executors.JavaCodeExecutor());");
+				sbContent.append("\t\taddExecutor(new org.gemoc.executionengine.ccsljava.engine.dsa.executors.JavaCodeExecutor());");
 				fileContent = fileContent.replaceAll(
 						Pattern.quote("${constructor.content}"), sbContent.toString());
 				
