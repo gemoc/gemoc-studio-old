@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.commons.trace;
+package org.gemoc.executionengine.ccsljava.engine.trace;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,11 @@ import com.google.common.collect.LinkedListMultimap;
  *
  */
 class GCopier extends Copier {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1436841508070681383L;
 
 	@Override
 	protected void copyAttribute(EAttribute eAttribute, EObject eObject, EObject copyEObject) {
@@ -54,7 +59,7 @@ class GCopier extends Copier {
 					LinkedListMultimap tempValue = LinkedListMultimap.create((LinkedListMultimap)value);
 					newValue = tempValue;
 				}
-				else if (value instanceof ArrayList) 
+				else if (value instanceof ArrayList<?>) 
 				{
 					ArrayList tempValue = new ArrayList((ArrayList)value);
 					newValue = tempValue;

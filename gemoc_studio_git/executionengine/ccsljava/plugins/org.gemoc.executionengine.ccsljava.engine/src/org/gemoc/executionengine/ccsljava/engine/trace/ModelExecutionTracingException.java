@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.commons.trace;
+package org.gemoc.executionengine.ccsljava.engine.trace;
 
 
 public class ModelExecutionTracingException extends Exception 

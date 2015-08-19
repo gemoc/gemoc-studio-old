@@ -14,5 +14,14 @@
             Name="Solver decider">
       </DeciderSpecification>
    </extension>
-
+   <extension
+         point="org.gemoc.gemoc_language_workbench.engine_addon">
+      <Addon
+            Class="org.gemoc.executionengine.ccsljava.engine.trace.ModelExecutionTracingAddon"
+            Default="true"
+            Name="Execution tracing"
+            ShortDescription="Trace the LogicalStep decisions. Will open the concurrent timeline view to allow navigation in the trace and present the decision branches."
+            id="ExecutionTracing.Addon">
+      </Addon>
+   </extension>
 </plugin>
