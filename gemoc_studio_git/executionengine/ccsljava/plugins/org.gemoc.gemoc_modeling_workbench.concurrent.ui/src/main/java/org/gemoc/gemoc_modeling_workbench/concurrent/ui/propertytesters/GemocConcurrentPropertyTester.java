@@ -1,5 +1,5 @@
 
-package org.gemoc.gemoc_modeling_workbench.ui.launcher;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.propertytesters;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.resources.IFile;
@@ -18,7 +18,7 @@ import org.gemoc.gemoc_language_workbench.conf.LanguageDefinition;
  * 
  * Note: this PropertyTester seems to be fully activated only when the containing plugin is started
  */
-public class GemocLaunchableTester extends PropertyTester {
+public class GemocConcurrentPropertyTester extends PropertyTester {
 
 	/**
 	 * name for the "is model" property

@@ -121,9 +121,9 @@
     <extension
           point="org.eclipse.core.expressions.propertyTesters">
        <propertyTester
-             class="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocLaunchableTester"
-             id="org.gemoc.gemoc_modeling_workbench.ui.launcher.GemocLaunchableTester"
-             namespace="org.gemoc.gemoc_modeling_workbench.ui.launcher"
+             class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.propertytesters.GemocConcurrentPropertyTester"
+             id="org.gemoc.gemoc_modeling_workbench.concurrent.ui.propertytesters.GemocConcurrentPropertyTester"
+             namespace="org.gemoc.gemoc_modeling_workbench.concurrent.ui.propertytesters"
              properties="isModel, isExecutableDomainSpecificModel"
              type="org.eclipse.core.runtime.IAdaptable">
        </propertyTester>
@@ -146,7 +146,7 @@
 		     		<count value="1"/>
 	      			<iterate>
 	       				<or>
-	        				<test property="org.gemoc.gemoc_modeling_workbench.ui.launcher.isExecutableDomainSpecificModel"/>
+	        				<test property="org.gemoc.gemoc_modeling_workbench.concurrent.ui.propertytesters.isExecutableDomainSpecificModel"/>
 	        				<test property="org.eclipse.debug.ui.matchesPattern"
 	                        	value="*.xmi">
 	                     	</test>
