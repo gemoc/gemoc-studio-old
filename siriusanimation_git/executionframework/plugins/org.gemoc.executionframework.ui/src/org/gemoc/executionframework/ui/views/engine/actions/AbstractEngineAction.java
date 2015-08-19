@@ -26,6 +26,17 @@ public abstract class AbstractEngineAction extends Action  implements IMenuCreat
 		EnginesStatusView view = ViewHelper.retrieveView(EnginesStatusView.ID);
 		view.addEngineSelectionListener(this);
 	}
+	public AbstractEngineAction(int style){	
+		super("fake", style);
+		setMenuCreator(this);
+		setEnabled(false);
+		
+		init();
+		updateButton();
+		
+		EnginesStatusView view = ViewHelper.retrieveView(EnginesStatusView.ID);
+		view.addEngineSelectionListener(this);
+	}
 	
 	protected void init(){
 		
