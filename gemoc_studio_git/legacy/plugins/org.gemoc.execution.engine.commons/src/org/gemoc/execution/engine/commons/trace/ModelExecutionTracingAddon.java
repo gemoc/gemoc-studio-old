@@ -34,12 +34,13 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.ModelState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.SolverState;
+import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionContext;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionengine.ccsljava.api.dsa.executors.CodeExecutionException;
+import org.gemoc.executionengine.ccsljava.api.dsa.executors.ICodeExecutor;
 import org.gemoc.executionengine.ccsljava.api.moc.ISolver;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.dsa.CodeExecutionException;
-import org.gemoc.gemoc_language_workbench.api.dsa.ICodeExecutor;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon;
 
 /**
@@ -53,7 +54,7 @@ import org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon;
 @SuppressWarnings("restriction")
 public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
-	private IExecutionContext _executionContext;
+	private IConcurrentExecutionContext _executionContext;
 	private IExecutionEngine _executionEngine;
 	private ExecutionTraceModel _executionTraceModel;
 	private Choice _lastChoice;
@@ -158,7 +159,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 				// if attribute, modify value on the aspect side that will
 				// modify the model in return.
 				AttributeChangeSpec asc = (AttributeChangeSpec) diff;
-				ICodeExecutor codeExecutor = _executionContext.getExecutionPlatform().getCodeExecutor();
+				ICodeExecutor codeExecutor = _executionContext.getConcurrentExecutionPlatform().getCodeExecutor();
 				EObject target = diff.getMatch().getRight();
 				String methodName = asc.getAttribute().getName();
 				ArrayList<Object> parameters = new ArrayList<Object>();
@@ -284,12 +285,19 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 	private void setUp(IExecutionEngine engine) {
 		if (_executionContext == null) {
+			
+			if(!(engine.getExecutionContext() instanceof IConcurrentExecutionContext)){
+				// DVK current implementation of this addon is Concurrent specific (due to the use of the CodeExecutor
+				// for now fail with an error message, later work may generalize this and remove the dependency (by removing some features ?)
+				System.err.println("incorrect use of ModelExecutionTracingAddon with non concurrent engine");
+				return;
+			}
 			_executionEngine = engine;
 			_executionTraceModel = Gemoc_execution_traceFactory.eINSTANCE.createExecutionTraceModel();
 			_currentBranch = Gemoc_execution_traceFactory.eINSTANCE.createBranch();
 			_currentBranch.setStartIndex(0);
 			_executionTraceModel.getBranches().add(_currentBranch);
-			setModelExecutionContext(engine.getExecutionContext());
+			setModelExecutionContext((IConcurrentExecutionContext) engine.getExecutionContext());
 
 			adapter = new EContentAdapter() {
 
@@ -309,7 +317,7 @@ public class ModelExecutionTracingAddon extends DefaultEngineAddon {
 
 	// private static class GemocTraceResource extends ResourceImpl
 
-	private void setModelExecutionContext(IExecutionContext executionContext) {
+	private void setModelExecutionContext(IConcurrentExecutionContext executionContext) {
 		_executionContext = executionContext;
 		ResourceSet rs = _executionContext.getResourceModel().getResourceSet();
 		URI traceModelURI = URI.createPlatformResourceURI(_executionContext.getWorkspace().getExecutionPath()
