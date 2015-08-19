@@ -66,7 +66,7 @@ abstract public class GenerateExtendedCCSLFileAction implements IObjectActionDel
 			modelFile=null;
 			if (selection instanceof TreeSelection) {
 				TreeSelection ts = (TreeSelection) selection;
-				Iterator it = ts.iterator();
+				Iterator<?> it = ts.iterator();
 				while(it.hasNext()){
 					Object o = it.next();
 					if (o instanceof IFile) {
