@@ -48,10 +48,10 @@ public class PauseResumeEngineDeciderAction extends AbstractEngineAction
 					INonDeterministicExecutionEngine engine_cast = (INonDeterministicExecutionEngine) getCurrentSelectedEngine();
 				_currentAction = DeciderManager.getSwitchDeciderAction(engine_cast.getLogicalStepDecider());
 				if(_currentAction.equals(_stepByStepDeciderAction)){
-					setToolTipText("Suspend selected engine using "+ _currentAction.getText());
+					setToolTipText("Suspend associated engine using "+ _currentAction.getText());
 					setImageDescriptor(SharedIcons.SUSPEND_ENGINE_DECIDER_ICON);
 				} else {
-					setToolTipText("Resume selected engine using "+ _currentAction.getText());
+					setToolTipText("Resume associated engine using "+ _currentAction.getText());
 					setImageDescriptor(SharedIcons.RESUME_ENGINE_DECIDER_ICON);
 				}
 				}

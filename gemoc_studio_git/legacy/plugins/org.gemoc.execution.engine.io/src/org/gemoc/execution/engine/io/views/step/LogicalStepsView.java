@@ -83,7 +83,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 		_representedEventColor = new Color(parent.getDisplay(), 255, 235, 174);
 		createTreeViewer(parent);
 		createMenuManager();
-		buildActioToolbar();
+		buildActionToolbar();
 		Activator.getDefault().getEventPresenters().add(this);
 	}
 
@@ -233,9 +233,10 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 	private void fillContextMenu(IMenuManager mgr)
 	{
 		mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+		mgr.add(new SwitchDeciderAction());
 	}
 
-	private void buildActioToolbar()
+	private void buildActionToolbar()
 	{
 		addActionToToolbar(new PauseResumeEngineDeciderAction());
 		addActionToToolbar(new StopEngineAction());

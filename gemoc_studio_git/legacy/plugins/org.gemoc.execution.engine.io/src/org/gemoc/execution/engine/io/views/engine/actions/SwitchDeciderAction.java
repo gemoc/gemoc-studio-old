@@ -6,20 +6,22 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
+import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
 import org.gemoc.executionframework.ui.views.engine.actions.AbstractEngineAction;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 
 public class SwitchDeciderAction extends AbstractEngineAction
 {
 	
-	private ArrayList<DeciderAction> _subActions = new ArrayList<>();
+	private ArrayList<DeciderAction> _subActions;
 
 	private DeciderAction _mainAction;
 	
 	public SwitchDeciderAction()
 	{
-		super();
+		super( AS_DROP_DOWN_MENU);
 	}
 	
 	@Override
@@ -28,7 +30,6 @@ public class SwitchDeciderAction extends AbstractEngineAction
 		_subActions = new ArrayList<>();
 		for(DeciderAction action : DeciderManager.getAllDeciderActions()){
 			_subActions.add(action);
-			
 		}
 	}
 	@Override
@@ -63,7 +64,7 @@ public class SwitchDeciderAction extends AbstractEngineAction
 				ActionContributionItem item = new ActionContributionItem(action);
 				item.fill(_menu, -1);
 			}
-		}
+		} 
 		return _menu;
 	}
 
