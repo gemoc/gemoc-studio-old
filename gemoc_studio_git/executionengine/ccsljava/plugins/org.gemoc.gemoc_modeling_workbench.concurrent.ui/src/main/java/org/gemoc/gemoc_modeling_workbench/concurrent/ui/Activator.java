@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -15,7 +15,7 @@ import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.gemoc_modeling_workbench.ui"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.gemoc.gemoc_modeling_workbench.concurrent.ui"; //$NON-NLS-1$
 
 	
 	// The shared instance

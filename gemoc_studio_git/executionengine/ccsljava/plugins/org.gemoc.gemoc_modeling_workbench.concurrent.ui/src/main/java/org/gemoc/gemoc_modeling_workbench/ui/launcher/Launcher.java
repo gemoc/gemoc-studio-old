@@ -40,7 +40,7 @@ import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_language_workbench.extensions.k3.PlainK3ExecutionEngine;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocAnimatorServices;
 import org.gemoc.gemoc_language_workbench.extensions.sirius.services.AbstractGemocDebuggerServices;
-import org.gemoc.gemoc_modeling_workbench.ui.Activator;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.AbstractGemocDebugger;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.GemocModelDebugger;
 import org.gemoc.gemoc_modeling_workbench.ui.debug.PlainK3ModelDebugger;

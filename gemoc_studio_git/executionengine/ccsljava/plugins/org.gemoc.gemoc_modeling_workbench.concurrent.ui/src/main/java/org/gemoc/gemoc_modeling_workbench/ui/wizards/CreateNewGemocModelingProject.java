@@ -11,7 +11,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-import org.gemoc.gemoc_modeling_workbench.ui.Activator;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.Activator;
 
 public class CreateNewGemocModelingProject extends Wizard implements INewWizard {
 

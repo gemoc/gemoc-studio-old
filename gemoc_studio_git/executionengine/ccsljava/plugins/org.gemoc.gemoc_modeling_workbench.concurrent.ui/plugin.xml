@@ -348,7 +348,7 @@
       <extension
             point="org.eclipse.ui.startup">
          <startup
-               class="org.gemoc.gemoc_modeling_workbench.ui.ModelingWorkbenchEarlyStartup">
+               class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.ModelingWorkbenchEarlyStartup">
          </startup>
       </extension>
    

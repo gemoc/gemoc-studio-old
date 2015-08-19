@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Gemoc Executable Modeling Workbench UI
 Bundle-SymbolicName: org.gemoc.gemoc_modeling_workbench.ui;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-Activator: org.gemoc.gemoc_modeling_workbench.ui.Activator
+Bundle-Activator: org.gemoc.gemoc_modeling_workbench.concurrent.ui.Activator
 Bundle-Vendor: INRIA
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -48,9 +48,11 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.executionengine.ccsljava.engine;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.gemoc.gemoc_modeling_workbench.ui,
+Export-Package: org.gemoc.gemoc_modeling_workbench.concurrent.ui,
+ org.gemoc.gemoc_modeling_workbench.ui.actions,
  org.gemoc.gemoc_modeling_workbench.ui.breakpoint,
  org.gemoc.gemoc_modeling_workbench.ui.commands,
+ org.gemoc.gemoc_modeling_workbench.ui.debug,
  org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action,
  org.gemoc.gemoc_modeling_workbench.ui.launcher,
  org.gemoc.gemoc_modeling_workbench.ui.launcher.tabs,

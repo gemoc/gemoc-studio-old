@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui;
 
 import org.eclipse.ui.IStartup;
 
