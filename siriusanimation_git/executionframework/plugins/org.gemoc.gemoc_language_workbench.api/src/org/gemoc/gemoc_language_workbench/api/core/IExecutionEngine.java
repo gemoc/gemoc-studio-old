@@ -53,4 +53,10 @@ public interface IExecutionEngine extends IDisposable {
 	<T extends IEngineAddon> Set<T> getAddonsTypedBy(Class<T> type);
 	
 	void initialize (IExecutionContext executionContext);
+	
+	/**
+	 * 
+	 * @return a user display name for the engine kind (will be used to compute the full name of the engine instance) 
+	 */
+	String engineKindName();
 }

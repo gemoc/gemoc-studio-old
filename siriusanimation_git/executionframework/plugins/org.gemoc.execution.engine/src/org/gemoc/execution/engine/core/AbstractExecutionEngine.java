@@ -217,7 +217,7 @@ public abstract class AbstractExecutionEngine implements IExecutionEngine, IDisp
 					}
 				}
 			};
-			thread = new Thread(r, "Gemoc engine " + _executionContext.getRunConfiguration().getExecutedModelURI());
+			thread = new Thread(r, engineKindName()+" " + _executionContext.getRunConfiguration().getExecutedModelURI());
 			thread.start();
 		}
 	}

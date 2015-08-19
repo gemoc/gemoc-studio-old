@@ -245,7 +245,11 @@ public class PlainK3ExecutionEngine extends AbstractDeterministicExecutionEngine
 				return (LanguageDefinition) first;
 			}
 		}
-	return null;
-}
+		return null;
+	}
 
+	@Override
+	public String engineKindName() {
+		return "GEMOC Sequential Engine";
+	}
 }

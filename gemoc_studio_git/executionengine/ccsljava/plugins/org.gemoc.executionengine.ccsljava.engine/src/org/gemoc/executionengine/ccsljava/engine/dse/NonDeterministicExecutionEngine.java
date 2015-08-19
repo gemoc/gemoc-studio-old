@@ -425,5 +425,10 @@ public class NonDeterministicExecutionEngine extends AbstractExecutionEngine imp
 		
 		Activator.getDefault().info("*** Engine initialization done. ***");
 	}
+
+	@Override
+	public String engineKindName() {
+		return "GEMOC Concurrent Engine";
+	}
 	
 }
