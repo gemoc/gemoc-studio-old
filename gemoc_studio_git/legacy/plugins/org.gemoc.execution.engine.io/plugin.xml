@@ -12,7 +12,7 @@
             class="org.gemoc.execution.engine.io.views.step.LogicalStepsView"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
-            name="Logical Steps">
+            name="Concurrent Logical Steps Decider">
       </view>
       <view
             category="org.gemoc.execution.engine.io.category"

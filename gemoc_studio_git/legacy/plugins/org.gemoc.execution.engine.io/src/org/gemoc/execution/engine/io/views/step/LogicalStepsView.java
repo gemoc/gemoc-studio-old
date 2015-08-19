@@ -2,6 +2,7 @@ package org.gemoc.execution.engine.io.views.step;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -34,6 +35,7 @@ import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.gemoc.commons.eclipse.ui.TreeViewerHelper;
+import org.gemoc.execution.engine.core.GemocRunningEnginesRegistry;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;
@@ -233,7 +235,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 	private void fillContextMenu(IMenuManager mgr)
 	{
 		mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
-		mgr.add(new SwitchDeciderAction());
+		//mgr.add(new SwitchDeciderAction());
 	}
 
 	private void buildActionToolbar()
@@ -280,6 +282,18 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 			{
 				_viewer.setInput(null);
 			}
+			
+			// display engine full name in tooltip
+			GemocRunningEnginesRegistry registry = org.gemoc.execution.engine.Activator.getDefault().gemocRunningEngineRegistry;
+			for (Entry<String, IExecutionEngine> e : registry.getRunningEngines().entrySet())
+			{
+				if (e.getValue() == engine)
+				{
+					setTitleToolTip(e.getKey()); // the key is the full name for this engine 
+					break;
+				}								
+			}
+			
 		}
 	}
 
