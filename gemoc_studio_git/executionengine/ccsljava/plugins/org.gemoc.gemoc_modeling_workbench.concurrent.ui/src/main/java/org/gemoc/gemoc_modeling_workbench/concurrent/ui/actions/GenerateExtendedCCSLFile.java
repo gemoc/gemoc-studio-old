@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.actions;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.actions;
 
 import java.util.ArrayList;
 import java.util.List;

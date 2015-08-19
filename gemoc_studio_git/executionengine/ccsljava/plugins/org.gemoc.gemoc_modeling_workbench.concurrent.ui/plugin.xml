@@ -267,12 +267,12 @@
          </menu>
          <action
                label="Generate extended CCSL (use language specified QVTO)"
-               class="org.gemoc.gemoc_modeling_workbench.ui.actions.GenerateExtendedCCSLFile"
+               class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.actions.GenerateExtendedCCSLFile"
                menubarPath="org.gemoc.modeling.menu/group1"
                id="org.gemoc.modeling.generate.extendedccsl">
          </action>
          <action
-               class="org.gemoc.gemoc_modeling_workbench.ui.actions.ChooseQVTOAndGenerateExtendedCCSLFile"
+               class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.actions.ChooseQVTOAndGenerateExtendedCCSLFile"
                id="org.gemoc.modeling.generate.extendedccsl2"
                label="Generate extended CCSL (choose QVTO)"
                menubarPath="org.gemoc.modeling.menu/group1">
@@ -280,12 +280,12 @@
 
          <action
                label="Generate time model (use language specified QVTO)"
-               class="org.gemoc.gemoc_modeling_workbench.ui.actions.GenerateTimeModelFile"
+               class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.actions.GenerateTimeModelFile"
                menubarPath="org.gemoc.modeling.menu/group1"
                id="org.gemoc.modeling.generate.extendedccsl">
          </action>
          <action
-               class="org.gemoc.gemoc_modeling_workbench.ui.actions.ChooseQVTOAndGenerateTimeModelFile"
+               class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.actions.ChooseQVTOAndGenerateTimeModelFile"
                id="org.gemoc.modeling.generate.extendedccsl2"
                label="Generate time model (choose QVTO)"
                menubarPath="org.gemoc.modeling.menu/group1">

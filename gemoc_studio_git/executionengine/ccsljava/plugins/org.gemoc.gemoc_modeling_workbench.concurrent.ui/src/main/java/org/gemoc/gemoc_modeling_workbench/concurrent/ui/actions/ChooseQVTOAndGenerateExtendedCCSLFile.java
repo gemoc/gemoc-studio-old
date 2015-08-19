@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.ui.actions;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.actions;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.dialogs.Dialog;
