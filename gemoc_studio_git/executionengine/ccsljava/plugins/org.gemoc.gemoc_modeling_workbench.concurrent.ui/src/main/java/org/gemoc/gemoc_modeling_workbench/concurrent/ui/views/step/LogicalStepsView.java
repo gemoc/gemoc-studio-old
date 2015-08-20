@@ -86,7 +86,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 		createTreeViewer(parent);
 		createMenuManager();
 		buildActionToolbar();
-		Activator.getDefault().getEventPresenters().add(this);
+		org.gemoc.executionframework.ui.Activator.getDefault().getEventPresenters().add(this);
 	}
 
 	private void createTreeViewer(Composite parent)
@@ -300,7 +300,7 @@ public class LogicalStepsView extends DependantViewPart implements IEvenPresente
 	@Override
 	public void dispose()
 	{
-		Activator.getDefault().getEventPresenters().remove(this);
+		org.gemoc.executionframework.ui.Activator.getDefault().getEventPresenters().remove(this);
 		super.dispose();
 		_column1LabelProvider.dispose();
 		_column2LabelProvider.dispose();

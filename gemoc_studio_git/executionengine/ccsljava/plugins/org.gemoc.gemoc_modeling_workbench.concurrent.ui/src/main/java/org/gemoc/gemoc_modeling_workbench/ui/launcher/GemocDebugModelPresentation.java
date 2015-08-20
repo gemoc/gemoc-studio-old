@@ -85,7 +85,7 @@ public class GemocDebugModelPresentation extends DSLDebugModelPresentation {
 		for (ModelSpecificEvent event : events) {
 			uris.add(EcoreUtil.getURI(event));
 		}
-		for (IEvenPresenter presenter : org.gemoc.execution.engine.io.Activator
+		for (IEvenPresenter presenter : org.gemoc.executionframework.ui.Activator
 				.getDefault().getEventPresenters()) {
 			presenter.present(uris);
 		}

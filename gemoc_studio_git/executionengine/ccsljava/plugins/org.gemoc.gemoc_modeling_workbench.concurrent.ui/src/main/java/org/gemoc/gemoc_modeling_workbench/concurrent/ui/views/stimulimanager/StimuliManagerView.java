@@ -50,6 +50,7 @@ import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.executionframework.ui.IEvenPresenter;
 import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
 import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
@@ -229,7 +230,7 @@ public class StimuliManagerView extends ViewPart implements IEngineSelectionList
 		decisionView.addSelectionChangedListener(_decisionViewListener);
 		updateView();
 		createMenuManager();
-		Activator.getDefault().getEventPresenters().add(this);
+		org.gemoc.executionframework.ui.Activator.getDefault().getEventPresenters().add(this);
 	}
 
 	/**
@@ -728,7 +729,7 @@ public class StimuliManagerView extends ViewPart implements IEngineSelectionList
 	@Override
 	public void dispose() 
 	{
-		Activator.getDefault().getEventPresenters().remove(this);
+		org.gemoc.executionframework.ui.Activator.getDefault().getEventPresenters().remove(this);
 		super.dispose();
 		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
 		decisionView.removeSelectionChangedListener(_decisionViewListener);
