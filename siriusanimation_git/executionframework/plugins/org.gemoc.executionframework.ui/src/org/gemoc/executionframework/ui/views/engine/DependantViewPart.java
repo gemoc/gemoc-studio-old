@@ -1,11 +1,9 @@
-package org.gemoc.execution.engine.io.views;
+package org.gemoc.executionframework.ui.views.engine;
 
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
-import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 
 public abstract class DependantViewPart extends ViewPart implements
 		IEngineSelectionListener {
