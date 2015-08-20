@@ -14,7 +14,6 @@
     <modules>
         <!-- plugins -->
         <module>plugins/fr.obeo.timeline</module>
-        <module>plugins/org.gemoc.execution.engine.scenario.model</module>
         <module>plugins/fr.inria.aoste.timesquare.backend.vcdgenerator.gemocAdaptation</module>
         
         <!-- feature and update site -->
