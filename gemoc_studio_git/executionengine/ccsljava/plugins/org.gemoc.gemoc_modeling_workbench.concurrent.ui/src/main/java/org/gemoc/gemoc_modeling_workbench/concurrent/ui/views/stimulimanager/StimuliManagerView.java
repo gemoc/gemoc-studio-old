@@ -58,6 +58,7 @@ import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.Activator;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.SharedIcons;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.step.LogicalStepsView;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.actions.PlayScenarioAction;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.actions.RecordScenarioAction;
