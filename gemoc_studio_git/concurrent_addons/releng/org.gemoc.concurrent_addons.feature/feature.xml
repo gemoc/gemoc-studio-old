@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.gemoc.concurrentviews.feature"
-      label="Concurrent Views"
+      id="org.gemoc.concurrent_addons.feature"
+      label="Concurrent addons and Views"
       version="0.1.0.qualifier"
       provider-name="GEMOC">
 

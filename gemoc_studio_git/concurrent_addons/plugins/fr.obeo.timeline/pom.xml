@@ -19,8 +19,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-  	<artifactId>org.gemoc.concurrentviews.root</artifactId>
-  	<groupId>org.gemoc.concurrentviews</groupId>
+  	<artifactId>org.gemoc.concurrent_addons.root</artifactId>
+  	<groupId>org.gemoc.concurrent_addons</groupId>
   	<version>0.1.0-SNAPSHOT</version>	
   	<relativePath>../../</relativePath>
   </parent>
