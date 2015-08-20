@@ -339,19 +339,10 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 		 });
 	}
 
-	private ArrayList<IEngineSelectionListener> _engineSelectionListeners = new ArrayList<IEngineSelectionListener>();	
-
-	public void addEngineSelectionListener(IEngineSelectionListener listener) {
-		assert(listener != null);
-		_engineSelectionListeners.add(listener);
-	}
-	public void removeEngineSelectionListener(IEngineSelectionListener listener) {
-		assert(listener != null);
-		_engineSelectionListeners.remove(listener);
-	}
+		
 	private void fireEngineSelectionChanged() {
 		IExecutionEngine engine = getSelectedEngine();
-		for(IEngineSelectionListener listener: _engineSelectionListeners) {
+		for(IEngineSelectionListener listener: Activator.getDefault().getEngineSelectionListeners()) {
 			listener.engineSelectionChanged(engine);
 		}
 	}

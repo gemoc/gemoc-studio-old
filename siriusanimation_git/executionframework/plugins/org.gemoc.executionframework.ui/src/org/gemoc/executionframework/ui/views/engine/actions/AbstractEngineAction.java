@@ -7,6 +7,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
+import org.gemoc.executionframework.ui.Activator;
 import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
 import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
@@ -23,8 +24,7 @@ public abstract class AbstractEngineAction extends Action  implements IMenuCreat
 		init();
 		updateButton();
 		
-		EnginesStatusView view = ViewHelper.retrieveView(EnginesStatusView.ID);
-		view.addEngineSelectionListener(this);
+		Activator.getDefault().addEngineSelectionListener(this);
 	}
 	public AbstractEngineAction(int style){	
 		super("fake", style);
@@ -34,8 +34,7 @@ public abstract class AbstractEngineAction extends Action  implements IMenuCreat
 		init();
 		updateButton();
 		
-		EnginesStatusView view = ViewHelper.retrieveView(EnginesStatusView.ID);
-		view.addEngineSelectionListener(this);
+		Activator.getDefault().addEngineSelectionListener(this);
 	}
 	
 	protected void init(){
@@ -48,8 +47,7 @@ public abstract class AbstractEngineAction extends Action  implements IMenuCreat
 	@Override
 	public void dispose() 
 	{
-		EnginesStatusView view = ViewHelper.retrieveView(EnginesStatusView.ID);
-		view.removeEngineSelectionListener(this);
+		Activator.getDefault().removeEngineSelectionListener(this);
 	}
 	
 	protected void showMessage(IWorkbenchPartSite partSite, String message) {

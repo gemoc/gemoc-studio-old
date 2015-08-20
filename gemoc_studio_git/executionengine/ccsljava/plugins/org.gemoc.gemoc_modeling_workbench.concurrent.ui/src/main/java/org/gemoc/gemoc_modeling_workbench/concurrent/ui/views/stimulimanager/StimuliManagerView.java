@@ -45,19 +45,16 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
-import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.executionframework.ui.IMSEPresenter;
-import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
-import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
+import org.gemoc.executionframework.ui.views.engine.EngineSelectionDependentViewPart;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
-import org.gemoc.gemoc_modeling_workbench.concurrent.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.SharedIcons;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.step.LogicalStepsView;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.actions.PlayScenarioAction;
@@ -79,7 +76,7 @@ import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
  * @author lguillem
  * @version 1.6
  */
-public class StimuliManagerView extends ViewPart implements IEngineSelectionListener, IEngineAddon, IMSEPresenter {
+public class StimuliManagerView extends EngineSelectionDependentViewPart implements IEngineAddon, IMSEPresenter {
 
 	private static final class GemocLabelDecorator extends DSLLabelDecorator {
 
@@ -217,7 +214,7 @@ public class StimuliManagerView extends ViewPart implements IEngineSelectionList
 
 		//createInformationAndButtons();
 		// get the view to listen to motor selection
-		startListeningToMotorSelectionChange();
+		//startListeningToMotorSelectionChange();
 
 		LogicalStepsView decisionView = ViewHelper.<LogicalStepsView>retrieveView(LogicalStepsView.ID);
 		_decisionViewListener = new ISelectionChangedListener() 
@@ -705,28 +702,7 @@ public class StimuliManagerView extends ViewPart implements IEngineSelectionList
 		_mseContextMap.put(_currentSelectedEngine, context);
 	}
 
-	private void startListeningToMotorSelectionChange() {
-		EnginesStatusView enginesStatusView = getEngineStatusView();
-		if (enginesStatusView != null) 
-		{
-			enginesStatusView.addEngineSelectionListener(this);
-		}
-	}
-
-	private void stopListeningToMotorSelectionChange() {
-		EnginesStatusView enginesStatusView = getEngineStatusView();
-		if (enginesStatusView != null) 
-		{
-			enginesStatusView.removeEngineSelectionListener(this);
-		}
-	}
-
-	private EnginesStatusView getEngineStatusView() {
-		return ViewHelper.retrieveView(EnginesStatusView.ID);
-	}
-
-
-
+	
 	@Override
 	public void dispose() 
 	{
@@ -739,7 +715,7 @@ public class StimuliManagerView extends ViewPart implements IEngineSelectionList
 			_currentSelectedEngine.getExecutionContext().getExecutionPlatform().removeEngineAddon(this);
 		}
 		_currentSelectedEngine = null;	
-		stopListeningToMotorSelectionChange();
+		//stopListeningToMotorSelectionChange();
 		_column1LabelProvider.dispose();
 		notForcedSetColor.dispose();
 		forcedSetColor.dispose();

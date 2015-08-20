@@ -105,16 +105,11 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 	private EnginesStatusView _enginesStatusView;
 
 	private void startListeningToMotorSelectionChange() {
-		_enginesStatusView = ViewHelper.retrieveView(EnginesStatusView.ID);
-		if (_enginesStatusView != null) {
-			_enginesStatusView.addEngineSelectionListener(this);
-		}
+		org.gemoc.executionframework.ui.Activator.getDefault().addEngineSelectionListener(this);
 	}
 
 	private void stopListeningToMotorSelectionChange() {
-		if (_enginesStatusView != null) {
-			_enginesStatusView.removeEngineSelectionListener(this);
-		}
+		org.gemoc.executionframework.ui.Activator.getDefault().removeEngineSelectionListener(this);
 	}
 
 	private ITimelineProvider _timelineProvider;

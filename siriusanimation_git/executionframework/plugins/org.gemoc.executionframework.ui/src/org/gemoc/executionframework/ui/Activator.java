@@ -6,6 +6,7 @@ import java.util.List;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -33,6 +34,7 @@ public class Activator extends AbstractUIPlugin {
 
 	
 	private final List<IMSEPresenter> eventPresenters = new ArrayList<>();
+	private final List<IEngineSelectionListener> engineSelectionListeners = new ArrayList<>();
 	
 	/**
 	 * The constructor
@@ -93,11 +95,27 @@ public class Activator extends AbstractUIPlugin {
 		Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID, Status.OK, msg, e));
 	}
 
+	/**
+	 * Gets the {@link List} of registered {@link IEngineSelectionListener}s.
+	 * 
+	 * @return the {@link List} of registered {@link IEngineSelectionListener}s
+	 */
+	public List<IEngineSelectionListener> getEngineSelectionListeners() {
+		return engineSelectionListeners;
+	}
+	public void addEngineSelectionListener(IEngineSelectionListener listener) {
+		assert(listener != null);
+		engineSelectionListeners.add(listener);
+	}
+	public void removeEngineSelectionListener(IEngineSelectionListener listener) {
+		assert(listener != null);
+		engineSelectionListeners.remove(listener);
+	}
 	
 	/**
-	 * Gets the {@link List} of registered {@link IMSEPresenter}.
+	 * Gets the {@link List} of registered {@link IMSEPresenter}s.
 	 * 
-	 * @return the {@link List} of registered {@link IMSEPresenter}
+	 * @return the {@link List} of registered {@link IMSEPresenter}s
 	 */
 	public List<IMSEPresenter> getEventPresenters() {
 		return eventPresenters;

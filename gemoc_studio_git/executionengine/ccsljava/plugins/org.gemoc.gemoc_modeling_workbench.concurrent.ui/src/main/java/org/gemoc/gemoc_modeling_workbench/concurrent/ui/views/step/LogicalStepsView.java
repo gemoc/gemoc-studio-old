@@ -43,8 +43,6 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.executionframework.ui.IMSEPresenter;
 import org.gemoc.executionframework.ui.views.engine.EngineSelectionDependentViewPart;
-import org.gemoc.executionframework.ui.views.engine.actions.DisposeAllStoppedEnginesAction;
-import org.gemoc.executionframework.ui.views.engine.actions.DisposeStoppedEngineAction;
 import org.gemoc.executionframework.ui.views.engine.actions.StopEngineAction;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
@@ -337,7 +335,7 @@ public class LogicalStepsView extends EngineSelectionDependentViewPart implement
 			});
 		} catch (Exception e)
 		{
-			Activator.getDefault().error(e.getMessage(), e);
+			Activator.error(e.getMessage(), e);
 		}
 		return _lastSelectedLogicalStep;
 	}

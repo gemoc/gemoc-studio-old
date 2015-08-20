@@ -4,6 +4,7 @@ import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
+import org.gemoc.executionframework.ui.Activator;
 
 /**
  * Views that are dependent on the engine selection in the EnginesStatusView may subclass this to get registered to it
@@ -29,19 +30,16 @@ public abstract class EngineSelectionDependentViewPart extends ViewPart implemen
 		stopListeningToMotorSelectionChange();
 	}
 
-	private EnginesStatusView _enginesStatusView;
 
 	private void startListeningToMotorSelectionChange() {
-		_enginesStatusView = ViewHelper.retrieveView(EnginesStatusView.ID);
-		if (_enginesStatusView != null) {
-			_enginesStatusView.addEngineSelectionListener(this);
-		}
+		// make sure the EngineStatusView is open
+		ViewHelper.retrieveView(EnginesStatusView.ID);
+		// register this view as listener
+		Activator.getDefault().addEngineSelectionListener(this);
 	}
 
 	private void stopListeningToMotorSelectionChange() {
-		if (_enginesStatusView != null) {
-			_enginesStatusView.removeEngineSelectionListener(this);
-		}
+		Activator.getDefault().removeEngineSelectionListener(this);
 	}
 
 
