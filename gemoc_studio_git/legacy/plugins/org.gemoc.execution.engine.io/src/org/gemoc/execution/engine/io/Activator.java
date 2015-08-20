@@ -18,7 +18,6 @@ public class Activator extends GemocUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 
-	private final List<IEvenPresenter> eventPresenters = new ArrayList<>();
 
 	/**
 	 * The constructor
@@ -101,13 +100,6 @@ public class Activator extends GemocUIPlugin {
 		return org.gemoc.execution.engine.commons.Activator.getDefault().resolveLoggingBackend();
 	}
 
-	/**
-	 * Gets the {@link List} of registered {@link IEvenPresenter}.
-	 * 
-	 * @return the {@link List} of registered {@link IEvenPresenter}
-	 */
-	public List<IEvenPresenter> getEventPresenters() {
-		return eventPresenters;
-	}
+
 
 }

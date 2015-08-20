@@ -1,5 +1,8 @@
 package org.gemoc.executionframework.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -28,6 +31,9 @@ public class Activator extends AbstractUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 
+	
+	private final List<IEvenPresenter> eventPresenters = new ArrayList<>();
+	
 	/**
 	 * The constructor
 	 */
@@ -87,4 +93,13 @@ public class Activator extends AbstractUIPlugin {
 		Activator.getDefault().getLog().log(new Status(Status.ERROR, PLUGIN_ID, Status.OK, msg, e));
 	}
 
+	
+	/**
+	 * Gets the {@link List} of registered {@link IEvenPresenter}.
+	 * 
+	 * @return the {@link List} of registered {@link IEvenPresenter}
+	 */
+	public List<IEvenPresenter> getEventPresenters() {
+		return eventPresenters;
+	}
 }

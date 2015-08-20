@@ -12,9 +12,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
-import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.trace.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
+import org.gemoc.executionframework.ui.IEvenPresenter;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.dsl.debug.ide.adapter.DSLStackFrameAdapter;
