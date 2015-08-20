@@ -3,7 +3,7 @@ package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.sc
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.gemoc.execution.engine.io.Activator;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.Activator;
 
 public class ScenarioException extends CoreException {
 

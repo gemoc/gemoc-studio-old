@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.gemoc.execution.engine.io.Activator;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.Activator;
 import org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.EventState;
 import org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ExecutionStep;
 import org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Reference;

@@ -5,7 +5,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.Activator;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.Activator;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.SelectScenarioFileDialog;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.StimuliManagerView;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.scenario.ScenarioException;
