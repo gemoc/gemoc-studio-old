@@ -5,11 +5,15 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 
-public abstract class DependantViewPart extends ViewPart implements
+/**
+ * Views that are dependent on the engine selection in the EnginesStatusView may subclass this to get registered to it
+ *
+ */
+public abstract class EngineSelectionDependentViewPart extends ViewPart implements
 		IEngineSelectionListener {
 
 	
-	public DependantViewPart()
+	public EngineSelectionDependentViewPart()
 	{
 	}
 	
