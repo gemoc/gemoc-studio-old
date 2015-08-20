@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.event.scenario;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.scenario;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -8,12 +8,12 @@ import java.util.List;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.gemoc.execution.engine.io.Activator;
-import org.gemoc.execution.engine.io.views.event.ClockStatus;
-import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
-import org.gemoc.execution.engine.io.views.event.ModelSpecificEventContext;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
 import org.gemoc.execution.engine.scenario.Reference;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.ClockStatus;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.ModelSpecificEventContext;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.ModelSpecificEventWrapper;
 
 public class ScenarioRecorder extends ScenarioTool
 {

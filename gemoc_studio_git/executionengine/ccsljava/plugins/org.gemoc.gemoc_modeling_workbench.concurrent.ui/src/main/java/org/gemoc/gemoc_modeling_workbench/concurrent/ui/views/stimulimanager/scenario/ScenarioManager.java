@@ -1,7 +1,7 @@
-package org.gemoc.execution.engine.io.views.event.scenario;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.scenario;
 
 import org.eclipse.core.runtime.IPath;
-import org.gemoc.execution.engine.io.views.event.ModelSpecificEventContext;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.ModelSpecificEventContext;
 
 public class ScenarioManager 
 {

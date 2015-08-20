@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.event;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.gemoc.execution.engine.io.views.event.filters.IEventFilterStrategy;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.filters.IEventFilterStrategy;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ActionModel;

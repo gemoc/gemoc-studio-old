@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.event;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.Block;
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;

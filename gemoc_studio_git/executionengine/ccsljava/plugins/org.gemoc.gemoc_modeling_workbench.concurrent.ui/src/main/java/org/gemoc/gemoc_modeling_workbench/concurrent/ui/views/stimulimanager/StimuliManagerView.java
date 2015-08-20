@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.event;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager;
 
 
 import java.util.ArrayList;
@@ -50,15 +50,6 @@ import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.Activator;
 import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;
-import org.gemoc.execution.engine.io.views.event.actions.PlayScenarioAction;
-import org.gemoc.execution.engine.io.views.event.actions.RecordScenarioAction;
-import org.gemoc.execution.engine.io.views.event.actions.StopAction;
-import org.gemoc.execution.engine.io.views.event.filters.Filter;
-import org.gemoc.execution.engine.io.views.event.filters.Filters;
-import org.gemoc.execution.engine.io.views.event.filters.NoFilter;
-import org.gemoc.execution.engine.io.views.event.scenario.ScenarioException;
-import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
-import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManagerState;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
@@ -69,6 +60,15 @@ import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.step.LogicalStepsView;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.actions.PlayScenarioAction;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.actions.RecordScenarioAction;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.actions.StopAction;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.filters.Filter;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.filters.Filters;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.filters.NoFilter;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.scenario.ScenarioException;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.scenario.ScenarioManager;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.scenario.ScenarioManagerState;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.dsl.debug.ide.DSLBreakpoint;

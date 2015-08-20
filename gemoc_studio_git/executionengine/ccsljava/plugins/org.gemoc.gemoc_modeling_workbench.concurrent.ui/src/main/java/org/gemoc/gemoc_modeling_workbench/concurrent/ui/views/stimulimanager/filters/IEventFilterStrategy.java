@@ -1,10 +1,10 @@
-package org.gemoc.execution.engine.io.views.event.filters;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.filters;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.ModelSpecificEventWrapper;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 

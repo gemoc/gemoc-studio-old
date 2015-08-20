@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.event.filters;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.filters;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,9 +10,9 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.views.event.ClockStatus;
-import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.step.LogicalStepsView;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.ClockStatus;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.ModelSpecificEventWrapper;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 

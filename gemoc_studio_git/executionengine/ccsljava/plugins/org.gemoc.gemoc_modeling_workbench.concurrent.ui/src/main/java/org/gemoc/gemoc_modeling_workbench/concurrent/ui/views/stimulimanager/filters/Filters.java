@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.event.filters;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.filters;
 
 /**
  * Store a "mapping" of all declared filters with a name

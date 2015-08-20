@@ -1,12 +1,12 @@
-package org.gemoc.execution.engine.io.views.event;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.gemoc.execution.engine.io.views.event.scenario.ScenarioManager;
 import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.executionengine.ccsljava.engine.dse.DefaultMSEStateController;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.scenario.ScenarioManager;
 
 public class ModelSpecificEventContext 
 {

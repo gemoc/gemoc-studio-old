@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.event;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager;
 
 import org.gemoc.commons.eclipse.core.resources.FileFinderVisitor;
 import org.gemoc.commons.eclipse.ui.dialogs.SelectSpecificFileDialog;

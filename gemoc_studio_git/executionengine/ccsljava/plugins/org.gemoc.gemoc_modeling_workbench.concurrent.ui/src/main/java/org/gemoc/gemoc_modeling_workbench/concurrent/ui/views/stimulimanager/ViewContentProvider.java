@@ -1,10 +1,10 @@
-package org.gemoc.execution.engine.io.views.event;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager;
 
 import java.util.ArrayList;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-import org.gemoc.execution.engine.io.views.event.filters.IEventFilterStrategy;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.filters.IEventFilterStrategy;
 
 public class ViewContentProvider implements IStructuredContentProvider 
 {

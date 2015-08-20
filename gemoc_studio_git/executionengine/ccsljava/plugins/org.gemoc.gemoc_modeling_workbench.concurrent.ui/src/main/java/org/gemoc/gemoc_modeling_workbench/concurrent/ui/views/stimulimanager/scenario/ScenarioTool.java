@@ -1,15 +1,15 @@
-package org.gemoc.execution.engine.io.views.event.scenario;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.scenario;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.execution.engine.core.CommandExecution;
-import org.gemoc.execution.engine.io.views.event.ModelSpecificEventContext;
 import org.gemoc.execution.engine.scenario.Fragment;
 import org.gemoc.execution.engine.scenario.Scenario;
 import org.gemoc.execution.engine.scenario.ScenarioFactory;
 import org.gemoc.execution.engine.scenario.impl.ScenarioFactoryImpl;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.ModelSpecificEventContext;
 
 public class ScenarioTool 
 {

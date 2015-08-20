@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.event.scenario;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.scenario;
 
 import java.util.List;
 
@@ -7,15 +7,15 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.io.views.event.ClockStatus;
-import org.gemoc.execution.engine.io.views.event.StimuliManagerView;
-import org.gemoc.execution.engine.io.views.event.ModelSpecificEventContext;
-import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
 import org.gemoc.execution.engine.scenario.EventState;
 import org.gemoc.execution.engine.scenario.ExecutionStep;
 import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.execution.engine.scenario.Scenario;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.ClockStatus;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.ModelSpecificEventContext;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.ModelSpecificEventWrapper;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.StimuliManagerView;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
