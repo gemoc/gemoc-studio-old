@@ -9,7 +9,7 @@
       </category>
       <view
             category="org.gemoc.execution.engine.io.category"
-            class="org.gemoc.execution.engine.io.views.step.LogicalStepsView"
+            class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.step.LogicalStepsView"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
             name="Concurrent Logical Steps Decider">
@@ -118,12 +118,12 @@
    <extension
          point="org.gemoc.gemoc_language_workbench.deciders">
       <DeciderSpecification
-            Class="org.gemoc.execution.engine.io.views.StepByStepUserDecider"
+            Class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.deciders.StepByStepUserDecider"
             Icon="icons/user-shield-green-16.png"
             Name="Step by step user decider">
       </DeciderSpecification>
       <DeciderSpecification
-            Class="org.gemoc.execution.engine.io.views.UserDecider"
+            Class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.deciders.UserDecider"
             Icon="icons/user-shield-black-16.png"
             Name="User decider">
       </DeciderSpecification>

@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.views.event.ClockStatus;
 import org.gemoc.execution.engine.io.views.event.ModelSpecificEventWrapper;
-import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.step.LogicalStepsView;
 
 import fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.CCSLModel.ClockExpressionAndRelation.Relation;
 

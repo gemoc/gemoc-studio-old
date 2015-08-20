@@ -5,12 +5,12 @@ import java.util.Collection;
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.views.event.StimuliManagerView;
-import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.io.views.timeline.TimeLineView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.step.LogicalStepsView;
 
 public class PrepareViewFrontend extends DefaultEngineAddon 
 {

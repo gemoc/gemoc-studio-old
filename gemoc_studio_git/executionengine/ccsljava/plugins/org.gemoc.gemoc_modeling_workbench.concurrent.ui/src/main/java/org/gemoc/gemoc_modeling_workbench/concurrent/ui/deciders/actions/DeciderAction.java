@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.engine.actions;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.deciders.actions;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.action.Action;

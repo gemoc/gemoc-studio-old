@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.step;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.step;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +41,6 @@ import org.gemoc.execution.engine.io.IEvenPresenter;
 import org.gemoc.execution.engine.io.SharedIcons;
 import org.gemoc.execution.engine.io.views.DependantViewPart;
 import org.gemoc.execution.engine.io.views.ViewUtils;
-import org.gemoc.execution.engine.io.views.engine.actions.PauseResumeEngineDeciderAction;
-import org.gemoc.execution.engine.io.views.engine.actions.SwitchDeciderAction;
 import org.gemoc.execution.engine.trace.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
@@ -53,6 +51,8 @@ import org.gemoc.executionframework.ui.views.engine.actions.StopEngineAction;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.deciders.actions.PauseResumeEngineDeciderAction;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.deciders.actions.SwitchDeciderAction;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 

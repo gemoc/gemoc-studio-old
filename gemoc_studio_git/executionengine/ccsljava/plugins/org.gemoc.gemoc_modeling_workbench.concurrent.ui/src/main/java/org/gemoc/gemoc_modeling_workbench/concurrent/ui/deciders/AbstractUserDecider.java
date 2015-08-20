@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views;
+package org.gemoc.gemoc_modeling_workbench.concurrent.ui.deciders;
 
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -10,10 +10,10 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.io.SharedIcons;
-import org.gemoc.execution.engine.io.views.step.LogicalStepsView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.executionengine.ccsljava.api.core.ILogicalStepDecider;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
+import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.step.LogicalStepsView;
 
 public abstract class AbstractUserDecider implements ILogicalStepDecider 
 {
