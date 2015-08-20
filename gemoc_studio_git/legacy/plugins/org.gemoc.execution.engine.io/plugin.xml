@@ -66,19 +66,7 @@
          </state>
       </command>
    </extension>
-   <extension
-         point="org.gemoc.gemoc_language_workbench.deciders">
-      <DeciderSpecification
-            Class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.deciders.StepByStepUserDecider"
-            Icon="icons/user-shield-green-16.png"
-            Name="Step by step user decider">
-      </DeciderSpecification>
-      <DeciderSpecification
-            Class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.deciders.UserDecider"
-            Icon="icons/user-shield-black-16.png"
-            Name="User decider">
-      </DeciderSpecification>
-   </extension>
+
    
 
    <extension
