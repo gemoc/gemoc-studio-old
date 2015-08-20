@@ -9,44 +9,16 @@
       </category>
       <view
             category="org.gemoc.execution.engine.io.category"
-            class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.step.LogicalStepsView"
-            icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
-            name="Concurrent Logical Steps Decider">
-      </view>
-      <view
-            category="org.gemoc.execution.engine.io.category"
             class="org.gemoc.execution.engine.io.views.timeline.TimeLineView"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.execution.engine.io.views.timeline.TimeLineView"
             name="Time Line">
       </view>
-      <view
-            category="org.gemoc.execution.engine.io.category"
-            class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.StimuliManagerView"
-            icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.StimuliManagerView"
-            name="Stimuli Manager">
-      </view>
 	</extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
-            targetID="org.eclipse.debug.ui.DebugPerspective">
-         <view
-               id="org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.StimuliManagerView"
-               minimized="false"
-               relationship="stack"
-               relative="org.eclipse.ui.views.ContentOutline"
-               visible="true">
-         </view>
-         <view
-               id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
-               minimized="false"
-               ratio="0.5"
-               relationship="right"
-               relative="org.eclipse.debug.ui.VariableView">
-         </view>
+            targetID="org.eclipse.debug.ui.DebugPerspective">         
          <view
                id="org.gemoc.execution.engine.io.views.timeline.TimeLineView"
                minimized="false"
@@ -59,31 +31,10 @@
       <perspectiveExtension
             targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
          <view
-               id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
-               minimized="false"
-               relationship="stack"
-               relative="org.eclipse.sirius.ui.tools.views.model.explorer"
-               visible="true">
-         </view>
-         <view
-               id="org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.StimuliManagerView"
-               minimized="false"
-               relationship="stack"
-               relative="org.eclipse.ui.views.ContentOutline"
-               visible="true">
-         </view>
-         <view
                id="org.gemoc.execution.engine.io.views.timeline.TimeLineView"
                minimized="false"
                ratio="0.5"
                relationship="left"
-               relative="org.eclipse.ui.views.PropertySheet"
-               visible="true">
-         </view>
-         <view
-               id="org.eclipse.ui.console.ConsoleView"
-               minimized="false"
-               relationship="stack"
                relative="org.eclipse.ui.views.PropertySheet"
                visible="true">
          </view>

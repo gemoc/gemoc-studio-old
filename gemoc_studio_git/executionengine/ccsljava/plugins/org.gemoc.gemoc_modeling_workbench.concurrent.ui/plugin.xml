@@ -232,7 +232,46 @@
          <newWizardShortcut
                id="org.gemoc.gemoc_modeling_workbench.ui.wizards.CreateNewGemocModelingProject">
          </newWizardShortcut>
+         <view
+               id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.sirius.ui.tools.views.model.explorer"
+               visible="true">
+         </view>
+         <view
+               id="org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.StimuliManagerView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.views.ContentOutline"
+               visible="true">
+         </view>
+         <view
+               id="org.eclipse.ui.console.ConsoleView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.views.PropertySheet"
+               visible="true">
+         </view>
       </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.debug.ui.DebugPerspective">
+         <view
+               id="org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.StimuliManagerView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.views.ContentOutline"
+               visible="true">
+         </view>
+         <view
+               id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
+               minimized="false"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.debug.ui.VariableView">
+         </view>
+      </perspectiveExtension>
+      
    </extension>
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
@@ -351,5 +390,26 @@
                class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.ModelingWorkbenchEarlyStartup">
          </startup>
       </extension>
+      <extension
+            point="org.eclipse.ui.views">
+      <category
+            id="org.gemoc.execution.engine.io.category"
+            name="Gemoc">
+      </category>
+      <view
+            category="org.gemoc.execution.engine.io.category"
+            class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.step.LogicalStepsView"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.execution.engine.io.views.steps.LogicalStepsView"
+            name="Concurrent Logical Steps Decider">
+      </view>
+      <view
+            category="org.gemoc.execution.engine.io.category"
+            class="org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.StimuliManagerView"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.StimuliManagerView"
+            name="Stimuli Manager">
+      </view>
+	</extension>
    
 </plugin>
