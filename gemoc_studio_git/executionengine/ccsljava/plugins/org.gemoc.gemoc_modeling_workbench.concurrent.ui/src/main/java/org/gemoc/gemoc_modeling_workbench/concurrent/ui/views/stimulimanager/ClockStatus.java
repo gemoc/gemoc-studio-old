@@ -1,6 +1,8 @@
 package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager;
 
-import org.gemoc.execution.engine.scenario.Future;
+import org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Future;
+
+
 
 /**
  * Store the 4 possible states of a Clock:

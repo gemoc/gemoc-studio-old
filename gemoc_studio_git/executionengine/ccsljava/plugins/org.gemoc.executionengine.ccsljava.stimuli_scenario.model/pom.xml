@@ -4,12 +4,12 @@
 
   <parent>
     <relativePath>../..</relativePath>
-    <groupId>org.gemoc.concurrent_addons</groupId>
-    <artifactId>org.gemoc.concurrent_addons.root</artifactId>
+    <groupId>org.gemoc.executionengine.ccsljava</groupId>
+    <artifactId>org.gemoc.executionengine.ccsljava.root</artifactId>
     <version>0.1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>org.gemoc.execution.engine.scenario.model</artifactId>
+  <artifactId>org.gemoc.executionengine.ccsljava.stimuli_scenario.model</artifactId>
   <packaging>eclipse-plugin</packaging>
   <version>0.1.0-SNAPSHOT</version>
 </project>

@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.execution.engine.scenario;
+package org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,14 +10,14 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Force State</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Future</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getForceState()
+ * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ScenarioPackage#getFuture()
  * @model
  * @generated
  */
-public enum ForceState implements Enumerator {
+public enum Future implements Enumerator {
 	/**
 	 * The '<em><b>Tick</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -69,34 +69,36 @@ public enum ForceState implements Enumerator {
 	public static final int NO_TICK_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>Force State</b></em>' enumerators.
+	 * An array of all the '<em><b>Future</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ForceState[] VALUES_ARRAY =
-		new ForceState[] {
+	private static final Future[] VALUES_ARRAY =
+		new Future[] {
 			TICK,
 			NO_TICK,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Force State</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Future</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ForceState> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<Future> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Force State</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Future</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ForceState get(String literal) {
+	public static Future get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ForceState result = VALUES_ARRAY[i];
+			Future result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -105,14 +107,16 @@ public enum ForceState implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Force State</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Future</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ForceState getByName(String name) {
+	public static Future getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ForceState result = VALUES_ARRAY[i];
+			Future result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -121,12 +125,14 @@ public enum ForceState implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Force State</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Future</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ForceState get(int value) {
+	public static Future get(int value) {
 		switch (value) {
 			case TICK_VALUE: return TICK;
 			case NO_TICK_VALUE: return NO_TICK;
@@ -161,7 +167,7 @@ public enum ForceState implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ForceState(int value, String name, String literal) {
+	private Future(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -205,4 +211,4 @@ public enum ForceState implements Enumerator {
 		return literal;
 	}
 	
-} //ForceState
+} //Future

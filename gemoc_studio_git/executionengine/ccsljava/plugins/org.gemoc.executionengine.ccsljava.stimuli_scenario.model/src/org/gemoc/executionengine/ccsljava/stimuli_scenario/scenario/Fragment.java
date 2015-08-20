@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.execution.engine.scenario;
+package org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -13,19 +13,19 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * <ul>
- *   <li>{@link org.gemoc.execution.engine.scenario.Fragment#getStepList <em>Step List</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Fragment#getStepList <em>Step List</em>}</li>
+ * </ul>
  *
- * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getFragment()
+ * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ScenarioPackage#getFragment()
  * @model
  * @generated
  */
 public interface Fragment extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Step List</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.execution.engine.scenario.ExecutionStep}.
+	 * The list contents are of type {@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ExecutionStep}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Step List</em>' containment reference list isn't clear,
@@ -33,7 +33,7 @@ public interface Fragment extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Step List</em>' containment reference list.
-	 * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getFragment_StepList()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ScenarioPackage#getFragment_StepList()
 	 * @model containment="true"
 	 * @generated
 	 */

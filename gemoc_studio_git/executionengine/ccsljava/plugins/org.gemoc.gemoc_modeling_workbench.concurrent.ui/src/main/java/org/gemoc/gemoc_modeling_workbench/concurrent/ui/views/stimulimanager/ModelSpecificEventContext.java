@@ -3,9 +3,9 @@ package org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.gemoc.execution.engine.scenario.Future;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.executionengine.ccsljava.engine.dse.DefaultMSEStateController;
+import org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Future;
 import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.scenario.ScenarioManager;
 
 public class ModelSpecificEventContext 

@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.execution.engine.scenario;
+package org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -13,19 +13,19 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * <ul>
- *   <li>{@link org.gemoc.execution.engine.scenario.ExecutionStep#getEventList <em>Event List</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ExecutionStep#getEventList <em>Event List</em>}</li>
+ * </ul>
  *
- * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getExecutionStep()
+ * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ScenarioPackage#getExecutionStep()
  * @model
  * @generated
  */
 public interface ExecutionStep extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Event List</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.execution.engine.scenario.EventState}.
+	 * The list contents are of type {@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.EventState}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Event List</em>' containment reference list isn't clear,
@@ -33,7 +33,7 @@ public interface ExecutionStep extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Event List</em>' containment reference list.
-	 * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getExecutionStep_EventList()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ScenarioPackage#getExecutionStep_EventList()
 	 * @model containment="true"
 	 * @generated
 	 */

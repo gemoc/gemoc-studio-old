@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.execution.engine.scenario;
+package org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.gemoc.execution.engine.scenario.ScenarioFactory
+ * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ScenarioFactory
  * @model kind="package"
  * @generated
  */
@@ -55,14 +55,14 @@ public interface ScenarioPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ScenarioPackage eINSTANCE = org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl.init();
+	ScenarioPackage eINSTANCE = org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.execution.engine.scenario.impl.ScenarioImpl <em>Scenario</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioImpl <em>Scenario</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioImpl
-	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getScenario()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioImpl
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getScenario()
 	 * @generated
 	 */
 	int SCENARIO = 0;
@@ -95,11 +95,11 @@ public interface ScenarioPackage extends EPackage {
 	int SCENARIO_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.execution.engine.scenario.impl.ReferenceImpl <em>Reference</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ReferenceImpl <em>Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.execution.engine.scenario.impl.ReferenceImpl
-	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getReference()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ReferenceImpl
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getReference()
 	 * @generated
 	 */
 	int REFERENCE = 1;
@@ -141,11 +141,11 @@ public interface ScenarioPackage extends EPackage {
 	int REFERENCE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.execution.engine.scenario.impl.FragmentImpl <em>Fragment</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.FragmentImpl <em>Fragment</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.execution.engine.scenario.impl.FragmentImpl
-	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getFragment()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.FragmentImpl
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getFragment()
 	 * @generated
 	 */
 	int FRAGMENT = 2;
@@ -178,11 +178,11 @@ public interface ScenarioPackage extends EPackage {
 	int FRAGMENT_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.execution.engine.scenario.impl.ExecutionStepImpl <em>Execution Step</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ExecutionStepImpl <em>Execution Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.execution.engine.scenario.impl.ExecutionStepImpl
-	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getExecutionStep()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ExecutionStepImpl
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getExecutionStep()
 	 * @generated
 	 */
 	int EXECUTION_STEP = 3;
@@ -215,11 +215,11 @@ public interface ScenarioPackage extends EPackage {
 	int EXECUTION_STEP_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl <em>Event State</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.EventStateImpl <em>Event State</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.execution.engine.scenario.impl.EventStateImpl
-	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getEventState()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.EventStateImpl
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getEventState()
 	 * @generated
 	 */
 	int EVENT_STATE = 4;
@@ -260,150 +260,150 @@ public interface ScenarioPackage extends EPackage {
 	 */
 	int EVENT_STATE_OPERATION_COUNT = 0;
 
-
 	/**
-	 * The meta object id for the '{@link org.gemoc.execution.engine.scenario.Future <em>Future</em>}' enum.
+	 * The meta object id for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Future <em>Future</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.execution.engine.scenario.Future
-	 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getFuture()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Future
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getFuture()
 	 * @generated
 	 */
 	int FUTURE = 5;
 
+
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.execution.engine.scenario.Scenario <em>Scenario</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Scenario <em>Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Scenario</em>'.
-	 * @see org.gemoc.execution.engine.scenario.Scenario
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Scenario
 	 * @generated
 	 */
 	EClass getScenario();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.execution.engine.scenario.Scenario#getRefList <em>Ref List</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Scenario#getRefList <em>Ref List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Ref List</em>'.
-	 * @see org.gemoc.execution.engine.scenario.Scenario#getRefList()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Scenario#getRefList()
 	 * @see #getScenario()
 	 * @generated
 	 */
 	EReference getScenario_RefList();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.execution.engine.scenario.Reference <em>Reference</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Reference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Reference</em>'.
-	 * @see org.gemoc.execution.engine.scenario.Reference
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Reference
 	 * @generated
 	 */
 	EClass getReference();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.execution.engine.scenario.Reference#getFragment <em>Fragment</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Reference#getFragment <em>Fragment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Fragment</em>'.
-	 * @see org.gemoc.execution.engine.scenario.Reference#getFragment()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Reference#getFragment()
 	 * @see #getReference()
 	 * @generated
 	 */
 	EReference getReference_Fragment();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.scenario.Reference#getStartStep <em>Start Step</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Reference#getStartStep <em>Start Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Start Step</em>'.
-	 * @see org.gemoc.execution.engine.scenario.Reference#getStartStep()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Reference#getStartStep()
 	 * @see #getReference()
 	 * @generated
 	 */
 	EAttribute getReference_StartStep();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.execution.engine.scenario.Fragment <em>Fragment</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Fragment <em>Fragment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Fragment</em>'.
-	 * @see org.gemoc.execution.engine.scenario.Fragment
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Fragment
 	 * @generated
 	 */
 	EClass getFragment();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.execution.engine.scenario.Fragment#getStepList <em>Step List</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Fragment#getStepList <em>Step List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Step List</em>'.
-	 * @see org.gemoc.execution.engine.scenario.Fragment#getStepList()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Fragment#getStepList()
 	 * @see #getFragment()
 	 * @generated
 	 */
 	EReference getFragment_StepList();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.execution.engine.scenario.ExecutionStep <em>Execution Step</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ExecutionStep <em>Execution Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Execution Step</em>'.
-	 * @see org.gemoc.execution.engine.scenario.ExecutionStep
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ExecutionStep
 	 * @generated
 	 */
 	EClass getExecutionStep();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.execution.engine.scenario.ExecutionStep#getEventList <em>Event List</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ExecutionStep#getEventList <em>Event List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Event List</em>'.
-	 * @see org.gemoc.execution.engine.scenario.ExecutionStep#getEventList()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ExecutionStep#getEventList()
 	 * @see #getExecutionStep()
 	 * @generated
 	 */
 	EReference getExecutionStep_EventList();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.execution.engine.scenario.EventState <em>Event State</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.EventState <em>Event State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Event State</em>'.
-	 * @see org.gemoc.execution.engine.scenario.EventState
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.EventState
 	 * @generated
 	 */
 	EClass getEventState();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.execution.engine.scenario.EventState#getState <em>State</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.EventState#getState <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>State</em>'.
-	 * @see org.gemoc.execution.engine.scenario.EventState#getState()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.EventState#getState()
 	 * @see #getEventState()
 	 * @generated
 	 */
 	EAttribute getEventState_State();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.execution.engine.scenario.EventState#getMse <em>Mse</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.EventState#getMse <em>Mse</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Mse</em>'.
-	 * @see org.gemoc.execution.engine.scenario.EventState#getMse()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.EventState#getMse()
 	 * @see #getEventState()
 	 * @generated
 	 */
 	EReference getEventState_Mse();
 
 	/**
-	 * Returns the meta object for enum '{@link org.gemoc.execution.engine.scenario.Future <em>Future</em>}'.
+	 * Returns the meta object for enum '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Future <em>Future</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Future</em>'.
-	 * @see org.gemoc.execution.engine.scenario.Future
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Future
 	 * @generated
 	 */
 	EEnum getFuture();
@@ -432,11 +432,11 @@ public interface ScenarioPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.impl.ScenarioImpl <em>Scenario</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioImpl <em>Scenario</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.execution.engine.scenario.impl.ScenarioImpl
-		 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getScenario()
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioImpl
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getScenario()
 		 * @generated
 		 */
 		EClass SCENARIO = eINSTANCE.getScenario();
@@ -450,11 +450,11 @@ public interface ScenarioPackage extends EPackage {
 		EReference SCENARIO__REF_LIST = eINSTANCE.getScenario_RefList();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.impl.ReferenceImpl <em>Reference</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ReferenceImpl <em>Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.execution.engine.scenario.impl.ReferenceImpl
-		 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getReference()
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ReferenceImpl
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getReference()
 		 * @generated
 		 */
 		EClass REFERENCE = eINSTANCE.getReference();
@@ -476,11 +476,11 @@ public interface ScenarioPackage extends EPackage {
 		EAttribute REFERENCE__START_STEP = eINSTANCE.getReference_StartStep();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.impl.FragmentImpl <em>Fragment</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.FragmentImpl <em>Fragment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.execution.engine.scenario.impl.FragmentImpl
-		 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getFragment()
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.FragmentImpl
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getFragment()
 		 * @generated
 		 */
 		EClass FRAGMENT = eINSTANCE.getFragment();
@@ -494,11 +494,11 @@ public interface ScenarioPackage extends EPackage {
 		EReference FRAGMENT__STEP_LIST = eINSTANCE.getFragment_StepList();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.impl.ExecutionStepImpl <em>Execution Step</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ExecutionStepImpl <em>Execution Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.execution.engine.scenario.impl.ExecutionStepImpl
-		 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getExecutionStep()
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ExecutionStepImpl
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getExecutionStep()
 		 * @generated
 		 */
 		EClass EXECUTION_STEP = eINSTANCE.getExecutionStep();
@@ -512,11 +512,11 @@ public interface ScenarioPackage extends EPackage {
 		EReference EXECUTION_STEP__EVENT_LIST = eINSTANCE.getExecutionStep_EventList();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.impl.EventStateImpl <em>Event State</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.EventStateImpl <em>Event State</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.execution.engine.scenario.impl.EventStateImpl
-		 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getEventState()
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.EventStateImpl
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getEventState()
 		 * @generated
 		 */
 		EClass EVENT_STATE = eINSTANCE.getEventState();
@@ -538,11 +538,11 @@ public interface ScenarioPackage extends EPackage {
 		EReference EVENT_STATE__MSE = eINSTANCE.getEventState_Mse();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.execution.engine.scenario.Future <em>Future</em>}' enum.
+		 * The meta object literal for the '{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Future <em>Future</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.execution.engine.scenario.Future
-		 * @see org.gemoc.execution.engine.scenario.impl.ScenarioPackageImpl#getFuture()
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Future
+		 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.ScenarioPackageImpl#getFuture()
 		 * @generated
 		 */
 		EEnum FUTURE = eINSTANCE.getFuture();

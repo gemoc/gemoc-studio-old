@@ -1,13 +1,13 @@
 /**
  */
-package org.gemoc.execution.engine.scenario.util;
+package org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.gemoc.execution.engine.scenario.*;
+import org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +19,7 @@ import org.gemoc.execution.engine.scenario.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.gemoc.execution.engine.scenario.ScenarioPackage
+ * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ScenarioPackage
  * @generated
  */
 public class ScenarioSwitch<T> extends Switch<T> {
@@ -47,7 +47,7 @@ public class ScenarioSwitch<T> extends Switch<T> {
 	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
+	 * @param ePackage the package in question.
 	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */

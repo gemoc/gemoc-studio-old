@@ -1,49 +1,55 @@
 /**
  */
-package org.gemoc.execution.engine.scenario.impl;
+package org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.gemoc.execution.engine.scenario.EventState;
-import org.gemoc.execution.engine.scenario.ExecutionStep;
-import org.gemoc.execution.engine.scenario.ScenarioPackage;
+
+import org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ExecutionStep;
+import org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Fragment;
+import org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ScenarioPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Execution Step</b></em>'.
+ * An implementation of the model object '<em><b>Fragment</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- *   <li>{@link org.gemoc.execution.engine.scenario.impl.ExecutionStepImpl#getEventList <em>Event List</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.impl.FragmentImpl#getStepList <em>Step List</em>}</li>
+ * </ul>
  *
  * @generated
  */
-public class ExecutionStepImpl extends MinimalEObjectImpl.Container implements ExecutionStep {
+public class FragmentImpl extends MinimalEObjectImpl.Container implements Fragment {
 	/**
-	 * The cached value of the '{@link #getEventList() <em>Event List</em>}' containment reference list.
+	 * The cached value of the '{@link #getStepList() <em>Step List</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEventList()
+	 * @see #getStepList()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EventState> eventList;
+	protected EList<ExecutionStep> stepList;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExecutionStepImpl() {
+	protected FragmentImpl() {
 		super();
 	}
 
@@ -54,7 +60,7 @@ public class ExecutionStepImpl extends MinimalEObjectImpl.Container implements E
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ScenarioPackage.Literals.EXECUTION_STEP;
+		return ScenarioPackage.Literals.FRAGMENT;
 	}
 
 	/**
@@ -62,11 +68,11 @@ public class ExecutionStepImpl extends MinimalEObjectImpl.Container implements E
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<EventState> getEventList() {
-		if (eventList == null) {
-			eventList = new EObjectContainmentEList<EventState>(EventState.class, this, ScenarioPackage.EXECUTION_STEP__EVENT_LIST);
+	public EList<ExecutionStep> getStepList() {
+		if (stepList == null) {
+			stepList = new EObjectContainmentEList<ExecutionStep>(ExecutionStep.class, this, ScenarioPackage.FRAGMENT__STEP_LIST);
 		}
-		return eventList;
+		return stepList;
 	}
 
 	/**
@@ -77,8 +83,8 @@ public class ExecutionStepImpl extends MinimalEObjectImpl.Container implements E
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ScenarioPackage.EXECUTION_STEP__EVENT_LIST:
-				return ((InternalEList<?>)getEventList()).basicRemove(otherEnd, msgs);
+			case ScenarioPackage.FRAGMENT__STEP_LIST:
+				return ((InternalEList<?>)getStepList()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -91,8 +97,8 @@ public class ExecutionStepImpl extends MinimalEObjectImpl.Container implements E
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ScenarioPackage.EXECUTION_STEP__EVENT_LIST:
-				return getEventList();
+			case ScenarioPackage.FRAGMENT__STEP_LIST:
+				return getStepList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -106,9 +112,9 @@ public class ExecutionStepImpl extends MinimalEObjectImpl.Container implements E
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ScenarioPackage.EXECUTION_STEP__EVENT_LIST:
-				getEventList().clear();
-				getEventList().addAll((Collection<? extends EventState>)newValue);
+			case ScenarioPackage.FRAGMENT__STEP_LIST:
+				getStepList().clear();
+				getStepList().addAll((Collection<? extends ExecutionStep>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,8 +128,8 @@ public class ExecutionStepImpl extends MinimalEObjectImpl.Container implements E
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ScenarioPackage.EXECUTION_STEP__EVENT_LIST:
-				getEventList().clear();
+			case ScenarioPackage.FRAGMENT__STEP_LIST:
+				getStepList().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -137,10 +143,10 @@ public class ExecutionStepImpl extends MinimalEObjectImpl.Container implements E
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ScenarioPackage.EXECUTION_STEP__EVENT_LIST:
-				return eventList != null && !eventList.isEmpty();
+			case ScenarioPackage.FRAGMENT__STEP_LIST:
+				return stepList != null && !stepList.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ExecutionStepImpl
+} //FragmentImpl

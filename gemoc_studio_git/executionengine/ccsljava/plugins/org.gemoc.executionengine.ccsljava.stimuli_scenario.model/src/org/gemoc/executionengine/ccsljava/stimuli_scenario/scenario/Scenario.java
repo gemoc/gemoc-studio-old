@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.execution.engine.scenario;
+package org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -13,19 +13,19 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * <ul>
- *   <li>{@link org.gemoc.execution.engine.scenario.Scenario#getRefList <em>Ref List</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Scenario#getRefList <em>Ref List</em>}</li>
+ * </ul>
  *
- * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getScenario()
+ * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ScenarioPackage#getScenario()
  * @model
  * @generated
  */
 public interface Scenario extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Ref List</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.execution.engine.scenario.Reference}.
+	 * The list contents are of type {@link org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.Reference}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ref List</em>' containment reference list isn't clear,
@@ -33,7 +33,7 @@ public interface Scenario extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ref List</em>' containment reference list.
-	 * @see org.gemoc.execution.engine.scenario.ScenarioPackage#getScenario_RefList()
+	 * @see org.gemoc.executionengine.ccsljava.stimuli_scenario.scenario.ScenarioPackage#getScenario_RefList()
 	 * @model containment="true"
 	 * @generated
 	 */
