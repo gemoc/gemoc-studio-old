@@ -5,8 +5,10 @@ import java.util.List;
 import org.eclipse.emf.common.util.URI;
 
 /**
- * Presents {@link fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event
- * Event}
+ * a class tha implement IEvenPresenter is a graphical UI that 
+ * presents/displays {@link fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent
+ * ModelSpecificEvent}
+ * When asked it should highlight/focus on the requested  ModelSpecificEvent
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  *
@@ -14,12 +16,11 @@ import org.eclipse.emf.common.util.URI;
 public interface IEvenPresenter {
 
 	/**
-	 * Presents the given {@link List} of
-	 * {@link fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event Event}
+	 * Ask the view to present or highlight the given {@link List} of
+	 * {@link fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent ModelSpecificEvent}
 	 * 
 	 * @param events
-	 *            {@link fr.inria.aoste.timesquare.ccslkernel.model.TimeModel.Event
-	 *            Event}
+	 *            {@link fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent ModelSpecificEvent} to highlight
 	 */
 	void present(List<URI> events);
 
