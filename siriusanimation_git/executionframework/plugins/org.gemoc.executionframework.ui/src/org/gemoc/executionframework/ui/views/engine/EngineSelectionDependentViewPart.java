@@ -21,24 +21,24 @@ public abstract class EngineSelectionDependentViewPart extends ViewPart implemen
 	@Override
 	public void init(IViewSite site) throws PartInitException {
 		super.init(site);
-		startListeningToMotorSelectionChange();
+		startListeningToEngineSelectionChange();
 	}
 	
 	@Override
 	public void dispose() {
 		super.dispose();
-		stopListeningToMotorSelectionChange();
+		stopListeningToEngineSelectionChange();
 	}
 
 
-	private void startListeningToMotorSelectionChange() {
+	protected void startListeningToEngineSelectionChange() {
 		// make sure the EngineStatusView is open
 		ViewHelper.retrieveView(EnginesStatusView.ID);
 		// register this view as listener
 		Activator.getDefault().addEngineSelectionListener(this);
 	}
 
-	private void stopListeningToMotorSelectionChange() {
+	protected void stopListeningToEngineSelectionChange() {
 		Activator.getDefault().removeEngineSelectionListener(this);
 	}
 
