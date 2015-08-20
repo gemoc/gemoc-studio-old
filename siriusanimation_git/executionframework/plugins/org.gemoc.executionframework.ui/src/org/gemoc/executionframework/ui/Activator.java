@@ -32,7 +32,7 @@ public class Activator extends AbstractUIPlugin {
 	private static Activator plugin;
 
 	
-	private final List<IEvenPresenter> eventPresenters = new ArrayList<>();
+	private final List<IMSEPresenter> eventPresenters = new ArrayList<>();
 	
 	/**
 	 * The constructor
@@ -95,11 +95,11 @@ public class Activator extends AbstractUIPlugin {
 
 	
 	/**
-	 * Gets the {@link List} of registered {@link IEvenPresenter}.
+	 * Gets the {@link List} of registered {@link IMSEPresenter}.
 	 * 
-	 * @return the {@link List} of registered {@link IEvenPresenter}
+	 * @return the {@link List} of registered {@link IMSEPresenter}
 	 */
-	public List<IEvenPresenter> getEventPresenters() {
+	public List<IMSEPresenter> getEventPresenters() {
 		return eventPresenters;
 	}
 }

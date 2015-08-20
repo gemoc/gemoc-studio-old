@@ -14,7 +14,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.gemoc.execution.engine.trace.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.executionframework.ui.IEvenPresenter;
+import org.gemoc.executionframework.ui.IMSEPresenter;
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 import fr.obeo.dsl.debug.ide.adapter.DSLStackFrameAdapter;
@@ -85,7 +85,7 @@ public class GemocDebugModelPresentation extends DSLDebugModelPresentation {
 		for (ModelSpecificEvent event : events) {
 			uris.add(EcoreUtil.getURI(event));
 		}
-		for (IEvenPresenter presenter : org.gemoc.executionframework.ui.Activator
+		for (IMSEPresenter presenter : org.gemoc.executionframework.ui.Activator
 				.getDefault().getEventPresenters()) {
 			presenter.present(uris);
 		}

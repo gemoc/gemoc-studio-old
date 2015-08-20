@@ -42,7 +42,7 @@ import org.gemoc.execution.engine.trace.LogicalStepHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
-import org.gemoc.executionframework.ui.IEvenPresenter;
+import org.gemoc.executionframework.ui.IMSEPresenter;
 import org.gemoc.executionframework.ui.views.engine.actions.DisposeAllStoppedEnginesAction;
 import org.gemoc.executionframework.ui.views.engine.actions.DisposeStoppedEngineAction;
 import org.gemoc.executionframework.ui.views.engine.actions.StopEngineAction;
@@ -56,7 +56,7 @@ import org.gemoc.gemoc_modeling_workbench.concurrent.ui.deciders.actions.SwitchD
 
 import fr.inria.aoste.timesquare.ecl.feedback.feedback.ModelSpecificEvent;
 
-public class LogicalStepsView extends DependantViewPart implements IEvenPresenter
+public class LogicalStepsView extends DependantViewPart implements IMSEPresenter
 {
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.steps.LogicalStepsView";

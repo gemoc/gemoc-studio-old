@@ -50,7 +50,7 @@ import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
-import org.gemoc.executionframework.ui.IEvenPresenter;
+import org.gemoc.executionframework.ui.IMSEPresenter;
 import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
 import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
@@ -78,7 +78,7 @@ import fr.obeo.dsl.debug.ide.ui.provider.DecoratingColumLabelProvider;
  * @author lguillem
  * @version 1.6
  */
-public class StimuliManagerView extends ViewPart implements IEngineSelectionListener, IEngineAddon, IEvenPresenter {
+public class StimuliManagerView extends ViewPart implements IEngineSelectionListener, IEngineAddon, IMSEPresenter {
 
 	private static final class GemocLabelDecorator extends DSLLabelDecorator {
 
