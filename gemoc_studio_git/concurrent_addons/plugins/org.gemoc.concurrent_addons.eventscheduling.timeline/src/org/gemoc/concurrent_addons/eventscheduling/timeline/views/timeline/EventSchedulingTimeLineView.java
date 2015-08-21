@@ -65,14 +65,14 @@ public class EventSchedulingTimeLineView extends AbstractTimelineView implements
 	@Override
 	public void init(IViewSite site) throws PartInitException {
 		super.init(site);
-		startListeningToMotorSelectionChange();
+		startListeningToEngineSelectionChange();
 	}
 
 	@Override
 	public void dispose() {
 		disposeTimeLineProvider();
 		removeDoubleClickListener();
-		stopListeningToMotorSelectionChange();
+		stopListeningToEngineSelectionChange();
 		super.dispose();
 		_contentProvider.dispose();
 		_labelProvider.dispose();
@@ -103,11 +103,11 @@ public class EventSchedulingTimeLineView extends AbstractTimelineView implements
 	}
 
 
-	private void startListeningToMotorSelectionChange() {
+	private void startListeningToEngineSelectionChange() {
 		org.gemoc.executionframework.ui.Activator.getDefault().addEngineSelectionListener(this);
 	}
 
-	private void stopListeningToMotorSelectionChange() {
+	private void stopListeningToEngineSelectionChange() {
 		org.gemoc.executionframework.ui.Activator.getDefault().removeEngineSelectionListener(this);
 	}
 
