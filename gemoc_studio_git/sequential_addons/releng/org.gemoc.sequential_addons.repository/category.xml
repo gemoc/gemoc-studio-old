@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.gemoc.sequential_addons.feature_0.1.0.qualifier.jar" id="org.gemoc.sequential_addons.feature" version="0.1.0.qualifier">
+      <category name="gemoc.sequential_addons"/>
+   </feature>
+   <feature url="features/org.gemoc.sequential_addons.feature.source_0.1.0.qualifier.jar" id="org.gemoc.sequential_addons.feature.source" version="0.1.0.qualifier">
+      <category name="gemoc.sequential_addons"/>
+   </feature>
+   <category-def name="gemoc.sequential_addons" label="GEMOC Sequential Addons and Views"/>
+</site>
