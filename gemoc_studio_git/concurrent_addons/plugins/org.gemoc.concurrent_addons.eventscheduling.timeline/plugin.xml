@@ -9,7 +9,7 @@
       </category>
       <view
             category="org.gemoc.concurrent_addons.eventscheduling.timeline.category"
-            class="org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.TimeLineView"
+            class="org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.EventSchedulingTimeLineView"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.TimeLineView"
             name="Time Line">

@@ -17,12 +17,12 @@ import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.obeo.timeline.view.AbstractTimelineProvider;
 
-public class TimelineProvider extends AbstractTimelineProvider implements IEngineAddon, IDisposable {
+public class EventSchedulingTimelineProvider extends AbstractTimelineProvider implements IEngineAddon, IDisposable {
 
 	private IExecutionEngine _engine;
 	private EventSchedulingModelExecutionTracingAddon _tracingAddon;
 	
-	public TimelineProvider(IExecutionEngine engine) {
+	public EventSchedulingTimelineProvider(IExecutionEngine engine) {
 		_engine = engine;
 		_engine.getExecutionContext().getExecutionPlatform().addEngineAddon(this);
 	}

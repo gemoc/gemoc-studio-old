@@ -38,7 +38,7 @@ import fr.obeo.timeline.editpart.TimelineEditPartFactory;
 import fr.obeo.timeline.view.AbstractTimelineView;
 import fr.obeo.timeline.view.ITimelineProvider;
 
-public class TimeLineView extends AbstractTimelineView implements IEngineSelectionListener {
+public class EventSchedulingTimeLineView extends AbstractTimelineView implements IEngineSelectionListener {
 
 	public static final String ID = "org.gemoc.execution.engine.io.views.timeline.TimeLineView";
 
@@ -57,7 +57,7 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 
 	private WeakHashMap<IExecutionEngine, Integer> _positions = new WeakHashMap<IExecutionEngine, Integer>();
 
-	public TimeLineView() {
+	public EventSchedulingTimeLineView() {
 		_contentProvider = new AdapterFactoryContentProvider(adapterFactory);
 		_labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 	}
@@ -102,7 +102,6 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 		getTimelineViewer().getControl().addMouseListener(_mouseListener);
 	}
 
-	private EnginesStatusView _enginesStatusView;
 
 	private void startListeningToMotorSelectionChange() {
 		org.gemoc.executionframework.ui.Activator.getDefault().addEngineSelectionListener(this);
@@ -123,14 +122,9 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 			if (engine != null) {
 				int start = getStartIndex(engine);
 				
-				// We first look for trace addons
-				Set<ITraceAddon> traceAddons = engine.getAddonsTypedBy(ITraceAddon.class);
-				if (!traceAddons.isEmpty())
-					_timelineProvider = traceAddons.iterator().next().getTimeLineProvider();
-
 				// If using a trace addon did not work, we fallback to the Gemoc trace
 				if (_timelineProvider == null) {
-					_timelineProvider = new TimelineProvider(engine);
+					_timelineProvider = new EventSchedulingTimelineProvider(engine);
 				}
 
 				setTimelineProvider(_timelineProvider, start);
@@ -219,10 +213,10 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 					}
 				} else {
 
-					for (ITraceAddon traceAddon : _currentEngine.getAddonsTypedBy(ITraceAddon.class)) {
-						if (o1 instanceof EObject)
-							traceAddon.goTo((EObject) o1);
-					}
+//					for (ITraceAddon traceAddon : _currentEngine.getAddonsTypedBy(ITraceAddon.class)) {
+//						if (o1 instanceof EObject)
+//							traceAddon.goTo((EObject) o1);
+//					}
 
 				}
 			}

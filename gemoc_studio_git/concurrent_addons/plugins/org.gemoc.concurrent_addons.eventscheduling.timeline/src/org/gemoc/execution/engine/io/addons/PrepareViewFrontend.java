@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import org.eclipse.ui.PlatformUI;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.TimeLineView;
+import org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.EventSchedulingTimeLineView;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -15,7 +15,7 @@ import org.gemoc.gemoc_modeling_workbench.concurrent.ui.views.stimulimanager.Sti
 public class PrepareViewFrontend extends DefaultEngineAddon 
 {
 
-	private TimeLineView _timelineView;
+	private EventSchedulingTimeLineView _timelineView;
 	
 	@Override
 	public void engineStarted(final IExecutionEngine engine) 
@@ -32,7 +32,7 @@ public class PrepareViewFrontend extends DefaultEngineAddon
 							public void run() {
 								ViewHelper.retrieveView(StimuliManagerView.ID);
 								ViewHelper.showView(EnginesStatusView.ID);
-								_timelineView = ViewHelper.showView(TimeLineView.ID);
+								_timelineView = ViewHelper.showView(EventSchedulingTimeLineView.ID);
 								_timelineView.configure(engine);
 								ViewHelper.showView(LogicalStepsView.ID);
 							}			
