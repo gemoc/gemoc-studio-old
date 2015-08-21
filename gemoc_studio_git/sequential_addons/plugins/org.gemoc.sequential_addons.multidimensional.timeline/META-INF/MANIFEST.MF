@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Gemoc MultiDimensional Timeline Addon
 Bundle-SymbolicName: org.gemoc.sequential_addons.multidimensional.timeline;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-Activator: org.gemoc.concurrent_addons.eventscheduling.timeline.Activator
+Bundle-Activator: org.gemoc.sequential_addons.multidimensional.timeline.Activator
 Require-Bundle: org.gemoc.gemoc_language_workbench.api,
  org.gemoc.commons.eclipse;bundle-version="0.1.0",
  org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
@@ -33,6 +33,6 @@ Require-Bundle: org.gemoc.gemoc_language_workbench.api,
  org.eclipse.ui.workbench
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.gemoc.concurrent_addons.eventscheduling.timeline,
- org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline
+Export-Package: org.gemoc.sequential_addons.multidimensional.timeline,
+ org.gemoc.sequential_addons.multidimensional.timeline.views.timeline
 

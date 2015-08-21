@@ -4,14 +4,14 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            id="org.gemoc.concurrent_addons.eventscheduling.timeline.category"
+            id="org.gemoc.sequential_addons.multidimensional.timeline.category"
             name="Gemoc">
       </category>
       <view
-            category="org.gemoc.concurrent_addons.eventscheduling.timeline.category"
-            class="org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.TimeLineView"
+            category="org.gemoc.sequential_addons.multidimensional.timeline.category"
+            class="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.TimeLineView"
             icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.TimeLineView"
+            id="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.TimeLineView"
             name="Time Line">
       </view>
 	</extension>
@@ -20,7 +20,7 @@
       <perspectiveExtension
             targetID="org.eclipse.debug.ui.DebugPerspective">         
          <view
-               id="org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.TimeLineView"
+               id="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.TimeLineView"
                minimized="false"
                ratio="0.5"
                relationship="left"
@@ -31,7 +31,7 @@
       <perspectiveExtension
             targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
          <view
-               id="org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.TimeLineView"
+               id="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.TimeLineView"
                minimized="false"
                ratio="0.5"
                relationship="left"
@@ -44,9 +44,9 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
-            locationURI="toolbar:org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.TimeLineView">
+            locationURI="toolbar:org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.TimeLineView">
          <command
-               commandId="org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.Follow"
+               commandId="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.Follow"
                icon="icons/play-4-16.png"
                label="Follow"
                style="toggle"
@@ -58,7 +58,7 @@
          point="org.eclipse.ui.commands">
       <command
             defaultHandler="fr.obeo.timeline.command.FollowHandler"
-            id="org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.Follow"
+            id="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.Follow"
             name="Follow">
          <state
                class="org.eclipse.ui.handlers.RegistryToggleState:true"
@@ -73,7 +73,7 @@
          point="org.gemoc.gemoc_language_workbench.engine_addon">      
       <Addon
             AddonGroupId="General.AddonGroup"
-            Class="org.gemoc.concurrent_addons.eventscheduling.timeline.addons.PrepareViewFrontend"
+            Class="org.gemoc.sequential_addons.multidimensional.timeline.addons.PrepareViewFrontend"
             Default="true"
             Name="Open Views"
             ShortDescription="Automatically opens the default views  that are usefull for animation."

@@ -1,4 +1,4 @@
-package org.gemoc.concurrent_addons.eventscheduling.timeline;
+package org.gemoc.sequential_addons.multidimensional.timeline;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

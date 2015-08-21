@@ -1,4 +1,4 @@
-package org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline;
+package org.gemoc.sequential_addons.multidimensional.timeline.views.timeline;
 
 import java.util.Set;
 import java.util.WeakHashMap;
@@ -32,7 +32,6 @@ import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_modeling_workbench.concurrent.ui.deciders.AbstractUserDecider;
 
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
 import fr.obeo.timeline.editpart.TimelineEditPartFactory;
@@ -201,61 +200,11 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 			final Object selected = ((IStructuredSelection) selection).getFirstElement();
 			if (selected instanceof PossibleStepEditPart) {
 				final Object o1 = ((PossibleStepEditPart) selected).getModel().getChoice2();
-				Object o2 = ((PossibleStepEditPart) selected).getModel().getPossibleStep();
-				if (o1 instanceof Choice && o2 instanceof LogicalStep) {
-					Choice choice = (Choice) o1;
-					LogicalStep logicalStep = (LogicalStep) o2;
-					if (_currentEngine.getRunningStatus().equals(RunStatus.WaitingLogicalStepSelection)) {
-						// If this choice has never been executed, we execute
-						// the chosen logical step
-						if (choice.getSelectedNextChoice() == null) {
-							performExecutionStep(logicalStep);
-						}
-						// Otherwise, we branch at the *next choice* of the
-						// chosen one
-						else {
-							Choice choiceToRestore = choice.getSelectedNextChoice();
-							branchIfPossible(choiceToRestore);
-						}
-					}
-				} else {
-
-					for (ITraceAddon traceAddon : _currentEngine.getAddonsTypedBy(ITraceAddon.class)) {
-						if (o1 instanceof EObject)
-							traceAddon.goTo((EObject) o1);
-					}
-
+				//Object o2 = ((PossibleStepEditPart) selected).getModel().getPossibleStep();
+				for (ITraceAddon traceAddon : _currentEngine.getAddonsTypedBy(ITraceAddon.class)) {
+					if (o1 instanceof EObject)
+						traceAddon.goTo((EObject) o1);
 				}
-			}
-		}
-	}
-
-	private void performExecutionStep(LogicalStep logicalStep) {
-		if (_currentEngine instanceof INonDeterministicExecutionEngine) {
-			INonDeterministicExecutionEngine engine_cast = (INonDeterministicExecutionEngine) _currentEngine;
-		if (engine_cast.getLogicalStepDecider() instanceof AbstractUserDecider) {
-			AbstractUserDecider decider = (AbstractUserDecider) engine_cast
-					.getLogicalStepDecider();
-			decider.decideFromTimeLine(logicalStep);
-		}
-		}
-		return;
-	}
-
-	private void branchIfPossible(Choice choice) {
-		if (_currentEngine.hasAddon(EventSchedulingModelExecutionTracingAddon.class)) {
-			EventSchedulingModelExecutionTracingAddon addon = _currentEngine.getAddon(EventSchedulingModelExecutionTracingAddon.class);
-			try {
-				Choice previousChoice = choice.getPreviousChoice();
-				Branch previousBranch = previousChoice.getBranch();
-				// if the choice is the last before last one, then branch
-				if (previousBranch.getChoices().indexOf(previousChoice) == (previousBranch.getChoices().size() - 2)) {
-					addon.reintegrateBranch(choice);
-				} else {
-					addon.branch(choice);
-				}
-			} catch (ModelExecutionTracingException e) {
-				Activator.error(e.getMessage(), e);
 			}
 		}
 	}

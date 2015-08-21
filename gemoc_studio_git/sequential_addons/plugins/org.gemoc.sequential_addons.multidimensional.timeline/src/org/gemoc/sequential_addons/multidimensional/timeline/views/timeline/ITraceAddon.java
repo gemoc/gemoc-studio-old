@@ -1,4 +1,4 @@
-package org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline;
+package org.gemoc.sequential_addons.multidimensional.timeline.views.timeline;
 
 import org.eclipse.emf.ecore.EObject;
 import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
