@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.gemoc.commons.eclipse.ui.Activator;
 import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
@@ -105,11 +106,11 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 	private EnginesStatusView _enginesStatusView;
 
 	private void startListeningToMotorSelectionChange() {
-		org.gemoc.executionframework.ui.Activator.getDefault().addEngineSelectionListener(this);
+		org.gemoc.executionframework.ui.Activator.getDefault().getEngineSelectionManager().addEngineSelectionListener(this);
 	}
 
 	private void stopListeningToMotorSelectionChange() {
-		org.gemoc.executionframework.ui.Activator.getDefault().removeEngineSelectionListener(this);
+		org.gemoc.executionframework.ui.Activator.getDefault().getEngineSelectionManager().removeEngineSelectionListener(this);
 	}
 
 	private ITimelineProvider _timelineProvider;
@@ -254,7 +255,7 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 					addon.branch(choice);
 				}
 			} catch (ModelExecutionTracingException e) {
-				e.printStackTrace();
+				Activator.error(e.getMessage(), e);
 			}
 		}
 	}

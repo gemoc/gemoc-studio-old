@@ -16,6 +16,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.gemoc.commons.eclipse.ui.Activator;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
@@ -249,7 +250,7 @@ public class EventSchedulingTimeLineView extends AbstractTimelineView implements
 					addon.branch(choice);
 				}
 			} catch (ModelExecutionTracingException e) {
-				e.printStackTrace();
+				Activator.error(e.getMessage(), e);
 			}
 		}
 	}

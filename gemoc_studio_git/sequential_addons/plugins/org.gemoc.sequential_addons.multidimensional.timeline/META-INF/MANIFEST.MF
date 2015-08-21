@@ -29,7 +29,8 @@ Require-Bundle: org.gemoc.gemoc_language_workbench.api,
  org.gemoc.executionengine.ccsljava.api;bundle-version="1.0.0",
  org.gemoc.executionengine.ccsljava.engine,
  org.gemoc.executionframework.ui,
- org.gemoc.gemoc_modeling_workbench.ui
+ org.gemoc.gemoc_modeling_workbench.ui,
+ org.eclipse.ui.workbench
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.concurrent_addons.eventscheduling.timeline,
