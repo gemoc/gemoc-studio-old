@@ -13,8 +13,7 @@
 	</parent>
     <modules>
         <!-- plugins -->
-        <module>plugins/fr.obeo.timeline</module>
-        <module>plugins/fr.inria.aoste.timesquare.backend.vcdgenerator.gemocAdaptation</module>
+        <module>plugins/org.gemoc.sequential_addons.multidimensional.timeline</module>
         
         <!-- feature and update site -->
         <module>releng/org.gemoc.sequential_addons.feature</module>

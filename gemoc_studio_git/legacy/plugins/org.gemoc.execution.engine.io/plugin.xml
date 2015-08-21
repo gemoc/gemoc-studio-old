@@ -7,68 +7,8 @@
             id="org.gemoc.execution.engine.io.category"
             name="Gemoc">
       </category>
-      <view
-            category="org.gemoc.execution.engine.io.category"
-            class="org.gemoc.execution.engine.io.views.timeline.TimeLineView"
-            icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.execution.engine.io.views.timeline.TimeLineView"
-            name="Time Line">
-      </view>
 	</extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="org.eclipse.debug.ui.DebugPerspective">         
-         <view
-               id="org.gemoc.execution.engine.io.views.timeline.TimeLineView"
-               minimized="false"
-               ratio="0.5"
-               relationship="left"
-               relative="org.eclipse.ui.console.ConsoleView"
-               visible="true">
-         </view>
-      </perspectiveExtension>
-      <perspectiveExtension
-            targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
-         <view
-               id="org.gemoc.execution.engine.io.views.timeline.TimeLineView"
-               minimized="false"
-               ratio="0.5"
-               relationship="left"
-               relative="org.eclipse.ui.views.PropertySheet"
-               visible="true">
-         </view>
-      </perspectiveExtension>
-   </extension>
-   <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            allPopups="false"
-            locationURI="toolbar:org.gemoc.execution.engine.io.views.timeline.TimeLineView">
-         <command
-               commandId="org.gemoc.execution.engine.io.views.timeline.Follow"
-               icon="icons/play-4-16.png"
-               label="Follow"
-               style="toggle"
-               tooltip="Follow the last choice">
-         </command>
-      </menuContribution>
-   </extension>
-   <extension
-         point="org.eclipse.ui.commands">
-      <command
-            defaultHandler="fr.obeo.timeline.command.FollowHandler"
-            id="org.gemoc.execution.engine.io.views.timeline.Follow"
-            name="Follow">
-         <state
-               class="org.eclipse.ui.handlers.RegistryToggleState:true"
-               id="org.eclipse.ui.commands.toggleState">
-         </state>
-      </command>
-   </extension>
-
    
-
    <extension
          point="org.gemoc.gemoc_language_workbench.engine_addon">      
       <Addon

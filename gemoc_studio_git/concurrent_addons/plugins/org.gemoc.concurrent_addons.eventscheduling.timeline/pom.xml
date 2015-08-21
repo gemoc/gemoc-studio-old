@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <relativePath>../..</relativePath>
+    <groupId>org.gemoc.concurrent_addons</groupId>
+    <artifactId>org.gemoc.concurrent_addons.root</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>org.gemoc.concurrent_addons.eventscheduling.timeline</artifactId>
+  <packaging>eclipse-plugin</packaging>
+  <version>0.1.0-SNAPSHOT</version>
+</project>

@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views;
+package org.gemoc.executionframework.ui.utils;
 
 import org.eclipse.xtext.util.SimpleAttributeResolver;
 

@@ -15,6 +15,7 @@
         <!-- plugins -->
         <module>plugins/fr.obeo.timeline</module>
         <module>plugins/fr.inria.aoste.timesquare.backend.vcdgenerator.gemocAdaptation</module>
+        <module>plugins/org.gemoc.concurrent_addons.eventscheduling.timeline</module>
         
         <!-- feature and update site -->
         <module>releng/org.gemoc.concurrent_addons.feature</module>

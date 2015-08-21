@@ -1,4 +1,4 @@
-package org.gemoc.execution.engine.io.views.timeline;
+package org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline;
 
 import java.util.Set;
 import java.util.WeakHashMap;
