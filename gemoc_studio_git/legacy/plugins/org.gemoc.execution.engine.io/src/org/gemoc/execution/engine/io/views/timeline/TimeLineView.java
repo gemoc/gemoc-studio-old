@@ -23,7 +23,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
-import org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.ModelExecutionTracingAddon;
+import org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.EventSchedulingModelExecutionTracingAddon;
 import org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.ModelExecutionTracingException;
 import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
 import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
@@ -242,8 +242,8 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 	}
 
 	private void branchIfPossible(Choice choice) {
-		if (_currentEngine.hasAddon(ModelExecutionTracingAddon.class)) {
-			ModelExecutionTracingAddon addon = _currentEngine.getAddon(ModelExecutionTracingAddon.class);
+		if (_currentEngine.hasAddon(EventSchedulingModelExecutionTracingAddon.class)) {
+			EventSchedulingModelExecutionTracingAddon addon = _currentEngine.getAddon(EventSchedulingModelExecutionTracingAddon.class);
 			try {
 				Choice previousChoice = choice.getPreviousChoice();
 				Branch previousBranch = previousChoice.getBranch();

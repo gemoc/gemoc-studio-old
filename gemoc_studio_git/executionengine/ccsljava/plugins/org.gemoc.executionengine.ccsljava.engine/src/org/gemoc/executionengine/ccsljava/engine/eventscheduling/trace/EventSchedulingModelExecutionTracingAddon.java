@@ -52,7 +52,7 @@ import org.gemoc.gemoc_language_workbench.api.engine_addon.DefaultEngineAddon;
  *
  */
 @SuppressWarnings("restriction")
-public class ModelExecutionTracingAddon extends DefaultEngineAddon {
+public class EventSchedulingModelExecutionTracingAddon extends DefaultEngineAddon {
 
 	private IConcurrentExecutionContext _executionContext;
 	private IExecutionEngine _executionEngine;

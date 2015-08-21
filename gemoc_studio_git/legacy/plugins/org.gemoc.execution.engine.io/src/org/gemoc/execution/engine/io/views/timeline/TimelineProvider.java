@@ -9,7 +9,7 @@ import org.gemoc.execution.engine.trace.gemoc_execution_trace.ExecutionTraceMode
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Gemoc_execution_traceFactory;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.MSEOccurrence;
-import org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.ModelExecutionTracingAddon;
+import org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.EventSchedulingModelExecutionTracingAddon;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
@@ -20,7 +20,7 @@ import fr.obeo.timeline.view.AbstractTimelineProvider;
 public class TimelineProvider extends AbstractTimelineProvider implements IEngineAddon, IDisposable {
 
 	private IExecutionEngine _engine;
-	private ModelExecutionTracingAddon _tracingAddon;
+	private EventSchedulingModelExecutionTracingAddon _tracingAddon;
 	
 	public TimelineProvider(IExecutionEngine engine) {
 		_engine = engine;
@@ -29,9 +29,9 @@ public class TimelineProvider extends AbstractTimelineProvider implements IEngin
 	
 	private ExecutionTraceModel getExecutionTrace() {
 		ExecutionTraceModel traceModel = null;;
-		if (_engine.hasAddon(ModelExecutionTracingAddon.class))
+		if (_engine.hasAddon(EventSchedulingModelExecutionTracingAddon.class))
 		{
-			_tracingAddon = _engine.getAddon(ModelExecutionTracingAddon.class);
+			_tracingAddon = _engine.getAddon(EventSchedulingModelExecutionTracingAddon.class);
 			traceModel = _tracingAddon.getExecutionTrace();			
 		}
 		else

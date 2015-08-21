@@ -29,11 +29,11 @@
          point="org.gemoc.gemoc_language_workbench.engine_addon">
       <Addon
             AddonGroupId="Concurrent.AddonGroup"
-            Class="org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.ModelExecutionTracingAddon"
+            Class="org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.EventSchedulingModelExecutionTracingAddon"
             Default="true"
-            Name="Concurrent Execution tracing"
-            ShortDescription="Trace the LogicalStep decisions. Will open the concurrent timeline view to allow navigation in the trace and present the decision branches."
-            id="ExecutionTracing.Addon">
+            Name="Event Scheduling Execution Tracing"
+            ShortDescription="Trace the LogicalStep decisions in an event scheduling execution. Will open the concurrent timeline view to allow navigation in the trace and present the decision branches."
+            id="EventSchedulingExecutionTracing.Addon">
       </Addon>
    </extension>
 </plugin>
