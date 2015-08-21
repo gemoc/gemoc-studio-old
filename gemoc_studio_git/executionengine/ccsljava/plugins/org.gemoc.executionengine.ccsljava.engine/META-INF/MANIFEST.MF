@@ -21,4 +21,4 @@ Export-Package: org.gemoc.executionengine.ccsljava.engine,
  org.gemoc.executionengine.ccsljava.engine.deciders,
  org.gemoc.executionengine.ccsljava.engine.dsa.executors,
  org.gemoc.executionengine.ccsljava.engine.dse,
- org.gemoc.executionengine.ccsljava.engine.trace
+ org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace

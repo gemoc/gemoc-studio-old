@@ -29,7 +29,7 @@
          point="org.gemoc.gemoc_language_workbench.engine_addon">
       <Addon
             AddonGroupId="Concurrent.AddonGroup"
-            Class="org.gemoc.executionengine.ccsljava.engine.trace.ModelExecutionTracingAddon"
+            Class="org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.ModelExecutionTracingAddon"
             Default="true"
             Name="Concurrent Execution tracing"
             ShortDescription="Trace the LogicalStep decisions. Will open the concurrent timeline view to allow navigation in the trace and present the decision branches."
