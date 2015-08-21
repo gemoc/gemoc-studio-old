@@ -1,10 +1,8 @@
 package org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline;
 
-import java.util.Set;
 import java.util.WeakHashMap;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -18,14 +16,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
 import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
 import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
 import org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.EventSchedulingModelExecutionTracingAddon;
 import org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.ModelExecutionTracingException;
-import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
 import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
@@ -66,6 +62,8 @@ public class EventSchedulingTimeLineView extends AbstractTimelineView implements
 	public void init(IViewSite site) throws PartInitException {
 		super.init(site);
 		startListeningToEngineSelectionChange();
+		// initialize the view with the currently selected engine (stored by the EngineRegistry)
+		configure(org.gemoc.executionframework.ui.Activator.getDefault().getEngineSelectionManager().get_lastSelectedEngine());
 	}
 
 	@Override
@@ -104,18 +102,21 @@ public class EventSchedulingTimeLineView extends AbstractTimelineView implements
 
 
 	private void startListeningToEngineSelectionChange() {
-		org.gemoc.executionframework.ui.Activator.getDefault().addEngineSelectionListener(this);
+		org.gemoc.executionframework.ui.Activator.getDefault().getEngineSelectionManager().addEngineSelectionListener(this);
 	}
 
 	private void stopListeningToEngineSelectionChange() {
-		org.gemoc.executionframework.ui.Activator.getDefault().removeEngineSelectionListener(this);
+		org.gemoc.executionframework.ui.Activator.getDefault().getEngineSelectionManager().removeEngineSelectionListener(this);
 	}
 
 	private ITimelineProvider _timelineProvider;
 	private MouseListener _mouseListener = null;
 
 	public void configure(IExecutionEngine engine) {
-		if (_currentEngine != engine || _timelineProvider == null) {
+		if(engine == null) {
+			// TODO clear the view or leave it content set to the last engine ?
+		}
+		else if (_currentEngine != engine || _timelineProvider == null) {
 			saveStartIndex();
 			_currentEngine = engine;
 			disposeTimeLineProvider();

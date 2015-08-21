@@ -6,13 +6,11 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IWorkbenchPartSite;
-import org.gemoc.commons.eclipse.ui.ViewHelper;
 import org.gemoc.executionframework.ui.Activator;
-import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
 import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
+import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
-import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 
 public abstract class AbstractEngineAction extends Action  implements IMenuCreator, IEngineSelectionListener{
 
@@ -24,7 +22,7 @@ public abstract class AbstractEngineAction extends Action  implements IMenuCreat
 		init();
 		updateButton();
 		
-		Activator.getDefault().addEngineSelectionListener(this);
+		Activator.getDefault().getEngineSelectionManager().addEngineSelectionListener(this);
 	}
 	public AbstractEngineAction(int style){	
 		super("fake", style);
@@ -34,7 +32,7 @@ public abstract class AbstractEngineAction extends Action  implements IMenuCreat
 		init();
 		updateButton();
 		
-		Activator.getDefault().addEngineSelectionListener(this);
+		Activator.getDefault().getEngineSelectionManager().addEngineSelectionListener(this);
 	}
 	
 	protected void init(){
@@ -47,7 +45,7 @@ public abstract class AbstractEngineAction extends Action  implements IMenuCreat
 	@Override
 	public void dispose() 
 	{
-		Activator.getDefault().removeEngineSelectionListener(this);
+		Activator.getDefault().getEngineSelectionManager().removeEngineSelectionListener(this);
 	}
 	
 	protected void showMessage(IWorkbenchPartSite partSite, String message) {

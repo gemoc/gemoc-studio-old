@@ -35,11 +35,11 @@ public abstract class EngineSelectionDependentViewPart extends ViewPart implemen
 		// make sure the EngineStatusView is open
 		ViewHelper.retrieveView(EnginesStatusView.ID);
 		// register this view as listener
-		Activator.getDefault().addEngineSelectionListener(this);
+		Activator.getDefault().getEngineSelectionManager().addEngineSelectionListener(this);
 	}
 
 	protected void stopListeningToEngineSelectionChange() {
-		Activator.getDefault().removeEngineSelectionListener(this);
+		Activator.getDefault().getEngineSelectionManager().removeEngineSelectionListener(this);
 	}
 
 

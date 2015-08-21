@@ -1,6 +1,5 @@
 package org.gemoc.executionframework.ui.views.engine;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map.Entry;
 
@@ -342,7 +341,7 @@ public class EnginesStatusView extends ViewPart implements IEngineAddon, IEngine
 		
 	private void fireEngineSelectionChanged() {
 		IExecutionEngine engine = getSelectedEngine();
-		for(IEngineSelectionListener listener: Activator.getDefault().getEngineSelectionListeners()) {
+		for(IEngineSelectionListener listener: Activator.getDefault().getEngineSelectionManager().getEngineSelectionListeners()) {
 			listener.engineSelectionChanged(engine);
 		}
 	}
