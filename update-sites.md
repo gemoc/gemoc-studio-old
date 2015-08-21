@@ -63,7 +63,7 @@
 * http://eclipse.org/siriuslab/modelanimation/updatesite/  
 	* http://gemoc.org/updatesites/executionframework/
 	* http://gemoc.org/updatesites/executionengine/java
-	* http://gemoc.org/updatesites/modelanimation/
+	* http://gemoc.org/updatesites/siriusmodelanimation/
 	* http://gemoc.org/updatesites/tracemanager/
 	* http://gemoc.org/updatesites/omniscientdebugging/
 
