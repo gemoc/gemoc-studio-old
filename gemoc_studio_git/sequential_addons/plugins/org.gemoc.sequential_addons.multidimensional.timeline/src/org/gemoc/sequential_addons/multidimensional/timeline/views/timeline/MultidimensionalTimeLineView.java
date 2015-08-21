@@ -18,15 +18,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.commons.eclipse.ui.Activator;
-import org.gemoc.commons.eclipse.ui.ViewHelper;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.Branch;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.Choice;
-import org.gemoc.execution.engine.trace.gemoc_execution_trace.LogicalStep;
-import org.gemoc.executionengine.ccsljava.api.core.INonDeterministicExecutionEngine;
-import org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.EventSchedulingModelExecutionTracingAddon;
-import org.gemoc.executionengine.ccsljava.engine.eventscheduling.trace.ModelExecutionTracingException;
-import org.gemoc.executionframework.ui.views.engine.EnginesStatusView;
 import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
@@ -38,9 +29,9 @@ import fr.obeo.timeline.editpart.TimelineEditPartFactory;
 import fr.obeo.timeline.view.AbstractTimelineView;
 import fr.obeo.timeline.view.ITimelineProvider;
 
-public class TimeLineView extends AbstractTimelineView implements IEngineSelectionListener {
+public class MultidimensionalTimeLineView extends AbstractTimelineView implements IEngineSelectionListener {
 
-	public static final String ID = "org.gemoc.execution.engine.io.views.timeline.TimeLineView";
+	public static final String ID = "org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.TimeLineView";
 
 	public static final String FOLLOW_COMMAND_ID = "org.gemoc.execution.engine.io.views.timeline.Follow";
 
@@ -57,7 +48,7 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 
 	private WeakHashMap<IExecutionEngine, Integer> _positions = new WeakHashMap<IExecutionEngine, Integer>();
 
-	public TimeLineView() {
+	public MultidimensionalTimeLineView() {
 		_contentProvider = new AdapterFactoryContentProvider(adapterFactory);
 		_labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 	}
@@ -102,7 +93,6 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 		getTimelineViewer().getControl().addMouseListener(_mouseListener);
 	}
 
-	private EnginesStatusView _enginesStatusView;
 
 	private void startListeningToMotorSelectionChange() {
 		org.gemoc.executionframework.ui.Activator.getDefault().getEngineSelectionManager().addEngineSelectionListener(this);
@@ -124,17 +114,12 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 				int start = getStartIndex(engine);
 				
 				// We first look for trace addons
-				Set<ITraceAddon> traceAddons = engine.getAddonsTypedBy(ITraceAddon.class);
-				if (!traceAddons.isEmpty())
+				Set<IMultiDimensionalTraceAddon> traceAddons = engine.getAddonsTypedBy(IMultiDimensionalTraceAddon.class);
+				if (!traceAddons.isEmpty()){
 					_timelineProvider = traceAddons.iterator().next().getTimeLineProvider();
 
-				// If using a trace addon did not work, we fallback to the Gemoc trace
-				if (_timelineProvider == null) {
-					_timelineProvider = new TimelineProvider(engine);
+					setTimelineProvider(_timelineProvider, start);
 				}
-
-				setTimelineProvider(_timelineProvider, start);
-
 			}
 		}
 	}
@@ -201,7 +186,7 @@ public class TimeLineView extends AbstractTimelineView implements IEngineSelecti
 			if (selected instanceof PossibleStepEditPart) {
 				final Object o1 = ((PossibleStepEditPart) selected).getModel().getChoice2();
 				//Object o2 = ((PossibleStepEditPart) selected).getModel().getPossibleStep();
-				for (ITraceAddon traceAddon : _currentEngine.getAddonsTypedBy(ITraceAddon.class)) {
+				for (IMultiDimensionalTraceAddon traceAddon : _currentEngine.getAddonsTypedBy(IMultiDimensionalTraceAddon.class)) {
 					if (o1 instanceof EObject)
 						traceAddon.goTo((EObject) o1);
 				}

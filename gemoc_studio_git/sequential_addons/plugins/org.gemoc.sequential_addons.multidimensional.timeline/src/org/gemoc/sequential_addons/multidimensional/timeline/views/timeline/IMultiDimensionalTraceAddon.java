@@ -5,7 +5,7 @@ import org.gemoc.gemoc_language_workbench.api.engine_addon.IEngineAddon;
 
 import fr.obeo.timeline.view.ITimelineProvider;
 
-public interface ITraceAddon extends IEngineAddon{
+public interface IMultiDimensionalTraceAddon extends IEngineAddon{
 
 	void goTo(EObject o1);
 	
