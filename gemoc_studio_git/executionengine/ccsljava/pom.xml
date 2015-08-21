@@ -15,6 +15,7 @@
         <!-- plugins -->
         <module>plugins/org.gemoc.executionengine.ccsljava.api</module>
         <module>plugins/org.gemoc.executionengine.ccsljava.engine</module>
+        <module>plugins/org.gemoc.executionengine.ccsljava.stimuli_scenario.model</module>
         <module>plugins/org.gemoc.gemoc_language_workbench.conf.model</module>
         <module>plugins/org.gemoc.gemoc_language_workbench.conf.model.edit</module>
         <module>plugins/org.gemoc.gemoc_language_workbench.conf.model.editor</module>
