@@ -1,7 +1,0 @@
-bin
-target
-build.acceleo
-.metadata
-*._trace
-**/gemoc-gen/*
-**/xtend-gen/*
