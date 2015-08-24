@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-  <extension point="org.gemoc.gemoc_language_workbench.xdsml">
-    <XDSML_Definition codeExecutor_class="tfsmplainK3.xdsml.api.impl.TfsmplainK3CodeExecutor" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader" toCCSLQVTOFilePath="" solver_class="org.gemoc.gemoc_language_workbench.extensions.k3.K3Solver" name="tfsmplainK3" xdsmlFilePath="/org.gemoc.sample.tfsm.plaink3.xdsml/project.xdsml" />
-  </extension>
-</plugin>
