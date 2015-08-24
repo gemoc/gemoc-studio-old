@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   <extension-point id="fr.obeo.dsl.fuml.library" name="%extension-point.name" schema="schema/fr.obeo.dsl.fuml.library.exsd"/>
-   <extension-point id="fr.obeo.dsl.fuml.services" name="SystemServices" schema="schema/fr.obeo.dsl.fuml.services.exsd"/>
-
-</plugin>

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<doc:Documentation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:doc="http://www.eclipse.org/papyrus/documentation/plugin/documentation" description="A straightforward implementation of fUML 1.1 Execution Model.&#xD;&#xA;Contributes to &quot;Moka execution engine&quot; extension point.">
-  <referent firstName="Arnaud" lastName="Cuccuru" eMail="arnaud.cuccuru@cea.fr" currentCompany="CEA LIST"/>
-</doc:Documentation>
