@@ -1,6 +1,0 @@
-[comment encoding = UTF-8 /]
-[module services('http://www.eclipse.org/emf/2002/Ecore', 'http://www.obeo.fr/dsl/plugin')/]
-
-[query public getDoc(arg0 : EModelElement) : String
-	= invoke('fr.obeo.dsl.plugin.gen.query.Services', 'getDoc(org.eclipse.emf.ecore.EModelElement)', Sequence{arg0}) /]
-

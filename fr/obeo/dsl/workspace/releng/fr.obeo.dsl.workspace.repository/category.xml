@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/fr.obeo.dsl.workspace.feature_1.0.0.qualifier.jar" id="fr.obeo.dsl.workspace.feature" version="1.0.0.qualifier">
-      <category name="Workspace_DSL"/>
-   </feature>
-   <category-def name="Workspace_DSL" label="Workspace DSL"/>
-</site>
