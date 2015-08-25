@@ -1,0 +1,87 @@
+AutomataConstraintLibrary TFSMMoCC{ 
+	import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+	import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as CCSLLib;
+	
+	RelationLibrary automataBasedTFSMRelations{
+
+		AutomataRelationDefinition EventGuardedTransitionDef[EventGuardedTransition]{
+
+			init:  EGT_initialState
+
+			from EGT_initialState to EGT_waitingEntry : EGT_init2waiting ->()
+
+			from EGT_waitingEntry to EGT_readyToFire : EGT_waitingEntryToreadyToFire
+			-> ( when EGT_stateEntry )
+
+			from EGT_readyToFire to EGT_waitingEntry : EGT_readyToFireTowaitingEntry
+			-> ( when EGT_reset)
+
+			from EGT_readyToFire to EGT_waitingEntry : EGT_readyToFireTowaitingEntry2
+			-> ( when EGT_trigger,EGT_fire)
+
+			from EGT_waitingEntry to EGT_waitingEntry :
+			EGT_waitingEntryToEGT_waitingEntry
+			-> ( when EGT_reset )
+
+			from EGT_waitingEntry to EGT_waitingEntry :
+			EGT_waitingEntryToEGT_waitingEntry2
+			-> ( when EGT_trigger )
+
+			State EGT_initialState ( out : EGT_init2waiting )
+
+			State EGT_waitingEntry ( in : EGT_init2waiting, EGT_readyToFireTowaitingEntry,
+			EGT_readyToFireTowaitingEntry2, EGT_waitingEntryToEGT_waitingEntry,
+			EGT_waitingEntryToEGT_waitingEntry2 out : EGT_waitingEntryToreadyToFire,
+			EGT_waitingEntryToEGT_waitingEntry, EGT_waitingEntryToEGT_waitingEntry2 )
+
+			State EGT_readyToFire ( in : EGT_waitingEntryToreadyToFire out :
+			EGT_readyToFireTowaitingEntry, EGT_readyToFireTowaitingEntry2 )
+		}
+
+		AutomataRelationDefinition TemporalGuardedTransitionDef[TemporalGuardedTransition]{
+
+			variables {
+			Integer currentCounter = 0	
+			}
+			
+			init:  TGT_initialState
+
+			from TGT_initialState to TGT_waitingEntry : TGT_init2waiting ->( do currentCounter = zero)
+
+			from TGT_waitingEntry to TGT_waitTimeToFire : TGT_waitingEntryToreadyToFire
+			-> ( when TGT_stateEntry do currentCounter = zero )
+
+			from TGT_waitTimeToFire to TGT_waitingEntry : TGT_readyToFireTowaitingEntry
+			-> ( when TGT_reset do currentCounter = zero)
+
+			from TGT_waitTimeToFire to TGT_waitingEntry : TGT_readyToFireTowaitingEntry2
+			-> ( when TGT_fire if (currentCounter == TGT_duration.value ) do
+			currentCounter = zero )
+
+			from TGT_waitingEntry to TGT_waitingEntry :
+			TGT_waitingEntryToTGT_waitingEntry
+			-> ( when TGT_timeRef )
+
+			from TGT_waitTimeToFire to TGT_waitTimeToFire :
+			TGT_waitTimeToFireToTGT_waitTimeToFire
+			-> ( when TGT_timeRef if ( currentCounter < TGT_duration .value ) do currentCounter = ( currentCounter + one ) )
+
+			from TGT_waitingEntry to TGT_waitingEntry :
+			TGT_waitingEntryToTGT_waitingEntry2
+			-> ( when TGT_reset )
+
+			State TGT_initialState ( out : TGT_init2waiting )
+
+			State TGT_waitingEntry ( in : TGT_init2waiting, TGT_readyToFireTowaitingEntry,
+			TGT_readyToFireTowaitingEntry2, TGT_waitingEntryToTGT_waitingEntry,
+			TGT_waitingEntryToTGT_waitingEntry2 out : TGT_waitingEntryToreadyToFire, TGT_waitingEntryToTGT_waitingEntry, TGT_waitingEntryToTGT_waitingEntry2 )
+
+			State TGT_waitTimeToFire ( in : TGT_waitingEntryToreadyToFire,
+			TGT_waitTimeToFireToTGT_waitTimeToFire out :
+			TGT_readyToFireTowaitingEntry, TGT_readyToFireTowaitingEntry2,
+			TGT_waitTimeToFireToTGT_waitTimeToFire )
+		}
+		RelationDeclaration EventGuardedTransition(EGT_stateEntry:clock, EGT_trigger:clock, EGT_reset:clock, EGT_fire:clock)
+		RelationDeclaration TemporalGuardedTransition(TGT_stateEntry:clock, TGT_timeRef:clock, TGT_reset:clock, TGT_duration:int, TGT_fire:clock)
+	}
+}

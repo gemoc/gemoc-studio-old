@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated sigpml -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.gemoc.sample.sigpml.presentation.SigpmlModelWizardID"
+            name="%_UI_SigpmlModelWizard_label"
+            class="org.gemoc.sample.sigpml.presentation.SigpmlModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/SigpmlModelFile.gif">
+         <description>%_UI_SigpmlModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated sigpml -->
+      <editor
+            id="org.gemoc.sample.sigpml.presentation.SigpmlEditorID"
+            name="%_UI_SigpmlEditor_label"
+            icon="icons/full/obj16/SigpmlModelFile.gif"
+            extensions="sigpml"
+            class="org.gemoc.sample.sigpml.presentation.SigpmlEditor"
+            contributorClass="org.gemoc.sample.sigpml.presentation.SigpmlActionBarContributor">
+      </editor>
+   </extension>
+</plugin>

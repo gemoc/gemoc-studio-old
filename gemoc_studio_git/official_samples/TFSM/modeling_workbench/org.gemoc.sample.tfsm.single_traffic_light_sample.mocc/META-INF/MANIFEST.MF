@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Single Traffic Light MoCC
+Bundle-SymbolicName: org.gemoc.sample.tfsm.single_traffic_light_sample.mocc
+Bundle-Version: 0.1.0.qualifier
+Export-Package: org.gemoc.sample.tfsm.single_traffic_light_sample.mocc.TrafficControl.blocks,
+ org.gemoc.sample.tfsm.single_traffic_light_sample.mocc.expressions,
+ org.gemoc.sample.tfsm.single_traffic_light_sample.mocc.main,
+ org.gemoc.sample.tfsm.single_traffic_light_sample.mocc.models,
+ org.gemoc.sample.tfsm.single_traffic_light_sample.mocc.relations,
+ org.gemoc.sample.tfsm.single_traffic_light_sample.mocc.tests
+Require-Bundle: fr.inria.aoste.timesquare.ccslkernel.runtime,
+ fr.inria.aoste.timesquare.javabdd.runtime,
+ fr.inria.aoste.timesquare.simulationpolicy,
+ org.junit
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

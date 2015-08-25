@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: GEMOC Commons Eclipse
+Bundle-SymbolicName: org.gemoc.commons.eclipse;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
+ org.gemoc.commons;bundle-version="0.1.0";visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: org.gemoc.commons.eclipse.core.resources,
+ org.gemoc.commons.eclipse.emf,
+ org.gemoc.commons.eclipse.logging,
+ org.gemoc.commons.eclipse.logging.backends,
+ org.gemoc.commons.eclipse.resource.merging
+Import-Package: org.eclipse.core.resources
+Bundle-Vendor: INRIA

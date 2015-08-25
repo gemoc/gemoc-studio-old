@@ -1,0 +1,28 @@
+StateRelationBasedLibrary CSPStateBasedLib{
+	imports{ 
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as ccsl;
+	}
+	RelationLibrary newRelationLib1 {
+		
+		StateBasedRelationDefinition AlternateSateDefinition [ Alternate ] {
+			init:  initialState
+			
+		    from initialState to alternate_S1 : doInit ( )
+			from alternate_S1 to alternate_S2 : ^leftClock ( when leftclock ) 
+			
+			from alternate_S2 to alternate_S1 : ^rightClock (when rightclock ) 
+			
+			State initialState ( out : doInit )
+			
+			State alternate_S1 ( in : doInit,
+			^rightClock out : ^leftClock ) 
+			
+			State alternate_S2 ( in : ^leftClock out :
+			^rightClock )
+		}
+		
+		RelationDeclaration Alternate ( leftclock : clock,
+		rightclock : clock )
+	}
+}

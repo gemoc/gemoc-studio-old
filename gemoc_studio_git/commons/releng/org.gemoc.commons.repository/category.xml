@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.gemoc.commons.feature_0.1.0.qualifier.jar" id="org.gemoc.commons.feature" version="0.1.0.qualifier">
+      <category name="gemoc_commons"/>
+   </feature>
+   <feature url="features/org.gemoc.commons.feature.source_0.1.0.qualifier.jar" id="org.gemoc.commons.feature.source" version="0.1.0.qualifier">
+      <category name="gemoc_commons"/>
+   </feature>
+   <category-def name="gemoc_commons" label="Gemoc Commons"/>
+</site>

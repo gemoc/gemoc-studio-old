@@ -1,0 +1,169 @@
+
+
+Version 2013.10.01.22.02.50	released on 2013/10/02
+
+	Threads.getLastMinuteLoadAverage() had problems with parsing the output of the "uptime" command
+		when the decimal separator is ',' instead of '.'. Fixed
+		
+	Introduction of the addComputerLoadListener(ComputerLoadListener l) method for dynamically monitoring
+		of the system load
+		
+
+Version 2013.12.10.14.38.56	released on 2013/12/10
+
+
+
+Version 2013.12.10.15.33.47	released on 2013/12/10
+
+
+
+Version 2013.12.10.15.54.50	released on 2013/12/10
+
+
+
+Version 2014.01.28.15.57.08	released on 2014/01/28
+
+
+
+Version 2014.01.28.16.07.59	released on 2014/01/28
+
+
+
+Version 2014.01.28.16.23.52	released on 2014/01/28
+
+
+
+Version 2014.01.28.16.25.30	released on 2014/01/28
+
+
+
+Version 2014.01.28.16.26.48	released on 2014/01/28
+
+
+
+Version 2014.01.28.16.27.47	released on 2014/01/28
+
+
+
+Version 2014.01.28.16.56.46	released on 2014/01/28
+
+
+
+Version 2014.01.28.17.02.04	released on 2014/01/28
+
+
+
+Version 2014.01.28.17.06.21	released on 2014/01/28
+
+
+
+Version 2014.01.28.17.07.00	released on 2014/01/28
+
+
+
+Version 2014.01.28.17.08.10	released on 2014/01/28
+
+
+
+Version 2014.01.28.17.08.31	released on 2014/01/28
+
+
+
+Version 2014.01.28.17.11.24	released on 2014/01/28
+
+
+
+Version 2014.01.28.17.14.21	released on 2014/01/28
+
+
+
+Version 2014.01.29.18.15.36	released on 2014/01/29
+
+
+
+Version 2014.01.29.18.24.14	released on 2014/01/29
+
+
+
+Version 2014.01.29.18.25.08	released on 2014/01/29
+
+
+
+Version 2014.01.29.18.26.57	released on 2014/01/29
+
+
+
+Version 2014.01.29.18.27.33	released on 2014/01/29
+
+
+
+Version 2014.01.29.18.28.24	released on 2014/01/30
+
+
+
+Version 2014.01.30.13.03.36	released on 2014/01/30
+
+
+
+Version 2014.01.30.14.56.51	released on 2014/01/30
+
+
+
+Version 2014.01.30.14.57.46	released on 2014/01/30
+
+
+
+Version 2014.01.30.15.32.49	released on 2014/01/30
+
+
+
+Version 2014.01.30.15.59.26	released on 2014/01/30
+
+
+
+Version 2014.01.30.16.00.05	released on 2014/01/30
+
+
+
+Version 2014.01.30.16.06.47	released on 2014/01/30
+
+
+
+Version 2014.01.30.16.09.43	released on 2014/01/30
+
+
+
+Version 2014.01.30.16.22.17	released on 2014/01/30
+
+
+
+Version 2014.01.30.16.22.42	released on 2014/01/30
+
+
+
+Version 2014.01.30.16.23.05	released on 2014/01/30
+
+
+
+Version 2014.01.30.16.23.44	released on 2014/01/30
+
+
+
+Version 2014.01.30.13.03.36	released on 2014/01/30
+
+
+
+Version 2014.01.31.08.22.17	released on 2014/01/31
+
+
+
+Version 2014.01.31.08.22.17	released on 2014/01/31
+
+
+
+Version 2014.01.31.11.50.23	released on 2014/01/31
+
+
+
+Version 2014.01.31.11.50.23	released on 2014/01/31
+

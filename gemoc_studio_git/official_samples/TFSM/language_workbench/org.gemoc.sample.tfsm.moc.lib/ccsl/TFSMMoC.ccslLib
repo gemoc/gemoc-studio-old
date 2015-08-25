@@ -1,0 +1,91 @@
+/*
+ * TFSM Model of Computation helper
+ * @author: Julien Deantoni
+ * date : Sun September 30 2012
+ */
+Library extraExpressions{ 
+
+	imports{ 
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as CCSLLib;
+	}
+	
+	RelationLibrary TFSM_relations{
+
+		RelationDefinition BooleanGuardedTransitionRuleDef[BooleanGuardedTransitionRule]{
+      Expression  ResEvalGuard = Union(Clock1->resTrue, Clock2->resFalse)
+      Relation EitherFalseOrTrue[Exclusion (Clock2->resTrue, Clock1->resFalse)
+      Relation evalCausesResult[Alternates (AlternatesLeftClock->evaluateGuard,AlternatesRightClock->ResEvalGuard)
+    }
+//		RelationDefinition TemporalTransitionDef[TemporalTransition]{
+//      Sequence TemporalTransition_delaySequence = (IntegerVariableRef[TemporalTransition_delay])
+//      Expression TemporalTransition_doItOnce=Defer(BaseClock->TemporalTransition_MakeFireable, DelayClock->TemporalTransition_RefClock, DelayPatternExpression->TemporalTransition_delaySequence)
+//      Expression TemporalTransition_doIt=RecursiveConcatenation( RecursiveConcatenation_dyingExpr->TemporalTransition_doItOnce)
+//      Expression TemporalTransition_ResOnce=UpTo(ClockToFollow->TemporalTransition_doItOnce, KillerCLock->TemporalTransition_Reset)
+//      Relation TemporalTransition_DeathPropagation[Coincides] (Clock2->TemporalTransition_ResOnce, Clock1->TemporalTransition_doItOnce)
+//      Expression TemporalTransition_Res=RecursiveConcatenation( RecursiveConcatenation_dyingExpr->TemporalTransition_ResOnce)
+//      Relation TemporalTransition_ResExported[Coincides] (Clock2->TemporalTransition_Fire, Clock1->TemporalTransition_doItOnce)//Res)
+//    }
+//		RelationDefinition EventTransitionDef[EventTransition]{
+//      Expression EventTransition_doItOnce=SampledOn(SampledOnSampledClock->EventTransition_MakeFireable, SampledOnTrigger->EventTransition_Trigger)
+//      Expression EventTransition_doIt=RecursiveConcatenation( RecursiveConcatenation_dyingExpr->EventTransition_doItOnce)
+//      Expression EventTransition_ResOnce=UpTo(ClockToFollow->EventTransition_doItOnce, KillerCLock->EventTransition_Reset)
+//      Relation EventTransition_DeathPropagation[Coincides] (Clock2->EventTransition_ResOnce, Clock1->EventTransition_doItOnce)
+//      Expression EventTransition_Res=RecursiveConcatenation( RecursiveConcatenation_dyingExpr->EventTransition_ResOnce)
+//      Relation EventTransition_ResExported[Coincides] (Clock2->EventTransition_Fire, Clock1->EventTransition_Res)
+//    }
+		RelationDefinition FSMEventRendezVousDef[FSMEventRendezVous]{
+      Relation RendezVous[Coincides] (Clock2->FSMEventRendezVous_Clock1, Clock1->FSMEventRendezVous_Clock2)
+    }
+		RelationDefinition FSMEventSendReceiveDef[FSMEventSendReceive]{
+      Relation EventSendReceive[Precedes] (LeftClock->FSMEventRendezVous_LeftClock, RightClock->FSMEventRendezVous_RightClock)
+    }
+		RelationDeclaration BooleanGuardedTransitionRule(evaluateGuard:clock, resTrue:clock, resFalse:clock) 
+//		RelationDeclaration TemporalTransition(TemporalTransition_MakeFireable:clock, TemporalTransition_RefClock:clock, TemporalTransition_Reset:clock, TemporalTransition_delay:int, TemporalTransition_Fire:clock) 
+//		RelationDeclaration EventTransition(EventTransition_MakeFireable:clock, EventTransition_Trigger:clock, EventTransition_Reset:clock, EventTransition_Fire:clock) 
+		RelationDeclaration FSMEventRendezVous(FSMEventRendezVous_Clock1:clock, FSMEventRendezVous_Clock2:clock)
+		RelationDeclaration FSMEventSendReceive(FSMEventRendezVous_LeftClock:clock, FSMEventRendezVous_RightClock:clock)
+
+	
+	
+	
+		RelationDeclaration WeakAlternates(WeakAlternatesLeftClock:clock, WeakAlternatesRightClock:clock) 			
+		RelationDefinition WeakAlternatesDef[WeakAlternates]{
+				//c1 <= c2
+				Relation WeakAlt_c1PrecedesC2[Causes]
+					(LeftClock -> WeakAlternatesLeftClock
+					,RightClock -> WeakAlternatesRightClock)
+				
+				Sequence WeakseqOneInfinite:IntegerSequence = (one=1) 
+
+				// c1 delayedBy (1)
+				Expression WeakAlt_c1DelayedByOne=Defer
+					(BaseClock -> WeakAlternatesLeftClock,
+					DelayClock -> WeakAlternatesLeftClock,
+					DelayPatternExpression -> WeakseqOneInfinite)
+				
+				
+				//c2 <= (c1 delayedBy (1))
+				Relation WeakAlt_c2precedesC1DelayedByOne[Causes]
+					(LeftClock -> WeakAlternatesRightClock,
+					RightClock -> WeakAlt_c1DelayedByOne)
+				
+										
+			}
+	}
+	ExpressionLibrary usefullTFSMExpressions{
+
+		ExpressionDeclaration RecursiveConcatenation(RecursiveConcatenation_dyingExpr:clock):clock
+		ExpressionDefinition RecursiveConcatenationDef [RecursiveConcatenation]
+		{
+			root=RecursiveConcatenation_concat
+			Expression RecursiveConcatenation_concat = Concatenation
+						( LeftClock -> RecursiveConcatenation_dyingExpr, 
+						 RightClock-> RecursiveConcatenation_concat )
+		//	Expression RecursiveConcatenation_tmp=Union( Clock1-> RecursiveConcatenation_dyingExpr ,Clock2-> RecursiveConcatenation_dyingExpr  )
+			//Relation RecursiveConcatenation_deathPropagation[Coincides](   Clock2-> RecursiveConcatenation_dyingExpr , Clock1-> RecursiveConcatenation_tmp  )
+
+  		}
+
+	}
+}

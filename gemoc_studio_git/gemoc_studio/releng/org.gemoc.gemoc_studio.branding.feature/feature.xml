@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.gemoc.gemoc_studio.branding.feature"
+      label="Gemoc Studio Main Features"
+      version="1.0.0.qualifier"
+      provider-name="GEMOC"
+      plugin="org.gemoc.gemoc_studio.branding">
+
+   <description url="http://www.gemoc.org">
+      List of features in Gemoc Studio that are part of the core of the Gemoc process.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.xtext.sdk" version="2.5.4" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtend.sdk" version="2.5.4" match="greaterOrEqual"/>
+      <import feature="org.eclipse.ocl.all.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecoretools.sdk" version="2.0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.concurrentviews.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.commons.feature" version="0.1.0.qualifier"/>
+      <import feature="org.gemoc.executionengine.ccsljava.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.executionengine.ccsljava.runtime.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.executionengine.ccsljava.runtime.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.executionframework.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.executionframework.executioncontext.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.legacy.feature" version="0.1.0.qualifier"/>
+      <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.sirius.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.core.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.power.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.vcd.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.codeexecution.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.launcher.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.ccslkernel.clocktree.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.nobackend.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.obeoviewpointanimator.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.ecl.feature" version="1.0.0.201403211604" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.doc.feature" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.eef" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.xtext" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ocl" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.specifier.ide.ui" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.gemoc.mocc.feature" version="0.0.0" match="greaterOrEqual"/>
+<!--      <import feature="fr.obeo.dsl.process.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.process.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.workspace.feature" version="0.0.0" match="greaterOrEqual"/> -->
+      <import feature="org.eclipse.e4.rcp" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.diverse.melange.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.diverse.trace.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.diverse.trace.gemoc.feature" version="0.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.gemoc.gemoc_studio.branding"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>

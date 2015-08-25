@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.gemoc.sample.tfsm:TimedSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.gemoc.sample.tfsm="http://www.gemoc.org/sample/tfsm" name="TrafficControl">
+  <tfsms name="Semaphore" initialState="//@tfsms.0/@ownedStates.0">
+    <ownedStates name="initSemaphore" outgoingTransitions="//@tfsms.0/@ownedTransitions.0"/>
+    <ownedStates name="Red" outgoingTransitions="//@tfsms.0/@ownedTransitions.1" incomingTransitions="//@tfsms.0/@ownedTransitions.0 //@tfsms.0/@ownedTransitions.2"/>
+    <ownedStates name="Green" outgoingTransitions="//@tfsms.0/@ownedTransitions.2" incomingTransitions="//@tfsms.0/@ownedTransitions.1"/>
+    <ownedTransitions name="initSemaphore_to_Red" source="//@tfsms.0/@ownedStates.0" target="//@tfsms.0/@ownedStates.1" action="dosomething">
+      <ownedGuard xsi:type="org.gemoc.sample.tfsm:TemporalGuard" name="guard_InitSemaphore_to_Red" onClock="//@globalClocks.0" afterDuration="1"/>
+    </ownedTransitions>
+    <ownedTransitions name="Red_to_Green" source="//@tfsms.0/@ownedStates.1" target="//@tfsms.0/@ownedStates.2" action="doGreen">
+      <ownedGuard xsi:type="org.gemoc.sample.tfsm:TemporalGuard" name="guard_Red_to_Green" onClock="//@globalClocks.0" afterDuration="3"/>
+    </ownedTransitions>
+    <ownedTransitions name="Green_to_Red" source="//@tfsms.0/@ownedStates.2" target="//@tfsms.0/@ownedStates.1" action="doRed">
+      <ownedGuard xsi:type="org.gemoc.sample.tfsm:EventGuard" name="guard_Green_to_Red" triggeringEvent="//@globalEvents.0"/>
+    </ownedTransitions>
+  </tfsms>
+  <globalClocks name="minutes"/>
+  <globalEvents name="switch" sollicitingTransitions="//@tfsms.0/@ownedTransitions.2"/>
+</org.gemoc.sample.tfsm:TimedSystem>

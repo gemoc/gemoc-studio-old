@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<conf:LanguageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:conf="http://www.gemoc.org/gemoc_language_workbench_conf" name="tfsmplainK3">
+  <dsaProject projectName="org.gemoc.sample.tfsm.plaink3.dsa" codeExecutorClass=""/>
+  <domainModelProject projectName="org.gemoc.sample.tfsm.plaink3.model" defaultRootEObjectQualifiedName="tfsm::TimedSystem" genmodeluri="platform:/resource/org.gemoc.sample.tfsm.plaink3.model/model/tfsm.genmodel"/>
+  <editorProjects xsi:type="conf:SiriusEditorProject" projectName="org.gemoc.sample.tfsm.plaink3.design">
+    <fileExtension>sigpml</fileExtension>
+    <fileExtension>SigPML</fileExtension>
+  </editorProjects>
+  <moCCProject projectName=""/>
+  <animatorProjects xsi:type="conf:SiriusAnimatorProject" projectName="org.gemoc.sample.tfsm.plaink3.design"/>
+  <dSEProject qvtoURI=""/>
+</conf:LanguageDefinition>

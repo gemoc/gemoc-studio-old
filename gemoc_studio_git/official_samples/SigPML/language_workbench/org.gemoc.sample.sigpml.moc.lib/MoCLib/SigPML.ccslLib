@@ -1,0 +1,156 @@
+/*
+ * the SigPML MoCC Library
+ * @author: Julien Deantoni
+ * date : Sun September 04 2011  15:03:42 CEST
+ * modified on Thu January 2014 to add AgentExecutionRelation 
+ */
+
+Library SDF{
+
+	imports{ 
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as kernel;
+	}
+
+				
+	RelationLibrary SigPML_Relations{
+		/*
+		 * Constraint associated with the execution time of the agent
+		 */
+		
+		RelationDeclaration AgentExecution(AgentExecution_start:clock, AgentExecution_stop:clock, AgentExecution_refTime:clock, AgentExecution_execTime:int)
+		RelationDefinition AgentExecutionDef[AgentExecution]{
+			Sequence AgentExecution_ByExecTime=(IntegerVariableRef[AgentExecution_execTime])
+			Expression AgentExecution_refFilteredByExecTime=FilterBy( FilterByClock-> AgentExecution_refTime ,FilterBySeq-> AgentExecution_ByExecTime  )
+			Relation AgentExecution_stopAfterExecTime[Coincides](   Clock2-> AgentExecution_stop , Clock1-> AgentExecution_refFilteredByExecTime  )
+			
+			Sequence AgentExecution_StartThenByExecTime=1(IntegerVariableRef[AgentExecution_execTime])
+			Expression AgentExecution_refFilteredStartThenByExecTime=FilterBy( FilterByClock-> AgentExecution_refTime ,FilterBySeq-> AgentExecution_StartThenByExecTime)
+			Relation AgentExecution_stopAfterExecTime[Coincides](   Clock2-> AgentExecution_start , Clock1-> AgentExecution_refFilteredStartThenByExecTime  )
+
+		}
+		
+		/*
+		 * Constraint associated with the token manipulation
+		 */
+		RelationDeclaration Token(Token_write:clock, Token_read:clock, Token_delay:int)
+		ConditionalRelationDefinition TokenDef[Token]{
+			Integer zero=0
+			
+			Expression Token_readDelayedForDelay=DelayFor( DelayForClockToDelay-> Token_read,
+													 DelayForClockForCounting-> Token_read,
+													 DelayForDelay-> Token_delay
+			)
+			
+			switch{
+				case IntInf{
+					leftValue IntegerVariableRef[Token_delay]
+					rightValue IntegerRef[one]
+					}:
+					Relation Token_causalityImmediate1[Precedes](LeftClock-> Token_write, RightClock-> Token_read)
+					
+					case IntSup{
+					leftValue IntegerVariableRef[Token_delay]
+					rightValue IntegerRef[zero]
+					}:
+					Relation Token_causalityImmediate2[Precedes](LeftClock-> Token_write, RightClock-> Token_readDelayedForDelay)
+				}default Relation Token_causalityDelayed[Coincides](Clock1-> Token_write, Clock2-> Token_write)
+		}
+				
+		
+		
+		
+		/*
+		 * Constraints associated to each input
+		 */
+		RelationDeclaration PlaceRate(Place_inputPortread:clock, Place_push:clock, Place_weightPlusOne:int, Place_delayPlusOne:int)
+		RelationDefinition PlaceRateDef[PlaceRate]{
+			Sequence Place_ByWeightPlusOne=(IntegerVariableRef[Place_weightPlusOne])
+			Sequence Place_oneThenByWeightPlusOne=IntegerVariableRef[Place_delayPlusOne](IntegerVariableRef[Place_weightPlusOne])
+						
+			Expression Place_pushByWeightPlusOne=FilterBy( FilterByClock->Place_push,
+													FilterBySeq-> Place_ByWeightPlusOne
+			)
+			Expression Place_readOneThenByWeightPlusOne=FilterBy( FilterByClock->Place_inputPortread,
+													FilterBySeq-> Place_oneThenByWeightPlusOne
+			)
+
+			Relation Place_weightTokenCausesExec[Causes](LeftClock-> Place_pushByWeightPlusOne,
+														 RightClock-> Place_readOneThenByWeightPlusOne
+			)
+
+			
+		}
+		
+		
+		/*
+		 * Constraints associated to each input
+		 */
+		RelationDeclaration Input(Input_actor:clock, Input_read:clock, Input_weightPlusOne:int, Input_weight:int)
+		RelationDefinition InputDef[Input]{
+			Sequence Input_ByWeightPlusOne=(IntegerVariableRef[Input_weightPlusOne])
+						
+			Expression Input_readByWeightPlusOne=FilterBy( FilterByClock->Input_read,
+													FilterBySeq-> Input_ByWeightPlusOne
+			)
+			Sequence Input_ByWeight=(IntegerVariableRef[Input_weight])
+						
+			Expression Input_readByWeight=FilterBy( FilterByClock->Input_read,
+													FilterBySeq-> Input_ByWeight
+			)
+			Relation Input_weightPlusOneTokenCausesExec[Precedes](RightClock-> Input_readByWeightPlusOne,
+														 LeftClock-> Input_actor
+			)
+			Relation Input_weightTokenCausesExec[Precedes](LeftClock-> Input_readByWeight,
+														 RightClock-> Input_actor
+			)
+		}
+		
+		/*
+		 * Constraints associated to each output
+		 */
+		RelationDeclaration Output(Output_actor:clock, Output_write:clock, Output_weight:int)
+		RelationDefinition OutputDef[Output]{
+			Sequence Output_ByWeight= 1 (IntegerVariableRef[Output_weight])
+			Expression Output_writeByWeight=FilterBy( FilterByClock->Output_write,
+													FilterBySeq-> Output_ByWeight
+			)
+			Relation Output_ExecWriteFirstToken[Coincides](Clock1-> Output_actor,
+														   Clock2-> Output_writeByWeight
+			)
+		}
+		
+		/*
+		 * The arc relation is combining the other and can be the only one used to apply the MoCC 
+		 */
+//		RelationDeclaration Arc(Arc_delay:int, 
+//								Arc_source:clock,
+//								Arc_outWeight:int,
+//								Arc_target:clock,
+//								Arc_inWeight:int
+//		)
+//		RelationDefinition ArcDef[Arc]{
+//			//internal clocks
+//			Clock Arc_Write:clock 
+//			Clock Arc_read:clock
+//			Relation Arc_output[Output](Output_actor-> Arc_source,
+//										Output_write-> Arc_Write,
+//										Output_weight-> Arc_outWeight
+//			)
+//			Relation Arc_token[Token](Token_write-> Arc_Write,
+//									   Token_read-> Arc_read,
+//									   Token_delay-> Arc_delay
+//			)
+//			Relation Arc_input[Input](Input_actor-> Arc_target,
+//										Input_read-> Arc_read,
+//										Input_weightPlusOne-> Arc_inWeight
+//			)
+//
+//
+//
+//		}
+	}
+	
+	
+
+}

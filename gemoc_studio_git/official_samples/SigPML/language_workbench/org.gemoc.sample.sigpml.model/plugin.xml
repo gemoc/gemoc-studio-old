@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated sigpml -->
+      <package
+            uri="http://org.gemoc.sigpml.model/1.0"
+            class="org.gemoc.sample.sigpml.SigpmlPackage"
+            genModel="model/sigpml.genmodel"/>
+   </extension>
+
+</plugin>

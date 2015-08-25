@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.gemoc.sequential_addons.multidimensional.timeline.category"
+            name="Gemoc">
+      </category>
+      <view
+            category="org.gemoc.sequential_addons.multidimensional.timeline.category"
+            class="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.MultidimensionalTimeLineView"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.MultidimensionalTimeLineView"
+            name="Multidimensional Timeline">
+      </view>
+	</extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.debug.ui.DebugPerspective">         
+         <view
+               id="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.MultidimensionalTimeLineView"
+               minimized="false"
+               relationship="stack"
+               relative="org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.EventSchedulingTimeLineView"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
+         <view
+               id="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.MultidimensionalTimeLineView"
+               minimized="false"
+               relationship="stack"
+               relative="org.gemoc.concurrent_addons.eventscheduling.timeline.views.timeline.EventSchedulingTimeLineView"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.MultidimensionalTimeLineView">
+         <command
+               commandId="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.Follow"
+               icon="icons/play-4-16.png"
+               label="Follow"
+               style="toggle"
+               tooltip="Follow the last choice">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="fr.obeo.timeline.command.FollowHandler"
+            id="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.Follow"
+            name="Follow">
+         <state
+               class="org.eclipse.ui.handlers.RegistryToggleState:true"
+               id="org.eclipse.ui.commands.toggleState">
+         </state>
+      </command>
+   </extension>
+
+
+
+</plugin>

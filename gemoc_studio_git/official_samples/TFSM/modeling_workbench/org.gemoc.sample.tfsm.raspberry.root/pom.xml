@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <name>TFSM Product build</name>
+    <groupId>org.gemoc.sample.tfsm.raspberry</groupId>
+    <artifactId>org.gemoc.sample.tfsm.raspberry.root</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <tycho-version>0.18.1</tycho-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <modules>
+        <module>../../language_workbench/org.gemoc.sample.tfsm.model</module>
+        <module>../../language_workbench/org.gemoc.sample.tfsm.k3dsa</module>
+        <module>../org.gemoc.sample.tfsm.single_traffic_light_sample.mocc</module>
+        <module>../org.gemoc.sample.tfsm.raspberry.launcher</module>
+        <module>../org.gemoc.sample.tfsm.raspberry.product</module>
+<!--         <module>../org.gemoc.sample.tfsm.eclmoc2as</module> -->
+<!--         <module>../org.gemoc.sample.tfsm.k3dsa</module> -->
+<!--         <module>../org.gemoc.sample.tfsm.moc.lib</module> -->
+<!--         <module>../org.gemoc.sample.tfsm.model</module> -->
+<!--         <module>../org.gemoc.sample.tfsm.raspberry.xdsml</module> -->
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>Gemoc Consolidated Target Platform</id>
+            <layout>p2</layout>
+<!--             <url>https://ci.inria.fr/gemoc/job/org.gemoc.execution.engine.root/lastSuccessfulBuild/artifact/org/gemoc/execution/engine/org.gemoc.execution.engine.p2updatesite/target/repository</url> -->
+            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-maven-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+                    <!-- environments that will be built -->
+                    <environments>
+<!--                      	<environment> -->
+<!--                             <os>linux</os> -->
+<!--                             <ws>gtk</ws> -->
+<!--                             <arch>x86_64</arch> -->
+<!--                         </environment> -->
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86</arch>
+                        </environment>
+<!--                         <environment> -->
+<!--                             <os>win32</os> -->
+<!--                             <ws>win32</ws> -->
+<!--                             <arch>x86</arch> -->
+<!--                         </environment> -->
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+<!--                         <environment> -->
+<!--                             <os>macosx</os>   -->
+<!--                             <ws>cocoa</ws>   -->
+<!--                             <arch>x86_64</arch>  -->
+<!--                         </environment> -->
+                    </environments>
+                </configuration>
+            </plugin>
+            <!-- Java compiler plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+        </plugins>
+    </build>
+    
+</project> 

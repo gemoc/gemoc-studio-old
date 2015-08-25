@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <relativePath>../../pom.xml</relativePath>
+    <groupId>org.gemoc.commons</groupId>
+    <artifactId>org.gemoc.commons.root</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>org.gemoc.commons.eclipse.pde</artifactId>
+  <packaging>eclipse-plugin</packaging>
+  <version>0.1.0-SNAPSHOT</version>
+</project>

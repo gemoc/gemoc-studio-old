@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SigPML Moclib
+Bundle-SymbolicName: org.gemoc.sample.sigpml.moc.lib
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.gemoc.sample.sigpml.moc.lib.Activator
+Bundle-Vendor: INRIA/I3S AOSTE
+Require-Bundle: org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7,
+ JavaSE-1.6
+Bundle-ActivationPolicy: lazy
