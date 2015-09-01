@@ -9,6 +9,8 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.gemoc.execution.engine.core.ExecutionWorkspace;
 import org.gemoc.executionengine.ccsljava.api.core.IConcurrentExecutionContext;
 import org.gemoc.executionengine.ccsljava.api.core.ILogicalStepDecider;
+import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtension;
+import org.gemoc.executionengine.ccsljava.api.extensions.languages.ConcurrentLanguageDefinitionExtensionPoint;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionContext;
 import org.gemoc.gemoc_language_workbench.api.core.IExecutionPlatform;
@@ -92,8 +94,7 @@ public class ModelExecutionContext implements IExecutionContext
 	
 	protected LanguageDefinitionExtension getLanguageDefinition(String languageName) throws EngineContextException
 	{
-		LanguageDefinitionExtension languageDefinition = LanguageDefinitionExtensionPoint
-				.findDefinition(_runConfiguration.getLanguageName());
+		ConcurrentLanguageDefinitionExtension languageDefinition = ConcurrentLanguageDefinitionExtensionPoint.findDefinition(_runConfiguration.getLanguageName());
 		if (languageDefinition == null)
 		{
 			String message = "Cannot find xdsml definition for the language " + _runConfiguration.getLanguageName()
