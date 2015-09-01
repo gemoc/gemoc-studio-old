@@ -11,7 +11,8 @@ Require-Bundle: fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version
  org.codehaus.groovy;bundle-version="2.0.7",
  org.eclipse.osgi;bundle-version="3.9.1",
  org.eclipse.core.runtime;bundle-version="3.9.100",
- org.gemoc.execution.engine.trace.model;bundle-version="0.1.0"
+ org.gemoc.execution.engine.trace.model;bundle-version="0.1.0",
+ org.gemoc.executionengine.ccsljava.api;bundle-version="1.0.0"
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
