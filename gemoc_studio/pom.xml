@@ -299,10 +299,40 @@
 	            <activeByDefault>true</activeByDefault>
 	        </activation>
 	        <repositories>
-		        <repository>
-		            <id>Gemoc Target Platform all-except-gemoc-executionengine_ccsljava</id>
+<!-- 		        <repository> -->
+<!-- 		            <id>Gemoc Target Platform all-except-gemoc-executionengine_ccsljava</id> -->
+<!-- 		            <layout>p2</layout> -->
+<!-- 		            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-gemoc-executionengine_ccsljava</url> -->
+<!-- 		        </repository> -->
+				<repository>
+		            <id>gemoc-studio_commons on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-gemoc-executionengine_ccsljava</url>
+		            <url>https://ci.inria.fr/gemoc/job/gemoc-studio_commons/lastSuccessfulBuild/artifact/commons/releng/org.gemoc.commons.repository/target/repository/</url>
+		        </repository>
+		        <repository>
+		            <id>modelanimation_executionframework on CI</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/job/modelanimation_executionframework/lastSuccessfulBuild/artifact/executionframework/releng/org.gemoc.executionframework.repository/target/repository/</url>
+		        </repository>
+		        <repository>
+		            <id>modelanimation_siriusmodelanimation on CI</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/job/modelanimation_siriusmodelanimation/lastSuccessfulBuild/artifact/siriusmodelanimation/releng/org.gemoc.siriusmodelanimation.repository/target/repository/</url>
+		        </repository>
+		        <repository>
+		            <id>concurrency_executionengine_ccsljava on CI</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/view/All/job/concurrency_executionengine_ccsljava/lastSuccessfulBuild/artifact/executionengine/ccsljava/releng/org.gemoc.executionengine.ccsljava.repository/target/repository/</url>
+		        </repository>
+				<repository>
+		            <id>concurrency_concurrent_addons on CI</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/view/All/job/concurrency_concurrent_addons/lastSuccessfulBuild/artifact/concurrent_addons/releng/org.gemoc.concurrent_addons.repository/target/repository/</url>
+		        </repository>
+		        <repository>
+		            <id>concurrency_moccml on CI</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/view/All/job/concurrency_moccml/lastSuccessfulBuild/artifact/moccml/releng/org.gemoc.mocc.p2updatesite/target/repository/</url>
 		        </repository>
 		    </repositories>
 	    </profile>
