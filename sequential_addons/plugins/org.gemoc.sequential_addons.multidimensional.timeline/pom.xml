@@ -4,7 +4,7 @@
 
   <parent>
     <relativePath>../..</relativePath>
-    <groupId>org.gemoc.sequentia_addons</groupId>
+    <groupId>org.gemoc.sequential_addons</groupId>
     <artifactId>org.gemoc.sequential_addons.root</artifactId>
     <version>0.1.0-SNAPSHOT</version>
   </parent>
