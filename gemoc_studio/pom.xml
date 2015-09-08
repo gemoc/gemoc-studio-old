@@ -333,6 +333,11 @@
 		            <id>concurrency_moccml on CI</id>
 		            <layout>p2</layout>
 		            <url>https://ci.inria.fr/gemoc/view/All/job/concurrency_moccml/lastSuccessfulBuild/artifact/moccml/releng/org.gemoc.mocc.p2updatesite/target/repository/</url>
+		        </repository>		        
+		        <repository>
+		            <id>gemoc-studio_sequential_addons on CI</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/view/All/job/gemoc-studio_sequential_addons/lastSuccessfulBuild/artifact/sequential_addons/releng/org.gemoc.sequential_addons.repository/target/repository/</url>
 		        </repository>
 		    </repositories>
 	    </profile>

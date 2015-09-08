@@ -19,11 +19,11 @@
 
    <requires>
       <import feature="org.gemoc.commons.feature.source" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.concurrentviews.feature.source" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.concurrent_addons.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionengine.ccsljava.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionengine.ccsljava.runtime.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionengine.ccsljava.runtime.ui.feature.source" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.legacy.feature.source" version="0.1.0.qualifier"/>
+      <import feature="org.gemoc.sequential_addons.feature.source" version="0.0.0" match="greaterOrEqual"/>
       
    </requires>
 

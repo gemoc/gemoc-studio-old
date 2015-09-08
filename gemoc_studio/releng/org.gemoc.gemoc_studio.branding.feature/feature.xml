@@ -30,6 +30,7 @@
       <import feature="org.gemoc.executionengine.ccsljava.runtime.ui.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionframework.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionframework.executioncontext.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.sequential_addons.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.ui.feature" version="0.0.0" match="greaterOrEqual"/>
