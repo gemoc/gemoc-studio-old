@@ -11,6 +11,5 @@ Export-Package: test,
  test.impl,
  test.util
 Require-Bundle: org.eclipse.xtext.ui;bundle-version="2.6.2",
- org.gemoc.gel;bundle-version="0.1.0",
  org.gemoc.gel.gexpressions.xtext
 Bundle-ActivationPolicy: lazy
