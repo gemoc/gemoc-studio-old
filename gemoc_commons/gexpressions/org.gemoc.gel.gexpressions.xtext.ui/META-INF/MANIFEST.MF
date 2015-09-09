@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: GExpressions Xtext UI
+Bundle-Vendor: IRIT
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.gemoc.gel.gexpressions.xtext.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.gemoc.gel.gexpressions.xtext;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.builder,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.compare
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.gemoc.gel.gexpressions.xtext.ui,
+ org.gemoc.gel.gexpressions.xtext.ui.contentassist,
+ org.gemoc.gel.gexpressions.xtext.ui.contentassist.antlr,
+ org.gemoc.gel.gexpressions.xtext.ui.contentassist.antlr.internal,
+ org.gemoc.gel.gexpressions.xtext.ui.internal,
+ org.gemoc.gel.gexpressions.xtext.ui.labeling,
+ org.gemoc.gel.gexpressions.xtext.ui.outline,
+ org.gemoc.gel.gexpressions.xtext.ui.quickfix
+Bundle-Activator: org.gemoc.gel.gexpressions.xtext.ui.internal.GExpressionsActivator

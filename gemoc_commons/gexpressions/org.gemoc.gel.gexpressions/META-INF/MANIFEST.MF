@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: GExpressions Abstract Syntax
+Bundle-SymbolicName: org.gemoc.gel.gexpressions;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: IRIT
+Bundle-Localization: plugin
+Export-Package: org.gemoc.gel.gexpressions,
+ org.gemoc.gel.gexpressions.impl,
+ org.gemoc.gel.gexpressions.util,
+ org.gemoc.gel.gexpressions.utils
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.2"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.eclipse.xtext
