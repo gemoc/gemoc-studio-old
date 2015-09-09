@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gexpressions" nsURI="http://www.gemoc.org/gel/gexpressions"
-    nsPrefix="gexpressions">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gexpressions" nsURI="http://www.gemoc.org/gexpressions" nsPrefix="gexpressions">
   <eClassifiers xsi:type="ecore:EClass" name="GProgram">
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//GImportStatement" containment="true"/>
@@ -17,7 +16,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" lowerBound="1" eType="#//GExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="referencedEObject" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GReferenceExpression" eSuperTypes="#//GExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="referencedObject" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
@@ -53,7 +52,7 @@
         eType="#//GExpression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GEnumLiteralExpression" eSuperTypes="#//GPrimaryExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumLiteral"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumLiteral"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GBinaryOperatorExpression" abstract="true"
       eSuperTypes="#//GExpression">
