@@ -3,9 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: GExpressions Xtext UI
 Bundle-Vendor: IRIT
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: org.gemoc.gel.gexpressions.xtext.ui; singleton:=true
+Bundle-SymbolicName: org.gemoc.gexpressions.xtext.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.gemoc.gel.gexpressions.xtext;visibility:=reexport,
+Require-Bundle: org.gemoc.gexpressions.xtext;visibility:=reexport,
  org.eclipse.xtext.ui,
  org.eclipse.xtext.ui.shared,
  org.eclipse.xtext.builder,

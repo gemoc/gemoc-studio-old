@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.gemoc.gel.gexpressions.edit;singleton:=true
+Bundle-SymbolicName: org.gemoc.gexpressions.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.gemoc.gel.gexpressions.provider.GexpressionsEditPlugin$Implementation
@@ -9,7 +9,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.gel.gexpressions.provider
-Require-Bundle: org.gemoc.gel.gexpressions;visibility:=reexport,
+Require-Bundle: org.gemoc.gexpressions;visibility:=reexport,
  org.eclipse.emf.ecore.edit;visibility:=reexport,
  org.eclipse.core.runtime;bundle-version="3.10.0"
 Bundle-ActivationPolicy: lazy

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GExpressions Abstract Syntax
-Bundle-SymbolicName: org.gemoc.gel.gexpressions;singleton:=true
+Bundle-SymbolicName: org.gemoc.gexpressions;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: IRIT
