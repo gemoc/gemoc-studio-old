@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.gemoc.gel.gexpressions.xtext.tests
+Bundle-Name: org.gemoc.gexpressions.xtext.tests
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.gemoc.gexpressions.xtext.tests;singleton:=true
@@ -20,4 +20,4 @@ Import-Package: org.apache.log4j,
  org.junit.runners.model;version="4.5.0",
  org.hamcrest.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.gemoc.gel.gexpressions.xtext
+Export-Package: org.gemoc.gexpressions.xtext

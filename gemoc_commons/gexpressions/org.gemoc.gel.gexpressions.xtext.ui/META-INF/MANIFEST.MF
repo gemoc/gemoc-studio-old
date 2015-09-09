@@ -13,12 +13,12 @@ Require-Bundle: org.gemoc.gexpressions.xtext;visibility:=reexport,
  org.eclipse.compare
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.gemoc.gel.gexpressions.xtext.ui,
- org.gemoc.gel.gexpressions.xtext.ui.contentassist,
- org.gemoc.gel.gexpressions.xtext.ui.contentassist.antlr,
- org.gemoc.gel.gexpressions.xtext.ui.contentassist.antlr.internal,
- org.gemoc.gel.gexpressions.xtext.ui.internal,
- org.gemoc.gel.gexpressions.xtext.ui.labeling,
- org.gemoc.gel.gexpressions.xtext.ui.outline,
- org.gemoc.gel.gexpressions.xtext.ui.quickfix
-Bundle-Activator: org.gemoc.gel.gexpressions.xtext.ui.internal.GExpressionsActivator
+Export-Package: org.gemoc.gexpressions.xtext.ui,
+ org.gemoc.gexpressions.xtext.ui.contentassist,
+ org.gemoc.gexpressions.xtext.ui.contentassist.antlr,
+ org.gemoc.gexpressions.xtext.ui.contentassist.antlr.internal,
+ org.gemoc.gexpressions.xtext.ui.internal,
+ org.gemoc.gexpressions.xtext.ui.labeling,
+ org.gemoc.gexpressions.xtext.ui.outline,
+ org.gemoc.gexpressions.xtext.ui.quickfix
+Bundle-Activator: org.gemoc.gexpressions.xtext.ui.internal.GExpressionsActivator

@@ -1,11 +1,11 @@
 package test.utils;
 
 import org.eclipse.xtext.serializer.impl.Serializer;
-import org.gemoc.gel.gexpressions.GAdditionExpression;
-import org.gemoc.gel.gexpressions.GIntegerExpression;
-import org.gemoc.gel.gexpressions.GStringExpression;
-import org.gemoc.gel.gexpressions.GexpressionsFactory;
-import org.gemoc.gel.gexpressions.xtext.GExpressionsStandaloneSetup;
+import org.gemoc.gexpressions.GAdditionExpression;
+import org.gemoc.gexpressions.GIntegerExpression;
+import org.gemoc.gexpressions.GStringExpression;
+import org.gemoc.gexpressions.GexpressionsFactory;
+import org.gemoc.gexpressions.xtext.GExpressionsStandaloneSetup;
 
 import com.google.inject.Injector;
 

@@ -8,16 +8,19 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
  org.eclipse.xtext.generator;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
- org.gemoc.gexpressions;bundle-version="0.1.0";visibility:=reexport
-Import-Package: org.eclipse.xtext.xbase.lib
+ org.gemoc.gexpressions;bundle-version="0.1.0";visibility:=reexport,
+ org.eclipse.equinox.common;bundle-version="3.6.200"
+Import-Package: org.apache.commons.logging,
+ org.apache.log4j;version="1.2.15",
+ org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.gemoc.gel.gexpressions.xtext,
- org.gemoc.gel.gexpressions.xtext.formatting,
- org.gemoc.gel.gexpressions.xtext.generator,
- org.gemoc.gel.gexpressions.xtext.linking,
- org.gemoc.gel.gexpressions.xtext.parser.antlr,
- org.gemoc.gel.gexpressions.xtext.parser.antlr.internal,
- org.gemoc.gel.gexpressions.xtext.scoping,
- org.gemoc.gel.gexpressions.xtext.serializer,
- org.gemoc.gel.gexpressions.xtext.services,
- org.gemoc.gel.gexpressions.xtext.validation
+Export-Package: org.gemoc.gexpressions.xtext.formatting,
+ org.gemoc.gexpressions.xtext.generator,
+ org.gemoc.gexpressions.xtext.linking,
+ org.gemoc.gexpressions.xtext.parser.antlr,
+ org.gemoc.gexpressions.xtext.parser.antlr.internal,
+ org.gemoc.gexpressions.xtext.scoping,
+ org.gemoc.gexpressions.xtext.serializer,
+ org.gemoc.gexpressions.xtext.services,
+ org.gemoc.gexpressions.xtext.validation,
+ org.gemoc.gexpressions.xtext
