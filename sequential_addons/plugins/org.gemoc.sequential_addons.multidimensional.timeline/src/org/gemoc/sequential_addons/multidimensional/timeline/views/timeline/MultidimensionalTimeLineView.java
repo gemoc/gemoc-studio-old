@@ -22,7 +22,7 @@ import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
-import org.gemoc.gemoc_language_workbench.api.core.IExecutionEngine;
+import org.gemoc.gemoc_language_workbench.api.core.IBasicExecutionEngine;
 
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
 import fr.obeo.timeline.editpart.TimelineEditPartFactory;
@@ -44,9 +44,9 @@ public class MultidimensionalTimeLineView extends AbstractTimelineView implement
 	private IContentProvider _contentProvider;
 	private ILabelProvider _labelProvider;
 
-	private IExecutionEngine _currentEngine;
+	private IBasicExecutionEngine _currentEngine;
 
-	private WeakHashMap<IExecutionEngine, Integer> _positions = new WeakHashMap<IExecutionEngine, Integer>();
+	private WeakHashMap<IBasicExecutionEngine, Integer> _positions = new WeakHashMap<IBasicExecutionEngine, Integer>();
 
 	public MultidimensionalTimeLineView() {
 		_contentProvider = new AdapterFactoryContentProvider(adapterFactory);
@@ -105,7 +105,7 @@ public class MultidimensionalTimeLineView extends AbstractTimelineView implement
 	private ITimelineProvider _timelineProvider;
 	private MouseListener _mouseListener = null;
 
-	public void configure(IExecutionEngine engine) {
+	public void configure(IBasicExecutionEngine engine) {
 		if (_currentEngine != engine || _timelineProvider == null) {
 			saveStartIndex();
 			_currentEngine = engine;
@@ -124,7 +124,7 @@ public class MultidimensionalTimeLineView extends AbstractTimelineView implement
 		}
 	}
 
-	private int getStartIndex(IExecutionEngine engine) {
+	private int getStartIndex(IBasicExecutionEngine engine) {
 		int start = 0;
 		if (_positions.containsKey(engine)) {
 			start = _positions.get(engine);
@@ -153,11 +153,11 @@ public class MultidimensionalTimeLineView extends AbstractTimelineView implement
 	}
 
 	@Override
-	public void engineSelectionChanged(IExecutionEngine engine) {
+	public void engineSelectionChanged(IBasicExecutionEngine engine) {
 		update(engine);
 	}
 
-	private boolean canDisplayTimeline(IExecutionEngine engine) {
+	private boolean canDisplayTimeline(IBasicExecutionEngine engine) {
 		if (engine.getExecutionContext().getExecutionMode().equals(ExecutionMode.Run)
 				&& engine.getRunningStatus().equals(RunStatus.Stopped)) {
 			return true;
@@ -199,7 +199,7 @@ public class MultidimensionalTimeLineView extends AbstractTimelineView implement
 		return new TimelineEditPartFactory(false);
 	}
 
-	public void update(IExecutionEngine engine) {
+	public void update(IBasicExecutionEngine engine) {
 		if (engine != null) {
 			if (canDisplayTimeline(engine)) {
 				configure(engine);
