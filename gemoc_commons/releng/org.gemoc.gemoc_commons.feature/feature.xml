@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.gemoc.gemoc_commons.feature"
+      label="Gemoc Commons"
+      version="0.1.0.qualifier"
+      provider-name="INRIA">
+
+   <description url="http://gemoc.org/studio/">
+      List of plugins that are part of Gemoc core (API, exchanged metamodels, ....)
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="fr.obeo.timeline"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
