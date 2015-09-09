@@ -48,6 +48,11 @@
 		            <url>https://ci.inria.fr/gemoc/job/gemoc-studio_commons/lastSuccessfulBuild/artifact/commons/releng/org.gemoc.commons.repository/target/repository/</url>
 		        </repository>
 		        <repository>
+		            <id>gemoc-studio_gemoc_commons on CI</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/job/gemoc-studio_gemoc_commons/lastSuccessfulBuild/artifact/gemoc_commons/releng/org.gemoc.gemoc_commons.repository/target/repository/</url>
+		        </repository>
+		        <repository>
 		            <id>modelanimation_executionframework on CI</id>
 		            <layout>p2</layout>
 		            <url>https://ci.inria.fr/gemoc/job/modelanimation_executionframework/lastSuccessfulBuild/artifact/executionframework/releng/org.gemoc.executionframework.repository/target/repository/</url>
