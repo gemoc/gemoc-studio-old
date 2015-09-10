@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.gemoc.official_samples.deployers.feature_0.1.0.qualifier.jar" id="org.gemoc.official_samples.deployers.feature" version="0.1.0.qualifier">
+      <category name="gemoc_samples"/>
+   </feature>
+   <feature url="features/org.gemoc.official_samples.deployers.source_0.1.0.qualifier.jar" id="org.gemoc.official_samples.deployers.feature.source" version="0.1.0.qualifier">
+      <category name="gemoc_samples"/>
+   </feature>
+   <category-def name="gemoc_samples" label="Gemoc Official samples"/>
+</site>

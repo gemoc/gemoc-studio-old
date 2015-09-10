@@ -4,15 +4,15 @@
 
     <properties>
         <sample_root>${basedir}/../../sample</sample_root>
-        <tfsm_sample_modeling_root>${basedir}/../../sample_deployed/TFSM/modeling_workbench</tfsm_sample_modeling_root>
-        <tfsm_plaink3_sample_modeling_root>${basedir}/../../sample_deployed/TFSM_PlainK3/modeling_workbench</tfsm_plaink3_sample_modeling_root>
-        <sigpml_sample_modeling_root>${basedir}/../../sample_deployed/SigPML/modeling_workbench</sigpml_sample_modeling_root>
+        <tfsm_sample_modeling_root>${basedir}/../../../TFSM/modeling_workbench</tfsm_sample_modeling_root>
+        <tfsm_plaink3_sample_modeling_root>${basedir}/../../../TFSM_PlainK3/modeling_workbench</tfsm_plaink3_sample_modeling_root>
+        <sigpml_sample_modeling_root>${basedir}/../../../SigPML/modeling_workbench</sigpml_sample_modeling_root>
     </properties>
     
 	<parent>
-		<relativePath>../org.gemoc.gemoc_modeling_workbench.root/pom.xml</relativePath>
-		<groupId>org.gemoc.gemoc_modeling_workbench</groupId>
-		<artifactId>org.gemoc.gemoc_modeling_workbench.root</artifactId>
+		<relativePath>../..</relativePath>
+		<groupId>org.gemoc.official_samples.deployers</groupId>
+		<artifactId>org.gemoc.official_samples.deployers.root</artifactId>
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 
