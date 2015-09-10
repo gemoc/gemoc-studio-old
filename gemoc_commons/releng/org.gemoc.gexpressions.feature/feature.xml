@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.gemoc.gexpressions.xtext.sdk"
-      label="GExpressions SDK Feature "
-      version="1.0.0.qualifier">
+      id="org.gemoc.gexpressions.feature"
+      label="GExpressions Feature"
+      version="0.1.0.qualifier">
 
    <plugin
          id="org.gemoc.gexpressions.xtext"
