@@ -20,11 +20,12 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.gexpressions.xtext,
- org.gemoc.gexpressions.xtext.services,
- org.gemoc.gexpressions.xtext.serializer,
+ org.gemoc.gexpressions.xtext.formatting,
+ org.gemoc.gexpressions.xtext.generator,
+ org.gemoc.gexpressions.xtext.linking,
  org.gemoc.gexpressions.xtext.parser.antlr,
  org.gemoc.gexpressions.xtext.parser.antlr.internal,
- org.gemoc.gexpressions.xtext.validation,
  org.gemoc.gexpressions.xtext.scoping,
- org.gemoc.gexpressions.xtext.generator,
- org.gemoc.gexpressions.xtext.formatting
+ org.gemoc.gexpressions.xtext.serializer,
+ org.gemoc.gexpressions.xtext.services,
+ org.gemoc.gexpressions.xtext.validation
