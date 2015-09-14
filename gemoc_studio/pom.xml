@@ -354,6 +354,11 @@
 		            <layout>p2</layout>
 		            <url>https://ci.inria.fr/gemoc/job/coordination_bcool/lastSuccessfulBuild/artifact/bcool/deployment/org.gemoc.bcool.updatesite/target/repository/</url>
 		        </repository>
+		        <repository>
+		            <id>coordination_heterogeneousCoordinationEngine on CI</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/job/coordination_heterogeneousCoordinationEngine/lastSuccessfulBuild/artifact/heterogeneousCoordinationEngine/releng/org.gemoc.heterogeneous_coordination_engine.repository/target/repository/</url>
+		        </repository>
 		    </repositories>
 	    </profile>
     </profiles>
