@@ -55,13 +55,11 @@
       <import feature="org.eclipse.sirius.specifier.ide.ui" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.gemoc.mocc.feature" version="0.0.0" match="greaterOrEqual"/>
-<!--      <import feature="fr.obeo.dsl.process.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.process.ui.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="fr.obeo.dsl.workspace.feature" version="0.0.0" match="greaterOrEqual"/> -->
       <import feature="org.eclipse.e4.rcp" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.melange.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.trace.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.trace.gemoc.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.bcool.feature" version="1.0.0.qualifier"/>
    </requires>
 
    <plugin

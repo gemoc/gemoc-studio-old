@@ -348,6 +348,11 @@
 		            <id>gemoc-studio_sequential_addons on CI</id>
 		            <layout>p2</layout>
 		            <url>https://ci.inria.fr/gemoc/view/All/job/gemoc-studio_sequential_addons/lastSuccessfulBuild/artifact/sequential_addons/releng/org.gemoc.sequential_addons.repository/target/repository/</url>
+		        </repository> 
+		        <repository>
+		            <id>coordination_bcool on CI</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/job/coordination_bcool/lastSuccessfulBuild/artifact/bcool/deployment/org.gemoc.bcool.updatesite/target/repository/</url>
 		        </repository>
 		    </repositories>
 	    </profile>
