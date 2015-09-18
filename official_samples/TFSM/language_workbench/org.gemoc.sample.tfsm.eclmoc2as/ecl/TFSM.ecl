@@ -15,7 +15,7 @@ package tfsm
  * @Public DSE
  */
 	/**
-	 * DSE linked to specific DSA
+	 * DSE linked to specific DSA 
 	 */ 
   	context FSMClock
      def: ticks : Event = self.ticks()
@@ -54,12 +54,12 @@ package tfsm
 
 /**
  * MoC Constraints to AS association
- */ 
+ */
 	context FSMEvent
 		inv occursWhenSolicitate:
 			(self.sollicitingTransitions->size() >0) implies  
 			(let AllTriggeringOccurrences : Event = Expression Union(self.sollicitingTransitions.fire) in
-			Relation FSMEventSendReceive(AllTriggeringOccurrences, self.occurs))
+			Relation FSMEventRendezVous(AllTriggeringOccurrences, self.occurs))
 	
 	context Transition
 	    inv fireWhenRestrueOccursTransition: 
