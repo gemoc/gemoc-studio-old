@@ -11,11 +11,6 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.gemoc.gemoc_language_workbench.ui.gemocLanguageDesignerBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
 			<name>org.eclipse.pde.ManifestBuilder</name>
 			<arguments>
 			</arguments>
@@ -25,10 +20,15 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>org.gemoc.executionengine.java.sequential_language_workbench.ui.GemocSequentialLanguageBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.gemoc.gemoc_language_workbench.ui.gemocLanguageDesignerNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.pde.PluginNature</nature>
+		<nature>org.gemoc.executionengine.java.sequential_language_workbench.ui.GemocSequentialLanguageNature</nature>
 	</natures>
 </projectDescription>
