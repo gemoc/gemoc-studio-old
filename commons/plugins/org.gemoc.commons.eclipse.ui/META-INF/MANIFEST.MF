@@ -18,3 +18,4 @@ Export-Package: org.gemoc.commons.eclipse.pde.ui,
  org.gemoc.commons.eclipse.ui,
  org.gemoc.commons.eclipse.ui.dialogs
 Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.gemoc.commons.eclipse.ui.Activator
