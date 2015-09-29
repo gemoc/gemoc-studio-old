@@ -6,7 +6,7 @@
       <!-- @generated tfsm -->
       <package
             uri="http://www.gemoc.org/sample/tfsm/plaink3"
-            class="org.gemoc.sample.tfsm.TfsmPackage"
+            class="org.gemoc.sample.tfsm_plaink3.TfsmPackage"
             genModel="model/tfsm.genmodel"/>
    </extension>
 

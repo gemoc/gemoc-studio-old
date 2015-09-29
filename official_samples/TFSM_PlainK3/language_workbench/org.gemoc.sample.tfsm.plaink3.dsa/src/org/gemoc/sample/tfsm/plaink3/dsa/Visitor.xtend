@@ -1,14 +1,14 @@
 package org.gemoc.sample.tfsm.plaink3.dsa
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
-import org.gemoc.sample.tfsm.EventGuard
-import org.gemoc.sample.tfsm.FSMClock
-import org.gemoc.sample.tfsm.Guard
-import org.gemoc.sample.tfsm.State
-import org.gemoc.sample.tfsm.TFSM
-import org.gemoc.sample.tfsm.TemporalGuard
-import org.gemoc.sample.tfsm.TimedSystem
-import org.gemoc.sample.tfsm.Transition
+import org.gemoc.sample.tfsm_plaink3.EventGuard
+import org.gemoc.sample.tfsm_plaink3.FSMClock
+import org.gemoc.sample.tfsm_plaink3.Guard
+import org.gemoc.sample.tfsm_plaink3.State
+import org.gemoc.sample.tfsm_plaink3.TFSM
+import org.gemoc.sample.tfsm_plaink3.TemporalGuard
+import org.gemoc.sample.tfsm_plaink3.TimedSystem
+import org.gemoc.sample.tfsm_plaink3.Transition
 
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMClockAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMClockVisitorAspect.*

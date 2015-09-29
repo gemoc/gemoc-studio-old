@@ -4,12 +4,11 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.gemoc.sample.tfsm.plaink3.model.editor;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.gemoc.sample.tfsm.plaink3.presentation.TfsmEditorPlugin$Implementation
+Bundle-Activator: org.gemoc.sample.tfsm_plaink3.presentation.TfsmEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.gemoc.sample.tfsm.plaink3.presentation,
- org.gemoc.sample.tfsm.presentation
+Export-Package: org.gemoc.sample.tfsm_plaink3.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.gemoc.sample.tfsm.plaink3.model.edit;visibility:=reexport,

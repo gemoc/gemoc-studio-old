@@ -1,10 +1,10 @@
 package org.gemoc.sample.tfsm.plaink3.design.services;
 
-import org.gemoc.sample.tfsm.EvaluateGuard;
-import org.gemoc.sample.tfsm.EventGuard;
-import org.gemoc.sample.tfsm.FSMEvent;
-import org.gemoc.sample.tfsm.TemporalGuard;
-import org.gemoc.sample.tfsm.Transition;
+import org.gemoc.sample.tfsm_plaink3.EvaluateGuard;
+import org.gemoc.sample.tfsm_plaink3.EventGuard;
+import org.gemoc.sample.tfsm_plaink3.FSMEvent;
+import org.gemoc.sample.tfsm_plaink3.TemporalGuard;
+import org.gemoc.sample.tfsm_plaink3.Transition;
 
 /** TFSM services.
  * 

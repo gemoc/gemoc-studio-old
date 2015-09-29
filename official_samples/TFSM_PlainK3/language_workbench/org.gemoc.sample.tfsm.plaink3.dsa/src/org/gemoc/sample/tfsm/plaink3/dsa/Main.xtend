@@ -10,8 +10,8 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
-import org.gemoc.sample.tfsm.TimedSystem
-import org.gemoc.sample.tfsm.impl.TfsmPackageImpl
+import org.gemoc.sample.tfsm_plaink3.TimedSystem
+import org.gemoc.sample.tfsm_plaink3.impl.TfsmPackageImpl
 
 class Main
 {
