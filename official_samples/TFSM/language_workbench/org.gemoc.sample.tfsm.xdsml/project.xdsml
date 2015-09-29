@@ -7,6 +7,6 @@
     <fileExtension>SigPML</fileExtension>
   </editorProjects>
   <moCCProject projectName="org.gemoc.sample.tfsm.moc.lib"/>
-  <animatorProjects xsi:type="conf:SiriusAnimatorProject" projectName="org.gemoc.sample.tfsm.design"/>
+  <animatorProjects xsi:type="xdsml_base:SiriusAnimatorProject" projectName="org.gemoc.sample.tfsm.design"/>
   <dSEProject projectName="org.gemoc.sample.tfsm.eclmoc2as" qvtoURI="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto"/>
 </concurrent_xdsml:ConcurrentLanguageDefinition>

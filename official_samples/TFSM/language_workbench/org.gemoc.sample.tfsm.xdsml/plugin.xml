@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-  <extension point="org.gemoc.gemoc_language_workbench.xdsml">
-    <XDSML_Definition codeExecutor_class="org.gemoc.sample.tfsm.xdsml.api.impl.TfsmCodeExecutor" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto" solver_class="org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl.CcslSolver" name="tfsm" xdsmlFilePath="/org.gemoc.sample.tfsm.xdsml/project.xdsml" />
-  </extension>
   <extension point="org.gemoc.gemoc_language_workbench.concurrent.xdsml">
     <XDSML_Definition codeExecutor_class="org.gemoc.sample.tfsm.xdsml.api.impl.TfsmCodeExecutor" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto" solver_class="org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl.CcslSolver" name="tfsm" xdsmlFilePath="/org.gemoc.sample.tfsm.xdsml/project.xdsml" />
   </extension>
