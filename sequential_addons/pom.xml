@@ -60,7 +60,7 @@
 		        <repository>
 		            <id>modelanimation_siriusmodelanimation on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/modelanimation_siriusmodelanimation/lastSuccessfulBuild/artifact/siriusmodelanimation/releng/org.gemoc.siriusmodelanimation.repository/target/repository/</url>
+		            <url>http://obeo-siriuslab-nightly.s3-website-eu-west-1.amazonaws.com/SiriusAnimator/master/repository/</url>
 		        </repository>
 		        
 		        <!-- this dependency need to be removed ! -->
