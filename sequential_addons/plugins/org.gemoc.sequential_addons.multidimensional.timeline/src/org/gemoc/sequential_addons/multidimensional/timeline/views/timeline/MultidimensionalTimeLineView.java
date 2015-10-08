@@ -31,7 +31,7 @@ import fr.obeo.timeline.view.ITimelineProvider;
 
 public class MultidimensionalTimeLineView extends AbstractTimelineView implements IEngineSelectionListener {
 
-	public static final String ID = "org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.TimeLineView";
+	public static final String ID = "org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.MultidimensionalTimeLineView";
 
 	public static final String FOLLOW_COMMAND_ID = "org.gemoc.execution.engine.io.views.timeline.Follow";
 
