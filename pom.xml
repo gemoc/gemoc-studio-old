@@ -54,7 +54,7 @@
         <repository>
             <id>umldesigner</id>
             <layout>p2</layout>
-            <url>http://marketplace.obeonetwork.com/updates/nightly/uml/repository</url>
+            <url>http://releases.umldesigner.org/5.0.0/repository/</url>
         </repository>
         <repository>
             <id>nebula</id>
