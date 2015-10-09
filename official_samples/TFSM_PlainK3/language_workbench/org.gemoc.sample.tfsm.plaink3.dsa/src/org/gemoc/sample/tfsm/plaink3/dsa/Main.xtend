@@ -46,6 +46,7 @@ class Main
 
 			i++
 		}
+		println("Normal stop after "+i+" iterations (set in main)");
 	}
 
 	static def private TimedSystem loadModel()

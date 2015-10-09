@@ -6,5 +6,5 @@
     <fileExtension>SigPML</fileExtension>
   </editorProjects>
   <animatorProjects xsi:type="xdsml_base:SiriusAnimatorProject" projectName="org.gemoc.sample.tfsm.plaink3.design"/>
-  <dsaProject projectName="org.gemoc.sample.tfsm.plaink3.dsa" codeExecutorClass=""/>
+  <dsaProject projectName="org.gemoc.sample.tfsm.plaink3.dsa" codeExecutorClass="" entryPoint="org.gemoc.sample.tfsm.plaink3.dsa.Main"/>
 </sequential_xdsml:SequentialLanguageDefinition>
