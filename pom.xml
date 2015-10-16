@@ -44,7 +44,7 @@
         <repository>
             <id>melange</id>
             <layout>p2</layout>
-            <url>https://ci.inria.fr/k3al/job/melange-production_stable/lastSuccessfulBuild/artifact/plugins/fr.inria.diverse.melange.p2updatesite/target/site/</url>
+            <url>http://melange-lang.org/updatesite/</url>
         </repository>
         <repository>
             <id>Sirius</id>
