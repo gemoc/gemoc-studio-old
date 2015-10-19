@@ -81,12 +81,7 @@ public final class EMFResource {
 	 */
 	public static Set<Resource> getRelatedResources(Resource res){
 		Set<Resource> result = new HashSet<Resource>();
-		result.add(res);
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossRefs = EcoreUtil.ExternalCrossReferencer.find(res);
-		for (Map.Entry<EObject, Collection<EStructuralFeature.Setting>> entry : crossRefs.entrySet()) { 
-            EObject proxyEObject = entry. getKey (); 
-            result.addAll(getRelatedResources(proxyEObject.eResource(), result));           
-		}
+		result.addAll(getRelatedResources(res, result));           		
 		return result;
 	}
 	
