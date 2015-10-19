@@ -17,11 +17,19 @@
  *******************************************************************************/
 package org.gemoc.commons.eclipse.emf;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public final class EMFResource {
 
@@ -65,4 +73,32 @@ public final class EMFResource {
 		return r;
 	}
 
+	/**
+	 * search for the Resources related to the given resource
+	 * This will help finding resources in a big ResourceSet
+	 * @param res
+	 * @return Resources related to the given resource including the input resource
+	 */
+	public static Set<Resource> getRelatedResources(Resource res){
+		Set<Resource> result = new HashSet<Resource>();
+		result.add(res);
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossRefs = EcoreUtil.ExternalCrossReferencer.find(res);
+		for (Map.Entry<EObject, Collection<EStructuralFeature.Setting>> entry : crossRefs.entrySet()) { 
+            EObject proxyEObject = entry. getKey (); 
+            result.addAll(getRelatedResources(proxyEObject.eResource(), result));           
+		}
+		return result;
+	}
+	
+	protected static Set<Resource> getRelatedResources(Resource res, Set<Resource> result){
+		if(result.contains(res)) return result;
+		result.add(res);
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossRefs = EcoreUtil.ExternalCrossReferencer.find(res);
+		for (Map.Entry<EObject, Collection<EStructuralFeature.Setting>> entry : crossRefs.entrySet()) { 
+			EObject proxyEObject = entry. getKey (); 
+            result.addAll(getRelatedResources(proxyEObject.eResource(), result));
+		} 
+		return result;
+	}
+	
 }
