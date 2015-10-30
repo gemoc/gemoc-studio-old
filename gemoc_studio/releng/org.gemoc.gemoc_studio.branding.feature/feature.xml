@@ -59,10 +59,10 @@
       <import feature="org.eclipse.sirius.specifier.ide.ui" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.gemoc.mocc.feature" version="0.0.0" match="greaterOrEqual"/>
-	  <import feature="org.gemoc.concurrency.exploration.common.feature" version="0.0.0" match="greaterOrEqual"/>
-	  <import feature="org.gemoc.concurrency.exploration.winonly.feature" version="0.0.0" match="greaterOrEqual"/>
-	  <import feature="org.gemoc.concurrency.exploration.linonly.feature" version="0.0.0" match="greaterOrEqual"/>
-	  <import feature="org.gemoc.concurrency.exploration.maconly.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.concurrency.exploration.common.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.concurrency.exploration.winonly.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.concurrency.exploration.linonly.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.concurrency.exploration.maconly.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.e4.rcp" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.melange.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.trace.feature" version="0.0.0" match="greaterOrEqual"/>
@@ -75,5 +75,12 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
+
+   <plugin
+         id="org.gemoc.gemoc_language_workbench.documentation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

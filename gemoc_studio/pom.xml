@@ -19,6 +19,7 @@
 
     <modules>
         <module>plugins/org.gemoc.gemoc_studio.branding</module>
+        <module>plugins/org.gemoc.gemoc_language_workbench.documentation</module>
         <module>releng/org.gemoc.gemoc_studio.product</module>
         <module>releng/org.gemoc.gemoc_studio.branding.feature</module>	
         <module>releng/org.gemoc.gemoc_studio.branding.source.feature</module>		
