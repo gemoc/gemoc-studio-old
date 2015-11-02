@@ -34,9 +34,6 @@
     "kermeta3": [
 		"http://www.kermeta.org/k3/update/",
 		"https://ci.inria.fr/k3al/job/melange-production_stable/lastSuccessfulBuild/artifact/plugins/fr.inria.diverse.melange.p2updatesite/target/site/"
-        ],    
-    "lastragen": [
-        "https://ci.inria.fr/lastragen/job/lastragen/lastSuccessfulBuild/artifact/fr.inria.diverse.trace.updatesite/target/repository/"
-    ]
+        ]
 
 }

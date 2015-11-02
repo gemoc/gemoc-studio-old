@@ -27,12 +27,7 @@
     </modules>
 
     <repositories>
-    	<repository>
-            <id>Lastragen (should be removed when Multi-dimensional Timeline and trace is included)</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/lastragen/job/lastragen/lastSuccessfulBuild/artifact/fr.inria.diverse.trace.updatesite/target/repository/</url>
-        </repository>
-    
+ 
     
     	<!-- Repositories specific for the studio (typically refered by the additional feature) -->
     	<repository>
