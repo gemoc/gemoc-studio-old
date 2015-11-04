@@ -18,12 +18,14 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.gemoc.executionengine.java.sequential_modeling_workbench.ui.debug.OmniscientGenericSequentialModelDebugger;
 import org.gemoc.executionframework.ui.views.engine.IEngineSelectionListener;
 import org.gemoc.gemoc_language_workbench.api.core.EngineStatus.RunStatus;
 import org.gemoc.gemoc_language_workbench.api.core.ExecutionMode;
 import org.gemoc.gemoc_language_workbench.api.core.IDisposable;
 import org.gemoc.gemoc_language_workbench.api.core.IBasicExecutionEngine;
 
+import fr.inria.diverse.trace.gemoc.traceaddon.IMultiDimensionalTraceAddon;
 import fr.obeo.timeline.editpart.PossibleStepEditPart;
 import fr.obeo.timeline.editpart.TimelineEditPartFactory;
 import fr.obeo.timeline.view.AbstractTimelineView;
@@ -93,13 +95,14 @@ public class MultidimensionalTimeLineView extends AbstractTimelineView implement
 		getTimelineViewer().getControl().addMouseListener(_mouseListener);
 	}
 
-
 	private void startListeningToMotorSelectionChange() {
-		org.gemoc.executionframework.ui.Activator.getDefault().getEngineSelectionManager().addEngineSelectionListener(this);
+		org.gemoc.executionframework.ui.Activator.getDefault().getEngineSelectionManager()
+				.addEngineSelectionListener(this);
 	}
 
 	private void stopListeningToMotorSelectionChange() {
-		org.gemoc.executionframework.ui.Activator.getDefault().getEngineSelectionManager().removeEngineSelectionListener(this);
+		org.gemoc.executionframework.ui.Activator.getDefault().getEngineSelectionManager()
+				.removeEngineSelectionListener(this);
 	}
 
 	private ITimelineProvider _timelineProvider;
@@ -112,10 +115,11 @@ public class MultidimensionalTimeLineView extends AbstractTimelineView implement
 			disposeTimeLineProvider();
 			if (engine != null) {
 				int start = getStartIndex(engine);
-				
+
 				// We first look for trace addons
-				Set<IMultiDimensionalTraceAddon> traceAddons = engine.getAddonsTypedBy(IMultiDimensionalTraceAddon.class);
-				if (!traceAddons.isEmpty()){
+				Set<IMultiDimensionalTraceAddon> traceAddons = engine
+						.getAddonsTypedBy(IMultiDimensionalTraceAddon.class);
+				if (!traceAddons.isEmpty()) {
 					_timelineProvider = traceAddons.iterator().next().getTimeLineProvider();
 
 					setTimelineProvider(_timelineProvider, start);
@@ -185,10 +189,11 @@ public class MultidimensionalTimeLineView extends AbstractTimelineView implement
 			final Object selected = ((IStructuredSelection) selection).getFirstElement();
 			if (selected instanceof PossibleStepEditPart) {
 				final Object o1 = ((PossibleStepEditPart) selected).getModel().getChoice2();
-				//Object o2 = ((PossibleStepEditPart) selected).getModel().getPossibleStep();
-				for (IMultiDimensionalTraceAddon traceAddon : _currentEngine.getAddonsTypedBy(IMultiDimensionalTraceAddon.class)) {
+				// Object o2 = ((PossibleStepEditPart) selected).getModel().getPossibleStep();
+				for (OmniscientGenericSequentialModelDebugger traceAddon : _currentEngine
+						.getAddonsTypedBy(OmniscientGenericSequentialModelDebugger.class)) {
 					if (o1 instanceof EObject)
-						traceAddon.goTo((EObject) o1);
+						traceAddon.jump((EObject) o1);
 				}
 			}
 		}

@@ -12,7 +12,10 @@ Require-Bundle: org.gemoc.gemoc_language_workbench.api,
  org.eclipse.sirius.ui,
  org.eclipse.gef,
  org.eclipse.emf.transaction,
- org.gemoc.executionframework.ui
+ org.gemoc.executionframework.ui,
+ fr.inria.diverse.trace.gemoc;bundle-version="1.0.0",
+ fr.inria.diverse.trace.api,
+ org.gemoc.executionengine.java.sequential_modeling_workbench.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.gemoc.sequential_addons.multidimensional.timeline,
