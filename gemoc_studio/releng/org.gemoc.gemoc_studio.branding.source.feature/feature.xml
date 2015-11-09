@@ -23,7 +23,6 @@
       <import feature="org.gemoc.executionengine.ccsljava.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionengine.ccsljava.runtime.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionengine.ccsljava.runtime.ui.feature.source" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.sequential_addons.feature.source" version="0.0.0" match="greaterOrEqual"/>
       
    </requires>
 
