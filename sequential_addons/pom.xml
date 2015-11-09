@@ -13,7 +13,6 @@
 	</parent>
     <modules>
         <!-- plugins -->
-        <module>plugins/org.gemoc.sequential_addons.multidimensional.timeline</module>
         
         <!-- feature and update site -->
         <module>releng/org.gemoc.sequential_addons.feature</module>
