@@ -12,8 +12,6 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
  org.gemoc.execution.engine,
  
- org.gemoc.execution.engine.commons,
- 
  org.gemoc.sample.tfsm.moc.lib;bundle-version="0.0.0";visibility:="reexport",
  
  org.codehaus.groovy,

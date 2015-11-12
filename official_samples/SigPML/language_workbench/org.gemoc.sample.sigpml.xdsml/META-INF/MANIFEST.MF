@@ -11,8 +11,6 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:="re
  
  org.gemoc.execution.engine,
  
- org.gemoc.execution.engine.commons,
- 
  fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.0.0",
  
  org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.0.0";visibility:="reexport",
