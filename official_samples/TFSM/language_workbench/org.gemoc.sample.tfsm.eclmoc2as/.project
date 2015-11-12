@@ -21,7 +21,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.gemoc.gemoc_language_workbench.ui.dse_builder</name>
+			<name>org.gemoc.gemoc_language_workbench.concurrent.ui.dse_builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -29,6 +29,6 @@
 	<natures>
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-		<nature>org.gemoc.gemoc_language_workbench.ui.dse_nature</nature>
+		<nature>org.gemoc.gemoc_language_workbench.concurrent.ui.dse_nature</nature>
 	</natures>
 </projectDescription>
