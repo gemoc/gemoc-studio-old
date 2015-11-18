@@ -54,7 +54,7 @@
         <repository>
             <id>umldesigner</id>
             <layout>p2</layout>
-            <url>http://releases.umldesigner.org/5.0.0/repository/</url>
+            <url>http://releases.umldesigner.org/5.0.1/repository/</url>
         </repository>
         <repository>
             <id>nebula</id>
