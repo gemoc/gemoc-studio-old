@@ -39,9 +39,12 @@ public class OpenEditor {
 	}
 	public static void openIFile(IFile iFile) {
 		File fileToOpen = new File(iFile.getLocation().toOSString());
-		if (fileToOpen.exists() && fileToOpen.isFile()) {
+		openFile(fileToOpen);
+	}
+	public static void openFile(File file) {
+		if (file.exists() && file.isFile()) {
 			IFileStore fileStore = EFS.getLocalFileSystem().getStore(
-					fileToOpen.toURI());
+					file.toURI());
 			IWorkbenchPage page = PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getActivePage();
 
@@ -54,6 +57,7 @@ public class OpenEditor {
 			// Do something if the file does not exist
 		}
 	}
+	
 	
 	
 	/**
