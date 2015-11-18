@@ -370,6 +370,11 @@
 		            <layout>p2</layout>
 		            <url>https://ci.inria.fr/gemoc/job/modelanimation_multidimensional_trace_management/lastSuccessfulBuild/artifact/multidimensional_trace_management/releng/fr.inria.diverse.trace.updatesite/target/repository/</url>
 		        </repository>
+		        <repository>
+		            <id>concurrency_gel on CI</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/job/concurrency_gel/lastSuccessfulBuild/artifact/gel/releng/org.gemoc.gel.repository/target/repository/</url>
+		        </repository>
 		    </repositories>
 	    </profile>
     </profiles>
