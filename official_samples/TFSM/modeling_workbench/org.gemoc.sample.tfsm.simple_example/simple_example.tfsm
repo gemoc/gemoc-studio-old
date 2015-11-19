@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.gemoc.sample.tfsm:TimedSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.gemoc.sample.tfsm="http://www.gemoc.org/sample/tfsm" name="PingPong">
+  <tfsms name="Ponger" initialState="//@tfsms.0/@ownedStates.0">
+    <ownedStates name="initPonger" outgoingTransitions="//@tfsms.0/@ownedTransitions.0"/>
+    <ownedStates name="Pong_ofPonger" outgoingTransitions="//@tfsms.0/@ownedTransitions.1" incomingTransitions="//@tfsms.0/@ownedTransitions.0 //@tfsms.0/@ownedTransitions.2"/>
+    <ownedStates name="Ping_ofPonger" outgoingTransitions="//@tfsms.0/@ownedTransitions.2" incomingTransitions="//@tfsms.0/@ownedTransitions.1"/>
+    <localClock name="pongerTime"/>
+    <ownedTransitions name="initToPong_ofPonger" source="//@tfsms.0/@ownedStates.0" target="//@tfsms.0/@ownedStates.1" action=""/>
+    <ownedTransitions name="PongToPing_ofPonger" source="//@tfsms.0/@ownedStates.1" target="//@tfsms.0/@ownedStates.2" action="">
+      <ownedGuard xsi:type="org.gemoc.sample.tfsm:EventGuard" name="guard_whenPing" triggeringEvent="//@globalEvents.1"/>
+    </ownedTransitions>
+    <ownedTransitions name="PingToPong_ofPonger" source="//@tfsms.0/@ownedStates.2" target="//@tfsms.0/@ownedStates.1" generatedEvents="//@globalEvents.0" action="">
+      <ownedGuard xsi:type="org.gemoc.sample.tfsm:TemporalGuard" name="guard_3onPongetTime" onClock="//@tfsms.0/@localClock" afterDuration="3"/>
+    </ownedTransitions>
+  </tfsms>
+  <tfsms name="Pinger" initialState="//@tfsms.1/@ownedStates.0">
+    <ownedStates name="initPinger" outgoingTransitions="//@tfsms.1/@ownedTransitions.0"/>
+    <ownedStates name="Ping_ofPinger" outgoingTransitions="//@tfsms.1/@ownedTransitions.1" incomingTransitions="//@tfsms.1/@ownedTransitions.2 //@tfsms.1/@ownedTransitions.0"/>
+    <ownedStates name="Pong_ofPinger" outgoingTransitions="//@tfsms.1/@ownedTransitions.2" incomingTransitions="//@tfsms.1/@ownedTransitions.1"/>
+    <localClock name="pingerTime"/>
+    <ownedTransitions name="initToPing_ofPinger" source="//@tfsms.1/@ownedStates.0" target="//@tfsms.1/@ownedStates.1" action=""/>
+    <ownedTransitions name="PingToPong_ofPinger" source="//@tfsms.1/@ownedStates.1" target="//@tfsms.1/@ownedStates.2" generatedEvents="//@globalEvents.1" action="">
+      <ownedGuard xsi:type="org.gemoc.sample.tfsm:TemporalGuard" name="guard_3onPingerTime" onClock="//@tfsms.1/@localClock" afterDuration="3"/>
+    </ownedTransitions>
+    <ownedTransitions name="PongToPing_ofPinger" source="//@tfsms.1/@ownedStates.2" target="//@tfsms.1/@ownedStates.1" action="">
+      <ownedGuard xsi:type="org.gemoc.sample.tfsm:EventGuard" name="guard_whenPong" triggeringEvent="//@globalEvents.0"/>
+    </ownedTransitions>
+  </tfsms>
+  <globalEvents name="pong" sollicitingTransitions="//@tfsms.0/@ownedTransitions.2"/>
+  <globalEvents name="ping" sollicitingTransitions="//@tfsms.1/@ownedTransitions.1"/>
+</org.gemoc.sample.tfsm:TimedSystem>
