@@ -35,7 +35,7 @@ public class TFSMServices {
 			res.append(((TemporalGuard) transition.getOwnedGuard())
 					.getOnClock().getName());
 		} else if (transition.getOwnedGuard() instanceof EvaluateGuard) {
-			res.append("when ");
+			res.append("if ");
 			res.append(((EvaluateGuard) transition.getOwnedGuard())
 					.getCondition());
 		}

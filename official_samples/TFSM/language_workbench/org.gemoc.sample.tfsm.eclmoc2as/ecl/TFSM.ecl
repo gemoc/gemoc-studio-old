@@ -11,7 +11,7 @@ ECLimport "platform:/resource/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib
 ECLimport "platform:/resource/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoCC.moccml"
 
 package tfsm
-/**
+/** 
  * @Public DSE
  */
 	/**
@@ -63,12 +63,12 @@ package tfsm
 	
 	context Transition
 	    inv fireWhenRestrueOccursTransition: 
-	    	(self.ownedGuard.oclIsKindOf(EvaluateGuard) and self.source.outgoingTransitions->select(t | (t) <> self)->size() = 0) implies
+	    	(self.ownedGuard <> null and self.ownedGuard.oclIsKindOf(EvaluateGuard) and self.source.outgoingTransitions->select(t | (t) <> self)->size() = 0) implies
 	    	let restrueOccursAfterOrWhileStateEntering :Event = Expression SampledOn(self.source.entering,self.ownedGuard.oclAsType(EvaluateGuard).evaluatedTrue) in
 	    	Relation Coincides(restrueOccursAfterOrWhileStateEntering, self.fire) 
 	    
 	    inv fireWhenRestrueOccursVariousTransition:
-			(self.ownedGuard.oclIsKindOf(EvaluateGuard) and self.source.outgoingTransitions->select(t | (t) <> self)->size() > 0) implies
+			(self.ownedGuard <> null and self.ownedGuard.oclIsKindOf(EvaluateGuard) and self.source.outgoingTransitions->select(t | (t) <> self)->size() > 0) implies
 			let otherFireFromTheSameState3: Event = Expression Union (self.source.outgoingTransitions->select(t | (t) <> self).fire) in
 		 	Relation EventGuardedTransition(self.source.entering,
 		 							self.ownedGuard.oclAsType(EvaluateGuard).evaluatedTrue,
@@ -78,12 +78,12 @@ package tfsm
 	    
 	    -- there is non rule when ocurrs various evaluate transitions
 		inv fireWhenEventOccursOneTransition:
-			(self.ownedGuard.oclIsKindOf(EventGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() = 0) implies
+			(self.ownedGuard <> null and self.ownedGuard.oclIsKindOf(EventGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() = 0) implies
 			let eventOccursAfterOrWhileStateEntering :Event = Expression SampledOn(self.source.entering,self.ownedGuard.oclAsType(EventGuard).triggeringEvent.occurs) in
 			Relation Coincides(eventOccursAfterOrWhileStateEntering, self.fire) 
 		
 		inv fireWhenEventOccursVariousTransition:
-			(self.ownedGuard.oclIsKindOf(EventGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() > 0) implies
+			(self.ownedGuard <> null and self.ownedGuard.oclIsKindOf(EventGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() > 0) implies
 			let otherFireFromTheSameState2: Event = Expression Union (self.source.outgoingTransitions->select(t| (t) <> self).fire) in
 		 	Relation EventGuardedTransition(self.source.entering,
 		 							self.ownedGuard.oclAsType(EventGuard).triggeringEvent.occurs,
@@ -92,7 +92,7 @@ package tfsm
 		 	) 
 		
 		inv fireWhenTemporalGuardHoldsVariousTransition:
-			(self.ownedGuard.oclIsKindOf(TemporalGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() > 0) implies
+			(self.ownedGuard <> null and self.ownedGuard.oclIsKindOf(TemporalGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() > 0) implies
 			let guardDelay : Integer = self.ownedGuard.oclAsType(TemporalGuard).afterDuration in
 			let otherFireFromTheSameState: Event = Expression Union (self.source.outgoingTransitions->select(t| (t) <> self).fire) in
 			Relation TemporalGuardedTransition(self.source.entering,
@@ -103,7 +103,7 @@ package tfsm
 			) 
 
 		inv fireWhenTemporalGuardHoldsOneTransition:
-			(self.ownedGuard.oclIsKindOf(TemporalGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() = 0) implies
+			(self.ownedGuard <> null and self.ownedGuard.oclIsKindOf(TemporalGuard) and self.source.outgoingTransitions->select(t| (t) <> self)->size() = 0) implies
 			let delay : Integer = self.ownedGuard.oclAsType(TemporalGuard).afterDuration in
 			let delayIsExpired_wrt_StateEntering :Event = Expression DelayFor(
 															self.source.entering,
@@ -114,11 +114,18 @@ package tfsm
 		
 		-- Evaluate guards is checked at the entering of the state 
 		inv EvaluateGuardWhenEnteringState:
-			(self.ownedGuard.oclIsKindOf(EvaluateGuard)) implies
+			(self.ownedGuard <> null and self.ownedGuard.oclIsKindOf(EvaluateGuard)) implies
 			(Relation Coincides(self.ownedGuard.oclAsType(EvaluateGuard).evaluate, self.source.entering)) 
 			
-	context State
-		inv enterOnceBeforeToLeave:
+		inv TransientInitTransition:
+			(self.source = self.source.owningFSM.initialState) implies
+			(Relation Coincides(self.source.entering, self.source.leaving))
+		inv TransientInitTransition2:
+			(self.source = self.source.owningFSM.initialState) implies
+			(Relation Coincides(self.source.leaving, self.fire))
+			
+	context State 
+		inv enterOnceBeforeToLeave: 
 			Relation WeakAlternates(self.entering, self.leaving)  
 		
 		inv firingATransitionAlternatesWithLeavingState:
@@ -136,8 +143,8 @@ package tfsm
 			(not (self = self.owningFSM.initialState)) and (self.owningFSM.localClock = null) implies --case of no local time
 			let allInputTransition2 : Event = Expression Union(self.incomingTransitions.fire) in
 			let allEvents : Event = Expression Union(self.owningFSM.oclAsType(ecore::EObject).eContainer().oclAsType(TimedSystem).globalEvents.occurs ) in
-			let eventsOrTime : Event = Expression Union(self.owningFSM.oclAsType(ecore::EObject).eContainer().oclAsType(TimedSystem).globalClocks->first().ticks, allEvents) in
-			let allInputsSampledOneventsOrTime : Event = Expression SampledOn(allInputTransition2, eventsOrTime) in
+			let eventsOrLocalTime : Event = Expression Union(self.owningFSM.localClock.ticks, allEvents) in
+			let allInputsSampledOneventsOrTime : Event = Expression SampledOn(allInputTransition2, eventsOrLocalTime) in
 			Relation Alternates(self.entering, allInputsSampledOneventsOrTime)
 
 	context EvaluateGuard 
@@ -145,8 +152,9 @@ package tfsm
 			Relation BooleanGuardedTransitionRule (self.evaluate, self.evaluatedTrue, self.evaluatedFalse)	
 			
 	context TFSM
-		inv oneStateAtATime:
-			Relation Exclusion(self.ownedStates.entering)
+-- not true for transient transitions
+--		inv oneStateAtATime:
+--			Relation Exclusion(self.ownedStates.entering)
 			
 		inv oneTransitionAtATime:
 			(self.ownedStates.outgoingTransitions->size() > 1) implies
@@ -158,6 +166,10 @@ package tfsm
 		inv firstOnlyOnce:
 			let onlyOneFirst : Event = Expression OneTickAndNoMore(self.start) in
 			Relation Coincides(self.start,onlyOneFirst)	
+			
+		inv noLocalTimeBeforeStart:
+			let firstLocalTimeTick : Event = Expression OneTickAndNoMore(self.localClock.ticks) in
+			Relation Precedes(self.start, firstLocalTimeTick)
 		
 		
 	
