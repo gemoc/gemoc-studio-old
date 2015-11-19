@@ -1,0 +1,35 @@
+AutomataConstraintLibrary markedgraph{ 
+	import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+	import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as ccsl;
+	
+	RelationLibrary placeLib {
+
+		AutomataRelationDefinition placeReadWriteDef[placeReadWrite]{
+
+			variables {
+				Integer MAX = 10
+				Integer count = 0
+				
+			}
+
+			init: s0
+			
+			from s0 to s : init
+			-> (do count = n.value)  
+
+			from s to s : read
+			-> ( when r if( count >= one) do count = (count - one))
+
+			from s to s : write
+			-> ( when w do count = (count + one))
+
+			State s0 (out : init)
+			State s( in : read, write, init 
+				out : write, read
+			)
+			
+		}
+		
+		RelationDeclaration placeReadWrite(r:clock, w: clock, n: int)
+	}
+}
