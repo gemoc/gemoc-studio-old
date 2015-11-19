@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="ASCII"?>
+<discovery:DiscoveryDefinition
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:discovery="http://www.eclipse.org/amalgamation/discovery/1.0">
+  <categories
+      name="Model To Text"
+      description="Model to Text (also known as code generation) tools and languages."
+      relevance="6"
+      image48="">
+    <components
+        name="Acceleo"
+        provider="Eclipse.org"
+        description="Acceleo is a standard-based template language focused on usability and pragmatism."
+        license="EPL"
+        image32="images/acceleo.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary=" Acceleo is a pragmatic implementation of the Object Management Group (OMG) MOF Model to Text Language (MTL) standard.&#xA;&#xA;You do not need to be an expert to start using the plug-ins and create your first code generator : using the provided example projects and the powerful completion feature of the Acceleo editor, it is very easy to get started once you understand the basic principles. "
+          screenshot="images/acceleo-screenshot-320x240.png"/>
+      <id>org.eclipse.acceleo</id>
+    </components>
+    <components
+        name="Xpand"
+        provider="Eclipse.org"
+        description="Xpand is an efficient code generation framework with a statically-typed template language and support for arbitrary input model types."
+        license="EPL"
+        image32="images/xpand.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="Xpand allows to write code generators for many different types of models. These&#xA;models include EMF models, UML models, XML documents and textual DSL models.&#xA;Any type of source code can be generated from the model sources. Xpand has&#xA;strong emphasize on reducing the effort to create industry-strength code&#xA;generators and provides outstanding Eclipse integration.&#xA;&#xA;Xpand's features include:&#xA; &#x2022; support of various modeling tools&#xA; &#x2022; support of EMF (Eclipse Modeling Framework)&#xA; &#x2022; model-to-code transformations&#xA; &#x2022; model-to-model transformations             &#xA; &#x2022; model validation&#xA; &#x2022; expression language&#xA; &#x2022; static code analysis&#xA; &#x2022; aspect oriented programming&#xA; &#x2022; support for standalone execution"
+          screenshot="images/xpand-screenshot-320x240.png"/>
+      <id>org.eclipse.xpand.sdk</id>
+      <hiddingFeatureID>org.eclipse.xpand</hiddingFeatureID>
+    </components>
+  </categories>
+  <categories
+      name="Model To Model"
+      description="Model to Model tools and transformation languages."
+      image48="">
+    <components
+        name="ATL"
+        provider="Eclipse.org"
+        description="ATL is a model transformation language and toolkit, including an ATL transformation engine and an IDE for ATL."
+        license="EPL"
+        image32="images/atl.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="The ATL component of the M2M project provides ways to produce a set of target models from a set of source models. An ATL transformation program is composed of rules that define how source model elements are matched and navigated to create and initialize the elements of the target models. Developed on top of the Eclipse platform, the ATL toolkit provides a number of standard development tools (advanced editor, debugger, profiler, etc.) that aims to ease development of ATL transformations."
+          screenshot="images/atl-screenshot-320x240.png"
+          url="http://www.eclipse.org/m2m/atl/"/>
+      <id>org.eclipse.m2m.atl.sdk</id>
+      <hiddingFeatureID>org.eclipse.m2m.atl</hiddingFeatureID>
+    </components>
+    <components
+        name="Declarative QVT"
+        provider="Eclipse.org"
+        description="Editors for QVT Relational and QVT Core documents"
+        license="EPL"
+        groups="//@filters.0"
+        image32="images/qvtd.png"
+        incubation="true"
+        visible="false">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="QVTd project currently provides Editors for&#xA;&#xA;- QVT Relational documents&#xA;- QVT Core documents&#xA;&#xA;QVTc and QVTr execution is work in progress"
+          screenshot="images/qvtd-screenshot-320x240.png"
+          url="http://www.eclipse.org/projects/project_summary.php?projectid=modeling.m2m.qvt-relations"/>
+      <id>org.eclipse.qvtd</id>
+    </components>
+    <components
+        name="Operational QVT"
+        provider="Eclipse.org"
+        description="Implementation of the Operational part of the OMG QVT (Query/View/Transformation) open standard"
+        license="EPL"
+        image32="images/qvto.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="Based on MDT OCL, the Operational QVT project aims to be fully compliant with the OMG QVT standard providing a powerful Eclipse IDE with feature-rich editor (code completion, outline, navigation, etc.), debugger, project builders, launch configurations, deployment facilities and Ant support."
+          screenshot="images/qvto-screenshot-320x240.png"
+          url="http://wiki.eclipse.org/M2M/Operational_QVT_Language_%28QVTO%29"/>
+      <id>org.eclipse.m2m.qvt.oml.sdk</id>
+    </components>
+  </categories>
+  <categories
+      name="Concrete Syntax Development"
+      description="Tools and frameworks to develop dedicated modeling tools. "
+      relevance="4">
+    <components
+        name="Sirius"
+        provider="Eclipse.org"
+        description="Sirius is an Eclipse project which allows you to easily create your own graphical modeling workbench by leveraging the Eclipse Modeling technologies, including EMF and GMF."
+        license="EPL"
+        groups="//@filters.0"
+        image32="images/sirius.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <sitesURLS>http://download.eclipse.org/sirius/updates/releases/2.0.4/luna</sitesURLS>
+      <overview
+          summary="A modeling workbench created with Sirius is composed of a set of Eclipse editors (diagrams, tables and trees) which allow the users to create, edit and visualize EMF models.&#xA;The editors are defined by a model which defines the complete structure of the modeling workbench, its behavior and all the edition and navigation tools. This description of a Sirius modeling workbench is dynamically interpreted by a runtime within the Eclipse IDE.&#xA;For supporting specific need for customization, Sirius is extensible in many ways, notably by providing new kinds of representations, new query languages and by being able to call Java code to interact with Eclipse or any other system."
+          screenshot="images/sirius-screenshot-320x240.png"
+          url="http://www.eclipse.org/sirius/"/>
+      <id>org.eclipse.sirius.specifier.ide.ui</id>
+      <id>org.eclipse.sirius.runtime.acceleo</id>
+      <id>org.eclipse.sirius.runtime.ide.ui</id>
+      <id>org.eclipse.sirius.doc.feature</id>
+      <id>org.eclipse.sirius.runtime</id>
+      <id>org.eclipse.sirius.specifier.ide.ui.acceleo</id>
+      <id>org.eclipse.sirius.runtime.ide.ui.acceleo</id>
+    </components>
+    <components
+        name="Extended Editing Framework"
+        provider="Eclipse.org"
+        description="EEF (Extended Editing Framework) is a presentation framework for EMF models. "
+        license="EPL"
+        image32="images/eef.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="The Extended Editing Framework aims at giving another way to improve the EMF model creation phase by providing new services dedicated to editing and using more appealing editing elements. The way to obtain these services and elements is based on a generative approach similar to the EMF.Edit one. The framework provides advanced editing components for the properties of EMF elements and a default generation based on standard metamodels using these components."
+          screenshot="images/eef-screenshot-320x240.png"
+          url="http://www.eclipse.org/modeling/emft/?project=eef"/>
+      <id>org.eclipse.emf.eef.sdk-feature</id>
+    </components>
+    <components
+        name="Graphical Modeling Framework Tooling"
+        provider="Eclipse.org"
+        description="GMF Tooling is a framework to generate functional graphical editors based on the GMF Runtime."
+        license="EPL"
+        image32="images/gmf.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <id>org.eclipse.gmf.sdk</id>
+    </components>
+    <components
+        name="Graphiti"
+        provider="Eclipse.org"
+        description="Graphiti is a graphical API that enables the fast and easy creation of graphical tools for any kind of domain models."
+        license="EPL"
+        groups="//@filters.0"
+        image32="images/graphiti.png"
+        incubation="true">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="The goal of Graphiti is to support the fast and easy creation of graphical tools, which can display and edit underlying domain models using a tool-defined graphical notation. Graphiti supports the developer in getting to a first version of an editor with very low effort by:&#xA;- Hiding platform specific technology (e.g. GEF / Draw2D on Eclipse)&#xA;- Providing rich default implementations inside the framework&#xA;- Providing a default look and feel that was designed in close co-operation with usability specialists"
+          screenshot="images/graphiti-screenshot-320x240.png"
+          url="http://www.eclipse.org/graphiti/"/>
+      <id>org.eclipse.graphiti.sdk.feature</id>
+    </components>
+    <components
+        name="Xtext"
+        provider="Eclipse.org"
+        description="Xtext is a framework for development of programming languages and domain specific languages (DSLs). "
+        license="EPL"
+        groups="//@filters.0"
+        image32="images/xtext.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="Xtext is a framework for development of programming languages and domain&#xA;specific languages (DSLs). Just describe your very own DSL using Xtext's simple&#xA;EBNF grammar language and the generator will create a parser, an AST-meta model&#xA;(implemented in EMF) as well as a full-featured Eclipse text editor from that.&#xA;&#xA;The Framework integrates with frameworks from Eclipse Modeling such as EMF, GMF&#xA;and M2T as well as other Eclipse based technologies. Development with Xtext is&#xA;optimized for short turn-arounds, so that adding new features to an existing&#xA;DSL is a matter of minutes. Still sophisticated programming languages can be&#xA;implemented."
+          screenshot="images/xtext-screenshot-320x240.png"/>
+      <id>org.eclipse.xtext.sdk</id>
+    </components>
+  </categories>
+  <categories
+      name="Modeler"
+      description="Modeling environment tools."
+      relevance="3">
+    <components
+        name="EcoreTools (Updates)"
+        provider="Eclipse.org"
+        description="Class diagrams and rich editing capabilities for your domain models."
+        license="EPL"
+        image32="images/sirius.png">
+      <sitesURLS>http://download.eclipse.org/ecoretools/updates/nightly/2.0.x/luna</sitesURLS>
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="EcoreTools is a graphical modeler to create, edit and analyze Ecore models.&#xA;&#xA;It provides several a class diagram editor (similar to UML Class Diagrams), a package dependencies diagram editor and several table editors to design your Ecore model."
+          screenshot="images/ecoretools-screenshot-320x240.png"
+          url="https://www.eclipse.org/ecoretools/"/>
+      <id>org.eclipse.emf.ecoretools.design</id>
+    </components>
+    <components
+        name="Papyrus"
+        provider="Eclipse.org"
+        description="Papyrus provides an integrated, user-consumable environment for editing models based on UML and other related languages such as SysML."
+        license="EPL"
+        image32="images/papyrus.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="Papyrus is an open source component of the&#xA;Model Development Tools (MDT) subproject to provide an integrated environment&#xA;for editing UML and SysML models. Specially, this project will provide the glue&#xA;around valuable UML and SysML diagram editors (GMF-based or not) and other MDE&#xA;tools. It will also offer support for UML and SysML profiling mechanisms."
+          screenshot="images/papyrus-screenshot-320x240.png"
+          url="http://www.eclipse.org/papyrus"/>
+      <id>org.eclipse.papyrus.sdk.feature</id>
+    </components>
+    <components
+        name="UML2 Tools"
+        provider="Eclipse.org"
+        description="The UML2Tools component is a set of the UML 2.1 compatible diagram editors, based on the Eclipse GMF framework"
+        license="EPL"
+        groups="//@filters.0"
+        image32=""
+        incubation="true"
+        visible="false">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="UML2Tools provides support for Class, Composite Structure, Component,&#xA;Deployment, UseCase, Activity and StateMachine diagram. It also contains&#xA;supplementary Profile Definition diagram, enabling the visual integration of&#xA;the custom defined stereotypes with the other supported diagrams."
+          screenshot="images/uml2tools-screenshot-320x240.png"/>
+      <id>org.eclipse.uml2tools</id>
+    </components>
+  </categories>
+  <categories
+      name="Reverse Engineering"
+      description="Tools focused on getting models from source code."
+      relevance="2">
+    <components
+        name="MoDisco"
+        provider="Eclipse.org"
+        description="MoDisco is an extensible framework to develop model-driven tools for software modernization projects."
+        license="EPL"
+        groups="//@filters.0"
+        image32="images/modisco.png"
+        incubation="true">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="MoDisco provides standard metamodels to describe existing systems, discoverers&#xA;to automaticaly create models from Java and XML source code, and generic tools&#xA;to understand and transform complex models.&#xA;"
+          screenshot="images/modisco-screenshot-320x240.png"
+          url="http://www.eclipse.org/gmt/modisco/"/>
+      <id>org.eclipse.modisco.sdk.feature</id>
+      <hiddingFeatureID>org.eclipse.modisco.infrastructure</hiddingFeatureID>
+    </components>
+  </categories>
+  <categories
+      name="Runtime and Tools"
+      description="Modeling related runtimes and frameworks."
+      relevance="1">
+    <components
+        name="Connected Data Objects Repository"
+        provider="Eclipse.org"
+        license="EPL"
+        visible="false">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+    </components>
+    <components
+        name="Agent Modeling Platform"
+        provider="             Eclipse.org  &#xA; &lt;a href=&quot;http://www.eclipse.org/amp/installing/about_discovery.php&quot;>contains non ip-approved content&lt;/a>"
+        description="Agent Modeling Platform (Incubation), including Agent Modeling Framework, Agent eXecution Framework, Agent Graphics and Visualization Framework, and Escape."
+        license="EPL"
+        groups="//@filters.0"
+        image32="images/amp.png"
+        incubation="true"
+        visible="false">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <sitesURLS>http://lwjgl.org/update</sitesURLS>
+      <sitesURLS>http://ascape.sourceforge.net/eclipse</sitesURLS>
+      <sitesURLS>http://download.eclipse.org/amp/updates/releases</sitesURLS>
+      <sitesURLS>http://mirror.anl.gov/pub/repastsimphony/</sitesURLS>
+      <overview
+          summary="The Agent Modeling Platform (AMP) provides extensible frameworks&#xA;and exemplary tools for representing, editing, generating, executing and&#xA;visualizing agent-based models (ABMs) and any other domain requiring spatial,&#xA;behavioral and functional features. AMP has two parts: 1) The Agent Modeling&#xA;Framework (AMF) which provides an Agent-Based Model (ABM) meta-model&#xA;representation, editor, development environment and code generators for popular&#xA;ABM platforms. 2) The AMP platform tools. The Agent Execution Framework (AXF)&#xA;provides services and UI for model management, execution, and views. The Agent&#xA;Graphics Framework (AGF) extends GEF, GEF3D, Zest, and the BIRT charting engine&#xA;to support real-time visualization of and interaction with agent models. Escape&#xA;is a complete ABM environment for Eclipse."
+          screenshot="images/amp-screenshot-320x240.png"
+          url="http://www.eclipse.org/amp"/>
+      <id>org.eclipse.amp.all</id>
+    </components>
+    <components
+        name="Model Workflow Engine"
+        provider="Eclipse.org"
+        license="EPL"
+        groups="//@filters.0"
+        incubation="true"
+        visible="false">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+    </components>
+    <components
+        name="EGF"
+        provider="Eclipse.org"
+        description="The purpose of EGF is to provide an extensible generation framework in order to support complex, large-scale and customizable generations."
+        license="EPL"
+        groups="//@filters.0"
+        image32="images/egf.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="In order to improve the software development industrialization, a major step consists in mass-producing software. This mass-production must be customizable, and must be able to support complex, large-scale and heterogeneous generations. Given the today's available Eclipse tools, the issue here is not to provide either a new transformation engine (model-to-model, model-to-text, text-to-model, text-to-text) or DSL (Domain-Specific Language) editor but to realize their integration for flexible software mass-production."
+          screenshot="images/egf-screenshot-320x240.png"
+          url="http://wiki.eclipse.org/EGF"/>
+      <id>org.eclipse.egf.sdk</id>
+      <hiddingFeatureID>org.eclipse.egf.sdk</hiddingFeatureID>
+    </components>
+    <components
+        name="EMFStore"
+        provider="Eclipse.org"
+        description="EMFStore is a model repository for EMF-based models/data. It allows storage, versioning, collaboration, offline work and interactive merging. All functions are available via API and via GUI included in the release."
+        license="EPL"
+        image32="images/emfstore.png"
+        visible="false">
+      <sitesURLS>http://download.eclipse.org/emf-store/releases</sitesURLS>
+      <overview
+          summary="EMFStore is a repository for EMF-based models. It features an offline mode and&#xA;is geared towards collaborative editing of the stored models. Therefore support&#xA;for conflict detection and interactive merging of models is built into the&#xA;repository including versioning. EMFStore also ships with a set of client&#xA;plugins containing an API for the server and even views for commiting changes&#xA;to, updating changes from the repository as well as merging models in a local&#xA;workspace. In addition EMFStore provides access control on the repository and&#xA;storage for the models and their meta data on client and server side. EMFStore&#xA;also supports changing the Ecore model of the stored EMF model instances by&#xA;generating model migrators based on Edapt. This is a useful feature if your&#xA;application evolves and requires changing your data model for example.&#xA;&#xA;Feature Overview:&#xA;- Offline Mode (No server connection neccessary)&#xA;- Interactive Merging&#xA;- Extensible Model Conflict Detection and Merging&#xA;- Model Versioning with full history&#xA;- Model Storage (client and server-side)&#xA;- Access Control&#xA;- Model Migration"
+          screenshot="images/emfstore-screenshot-320x240.png"
+          url="http://emfstore.org"/>
+      <id>org.eclipse.emf.emfstore.sdk.feature</id>
+    </components>
+    <components
+        name="Teneo"
+        provider="Eclipse.org"
+        description="Teneo is a Model-Relational mapping and runtime database persistence solution for the Eclipse Modeling Framework (EMF) using Hibernate and EclipseLink."
+        license="EPL"
+        visible="false">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="The EMF &#x2013; Hibernate integration supports all EMF features and standard EclipseLink and Hibernate features. EMF objects can be persisted in most major relational databases and retrieved using an EMF resource approach or HQL/JPA queries. A distinctive feature of Teneo is that you can override/extend the Model-Relational mapping using JPA annotations in the model."
+          screenshot="images/teneo-screenshot-320x240.png"
+          url="http://wiki.eclipse.org/Teneo"/>
+      <id>org.eclipse.emf.teneo.hibernate</id>
+      <id>org.eclipse.emf.teneo.eclipselink</id>
+    </components>
+    <components
+        name="OCL Tools"
+        provider="Eclipse.org"
+        description="An evaluation Console for OCL expressions, and Xtext Editors for Complete OCL documents, Combined OCL in Ecore Models and for individual OCL expressions"
+        license="EPL"
+        image32="images/ocl.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <overview
+          summary="The Examples for the Object Constraint Language provide&#xA;&#xA;Xtext Editors for&#xA;- CompleteOCL documents to enhance Ecore or UML models&#xA;- OCL in Ecore documents defining OCL and Ecore at once&#xA;- Individual Expressions for use by other tools&#xA;- the OCL Standard Library"
+          screenshot="images/ocl-screenshot-320x240.png"
+          url="http://www.eclipse.org/projects/project_summary.php?projectid=modeling.mdt.ocl"/>
+      <id>org.eclipse.ocl.examples</id>
+    </components>
+  </categories>
+  <filters name="Incubation"/>
+</discovery:DiscoveryDefinition>
