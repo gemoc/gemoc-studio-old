@@ -67,6 +67,8 @@
       <import feature="fr.inria.diverse.trace.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.trace.gemoc.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.bcool.feature" version="1.0.0.qualifier"/>
+      <import feature="org.gemoc.gel.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.gel.microgel.feature" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<discovery:DiscoveryDefinition
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:discovery="http://www.eclipse.org/amalgamation/discovery/1.0">
+  <categories
+      name="Modeler"
+      description="Modeling environment tools."
+      relevance="3">
+    <components
+        name="UML Designer"
+        provider="Obeo"
+        description="Graphical tooling to edit and visualize UML models."
+        license="EPL"
+        image32="images/umldesigner.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <sitesURLS>http://download.eclipse.org/sirius/updates/nightly/3.0.x/luna</sitesURLS>
+      <sitesURLS>http://releases.umldesigner.org/5.0.1/repository/</sitesURLS>
+      <overview
+          summary="UML Designer provides a set of common diagrams to work with UML 2.5 models. The intent is to provide an easy way to make the transition from UML to domain specific modeling. This way users can continue to manipulate legacy UML models and start working with DSL. Users can even re-use the provided representations and work in a total transparence on both UML and DSL models at the same time."
+          screenshot="images/umldesigner-screenshot-320x240.png"
+          url="http://www.umldesigner.org/"/>
+      <id>org.obeonetwork.dsl.uml2.runtime.feature</id>
+    </components>
+  </categories>
+  <filters name="Incubation"/>
+</discovery:DiscoveryDefinition>
