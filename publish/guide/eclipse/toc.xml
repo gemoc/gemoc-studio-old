@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<toc label="GEMOC Studio Guide" topic="Guide.html">
+<toc label="GEMOC Studio Documentation" topic="Guide.html">
    <topic label="Introduction" href="pr01.html">
       <topic label="Language Workbench overview" href="pr01.html#_language_workbench_overview_inlinemediaobject_imageobject_imagedata_fileref_images_icons_iconegemoclanguage_16_png_contentwidth_16_contentdepth_16_imageobject_textobject_phrase_iconegemoclanguage_16_phrase_textobject_inlinemediaobject"/>
       <topic label="Modeling workbench overview" href="pr01s02.html"/>
