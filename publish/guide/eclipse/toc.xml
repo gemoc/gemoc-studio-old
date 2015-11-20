@@ -12,7 +12,7 @@
          <topic label="Creating the xDSML Project" href="ch01s02.html#_creating_the_xdsml_project"/>
          <topic label="Editing the xDSML Project" href="ch01s02.html#_editing_the_xdsml_project"/>
       </topic>
-      <topic label="Domain Model Project" href="ch01s03.html">
+      <topic label="Defining a Domain Model Project" href="ch01s03.html">
          <topic label="Purpose" href="ch01s03.html#_purpose_2"/>
          <topic label="Creating the Domain Model Project" href="ch01s03.html#_creating_the_domain_model_project"/>
          <topic label="Editing the Domain Model Project" href="ch01s03.html#_editing_the_domain_model_project"/>
