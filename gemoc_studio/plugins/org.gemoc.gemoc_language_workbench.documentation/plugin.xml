@@ -9,7 +9,15 @@
             primary="true">
       </toc>
       <toc
-            file="eclipse_help/eclipse/toc.xml"
+            file="eclipse_help/guide/eclipse/toc.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="eclipse_help/tutorial_markedgraph/eclipse/toc.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="eclipse_help/tutorial_sigpml/eclipse/toc.xml"
             primary="false">
       </toc>
    </extension>

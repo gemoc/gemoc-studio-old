@@ -55,29 +55,43 @@
 						</goals>
 						<configuration>
 							<tasks>
-								<mkdir dir="${project.build.outputDirectory}/zips" />
+								<mkdir dir="${project.build.directory}/zips" />
 								<mkdir dir="eclipse_help" />
+								<mkdir dir="eclipse_help/guide" />
 								<get
 									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/guide/eclipse/*zip*/eclipse.zip"
-									dest="${project.build.outputDirectory}/zips/eclipse.zip" />
-								<unzip src="${project.build.outputDirectory}/zips/eclipse.zip"
-									dest="eclipse_help" />
-								<!-- override eclipse html by html version wich is cleaner -->
-								<get
+									dest="${project.build.directory}/zips/guide_eclipse.zip" />
+								<unzip src="${project.build.directory}/zips/guide_eclipse.zip"
+									dest="eclipse_help/guide" />
+								<!-- override eclipse html by html version which is cleaner -->
+								<!-- <get
 									src="https://ci.inria.fr/gemoc/view/Documentation/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/guide/html/*zip*/html.zip"
-									dest="${project.build.outputDirectory}/zips/html.zip" />
-								<unzip src="${project.build.outputDirectory}/zips/html.zip"
+									dest="${project.build.outputDirectory}/zips/guide_html.zip" />
+								<unzip src="${project.build.outputDirectory}/zips/guide_html.zip"
 									dest="eclipse_help" />
 								<copy todir="eclipse_help/eclipse" overwrite="true">
 									<fileset dir="eclipse_help/html"  />
-								</copy>
+								</copy>-->
+								
+								<mkdir dir="eclipse_help/tutorial_markedgraph" />
+								<get
+									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_markedgraph/eclipse/*zip*/eclipse.zip"
+									dest="${project.build.directory}/zips/tutorial_markedgraph_eclipse.zip" />
+								<unzip src="${project.build.directory}/zips/tutorial_markedgraph_eclipse.zip"
+									dest="eclipse_help/tutorial_markedgraph" />
+								<mkdir dir="eclipse_help/tutorial_sigpml" />
+								<get
+									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_sigpml/eclipse/*zip*/eclipse.zip"
+									dest="${project.build.directory}/zips/tutorial_sigpml_eclipse.zip" />
+								<unzip src="${project.build.directory}/zips/tutorial_sigpml_eclipse.zip"
+									dest="eclipse_help/tutorial_sigpml" />
 							</tasks>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 
-			<!-- Workaround docbokk generation, the toc.xml are gerenated in the same 
+			<!-- Workaround docbook generation, the toc.xml are gerenated in the same 
 				folder and navigation fails -->
 			<plugin>
 				<groupId>com.google.code.maven-replacer-plugin</groupId>
@@ -85,23 +99,76 @@
 				<version>1.4.1</version>
 				<executions>
 					<execution>
+						<id>replace-for-guide</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>replace</goal>
 						</goals>
 						<configuration>
-							<file>eclipse_help/eclipse/toc.xml</file>
+							<file>eclipse_help/guide/eclipse/toc.xml</file>
 							<regex>false</regex>
 							<replacements>
 								<replacement>
 									<token>href="</token>
-									<value>href="eclipse_help/eclipse/</value>
+									<value>href="eclipse_help/guide/eclipse/</value>
+								</replacement>
+							</replacements>
+						</configuration>
+					</execution>
+					<execution>
+						<id>replace-for-tutorial_sigpml</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+						<configuration>
+							<file>eclipse_help/tutorial_sigpml/eclipse/toc.xml</file>
+							<regex>false</regex>
+							<replacements>
+								<replacement>
+									<token>href="</token>
+									<value>href="eclipse_help/tutorial_sigpml/eclipse/</value>
+								</replacement>
+							</replacements>
+						</configuration>
+					</execution>
+					<execution>
+						<id>replace-for-tutorial_markedgraph</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+						<configuration>
+							<file>eclipse_help/tutorial_markedgraph/eclipse/toc.xml</file>
+							<regex>false</regex>
+							<replacements>
+								<replacement>
+									<token>href="</token>
+									<value>href="eclipse_help/tutorial_markedgraph/eclipse/</value>
 								</replacement>
 							</replacements>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>eclipse_help</directory>
+							<excludes>
+            					<exclude>**/.gitignore</exclude>
+            					<exclude>html/**</exclude>
+          					</excludes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 	</build>
 
