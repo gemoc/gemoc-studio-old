@@ -23,5 +23,19 @@
       <id>org.obeonetwork.dsl.uml2.runtime.feature</id>
     </components>
   </categories>
+  <categories
+      name="Exhaustive Exploration"
+      description="Exhaustive exploration topic tools">
+    <components
+        name="Clocksystem"
+        provider="ENSTA"
+        description="Multiform Time Constraints"
+        license="MIT"
+        image32="images/clocksystem_logo_32x32.png">
+      <sitesURLS>https://ci.inria.fr/gemoc/job/concurrency_exploration/</sitesURLS>
+      <overview/>
+      <id>org.gemoc.mocc.clocksystem.common.feature</id>
+    </components>
+  </categories>
   <filters name="Incubation"/>
 </discovery:DiscoveryDefinition>
