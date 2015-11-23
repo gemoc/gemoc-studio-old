@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<toc label="SigPML overview" topic="Tutorial_SigPML.html">
+   <topic label="SigPML overview" href="ch01.html"/>
+   <topic label="Import and install the projects for the abstract and concrete syntax" href="ch02.html">
+      <topic label="SigPML abstract syntax" href="ch02.html#_sigpml_abstract_syntax"/>
+      <topic label="SigPML concrete syntax and sample model" href="ch02s02.html"/>
+   </topic>
+   <topic label="Creating an xDSML Project" href="ch03.html">
+      <topic label="Open xDSML view" href="ch03.html#_open_xdsml_view"/>
+      <topic label="Select the domain model" href="ch03s02.html"/>
+      <topic label="Select the graphical editor" href="ch03s03.html"/>
+   </topic>
+   <topic label="SigPML execution semantics" href="ch04.html">
+      <topic label="Execution semantics overview" href="ch04.html#_execution_semantics_overview"/>
+      <topic label="DSA definition" href="ch04s02.html">
+         <topic label="Extending the Ecore definition" href="ch04s02.html#_extending_the_ecore_definition"/>
+         <topic label="Creating the DSA project" href="ch04s02.html#_creating_the_dsa_project"/>
+         <topic label="Implementation of the DSA" href="ch04s02.html#_implementation_of_the_dsa"/>
+      </topic>
+      <topic label="DSE definition" href="ch04s03.html">
+         <topic label="Creating the ECL project" href="ch04s03.html#_creating_the_ecl_project"/>
+         <topic label="Implementation of the ECL" href="ch04s03.html#_implementation_of_the_ecl"/>
+      </topic>
+      <topic label="MoCCML definition" href="ch04s04.html">
+         <topic label="Creating the MoCCML project" href="ch04s04.html#_creating_the_moccml_project"/>
+         <topic label="Implementation of the MoCCML" href="ch04s04.html#_implementation_of_the_moccml"/>
+      </topic>
+      <topic label="Create an animator" href="ch04s05.html">
+         <topic label="Creating the Animator project as a Sirius viewpoint" href="ch04s05.html#_creating_the_animator_project_as_a_sirius_viewpoint"/>
+      </topic>
+   </topic>
+   <topic label="SigPML modeling workbench" href="ch05.html">
+      <topic label="Launch the Modeling workbench creation (Start a new Eclipse)" href="ch05.html#_launch_the_modeling_workbench_creation_start_a_new_eclipse"/>
+      <topic label="Import the project with a sample model" href="ch05s02.html"/>
+      <topic label="Create a debug launch configuration" href="ch05s03.html"/>
+      <topic label="Start the model" href="ch05s04.html"/>
+      <topic label="Select a logical step" href="ch05s05.html"/>
+      <topic label="Select a logical step in the past" href="ch05s06.html"/>
+      <topic label="Stop the animation" href="ch05s07.html"/>
+      <topic label="This is the end" href="ch05s08.html"/>
+   </topic>
+</toc>
