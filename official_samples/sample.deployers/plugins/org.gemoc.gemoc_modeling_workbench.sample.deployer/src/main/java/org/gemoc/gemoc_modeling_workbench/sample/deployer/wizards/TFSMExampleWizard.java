@@ -23,9 +23,9 @@ public class TFSMExampleWizard
 		// We need the statements example to be unzipped along with the
 		// EMF library example model, edit and editor examples
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.single_traffic_light_sample.zip", "org.gemoc.sample.tfsm.single_traffic_light_sample"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample.zip", "org.gemoc.sample.tfsm.daynight_single_traffic_light_sample"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample.zip", "org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.simple_example.zip", "org.gemoc.sample.tfsm.simple_example"));
+		//projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample.zip", "org.gemoc.sample.tfsm.daynight_single_traffic_light_sample"));
+		//projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample.zip", "org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample"));
 		return projects;
 	}
 
