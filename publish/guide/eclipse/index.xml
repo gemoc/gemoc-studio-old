@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <index>
    <entry keyword="BCOoL">
-      <topic href="ch05.html#d0e2025"/>
+      <topic href="ch05.html#d0e2037"/>
    </entry>
    <entry keyword="Both representations (graphical or textual) can be used for edition of models">
       <topic href="ch03s05.html#d0e1047"/>
@@ -10,7 +10,7 @@
       <topic href="ch03s08.html#d0e1665"/>
    </entry>
    <entry keyword="Decider">
-      <topic href="ch07s03.html#d0e2154"/>
+      <topic href="ch07s03.html#d0e2166"/>
    </entry>
    <entry keyword="ECL">
       <topic href="ch03s05.html#d0e791"/>
@@ -19,19 +19,19 @@
       <topic href="ch03s08.html#d0e1409"/>
    </entry>
    <entry keyword="EMF Tree Editor">
-      <topic href="ch07s02.html#d0e2119"/>
+      <topic href="ch07s02.html#d0e2131"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch07s03.html#d0e2193"/>
+      <topic href="ch07s03.html#d0e2205"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch07s03.html#d0e2224"/>
+      <topic href="ch07s03.html#d0e2236"/>
    </entry>
    <entry keyword="Event Manager">
-      <topic href="ch07s03.html#d0e2242"/>
+      <topic href="ch07s03.html#d0e2254"/>
    </entry>
    <entry keyword="Event Manager">
-      <topic href="ch07s03.html#d0e2251"/>
+      <topic href="ch07s03.html#d0e2263"/>
    </entry>
    <entry keyword="Feedback Policy">
       <topic href="ch03s07.html#d0e1333"/>
@@ -67,10 +67,10 @@
       <topic href="ch01.html#d0e318"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch07s03.html#d0e2158"/>
+      <topic href="ch07s03.html#d0e2170"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch07s03.html#d0e2490"/>
+      <topic href="ch07s03.html#d0e2502"/>
    </entry>
    <entry keyword="MoCCML">
       <topic href="ch03s05.html#d0e800"/>
@@ -79,13 +79,13 @@
       <topic href="ch03s08.html#d0e1418"/>
    </entry>
    <entry keyword="Modeling workbench">
-      <topic href="ch06.html#d0e2068"/>
+      <topic href="ch06.html#d0e2080"/>
    </entry>
    <entry keyword="Runtime Data">
-      <topic href="ch07s03.html#d0e2268"/>
+      <topic href="ch07s03.html#d0e2280"/>
    </entry>
    <entry keyword="Runtime Data">
-      <topic href="ch07s03.html#d0e2506"/>
+      <topic href="ch07s03.html#d0e2518"/>
    </entry>
    <entry keyword="Sirius">
       <topic href="ch02s02.html#d0e571"/>
@@ -103,16 +103,16 @@
       <topic href="ch04.html#d0e2011"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch07.html#d0e2083"/>
-   </entry>
-   <entry keyword="Sirius">
-      <topic href="ch07.html#d0e2089"/>
-   </entry>
-   <entry keyword="Sirius)">
       <topic href="ch07.html#d0e2095"/>
    </entry>
+   <entry keyword="Sirius">
+      <topic href="ch07.html#d0e2101"/>
+   </entry>
+   <entry keyword="Sirius)">
+      <topic href="ch07.html#d0e2107"/>
+   </entry>
    <entry keyword="TFSM">
-      <topic href="ch06.html#d0e2058"/>
+      <topic href="ch06.html#d0e2070"/>
    </entry>
    <entry keyword="TFSM">
       <topic href="ch01.html#d0e312"/>
@@ -121,15 +121,15 @@
       </entry>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch06.html#d0e2062"/>
+      <topic href="ch06.html#d0e2074"/>
       <entry keyword="Modeling workbench">
-         <topic href="ch06.html#d0e2064"/>
+         <topic href="ch06.html#d0e2076"/>
       </entry>
    </entry>
    <entry keyword="Timeline">
-      <topic href="ch07s03.html#d0e2202"/>
+      <topic href="ch07s03.html#d0e2214"/>
    </entry>
    <entry keyword="Timeline">
-      <topic href="ch07s03.html#d0e2233"/>
+      <topic href="ch07s03.html#d0e2245"/>
    </entry>
 </index>

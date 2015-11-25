@@ -37,7 +37,7 @@
          </topic>
       </topic>
       <topic label="Make a language executable" href="ch03.html">
-         <topic label="Make a sequential executable language" href="ch03.html#_make_a_sequential_executable_language"/>
+         <topic label="Make a sequential executable language" href="ch03.html#make-sequential-language-executable-section"/>
          <topic label="Defining the Domain-Specific Actions (DSA) Project for Sequential language" href="ch03s02.html">
             <topic label="Purpose" href="ch03s02.html#_purpose_3"/>
             <topic label="Creating the DSA Project" href="ch03s02.html#_creating_the_dsa_project"/>
@@ -128,6 +128,7 @@
                <topic label="Debug layer" href="ch04.html#_debug_layer"/>
             </topic>
          </topic>
+         <topic label="Defining Multidimentional Trace support" href="ch04s02.html"/>
       </topic>
       <topic label="Compose languages" href="ch05.html">
          <topic label="Composing languages with BCOoL" href="ch05.html#composing-languages-with-bcool-section"/>
@@ -158,7 +159,7 @@
          <topic label="Coordinating Model Execution" href="ch07s04.html"/>
       </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e2524"/>
+         <topic label="Articles" href="bi01.html#d0e2536"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
