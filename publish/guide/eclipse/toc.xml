@@ -145,23 +145,29 @@
          <topic label="Editing model with EMF Tree Editor" href="ch07s02.html"/>
       </topic>
       <topic label="Executing model" href="ch08.html">
-         <topic label="Launch configuration" href="ch08.html#_launch_configuration">
-            <topic label="General options" href="ch08.html#_general_options"/>
-            <topic label="Run mode" href="ch08.html#_run_mode"/>
-            <topic label="Debug mode" href="ch08.html#_debug_mode"/>
-            <topic label="Backends and frontends" href="ch08.html#modeling-workbench-backends-frontends-section"/>
+         <topic label="Sequential Launch configuration" href="ch08.html#_sequential_launch_configuration">
+            <topic label="Sequential general options" href="ch08.html#_sequential_general_options"/>
+            <topic label="Sequential Run mode" href="ch08.html#_sequential_run_mode"/>
+            <topic label="Sequential Debug mode" href="ch08.html#_sequential_debug_mode"/>
          </topic>
-         <topic label="Engine View" href="ch08s02.html"/>
-         <topic label="Logical Steps View" href="ch08s03.html"/>
-         <topic label="Event Scheduling Timeline View" href="ch08s04.html"/>
-         <topic label="Stimuli Manager View" href="ch08s05.html"/>
-         <topic label="Animation View" href="ch08s06.html"/>
-         <topic label="Debug View" href="ch08s07.html"/>
-         <topic label="Variable View" href="ch08s08.html"/>
+         <topic label="Concurrent Launch configuration" href="ch08s02.html">
+            <topic label="Concurrent General options" href="ch08s02.html#_concurrent_general_options"/>
+            <topic label="Concurrent Run mode" href="ch08s02.html#_concurrent_run_mode"/>
+            <topic label="Concurrent Debug mode" href="ch08s02.html#_concurrent_debug_mode"/>
+            <topic label="Backends and frontends" href="ch08s02.html#modeling-workbench-backends-frontends-section"/>
+         </topic>
+         <topic label="Engine View" href="ch08s03.html"/>
+         <topic label="Logical Steps View" href="ch08s04.html"/>
+         <topic label="Event Scheduling Timeline View" href="ch08s05.html"/>
+         <topic label="Multidimentional Timeline View" href="ch08s06.html"/>
+         <topic label="Stimuli Manager View" href="ch08s07.html"/>
+         <topic label="Animation View" href="ch08s08.html"/>
+         <topic label="Debug View" href="ch08s09.html"/>
+         <topic label="Variable View" href="ch08s10.html"/>
       </topic>
       <topic label="Coordinating Model Execution" href="ch09.html"/>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e2543"/>
+         <topic label="Articles" href="bi01.html#d0e2687"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
