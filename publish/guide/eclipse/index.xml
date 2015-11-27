@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <index>
+   <entry keyword="Animation Manager">
+      <topic href="ch08.html#d0e2270"/>
+   </entry>
    <entry keyword="BCOoL">
       <topic href="ch05.html#d0e2037"/>
    </entry>
@@ -27,11 +30,11 @@
    <entry keyword="Engine">
       <topic href="ch08.html#d0e2243"/>
    </entry>
-   <entry keyword="Event Manager">
-      <topic href="ch08.html#d0e2261"/>
+   <entry keyword="Event Scheduling Timeline">
+      <topic href="ch08.html#d0e2221"/>
    </entry>
-   <entry keyword="Event Manager">
-      <topic href="ch08.html#d0e2270"/>
+   <entry keyword="Event Scheduling Timeline">
+      <topic href="ch08.html#d0e2252"/>
    </entry>
    <entry keyword="Feedback Policy">
       <topic href="ch03s02.html#d0e1333"/>
@@ -111,6 +114,9 @@
    <entry keyword="Sirius)">
       <topic href="ch07.html#d0e2107"/>
    </entry>
+   <entry keyword="Stimuli Manager">
+      <topic href="ch08.html#d0e2261"/>
+   </entry>
    <entry keyword="TFSM">
       <topic href="ch06.html#d0e2070"/>
    </entry>
@@ -125,11 +131,5 @@
       <entry keyword="Modeling workbench">
          <topic href="ch06.html#d0e2076"/>
       </entry>
-   </entry>
-   <entry keyword="Timeline">
-      <topic href="ch08.html#d0e2221"/>
-   </entry>
-   <entry keyword="Timeline">
-      <topic href="ch08.html#d0e2252"/>
    </entry>
 </index>
