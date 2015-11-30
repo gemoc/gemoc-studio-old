@@ -1,0 +1,14 @@
+BCoolLibrary facilities{
+
+
+relationDeclarations { 
+	RelationDeclaration RendezVous {}
+    , RelationDeclaration Causality {}
+}
+
+
+expressionDeclarations {
+	ExpressionDeclaration SampledBy{}
+}
+
+}

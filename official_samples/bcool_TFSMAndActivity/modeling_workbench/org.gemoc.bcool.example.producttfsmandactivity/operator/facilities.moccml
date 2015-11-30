@@ -1,0 +1,68 @@
+AutomataConstraintLibrary ModeAutomataCoordination{ 
+	import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+	import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as CCSLLib;
+	
+	
+	RelationLibrary CCSLBasedRelations {
+		
+		RelationDefinition RendezVousDef[RendezVous]{ 
+			Relation RendezVousrelat[Coincides]( Clock1->ClockA, Clock2->ClockB)
+		}
+		
+		RelationDefinition CausalityDef[Causality]{ 
+			Relation Causalityrelat[Causes]( LeftClock->ClockLeft, RightClock->ClockRight)
+		}
+		
+		RelationDefinition RendezVouswithGlobalClockDef[RendezVouswithGlobalClock]{ 
+			Expression sampledStartAction = SampledBy (Sampled -> globalClock, Trigger-> startAction)
+			Expression sampledOccurs = SampledBy (Sampled -> globalClock, Trigger-> occurs)
+			
+			Relation RendezVousSamples[Coincides](   Clock2-> sampledStartAction , Clock1-> sampledOccurs  )
+			}
+		
+		AutomataRelationDefinition RendenVousAfterTwoDef[RendenVousAfterTwo]{
+			init: initState
+			
+			from initState to firstOccurs : initStateTofirstOccurs
+			-> ( )
+			
+			from firstOccurs to secondOccurs : firstOccurstoSecondOccurs
+			-> ( when eventA )
+			
+			from secondOccurs to firstOccurs : secondOccurstoFirstOccurs
+			-> ( when eventA , eventB)
+			
+			State initState( out : initStateTofirstOccurs )
+			State firstOccurs ( in : initStateTofirstOccurs, secondOccurstoFirstOccurs out : firstOccurstoSecondOccurs)
+			State secondOccurs ( in : firstOccurstoSecondOccurs out : secondOccurstoFirstOccurs)
+		}
+		
+		RelationDeclaration RendezVous (ClockA:clock, ClockB:clock) 
+		RelationDeclaration Causality (ClockLeft:clock, ClockRight:clock)
+		RelationDeclaration RendezVouswithGlobalClock (startAction: clock , occurs: clock, globalClock: clock )
+		
+		RelationDeclaration RendenVousAfterTwo(
+			eventA:clock,
+			eventB:clock
+		)
+}
+	
+	ExpressionLibrary BCOolfilters{
+		ExpressionDefinition FilterNDef [FilterN]{
+			root=filterN_result 
+				Expression filterN_result = Periodic
+						( PeriodicBaseClock->WaitingClock, PeriodicPeriod -> WaitingValue, PeriodicOffset -> four)	
+  		}
+		
+		ExpressionDefinition SampledDef [SampledBy]{
+			root=Sample_result 
+			Expression Sample_result = SampledOn(SampledOnTrigger -> Trigger, SampledOnSampledClock ->Sampled)
+  		}
+  		
+		ExpressionDeclaration SampledBy(Trigger: clock,  Sampled: clock):clock
+		ExpressionDeclaration FilterN(WaitingClock: clock,  WaitingValue: int):clock
+		
+	}	
+	
+	
+}
