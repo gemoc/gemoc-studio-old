@@ -15,7 +15,7 @@ package markedgraph
 	context Place
 		inv placeReadAndWrite:
 			let delay: Integer = self.tokenCount in
-				Relation placeReadWrite(self.input.fireIt, self.input.fireIt, delay)
+				Relation placeReadWrite(self.output.fireIt, self.input.fireIt, delay)
 
 	context MarkedGraph
         inv initFirst:

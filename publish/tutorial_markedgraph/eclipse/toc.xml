@@ -43,7 +43,7 @@
          </topic>
       </topic>
       <topic label="Animate a Model" href="ch06.html">
-         <topic label="Launch the Modelling WorkBench" href="ch06.html#_launch_the_modelling_workbench"/>
+         <topic label="Launch the Modeling WorkBench" href="ch06.html#_launch_the_modeling_workbench"/>
          <topic label="Import the project with a sample model" href="ch06s02.html"/>
          <topic label="Select the Modeling perspective" href="ch06s03.html"/>
          <topic label="Create a Launch Configuration" href="ch06s04.html"/>
@@ -51,7 +51,7 @@
          <topic label="Select a logical step" href="ch06s06.html"/>
          <topic label="Stop the execution" href="ch06s07.html"/>
       </topic>
-      <topic label="Define a MoCCML library" href="ch07.html">
+      <topic label="Going further…​" href="ch07.html">
          <topic label="Define a MoCCML library using CCSL" href="ch07.html#_define_a_moccml_library_using_ccsl"/>
          <topic label="Using it in the ECL file" href="ch07s02.html"/>
       </topic>

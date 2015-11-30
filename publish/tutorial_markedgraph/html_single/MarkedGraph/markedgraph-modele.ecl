@@ -18,7 +18,7 @@ package markedgraph
 // MoCCML START DELETE
 		inv placeReadAndWrite:
 			let delay: Integer = self.tokenCount in
-				Relation placeReadWrite(self.input.fireIt, self.input.fireIt, delay)
+				Relation placeReadWrite(self.output.fireIt, self.input.fireIt, delay)
 // MoCCML STOP DELETE
 // ECL_ONLY START DELETE
 		inv tokenCountIsNull:
