@@ -54,9 +54,9 @@
                     <children xmi:type="notation:Node" xmi:id="_lnKhA4yCEeWMs7E3jAsIGQ" type="5003">
                       <layoutConstraint xmi:type="notation:Location" xmi:id="_lnKhBIyCEeWMs7E3jAsIGQ" y="-21"/>
                     </children>
-                    <children xmi:type="notation:Node" xmi:id="_tO2EEIyCEeWMs7E3jAsIGQ" type="3005" element="_tOzn0IyCEeWMs7E3jAsIGQ">
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_tO2EEYyCEeWMs7E3jAsIGQ" fontName="Sans Serif"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tO2EEoyCEeWMs7E3jAsIGQ"/>
+                    <children xmi:type="notation:Node" xmi:id="_9XuP0Jd9EeW9LdrknkvcLA" type="3005" element="_9Xe_RZd9EeW9LdrknkvcLA">
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_9XuP0Zd9EeW9LdrknkvcLA" fontName="Segoe UI"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9XuP0pd9EeW9LdrknkvcLA"/>
                     </children>
                     <styles xmi:type="notation:ShapeStyle" xmi:id="_lnKhAYyCEeWMs7E3jAsIGQ" fontName="Sans Serif" fontHeight="8" bold="true"/>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lnKhAoyCEeWMs7E3jAsIGQ" x="459" y="39" width="50" height="45"/>
@@ -129,9 +129,9 @@
                     <children xmi:type="notation:Node" xmi:id="_lnLIFoyCEeWMs7E3jAsIGQ" type="5003">
                       <layoutConstraint xmi:type="notation:Location" xmi:id="_lnLIF4yCEeWMs7E3jAsIGQ" y="-21"/>
                     </children>
-                    <children xmi:type="notation:Node" xmi:id="_tO2rIIyCEeWMs7E3jAsIGQ" type="3005" element="_tO0O4IyCEeWMs7E3jAsIGQ">
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_tO2rIYyCEeWMs7E3jAsIGQ" fontName="Sans Serif"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tO2rIoyCEeWMs7E3jAsIGQ"/>
+                    <children xmi:type="notation:Node" xmi:id="_9Xu24Jd9EeW9LdrknkvcLA" type="3005" element="_9Xg0dJd9EeW9LdrknkvcLA">
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_9Xu24Zd9EeW9LdrknkvcLA" fontName="Segoe UI"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9Xu24pd9EeW9LdrknkvcLA"/>
                     </children>
                     <styles xmi:type="notation:ShapeStyle" xmi:id="_lnLIFIyCEeWMs7E3jAsIGQ" fontName="Sans Serif" fontHeight="8" bold="true"/>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lnLIFYyCEeWMs7E3jAsIGQ" x="42" y="39" width="50" height="45"/>
@@ -248,7 +248,35 @@
         </data>
       </ownedAnnotationEntries>
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_skjJ4IyCEeWMs7E3jAsIGQ" source="DANNOTATION_CUSTOMIZATION_KEY">
-        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_skjJ4YyCEeWMs7E3jAsIGQ"/>
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_skjJ4YyCEeWMs7E3jAsIGQ">
+          <computedStyleDescriptions xmi:type="style:WorkspaceImageDescription" xmi:id="_9Xe_Q5d9EeW9LdrknkvcLA" labelFormat="bold" showIcon="false" labelExpression="pongerTime:10" sizeComputationExpression="5" resizeKind="NSEW" roundedCorner="true" workspacePath="/org.gemoc.sample.tfsm.design/icons/clock_local_small.gif">
+            <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </computedStyleDescriptions>
+          <computedStyleDescriptions xmi:type="style:WorkspaceImageDescription" xmi:id="_9Xg0cpd9EeW9LdrknkvcLA" labelFormat="bold" showIcon="false" labelExpression="pingerTime:0" sizeComputationExpression="5" resizeKind="NSEW" roundedCorner="true" workspacePath="/org.gemoc.sample.tfsm.design/icons/clock_local_small.gif">
+            <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </computedStyleDescriptions>
+          <cache xmi:type="diagram:DiagramElementMapping2ModelElement" xmi:id="_9Xe_QJd9EeW9LdrknkvcLA">
+            <key xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='Clocks']"/>
+            <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_9Xe_QZd9EeW9LdrknkvcLA">
+              <key xmi:type="org.gemoc.sample.tfsm:FSMClock" href="simple_example.tfsm#//@tfsms.0/@localClock"/>
+              <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_9Xe_Qpd9EeW9LdrknkvcLA" key="_lm-TwIyCEeWMs7E3jAsIGQ">
+                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_9Xe_RJd9EeW9LdrknkvcLA" value="_9Xe_Q5d9EeW9LdrknkvcLA">
+                  <key xmi:type="org.gemoc.sample.tfsm:TFSM" href="simple_example.tfsm#//@tfsms.0"/>
+                </value>
+              </value>
+            </value>
+            <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_9Xg0cJd9EeW9LdrknkvcLA">
+              <key xmi:type="org.gemoc.sample.tfsm:FSMClock" href="simple_example.tfsm#//@tfsms.1/@localClock"/>
+              <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_9Xg0cZd9EeW9LdrknkvcLA" key="_lm-60IyCEeWMs7E3jAsIGQ">
+                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_9Xg0c5d9EeW9LdrknkvcLA" value="_9Xg0cpd9EeW9LdrknkvcLA">
+                  <key xmi:type="org.gemoc.sample.tfsm:TFSM" href="simple_example.tfsm#//@tfsms.1"/>
+                </value>
+              </value>
+            </value>
+          </cache>
+        </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_OB5EYYx4EeWiK8MV_u2pgg" name="PingPong">
         <target xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="simple_example.tfsm#/"/>
@@ -320,16 +348,15 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_lm-TwIyCEeWMs7E3jAsIGQ" name="pongerTime" width="5" height="5" resizeKind="NSEW">
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_lm-TwIyCEeWMs7E3jAsIGQ" name="pongerTime:10" width="5" height="5" resizeKind="NSEW">
             <target xmi:type="org.gemoc.sample.tfsm:FSMClock" href="simple_example.tfsm#//@tfsms.0/@localClock"/>
             <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMClock" href="simple_example.tfsm#//@tfsms.0/@localClock"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_tOzn0IyCEeWMs7E3jAsIGQ" labelFormat="bold" showIcon="false" workspacePath="/org.gemoc.sample.tfsm.design/icons/clock_local_small.gif">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tOzn0YyCEeWMs7E3jAsIGQ"/>
-              <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tOzn0oyCEeWMs7E3jAsIGQ"/>
+            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_9Xe_RZd9EeW9LdrknkvcLA" labelFormat="bold" showIcon="false" description="_9Xe_Q5d9EeW9LdrknkvcLA" workspacePath="/org.gemoc.sample.tfsm.design/icons/clock_local_small.gif">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_9Xe_Rpd9EeW9LdrknkvcLA"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_9Xe_R5d9EeW9LdrknkvcLA"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='Clocks']"/>
           </ownedDiagramElements>
@@ -416,16 +443,15 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_lm-60IyCEeWMs7E3jAsIGQ" name="pingerTime" width="5" height="5" resizeKind="NSEW">
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_lm-60IyCEeWMs7E3jAsIGQ" name="pingerTime:0" width="5" height="5" resizeKind="NSEW">
             <target xmi:type="org.gemoc.sample.tfsm:FSMClock" href="simple_example.tfsm#//@tfsms.1/@localClock"/>
             <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMClock" href="simple_example.tfsm#//@tfsms.1/@localClock"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_tO0O4IyCEeWMs7E3jAsIGQ" labelFormat="bold" showIcon="false" workspacePath="/org.gemoc.sample.tfsm.design/icons/clock_local_small.gif">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tO0O4YyCEeWMs7E3jAsIGQ"/>
-              <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tO0O4oyCEeWMs7E3jAsIGQ"/>
+            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_9Xg0dJd9EeW9LdrknkvcLA" labelFormat="bold" showIcon="false" description="_9Xg0cpd9EeW9LdrknkvcLA" workspacePath="/org.gemoc.sample.tfsm.design/icons/clock_local_small.gif">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_9Xg0dZd9EeW9LdrknkvcLA"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_9Xg0dpd9EeW9LdrknkvcLA"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='Clocks']"/>
           </ownedDiagramElements>
@@ -507,6 +533,7 @@
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_OB5rh4x4EeWiK8MV_u2pgg"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer"/>
       <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@additionalLayers[name='Debug']"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@additionalLayers[name='Animation']"/>
       <target xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="simple_example.tfsm#/"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']"/>
