@@ -32,7 +32,7 @@
         description="Multiform Time Constraints"
         license="MIT"
         image32="images/clocksystem_logo_32x32.png">
-      <sitesURLS>https://ci.inria.fr/gemoc/job/concurrency_exploration/</sitesURLS>
+        <sitesURLS>https://ci.inria.fr/gemoc/job/concurrency_exploration/lastSuccessfulBuild/artifact/exploration/releng/org.gemoc.mocc.clocksystem.features.updatesite/target/repository</sitesURLS>
       <overview
           summary="Clocksystem is meta-described clock-constraint engine, which embeds a formal model of logical time into the Smalltalk general-purpose language and environment"
           screenshot="images/cs_screenshot_320x240.png"/>
