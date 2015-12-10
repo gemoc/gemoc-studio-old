@@ -18,7 +18,7 @@
             hasPages="false"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.sample.deployer.tfsm.wizard"
-            name="Gemoc TFSM Language example"
+            name="Gemoc TFSM Language example (Concurrent)"
             preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling,fr.obeo.dsl.viewpoint.ui.tools.perspective.design">
          <description>
             T⁮his set of projects feature a simple Timed finite state machine language which is made executable using Gemoc.
@@ -32,7 +32,7 @@
             hasPages="false"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.sample.deployer.tfsm_plaink3.wizard"
-            name="Gemoc TFSM Plain K3 Language example"
+            name="Gemoc TFSM Language example (Sequential)"
             preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling,fr.obeo.dsl.viewpoint.ui.tools.perspective.design">
          <description>
             T⁮his set of projects feature a simple Timed finite state machine language which is made executable using Gemoc.
@@ -46,7 +46,7 @@
             hasPages="false"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.sample.deployer.sdf.wizard"
-            name="Gemoc SigPML Language example"
+            name="Gemoc SigPML Language example (Concurrent)"
             preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling,fr.obeo.dsl.viewpoint.ui.tools.perspective.design">
          <description>
 T⁮his set of projects feature a simple signal processing modeling language (SigPML) which is made executable using Gemoc.
