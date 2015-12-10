@@ -415,8 +415,26 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getFSMEvent_IsTriggered() {
+		return (EAttribute)fsmEventEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFSMClock() {
 		return fsmClockEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFSMClock_NumberOfTicks() {
+		return (EAttribute)fsmClockEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -535,8 +553,10 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 
 		fsmEventEClass = createEClass(FSM_EVENT);
 		createEReference(fsmEventEClass, FSM_EVENT__SOLLICITING_TRANSITIONS);
+		createEAttribute(fsmEventEClass, FSM_EVENT__IS_TRIGGERED);
 
 		fsmClockEClass = createEClass(FSM_CLOCK);
+		createEAttribute(fsmClockEClass, FSM_CLOCK__NUMBER_OF_TICKS);
 
 		timedSystemEClass = createEClass(TIMED_SYSTEM);
 		createEReference(timedSystemEClass, TIMED_SYSTEM__TFSMS);
@@ -621,8 +641,10 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 
 		initEClass(fsmEventEClass, FSMEvent.class, "FSMEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFSMEvent_SollicitingTransitions(), this.getTransition(), null, "sollicitingTransitions", null, 0, -1, FSMEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFSMEvent_IsTriggered(), ecorePackage.getEBoolean(), "isTriggered", "false", 0, 1, FSMEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(fsmClockEClass, FSMClock.class, "FSMClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFSMClock_NumberOfTicks(), ecorePackage.getEIntegerObject(), "numberOfTicks", "0", 0, 1, FSMClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(timedSystemEClass, TimedSystem.class, "TimedSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTimedSystem_Tfsms(), this.getTFSM(), null, "tfsms", null, 0, -1, TimedSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -634,6 +656,35 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// dynamic
+		createDynamicAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>dynamic</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDynamicAnnotations() {
+		String source = "dynamic";	
+		addAnnotation
+		  (getTFSM_CurrentState(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFSMEvent_IsTriggered(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFSMClock_NumberOfTicks(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 } //TfsmPackageImpl

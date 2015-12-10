@@ -4,10 +4,12 @@ package org.gemoc.sample.tfsm_plaink3.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.gemoc.sample.tfsm_plaink3.FSMEvent;
@@ -22,6 +24,7 @@ import org.gemoc.sample.tfsm_plaink3.Transition;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.FSMEventImpl#getSollicitingTransitions <em>Solliciting Transitions</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.FSMEventImpl#isIsTriggered <em>Is Triggered</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,6 +40,25 @@ public class FSMEventImpl extends NamedElementImpl implements FSMEvent {
 	 * @ordered
 	 */
 	protected EList<Transition> sollicitingTransitions;
+
+	/**
+	 * The default value of the '{@link #isIsTriggered() <em>Is Triggered</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsTriggered()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_TRIGGERED_EDEFAULT = false;
+	/**
+	 * The cached value of the '{@link #isIsTriggered() <em>Is Triggered</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsTriggered()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isTriggered = IS_TRIGGERED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,11 +96,34 @@ public class FSMEventImpl extends NamedElementImpl implements FSMEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isIsTriggered() {
+		return isTriggered;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsTriggered(boolean newIsTriggered) {
+		boolean oldIsTriggered = isTriggered;
+		isTriggered = newIsTriggered;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.FSM_EVENT__IS_TRIGGERED, oldIsTriggered, isTriggered));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case TfsmPackage.FSM_EVENT__SOLLICITING_TRANSITIONS:
 				return getSollicitingTransitions();
+			case TfsmPackage.FSM_EVENT__IS_TRIGGERED:
+				return isIsTriggered();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -96,6 +141,9 @@ public class FSMEventImpl extends NamedElementImpl implements FSMEvent {
 				getSollicitingTransitions().clear();
 				getSollicitingTransitions().addAll((Collection<? extends Transition>)newValue);
 				return;
+			case TfsmPackage.FSM_EVENT__IS_TRIGGERED:
+				setIsTriggered((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -111,6 +159,9 @@ public class FSMEventImpl extends NamedElementImpl implements FSMEvent {
 			case TfsmPackage.FSM_EVENT__SOLLICITING_TRANSITIONS:
 				getSollicitingTransitions().clear();
 				return;
+			case TfsmPackage.FSM_EVENT__IS_TRIGGERED:
+				setIsTriggered(IS_TRIGGERED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -125,8 +176,26 @@ public class FSMEventImpl extends NamedElementImpl implements FSMEvent {
 		switch (featureID) {
 			case TfsmPackage.FSM_EVENT__SOLLICITING_TRANSITIONS:
 				return sollicitingTransitions != null && !sollicitingTransitions.isEmpty();
+			case TfsmPackage.FSM_EVENT__IS_TRIGGERED:
+				return isTriggered != IS_TRIGGERED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isTriggered: ");
+		result.append(isTriggered);
+		result.append(')');
+		return result.toString();
 	}
 
 } //FSMEventImpl

@@ -16,10 +16,6 @@ import fr.inria.diverse.k3.al.annotationprocessor.Step
 @Aspect(className=TFSM)
 class TFSMAspect {
 
-	// should be added automatically by the dsa, currently introduced directly in the ecore
-	// public State currentState;
-	public State currentState
-
 	@Step
 	def public void init() {
 
@@ -36,7 +32,6 @@ class TFSMAspect {
 
 @Aspect(className=FSMClock)
 class FSMClockAspect {
-	public Integer numberOfTicks = 0;
 
 	// Clock tick
 	@Step
@@ -74,8 +69,6 @@ class TransitionAspect {
 
 @Aspect(className=FSMEvent)
 class FSMEventAspect {
-
-	public boolean isTriggered = false
 
 	@Step
 	def public void trigger() {
