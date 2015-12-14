@@ -22,7 +22,8 @@ public class Activator extends Plugin {
 	public static MessagingSystem getMessagingSystem() {
 		if (messagingSystem == null) {
 			MessagingSystemManager msm = new MessagingSystemManager();
-			messagingSystem = msm.createBestPlatformMessagingSystem("org.gemoc.execution.engine", "Execution Engine");
+			// use the baseMessageGroup of the engine in order to share consoles instead of duplicating them
+			messagingSystem = msm.createBestPlatformMessagingSystem(org.gemoc.execution.engine.Activator.PLUGIN_ID, "Modeling Workbench Console");
 		}
 		return messagingSystem;
 	}
