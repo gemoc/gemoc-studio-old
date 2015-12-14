@@ -433,13 +433,22 @@ public interface TfsmPackage extends EPackage {
 	int FSM_EVENT__SOLLICITING_TRANSITIONS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Is Triggered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_EVENT__IS_TRIGGERED = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>FSM Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int FSM_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.tfsm_plaink3.impl.FSMClockImpl <em>FSM Clock</em>}' class.
@@ -461,13 +470,22 @@ public interface TfsmPackage extends EPackage {
 	int FSM_CLOCK__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Number Of Ticks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_CLOCK__NUMBER_OF_TICKS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>FSM Clock</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int FSM_CLOCK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.tfsm_plaink3.impl.TimedSystemImpl <em>Timed System</em>}' class.
@@ -852,6 +870,17 @@ public interface TfsmPackage extends EPackage {
 	EReference getFSMEvent_SollicitingTransitions();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm_plaink3.FSMEvent#isIsTriggered <em>Is Triggered</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Triggered</em>'.
+	 * @see org.gemoc.sample.tfsm_plaink3.FSMEvent#isIsTriggered()
+	 * @see #getFSMEvent()
+	 * @generated
+	 */
+	EAttribute getFSMEvent_IsTriggered();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm_plaink3.FSMClock <em>FSM Clock</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -860,6 +889,17 @@ public interface TfsmPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getFSMClock();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm_plaink3.FSMClock#getNumberOfTicks <em>Number Of Ticks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number Of Ticks</em>'.
+	 * @see org.gemoc.sample.tfsm_plaink3.FSMClock#getNumberOfTicks()
+	 * @see #getFSMClock()
+	 * @generated
+	 */
+	EAttribute getFSMClock_NumberOfTicks();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm_plaink3.TimedSystem <em>Timed System</em>}'.
@@ -1180,6 +1220,14 @@ public interface TfsmPackage extends EPackage {
 		EReference FSM_EVENT__SOLLICITING_TRANSITIONS = eINSTANCE.getFSMEvent_SollicitingTransitions();
 
 		/**
+		 * The meta object literal for the '<em><b>Is Triggered</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FSM_EVENT__IS_TRIGGERED = eINSTANCE.getFSMEvent_IsTriggered();
+
+		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.tfsm_plaink3.impl.FSMClockImpl <em>FSM Clock</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1188,6 +1236,14 @@ public interface TfsmPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FSM_CLOCK = eINSTANCE.getFSMClock();
+
+		/**
+		 * The meta object literal for the '<em><b>Number Of Ticks</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FSM_CLOCK__NUMBER_OF_TICKS = eINSTANCE.getFSMClock_NumberOfTicks();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.tfsm_plaink3.impl.TimedSystemImpl <em>Timed System</em>}' class.
