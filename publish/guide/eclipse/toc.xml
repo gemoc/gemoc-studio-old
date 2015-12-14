@@ -111,7 +111,7 @@
          <topic label="Defining Multidimentional Trace support" href="ch04s02.html"/>
       </topic>
       <topic label="Compose languages" href="ch05.html">
-         <topic label="Composing languages with BCOoL" href="ch05.html#composing-languages-with-bcool-section"/>
+         <topic label="Coordination of Languages with BCOoL" href="ch05.html#composing-languages-with-bcool-section"/>
       </topic>
    </topic>
    <topic label="GEMOC Modeling workbench" href="pt02.html">
