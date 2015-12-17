@@ -29,8 +29,9 @@
       <import feature="org.gemoc.executionengine.ccsljava.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionengine.ccsljava.runtime.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionengine.ccsljava.runtime.ui.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.executionframework.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.executionframework.executioncontext.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.framework.commons.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.xdsmlframework.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.executionframework.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionengine.java.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.official_samples.deployers.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.heterogeneous_coordination_engine.feature" version="0.0.0" match="greaterOrEqual"/>
@@ -61,8 +62,9 @@
       <import feature="org.gemoc.mocc.transformations.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.e4.rcp" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.melange.sdk" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="fr.inria.diverse.trace.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="fr.inria.diverse.trace.gemoc.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.trace.commons.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.trace.generator.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.trace.manager.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.bcool.feature" version="1.0.0.qualifier"/>
       <import feature="org.gemoc.gel.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.gel.microgel.feature" version="0.0.0" match="greaterOrEqual"/>
