@@ -338,7 +338,7 @@
 		        <repository>
 		            <id>modelanimation_executionengine_java on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/modelanimation_executionengine_java/lastSuccessfulBuild/artifact/executionengine/java/releng/org.gemoc.executionengine.java.repository/target/repository/</url>
+		            <url>https://ci.inria.fr/gemoc/job/modelanimation_executionengine_java/lastSuccessfulBuild/artifact/java_execution/releng/org.gemoc.execution.sequential.java.repository/target/repository/</url>
 		        </repository>
 		        <repository>
 		            <id>concurrency_executionengine_ccsljava on CI</id>
