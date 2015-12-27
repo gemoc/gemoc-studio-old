@@ -14,13 +14,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Agent" eSuperTypes="#//NamedElement">
     <eOperations name="isExecuting">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eOperations>
     <eOperations name="execute">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eOperations>
     <eOperations name="stop">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPorts" upperBound="-1"
         eType="#//Port" containment="true" eOpposite="#//Port/owner"/>
@@ -32,7 +32,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentExecCycle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isCurrentlyExecuting" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true" eSuperTypes="#//NamedElement">
@@ -46,24 +46,24 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InputPort" eSuperTypes="#//Port">
     <eOperations name="read" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eOperations>
     <eOperations name="logSizeToReadWhenZero">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eOperations>
     <eOperations name="logSizeToReadWhenNotZero">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeToread" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OutputPort" eSuperTypes="#//Port">
     <eOperations name="write">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeWritten" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//NamedElement">
@@ -74,21 +74,21 @@
       <details key="matchRates" value="if byteSize > 0 then byteSize >= itsOutputPort.byteRate and byteSize >= itsInputPort.byteRate else true endif"/>
     </eAnnotations>
     <eOperations name="push">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eOperations>
     <eOperations name="pop">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsOutputPort" lowerBound="1"
         eType="#//OutputPort"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsInputPort" lowerBound="1"
         eType="#//InputPort"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fifo" upperBound="-1" eType="#//Object">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitialized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Application"
@@ -137,7 +137,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedHWPlatform" eType="#//HWPlatform"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sharedMemory" eType="#//LinkedListMultimap">
-      <eAnnotations source="aspect"/>
+      <eAnnotations source="dynamic"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="LinkedListMultimap" instanceClassName="com.google.common.collect.LinkedListMultimap"/>

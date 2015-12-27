@@ -1006,8 +1006,8 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		// Create annotations
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
-		// aspect
-		createAspectAnnotations();
+		// dynamic
+		createDynamicAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
 		createPivotAnnotations();
 	}
@@ -1037,13 +1037,13 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	}
 
 	/**
-	 * Initializes the annotations for <b>aspect</b>.
+	 * Initializes the annotations for <b>dynamic</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createAspectAnnotations() {
-		String source = "aspect";	
+	protected void createDynamicAnnotations() {
+		String source = "dynamic";	
 		addAnnotation
 		  (getAgent__IsExecuting(), 
 		   source, 
