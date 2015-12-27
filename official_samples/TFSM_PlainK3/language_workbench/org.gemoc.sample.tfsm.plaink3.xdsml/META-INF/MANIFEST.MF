@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.gemoc.gemoc_language_workbench.extensions.k3;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.sample.tfsm.plaink3.dsa;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.execution.sequential.javaxdsml.api,
- org.gemoc.xdsmlframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport
+ org.gemoc.xdsmlframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Manifest-Version: 1.0
