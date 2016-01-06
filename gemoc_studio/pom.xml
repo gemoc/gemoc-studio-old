@@ -343,7 +343,7 @@
 		        <repository>
 		            <id>concurrency_executionengine_ccsljava on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/view/All/job/concurrency_executionengine_ccsljava/lastSuccessfulBuild/artifact/executionengine/ccsljava/releng/org.gemoc.executionengine.ccsljava.repository/target/repository/</url>
+		            <url>https://ci.inria.fr/gemoc/view/All/job/concurrency_executionengine_ccsljava/lastSuccessfulBuild/artifact/ccsljava_execution/releng/org.gemoc.executionengine.ccsljava.repository/target/repository/</url>
 		        </repository>
 				<repository>
 		            <id>concurrency_concurrent_addons on CI</id>
