@@ -1,6 +1,6 @@
 package org.gemoc.sample.sigpml.k3dsa;
 
-import org.gemoc.gemoc_language_workbench.extensions.k3.dsa.impl.Kermeta3AspectsCodeExecutor;
+import org.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.impl.Kermeta3AspectsCodeExecutor;
 
 public class SigPML_Kermeta3AspectsCodeExecutor extends Kermeta3AspectsCodeExecutor {
 	public SigPML_Kermeta3AspectsCodeExecutor() {
