@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-  <extension point="org.gemoc.gemoc_language_workbench.xdsml">
-    <XDSML_Definition codeExecutor_class="tfsm.xdsml.api.impl.TfsmCodeExecutor" domainSpecificEventsResourcePath="/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl" eventExecutor_class="org.gemoc.sample.tfsm.xdsml.executor.TfsmEventExecutor" feedbackPolicy_class="org.gemoc.sample.tfsm.xdsml.feedback.TfsmFeedbackPolicy" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader" name="tfsm for raspberry" solver_class="org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto" xdsmlFilePath="/org.gemoc.sample.tfsm.raspberry.xdsml/project.xdsml" />
-    <!-- domainSpecificEventsResource="/org.gemoc.sample.tfsm.ecldse/dse/TFSM.ecl" -->
-  </extension>
   <extension point="org.gemoc.gemoc_language_workbench.concurrent.xdsml">
-    <XDSML_Definition codeExecutor_class="tfsm.xdsml.api.impl.TfsmCodeExecutor" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto" solver_class="org.gemoc.gemoc_language_workbench.extensions.timesquare.moc.impl.CcslSolver" name="tfsm for raspberry" xdsmlFilePath="/org.gemoc.sample.tfsm.raspberry.xdsml/project.xdsml" />
+    <XDSML_Definition codeExecutor_class="tfsm.xdsml.api.impl.TfsmCodeExecutor" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" name="tfsm for raspberry" xdsmlFilePath="/org.gemoc.sample.tfsm.raspberry.xdsml/project.xdsml" />
   </extension>
 </plugin>
