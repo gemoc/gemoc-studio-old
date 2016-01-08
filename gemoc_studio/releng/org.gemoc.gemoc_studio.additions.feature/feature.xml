@@ -36,7 +36,6 @@
       <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.1.1" match="greaterOrEqual"/>
       <import feature="org.eclipse.epp.mpc" version="1.2.1.v20140219-1000" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtend.sdk" version="0.0.0"/>
-      <import feature="org.obeonetwork.dsl.uml2.runtime.feature" version="4.0.0.201403071353" match="greaterOrEqual"/>
       <import feature="org.sonatype.tycho.m2e.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="net.sf.eclipsecs" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.polarion.eclipse.team.svn.connector.svnkit18" version="0.0.0"/>

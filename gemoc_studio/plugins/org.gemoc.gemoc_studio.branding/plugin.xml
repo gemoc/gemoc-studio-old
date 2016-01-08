@@ -32,7 +32,7 @@
       <command
             categoryId="org.gemoc.gemoc_studio.commands.category"
             id="org.gemoc.gemoc_studio.commands.discoveryCommand"
-            name="Install Additional Components">
+            name="Install Additional GEMOC Components">
       </command>
    </extension>
    <extension
