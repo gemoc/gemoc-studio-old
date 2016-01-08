@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.gemoc.gemoc_modeling_workbench.ui.launcher">
-<booleanAttribute key="Event Scheduling Execution Tracing" value="true"/>
+<booleanAttribute key="Event Scheduling Execution Reflective Tracing" value="true"/>
 <intAttribute key="GEMOC_ANIMATE_DELAY" value="0"/>
-<booleanAttribute key="GEMOC_LAUNCH_BREAK_START" value="false"/>
+<booleanAttribute key="GEMOC_LAUNCH_BREAK_START" value="true"/>
 <stringAttribute key="GEMOC_LAUNCH_ENTRY_POINT" value=""/>
 <stringAttribute key="GEMOC_LAUNCH_MELANGE_QUERY" value=""/>
 <stringAttribute key="GEMOC_LAUNCH_SELECTED_DECIDER" value="Step by step user decider"/>
