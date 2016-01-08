@@ -21,14 +21,14 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.gemoc.executionengine.java.sequential_language_workbench.ui.GemocSequentialLanguageBuilder</name>
+			<name>org.gemoc.execution.sequential.javaxdsml.ide.ui.GemocSequentialLanguageBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.gemoc.execution.sequential.javaxdsml.ide.ui.GemocSequentialLanguageNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.pde.PluginNature</nature>
-		<nature>org.gemoc.executionengine.java.sequential_language_workbench.ui.GemocSequentialLanguageNature</nature>
 	</natures>
 </projectDescription>
