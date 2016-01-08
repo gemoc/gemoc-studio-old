@@ -47,6 +47,8 @@
       <import feature="org.eclipse.m2m.qvt.oml.examples" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml.runtime" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.ajdt" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.fx.ide.basic.feature" version="2.1.0.201508240705"/>
+      <import feature="org.eclipse.fx.ide.pde.feature" version="2.1.0.201508240705"/>
    </requires>
 
 </feature>
