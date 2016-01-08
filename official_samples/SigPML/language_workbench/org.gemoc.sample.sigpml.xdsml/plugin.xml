@@ -2,6 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.concurrent.xdsml">
-    <XDSML_Definition codeExecutor_class="org.gemoc.sample.sigpml.xdsml.executor.SigpmlCodeExecutor" modelLoader_class="org.gemoc.gemoc_language_workbench.extensions.sirius.modelloader.DefaultModelLoader" toCCSLQVTOFilePath="/org.gemoc.sample.sigpml.moc.application/qvto-gen/modeling/SigPML.qvto" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" name="sigpml" xdsmlFilePath="/org.gemoc.sample.sigpml.xdsml/project.xdsml" />
+    <XDSML_Definition codeExecutor_class="org.gemoc.sample.sigpml.xdsml.executor.SigpmlCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" toCCSLQVTOFilePath="/org.gemoc.sample.sigpml.moc.application/qvto-gen/modeling/SigPML.qvto" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" name="sigpml" xdsmlFilePath="/org.gemoc.sample.sigpml.xdsml/project.xdsml" />
   </extension>
 </plugin>
