@@ -114,11 +114,6 @@
          <topic label="Coordination of Languages with BCOoL" href="ch05.html#composing-languages-with-bcool-section">
             <topic label="What is BCOoL?" href="ch05.html#_what_is_indexterm_primary_bcool_primary_indexterm_bcool"/>
          </topic>
-         <topic label="Running Example: Coordination of a Coffee Machine Model" href="ch05s02.html">
-            <topic label="Preparing the Language Workbench" href="ch05s02.html#_preparing_the_language_workbench"/>
-            <topic label="Getting the Modeling Workbench" href="ch05s02.html#_getting_the_modeling_workbench"/>
-            <topic label="Running the example" href="ch05s02.html#_running_the_example"/>
-         </topic>
       </topic>
    </topic>
    <topic label="GEMOC Modeling workbench" href="pt02.html">
@@ -172,7 +167,7 @@
       </topic>
       <topic label="Coordinating Model Execution" href="ch09.html"/>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e2932"/>
+         <topic label="Articles" href="bi01.html#d0e2835"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
