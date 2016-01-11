@@ -165,9 +165,15 @@
             </topic>
          </topic>
       </topic>
-      <topic label="Coordinating Model Execution" href="ch09.html"/>
+      <topic label="Coordinating Model Execution" href="ch09.html">
+         <topic label="Running Example: Coordination of a Coffee Machine Model" href="ch09.html#_running_example_coordination_of_a_coffee_machine_model">
+            <topic label="Preparing the Language Workbench" href="ch09.html#_preparing_the_language_workbench"/>
+            <topic label="Getting the Modeling Workbench" href="ch09.html#_getting_the_modeling_workbench"/>
+            <topic label="Running the example" href="ch09.html#_running_the_example"/>
+         </topic>
+      </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e2835"/>
+         <topic label="Articles" href="bi01.html#d0e2930"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
