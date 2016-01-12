@@ -80,7 +80,7 @@
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Toggle breakpoint" icon="/org.gemoc.sample.tfsm.plaink3.design/icons/breakpoint.gif">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Toggle Gemoc breakpoint" icon="/org.gemoc.sample.tfsm.plaink3.design/icons/breakpoint.gif" id="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocToggleBreakpoint"/>
+                <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Toggle Gemoc breakpoint" icon="/org.gemoc.sample.tfsm.plaink3.design/icons/breakpoint.gif" id="org.gemoc.executionframework.engine.ui.debug.sirius.action.GemocToggleBreakpointAction"/>
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
@@ -214,7 +214,7 @@
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Toggle breakpoint" icon="/org.gemoc.sample.tfsm.plaink3.design/icons/breakpoint.gif">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Toggle Gemoc breakpoint" icon="/org.gemoc.sample.tfsm.plaink3.design/icons/breakpoint.gif" id="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocToggleBreakpoint"/>
+                <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Toggle Gemoc breakpoint" icon="/org.gemoc.sample.tfsm.plaink3.design/icons/breakpoint.gif" id="org.gemoc.executionframework.engine.ui.debug.sirius.action.GemocToggleBreakpointAction"/>
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
