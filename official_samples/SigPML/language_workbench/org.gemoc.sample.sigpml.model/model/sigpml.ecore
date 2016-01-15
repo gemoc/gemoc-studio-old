@@ -117,6 +117,9 @@
         eType="#//HWRessource"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HWComputationalResource" eSuperTypes="#//HWRessource">
+    <eOperations name="incCycle">
+      <eAnnotations source="dynamic"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isUnderPreemptiveManagement"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedAgents" upperBound="-1"

@@ -3,7 +3,7 @@ import 'http://org.gemoc.sigpml.model/1.0'
 ECLimport "platform:/resource/org.gemoc.sample.sigpml.moc.lib/MoCLib/SigPML.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" 
-
+ 
 package sigpml
 
 	context Agent 
@@ -17,7 +17,7 @@ package sigpml
 	
 	context OutputPort
 	def : write : Event= self.write()
-	
+	 
 	context Place
 	def : push :Event = self.push()
 	def : pop :Event = self.pop()
@@ -25,7 +25,7 @@ package sigpml
 	def : delayPlusOne : Integer = self.delay +1
 	
 	context HWComputationalResource
-	def : isExecuting : Event= self
+	def : isExecuting : Event= self.incCycle()
 	def : idle: Event= self
 	
 	context HWStorageResource

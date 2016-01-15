@@ -11,6 +11,12 @@ import org.gemoc.sample.sigpml.SigpmlFactory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>HW Computational Resource</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link org.gemoc.sample.sigpml.HWComputationalResource#incCycle() <em>Inc Cycle</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class HWComputationalResourceTest extends HWRessourceTest {
@@ -65,6 +71,19 @@ public class HWComputationalResourceTest extends HWRessourceTest {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.gemoc.sample.sigpml.HWComputationalResource#incCycle() <em>Inc Cycle</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.gemoc.sample.sigpml.HWComputationalResource#incCycle()
+	 * @generated
+	 */
+	public void testIncCycle() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //HWComputationalResourceTest

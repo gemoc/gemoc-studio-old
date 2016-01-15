@@ -64,4 +64,12 @@ public interface HWComputationalResource extends HWRessource {
 	 */
 	EList<Agent> getAllocatedAgents();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void incCycle();
+
 } // HWComputationalResource
