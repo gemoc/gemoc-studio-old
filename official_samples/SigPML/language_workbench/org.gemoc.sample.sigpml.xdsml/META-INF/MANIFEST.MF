@@ -1,4 +1,4 @@
-Export-Package: org.gemoc.sample.sigpml.xdsml,org.gemoc.sample.sigpml.xdsml.executor
+Export-Package: org.gemoc.sample.sigpml.xdsml,sigpml.xdsml.api.impl
 Bundle-SymbolicName: org.gemoc.sample.sigpml.xdsml;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Name: Xdsml
@@ -39,7 +39,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:="re
  
  org.gemoc.sample.sigpml.moc.application;bundle-version="0.0.0";visibility:="reexport",
  
- org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare;bundle-version="0.0.0";visibility:="reexport",
  
  org.gemoc.sample.sigpml.k3dsa;bundle-version="0.0.0";visibility:="reexport",
  
@@ -59,7 +59,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:="re
  
  org.gemoc.executionframework.engine.mse.model;bundle-version="0.1.0",
  
- org.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:="reexport"
+ org.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.gemoc.sample.sigpml.xdsml.Activator
