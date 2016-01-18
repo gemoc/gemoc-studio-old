@@ -25,9 +25,10 @@ import org.gemoc.sample.sigpml.Place
 import org.gemoc.sample.sigpml.Port
 import org.gemoc.sample.sigpml.System
 
-import static extension org.gemoc.sample.sigpml.k3dsa.InputPortAspect.*
-import static extension org.gemoc.sample.sigpml.k3dsa.OutputPortAspect.*
-import static extension org.gemoc.sample.sigpml.k3dsa.SystemAspect.*
+import static extension org.gemoc.sample.sigpml.k3dsa.InputPortAspect.*;
+import static extension org.gemoc.sample.sigpml.k3dsa.OutputPortAspect.*;
+import static extension org.gemoc.sample.sigpml.k3dsa.SystemAspect.*;
+import static extension org.gemoc.sample.sigpml.k3dsa.HWComputationalResourceAspect.*;
 import org.eclipse.core.runtime.Platform
 import org.osgi.framework.wiring.BundleWiring
 
@@ -74,7 +75,7 @@ class AgentAspect extends NamedElementAspect {
 		binding.setVariable("plotter", _self.plotter)
 		binding.setVariable("frame", _self.frame)
 
-		val localTime = _self.currentExecCycle
+		val localTime = _self.allocatedTo.currentExecCycle
 		binding.setVariable("localTime", localTime)
 		binding.setVariable("figure", _self.figure)
 

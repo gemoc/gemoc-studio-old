@@ -659,6 +659,15 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getHWComputationalResource__IncCycle() {
+		return hwComputationalResourceEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHWStorageResource() {
 		return hwStorageResourceEClass;
 	}
@@ -846,6 +855,7 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		hwComputationalResourceEClass = createEClass(HW_COMPUTATIONAL_RESOURCE);
 		createEAttribute(hwComputationalResourceEClass, HW_COMPUTATIONAL_RESOURCE__IS_UNDER_PREEMPTIVE_MANAGEMENT);
 		createEReference(hwComputationalResourceEClass, HW_COMPUTATIONAL_RESOURCE__ALLOCATED_AGENTS);
+		createEOperation(hwComputationalResourceEClass, HW_COMPUTATIONAL_RESOURCE___INC_CYCLE);
 
 		hwStorageResourceEClass = createEClass(HW_STORAGE_RESOURCE);
 		createEReference(hwStorageResourceEClass, HW_STORAGE_RESOURCE__ALLOCATED_PLACES);
@@ -975,6 +985,8 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		initEClass(hwComputationalResourceEClass, HWComputationalResource.class, "HWComputationalResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHWComputationalResource_IsUnderPreemptiveManagement(), ecorePackage.getEBoolean(), "isUnderPreemptiveManagement", null, 0, 1, HWComputationalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHWComputationalResource_AllocatedAgents(), this.getAgent(), null, "allocatedAgents", null, 0, -1, HWComputationalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getHWComputationalResource__IncCycle(), null, "incCycle", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(hwStorageResourceEClass, HWStorageResource.class, "HWStorageResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHWStorageResource_AllocatedPlaces(), this.getPlace(), null, "allocatedPlaces", null, 0, -1, HWStorageResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1111,6 +1123,11 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		   });	
 		addAnnotation
 		  (getPlace_IsInitialized(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getHWComputationalResource__IncCycle(), 
 		   source, 
 		   new String[] {
 		   });	

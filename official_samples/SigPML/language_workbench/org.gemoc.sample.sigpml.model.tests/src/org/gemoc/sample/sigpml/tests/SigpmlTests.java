@@ -35,6 +35,7 @@ public class SigpmlTests extends TestSuite {
 		suite.addTestSuite(InputPortTest.class);
 		suite.addTestSuite(OutputPortTest.class);
 		suite.addTestSuite(PlaceTest.class);
+		suite.addTestSuite(HWComputationalResourceTest.class);
 		return suite;
 	}
 

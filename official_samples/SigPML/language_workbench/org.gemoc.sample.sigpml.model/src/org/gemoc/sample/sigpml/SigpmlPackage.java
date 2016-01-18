@@ -817,13 +817,22 @@ public interface SigpmlPackage extends EPackage {
 	int HW_COMPUTATIONAL_RESOURCE_FEATURE_COUNT = HW_RESSOURCE_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Inc Cycle</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_COMPUTATIONAL_RESOURCE___INC_CYCLE = HW_RESSOURCE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>HW Computational Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_COMPUTATIONAL_RESOURCE_OPERATION_COUNT = HW_RESSOURCE_OPERATION_COUNT + 0;
+	int HW_COMPUTATIONAL_RESOURCE_OPERATION_COUNT = HW_RESSOURCE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.HWStorageResourceImpl <em>HW Storage Resource</em>}' class.
@@ -1596,6 +1605,16 @@ public interface SigpmlPackage extends EPackage {
 	EReference getHWComputationalResource_AllocatedAgents();
 
 	/**
+	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.HWComputationalResource#incCycle() <em>Inc Cycle</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Inc Cycle</em>' operation.
+	 * @see org.gemoc.sample.sigpml.HWComputationalResource#incCycle()
+	 * @generated
+	 */
+	EOperation getHWComputationalResource__IncCycle();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.HWStorageResource <em>HW Storage Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2146,6 +2165,14 @@ public interface SigpmlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HW_COMPUTATIONAL_RESOURCE__ALLOCATED_AGENTS = eINSTANCE.getHWComputationalResource_AllocatedAgents();
+
+		/**
+		 * The meta object literal for the '<em><b>Inc Cycle</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation HW_COMPUTATIONAL_RESOURCE___INC_CYCLE = eINSTANCE.getHWComputationalResource__IncCycle();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.HWStorageResourceImpl <em>HW Storage Resource</em>}' class.
