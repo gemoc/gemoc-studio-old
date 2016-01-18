@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<concurrent_xdsml:ConcurrentLanguageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concurrent_xdsml="http://www.gemoc.org/concurrent_xdsml" xmlns:xdsml_base="http://www.gemoc.org/xdsml_base" name="tfsm">
-  <domainModelProject projectName="org.gemoc.sample.tfsm.model" defaultRootEObjectQualifiedName="tfsm::TimedSystem" genmodeluri="platform:/resource/org.gemoc.sample.tfsm.model/model/tfsm.genmodel"/>
-  <editorProjects xsi:type="xdsml_base:SiriusEditorProject" projectName="org.gemoc.sample.tfsm.design"/>
-  <animatorProjects xsi:type="xdsml_base:SiriusAnimatorProject" projectName="org.gemoc.sample.tfsm.design"/>
-  <dsaProject projectName="org.gemoc.sample.tfsm.k3dsa" codeExecutorClass="org.gemoc.sample.tfsm.xdsml.api.impl.TfsmCodeExecutor"/>
-  <moCCProject projectName="org.gemoc.sample.tfsm.moc.lib"/>
-  <dSEProject projectName="org.gemoc.sample.tfsm.eclmoc2as" qvtoURI="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto"/>
-</concurrent_xdsml:ConcurrentLanguageDefinition>

@@ -12,6 +12,7 @@ import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
 import fr.inria.diverse.k3.al.annotationprocessor.Step
+import org.gemoc.sample.tfsm_plaink3.TimedSystem
 
 @Aspect(className=TFSM)
 class TFSMAspect {
@@ -80,4 +81,35 @@ class FSMEventAspect {
 		_self.isTriggered = false
 	}
 
+}
+
+@Aspect(className=TimedSystem)
+class TimedSystemAspect {
+       
+       @fr.inria.diverse.k3.al.annotationprocessor.Main
+       def public void main() {
+               val tfsm = _self.tfsms.get(0)
+               tfsm.init
+               var i = 0
+               while (i != 20)
+               {
+
+                       if (i == 10)
+                       {
+                               tfsm.localEvents.forEach [ e |
+                                       e.trigger
+                               ]
+                       }
+
+                       tfsm.visit
+
+                       if (i == 10)
+                       {
+                               tfsm.localEvents.forEach[e|e.unTrigger]
+                       }
+
+                       i++
+               }
+               println("Normal stop after "+i+" iterations (set in main)");
+       }
 }

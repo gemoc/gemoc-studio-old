@@ -2,6 +2,14 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.concurrent.xdsml">
-    <XDSML_Definition codeExecutor_class="org.gemoc.sample.tfsm.xdsml.api.impl.TfsmCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" name="tfsm" xdsmlFilePath="/org.gemoc.sample.tfsm.xdsml/project.xdsml" />
+    <XDSML_Definition codeExecutor_class="tfsm.xdsml.api.impl.TfsmCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.tfsm.xdsml.TfsmConcurrent" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling" xdsmlFilePath="" />
+  </extension>
+  <extension point="fr.inria.diverse.melange.modeltype">
+    <modeltype id="org.gemoc.sample.tfsm.xdsml.TfsmConcurrentMT" uri="http://tfsmconcurrentmt/" />
+  </extension>
+  <extension point="fr.inria.diverse.melange.language">
+    <language aspects="FSMClock:org.gemoc.sample.tfsm.k3dsa.aspect.FSMClockAspect;TimedSystem:org.gemoc.sample.tfsm.k3dsa.aspect.TimedSystemAspect;State:org.gemoc.sample.tfsm.k3dsa.aspect.StateAspect;EvaluateGuard:org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect;EventGuard:org.gemoc.sample.tfsm.k3dsa.aspect.EventGuardAspect;Transition:org.gemoc.sample.tfsm.k3dsa.aspect.TransitionAspect;Guard:org.gemoc.sample.tfsm.k3dsa.aspect.GuardAspect;FSMEvent:org.gemoc.sample.tfsm.k3dsa.aspect.FSMEventAspect;TFSM:org.gemoc.sample.tfsm.k3dsa.aspect.TFSMAspect;TemporalGuard:org.gemoc.sample.tfsm.k3dsa.aspect.TemporalGuardAspect;NamedElement:org.gemoc.sample.tfsm.k3dsa.aspect.NamedElementAspect" entryPoints="" exactType="org.gemoc.sample.tfsm.xdsml.TfsmConcurrentMT" id="org.gemoc.sample.tfsm.xdsml.TfsmConcurrent" uri="http://www.gemoc.org/sample/tfsm">
+      <adapter class="org.gemoc.sample.tfsm.xdsml.tfsmconcurrent.adapters.tfsmconcurrentmt.TfsmConcurrentAdapter" modeltypeId="org.gemoc.sample.tfsm.xdsml.TfsmConcurrentMT" />
+    </language>
   </extension>
 </plugin>
