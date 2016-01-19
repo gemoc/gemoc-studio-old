@@ -8,7 +8,7 @@ language Sigpml {
 	syntax "platform:/resource/org.gemoc.sample.sigpml.model/model/sigpml.ecore"
 	
 	/*
-	 * Declare DSE
+	 * Declare DSA
 	 */
 	with org.gemoc.sample.sigpml.k3dsa.HWComputationalResourceAspect
 	with org.gemoc.sample.sigpml.k3dsa.AgentAspect
@@ -19,7 +19,7 @@ language Sigpml {
 	with org.gemoc.sample.sigpml.k3dsa.NamedElementAspect
 
 	/*
-	 * Locate ECL file (optional)
+	 * Locate ECL file 
 	 */
 	ecl "org.gemoc.sample.sigpml.moc.application/MoCApplication/SigPML.ecl"
 	
