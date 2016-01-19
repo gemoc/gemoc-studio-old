@@ -17,4 +17,8 @@ public class TFSMDebuggerServices extends AbstractGemocDebuggerServices {
 		return res;
 	}
 	
+	@Override
+	public String getModelIdentifier() {
+		return org.gemoc.execution.sequential.javaengine.ui.Activator.PLUGIN_ID+".debugModel";
+	}
 }
