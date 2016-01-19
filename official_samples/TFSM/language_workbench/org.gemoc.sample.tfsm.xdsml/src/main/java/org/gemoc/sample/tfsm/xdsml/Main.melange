@@ -8,7 +8,7 @@ language TfsmConcurrent {
 	syntax "platform:/resource/org.gemoc.sample.tfsm.model/model/tfsm.ecore"
 	
 	/*
-	 * Declare DSE
+	 * Declare DSA
 	 */
 	with org.gemoc.sample.tfsm.k3dsa.aspect.TFSMAspect
 	with org.gemoc.sample.tfsm.k3dsa.aspect.StateAspect
@@ -23,7 +23,7 @@ language TfsmConcurrent {
 	with org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect
 
 	/*
-	 * Locate ECL file (optional)
+	 * Locate ECL file 
 	 */
 	ecl "org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl"
 	
