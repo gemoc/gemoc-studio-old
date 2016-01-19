@@ -26,6 +26,9 @@ public class TFSM_PlainK3ExampleWizard
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.design.zip", "org.gemoc.sample.tfsm.plaink3.design"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.dsa.zip", "org.gemoc.sample.tfsm.plaink3.dsa"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.model.zip", "org.gemoc.sample.tfsm.plaink3.model"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.model.edit.zip", "org.gemoc.sample.tfsm.plaink3.model.edit"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.model.editor.zip", "org.gemoc.sample.tfsm.plaink3.model.editor"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.trace.zip", "org.gemoc.sample.tfsm.plaink3.trace"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.xdsml.zip", "org.gemoc.sample.tfsm.plaink3.xdsml"));
 		return projects;
 	}
