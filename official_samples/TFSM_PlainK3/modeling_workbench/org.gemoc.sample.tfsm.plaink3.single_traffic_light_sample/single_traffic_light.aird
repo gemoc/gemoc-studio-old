@@ -194,6 +194,9 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_67Nv3xAzEeWHqKBSJaihuA" name="Red" outgoingEdges="_67Nv8BAzEeWHqKBSJaihuA" incomingEdges="_67Nv6xAzEeWHqKBSJaihuA _67Nv9RAzEeWHqKBSJaihuA">
         <target xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
         <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_8iZioL6TEeWJIe7avQoiww">
+          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sample.tfsm.plaink3.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Debug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
+        </decorations>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_67Nv4BAzEeWHqKBSJaihuA" showIcon="false" backgroundStyle="Liquid">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_67Nv4RAzEeWHqKBSJaihuA"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.plaink3.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']/@style"/>
@@ -206,6 +209,9 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_67Nv5RAzEeWHqKBSJaihuA" name="Green" outgoingEdges="_67Nv9RAzEeWHqKBSJaihuA" incomingEdges="_67Nv8BAzEeWHqKBSJaihuA">
         <target xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
         <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_9FyjkL6TEeWJIe7avQoiww">
+          <description xmi:type="description_1:MappingBasedDecoration" href="platform:/plugin/org.gemoc.sample.tfsm.plaink3.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Debug']/@decorationDescriptionsSet/@decorationDescriptions[name='Enabled%20breakpoint']"/>
+        </decorations>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_67Nv5hAzEeWHqKBSJaihuA" showIcon="false" backgroundStyle="Liquid">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_67Nv5xAzEeWHqKBSJaihuA"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.plaink3.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']/@style"/>
