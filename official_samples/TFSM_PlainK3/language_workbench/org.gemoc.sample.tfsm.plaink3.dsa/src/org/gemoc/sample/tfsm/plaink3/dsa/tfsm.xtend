@@ -13,6 +13,7 @@ import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
 import fr.inria.diverse.k3.al.annotationprocessor.Step
 import org.gemoc.sample.tfsm_plaink3.TimedSystem
+import java.util.List
 
 @Aspect(className=TFSM)
 class TFSMAspect {
@@ -88,8 +89,7 @@ class TimedSystemAspect {
        
        @fr.inria.diverse.k3.al.annotationprocessor.Main
        def public void main() {
-               val tfsm = _self.tfsms.get(0)
-               tfsm.init
+       	       val tfsm = _self.tfsms.get(0)
                var i = 0
                while (i != 20)
                {
@@ -111,5 +111,12 @@ class TimedSystemAspect {
                        i++
                }
                println("Normal stop after "+i+" iterations (set in main)");
+       }
+       
+       
+       @fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
+       def public void initializeModel(List<String> args){
+       		val tfsm = _self.tfsms.get(0)
+            tfsm.init	
        }
 }
