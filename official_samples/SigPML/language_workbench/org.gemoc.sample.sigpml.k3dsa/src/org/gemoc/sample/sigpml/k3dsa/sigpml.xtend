@@ -27,10 +27,13 @@ import org.gemoc.sample.sigpml.System
 
 import static extension org.gemoc.sample.sigpml.k3dsa.InputPortAspect.*;
 import static extension org.gemoc.sample.sigpml.k3dsa.OutputPortAspect.*;
+import static extension org.gemoc.sample.sigpml.k3dsa.PlaceAspect.*;
 import static extension org.gemoc.sample.sigpml.k3dsa.SystemAspect.*;
 import static extension org.gemoc.sample.sigpml.k3dsa.HWComputationalResourceAspect.*;
 import org.eclipse.core.runtime.Platform
 import org.osgi.framework.wiring.BundleWiring
+import java.util.List
+import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
 
 @Aspect(className = HWComputationalResource)
 class HWComputationalResourceAspect {
@@ -174,7 +177,7 @@ class PlaceAspect extends NamedElementAspect {
 	public ArrayList<Object> fifo
 	public int currentSize = 0
 
-	def private void initialize() {
+	def public void initialize() {
 		println("place " + _self.name + "is initializing")
 		_self.fifo = newArrayList
 		for(i:0 ..< _self.delay) {
@@ -230,6 +233,13 @@ class PlaceAspect extends NamedElementAspect {
 @Aspect(className=System)
 class SystemAspect {
 	public LinkedListMultimap sharedMemory
+	
+	@InitializeModel
+	def void initializeModel(List<String> args){
+		for(Place place : _self.ownedApplication.ownedPlaces){
+			place.initialize
+		}
+	}
 }
 
 @Aspect(className=NamedElement)
