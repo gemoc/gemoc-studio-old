@@ -2,7 +2,14 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.sequential.xdsml">
-    <XDSML_Definition modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="Tfsm" xdsmlFilePath="/org.gemoc.sample.tfsm.plaink3.xdsml/bin/org/gemoc/sample/tfsm/xdsml/Main.melange" />
+    <XDSML_Definition
+          modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader"
+          name="org.gemoc.sample.tfsm.xdsml.Tfsm"
+          xdsmlFilePath="/org.gemoc.sample.tfsm.plaink3.xdsml/bin/org/gemoc/sample/tfsm/xdsml/Main.melange">
+       <XDSML_Definition_Customization
+             fileExtensions="tfsm">
+       </XDSML_Definition_Customization>
+    </XDSML_Definition>
   </extension>
   <extension point="fr.inria.diverse.melange.modeltype">
     <modeltype id="org.gemoc.sample.tfsm.xdsml.TfsmMT" uri="http://tfsmmt/" />
