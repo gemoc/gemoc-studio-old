@@ -1,5 +1,5 @@
-Export-Package: org.gemoc.sample.sigpml.xdsml,sigpml.xdsml.api.impl
 Bundle-SymbolicName: org.gemoc.sample.sigpml.xdsml;singleton:=true
+Export-Package: org.gemoc.sample.sigpml.xdsml,sigpml.xdsml.api.impl
 Bundle-Version: 1.0.0.qualifier
 Bundle-Name: Xdsml
 Bundle-ClassPath: .
