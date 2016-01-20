@@ -2,7 +2,17 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.concurrent.xdsml">
-    <XDSML_Definition codeExecutor_class="tfsmconcurrent.xdsml.api.impl.TfsmConcurrentCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.tfsm.xdsml.TfsmConcurrent" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto" xdsmlFilePath="" />
+    <XDSML_Definition
+          codeExecutor_class="tfsmconcurrent.xdsml.api.impl.TfsmConcurrentCodeExecutor"
+          modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader"
+          name="org.gemoc.sample.tfsm.xdsml.TfsmConcurrent"
+          solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver"
+          toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.eclmoc2as/qvto-gen/modeling/TFSM.qvto"
+          xdsmlFilePath="/org.gemoc.sample.tfsm.xdsml/bin/org/gemoc/sample/tfsm/xdsml/Main.melange">
+       <XDSML_Definition_Customization
+             fileExtensions="tfsm">
+       </XDSML_Definition_Customization>
+    </XDSML_Definition>
   </extension>
   <extension point="fr.inria.diverse.melange.modeltype">
     <modeltype id="org.gemoc.sample.tfsm.xdsml.TfsmConcurrentMT" uri="http://tfsmconcurrentmt/" />

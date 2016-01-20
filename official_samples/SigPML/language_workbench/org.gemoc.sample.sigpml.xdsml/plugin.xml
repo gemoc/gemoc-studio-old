@@ -2,7 +2,9 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.concurrent.xdsml">
-    <XDSML_Definition codeExecutor_class="sigpml.xdsml.api.impl.SigpmlCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.sigpml.xdsml.Sigpml" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.sample.sigpml.moc.application/qvto-gen/modeling/SigPML.qvto" xdsmlFilePath="" />
+    <XDSML_Definition codeExecutor_class="sigpml.xdsml.api.impl.SigpmlCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.sigpml.xdsml.Sigpml" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.sample.sigpml.moc.application/qvto-gen/modeling/SigPML.qvto" xdsmlFilePath="/org.gemoc.sample.sigpml.xdsml/src/main/java/org/gemoc/sample/sigpml/xdsml/Main.melange">
+      <XDSML_Definition_Customization fileExtensions="sigpml" />
+    </XDSML_Definition>
   </extension>
   <extension point="fr.inria.diverse.melange.modeltype">
     <modeltype id="org.gemoc.sample.sigpml.xdsml.SigpmlMT" uri="http://sigpmlmt/" />
