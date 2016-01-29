@@ -31,5 +31,5 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
  fr.inria.diverse.melange.lib;bundle-version="0.1.0"
 Bundle-ManifestVersion: 2
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Manifest-Version: 1.0
