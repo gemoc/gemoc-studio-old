@@ -5,7 +5,7 @@ import org.gemoc.execution.concurrent.ccsljavaengine.dsa.executors.CodeExecutorD
 public class TfsmConcurrentCodeExecutor extends CodeExecutorDispatcher 
 		implements org.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.api.IK3DSAExecutorClassLoader  {
 	public TfsmConcurrentCodeExecutor(){
-	    // add K3 DSA specific executor
+	    // add Melange or K3 DSA specific executors
 		addExecutor(new org.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.impl.MelangeCodeExecutor(this,
 			"org.gemoc.sample.tfsm.xdsml.TfsmConcurrent"));
 		// fall back executor : search classic java method

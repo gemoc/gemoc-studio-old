@@ -21,6 +21,7 @@ language TfsmConcurrent {
 	with org.gemoc.sample.tfsm.k3dsa.aspect.FSMClockAspect
 	with org.gemoc.sample.tfsm.k3dsa.aspect.TimedSystemAspect
 	with org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect
+ 
 
 	/*
 	 * Locate ECL file 
