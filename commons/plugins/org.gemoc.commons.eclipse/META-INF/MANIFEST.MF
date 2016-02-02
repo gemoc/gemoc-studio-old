@@ -9,7 +9,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.gemoc.commons;bundle-version="0.1.0";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.gemoc.commons.eclipse.core.resources,
+Export-Package: org.gemoc.commons.eclipse,
+ org.gemoc.commons.eclipse.core.resources,
  org.gemoc.commons.eclipse.emf,
  org.gemoc.commons.eclipse.logging,
  org.gemoc.commons.eclipse.logging.backends,
