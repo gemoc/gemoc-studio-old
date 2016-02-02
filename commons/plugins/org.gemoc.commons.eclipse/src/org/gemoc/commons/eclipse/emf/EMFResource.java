@@ -122,7 +122,7 @@ public final class EMFResource {
 	 */
 	public static IFile getIFile(Resource res) {
 		URI uri = res.getURI();
-		String filePath = URI.decode(uri.path());
+		String filePath = uri.toPlatformString(true);
 		IFile ifile = ResourcesPlugin.getWorkspace().getRoot()
 				.getFile(new Path(filePath));
 		return ifile;
