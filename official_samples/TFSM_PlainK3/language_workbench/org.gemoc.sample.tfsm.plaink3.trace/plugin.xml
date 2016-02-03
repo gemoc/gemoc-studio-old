@@ -20,6 +20,6 @@
     <package uri="tfsm_plaink3Trace_tfsm_plaink3" class="tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Package" genModel="model/tfsm_plaink3Trace.genmodel" />
   </extension>
   <extension point="org.gemoc.gemoc_language_workbench.engine_addon">
-    <Addon Class="org.gemoc.sample.tfsm.plaink3.trace.tracemanager.Tfsm_plaink3TraceEngineAddon" Default="false" id="org.gemoc.sample.tfsm.plaink3.trace" Name="tfsm_plaink3Trace Addon" />
+    <Addon Class="org.gemoc.sample.tfsm.plaink3.trace.tracemanager.Tfsm_plaink3TraceEngineAddon" Default="false" id="org.gemoc.sample.tfsm.plaink3.trace" Name="tfsm_plaink3 Multidimensional Trace" />
   </extension>
 </plugin>
