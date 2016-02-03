@@ -31,7 +31,6 @@
             <topic label="Load markedgraph.odesign as a resource." href="ch05.html#_load_markedgraph_odesign_as_a_resource"/>
             <topic label="Add markedgraph.ecore to the metamodels" href="ch05.html#_add_markedgraph_ecore_to_the_metamodels"/>
             <topic label="Complete the debug representation" href="ch05.html#_complete_the_debug_representation"/>
-            <topic label="Complete the dependencies of the project" href="ch05.html#_complete_the_dependencies_of_the_project"/>
             <topic label="Set the animation viewpoint in project.xml" href="ch05.html#_set_the_animation_viewpoint_in_project_xml"/>
          </topic>
          <topic label="Create an animation representation" href="ch05s02.html">
