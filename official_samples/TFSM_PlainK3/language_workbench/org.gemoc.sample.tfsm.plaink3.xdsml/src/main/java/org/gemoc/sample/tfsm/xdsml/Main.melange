@@ -8,7 +8,7 @@ language Tfsm {
 	syntax "platform:/resource/org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore"
 	
 	/*
-	 * Declare DSE
+	 * Declare DSA
 	 */
 	with org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect
 	with org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect
