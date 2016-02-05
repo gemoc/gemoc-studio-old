@@ -28,14 +28,148 @@ The rate to read and write in the connector is defined as an attribute of the po
 - creating aspects to weave with the Ecore model in Kermeta3</p><div class="section" title="4.2.1.&nbsp;Extending the Ecore definition"><div class="titlepage"><div><div><h3 class="title"><a name="_extending_the_ecore_definition"></a>4.2.1.&nbsp;Extending the Ecore definition</h3></div></div></div><p>So first, Execution Data and Execution Function definitions are added to the domain model of SigPMLTuto ecore file. We extend the SigPML metamodel by adding one function <span class="emphasis"><em>execute()</em></span> in the <span class="emphasis"><em>Block</em></span> class and the functions <span class="emphasis"><em>push()</em></span> and <span class="emphasis"><em>pop()</em></span> in <span class="emphasis"><em>Connector</em></span> class. These functions are added with the Ecore reflexive editor.</p><p title="Execution Function in the SigPML metamodel"><b>Execution Function in the SigPML metamodel.&nbsp;</b><span class="inlinemediaobject"><img src="./images/quickTutorial/sigpml/EF_InEcoreDomainModel.png" alt="Execution Function in the SigPML metamodel"></span></p></div><div class="section" title="4.2.2.&nbsp;Creating the DSA project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_dsa_project"></a>4.2.2.&nbsp;Creating the DSA project</h3></div></div></div><p>The creation of the DSA project is New&#8594;Other&#8594;Kermeta3&#8594;K3 project&#8594;give the name&#8594;next&#8594;select "Create a plugin using one the templates"&#8594;choose "User Ecore Basic Aspects"&#8594;fill in allthe requested names and select the Ecore domain model.</p><p>The resulted DSA project is a k3dsa project with a sigpmlAspects.xtend file in the package <span class="emphasis"><em>org.gemoc.sample.xsigpml.k3dsa</em></span>.
 This file contains the aspects that we want to add to the necessary classes in our case <span class="emphasis"><em>Block</em></span> and <span class="emphasis"><em>Connector</em></span>.</p><p><span class="inlinemediaobject"><img src="./images/quickTutorial/sigpml/resultedDSAProject.png" alt="DSA project and associated aspect file"></span></p></div><div class="section" title="4.2.3.&nbsp;Implementation of the DSA"><div class="titlepage"><div><div><h3 class="title"><a name="_implementation_of_the_dsa"></a>4.2.3.&nbsp;Implementation of the DSA</h3></div></div></div><p>In this tutorial, the implementation of the functions is simple. The <span class="emphasis"><em>execute</em></span> function increments the <span class="emphasis"><em>currentExecCycle</em></span> of a block until its value is inferior to the <span class="emphasis"><em>cycles</em></span> value.</p><p>The source code is available through
 <a class="link" href="tutorialFiles/quickTutorial/sigpml/sigpmlAspects.xtend" target="_top">Kermeta 3 aspects,tabsize=4</a>
-and showed below</p><pre class="screen">Unresolved directive in Tutorial_SigPML.asciidoc - include::tutorialFiles/quickTutorial/sigpmlAspects.xtend[source code of the Kermeta 3 aspects]</pre></div></div><div class="section" title="4.3.&nbsp;DSE definition"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_dse_definition"></a>4.3.&nbsp;DSE definition</h2></div></div></div><p>The DSE definition is related to declare the Domain Specific Events which define the event interface of our language.</p><p>The two next sections ECL and MoCC definitions are tightly coupled. So you can create the two projects and iterate between the two projects in progress.</p><div class="section" title="4.3.1.&nbsp;Creating the ECL project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_ecl_project"></a>4.3.1.&nbsp;Creating the ECL project</h3></div></div></div><p>From the xDSML project, we select the associated wizard of the DSE definition that helps to create an ECL project (Event Constraint Language). After you give a name on your project&#8594;next&#8594;(you must have a reference on your Ecore domain file)&#8594;finish</p><p title="ECL project creation"><b>ECL project creation.&nbsp;</b><span class="inlinemediaobject"><img src="./images/quickTutorial/sigpml/createECLProject.png" alt="ECL project creation"></span></p></div><div class="section" title="4.3.2.&nbsp;Implementation of the ECL"><div class="titlepage"><div><div><h3 class="title"><a name="_implementation_of_the_ecl"></a>4.3.2.&nbsp;Implementation of the ECL</h3></div></div></div><p>An ECL program defines the mapping between the domain model, including ED and EF, and the MoCC definition of the next section.
+and showed below</p><pre class="screen">package org.gemoc.sample.xsigpml.k3dsa
+
+
+
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect
+import sigpml.Application
+import sigpml.Block
+import sigpml.Port
+import sigpml.InputPort
+import sigpml.OutputPort
+import sigpml.Connector
+import sigpml.NamedElement
+
+
+
+@Aspect(className=Application)
+class ApplicationAspect extends org.gemoc.sample.xsigpml.k3dsa.NamedElementAspect {
+
+
+}
+
+
+@Aspect(className=Block)
+class BlockAspect extends org.gemoc.sample.xsigpml.k3dsa.NamedElementAspect {
+
+	public int currentExecCycle = 0
+
+
+	def public void execute() {
+
+		if ( _self.currentExecCycle &lt; _self.cycles )
+			_self.currentExecCycle = _self.currentExecCycle + 1
+		else
+			_self.currentExecCycle = 0
+
+		println(_self.name + "\n      execute (" + _self.currentExecCycle + ")" )
+
+	}
+
+}
+
+
+@Aspect(className=Connector)
+class ConnectorAspect extends org.gemoc.sample.xsigpml.k3dsa.NamedElementAspect {
+
+
+	def public void push() {
+
+		println( " Push on : " + _self.name + "\n ")
+	}
+
+	def public void pop() {
+
+		println( " Pop on : " + _self.name + "\n ")
+	}
+
+}
+
+
+@Aspect(className=NamedElement)
+abstract class NamedElementAspect {
+
+}</pre></div></div><div class="section" title="4.3.&nbsp;DSE definition"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_dse_definition"></a>4.3.&nbsp;DSE definition</h2></div></div></div><p>The DSE definition is related to declare the Domain Specific Events which define the event interface of our language.</p><p>The two next sections ECL and MoCC definitions are tightly coupled. So you can create the two projects and iterate between the two projects in progress.</p><div class="section" title="4.3.1.&nbsp;Creating the ECL project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_ecl_project"></a>4.3.1.&nbsp;Creating the ECL project</h3></div></div></div><p>From the xDSML project, we select the associated wizard of the DSE definition that helps to create an ECL project (Event Constraint Language). After you give a name on your project&#8594;next&#8594;(you must have a reference on your Ecore domain file)&#8594;finish</p><p title="ECL project creation"><b>ECL project creation.&nbsp;</b><span class="inlinemediaobject"><img src="./images/quickTutorial/sigpml/createECLProject.png" alt="ECL project creation"></span></p></div><div class="section" title="4.3.2.&nbsp;Implementation of the ECL"><div class="titlepage"><div><div><h3 class="title"><a name="_implementation_of_the_ecl"></a>4.3.2.&nbsp;Implementation of the ECL</h3></div></div></div><p>An ECL program defines the mapping between the domain model, including ED and EF, and the MoCC definition of the next section.
 In this program, you declare the metaclasses that you want to select ED or EF, and associating them with a MoCC definition.</p><p>A metaclass is referenced as <span class="emphasis"><em>Context</em></span> and in this scope we define an event relative to the EF and also invariants that must be satisfied in the context of the metaclasse.</p><p>In this tutorial, two contexts are declared for the metaclasses <span class="emphasis"><em>Block</em></span> and <span class="emphasis"><em>Connector</em></span>.
 In the context of <span class="emphasis"><em>Block</em></span> an event <span class="emphasis"><em>execute</em></span> is defined relative to the execution function of the same name in the <span class="emphasis"><em>Block</em></span> metaclasse.
 In the context of <span class="emphasis"><em>Connector</em></span>, an invariant is declared based on the call of a relation declaration. The arguments of this relation are associated to the attributes of the metaclasses <span class="emphasis"><em>Connector</em></span> and also we can access by navigation expression to the others <span class="emphasis"><em>Ports</em></span> (for the <span class="emphasis"><em>rate</em></span> attribute) and <span class="emphasis"><em>Block</em></span> (for the execute EF).</p><p>This relation is defined in the MoCCML program of the next section.</p><p>The source code is available through
 <a class="link" href="tutorialfiles/quickTutorial/sigpml/xSigpml.ecl" target="_top">the ECL program</a>
 and showed below</p><pre class="screen">Unresolved directive in Tutorial_SigPML.asciidoc - include::tutorialFiles/quickTutorial/xSigpml.ecl[source code of the ecl program]</pre></div></div><div class="section" title="4.4.&nbsp;MoCCML definition"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_moccml_definition"></a>4.4.&nbsp;MoCCML definition</h2></div></div></div><div class="section" title="4.4.1.&nbsp;Creating the MoCCML project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_moccml_project"></a>4.4.1.&nbsp;Creating the MoCCML project</h3></div></div></div><p>From the xDSML project, we select the associated wizard of the MoCC definition that helps to create the moCCML project. Fill the name of the project&#8594;next&#8594;fill the name of the file&#8594;finish</p><p title="MoCCML project creation"><b>MoCCML project creation.&nbsp;</b><span class="inlinemediaobject"><img src="./images/quickTutorial/sigpml/MoCCProjectCreation.png" alt="MoCCML project creation"></span></p><p>In the resulting project, we have a directory <span class="emphasis"><em>mocc</em></span> with the <span class="emphasis"><em>MoCCML</em></span> file.</p></div><div class="section" title="4.4.2.&nbsp;Implementation of the MoCCML"><div class="titlepage"><div><div><h3 class="title"><a name="_implementation_of_the_moccml"></a>4.4.2.&nbsp;Implementation of the MoCCML</h3></div></div></div><p>In the MoCCML program, we define the constraint relation referenced in the ECL program (in our case, the <span class="emphasis"><em>ConnectorSDF_PAM</em></span> relation). This relation is based on an automaton definition.</p><p>This automaton describes how the events and variables are used to define a constraint automaton relative to each instance of the <span class="emphasis"><em>Connector</em></span> class.</p><p>The source code is available through
 <a class="link" href="tutorialfiles/quickTutorial/sigpml/xSigpml.moccml" target="_top">the MoCCML program</a>
-and showed below</p><pre class="screen">Unresolved directive in Tutorial_SigPML.asciidoc - include::tutorialFiles/quickTutorial/xSigpml.moccml[source code of the MocCCML program]</pre><p>At the end of this step the SigPML language is completely in terms of the metamodel, the graphical syntax, the behavior code of the functions, the expression of the concurrent semantics and the mapping them.</p><p>The last step is to define the animation view of the models as a debug extension of the graphical syntax.</p></div></div><div class="section" title="4.5.&nbsp;Create an animator"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_create_an_animator"></a>4.5.&nbsp;Create an animator</h2></div></div></div><div class="section" title="4.5.1.&nbsp;Creating the Animator project as a Sirius viewpoint"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_animator_project_as_a_sirius_viewpoint"></a>4.5.1.&nbsp;Creating the Animator project as a Sirius viewpoint</h3></div></div></div><p>As the section dedicated to the graphical syntax, the animator is defined as a Sirius viewpoint based on
+and showed below</p><pre class="screen">AutomataConstraintLibrary xSigpmlMocc{
+
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as ccsl;
+
+
+	RelationLibrary BlockFlowRelationDefLib {
+
+
+
+		AutomataRelationDefinition ConnectorSDF_PAM_Def [ ConnectorSDF_PAM ] {
+
+			variables {
+				Integer capacity=0
+				Integer size=0
+				Integer un=1
+				Integer deux = 2
+				Integer inRate=0
+				Integer outRate=0
+			 }
+
+			init:  CES0
+
+			from CES0 to CES1 : CES0ToCES1
+			-&gt;(
+				do size = Connector_currentSize.value
+				do capacity = Connector_capacity.value
+				do inRate = Connector_inRate.value
+				do outRate = Connector_outRate.value
+			)
+
+
+			from CES1 to CES1 : PUSHCES1ToCES1
+			-&gt; (
+				when ConnectorSDF_PAM_pop if( size &gt;= inRate ) do size = ( size - inRate )
+			)
+
+			from CES1 to CES1 : POPCES1ToCES11
+			-&gt; (
+				when ConnectorSDF_PAM_push if( (size + outRate ) &lt;= capacity ) do size = ( size + outRate )
+			)
+
+
+			State CES0
+			(
+			  out : CES0ToCES1
+			)
+
+			State CES1
+			( in : CES0ToCES1, PUSHCES1ToCES1, POPCES1ToCES11
+			  out : POPCES1ToCES11, PUSHCES1ToCES1
+			)
+
+
+		}
+
+
+		RelationDeclaration ConnectorSDF_PAM(
+			ConnectorSDF_PAM_push:clock,
+			ConnectorSDF_PAM_pop:clock,
+			Connector_capacity:int,
+			Connector_inRate:int,
+			Connector_outRate:int,
+			Connector_currentSize:int
+		)
+
+
+
+
+
+	}
+
+}</pre><p>At the end of this step the SigPML language is completely in terms of the metamodel, the graphical syntax, the behavior code of the functions, the expression of the concurrent semantics and the mapping them.</p><p>The last step is to define the animation view of the models as a debug extension of the graphical syntax.</p></div></div><div class="section" title="4.5.&nbsp;Create an animator"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_create_an_animator"></a>4.5.&nbsp;Create an animator</h2></div></div></div><div class="section" title="4.5.1.&nbsp;Creating the Animator project as a Sirius viewpoint"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_animator_project_as_a_sirius_viewpoint"></a>4.5.1.&nbsp;Creating the Animator project as a Sirius viewpoint</h3></div></div></div><p>As the section dedicated to the graphical syntax, the animator is defined as a Sirius viewpoint based on
 <a class="link" href="tutorialfiles/quickTutorial/sigpml/xSigpmlAnim.odesign" target="_top">the odesign file</a></p><p>In this file, we define the viewpoint as an extension of the <span class="emphasis"><em>odesign</em></span> file of the graphical syntax and modify the graphical shape of the blocks when the <span class="emphasis"><em>currentExecCycle</em></span> variable is incremented. The expression <span class="emphasis"><em>[ self.eGet('currentExecCycle') &gt; 0 /]</em></span> is declared to customize the graphical shape of the blocks.</p><p>We create an animation project through the xDSML definition.</p><p title="Animation project creation"><b>Animation project creation.&nbsp;</b><span class="inlinemediaobject"><img src="./images/quickTutorial/sigpml/AnimationProjectCreation.png" alt="Animation project creation"></span></p><p>We select the <span class="emphasis"><em>Add a debug layer to an existing diagram description</em></span>&#8594;next&#8594;select the SigPMLAppliDiagram&#8594;next&#8594;select the name of the Debug layer&#8594;finish.
 We can replace the <span class="emphasis"><em>odesign</em></span> file by the provided one.</p><p>For now the language is totatly defined and executable, so we can used the SigPML Language !!</p></div></div></div><div class="chapter" title="Chapter&nbsp;5.&nbsp;SigPML modeling workbench"><div class="titlepage"><div><div><h2 class="title"><a name="_sigpml_modeling_workbench"></a>Chapter&nbsp;5.&nbsp;SigPML modeling workbench</h2></div></div></div><p>From the language workbench, the Sigpml modeling workbench can be used to create a model and execute it.</p><div class="section" title="5.1.&nbsp;Launch the Modeling workbench creation (Start a new Eclipse)"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_launch_the_modeling_workbench_creation_start_a_new_eclipse"></a>5.1.&nbsp;Launch the Modeling workbench creation (Start a new Eclipse)</h2></div></div></div><p>To launch the modeling workbench dedicated to the Sigpml language, we create an eclipse apllication configuration to run the gemocstudio associated with the xDSML definition.
 The current parameters are set conforming to the parameters of the next picture.</p><p title="Modeling Workbench launching"><b>Modeling Workbench launching.&nbsp;</b><span class="inlinemediaobject"><img src="./images/quickTutorial/sigpml/CreateModelingWorkbench.png" alt="Modeling Workbench launching"></span></p><p>To obtain modeling workbench adequate performances, we set the VM parameters in the <span class="emphasis"><em>Arguments</em></span> tab to</p><pre class="screen">-Xmx3000m

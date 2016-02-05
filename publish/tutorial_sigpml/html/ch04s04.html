@@ -2,4 +2,76 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    <title>4.4.&nbsp;MoCCML definition</title><link rel="stylesheet" href="css/docbook.css" type="text/css"><meta name="generator" content="DocBook XSL-NS Stylesheets V1.75.2"><link rel="home" href="Tutorial_SigPML.html" title="SigPML overview"><link rel="up" href="ch04.html" title="Chapter&nbsp;4.&nbsp;SigPML execution semantics"><link rel="prev" href="ch04s03.html" title="4.3.&nbsp;DSE definition"><link rel="next" href="ch04s05.html" title="4.5.&nbsp;Create an animator"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.4.&nbsp;MoCCML definition</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;4.&nbsp;SigPML execution semantics</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch04s05.html">Next</a></td></tr></table><hr></div><div class="section" title="4.4.&nbsp;MoCCML definition"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_moccml_definition"></a>4.4.&nbsp;MoCCML definition</h2></div></div></div><div class="section" title="4.4.1.&nbsp;Creating the MoCCML project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_moccml_project"></a>4.4.1.&nbsp;Creating the MoCCML project</h3></div></div></div><p>From the xDSML project, we select the associated wizard of the MoCC definition that helps to create the moCCML project. Fill the name of the project&#8594;next&#8594;fill the name of the file&#8594;finish</p><p title="MoCCML project creation"><b>MoCCML project creation.&nbsp;</b><span class="inlinemediaobject"><img src="./images/quickTutorial/sigpml/MoCCProjectCreation.png" alt="MoCCML project creation"></span></p><p>In the resulting project, we have a directory <span class="emphasis"><em>mocc</em></span> with the <span class="emphasis"><em>MoCCML</em></span> file.</p></div><div class="section" title="4.4.2.&nbsp;Implementation of the MoCCML"><div class="titlepage"><div><div><h3 class="title"><a name="_implementation_of_the_moccml"></a>4.4.2.&nbsp;Implementation of the MoCCML</h3></div></div></div><p>In the MoCCML program, we define the constraint relation referenced in the ECL program (in our case, the <span class="emphasis"><em>ConnectorSDF_PAM</em></span> relation). This relation is based on an automaton definition.</p><p>This automaton describes how the events and variables are used to define a constraint automaton relative to each instance of the <span class="emphasis"><em>Connector</em></span> class.</p><p>The source code is available through
 <a class="link" href="tutorialfiles/quickTutorial/sigpml/xSigpml.moccml" target="_top">the MoCCML program</a>
-and showed below</p><pre class="screen">Unresolved directive in Tutorial_SigPML.asciidoc - include::tutorialFiles/quickTutorial/xSigpml.moccml[source code of the MocCCML program]</pre><p>At the end of this step the SigPML language is completely in terms of the metamodel, the graphical syntax, the behavior code of the functions, the expression of the concurrent semantics and the mapping them.</p><p>The last step is to define the animation view of the models as a debug extension of the graphical syntax.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch04s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.3.&nbsp;DSE definition&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Tutorial_SigPML.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;4.5.&nbsp;Create an animator</td></tr></table></div></body></html>
+and showed below</p><pre class="screen">AutomataConstraintLibrary xSigpmlMocc{
+
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as ccsl;
+
+
+	RelationLibrary BlockFlowRelationDefLib {
+
+
+
+		AutomataRelationDefinition ConnectorSDF_PAM_Def [ ConnectorSDF_PAM ] {
+
+			variables {
+				Integer capacity=0
+				Integer size=0
+				Integer un=1
+				Integer deux = 2
+				Integer inRate=0
+				Integer outRate=0
+			 }
+
+			init:  CES0
+
+			from CES0 to CES1 : CES0ToCES1
+			-&gt;(
+				do size = Connector_currentSize.value
+				do capacity = Connector_capacity.value
+				do inRate = Connector_inRate.value
+				do outRate = Connector_outRate.value
+			)
+
+
+			from CES1 to CES1 : PUSHCES1ToCES1
+			-&gt; (
+				when ConnectorSDF_PAM_pop if( size &gt;= inRate ) do size = ( size - inRate )
+			)
+
+			from CES1 to CES1 : POPCES1ToCES11
+			-&gt; (
+				when ConnectorSDF_PAM_push if( (size + outRate ) &lt;= capacity ) do size = ( size + outRate )
+			)
+
+
+			State CES0
+			(
+			  out : CES0ToCES1
+			)
+
+			State CES1
+			( in : CES0ToCES1, PUSHCES1ToCES1, POPCES1ToCES11
+			  out : POPCES1ToCES11, PUSHCES1ToCES1
+			)
+
+
+		}
+
+
+		RelationDeclaration ConnectorSDF_PAM(
+			ConnectorSDF_PAM_push:clock,
+			ConnectorSDF_PAM_pop:clock,
+			Connector_capacity:int,
+			Connector_inRate:int,
+			Connector_outRate:int,
+			Connector_currentSize:int
+		)
+
+
+
+
+
+	}
+
+}</pre><p>At the end of this step the SigPML language is completely in terms of the metamodel, the graphical syntax, the behavior code of the functions, the expression of the concurrent semantics and the mapping them.</p><p>The last step is to define the animation view of the models as a debug extension of the graphical syntax.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch04s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.3.&nbsp;DSE definition&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Tutorial_SigPML.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;4.5.&nbsp;Create an animator</td></tr></table></div></body></html>
