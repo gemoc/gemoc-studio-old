@@ -1,0 +1,74 @@
+AutomataConstraintLibrary xSigpmlMocc{ 
+
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as ccsl;
+
+
+	RelationLibrary BlockFlowRelationDefLib {
+
+
+
+		AutomataRelationDefinition ConnectorSDF_PAM_Def [ ConnectorSDF_PAM ] {
+			
+			variables {
+				Integer capacity=0
+				Integer size=0
+				Integer un=1
+				Integer deux = 2
+				Integer inRate=0
+				Integer outRate=0
+			 }
+			
+			init:  CES0  
+			
+			from CES0 to CES1 : CES0ToCES1 
+			->(  
+				do size = Connector_currentSize.value
+				do capacity = Connector_capacity.value
+				do inRate = Connector_inRate.value
+				do outRate = Connector_outRate.value
+			)
+  
+
+			from CES1 to CES1 : PUSHCES1ToCES1
+			-> ( 
+				when ConnectorSDF_PAM_pop if( size >= inRate ) do size = ( size - inRate )
+			)
+
+			from CES1 to CES1 : POPCES1ToCES11
+			-> ( 
+				when ConnectorSDF_PAM_push if( (size + outRate ) <= capacity ) do size = ( size + outRate )
+			)
+
+
+			State CES0
+			(
+			  out : CES0ToCES1 
+			)
+			
+			State CES1
+			( in : CES0ToCES1, PUSHCES1ToCES1, POPCES1ToCES11
+			  out : POPCES1ToCES11, PUSHCES1ToCES1 
+			)
+
+
+		}
+
+
+		RelationDeclaration ConnectorSDF_PAM(
+			ConnectorSDF_PAM_push:clock,
+			ConnectorSDF_PAM_pop:clock,
+			Connector_capacity:int,
+			Connector_inRate:int,
+			Connector_outRate:int,
+			Connector_currentSize:int  
+		)
+
+
+
+
+
+	}
+
+}
+

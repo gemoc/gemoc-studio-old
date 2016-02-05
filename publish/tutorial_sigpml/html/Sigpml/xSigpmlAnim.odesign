@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="xSigpmlAnim" version="9.0.0">
+  <ownedViewpoints name="xSigpmlAnim">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="xSigpmlAnimDiag" viewpointURI="viewpoint:/org.gemoc.sigpmlTuto.design/SigPMLTuto" representationName="SigPMLAppliDiagram">
+      <metamodel href="../../org.gemoc.sigpmldomain/model/sigpmldomain.ecore#/"/>
+      <layers name="Debug" activeByDefault="true" optional="false">
+        <toolSections name="Debug">
+          <ownedTools xsi:type="tool:PopupMenu" name="Gemoc">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Debug" icon="/org.gemoc.gemoc_modeling_workbench.ui/icons/debug_exc.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Debug" icon="/org.gemoc.gemoc_modeling_workbench.ui/icons/debug_exc.gif" id="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocDebugAs"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Toggle breakpoint" icon="/org.gemoc.gemoc_modeling_workbench.ui/icons/debug_exc.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Toggle Gemoc breakpoint" icon="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint.gif" id="org.gemoc.gemoc_modeling_workbench.ui.debug.sirius.action.gemocToggleBreakpoint"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Enabled breakpoint" decoratorPath="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_enabled.gif" preconditionExpression="service:self.hasEnabledBreakpoint">
+            <mappings xsi:type="description_1:NodeMapping" href="../../org.gemoc.sigpmlTuto.design/description/sigpmlTuto.odesign#//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@containerMappings[name='AppliNode']/@subNodeMappings[name='BlockNode']"/>
+            <mappings xsi:type="description_1:EdgeMapping" href="../../org.gemoc.sigpmlTuto.design/description/sigpmlTuto.odesign#//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@edgeMappings[name='ConnectorEdge']"/>
+          </decorationDescriptions>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Disabled breakpoint" decoratorPath="/org.gemoc.gemoc_modeling_workbench.ui/icons/breakpoint_disabled.gif" preconditionExpression="service:self.hasDisabledBreakpoint">
+            <mappings xsi:type="description_1:NodeMapping" href="../../org.gemoc.sigpmlTuto.design/description/sigpmlTuto.odesign#//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@containerMappings[name='AppliNode']/@subNodeMappings[name='BlockNode']"/>
+            <mappings xsi:type="description_1:EdgeMapping" href="../../org.gemoc.sigpmlTuto.design/description/sigpmlTuto.odesign#//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@edgeMappings[name='ConnectorEdge']"/>
+          </decorationDescriptions>
+        </decorationDescriptionsSet>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="labelExpression" value="[ 'Nb current Cycles '  + self.eGet('currentExecCycle') /]">
+              <appliedOn href="../../org.gemoc.sigpmlTuto.design/description/sigpmlTuto.odesign#//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@containerMappings[name='AppliNode']/@subNodeMappings[name='BlockNode']/@style"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[ self.eGet('currentExecCycle') > 0 /]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" referenceName="color">
+              <appliedOn href="../../org.gemoc.sigpmlTuto.design/description/sigpmlTuto.odesign#//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@containerMappings[name='AppliNode']/@subNodeMappings[name='BlockNode']/@style"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+        </customization>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedJavaExtensions qualifiedClassName="org.gemoc.sample.xSigpmlAnim.services.SigpmlDebugServices"/>
+  </ownedViewpoints>
+</description:Group>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sigpml" nsURI="http://org.gemoc.sigpml.model/1.0" nsPrefix="sigpml">
+  <eClassifiers xsi:type="ecore:EClass" name="Application" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedBlocks" upperBound="-1"
+        eType="#//Block" containment="true" eOpposite="#//Block/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedConnectors" upperBound="-1"
+        eType="#//Connector" containment="true" eOpposite="#//Connector/owner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Block" eSuperTypes="#//NamedElement">
+    <eOperations name="execute"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPorts" upperBound="-1"
+        eType="#//Port" containment="true" eOpposite="#//Port/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cycles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Application"
+        eOpposite="#//Application/ownedBlocks"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentExecCycle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Block"
+        eOpposite="#//Block/ownedPorts"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputPort" eSuperTypes="#//Port"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputPort" eSuperTypes="#//Port"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Connector" eSuperTypes="#//NamedElement">
+    <eOperations name="pop"/>
+    <eOperations name="push"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsOutputPort" lowerBound="1"
+        eType="#//OutputPort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itsInputPort" lowerBound="1"
+        eType="#//InputPort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Application"
+        eOpposite="#//Application/ownedConnectors"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
