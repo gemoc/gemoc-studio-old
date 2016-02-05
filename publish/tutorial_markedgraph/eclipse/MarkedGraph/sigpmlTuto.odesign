@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="sigpmlTuto" version="9.0.0">
+  <ownedViewpoints name="SigPMLTuto" modelFileExtension="*.sigpml xmi">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SigPMLAppliDiagram" initialisation="true" domainClass="sigpml.Application ">
+      <metamodel href="../../org.gemoc.sigpmldomain/model/sigpmldomain.ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="ConnectorEdge" semanticCandidatesExpression="feature:ownedConnectors" sourceMapping="//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@containerMappings[name='AppliNode']/@subNodeMappings[name='BlockNode']/@borderedNodeMappings[name='OutputNode']" targetMapping="//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@containerMappings[name='AppliNode']/@subNodeMappings[name='BlockNode']/@borderedNodeMappings[name='InputNode']" targetFinderExpression="[self.itsInputPort/]" sourceFinderExpression="[self.itsOutputPort/]" domainClass="sigpml.Connector " useDomainElement="true">
+          <style sourceArrow="OutputFillClosedArrow" targetArrow="InputFillClosedArrow" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="[ 'From ' + self.itsOutputPort.name + ' To ' + self.itsInputPort.name /]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="AppliNode" semanticCandidatesExpression="[self/]" domainClass="sigpml.Application">
+          <subNodeMappings name="BlockNode" semanticCandidatesExpression="feature:eAllContents" domainClass="sigpml.Block">
+            <borderedNodeMappings name="InputNode" semanticCandidatesExpression="feature:eAllContents" domainClass="sigpml.InputPort">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelAlignment="LEFT" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="OutputNode" semanticCandidatesExpression="feature:eAllContents" domainClass="sigpml.OutputPort">
+              <style xsi:type="style:SquareDescription" showIcon="false" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" showIcon="false" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="CreationTool">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateBlock" nodeMappings="//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@containerMappings[name='AppliNode']/@subNodeMappings[name='BlockNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="sigpml.Block" referenceName="ownedBlocks"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateInputPort" nodeMappings="//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@containerMappings[name='AppliNode']/@subNodeMappings[name='BlockNode']/@borderedNodeMappings[name='InputNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="sigpml.InputPort" referenceName="ownedPorts"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateOutputPort" nodeMappings="//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@containerMappings[name='AppliNode']/@subNodeMappings[name='BlockNode']/@borderedNodeMappings[name='OutputNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="sigpml.OutputPort" referenceName="ownedPorts"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateConnector" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='SigPMLTuto']/@ownedRepresentations[name='SigPMLAppliDiagram']/@defaultLayer/@edgeMappings[name='ConnectorEdge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.oclAsType(OutputPort).owner.owner/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="sigpml.Connector" referenceName="ownedConnectors">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="itsOutputPort" valueExpression="var:source"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="itsInputPort" valueExpression="var:target"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['From_'  + source.oclAsType(Port).name  + '_to_' + target.oclAsType(Port).name /]"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
