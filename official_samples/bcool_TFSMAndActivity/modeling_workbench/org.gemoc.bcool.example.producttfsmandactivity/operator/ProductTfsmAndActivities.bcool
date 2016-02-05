@@ -3,7 +3,7 @@ ProductTfsmAndActivities
 ImportLib "platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/operator/facilities.bcoollib"
 ImportLib "platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/operator/facilities.moccml"
 
-ImportInterface "platform:/plugin/org.modelexecution.operationalsemantics.gemoc.ecl/model/ActivitiyDiagramV2.ecl" as ad
+ImportInterface "platform:/plugin/org.modelexecution.operationalsemantics.ad.concurrent.ecl/model/ActivitiyDiagramV2.ecl"  as ad
 ImportInterface "platform:/plugin/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl" as tfsm
 
 Spec test 

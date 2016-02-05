@@ -1,7 +1,8 @@
 BCOoLFlow CoffeeMachine
 {
-	BCOoL Specification: "platform:/resource/org.gemoc.bcool.example.productfumlandtfsm/operator/syncproducttfsmwithfuml.bcool" ;
+	 import "ProductTfsmAndActivities.bcool";
 	
+	BCOoL Specification: "ProductTfsmAndActivities";
 	// Resulting time model
 	Output: "platform:/resource/org.gemoc.bcool.example.productfumlandtfsm/gemoc-gen/ad.launchtfsm.launch.timemodel";
 	
@@ -15,7 +16,7 @@ BCOoLFlow CoffeeMachine
 	
 	Flow 
 		// First the sync prouct between CameraControl and BatteryControl
-		applies SyncFSMEventsAndActions between (CoffeeMachineAlgorithm, CoffeMachineControl) ;
+		applies "SyncFSMEventsAndActions" between (CoffeeMachineAlgorithm, CoffeMachineControl) ;
 
 	end Flow;
 	
