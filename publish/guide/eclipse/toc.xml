@@ -149,7 +149,7 @@
             </topic>
             <topic label="Engine View" href="ch08s02.html#mw-executing-concurrent-model-engine-view-section"/>
             <topic label="Logical Steps View" href="ch08s02.html#mw-executing-concurrent-model-logical-steps-view-section"/>
-            <topic label="Event Scheduling Timeline View" href="ch08s02.html#mw-executing-concurrent-model-event-scheduling-timeline-view-section"/>
+            <topic label="MultiBranch Timeline View" href="ch08s02.html#mw-executing-concurrent-model-multibranch-timeline-view-section"/>
             <topic label="Stimuli Manager View" href="ch08s02.html#mw-executing-concurrent-model-stimuli-manager-view-section"/>
             <topic label="Animation View" href="ch08s02.html#mw-executing-concurrent-model-animation-view-section"/>
             <topic label="Debug View" href="ch08s02.html#mw-executing-concurrent-model-debug-view-section"/>
@@ -175,7 +175,7 @@
          </topic>
       </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e3295"/>
+         <topic label="Articles" href="bi01.html#d0e3298"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
