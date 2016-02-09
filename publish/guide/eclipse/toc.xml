@@ -34,6 +34,7 @@
          <topic label="Defining a Concrete Syntax" href="ch02s02.html">
             <topic label="Defining a Concrete Syntax with Xtext" href="ch02s02.html#defining-a-concrete-syntax-with-xtext-section"/>
             <topic label="Defining a Concrete Syntax with Sirius" href="ch02s02.html#defining-a-concrete-syntax-with-sirius-section"/>
+            <topic label="Defining a Concrete Syntax with EMF" href="ch02s02.html#defining-a-concrete-syntax-with-emf-section"/>
          </topic>
       </topic>
       <topic label="Make a language executable" href="ch03.html">
@@ -173,7 +174,7 @@
          </topic>
       </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e2930"/>
+         <topic label="Articles" href="bi01.html#d0e3027"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
