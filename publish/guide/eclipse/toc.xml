@@ -115,6 +115,7 @@
          <topic label="Coordination of Languages with BCOoL" href="ch05.html#composing-languages-with-bcool-section">
             <topic label="What is BCOoL?" href="ch05.html#_what_is_indexterm_primary_bcool_primary_indexterm_bcool"/>
          </topic>
+         <topic label="Example: a BCOoL Operator between the TFSM and Activity languages." href="ch05s02.html"/>
       </topic>
    </topic>
    <topic label="GEMOC Modeling workbench" href="pt02.html">
@@ -174,7 +175,7 @@
          </topic>
       </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e3027"/>
+         <topic label="Articles" href="bi01.html#d0e3153"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
