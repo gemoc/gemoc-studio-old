@@ -134,8 +134,8 @@
                <topic label="Sequential Debug mode" href="ch08.html#_sequential_debug_mode"/>
             </topic>
             <topic label="Engine View" href="ch08.html#mw-executing-sequential-model-engine-view-section"/>
-            <topic label="Event Scheduling Timeline View" href="ch08.html#mw-executing-sequential-model-event-scheduling-timeline-view-section"/>
-            <topic label="Multidimentional Timeline View" href="ch08.html#mw-executing-sequential-model-multidimensional-timeline-view-section"/>
+            <topic label="MultiDimentional Timeline View" href="ch08.html#mw-executing-sequential-model-multidimensional-timeline-view-section"/>
+            <topic label="MultiBranch Timeline View" href="ch08.html#mw-executing-sequential-model-multibranch-timeline-view-section"/>
             <topic label="Animation View" href="ch08.html#mw-executing-sequential-model-animation-view-section"/>
             <topic label="Debug View" href="ch08.html#mw-executing-sequential-model-debug-view-section"/>
             <topic label="Variable View" href="ch08.html#mw-executing-sequential-model-variable-view-section"/>
@@ -175,7 +175,7 @@
          </topic>
       </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e3153"/>
+         <topic label="Articles" href="bi01.html#d0e3295"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
