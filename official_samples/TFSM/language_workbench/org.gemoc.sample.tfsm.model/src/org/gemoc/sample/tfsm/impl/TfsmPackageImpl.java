@@ -667,18 +667,20 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
+		// aspect
+		createAspectAnnotations();
 		// dynamic
 		createDynamicAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>dynamic</b>.
+	 * Initializes the annotations for <b>aspect</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createDynamicAnnotations() {
-		String source = "dynamic";	
+	protected void createAspectAnnotations() {
+		String source = "aspect";	
 		addAnnotation
 		  (tfsmEClass.getEOperations().get(0), 
 		   source, 
@@ -695,16 +697,6 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (stateEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (stateEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (transitionEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
@@ -715,17 +707,37 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (fsmClockEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (getFSMClock_NumberOfTicks(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
 		  (evaluateGuardEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>dynamic</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDynamicAnnotations() {
+		String source = "dynamic";	
+		addAnnotation
+		  (stateEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (stateEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (fsmClockEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });

@@ -658,18 +658,18 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
-		// dynamic
-		createDynamicAnnotations();
+		// aspect
+		createAspectAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>dynamic</b>.
+	 * Initializes the annotations for <b>aspect</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createDynamicAnnotations() {
-		String source = "dynamic";	
+	protected void createAspectAnnotations() {
+		String source = "aspect";	
 		addAnnotation
 		  (getTFSM_CurrentState(), 
 		   source, 
