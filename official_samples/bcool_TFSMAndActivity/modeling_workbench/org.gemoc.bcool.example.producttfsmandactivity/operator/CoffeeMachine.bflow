@@ -1,8 +1,8 @@
 BCOoLFlow CoffeeMachine
 {
-	 import "ProductTfsmAndActivities.bcool";
+	 import "TfsmAndActivities.bcool";
 	
-	BCOoL Specification: "ProductTfsmAndActivities";
+	BCOoL Specification: "TfsmAndActivities";
 	// Resulting time model
 	Output: "platform:/resource/org.gemoc.bcool.example.productfumlandtfsm/gemoc-gen/ad.launchtfsm.launch.timemodel";
 	
