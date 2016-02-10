@@ -5,11 +5,9 @@
     <ownedStates name="Locked" outgoingTransitions="//@tfsms.0/@ownedTransitions.1" incomingTransitions="//@tfsms.0/@ownedTransitions.0 //@tfsms.0/@ownedTransitions.2"/>
     <ownedStates name="Unlocked" outgoingTransitions="//@tfsms.0/@ownedTransitions.2" incomingTransitions="//@tfsms.0/@ownedTransitions.1"/>
     <localClock name="localclk"/>
-    <ownedTransitions name="inittoopen" source="//@tfsms.0/@ownedStates.0" target="//@tfsms.0/@ownedStates.1" action="doInit">
-      <ownedGuard xsi:type="org.gemoc.sample.tfsm:EventGuard" name="guardstart" triggeringEvent="//@globalEvents.2"/>
-    </ownedTransitions>
+    <ownedTransitions name="inittoopen" source="//@tfsms.0/@ownedStates.0" target="//@tfsms.0/@ownedStates.1" action="doInit"/>
     <ownedTransitions name="opentoclose" source="//@tfsms.0/@ownedStates.1" target="//@tfsms.0/@ownedStates.2" generatedEvents="//@globalEvents.0" action="">
-      <ownedGuard xsi:type="org.gemoc.sample.tfsm:EventGuard" name="guardcoin" triggeringEvent="//@globalEvents.3"/>
+      <ownedGuard xsi:type="org.gemoc.sample.tfsm:EventGuard" name="guardcoin" triggeringEvent="//@globalEvents.2"/>
     </ownedTransitions>
     <ownedTransitions name="unlockedtolocked" source="//@tfsms.0/@ownedStates.2" target="//@tfsms.0/@ownedStates.1" action="doLock">
       <ownedGuard xsi:type="org.gemoc.sample.tfsm:EventGuard" name="guardcoffeedone" triggeringEvent="//@globalEvents.1"/>
@@ -18,6 +16,5 @@
   <globalClocks name="globalClock"/>
   <globalEvents name="selectCoffee" sollicitingTransitions="//@tfsms.0/@ownedTransitions.1"/>
   <globalEvents name="releaseCoffee"/>
-  <globalEvents name="start"/>
   <globalEvents name="coin"/>
 </org.gemoc.sample.tfsm:TimedSystem>
