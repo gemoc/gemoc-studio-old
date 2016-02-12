@@ -9,7 +9,7 @@ ImportInterface "platform:/plugin/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl" 
 Spec test 
 
 Operator SyncFSMEventsAndActions (FSMEvents : tfsm::occurs, ActionExecute : activity::executeIt)
-MatchingCorrespondance: when FSMEvents.name = ActionExecute .name ;
+when FSMEvents.name = ActionExecute .name ;
 		CoordinationRule:
 			facilities.RendezVous(FSMEvents, ActionExecute )
 end operator; 
