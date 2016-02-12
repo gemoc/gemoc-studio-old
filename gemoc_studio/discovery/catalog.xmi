@@ -25,7 +25,7 @@
   </categories>
   <categories
       name="Exhaustive Exploration"
-      description="Exhaustive exploration topic tools">
+      description="Exhaustive exploration topic tools.">
     <components
         name="Clocksystem"
         provider="ENSTA"
@@ -41,7 +41,7 @@
   </categories>
   <categories
       name="GEMOC Language"
-      description="Languages designed using GEMOC">
+      description="Languages designed using GEMOC.">
     <components
         name="ActivityDiagram Languages (Concurrent/Sequential)"
         provider="GEMOC"
