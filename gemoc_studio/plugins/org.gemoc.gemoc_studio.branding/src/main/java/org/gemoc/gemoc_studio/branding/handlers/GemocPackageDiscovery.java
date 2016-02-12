@@ -68,12 +68,12 @@ public class GemocPackageDiscovery extends DiscoveryContentProvider {
 
 	@Override
 	public String getDescription() {
-		return "Pick a modeling component to install it.";
+		return "Pick a GEMOC component to install it.";
 	}
 
 	@Override
 	public String getTitle() {
-		return "Eclipse Modeling Components Discovery";
+		return "GEMOC Components Discovery";
 	}
 
 	public static void openModelingDiscoveryWizard(IWorkbenchWindow window) {

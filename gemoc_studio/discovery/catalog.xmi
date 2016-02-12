@@ -25,12 +25,13 @@
   </categories>
   <categories
       name="Exhaustive Exploration"
-      description="Exhaustive exploration topic tools.">
+      description="Tools for Exhaustive Exploration.">
     <components
         name="Clocksystem"
         provider="ENSTA"
         description="Multiform Time Constraints"
         license="MIT"
+        groups="//@filters.1"
         image32="images/clocksystem_logo_32x32.png">
       <sitesURLS>https://ci.inria.fr/gemoc/job/concurrency_exploration/lastSuccessfulBuild/artifact/exploration/releng/org.gemoc.mocc.clocksystem.features.updatesite/target/repository</sitesURLS>
       <overview
@@ -47,18 +48,14 @@
         provider="GEMOC"
         description="Deployer that installs the project sources for Concurrent and/or Sequential version of the Activitydiagram Language and sample models."
         license="EPL"
-        groups="//@filters.1 //@filters.2"
-        image32="images/IconeGemocLanguagePlusModel-32.png"
-        incubation="true">
+        groups="//@filters.0 //@filters.1 //@filters.2"
+        image32="images/IconeGemocLanguagePlusModel-32.png">
       <sitesURLS>https://ci.inria.fr/gemoc/job/ActivityDiagram_updatesite/lastSuccessfulBuild/artifact/dev/releng/org.gemoc.activitydiagram.repository/target/repository/</sitesURLS>
       <overview
           summary="Deployer that installs the project sources for two versions of the Activitydiagram Language developped using GEMOC. One version will run using the GEMOC Sequential engine, the second using Concurrent engine.  The deployer also provides sample models."
           screenshot="images/activitydiagram_sequential-screenshot-320x240.png"
           url="http://github.com/gemoc/activitydiagram"/>
       <id>org.gemoc.activitydiagram.feature</id>
-      <messages
-          title="test message Title"
-          message="test message"/>
     </components>
   </categories>
   <filters name="Incubation"/>
