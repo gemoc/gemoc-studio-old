@@ -43,10 +43,11 @@
       name="GEMOC Language"
       description="Languages designed using GEMOC.">
     <components
-        name="ActivityDiagram Languages (Concurrent/Sequential)"
+        name="ActivityDiagram Languages"
         provider="GEMOC"
         description="Deployer that installs the project sources for Concurrent and/or Sequential version of the Activitydiagram Language and sample models."
         license="EPL"
+        groups="//@filters.1 //@filters.2"
         image32="images/IconeGemocLanguagePlusModel-32.png"
         incubation="true">
       <sitesURLS>https://ci.inria.fr/gemoc/job/ActivityDiagram_updatesite/lastSuccessfulBuild/artifact/dev/releng/org.gemoc.activitydiagram.repository/target/repository/</sitesURLS>
@@ -55,7 +56,12 @@
           screenshot="images/activitydiagram_sequential-screenshot-320x240.png"
           url="http://github.com/gemoc/activitydiagram"/>
       <id>org.gemoc.activitydiagram.feature</id>
+      <messages
+          title="test message Title"
+          message="test message"/>
     </components>
   </categories>
   <filters name="Incubation"/>
+  <filters name="Concurrent"/>
+  <filters name="Sequential"/>
 </discovery:DiscoveryDefinition>
