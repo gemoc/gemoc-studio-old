@@ -21,8 +21,6 @@ addRepository(type:0,location:http${#58}//download.eclipse.org/sirius/updates/le
 addRepository(type:1,location:http${#58}//download.eclipse.org/sirius/updates/legacy,name:Acceleo for Sirius 2.0.1);\
 addRepository(type:0,location:https${#58}//hudson.polarsys.org/capella/job/capella-gerrit/113/artifact/result/publish/org.polarsys.capella/site.p2/,name:Capella for luna);\
 addRepository(type:1,location:https${#58}//hudson.polarsys.org/capella/job/capella-gerrit/113/artifact/result/publish/org.polarsys.capella/site.p2/,name:Capella for luna);\
-addRepository(type:0,location:http${#58}//wwwdi.supelec.fr/tesl-update-site/,name:TESL);\
-addRepository(type:1,location:http${#58}//wwwdi.supelec.fr/tesl-update-site/,name:TESL);\
 addRepository(type:0,location:http${#58}//download.eclipse.org/efxclipse/updates-released/2.1.0/site,name:Efxclipse);\
 addRepository(type:1,location:http${#58}//download.eclipse.org/efxclipse/updates-released/2.1.0/site,name:Efxclipse);\
   mkdir(path:${installFolder}/dropins);
