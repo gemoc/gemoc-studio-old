@@ -57,5 +57,21 @@
       <id>org.gemoc.activitydiagram.feature</id>
     </components>
   </categories>
+  <categories
+      name="Alternative tools"
+      description="Engines and tools proposing alternative approaches (may not directly use GEMOC execution framework)"
+      relevance="3">
+    <components
+        name="TESL Engine and Editor"
+        description="The Tagged Event Specification Language allows the specification of timed systems by modeling events as clocks and occurrences of an event as ticks on its clock."
+        groups="//@filters.0"
+        incubation="true">
+      <overview
+          summary="The Tagged Event Specification Language allows the specification of timed systems by modeling events as clocks and occurrences of an event as ticks on its clock."
+          screenshot="images/tesl-screenshot-320x240.png"
+          url="http://wwwdi.supelec.fr/software/TESL/"/>
+      <id>fr.supelec.tesl.feature</id>
+    </components>
+  </categories>
   <filters name="Incubation"/>
 </discovery:DiscoveryDefinition>
