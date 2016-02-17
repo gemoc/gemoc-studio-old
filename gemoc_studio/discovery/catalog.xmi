@@ -63,9 +63,12 @@
       relevance="3">
     <components
         name="TESL Engine and Editor"
+        provider="CentraleSup&#xe9;lec/LRI"
         description="The Tagged Event Specification Language allows the specification of timed systems by modeling events as clocks and occurrences of an event as ticks on its clock."
+        license="Unknown Licence"
         groups="//@filters.0"
         incubation="true">
+      <sitesURLS>http://wwwdi.supelec.fr/tesl-update-site</sitesURLS>
       <overview
           summary="The Tagged Event Specification Language allows the specification of timed systems by modeling events as clocks and occurrences of an event as ticks on its clock."
           screenshot="images/tesl-screenshot-320x240.png"
