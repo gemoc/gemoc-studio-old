@@ -41,7 +41,8 @@
   </categories>
   <categories
       name="GEMOC Language"
-      description="Languages designed using GEMOC.">
+      description="Languages designed using GEMOC."
+      relevance="6">
     <components
         name="ActivityDiagram Languages"
         provider="GEMOC"
@@ -60,7 +61,7 @@
   <categories
       name="Alternative tools"
       description="Engines and tools proposing alternative approaches (may not directly use GEMOC execution framework)"
-      relevance="3">
+      relevance="2">
     <components
         name="TESL Engine and Editor"
         provider="CentraleSup&#xe9;lec/LRI"
