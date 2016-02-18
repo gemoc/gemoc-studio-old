@@ -52,7 +52,7 @@
                   commandId="org.gemoc.gemoc_studio.commands.discoveryCommand"
                   icon="images/icons/IconeGemocStudio/png/IconeGemocStudio_16x16x32.png"
                   id="org.gemoc.gemoc_studio.toolbars.discoveryCommand"
-                  tooltip="Install Additional Components">
+                  tooltip="Install GEMOC Components">
             </command>
          </toolbar>
       </menuContribution>
