@@ -1,0 +1,22 @@
+BCOoLFlow CoffeeMachineTest
+{
+	import "platform:/plugin/org.gemoc.sample.bcool.tfsmandactivity/operator/TfsmAndActivity.bcool";
+	
+	// The resulting model is optional
+	//Output: "platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/gemoc-gen/CoffeeAlgorithm.launchCoffeeCoin.launch.timemodel";
+	
+	// Models to apply the specification
+	Model CoffeMachineControl ( "platform:/resource/org.gemoc.sample.bcool.coffeemachine/models/tfsm_models/coffemachine.tfsm");
+	Model CoffeeMachineAlgorithm ("platform:/resource/org.gemoc.sample.bcool.coffeemachine/models/activity_models/algorithm2.ad");
+					  
+	Flows 
+		// First, we apply the product between the CameraControl and the BatteryControl models
+		applies "SyncFSMEventsAndActions" between (CoffeeMachineAlgorithm, CoffeMachineControl) ;
+	end Flows;
+	
+	Launchers 
+		launcher URI "org.gemoc.sample.bcool.coffeemachine/models/activity_models/CoffeeAlgorithm.launch";
+		launcher URI "org.gemoc.sample.bcool.coffeemachine/models/tfsm_models/CoffeeCoin.launch";
+	end Launchers
+
+	}

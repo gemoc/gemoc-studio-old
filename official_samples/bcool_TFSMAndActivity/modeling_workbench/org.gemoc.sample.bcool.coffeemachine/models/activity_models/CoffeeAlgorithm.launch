@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.gemoc.execution.concurrent.ccsljavaengine.ui.launcher">
+<intAttribute key="GEMOC_ANIMATE_DELAY" value="0"/>
+<booleanAttribute key="GEMOC_LAUNCH_BREAK_START" value="false"/>
+<stringAttribute key="GEMOC_LAUNCH_INITIALIZATION_ARGUMENTS" value=""/>
+<stringAttribute key="GEMOC_LAUNCH_INITIALIZATION_METHOD" value=""/>
+<stringAttribute key="GEMOC_LAUNCH_SELECTED_DECIDER" value="Step by step user decider"/>
+<stringAttribute key="GEMOC_LAUNCH_SELECTED_LANGUAGE" value="org.modelexecution.operationalsemantics.ad.concurrent.xdsml.ConcurrentActivityDiagram"/>
+<booleanAttribute key="MultiBranch Reflective Tracing" value="true"/>
+<booleanAttribute key="MultiBranch Timeline" value="false"/>
+<booleanAttribute key="MultiDimensional Timeline" value="false"/>
+<stringAttribute key="Resource" value="/org.gemoc.sample.bcool.coffeemachine/models/activity_models/algorithm2.ad"/>
+<booleanAttribute key="VCD visualization" value="false"/>
+<stringAttribute key="airdResource" value="/org.gemoc.sample.bcool.coffeemachine/models/activity_models/algorithm2.aird"/>
+</launchConfiguration>
