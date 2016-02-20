@@ -1,0 +1,23 @@
+BCOoLFlow CoffeeMachine
+{
+	 import "TfsmAndActivities.bcool";
+	
+	BCOoL Specification: "TfsmAndActivities";
+	// Resulting time model
+	Output: "platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/gemoc-gen/CoffeeAlgorithm.launchCoffeeCoin.launch.timemodel";
+	
+	// Models to apply the specification
+	Model CoffeMachineControl ( "platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/gemoc-gen/coffemachine.timemodel",
+						 	    "platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/models/tfsm_model/coffemachine.tfsm");
+	
+	Model CoffeeMachineAlgorithm ("platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/gemoc-gen/algorithm2.timemodel",
+		"platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/models/activity_model/algorithm2.ad"
+	);					  
+
+	Flow 
+		// First the sync prouct between CameraControl and BatteryControl
+		applies "SyncFSMEventsAndActions" between (CoffeeMachineAlgorithm, CoffeMachineControl) ;
+
+	end Flow;
+
+	}

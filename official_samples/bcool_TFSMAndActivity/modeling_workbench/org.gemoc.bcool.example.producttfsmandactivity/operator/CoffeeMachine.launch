@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.gemoc.gemoc_heterogeneous_modeling_workbench.ui.launcher">
+<stringAttribute key="Configuration0" value="/org.gemoc.bcool.example.producttfsmandactivity/models/activity_model/CoffeeAlgorithm.launch"/>
+<stringAttribute key="Configuration1" value="/org.gemoc.bcool.example.producttfsmandactivity/models/tfsm_model/CoffeeCoin.launch"/>
+<stringAttribute key="GEMOC_LAUNCH_SELECTED_DECIDER" value="Step by step user decider"/>
+<stringAttribute key="Resource" value="/org.gemoc.bcool.example.producttfsmandactivity/operator/TfsmAndActivities.bcool"/>
+<stringAttribute key="bflow" value=""/>
+<intAttribute key="nb_logicalSteps" value="2"/>
+</launchConfiguration>

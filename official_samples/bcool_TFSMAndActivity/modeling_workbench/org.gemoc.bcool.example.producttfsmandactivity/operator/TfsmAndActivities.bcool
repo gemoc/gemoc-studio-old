@@ -1,0 +1,15 @@
+TfsmAndActivities
+
+ImportLib "platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/operator/facilities.bcoollib"
+ImportLib "platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/operator/facilities.moccml"
+
+ImportInterface "platform:/plugin/org.modelexecution.operationalsemantics.ad.concurrent.ecl/model/ActivitiyDiagramV2.ecl"  as activity
+ImportInterface "platform:/plugin/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl" as tfsm
+
+Spec test 
+
+Operator SyncFSMEventsAndActions (FSMEvents : tfsm::occurs, ActionExecute : activity::executeIt)
+MatchingCorrespondance: when FSMEvents.name = ActionExecute .name ;
+		CoordinationRule:
+			facilities.RendezVous(FSMEvents, ActionExecute )
+end operator; 
