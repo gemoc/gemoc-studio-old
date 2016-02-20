@@ -1,0 +1,15 @@
+activity CoffeeAlgorithm {
+	nodes {
+		initial initialNode out (edge1),
+		action selectCoffee in (edge1) out (edge3),
+		action makeCoffee in (edge3) out (edge4),
+		action releaseCoffee in (edge4) out (edge5),
+		final finalNode in (edge5)
+	}
+	edges {
+		flow edge1 from initialNode to selectCoffee,
+		flow edge3 from selectCoffee to makeCoffee,
+		flow edge4 from makeCoffee to releaseCoffee,
+		flow edge5 from releaseCoffee to finalNode 
+	}
+}
