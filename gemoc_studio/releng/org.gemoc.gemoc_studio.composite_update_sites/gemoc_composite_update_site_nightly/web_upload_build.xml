@@ -1,0 +1,83 @@
+<project name="full_kermeta_studio_updatesite" default="all">
+	<!-- configuration properties -->		
+	<!-- project configuration -->
+	<property environment="env"/>
+
+	<property name="env.WORKSPACE" location="."/>
+	<property name="temp.backup.dir" location="${env.WORKSPACE}/archive"/>
+	<property name="source_server.base.url" value="https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_studio.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_studio/org.gemoc.gemoc_studio.product/target/products"/>
+	<property name="deploy.server" value="gemoc.irisa.fr"/>
+	<property name="deploy.user" value="web-gemoc"/>
+	<property name="deploy.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/updatesite/studio"/> 
+	
+	
+
+	<tstamp>
+	  <format property="TODAY_MONTH"
+		          pattern="MM"
+		          locale="en,UK"/>
+	  <format property="TODAY_DAY_OF_MONTH"
+	          pattern="dd"
+	          locale="en,UK"/>
+	  <format property="TODAY_DAY_OF_WEEK"
+			          pattern="E"
+			          locale="en,UK"/>
+	  <format property="TODAY_WEEK_OF_MONTH"
+				          pattern="F"
+				          locale="en,UK"/>
+		
+	</tstamp>
+	
+	<!-- <property name="deploy.month.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/time_shifting_versions/month_${TODAY_MONTH}"/>
+	<property name="deploy.day_of_month.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/time_shifting_versions/day_of_month_${TODAY_DAY_OF_MONTH}"/>
+	<property name="deploy.day_of_week.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/time_shifting_versions/day_of_week_${TODAY_DAY_OF_WEEK}"/>	
+	<property name="deploy.week_of_month.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/time_shifting_versions/week_of_month_${TODAY_WEEK_OF_MONTH}"/>-->
+	
+	<target name="all" depends="upload"></target>
+	
+	<target name="upload" > 
+		<echo>Month = ${TODAY_MONTH}</echo>
+		<echo>Day of month = ${TODAY_DAY_OF_MONTH}</echo>
+		<echo>Day of week = ${TODAY_DAY_OF_WEEK}</echo>
+		<echo>Week of month = ${TODAY_WEEK_OF_MONTH}</echo>
+		<echo>Month path = ${deploy.month.path}</echo>
+		<echo>Day of month path = ${deploy.day_of_month.path}</echo>
+		<echo>Day of week path = ${deploy.day_of_week.path}</echo>
+		<echo>Week of Month path = ${deploy.week_of_month.path}</echo>
+	    
+		<echo>Cleaning today ${deploy.server}:${deploy.path}</echo>
+		<sshexec host="${deploy.server}"
+						         username="${deploy.user}"
+								 keyfile="${key.file}"
+								 passphrase=""
+							     trust="yes"
+							     command="rm -Rf ${deploy.path};"/>
+		
+		<sshexec host="${deploy.server}"
+		         username="${deploy.user}"
+				 keyfile="${key.file}"
+				 passphrase=""
+			     trust="yes"
+			     command="mkdir ${deploy.path};"/>
+		
+		<echo>Uploading to ${deploy.server}:${deploy.path}</echo>
+		<scp todir="${deploy.user}@${deploy.server}:${deploy.path}"
+			keyfile="${key.file}"
+			passphrase=""
+		    trust="yes" verbose="yes">
+		    <fileset dir="${temp.backup.dir}">
+		      <include name="**/**"/>
+		    </fileset>
+		</scp>
+				
+	</target>
+	 
+	
+	<target name="clean_local">
+		<delete failonerror="no" includeemptydirs="yes">
+			<fileset dir="${temp.backup.dir}">
+			</fileset>
+		</delete>
+		<mkdir dir="${temp.backup.dir}"/>
+	</target>
+</project>
