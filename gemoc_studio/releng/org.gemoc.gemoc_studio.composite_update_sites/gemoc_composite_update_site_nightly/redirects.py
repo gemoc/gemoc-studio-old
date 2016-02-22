@@ -118,7 +118,7 @@ def generate_redirects(sitejsonfile='sites.json'):
 			      <append>true</append>\n\
 			      <destination>%s</destination>\n\
 			  </configuration>\n\
-		      </execution>\n" % (name,SCRIPT_HOME + "/" + AGGREGATED_UPDATE+ "/" + name,SCRIPT_HOME + "/" + MIRRORED_UPDATE+ "/" + name)
+		      </execution>\n" % (name,"${project.baseUri}../" + AGGREGATED_UPDATE+ "/" + name,SCRIPT_HOME + "/" + MIRRORED_UPDATE+ "/" + name)
   pomContent += "                </executions>\n\
 	      </plugin>\n\
 	  </plugins>\n\
