@@ -71,6 +71,7 @@
 		    trust="yes" verbose="yes">
 		    <fileset dir="${temp.backup.dir}">
 		      <include name="**/**"/>
+		      <exclude name="**/target/**"/>
 		    </fileset>
 		</scp>
 		<echo>Create link to latest to ${deploy.server}:${deploy.path}_nightly</echo>
