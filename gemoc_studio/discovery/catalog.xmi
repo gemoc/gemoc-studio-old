@@ -57,6 +57,20 @@
           url="http://github.com/gemoc/activitydiagram"/>
       <id>org.gemoc.activitydiagram.feature</id>
     </components>
+    <components
+        name="ArduinoModeling Language"
+        provider="GEMOC"
+        description="Deployer that installs the project sources for Sequential version of the ArduinoModeling Language and sample models."
+        license="EPL"
+        groups="//@filters.0"
+        image32="images/IconeGemocLanguagePlusModel-32.png"
+        incubation="true">
+      <sitesURLS>https://ci.inria.fr/gemoc/job/ArduinoModeling_updatesite/lastSuccessfulBuild/artifact/dev/releng/org.gemoc.arduinomodeling.repository/target/repository/</sitesURLS>
+      <overview
+          summary="Deployer that installs the project sources for the sequential version of the ArduinoModeling Language developped using GEMOC. The deployer also provides some sample models."
+          url="http://github.com/gemoc/arduinomodeling"/>
+      <id>org.gemoc.arduinomodeling.feature</id>
+    </components>
   </categories>
   <categories
       name="Alternative tools"
