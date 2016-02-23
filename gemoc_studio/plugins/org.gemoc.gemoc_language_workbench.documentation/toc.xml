@@ -12,5 +12,8 @@
     <topic href="eclipse_help/tutorial_sigpml/eclipse/Tutorial_SigPML.html" label="Tutorial : SigPML">
        <link toc="eclipse_help/tutorial_sigpml/eclipse/toc.xml"/>
     </topic>
+    <topic href="eclipse_help/html/index.html" label="GEMOC Examples">
+       <anchor id="GEMOC.examples"/>
+    </topic>
  </topic>
 </toc>

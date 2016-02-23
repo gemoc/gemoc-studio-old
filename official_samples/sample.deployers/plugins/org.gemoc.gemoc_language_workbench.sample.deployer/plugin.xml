@@ -53,5 +53,11 @@ T⁮his set of projects feature a simple signal processing modeling language (Si
          </description>
       </wizard>      
    </extension>
- 
+   <extension
+       point="org.eclipse.help.toc">
+    <toc
+          file="toc.xml"
+          primary="false">
+    </toc>
+   </extension>
 </plugin>
