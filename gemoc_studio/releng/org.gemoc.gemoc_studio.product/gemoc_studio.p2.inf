@@ -5,14 +5,12 @@ addRepository(type:0,location:http${#58}//timesquare.inria.fr/ecl/update_site,na
 addRepository(type:1,location:http${#58}//timesquare.inria.fr/ecl/update_site,name:Timesquare ECL);\
 addRepository(type:0,location:http${#58}//timesquare.inria.fr/update_site/experimental,name:Timesquare);\
 addRepository(type:1,location:http${#58}//timesquare.inria.fr/update_site/experimental,name:Timesquare);\
-addRepository(type:0,location:http${#58}//www.kermeta.org/k3/update/,name:Kermeta 3);\
-addRepository(type:1,location:http${#58}//www.kermeta.org/k3/update/,name:Kermeta 3);\
 addRepository(type:0,location:http${#58}//melange-lang.org/updatesite/,name:Melange);\
 addRepository(type:1,location:http${#58}//melange-lang.org/updatesite/,name:Melange);\
 addRepository(type:0,location:http${#58}//download.eclipse.org/sirius/updates/nightly/2.0.x/luna,name:Sirius 2.0.x);\
 addRepository(type:1,location:http${#58}//download.eclipse.org/sirius/updates/nightly/2.0.x/luna,name:Sirius 2.0.x);\
-addRepository(type:0,location:https${#58}//ci.inria.fr/gemoc/job/gemoc_composite_update_site_nightly/lastSuccessfulBuild/artifact/gemoc_studio/releng/org.gemoc.gemoc_studio.composite_update_sites/gemoc_composite_update_site_nightly/update/,name:All Gemoc components - nightly composite update site);\
-addRepository(type:1,location:https${#58}//ci.inria.fr/gemoc/job/gemoc_composite_update_site_nightly/lastSuccessfulBuild/artifact/gemoc_studio/releng/org.gemoc.gemoc_studio.composite_update_sites/gemoc_composite_update_site_nightly/update/,name:All Gemoc components - nightly composite update site);\
+addRepository(type:0,location:http${#58}//gemoc.org/updatesite/studio_nightly/,name:All Gemoc components - nightly);\
+addRepository(type:1,location:http${#58}//gemoc.org/updatesite/studio_nightly/,name:All Gemoc components - nightly);\
 addRepository(type:0,location:https${#58}//hudson.polarsys.org/kitalpha/job/Kitalpha_Nightly/380/artifact/result/publish/kitalpha/site.p2/,name:KitAlpha);\
 addRepository(type:1,location:https${#58}//hudson.polarsys.org/kitalpha/job/Kitalpha_Nightly/380/artifact/result/publish/kitalpha/site.p2/,name:KitAlpha);\
 addRepository(type:0,location:http${#58}//download.eclipse.org/diffmerge/releases/0.4.0/emf-diffmerge-site,name:DiffMerge 0.4.0);\
