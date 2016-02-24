@@ -27,10 +27,11 @@
       name="Exhaustive Exploration"
       description="Tools for Exhaustive Exploration.">
     <components
-        name="Clocksystem"
+        name="Clocksystem (Incubation)"
         provider="ENSTA"
         description="Multiform Time Constraints"
         license="MIT"
+        groups="//@filters.0"
         image32="images/clocksystem_logo_32x32.png">
       <sitesURLS>https://ci.inria.fr/gemoc/job/concurrency_exploration/lastSuccessfulBuild/artifact/exploration/releng/org.gemoc.mocc.clocksystem.features.updatesite/target/repository</sitesURLS>
       <overview
@@ -44,7 +45,7 @@
       description="Languages designed using GEMOC."
       relevance="6">
     <components
-        name="ActivityDiagram Languages"
+        name="ActivityDiagram Languages (Incubation)"
         provider="GEMOC"
         description="Deployer that installs the project sources for Concurrent and/or Sequential version of the Activitydiagram Language and sample models."
         license="EPL"
@@ -58,13 +59,12 @@
       <id>org.gemoc.activitydiagram.feature</id>
     </components>
     <components
-        name="ArduinoModeling Language"
+        name="ArduinoModeling Sequential Language (Incubation)"
         provider="GEMOC"
         description="Deployer that installs the project sources for Sequential version of the ArduinoModeling Language and sample models."
         license="EPL"
         groups="//@filters.0"
-        image32="images/IconeGemocLanguagePlusModel-32.png"
-        incubation="true">
+        image32="images/IconeGemocLanguagePlusModel-32.png">
       <sitesURLS>https://ci.inria.fr/gemoc/job/ArduinoModeling_updatesite/lastSuccessfulBuild/artifact/dev/releng/org.gemoc.arduinomodeling.repository/target/repository/</sitesURLS>
       <overview
           summary="Deployer that installs the project sources for the sequential version of the ArduinoModeling Language developped using GEMOC. The deployer also provides some sample models."
