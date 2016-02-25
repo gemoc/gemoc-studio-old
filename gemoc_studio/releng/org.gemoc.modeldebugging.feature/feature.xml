@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.gemoc.modeldebugging.feature"
+      label="GEMOC ModelDebugging"
+      version="2.1.0.qualifier"
+      provider-name="GEMOC">
+
+   <description url="http://www.gemoc.org">
+      GEMOC ModelDebugging components. 
+
+
+This feature regroups the GEMOC components used to design sequential executable languages and run/animate models conformant to these languages
+This approach supports a sequential model execution, the trace management capability,
+the animation and an omniscient debugger. These components help to bring execution and simulation
+in domain specific tooling built with Sirius and Eclipse Modeling
+Framework.
+   </description>
+
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
+      Copyright (c) 2016 GEMOC Initiative and others.
+All rights reserved.   This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      EPL
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.emf.ecoretools.sdk" version="2.0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.commons.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.gemoc_commons.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.framework.commons.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.xdsmlframework.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.executionframework.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.execution.sequential.javaxdsml.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.official_samples.deployers.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.sirius.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.doc.feature" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.eef" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.xtext" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ocl" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.specifier.ide.ui" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
+      <import feature="fr.inria.diverse.melange.sdk" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.trace.commons.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.trace.generator.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.trace.manager.feature" version="0.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.gemoc.gemoc_language_workbench.documentation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

@@ -13,7 +13,7 @@
 		<relativePath>..</relativePath>
 	</parent>
     <properties>
-        <tycho-version>0.21.0</tycho-version>
+        <tycho-version>0.24.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -24,6 +24,10 @@
         <module>releng/org.gemoc.gemoc_studio.branding.feature</module>	
         <module>releng/org.gemoc.gemoc_studio.branding.source.feature</module>		
         <module>releng/org.gemoc.gemoc_studio.additions.feature</module>	
+        <module>releng/org.gemoc.modeldebugging.feature</module>
+        <module>releng/org.gemoc.concurrency.feature</module>
+        <module>releng/org.gemoc.coordination.feature</module>
+        <module>releng/org.gemoc.gemoc_studio.updatesite</module>
     </modules>
 
     <repositories>

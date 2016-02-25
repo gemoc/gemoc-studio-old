@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.gemoc.coordination.feature"
+      label="GEMOC Coordination"
+      version="2.1.0.qualifier"
+      provider-name="GEMOC">
+
+   <description url="http://www.gemoc.org">
+      GEMOC Coordination components.
+
+This feature regroups the GEMOC components used to enable the specification of language coordination patterns and to coordinate execution engines of possibly heterogeneous models.
+
+This is done thanks to a coordination framework based on: BCoOL and an heterogeneous engine.
+   </description>
+
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
+      Copyright (c) 2016 GEMOC Initiative and others.
+All rights reserved.   This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      EPL
+   </license>
+
+   <requires>
+      <import feature="org.gemoc.concurrency.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.heterogeneous_coordination_engine.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.bcool.feature" version="1.0.0.qualifier"/>
+   </requires>
+
+</feature>

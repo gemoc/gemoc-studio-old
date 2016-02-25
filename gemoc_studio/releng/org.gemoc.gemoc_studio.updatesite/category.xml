@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.gemoc.modeldebugging.feature_2.1.0.qualifier.jar" id="org.gemoc.modeldebugging.feature" version="2.1.0.qualifier">
+      <category name="GEMOC_AllInOne"/>
+   </feature>
+   <feature url="features/org.gemoc.concurrency.feature_2.1.0.qualifier.jar" id="org.gemoc.concurrency.feature" version="2.1.0.qualifier">
+      <category name="GEMOC_AllInOne"/>
+   </feature>
+   <feature url="features/org.gemoc.coordination.feature_2.1.0.qualifier.jar" id="org.gemoc.coordination.feature" version="2.1.0.qualifier">
+      <category name="GEMOC_AllInOne"/>
+   </feature>
+   <feature url="features/org.gemoc.commons.feature_0.1.0.qualifier.jar" id="org.gemoc.commons.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.bcool.feature_1.0.0.qualifier.jar" id="org.gemoc.bcool.feature" version="1.0.0.qualifier">
+      <category name="GEMOC_Coordination_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.commons.feature_0.1.0.qualifier.jar" id="org.gemoc.commons.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.commons.feature.source_0.1.0.qualifier.jar" id="org.gemoc.commons.feature.source" version="0.1.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.concurrent_addons.feature_0.1.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.concurrent_addons.feature.source_0.1.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature.source" version="0.1.0.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.execution.sequential.javaxdsml.feature_0.1.0.qualifier.jar" id="org.gemoc.execution.sequential.javaxdsml.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.executionengine.ccsljava.feature_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.executionengine.ccsljava.feature.source_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature.source" version="0.1.0.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature.source_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature.source" version="0.1.0.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature.source_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature.source" version="0.1.0.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.gel.feature_0.1.0.qualifier.jar" id="org.gemoc.gel.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.gel.microgel.feature_0.1.0.qualifier.jar" id="org.gemoc.gel.microgel.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.gemoc_commons.feature_0.1.0.qualifier.jar" id="org.gemoc.gemoc_commons.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.heterogeneous_coordination_engine.feature_0.1.0.qualifier.jar" id="org.gemoc.heterogeneous_coordination_engine.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_Coordination_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.mocc.core.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.core.feature" version="0.1.1.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.mocc.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.feature" version="0.1.1.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.mocc.graphical.editors.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.graphical.editors.feature" version="0.1.1.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.mocc.text.editors.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.text.editors.feature" version="0.1.1.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature" version="0.1.1.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.mocc.transformations.feature_0.0.1.qualifier.jar" id="org.gemoc.mocc.transformations.feature" version="0.0.1.qualifier">
+      <category name="GEMOC_Concurrency_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.modeldebugging.executionframework.feature_0.1.0.qualifier.jar" id="org.gemoc.modeldebugging.executionframework.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.modeldebugging.framework.commons.feature_0.1.0.qualifier.jar" id="org.gemoc.modeldebugging.framework.commons.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.modeldebugging.trace.commons.feature_1.0.0.qualifier.jar" id="org.gemoc.modeldebugging.trace.commons.feature" version="1.0.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.modeldebugging.trace.generator.feature_1.0.0.qualifier.jar" id="org.gemoc.modeldebugging.trace.generator.feature" version="1.0.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.modeldebugging.trace.manager.feature_1.0.0.qualifier.jar" id="org.gemoc.modeldebugging.trace.manager.feature" version="1.0.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.modeldebugging.xdsmlframework.feature_0.1.0.qualifier.jar" id="org.gemoc.modeldebugging.xdsmlframework.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <feature url="features/org.gemoc.official_samples.deployers.feature_0.1.0.qualifier.jar" id="org.gemoc.official_samples.deployers.feature" version="0.1.0.qualifier">
+      <category name="GEMOC_ModelDebugging_Components"/>
+   </feature>
+   <category-def name="GEMOC_AllInOne" label="GEMOC all in one">
+      <description>
+         All GEMOC components installed via simple features dedicated for the main scenarios.
+      </description>
+   </category-def>
+   <category-def name="GEMOC_ModelDebugging_Components" label="GEMOC ModelDebugging Components (expert mode)">
+      <description>
+         Individual components that are part of GEMOC and dedicated to scenario related to ModelDebugging core and Sequential model execution.
+      </description>
+   </category-def>
+   <category-def name="GEMOC_Concurrency_Components" label="GEMOC Concurrency (expert mode)">
+      <description>
+         Individual components that are part of GEMOC and dedicated to scenario related to Concurrent model execution.
+      </description>
+   </category-def>
+   <category-def name="GEMOC_Coordination_Components" label="GEMOC Coordination (expert mode)">
+      <description>
+         Individual components that are part of GEMOC and dedicated to scenario related to Coordination of model execution.
+      </description>
+   </category-def>
+</site>
