@@ -68,6 +68,7 @@
       <sitesURLS>https://ci.inria.fr/gemoc/job/ArduinoModeling_updatesite/lastSuccessfulBuild/artifact/dev/releng/org.gemoc.arduinomodeling.repository/target/repository/</sitesURLS>
       <overview
           summary="Deployer that installs the project sources for the sequential version of the ArduinoModeling Language developped using GEMOC. The deployer also provides some sample models."
+          screenshot="images/arduinomodeling_sequential-screenshot-320x240.png"
           url="http://github.com/gemoc/arduinomodeling"/>
       <id>org.gemoc.arduinomodeling.feature</id>
     </components>
