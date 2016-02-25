@@ -160,7 +160,7 @@
          </topic>
          <topic label="Exhaustive Exploration and Verification at Model Design Time" href="ch08s03.html">
             <topic label="Generating inputs for Exhaustive Exploration tools : T2 at Modeling Level" href="ch08s03.html#_generating_inputs_for_exhaustive_exploration_tools_emphasis_t2_emphasis_at_modeling_level"/>
-            <topic label="ClockSystem" href="ch08s03.html#__emphasis_role_strong_indexterm_primary_clocksystem_primary_indexterm_clocksystem_emphasis_inlinemediaobject_imageobject_imagedata_fileref_images_exhaustive_exploration_clocksystem_logo_32x32_png_contentwidth_16_contentdepth_16_imageobject_textobject_phrase_clocksystem_logo_32x32_phrase_textobject_inlinemediaobject">
+            <topic label="ClockSystem" href="ch08s03.html#__emphasis_role_strong_indexterm_primary_clocksystem_primary_indexterm_clocksystem_emphasis">
                <topic label="Description" href="ch08s03.html#_description_2"/>
                <topic label="Using ClockSystem" href="ch08s03.html#_using_clocksystem"/>
             </topic>
@@ -178,7 +178,7 @@
          </topic>
       </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e3489"/>
+         <topic label="Articles" href="bi01.html#d0e3493"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
