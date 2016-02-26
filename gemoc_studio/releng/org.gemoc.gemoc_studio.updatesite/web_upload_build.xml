@@ -26,7 +26,7 @@
 				          pattern="F"
 				          locale="en,UK"/>
 	  <format property="TODAY_pattern"
-						          pattern="yy-mm-dd"
+						          pattern="yy-MM-dd"
 						          locale="en,UK"/>
 		
 	</tstamp>
