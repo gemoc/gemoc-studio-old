@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.gemoc.commons.feature"
-      label="Gemoc Eclipse Commons"
+      label="GEMOC Eclipse Commons"
       version="0.1.0.qualifier"
       provider-name="INRIA">
 
    <description url="http://gemoc.org/studio/">
-      List of plugins that are part of Gemoc core (API, exchanged metamodels, ....)
+      List of plugins that are part of GEMOC core (API, exchanged metamodels, ....)
    </description>
 
    <copyright url="http://www.example.com/copyright">

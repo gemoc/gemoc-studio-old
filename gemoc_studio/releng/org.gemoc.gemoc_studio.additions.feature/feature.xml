@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.gemoc.gemoc_studio.additions.feature"
-      label="Gemoc Studio Additional Features"
+      label="GEMOC Studio Additional Features"
       version="2.1.0.qualifier"
       provider-name="GEMOC">
 
    <description url="http://www.gemoc.org">
-      This feature is dependent of a list of additionnal features (possibly thirdparties) that are usually useful in Gemoc Studio but aren&apos;t part of the core of the Gemoc process.
+      This feature is dependent of a list of additionnal features (possibly thirdparties) that are usually useful in GEMOC Studio but aren&apos;t part of the core of the GEMOC process.
    </description>
 
    <copyright url="http://www.example.com/copyright">

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.gemoc.gemoc_studio.branding.feature"
-      label="Gemoc Studio Main Features"
+      label="GEMOC Studio Main Features"
       version="2.1.0.qualifier"
       provider-name="GEMOC"
       plugin="org.gemoc.gemoc_studio.branding">
 
    <description url="http://www.gemoc.org">
-      List of features in Gemoc Studio that are part of the core of the Gemoc process.
+      List of features in GEMOC Studio that are part of the core of the GEMOC process.
    </description>
 
    <copyright url="http://www.example.com/copyright">
