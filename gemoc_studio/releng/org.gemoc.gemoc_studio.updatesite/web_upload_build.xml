@@ -4,7 +4,7 @@
 	<property environment="env"/>
 
 	<property name="env.WORKSPACE" location="."/>
-	<property name="temp.backup.dir" location="${env.WORKSPACE}/gemoc_studio/releng/org.gemoc.gemoc_studio.composite_update_sites/gemoc_composite_update_site_nightly/archive"/>
+	<property name="source_to_upload.dir" location="${env.WORKSPACE}/gemoc_studio/releng/org.gemoc.gemoc_studio.updatesite/target/repository"/>
 	<property name="source_server.base.url" value="https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_studio.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_studio/org.gemoc.gemoc_studio.product/target/products"/>
 	<property name="deploy.server" value="gemoc.irisa.fr"/>
 	<property name="deploy.user" value="web-gemoc"/>
@@ -69,7 +69,7 @@
 			keyfile="${key.file}"
 			passphrase=""
 		    trust="yes" verbose="yes">
-		    <fileset dir="${temp.backup.dir}">
+		    <fileset dir="${source_to_upload.dir}">
 		      <include name="**/**"/>
 		      <exclude name="**/target/**"/>
 		    </fileset>
@@ -82,13 +82,5 @@
 					     trust="yes"
 					     command="ln -s ${deploy.today.path}_SNAPSHOT ${deploy.path}_nightly;"/>		
 	</target>
-	 
 	
-	<target name="clean_local">
-		<delete failonerror="no" includeemptydirs="yes">
-			<fileset dir="${temp.backup.dir}">
-			</fileset>
-		</delete>
-		<mkdir dir="${temp.backup.dir}"/>
-	</target>
 </project>
