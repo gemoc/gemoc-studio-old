@@ -43,7 +43,7 @@ public interface Tfsm_plaink3_State_Visit extends BigStep {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (State) this.getMse().getCaller();\r\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (State) this.getMse().getCaller();\n'"
 	 * @generated
 	 */
 	State getCaller();

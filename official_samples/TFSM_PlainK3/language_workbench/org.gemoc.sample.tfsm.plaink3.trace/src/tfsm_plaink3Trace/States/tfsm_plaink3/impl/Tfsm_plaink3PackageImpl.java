@@ -382,18 +382,18 @@ public class Tfsm_plaink3PackageImpl extends EPackageImpl implements Tfsm_plaink
 		initEReference(getTracedTFSM_OwnedTransitions(), theTfsmPackage.getTransition(), null, "ownedTransitions", null, 0, -1, TracedTFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create annotations
-		// dynamic
-		createDynamicAnnotations();
+		// aspect
+		createAspectAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>dynamic</b>.
+	 * Initializes the annotations for <b>aspect</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createDynamicAnnotations() {
-		String source = "dynamic";	
+	protected void createAspectAnnotations() {
+		String source = "aspect";	
 		addAnnotation
 		  (getTracedTFSM_CurrentState(), 
 		   source, 

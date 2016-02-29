@@ -27,7 +27,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Tfsm_plaink3_FSMClock_Ticks" eSuperTypes="//Steps/SmallStep">
       <eOperations name="getCaller" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return (FSMClock) this.getMse().getCaller();&#xD;&#xA;"/>
+          <details key="body" value="return (FSMClock) this.getMse().getCaller();&#xA;"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//FSMClock"/>
       </eOperations>
@@ -35,7 +35,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Tfsm_plaink3_FSMEvent_Trigger" eSuperTypes="//Steps/SmallStep">
       <eOperations name="getCaller" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return (FSMEvent) this.getMse().getCaller();&#xD;&#xA;"/>
+          <details key="body" value="return (FSMEvent) this.getMse().getCaller();&#xA;"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//FSMEvent"/>
       </eOperations>
@@ -43,7 +43,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Tfsm_plaink3_FSMEvent_UnTrigger" eSuperTypes="//Steps/SmallStep">
       <eOperations name="getCaller" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return (FSMEvent) this.getMse().getCaller();&#xD;&#xA;"/>
+          <details key="body" value="return (FSMEvent) this.getMse().getCaller();&#xA;"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//FSMEvent"/>
       </eOperations>
@@ -51,7 +51,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Tfsm_plaink3_State_Visit" eSuperTypes="//Steps/BigStep">
       <eOperations name="getCaller" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return (State) this.getMse().getCaller();&#xD;&#xA;"/>
+          <details key="body" value="return (State) this.getMse().getCaller();&#xA;"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//State"/>
       </eOperations>
@@ -62,7 +62,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Tfsm_plaink3_TFSM_Init" eSuperTypes="//Steps/SmallStep">
       <eOperations name="getCaller" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return (TFSM) this.getMse().getCaller();&#xD;&#xA;"/>
+          <details key="body" value="return (TFSM) this.getMse().getCaller();&#xA;"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//TFSM"/>
       </eOperations>
@@ -70,7 +70,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Tfsm_plaink3_Transition_Fire" eSuperTypes="//Steps/SmallStep //Steps/Tfsm_plaink3_Transition_Visit_AbstractSubStep">
       <eOperations name="getCaller" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return (Transition) this.getMse().getCaller();&#xD;&#xA;"/>
+          <details key="body" value="return (Transition) this.getMse().getCaller();&#xA;"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//Transition"/>
       </eOperations>
@@ -78,7 +78,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Tfsm_plaink3_Transition_Visit" eSuperTypes="//Steps/BigStep //Steps/Tfsm_plaink3_State_Visit_AbstractSubStep">
       <eOperations name="getCaller" lowerBound="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="body" value="return (Transition) this.getMse().getCaller();&#xD;&#xA;"/>
+          <details key="body" value="return (Transition) this.getMse().getCaller();&#xA;"/>
         </eAnnotations>
         <eType xsi:type="ecore:EClass" href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//Transition"/>
       </eOperations>
@@ -93,7 +93,7 @@
         <details key="executionMetamodelElement"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfTicks" defaultValueLiteral="0">
-        <eAnnotations source="dynamic"/>
+        <eAnnotations source="aspect"/>
         <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1" eType="//States/tfsm_plaink3/TracedFSMClock" eOpposite="//States/tfsm_plaink3/TracedFSMClock/numberOfTicksSequence"/>
@@ -104,7 +104,7 @@
         <details key="executionMetamodelElement"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTriggered" defaultValueLiteral="false">
-        <eAnnotations source="dynamic"/>
+        <eAnnotations source="aspect"/>
         <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1" eType="//States/tfsm_plaink3/TracedFSMEvent" eOpposite="//States/tfsm_plaink3/TracedFSMEvent/isTriggeredSequence"/>
@@ -122,7 +122,7 @@
         <details key="executionMetamodelElement"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="currentState">
-        <eAnnotations source="dynamic"/>
+        <eAnnotations source="aspect"/>
         <eType xsi:type="ecore:EClass" href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//State"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1" eType="//States/tfsm_plaink3/TracedTFSM" eOpposite="//States/tfsm_plaink3/TracedTFSM/currentStateSequence"/>
@@ -145,7 +145,7 @@
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="TracedTFSM" eSuperTypes="//States/tfsm_plaink3/TracedNamedElement">
         <eStructuralFeatures xsi:type="ecore:EReference" name="currentState">
-          <eAnnotations source="dynamic"/>
+          <eAnnotations source="aspect"/>
           <eType xsi:type="ecore:EClass" href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore#//State"/>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="currentStateSequence" upperBound="-1" eType="//States/TFSM_currentState_Value" containment="true" eOpposite="//States/TFSM_currentState_Value/parent"/>

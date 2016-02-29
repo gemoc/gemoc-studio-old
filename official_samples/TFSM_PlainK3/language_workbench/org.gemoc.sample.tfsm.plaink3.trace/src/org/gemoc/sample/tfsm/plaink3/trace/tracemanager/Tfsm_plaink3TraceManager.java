@@ -4,6 +4,7 @@ import fr.inria.diverse.trace.api.IValueTrace;
 import fr.inria.diverse.trace.api.impl.GenericValueTrace;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -175,7 +176,8 @@ public class Tfsm_plaink3TraceManager implements fr.inria.diverse.trace.gemoc.ap
 
 					java.lang.Integer content3 = o_cast.getNumberOfTicks();
 
-					boolean noChange3 = previousValue3 != null && previousValue3.getNumberOfTicks() == content3;
+					boolean noChange3 = previousValue3 != null && previousValue3.getNumberOfTicks() != null
+							&& previousValue3.getNumberOfTicks().equals(content3);
 
 					if (noChange3) {
 						newState.getFSMClock_numberOfTicks_Values().add(previousValue3);
@@ -836,6 +838,55 @@ public class Tfsm_plaink3TraceManager implements fr.inria.diverse.trace.gemoc.ap
 				}
 			}
 		}
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	private Map<fr.inria.diverse.trace.api.IStep,List<fr.inria.diverse.trace.api.IStep>> getStepSubGraph(
+			tfsm_plaink3Trace.Steps.Step step, int startingState, int endingState,
+			Map<fr.inria.diverse.trace.api.IStep,List<fr.inria.diverse.trace.api.IStep>> accumulator,
+			Map<tfsm_plaink3Trace.Steps.Step, fr.inria.diverse.trace.api.IStep> step2IStep) {
+		
+		final List<tfsm_plaink3Trace.Steps.Step> steps = (List<tfsm_plaink3Trace.Steps.Step>) emfGet(step, "subSteps");
+		final List<tfsm_plaink3Trace.States.State> states = this.traceRoot.getStatesTrace();
+		final fr.inria.diverse.trace.api.IStep iStep = step2IStep.computeIfAbsent(step, (s)->createGenericStep(s));
+		
+		if (steps != null && !steps.isEmpty()) {
+			final List<tfsm_plaink3Trace.Steps.Step> eligibleSteps = steps.stream().filter(s->{
+				final int stepStartingState = states.indexOf(s.getStartingState());
+				final int stepEndingState = states.indexOf(s.getEndingState());
+				return (stepEndingState == -1 || stepEndingState > startingState) && stepStartingState < endingState;
+			}).collect(Collectors.toList());
+			
+			accumulator.put(iStep, eligibleSteps.stream().map(s->step2IStep.computeIfAbsent(s, (k)->createGenericStep(k))).collect(Collectors.toList()));
+			
+			for (tfsm_plaink3Trace.Steps.Step subStep : eligibleSteps) {
+				getStepSubGraph(subStep, startingState, endingState, accumulator, step2IStep);
+			}
+		} else {
+			accumulator.put(iStep, Collections.EMPTY_LIST);
+		}
+		
+		return accumulator;
+	}
+
+	@Override
+	public Map<fr.inria.diverse.trace.api.IStep, List<fr.inria.diverse.trace.api.IStep>> getStepsForStates(
+			int startingState, int endingState) {
+
+		final List<tfsm_plaink3Trace.Steps.Step> rootSteps = this.traceRoot.getRootSteps();
+		final List<tfsm_plaink3Trace.States.State> states = this.traceRoot.getStatesTrace();
+		final Map<tfsm_plaink3Trace.Steps.Step, fr.inria.diverse.trace.api.IStep> step2IStep = new HashMap<>();
+		final Map<fr.inria.diverse.trace.api.IStep, List<fr.inria.diverse.trace.api.IStep>> result = new HashMap<>();
+
+		for (tfsm_plaink3Trace.Steps.Step step : rootSteps) {
+			final int stepStartingState = states.indexOf(step.getStartingState());
+			final int stepEndingState = states.indexOf(step.getEndingState());
+			if ((stepEndingState == -1 || stepEndingState > startingState) && stepStartingState < endingState) {
+				getStepSubGraph(step, startingState, endingState, result, step2IStep);
+			}
+		}
+
 		return result;
 	}
 

@@ -19,7 +19,7 @@ public interface Tfsm_plaink3_TFSM_Init extends SmallStep {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (TFSM) this.getMse().getCaller();\r\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (TFSM) this.getMse().getCaller();\n'"
 	 * @generated
 	 */
 	TFSM getCaller();

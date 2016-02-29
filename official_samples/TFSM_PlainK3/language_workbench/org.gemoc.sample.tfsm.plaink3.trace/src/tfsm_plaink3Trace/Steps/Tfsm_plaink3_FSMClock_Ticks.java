@@ -19,7 +19,7 @@ public interface Tfsm_plaink3_FSMClock_Ticks extends SmallStep {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (FSMClock) this.getMse().getCaller();\r\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (FSMClock) this.getMse().getCaller();\n'"
 	 * @generated
 	 */
 	FSMClock getCaller();

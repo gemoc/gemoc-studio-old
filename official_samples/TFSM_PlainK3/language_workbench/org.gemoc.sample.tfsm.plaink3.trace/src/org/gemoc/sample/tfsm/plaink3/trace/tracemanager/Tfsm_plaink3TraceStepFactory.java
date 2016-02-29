@@ -41,9 +41,8 @@ public class Tfsm_plaink3TraceStepFactory implements IStepFactory {
 			mseocc = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_Transition_Visit();
 		}
 
-		else {
+		else
 			mseocc = org.gemoc.executionframework.engine.mse.MseFactory.eINSTANCE.createMSEOccurrence();
-		}
 
 		if (mseocc != null) {
 			mseocc.setMse(mse);

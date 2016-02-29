@@ -19,7 +19,7 @@ public interface Tfsm_plaink3_Transition_Fire extends SmallStep, Tfsm_plaink3_Tr
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (Transition) this.getMse().getCaller();\r\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (Transition) this.getMse().getCaller();\n'"
 	 * @generated
 	 */
 	Transition getCaller();
