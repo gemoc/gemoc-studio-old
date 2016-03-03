@@ -11,6 +11,15 @@
             <topic label="Purpose" href="ch01.html#_purpose"/>
             <topic label="Creating the xDSML Project" href="ch01.html#_creating_the_xdsml_project"/>
             <topic label="Editing the xDSML Project" href="ch01.html#_editing_the_xdsml_project"/>
+            <topic label="xDSML perspective" href="ch01.html#_xdsml_perspective"/>
+            <topic label="GEMOC Language menu" href="ch01.html#_gemoc_language_menu"/>
+            <topic label="Melange menu" href="ch01.html#_melange_menu"/>
+            <topic label="Melange editor" href="ch01.html#_melange_editor">
+               <topic label="Syntax" href="ch01.html#_syntax"/>
+               <topic label="Content assist" href="ch01.html#_content_assist"/>
+               <topic label="Outline" href="ch01.html#_outline"/>
+            </topic>
+            <topic label="Plugin.xml" href="ch01.html#_plugin_xml"/>
          </topic>
          <topic label="Language workbench dashboard" href="ch01s02.html">
             <topic label="Open the dashboard" href="ch01s02.html#_open_the_dashboard"/>
@@ -182,7 +191,7 @@
          </topic>
       </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e3557"/>
+         <topic label="Articles" href="bi01.html#d0e3866"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
