@@ -120,65 +120,69 @@
          </topic>
          <topic label="Example: a BCOoL Operator between the TFSM and Activity languages." href="ch05s02.html"/>
       </topic>
+      <topic label="Deploy languages" href="ch06.html">
+         <topic label="Deployment of languages for the Language designer" href="ch06.html#deploy-language-for-language-designer-section"/>
+         <topic label="Distribution of languages to the Model designer" href="ch06s02.html"/>
+      </topic>
    </topic>
    <topic label="GEMOC Modeling workbench" href="pt02.html">
-      <topic label="Modeling workbench overview" href="ch06.html"/>
-      <topic label="Editing model" href="ch07.html">
-         <topic label="Editing model with Sirius" href="ch07.html#modeling-workbench-editing-model-with-sirius-section">
-            <topic label="Debug specific" href="ch07.html#_debug_specific"/>
+      <topic label="Modeling workbench overview" href="ch07.html"/>
+      <topic label="Editing model" href="ch08.html">
+         <topic label="Editing model with Sirius" href="ch08.html#modeling-workbench-editing-model-with-sirius-section">
+            <topic label="Debug specific" href="ch08.html#_debug_specific"/>
          </topic>
-         <topic label="Editing model with EMF Tree Editor" href="ch07s02.html"/>
+         <topic label="Editing model with EMF Tree Editor" href="ch08s02.html"/>
       </topic>
-      <topic label="Executing model" href="ch08.html">
-         <topic label="Executing model with the Sequential Engine" href="ch08.html#_executing_model_with_the_indexterm_primary_sequential_engine_primary_indexterm_sequential_engine">
-            <topic label="Sequential Launch configuration" href="ch08.html#_sequential_launch_configuration">
-               <topic label="Sequential general options" href="ch08.html#_sequential_general_options"/>
-               <topic label="Sequential Run mode" href="ch08.html#_sequential_run_mode"/>
-               <topic label="Sequential Debug mode" href="ch08.html#_sequential_debug_mode"/>
+      <topic label="Executing model" href="ch09.html">
+         <topic label="Executing model with the Sequential Engine" href="ch09.html#_executing_model_with_the_indexterm_primary_sequential_engine_primary_indexterm_sequential_engine">
+            <topic label="Sequential Launch configuration" href="ch09.html#_sequential_launch_configuration">
+               <topic label="Sequential general options" href="ch09.html#_sequential_general_options"/>
+               <topic label="Sequential Run mode" href="ch09.html#_sequential_run_mode"/>
+               <topic label="Sequential Debug mode" href="ch09.html#_sequential_debug_mode"/>
             </topic>
-            <topic label="Engine View" href="ch08.html#mw-executing-sequential-model-engine-view-section"/>
-            <topic label="MultiDimentional Timeline View" href="ch08.html#mw-executing-sequential-model-multidimensional-timeline-view-section"/>
-            <topic label="MultiBranch Timeline View" href="ch08.html#mw-executing-sequential-model-multibranch-timeline-view-section"/>
-            <topic label="Animation View" href="ch08.html#mw-executing-sequential-model-animation-view-section"/>
-            <topic label="Debug View" href="ch08.html#mw-executing-sequential-model-debug-view-section"/>
-            <topic label="Variable View" href="ch08.html#mw-executing-sequential-model-variable-view-section"/>
+            <topic label="Engine View" href="ch09.html#mw-executing-sequential-model-engine-view-section"/>
+            <topic label="MultiDimentional Timeline View" href="ch09.html#mw-executing-sequential-model-multidimensional-timeline-view-section"/>
+            <topic label="MultiBranch Timeline View" href="ch09.html#mw-executing-sequential-model-multibranch-timeline-view-section"/>
+            <topic label="Animation View" href="ch09.html#mw-executing-sequential-model-animation-view-section"/>
+            <topic label="Debug View" href="ch09.html#mw-executing-sequential-model-debug-view-section"/>
+            <topic label="Variable View" href="ch09.html#mw-executing-sequential-model-variable-view-section"/>
          </topic>
-         <topic label="Executing model with the Concurrent Engine" href="ch08s02.html">
-            <topic label="Concurrent Launch configuration" href="ch08s02.html#_concurrent_launch_configuration">
-               <topic label="Concurrent General options" href="ch08s02.html#_concurrent_general_options"/>
-               <topic label="Concurrent Run mode" href="ch08s02.html#_concurrent_run_mode"/>
-               <topic label="Concurrent Debug mode" href="ch08s02.html#_concurrent_debug_mode"/>
-               <topic label="Backends and frontends" href="ch08s02.html#modeling-workbench-backends-frontends-section"/>
+         <topic label="Executing model with the Concurrent Engine" href="ch09s02.html">
+            <topic label="Concurrent Launch configuration" href="ch09s02.html#_concurrent_launch_configuration">
+               <topic label="Concurrent General options" href="ch09s02.html#_concurrent_general_options"/>
+               <topic label="Concurrent Run mode" href="ch09s02.html#_concurrent_run_mode"/>
+               <topic label="Concurrent Debug mode" href="ch09s02.html#_concurrent_debug_mode"/>
+               <topic label="Backends and frontends" href="ch09s02.html#modeling-workbench-backends-frontends-section"/>
             </topic>
-            <topic label="Engine View" href="ch08s02.html#mw-executing-concurrent-model-engine-view-section"/>
-            <topic label="Logical Steps View" href="ch08s02.html#mw-executing-concurrent-model-logical-steps-view-section"/>
-            <topic label="MultiBranch Timeline View" href="ch08s02.html#mw-executing-concurrent-model-multibranch-timeline-view-section"/>
-            <topic label="Stimuli Manager View" href="ch08s02.html#mw-executing-concurrent-model-stimuli-manager-view-section"/>
-            <topic label="Animation View" href="ch08s02.html#mw-executing-concurrent-model-animation-view-section"/>
-            <topic label="Debug View" href="ch08s02.html#mw-executing-concurrent-model-debug-view-section"/>
-            <topic label="Variable View" href="ch08s02.html#mw-executing-concurrent-model-variable-view-section"/>
+            <topic label="Engine View" href="ch09s02.html#mw-executing-concurrent-model-engine-view-section"/>
+            <topic label="Logical Steps View" href="ch09s02.html#mw-executing-concurrent-model-logical-steps-view-section"/>
+            <topic label="MultiBranch Timeline View" href="ch09s02.html#mw-executing-concurrent-model-multibranch-timeline-view-section"/>
+            <topic label="Stimuli Manager View" href="ch09s02.html#mw-executing-concurrent-model-stimuli-manager-view-section"/>
+            <topic label="Animation View" href="ch09s02.html#mw-executing-concurrent-model-animation-view-section"/>
+            <topic label="Debug View" href="ch09s02.html#mw-executing-concurrent-model-debug-view-section"/>
+            <topic label="Variable View" href="ch09s02.html#mw-executing-concurrent-model-variable-view-section"/>
          </topic>
-         <topic label="Exhaustive Exploration and Verification at Model Design Time" href="ch08s03.html">
-            <topic label="Generating inputs for Exhaustive Exploration tools : T2 at Modeling Level" href="ch08s03.html#_generating_inputs_for_exhaustive_exploration_tools_emphasis_t2_emphasis_at_modeling_level"/>
-            <topic label="ClockSystem" href="ch08s03.html#__emphasis_role_strong_indexterm_primary_clocksystem_primary_indexterm_clocksystem_emphasis">
-               <topic label="Description" href="ch08s03.html#_description_2"/>
-               <topic label="Using ClockSystem" href="ch08s03.html#_using_clocksystem"/>
+         <topic label="Exhaustive Exploration and Verification at Model Design Time" href="ch09s03.html">
+            <topic label="Generating inputs for Exhaustive Exploration tools : T2 at Modeling Level" href="ch09s03.html#_generating_inputs_for_exhaustive_exploration_tools_emphasis_t2_emphasis_at_modeling_level"/>
+            <topic label="ClockSystem" href="ch09s03.html#__emphasis_role_strong_indexterm_primary_clocksystem_primary_indexterm_clocksystem_emphasis">
+               <topic label="Description" href="ch09s03.html#_description_2"/>
+               <topic label="Using ClockSystem" href="ch09s03.html#_using_clocksystem"/>
             </topic>
-            <topic label="Defining Properties" href="ch08s03.html#_defining_properties">
-               <topic label="Expressing Properties (CDL Formalization)" href="ch08s03.html#_expressing_properties_cdl_formalization"/>
-               <topic label="OBP example" href="ch08s03.html#_obp_example"/>
+            <topic label="Defining Properties" href="ch09s03.html#_defining_properties">
+               <topic label="Expressing Properties (CDL Formalization)" href="ch09s03.html#_expressing_properties_cdl_formalization"/>
+               <topic label="OBP example" href="ch09s03.html#_obp_example"/>
             </topic>
          </topic>
       </topic>
-      <topic label="Coordinating Model Execution" href="ch09.html">
-         <topic label="Running Example: Coordination of a Coffee Machine Model" href="ch09.html#_running_example_coordination_of_a_coffee_machine_model">
-            <topic label="Preparing the Language Workbench" href="ch09.html#_preparing_the_language_workbench"/>
-            <topic label="Getting the Modeling Workbench" href="ch09.html#_getting_the_modeling_workbench"/>
-            <topic label="Running the example" href="ch09.html#_running_the_example"/>
+      <topic label="Coordinating Model Execution" href="ch10.html">
+         <topic label="Running Example: Coordination of a Coffee Machine Model" href="ch10.html#_running_example_coordination_of_a_coffee_machine_model">
+            <topic label="Preparing the Language Workbench" href="ch10.html#_preparing_the_language_workbench"/>
+            <topic label="Getting the Modeling Workbench" href="ch10.html#_getting_the_modeling_workbench"/>
+            <topic label="Running the example" href="ch10.html#_running_the_example"/>
          </topic>
       </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e3493"/>
+         <topic label="Articles" href="bi01.html#d0e3557"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
