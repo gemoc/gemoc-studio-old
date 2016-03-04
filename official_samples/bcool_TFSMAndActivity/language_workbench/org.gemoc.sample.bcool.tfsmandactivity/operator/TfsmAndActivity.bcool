@@ -5,9 +5,9 @@ ImportLib "platform:/resource/org.gemoc.sample.bcool.tfsmandactivity/operator/fa
 
 ImportInterface "platform:/resource/org.modelexecution.operationalsemantics.ad.concurrent.ecl/model/ActivitiyDiagramV2.ecl"  as activity
 ImportInterface "platform:/resource/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl" as tfsm
-Spec nada
+
 Operator SyncFSMEventsAndActions (FSMEvents : tfsm::occurs, ActionExecute : activity::executeIt)
-MatchingCorrespondance: when FSMEvents.name = ActionExecute.name;
-		CoordinationRule: 
+	when FSMEvents.name = ActionExecute.name;
+CoordinationRule: 
 			facilities.RendezVous(FSMEvents, ActionExecute )
 end operator; 
