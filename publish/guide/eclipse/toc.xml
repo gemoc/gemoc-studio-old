@@ -14,7 +14,7 @@
             <topic label="xDSML perspective" href="ch01.html#_xdsml_perspective"/>
             <topic label="GEMOC Language menu" href="ch01.html#_gemoc_language_menu"/>
             <topic label="Melange menu" href="ch01.html#_melange_menu"/>
-            <topic label="Melange editor" href="ch01.html#_melange_editor">
+            <topic label="Melange editor" href="ch01.html#section-melange-editor">
                <topic label="Syntax" href="ch01.html#_syntax"/>
                <topic label="Content assist" href="ch01.html#_content_assist"/>
                <topic label="Outline" href="ch01.html#_outline"/>
@@ -191,7 +191,7 @@
          </topic>
       </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e3869"/>
+         <topic label="Articles" href="bi01.html#d0e3876"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
