@@ -5,10 +5,9 @@ ImportLib "platform:/resource/org.gemoc.sample.bcool.tfsmandsigpml/operator/faci
 
 ImportInterface "platform:/resource/org.gemoc.sample.sigpml.moc.application/MoCApplication/SigPML.ecl"  as sigpml
 ImportInterface "platform:/resource/org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl" as tfsm
-Spec nada
 
 Operator SyncFSMEventsAndAgents (FSMEvents : tfsm::occurs,startAgent : sigpml::startAgent)
-MatchingCorrespondance: when FSMEvents.name = startAgent.name;
-		CoordinationRule: 
-			facilities.RendezVous(FSMEvents, startAgent )
+	when FSMEvents.name = startAgent.name;
+CoordinationRule: 
+	facilities.RendezVous(FSMEvents, startAgent )
 end operator; 
