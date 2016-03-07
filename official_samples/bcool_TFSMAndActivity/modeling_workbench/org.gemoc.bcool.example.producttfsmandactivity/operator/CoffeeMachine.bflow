@@ -1,23 +1,22 @@
 BCOoLFlow CoffeeMachine
 {
-	 import "TfsmAndActivities.bcool";
+	// Warning:
+	// When the .bcool is in the modeling workbench the qvto must be manually generated.
+	// To do so, right click on the .bcool and do GEMOC Coordination > Generate BCOoL transformation
+	// 
+	import "TfsmAndActivities.bcool";
 	
-	BCOoL Specification: "TfsmAndActivities";
-	// Resulting time model
-	Output: "platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/gemoc-gen/CoffeeAlgorithm.launchCoffeeCoin.launch.timemodel";
+	Output: "/org.gemoc.bcool.example.producttfsmandactivity/gemoc-gen/coordinated-coffeemachine.timemodel";
 	
 	// Models to apply the specification
-	Model CoffeMachineControl ( "platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/gemoc-gen/coffemachine.timemodel",
-						 	    "platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/models/tfsm_model/coffemachine.tfsm");
+	Model CoffeMachineControl ("platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/models/tfsm_model/coffemachine.tfsm");
 	
-	Model CoffeeMachineAlgorithm ("platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/gemoc-gen/algorithm2.timemodel",
-		"platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/models/activity_model/algorithm2.ad"
+	Model CoffeeMachineAlgorithm ("platform:/resource/org.gemoc.bcool.example.producttfsmandactivity/models/activity_model/algorithm2.ad"
 	);					  
 
-	Flow 
+	Flows
 		// First the sync prouct between CameraControl and BatteryControl
-		applies "SyncFSMEventsAndActions" between (CoffeeMachineAlgorithm, CoffeMachineControl) ;
-
-	end Flow;
+		apply SyncFSMEventsAndActions on (CoffeeMachineAlgorithm, CoffeMachineControl) ;
+	end Flows;
 
 	}
