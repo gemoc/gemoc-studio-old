@@ -27,8 +27,8 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.gemoc.execution.concurrent.ccsljavaxdsml.ui.dse_nature</nature>
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-		<nature>org.gemoc.execution.concurrent.ccsljavaxdsml.ui.dse_nature</nature>
 	</natures>
 </projectDescription>
