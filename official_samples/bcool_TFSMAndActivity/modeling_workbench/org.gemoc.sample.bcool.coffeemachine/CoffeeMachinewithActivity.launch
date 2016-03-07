@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.gemoc.gemoc_heterogeneous_modeling_workbench.ui.launcher">
+<stringAttribute key="GEMOC_LAUNCH_SELECTED_DECIDER" value="Step by step user decider"/>
+<stringAttribute key="Resource" value="/"/>
+<stringAttribute key="bflow" value="/org.gemoc.sample.bcool.coffeemachine/CoffeeMachine.bflow"/>
+<intAttribute key="nb_logicalSteps" value="0"/>
+</launchConfiguration>
