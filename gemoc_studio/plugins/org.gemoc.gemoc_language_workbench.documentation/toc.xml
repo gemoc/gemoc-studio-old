@@ -5,7 +5,7 @@
  <topic href="eclipse_help/guide/eclipse/Guide.html" label="GEMOC Studio User Guide">
     <link toc="eclipse_help/guide/eclipse/toc.xml"/>
  </topic>
- <topic label="GEMOC Studio Tutorials">
+ <topic label="GEMOC Studio Tutorials &amp; Examples">
     <topic href="eclipse_help/tutorial_markedgraph/eclipse/GuideTutorialMarkedGraph.html" label="Tutorial : Markedgraph">
        <link toc="eclipse_help/tutorial_markedgraph/eclipse/toc.xml"/>
     </topic>
