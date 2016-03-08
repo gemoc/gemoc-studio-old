@@ -80,6 +80,7 @@
     <components
         name="Operator for TFSM and ActivityDiagram (Incubation)"
         provider="IS3"
+        description="Deployer that installs the project sources for the coordination operator for TFSM and ActivityDiagram concurrent languages and sample models."
         license="EPL"
         groups="//@filters.0"
         image32="images/bcool-icon-32.png">
