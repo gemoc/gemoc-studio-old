@@ -7,6 +7,7 @@
         <tfsm_sample_modeling_root>${basedir}/../../../TFSM/modeling_workbench</tfsm_sample_modeling_root>
         <tfsm_plaink3_sample_modeling_root>${basedir}/../../../TFSM_PlainK3/modeling_workbench</tfsm_plaink3_sample_modeling_root>
         <sigpml_sample_modeling_root>${basedir}/../../../SigPML/modeling_workbench</sigpml_sample_modeling_root>
+        <tfsmandsigpml_sample_modeling_root>${basedir}/../../../bcool_TFSMAndSigPML/modeling_workbench</tfsmandsigpml_sample_modeling_root>
     </properties>
     
 	<parent>
@@ -53,7 +54,11 @@
 								</zip>
 								
 								
-
+								<!-- BCooL TFSM and SigPML  -->
+							
+								<zip destfile="${basedir}/zips/org.gemoc.sample.bcool.coffeemachinewithsigpml.zip">
+									<fileset dir="${tfsmandsigpml_sample_modeling_root}/org.gemoc.sample.bcool.coffeemachinewithsigpml/" />
+								</zip>
 							</tasks>
 						</configuration>
 					</execution>

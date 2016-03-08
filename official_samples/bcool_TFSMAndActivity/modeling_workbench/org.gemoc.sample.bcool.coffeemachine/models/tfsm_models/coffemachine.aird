@@ -293,7 +293,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oSLaNF_FEeW2puvWbZ7pPQ" name="Invalid feature as name" sourceNode="_oSLaDV_FEeW2puvWbZ7pPQ" targetNode="_oSLaEl_FEeW2puvWbZ7pPQ">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oSLaNF_FEeW2puvWbZ7pPQ" name="&#xA; / &#xA;doInit&#xA;" sourceNode="_oSLaDV_FEeW2puvWbZ7pPQ" targetNode="_oSLaEl_FEeW2puvWbZ7pPQ">
         <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.0"/>
         <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.0"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_IFgt4GB4EeWy5NmTI7P8Dw"/>
@@ -489,7 +489,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oS3WlF_FEeW2puvWbZ7pPQ" name="Invalid feature as name" sourceNode="_oS3WhV_FEeW2puvWbZ7pPQ" targetNode="_oS3Wil_FEeW2puvWbZ7pPQ">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oS3WlF_FEeW2puvWbZ7pPQ" name="&#xA; / &#xA;doInit&#xA;" sourceNode="_oS3WhV_FEeW2puvWbZ7pPQ" targetNode="_oS3Wil_FEeW2puvWbZ7pPQ">
         <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.0"/>
         <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.0"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_1LF1sM_dEeWO6PmQE5u1XA"/>

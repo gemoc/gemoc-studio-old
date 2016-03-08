@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="ActivityDiagram example" link_to="../org.gemoc.gemoc_language_workbench.documentation/toc.xml#GEMOC.examples">
+   <topic href="html/activitydiagram_concurrent.html" label="ActivityDiagram Concurrent Example">
+   </topic>
+   <topic href="html/activitydiagram_sequential.html" label="ActivityDiagram Sequential Example">
+   </topic>
+</toc>

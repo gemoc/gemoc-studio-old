@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TFSM and ActivityDiagram coordination SampleDeployer
+Bundle-SymbolicName: org.gemoc.tfsmandactivity.sampledeployer;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: org.gemoc.tfsmandactivity.sampledeployer.Activator
+Bundle-Vendor: GEMOC
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.equinox.registry,
+ fr.inria.diverse.commons.eclipse.jface;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

@@ -7,6 +7,7 @@
         <tfsm_sample_language_root>${basedir}/../../../TFSM/language_workbench</tfsm_sample_language_root>
         <tfsm_plaink3_sample_language_root>${basedir}/../../../TFSM_PlainK3/language_workbench</tfsm_plaink3_sample_language_root>
         <sigpml_sample_language_root>${basedir}/../../../SigPML/language_workbench</sigpml_sample_language_root>
+        <tfsmandsigpml_sample_language_root>${basedir}/../../../bcool_TFSMAndSigPML/language_workbench</tfsmandsigpml_sample_language_root>
     </properties>
     
 	<parent>
@@ -112,6 +113,12 @@
 									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sample.sigpml.xdsml/" />
 								</zip>
 								
+								
+								<!-- BCooL TFSM and SigPML  -->
+															
+								<zip destfile="${basedir}/zips/org.gemoc.sample.bcool.tfsmandsigpml.zip">
+									<fileset dir="${tfsmandsigpml_sample_language_root}/org.gemoc.sample.bcool.tfsmandsigpml/" />
+								</zip>
 							</tasks>
 						</configuration>
 					</execution>

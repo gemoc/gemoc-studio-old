@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+
+
+	<extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.gemoc.gemoc_modeling_workbench.samples.category"
+            name="GEMOC modeling workbench examples"
+            parentCategory="org.eclipse.ui.Examples"/>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
+            class="org.gemoc.tfsmandactivity.sampledeployer.wizards.TFSMAndActivityModelExampleWizard"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+            hasPages="false"
+            icon="icons/bcoolicon.png"
+            id="org.gemoc.activitydiagram.sampledeployer.wizards.ActivityDiagramModelExampleWizard"
+            name="GEMOC coffee machine models for TFSM and ActivityDiagram (Coordination)"
+            preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling">
+         <description>
+            T⁮his project contains some ActivityDiagram models that can be executed if you have installed the one or both ActivityDiagram languages (Sequential and/or Concurrent).
+         </description>
+      </wizard>
+      <category
+            id="org.gemoc.gemoc_language_workbench.samples.category"
+            name="GEMOC language workbench examples"
+            parentCategory="org.eclipse.ui.Examples"/>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
+            class="org.gemoc.tfsmandactivity.sampledeployer.wizards.TFSMAndActivityLanguageCoordinationExampleWizard"
+            finalPerspective="org.gemoc.xdsmlframework.ide.ui.xdsml.perspective"
+            hasPages="false"
+            icon="icons/bcoolicon.png"
+            id="org.gemoc.tfsmandactivity.sampledeployer.wizards.TFSMAndActivityLanguageCoordinationExampleWizard"
+            name="GEMOC operator for TFSM and ActivityDiagram languages (Coordination)"
+            preferredPerspectives="org.gemoc.xdsmlframework.ide.ui.xdsml.perspective">
+         <description>
+            T⁮his set of projects feature an ActivityDiagram concurrent language which is made executable using Gemoc.
+         </description>
+      </wizard>
+   </extension>
+ <extension
+       point="org.eclipse.help.toc">
+    <toc
+          file="toc.xml"
+          primary="false">
+    </toc>
+ </extension>
+ 
+</plugin>

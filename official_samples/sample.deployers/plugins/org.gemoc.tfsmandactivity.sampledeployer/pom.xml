@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <sample_root>${basedir}/../../sample</sample_root>
+        <sample_language_root>${basedir}/../../../bcool_TFSMAndActivity/language_workbench</sample_language_root>
+        <sample_modeling_root>${basedir}/../../../bcool_TFSMAndActivity/modeling_workbench</sample_modeling_root>
+        
+    </properties>
+    
+	<parent>
+		<relativePath>../..</relativePath>
+		<groupId>org.gemoc.official_samples.deployers</groupId>
+		<artifactId>org.gemoc.official_samples.deployers.root</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>org.gemoc.tfsmandactivity.sampledeployer</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<mkdir dir="${basedir}/zips" />
+								
+								<!-- Activity diagram Concurrent Language Workbench  -->
+								<zip destfile="${basedir}/zips/org.gemoc.sample.bcool.tfsmandactivity.zip">
+									<fileset dir="${sample_language_root}/org.gemoc.sample.bcool.tfsmandactivity/" />
+								</zip>
+
+								<!-- Activity diagram commons Modeling Workbench  -->
+								
+								<zip destfile="${basedir}/zips/org.gemoc.bcool.example.producttfsmandactivity.zip">
+									<fileset dir="${sample_modeling_root}/org.gemoc.bcool.example.producttfsmandactivity/" />
+								</zip>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project> 
+
