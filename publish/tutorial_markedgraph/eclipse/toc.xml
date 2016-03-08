@@ -9,9 +9,7 @@
       </topic>
       <topic label="Set up an xDSML project" href="ch03.html">
          <topic label="Create an xDSML Project" href="ch03.html#_create_an_xdsml_project"/>
-         <topic label="Open xDSML View" href="ch03s02.html"/>
-         <topic label="Select the AS" href="ch03s03.html"/>
-         <topic label="Select the Graphical Editor" href="ch03s04.html"/>
+         <topic label="Open the Melange file" href="ch03s02.html"/>
       </topic>
       <topic label="Define the Execution Semantics" href="ch04.html">
          <topic label="Define DSA" href="ch04.html#_define_dsa">
