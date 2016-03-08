@@ -79,7 +79,7 @@
       relevance="6">
     <components
         name="Operator for TFSM and ActivityDiagram (Incubation)"
-        provider="IS3"
+        provider="I3S"
         description="Deployer that installs the project sources for the coordination operator for TFSM and ActivityDiagram concurrent languages and sample models."
         license="EPL"
         groups="//@filters.0"
