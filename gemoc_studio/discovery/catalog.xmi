@@ -59,7 +59,7 @@
       <id>org.gemoc.activitydiagram.feature</id>
       <messages
           title="Getting started"
-          message="Once Eclipse has restarted, your example languages will be available in the File > New > Example... menu. Look for the GEMOC categories. \nSome more informations will be available in the Eclipse help."/>
+          message="Once Eclipse has restarted, your example languages will be available in the File > New > Example... menu. Look for the GEMOC categories. Some more informations will be available in the Eclipse help."/>
     </components>
     <components
         name="ArduinoModeling Languages (Sequential/Concurrent)(Incubation)"
@@ -76,7 +76,7 @@
       <id>org.gemoc.arduinomodeling.feature</id>
       <messages
           title="Getting started"
-          message="Once Eclipse has restarted, your example languages will be available in the File > New > Example... menu. Look for the GEMOC categories. \nSome more informations will be available in the Eclipse help."/>
+          message="Once Eclipse has restarted, your example languages will be available in the File > New > Example... menu. Look for the GEMOC categories. Some more informations will be available in the Eclipse help."/>
     </components>
   </categories>
   <categories
@@ -98,7 +98,7 @@
       <id>org.gemoc.tfsmandactivity.deployer.feature</id>
       <messages
           title="Getting started"
-          message="Once Eclipse has restarted, your example languages will be available in the File > New > Example... menu. Look for the GEMOC categories. \nSome more informations will be available in the Eclipse help."/>
+          message="Once Eclipse has restarted, your example languages will be available in the File > New > Example... menu. Look for the GEMOC categories. Some more informations will be available in the Eclipse help."/>
     </components>
   </categories>
   <categories
