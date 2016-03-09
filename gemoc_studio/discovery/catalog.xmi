@@ -45,7 +45,7 @@
       description="Languages designed using GEMOC."
       relevance="7">
     <components
-        name="ActivityDiagram Languages (Incubation)"
+        name="ActivityDiagram Languages (Sequential/Concurrent)(Incubation)"
         provider="GEMOC"
         description="Deployer that installs the project sources for Concurrent and/or Sequential version of the Activitydiagram Language and sample models."
         license="EPL"
@@ -57,20 +57,26 @@
           screenshot="images/activitydiagram_sequential-screenshot-320x240.png"
           url="http://github.com/gemoc/activitydiagram"/>
       <id>org.gemoc.activitydiagram.feature</id>
+      <messages
+          title="Getting started"
+          message="Once Eclipse has restarted, your example languages will be available in the File > New > Example... menu. Look for the GEMOC categories. \nSome more informations will be available in the Eclipse help."/>
     </components>
     <components
-        name="ArduinoModeling Sequential Language (Incubation)"
+        name="ArduinoModeling Languages (Sequential/Concurrent)(Incubation)"
         provider="GEMOC"
-        description="Deployer that installs the project sources for Sequential version of the ArduinoModeling Language and sample models."
+        description="Deployer that installs the project sources for Sequential and Concurrent  versions of the ArduinoModeling Language and sample models."
         license="EPL"
         groups="//@filters.0"
         image32="images/IconeGemocLanguagePlusModel-32.png">
       <sitesURLS>https://ci.inria.fr/gemoc/job/ArduinoModeling_updatesite/lastSuccessfulBuild/artifact/dev/releng/org.gemoc.arduinomodeling.repository/target/repository/</sitesURLS>
       <overview
-          summary="Deployer that installs the project sources for the sequential version of the ArduinoModeling Language developped using GEMOC. The deployer also provides some sample models."
+          summary="Deployer that installs the project sources for two versions of the ArduinoModeling Language developped using GEMOC.  One version run using the GEMOC Sequential engine, the second using the Concurrent engine. The deployer also provides some sample models."
           screenshot="images/arduinomodeling_sequential-screenshot-320x240.png"
           url="http://github.com/gemoc/arduinomodeling"/>
       <id>org.gemoc.arduinomodeling.feature</id>
+      <messages
+          title="Getting started"
+          message="Once Eclipse has restarted, your example languages will be available in the File > New > Example... menu. Look for the GEMOC categories. \nSome more informations will be available in the Eclipse help."/>
     </components>
   </categories>
   <categories
@@ -90,6 +96,9 @@
           screenshot="images/bcool-tfsm-activity-320x240.png"
           url="http://timesquare.inria.fr/BCOoL/"/>
       <id>org.gemoc.tfsmandactivity.deployer.feature</id>
+      <messages
+          title="Getting started"
+          message="Once Eclipse has restarted, your example languages will be available in the File > New > Example... menu. Look for the GEMOC categories. \nSome more informations will be available in the Eclipse help."/>
     </components>
   </categories>
   <categories
