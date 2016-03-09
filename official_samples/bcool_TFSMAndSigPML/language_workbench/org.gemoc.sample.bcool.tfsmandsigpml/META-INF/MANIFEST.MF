@@ -1,5 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Tfsmandsigpml
+Bundle-Name: BCool operator for TFSM and SigPML
 Bundle-SymbolicName: org.gemoc.sample.bcool.tfsmandsigpml
 Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.gemoc.sample.tfsm.xdsml;bundle-version="1.0.0",
+ org.gemoc.sample.sigpml.xdsml;bundle-version="1.0.0"
