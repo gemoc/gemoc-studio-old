@@ -54,7 +54,7 @@
         <ecoreFeature xsi:type="ecore:EAttribute" href="tfsm.ecore#//Transition/action"/>
       </genFeatures>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="tfsm.ecore#//NamedElement"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="tfsm.ecore#//NamedElement/name"/>

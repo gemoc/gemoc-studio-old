@@ -9,9 +9,13 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.gemoc.sample.tfsm_plaink3.FSMClock;
+import org.gemoc.sample.tfsm_plaink3.TfsmPackage;
 
 /**
  * This is the item provider adapter for a {@link org.gemoc.sample.tfsm_plaink3.FSMClock} object.
@@ -41,8 +45,31 @@ public class FSMClockItemProvider extends NamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNumberOfTicksPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Number Of Ticks feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumberOfTicksPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FSMClock_numberOfTicks_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FSMClock_numberOfTicks_feature", "_UI_FSMClock_type"),
+				 TfsmPackage.Literals.FSM_CLOCK__NUMBER_OF_TICKS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -81,6 +108,12 @@ public class FSMClockItemProvider extends NamedElementItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(FSMClock.class)) {
+			case TfsmPackage.FSM_CLOCK__NUMBER_OF_TICKS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

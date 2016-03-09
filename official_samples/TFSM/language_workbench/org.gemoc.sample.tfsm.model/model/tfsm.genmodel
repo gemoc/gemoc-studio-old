@@ -72,7 +72,7 @@
         <ecoreOperation href="tfsm.ecore#//Transition/fire"/>
       </genOperations>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="tfsm.ecore#//NamedElement"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="tfsm.ecore#//NamedElement/name"/>

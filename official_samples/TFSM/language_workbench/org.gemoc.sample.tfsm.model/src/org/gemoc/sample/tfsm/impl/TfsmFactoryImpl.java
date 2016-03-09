@@ -59,7 +59,6 @@ public class TfsmFactoryImpl extends EFactoryImpl implements TfsmFactory {
 			case TfsmPackage.TFSM: return createTFSM();
 			case TfsmPackage.STATE: return createState();
 			case TfsmPackage.TRANSITION: return createTransition();
-			case TfsmPackage.NAMED_ELEMENT: return createNamedElement();
 			case TfsmPackage.TEMPORAL_GUARD: return createTemporalGuard();
 			case TfsmPackage.EVENT_GUARD: return createEventGuard();
 			case TfsmPackage.FSM_EVENT: return createFSMEvent();
@@ -99,16 +98,6 @@ public class TfsmFactoryImpl extends EFactoryImpl implements TfsmFactory {
 	public Transition createTransition() {
 		TransitionImpl transition = new TransitionImpl();
 		return transition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NamedElement createNamedElement() {
-		NamedElementImpl namedElement = new NamedElementImpl();
-		return namedElement;
 	}
 
 	/**

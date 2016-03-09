@@ -12,6 +12,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.gemoc.sample.tfsm_plaink3.FSMEvent;
 import org.gemoc.sample.tfsm_plaink3.TfsmPackage;
 
@@ -44,6 +46,7 @@ public class FSMEventItemProvider extends NamedElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addSollicitingTransitionsPropertyDescriptor(object);
+			addIsTriggeredPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -66,6 +69,28 @@ public class FSMEventItemProvider extends NamedElementItemProvider {
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Triggered feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsTriggeredPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FSMEvent_isTriggered_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FSMEvent_isTriggered_feature", "_UI_FSMEvent_type"),
+				 TfsmPackage.Literals.FSM_EVENT__IS_TRIGGERED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -106,6 +131,12 @@ public class FSMEventItemProvider extends NamedElementItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(FSMEvent.class)) {
+			case TfsmPackage.FSM_EVENT__IS_TRIGGERED:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

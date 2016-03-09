@@ -141,29 +141,6 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.NamedElement} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected NamedElementItemProvider namedElementItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.NamedElement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createNamedElementAdapter() {
-		if (namedElementItemProvider == null) {
-			namedElementItemProvider = new NamedElementItemProvider(this);
-		}
-
-		return namedElementItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.TemporalGuard} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -403,7 +380,6 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 		if (tfsmItemProvider != null) tfsmItemProvider.dispose();
 		if (stateItemProvider != null) stateItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
-		if (namedElementItemProvider != null) namedElementItemProvider.dispose();
 		if (temporalGuardItemProvider != null) temporalGuardItemProvider.dispose();
 		if (eventGuardItemProvider != null) eventGuardItemProvider.dispose();
 		if (fsmEventItemProvider != null) fsmEventItemProvider.dispose();

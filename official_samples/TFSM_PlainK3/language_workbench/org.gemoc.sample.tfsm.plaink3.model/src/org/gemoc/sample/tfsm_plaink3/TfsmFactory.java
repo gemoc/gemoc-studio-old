@@ -49,15 +49,6 @@ public interface TfsmFactory extends EFactory {
 	Transition createTransition();
 
 	/**
-	 * Returns a new object of class '<em>Named Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Named Element</em>'.
-	 * @generated
-	 */
-	NamedElement createNamedElement();
-
-	/**
 	 * Returns a new object of class '<em>Temporal Guard</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
