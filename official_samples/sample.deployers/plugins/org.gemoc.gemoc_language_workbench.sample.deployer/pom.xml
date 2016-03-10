@@ -77,8 +77,8 @@
 								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.model.editor.zip">
 									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.model.editor/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.trace.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.trace/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.tfsm.trace.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.tfsm.trace/" />
 								</zip>
 								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.zip">
 									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml/" />
