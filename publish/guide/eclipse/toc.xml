@@ -127,7 +127,7 @@
          <topic label="Coordination of Languages with BCOoL" href="ch05.html#composing-languages-with-bcool-section">
             <topic label="What is BCOoL?" href="ch05.html#_what_is_indexterm_primary_bcool_primary_indexterm_bcool"/>
          </topic>
-         <topic label="Deploy a BCOoL operator by using the wizard" href="ch05s02.html"/>
+         <topic label="Deploy a BCOoL project by using the wizard" href="ch05s02.html"/>
          <topic label="Create a BCOoL project from scratch" href="ch05s03.html"/>
       </topic>
       <topic label="Deploy languages" href="ch06.html">
