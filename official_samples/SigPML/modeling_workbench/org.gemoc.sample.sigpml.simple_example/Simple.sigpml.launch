@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.gemoc.execution.concurrent.ccsljavaengine.ui.launcher">
+<booleanAttribute key="Event Scheduling Execution Reflective Tracing" value="true"/>
+<stringAttribute key="First Instruction" value="http://www.eclipse.org/emf/2002/Ecore#/"/>
+<intAttribute key="GEMOC_ANIMATE_DELAY" value="0"/>
+<booleanAttribute key="GEMOC_LAUNCH_BREAK_START" value="true"/>
+<stringAttribute key="GEMOC_LAUNCH_INITIALIZATION_ARGUMENTS" value=""/>
+<stringAttribute key="GEMOC_LAUNCH_INITIALIZATION_METHOD" value="org.gemoc.sample.sigpml.k3dsa.SystemAspect.initializeModel"/>
+<stringAttribute key="GEMOC_LAUNCH_MELANGE_QUERY" value=""/>
+<stringAttribute key="GEMOC_LAUNCH_SELECTED_DECIDER" value="Step by step user decider"/>
+<stringAttribute key="GEMOC_LAUNCH_SELECTED_LANGUAGE" value="org.gemoc.sample.sigpml.xdsml.Sigpml"/>
+<booleanAttribute key="Open Event Scheduling Timeline view" value="true"/>
+<booleanAttribute key="Open Multidimentional Timeline view" value="false"/>
+<stringAttribute key="Resource" value="/org.gemoc.sample.sigpml.simple_example/Simple.sigpml"/>
+<booleanAttribute key="VCD visualization" value="false"/>
+<stringAttribute key="airdResource" value="/org.gemoc.sample.sigpml.simple_example/Simple.aird"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/org.gemoc.sample.sigpml.simple_example/Simple.sigpml"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+</launchConfiguration>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.sample.tfsm.plaink3.tfsm.trace/src" modelPluginID="org.gemoc.sample.tfsm.plaink3.tfsm.trace" modelName="Tfsm_plaink3Trace" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>file:/C:/Users/dvojtise/AppData/Local/Temp/diverse3624410478415056073tracemmgeneration/tfsm_plaink3Trace.ecore</foreignModel>
+  <genPackages prefix="Tfsm_plaink3Trace" disposableProviderFactory="true">
+    <ecorePackage href="tfsm_plaink3Trace.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="tfsm_plaink3Trace.ecore#//Trace"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/Tfsm_plaink3_FSMClock_Ticks_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/Tfsm_plaink3_FSMEvent_Trigger_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/Tfsm_plaink3_FSMEvent_UnTrigger_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/Tfsm_plaink3_State_Visit_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/Tfsm_plaink3_TFSM_Init_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/Tfsm_plaink3_Transition_Fire_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/Tfsm_plaink3_Transition_Visit_Sequence"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/rootSteps"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/statesTrace"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/tfsm_plaink3_tracedFSMClocks"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/tfsm_plaink3_tracedFSMEvents"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Trace/tfsm_plaink3_tracedTFSMs"/>
+      </genFeatures>
+    </genClasses>
+    <nestedGenPackages prefix="Steps" disposableProviderFactory="true">
+      <ecorePackage href="tfsm_plaink3Trace.ecore#//Steps"/>
+      <genClasses image="false">
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/BigStep"/>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/RootImplicitStep"/>
+      </genClasses>
+      <genClasses image="false">
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/SmallStep"/>
+      </genClasses>
+      <genClasses image="false">
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Step"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Steps/Step/endingState"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Steps/Step/startingState"/>
+        </genFeatures>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_FSMClock_Ticks"/>
+        <genOperations>
+          <ecoreOperation href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_FSMClock_Ticks/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_FSMEvent_Trigger"/>
+        <genOperations>
+          <ecoreOperation href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_FSMEvent_Trigger/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_FSMEvent_UnTrigger"/>
+        <genOperations>
+          <ecoreOperation href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_FSMEvent_UnTrigger/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_State_Visit"/>
+        <genFeatures property="None" children="true" createChild="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_State_Visit/subSteps"/>
+        </genFeatures>
+        <genOperations>
+          <ecoreOperation href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_State_Visit/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false">
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_State_Visit_AbstractSubStep"/>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_State_Visit_ImplicitStep"/>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_TFSM_Init"/>
+        <genOperations>
+          <ecoreOperation href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_TFSM_Init/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_Transition_Fire"/>
+        <genOperations>
+          <ecoreOperation href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_Transition_Fire/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_Transition_Visit"/>
+        <genFeatures property="None" children="true" createChild="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_Transition_Visit/subSteps"/>
+        </genFeatures>
+        <genOperations>
+          <ecoreOperation href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_Transition_Visit/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false">
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_Transition_Visit_AbstractSubStep"/>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//Steps/Tfsm_plaink3_Transition_Visit_ImplicitStep"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="States" disposableProviderFactory="true">
+      <ecorePackage href="tfsm_plaink3Trace.ecore#//States"/>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//States/FSMClock_numberOfTicks_Value"/>
+        <genFeatures createChild="false">
+          <ecoreFeature xsi:type="ecore:EAttribute" href="tfsm_plaink3Trace.ecore#//States/FSMClock_numberOfTicks_Value/numberOfTicks"/>
+        </genFeatures>
+        <genFeatures property="None" notify="false" createChild="false">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/FSMClock_numberOfTicks_Value/parent"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/FSMClock_numberOfTicks_Value/states"/>
+        </genFeatures>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//States/FSMEvent_isTriggered_Value"/>
+        <genFeatures createChild="false">
+          <ecoreFeature xsi:type="ecore:EAttribute" href="tfsm_plaink3Trace.ecore#//States/FSMEvent_isTriggered_Value/isTriggered"/>
+        </genFeatures>
+        <genFeatures property="None" notify="false" createChild="false">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/FSMEvent_isTriggered_Value/parent"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/FSMEvent_isTriggered_Value/states"/>
+        </genFeatures>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//States/State"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/State/endedSteps"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/State/fSMClock_numberOfTicks_Values"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/State/fSMEvent_isTriggered_Values"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/State/startedSteps"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/State/tFSM_currentState_Values"/>
+        </genFeatures>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="tfsm_plaink3Trace.ecore#//States/TFSM_currentState_Value"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/TFSM_currentState_Value/currentState"/>
+        </genFeatures>
+        <genFeatures property="None" notify="false" createChild="false">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/TFSM_currentState_Value/parent"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/TFSM_currentState_Value/states"/>
+        </genFeatures>
+      </genClasses>
+      <nestedGenPackages prefix="Tfsm_plaink3" disposableProviderFactory="true">
+        <ecorePackage href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3"/>
+        <genClasses>
+          <ecoreClass href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedFSMClock"/>
+          <genFeatures property="None" children="true" createChild="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedFSMClock/numberOfTicksSequence"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedFSMClock/originalObject"/>
+          </genFeatures>
+        </genClasses>
+        <genClasses>
+          <ecoreClass href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedFSMEvent"/>
+          <genFeatures property="None" children="true" createChild="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedFSMEvent/isTriggeredSequence"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedFSMEvent/originalObject"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedFSMEvent/sollicitingTransitions"/>
+          </genFeatures>
+        </genClasses>
+        <genClasses image="false">
+          <ecoreClass href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedNamedElement"/>
+        </genClasses>
+        <genClasses>
+          <ecoreClass href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedTFSM"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedTFSM/currentState"/>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedTFSM/currentStateSequence"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedTFSM/initialState"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedTFSM/localClock"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedTFSM/localEvents"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedTFSM/originalObject"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedTFSM/ownedStates"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="tfsm_plaink3Trace.ecore#//States/tfsm_plaink3/TracedTFSM/ownedTransitions"/>
+          </genFeatures>
+        </genClasses>
+      </nestedGenPackages>
+    </nestedGenPackages>
+  </genPackages>
+  <usedGenPackages href="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"/>
+  <usedGenPackages href="../../org.gemoc.executionframework.engine.mse.model/model/GemocExecutionEngineMSE.genmodel#//mse"/>
+  <usedGenPackages href="../../org.gemoc.sample.tfsm.plaink3.model/model/tfsm.genmodel#//tfsm_plaink3"/>
+</genmodel:GenModel>
