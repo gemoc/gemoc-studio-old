@@ -7,8 +7,7 @@
    </topic>
    <topic label="Creating an xDSML Project" href="ch03.html">
       <topic label="Open xDSML view" href="ch03.html#_open_xdsml_view"/>
-      <topic label="Select the domain model" href="ch03s02.html"/>
-      <topic label="Select the graphical editor" href="ch03s03.html"/>
+      <topic label="The graphical editor" href="ch03s02.html"/>
    </topic>
    <topic label="SigPML execution semantics" href="ch04.html">
       <topic label="Execution semantics overview" href="ch04.html#_execution_semantics_overview"/>
