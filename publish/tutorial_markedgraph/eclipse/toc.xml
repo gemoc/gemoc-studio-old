@@ -22,38 +22,45 @@
             <topic label="Define DSE" href="ch04s02.html#_define_dse_2"/>
          </topic>
       </topic>
-      <topic label="Define Animation Viewpoint" href="ch05.html">
-         <topic label="Create a debug representation (as an extension of the graphical editor viewpoint)" href="ch05.html#_create_a_debug_representation_as_an_extension_of_the_graphical_editor_viewpoint">
-            <topic label="Run the wizard" href="ch05.html#_run_the_wizard"/>
-            <topic label="Open the markedgraph-animation.odesign" href="ch05.html#_open_the_markedgraph_animation_odesign"/>
-            <topic label="Load markedgraph.odesign as a resource." href="ch05.html#_load_markedgraph_odesign_as_a_resource"/>
-            <topic label="Add markedgraph.ecore to the metamodels" href="ch05.html#_add_markedgraph_ecore_to_the_metamodels"/>
-            <topic label="Complete the debug representation" href="ch05.html#_complete_the_debug_representation"/>
-            <topic label="Set the animation viewpoint in project.xml" href="ch05.html#_set_the_animation_viewpoint_in_project_xml"/>
+      <topic label="Execute a Model" href="ch05.html">
+         <topic label="Launch the Modeling WorkBench" href="ch05.html#_launch_the_modeling_workbench"/>
+         <topic label="Import the project with a sample model" href="ch05s02.html"/>
+         <topic label="Select the Modeling perspective" href="ch05s03.html"/>
+         <topic label="View the wikipedia example" href="ch05s04.html"/>
+         <topic label="Create a Launch Configuration" href="ch05s05.html"/>
+         <topic label="Launch the execution of the model" href="ch05s06.html"/>
+         <topic label="Select a logical step" href="ch05s07.html"/>
+         <topic label="Stop the execution" href="ch05s08.html"/>
+         <topic label="How to visualize the state of the model?" href="ch05s09.html"/>
+      </topic>
+      <topic label="Define Animation Viewpoint" href="ch06.html">
+         <topic label="Create a debug representation (as an extension of the graphical editor viewpoint)" href="ch06.html#_create_a_debug_representation_as_an_extension_of_the_graphical_editor_viewpoint">
+            <topic label="Run the wizard" href="ch06.html#_run_the_wizard"/>
+            <topic label="Open the markedgraph-animation.odesign" href="ch06.html#_open_the_markedgraph_animation_odesign"/>
+            <topic label="Load markedgraph.odesign as a resource." href="ch06.html#_load_markedgraph_odesign_as_a_resource"/>
+            <topic label="Add markedgraph.ecore to the metamodels" href="ch06.html#_add_markedgraph_ecore_to_the_metamodels"/>
+            <topic label="Complete the debug representation" href="ch06.html#_complete_the_debug_representation"/>
          </topic>
-         <topic label="Create an animation representation" href="ch05s02.html">
-            <topic label="Create the Animation Layer" href="ch05s02.html#_create_the_animation_layer"/>
-            <topic label="Display the firable transition with a green background color" href="ch05s02.html#_display_the_firable_transition_with_a_green_background_color"/>
-            <topic label="Set the background color of a place to light_yellow" href="ch05s02.html#_set_the_background_color_of_a_place_to_light_yellow"/>
-            <topic label="Display the runtime token count in a place" href="ch05s02.html#_display_the_runtime_token_count_in_a_place"/>
-            <topic label="Add the Animation service" href="ch05s02.html#_add_the_animation_service"/>
+         <topic label="Create an animation representation" href="ch06s02.html">
+            <topic label="Create the Animation Layer" href="ch06s02.html#_create_the_animation_layer"/>
+            <topic label="Display the firable transition with a green background color" href="ch06s02.html#_display_the_firable_transition_with_a_green_background_color"/>
+            <topic label="Set the background color of a place to light_yellow" href="ch06s02.html#_set_the_background_color_of_a_place_to_light_yellow"/>
+            <topic label="Display the runtime token count in a place" href="ch06s02.html#_display_the_runtime_token_count_in_a_place"/>
+            <topic label="Add the Animation service" href="ch06s02.html#_add_the_animation_service"/>
          </topic>
       </topic>
-      <topic label="Animate a Model" href="ch06.html">
-         <topic label="Launch the Modeling WorkBench" href="ch06.html#_launch_the_modeling_workbench"/>
-         <topic label="Import the project with a sample model" href="ch06s02.html"/>
-         <topic label="Select the Modeling perspective" href="ch06s03.html"/>
-         <topic label="Create a Launch Configuration" href="ch06s04.html"/>
-         <topic label="Launch the execution of the model" href="ch06s05.html"/>
-         <topic label="Select a logical step" href="ch06s06.html"/>
-         <topic label="Stop the execution" href="ch06s07.html"/>
+      <topic label="Animate a Model" href="ch07.html">
+         <topic label="Restart the MarkedGraph Modeling WorkBench" href="ch07.html#_restart_the_markedgraph_modeling_workbench"/>
+         <topic label="Add the MarkedGraphAnimationViewpoint to wikipedia.aird" href="ch07s02.html"/>
+         <topic label="Update the &#34;run wikipedia example&#34; configuration" href="ch07s03.html"/>
+         <topic label="Launch the execution of the model" href="ch07s04.html"/>
       </topic>
-      <topic label="Going further…​" href="ch07.html">
-         <topic label="Define a MoCCML library using CCSL" href="ch07.html#_define_a_moccml_library_using_ccsl"/>
-         <topic label="Using it in the ECL file" href="ch07s02.html"/>
+      <topic label="Going further…​" href="ch08.html">
+         <topic label="Define a MoCCML library using CCSL" href="ch08.html#_define_a_moccml_library_using_ccsl"/>
+         <topic label="Using it in the ECL file" href="ch08s02.html"/>
       </topic>
-      <topic label="Use constraint automata to define the MoCC" href="ch08.html">
-         <topic label="Define the constraint automaton using MoCCML editor" href="ch08.html#_define_the_constraint_automaton_using_moccml_editor"/>
+      <topic label="Use constraint automata to define the MoCC" href="ch09.html">
+         <topic label="Define the constraint automaton using MoCCML editor" href="ch09.html#_define_the_constraint_automaton_using_moccml_editor"/>
       </topic>
    </topic>
 </toc>
