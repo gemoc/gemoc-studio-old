@@ -185,14 +185,13 @@
          </topic>
       </topic>
       <topic label="Coordinating Model Execution" href="ch10.html">
-         <topic label="Running Example: Coordination of a Coffee Machine Model" href="ch10.html#_running_example_coordination_of_a_coffee_machine_model">
-            <topic label="Preparing the Language Workbench" href="ch10.html#_preparing_the_language_workbench"/>
-            <topic label="Getting the Modeling Workbench" href="ch10.html#_getting_the_modeling_workbench"/>
-            <topic label="Running the example" href="ch10.html#_running_the_example"/>
+         <topic label="Deploy an example project by using the wizard" href="ch10.html#_deploy_an_example_project_by_using_the_wizard"/>
+         <topic label="Description of a BFloW specification" href="ch10s02.html">
+            <topic label="Launching the coordinated execution" href="ch10s02.html#_launching_the_coordinated_execution"/>
          </topic>
       </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e3805"/>
+         <topic label="Articles" href="bi01.html#d0e3807"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>
