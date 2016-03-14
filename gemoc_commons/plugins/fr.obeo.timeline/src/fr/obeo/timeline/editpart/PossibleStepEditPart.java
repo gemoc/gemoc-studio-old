@@ -243,7 +243,9 @@ public class PossibleStepEditPart extends AbstractGraphicalEditPart {
 			}
 		} else {
 			figure.getEllipseToolTip().setText(getModel().getName());
-			if (getModel().isSelected()) {
+			if (getModel().isCurrent()) {
+				figure.getEllipse().setBackgroundColor(ColorConstants.blue);
+			} else if (getModel().isSelected()) {
 				figure.getEllipse().setBackgroundColor(ColorConstants.lightBlue);
 			} else {
 				figure.getEllipse().setBackgroundColor(ColorConstants.lightGreen);

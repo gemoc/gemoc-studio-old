@@ -230,4 +230,10 @@ public final class PossibleStep {
 		return getTimelineWindow().getProvider().getAt(branch, index);
 	}
 
+	public boolean isCurrent() {
+		final ITimelineProvider provider = getTimelineWindow().getProvider();
+
+		return branch == provider.getCurrentBranch() && index == provider.getCurrentChoice()
+				&& possibleStep == provider.getCurrentPossibleStep();
+	}
 }

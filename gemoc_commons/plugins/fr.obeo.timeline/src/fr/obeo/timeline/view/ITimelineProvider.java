@@ -179,6 +179,29 @@ public interface ITimelineProvider {
 	int[][] getPrecedings(int branch, int index, int possibleStep);
 
 	/**
+	 * Gets the current branch index.
+	 * 
+	 * @return the current branch index
+	 */
+	int getCurrentBranch();
+
+	/**
+	 * Gets the current choice index in the {@link ITimelineProvider#getCurrentBranch() current branch}.
+	 * 
+	 * @return the current choice index in the {@link ITimelineProvider#getCurrentBranch() current branch}
+	 */
+	int getCurrentChoice();
+
+	/**
+	 * Gets the current possible step for the {@link ITimelineProvider#getCurrentBranch() current branch} and
+	 * {@link ITimelineProvider#getCurrentChoice() current choice}.
+	 * 
+	 * @return the current possible step for the {@link ITimelineProvider#getCurrentBranch() current branch}
+	 *         and {@link ITimelineProvider#getCurrentChoice() current choice}
+	 */
+	int getCurrentPossibleStep();
+
+	/**
 	 * Adds a {@link ITimelineListener}.
 	 * 
 	 * @param listener
