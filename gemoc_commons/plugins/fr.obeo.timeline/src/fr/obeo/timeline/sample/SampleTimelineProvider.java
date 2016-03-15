@@ -27,6 +27,21 @@ import fr.obeo.timeline.view.AbstractTimelineProvider;
 public class SampleTimelineProvider extends AbstractTimelineProvider {
 
 	/**
+	 * The current branch index.
+	 */
+	private int currentBranch;
+
+	/**
+	 * The current choice index.
+	 */
+	private int currentChoice;
+
+	/**
+	 * The current possible step index.
+	 */
+	private int currentPossibleStep;
+
+	/**
 	 * A sample branch.
 	 *
 	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
@@ -114,6 +129,9 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 					notifyFollowingsChanged(branch, index - 1, selected[index - 1], tmp);
 					Thread.sleep(DELAY_MS / 2);
 				}
+				currentBranch = branch;
+				currentChoice = index;
+				currentPossibleStep = selected[index];
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -233,6 +251,21 @@ public class SampleTimelineProvider extends AbstractTimelineProvider {
 		}
 
 		return res;
+	}
+
+	@Override
+	public int getCurrentBranch() {
+		return currentBranch;
+	}
+
+	@Override
+	public int getCurrentChoice() {
+		return currentChoice;
+	}
+
+	@Override
+	public int getCurrentPossibleStep() {
+		return currentPossibleStep;
 	}
 
 }
