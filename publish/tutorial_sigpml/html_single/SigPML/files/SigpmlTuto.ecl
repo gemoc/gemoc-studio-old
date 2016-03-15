@@ -1,18 +1,18 @@
 import 'platform:/resource/org.gemoc.sigpmldomain/model/sigpmldomain.ecore'
 --import './sigpmldomain.ecore'
 
-ECLimport "platform:/resource/org.gemoc.sample.xSigpml.mocc/mocc/xSigpml.moccml"
+ECLimport "platform:/resource/org.gemoc.SigpmlTuto.mocc/mocc/SigpmlTuto.moccml"
 --ECLimport "./xSigpml.moccml"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" 
+
 
 
 package sigpml
 			  
 	context Block 
 		def : execute : Event = self.execute()
-		    
-			  
+		          
 	context Connector	   
 		inv ConnectorComputing: 
 			let capacity : Integer = self.oclAsType(Connector).capacity in
@@ -29,6 +29,5 @@ package sigpml
 				currentSize		  
 			)        
 			                   
-	              
+	          
 endpackage
-

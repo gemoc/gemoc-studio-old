@@ -1,27 +1,20 @@
-package org.gemoc.sample.xsigpml.k3dsa
-
-  
+package sigpml.aspects
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import sigpml.Application
-import sigpml.Block 
-import sigpml.Port
-import sigpml.InputPort
-import sigpml.OutputPort
+import sigpml.Block
 import sigpml.Connector
-import sigpml.NamedElement
 
-  
 
 @Aspect(className=Application)
-class ApplicationAspect extends org.gemoc.sample.xsigpml.k3dsa.NamedElementAspect {
+class ApplicationAspect {
 
 		
 }
   
   
 @Aspect(className=Block)
-class BlockAspect extends org.gemoc.sample.xsigpml.k3dsa.NamedElementAspect {
+class BlockAspect {
 
 	public int currentExecCycle = 0
 
@@ -31,36 +24,26 @@ class BlockAspect extends org.gemoc.sample.xsigpml.k3dsa.NamedElementAspect {
 		if ( _self.currentExecCycle < _self.cycles )
 			_self.currentExecCycle = _self.currentExecCycle + 1
 		else 
-			_self.currentExecCycle = 0
+		_self.currentExecCycle = 0
 
 		println(_self.name + "\n      execute (" + _self.currentExecCycle + ")" )
 		
-	}
+			
+}
+
+
+
+
 
 }
 
 
 @Aspect(className=Connector)
-class ConnectorAspect extends org.gemoc.sample.xsigpml.k3dsa.NamedElementAspect {
+class ConnectorAspect {
 
-
-	def public void push() {
-
-		println( " Push on : " + _self.name + "\n ")
-	}
-
-	def public void pop() {
-
-		println( " Pop on : " + _self.name + "\n ")
-	}
 	
 }
 
-
-@Aspect(className=NamedElement)
-abstract class NamedElementAspect {
-
-}
 
 
 

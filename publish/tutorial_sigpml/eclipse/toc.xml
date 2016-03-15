@@ -2,12 +2,12 @@
 <toc label="SigPML overview" topic="Tutorial_SigPML.html">
    <topic label="SigPML overview" href="ch01.html"/>
    <topic label="Import and install the projects for the abstract and concrete syntax" href="ch02.html">
-      <topic label="SigPML abstract syntax" href="ch02.html#_sigpml_abstract_syntax"/>
-      <topic label="SigPML concrete syntax and sample model" href="ch02s02.html"/>
+      <topic label="Abstract and concrete syntax of the SigPML language projects" href="ch02.html#_abstract_and_concrete_syntax_of_the_sigpml_language_projects"/>
+      <topic label="SigPML abstract syntax" href="ch02s02.html"/>
+      <topic label="SigPML concrete syntax and sample model" href="ch02s03.html"/>
    </topic>
    <topic label="Creating an xDSML Project" href="ch03.html">
-      <topic label="Open xDSML view" href="ch03.html#_open_xdsml_view"/>
-      <topic label="The graphical editor" href="ch03s02.html"/>
+      <topic label="Open xDSML root definition" href="ch03.html#_open_xdsml_root_definition"/>
    </topic>
    <topic label="SigPML execution semantics" href="ch04.html">
       <topic label="Execution semantics overview" href="ch04.html#_execution_semantics_overview"/>
@@ -16,13 +16,13 @@
          <topic label="Creating the DSA project" href="ch04s02.html#_creating_the_dsa_project"/>
          <topic label="Implementation of the DSA" href="ch04s02.html#_implementation_of_the_dsa"/>
       </topic>
-      <topic label="DSE definition" href="ch04s03.html">
-         <topic label="Creating the ECL project" href="ch04s03.html#_creating_the_ecl_project"/>
-         <topic label="Implementation of the ECL" href="ch04s03.html#_implementation_of_the_ecl"/>
+      <topic label="MoCCML definition" href="ch04s03.html">
+         <topic label="Creating the MoCCML project" href="ch04s03.html#_creating_the_moccml_project"/>
+         <topic label="Implementation of the MoCCML" href="ch04s03.html#_implementation_of_the_moccml"/>
       </topic>
-      <topic label="MoCCML definition" href="ch04s04.html">
-         <topic label="Creating the MoCCML project" href="ch04s04.html#_creating_the_moccml_project"/>
-         <topic label="Implementation of the MoCCML" href="ch04s04.html#_implementation_of_the_moccml"/>
+      <topic label="DSE definition" href="ch04s04.html">
+         <topic label="Creating the ECL project" href="ch04s04.html#_creating_the_ecl_project"/>
+         <topic label="Implementation of the ECL" href="ch04s04.html#_implementation_of_the_ecl"/>
       </topic>
       <topic label="Create an animator" href="ch04s05.html">
          <topic label="Creating the Animator project as a Sirius viewpoint" href="ch04s05.html#_creating_the_animator_project_as_a_sirius_viewpoint"/>
