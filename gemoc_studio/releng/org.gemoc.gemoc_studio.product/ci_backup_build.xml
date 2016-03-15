@@ -10,8 +10,8 @@
 	<property name="deploy.server" value="gemoc.irisa.fr"/>
 	<property name="deploy.user" value="web-gemoc"/>
 	<property name="deploy.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/time_shifting_versions"/> 
-	
-	
+		
+	<target name="all_and_publish" depends="clean_local, dowload, upload, copy_to_publish"></target>
 
 	<tstamp>
 	  <format property="TODAY_MONTH"
@@ -33,7 +33,8 @@
 	<property name="deploy.day_of_month.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/time_shifting_versions/day_of_month_${TODAY_DAY_OF_MONTH}"/>
 	<property name="deploy.day_of_week.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/time_shifting_versions/day_of_week_${TODAY_DAY_OF_WEEK}"/>	
 	<property name="deploy.week_of_month.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/time_shifting_versions/week_of_month_${TODAY_WEEK_OF_MONTH}"/>
-	
+	<property name="deploy.publish.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/gemoc_studio_${TODAY_YYYY_MM_DD}"/>
+		
 	<target name="all" depends="clean_local, dowload, upload"></target>
 	
 	<target name="upload" > 
@@ -93,6 +94,15 @@
 								 passphrase=""
 							     trust="yes"
 							     command="cp -r ${deploy.day_of_week.path}  ${deploy.week_of_month.path};"/>		
+	</target>
+
+	<target name="copy_to_publish">
+		<sshexec host="${deploy.server}"
+						         username="${deploy.user}"
+								 keyfile="${key.file}"
+								 passphrase=""
+							     trust="yes"
+							     command="cp -r ${deploy.day_of_week.path}  ${deploy.publish.path};"/>
 	</target>
 	
 	<target name="dowload" >
