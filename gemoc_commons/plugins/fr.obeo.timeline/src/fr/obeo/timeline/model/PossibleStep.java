@@ -232,8 +232,8 @@ public final class PossibleStep {
 
 	public boolean isCurrent() {
 		final ITimelineProvider provider = getTimelineWindow().getProvider();
-
-		return branch == provider.getCurrentBranch() && index == provider.getCurrentChoice()
-				&& possibleStep == provider.getCurrentPossibleStep();
+		return branch == provider.getCurrentBranch() && index == provider.getCurrentChoice();
+		// return branch == provider.getCurrentBranch() && index == provider.getCurrentChoice()
+		// && possibleStep == provider.getCurrentPossibleStep();
 	}
 }
