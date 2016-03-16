@@ -33,7 +33,7 @@
 	<property name="deploy.day_of_month.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/time_shifting_versions/day_of_month_${TODAY_DAY_OF_MONTH}"/>
 	<property name="deploy.day_of_week.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/time_shifting_versions/day_of_week_${TODAY_DAY_OF_WEEK}"/>	
 	<property name="deploy.week_of_month.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/time_shifting_versions/week_of_month_${TODAY_WEEK_OF_MONTH}"/>
-	<property name="deploy.publish.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/gemoc_studio_${TODAY_YYYY_MM_DD}"/>
+	<property name="deploy.publish.path" value="/home/web/apache/sites/gemoc.irisa.fr/htdocs/pub/studio/gemoc_studio_latest"/>
 		
 	<target name="all" depends="clean_local, dowload, upload"></target>
 	
