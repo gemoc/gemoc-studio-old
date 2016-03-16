@@ -33,20 +33,20 @@ choose <span class="emphasis"><em>GEMOC Languge &gt; Create DSA Project for lang
 On the next screen, the project name is already initialized.  Click 'Finish'
 and the 'org.gemoc.sample.markedgraph.k3dsa' is created and the Melange file is completed with references to aspects implemented the ED and EF.</p><div class="figure"><a name="d0e313"></a><div class="figure-contents"><div class="mediaobject"><img src="./MarkedGraph/images/v2.1/MG-XDSML-15-melange-with-dsa.png" width="800" alt="The Melange file with references to aspects implementing ED and EF"></div></div><p class="title"><b>Figure&nbsp;4.3.&nbsp;The Melange file with references to aspects implementing ED and EF</b></p></div><br class="figure-break"></div><div class="section" title="4.1.3.&nbsp;Implement the DSA"><div class="titlepage"><div><div><h3 class="title"><a name="_implement_the_dsa"></a>4.1.3.&nbsp;Implement the DSA</h3></div></div></div><p>Open the <span class="emphasis"><em>markedgraphAspects.xtend</em></span> file.  It is located in the <span class="emphasis"><em>org.gemoc.sample.markedgraph.k3dsa</em></span> project in <span class="emphasis"><em>src/markedgraph.aspects</em></span>.
 The file has been initialized with a template that can be discarded and
-replaced with the <a class="link" href="MarkedGraph/markedgraph.xtend" target="_top">following text</a>.</p><pre class="programlisting"><b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">package</b> markedgraph.aspects
+replaced with the <a class="link" href="MarkedGraph/markedgraphAspects.xtend" target="_top">following text</a>.</p><pre class="programlisting"><b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">package</b> markedgraph.aspects
 
 <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> fr.inria.diverse.k3.al.annotationprocessor.Aspect
 <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> markedgraph.MarkedGraph
 <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> markedgraph.Place
 <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> markedgraph.Transition
 
-<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">static</b> extension markedgraph.aspects.PlaceAspect.*
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">static</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">extension</b> markedgraph.aspects.PlaceAspect.*
 
 <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color: darkred">@Aspect(className=MarkedGraph)</b>
 <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">class</b> MarkedGraphAspect {
 	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">def</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">public</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">void</b> initialize() {
-		println(<i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"Graph "</i> + _self.name + <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">" initialized."</i>)
-		_self.places.forEach [ pl | pl.initialize ]
+		println(<i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"Graph "</i> + <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.name + <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">" initialized."</i>)
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.places.forEach [ pl | pl.initialize ]
 	}
 }
 
@@ -56,16 +56,16 @@ replaced with the <a class="link" href="MarkedGraph/markedgraph.xtend" target="_
 
 	<i xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-comment" style="color: darkgreen">// @Helper</i>
 	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">def</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">public</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">void</b> initialize() {
-		println(<i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"Place "</i> + _self.name + <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">": initialized."</i>)
-		_self.runtimeTokenCount = _self.tokenCount
+		println(<i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"Place "</i> + <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.name + <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">": initialized."</i>)
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.runtimeTokenCount = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.tokenCount
 	}
 }
 
 <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color: darkred">@Aspect(className=Transition)</b>
 <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">class</b> TransitionAspect {
 	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">def</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">public</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">void</b> fire() {
-		println(<i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"Transition "</i> + _self.name + <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">": fired."</i>)
-		_self.inputs.forEach[ runtimeTokenCount = runtimeTokenCount - <span class="hl-number">1</span> ]
-		_self.outputs.forEach[ runtimeTokenCount = runtimeTokenCount + <span class="hl-number">1</span> ]
+		println(<i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"Transition "</i> + <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.name + <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">": fired."</i>)
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.inputs.forEach[ runtimeTokenCount = runtimeTokenCount - <span class="hl-number">1</span> ]
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.outputs.forEach[ runtimeTokenCount = runtimeTokenCount + <span class="hl-number">1</span> ]
 	}
 }</pre><div class="figure"><a name="d0e341"></a><div class="figure-contents"><div class="mediaobject"><img src="./MarkedGraph/images/v2.1/MG-XDSML-18-dsa-file-completed.png" width="800" alt="Definition of the DSA (ED and EF)"></div></div><p class="title"><b>Figure&nbsp;4.4.&nbsp;Definition of the DSA (ED and EF)</b></p></div><br class="figure-break"><p>There is an error in the Melange file because no aspect has been defined on the NamedElement metaclass.  Just comment out the corresponding line.</p><div class="figure"><a name="d0e352"></a><div class="figure-contents"><div class="mediaobject"><img src="./MarkedGraph/images/v2.1/MG-XDSML-19-melange-with-dsa-corrected.png" width="800" alt="Corrected Melange file"></div></div><p class="title"><b>Figure&nbsp;4.5.&nbsp;Corrected Melange file</b></p></div><br class="figure-break"></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="pt01.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch04s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.2.&nbsp;Open the Melange file&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="GuideTutorialMarkedGraph.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;4.2.&nbsp;Define DSE</td></tr></table></div></body></html>

@@ -91,19 +91,6 @@
                   </topic>
                </topic>
             </topic>
-            <topic label="Defining the Domain-Specific Events (DSE)" href="ch03s02.html#_defining_the_domain_specific_events_dse">
-               <topic label="Purpose" href="ch03s02.html#_purpose_5"/>
-               <topic label="Creating the DSE Project" href="ch03s02.html#_creating_the_dse_project"/>
-               <topic label="Editing the DSE Project" href="ch03s02.html#_editing_the_dse_project">
-                  <topic label="Defining an Atomic Domain-Specific Event" href="ch03s02.html#_defining_an_atomic_domain_specific_event"/>
-                  <topic label="Semantics of Atomic Domain-Specific Events" href="ch03s02.html#_semantics_of_atomic_domain_specific_events"/>
-               </topic>
-            </topic>
-            <topic label="Defining the Feedback Specification" href="ch03s02.html#_defining_the_indexterm_primary_feedback_specification_primary_indexterm_feedback_specification">
-               <topic label="Purpose" href="ch03s02.html#_purpose_6"/>
-               <topic label="Creating a Feedback Policy" href="ch03s02.html#_creating_a_indexterm_primary_feedback_policy_primary_indexterm_feedback_policy"/>
-               <topic label="Semantics of the Feedback Policy" href="ch03s02.html#_semantics_of_the_feedback_policy"/>
-            </topic>
             <topic label="Exhaustive Exploration and Verification at Language Design Time" href="ch03s02.html#section-exhaustive-exploration-lw">
                <topic label="Generating inputs for Exhaustive Exploration tools : T1 at Language Level" href="ch03s02.html#_generating_inputs_for_exhaustive_exploration_tools_emphasis_t1_emphasis_at_language_level"/>
             </topic>
@@ -191,7 +178,7 @@
          </topic>
       </topic>
       <topic label="Bibliography" href="bi01.html">
-         <topic label="Articles" href="bi01.html#d0e3815"/>
+         <topic label="Articles" href="bi01.html#d0e3673"/>
       </topic>
       <topic label="Glossary" href="go01.html"/>
       <topic label="Index" href="ix01.html"/>

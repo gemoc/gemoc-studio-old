@@ -1,127 +1,118 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <index>
    <entry keyword="Animation Manager">
-      <topic href="ch09.html#d0e2521"/>
+      <topic href="ch09.html#d0e2379"/>
    </entry>
    <entry keyword="Animation Manager">
-      <topic href="ch09s02.html#d0e2968"/>
+      <topic href="ch09s02.html#d0e2826"/>
    </entry>
    <entry keyword="BCOoL">
-      <topic href="ch05.html#d0e2143"/>
+      <topic href="ch05.html#d0e2001"/>
    </entry>
    <entry keyword="BCOoL">
-      <topic href="ch05.html#d0e2148"/>
+      <topic href="ch05.html#d0e2006"/>
    </entry>
    <entry keyword="BCOoL">
-      <topic href="ch05.html#d0e2167"/>
+      <topic href="ch05.html#d0e2025"/>
    </entry>
    <entry keyword="Both representations (graphical or textual) can be used for edition of models">
-      <topic href="ch03s02.html#d0e1471"/>
+      <topic href="ch03s02.html#d0e1463"/>
    </entry>
    <entry keyword="CDL">
-      <topic href="ch09s03.html#d0e3287"/>
+      <topic href="ch09s03.html#d0e3145"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3278"/>
+      <topic href="ch09s03.html#d0e3136"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3337"/>
+      <topic href="ch09s03.html#d0e3195"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3362"/>
+      <topic href="ch09s03.html#d0e3220"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3379"/>
+      <topic href="ch09s03.html#d0e3237"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3388"/>
+      <topic href="ch09s03.html#d0e3246"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3395"/>
+      <topic href="ch09s03.html#d0e3253"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3414"/>
+      <topic href="ch09s03.html#d0e3272"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3433"/>
+      <topic href="ch09s03.html#d0e3291"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3488"/>
+      <topic href="ch09s03.html#d0e3346"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3494"/>
+      <topic href="ch09s03.html#d0e3352"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3502"/>
+      <topic href="ch09s03.html#d0e3360"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3511"/>
+      <topic href="ch09s03.html#d0e3369"/>
    </entry>
    <entry keyword="ClockSystem">
-      <topic href="ch09s03.html#d0e3617"/>
+      <topic href="ch09s03.html#d0e3475"/>
    </entry>
    <entry keyword="Concurrent Engine">
-      <topic href="ch09s02.html#d0e2837"/>
+      <topic href="ch09s02.html#d0e2695"/>
    </entry>
    <entry keyword="Decider">
-      <topic href="ch09s02.html#d0e2865"/>
+      <topic href="ch09s02.html#d0e2723"/>
    </entry>
    <entry keyword="DSA">
-      <topic href="ch03s02.html#d0e1867"/>
+      <topic href="ch03s02.html#d0e1725"/>
    </entry>
    <entry keyword="DSA">
-      <topic href="ch09s03.html#d0e3311"/>
+      <topic href="ch09s03.html#d0e3169"/>
    </entry>
    <entry keyword="DSE">
-      <topic href="ch03s02.html#d0e1873"/>
+      <topic href="ch03s02.html#d0e1731"/>
    </entry>
    <entry keyword="DSE">
-      <topic href="ch09s03.html#d0e3317"/>
+      <topic href="ch09s03.html#d0e3175"/>
    </entry>
    <entry keyword="ECL">
-      <topic href="ch03s02.html#d0e1215"/>
+      <topic href="ch03s02.html#d0e1207"/>
    </entry>
    <entry keyword="ECL">
-      <topic href="ch03s02.html#d0e1838"/>
+      <topic href="ch03s02.html#d0e1696"/>
    </entry>
    <entry keyword="ECL">
-      <topic href="ch03s02.html#d0e1892"/>
+      <topic href="ch03s02.html#d0e1750"/>
    </entry>
    <entry keyword="ECL">
-      <topic href="ch03s02.html#d0e1928"/>
+      <topic href="ch03s02.html#d0e1786"/>
    </entry>
    <entry keyword="EMF">
-      <topic href="ch02s02.html#d0e903"/>
+      <topic href="ch02s02.html#d0e895"/>
    </entry>
    <entry keyword="EMF Tree Editor">
-      <topic href="ch08s02.html#d0e2384"/>
+      <topic href="ch08s02.html#d0e2242"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch09.html#d0e2481"/>
+      <topic href="ch09.html#d0e2339"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch09.html#d0e2512"/>
+      <topic href="ch09.html#d0e2370"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch09s02.html#d0e2904"/>
+      <topic href="ch09s02.html#d0e2762"/>
    </entry>
    <entry keyword="Engine">
-      <topic href="ch09s02.html#d0e2935"/>
-   </entry>
-   <entry keyword="Feedback Policy">
-      <topic href="ch03s02.html#d0e1757"/>
-   </entry>
-   <entry keyword="Feedback Specification">
-      <topic href="ch03s02.html#d0e1729"/>
-   </entry>
-   <entry keyword="GEL">
-      <topic href="ch03s02.html#d0e1750"/>
+      <topic href="ch09s02.html#d0e2793"/>
    </entry>
    <entry keyword="GEMOC Language Workbench">
       <topic href="ch01.html#d0e289"/>
    </entry>
    <entry keyword="import">
-      <topic href="ch03s02.html#d0e1282"/>
+      <topic href="ch03s02.html#d0e1274"/>
    </entry>
    <entry keyword="Language Designer">
       <topic href="ch01.html#d0e294"/>
@@ -130,123 +121,123 @@
       <topic href="ch01.html#d0e298"/>
    </entry>
    <entry keyword="Language Workbench">
-      <topic href="ch01.html#d0e326"/>
+      <topic href="ch01.html#d0e318"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch09s02.html#d0e2869"/>
+      <topic href="ch09s02.html#d0e2727"/>
    </entry>
    <entry keyword="Logical Step">
-      <topic href="ch09s02.html#d0e3215"/>
+      <topic href="ch09s02.html#d0e3073"/>
    </entry>
    <entry keyword="MoCCML">
-      <topic href="ch03s02.html#d0e1224"/>
+      <topic href="ch03s02.html#d0e1216"/>
    </entry>
    <entry keyword="MoCCML">
-      <topic href="ch03s02.html#d0e1805"/>
+      <topic href="ch03s02.html#d0e1663"/>
    </entry>
    <entry keyword="MoCCML">
-      <topic href="ch03s02.html#d0e1811"/>
+      <topic href="ch03s02.html#d0e1669"/>
    </entry>
    <entry keyword="MoCCML">
-      <topic href="ch03s02.html#d0e1898"/>
+      <topic href="ch03s02.html#d0e1756"/>
    </entry>
    <entry keyword="MoCCML">
-      <topic href="ch03s02.html#d0e1907"/>
+      <topic href="ch03s02.html#d0e1765"/>
    </entry>
    <entry keyword="MoCCML">
-      <topic href="ch09s03.html#d0e3243"/>
+      <topic href="ch09s03.html#d0e3101"/>
    </entry>
    <entry keyword="MoCCML">
-      <topic href="ch09s03.html#d0e3249"/>
+      <topic href="ch09s03.html#d0e3107"/>
    </entry>
    <entry keyword="MoCCML">
-      <topic href="ch09s03.html#d0e3401"/>
+      <topic href="ch09s03.html#d0e3259"/>
    </entry>
    <entry keyword="MoCCML">
-      <topic href="ch09s03.html#d0e3579"/>
+      <topic href="ch09s03.html#d0e3437"/>
    </entry>
    <entry keyword="MoccML">
-      <topic href="ch03s02.html#d0e1879"/>
+      <topic href="ch03s02.html#d0e1737"/>
    </entry>
    <entry keyword="MoccML">
-      <topic href="ch09s03.html#d0e3323"/>
+      <topic href="ch09s03.html#d0e3181"/>
    </entry>
    <entry keyword="Modeling workbench">
-      <topic href="ch07.html#d0e2333"/>
+      <topic href="ch07.html#d0e2191"/>
    </entry>
    <entry keyword="mtl-gen">
-      <topic href="ch03s02.html#d0e1917"/>
+      <topic href="ch03s02.html#d0e1775"/>
    </entry>
    <entry keyword="MultiBranch Timeline">
-      <topic href="ch09.html#d0e2490"/>
+      <topic href="ch09.html#d0e2348"/>
    </entry>
    <entry keyword="MultiBranch Timeline">
-      <topic href="ch09.html#d0e2551"/>
-   </entry>
-   <entry keyword="MultiBranch Timeline">
-      <topic href="ch09s02.html#d0e2913"/>
-   </entry>
-   <entry keyword="MultiBranch Timeline">
-      <topic href="ch09s02.html#d0e2944"/>
-   </entry>
-   <entry keyword="MultiDimensional Timeline">
-      <topic href="ch09.html#d0e2560"/>
-   </entry>
-   <entry keyword="Runtime Data">
-      <topic href="ch09.html#d0e2538"/>
-   </entry>
-   <entry keyword="Runtime Data">
-      <topic href="ch09.html#d0e2819"/>
-   </entry>
-   <entry keyword="Runtime Data">
-      <topic href="ch09s02.html#d0e2985"/>
-   </entry>
-   <entry keyword="Runtime Data">
-      <topic href="ch09s02.html#d0e3231"/>
-   </entry>
-   <entry keyword="Sequential Engine">
       <topic href="ch09.html#d0e2409"/>
    </entry>
-   <entry keyword="Sirius">
-      <topic href="ch02s02.html#d0e888"/>
+   <entry keyword="MultiBranch Timeline">
+      <topic href="ch09s02.html#d0e2771"/>
+   </entry>
+   <entry keyword="MultiBranch Timeline">
+      <topic href="ch09s02.html#d0e2802"/>
+   </entry>
+   <entry keyword="MultiDimensional Timeline">
+      <topic href="ch09.html#d0e2418"/>
+   </entry>
+   <entry keyword="Runtime Data">
+      <topic href="ch09.html#d0e2396"/>
+   </entry>
+   <entry keyword="Runtime Data">
+      <topic href="ch09.html#d0e2677"/>
+   </entry>
+   <entry keyword="Runtime Data">
+      <topic href="ch09s02.html#d0e2843"/>
+   </entry>
+   <entry keyword="Runtime Data">
+      <topic href="ch09s02.html#d0e3089"/>
+   </entry>
+   <entry keyword="Sequential Engine">
+      <topic href="ch09.html#d0e2267"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch04.html#d0e1969"/>
+      <topic href="ch02s02.html#d0e880"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch04.html#d0e1975"/>
+      <topic href="ch04.html#d0e1827"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch04.html#d0e1984"/>
+      <topic href="ch04.html#d0e1833"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch04.html#d0e2115"/>
+      <topic href="ch04.html#d0e1842"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch08.html#d0e2348"/>
+      <topic href="ch04.html#d0e1973"/>
    </entry>
    <entry keyword="Sirius">
-      <topic href="ch08.html#d0e2354"/>
+      <topic href="ch08.html#d0e2206"/>
+   </entry>
+   <entry keyword="Sirius">
+      <topic href="ch08.html#d0e2212"/>
    </entry>
    <entry keyword="Sirius)">
-      <topic href="ch08.html#d0e2360"/>
+      <topic href="ch08.html#d0e2218"/>
    </entry>
    <entry keyword="Stimuli Manager">
-      <topic href="ch09s02.html#d0e2959"/>
+      <topic href="ch09s02.html#d0e2817"/>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch07.html#d0e2323"/>
+      <topic href="ch07.html#d0e2181"/>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch01.html#d0e320"/>
+      <topic href="ch01.html#d0e312"/>
       <entry keyword="Language Workbench">
-         <topic href="ch01.html#d0e322"/>
+         <topic href="ch01.html#d0e314"/>
       </entry>
    </entry>
    <entry keyword="TFSM">
-      <topic href="ch07.html#d0e2327"/>
+      <topic href="ch07.html#d0e2185"/>
       <entry keyword="Modeling workbench">
-         <topic href="ch07.html#d0e2329"/>
+         <topic href="ch07.html#d0e2187"/>
       </entry>
    </entry>
 </index>
