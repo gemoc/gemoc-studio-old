@@ -8,42 +8,42 @@ project is created with a template for the MarkedGraphL.ecl file (found in the
 ecl directory).</p><div class="figure"><a name="d0e434"></a><div class="figure-contents"><div class="mediaobject"><img src="./MarkedGraph/images/v2.1/MG-XDSML-25-dse-template.png" width="800" alt="Template of the ECL file"></div></div><p class="title"><b>Figure&nbsp;4.8.&nbsp;Template of the ECL file</b></p></div><br class="figure-break"></div><div class="section" title="4.2.2.&nbsp;Define DSE"><div class="titlepage"><div><div><h3 class="title"><a name="_define_dse_2"></a>4.2.2.&nbsp;Define DSE</h3></div></div></div><p>Replace the content of the ECL file with the
 <a class="link" href="MarkedGraph/markedgraph.ecl" target="_top">following code</a> (explanations on
 this code are given bellow):</p><p title="The file markedgraph.ecl"><b>The file markedgraph.ecl.&nbsp;</b>
-</p><pre class="screen">import 'platform:/resource/org.gemoc.sample.markedgraph.model/model/markedgraph.ecore'
+</p><pre class="programlisting"><b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> 'platform:/resource/org.gemoc.sample.markedgraph.model/model/markedgraph.ecore'
 
-ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
-ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">ECLimport</b> <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"</i>
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">ECLimport</b> <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"</i>
 
-package markedgraph
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">package</b> markedgraph
 
-	context MarkedGraph
-		def: initIt: Event = self.initialize()
+	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">context</b> MarkedGraph
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">def</b>: initIt: <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Event</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.initialize()
 
-	context Transition
-		def: fireIt: Event = self.fire()
+	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">context</b> Transition
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">def</b>: fireIt: <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Event</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.fire()
 
-	context Place
-		inv tokenCountIsNull:
-			(self.tokenCount = 0) implies
-				(Relation Precedes(self.input.fireIt, self.output.fireIt))
-		inv tokenCountIsNotNullDelayRequired:
-			(self.tokenCount &gt; 0) implies
-				let delay: Integer = self.tokenCount in
-				let outputDelayed: Event =
-					Expression DelayFor(self.output.fireIt, self.output.fireIt, delay) in
-						Relation Precedes(self.input.fireIt, outputDelayed)
+	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">context</b> Place
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">inv</b> tokenCountIsNull:
+			(<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.tokenCount = 0) <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">implies</b>
+				(<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Relation</b> Precedes(<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.input.fireIt, <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.output.fireIt))
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">inv</b> tokenCountIsNotNullDelayRequired:
+			(<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.tokenCount &gt; 0) <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">implies</b>
+				<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> delay: Integer = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.tokenCount in
+				<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> outputDelayed: <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Event</b> =
+					<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Expression</b> DelayFor(<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.output.fireIt, <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.output.fireIt, delay) in
+						<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Relation</b> Precedes(<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.input.fireIt, outputDelayed)
 
-	context MarkedGraph
-        inv initFirst:
-                let firstInit : Event = Expression OneTickAndNoMore(self.initIt) in
-                let allFire : Event = Expression Union(self.transitions.fireIt) in
-                let firstOfAllFire : Event = Expression OneTickAndNoMore(allFire) in
-                Relation Precedes(firstInit, firstOfAllFire)
+	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">context</b> MarkedGraph
+        <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">inv</b> initFirst:
+                <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> firstInit : <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Event</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Expression</b> OneTickAndNoMore(<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.initIt) in
+                <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> allFire : <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Event</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Expression</b> Union(<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.transitions.fireIt) in
+                <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> firstOfAllFire : <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Event</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Expression</b> OneTickAndNoMore(allFire) in
+                <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Relation</b> Precedes(firstInit, firstOfAllFire)
 
-        inv onlyOneInit:
-                let firstInit2 : Event = Expression OneTickAndNoMore(self.initIt) in
-                Relation Coincides(self.initIt, firstInit2)
+        <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">inv</b> onlyOneInit:
+                <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> firstInit2 : <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Event</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Expression</b> OneTickAndNoMore(<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.initIt) in
+                <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Relation</b> Coincides(<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.initIt, firstInit2)
 
-endpackage</pre><p title="The file markedgraph.ecl">
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">endpackage</b></pre><p title="The file markedgraph.ecl">
 </p><div class="figure"><a name="d0e459"></a><div class="figure-contents"><div class="mediaobject"><img src="./MarkedGraph/images/v2.1/MG-XDSML-26-dse-completed.png" width="800" alt="Definition of the DSE (events and constraints)"></div></div><p class="title"><b>Figure&nbsp;4.9.&nbsp;Definition of the DSE (events and constraints)</b></p></div><br class="figure-break"><p>This step has three main purposes:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">First, it specifies DSE in the context of metaclasses of the AS.
 For Marked Graph xDSML, we identify 2 DSE:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">fireIt: defined in the context of a Transition</li><li class="listitem">initIt: defined in the context of a MarkedGraph</li></ul></div></li><li class="listitem"><p class="simpara">Then, it links them to EF from DSA --- when a DSE will occur the
 associated EF will be executed.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">fireIt is linked to the EF 'fire' of Transition</li><li class="listitem">initIt is linked to the EF 'initialize' of MarkedGraph</li></ul></div></li><li class="listitem"><p class="simpara">Finally, it defines constraints on the DSE to rule the possible

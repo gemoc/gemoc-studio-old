@@ -5,31 +5,31 @@ In this program, you declare the metaclasses that you want to select ED or EF, a
 In the context of <span class="emphasis"><em>Block</em></span> an event <span class="emphasis"><em>execute</em></span> is defined relative to the execution function of the same name in the <span class="emphasis"><em>Block</em></span> metaclass.
 In the context of <span class="emphasis"><em>Connector</em></span>, an invariant is declared based on the call of the relation declaration defined previously in the MoCCML model. The arguments of this relation are associated to the attributes of the metaclasses <span class="emphasis"><em>Connector</em></span> and also we can access by navigation expression to the others <span class="emphasis"><em>Ports</em></span> (for the <span class="emphasis"><em>rate</em></span> attribute) and <span class="emphasis"><em>Block</em></span> (for the <span class="emphasis"><em>execute</em></span> EF).</p><p>The source code is available through
 <a class="link" href="SigPML/files/xSigpml.ecl" target="_top">the ECL program</a>
-and showed below</p><pre class="screen">import 'platform:/resource/org.gemoc.sigpmldomain/model/sigpmldomain.ecore'
---import './sigpmldomain.ecore'
+and showed below</p><pre class="programlisting"><b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> 'platform:/resource/org.gemoc.sigpmldomain/model/sigpmldomain.ecore'
+--<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> './sigpmldomain.ecore'
 
-ECLimport "platform:/resource/org.gemoc.SigpmlTuto.mocc/mocc/SigpmlTuto.moccml"
---ECLimport "./xSigpml.moccml"
-ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
-ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">ECLimport</b> <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"platform:/resource/org.gemoc.SigpmlTuto.mocc/mocc/SigpmlTuto.moccml"</i>
+--<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">ECLimport</b> <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"./xSigpml.moccml"</i>
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">ECLimport</b> <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"</i>
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">ECLimport</b> <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"</i>
 
 
 
-package sigpml
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">package</b> sigpml
 
-	context Block
-		def : execute : Event = self.execute()
+	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">context</b> Block
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">def</b> : execute : <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Event</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.execute()
 
-	context Connector
-		inv ConnectorComputing:
-			let capacity : Integer = self.oclAsType(Connector).capacity in
-		 	let inRate : Integer = self.itsInputPort.oclAsType(Port).rate in
-		 	let outRate : Integer = self.itsOutputPort.oclAsType(Port).rate in
-		 	let currentSize : Integer = self.oclAsType(Connector).currentSize in
+	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">context</b> Connector
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">inv</b> ConnectorComputing:
+			<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> capacity : Integer = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.oclAsType(Connector).capacity in
+		 	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> inRate : Integer = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.itsInputPort.oclAsType(Port).rate in
+		 	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> outRate : Integer = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.itsOutputPort.oclAsType(Port).rate in
+		 	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> currentSize : Integer = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.oclAsType(Connector).currentSize in
 
-		 Relation ConnectorSDF_PAM (
-				self.itsOutputPort.oclAsType(OutputPort).owner.oclAsType(Block).execute,
-				self.itsInputPort.oclAsType(InputPort).owner.oclAsType(Block).execute,
+		 <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Relation</b> ConnectorSDF_PAM (
+				<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.itsOutputPort.oclAsType(OutputPort).owner.oclAsType(Block).execute,
+				<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.itsInputPort.oclAsType(InputPort).owner.oclAsType(Block).execute,
 				capacity,
 				inRate,
 				outRate,
@@ -37,4 +37,4 @@ package sigpml
 			)
 
 
-endpackage</pre><p title="ECL Implemenattion"><b>ECL Implemenattion.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/ECL_Implementation.png" alt="ECL Implementation"></span></p><p>At the end of this step the SigPML language is completely in terms of the metamodel, the graphical syntax, the behavior code of the functions, the expression of the concurrent semantics and the mapping between them.</p><p>The last step is to define the animation view of the models as a debug extension of the graphical syntax.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch04s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.3.&nbsp;MoCCML definition&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Tutorial_SigPML.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;4.5.&nbsp;Create an animator</td></tr></table></div></body></html>
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">endpackage</b></pre><p title="ECL Implemenattion"><b>ECL Implemenattion.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/ECL_Implementation.png" alt="ECL Implementation"></span></p><p>At the end of this step the SigPML language is completely in terms of the metamodel, the graphical syntax, the behavior code of the functions, the expression of the concurrent semantics and the mapping between them.</p><p>The last step is to define the animation view of the models as a debug extension of the graphical syntax.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch04s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.3.&nbsp;MoCCML definition&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Tutorial_SigPML.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;4.5.&nbsp;Create an animator</td></tr></table></div></body></html>
