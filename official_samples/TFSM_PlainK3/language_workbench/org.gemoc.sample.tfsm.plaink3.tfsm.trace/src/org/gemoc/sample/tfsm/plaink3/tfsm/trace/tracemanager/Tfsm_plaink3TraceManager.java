@@ -40,226 +40,6 @@ public class Tfsm_plaink3TraceManager implements fr.inria.diverse.trace.gemoc.ap
 		this.traces = new ArrayList<IValueTrace>();
 	}
 
-	private void addInitialState() {
-		if (lastState == null) {
-			// Creation of the initial state
-			Set<Resource> allResources = getAllExecutedModelResources();
-			lastState = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE.createState();
-			for (Resource r : allResources) {
-				for (TreeIterator<EObject> i = r.getAllContents(); i.hasNext();) {
-					EObject o = i.next();
-
-					if (o instanceof org.gemoc.sample.tfsm_plaink3.TFSM) {
-						org.gemoc.sample.tfsm_plaink3.TFSM o_cast = (org.gemoc.sample.tfsm_plaink3.TFSM) o;
-						addNewObjectToState(o_cast, lastState);
-					} else
-
-					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMEvent) {
-						org.gemoc.sample.tfsm_plaink3.FSMEvent o_cast = (org.gemoc.sample.tfsm_plaink3.FSMEvent) o;
-						addNewObjectToState(o_cast, lastState);
-					} else
-
-					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMClock) {
-						org.gemoc.sample.tfsm_plaink3.FSMClock o_cast = (org.gemoc.sample.tfsm_plaink3.FSMClock) o;
-						addNewObjectToState(o_cast, lastState);
-					}
-				}
-			}
-			this.traceRoot.getStatesTrace().add(lastState);
-		}
-	}
-
-	private void addNewObjectToState(org.gemoc.sample.tfsm_plaink3.TFSM o_cast, tfsm_plaink3Trace.States.State newState) {
-		storeAsTracedObject(o_cast);
-		tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) exeToTraced
-				.get(o_cast);
-
-		// Creation of the first value of the field currentState
-		tfsm_plaink3Trace.States.TFSM_currentState_Value firstValue_currentState = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-				.createTFSM_currentState_Value();
-		firstValue_currentState.setCurrentState(o_cast.getCurrentState());
-		traced.getCurrentStateSequence().add(firstValue_currentState);
-		newState.getTFSM_currentState_Values().add(firstValue_currentState);
-	}
-
-	private void addNewObjectToState(org.gemoc.sample.tfsm_plaink3.FSMEvent o_cast,
-			tfsm_plaink3Trace.States.State newState) {
-		storeAsTracedObject(o_cast);
-		tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent) exeToTraced
-				.get(o_cast);
-
-		// Creation of the first value of the field isTriggered
-		tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value firstValue_isTriggered = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-				.createFSMEvent_isTriggered_Value();
-		firstValue_isTriggered.setIsTriggered(o_cast.isIsTriggered());
-		traced.getIsTriggeredSequence().add(firstValue_isTriggered);
-		newState.getFSMEvent_isTriggered_Values().add(firstValue_isTriggered);
-	}
-
-	private void addNewObjectToState(org.gemoc.sample.tfsm_plaink3.FSMClock o_cast,
-			tfsm_plaink3Trace.States.State newState) {
-		storeAsTracedObject(o_cast);
-		tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock) exeToTraced
-				.get(o_cast);
-
-		// Creation of the first value of the field numberOfTicks
-		tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value firstValue_numberOfTicks = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-				.createFSMClock_numberOfTicks_Value();
-		firstValue_numberOfTicks.setNumberOfTicks(o_cast.getNumberOfTicks());
-		traced.getNumberOfTicksSequence().add(firstValue_numberOfTicks);
-		newState.getFSMClock_numberOfTicks_Values().add(firstValue_numberOfTicks);
-	}
-
-	private tfsm_plaink3Trace.States.State copyState(tfsm_plaink3Trace.States.State oldState) {
-		tfsm_plaink3Trace.States.State newState = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE.createState();
-		newState.getFSMClock_numberOfTicks_Values().addAll(oldState.getFSMClock_numberOfTicks_Values());
-		newState.getFSMEvent_isTriggered_Values().addAll(oldState.getFSMEvent_isTriggered_Values());
-		newState.getTFSM_currentState_Values().addAll(oldState.getTFSM_currentState_Values());
-		return newState;
-	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public void addState(Set<org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange> changes) {
-
-		if (lastState == null) {
-			addInitialState();
-		}
-
-		if (!changes.isEmpty()) {
-
-			boolean stateChanged = false;
-
-			// We start by a (shallow) copy of the last state
-			// But we will have to rollback a little by replacing values that changed
-			tfsm_plaink3Trace.States.State newState = copyState(lastState);
-
-			for (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange modelChange : changes) {
-				EObject o = modelChange.getChangedObject();
-
-				// We only look at constructable objects that have mutable fields
-				// Here we have nothing to rollback, just a new object to add
-				if (modelChange instanceof org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NewObjectModelChange) {
-					stateChanged = true;
-
-				}
-
-				// We only look at constructable objects that have mutable fields
-				// Here we must rollback to remove the values of the removed object from the copied state
-				else if (modelChange instanceof org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.RemovedObjectModelChange) {
-					stateChanged = true;
-
-				}
-
-				// Here we must look at non-collection mutable fields
-				// We must rollback the last values from the copied state, and add new values as well
-				// ie. mix of remove and new
-				else if (modelChange instanceof org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) {
-					stateChanged = true;
-
-					org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange modelChange_cast = (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) modelChange;
-					org.eclipse.emf.ecore.EStructuralFeature p = modelChange_cast.getChangedField();
-
-					if (o instanceof org.gemoc.sample.tfsm_plaink3.TFSM) {
-
-						org.gemoc.sample.tfsm_plaink3.TFSM o_cast = (org.gemoc.sample.tfsm_plaink3.TFSM) o;
-
-						if (p.getFeatureID() == org.gemoc.sample.tfsm_plaink3.TfsmPackage.eINSTANCE
-								.getTFSM_CurrentState().getFeatureID()) {
-
-							// Rollback: we remove the last value of this field from the new state
-							tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) exeToTraced
-									.get(o);
-							tfsm_plaink3Trace.States.TFSM_currentState_Value lastValue = traced
-									.getCurrentStateSequence().get(traced.getCurrentStateSequence().size() - 1);
-							newState.getTFSM_currentState_Values().remove(lastValue);
-
-							// And we create a proper new value
-							tfsm_plaink3Trace.States.TFSM_currentState_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-									.createTFSM_currentState_Value();
-							newValue.setCurrentState(o_cast.getCurrentState());
-							traced.getCurrentStateSequence().add(newValue);
-							newState.getTFSM_currentState_Values().add(newValue);
-						}
-
-					} else
-
-					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMEvent) {
-
-						org.gemoc.sample.tfsm_plaink3.FSMEvent o_cast = (org.gemoc.sample.tfsm_plaink3.FSMEvent) o;
-
-						if (p.getFeatureID() == org.gemoc.sample.tfsm_plaink3.TfsmPackage.eINSTANCE
-								.getFSMEvent_IsTriggered().getFeatureID()) {
-
-							// Rollback: we remove the last value of this field from the new state
-							tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent) exeToTraced
-									.get(o);
-							tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value lastValue = traced
-									.getIsTriggeredSequence().get(traced.getIsTriggeredSequence().size() - 1);
-							newState.getFSMEvent_isTriggered_Values().remove(lastValue);
-
-							// And we create a proper new value
-							tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-									.createFSMEvent_isTriggered_Value();
-							newValue.setIsTriggered(o_cast.isIsTriggered());
-							traced.getIsTriggeredSequence().add(newValue);
-							newState.getFSMEvent_isTriggered_Values().add(newValue);
-						}
-
-					} else
-
-					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMClock) {
-
-						org.gemoc.sample.tfsm_plaink3.FSMClock o_cast = (org.gemoc.sample.tfsm_plaink3.FSMClock) o;
-
-						if (p.getFeatureID() == org.gemoc.sample.tfsm_plaink3.TfsmPackage.eINSTANCE
-								.getFSMClock_NumberOfTicks().getFeatureID()) {
-
-							// Rollback: we remove the last value of this field from the new state
-							tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock) exeToTraced
-									.get(o);
-							tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value lastValue = traced
-									.getNumberOfTicksSequence().get(traced.getNumberOfTicksSequence().size() - 1);
-							newState.getFSMClock_numberOfTicks_Values().remove(lastValue);
-
-							// And we create a proper new value
-							tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-									.createFSMClock_numberOfTicks_Value();
-							newValue.setNumberOfTicks(o_cast.getNumberOfTicks());
-							traced.getNumberOfTicksSequence().add(newValue);
-							newState.getFSMClock_numberOfTicks_Values().add(newValue);
-						}
-
-					}
-
-				}
-
-				// Here we look at collection mutable fields
-				// We must first manually find out if the collection changed...
-				// If it changed we must rollback the last values from the copied state, and add new values as well
-				else if (modelChange instanceof org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.PotentialCollectionFieldModelChange) {
-					org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.PotentialCollectionFieldModelChange modelChange_cast = (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.PotentialCollectionFieldModelChange) modelChange;
-
-					org.eclipse.emf.ecore.EStructuralFeature p = modelChange_cast.getChangedField();
-
-				}
-
-			}
-
-			if (stateChanged) {
-				final tfsm_plaink3Trace.Steps.Step currentStep = context.peekFirst();
-				if (currentStep != null && currentStep instanceof tfsm_plaink3Trace.Steps.BigStep) {
-					final tfsm_plaink3Trace.States.State startingState = lastState;
-					final tfsm_plaink3Trace.States.State endingState = newState;
-					addImplicitStep(currentStep, startingState, endingState);
-				}
-
-				lastState = newState;
-				traceRoot.getStatesTrace().add(lastState);
-			}
-		}
-	}
-
 	@Override
 	public boolean addStateIfChanged() {
 		return addState(true);
@@ -789,18 +569,30 @@ public class Tfsm_plaink3TraceManager implements fr.inria.diverse.trace.gemoc.ap
 	}
 
 	@Override
-	public String getDescriptionOfValue(EObject eObject) {
-		if (eObject instanceof tfsm_plaink3Trace.States.TFSM_currentState_Value) {
+	public String getDescriptionOfValue(EObject value) {
+		if (value instanceof tfsm_plaink3Trace.States.TFSM_currentState_Value) {
 			return "tfsm_plaink3Trace.States.TFSM_currentState_Value: "
-					+ ((tfsm_plaink3Trace.States.TFSM_currentState_Value) eObject).getCurrentState();
-		} else if (eObject instanceof tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value) {
+					+ ((tfsm_plaink3Trace.States.TFSM_currentState_Value) value).getCurrentState();
+		} else if (value instanceof tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value) {
 			return "tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value: "
-					+ ((tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value) eObject).isIsTriggered();
-		} else if (eObject instanceof tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value) {
+					+ ((tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value) value).isIsTriggered();
+		} else if (value instanceof tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value) {
 			return "tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value: "
-					+ ((tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value) eObject).getNumberOfTicks();
+					+ ((tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value) value).getNumberOfTicks();
 		} else
 			return "ERROR";
+	}
+
+	@Override
+	public Object getContainedValue(EObject value) {
+		if (value instanceof tfsm_plaink3Trace.States.TFSM_currentState_Value) {
+			return ((tfsm_plaink3Trace.States.TFSM_currentState_Value) value).getCurrentState();
+		} else if (value instanceof tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value) {
+			return ((tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value) value).isIsTriggered();
+		} else if (value instanceof tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value) {
+			return ((tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value) value).getNumberOfTicks();
+		} else
+			return null;
 	}
 
 	private void storeAsTracedObject(org.gemoc.sample.tfsm_plaink3.FSMClock o) {
