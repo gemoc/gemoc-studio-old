@@ -21,49 +21,34 @@ So an execute function of the blocks is synchronized on the connector behavior.<
 So the block instances run the function <span class="emphasis"><em>execute()</em></span> when the value of <span class="emphasis"><em>currentExecCycle</em></span> is lower than the value of <span class="emphasis"><em>cycles</em></span>.</p><p>The function and variables are added with the Ecore reflexive editor. In this tutorial, function and variables are provided in the initial ecore model.</p><p title="Execution Function in the SigPML metamodel"><b>Execution Function in the SigPML metamodel.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/EF_InEcoreDomainModel.png" alt="Execution Function in the SigPML metamodel"></span></p></div><div class="section" title="4.2.2.&nbsp;Creating the DSA project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_dsa_project"></a>4.2.2.&nbsp;Creating the DSA project</h3></div></div></div><p>The creation of the DSA project is on a click right menu on the Melange file "Create DSA Project for language "&#8594;select the name of the xDSML language (SigPMLTuto language).</p><p title="DSA project creation"><b>DSA project creation.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/CreateDSAProject.png" alt="DSA project creation"></span></p><p>This project includes aspect definition which is weaved with the Java code corresponding the SigPML ecore model. The file name and classes suffix are proposed in the DSA wizard of the next figure.</p><p title="DSA project wizard"><b>DSA project wizard.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/DSA-Wizard.png" alt="DSA project wizard"></span></p><p>The resulted DSA project is a k3dsa project with a sigpmlAspects.xtend file in the package <span class="emphasis"><em>org.gemoc.sample.xsigpml.k3dsa</em></span>.
 This file contains the aspects that we want to add to the necessary classes in our case only the <span class="emphasis"><em>Block</em></span> one. The resulting project is showed in the next figure.</p><p title="K3dsa project with the aspect code provided in the next section"><b>K3dsa project with the aspect code provided in the next section.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/resultedDSAProject.png" alt="DSA project and associated aspect file"></span></p></div><div class="section" title="4.2.3.&nbsp;Implementation of the DSA"><div class="titlepage"><div><div><h3 class="title"><a name="_implementation_of_the_dsa"></a>4.2.3.&nbsp;Implementation of the DSA</h3></div></div></div><p>In this tutorial, the implementation of the functions is simple. The <span class="emphasis"><em>execute</em></span> function increments the <span class="emphasis"><em>currentExecCycle</em></span> of a block until its value is inferior to the <span class="emphasis"><em>cycles</em></span> value.</p><p>The source code is available through
 <a class="link" href="SigPML/files/sigpmlAspects.xtend" target="_top">Kermeta 3 aspects,tabsize=4</a>
-and showed below</p><pre class="screen">package sigpml.aspects
+and showed below</p><a name="sigpmlAspects.xtendExample"></a><pre class="programlisting"><b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">package</b> sigpml.aspects
 
-import fr.inria.diverse.k3.al.annotationprocessor.Aspect
-import sigpml.Application
-import sigpml.Block
-import sigpml.Connector
-
-
-@Aspect(className=Application)
-class ApplicationAspect {
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> fr.inria.diverse.k3.al.annotationprocessor.Aspect
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> sigpml.Application
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> sigpml.Block
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> sigpml.Connector
 
 
-}
-
-
-@Aspect(className=Block)
-class BlockAspect {
-
-	public int currentExecCycle = 0
-
-
-	def public void execute() {
-
-		if ( _self.currentExecCycle &lt; _self.cycles )
-			_self.currentExecCycle = _self.currentExecCycle + 1
-		else
-		_self.currentExecCycle = 0
-
-		println(_self.name + "\n      execute (" + _self.currentExecCycle + ")" )
-
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color: darkred">@Aspect(className=Application)</b>
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">class</b> ApplicationAspect {
 
 }
 
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color: darkred">@Aspect(className=Block)</b>
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">class</b> BlockAspect {
+	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">public</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">int</b> currentExecCycle = <span class="hl-number">0</span>
 
-
-
-
+	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">def</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">public</b> <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">void</b> execute() {
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">if</b> ( <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.currentExecCycle &lt; <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.cycles )
+			<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.currentExecCycle = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.currentExecCycle + <span class="hl-number">1</span>
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">else</b>
+			<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.currentExecCycle = <span class="hl-number">0</span>
+		println(<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.name + <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"\n      execute ("</i> + <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">_self</b>.currentExecCycle + <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">")"</i> )
+	}
 }
 
-
-@Aspect(className=Connector)
-class ConnectorAspect {
-
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color: darkred">@Aspect(className=Connector)</b>
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">class</b> ConnectorAspect {
 
 }</pre><p>You must remove the aspects reference in the Melange file.</p><p><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/RemovingImportAspectInMelange.png" alt="Updating the Melange file"></span></p></div></div><div class="section" title="4.3.&nbsp;MoCCML definition"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_moccml_definition"></a>4.3.&nbsp;MoCCML definition</h2></div></div></div><div class="section" title="4.3.1.&nbsp;Creating the MoCCML project"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_moccml_project"></a>4.3.1.&nbsp;Creating the MoCCML project</h3></div></div></div><p>From the xDSML project, we select the associated wizard of the MoCC definition that helps to create the moCCML project. On the right click on the Melange file, select the menu "Create MoCC Library for language"&#8594;select the name of the language project&#8594;next&#8594;finish</p><p title="MoCCML project creation"><b>MoCCML project creation.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/MoCCProjectCreation.png" alt="MoCCML project creation"></span></p><p>In the resulting project, we have a directory <span class="emphasis"><em>mocc</em></span> with the <span class="emphasis"><em>MoCCML</em></span> file.</p></div><div class="section" title="4.3.2.&nbsp;Implementation of the MoCCML"><div class="titlepage"><div><div><h3 class="title"><a name="_implementation_of_the_moccml"></a>4.3.2.&nbsp;Implementation of the MoCCML</h3></div></div></div><p>In the MoCCML program, we define the constraint relation which will be referenced in the ECL program (in our case, the <span class="emphasis"><em>ConnectorSDF_PAM</em></span> relation). This relation is based on an automaton definition.</p><p>This automaton describes how the events and variables are used to define a constraint automaton relative to each instance of the <span class="emphasis"><em>Connector</em></span> class.</p><p>The source code is available through
 <a class="link" href="SigPML/files/xSigpml.moccml" target="_top">the MoCCML program</a>
@@ -145,31 +130,31 @@ In this program, you declare the metaclasses that you want to select ED or EF, a
 In the context of <span class="emphasis"><em>Block</em></span> an event <span class="emphasis"><em>execute</em></span> is defined relative to the execution function of the same name in the <span class="emphasis"><em>Block</em></span> metaclass.
 In the context of <span class="emphasis"><em>Connector</em></span>, an invariant is declared based on the call of the relation declaration defined previously in the MoCCML model. The arguments of this relation are associated to the attributes of the metaclasses <span class="emphasis"><em>Connector</em></span> and also we can access by navigation expression to the others <span class="emphasis"><em>Ports</em></span> (for the <span class="emphasis"><em>rate</em></span> attribute) and <span class="emphasis"><em>Block</em></span> (for the <span class="emphasis"><em>execute</em></span> EF).</p><p>The source code is available through
 <a class="link" href="SigPML/files/xSigpml.ecl" target="_top">the ECL program</a>
-and showed below</p><pre class="screen">import 'platform:/resource/org.gemoc.sigpmldomain/model/sigpmldomain.ecore'
---import './sigpmldomain.ecore'
+and showed below</p><pre class="programlisting"><b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> 'platform:/resource/org.gemoc.sigpmldomain/model/sigpmldomain.ecore'
+--<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">import</b> './sigpmldomain.ecore'
 
-ECLimport "platform:/resource/org.gemoc.SigpmlTuto.mocc/mocc/SigpmlTuto.moccml"
---ECLimport "./xSigpml.moccml"
-ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
-ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">ECLimport</b> <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"platform:/resource/org.gemoc.SigpmlTuto.mocc/mocc/SigpmlTuto.moccml"</i>
+--<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">ECLimport</b> <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"./xSigpml.moccml"</i>
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">ECLimport</b> <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"</i>
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">ECLimport</b> <i xmlns:fo="http://www.w3.org/1999/XSL/Format" style="color:blue" class="hl-string">"platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"</i>
 
 
 
-package sigpml
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">package</b> sigpml
 
-	context Block
-		def : execute : Event = self.execute()
+	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">context</b> Block
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">def</b> : execute : <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Event</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.execute()
 
-	context Connector
-		inv ConnectorComputing:
-			let capacity : Integer = self.oclAsType(Connector).capacity in
-		 	let inRate : Integer = self.itsInputPort.oclAsType(Port).rate in
-		 	let outRate : Integer = self.itsOutputPort.oclAsType(Port).rate in
-		 	let currentSize : Integer = self.oclAsType(Connector).currentSize in
+	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">context</b> Connector
+		<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">inv</b> ConnectorComputing:
+			<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> capacity : <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Integer</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.oclAsType(Connector).capacity <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">in</b>
+		 	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> inRate : <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Integer</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.itsInputPort.oclAsType(Port).rate <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">in</b>
+		 	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> outRate : <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Integer</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.itsOutputPort.oclAsType(Port).rate <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">in</b>
+		 	<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">let</b> currentSize : <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Integer</b> = <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.oclAsType(Connector).currentSize <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">in</b>
 
-		 Relation ConnectorSDF_PAM (
-				self.itsOutputPort.oclAsType(OutputPort).owner.oclAsType(Block).execute,
-				self.itsInputPort.oclAsType(InputPort).owner.oclAsType(Block).execute,
+		 <b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">Relation</b> ConnectorSDF_PAM (
+				<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.itsOutputPort.oclAsType(OutputPort).owner.oclAsType(Block).execute,
+				<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">self</b>.itsInputPort.oclAsType(InputPort).owner.oclAsType(Block).execute,
 				capacity,
 				inRate,
 				outRate,
@@ -177,7 +162,7 @@ package sigpml
 			)
 
 
-endpackage</pre><p title="ECL Implemenattion"><b>ECL Implemenattion.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/ECL_Implementation.png" alt="ECL Implementation"></span></p><p>At the end of this step the SigPML language is completely in terms of the metamodel, the graphical syntax, the behavior code of the functions, the expression of the concurrent semantics and the mapping between them.</p><p>The last step is to define the animation view of the models as a debug extension of the graphical syntax.</p></div></div><div class="section" title="4.5.&nbsp;Create an animator"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_create_an_animator"></a>4.5.&nbsp;Create an animator</h2></div></div></div><div class="section" title="4.5.1.&nbsp;Creating the Animator project as a Sirius viewpoint"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_animator_project_as_a_sirius_viewpoint"></a>4.5.1.&nbsp;Creating the Animator project as a Sirius viewpoint</h3></div></div></div><p>As the section dedicated to the graphical syntax, the animator is defined as a Sirius viewpoint based on
+<b xmlns:fo="http://www.w3.org/1999/XSL/Format" class="hl-keyword" style="color:darkblue">endpackage</b></pre><p title="ECL Implemenattion"><b>ECL Implemenattion.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/ECL_Implementation.png" alt="ECL Implementation"></span></p><p>At the end of this step the SigPML language is completely in terms of the metamodel, the graphical syntax, the behavior code of the functions, the expression of the concurrent semantics and the mapping between them.</p><p>The last step is to define the animation view of the models as a debug extension of the graphical syntax.</p></div></div><div class="section" title="4.5.&nbsp;Create an animator"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_create_an_animator"></a>4.5.&nbsp;Create an animator</h2></div></div></div><div class="section" title="4.5.1.&nbsp;Creating the Animator project as a Sirius viewpoint"><div class="titlepage"><div><div><h3 class="title"><a name="_creating_the_animator_project_as_a_sirius_viewpoint"></a>4.5.1.&nbsp;Creating the Animator project as a Sirius viewpoint</h3></div></div></div><p>As the section dedicated to the graphical syntax, the animator is defined as a Sirius viewpoint based on
 <a class="link" href="SigPML/files/xSigpmlAnim.odesign" target="_top">the odesign file</a></p><p>In this file, we define the viewpoint as an extension of the <span class="emphasis"><em>odesign</em></span> file of the graphical syntax and modify the graphical shape of the blocks when the <span class="emphasis"><em>currentExecCycle</em></span> variable is incremented. The expression <span class="emphasis"><em>[ self.eGet('currentExecCycle') &gt; 0 /]</em></span> is declared to customize the graphical shape of the blocks.</p><p>We create an animation project through the xDSML definition.</p><p title="Animation project creation"><b>Animation project creation.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/AnimationProjectCreation.png" alt="Animation project creation"></span></p><p>We select the <span class="emphasis"><em>Add a debug layer to an existing diagram description</em></span>&#8594;next&#8594;select the SigPMLAppliDiagram&#8594;next&#8594;select the name of the Debug layer&#8594;finish.
 We can replace the <span class="emphasis"><em>odesign</em></span> file by the provided one.</p><p>For now the language is totaly defined and executable, so we can used the SigPML Language !!</p></div></div></div><div class="chapter" title="Chapter&nbsp;5.&nbsp;SigPML modeling workbench"><div class="titlepage"><div><div><h2 class="title"><a name="_sigpml_modeling_workbench"></a>Chapter&nbsp;5.&nbsp;SigPML modeling workbench</h2></div></div></div><p>From the language workbench, the Sigpml modeling workbench can be used to create a model and execute it.</p><div class="section" title="5.1.&nbsp;Launch the Modeling workbench creation (Start a new Eclipse)"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_launch_the_modeling_workbench_creation_start_a_new_eclipse"></a>5.1.&nbsp;Launch the Modeling workbench creation (Start a new Eclipse)</h2></div></div></div><p>To launch the modeling workbench dedicated to the Sigpml language, we create an eclipse apllication configuration to run the gemocstudio associated with the xDSML definition.
 The current parameters are set conforming to the parameters of the next picture.</p><p title="Modeling Workbench launching"><b>Modeling Workbench launching.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/CreateModelingWorkbench.png" alt="Modeling Workbench launching"></span></p><p>To obtain modeling workbench adequate performances, we set the VM parameters in the <span class="emphasis"><em>Arguments</em></span> tab to</p><pre class="screen">-Xmx3000m
