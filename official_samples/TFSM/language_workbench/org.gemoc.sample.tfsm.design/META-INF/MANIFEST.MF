@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.sample.tfsm.model;bundle-version="0.1.0",
  org.gemoc.executionframework.extensions.sirius
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ManifestVersion: 2
 Export-Package: org.gemoc.sample.tfsm.design,
  org.gemoc.sample.tfsm.design.services

@@ -21,6 +21,6 @@ Require-Bundle: org.eclipse.ui,
  org.gemoc.executionframework.extensions.sirius,
  org.gemoc.execution.concurrent.ccsljavaengine.ui;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.gemoc.sample.sigpml.concrete.design,
  org.gemoc.sample.sigpml.concrete.design.services

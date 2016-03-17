@@ -19,6 +19,6 @@ Bundle-ClassPath: .,libs/groovy-all-2.1.2.jar
 Export-Package: org.gemoc.sample.tfsm.k3dsa,
  org.gemoc.sample.tfsm.k3dsa.aspect
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Activator: org.gemoc.sample.tfsm.k3dsa.Activator
 

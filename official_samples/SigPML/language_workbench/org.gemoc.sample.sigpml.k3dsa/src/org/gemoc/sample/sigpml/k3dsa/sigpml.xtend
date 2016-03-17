@@ -30,8 +30,6 @@ import static extension org.gemoc.sample.sigpml.k3dsa.OutputPortAspect.*;
 import static extension org.gemoc.sample.sigpml.k3dsa.PlaceAspect.*;
 import static extension org.gemoc.sample.sigpml.k3dsa.SystemAspect.*;
 import static extension org.gemoc.sample.sigpml.k3dsa.HWComputationalResourceAspect.*;
-import org.eclipse.core.runtime.Platform
-import org.osgi.framework.wiring.BundleWiring
 import java.util.List
 import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
 
