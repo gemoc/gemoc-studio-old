@@ -81,13 +81,13 @@
     <components
         name="Markedgraph Language (Concurrent)(Incubation)"
         provider="GEMOC"
-        description="Deployer that installs the project sources for the concurrent  version of the Markedgraph Language and sample models."
+        description="Deployer that installs the project sources for the concurrent version of the Markedgraph Language and sample models."
         license="EPL"
         groups="//@filters.0"
         image32="images/IconeGemocLanguagePlusModel-32.png">
       <sitesURLS>https://ci.inria.fr/gemoc/job/Markedgraph_updatesite/lastSuccessfulBuild/artifact/sample/markedgraph/releng/org.gemoc.sample.markedgraph.repository/target/repository/</sitesURLS>
       <overview
-          summary="Deployer that installs the project sources for the Markedgraph Language developped using GEMOC.  This version run using the GEMOC Concurrent engine. The deployer also provides some sample models. This is the result of the GEMOC tutorial available in the eclipse hep."
+          summary="Deployer that installs the project sources for the Markedgraph Language developped using GEMOC.  This version runs using the GEMOC Concurrent engine. The deployer also provides some sample models. This is the result of the GEMOC tutorial available in the eclipse hep."
           screenshot="images/markedgraph_sequential-screenshot-320x240.png"
           url="http://gemoc.github.io/gemoc-studio/publish/tutorial_markedgraph/html_single/GuideTutorialMarkedGraph.html"/>
       <id>org.gemoc.sample.markedgraph.feature</id>
