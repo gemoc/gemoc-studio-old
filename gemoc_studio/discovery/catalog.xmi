@@ -81,7 +81,7 @@
     <components
         name="Markedgraph Language (Concurrent)(Incubation)"
         provider="GEMOC"
-        description="Deployer that installs the project sources for Sequential and Concurrent  versions of the ArduinoModeling Language and sample models."
+        description="Deployer that installs the project sources for the concurrent  version of the Markedgraph Language and sample models."
         license="EPL"
         groups="//@filters.0"
         image32="images/IconeGemocLanguagePlusModel-32.png">
