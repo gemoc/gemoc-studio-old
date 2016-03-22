@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.gemoc.modeldebugging.feature_2.1.0.qualifier.jar" id="org.gemoc.modeldebugging.feature" version="2.1.0.qualifier">
+   <feature url="features/org.gemoc.modeldebugging.feature_2.1.1.qualifier.jar" id="org.gemoc.modeldebugging.feature" version="2.1.1.qualifier">
       <category name="GEMOC_AllInOne"/>
    </feature>
-   <feature url="features/org.gemoc.concurrency.feature_2.1.0.qualifier.jar" id="org.gemoc.concurrency.feature" version="2.1.0.qualifier">
+   <feature url="features/org.gemoc.concurrency.feature_2.1.1.qualifier.jar" id="org.gemoc.concurrency.feature" version="2.1.1.qualifier">
       <category name="GEMOC_AllInOne"/>
    </feature>
-   <feature url="features/org.gemoc.coordination.feature_2.1.0.qualifier.jar" id="org.gemoc.coordination.feature" version="2.1.0.qualifier">
+   <feature url="features/org.gemoc.coordination.feature_2.1.1.qualifier.jar" id="org.gemoc.coordination.feature" version="2.1.1.qualifier">
       <category name="GEMOC_AllInOne"/>
    </feature>
    <feature url="features/org.gemoc.commons.feature_0.1.0.qualifier.jar" id="org.gemoc.commons.feature" version="0.1.0.qualifier">

@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.coordination.feature"
       label="GEMOC Coordination"
-      version="2.1.0.qualifier"
+      version="2.1.1.qualifier"
       provider-name="GEMOC">
 
    <description url="http://www.gemoc.org">

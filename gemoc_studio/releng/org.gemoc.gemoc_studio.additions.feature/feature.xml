@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.gemoc_studio.additions.feature"
       label="GEMOC Studio Additional Features"
-      version="2.1.0.qualifier"
+      version="2.1.1.qualifier"
       provider-name="GEMOC">
 
    <description url="http://www.gemoc.org">
@@ -46,8 +46,8 @@
       <import feature="org.eclipse.m2m.qvt.oml.examples" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml.runtime" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.ajdt" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.fx.ide.basic.feature" version="2.1.0.201508240705"/>
-      <import feature="org.eclipse.fx.ide.pde.feature" version="2.1.0.201508240705"/>
+      <import feature="org.eclipse.fx.ide.basic.feature" version="2.1.1.201508240705"/>
+      <import feature="org.eclipse.fx.ide.pde.feature" version="2.1.1.201508240705"/>
       <import plugin="org.eclipse.amalgam.discovery.modeling"/>
    </requires>
 
