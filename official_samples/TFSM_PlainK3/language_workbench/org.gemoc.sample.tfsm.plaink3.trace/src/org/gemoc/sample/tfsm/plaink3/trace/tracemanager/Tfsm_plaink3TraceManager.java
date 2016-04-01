@@ -1,4 +1,4 @@
-package org.gemoc.sample.tfsm.plaink3.tfsm.trace.tracemanager;
+package org.gemoc.sample.tfsm.plaink3.trace.tracemanager;
 
 import fr.inria.diverse.trace.api.IValueTrace;
 import fr.inria.diverse.trace.api.impl.GenericValueTrace;
@@ -40,184 +40,198 @@ public class Tfsm_plaink3TraceManager implements fr.inria.diverse.trace.gemoc.ap
 		this.traces = new ArrayList<IValueTrace>();
 	}
 
-	@Override
-	public boolean addStateIfChanged() {
-		return addState(true);
+	private void addInitialState() {
+		if (lastState == null) {
+			// Creation of the initial state
+			Set<Resource> allResources = getAllExecutedModelResources();
+			lastState = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE.createState();
+			for (Resource r : allResources) {
+				for (TreeIterator<EObject> i = r.getAllContents(); i.hasNext();) {
+					EObject o = i.next();
+
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.TFSM) {
+						org.gemoc.sample.tfsm_plaink3.TFSM o_cast = (org.gemoc.sample.tfsm_plaink3.TFSM) o;
+						addNewObjectToState(o_cast, lastState);
+					} else
+
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMEvent) {
+						org.gemoc.sample.tfsm_plaink3.FSMEvent o_cast = (org.gemoc.sample.tfsm_plaink3.FSMEvent) o;
+						addNewObjectToState(o_cast, lastState);
+					} else
+
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMClock) {
+						org.gemoc.sample.tfsm_plaink3.FSMClock o_cast = (org.gemoc.sample.tfsm_plaink3.FSMClock) o;
+						addNewObjectToState(o_cast, lastState);
+					}
+				}
+			}
+			this.traceRoot.getStatesTrace().add(lastState);
+		}
 	}
 
-	@Override
-	public void addState() {
-		addState(false);
+	private void addNewObjectToState(org.gemoc.sample.tfsm_plaink3.TFSM o_cast, tfsm_plaink3Trace.States.State newState) {
+		storeAsTracedObject(o_cast);
+		tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) exeToTraced
+				.get(o_cast);
+
+		// Creation of the first value of the field currentState
+		tfsm_plaink3Trace.States.TFSM_currentState_Value firstValue_currentState = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+				.createTFSM_currentState_Value();
+		firstValue_currentState.setCurrentState(o_cast.getCurrentState());
+		traced.getCurrentStateSequence().add(firstValue_currentState);
+		newState.getTFSM_currentState_Values().add(firstValue_currentState);
 	}
 
-	@SuppressWarnings("unchecked")
-	private boolean addState(boolean onlyIfChange) {
+	private void addNewObjectToState(org.gemoc.sample.tfsm_plaink3.FSMEvent o_cast,
+			tfsm_plaink3Trace.States.State newState) {
+		storeAsTracedObject(o_cast);
+		tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent) exeToTraced
+				.get(o_cast);
 
+		// Creation of the first value of the field isTriggered
+		tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value firstValue_isTriggered = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+				.createFSMEvent_isTriggered_Value();
+		firstValue_isTriggered.setIsTriggered(o_cast.isIsTriggered());
+		traced.getIsTriggeredSequence().add(firstValue_isTriggered);
+		newState.getFSMEvent_isTriggered_Values().add(firstValue_isTriggered);
+	}
+
+	private void addNewObjectToState(org.gemoc.sample.tfsm_plaink3.FSMClock o_cast,
+			tfsm_plaink3Trace.States.State newState) {
+		storeAsTracedObject(o_cast);
+		tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock) exeToTraced
+				.get(o_cast);
+
+		// Creation of the first value of the field numberOfTicks
+		tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value firstValue_numberOfTicks = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+				.createFSMClock_numberOfTicks_Value();
+		firstValue_numberOfTicks.setNumberOfTicks(o_cast.getNumberOfTicks());
+		traced.getNumberOfTicksSequence().add(firstValue_numberOfTicks);
+		newState.getFSMClock_numberOfTicks_Values().add(firstValue_numberOfTicks);
+	}
+
+	private tfsm_plaink3Trace.States.State copyState(tfsm_plaink3Trace.States.State oldState) {
 		tfsm_plaink3Trace.States.State newState = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE.createState();
-		boolean changed = false;
+		newState.getFSMClock_numberOfTicks_Values().addAll(oldState.getFSMClock_numberOfTicks_Values());
+		newState.getFSMEvent_isTriggered_Values().addAll(oldState.getFSMEvent_isTriggered_Values());
+		newState.getTFSM_currentState_Values().addAll(oldState.getTFSM_currentState_Values());
+		return newState;
+	}
 
-		Set<Resource> allResources = getAllExecutedModelResources();
+	@Override
+	public void addState(Set<org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange> changes) {
 
-		// We look at each object instance of a class with mutable properties 
-		// Each of these objects should eventually become a traced object
-		for (Resource r : allResources)
-			for (TreeIterator<EObject> i = r.getAllContents(); i.hasNext();) {
-				EObject o = i.next();
+		if (lastState == null) {
+			addInitialState();
+		}
 
-				/**
-				 * Storing the state of a org.gemoc.sample.tfsm_plaink3.TFSM object
-				 */
-				if (o instanceof org.gemoc.sample.tfsm_plaink3.TFSM) {
+		if (!changes.isEmpty()) {
 
-					org.gemoc.sample.tfsm_plaink3.TFSM o_cast = (org.gemoc.sample.tfsm_plaink3.TFSM) o;
+			boolean stateChanged = false;
 
-					storeAsTracedObject(o_cast);
+			// We start by a (shallow) copy of the last state
+			// But we will have to rollback a little by replacing values that changed
+			tfsm_plaink3Trace.States.State newState = copyState(lastState);
 
-					tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM tracedObject = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) exeToTraced
-							.get(o);
+			for (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange modelChange : changes) {
+				EObject o = modelChange.getChangedObject();
 
-					// Then we compare the value of the field with the last stored value
-					// If same value, we create no local state and we refer to the previous
-					List<tfsm_plaink3Trace.States.TFSM_currentState_Value> valueSequence1 = tracedObject
-							.getCurrentStateSequence();
-					tfsm_plaink3Trace.States.TFSM_currentState_Value previousValue1 = null;
-					if (!valueSequence1.isEmpty())
-						previousValue1 = valueSequence1.get(valueSequence1.size() - 1);
+				// Here we must look at non-collection mutable fields
+				// We must rollback the last values from the copied state, and add new values as well
+				// ie. mix of remove and new
+				if (modelChange instanceof org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) {
+					stateChanged = true;
 
-					org.gemoc.sample.tfsm_plaink3.State content1 = null;
-					if (o_cast.getCurrentState() != null)
-						content1 = o_cast.getCurrentState();
+					org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange modelChange_cast = (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) modelChange;
+					org.eclipse.emf.ecore.EStructuralFeature p = modelChange_cast.getChangedField();
 
-					boolean noChange1 = previousValue1 != null && previousValue1.getCurrentState() == content1;
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.TFSM) {
 
-					if (noChange1) {
-						newState.getTFSM_currentState_Values().add(previousValue1);
+						org.gemoc.sample.tfsm_plaink3.TFSM o_cast = (org.gemoc.sample.tfsm_plaink3.TFSM) o;
 
-					} // Else we create one
-					else {
-						changed = true;
-						tfsm_plaink3Trace.States.TFSM_currentState_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-								.createTFSM_currentState_Value();
+						if (p.getFeatureID() == org.gemoc.sample.tfsm_plaink3.TfsmPackage.eINSTANCE
+								.getTFSM_CurrentState().getFeatureID()) {
 
-						newValue.setCurrentState(content1);
+							// Rollback: we remove the last value of this field from the new state
+							tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) exeToTraced
+									.get(o);
+							tfsm_plaink3Trace.States.TFSM_currentState_Value lastValue = traced
+									.getCurrentStateSequence().get(traced.getCurrentStateSequence().size() - 1);
+							newState.getTFSM_currentState_Values().remove(lastValue);
 
-						tracedObject.getCurrentStateSequence().add(newValue);
-						newState.getTFSM_currentState_Values().add(newValue);
-					}
+							// And we create a proper new value
+							tfsm_plaink3Trace.States.TFSM_currentState_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+									.createTFSM_currentState_Value();
+							newValue.setCurrentState(o_cast.getCurrentState());
+							traced.getCurrentStateSequence().add(newValue);
+							newState.getTFSM_currentState_Values().add(newValue);
+						}
 
-				} else
+					} else
 
-				/**
-				 * Storing the state of a org.gemoc.sample.tfsm_plaink3.FSMEvent object
-				 */
-				if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMEvent) {
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMEvent) {
 
-					org.gemoc.sample.tfsm_plaink3.FSMEvent o_cast = (org.gemoc.sample.tfsm_plaink3.FSMEvent) o;
+						org.gemoc.sample.tfsm_plaink3.FSMEvent o_cast = (org.gemoc.sample.tfsm_plaink3.FSMEvent) o;
 
-					storeAsTracedObject(o_cast);
+						if (p.getFeatureID() == org.gemoc.sample.tfsm_plaink3.TfsmPackage.eINSTANCE
+								.getFSMEvent_IsTriggered().getFeatureID()) {
 
-					tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent tracedObject = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent) exeToTraced
-							.get(o);
+							// Rollback: we remove the last value of this field from the new state
+							tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent) exeToTraced
+									.get(o);
+							tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value lastValue = traced
+									.getIsTriggeredSequence().get(traced.getIsTriggeredSequence().size() - 1);
+							newState.getFSMEvent_isTriggered_Values().remove(lastValue);
 
-					// Then we compare the value of the field with the last stored value
-					// If same value, we create no local state and we refer to the previous
-					List<tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value> valueSequence2 = tracedObject
-							.getIsTriggeredSequence();
-					tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value previousValue2 = null;
-					if (!valueSequence2.isEmpty())
-						previousValue2 = valueSequence2.get(valueSequence2.size() - 1);
+							// And we create a proper new value
+							tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+									.createFSMEvent_isTriggered_Value();
+							newValue.setIsTriggered(o_cast.isIsTriggered());
+							traced.getIsTriggeredSequence().add(newValue);
+							newState.getFSMEvent_isTriggered_Values().add(newValue);
+						}
 
-					boolean content2 = o_cast.isIsTriggered();
+					} else
 
-					boolean noChange2 = previousValue2 != null && previousValue2.isIsTriggered() == content2;
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMClock) {
 
-					if (noChange2) {
-						newState.getFSMEvent_isTriggered_Values().add(previousValue2);
+						org.gemoc.sample.tfsm_plaink3.FSMClock o_cast = (org.gemoc.sample.tfsm_plaink3.FSMClock) o;
 
-					} // Else we create one
-					else {
-						changed = true;
-						tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-								.createFSMEvent_isTriggered_Value();
+						if (p.getFeatureID() == org.gemoc.sample.tfsm_plaink3.TfsmPackage.eINSTANCE
+								.getFSMClock_NumberOfTicks().getFeatureID()) {
 
-						newValue.setIsTriggered(content2);
+							// Rollback: we remove the last value of this field from the new state
+							tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock) exeToTraced
+									.get(o);
+							tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value lastValue = traced
+									.getNumberOfTicksSequence().get(traced.getNumberOfTicksSequence().size() - 1);
+							newState.getFSMClock_numberOfTicks_Values().remove(lastValue);
 
-						tracedObject.getIsTriggeredSequence().add(newValue);
-						newState.getFSMEvent_isTriggered_Values().add(newValue);
-					}
+							// And we create a proper new value
+							tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+									.createFSMClock_numberOfTicks_Value();
+							newValue.setNumberOfTicks(o_cast.getNumberOfTicks());
+							traced.getNumberOfTicksSequence().add(newValue);
+							newState.getFSMClock_numberOfTicks_Values().add(newValue);
+						}
 
-				} else
-
-				/**
-				 * Storing the state of a org.gemoc.sample.tfsm_plaink3.FSMClock object
-				 */
-				if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMClock) {
-
-					org.gemoc.sample.tfsm_plaink3.FSMClock o_cast = (org.gemoc.sample.tfsm_plaink3.FSMClock) o;
-
-					storeAsTracedObject(o_cast);
-
-					tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock tracedObject = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock) exeToTraced
-							.get(o);
-
-					// Then we compare the value of the field with the last stored value
-					// If same value, we create no local state and we refer to the previous
-					List<tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value> valueSequence3 = tracedObject
-							.getNumberOfTicksSequence();
-					tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value previousValue3 = null;
-					if (!valueSequence3.isEmpty())
-						previousValue3 = valueSequence3.get(valueSequence3.size() - 1);
-
-					java.lang.Integer content3 = o_cast.getNumberOfTicks();
-
-					boolean noChange3 = previousValue3 != null && previousValue3.getNumberOfTicks() != null
-							&& previousValue3.getNumberOfTicks().equals(content3);
-
-					if (noChange3) {
-						newState.getFSMClock_numberOfTicks_Values().add(previousValue3);
-
-					} // Else we create one
-					else {
-						changed = true;
-						tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-								.createFSMClock_numberOfTicks_Value();
-
-						newValue.setNumberOfTicks(content3);
-
-						tracedObject.getNumberOfTicksSequence().add(newValue);
-						newState.getFSMClock_numberOfTicks_Values().add(newValue);
 					}
 
 				}
+
+				if (stateChanged) {
+					final tfsm_plaink3Trace.Steps.Step currentStep = context.peekFirst();
+					if (currentStep != null && currentStep instanceof tfsm_plaink3Trace.Steps.BigStep) {
+						final tfsm_plaink3Trace.States.State startingState = lastState;
+						final tfsm_plaink3Trace.States.State endingState = newState;
+						addImplicitStep(currentStep, startingState, endingState);
+					}
+
+					lastState = newState;
+					traceRoot.getStatesTrace().add(lastState);
+				}
 			}
-
-		boolean createNewState = lastState == null || (!onlyIfChange || changed);
-		if (createNewState) {
-
-			final tfsm_plaink3Trace.Steps.Step currentStep = context.peekFirst();
-			if (currentStep != null && currentStep instanceof tfsm_plaink3Trace.Steps.BigStep) {
-				final tfsm_plaink3Trace.States.State startingState = lastState;
-				final tfsm_plaink3Trace.States.State endingState = newState;
-				addImplicitStep(currentStep, startingState, endingState);
-			}
-
-			lastState = newState;
-			traceRoot.getStatesTrace().add(lastState);
 		}
-
-		// Undoing the new state created for nothing
-		else {
-
-			newState.getStartedSteps().clear();
-			newState.getEndedSteps().clear();
-
-			newState.getTFSM_currentState_Values().clear();
-			newState.getFSMEvent_isTriggered_Values().clear();
-			newState.getFSMClock_numberOfTicks_Values().clear();
-		}
-
-		return createNewState;
-
 	}
 
 	@Override
@@ -431,7 +445,6 @@ public class Tfsm_plaink3TraceManager implements fr.inria.diverse.trace.gemoc.ap
 			popped.setEndingState(lastState);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void goTo(EObject state) {
 
@@ -635,41 +648,6 @@ public class Tfsm_plaink3TraceManager implements fr.inria.diverse.trace.gemoc.ap
 
 			traces.add(new GenericValueTrace(tracedObject.getCurrentStateSequence(), this));
 		}
-	}
-
-	private void storeAsTracedObject(EObject o) {
-		if (o instanceof org.gemoc.sample.tfsm_plaink3.TFSM) {
-			storeAsTracedObject((org.gemoc.sample.tfsm_plaink3.TFSM) o);
-		} else if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMEvent) {
-			storeAsTracedObject((org.gemoc.sample.tfsm_plaink3.FSMEvent) o);
-		} else if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMClock) {
-			storeAsTracedObject((org.gemoc.sample.tfsm_plaink3.FSMClock) o);
-		}
-	}
-
-	private Collection<? extends EObject> getExeToTraced(Collection<? extends EObject> exeObjects) {
-		Collection<EObject> result = new ArrayList<EObject>();
-		for (EObject exeObject : exeObjects) {
-			storeAsTracedObject(exeObject);
-			result.add(exeToTraced.get(exeObject));
-		}
-		return result;
-	}
-
-	private Collection<? extends EObject> getTracedToExe(Collection<? extends EObject> tracedObjects) {
-		Collection<EObject> result = new ArrayList<EObject>();
-		for (EObject tracedObject : tracedObjects) {
-			result.add(getTracedToExe(tracedObject));
-		}
-		return result;
-	}
-
-	private EObject getTracedToExe(EObject tracedObject) {
-		for (EObject key : exeToTraced.keySet()) {
-			if (exeToTraced.get(key) == tracedObject)
-				return key;
-		}
-		return null;
 	}
 
 	@SuppressWarnings("unchecked")

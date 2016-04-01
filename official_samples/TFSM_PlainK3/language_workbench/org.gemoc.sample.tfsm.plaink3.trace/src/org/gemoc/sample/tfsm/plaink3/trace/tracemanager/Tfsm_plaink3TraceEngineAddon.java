@@ -1,4 +1,4 @@
-package org.gemoc.sample.tfsm.plaink3.tfsm.trace.tracemanager;
+package org.gemoc.sample.tfsm.plaink3.trace.tracemanager;
 
 import fr.inria.diverse.trace.gemoc.traceaddon.AbstractTraceAddon;
 import fr.inria.diverse.trace.gemoc.api.IStepFactory;
