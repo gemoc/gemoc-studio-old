@@ -12,6 +12,10 @@
 		<relativePath>../..</relativePath>
 	</parent>
 
+	<properties>
+		<eclipse.version.name>Mars.2</eclipse.version.name>
+	</properties>
+
 	<artifactId>org.gemoc.gemoc_studio.branding</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
@@ -66,6 +70,10 @@
 	                                <imageFile>src/main/splash/splash.png</imageFile>
 	                                <name>splash</name>
 	                            </loadImage>
+	                            <loadImage>
+	                                <imageFile>src/main/splash/eclipse_48.png</imageFile>
+	                                <name>eclipse</name>
+	                            </loadImage>
 	                        </resources>
 	                        <canvas>
 	                        	<backgroundImageName>splash</backgroundImageName>
@@ -77,6 +85,20 @@
 			                            <fontStyle>italic,bold</fontStyle>
 			                            <fontSize>12</fontSize>
 			                            <position>right-15,bottom-20</position>
+			                        </drawText>
+			                        <!-- Eclipse Logo 64 -->
+			                        <drawImage>
+                            			<imageName>eclipse</imageName>
+                            			<position>right-15,bottom-45</position>
+                        			</drawImage>
+			                        <!-- Eclipse version -->
+	                            	<drawText>
+			                            <text>${eclipse.version.name}</text>
+			                            <textColor>#f7941e</textColor>
+			                            <fontName>SansSerif</fontName>
+			                            <fontStyle>italic,bold</fontStyle>
+			                            <fontSize>16</fontSize>
+			                            <position>right-15,bottom-45</position>
 			                        </drawText>
 	                            </draw>
 	                        </canvas>
