@@ -37,7 +37,7 @@
     	<repository>
             <id>Subversive</id>
             <layout>p2</layout>
-            <url>http://community.polarion.com/projects/subversive/download/eclipse/4.0/luna-site/</url>
+            <url>http://community.polarion.com/projects/subversive/download/eclipse/5.0/mars-site/</url>
         </repository> 
         <repository>
             <id>Groovy</id>
@@ -57,11 +57,11 @@
 <!--             <url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/</url> -->
 <!--         </repository> -->
         <!-- refinement from "xtext all releases" -->
-        <repository>
+        <!-- <repository>
             <id>xtext releases 2.8.4</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.8.4/</url>
-        </repository>
+        </repository>-->
         
         <!-- *********** -->
         <repository>

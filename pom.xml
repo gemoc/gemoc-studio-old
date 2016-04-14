@@ -17,9 +17,9 @@
   	<!-- List of P2 repositories of external tool used to build the components -->
   	<!--  must NOT include the repositories of the tools included in the Studio has it has its own complementary list -->
         <repository>
-            <id>Luna release</id>
+            <id>Mars release</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/releases/luna/201502271000</url>
+            <url>http://download.eclipse.org/releases/mars/201602261000</url>
         </repository>
         <repository>
             <id>timesquare</id>
@@ -46,11 +46,11 @@
             <layout>p2</layout>
             <url>http://melange-lang.org/updatesite/</url>
         </repository>
-        <repository>
+        <!-- <repository>
             <id>Sirius</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/sirius/updates/nightly/2.0.x/luna</url>
-        </repository>
+        </repository>-->
         <repository>
             <id>umldesigner</id>
             <layout>p2</layout>
@@ -66,11 +66,11 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/tools/gef/updates/milestones</url>
         </repository>
-        <repository>
+       <!--  <repository>
             <id>javafx</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/efxclipse/updates-released/2.1.0/site</url>
-        </repository>
+        </repository>-->
     </repositories>
 
 
