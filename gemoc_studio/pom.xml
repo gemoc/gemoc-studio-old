@@ -51,17 +51,17 @@
         </repository>
         
         <!-- *********** Xtext related update site -->
-<!--         <repository> -->
-<!--             <id>xtext all releases</id> -->
-<!--             <layout>p2</layout> -->
-<!--             <url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/</url> -->
-<!--         </repository> -->
-        <!-- refinement from "xtext all releases" -->
-        <repository> <!-- strange : required by fr.inria.aoste.timesquare.ccslkernel.solver.priorities.editor.feature.feature.group -->
-            <id>xtext releases 2.8.4</id>
+        <repository>
+            <id>xtext all releases</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.8.4/</url>
+            <url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/</url>
         </repository>
+        <!-- refinement from "xtext all releases" -->
+<!--         <repository> strange : required by fr.inria.aoste.timesquare.ccslkernel.solver.priorities.editor.feature.feature.group -->
+<!--             <id>xtext releases 2.8.4</id> -->
+<!--             <layout>p2</layout> -->
+<!--             <url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.8.4/</url> -->
+<!--         </repository> -->
         
         <!-- *********** -->
         <repository>
@@ -135,8 +135,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
