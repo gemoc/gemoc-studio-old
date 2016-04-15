@@ -16,13 +16,7 @@
   	<repositories>
   	<!-- List of P2 repositories of external tool used to build the components -->
   	<!--  must NOT include the repositories of the tools included in the Studio has it has its own complementary list -->
-  	
-        <!-- Luna is maintained only for compilation, must be removed ASAP -->
-        <repository>
-            <id>Luna release</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/releases/luna/201502271000</url>
-        </repository>
+  	        
         <repository>
             <id>Mars release</id>
             <layout>p2</layout>
