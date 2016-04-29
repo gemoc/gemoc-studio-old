@@ -1,15 +1,12 @@
 import 'platform:/resource/org.gemoc.sigpmldomain/model/sigpmldomain.ecore'
 --import './sigpmldomain.ecore'
-
-ECLimport "platform:/resource/org.gemoc.SigpmlTuto.mocc/mocc/SigpmlTuto.moccml"
---ECLimport "./xSigpml.moccml"
+ECLimport "platform:/resource/org.gemoc.sigpmltuto.mocc/mocc/Sigpmltuto.moccml"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" 
 
 
-
 package sigpml
-			  
+
 	context Block 
 		def : execute : Event = self.execute()
 		          
@@ -28,6 +25,9 @@ package sigpml
 				outRate,
 				currentSize		  
 			)        
-			                   
 	          
 endpackage
+
+--import './sigpmldomain.ecore'
+--ECLimport "./xSigpml.moccml"
+--ECLimport "./Sigpmltuto.moccml"

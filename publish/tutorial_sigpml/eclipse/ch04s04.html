@@ -4,15 +4,12 @@
 In this program, you declare the metaclasses that you want to select ED or EF, and associating them with a MoCC definition.</p><p>A metaclass is referenced as <span class="emphasis"><em>Context</em></span> and in this scope we define an event relative to the EF and also invariants that must be satisfied in the context of the metaclasse.</p><p>In this tutorial, two contexts are declared for the metaclasses <span class="emphasis"><em>Block</em></span> and <span class="emphasis"><em>Connector</em></span>.
 In the context of <span class="emphasis"><em>Block</em></span> an event <span class="emphasis"><em>execute</em></span> is defined relative to the execution function of the same name in the <span class="emphasis"><em>Block</em></span> metaclass.
 In the context of <span class="emphasis"><em>Connector</em></span>, an invariant is declared based on the call of the relation declaration defined previously in the MoCCML model. The arguments of this relation are associated to the attributes of the metaclasses <span class="emphasis"><em>Connector</em></span> and also we can access by navigation expression to the others <span class="emphasis"><em>Ports</em></span> (for the <span class="emphasis"><em>rate</em></span> attribute) and <span class="emphasis"><em>Block</em></span> (for the <span class="emphasis"><em>execute</em></span> EF).</p><p>The source code is available through
-<a class="link" href="SigPML/files/xSigpml.ecl" target="_top">the ECL program</a>
+<a class="link" href="SigPML/files/SigpmlTuto.ecl" target="_top">the ECL program</a>
 and showed below</p><pre class="programlisting">import 'platform:/resource/org.gemoc.sigpmldomain/model/sigpmldomain.ecore'
 --import './sigpmldomain.ecore'
-
-ECLimport "platform:/resource/org.gemoc.SigpmlTuto.mocc/mocc/SigpmlTuto.moccml"
---ECLimport "./xSigpml.moccml"
+ECLimport "platform:/resource/org.gemoc.sigpmltuto.mocc/mocc/Sigpmltuto.moccml"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
-
 
 
 package sigpml
@@ -36,5 +33,8 @@ package sigpml
 				currentSize
 			)
 
+endpackage
 
-endpackage</pre><p title="ECL Implemenattion"><b>ECL Implemenattion.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/ECL_Implementation.png" alt="ECL Implementation"></span></p><p>At the end of this step the SigPML language is completely in terms of the metamodel, the graphical syntax, the behavior code of the functions, the expression of the concurrent semantics and the mapping between them.</p><p>The last step is to define the animation view of the models as a debug extension of the graphical syntax.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch04s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">MoCCML definition&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Tutorial_SigPML.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Create an animator</td></tr></table></div></body></html>
+--import './sigpmldomain.ecore'
+--ECLimport "./xSigpml.moccml"
+--ECLimport "./Sigpmltuto.moccml"</pre><p title="ECL Implemenattion"><b>ECL Implemenattion.&nbsp;</b><span class="inlinemediaobject"><img src="./SigPML/images/sigpml/ECL_Implementation.png" alt="ECL Implementation"></span></p><p>At the end of this step the SigPML language is completely in terms of the metamodel, the graphical syntax, the behavior code of the functions, the expression of the concurrent semantics and the mapping between them.</p><p>The last step is to define the animation view of the models as a debug extension of the graphical syntax.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch04s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">MoCCML definition&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="Tutorial_SigPML.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Create an animator</td></tr></table></div></body></html>

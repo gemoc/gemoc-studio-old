@@ -1,4 +1,4 @@
-AutomataConstraintLibrary xSigpmlMocc{ 
+AutomataConstraintLibrary Sigpmltuto{ 
 
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as kernel;
 		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as ccsl;
@@ -65,10 +65,6 @@ AutomataConstraintLibrary xSigpmlMocc{
 		)
 
 
-
-
-
 	}
 
 }
-
