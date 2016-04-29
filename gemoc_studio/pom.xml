@@ -31,24 +31,20 @@
     </modules>
 
     <repositories>
- 
-        <!-- Luna is maintained only for compilation, must be removed ASAP -->
+
+        <!-- IMPORTANT : repository used to get older versions of org.eclipse.ocl.examples.feature.group for ECL, need to be removed ASAP -->
         <repository>
-            <id>Luna release</id>
+            <id>OCL releases</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/releases/luna/201502271000</url>
+            <url>http://download.eclipse.org/modeling/mdt/ocl/updates</url>
         </repository>
-    	<!-- Repositories specific for the studio (typically refered by the additional feature) -->
+        
+    	<!-- Repositories specific for the studio (typically referred by the additional feature) -->
     	<repository>
             <id>Subversive</id>
             <layout>p2</layout>
             <url>http://community.polarion.com/projects/subversive/download/eclipse/5.0/mars-site/</url>
-        </repository> 
-        <repository>
-            <id>Groovy</id>
-            <layout>p2</layout>
-            <url>http://dist.springsource.org/milestone/GRECLIPSE/e4.4/</url>
-        </repository>
+        </repository>         
         <repository>
             <id>M2E connectors</id>
             <layout>p2</layout>
