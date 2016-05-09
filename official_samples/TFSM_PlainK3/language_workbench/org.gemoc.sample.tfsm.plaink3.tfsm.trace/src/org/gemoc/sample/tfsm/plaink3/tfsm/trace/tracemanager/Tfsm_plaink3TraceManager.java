@@ -1,0 +1,919 @@
+package org.gemoc.sample.tfsm.plaink3.tfsm.trace.tracemanager;
+
+import fr.inria.diverse.trace.api.IValueTrace;
+import fr.inria.diverse.trace.api.impl.GenericValueTrace;
+
+import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
+
+public class Tfsm_plaink3TraceManager implements fr.inria.diverse.trace.gemoc.api.IGemocTraceManager {
+
+	private tfsm_plaink3Trace.Trace traceRoot;
+	private org.gemoc.executionframework.engine.mse.MSEModel mseModel;
+	private Resource executedModel;
+
+	private Map<EObject, EObject> exeToTraced;
+
+	private tfsm_plaink3Trace.States.State lastState;
+	private List<IValueTrace> traces;
+
+	private Resource traceResource;
+	private Deque<tfsm_plaink3Trace.Steps.Step> context = new LinkedList<tfsm_plaink3Trace.Steps.Step>();
+
+	public Tfsm_plaink3TraceManager(Resource exeModel, Resource traceResource) {
+		this.traceResource = traceResource;
+		this.executedModel = exeModel;
+		this.traces = new ArrayList<IValueTrace>();
+	}
+
+	private void addInitialState() {
+		if (lastState == null) {
+			// Creation of the initial state
+			Set<Resource> allResources = getAllExecutedModelResources();
+			lastState = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE.createState();
+			for (Resource r : allResources) {
+				for (TreeIterator<EObject> i = r.getAllContents(); i.hasNext();) {
+					EObject o = i.next();
+
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.TFSM) {
+						org.gemoc.sample.tfsm_plaink3.TFSM o_cast = (org.gemoc.sample.tfsm_plaink3.TFSM) o;
+						addNewObjectToState(o_cast, lastState);
+					} else
+
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMEvent) {
+						org.gemoc.sample.tfsm_plaink3.FSMEvent o_cast = (org.gemoc.sample.tfsm_plaink3.FSMEvent) o;
+						addNewObjectToState(o_cast, lastState);
+					} else
+
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMClock) {
+						org.gemoc.sample.tfsm_plaink3.FSMClock o_cast = (org.gemoc.sample.tfsm_plaink3.FSMClock) o;
+						addNewObjectToState(o_cast, lastState);
+					}
+				}
+			}
+			this.traceRoot.getStatesTrace().add(lastState);
+		}
+	}
+
+	private void addNewObjectToState(org.gemoc.sample.tfsm_plaink3.TFSM o_cast,
+			tfsm_plaink3Trace.States.State newState) {
+		storeAsTracedObject(o_cast);
+		tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) exeToTraced
+				.get(o_cast);
+
+		// Creation of the first value of the field currentState
+		tfsm_plaink3Trace.States.TFSM_currentState_Value firstValue_currentState = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+				.createTFSM_currentState_Value();
+		firstValue_currentState.setCurrentState(o_cast.getCurrentState());
+		traced.getCurrentStateSequence().add(firstValue_currentState);
+		newState.getTFSM_currentState_Values().add(firstValue_currentState);
+	}
+
+	private void addNewObjectToState(org.gemoc.sample.tfsm_plaink3.FSMEvent o_cast,
+			tfsm_plaink3Trace.States.State newState) {
+		storeAsTracedObject(o_cast);
+		tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent) exeToTraced
+				.get(o_cast);
+
+		// Creation of the first value of the field isTriggered
+		tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value firstValue_isTriggered = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+				.createFSMEvent_isTriggered_Value();
+		firstValue_isTriggered.setIsTriggered(o_cast.isIsTriggered());
+		traced.getIsTriggeredSequence().add(firstValue_isTriggered);
+		newState.getFSMEvent_isTriggered_Values().add(firstValue_isTriggered);
+	}
+
+	private void addNewObjectToState(org.gemoc.sample.tfsm_plaink3.FSMClock o_cast,
+			tfsm_plaink3Trace.States.State newState) {
+		storeAsTracedObject(o_cast);
+		tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock) exeToTraced
+				.get(o_cast);
+
+		// Creation of the first value of the field numberOfTicks
+		tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value firstValue_numberOfTicks = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+				.createFSMClock_numberOfTicks_Value();
+		firstValue_numberOfTicks.setNumberOfTicks(o_cast.getNumberOfTicks());
+		traced.getNumberOfTicksSequence().add(firstValue_numberOfTicks);
+		newState.getFSMClock_numberOfTicks_Values().add(firstValue_numberOfTicks);
+	}
+
+	private tfsm_plaink3Trace.States.State copyState(tfsm_plaink3Trace.States.State oldState) {
+		tfsm_plaink3Trace.States.State newState = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE.createState();
+		newState.getFSMClock_numberOfTicks_Values().addAll(oldState.getFSMClock_numberOfTicks_Values());
+		newState.getFSMEvent_isTriggered_Values().addAll(oldState.getFSMEvent_isTriggered_Values());
+		newState.getTFSM_currentState_Values().addAll(oldState.getTFSM_currentState_Values());
+		return newState;
+	}
+
+	@Override
+	public void addState(Set<org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange> changes) {
+
+		if (lastState == null) {
+			addInitialState();
+		}
+
+		if (!changes.isEmpty()) {
+
+			boolean stateChanged = false;
+
+			// We start by a (shallow) copy of the last state
+			// But we will have to rollback a little by replacing values that changed
+			tfsm_plaink3Trace.States.State newState = copyState(lastState);
+
+			for (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange modelChange : changes) {
+				EObject o = modelChange.getChangedObject();
+
+				// Here we must look at non-collection mutable fields
+				// We must rollback the last values from the copied state, and add new values as well
+				// ie. mix of remove and new
+				if (modelChange instanceof org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) {
+					stateChanged = true;
+
+					org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange modelChange_cast = (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) modelChange;
+					org.eclipse.emf.ecore.EStructuralFeature p = modelChange_cast.getChangedField();
+
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.TFSM) {
+
+						org.gemoc.sample.tfsm_plaink3.TFSM o_cast = (org.gemoc.sample.tfsm_plaink3.TFSM) o;
+
+						if (p.getFeatureID() == org.gemoc.sample.tfsm_plaink3.TfsmPackage.eINSTANCE
+								.getTFSM_CurrentState().getFeatureID()) {
+
+							// Rollback: we remove the last value of this field from the new state
+							tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) exeToTraced
+									.get(o);
+							tfsm_plaink3Trace.States.TFSM_currentState_Value lastValue = traced
+									.getCurrentStateSequence().get(traced.getCurrentStateSequence().size() - 1);
+							newState.getTFSM_currentState_Values().remove(lastValue);
+
+							// And we create a proper new value
+							tfsm_plaink3Trace.States.TFSM_currentState_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+									.createTFSM_currentState_Value();
+							newValue.setCurrentState(o_cast.getCurrentState());
+							traced.getCurrentStateSequence().add(newValue);
+							newState.getTFSM_currentState_Values().add(newValue);
+						}
+
+					} else
+
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMEvent) {
+
+						org.gemoc.sample.tfsm_plaink3.FSMEvent o_cast = (org.gemoc.sample.tfsm_plaink3.FSMEvent) o;
+
+						if (p.getFeatureID() == org.gemoc.sample.tfsm_plaink3.TfsmPackage.eINSTANCE
+								.getFSMEvent_IsTriggered().getFeatureID()) {
+
+							// Rollback: we remove the last value of this field from the new state
+							tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent) exeToTraced
+									.get(o);
+							tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value lastValue = traced
+									.getIsTriggeredSequence().get(traced.getIsTriggeredSequence().size() - 1);
+							newState.getFSMEvent_isTriggered_Values().remove(lastValue);
+
+							// And we create a proper new value
+							tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+									.createFSMEvent_isTriggered_Value();
+							newValue.setIsTriggered(o_cast.isIsTriggered());
+							traced.getIsTriggeredSequence().add(newValue);
+							newState.getFSMEvent_isTriggered_Values().add(newValue);
+						}
+
+					} else
+
+					if (o instanceof org.gemoc.sample.tfsm_plaink3.FSMClock) {
+
+						org.gemoc.sample.tfsm_plaink3.FSMClock o_cast = (org.gemoc.sample.tfsm_plaink3.FSMClock) o;
+
+						if (p.getFeatureID() == org.gemoc.sample.tfsm_plaink3.TfsmPackage.eINSTANCE
+								.getFSMClock_NumberOfTicks().getFeatureID()) {
+
+							// Rollback: we remove the last value of this field from the new state
+							tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock) exeToTraced
+									.get(o);
+							tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value lastValue = traced
+									.getNumberOfTicksSequence().get(traced.getNumberOfTicksSequence().size() - 1);
+							newState.getFSMClock_numberOfTicks_Values().remove(lastValue);
+
+							// And we create a proper new value
+							tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+									.createFSMClock_numberOfTicks_Value();
+							newValue.setNumberOfTicks(o_cast.getNumberOfTicks());
+							traced.getNumberOfTicksSequence().add(newValue);
+							newState.getFSMClock_numberOfTicks_Values().add(newValue);
+						}
+
+					}
+
+				}
+
+			}
+			if (stateChanged) {
+				final tfsm_plaink3Trace.Steps.Step currentStep = context.peekFirst();
+				if (currentStep != null && currentStep instanceof tfsm_plaink3Trace.Steps.BigStep) {
+					final tfsm_plaink3Trace.States.State startingState = lastState;
+					final tfsm_plaink3Trace.States.State endingState = newState;
+					addImplicitStep(currentStep, startingState, endingState);
+				}
+
+				lastState = newState;
+				traceRoot.getStatesTrace().add(lastState);
+			}
+		}
+	}
+
+	@Override
+	public void addStep(String stepRule, Map<String, Object> params) {
+		addStep(stepRule, params, this.getTraceSize() - 1);
+	}
+
+	private void addStep(String stepRule, Map<String, Object> params, int stateIndex) {
+
+		tfsm_plaink3Trace.Steps.Step toPush = null;
+
+		if (stateIndex >= 0) {
+
+			tfsm_plaink3Trace.States.State state = this.traceRoot.getStatesTrace().get(stateIndex);
+
+			if (stepRule.equalsIgnoreCase("tfsm_plaink3.FSMClock.ticks")) {
+				// First we create the step
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMClock_Ticks tfsm_plaink3_FSMClock_TicksInstance = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE
+						.createTfsm_plaink3_FSMClock_Ticks();
+				tfsm_plaink3_FSMClock_TicksInstance.setStartingState(state);
+
+				if (!context.isEmpty() && context.getFirst() != null) {
+					emfAdd(context.getFirst(), "subSteps", tfsm_plaink3_FSMClock_TicksInstance);
+				} else {
+					traceRoot.getRootSteps().add(tfsm_plaink3_FSMClock_TicksInstance);
+				}
+				toPush = tfsm_plaink3_FSMClock_TicksInstance;
+
+				// Then we add it to its trace
+				this.traceRoot.getTfsm_plaink3_FSMClock_Ticks_Sequence().add(tfsm_plaink3_FSMClock_TicksInstance);
+			} else
+
+			if (stepRule.equalsIgnoreCase("tfsm_plaink3.FSMEvent.trigger")) {
+				// First we create the step
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_Trigger tfsm_plaink3_FSMEvent_TriggerInstance = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE
+						.createTfsm_plaink3_FSMEvent_Trigger();
+				tfsm_plaink3_FSMEvent_TriggerInstance.setStartingState(state);
+
+				if (!context.isEmpty() && context.getFirst() != null) {
+					emfAdd(context.getFirst(), "subSteps", tfsm_plaink3_FSMEvent_TriggerInstance);
+				} else {
+					traceRoot.getRootSteps().add(tfsm_plaink3_FSMEvent_TriggerInstance);
+				}
+				toPush = tfsm_plaink3_FSMEvent_TriggerInstance;
+
+				// Then we add it to its trace
+				this.traceRoot.getTfsm_plaink3_FSMEvent_Trigger_Sequence().add(tfsm_plaink3_FSMEvent_TriggerInstance);
+			} else
+
+			if (stepRule.equalsIgnoreCase("tfsm_plaink3.FSMEvent.unTrigger")) {
+				// First we create the step
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_UnTrigger tfsm_plaink3_FSMEvent_UnTriggerInstance = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE
+						.createTfsm_plaink3_FSMEvent_UnTrigger();
+				tfsm_plaink3_FSMEvent_UnTriggerInstance.setStartingState(state);
+
+				if (!context.isEmpty() && context.getFirst() != null) {
+					emfAdd(context.getFirst(), "subSteps", tfsm_plaink3_FSMEvent_UnTriggerInstance);
+				} else {
+					traceRoot.getRootSteps().add(tfsm_plaink3_FSMEvent_UnTriggerInstance);
+				}
+				toPush = tfsm_plaink3_FSMEvent_UnTriggerInstance;
+
+				// Then we add it to its trace
+				this.traceRoot.getTfsm_plaink3_FSMEvent_UnTrigger_Sequence()
+						.add(tfsm_plaink3_FSMEvent_UnTriggerInstance);
+			} else
+
+			if (stepRule.equalsIgnoreCase("tfsm_plaink3.State.visit")) {
+				// First we create the step
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit tfsm_plaink3_State_VisitInstance = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE
+						.createTfsm_plaink3_State_Visit();
+				tfsm_plaink3_State_VisitInstance.setStartingState(state);
+
+				if (!context.isEmpty() && context.getFirst() != null) {
+					emfAdd(context.getFirst(), "subSteps", tfsm_plaink3_State_VisitInstance);
+				} else {
+					traceRoot.getRootSteps().add(tfsm_plaink3_State_VisitInstance);
+				}
+				toPush = tfsm_plaink3_State_VisitInstance;
+
+				// Then we add it to its trace
+				this.traceRoot.getTfsm_plaink3_State_Visit_Sequence().add(tfsm_plaink3_State_VisitInstance);
+			} else
+
+			if (stepRule.equalsIgnoreCase("tfsm_plaink3.TFSM.init")) {
+				// First we create the step
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_TFSM_Init tfsm_plaink3_TFSM_InitInstance = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE
+						.createTfsm_plaink3_TFSM_Init();
+				tfsm_plaink3_TFSM_InitInstance.setStartingState(state);
+
+				if (!context.isEmpty() && context.getFirst() != null) {
+					emfAdd(context.getFirst(), "subSteps", tfsm_plaink3_TFSM_InitInstance);
+				} else {
+					traceRoot.getRootSteps().add(tfsm_plaink3_TFSM_InitInstance);
+				}
+				toPush = tfsm_plaink3_TFSM_InitInstance;
+
+				// Then we add it to its trace
+				this.traceRoot.getTfsm_plaink3_TFSM_Init_Sequence().add(tfsm_plaink3_TFSM_InitInstance);
+			} else
+
+			if (stepRule.equalsIgnoreCase("tfsm_plaink3.Transition.fire")) {
+				// First we create the step
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Fire tfsm_plaink3_Transition_FireInstance = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE
+						.createTfsm_plaink3_Transition_Fire();
+				tfsm_plaink3_Transition_FireInstance.setStartingState(state);
+
+				if (!context.isEmpty() && context.getFirst() != null) {
+					emfAdd(context.getFirst(), "subSteps", tfsm_plaink3_Transition_FireInstance);
+				} else {
+					traceRoot.getRootSteps().add(tfsm_plaink3_Transition_FireInstance);
+				}
+				toPush = tfsm_plaink3_Transition_FireInstance;
+
+				// Then we add it to its trace
+				this.traceRoot.getTfsm_plaink3_Transition_Fire_Sequence().add(tfsm_plaink3_Transition_FireInstance);
+			} else
+
+			if (stepRule.equalsIgnoreCase("tfsm_plaink3.Transition.visit")) {
+				// First we create the step
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit tfsm_plaink3_Transition_VisitInstance = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE
+						.createTfsm_plaink3_Transition_Visit();
+				tfsm_plaink3_Transition_VisitInstance.setStartingState(state);
+
+				if (!context.isEmpty() && context.getFirst() != null) {
+					emfAdd(context.getFirst(), "subSteps", tfsm_plaink3_Transition_VisitInstance);
+				} else {
+					traceRoot.getRootSteps().add(tfsm_plaink3_Transition_VisitInstance);
+				}
+				toPush = tfsm_plaink3_Transition_VisitInstance;
+
+				// Then we add it to its trace
+				this.traceRoot.getTfsm_plaink3_Transition_Visit_Sequence().add(tfsm_plaink3_Transition_VisitInstance);
+			}
+
+		}
+
+		context.push(toPush);
+
+	}
+
+	private void addImplicitStep(tfsm_plaink3Trace.Steps.Step currentStep, tfsm_plaink3Trace.States.State startingState,
+			tfsm_plaink3Trace.States.State endingState) {
+
+		tfsm_plaink3Trace.Steps.Step implicitStep = null;
+		if (currentStep instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit) {
+			implicitStep = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_State_Visit_ImplicitStep();
+		} else if (currentStep instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit) {
+			implicitStep = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE
+					.createTfsm_plaink3_Transition_Visit_ImplicitStep();
+		}
+		if (implicitStep != null) {
+			implicitStep.setStartingState(startingState);
+			implicitStep.setEndingState(endingState);
+			emfAdd(currentStep, "subSteps", implicitStep);
+		}
+	}
+
+	@Override
+	public boolean addStep(org.gemoc.executionframework.engine.mse.MSEOccurrence mseOccurrence) {
+
+		tfsm_plaink3Trace.Steps.Step step = null;
+
+		if (mseOccurrence != null && mseOccurrence instanceof tfsm_plaink3Trace.Steps.Step) {
+
+			step = (tfsm_plaink3Trace.Steps.Step) mseOccurrence;
+
+			if (mseModel == null) {
+				mseModel = org.gemoc.executionframework.engine.mse.MseFactory.eINSTANCE.createMSEModel();
+				traceResource.getContents().add(mseModel);
+			}
+
+			mseModel.getOwnedMSEs().add(step.getMse());
+
+			// Creating generic (or almost generic) links
+			tfsm_plaink3Trace.States.State state = this.traceRoot.getStatesTrace().get(this.getTraceSize() - 1);
+			step.setStartingState(state);
+			if (!context.isEmpty() && context.getFirst() != null) {
+				emfAdd(context.getFirst(), "subSteps", step);
+			} else {
+				traceRoot.getRootSteps().add(step);
+			}
+
+			// Adding step in its dedicated sequence/dimension
+			if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMClock_Ticks) {
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMClock_Ticks tfsm_plaink3_FSMClock_TicksInstance = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMClock_Ticks) step;
+				this.traceRoot.getTfsm_plaink3_FSMClock_Ticks_Sequence().add(tfsm_plaink3_FSMClock_TicksInstance);
+			} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_Trigger) {
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_Trigger tfsm_plaink3_FSMEvent_TriggerInstance = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_Trigger) step;
+				this.traceRoot.getTfsm_plaink3_FSMEvent_Trigger_Sequence().add(tfsm_plaink3_FSMEvent_TriggerInstance);
+			} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_UnTrigger) {
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_UnTrigger tfsm_plaink3_FSMEvent_UnTriggerInstance = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_UnTrigger) step;
+				this.traceRoot.getTfsm_plaink3_FSMEvent_UnTrigger_Sequence()
+						.add(tfsm_plaink3_FSMEvent_UnTriggerInstance);
+			} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit) {
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit tfsm_plaink3_State_VisitInstance = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit) step;
+				this.traceRoot.getTfsm_plaink3_State_Visit_Sequence().add(tfsm_plaink3_State_VisitInstance);
+			} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_TFSM_Init) {
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_TFSM_Init tfsm_plaink3_TFSM_InitInstance = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_TFSM_Init) step;
+				this.traceRoot.getTfsm_plaink3_TFSM_Init_Sequence().add(tfsm_plaink3_TFSM_InitInstance);
+			} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Fire) {
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Fire tfsm_plaink3_Transition_FireInstance = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Fire) step;
+				this.traceRoot.getTfsm_plaink3_Transition_Fire_Sequence().add(tfsm_plaink3_Transition_FireInstance);
+			} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit) {
+				tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit tfsm_plaink3_Transition_VisitInstance = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit) step;
+				this.traceRoot.getTfsm_plaink3_Transition_Visit_Sequence().add(tfsm_plaink3_Transition_VisitInstance);
+			}
+		}
+		context.push(step);
+
+		return (step != null);
+	}
+
+	@Override
+	public void endStep(String stepRule, Object returnValue) {
+		tfsm_plaink3Trace.Steps.Step popped = context.pop();
+		if (popped != null)
+			popped.setEndingState(lastState);
+	}
+
+	@Override
+	public void goTo(EObject state) {
+
+		if (state instanceof tfsm_plaink3Trace.States.State) {
+			tfsm_plaink3Trace.States.State stateToGo = (tfsm_plaink3Trace.States.State) state;
+
+			for (tfsm_plaink3Trace.States.TFSM_currentState_Value value : stateToGo.getTFSM_currentState_Values()) {
+
+				if (value.getParent() instanceof tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) {
+					tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM parent_cast = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) value
+							.getParent();
+					org.gemoc.sample.tfsm_plaink3.State toset = value.getCurrentState();
+					org.gemoc.sample.tfsm_plaink3.State current = ((org.gemoc.sample.tfsm_plaink3.TFSM) parent_cast
+							.getOriginalObject()).getCurrentState();
+					if (current != toset)
+						((org.gemoc.sample.tfsm_plaink3.TFSM) parent_cast.getOriginalObject()).setCurrentState(toset);
+
+				}
+
+			}
+
+			for (tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value value : stateToGo
+					.getFSMEvent_isTriggered_Values()) {
+
+				if (value.getParent() instanceof tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent) {
+					tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent parent_cast = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent) value
+							.getParent();
+					boolean toset = value.isIsTriggered();
+					boolean current = ((org.gemoc.sample.tfsm_plaink3.FSMEvent) parent_cast.getOriginalObject())
+							.isIsTriggered();
+					if (current != toset)
+						((org.gemoc.sample.tfsm_plaink3.FSMEvent) parent_cast.getOriginalObject())
+								.setIsTriggered(toset);
+
+				}
+
+			}
+
+			for (tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value value : stateToGo
+					.getFSMClock_numberOfTicks_Values()) {
+
+				if (value.getParent() instanceof tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock) {
+					tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock parent_cast = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock) value
+							.getParent();
+					java.lang.Integer toset = value.getNumberOfTicks();
+					java.lang.Integer current = ((org.gemoc.sample.tfsm_plaink3.FSMClock) parent_cast
+							.getOriginalObject()).getNumberOfTicks();
+					if (current != toset)
+						((org.gemoc.sample.tfsm_plaink3.FSMClock) parent_cast.getOriginalObject())
+								.setNumberOfTicks(toset);
+
+				}
+
+			}
+
+		} else {
+			goToValue(state);
+		}
+	}
+
+	@Override
+	public void goTo(int stepNumber) {
+		tfsm_plaink3Trace.States.State stateToGo = traceRoot.getStatesTrace().get(stepNumber);
+		goTo(stateToGo);
+	}
+
+	private void goToValue(EObject value) {
+		Object states = emfGet(value, "states");
+		if (states != null) {
+			if (states instanceof List<?>) {
+				// We get the first state in which this value existed
+				Object state = ((List<?>) states).get(0);
+				if (state instanceof tfsm_plaink3Trace.States.State) {
+					goTo((tfsm_plaink3Trace.States.State) state);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void initTrace() {
+		// Create root
+		this.traceRoot = tfsm_plaink3Trace.Tfsm_plaink3TraceFactory.eINSTANCE.createTrace();
+
+		// Put in the resource
+		traceResource.getContents().add(traceRoot);
+
+		// Initializing the map exeobject -> tracedobject
+		this.exeToTraced = new HashMap<EObject, EObject>();
+	}
+
+	public void loadTrace(tfsm_plaink3Trace.Trace traceRoot) {
+		this.traceRoot = traceRoot;
+		this.exeToTraced = new HashMap<EObject, EObject>();
+		for (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock tracedObject : traceRoot
+				.getTfsm_plaink3_tracedFSMClocks()) {
+			traces.add(new GenericValueTrace(tracedObject.getNumberOfTicksSequence(), this));
+		}
+		for (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent tracedObject : traceRoot
+				.getTfsm_plaink3_tracedFSMEvents()) {
+			traces.add(new GenericValueTrace(tracedObject.getIsTriggeredSequence(), this));
+		}
+		for (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM tracedObject : traceRoot.getTfsm_plaink3_tracedTFSMs()) {
+			traces.add(new GenericValueTrace(tracedObject.getCurrentStateSequence(), this));
+		}
+	}
+
+	@Override
+	public void save() {
+		try {
+			traceResource.save(null);
+		} catch (java.io.IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void save(URI uri) {
+		try {
+			traceResource.setURI(uri);
+			traceResource.save(null);
+		} catch (java.io.IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public String getDescriptionOfExecutionState(int index) {
+		StringBuilder result = new StringBuilder();
+		tfsm_plaink3Trace.States.State gs = traceRoot.getStatesTrace().get(index);
+
+		if (!gs.getTFSM_currentState_Values().isEmpty())
+			result.append("\nCurrentState values:");
+		for (tfsm_plaink3Trace.States.TFSM_currentState_Value currentState : gs.getTFSM_currentState_Values()) {
+			result.append("\n\t" + currentState.getCurrentState());
+		}
+
+		if (!gs.getFSMEvent_isTriggered_Values().isEmpty())
+			result.append("\nIsTriggered values:");
+		for (tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value currentState : gs.getFSMEvent_isTriggered_Values()) {
+			result.append("\n\t" + currentState.isIsTriggered());
+		}
+
+		if (!gs.getFSMClock_numberOfTicks_Values().isEmpty())
+			result.append("\nNumberOfTicks values:");
+		for (tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value currentState : gs
+				.getFSMClock_numberOfTicks_Values()) {
+			result.append("\n\t" + currentState.getNumberOfTicks());
+		}
+
+		if (!gs.getStartedSteps().isEmpty()) {
+			result.append("\n\nStarting steps: ");
+			for (tfsm_plaink3Trace.Steps.Step m : gs.getStartedSteps()) {
+				result.append("\n\t" + m.eClass().getName());
+				if (m.getEndingState() != null) {
+					result.append(" (ends at state " + traceRoot.getStatesTrace().indexOf(m.getEndingState()) + ")");
+				}
+			}
+		}
+
+		result.deleteCharAt(0);
+		return result.toString();
+	}
+
+	@Override
+	public String getDescriptionOfValue(EObject value) {
+		if (value instanceof tfsm_plaink3Trace.States.TFSM_currentState_Value) {
+			return "tfsm_plaink3Trace.States.TFSM_currentState_Value: "
+					+ ((tfsm_plaink3Trace.States.TFSM_currentState_Value) value).getCurrentState();
+		} else if (value instanceof tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value) {
+			return "tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value: "
+					+ ((tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value) value).isIsTriggered();
+		} else if (value instanceof tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value) {
+			return "tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value: "
+					+ ((tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value) value).getNumberOfTicks();
+		} else
+			return "ERROR";
+	}
+
+	@Override
+	public Object getContainedValue(EObject value) {
+		if (value instanceof tfsm_plaink3Trace.States.TFSM_currentState_Value) {
+			return ((tfsm_plaink3Trace.States.TFSM_currentState_Value) value).getCurrentState();
+		} else if (value instanceof tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value) {
+			return ((tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value) value).isIsTriggered();
+		} else if (value instanceof tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value) {
+			return ((tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value) value).getNumberOfTicks();
+		} else
+			return null;
+	}
+
+	private void storeAsTracedObject(org.gemoc.sample.tfsm_plaink3.FSMClock o) {
+
+		// First we find the traced object, and we create it if required
+		tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock tracedObject;
+		if (!exeToTraced.containsKey(o)) {
+			tracedObject = tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Factory.eINSTANCE.createTracedFSMClock();
+			tracedObject.setOriginalObject(o);
+			exeToTraced.put(o, tracedObject);
+			traceRoot.getTfsm_plaink3_tracedFSMClocks().add(tracedObject);
+
+			traces.add(new GenericValueTrace(tracedObject.getNumberOfTicksSequence(), this));
+		}
+	}
+
+	private void storeAsTracedObject(org.gemoc.sample.tfsm_plaink3.FSMEvent o) {
+
+		// First we find the traced object, and we create it if required
+		tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent tracedObject;
+		if (!exeToTraced.containsKey(o)) {
+			tracedObject = tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Factory.eINSTANCE.createTracedFSMEvent();
+			tracedObject.setOriginalObject(o);
+			exeToTraced.put(o, tracedObject);
+			traceRoot.getTfsm_plaink3_tracedFSMEvents().add(tracedObject);
+
+			traces.add(new GenericValueTrace(tracedObject.getIsTriggeredSequence(), this));
+		}
+	}
+
+	private void storeAsTracedObject(org.gemoc.sample.tfsm_plaink3.TFSM o) {
+
+		// First we find the traced object, and we create it if required
+		tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM tracedObject;
+		if (!exeToTraced.containsKey(o)) {
+			tracedObject = tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Factory.eINSTANCE.createTracedTFSM();
+			tracedObject.setOriginalObject(o);
+			exeToTraced.put(o, tracedObject);
+			traceRoot.getTfsm_plaink3_tracedTFSMs().add(tracedObject);
+
+			traces.add(new GenericValueTrace(tracedObject.getCurrentStateSequence(), this));
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private static void emfAdd(EObject o, String property, Object value) {
+		for (EReference r : o.eClass().getEAllReferences()) {
+			if (r.getName().equalsIgnoreCase(property)) {
+				Object coll = o.eGet(r);
+				if (coll instanceof Collection) {
+					((Collection<Object>) coll).add(value);
+					return;
+				}
+			}
+		}
+	}
+
+	private static Object emfGet(EObject o, String property) {
+		for (EReference r : o.eClass().getEAllReferences()) {
+			if (r.getName().equalsIgnoreCase(property)) {
+				return o.eGet(r);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public EObject getExecutionState(int index) {
+		return traceRoot.getStatesTrace().get(index);
+	}
+
+	@Override
+	public int getTraceSize() {
+		return traceRoot.getStatesTrace().size();
+	}
+
+	@Override
+	public int getNumberOfValueTraces() {
+		return traces.size();
+	}
+
+	@Override
+	public Set<EObject> getAllCurrentValues(int stateIndex) {
+		tfsm_plaink3Trace.States.State currentState = this.traceRoot.getStatesTrace().get(stateIndex);
+		// We find all current values
+		Set<EObject> currentValues = new HashSet<EObject>();
+		if (currentState != null) {
+			currentValues.addAll(currentState.getTFSM_currentState_Values());
+			currentValues.addAll(currentState.getFSMEvent_isTriggered_Values());
+			currentValues.addAll(currentState.getFSMClock_numberOfTicks_Values());
+		}
+		return currentValues;
+	}
+
+	public List<IValueTrace> getAllValueTraces() {
+		return traces;
+	}
+
+	@Override
+	public int getStateOrValueIndex(EObject stateOrValue) {
+		int idx = traceRoot.getStatesTrace().indexOf(stateOrValue);
+		if (idx == -1) {
+			final Object states = emfGet(stateOrValue, "states");
+			if (states != null) {
+				if (states instanceof List<?>) {
+					// We get the first state in which this value existed
+					Object valueState = ((List<?>) states).get(0);
+					if (valueState instanceof tfsm_plaink3Trace.States.State) {
+						idx = traceRoot.getStatesTrace().indexOf(valueState);
+					}
+				}
+			}
+		}
+		return idx;
+	}
+
+	@Override
+	public String currentBigStep() {
+		if (!context.isEmpty() && context.getFirst() != null)
+			return context.getFirst().eClass().getName();
+		else
+			return null;
+	}
+
+	@Override
+	public List<fr.inria.diverse.trace.api.IStep> getStepsForStates(int startingState, int endingState) {
+		Predicate<fr.inria.diverse.trace.api.IStep> predicate = (s) -> {
+			final int stepStartingState = s.getStartingIndex();
+			final int stepEndingState = s.getEndingIndex();
+			return (stepEndingState == -1 || stepEndingState >= startingState) && stepStartingState <= endingState;
+		};
+		return traceRoot.getRootSteps().stream().map(s -> createLazyGenericStep(s, null, predicate)).filter(predicate)
+				.collect(Collectors.toList());
+	}
+
+	@SuppressWarnings("unchecked")
+	private List<fr.inria.diverse.trace.api.IStep> generateSubSteps(tfsm_plaink3Trace.Steps.Step step,
+			fr.inria.diverse.trace.api.IStep parent) {
+
+		final List<tfsm_plaink3Trace.Steps.Step> subSteps = (List<tfsm_plaink3Trace.Steps.Step>) emfGet(step,
+				"subSteps");
+		final List<fr.inria.diverse.trace.api.IStep> result = new ArrayList<>();
+
+		if (subSteps != null && !subSteps.isEmpty()) {
+			for (tfsm_plaink3Trace.Steps.Step subStep : subSteps) {
+				result.add(createLazyGenericStep(subStep, parent));
+			}
+		}
+
+		return result;
+	}
+
+	private fr.inria.diverse.trace.api.IStep createLazyGenericStep(tfsm_plaink3Trace.Steps.Step step,
+			fr.inria.diverse.trace.api.IStep parent) {
+		return createLazyGenericStep(step, parent, null);
+	}
+
+	private fr.inria.diverse.trace.api.IStep createLazyGenericStep(tfsm_plaink3Trace.Steps.Step step,
+			fr.inria.diverse.trace.api.IStep parent, Predicate<fr.inria.diverse.trace.api.IStep> predicate) {
+		fr.inria.diverse.trace.api.IStep result = null;
+
+		if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMClock_Ticks) {
+			tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMClock_Ticks step_cast = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMClock_Ticks) step;
+			int startIndex = this.traceRoot.getStatesTrace().indexOf(step.getStartingState());
+			int endIndex = this.traceRoot.getStatesTrace().indexOf(step.getEndingState());
+
+			result = new fr.inria.diverse.trace.api.impl.PartiallyLazyGenericStep(
+					"org.gemoc.sample.tfsm_plaink3.FSMClock", "ticks", startIndex, endIndex, parent,
+					(s) -> generateSubSteps(step_cast, s), predicate);
+			result.addParameter("caller", (step_cast.getCaller()));
+			result.addParameter("this", step);
+
+		} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_Trigger) {
+			tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_Trigger step_cast = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_Trigger) step;
+			int startIndex = this.traceRoot.getStatesTrace().indexOf(step.getStartingState());
+			int endIndex = this.traceRoot.getStatesTrace().indexOf(step.getEndingState());
+
+			result = new fr.inria.diverse.trace.api.impl.PartiallyLazyGenericStep(
+					"org.gemoc.sample.tfsm_plaink3.FSMEvent", "trigger", startIndex, endIndex, parent,
+					(s) -> generateSubSteps(step_cast, s), predicate);
+			result.addParameter("caller", (step_cast.getCaller()));
+			result.addParameter("this", step);
+
+		} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_UnTrigger) {
+			tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_UnTrigger step_cast = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMEvent_UnTrigger) step;
+			int startIndex = this.traceRoot.getStatesTrace().indexOf(step.getStartingState());
+			int endIndex = this.traceRoot.getStatesTrace().indexOf(step.getEndingState());
+
+			result = new fr.inria.diverse.trace.api.impl.PartiallyLazyGenericStep(
+					"org.gemoc.sample.tfsm_plaink3.FSMEvent", "unTrigger", startIndex, endIndex, parent,
+					(s) -> generateSubSteps(step_cast, s), predicate);
+			result.addParameter("caller", (step_cast.getCaller()));
+			result.addParameter("this", step);
+
+		} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit) {
+			tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit step_cast = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit) step;
+			int startIndex = this.traceRoot.getStatesTrace().indexOf(step.getStartingState());
+			int endIndex = this.traceRoot.getStatesTrace().indexOf(step.getEndingState());
+
+			result = new fr.inria.diverse.trace.api.impl.PartiallyLazyGenericStep("org.gemoc.sample.tfsm_plaink3.State",
+					"visit", startIndex, endIndex, parent, (s) -> generateSubSteps(step_cast, s), predicate);
+			result.addParameter("caller", (step_cast.getCaller()));
+			result.addParameter("this", step);
+
+		} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_TFSM_Init) {
+			tfsm_plaink3Trace.Steps.Tfsm_plaink3_TFSM_Init step_cast = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_TFSM_Init) step;
+			int startIndex = this.traceRoot.getStatesTrace().indexOf(step.getStartingState());
+			int endIndex = this.traceRoot.getStatesTrace().indexOf(step.getEndingState());
+
+			result = new fr.inria.diverse.trace.api.impl.PartiallyLazyGenericStep("org.gemoc.sample.tfsm_plaink3.TFSM",
+					"init", startIndex, endIndex, parent, (s) -> generateSubSteps(step_cast, s), predicate);
+			result.addParameter("caller", (step_cast.getCaller()));
+			result.addParameter("this", step);
+
+		} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Fire) {
+			tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Fire step_cast = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Fire) step;
+			int startIndex = this.traceRoot.getStatesTrace().indexOf(step.getStartingState());
+			int endIndex = this.traceRoot.getStatesTrace().indexOf(step.getEndingState());
+
+			result = new fr.inria.diverse.trace.api.impl.PartiallyLazyGenericStep(
+					"org.gemoc.sample.tfsm_plaink3.Transition", "fire", startIndex, endIndex, parent,
+					(s) -> generateSubSteps(step_cast, s), predicate);
+			result.addParameter("caller", (step_cast.getCaller()));
+			result.addParameter("this", step);
+
+		} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit) {
+			tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit step_cast = (tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit) step;
+			int startIndex = this.traceRoot.getStatesTrace().indexOf(step.getStartingState());
+			int endIndex = this.traceRoot.getStatesTrace().indexOf(step.getEndingState());
+
+			result = new fr.inria.diverse.trace.api.impl.PartiallyLazyGenericStep(
+					"org.gemoc.sample.tfsm_plaink3.Transition", "visit", startIndex, endIndex, parent,
+					(s) -> generateSubSteps(step_cast, s), predicate);
+			result.addParameter("caller", (step_cast.getCaller()));
+			result.addParameter("this", step);
+
+		} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit_ImplicitStep) {
+			int startIndex = this.traceRoot.getStatesTrace().indexOf(step.getStartingState());
+			int endIndex = this.traceRoot.getStatesTrace().indexOf(step.getEndingState());
+
+			result = new fr.inria.diverse.trace.api.impl.GenericStep("org.gemoc.sample.tfsm_plaink3.State",
+					"implicitStep", startIndex, endIndex, parent, new ArrayList<>());
+			result.addParameter("this", step);
+		} else if (step instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_ImplicitStep) {
+			int startIndex = this.traceRoot.getStatesTrace().indexOf(step.getStartingState());
+			int endIndex = this.traceRoot.getStatesTrace().indexOf(step.getEndingState());
+
+			result = new fr.inria.diverse.trace.api.impl.GenericStep("org.gemoc.sample.tfsm_plaink3.Transition",
+					"implicitStep", startIndex, endIndex, parent, new ArrayList<>());
+			result.addParameter("this", step);
+		}
+
+		return result;
+	}
+
+	private Set<Resource> getAllExecutedModelResources() {
+		Set<Resource> allResources = new HashSet<>();
+		allResources.add(executedModel);
+		allResources.addAll(org.gemoc.commons.eclipse.emf.EMFResource.getRelatedResources(executedModel));
+		return allResources;
+	}
+
+	@Override
+	public boolean isPartialTraceManager() {
+		return false;
+	}
+
+	@Override
+	public void setTraceRoot(EObject object) {
+		if (object instanceof tfsm_plaink3Trace.Trace) {
+			traceRoot = (tfsm_plaink3Trace.Trace) object;
+		}
+	}
+}
