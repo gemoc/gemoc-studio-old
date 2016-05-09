@@ -50,13 +50,18 @@
             <layout>p2</layout>
             <url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.7.0/N/0.7.0.201309291400/</url>
         </repository>
+        <repository>
+            <id>Palette patch update site</id>
+            <layout>p2</layout>
+            <url>http://gemoc.org/pub/studio/patch_sirius_palette/</url>
+        </repository>
         
         <!-- *********** Xtext related update site -->
-        <repository>
+       <!--  <repository>
             <id>xtext all releases</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/</url>
-        </repository>
+        </repository> -->
         <!-- refinement from "xtext all releases" -->
 <!--         <repository> strange : required by fr.inria.aoste.timesquare.ccslkernel.solver.priorities.editor.feature.feature.group -->
 <!--             <id>xtext releases 2.8.4</id> -->

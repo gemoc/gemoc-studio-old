@@ -32,7 +32,6 @@
       <import feature="org.polarion.eclipse.team.svn.connector" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2e.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2e.logback.feature" version="0.0.0" match="greaterOrEqual"/>
-      <!-- <import feature="org.codehaus.groovy.eclipse.feature" version="0.0.0" match="greaterOrEqual"/>-->
       <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.1.1" match="greaterOrEqual"/>
       <import feature="org.eclipse.epp.mpc" version="1.2.1.v20140219-1000" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtend.sdk" version="0.0.0"/>
@@ -49,6 +48,7 @@
       <import feature="org.eclipse.fx.ide.basic.feature" version="2.2.0.201508240705"/>
       <import feature="org.eclipse.fx.ide.pde.feature" version="2.2.0.201508240705"/>
       <import plugin="org.eclipse.amalgam.discovery.modeling"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui.palettepatch" version="1.0.0"/>
    </requires>
 
 </feature>
