@@ -48,7 +48,6 @@
       <import feature="org.eclipse.fx.ide.basic.feature" version="2.2.0.201508240705"/>
       <import feature="org.eclipse.fx.ide.pde.feature" version="2.2.0.201508240705"/>
       <import plugin="org.eclipse.amalgam.discovery.modeling"/>
-      <import feature="org.eclipse.sirius.runtime.ide.ui.palettepatch" version="1.0.0"/>
    </requires>
 
 </feature>
