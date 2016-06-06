@@ -17,6 +17,8 @@ addRepository(type:0,location:https${#58}//hudson.polarsys.org/capella/job/capel
 addRepository(type:1,location:https${#58}//hudson.polarsys.org/capella/job/capella-gerrit/113/artifact/result/publish/org.polarsys.capella/site.p2/,name:Capella for luna);\
 addRepository(type:0,location:http${#58}//download.eclipse.org/technology/nebula/archives/Q42015/incubation,name:Nebula incubation);\
 addRepository(type:1,location:http${#58}//download.eclipse.org/technology/nebula/archives/Q42015/incubation,name:Nebula incubation);\
+addRepository(type:0,location:http${#58}//gemoc.org/pub/studio/patch_sirius_palette/,name:Patch For Sirius (enabling animation));\
+addRepository(type:1,location:http${#58}//gemoc.org/pub/studio/patch_sirius_palette/,name:Patch For Sirius (enabling animation));\
   mkdir(path:${installFolder}/dropins);
 
 requires.1.namespace=org.eclipse.equinox.p2.iu

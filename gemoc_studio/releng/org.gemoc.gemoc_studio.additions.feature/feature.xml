@@ -47,6 +47,8 @@
       <import feature="org.eclipse.ajdt" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.fx.ide.basic.feature" version="2.2.0.201508240705"/>
       <import feature="org.eclipse.fx.ide.pde.feature" version="2.2.0.201508240705"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui.palettepatch" version="1.0.0"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui" version="0.0.0" match="greaterOrEqual"/> <!-- needed to force installation of the feature patch -->
       <import plugin="org.eclipse.amalgam.discovery.modeling"/>
    </requires>
 
