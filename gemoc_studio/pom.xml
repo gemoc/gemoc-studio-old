@@ -333,17 +333,17 @@
 		        <repository>
 		            <id>modeldebugging_framework_frameworkcommons on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/modeldebugging_framework_framework_commons/lastSuccessfulBuild/artifact/framework/framework_commons/releng/org.gemoc.modeldebugging.framework.commons.repository/target/repository/</url>
+		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/framework/framework_commons/releng/org.gemoc.modeldebugging.framework.commons.repository/target/repository/</url>
 		        </repository>
 		        <repository>
 		            <id>modeldebugging_framework_xdsmlframework on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/modeldebugging_framework_xdsmlframework/lastSuccessfulBuild/artifact/framework/xdsml_framework/releng/org.gemoc.modeldebugging.xdsmlframework.repository/target/repository/</url>
+		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/framework/xdsml_framework/releng/org.gemoc.modeldebugging.xdsmlframework.repository/target/repository/</url>
 		        </repository>
 		        <repository>
 		            <id>modeldebugging_framework_executionframework on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/modeldebugging_framework_executionframework/lastSuccessfulBuild/artifact/framework/execution_framework/releng/org.gemoc.modeldebugging.executionframework.repository/target/repository/</url>
+		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/framework/execution_framework/releng/org.gemoc.modeldebugging.executionframework.repository/target/repository/</url>
 		        </repository>
 		        <repository>
 		            <id>modelanimation_siriusmodelanimation on CI</id>
@@ -353,7 +353,7 @@
 		        <repository>
 		            <id>modelanimation_executionengine_java on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/modelanimation_executionengine_java/lastSuccessfulBuild/artifact/java_execution/releng/org.gemoc.execution.sequential.java.repository/target/repository/</url>
+		            <url>https://ci.inria.fr/gemoc/job/java_execution/lastSuccessfulBuild/artifact/java_execution/releng/org.gemoc.execution.sequential.java.repository/target/repository/</url>
 		        </repository>
 		        <repository>
 		            <id>concurrency_executionengine_ccsljava on CI</id>
@@ -393,17 +393,17 @@
 		        <repository>
 		            <id>modeldebugging_trace_commons on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/modeldebugging_trace_commons/lastSuccessfulBuild/artifact/trace/commons/releng/fr.inria.diverse.trace.commons.updatesite/target/repository/</url>
+		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/trace/commons/releng/fr.inria.diverse.trace.commons.updatesite/target/repository/</url>
 		        </repository>
 		    	<repository>
 		            <id>modeldebugging_trace_generator on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/modeldebugging_trace_generator/lastSuccessfulBuild/artifact/trace/generator/releng/org.gemoc.modeldebugging.trace.generator.updatesite/target/repository/</url>
+		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/trace/generator/releng/org.gemoc.modeldebugging.trace.generator.updatesite/target/repository/</url>
 		        </repository>
 		    	<repository>
 		            <id>modeldebugging_trace_manager on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/modeldebugging_trace_manager/lastSuccessfulBuild/artifact/trace/manager/releng/org.gemoc.modeldebugging.trace.manager.updatesite/target/repository/</url>
+		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/trace/manager/releng/org.gemoc.modeldebugging.trace.manager.updatesite/target/repository/</url>
 		        </repository>
 		        <repository>
 		            <id>concurrency_gel on CI</id>
