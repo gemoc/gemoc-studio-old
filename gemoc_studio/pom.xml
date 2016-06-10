@@ -61,6 +61,11 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/sirius/updates/releases/3.1.4/mars</url>
         </repository>
+		<repository>
+            <id>Groovy4Eclipse</id>
+            <layout>p2</layout>
+            <url>http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/</url>
+        </repository>
         <!-- *********** Xtext related update site -->
        <!--  <repository>
             <id>xtext all releases</id>

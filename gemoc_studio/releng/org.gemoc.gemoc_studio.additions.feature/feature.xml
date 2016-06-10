@@ -19,6 +19,7 @@
 
    <requires>
       <import feature="fr.inria.diverse.commons.provisionner4eclipse.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.codehaus.groovy.eclipse.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.team.svn.resource.ignore.rules.jdt" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.team.svn" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.egit" version="0.0.0" match="greaterOrEqual"/>
