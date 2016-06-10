@@ -20,7 +20,7 @@ addRepository(type:1,location:http${#58}//download.eclipse.org/technology/nebula
 addRepository(type:0,location:http${#58}//gemoc.org/pub/studio/patch_sirius_palette/,name:Patch For Sirius (enabling animation));\
 addRepository(type:1,location:http${#58}//gemoc.org/pub/studio/patch_sirius_palette/,name:Patch For Sirius (enabling animation));\
 addRepository(type:0,location:http${#58}//dist.springsource.org/snapshot/GRECLIPSE/e4.5/,name:Greclipse);\
-addRepository(type:1,location:http${#58}//dist.springsource.org/snapshot/GRECLIPSE/e4.5/,name,name:Greclipse);\
+addRepository(type:1,location:http${#58}//dist.springsource.org/snapshot/GRECLIPSE/e4.5/,name:Greclipse);\
   mkdir(path:${installFolder}/dropins);
 
 requires.1.namespace=org.eclipse.equinox.p2.iu
