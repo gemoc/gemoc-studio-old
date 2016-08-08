@@ -4,7 +4,7 @@ package tfsm_plaink3Trace.States.tfsm_plaink3;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.gemoc.sample.tfsm_plaink3.FSMClock;
+import org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.tfsm_plaink3.FSMClock;
 
 import tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value;
 

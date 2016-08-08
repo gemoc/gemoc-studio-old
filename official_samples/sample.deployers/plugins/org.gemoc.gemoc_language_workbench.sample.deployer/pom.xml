@@ -83,6 +83,9 @@
 								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.zip">
 									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml/" />
 								</zip>
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml.tfsm/" />
+								</zip>
 
 								<!-- SigPML -->
 								<zip destfile="${basedir}/zips/fr.cnrs.luchogie.ultimateplotter.zip">

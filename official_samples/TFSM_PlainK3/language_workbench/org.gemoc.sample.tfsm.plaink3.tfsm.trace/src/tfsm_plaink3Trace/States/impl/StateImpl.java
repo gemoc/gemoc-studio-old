@@ -21,8 +21,10 @@ import tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value;
 import tfsm_plaink3Trace.States.State;
 import tfsm_plaink3Trace.States.StatesPackage;
 import tfsm_plaink3Trace.States.TFSM_currentState_Value;
+import tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value;
+import tfsm_plaink3Trace.States.TFSM_stepNumber_Value;
 
-import tfsm_plaink3Trace.Steps.Step;
+import tfsm_plaink3Trace.Steps.SpecificStep;
 import tfsm_plaink3Trace.Steps.StepsPackage;
 
 /**
@@ -38,6 +40,8 @@ import tfsm_plaink3Trace.Steps.StepsPackage;
  *   <li>{@link tfsm_plaink3Trace.States.impl.StateImpl#getFSMEvent_isTriggered_Values <em>FSM Event is Triggered Values</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.impl.StateImpl#getStartedSteps <em>Started Steps</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.impl.StateImpl#getTFSM_currentState_Values <em>TFSM current State Values</em>}</li>
+ *   <li>{@link tfsm_plaink3Trace.States.impl.StateImpl#getTFSM_lastStateChangeStepNumber_Values <em>TFSM last State Change Step Number Values</em>}</li>
+ *   <li>{@link tfsm_plaink3Trace.States.impl.StateImpl#getTFSM_stepNumber_Values <em>TFSM step Number Values</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,7 +55,7 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Step> endedSteps;
+	protected EList<SpecificStep> endedSteps;
 
 	/**
 	 * The cached value of the '{@link #getFSMClock_numberOfTicks_Values() <em>FSM Clock number Of Ticks Values</em>}' reference list.
@@ -81,7 +85,7 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Step> startedSteps;
+	protected EList<SpecificStep> startedSteps;
 
 	/**
 	 * The cached value of the '{@link #getTFSM_currentState_Values() <em>TFSM current State Values</em>}' reference list.
@@ -92,6 +96,26 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 	 * @ordered
 	 */
 	protected EList<TFSM_currentState_Value> tFSM_currentState_Values;
+
+	/**
+	 * The cached value of the '{@link #getTFSM_lastStateChangeStepNumber_Values() <em>TFSM last State Change Step Number Values</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTFSM_lastStateChangeStepNumber_Values()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TFSM_lastStateChangeStepNumber_Value> tFSM_lastStateChangeStepNumber_Values;
+
+	/**
+	 * The cached value of the '{@link #getTFSM_stepNumber_Values() <em>TFSM step Number Values</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTFSM_stepNumber_Values()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TFSM_stepNumber_Value> tFSM_stepNumber_Values;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,9 +141,9 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Step> getEndedSteps() {
+	public EList<SpecificStep> getEndedSteps() {
 		if (endedSteps == null) {
-			endedSteps = new EObjectWithInverseResolvingEList<Step>(Step.class, this, StatesPackage.STATE__ENDED_STEPS, StepsPackage.STEP__ENDING_STATE);
+			endedSteps = new EObjectWithInverseResolvingEList<SpecificStep>(SpecificStep.class, this, StatesPackage.STATE__ENDED_STEPS, StepsPackage.SPECIFIC_STEP__ENDING_STATE);
 		}
 		return endedSteps;
 	}
@@ -153,9 +177,9 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Step> getStartedSteps() {
+	public EList<SpecificStep> getStartedSteps() {
 		if (startedSteps == null) {
-			startedSteps = new EObjectWithInverseResolvingEList<Step>(Step.class, this, StatesPackage.STATE__STARTED_STEPS, StepsPackage.STEP__STARTING_STATE);
+			startedSteps = new EObjectWithInverseResolvingEList<SpecificStep>(SpecificStep.class, this, StatesPackage.STATE__STARTED_STEPS, StepsPackage.SPECIFIC_STEP__STARTING_STATE);
 		}
 		return startedSteps;
 	}
@@ -177,6 +201,30 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<TFSM_lastStateChangeStepNumber_Value> getTFSM_lastStateChangeStepNumber_Values() {
+		if (tFSM_lastStateChangeStepNumber_Values == null) {
+			tFSM_lastStateChangeStepNumber_Values = new EObjectWithInverseResolvingEList.ManyInverse<TFSM_lastStateChangeStepNumber_Value>(TFSM_lastStateChangeStepNumber_Value.class, this, StatesPackage.STATE__TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES, StatesPackage.TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__STATES);
+		}
+		return tFSM_lastStateChangeStepNumber_Values;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<TFSM_stepNumber_Value> getTFSM_stepNumber_Values() {
+		if (tFSM_stepNumber_Values == null) {
+			tFSM_stepNumber_Values = new EObjectWithInverseResolvingEList.ManyInverse<TFSM_stepNumber_Value>(TFSM_stepNumber_Value.class, this, StatesPackage.STATE__TFSM_STEP_NUMBER_VALUES, StatesPackage.TFSM_STEP_NUMBER_VALUE__STATES);
+		}
+		return tFSM_stepNumber_Values;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -191,6 +239,10 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getStartedSteps()).basicAdd(otherEnd, msgs);
 			case StatesPackage.STATE__TFSM_CURRENT_STATE_VALUES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTFSM_currentState_Values()).basicAdd(otherEnd, msgs);
+			case StatesPackage.STATE__TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTFSM_lastStateChangeStepNumber_Values()).basicAdd(otherEnd, msgs);
+			case StatesPackage.STATE__TFSM_STEP_NUMBER_VALUES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTFSM_stepNumber_Values()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -213,6 +265,10 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 				return ((InternalEList<?>)getStartedSteps()).basicRemove(otherEnd, msgs);
 			case StatesPackage.STATE__TFSM_CURRENT_STATE_VALUES:
 				return ((InternalEList<?>)getTFSM_currentState_Values()).basicRemove(otherEnd, msgs);
+			case StatesPackage.STATE__TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES:
+				return ((InternalEList<?>)getTFSM_lastStateChangeStepNumber_Values()).basicRemove(otherEnd, msgs);
+			case StatesPackage.STATE__TFSM_STEP_NUMBER_VALUES:
+				return ((InternalEList<?>)getTFSM_stepNumber_Values()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -235,6 +291,10 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 				return getStartedSteps();
 			case StatesPackage.STATE__TFSM_CURRENT_STATE_VALUES:
 				return getTFSM_currentState_Values();
+			case StatesPackage.STATE__TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES:
+				return getTFSM_lastStateChangeStepNumber_Values();
+			case StatesPackage.STATE__TFSM_STEP_NUMBER_VALUES:
+				return getTFSM_stepNumber_Values();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -250,7 +310,7 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 		switch (featureID) {
 			case StatesPackage.STATE__ENDED_STEPS:
 				getEndedSteps().clear();
-				getEndedSteps().addAll((Collection<? extends Step>)newValue);
+				getEndedSteps().addAll((Collection<? extends SpecificStep>)newValue);
 				return;
 			case StatesPackage.STATE__FSM_CLOCK_NUMBER_OF_TICKS_VALUES:
 				getFSMClock_numberOfTicks_Values().clear();
@@ -262,11 +322,19 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 				return;
 			case StatesPackage.STATE__STARTED_STEPS:
 				getStartedSteps().clear();
-				getStartedSteps().addAll((Collection<? extends Step>)newValue);
+				getStartedSteps().addAll((Collection<? extends SpecificStep>)newValue);
 				return;
 			case StatesPackage.STATE__TFSM_CURRENT_STATE_VALUES:
 				getTFSM_currentState_Values().clear();
 				getTFSM_currentState_Values().addAll((Collection<? extends TFSM_currentState_Value>)newValue);
+				return;
+			case StatesPackage.STATE__TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES:
+				getTFSM_lastStateChangeStepNumber_Values().clear();
+				getTFSM_lastStateChangeStepNumber_Values().addAll((Collection<? extends TFSM_lastStateChangeStepNumber_Value>)newValue);
+				return;
+			case StatesPackage.STATE__TFSM_STEP_NUMBER_VALUES:
+				getTFSM_stepNumber_Values().clear();
+				getTFSM_stepNumber_Values().addAll((Collection<? extends TFSM_stepNumber_Value>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -295,6 +363,12 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 			case StatesPackage.STATE__TFSM_CURRENT_STATE_VALUES:
 				getTFSM_currentState_Values().clear();
 				return;
+			case StatesPackage.STATE__TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES:
+				getTFSM_lastStateChangeStepNumber_Values().clear();
+				return;
+			case StatesPackage.STATE__TFSM_STEP_NUMBER_VALUES:
+				getTFSM_stepNumber_Values().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -317,6 +391,10 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 				return startedSteps != null && !startedSteps.isEmpty();
 			case StatesPackage.STATE__TFSM_CURRENT_STATE_VALUES:
 				return tFSM_currentState_Values != null && !tFSM_currentState_Values.isEmpty();
+			case StatesPackage.STATE__TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES:
+				return tFSM_lastStateChangeStepNumber_Values != null && !tFSM_lastStateChangeStepNumber_Values.isEmpty();
+			case StatesPackage.STATE__TFSM_STEP_NUMBER_VALUES:
+				return tFSM_stepNumber_Values != null && !tFSM_stepNumber_Values.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

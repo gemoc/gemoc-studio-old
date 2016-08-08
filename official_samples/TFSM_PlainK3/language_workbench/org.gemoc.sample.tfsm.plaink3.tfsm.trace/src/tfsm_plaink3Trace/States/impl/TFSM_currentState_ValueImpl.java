@@ -19,12 +19,12 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.gemoc.sample.tfsm_plaink3.State;
-
+import tfsm_plaink3Trace.States.State;
 import tfsm_plaink3Trace.States.StatesPackage;
 import tfsm_plaink3Trace.States.TFSM_currentState_Value;
 
 import tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Package;
+import tfsm_plaink3Trace.States.tfsm_plaink3.TracedState;
 import tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM;
 
 /**
@@ -35,6 +35,7 @@ import tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link tfsm_plaink3Trace.States.impl.TFSM_currentState_ValueImpl#getStatesNoOpposite <em>States No Opposite</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.impl.TFSM_currentState_ValueImpl#getCurrentState <em>Current State</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.impl.TFSM_currentState_ValueImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.impl.TFSM_currentState_ValueImpl#getStates <em>States</em>}</li>
@@ -51,7 +52,7 @@ public class TFSM_currentState_ValueImpl extends MinimalEObjectImpl.Container im
 	 * @generated
 	 * @ordered
 	 */
-	protected State currentState;
+	protected TracedState currentState;
 
 	/**
 	 * The cached value of the '{@link #getStates() <em>States</em>}' reference list.
@@ -61,7 +62,7 @@ public class TFSM_currentState_ValueImpl extends MinimalEObjectImpl.Container im
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<tfsm_plaink3Trace.States.State> states;
+	protected EList<State> states;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,10 +88,19 @@ public class TFSM_currentState_ValueImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public State getCurrentState() {
+	public EList<State> getStatesNoOpposite() {
+		return this.getStates();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TracedState getCurrentState() {
 		if (currentState != null && currentState.eIsProxy()) {
 			InternalEObject oldCurrentState = (InternalEObject)currentState;
-			currentState = (State)eResolveProxy(oldCurrentState);
+			currentState = (TracedState)eResolveProxy(oldCurrentState);
 			if (currentState != oldCurrentState) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StatesPackage.TFSM_CURRENT_STATE_VALUE__CURRENT_STATE, oldCurrentState, currentState));
@@ -104,7 +114,7 @@ public class TFSM_currentState_ValueImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public State basicGetCurrentState() {
+	public TracedState basicGetCurrentState() {
 		return currentState;
 	}
 
@@ -113,8 +123,8 @@ public class TFSM_currentState_ValueImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCurrentState(State newCurrentState) {
-		State oldCurrentState = currentState;
+	public void setCurrentState(TracedState newCurrentState) {
+		TracedState oldCurrentState = currentState;
 		currentState = newCurrentState;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, StatesPackage.TFSM_CURRENT_STATE_VALUE__CURRENT_STATE, oldCurrentState, currentState));
@@ -166,9 +176,9 @@ public class TFSM_currentState_ValueImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<tfsm_plaink3Trace.States.State> getStates() {
+	public EList<State> getStates() {
 		if (states == null) {
-			states = new EObjectWithInverseResolvingEList.ManyInverse<tfsm_plaink3Trace.States.State>(tfsm_plaink3Trace.States.State.class, this, StatesPackage.TFSM_CURRENT_STATE_VALUE__STATES, StatesPackage.STATE__TFSM_CURRENT_STATE_VALUES);
+			states = new EObjectWithInverseResolvingEList.ManyInverse<State>(State.class, this, StatesPackage.TFSM_CURRENT_STATE_VALUE__STATES, StatesPackage.STATE__TFSM_CURRENT_STATE_VALUES);
 		}
 		return states;
 	}
@@ -230,6 +240,8 @@ public class TFSM_currentState_ValueImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case StatesPackage.TFSM_CURRENT_STATE_VALUE__STATES_NO_OPPOSITE:
+				return getStatesNoOpposite();
 			case StatesPackage.TFSM_CURRENT_STATE_VALUE__CURRENT_STATE:
 				if (resolve) return getCurrentState();
 				return basicGetCurrentState();
@@ -251,14 +263,14 @@ public class TFSM_currentState_ValueImpl extends MinimalEObjectImpl.Container im
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case StatesPackage.TFSM_CURRENT_STATE_VALUE__CURRENT_STATE:
-				setCurrentState((State)newValue);
+				setCurrentState((TracedState)newValue);
 				return;
 			case StatesPackage.TFSM_CURRENT_STATE_VALUE__PARENT:
 				setParent((TracedTFSM)newValue);
 				return;
 			case StatesPackage.TFSM_CURRENT_STATE_VALUE__STATES:
 				getStates().clear();
-				getStates().addAll((Collection<? extends tfsm_plaink3Trace.States.State>)newValue);
+				getStates().addAll((Collection<? extends State>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -273,7 +285,7 @@ public class TFSM_currentState_ValueImpl extends MinimalEObjectImpl.Container im
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case StatesPackage.TFSM_CURRENT_STATE_VALUE__CURRENT_STATE:
-				setCurrentState((State)null);
+				setCurrentState((TracedState)null);
 				return;
 			case StatesPackage.TFSM_CURRENT_STATE_VALUE__PARENT:
 				setParent((TracedTFSM)null);
@@ -293,6 +305,8 @@ public class TFSM_currentState_ValueImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case StatesPackage.TFSM_CURRENT_STATE_VALUE__STATES_NO_OPPOSITE:
+				return !getStatesNoOpposite().isEmpty();
 			case StatesPackage.TFSM_CURRENT_STATE_VALUE__CURRENT_STATE:
 				return currentState != null;
 			case StatesPackage.TFSM_CURRENT_STATE_VALUE__PARENT:

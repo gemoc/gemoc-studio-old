@@ -2,7 +2,9 @@
  */
 package tfsm_plaink3Trace.Steps;
 
-import org.gemoc.sample.tfsm_plaink3.Transition;
+import fr.inria.diverse.trace.commons.model.trace.SmallStep;
+
+import tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,14 +16,14 @@ import org.gemoc.sample.tfsm_plaink3.Transition;
  * @model
  * @generated
  */
-public interface Tfsm_plaink3_Transition_Fire extends SmallStep, Tfsm_plaink3_Transition_Visit_AbstractSubStep {
+public interface Tfsm_plaink3_Transition_Fire extends SpecificStep, SmallStep, Tfsm_plaink3_Transition_Visit_AbstractSubStep {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (org.gemoc.sample.tfsm_plaink3.Transition) this.getMse().getCaller();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition) this.getMseoccurrence().getMse().getCaller();'"
 	 * @generated
 	 */
-	Transition getCaller();
+	TracedTransition getCaller();
 
 } // Tfsm_plaink3_Transition_Fire

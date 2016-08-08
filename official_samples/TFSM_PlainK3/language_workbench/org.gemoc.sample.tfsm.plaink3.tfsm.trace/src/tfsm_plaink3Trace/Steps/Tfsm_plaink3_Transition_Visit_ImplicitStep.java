@@ -2,6 +2,7 @@
  */
 package tfsm_plaink3Trace.Steps;
 
+import fr.inria.diverse.trace.commons.model.trace.SmallStep;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,5 +14,5 @@ package tfsm_plaink3Trace.Steps;
  * @model
  * @generated
  */
-public interface Tfsm_plaink3_Transition_Visit_ImplicitStep extends SmallStep, Tfsm_plaink3_Transition_Visit_AbstractSubStep {
+public interface Tfsm_plaink3_Transition_Visit_ImplicitStep extends Tfsm_plaink3_Transition_Visit_AbstractSubStep, SmallStep {
 } // Tfsm_plaink3_Transition_Visit_ImplicitStep

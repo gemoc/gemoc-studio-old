@@ -69,12 +69,14 @@ public class StatesSwitch<T> extends Switch<T> {
 			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE: {
 				FSMClock_numberOfTicks_Value fsmClock_numberOfTicks_Value = (FSMClock_numberOfTicks_Value)theEObject;
 				T result = caseFSMClock_numberOfTicks_Value(fsmClock_numberOfTicks_Value);
+				if (result == null) result = caseValue(fsmClock_numberOfTicks_Value);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case StatesPackage.FSM_EVENT_IS_TRIGGERED_VALUE: {
 				FSMEvent_isTriggered_Value fsmEvent_isTriggered_Value = (FSMEvent_isTriggered_Value)theEObject;
 				T result = caseFSMEvent_isTriggered_Value(fsmEvent_isTriggered_Value);
+				if (result == null) result = caseValue(fsmEvent_isTriggered_Value);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -87,6 +89,27 @@ public class StatesSwitch<T> extends Switch<T> {
 			case StatesPackage.TFSM_CURRENT_STATE_VALUE: {
 				TFSM_currentState_Value tfsM_currentState_Value = (TFSM_currentState_Value)theEObject;
 				T result = caseTFSM_currentState_Value(tfsM_currentState_Value);
+				if (result == null) result = caseValue(tfsM_currentState_Value);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StatesPackage.TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE: {
+				TFSM_lastStateChangeStepNumber_Value tfsM_lastStateChangeStepNumber_Value = (TFSM_lastStateChangeStepNumber_Value)theEObject;
+				T result = caseTFSM_lastStateChangeStepNumber_Value(tfsM_lastStateChangeStepNumber_Value);
+				if (result == null) result = caseValue(tfsM_lastStateChangeStepNumber_Value);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StatesPackage.TFSM_STEP_NUMBER_VALUE: {
+				TFSM_stepNumber_Value tfsM_stepNumber_Value = (TFSM_stepNumber_Value)theEObject;
+				T result = caseTFSM_stepNumber_Value(tfsM_stepNumber_Value);
+				if (result == null) result = caseValue(tfsM_stepNumber_Value);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StatesPackage.VALUE: {
+				Value value = (Value)theEObject;
+				T result = caseValue(value);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -151,6 +174,51 @@ public class StatesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTFSM_currentState_Value(TFSM_currentState_Value object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>TFSM last State Change Step Number Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>TFSM last State Change Step Number Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTFSM_lastStateChangeStepNumber_Value(TFSM_lastStateChangeStepNumber_Value object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>TFSM step Number Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>TFSM step Number Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTFSM_stepNumber_Value(TFSM_stepNumber_Value object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseValue(Value object) {
 		return null;
 	}
 

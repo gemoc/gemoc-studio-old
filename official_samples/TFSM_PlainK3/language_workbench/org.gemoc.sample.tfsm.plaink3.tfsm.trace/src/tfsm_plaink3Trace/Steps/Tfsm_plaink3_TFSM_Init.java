@@ -2,7 +2,9 @@
  */
 package tfsm_plaink3Trace.Steps;
 
-import org.gemoc.sample.tfsm_plaink3.TFSM;
+import fr.inria.diverse.trace.commons.model.trace.SmallStep;
+
+import tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,14 +16,14 @@ import org.gemoc.sample.tfsm_plaink3.TFSM;
  * @model
  * @generated
  */
-public interface Tfsm_plaink3_TFSM_Init extends SmallStep {
+public interface Tfsm_plaink3_TFSM_Init extends SpecificStep, SmallStep {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (org.gemoc.sample.tfsm_plaink3.TFSM) this.getMse().getCaller();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) this.getMseoccurrence().getMse().getCaller();'"
 	 * @generated
 	 */
-	TFSM getCaller();
+	TracedTFSM getCaller();
 
 } // Tfsm_plaink3_TFSM_Init

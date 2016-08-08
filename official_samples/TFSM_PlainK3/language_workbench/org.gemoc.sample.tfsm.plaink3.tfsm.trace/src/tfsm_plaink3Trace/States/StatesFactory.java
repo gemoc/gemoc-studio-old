@@ -58,6 +58,24 @@ public interface StatesFactory extends EFactory {
 	TFSM_currentState_Value createTFSM_currentState_Value();
 
 	/**
+	 * Returns a new object of class '<em>TFSM last State Change Step Number Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TFSM last State Change Step Number Value</em>'.
+	 * @generated
+	 */
+	TFSM_lastStateChangeStepNumber_Value createTFSM_lastStateChangeStepNumber_Value();
+
+	/**
+	 * Returns a new object of class '<em>TFSM step Number Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TFSM step Number Value</em>'.
+	 * @generated
+	 */
+	TFSM_stepNumber_Value createTFSM_stepNumber_Value();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -2,7 +2,6 @@
  */
 package tfsm_plaink3Trace.Steps;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,8 +10,8 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see tfsm_plaink3Trace.Steps.StepsPackage#getTfsm_plaink3_State_Visit_AbstractSubStep()
- * @model abstract="true"
+ * @model interface="true" abstract="true"
  * @generated
  */
-public interface Tfsm_plaink3_State_Visit_AbstractSubStep extends EObject {
+public interface Tfsm_plaink3_State_Visit_AbstractSubStep extends SpecificStep {
 } // Tfsm_plaink3_State_Visit_AbstractSubStep

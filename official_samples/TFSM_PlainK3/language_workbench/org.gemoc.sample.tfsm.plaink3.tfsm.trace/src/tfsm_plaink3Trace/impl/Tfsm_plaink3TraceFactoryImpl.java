@@ -56,7 +56,7 @@ public class Tfsm_plaink3TraceFactoryImpl extends EFactoryImpl implements Tfsm_p
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case Tfsm_plaink3TracePackage.TRACE: return createTrace();
+			case Tfsm_plaink3TracePackage.SPECIFIC_TRACE: return createSpecificTrace();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -67,9 +67,9 @@ public class Tfsm_plaink3TraceFactoryImpl extends EFactoryImpl implements Tfsm_p
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Trace createTrace() {
-		TraceImpl trace = new TraceImpl();
-		return trace;
+	public SpecificTrace createSpecificTrace() {
+		SpecificTraceImpl specificTrace = new SpecificTraceImpl();
+		return specificTrace;
 	}
 
 	/**

@@ -2,6 +2,7 @@
  */
 package tfsm_plaink3Trace.Steps;
 
+import fr.inria.diverse.trace.commons.model.trace.SmallStep;
 
 /**
  * <!-- begin-user-doc -->

@@ -34,6 +34,7 @@ import tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link tfsm_plaink3Trace.States.impl.FSMClock_numberOfTicks_ValueImpl#getStatesNoOpposite <em>States No Opposite</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.impl.FSMClock_numberOfTicks_ValueImpl#getNumberOfTicks <em>Number Of Ticks</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.impl.FSMClock_numberOfTicks_ValueImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.impl.FSMClock_numberOfTicks_ValueImpl#getStates <em>States</em>}</li>
@@ -89,6 +90,15 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	@Override
 	protected EClass eStaticClass() {
 		return StatesPackage.Literals.FSM_CLOCK_NUMBER_OF_TICKS_VALUE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<State> getStatesNoOpposite() {
+		return this.getStates();
 	}
 
 	/**
@@ -222,6 +232,8 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES_NO_OPPOSITE:
+				return getStatesNoOpposite();
 			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS:
 				return getNumberOfTicks();
 			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT:
@@ -284,6 +296,8 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES_NO_OPPOSITE:
+				return !getStatesNoOpposite().isEmpty();
 			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS:
 				return NUMBER_OF_TICKS_EDEFAULT == null ? numberOfTicks != null : !NUMBER_OF_TICKS_EDEFAULT.equals(numberOfTicks);
 			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT:

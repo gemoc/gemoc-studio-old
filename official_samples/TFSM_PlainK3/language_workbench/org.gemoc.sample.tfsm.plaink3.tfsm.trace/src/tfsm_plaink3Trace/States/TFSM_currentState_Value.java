@@ -4,10 +4,7 @@ package tfsm_plaink3Trace.States;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
-import org.gemoc.sample.tfsm_plaink3.State;
-
+import tfsm_plaink3Trace.States.tfsm_plaink3.TracedState;
 import tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM;
 
 /**
@@ -28,7 +25,7 @@ import tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM;
  * @model annotation="http://www.modelexecution.org/trace/XMOF executionMetamodelElement='null'"
  * @generated
  */
-public interface TFSM_currentState_Value extends EObject {
+public interface TFSM_currentState_Value extends Value {
 	/**
 	 * Returns the value of the '<em><b>Current State</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -38,12 +35,12 @@ public interface TFSM_currentState_Value extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Current State</em>' reference.
-	 * @see #setCurrentState(State)
+	 * @see #setCurrentState(TracedState)
 	 * @see tfsm_plaink3Trace.States.StatesPackage#getTFSM_currentState_Value_CurrentState()
 	 * @model
 	 * @generated
 	 */
-	State getCurrentState();
+	TracedState getCurrentState();
 
 	/**
 	 * Sets the value of the '{@link tfsm_plaink3Trace.States.TFSM_currentState_Value#getCurrentState <em>Current State</em>}' reference.
@@ -53,7 +50,7 @@ public interface TFSM_currentState_Value extends EObject {
 	 * @see #getCurrentState()
 	 * @generated
 	 */
-	void setCurrentState(State value);
+	void setCurrentState(TracedState value);
 
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
@@ -99,6 +96,15 @@ public interface TFSM_currentState_Value extends EObject {
 	 * @model opposite="tFSM_currentState_Values" required="true"
 	 * @generated
 	 */
-	EList<tfsm_plaink3Trace.States.State> getStates();
+	EList<State> getStates();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getStates();'"
+	 * @generated
+	 */
+	EList<State> getStatesNoOpposite();
 
 } // TFSM_currentState_Value

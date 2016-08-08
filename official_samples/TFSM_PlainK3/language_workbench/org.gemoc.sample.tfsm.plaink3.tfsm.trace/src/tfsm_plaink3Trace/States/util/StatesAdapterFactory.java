@@ -84,6 +84,18 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 				return createTFSM_currentState_ValueAdapter();
 			}
 			@Override
+			public Adapter caseTFSM_lastStateChangeStepNumber_Value(TFSM_lastStateChangeStepNumber_Value object) {
+				return createTFSM_lastStateChangeStepNumber_ValueAdapter();
+			}
+			@Override
+			public Adapter caseTFSM_stepNumber_Value(TFSM_stepNumber_Value object) {
+				return createTFSM_stepNumber_ValueAdapter();
+			}
+			@Override
+			public Adapter caseValue(Value object) {
+				return createValueAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -156,6 +168,48 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTFSM_currentState_ValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value <em>TFSM last State Change Step Number Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value
+	 * @generated
+	 */
+	public Adapter createTFSM_lastStateChangeStepNumber_ValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.TFSM_stepNumber_Value <em>TFSM step Number Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.States.TFSM_stepNumber_Value
+	 * @generated
+	 */
+	public Adapter createTFSM_stepNumber_ValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.Value <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.States.Value
+	 * @generated
+	 */
+	public Adapter createValueAdapter() {
 		return null;
 	}
 

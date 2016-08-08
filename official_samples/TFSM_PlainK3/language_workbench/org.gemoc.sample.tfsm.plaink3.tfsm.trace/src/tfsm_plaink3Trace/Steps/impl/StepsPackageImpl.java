@@ -2,29 +2,26 @@
  */
 package tfsm_plaink3Trace.Steps.impl;
 
+import fr.inria.diverse.trace.commons.model.trace.TracePackage;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.gemoc.executionframework.engine.mse.MsePackage;
-
-import org.gemoc.sample.tfsm_plaink3.TfsmPackage;
+import org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.tfsm_plaink3.Tfsm_plaink3Package;
 
 import tfsm_plaink3Trace.States.StatesPackage;
 
 import tfsm_plaink3Trace.States.impl.StatesPackageImpl;
 
-import tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Package;
-
 import tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl;
 
-import tfsm_plaink3Trace.Steps.BigStep;
 import tfsm_plaink3Trace.Steps.RootImplicitStep;
-import tfsm_plaink3Trace.Steps.SmallStep;
-import tfsm_plaink3Trace.Steps.Step;
+import tfsm_plaink3Trace.Steps.SpecificStep;
 import tfsm_plaink3Trace.Steps.StepsFactory;
 import tfsm_plaink3Trace.Steps.StepsPackage;
 import tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMClock_Ticks;
@@ -55,13 +52,6 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass bigStepEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass rootImplicitStepEClass = null;
 
 	/**
@@ -69,14 +59,7 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass smallStepEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass stepEClass = null;
+	private EClass specificStepEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -202,25 +185,25 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		MsePackage.eINSTANCE.eClass();
-		TfsmPackage.eINSTANCE.eClass();
+		TracePackage.eINSTANCE.eClass();
+		Tfsm_plaink3Package.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		Tfsm_plaink3TracePackageImpl theTfsm_plaink3TracePackage = (Tfsm_plaink3TracePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Tfsm_plaink3TracePackage.eNS_URI) instanceof Tfsm_plaink3TracePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Tfsm_plaink3TracePackage.eNS_URI) : Tfsm_plaink3TracePackage.eINSTANCE);
 		StatesPackageImpl theStatesPackage = (StatesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI) instanceof StatesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI) : StatesPackage.eINSTANCE);
-		Tfsm_plaink3PackageImpl theTfsm_plaink3Package = (Tfsm_plaink3PackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Tfsm_plaink3Package.eNS_URI) instanceof Tfsm_plaink3PackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Tfsm_plaink3Package.eNS_URI) : Tfsm_plaink3Package.eINSTANCE);
+		Tfsm_plaink3PackageImpl theTfsm_plaink3Package_1 = (Tfsm_plaink3PackageImpl)(EPackage.Registry.INSTANCE.getEPackage(tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Package.eNS_URI) instanceof Tfsm_plaink3PackageImpl ? EPackage.Registry.INSTANCE.getEPackage(tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Package.eNS_URI) : tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE);
 
 		// Create package meta-data objects
 		theStepsPackage.createPackageContents();
 		theTfsm_plaink3TracePackage.createPackageContents();
 		theStatesPackage.createPackageContents();
-		theTfsm_plaink3Package.createPackageContents();
+		theTfsm_plaink3Package_1.createPackageContents();
 
 		// Initialize created meta-data
 		theStepsPackage.initializePackageContents();
 		theTfsm_plaink3TracePackage.initializePackageContents();
 		theStatesPackage.initializePackageContents();
-		theTfsm_plaink3Package.initializePackageContents();
+		theTfsm_plaink3Package_1.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theStepsPackage.freeze();
@@ -229,15 +212,6 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(StepsPackage.eNS_URI, theStepsPackage);
 		return theStepsPackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBigStep() {
-		return bigStepEClass;
 	}
 
 	/**
@@ -254,8 +228,8 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSmallStep() {
-		return smallStepEClass;
+	public EClass getSpecificStep() {
+		return specificStepEClass;
 	}
 
 	/**
@@ -263,8 +237,8 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getStep() {
-		return stepEClass;
+	public EReference getSpecificStep_EndingState() {
+		return (EReference)specificStepEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -272,17 +246,8 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStep_EndingState() {
-		return (EReference)stepEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getStep_StartingState() {
-		return (EReference)stepEClass.getEStructuralFeatures().get(1);
+	public EReference getSpecificStep_StartingState() {
+		return (EReference)specificStepEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -346,15 +311,6 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 */
 	public EClass getTfsm_plaink3_State_Visit() {
 		return tfsm_plaink3_State_VisitEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTfsm_plaink3_State_Visit_SubSteps() {
-		return (EReference)tfsm_plaink3_State_VisitEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -434,15 +390,6 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTfsm_plaink3_Transition_Visit_SubSteps() {
-		return (EReference)tfsm_plaink3_Transition_VisitEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getTfsm_plaink3_Transition_Visit__GetCaller() {
 		return tfsm_plaink3_Transition_VisitEClass.getEOperations().get(0);
 	}
@@ -493,15 +440,11 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		bigStepEClass = createEClass(BIG_STEP);
-
 		rootImplicitStepEClass = createEClass(ROOT_IMPLICIT_STEP);
 
-		smallStepEClass = createEClass(SMALL_STEP);
-
-		stepEClass = createEClass(STEP);
-		createEReference(stepEClass, STEP__ENDING_STATE);
-		createEReference(stepEClass, STEP__STARTING_STATE);
+		specificStepEClass = createEClass(SPECIFIC_STEP);
+		createEReference(specificStepEClass, SPECIFIC_STEP__ENDING_STATE);
+		createEReference(specificStepEClass, SPECIFIC_STEP__STARTING_STATE);
 
 		tfsm_plaink3_FSMClock_TicksEClass = createEClass(TFSM_PLAINK3_FSM_CLOCK_TICKS);
 		createEOperation(tfsm_plaink3_FSMClock_TicksEClass, TFSM_PLAINK3_FSM_CLOCK_TICKS___GET_CALLER);
@@ -513,7 +456,6 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		createEOperation(tfsm_plaink3_FSMEvent_UnTriggerEClass, TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER___GET_CALLER);
 
 		tfsm_plaink3_State_VisitEClass = createEClass(TFSM_PLAINK3_STATE_VISIT);
-		createEReference(tfsm_plaink3_State_VisitEClass, TFSM_PLAINK3_STATE_VISIT__SUB_STEPS);
 		createEOperation(tfsm_plaink3_State_VisitEClass, TFSM_PLAINK3_STATE_VISIT___GET_CALLER);
 
 		tfsm_plaink3_State_Visit_AbstractSubStepEClass = createEClass(TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP);
@@ -527,7 +469,6 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		createEOperation(tfsm_plaink3_Transition_FireEClass, TFSM_PLAINK3_TRANSITION_FIRE___GET_CALLER);
 
 		tfsm_plaink3_Transition_VisitEClass = createEClass(TFSM_PLAINK3_TRANSITION_VISIT);
-		createEReference(tfsm_plaink3_Transition_VisitEClass, TFSM_PLAINK3_TRANSITION_VISIT__SUB_STEPS);
 		createEOperation(tfsm_plaink3_Transition_VisitEClass, TFSM_PLAINK3_TRANSITION_VISIT___GET_CALLER);
 
 		tfsm_plaink3_Transition_Visit_AbstractSubStepEClass = createEClass(TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP);
@@ -559,79 +500,89 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		MsePackage theMsePackage = (MsePackage)EPackage.Registry.INSTANCE.getEPackage(MsePackage.eNS_URI);
+		TracePackage theTracePackage = (TracePackage)EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI);
 		StatesPackage theStatesPackage = (StatesPackage)EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI);
-		TfsmPackage theTfsmPackage = (TfsmPackage)EPackage.Registry.INSTANCE.getEPackage(TfsmPackage.eNS_URI);
+		tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Package theTfsm_plaink3Package_1 = (tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Package)EPackage.Registry.INSTANCE.getEPackage(tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Package.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		bigStepEClass.getESuperTypes().add(this.getStep());
-		rootImplicitStepEClass.getESuperTypes().add(this.getSmallStep());
-		smallStepEClass.getESuperTypes().add(this.getStep());
-		stepEClass.getESuperTypes().add(theMsePackage.getMSEOccurrence());
-		tfsm_plaink3_FSMClock_TicksEClass.getESuperTypes().add(this.getSmallStep());
-		tfsm_plaink3_FSMEvent_TriggerEClass.getESuperTypes().add(this.getSmallStep());
-		tfsm_plaink3_FSMEvent_UnTriggerEClass.getESuperTypes().add(this.getSmallStep());
-		tfsm_plaink3_State_VisitEClass.getESuperTypes().add(this.getBigStep());
-		tfsm_plaink3_State_Visit_ImplicitStepEClass.getESuperTypes().add(this.getSmallStep());
+		rootImplicitStepEClass.getESuperTypes().add(theTracePackage.getSmallStep());
+		specificStepEClass.getESuperTypes().add(theTracePackage.getStep());
+		tfsm_plaink3_FSMClock_TicksEClass.getESuperTypes().add(this.getSpecificStep());
+		tfsm_plaink3_FSMClock_TicksEClass.getESuperTypes().add(theTracePackage.getSmallStep());
+		tfsm_plaink3_FSMEvent_TriggerEClass.getESuperTypes().add(this.getSpecificStep());
+		tfsm_plaink3_FSMEvent_TriggerEClass.getESuperTypes().add(theTracePackage.getSmallStep());
+		tfsm_plaink3_FSMEvent_UnTriggerEClass.getESuperTypes().add(this.getSpecificStep());
+		tfsm_plaink3_FSMEvent_UnTriggerEClass.getESuperTypes().add(theTracePackage.getSmallStep());
+		EGenericType g1 = createEGenericType(this.getSpecificStep());
+		tfsm_plaink3_State_VisitEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theTracePackage.getSequentialStep());
+		EGenericType g2 = createEGenericType(this.getTfsm_plaink3_State_Visit_AbstractSubStep());
+		g1.getETypeArguments().add(g2);
+		tfsm_plaink3_State_VisitEClass.getEGenericSuperTypes().add(g1);
+		tfsm_plaink3_State_Visit_AbstractSubStepEClass.getESuperTypes().add(this.getSpecificStep());
 		tfsm_plaink3_State_Visit_ImplicitStepEClass.getESuperTypes().add(this.getTfsm_plaink3_State_Visit_AbstractSubStep());
-		tfsm_plaink3_TFSM_InitEClass.getESuperTypes().add(this.getSmallStep());
-		tfsm_plaink3_Transition_FireEClass.getESuperTypes().add(this.getSmallStep());
+		tfsm_plaink3_State_Visit_ImplicitStepEClass.getESuperTypes().add(theTracePackage.getSmallStep());
+		tfsm_plaink3_TFSM_InitEClass.getESuperTypes().add(this.getSpecificStep());
+		tfsm_plaink3_TFSM_InitEClass.getESuperTypes().add(theTracePackage.getSmallStep());
+		tfsm_plaink3_Transition_FireEClass.getESuperTypes().add(this.getSpecificStep());
+		tfsm_plaink3_Transition_FireEClass.getESuperTypes().add(theTracePackage.getSmallStep());
 		tfsm_plaink3_Transition_FireEClass.getESuperTypes().add(this.getTfsm_plaink3_Transition_Visit_AbstractSubStep());
-		tfsm_plaink3_Transition_VisitEClass.getESuperTypes().add(this.getBigStep());
-		tfsm_plaink3_Transition_VisitEClass.getESuperTypes().add(this.getTfsm_plaink3_State_Visit_AbstractSubStep());
-		tfsm_plaink3_Transition_Visit_ImplicitStepEClass.getESuperTypes().add(this.getSmallStep());
+		g1 = createEGenericType(this.getSpecificStep());
+		tfsm_plaink3_Transition_VisitEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theTracePackage.getSequentialStep());
+		g2 = createEGenericType(this.getTfsm_plaink3_Transition_Visit_AbstractSubStep());
+		g1.getETypeArguments().add(g2);
+		tfsm_plaink3_Transition_VisitEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getTfsm_plaink3_State_Visit_AbstractSubStep());
+		tfsm_plaink3_Transition_VisitEClass.getEGenericSuperTypes().add(g1);
+		tfsm_plaink3_Transition_Visit_AbstractSubStepEClass.getESuperTypes().add(this.getSpecificStep());
 		tfsm_plaink3_Transition_Visit_ImplicitStepEClass.getESuperTypes().add(this.getTfsm_plaink3_Transition_Visit_AbstractSubStep());
+		tfsm_plaink3_Transition_Visit_ImplicitStepEClass.getESuperTypes().add(theTracePackage.getSmallStep());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(bigStepEClass, BigStep.class, "BigStep", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(rootImplicitStepEClass, RootImplicitStep.class, "RootImplicitStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(smallStepEClass, SmallStep.class, "SmallStep", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(stepEClass, Step.class, "Step", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStep_EndingState(), theStatesPackage.getState(), theStatesPackage.getState_EndedSteps(), "endingState", null, 0, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStep_StartingState(), theStatesPackage.getState(), theStatesPackage.getState_StartedSteps(), "startingState", null, 1, 1, Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(specificStepEClass, SpecificStep.class, "SpecificStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSpecificStep_EndingState(), theStatesPackage.getState(), theStatesPackage.getState_EndedSteps(), "endingState", null, 0, 1, SpecificStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpecificStep_StartingState(), theStatesPackage.getState(), theStatesPackage.getState_StartedSteps(), "startingState", null, 1, 1, SpecificStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tfsm_plaink3_FSMClock_TicksEClass, Tfsm_plaink3_FSMClock_Ticks.class, "Tfsm_plaink3_FSMClock_Ticks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_plaink3_FSMClock_Ticks__GetCaller(), theTfsmPackage.getFSMClock(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getTfsm_plaink3_FSMClock_Ticks__GetCaller(), theTfsm_plaink3Package_1.getTracedFSMClock(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_plaink3_FSMEvent_TriggerEClass, Tfsm_plaink3_FSMEvent_Trigger.class, "Tfsm_plaink3_FSMEvent_Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_plaink3_FSMEvent_Trigger__GetCaller(), theTfsmPackage.getFSMEvent(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getTfsm_plaink3_FSMEvent_Trigger__GetCaller(), theTfsm_plaink3Package_1.getTracedFSMEvent(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_plaink3_FSMEvent_UnTriggerEClass, Tfsm_plaink3_FSMEvent_UnTrigger.class, "Tfsm_plaink3_FSMEvent_UnTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_plaink3_FSMEvent_UnTrigger__GetCaller(), theTfsmPackage.getFSMEvent(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getTfsm_plaink3_FSMEvent_UnTrigger__GetCaller(), theTfsm_plaink3Package_1.getTracedFSMEvent(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_plaink3_State_VisitEClass, Tfsm_plaink3_State_Visit.class, "Tfsm_plaink3_State_Visit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTfsm_plaink3_State_Visit_SubSteps(), this.getTfsm_plaink3_State_Visit_AbstractSubStep(), null, "subSteps", null, 0, -1, Tfsm_plaink3_State_Visit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getTfsm_plaink3_State_Visit__GetCaller(), theTfsmPackage.getState(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getTfsm_plaink3_State_Visit__GetCaller(), theTfsm_plaink3Package_1.getTracedState(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(tfsm_plaink3_State_Visit_AbstractSubStepEClass, Tfsm_plaink3_State_Visit_AbstractSubStep.class, "Tfsm_plaink3_State_Visit_AbstractSubStep", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(tfsm_plaink3_State_Visit_AbstractSubStepEClass, Tfsm_plaink3_State_Visit_AbstractSubStep.class, "Tfsm_plaink3_State_Visit_AbstractSubStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(tfsm_plaink3_State_Visit_ImplicitStepEClass, Tfsm_plaink3_State_Visit_ImplicitStep.class, "Tfsm_plaink3_State_Visit_ImplicitStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(tfsm_plaink3_TFSM_InitEClass, Tfsm_plaink3_TFSM_Init.class, "Tfsm_plaink3_TFSM_Init", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_plaink3_TFSM_Init__GetCaller(), theTfsmPackage.getTFSM(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getTfsm_plaink3_TFSM_Init__GetCaller(), theTfsm_plaink3Package_1.getTracedTFSM(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_plaink3_Transition_FireEClass, Tfsm_plaink3_Transition_Fire.class, "Tfsm_plaink3_Transition_Fire", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_plaink3_Transition_Fire__GetCaller(), theTfsmPackage.getTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getTfsm_plaink3_Transition_Fire__GetCaller(), theTfsm_plaink3Package_1.getTracedTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_plaink3_Transition_VisitEClass, Tfsm_plaink3_Transition_Visit.class, "Tfsm_plaink3_Transition_Visit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTfsm_plaink3_Transition_Visit_SubSteps(), this.getTfsm_plaink3_Transition_Visit_AbstractSubStep(), null, "subSteps", null, 0, -1, Tfsm_plaink3_Transition_Visit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getTfsm_plaink3_Transition_Visit__GetCaller(), theTfsmPackage.getTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getTfsm_plaink3_Transition_Visit__GetCaller(), theTfsm_plaink3Package_1.getTracedTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(tfsm_plaink3_Transition_Visit_AbstractSubStepEClass, Tfsm_plaink3_Transition_Visit_AbstractSubStep.class, "Tfsm_plaink3_Transition_Visit_AbstractSubStep", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(tfsm_plaink3_Transition_Visit_AbstractSubStepEClass, Tfsm_plaink3_Transition_Visit_AbstractSubStep.class, "Tfsm_plaink3_Transition_Visit_AbstractSubStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(tfsm_plaink3_Transition_Visit_ImplicitStepEClass, Tfsm_plaink3_Transition_Visit_ImplicitStep.class, "Tfsm_plaink3_Transition_Visit_ImplicitStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}

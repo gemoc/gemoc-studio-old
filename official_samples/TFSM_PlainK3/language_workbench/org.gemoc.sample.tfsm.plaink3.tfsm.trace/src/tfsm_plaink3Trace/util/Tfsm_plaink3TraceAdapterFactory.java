@@ -2,6 +2,8 @@
  */
 package tfsm_plaink3Trace.util;
 
+import fr.inria.diverse.trace.commons.model.trace.Trace;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -68,7 +70,11 @@ public class Tfsm_plaink3TraceAdapterFactory extends AdapterFactoryImpl {
 	protected Tfsm_plaink3TraceSwitch<Adapter> modelSwitch =
 		new Tfsm_plaink3TraceSwitch<Adapter>() {
 			@Override
-			public Adapter caseTrace(Trace object) {
+			public Adapter caseSpecificTrace(SpecificTrace object) {
+				return createSpecificTraceAdapter();
+			}
+			@Override
+			public <StepSubType> Adapter caseTrace(Trace<StepSubType> object) {
 				return createTraceAdapter();
 			}
 			@Override
@@ -92,13 +98,27 @@ public class Tfsm_plaink3TraceAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.Trace <em>Trace</em>}'.
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.SpecificTrace <em>Specific Trace</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tfsm_plaink3Trace.Trace
+	 * @see tfsm_plaink3Trace.SpecificTrace
+	 * @generated
+	 */
+	public Adapter createSpecificTraceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.Trace <em>Trace</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.diverse.trace.commons.model.trace.Trace
 	 * @generated
 	 */
 	public Adapter createTraceAdapter() {

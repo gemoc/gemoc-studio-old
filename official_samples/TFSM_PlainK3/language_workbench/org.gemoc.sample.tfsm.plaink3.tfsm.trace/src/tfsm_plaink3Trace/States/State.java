@@ -6,7 +6,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
-import tfsm_plaink3Trace.Steps.Step;
+import tfsm_plaink3Trace.Steps.SpecificStep;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,6 +22,8 @@ import tfsm_plaink3Trace.Steps.Step;
  *   <li>{@link tfsm_plaink3Trace.States.State#getFSMEvent_isTriggered_Values <em>FSM Event is Triggered Values</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.State#getStartedSteps <em>Started Steps</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.State#getTFSM_currentState_Values <em>TFSM current State Values</em>}</li>
+ *   <li>{@link tfsm_plaink3Trace.States.State#getTFSM_lastStateChangeStepNumber_Values <em>TFSM last State Change Step Number Values</em>}</li>
+ *   <li>{@link tfsm_plaink3Trace.States.State#getTFSM_stepNumber_Values <em>TFSM step Number Values</em>}</li>
  * </ul>
  *
  * @see tfsm_plaink3Trace.States.StatesPackage#getState()
@@ -31,8 +33,8 @@ import tfsm_plaink3Trace.Steps.Step;
 public interface State extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Ended Steps</b></em>' reference list.
-	 * The list contents are of type {@link tfsm_plaink3Trace.Steps.Step}.
-	 * It is bidirectional and its opposite is '{@link tfsm_plaink3Trace.Steps.Step#getEndingState <em>Ending State</em>}'.
+	 * The list contents are of type {@link tfsm_plaink3Trace.Steps.SpecificStep}.
+	 * It is bidirectional and its opposite is '{@link tfsm_plaink3Trace.Steps.SpecificStep#getEndingState <em>Ending State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ended Steps</em>' reference list isn't clear,
@@ -41,11 +43,11 @@ public interface State extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ended Steps</em>' reference list.
 	 * @see tfsm_plaink3Trace.States.StatesPackage#getState_EndedSteps()
-	 * @see tfsm_plaink3Trace.Steps.Step#getEndingState
+	 * @see tfsm_plaink3Trace.Steps.SpecificStep#getEndingState
 	 * @model opposite="endingState"
 	 * @generated
 	 */
-	EList<Step> getEndedSteps();
+	EList<SpecificStep> getEndedSteps();
 
 	/**
 	 * Returns the value of the '<em><b>FSM Clock number Of Ticks Values</b></em>' reference list.
@@ -85,8 +87,8 @@ public interface State extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Started Steps</b></em>' reference list.
-	 * The list contents are of type {@link tfsm_plaink3Trace.Steps.Step}.
-	 * It is bidirectional and its opposite is '{@link tfsm_plaink3Trace.Steps.Step#getStartingState <em>Starting State</em>}'.
+	 * The list contents are of type {@link tfsm_plaink3Trace.Steps.SpecificStep}.
+	 * It is bidirectional and its opposite is '{@link tfsm_plaink3Trace.Steps.SpecificStep#getStartingState <em>Starting State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Started Steps</em>' reference list isn't clear,
@@ -95,11 +97,11 @@ public interface State extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Started Steps</em>' reference list.
 	 * @see tfsm_plaink3Trace.States.StatesPackage#getState_StartedSteps()
-	 * @see tfsm_plaink3Trace.Steps.Step#getStartingState
+	 * @see tfsm_plaink3Trace.Steps.SpecificStep#getStartingState
 	 * @model opposite="startingState"
 	 * @generated
 	 */
-	EList<Step> getStartedSteps();
+	EList<SpecificStep> getStartedSteps();
 
 	/**
 	 * Returns the value of the '<em><b>TFSM current State Values</b></em>' reference list.
@@ -118,5 +120,41 @@ public interface State extends EObject {
 	 * @generated
 	 */
 	EList<TFSM_currentState_Value> getTFSM_currentState_Values();
+
+	/**
+	 * Returns the value of the '<em><b>TFSM last State Change Step Number Values</b></em>' reference list.
+	 * The list contents are of type {@link tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value}.
+	 * It is bidirectional and its opposite is '{@link tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value#getStates <em>States</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>TFSM last State Change Step Number Values</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>TFSM last State Change Step Number Values</em>' reference list.
+	 * @see tfsm_plaink3Trace.States.StatesPackage#getState_TFSM_lastStateChangeStepNumber_Values()
+	 * @see tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value#getStates
+	 * @model opposite="states" ordered="false"
+	 * @generated
+	 */
+	EList<TFSM_lastStateChangeStepNumber_Value> getTFSM_lastStateChangeStepNumber_Values();
+
+	/**
+	 * Returns the value of the '<em><b>TFSM step Number Values</b></em>' reference list.
+	 * The list contents are of type {@link tfsm_plaink3Trace.States.TFSM_stepNumber_Value}.
+	 * It is bidirectional and its opposite is '{@link tfsm_plaink3Trace.States.TFSM_stepNumber_Value#getStates <em>States</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>TFSM step Number Values</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>TFSM step Number Values</em>' reference list.
+	 * @see tfsm_plaink3Trace.States.StatesPackage#getState_TFSM_stepNumber_Values()
+	 * @see tfsm_plaink3Trace.States.TFSM_stepNumber_Value#getStates
+	 * @model opposite="states" ordered="false"
+	 * @generated
+	 */
+	EList<TFSM_stepNumber_Value> getTFSM_stepNumber_Values();
 
 } // State

@@ -7,49 +7,81 @@ import fr.inria.diverse.trace.gemoc.api.IStepFactory;
 public class Tfsm_plaink3TraceStepFactory implements IStepFactory {
 
 	@Override
-	public org.gemoc.executionframework.engine.mse.MSEOccurrence createMSEOccurrence(
-			org.gemoc.executionframework.engine.mse.MSE mse, List<Object> parameters, List<Object> result) {
+	public fr.inria.diverse.trace.commons.model.trace.Step createStep(
+			fr.inria.diverse.trace.commons.model.trace.MSE mse, List<Object> parameters, List<Object> result) {
 
-		String stepRule = fr.inria.diverse.trace.commons.EcoreCraftingUtil.getFQN(mse.getCaller().eClass(), ".") + "."
+		fr.inria.diverse.trace.commons.model.trace.Step step = null;
+		org.eclipse.emf.ecore.EClass ec = mse.getCaller().eClass();
+		String stepRule = fr.inria.diverse.trace.commons.EcoreCraftingUtil.getFQN(ec, ".") + "."
 				+ mse.getAction().getName();
-		org.gemoc.executionframework.engine.mse.MSEOccurrence mseocc = null;
 
-		if (stepRule.equalsIgnoreCase("tfsm_plaink3.FSMClock.ticks")) {
-			mseocc = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_FSMClock_Ticks();
+		if (mse.getAction().getName().equalsIgnoreCase("ticks")
+				&& (ec.getClassifierID() == org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
+						.getFSMClock().getClassifierID()))
+
+		{
+			step = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_FSMClock_Ticks();
 		} else
 
-		if (stepRule.equalsIgnoreCase("tfsm_plaink3.FSMEvent.trigger")) {
-			mseocc = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_FSMEvent_Trigger();
+		if (mse.getAction().getName().equalsIgnoreCase("trigger")
+				&& (ec.getClassifierID() == org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
+						.getFSMEvent().getClassifierID()))
+
+		{
+			step = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_FSMEvent_Trigger();
 		} else
 
-		if (stepRule.equalsIgnoreCase("tfsm_plaink3.FSMEvent.unTrigger")) {
-			mseocc = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_FSMEvent_UnTrigger();
+		if (mse.getAction().getName().equalsIgnoreCase("unTrigger")
+				&& (ec.getClassifierID() == org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
+						.getFSMEvent().getClassifierID()))
+
+		{
+			step = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_FSMEvent_UnTrigger();
 		} else
 
-		if (stepRule.equalsIgnoreCase("tfsm_plaink3.State.visit")) {
-			mseocc = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_State_Visit();
+		if (mse.getAction().getName().equalsIgnoreCase("visit")
+				&& (ec.getClassifierID() == org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
+						.getState().getClassifierID()))
+
+		{
+			step = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_State_Visit();
 		} else
 
-		if (stepRule.equalsIgnoreCase("tfsm_plaink3.TFSM.init")) {
-			mseocc = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_TFSM_Init();
+		if (mse.getAction().getName().equalsIgnoreCase("init")
+				&& (ec.getClassifierID() == org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
+						.getTFSM().getClassifierID()))
+
+		{
+			step = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_TFSM_Init();
 		} else
 
-		if (stepRule.equalsIgnoreCase("tfsm_plaink3.Transition.fire")) {
-			mseocc = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_Transition_Fire();
+		if (mse.getAction().getName().equalsIgnoreCase("fire")
+				&& (ec.getClassifierID() == org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
+						.getTransition().getClassifierID()))
+
+		{
+			step = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_Transition_Fire();
 		} else
 
-		if (stepRule.equalsIgnoreCase("tfsm_plaink3.Transition.visit")) {
-			mseocc = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_Transition_Visit();
+		if (mse.getAction().getName().equalsIgnoreCase("visit")
+				&& (ec.getClassifierID() == org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
+						.getTransition().getClassifierID()))
+
+		{
+			step = tfsm_plaink3Trace.Steps.StepsFactory.eINSTANCE.createTfsm_plaink3_Transition_Visit();
 		}
 
-		else
-			mseocc = org.gemoc.executionframework.engine.mse.MseFactory.eINSTANCE.createMSEOccurrence();
-
-		if (mseocc != null) {
-			mseocc.setMse(mse);
-			mseocc.getParameters().addAll(parameters);
-			mseocc.getResult().addAll(result);
+		else {
+			step = fr.inria.diverse.trace.commons.model.trace.TraceFactory.eINSTANCE.createGenericSequentialStep();
 		}
-		return mseocc;
+
+		fr.inria.diverse.trace.commons.model.trace.MSEOccurrence mseocc = fr.inria.diverse.trace.commons.model.trace.TraceFactory.eINSTANCE
+				.createMSEOccurrence();
+		mseocc.setMse(mse);
+		mseocc.getParameters().addAll(parameters);
+		mseocc.getResult().addAll(result);
+		step.setMseoccurrence(mseocc);
+
+		return step;
 	}
 }

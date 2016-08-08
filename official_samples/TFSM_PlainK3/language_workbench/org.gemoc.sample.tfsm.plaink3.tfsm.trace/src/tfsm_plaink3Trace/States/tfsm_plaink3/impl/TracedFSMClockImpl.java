@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.gemoc.sample.tfsm_plaink3.FSMClock;
+import org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.tfsm_plaink3.FSMClock;
 
 import tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value;
 import tfsm_plaink3Trace.States.StatesPackage;

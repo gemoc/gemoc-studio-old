@@ -63,7 +63,7 @@ public interface Tfsm_plaink3Package extends EPackage {
 	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedNamedElement()
 	 * @generated
 	 */
-	int TRACED_NAMED_ELEMENT = 2;
+	int TRACED_NAMED_ELEMENT = 5;
 
 	/**
 	 * The number of structural features of the '<em>Traced Named Element</em>' class.
@@ -84,6 +84,108 @@ public interface Tfsm_plaink3Package extends EPackage {
 	int TRACED_NAMED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedGuardImpl <em>Traced Guard</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedGuardImpl
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedGuard()
+	 * @generated
+	 */
+	int TRACED_GUARD = 4;
+
+	/**
+	 * The number of structural features of the '<em>Traced Guard</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_GUARD_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Traced Guard</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_GUARD_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedEvaluateGuardImpl <em>Traced Evaluate Guard</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedEvaluateGuardImpl
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedEvaluateGuard()
+	 * @generated
+	 */
+	int TRACED_EVALUATE_GUARD = 0;
+
+	/**
+	 * The feature id for the '<em><b>Original Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_EVALUATE_GUARD__ORIGINAL_OBJECT = TRACED_GUARD_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Traced Evaluate Guard</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_EVALUATE_GUARD_FEATURE_COUNT = TRACED_GUARD_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Traced Evaluate Guard</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_EVALUATE_GUARD_OPERATION_COUNT = TRACED_GUARD_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedEventGuardImpl <em>Traced Event Guard</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedEventGuardImpl
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedEventGuard()
+	 * @generated
+	 */
+	int TRACED_EVENT_GUARD = 1;
+
+	/**
+	 * The feature id for the '<em><b>Original Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_EVENT_GUARD__ORIGINAL_OBJECT = TRACED_GUARD_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Traced Event Guard</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_EVENT_GUARD_FEATURE_COUNT = TRACED_GUARD_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Traced Event Guard</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_EVENT_GUARD_OPERATION_COUNT = TRACED_GUARD_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedFSMClockImpl <em>Traced FSM Clock</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,7 +193,7 @@ public interface Tfsm_plaink3Package extends EPackage {
 	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedFSMClock()
 	 * @generated
 	 */
-	int TRACED_FSM_CLOCK = 0;
+	int TRACED_FSM_CLOCK = 2;
 
 	/**
 	 * The feature id for the '<em><b>Number Of Ticks Sequence</b></em>' containment reference list.
@@ -137,7 +239,7 @@ public interface Tfsm_plaink3Package extends EPackage {
 	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedFSMEvent()
 	 * @generated
 	 */
-	int TRACED_FSM_EVENT = 1;
+	int TRACED_FSM_EVENT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Is Triggered Sequence</b></em>' containment reference list.
@@ -176,6 +278,43 @@ public interface Tfsm_plaink3Package extends EPackage {
 	int TRACED_FSM_EVENT_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedStateImpl <em>Traced State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedStateImpl
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedState()
+	 * @generated
+	 */
+	int TRACED_STATE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Original Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_STATE__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Traced State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_STATE_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Traced State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_STATE_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTFSMImpl <em>Traced TFSM</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -183,7 +322,7 @@ public interface Tfsm_plaink3Package extends EPackage {
 	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedTFSM()
 	 * @generated
 	 */
-	int TRACED_TFSM = 3;
+	int TRACED_TFSM = 7;
 
 	/**
 	 * The feature id for the '<em><b>Current State Sequence</b></em>' containment reference list.
@@ -195,13 +334,31 @@ public interface Tfsm_plaink3Package extends EPackage {
 	int TRACED_TFSM__CURRENT_STATE_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Last State Change Step Number Sequence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TFSM__LAST_STATE_CHANGE_STEP_NUMBER_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Original Object</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_TFSM__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int TRACED_TFSM__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Step Number Sequence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TFSM__STEP_NUMBER_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Traced TFSM</em>' class.
@@ -210,7 +367,7 @@ public interface Tfsm_plaink3Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_TFSM_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int TRACED_TFSM_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Traced TFSM</em>' class.
@@ -221,6 +378,159 @@ public interface Tfsm_plaink3Package extends EPackage {
 	 */
 	int TRACED_TFSM_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
 
+	/**
+	 * The meta object id for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTemporalGuardImpl <em>Traced Temporal Guard</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTemporalGuardImpl
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedTemporalGuard()
+	 * @generated
+	 */
+	int TRACED_TEMPORAL_GUARD = 8;
+
+	/**
+	 * The feature id for the '<em><b>Original Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TEMPORAL_GUARD__ORIGINAL_OBJECT = TRACED_GUARD_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Traced Temporal Guard</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TEMPORAL_GUARD_FEATURE_COUNT = TRACED_GUARD_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Traced Temporal Guard</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TEMPORAL_GUARD_OPERATION_COUNT = TRACED_GUARD_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTimedSystemImpl <em>Traced Timed System</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTimedSystemImpl
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedTimedSystem()
+	 * @generated
+	 */
+	int TRACED_TIMED_SYSTEM = 9;
+
+	/**
+	 * The feature id for the '<em><b>Original Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TIMED_SYSTEM__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Traced Timed System</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TIMED_SYSTEM_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Traced Timed System</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TIMED_SYSTEM_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTransitionImpl <em>Traced Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTransitionImpl
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedTransition()
+	 * @generated
+	 */
+	int TRACED_TRANSITION = 10;
+
+	/**
+	 * The feature id for the '<em><b>Original Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TRANSITION__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Traced Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TRANSITION_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Traced Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TRANSITION_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+
+	/**
+	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedEvaluateGuard <em>Traced Evaluate Guard</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Traced Evaluate Guard</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedEvaluateGuard
+	 * @generated
+	 */
+	EClass getTracedEvaluateGuard();
+
+	/**
+	 * Returns the meta object for the reference '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedEvaluateGuard#getOriginalObject <em>Original Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Original Object</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedEvaluateGuard#getOriginalObject()
+	 * @see #getTracedEvaluateGuard()
+	 * @generated
+	 */
+	EReference getTracedEvaluateGuard_OriginalObject();
+
+	/**
+	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedEventGuard <em>Traced Event Guard</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Traced Event Guard</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedEventGuard
+	 * @generated
+	 */
+	EClass getTracedEventGuard();
+
+	/**
+	 * Returns the meta object for the reference '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedEventGuard#getOriginalObject <em>Original Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Original Object</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedEventGuard#getOriginalObject()
+	 * @see #getTracedEventGuard()
+	 * @generated
+	 */
+	EReference getTracedEventGuard_OriginalObject();
 
 	/**
 	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock <em>Traced FSM Clock</em>}'.
@@ -287,6 +597,16 @@ public interface Tfsm_plaink3Package extends EPackage {
 	EReference getTracedFSMEvent_OriginalObject();
 
 	/**
+	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedGuard <em>Traced Guard</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Traced Guard</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedGuard
+	 * @generated
+	 */
+	EClass getTracedGuard();
+
+	/**
 	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedNamedElement <em>Traced Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -295,6 +615,27 @@ public interface Tfsm_plaink3Package extends EPackage {
 	 * @generated
 	 */
 	EClass getTracedNamedElement();
+
+	/**
+	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedState <em>Traced State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Traced State</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedState
+	 * @generated
+	 */
+	EClass getTracedState();
+
+	/**
+	 * Returns the meta object for the reference '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedState#getOriginalObject <em>Original Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Original Object</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedState#getOriginalObject()
+	 * @see #getTracedState()
+	 * @generated
+	 */
+	EReference getTracedState_OriginalObject();
 
 	/**
 	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM <em>Traced TFSM</em>}'.
@@ -318,6 +659,17 @@ public interface Tfsm_plaink3Package extends EPackage {
 	EReference getTracedTFSM_CurrentStateSequence();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM#getLastStateChangeStepNumberSequence <em>Last State Change Step Number Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Last State Change Step Number Sequence</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM#getLastStateChangeStepNumberSequence()
+	 * @see #getTracedTFSM()
+	 * @generated
+	 */
+	EReference getTracedTFSM_LastStateChangeStepNumberSequence();
+
+	/**
 	 * Returns the meta object for the reference '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM#getOriginalObject <em>Original Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -327,6 +679,80 @@ public interface Tfsm_plaink3Package extends EPackage {
 	 * @generated
 	 */
 	EReference getTracedTFSM_OriginalObject();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM#getStepNumberSequence <em>Step Number Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Step Number Sequence</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM#getStepNumberSequence()
+	 * @see #getTracedTFSM()
+	 * @generated
+	 */
+	EReference getTracedTFSM_StepNumberSequence();
+
+	/**
+	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTemporalGuard <em>Traced Temporal Guard</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Traced Temporal Guard</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedTemporalGuard
+	 * @generated
+	 */
+	EClass getTracedTemporalGuard();
+
+	/**
+	 * Returns the meta object for the reference '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTemporalGuard#getOriginalObject <em>Original Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Original Object</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedTemporalGuard#getOriginalObject()
+	 * @see #getTracedTemporalGuard()
+	 * @generated
+	 */
+	EReference getTracedTemporalGuard_OriginalObject();
+
+	/**
+	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTimedSystem <em>Traced Timed System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Traced Timed System</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedTimedSystem
+	 * @generated
+	 */
+	EClass getTracedTimedSystem();
+
+	/**
+	 * Returns the meta object for the reference '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTimedSystem#getOriginalObject <em>Original Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Original Object</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedTimedSystem#getOriginalObject()
+	 * @see #getTracedTimedSystem()
+	 * @generated
+	 */
+	EReference getTracedTimedSystem_OriginalObject();
+
+	/**
+	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition <em>Traced Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Traced Transition</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition
+	 * @generated
+	 */
+	EClass getTracedTransition();
+
+	/**
+	 * Returns the meta object for the reference '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition#getOriginalObject <em>Original Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Original Object</em>'.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition#getOriginalObject()
+	 * @see #getTracedTransition()
+	 * @generated
+	 */
+	EReference getTracedTransition_OriginalObject();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -351,6 +777,42 @@ public interface Tfsm_plaink3Package extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedEvaluateGuardImpl <em>Traced Evaluate Guard</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedEvaluateGuardImpl
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedEvaluateGuard()
+		 * @generated
+		 */
+		EClass TRACED_EVALUATE_GUARD = eINSTANCE.getTracedEvaluateGuard();
+
+		/**
+		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACED_EVALUATE_GUARD__ORIGINAL_OBJECT = eINSTANCE.getTracedEvaluateGuard_OriginalObject();
+
+		/**
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedEventGuardImpl <em>Traced Event Guard</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedEventGuardImpl
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedEventGuard()
+		 * @generated
+		 */
+		EClass TRACED_EVENT_GUARD = eINSTANCE.getTracedEventGuard();
+
+		/**
+		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACED_EVENT_GUARD__ORIGINAL_OBJECT = eINSTANCE.getTracedEventGuard_OriginalObject();
+
 		/**
 		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedFSMClockImpl <em>Traced FSM Clock</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -404,6 +866,16 @@ public interface Tfsm_plaink3Package extends EPackage {
 		EReference TRACED_FSM_EVENT__ORIGINAL_OBJECT = eINSTANCE.getTracedFSMEvent_OriginalObject();
 
 		/**
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedGuardImpl <em>Traced Guard</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedGuardImpl
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedGuard()
+		 * @generated
+		 */
+		EClass TRACED_GUARD = eINSTANCE.getTracedGuard();
+
+		/**
 		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedNamedElementImpl <em>Traced Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -412,6 +884,24 @@ public interface Tfsm_plaink3Package extends EPackage {
 		 * @generated
 		 */
 		EClass TRACED_NAMED_ELEMENT = eINSTANCE.getTracedNamedElement();
+
+		/**
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedStateImpl <em>Traced State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedStateImpl
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedState()
+		 * @generated
+		 */
+		EClass TRACED_STATE = eINSTANCE.getTracedState();
+
+		/**
+		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACED_STATE__ORIGINAL_OBJECT = eINSTANCE.getTracedState_OriginalObject();
 
 		/**
 		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTFSMImpl <em>Traced TFSM</em>}' class.
@@ -432,12 +922,82 @@ public interface Tfsm_plaink3Package extends EPackage {
 		EReference TRACED_TFSM__CURRENT_STATE_SEQUENCE = eINSTANCE.getTracedTFSM_CurrentStateSequence();
 
 		/**
+		 * The meta object literal for the '<em><b>Last State Change Step Number Sequence</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACED_TFSM__LAST_STATE_CHANGE_STEP_NUMBER_SEQUENCE = eINSTANCE.getTracedTFSM_LastStateChangeStepNumberSequence();
+
+		/**
 		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference TRACED_TFSM__ORIGINAL_OBJECT = eINSTANCE.getTracedTFSM_OriginalObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Step Number Sequence</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACED_TFSM__STEP_NUMBER_SEQUENCE = eINSTANCE.getTracedTFSM_StepNumberSequence();
+
+		/**
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTemporalGuardImpl <em>Traced Temporal Guard</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTemporalGuardImpl
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedTemporalGuard()
+		 * @generated
+		 */
+		EClass TRACED_TEMPORAL_GUARD = eINSTANCE.getTracedTemporalGuard();
+
+		/**
+		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACED_TEMPORAL_GUARD__ORIGINAL_OBJECT = eINSTANCE.getTracedTemporalGuard_OriginalObject();
+
+		/**
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTimedSystemImpl <em>Traced Timed System</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTimedSystemImpl
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedTimedSystem()
+		 * @generated
+		 */
+		EClass TRACED_TIMED_SYSTEM = eINSTANCE.getTracedTimedSystem();
+
+		/**
+		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACED_TIMED_SYSTEM__ORIGINAL_OBJECT = eINSTANCE.getTracedTimedSystem_OriginalObject();
+
+		/**
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTransitionImpl <em>Traced Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.TracedTransitionImpl
+		 * @see tfsm_plaink3Trace.States.tfsm_plaink3.impl.Tfsm_plaink3PackageImpl#getTracedTransition()
+		 * @generated
+		 */
+		EClass TRACED_TRANSITION = eINSTANCE.getTracedTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACED_TRANSITION__ORIGINAL_OBJECT = eINSTANCE.getTracedTransition_OriginalObject();
 
 	}
 

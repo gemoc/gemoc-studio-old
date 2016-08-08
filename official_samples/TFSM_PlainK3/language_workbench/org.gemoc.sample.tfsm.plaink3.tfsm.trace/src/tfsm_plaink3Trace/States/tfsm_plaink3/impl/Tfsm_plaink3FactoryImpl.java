@@ -56,12 +56,38 @@ public class Tfsm_plaink3FactoryImpl extends EFactoryImpl implements Tfsm_plaink
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case Tfsm_plaink3Package.TRACED_EVALUATE_GUARD: return createTracedEvaluateGuard();
+			case Tfsm_plaink3Package.TRACED_EVENT_GUARD: return createTracedEventGuard();
 			case Tfsm_plaink3Package.TRACED_FSM_CLOCK: return createTracedFSMClock();
 			case Tfsm_plaink3Package.TRACED_FSM_EVENT: return createTracedFSMEvent();
+			case Tfsm_plaink3Package.TRACED_STATE: return createTracedState();
 			case Tfsm_plaink3Package.TRACED_TFSM: return createTracedTFSM();
+			case Tfsm_plaink3Package.TRACED_TEMPORAL_GUARD: return createTracedTemporalGuard();
+			case Tfsm_plaink3Package.TRACED_TIMED_SYSTEM: return createTracedTimedSystem();
+			case Tfsm_plaink3Package.TRACED_TRANSITION: return createTracedTransition();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TracedEvaluateGuard createTracedEvaluateGuard() {
+		TracedEvaluateGuardImpl tracedEvaluateGuard = new TracedEvaluateGuardImpl();
+		return tracedEvaluateGuard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TracedEventGuard createTracedEventGuard() {
+		TracedEventGuardImpl tracedEventGuard = new TracedEventGuardImpl();
+		return tracedEventGuard;
 	}
 
 	/**
@@ -89,9 +115,49 @@ public class Tfsm_plaink3FactoryImpl extends EFactoryImpl implements Tfsm_plaink
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TracedState createTracedState() {
+		TracedStateImpl tracedState = new TracedStateImpl();
+		return tracedState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TracedTFSM createTracedTFSM() {
 		TracedTFSMImpl tracedTFSM = new TracedTFSMImpl();
 		return tracedTFSM;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TracedTemporalGuard createTracedTemporalGuard() {
+		TracedTemporalGuardImpl tracedTemporalGuard = new TracedTemporalGuardImpl();
+		return tracedTemporalGuard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TracedTimedSystem createTracedTimedSystem() {
+		TracedTimedSystemImpl tracedTimedSystem = new TracedTimedSystemImpl();
+		return tracedTimedSystem;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TracedTransition createTracedTransition() {
+		TracedTransitionImpl tracedTransition = new TracedTransitionImpl();
+		return tracedTransition;
 	}
 
 	/**

@@ -34,6 +34,7 @@ import tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link tfsm_plaink3Trace.States.impl.FSMEvent_isTriggered_ValueImpl#getStatesNoOpposite <em>States No Opposite</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.impl.FSMEvent_isTriggered_ValueImpl#isIsTriggered <em>Is Triggered</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.impl.FSMEvent_isTriggered_ValueImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link tfsm_plaink3Trace.States.impl.FSMEvent_isTriggered_ValueImpl#getStates <em>States</em>}</li>
@@ -89,6 +90,15 @@ public class FSMEvent_isTriggered_ValueImpl extends MinimalEObjectImpl.Container
 	@Override
 	protected EClass eStaticClass() {
 		return StatesPackage.Literals.FSM_EVENT_IS_TRIGGERED_VALUE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<State> getStatesNoOpposite() {
+		return this.getStates();
 	}
 
 	/**
@@ -222,6 +232,8 @@ public class FSMEvent_isTriggered_ValueImpl extends MinimalEObjectImpl.Container
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case StatesPackage.FSM_EVENT_IS_TRIGGERED_VALUE__STATES_NO_OPPOSITE:
+				return getStatesNoOpposite();
 			case StatesPackage.FSM_EVENT_IS_TRIGGERED_VALUE__IS_TRIGGERED:
 				return isIsTriggered();
 			case StatesPackage.FSM_EVENT_IS_TRIGGERED_VALUE__PARENT:
@@ -284,6 +296,8 @@ public class FSMEvent_isTriggered_ValueImpl extends MinimalEObjectImpl.Container
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case StatesPackage.FSM_EVENT_IS_TRIGGERED_VALUE__STATES_NO_OPPOSITE:
+				return !getStatesNoOpposite().isEmpty();
 			case StatesPackage.FSM_EVENT_IS_TRIGGERED_VALUE__IS_TRIGGERED:
 				return isTriggered != IS_TRIGGERED_EDEFAULT;
 			case StatesPackage.FSM_EVENT_IS_TRIGGERED_VALUE__PARENT:

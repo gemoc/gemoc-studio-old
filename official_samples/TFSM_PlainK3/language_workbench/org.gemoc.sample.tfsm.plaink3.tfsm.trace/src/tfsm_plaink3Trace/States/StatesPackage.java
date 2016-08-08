@@ -4,6 +4,7 @@ package tfsm_plaink3Trace.States;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -57,6 +58,43 @@ public interface StatesPackage extends EPackage {
 	StatesPackage eINSTANCE = tfsm_plaink3Trace.States.impl.StatesPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link tfsm_plaink3Trace.States.Value <em>Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm_plaink3Trace.States.Value
+	 * @see tfsm_plaink3Trace.States.impl.StatesPackageImpl#getValue()
+	 * @generated
+	 */
+	int VALUE = 6;
+
+	/**
+	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__STATES_NO_OPPOSITE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.States.impl.FSMClock_numberOfTicks_ValueImpl <em>FSM Clock number Of Ticks Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,13 +105,22 @@ public interface StatesPackage extends EPackage {
 	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE = 0;
 
 	/**
+	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
+
+	/**
 	 * The feature id for the '<em><b>Number Of Ticks</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS = 0;
+	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS = VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -82,7 +129,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT = 1;
+	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>States</b></em>' reference list.
@@ -91,7 +138,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES = 2;
+	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>FSM Clock number Of Ticks Value</em>' class.
@@ -100,7 +147,16 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE_FEATURE_COUNT = 3;
+	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get States No Opposite</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE___GET_STATES_NO_OPPOSITE = VALUE_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>FSM Clock number Of Ticks Value</em>' class.
@@ -109,7 +165,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE_OPERATION_COUNT = 0;
+	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.States.impl.FSMEvent_isTriggered_ValueImpl <em>FSM Event is Triggered Value</em>}' class.
@@ -122,13 +178,22 @@ public interface StatesPackage extends EPackage {
 	int FSM_EVENT_IS_TRIGGERED_VALUE = 1;
 
 	/**
+	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_EVENT_IS_TRIGGERED_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
+
+	/**
 	 * The feature id for the '<em><b>Is Triggered</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_EVENT_IS_TRIGGERED_VALUE__IS_TRIGGERED = 0;
+	int FSM_EVENT_IS_TRIGGERED_VALUE__IS_TRIGGERED = VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -137,7 +202,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_EVENT_IS_TRIGGERED_VALUE__PARENT = 1;
+	int FSM_EVENT_IS_TRIGGERED_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>States</b></em>' reference list.
@@ -146,7 +211,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_EVENT_IS_TRIGGERED_VALUE__STATES = 2;
+	int FSM_EVENT_IS_TRIGGERED_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>FSM Event is Triggered Value</em>' class.
@@ -155,7 +220,16 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_EVENT_IS_TRIGGERED_VALUE_FEATURE_COUNT = 3;
+	int FSM_EVENT_IS_TRIGGERED_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get States No Opposite</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_EVENT_IS_TRIGGERED_VALUE___GET_STATES_NO_OPPOSITE = VALUE_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>FSM Event is Triggered Value</em>' class.
@@ -164,7 +238,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_EVENT_IS_TRIGGERED_VALUE_OPERATION_COUNT = 0;
+	int FSM_EVENT_IS_TRIGGERED_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.States.impl.StateImpl <em>State</em>}' class.
@@ -222,13 +296,31 @@ public interface StatesPackage extends EPackage {
 	int STATE__TFSM_CURRENT_STATE_VALUES = 4;
 
 	/**
+	 * The feature id for the '<em><b>TFSM last State Change Step Number Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES = 5;
+
+	/**
+	 * The feature id for the '<em><b>TFSM step Number Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__TFSM_STEP_NUMBER_VALUES = 6;
+
+	/**
 	 * The number of structural features of the '<em>State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_FEATURE_COUNT = 5;
+	int STATE_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>State</em>' class.
@@ -250,13 +342,22 @@ public interface StatesPackage extends EPackage {
 	int TFSM_CURRENT_STATE_VALUE = 3;
 
 	/**
+	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_CURRENT_STATE_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
+
+	/**
 	 * The feature id for the '<em><b>Current State</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_CURRENT_STATE_VALUE__CURRENT_STATE = 0;
+	int TFSM_CURRENT_STATE_VALUE__CURRENT_STATE = VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -265,7 +366,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_CURRENT_STATE_VALUE__PARENT = 1;
+	int TFSM_CURRENT_STATE_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>States</b></em>' reference list.
@@ -274,7 +375,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_CURRENT_STATE_VALUE__STATES = 2;
+	int TFSM_CURRENT_STATE_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>TFSM current State Value</em>' class.
@@ -283,7 +384,16 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_CURRENT_STATE_VALUE_FEATURE_COUNT = 3;
+	int TFSM_CURRENT_STATE_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get States No Opposite</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_CURRENT_STATE_VALUE___GET_STATES_NO_OPPOSITE = VALUE_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>TFSM current State Value</em>' class.
@@ -292,7 +402,153 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_CURRENT_STATE_VALUE_OPERATION_COUNT = 0;
+	int TFSM_CURRENT_STATE_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link tfsm_plaink3Trace.States.impl.TFSM_lastStateChangeStepNumber_ValueImpl <em>TFSM last State Change Step Number Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm_plaink3Trace.States.impl.TFSM_lastStateChangeStepNumber_ValueImpl
+	 * @see tfsm_plaink3Trace.States.impl.StatesPackageImpl#getTFSM_lastStateChangeStepNumber_Value()
+	 * @generated
+	 */
+	int TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE = 4;
+
+	/**
+	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
+
+	/**
+	 * The feature id for the '<em><b>Last State Change Step Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__LAST_STATE_CHANGE_STEP_NUMBER = VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>TFSM last State Change Step Number Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get States No Opposite</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE___GET_STATES_NO_OPPOSITE = VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>TFSM last State Change Step Number Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link tfsm_plaink3Trace.States.impl.TFSM_stepNumber_ValueImpl <em>TFSM step Number Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm_plaink3Trace.States.impl.TFSM_stepNumber_ValueImpl
+	 * @see tfsm_plaink3Trace.States.impl.StatesPackageImpl#getTFSM_stepNumber_Value()
+	 * @generated
+	 */
+	int TFSM_STEP_NUMBER_VALUE = 5;
+
+	/**
+	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_STEP_NUMBER_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_STEP_NUMBER_VALUE__PARENT = VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_STEP_NUMBER_VALUE__STATES = VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Step Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_STEP_NUMBER_VALUE__STEP_NUMBER = VALUE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>TFSM step Number Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_STEP_NUMBER_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get States No Opposite</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_STEP_NUMBER_VALUE___GET_STATES_NO_OPPOSITE = VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>TFSM step Number Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_STEP_NUMBER_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 1;
 
 
 	/**
@@ -339,6 +595,16 @@ public interface StatesPackage extends EPackage {
 	EReference getFSMClock_numberOfTicks_Value_States();
 
 	/**
+	 * Returns the meta object for the '{@link tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value#getStatesNoOpposite() <em>Get States No Opposite</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get States No Opposite</em>' operation.
+	 * @see tfsm_plaink3Trace.States.FSMClock_numberOfTicks_Value#getStatesNoOpposite()
+	 * @generated
+	 */
+	EOperation getFSMClock_numberOfTicks_Value__GetStatesNoOpposite();
+
+	/**
 	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value <em>FSM Event is Triggered Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -380,6 +646,16 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFSMEvent_isTriggered_Value_States();
+
+	/**
+	 * Returns the meta object for the '{@link tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value#getStatesNoOpposite() <em>Get States No Opposite</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get States No Opposite</em>' operation.
+	 * @see tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value#getStatesNoOpposite()
+	 * @generated
+	 */
+	EOperation getFSMEvent_isTriggered_Value__GetStatesNoOpposite();
 
 	/**
 	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.State <em>State</em>}'.
@@ -447,6 +723,28 @@ public interface StatesPackage extends EPackage {
 	EReference getState_TFSM_currentState_Values();
 
 	/**
+	 * Returns the meta object for the reference list '{@link tfsm_plaink3Trace.States.State#getTFSM_lastStateChangeStepNumber_Values <em>TFSM last State Change Step Number Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>TFSM last State Change Step Number Values</em>'.
+	 * @see tfsm_plaink3Trace.States.State#getTFSM_lastStateChangeStepNumber_Values()
+	 * @see #getState()
+	 * @generated
+	 */
+	EReference getState_TFSM_lastStateChangeStepNumber_Values();
+
+	/**
+	 * Returns the meta object for the reference list '{@link tfsm_plaink3Trace.States.State#getTFSM_stepNumber_Values <em>TFSM step Number Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>TFSM step Number Values</em>'.
+	 * @see tfsm_plaink3Trace.States.State#getTFSM_stepNumber_Values()
+	 * @see #getState()
+	 * @generated
+	 */
+	EReference getState_TFSM_stepNumber_Values();
+
+	/**
 	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.TFSM_currentState_Value <em>TFSM current State Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -488,6 +786,143 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTFSM_currentState_Value_States();
+
+	/**
+	 * Returns the meta object for the '{@link tfsm_plaink3Trace.States.TFSM_currentState_Value#getStatesNoOpposite() <em>Get States No Opposite</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get States No Opposite</em>' operation.
+	 * @see tfsm_plaink3Trace.States.TFSM_currentState_Value#getStatesNoOpposite()
+	 * @generated
+	 */
+	EOperation getTFSM_currentState_Value__GetStatesNoOpposite();
+
+	/**
+	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value <em>TFSM last State Change Step Number Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>TFSM last State Change Step Number Value</em>'.
+	 * @see tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value
+	 * @generated
+	 */
+	EClass getTFSM_lastStateChangeStepNumber_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value#getLastStateChangeStepNumber <em>Last State Change Step Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Last State Change Step Number</em>'.
+	 * @see tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value#getLastStateChangeStepNumber()
+	 * @see #getTFSM_lastStateChangeStepNumber_Value()
+	 * @generated
+	 */
+	EAttribute getTFSM_lastStateChangeStepNumber_Value_LastStateChangeStepNumber();
+
+	/**
+	 * Returns the meta object for the container reference '{@link tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Parent</em>'.
+	 * @see tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value#getParent()
+	 * @see #getTFSM_lastStateChangeStepNumber_Value()
+	 * @generated
+	 */
+	EReference getTFSM_lastStateChangeStepNumber_Value_Parent();
+
+	/**
+	 * Returns the meta object for the reference list '{@link tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value#getStates <em>States</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>States</em>'.
+	 * @see tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value#getStates()
+	 * @see #getTFSM_lastStateChangeStepNumber_Value()
+	 * @generated
+	 */
+	EReference getTFSM_lastStateChangeStepNumber_Value_States();
+
+	/**
+	 * Returns the meta object for the '{@link tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value#getStatesNoOpposite() <em>Get States No Opposite</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get States No Opposite</em>' operation.
+	 * @see tfsm_plaink3Trace.States.TFSM_lastStateChangeStepNumber_Value#getStatesNoOpposite()
+	 * @generated
+	 */
+	EOperation getTFSM_lastStateChangeStepNumber_Value__GetStatesNoOpposite();
+
+	/**
+	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.TFSM_stepNumber_Value <em>TFSM step Number Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>TFSM step Number Value</em>'.
+	 * @see tfsm_plaink3Trace.States.TFSM_stepNumber_Value
+	 * @generated
+	 */
+	EClass getTFSM_stepNumber_Value();
+
+	/**
+	 * Returns the meta object for the container reference '{@link tfsm_plaink3Trace.States.TFSM_stepNumber_Value#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Parent</em>'.
+	 * @see tfsm_plaink3Trace.States.TFSM_stepNumber_Value#getParent()
+	 * @see #getTFSM_stepNumber_Value()
+	 * @generated
+	 */
+	EReference getTFSM_stepNumber_Value_Parent();
+
+	/**
+	 * Returns the meta object for the reference list '{@link tfsm_plaink3Trace.States.TFSM_stepNumber_Value#getStates <em>States</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>States</em>'.
+	 * @see tfsm_plaink3Trace.States.TFSM_stepNumber_Value#getStates()
+	 * @see #getTFSM_stepNumber_Value()
+	 * @generated
+	 */
+	EReference getTFSM_stepNumber_Value_States();
+
+	/**
+	 * Returns the meta object for the attribute '{@link tfsm_plaink3Trace.States.TFSM_stepNumber_Value#getStepNumber <em>Step Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Step Number</em>'.
+	 * @see tfsm_plaink3Trace.States.TFSM_stepNumber_Value#getStepNumber()
+	 * @see #getTFSM_stepNumber_Value()
+	 * @generated
+	 */
+	EAttribute getTFSM_stepNumber_Value_StepNumber();
+
+	/**
+	 * Returns the meta object for the '{@link tfsm_plaink3Trace.States.TFSM_stepNumber_Value#getStatesNoOpposite() <em>Get States No Opposite</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get States No Opposite</em>' operation.
+	 * @see tfsm_plaink3Trace.States.TFSM_stepNumber_Value#getStatesNoOpposite()
+	 * @generated
+	 */
+	EOperation getTFSM_stepNumber_Value__GetStatesNoOpposite();
+
+	/**
+	 * Returns the meta object for class '{@link tfsm_plaink3Trace.States.Value <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Value</em>'.
+	 * @see tfsm_plaink3Trace.States.Value
+	 * @generated
+	 */
+	EClass getValue();
+
+	/**
+	 * Returns the meta object for the reference list '{@link tfsm_plaink3Trace.States.Value#getStatesNoOpposite <em>States No Opposite</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>States No Opposite</em>'.
+	 * @see tfsm_plaink3Trace.States.Value#getStatesNoOpposite()
+	 * @see #getValue()
+	 * @generated
+	 */
+	EReference getValue_StatesNoOpposite();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -547,6 +982,14 @@ public interface StatesPackage extends EPackage {
 		EReference FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES = eINSTANCE.getFSMClock_numberOfTicks_Value_States();
 
 		/**
+		 * The meta object literal for the '<em><b>Get States No Opposite</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation FSM_CLOCK_NUMBER_OF_TICKS_VALUE___GET_STATES_NO_OPPOSITE = eINSTANCE.getFSMClock_numberOfTicks_Value__GetStatesNoOpposite();
+
+		/**
 		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.impl.FSMEvent_isTriggered_ValueImpl <em>FSM Event is Triggered Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -579,6 +1022,14 @@ public interface StatesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FSM_EVENT_IS_TRIGGERED_VALUE__STATES = eINSTANCE.getFSMEvent_isTriggered_Value_States();
+
+		/**
+		 * The meta object literal for the '<em><b>Get States No Opposite</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation FSM_EVENT_IS_TRIGGERED_VALUE___GET_STATES_NO_OPPOSITE = eINSTANCE.getFSMEvent_isTriggered_Value__GetStatesNoOpposite();
 
 		/**
 		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.impl.StateImpl <em>State</em>}' class.
@@ -631,6 +1082,22 @@ public interface StatesPackage extends EPackage {
 		EReference STATE__TFSM_CURRENT_STATE_VALUES = eINSTANCE.getState_TFSM_currentState_Values();
 
 		/**
+		 * The meta object literal for the '<em><b>TFSM last State Change Step Number Values</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES = eINSTANCE.getState_TFSM_lastStateChangeStepNumber_Values();
+
+		/**
+		 * The meta object literal for the '<em><b>TFSM step Number Values</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__TFSM_STEP_NUMBER_VALUES = eINSTANCE.getState_TFSM_stepNumber_Values();
+
+		/**
 		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.impl.TFSM_currentState_ValueImpl <em>TFSM current State Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -663,6 +1130,116 @@ public interface StatesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TFSM_CURRENT_STATE_VALUE__STATES = eINSTANCE.getTFSM_currentState_Value_States();
+
+		/**
+		 * The meta object literal for the '<em><b>Get States No Opposite</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TFSM_CURRENT_STATE_VALUE___GET_STATES_NO_OPPOSITE = eINSTANCE.getTFSM_currentState_Value__GetStatesNoOpposite();
+
+		/**
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.impl.TFSM_lastStateChangeStepNumber_ValueImpl <em>TFSM last State Change Step Number Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tfsm_plaink3Trace.States.impl.TFSM_lastStateChangeStepNumber_ValueImpl
+		 * @see tfsm_plaink3Trace.States.impl.StatesPackageImpl#getTFSM_lastStateChangeStepNumber_Value()
+		 * @generated
+		 */
+		EClass TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE = eINSTANCE.getTFSM_lastStateChangeStepNumber_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Last State Change Step Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__LAST_STATE_CHANGE_STEP_NUMBER = eINSTANCE.getTFSM_lastStateChangeStepNumber_Value_LastStateChangeStepNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__PARENT = eINSTANCE.getTFSM_lastStateChangeStepNumber_Value_Parent();
+
+		/**
+		 * The meta object literal for the '<em><b>States</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__STATES = eINSTANCE.getTFSM_lastStateChangeStepNumber_Value_States();
+
+		/**
+		 * The meta object literal for the '<em><b>Get States No Opposite</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE___GET_STATES_NO_OPPOSITE = eINSTANCE.getTFSM_lastStateChangeStepNumber_Value__GetStatesNoOpposite();
+
+		/**
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.impl.TFSM_stepNumber_ValueImpl <em>TFSM step Number Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tfsm_plaink3Trace.States.impl.TFSM_stepNumber_ValueImpl
+		 * @see tfsm_plaink3Trace.States.impl.StatesPackageImpl#getTFSM_stepNumber_Value()
+		 * @generated
+		 */
+		EClass TFSM_STEP_NUMBER_VALUE = eINSTANCE.getTFSM_stepNumber_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TFSM_STEP_NUMBER_VALUE__PARENT = eINSTANCE.getTFSM_stepNumber_Value_Parent();
+
+		/**
+		 * The meta object literal for the '<em><b>States</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TFSM_STEP_NUMBER_VALUE__STATES = eINSTANCE.getTFSM_stepNumber_Value_States();
+
+		/**
+		 * The meta object literal for the '<em><b>Step Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TFSM_STEP_NUMBER_VALUE__STEP_NUMBER = eINSTANCE.getTFSM_stepNumber_Value_StepNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Get States No Opposite</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TFSM_STEP_NUMBER_VALUE___GET_STATES_NO_OPPOSITE = eINSTANCE.getTFSM_stepNumber_Value__GetStatesNoOpposite();
+
+		/**
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.States.Value <em>Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see tfsm_plaink3Trace.States.Value
+		 * @see tfsm_plaink3Trace.States.impl.StatesPackageImpl#getValue()
+		 * @generated
+		 */
+		EClass VALUE = eINSTANCE.getValue();
+
+		/**
+		 * The meta object literal for the '<em><b>States No Opposite</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VALUE__STATES_NO_OPPOSITE = eINSTANCE.getValue_StatesNoOpposite();
 
 	}
 

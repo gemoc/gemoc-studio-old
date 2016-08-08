@@ -2,14 +2,17 @@
  */
 package tfsm_plaink3Trace.Steps.util;
 
+import fr.inria.diverse.trace.commons.model.trace.BigStep;
+import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
+import fr.inria.diverse.trace.commons.model.trace.SmallStep;
+import fr.inria.diverse.trace.commons.model.trace.Step;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.gemoc.executionframework.engine.mse.MSEOccurrence;
 
 import tfsm_plaink3Trace.Steps.*;
 
@@ -70,20 +73,12 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 	protected StepsSwitch<Adapter> modelSwitch =
 		new StepsSwitch<Adapter>() {
 			@Override
-			public Adapter caseBigStep(BigStep object) {
-				return createBigStepAdapter();
-			}
-			@Override
 			public Adapter caseRootImplicitStep(RootImplicitStep object) {
 				return createRootImplicitStepAdapter();
 			}
 			@Override
-			public Adapter caseSmallStep(SmallStep object) {
-				return createSmallStepAdapter();
-			}
-			@Override
-			public Adapter caseStep(Step object) {
-				return createStepAdapter();
+			public Adapter caseSpecificStep(SpecificStep object) {
+				return createSpecificStepAdapter();
 			}
 			@Override
 			public Adapter caseTfsm_plaink3_FSMClock_Ticks(Tfsm_plaink3_FSMClock_Ticks object) {
@@ -130,8 +125,20 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 				return createTfsm_plaink3_Transition_Visit_ImplicitStepAdapter();
 			}
 			@Override
-			public Adapter caseMSEOccurrence(MSEOccurrence object) {
-				return createMSEOccurrenceAdapter();
+			public Adapter caseStep(Step object) {
+				return createStepAdapter();
+			}
+			@Override
+			public Adapter caseSmallStep(SmallStep object) {
+				return createSmallStepAdapter();
+			}
+			@Override
+			public <StepSubtype extends Step> Adapter caseBigStep(BigStep<StepSubtype> object) {
+				return createBigStepAdapter();
+			}
+			@Override
+			public <StepSubtype extends Step> Adapter caseSequentialStep(SequentialStep<StepSubtype> object) {
+				return createSequentialStepAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -154,20 +161,6 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.Steps.BigStep <em>Big Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tfsm_plaink3Trace.Steps.BigStep
-	 * @generated
-	 */
-	public Adapter createBigStepAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.Steps.RootImplicitStep <em>Root Implicit Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -182,30 +175,16 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.Steps.SmallStep <em>Small Step</em>}'.
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.Steps.SpecificStep <em>Specific Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see tfsm_plaink3Trace.Steps.SmallStep
+	 * @see tfsm_plaink3Trace.Steps.SpecificStep
 	 * @generated
 	 */
-	public Adapter createSmallStepAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.Steps.Step <em>Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see tfsm_plaink3Trace.Steps.Step
-	 * @generated
-	 */
-	public Adapter createStepAdapter() {
+	public Adapter createSpecificStepAdapter() {
 		return null;
 	}
 
@@ -364,16 +343,58 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.executionframework.engine.mse.MSEOccurrence <em>MSE Occurrence</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.Step <em>Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.executionframework.engine.mse.MSEOccurrence
+	 * @see fr.inria.diverse.trace.commons.model.trace.Step
 	 * @generated
 	 */
-	public Adapter createMSEOccurrenceAdapter() {
+	public Adapter createStepAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.SmallStep <em>Small Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.diverse.trace.commons.model.trace.SmallStep
+	 * @generated
+	 */
+	public Adapter createSmallStepAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.BigStep <em>Big Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.diverse.trace.commons.model.trace.BigStep
+	 * @generated
+	 */
+	public Adapter createBigStepAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.SequentialStep <em>Sequential Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.diverse.trace.commons.model.trace.SequentialStep
+	 * @generated
+	 */
+	public Adapter createSequentialStepAdapter() {
 		return null;
 	}
 

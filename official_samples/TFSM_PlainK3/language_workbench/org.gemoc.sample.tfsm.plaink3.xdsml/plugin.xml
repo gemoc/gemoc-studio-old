@@ -2,16 +2,16 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.sequential.xdsml">
-    <XDSML_Definition modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.tfsm.xdsml.Tfsm" xdsmlFilePath="/org.gemoc.sample.tfsm.plaink3.xdsml/src/main/java/org/gemoc/sample/tfsm/xdsml/Main.melange">
+    <XDSML_Definition modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.tfsm.plaink3.xdsml.Tfsm" xdsmlFilePath="/org.gemoc.sample.tfsm.plaink3.xdsml/bin/org/gemoc/sample/tfsm/plaink3/xdsml/Main.melange">
       <XDSML_Definition_Customization fileExtensions="tfsm" />
     </XDSML_Definition>
   </extension>
   <extension point="fr.inria.diverse.melange.modeltype">
-    <modeltype id="org.gemoc.sample.tfsm.xdsml.TfsmMT" uri="http://tfsmmt/" />
+    <modeltype id="org.gemoc.sample.tfsm.plaink3.xdsml.TfsmMT" uri="http://tfsmmt/" />
   </extension>
   <extension point="fr.inria.diverse.melange.language">
-    <language aspects="FSMClock:org.gemoc.sample.tfsm.plaink3.dsa.FSMClockAspect,org.gemoc.sample.tfsm.plaink3.dsa.FSMClockVisitorAspect;TimedSystem:org.gemoc.sample.tfsm.plaink3.dsa.TimedSystemAspect,org.gemoc.sample.tfsm.plaink3.dsa.TimedSystemVisitorAspect;State:org.gemoc.sample.tfsm.plaink3.dsa.StateAspect,org.gemoc.sample.tfsm.plaink3.dsa.StateVisitorAspect;EventGuard:org.gemoc.sample.tfsm.plaink3.dsa.EventGuardVisitorAspect;Transition:org.gemoc.sample.tfsm.plaink3.dsa.TransitionAspect,org.gemoc.sample.tfsm.plaink3.dsa.TransitionVisitorAspect;FSMEvent:org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect;Guard:org.gemoc.sample.tfsm.plaink3.dsa.GuardVisitorAspect;TFSM:org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect,org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect;TemporalGuard:org.gemoc.sample.tfsm.plaink3.dsa.TemporalGuardVisitorAspect" entryPoints="org.gemoc.sample.tfsm.plaink3.dsa.TimedSystemAspect.main(org.gemoc.sample.tfsm_plaink3.TimedSystem)" exactType="org.gemoc.sample.tfsm.xdsml.TfsmMT" id="org.gemoc.sample.tfsm.xdsml.Tfsm" uri="http://tfsmmt/">
-      <adapter class="org.gemoc.sample.tfsm.xdsml.tfsm.adapters.tfsmmt.TfsmAdapter" modeltypeId="org.gemoc.sample.tfsm.xdsml.TfsmMT" />
+    <language aspects="FSMClock:org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.FSMClockAspect,org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.FSMClockVisitorAspect;TimedSystem:org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.TimedSystemAspect,org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.TimedSystemVisitorAspect;State:org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.StateAspect,org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.StateVisitorAspect;EventGuard:org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.EventGuardVisitorAspect;Transition:org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.TransitionAspect,org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.TransitionVisitorAspect;FSMEvent:org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.FSMEventAspect;Guard:org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.GuardVisitorAspect;TFSM:org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.TFSMAspect,org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.TFSMVisitorAspect;TemporalGuard:org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.TemporalGuardVisitorAspect" entryPoints="org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.aspects.TimedSystemAspect.main(org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.tfsm_plaink3.TimedSystem)" exactType="org.gemoc.sample.tfsm.plaink3.xdsml.TfsmMT" id="org.gemoc.sample.tfsm.plaink3.xdsml.Tfsm" uri="http://tfsm/tfsm_plaink3/">
+      <adapter class="org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.adapters.tfsmmt.TfsmAdapter" modeltypeId="org.gemoc.sample.tfsm.plaink3.xdsml.TfsmMT" />
     </language>
   </extension>
 </plugin>

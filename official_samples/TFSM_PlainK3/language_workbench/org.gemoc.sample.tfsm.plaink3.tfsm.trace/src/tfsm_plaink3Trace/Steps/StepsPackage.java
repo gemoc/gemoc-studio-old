@@ -2,12 +2,12 @@
  */
 package tfsm_plaink3Trace.Steps;
 
+import fr.inria.diverse.trace.commons.model.trace.TracePackage;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.gemoc.executionframework.engine.mse.MsePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,225 +59,6 @@ public interface StepsPackage extends EPackage {
 	StepsPackage eINSTANCE = tfsm_plaink3Trace.Steps.impl.StepsPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.StepImpl <em>Step</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tfsm_plaink3Trace.Steps.impl.StepImpl
-	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getStep()
-	 * @generated
-	 */
-	int STEP = 3;
-
-	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__MSE = MsePackage.MSE_OCCURRENCE__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__PARAMETERS = MsePackage.MSE_OCCURRENCE__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__RESULT = MsePackage.MSE_OCCURRENCE__RESULT;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__ENDING_STATE = MsePackage.MSE_OCCURRENCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__STARTING_STATE = MsePackage.MSE_OCCURRENCE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Step</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_FEATURE_COUNT = MsePackage.MSE_OCCURRENCE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Step</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_OPERATION_COUNT = MsePackage.MSE_OCCURRENCE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.BigStepImpl <em>Big Step</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tfsm_plaink3Trace.Steps.impl.BigStepImpl
-	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getBigStep()
-	 * @generated
-	 */
-	int BIG_STEP = 0;
-
-	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BIG_STEP__MSE = STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BIG_STEP__PARAMETERS = STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BIG_STEP__RESULT = STEP__RESULT;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BIG_STEP__ENDING_STATE = STEP__ENDING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BIG_STEP__STARTING_STATE = STEP__STARTING_STATE;
-
-	/**
-	 * The number of structural features of the '<em>Big Step</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BIG_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Big Step</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BIG_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.SmallStepImpl <em>Small Step</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see tfsm_plaink3Trace.Steps.impl.SmallStepImpl
-	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getSmallStep()
-	 * @generated
-	 */
-	int SMALL_STEP = 2;
-
-	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SMALL_STEP__MSE = STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SMALL_STEP__PARAMETERS = STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SMALL_STEP__RESULT = STEP__RESULT;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SMALL_STEP__ENDING_STATE = STEP__ENDING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SMALL_STEP__STARTING_STATE = STEP__STARTING_STATE;
-
-	/**
-	 * The number of structural features of the '<em>Small Step</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SMALL_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Small Step</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SMALL_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.RootImplicitStepImpl <em>Root Implicit Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -285,52 +66,16 @@ public interface StepsPackage extends EPackage {
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getRootImplicitStep()
 	 * @generated
 	 */
-	int ROOT_IMPLICIT_STEP = 1;
+	int ROOT_IMPLICIT_STEP = 0;
 
 	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROOT_IMPLICIT_STEP__MSE = SMALL_STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROOT_IMPLICIT_STEP__PARAMETERS = SMALL_STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROOT_IMPLICIT_STEP__RESULT = SMALL_STEP__RESULT;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROOT_IMPLICIT_STEP__ENDING_STATE = SMALL_STEP__ENDING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROOT_IMPLICIT_STEP__STARTING_STATE = SMALL_STEP__STARTING_STATE;
+	int ROOT_IMPLICIT_STEP__MSEOCCURRENCE = TracePackage.SMALL_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The number of structural features of the '<em>Root Implicit Step</em>' class.
@@ -339,7 +84,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ROOT_IMPLICIT_STEP_FEATURE_COUNT = SMALL_STEP_FEATURE_COUNT + 0;
+	int ROOT_IMPLICIT_STEP_FEATURE_COUNT = TracePackage.SMALL_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Root Implicit Step</em>' class.
@@ -348,7 +93,62 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ROOT_IMPLICIT_STEP_OPERATION_COUNT = SMALL_STEP_OPERATION_COUNT + 0;
+	int ROOT_IMPLICIT_STEP_OPERATION_COUNT = TracePackage.SMALL_STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.SpecificStep <em>Specific Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see tfsm_plaink3Trace.Steps.SpecificStep
+	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getSpecificStep()
+	 * @generated
+	 */
+	int SPECIFIC_STEP = 1;
+
+	/**
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_STEP__MSEOCCURRENCE = TracePackage.STEP__MSEOCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Ending State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_STEP__ENDING_STATE = TracePackage.STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Starting State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_STEP__STARTING_STATE = TracePackage.STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Specific Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_STEP_FEATURE_COUNT = TracePackage.STEP_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Specific Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_STEP_OPERATION_COUNT = TracePackage.STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_FSMClock_TicksImpl <em>Tfsm plaink3 FSM Clock Ticks</em>}' class.
@@ -358,34 +158,16 @@ public interface StepsPackage extends EPackage {
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_FSMClock_Ticks()
 	 * @generated
 	 */
-	int TFSM_PLAINK3_FSM_CLOCK_TICKS = 4;
+	int TFSM_PLAINK3_FSM_CLOCK_TICKS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_CLOCK_TICKS__MSE = SMALL_STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_FSM_CLOCK_TICKS__PARAMETERS = SMALL_STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_FSM_CLOCK_TICKS__RESULT = SMALL_STEP__RESULT;
+	int TFSM_PLAINK3_FSM_CLOCK_TICKS__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -394,7 +176,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_CLOCK_TICKS__ENDING_STATE = SMALL_STEP__ENDING_STATE;
+	int TFSM_PLAINK3_FSM_CLOCK_TICKS__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -403,7 +185,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_CLOCK_TICKS__STARTING_STATE = SMALL_STEP__STARTING_STATE;
+	int TFSM_PLAINK3_FSM_CLOCK_TICKS__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Tfsm plaink3 FSM Clock Ticks</em>' class.
@@ -412,7 +194,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_CLOCK_TICKS_FEATURE_COUNT = SMALL_STEP_FEATURE_COUNT + 0;
+	int TFSM_PLAINK3_FSM_CLOCK_TICKS_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Caller</em>' operation.
@@ -421,7 +203,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_CLOCK_TICKS___GET_CALLER = SMALL_STEP_OPERATION_COUNT + 0;
+	int TFSM_PLAINK3_FSM_CLOCK_TICKS___GET_CALLER = SPECIFIC_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Tfsm plaink3 FSM Clock Ticks</em>' class.
@@ -430,7 +212,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_CLOCK_TICKS_OPERATION_COUNT = SMALL_STEP_OPERATION_COUNT + 1;
+	int TFSM_PLAINK3_FSM_CLOCK_TICKS_OPERATION_COUNT = SPECIFIC_STEP_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_FSMEvent_TriggerImpl <em>Tfsm plaink3 FSM Event Trigger</em>}' class.
@@ -440,34 +222,16 @@ public interface StepsPackage extends EPackage {
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_FSMEvent_Trigger()
 	 * @generated
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_TRIGGER = 5;
+	int TFSM_PLAINK3_FSM_EVENT_TRIGGER = 3;
 
 	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_TRIGGER__MSE = SMALL_STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_FSM_EVENT_TRIGGER__PARAMETERS = SMALL_STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_FSM_EVENT_TRIGGER__RESULT = SMALL_STEP__RESULT;
+	int TFSM_PLAINK3_FSM_EVENT_TRIGGER__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -476,7 +240,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_TRIGGER__ENDING_STATE = SMALL_STEP__ENDING_STATE;
+	int TFSM_PLAINK3_FSM_EVENT_TRIGGER__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -485,7 +249,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_TRIGGER__STARTING_STATE = SMALL_STEP__STARTING_STATE;
+	int TFSM_PLAINK3_FSM_EVENT_TRIGGER__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Tfsm plaink3 FSM Event Trigger</em>' class.
@@ -494,7 +258,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_TRIGGER_FEATURE_COUNT = SMALL_STEP_FEATURE_COUNT + 0;
+	int TFSM_PLAINK3_FSM_EVENT_TRIGGER_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Caller</em>' operation.
@@ -503,7 +267,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_TRIGGER___GET_CALLER = SMALL_STEP_OPERATION_COUNT + 0;
+	int TFSM_PLAINK3_FSM_EVENT_TRIGGER___GET_CALLER = SPECIFIC_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Tfsm plaink3 FSM Event Trigger</em>' class.
@@ -512,7 +276,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_TRIGGER_OPERATION_COUNT = SMALL_STEP_OPERATION_COUNT + 1;
+	int TFSM_PLAINK3_FSM_EVENT_TRIGGER_OPERATION_COUNT = SPECIFIC_STEP_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_FSMEvent_UnTriggerImpl <em>Tfsm plaink3 FSM Event Un Trigger</em>}' class.
@@ -522,34 +286,16 @@ public interface StepsPackage extends EPackage {
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_FSMEvent_UnTrigger()
 	 * @generated
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER = 6;
+	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER = 4;
 
 	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER__MSE = SMALL_STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER__PARAMETERS = SMALL_STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER__RESULT = SMALL_STEP__RESULT;
+	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -558,7 +304,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER__ENDING_STATE = SMALL_STEP__ENDING_STATE;
+	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -567,7 +313,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER__STARTING_STATE = SMALL_STEP__STARTING_STATE;
+	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Tfsm plaink3 FSM Event Un Trigger</em>' class.
@@ -576,7 +322,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER_FEATURE_COUNT = SMALL_STEP_FEATURE_COUNT + 0;
+	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Caller</em>' operation.
@@ -585,7 +331,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER___GET_CALLER = SMALL_STEP_OPERATION_COUNT + 0;
+	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER___GET_CALLER = SPECIFIC_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Tfsm plaink3 FSM Event Un Trigger</em>' class.
@@ -594,7 +340,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER_OPERATION_COUNT = SMALL_STEP_OPERATION_COUNT + 1;
+	int TFSM_PLAINK3_FSM_EVENT_UN_TRIGGER_OPERATION_COUNT = SPECIFIC_STEP_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_State_VisitImpl <em>Tfsm plaink3 State Visit</em>}' class.
@@ -604,34 +350,16 @@ public interface StepsPackage extends EPackage {
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_State_Visit()
 	 * @generated
 	 */
-	int TFSM_PLAINK3_STATE_VISIT = 7;
+	int TFSM_PLAINK3_STATE_VISIT = 5;
 
 	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT__MSE = BIG_STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_STATE_VISIT__PARAMETERS = BIG_STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_STATE_VISIT__RESULT = BIG_STEP__RESULT;
+	int TFSM_PLAINK3_STATE_VISIT__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -640,7 +368,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT__ENDING_STATE = BIG_STEP__ENDING_STATE;
+	int TFSM_PLAINK3_STATE_VISIT__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -649,7 +377,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT__STARTING_STATE = BIG_STEP__STARTING_STATE;
+	int TFSM_PLAINK3_STATE_VISIT__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Sub Steps</b></em>' containment reference list.
@@ -658,7 +386,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT__SUB_STEPS = BIG_STEP_FEATURE_COUNT + 0;
+	int TFSM_PLAINK3_STATE_VISIT__SUB_STEPS = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Tfsm plaink3 State Visit</em>' class.
@@ -667,7 +395,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT_FEATURE_COUNT = BIG_STEP_FEATURE_COUNT + 1;
+	int TFSM_PLAINK3_STATE_VISIT_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Caller</em>' operation.
@@ -676,7 +404,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT___GET_CALLER = BIG_STEP_OPERATION_COUNT + 0;
+	int TFSM_PLAINK3_STATE_VISIT___GET_CALLER = SPECIFIC_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Tfsm plaink3 State Visit</em>' class.
@@ -685,17 +413,44 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT_OPERATION_COUNT = BIG_STEP_OPERATION_COUNT + 1;
+	int TFSM_PLAINK3_STATE_VISIT_OPERATION_COUNT = SPECIFIC_STEP_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_State_Visit_AbstractSubStepImpl <em>Tfsm plaink3 State Visit Abstract Sub Step</em>}' class.
+	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit_AbstractSubStep <em>Tfsm plaink3 State Visit Abstract Sub Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_State_Visit_AbstractSubStepImpl
+	 * @see tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit_AbstractSubStep
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_State_Visit_AbstractSubStep()
 	 * @generated
 	 */
-	int TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP = 8;
+	int TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP = 6;
+
+	/**
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Ending State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Starting State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Tfsm plaink3 State Visit Abstract Sub Step</em>' class.
@@ -704,7 +459,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT = 0;
+	int TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Tfsm plaink3 State Visit Abstract Sub Step</em>' class.
@@ -713,7 +468,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP_OPERATION_COUNT = 0;
+	int TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP_OPERATION_COUNT = SPECIFIC_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_State_Visit_ImplicitStepImpl <em>Tfsm plaink3 State Visit Implicit Step</em>}' class.
@@ -723,34 +478,16 @@ public interface StepsPackage extends EPackage {
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_State_Visit_ImplicitStep()
 	 * @generated
 	 */
-	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP = 9;
+	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP = 7;
 
 	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP__MSE = SMALL_STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP__PARAMETERS = SMALL_STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP__RESULT = SMALL_STEP__RESULT;
+	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP__MSEOCCURRENCE = TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -759,7 +496,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP__ENDING_STATE = SMALL_STEP__ENDING_STATE;
+	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP__ENDING_STATE = TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -768,7 +505,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP__STARTING_STATE = SMALL_STEP__STARTING_STATE;
+	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP__STARTING_STATE = TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Tfsm plaink3 State Visit Implicit Step</em>' class.
@@ -777,7 +514,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP_FEATURE_COUNT = SMALL_STEP_FEATURE_COUNT + 0;
+	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP_FEATURE_COUNT = TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Tfsm plaink3 State Visit Implicit Step</em>' class.
@@ -786,7 +523,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP_OPERATION_COUNT = SMALL_STEP_OPERATION_COUNT + 0;
+	int TFSM_PLAINK3_STATE_VISIT_IMPLICIT_STEP_OPERATION_COUNT = TFSM_PLAINK3_STATE_VISIT_ABSTRACT_SUB_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_TFSM_InitImpl <em>Tfsm plaink3 TFSM Init</em>}' class.
@@ -796,34 +533,16 @@ public interface StepsPackage extends EPackage {
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_TFSM_Init()
 	 * @generated
 	 */
-	int TFSM_PLAINK3_TFSM_INIT = 10;
+	int TFSM_PLAINK3_TFSM_INIT = 8;
 
 	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TFSM_INIT__MSE = SMALL_STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_TFSM_INIT__PARAMETERS = SMALL_STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_TFSM_INIT__RESULT = SMALL_STEP__RESULT;
+	int TFSM_PLAINK3_TFSM_INIT__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -832,7 +551,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TFSM_INIT__ENDING_STATE = SMALL_STEP__ENDING_STATE;
+	int TFSM_PLAINK3_TFSM_INIT__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -841,7 +560,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TFSM_INIT__STARTING_STATE = SMALL_STEP__STARTING_STATE;
+	int TFSM_PLAINK3_TFSM_INIT__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Tfsm plaink3 TFSM Init</em>' class.
@@ -850,7 +569,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TFSM_INIT_FEATURE_COUNT = SMALL_STEP_FEATURE_COUNT + 0;
+	int TFSM_PLAINK3_TFSM_INIT_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Caller</em>' operation.
@@ -859,7 +578,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TFSM_INIT___GET_CALLER = SMALL_STEP_OPERATION_COUNT + 0;
+	int TFSM_PLAINK3_TFSM_INIT___GET_CALLER = SPECIFIC_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Tfsm plaink3 TFSM Init</em>' class.
@@ -868,7 +587,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TFSM_INIT_OPERATION_COUNT = SMALL_STEP_OPERATION_COUNT + 1;
+	int TFSM_PLAINK3_TFSM_INIT_OPERATION_COUNT = SPECIFIC_STEP_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_Transition_FireImpl <em>Tfsm plaink3 Transition Fire</em>}' class.
@@ -878,34 +597,16 @@ public interface StepsPackage extends EPackage {
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_Transition_Fire()
 	 * @generated
 	 */
-	int TFSM_PLAINK3_TRANSITION_FIRE = 11;
+	int TFSM_PLAINK3_TRANSITION_FIRE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_FIRE__MSE = SMALL_STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_TRANSITION_FIRE__PARAMETERS = SMALL_STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_TRANSITION_FIRE__RESULT = SMALL_STEP__RESULT;
+	int TFSM_PLAINK3_TRANSITION_FIRE__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -914,7 +615,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_FIRE__ENDING_STATE = SMALL_STEP__ENDING_STATE;
+	int TFSM_PLAINK3_TRANSITION_FIRE__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -923,7 +624,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_FIRE__STARTING_STATE = SMALL_STEP__STARTING_STATE;
+	int TFSM_PLAINK3_TRANSITION_FIRE__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Tfsm plaink3 Transition Fire</em>' class.
@@ -932,7 +633,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_FIRE_FEATURE_COUNT = SMALL_STEP_FEATURE_COUNT + 0;
+	int TFSM_PLAINK3_TRANSITION_FIRE_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Caller</em>' operation.
@@ -941,7 +642,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_FIRE___GET_CALLER = SMALL_STEP_OPERATION_COUNT + 0;
+	int TFSM_PLAINK3_TRANSITION_FIRE___GET_CALLER = SPECIFIC_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Tfsm plaink3 Transition Fire</em>' class.
@@ -950,7 +651,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_FIRE_OPERATION_COUNT = SMALL_STEP_OPERATION_COUNT + 1;
+	int TFSM_PLAINK3_TRANSITION_FIRE_OPERATION_COUNT = SPECIFIC_STEP_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_Transition_VisitImpl <em>Tfsm plaink3 Transition Visit</em>}' class.
@@ -960,34 +661,16 @@ public interface StepsPackage extends EPackage {
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_Transition_Visit()
 	 * @generated
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT = 12;
+	int TFSM_PLAINK3_TRANSITION_VISIT = 10;
 
 	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT__MSE = BIG_STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT__PARAMETERS = BIG_STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT__RESULT = BIG_STEP__RESULT;
+	int TFSM_PLAINK3_TRANSITION_VISIT__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -996,7 +679,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT__ENDING_STATE = BIG_STEP__ENDING_STATE;
+	int TFSM_PLAINK3_TRANSITION_VISIT__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -1005,7 +688,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT__STARTING_STATE = BIG_STEP__STARTING_STATE;
+	int TFSM_PLAINK3_TRANSITION_VISIT__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Sub Steps</b></em>' containment reference list.
@@ -1014,7 +697,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT__SUB_STEPS = BIG_STEP_FEATURE_COUNT + 0;
+	int TFSM_PLAINK3_TRANSITION_VISIT__SUB_STEPS = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Tfsm plaink3 Transition Visit</em>' class.
@@ -1023,7 +706,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_FEATURE_COUNT = BIG_STEP_FEATURE_COUNT + 1;
+	int TFSM_PLAINK3_TRANSITION_VISIT_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Caller</em>' operation.
@@ -1032,7 +715,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT___GET_CALLER = BIG_STEP_OPERATION_COUNT + 0;
+	int TFSM_PLAINK3_TRANSITION_VISIT___GET_CALLER = SPECIFIC_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Tfsm plaink3 Transition Visit</em>' class.
@@ -1041,17 +724,44 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_OPERATION_COUNT = BIG_STEP_OPERATION_COUNT + 1;
+	int TFSM_PLAINK3_TRANSITION_VISIT_OPERATION_COUNT = SPECIFIC_STEP_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_Transition_Visit_AbstractSubStepImpl <em>Tfsm plaink3 Transition Visit Abstract Sub Step</em>}' class.
+	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_AbstractSubStep <em>Tfsm plaink3 Transition Visit Abstract Sub Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_Transition_Visit_AbstractSubStepImpl
+	 * @see tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_AbstractSubStep
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_Transition_Visit_AbstractSubStep()
 	 * @generated
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP = 13;
+	int TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP = 11;
+
+	/**
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Ending State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Starting State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Tfsm plaink3 Transition Visit Abstract Sub Step</em>' class.
@@ -1060,7 +770,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT = 0;
+	int TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Tfsm plaink3 Transition Visit Abstract Sub Step</em>' class.
@@ -1069,7 +779,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP_OPERATION_COUNT = 0;
+	int TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP_OPERATION_COUNT = SPECIFIC_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_Transition_Visit_ImplicitStepImpl <em>Tfsm plaink3 Transition Visit Implicit Step</em>}' class.
@@ -1079,34 +789,16 @@ public interface StepsPackage extends EPackage {
 	 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_Transition_Visit_ImplicitStep()
 	 * @generated
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP = 14;
+	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP = 12;
 
 	/**
-	 * The feature id for the '<em><b>Mse</b></em>' reference.
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP__MSE = SMALL_STEP__MSE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP__PARAMETERS = SMALL_STEP__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP__RESULT = SMALL_STEP__RESULT;
+	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP__MSEOCCURRENCE = TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -1115,7 +807,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP__ENDING_STATE = SMALL_STEP__ENDING_STATE;
+	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP__ENDING_STATE = TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -1124,7 +816,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP__STARTING_STATE = SMALL_STEP__STARTING_STATE;
+	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP__STARTING_STATE = TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Tfsm plaink3 Transition Visit Implicit Step</em>' class.
@@ -1133,7 +825,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP_FEATURE_COUNT = SMALL_STEP_FEATURE_COUNT + 0;
+	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP_FEATURE_COUNT = TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Tfsm plaink3 Transition Visit Implicit Step</em>' class.
@@ -1142,18 +834,8 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP_OPERATION_COUNT = SMALL_STEP_OPERATION_COUNT + 0;
+	int TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP_OPERATION_COUNT = TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP_OPERATION_COUNT + 0;
 
-
-	/**
-	 * Returns the meta object for class '{@link tfsm_plaink3Trace.Steps.BigStep <em>Big Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Big Step</em>'.
-	 * @see tfsm_plaink3Trace.Steps.BigStep
-	 * @generated
-	 */
-	EClass getBigStep();
 
 	/**
 	 * Returns the meta object for class '{@link tfsm_plaink3Trace.Steps.RootImplicitStep <em>Root Implicit Step</em>}'.
@@ -1166,46 +848,36 @@ public interface StepsPackage extends EPackage {
 	EClass getRootImplicitStep();
 
 	/**
-	 * Returns the meta object for class '{@link tfsm_plaink3Trace.Steps.SmallStep <em>Small Step</em>}'.
+	 * Returns the meta object for class '{@link tfsm_plaink3Trace.Steps.SpecificStep <em>Specific Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Small Step</em>'.
-	 * @see tfsm_plaink3Trace.Steps.SmallStep
+	 * @return the meta object for class '<em>Specific Step</em>'.
+	 * @see tfsm_plaink3Trace.Steps.SpecificStep
 	 * @generated
 	 */
-	EClass getSmallStep();
+	EClass getSpecificStep();
 
 	/**
-	 * Returns the meta object for class '{@link tfsm_plaink3Trace.Steps.Step <em>Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Step</em>'.
-	 * @see tfsm_plaink3Trace.Steps.Step
-	 * @generated
-	 */
-	EClass getStep();
-
-	/**
-	 * Returns the meta object for the reference '{@link tfsm_plaink3Trace.Steps.Step#getEndingState <em>Ending State</em>}'.
+	 * Returns the meta object for the reference '{@link tfsm_plaink3Trace.Steps.SpecificStep#getEndingState <em>Ending State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Ending State</em>'.
-	 * @see tfsm_plaink3Trace.Steps.Step#getEndingState()
-	 * @see #getStep()
+	 * @see tfsm_plaink3Trace.Steps.SpecificStep#getEndingState()
+	 * @see #getSpecificStep()
 	 * @generated
 	 */
-	EReference getStep_EndingState();
+	EReference getSpecificStep_EndingState();
 
 	/**
-	 * Returns the meta object for the reference '{@link tfsm_plaink3Trace.Steps.Step#getStartingState <em>Starting State</em>}'.
+	 * Returns the meta object for the reference '{@link tfsm_plaink3Trace.Steps.SpecificStep#getStartingState <em>Starting State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Starting State</em>'.
-	 * @see tfsm_plaink3Trace.Steps.Step#getStartingState()
-	 * @see #getStep()
+	 * @see tfsm_plaink3Trace.Steps.SpecificStep#getStartingState()
+	 * @see #getSpecificStep()
 	 * @generated
 	 */
-	EReference getStep_StartingState();
+	EReference getSpecificStep_StartingState();
 
 	/**
 	 * Returns the meta object for class '{@link tfsm_plaink3Trace.Steps.Tfsm_plaink3_FSMClock_Ticks <em>Tfsm plaink3 FSM Clock Ticks</em>}'.
@@ -1276,17 +948,6 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTfsm_plaink3_State_Visit();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit#getSubSteps <em>Sub Steps</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Sub Steps</em>'.
-	 * @see tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit#getSubSteps()
-	 * @see #getTfsm_plaink3_State_Visit()
-	 * @generated
-	 */
-	EReference getTfsm_plaink3_State_Visit_SubSteps();
 
 	/**
 	 * Returns the meta object for the '{@link tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit#getCaller() <em>Get Caller</em>}' operation.
@@ -1369,17 +1030,6 @@ public interface StepsPackage extends EPackage {
 	EClass getTfsm_plaink3_Transition_Visit();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit#getSubSteps <em>Sub Steps</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Sub Steps</em>'.
-	 * @see tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit#getSubSteps()
-	 * @see #getTfsm_plaink3_Transition_Visit()
-	 * @generated
-	 */
-	EReference getTfsm_plaink3_Transition_Visit_SubSteps();
-
-	/**
 	 * Returns the meta object for the '{@link tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit#getCaller() <em>Get Caller</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1433,16 +1083,6 @@ public interface StepsPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link tfsm_plaink3Trace.Steps.impl.BigStepImpl <em>Big Step</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see tfsm_plaink3Trace.Steps.impl.BigStepImpl
-		 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getBigStep()
-		 * @generated
-		 */
-		EClass BIG_STEP = eINSTANCE.getBigStep();
-
-		/**
 		 * The meta object literal for the '{@link tfsm_plaink3Trace.Steps.impl.RootImplicitStepImpl <em>Root Implicit Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1453,24 +1093,14 @@ public interface StepsPackage extends EPackage {
 		EClass ROOT_IMPLICIT_STEP = eINSTANCE.getRootImplicitStep();
 
 		/**
-		 * The meta object literal for the '{@link tfsm_plaink3Trace.Steps.impl.SmallStepImpl <em>Small Step</em>}' class.
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.Steps.SpecificStep <em>Specific Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see tfsm_plaink3Trace.Steps.impl.SmallStepImpl
-		 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getSmallStep()
+		 * @see tfsm_plaink3Trace.Steps.SpecificStep
+		 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getSpecificStep()
 		 * @generated
 		 */
-		EClass SMALL_STEP = eINSTANCE.getSmallStep();
-
-		/**
-		 * The meta object literal for the '{@link tfsm_plaink3Trace.Steps.impl.StepImpl <em>Step</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see tfsm_plaink3Trace.Steps.impl.StepImpl
-		 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getStep()
-		 * @generated
-		 */
-		EClass STEP = eINSTANCE.getStep();
+		EClass SPECIFIC_STEP = eINSTANCE.getSpecificStep();
 
 		/**
 		 * The meta object literal for the '<em><b>Ending State</b></em>' reference feature.
@@ -1478,7 +1108,7 @@ public interface StepsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STEP__ENDING_STATE = eINSTANCE.getStep_EndingState();
+		EReference SPECIFIC_STEP__ENDING_STATE = eINSTANCE.getSpecificStep_EndingState();
 
 		/**
 		 * The meta object literal for the '<em><b>Starting State</b></em>' reference feature.
@@ -1486,7 +1116,7 @@ public interface StepsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STEP__STARTING_STATE = eINSTANCE.getStep_StartingState();
+		EReference SPECIFIC_STEP__STARTING_STATE = eINSTANCE.getSpecificStep_StartingState();
 
 		/**
 		 * The meta object literal for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_FSMClock_TicksImpl <em>Tfsm plaink3 FSM Clock Ticks</em>}' class.
@@ -1553,14 +1183,6 @@ public interface StepsPackage extends EPackage {
 		EClass TFSM_PLAINK3_STATE_VISIT = eINSTANCE.getTfsm_plaink3_State_Visit();
 
 		/**
-		 * The meta object literal for the '<em><b>Sub Steps</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TFSM_PLAINK3_STATE_VISIT__SUB_STEPS = eINSTANCE.getTfsm_plaink3_State_Visit_SubSteps();
-
-		/**
 		 * The meta object literal for the '<em><b>Get Caller</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1569,10 +1191,10 @@ public interface StepsPackage extends EPackage {
 		EOperation TFSM_PLAINK3_STATE_VISIT___GET_CALLER = eINSTANCE.getTfsm_plaink3_State_Visit__GetCaller();
 
 		/**
-		 * The meta object literal for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_State_Visit_AbstractSubStepImpl <em>Tfsm plaink3 State Visit Abstract Sub Step</em>}' class.
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit_AbstractSubStep <em>Tfsm plaink3 State Visit Abstract Sub Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_State_Visit_AbstractSubStepImpl
+		 * @see tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit_AbstractSubStep
 		 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_State_Visit_AbstractSubStep()
 		 * @generated
 		 */
@@ -1635,14 +1257,6 @@ public interface StepsPackage extends EPackage {
 		EClass TFSM_PLAINK3_TRANSITION_VISIT = eINSTANCE.getTfsm_plaink3_Transition_Visit();
 
 		/**
-		 * The meta object literal for the '<em><b>Sub Steps</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TFSM_PLAINK3_TRANSITION_VISIT__SUB_STEPS = eINSTANCE.getTfsm_plaink3_Transition_Visit_SubSteps();
-
-		/**
 		 * The meta object literal for the '<em><b>Get Caller</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1651,10 +1265,10 @@ public interface StepsPackage extends EPackage {
 		EOperation TFSM_PLAINK3_TRANSITION_VISIT___GET_CALLER = eINSTANCE.getTfsm_plaink3_Transition_Visit__GetCaller();
 
 		/**
-		 * The meta object literal for the '{@link tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_Transition_Visit_AbstractSubStepImpl <em>Tfsm plaink3 Transition Visit Abstract Sub Step</em>}' class.
+		 * The meta object literal for the '{@link tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_AbstractSubStep <em>Tfsm plaink3 Transition Visit Abstract Sub Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see tfsm_plaink3Trace.Steps.impl.Tfsm_plaink3_Transition_Visit_AbstractSubStepImpl
+		 * @see tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_AbstractSubStep
 		 * @see tfsm_plaink3Trace.Steps.impl.StepsPackageImpl#getTfsm_plaink3_Transition_Visit_AbstractSubStep()
 		 * @generated
 		 */

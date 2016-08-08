@@ -4,8 +4,6 @@ package tfsm_plaink3Trace.States;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 import tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent;
 
 /**
@@ -26,7 +24,7 @@ import tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent;
  * @model annotation="http://www.modelexecution.org/trace/XMOF executionMetamodelElement='null'"
  * @generated
  */
-public interface FSMEvent_isTriggered_Value extends EObject {
+public interface FSMEvent_isTriggered_Value extends Value {
 	/**
 	 * Returns the value of the '<em><b>Is Triggered</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
@@ -99,5 +97,14 @@ public interface FSMEvent_isTriggered_Value extends EObject {
 	 * @generated
 	 */
 	EList<State> getStates();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getStates();'"
+	 * @generated
+	 */
+	EList<State> getStatesNoOpposite();
 
 } // FSMEvent_isTriggered_Value

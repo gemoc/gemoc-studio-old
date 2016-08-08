@@ -68,6 +68,14 @@ public class Tfsm_plaink3AdapterFactory extends AdapterFactoryImpl {
 	protected Tfsm_plaink3Switch<Adapter> modelSwitch =
 		new Tfsm_plaink3Switch<Adapter>() {
 			@Override
+			public Adapter caseTracedEvaluateGuard(TracedEvaluateGuard object) {
+				return createTracedEvaluateGuardAdapter();
+			}
+			@Override
+			public Adapter caseTracedEventGuard(TracedEventGuard object) {
+				return createTracedEventGuardAdapter();
+			}
+			@Override
 			public Adapter caseTracedFSMClock(TracedFSMClock object) {
 				return createTracedFSMClockAdapter();
 			}
@@ -76,12 +84,32 @@ public class Tfsm_plaink3AdapterFactory extends AdapterFactoryImpl {
 				return createTracedFSMEventAdapter();
 			}
 			@Override
+			public Adapter caseTracedGuard(TracedGuard object) {
+				return createTracedGuardAdapter();
+			}
+			@Override
 			public Adapter caseTracedNamedElement(TracedNamedElement object) {
 				return createTracedNamedElementAdapter();
 			}
 			@Override
+			public Adapter caseTracedState(TracedState object) {
+				return createTracedStateAdapter();
+			}
+			@Override
 			public Adapter caseTracedTFSM(TracedTFSM object) {
 				return createTracedTFSMAdapter();
+			}
+			@Override
+			public Adapter caseTracedTemporalGuard(TracedTemporalGuard object) {
+				return createTracedTemporalGuardAdapter();
+			}
+			@Override
+			public Adapter caseTracedTimedSystem(TracedTimedSystem object) {
+				return createTracedTimedSystemAdapter();
+			}
+			@Override
+			public Adapter caseTracedTransition(TracedTransition object) {
+				return createTracedTransitionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -102,6 +130,34 @@ public class Tfsm_plaink3AdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedEvaluateGuard <em>Traced Evaluate Guard</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedEvaluateGuard
+	 * @generated
+	 */
+	public Adapter createTracedEvaluateGuardAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedEventGuard <em>Traced Event Guard</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedEventGuard
+	 * @generated
+	 */
+	public Adapter createTracedEventGuardAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock <em>Traced FSM Clock</em>}'.
@@ -132,6 +188,20 @@ public class Tfsm_plaink3AdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedGuard <em>Traced Guard</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedGuard
+	 * @generated
+	 */
+	public Adapter createTracedGuardAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedNamedElement <em>Traced Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -146,6 +216,20 @@ public class Tfsm_plaink3AdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedState <em>Traced State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedState
+	 * @generated
+	 */
+	public Adapter createTracedStateAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM <em>Traced TFSM</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -156,6 +240,48 @@ public class Tfsm_plaink3AdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTracedTFSMAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTemporalGuard <em>Traced Temporal Guard</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedTemporalGuard
+	 * @generated
+	 */
+	public Adapter createTracedTemporalGuardAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTimedSystem <em>Traced Timed System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedTimedSystem
+	 * @generated
+	 */
+	public Adapter createTracedTimedSystemAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition <em>Traced Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition
+	 * @generated
+	 */
+	public Adapter createTracedTransitionAdapter() {
 		return null;
 	}
 

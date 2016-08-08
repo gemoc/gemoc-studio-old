@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.sample.tfsm.plaink3.xdsml/src-gen" modelName="TfsmMT" complianceLevel="7.0" copyrightFields="false">
   <foreignModel>platform:/resource/org.gemoc.sample.tfsm.plaink3.xdsml/model-gen/TfsmMT.ecore</foreignModel>
-  <genPackages prefix="Tfsm_plaink3" basePackage="org.gemoc.sample.tfsm.xdsml.tfsmmt" disposableProviderFactory="true">
+  <genPackages prefix="Tfsm_plaink3" basePackage="org.gemoc.sample.tfsm.plaink3.xdsml.tfsmmt" disposableProviderFactory="true">
     <ecorePackage href="TfsmMT.ecore#/"/>
     <genClasses>
       <ecoreClass href="TfsmMT.ecore#//TFSM"/>
@@ -81,7 +81,7 @@
         <ecoreOperation href="TfsmMT.ecore#//Transition/visit"/>
       </genOperations>
     </genClasses>
-    <genClasses>
+    <genClasses image="false">
       <ecoreClass href="TfsmMT.ecore#//NamedElement"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="TfsmMT.ecore#//NamedElement/name"/>
@@ -156,6 +156,12 @@
         <ecoreOperation href="TfsmMT.ecore#//TimedSystem/main"/>
       </genOperations>
       <genOperations>
+        <ecoreOperation href="TfsmMT.ecore#//TimedSystem/initializeModel"/>
+        <genParameters>
+          <ecoreParameter href="TfsmMT.ecore#//TimedSystem/initializeModel/args"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
         <ecoreOperation href="TfsmMT.ecore#//TimedSystem/visit"/>
       </genOperations>
     </genClasses>
@@ -166,4 +172,5 @@
       </genFeatures>
     </genClasses>
   </genPackages>
+  <usedGenPackages href="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"/>
 </genmodel:GenModel>

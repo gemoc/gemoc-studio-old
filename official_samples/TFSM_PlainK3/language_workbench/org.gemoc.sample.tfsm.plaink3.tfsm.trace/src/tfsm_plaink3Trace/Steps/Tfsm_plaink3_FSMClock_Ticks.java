@@ -2,7 +2,9 @@
  */
 package tfsm_plaink3Trace.Steps;
 
-import org.gemoc.sample.tfsm_plaink3.FSMClock;
+import fr.inria.diverse.trace.commons.model.trace.SmallStep;
+
+import tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,14 +16,14 @@ import org.gemoc.sample.tfsm_plaink3.FSMClock;
  * @model
  * @generated
  */
-public interface Tfsm_plaink3_FSMClock_Ticks extends SmallStep {
+public interface Tfsm_plaink3_FSMClock_Ticks extends SpecificStep, SmallStep {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (org.gemoc.sample.tfsm_plaink3.FSMClock) this.getMse().getCaller();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMClock) this.getMseoccurrence().getMse().getCaller();'"
 	 * @generated
 	 */
-	FSMClock getCaller();
+	TracedFSMClock getCaller();
 
 } // Tfsm_plaink3_FSMClock_Ticks

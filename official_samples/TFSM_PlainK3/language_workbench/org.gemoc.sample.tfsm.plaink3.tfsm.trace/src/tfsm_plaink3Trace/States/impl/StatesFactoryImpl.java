@@ -60,6 +60,8 @@ public class StatesFactoryImpl extends EFactoryImpl implements StatesFactory {
 			case StatesPackage.FSM_EVENT_IS_TRIGGERED_VALUE: return createFSMEvent_isTriggered_Value();
 			case StatesPackage.STATE: return createState();
 			case StatesPackage.TFSM_CURRENT_STATE_VALUE: return createTFSM_currentState_Value();
+			case StatesPackage.TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE: return createTFSM_lastStateChangeStepNumber_Value();
+			case StatesPackage.TFSM_STEP_NUMBER_VALUE: return createTFSM_stepNumber_Value();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +105,26 @@ public class StatesFactoryImpl extends EFactoryImpl implements StatesFactory {
 	public TFSM_currentState_Value createTFSM_currentState_Value() {
 		TFSM_currentState_ValueImpl tfsM_currentState_Value = new TFSM_currentState_ValueImpl();
 		return tfsM_currentState_Value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TFSM_lastStateChangeStepNumber_Value createTFSM_lastStateChangeStepNumber_Value() {
+		TFSM_lastStateChangeStepNumber_ValueImpl tfsM_lastStateChangeStepNumber_Value = new TFSM_lastStateChangeStepNumber_ValueImpl();
+		return tfsM_lastStateChangeStepNumber_Value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TFSM_stepNumber_Value createTFSM_stepNumber_Value() {
+		TFSM_stepNumber_ValueImpl tfsM_stepNumber_Value = new TFSM_stepNumber_ValueImpl();
+		return tfsM_stepNumber_Value;
 	}
 
 	/**

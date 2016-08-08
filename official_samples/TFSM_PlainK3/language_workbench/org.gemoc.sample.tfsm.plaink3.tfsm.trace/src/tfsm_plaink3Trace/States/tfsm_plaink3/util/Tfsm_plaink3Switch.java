@@ -66,6 +66,22 @@ public class Tfsm_plaink3Switch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case Tfsm_plaink3Package.TRACED_EVALUATE_GUARD: {
+				TracedEvaluateGuard tracedEvaluateGuard = (TracedEvaluateGuard)theEObject;
+				T result = caseTracedEvaluateGuard(tracedEvaluateGuard);
+				if (result == null) result = caseTracedGuard(tracedEvaluateGuard);
+				if (result == null) result = caseTracedNamedElement(tracedEvaluateGuard);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Tfsm_plaink3Package.TRACED_EVENT_GUARD: {
+				TracedEventGuard tracedEventGuard = (TracedEventGuard)theEObject;
+				T result = caseTracedEventGuard(tracedEventGuard);
+				if (result == null) result = caseTracedGuard(tracedEventGuard);
+				if (result == null) result = caseTracedNamedElement(tracedEventGuard);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case Tfsm_plaink3Package.TRACED_FSM_CLOCK: {
 				TracedFSMClock tracedFSMClock = (TracedFSMClock)theEObject;
 				T result = caseTracedFSMClock(tracedFSMClock);
@@ -80,9 +96,23 @@ public class Tfsm_plaink3Switch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case Tfsm_plaink3Package.TRACED_GUARD: {
+				TracedGuard tracedGuard = (TracedGuard)theEObject;
+				T result = caseTracedGuard(tracedGuard);
+				if (result == null) result = caseTracedNamedElement(tracedGuard);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case Tfsm_plaink3Package.TRACED_NAMED_ELEMENT: {
 				TracedNamedElement tracedNamedElement = (TracedNamedElement)theEObject;
 				T result = caseTracedNamedElement(tracedNamedElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Tfsm_plaink3Package.TRACED_STATE: {
+				TracedState tracedState = (TracedState)theEObject;
+				T result = caseTracedState(tracedState);
+				if (result == null) result = caseTracedNamedElement(tracedState);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -93,8 +123,60 @@ public class Tfsm_plaink3Switch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case Tfsm_plaink3Package.TRACED_TEMPORAL_GUARD: {
+				TracedTemporalGuard tracedTemporalGuard = (TracedTemporalGuard)theEObject;
+				T result = caseTracedTemporalGuard(tracedTemporalGuard);
+				if (result == null) result = caseTracedGuard(tracedTemporalGuard);
+				if (result == null) result = caseTracedNamedElement(tracedTemporalGuard);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Tfsm_plaink3Package.TRACED_TIMED_SYSTEM: {
+				TracedTimedSystem tracedTimedSystem = (TracedTimedSystem)theEObject;
+				T result = caseTracedTimedSystem(tracedTimedSystem);
+				if (result == null) result = caseTracedNamedElement(tracedTimedSystem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Tfsm_plaink3Package.TRACED_TRANSITION: {
+				TracedTransition tracedTransition = (TracedTransition)theEObject;
+				T result = caseTracedTransition(tracedTransition);
+				if (result == null) result = caseTracedNamedElement(tracedTransition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Traced Evaluate Guard</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Traced Evaluate Guard</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTracedEvaluateGuard(TracedEvaluateGuard object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Traced Event Guard</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Traced Event Guard</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTracedEventGuard(TracedEventGuard object) {
+		return null;
 	}
 
 	/**
@@ -128,6 +210,21 @@ public class Tfsm_plaink3Switch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Traced Guard</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Traced Guard</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTracedGuard(TracedGuard object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Traced Named Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -143,6 +240,21 @@ public class Tfsm_plaink3Switch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Traced State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Traced State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTracedState(TracedState object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Traced TFSM</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -154,6 +266,51 @@ public class Tfsm_plaink3Switch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTracedTFSM(TracedTFSM object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Traced Temporal Guard</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Traced Temporal Guard</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTracedTemporalGuard(TracedTemporalGuard object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Traced Timed System</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Traced Timed System</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTracedTimedSystem(TracedTimedSystem object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Traced Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Traced Transition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTracedTransition(TracedTransition object) {
 		return null;
 	}
 

@@ -22,13 +22,13 @@ public interface Tfsm_plaink3TraceFactory extends EFactory {
 	Tfsm_plaink3TraceFactory eINSTANCE = tfsm_plaink3Trace.impl.Tfsm_plaink3TraceFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Trace</em>'.
+	 * Returns a new object of class '<em>Specific Trace</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Trace</em>'.
+	 * @return a new object of class '<em>Specific Trace</em>'.
 	 * @generated
 	 */
-	Trace createTrace();
+	SpecificTrace createSpecificTrace();
 
 	/**
 	 * Returns the package supported by this factory.
