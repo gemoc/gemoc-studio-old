@@ -10,32 +10,138 @@
 	</parent>
 
 <profiles>
+
+
+
+
+
 	<profile>
 	        <id>ignore_CI_repositories</id>
 	        <activation>
 	        </activation>
 
-      <properties>
+   
+	<build>
+	<plugins>
+	<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<mkdir dir="eclipse_help" />
 
-        <location.eclipse_help>${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/guide/eclipse/*zip*/eclipse.zip</location.eclipse_help>
-	<location.eclipse_help_tutorial_markedgraph>${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/tutorial_markedgraph/eclipse/*zip*/eclipse.zip</location.eclipse_help_tutorial_markedgraph>
-	<location.eclipse_help_tutorial_sigpml>${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/tutorial_sigpml/eclipse/*zip*/eclipse.zip</location.eclipse_help_tutorial_sigpml>
-            </properties>
+								<mkdir dir="eclipse_help/guide" />
+								<copy  todir="eclipse_help/guide/eclipse">
+									<fileset dir="${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/guide/eclipse"/>
+								</copy> 
+						
+								<mkdir dir="eclipse_help/tutorial_markedgraph" />
+								<copy  todir="eclipse_help/tutorial_markedgraph/eclipse">	
+									<fileset dir="${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/tutorial_markedgraph/eclipse"/>
+								</copy> 
+								
+								<mkdir dir="eclipse_help/tutorial_sigpml" />
+								<copy  todir="eclipse_help/tutorial_sigpml/eclipse">
+									<fileset dir="${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/tutorial_sigpml/eclipse"/>
+								</copy> 
+								
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+	</plugins>
+	</build>
+
 
 	    </profile>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	    <profile>
 	        <id>use_CI_repositories</id>
 	        <activation>
 	            <activeByDefault>true</activeByDefault>
 	        </activation>
 
-	<properties>
+	<build>
+	<plugins>
+	<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<mkdir dir="${project.build.directory}/zips" />
+								<mkdir dir="eclipse_help" />
+								<mkdir dir="eclipse_help/guide" />
+								<get
+									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/guide/eclipse/*zip*/eclipse.zip"
+									dest="${project.build.directory}/zips/guide_eclipse.zip" />
+								<unzip src="${project.build.directory}/zips/guide_eclipse.zip"
+									dest="eclipse_help/guide" />
+								<!-- override eclipse html by html version which is cleaner -->
+								<!-- <get
+									src="https://ci.inria.fr/gemoc/view/Documentation/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/guide/html/*zip*/html.zip"
+									dest="${project.build.outputDirectory}/zips/guide_html.zip" />
+								<unzip src="${project.build.outputDirectory}/zips/guide_html.zip"
+									dest="eclipse_help" />
+								<copy todir="eclipse_help/eclipse" overwrite="true">
+									<fileset dir="eclipse_help/html"  />
+								</copy>-->
+								
+								<mkdir dir="eclipse_help/tutorial_markedgraph" />
+								<get
+									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_markedgraph/eclipse/*zip*/eclipse.zip"
+									dest="${project.build.directory}/zips/tutorial_markedgraph_eclipse.zip" />
+								<unzip src="${project.build.directory}/zips/tutorial_markedgraph_eclipse.zip"
+									dest="eclipse_help/tutorial_markedgraph" />
+								<mkdir dir="eclipse_help/tutorial_sigpml" />
+								<get
+									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_sigpml/eclipse/*zip*/eclipse.zip"
+									dest="${project.build.directory}/zips/tutorial_sigpml_eclipse.zip" />
+								<unzip src="${project.build.directory}/zips/tutorial_sigpml_eclipse.zip"
+									dest="eclipse_help/tutorial_sigpml" />
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+	</plugins>
+	</build>
 
-  	<location.eclipse_help>https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/guide/eclipse/*zip*/eclipse.zip</location.eclipse_help>
-	<location.eclipse_help_tutorial_markedgraph>https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_markedgraph/eclipse/*zip*/eclipse.zip</location.eclipse_help_tutorial_markedgraph>
-	<location.eclipse_help_tutorial_sigpml>https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_sigpml/eclipse/*zip*/eclipse.zip</location.eclipse_help_tutorial_sigpml>
 
-      </properties>
 
 
 	</profile>
@@ -75,53 +181,7 @@
 			<!-- </executions> -->
 			<!-- </plugin> -->
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.3</version>
-				<executions>
-					<execution>
-						<phase>initialize</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<tasks>
-								<mkdir dir="${project.build.directory}/zips" />
-								<mkdir dir="eclipse_help" />
-								<mkdir dir="eclipse_help/guide" />
-								<get
-									src="${location.eclipse_help}"
-									dest="${project.build.directory}/zips/guide_eclipse.zip" />
-								<unzip src="${project.build.directory}/zips/guide_eclipse.zip"
-									dest="eclipse_help/guide" />
-								<!-- override eclipse html by html version which is cleaner -->
-								<!-- <get
-									src="https://ci.inria.fr/gemoc/view/Documentation/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/guide/html/*zip*/html.zip"
-									dest="${project.build.outputDirectory}/zips/guide_html.zip" />
-								<unzip src="${project.build.outputDirectory}/zips/guide_html.zip"
-									dest="eclipse_help" />
-								<copy todir="eclipse_help/eclipse" overwrite="true">
-									<fileset dir="eclipse_help/html"  />
-								</copy>-->
-								
-								<mkdir dir="eclipse_help/tutorial_markedgraph" />
-								<get
-									src="${location.eclipse_help_tutorial_markedgraph}"
-									dest="${project.build.directory}/zips/tutorial_markedgraph_eclipse.zip" />
-								<unzip src="${project.build.directory}/zips/tutorial_markedgraph_eclipse.zip"
-									dest="eclipse_help/tutorial_markedgraph" />
-								<mkdir dir="eclipse_help/tutorial_sigpml" />
-								<get
-									src="${location.eclipse_help_tutorial_sigpml}"
-									dest="${project.build.directory}/zips/tutorial_sigpml_eclipse.zip" />
-								<unzip src="${project.build.directory}/zips/tutorial_sigpml_eclipse.zip"
-									dest="eclipse_help/tutorial_sigpml" />
-							</tasks>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			
 
 			<!-- Workaround docbook generation, the toc.xml are gerenated in the same 
 				folder and navigation fails -->
