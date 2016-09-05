@@ -13,9 +13,6 @@
         eType="#//FSMClock" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTransitions" upperBound="-1"
         eType="#//Transition" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="currentState" eType="#//State">
-      <eAnnotations source="aspect"/>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningFSM" lowerBound="1"
@@ -53,17 +50,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="FSMEvent" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sollicitingTransitions"
         upperBound="-1" eType="#//Transition"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTriggered" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false">
-      <eAnnotations source="aspect"/>
-    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FSMClock" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfTicks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
-        defaultValueLiteral="0">
-      <eAnnotations source="aspect"/>
-    </eStructuralFeatures>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FSMClock" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="TimedSystem" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tfsms" upperBound="-1"
         eType="#//TFSM" containment="true"/>

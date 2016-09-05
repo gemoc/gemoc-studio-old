@@ -14,10 +14,13 @@ import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
 import fr.inria.diverse.k3.al.annotationprocessor.Step
 import org.gemoc.sample.tfsm_plaink3.TimedSystem
 import java.util.List
+import org.eclipse.emf.common.util.EList
 
 @Aspect(className=TFSM)
 class TFSMAspect {
 
+	public State currentState
+	
 	@Step
 	def public void init() {
 
@@ -34,7 +37,7 @@ class TFSMAspect {
 
 @Aspect(className=FSMClock)
 class FSMClockAspect {
-
+	public int numberOfTicks
 	// Clock tick
 	@Step
 	def public Integer ticks() {
@@ -72,6 +75,7 @@ class TransitionAspect {
 @Aspect(className=FSMEvent)
 class FSMEventAspect {
 
+	public boolean isTriggered 
 	@Step
 	def public void trigger() {
 		_self.isTriggered = true
@@ -115,7 +119,7 @@ class TimedSystemAspect {
        
        
        @fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
-       def public void initializeModel(List<String> args){
+       def public void initializeModel(EList<String> args){
        		val tfsm = _self.tfsms.get(0)
             tfsm.init	
        }

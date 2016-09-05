@@ -1,12 +1,13 @@
-package org.gemoc.sample.tfsm.plaink3.xdsml
+package org.gemoc.sample.tfsm.xdsml
 
-language Tfsm {
-	
-	/*
-	 * Declare abstract syntax
-	 */
+external language Tfsm {
 	syntax "platform:/resource/org.gemoc.sample.tfsm.plaink3.model/model/tfsm.ecore"
-	
+	//withGenmodel "platform:/resource/org.gemoc.sample.tfsm.plaink3.model/model/tfsm.genmodel"
+	exactType TfsmMT
+}
+
+language ExecutableTfsm inherits Tfsm 	{
+
 	/*
 	 * Declare DSA
 	 */
@@ -28,5 +29,5 @@ language Tfsm {
 	/*
 	 * Set name of the ModelType (ie: the type of this language)
 	 */
-	exactType TfsmMT
+	exactType ExecutableTfsmMT
 }
