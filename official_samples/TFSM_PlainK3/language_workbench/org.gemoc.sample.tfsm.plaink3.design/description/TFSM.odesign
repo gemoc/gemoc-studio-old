@@ -239,11 +239,19 @@
       </additionalLayers>
       <additionalLayers name="Animation">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Current State" position="EAST" decoratorPath="/org.gemoc.sample.tfsm.plaink3.design/icons/cursor-3-24.png" preconditionExpression="[self.eContainer(TFSM).currentState = self/]" mappings="//@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Current State" position="SOUTH_EAST" decoratorPath="/org.gemoc.sample.tfsm.plaink3.design/icons/cursor-3-24.png" preconditionExpression="[self.eContainer(TFSM).currentState = self/]" mappings="//@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="EventOccurred" position="CENTER" decoratorPath="/org.gemoc.sample.tfsm.plaink3.design/icons/eventOccurred.png" preconditionExpression="service:self.hasBeenActivated" domainClass="FSMEvent"/>
         </decorationDescriptionsSet>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor" value="//@userColorsPalettes[name='TFSM%20Palette']/@entries[name='activated%20instruction']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name='TFSM%20Palette']/@entries[name='activated%20instruction']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']/@style //@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']/@style //@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='LocalEvents']/@style //@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']/@style" referenceName="borderColor">
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']/@style //@ownedViewpoints[name='TFSM_plaink3_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']/@style" attributeName="labelExpression" value="[self.oclAsType(FSMClock).name+':'+self.oclAsType(FSMClock).numberOfTicks/]"/>
           </vsmElementCustomizations>
         </customization>
       </additionalLayers>
