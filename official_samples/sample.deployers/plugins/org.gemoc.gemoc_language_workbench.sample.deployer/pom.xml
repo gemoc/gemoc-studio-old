@@ -71,20 +71,20 @@
 								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.model.zip">
 									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.model/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.model.edit.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.model.edit/" />
-								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.model.editor.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.model.editor/" />
-								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.tfsm.trace.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.tfsm.trace/" />
-								</zip>
 								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.zip">
 									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.tfsm.zip">
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.zip">
 									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml.tfsm/" />
+								</zip>
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.edit.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.edit/" />
+								</zip>
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.editor.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.editor/" />
+								</zip>
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xtfsm.trace.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xtfsm.trace/" />
 								</zip>
 
 								<!-- SigPML -->
