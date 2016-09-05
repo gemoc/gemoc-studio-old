@@ -82,7 +82,7 @@ def generate_redirects(sitejsonfile='sites.json'):
       <packaging>pom</packaging>\n\
   \n\
       <properties>\n\
-	  <tycho-version>0.22.0</tycho-version>\n\
+	  <tycho-version>0.24.0</tycho-version>\n\
 	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n\
       </properties>\n\
   \n\
