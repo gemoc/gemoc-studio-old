@@ -9,6 +9,38 @@
 		<relativePath>../..</relativePath>
 	</parent>
 
+<profiles>
+	<profile>
+	        <id>ignore_CI_repositories</id>
+	        <activation>
+	        </activation>
+
+      <properties>
+
+        <location.eclipse_help>${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/guide/eclipse/*zip*/eclipse.zip</location.eclipse_help>
+	<location.eclipse_help_tutorial_markedgraph>${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/tutorial_markedgraph/eclipse/*zip*/eclipse.zip</location.eclipse_help_tutorial_markedgraph>
+	<location.eclipse_help_tutorial_sigpml>${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/tutorial_sigpml/eclipse/*zip*/eclipse.zip</location.eclipse_help_tutorial_sigpml>
+            </properties>
+
+	    </profile>
+	    <profile>
+	        <id>use_CI_repositories</id>
+	        <activation>
+	            <activeByDefault>true</activeByDefault>
+	        </activation>
+
+	<properties>
+
+  	<location.eclipse_help>https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/guide/eclipse/*zip*/eclipse.zip</location.eclipse_help>
+	<location.eclipse_help_tutorial_markedgraph>https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_markedgraph/eclipse/*zip*/eclipse.zip</location.eclipse_help_tutorial_markedgraph>
+	<location.eclipse_help_tutorial_sigpml>https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_sigpml/eclipse/*zip*/eclipse.zip</location.eclipse_help_tutorial_sigpml>
+
+      </properties>
+
+
+	</profile>
+</profiles>
+
 	<artifactId>org.gemoc.gemoc_language_workbench.documentation</artifactId>
 	<packaging>eclipse-plugin</packaging>
 	<build>
@@ -59,7 +91,7 @@
 								<mkdir dir="eclipse_help" />
 								<mkdir dir="eclipse_help/guide" />
 								<get
-									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/guide/eclipse/*zip*/eclipse.zip"
+									src="${location.eclipse_help}"
 									dest="${project.build.directory}/zips/guide_eclipse.zip" />
 								<unzip src="${project.build.directory}/zips/guide_eclipse.zip"
 									dest="eclipse_help/guide" />
@@ -75,13 +107,13 @@
 								
 								<mkdir dir="eclipse_help/tutorial_markedgraph" />
 								<get
-									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_markedgraph/eclipse/*zip*/eclipse.zip"
+									src="${location.eclipse_help_tutorial_markedgraph}"
 									dest="${project.build.directory}/zips/tutorial_markedgraph_eclipse.zip" />
 								<unzip src="${project.build.directory}/zips/tutorial_markedgraph_eclipse.zip"
 									dest="eclipse_help/tutorial_markedgraph" />
 								<mkdir dir="eclipse_help/tutorial_sigpml" />
 								<get
-									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_sigpml/eclipse/*zip*/eclipse.zip"
+									src="${location.eclipse_help_tutorial_sigpml}"
 									dest="${project.build.directory}/zips/tutorial_sigpml_eclipse.zip" />
 								<unzip src="${project.build.directory}/zips/tutorial_sigpml_eclipse.zip"
 									dest="eclipse_help/tutorial_sigpml" />
