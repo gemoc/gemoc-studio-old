@@ -19,11 +19,11 @@ import org.gemoc.sample.tfsm_plaink3.TfsmPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.TemporalGuardImpl#getOnClock <em>On Clock</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.TemporalGuardImpl#getAfterDuration <em>After Duration</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

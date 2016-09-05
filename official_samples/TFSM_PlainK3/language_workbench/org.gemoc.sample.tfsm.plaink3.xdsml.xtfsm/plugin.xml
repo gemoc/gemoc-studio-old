@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated XTfsm -->
+      <package
+            uri="http://xtfsm/tfsm_plaink3/"
+            class="org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Tfsm_plaink3Package"
+            genModel="model/XTfsm.genmodel"/>
+   </extension>
+
+</plugin>

@@ -28,6 +28,7 @@ import org.gemoc.sample.tfsm_plaink3.Transition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.TransitionImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.TransitionImpl#getTarget <em>Target</em>}</li>
@@ -35,7 +36,6 @@ import org.gemoc.sample.tfsm_plaink3.Transition;
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.TransitionImpl#getGeneratedEvents <em>Generated Events</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.TransitionImpl#getAction <em>Action</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
