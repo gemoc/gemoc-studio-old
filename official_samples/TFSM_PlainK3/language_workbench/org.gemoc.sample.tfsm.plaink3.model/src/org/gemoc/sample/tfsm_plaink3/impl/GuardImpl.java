@@ -11,8 +11,6 @@ import org.gemoc.sample.tfsm_plaink3.TfsmPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Guard</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

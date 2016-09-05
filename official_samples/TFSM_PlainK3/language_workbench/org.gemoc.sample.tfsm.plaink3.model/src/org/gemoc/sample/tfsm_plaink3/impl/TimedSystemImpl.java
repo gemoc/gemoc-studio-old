@@ -26,12 +26,12 @@ import org.gemoc.sample.tfsm_plaink3.TimedSystem;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.TimedSystemImpl#getTfsms <em>Tfsms</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.TimedSystemImpl#getGlobalClocks <em>Global Clocks</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.TimedSystemImpl#getGlobalEvents <em>Global Events</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

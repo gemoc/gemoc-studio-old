@@ -10,11 +10,11 @@ package org.gemoc.sample.tfsm_plaink3;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.TemporalGuard#getOnClock <em>On Clock</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.TemporalGuard#getAfterDuration <em>After Duration</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.tfsm_plaink3.TfsmPackage#getTemporalGuard()
  * @model

@@ -11,12 +11,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.State#getOwningFSM <em>Owning FSM</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.State#getOutgoingTransitions <em>Outgoing Transitions</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.State#getIncomingTransitions <em>Incoming Transitions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.tfsm_plaink3.TfsmPackage#getState()
  * @model

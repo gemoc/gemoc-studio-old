@@ -11,12 +11,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.TimedSystem#getTfsms <em>Tfsms</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.TimedSystem#getGlobalClocks <em>Global Clocks</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.TimedSystem#getGlobalEvents <em>Global Events</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.tfsm_plaink3.TfsmPackage#getTimedSystem()
  * @model

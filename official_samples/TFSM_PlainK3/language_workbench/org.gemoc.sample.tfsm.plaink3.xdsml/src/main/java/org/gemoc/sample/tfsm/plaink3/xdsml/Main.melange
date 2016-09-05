@@ -1,6 +1,6 @@
 package org.gemoc.sample.tfsm.plaink3.xdsml
 
-language Tfsm {
+language XTfsm {
 	
 	/*
 	 * Declare abstract syntax
@@ -26,7 +26,7 @@ language Tfsm {
 	with org.gemoc.sample.tfsm.plaink3.dsa.TimedSystemVisitorAspect
 	
 	/*
-	 * Set name of the ModelType (ie: the type of this language)
+	 * Set name of the ModelType (ie: the type of this language)(optional)
 	 */
-	exactType TfsmMT
+	exactType XTfsmMT
 }

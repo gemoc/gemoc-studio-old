@@ -19,10 +19,10 @@ import org.gemoc.sample.tfsm_plaink3.TfsmPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm_plaink3.impl.EventGuardImpl#getTriggeringEvent <em>Triggering Event</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
