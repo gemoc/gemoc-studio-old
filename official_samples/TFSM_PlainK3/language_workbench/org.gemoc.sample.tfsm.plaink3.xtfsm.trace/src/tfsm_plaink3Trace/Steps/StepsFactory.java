@@ -103,6 +103,15 @@ public interface StepsFactory extends EFactory {
 	Tfsm_plaink3_Transition_Visit createTfsm_plaink3_Transition_Visit();
 
 	/**
+	 * Returns a new object of class '<em>Tfsm plaink3 Transition Visit Implicit Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Tfsm plaink3 Transition Visit Implicit Step</em>'.
+	 * @generated
+	 */
+	Tfsm_plaink3_Transition_Visit_ImplicitStep createTfsm_plaink3_Transition_Visit_ImplicitStep();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

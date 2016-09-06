@@ -2,7 +2,7 @@
  */
 package tfsm_plaink3Trace.Steps;
 
-import fr.inria.diverse.trace.commons.model.trace.SmallStep;
+import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
 
 import tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition;
 
@@ -16,7 +16,7 @@ import tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition;
  * @model
  * @generated
  */
-public interface Tfsm_plaink3_Transition_Visit extends Tfsm_plaink3_State_Visit_AbstractSubStep, SpecificStep, SmallStep {
+public interface Tfsm_plaink3_Transition_Visit extends Tfsm_plaink3_State_Visit_AbstractSubStep, SpecificStep, SequentialStep<Tfsm_plaink3_Transition_Visit_AbstractSubStep> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

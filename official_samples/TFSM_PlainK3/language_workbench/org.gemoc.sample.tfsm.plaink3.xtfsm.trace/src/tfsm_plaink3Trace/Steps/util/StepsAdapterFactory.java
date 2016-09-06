@@ -117,6 +117,14 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 				return createTfsm_plaink3_Transition_VisitAdapter();
 			}
 			@Override
+			public Adapter caseTfsm_plaink3_Transition_Visit_AbstractSubStep(Tfsm_plaink3_Transition_Visit_AbstractSubStep object) {
+				return createTfsm_plaink3_Transition_Visit_AbstractSubStepAdapter();
+			}
+			@Override
+			public Adapter caseTfsm_plaink3_Transition_Visit_ImplicitStep(Tfsm_plaink3_Transition_Visit_ImplicitStep object) {
+				return createTfsm_plaink3_Transition_Visit_ImplicitStepAdapter();
+			}
+			@Override
 			public Adapter caseStep(Step object) {
 				return createStepAdapter();
 			}
@@ -303,6 +311,34 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTfsm_plaink3_Transition_VisitAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_AbstractSubStep <em>Tfsm plaink3 Transition Visit Abstract Sub Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_AbstractSubStep
+	 * @generated
+	 */
+	public Adapter createTfsm_plaink3_Transition_Visit_AbstractSubStepAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_ImplicitStep <em>Tfsm plaink3 Transition Visit Implicit Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_ImplicitStep
+	 * @generated
+	 */
+	public Adapter createTfsm_plaink3_Transition_Visit_ImplicitStepAdapter() {
 		return null;
 	}
 

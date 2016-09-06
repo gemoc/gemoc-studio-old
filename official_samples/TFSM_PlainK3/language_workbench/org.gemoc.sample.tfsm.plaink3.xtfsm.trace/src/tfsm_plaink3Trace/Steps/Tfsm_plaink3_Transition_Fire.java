@@ -16,7 +16,7 @@ import tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition;
  * @model
  * @generated
  */
-public interface Tfsm_plaink3_Transition_Fire extends SpecificStep, SmallStep {
+public interface Tfsm_plaink3_Transition_Fire extends SpecificStep, SmallStep, Tfsm_plaink3_Transition_Visit_AbstractSubStep {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

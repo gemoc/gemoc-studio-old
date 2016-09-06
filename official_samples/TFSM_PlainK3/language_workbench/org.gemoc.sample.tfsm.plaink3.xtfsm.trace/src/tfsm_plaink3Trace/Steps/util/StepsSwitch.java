@@ -153,8 +153,9 @@ public class StepsSwitch<T> extends Switch<T> {
 			case StepsPackage.TFSM_PLAINK3_TRANSITION_FIRE: {
 				Tfsm_plaink3_Transition_Fire tfsm_plaink3_Transition_Fire = (Tfsm_plaink3_Transition_Fire)theEObject;
 				T result = caseTfsm_plaink3_Transition_Fire(tfsm_plaink3_Transition_Fire);
-				if (result == null) result = caseSpecificStep(tfsm_plaink3_Transition_Fire);
 				if (result == null) result = caseSmallStep(tfsm_plaink3_Transition_Fire);
+				if (result == null) result = caseTfsm_plaink3_Transition_Visit_AbstractSubStep(tfsm_plaink3_Transition_Fire);
+				if (result == null) result = caseSpecificStep(tfsm_plaink3_Transition_Fire);
 				if (result == null) result = caseStep(tfsm_plaink3_Transition_Fire);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -163,9 +164,28 @@ public class StepsSwitch<T> extends Switch<T> {
 				Tfsm_plaink3_Transition_Visit tfsm_plaink3_Transition_Visit = (Tfsm_plaink3_Transition_Visit)theEObject;
 				T result = caseTfsm_plaink3_Transition_Visit(tfsm_plaink3_Transition_Visit);
 				if (result == null) result = caseTfsm_plaink3_State_Visit_AbstractSubStep(tfsm_plaink3_Transition_Visit);
-				if (result == null) result = caseSmallStep(tfsm_plaink3_Transition_Visit);
+				if (result == null) result = caseSequentialStep(tfsm_plaink3_Transition_Visit);
 				if (result == null) result = caseSpecificStep(tfsm_plaink3_Transition_Visit);
+				if (result == null) result = caseBigStep(tfsm_plaink3_Transition_Visit);
 				if (result == null) result = caseStep(tfsm_plaink3_Transition_Visit);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StepsPackage.TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP: {
+				Tfsm_plaink3_Transition_Visit_AbstractSubStep tfsm_plaink3_Transition_Visit_AbstractSubStep = (Tfsm_plaink3_Transition_Visit_AbstractSubStep)theEObject;
+				T result = caseTfsm_plaink3_Transition_Visit_AbstractSubStep(tfsm_plaink3_Transition_Visit_AbstractSubStep);
+				if (result == null) result = caseSpecificStep(tfsm_plaink3_Transition_Visit_AbstractSubStep);
+				if (result == null) result = caseStep(tfsm_plaink3_Transition_Visit_AbstractSubStep);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StepsPackage.TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP: {
+				Tfsm_plaink3_Transition_Visit_ImplicitStep tfsm_plaink3_Transition_Visit_ImplicitStep = (Tfsm_plaink3_Transition_Visit_ImplicitStep)theEObject;
+				T result = caseTfsm_plaink3_Transition_Visit_ImplicitStep(tfsm_plaink3_Transition_Visit_ImplicitStep);
+				if (result == null) result = caseTfsm_plaink3_Transition_Visit_AbstractSubStep(tfsm_plaink3_Transition_Visit_ImplicitStep);
+				if (result == null) result = caseSmallStep(tfsm_plaink3_Transition_Visit_ImplicitStep);
+				if (result == null) result = caseSpecificStep(tfsm_plaink3_Transition_Visit_ImplicitStep);
+				if (result == null) result = caseStep(tfsm_plaink3_Transition_Visit_ImplicitStep);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -335,6 +355,36 @@ public class StepsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTfsm_plaink3_Transition_Visit(Tfsm_plaink3_Transition_Visit object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Tfsm plaink3 Transition Visit Abstract Sub Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Tfsm plaink3 Transition Visit Abstract Sub Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTfsm_plaink3_Transition_Visit_AbstractSubStep(Tfsm_plaink3_Transition_Visit_AbstractSubStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Tfsm plaink3 Transition Visit Implicit Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Tfsm plaink3 Transition Visit Implicit Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTfsm_plaink3_Transition_Visit_ImplicitStep(Tfsm_plaink3_Transition_Visit_ImplicitStep object) {
 		return null;
 	}
 
