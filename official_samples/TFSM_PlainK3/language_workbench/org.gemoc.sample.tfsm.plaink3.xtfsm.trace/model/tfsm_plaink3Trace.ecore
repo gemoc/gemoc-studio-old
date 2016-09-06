@@ -91,6 +91,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Tfsm_plaink3_Transition_Fire">
       <eSuperTypes href="#//Steps/SpecificStep"/>
       <eSuperTypes href="../../fr.inria.diverse.trace.commons.model/model/GenericTrace.ecore#//SmallStep"/>
+      <eSuperTypes href="#//Steps/Tfsm_plaink3_Transition_Visit_AbstractSubStep"/>
       <eOperations name="getCaller" lowerBound="1" eType="//States/tfsm_plaink3/TracedTransition">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="body" value="return (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition) this.getMseoccurrence().getMse().getCaller();"/>
@@ -98,14 +99,22 @@
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Tfsm_plaink3_Transition_Visit">
-      <eSuperTypes href="#//Steps/Tfsm_plaink3_State_Visit_AbstractSubStep"/>
-      <eSuperTypes href="#//Steps/SpecificStep"/>
-      <eSuperTypes href="../../fr.inria.diverse.trace.commons.model/model/GenericTrace.ecore#//SmallStep"/>
       <eOperations name="getCaller" lowerBound="1" eType="//States/tfsm_plaink3/TracedTransition">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="body" value="return (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition) this.getMseoccurrence().getMse().getCaller();"/>
         </eAnnotations>
       </eOperations>
+      <eGenericSuperTypes eClassifier="//Steps/Tfsm_plaink3_State_Visit_AbstractSubStep"/>
+      <eGenericSuperTypes eClassifier="//Steps/SpecificStep"/>
+      <eGenericSuperTypes>
+        <eTypeArguments eClassifier="//Steps/Tfsm_plaink3_Transition_Visit_AbstractSubStep"/>
+        <eClassifier xsi:type="ecore:EClass" href="../../fr.inria.diverse.trace.commons.model/model/GenericTrace.ecore#//SequentialStep"/>
+      </eGenericSuperTypes>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Tfsm_plaink3_Transition_Visit_AbstractSubStep" abstract="true" interface="true" eSuperTypes="//Steps/SpecificStep"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Tfsm_plaink3_Transition_Visit_ImplicitStep">
+      <eSuperTypes href="#//Steps/Tfsm_plaink3_Transition_Visit_AbstractSubStep"/>
+      <eSuperTypes href="../../fr.inria.diverse.trace.commons.model/model/GenericTrace.ecore#//SmallStep"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="States" nsURI="tfsm_plaink3Trace_States" nsPrefix="tracedclasses">

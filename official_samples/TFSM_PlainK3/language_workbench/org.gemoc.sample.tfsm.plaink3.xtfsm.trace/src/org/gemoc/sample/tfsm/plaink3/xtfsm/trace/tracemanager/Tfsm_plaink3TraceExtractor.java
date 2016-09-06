@@ -521,7 +521,8 @@ public class Tfsm_plaink3TraceExtractor implements ITraceExtractor {
 		final boolean b = state.getStartedSteps().size() == 1;
 		if (b) {
 			tfsm_plaink3Trace.Steps.SpecificStep s = state.getStartedSteps().get(0);
-			return !(s instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit_ImplicitStep);
+			return !(s instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit_ImplicitStep
+					|| s instanceof tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_ImplicitStep);
 		}
 		return true;
 	}

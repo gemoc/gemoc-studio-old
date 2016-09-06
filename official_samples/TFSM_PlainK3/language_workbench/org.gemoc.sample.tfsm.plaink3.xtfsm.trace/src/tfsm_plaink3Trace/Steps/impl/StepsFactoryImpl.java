@@ -65,6 +65,7 @@ public class StepsFactoryImpl extends EFactoryImpl implements StepsFactory {
 			case StepsPackage.TFSM_PLAINK3_TFSM_INIT: return createTfsm_plaink3_TFSM_Init();
 			case StepsPackage.TFSM_PLAINK3_TRANSITION_FIRE: return createTfsm_plaink3_Transition_Fire();
 			case StepsPackage.TFSM_PLAINK3_TRANSITION_VISIT: return createTfsm_plaink3_Transition_Visit();
+			case StepsPackage.TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP: return createTfsm_plaink3_Transition_Visit_ImplicitStep();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -158,6 +159,16 @@ public class StepsFactoryImpl extends EFactoryImpl implements StepsFactory {
 	public Tfsm_plaink3_Transition_Visit createTfsm_plaink3_Transition_Visit() {
 		Tfsm_plaink3_Transition_VisitImpl tfsm_plaink3_Transition_Visit = new Tfsm_plaink3_Transition_VisitImpl();
 		return tfsm_plaink3_Transition_Visit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Tfsm_plaink3_Transition_Visit_ImplicitStep createTfsm_plaink3_Transition_Visit_ImplicitStep() {
+		Tfsm_plaink3_Transition_Visit_ImplicitStepImpl tfsm_plaink3_Transition_Visit_ImplicitStep = new Tfsm_plaink3_Transition_Visit_ImplicitStepImpl();
+		return tfsm_plaink3_Transition_Visit_ImplicitStep;
 	}
 
 	/**

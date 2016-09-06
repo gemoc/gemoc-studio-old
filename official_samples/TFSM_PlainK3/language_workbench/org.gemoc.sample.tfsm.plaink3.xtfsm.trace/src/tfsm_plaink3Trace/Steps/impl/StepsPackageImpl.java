@@ -33,6 +33,8 @@ import tfsm_plaink3Trace.Steps.Tfsm_plaink3_State_Visit_ImplicitStep;
 import tfsm_plaink3Trace.Steps.Tfsm_plaink3_TFSM_Init;
 import tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Fire;
 import tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit;
+import tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_AbstractSubStep;
+import tfsm_plaink3Trace.Steps.Tfsm_plaink3_Transition_Visit_ImplicitStep;
 
 import tfsm_plaink3Trace.Tfsm_plaink3TracePackage;
 
@@ -121,6 +123,20 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * @generated
 	 */
 	private EClass tfsm_plaink3_Transition_VisitEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tfsm_plaink3_Transition_Visit_AbstractSubStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tfsm_plaink3_Transition_Visit_ImplicitStepEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -383,6 +399,24 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTfsm_plaink3_Transition_Visit_AbstractSubStep() {
+		return tfsm_plaink3_Transition_Visit_AbstractSubStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTfsm_plaink3_Transition_Visit_ImplicitStep() {
+		return tfsm_plaink3_Transition_Visit_ImplicitStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public StepsFactory getStepsFactory() {
 		return (StepsFactory)getEFactoryInstance();
 	}
@@ -436,6 +470,10 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 
 		tfsm_plaink3_Transition_VisitEClass = createEClass(TFSM_PLAINK3_TRANSITION_VISIT);
 		createEOperation(tfsm_plaink3_Transition_VisitEClass, TFSM_PLAINK3_TRANSITION_VISIT___GET_CALLER);
+
+		tfsm_plaink3_Transition_Visit_AbstractSubStepEClass = createEClass(TFSM_PLAINK3_TRANSITION_VISIT_ABSTRACT_SUB_STEP);
+
+		tfsm_plaink3_Transition_Visit_ImplicitStepEClass = createEClass(TFSM_PLAINK3_TRANSITION_VISIT_IMPLICIT_STEP);
 	}
 
 	/**
@@ -492,9 +530,18 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		tfsm_plaink3_TFSM_InitEClass.getESuperTypes().add(theTracePackage.getSmallStep());
 		tfsm_plaink3_Transition_FireEClass.getESuperTypes().add(this.getSpecificStep());
 		tfsm_plaink3_Transition_FireEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		tfsm_plaink3_Transition_VisitEClass.getESuperTypes().add(this.getTfsm_plaink3_State_Visit_AbstractSubStep());
-		tfsm_plaink3_Transition_VisitEClass.getESuperTypes().add(this.getSpecificStep());
-		tfsm_plaink3_Transition_VisitEClass.getESuperTypes().add(theTracePackage.getSmallStep());
+		tfsm_plaink3_Transition_FireEClass.getESuperTypes().add(this.getTfsm_plaink3_Transition_Visit_AbstractSubStep());
+		g1 = createEGenericType(this.getTfsm_plaink3_State_Visit_AbstractSubStep());
+		tfsm_plaink3_Transition_VisitEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getSpecificStep());
+		tfsm_plaink3_Transition_VisitEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theTracePackage.getSequentialStep());
+		g2 = createEGenericType(this.getTfsm_plaink3_Transition_Visit_AbstractSubStep());
+		g1.getETypeArguments().add(g2);
+		tfsm_plaink3_Transition_VisitEClass.getEGenericSuperTypes().add(g1);
+		tfsm_plaink3_Transition_Visit_AbstractSubStepEClass.getESuperTypes().add(this.getSpecificStep());
+		tfsm_plaink3_Transition_Visit_ImplicitStepEClass.getESuperTypes().add(this.getTfsm_plaink3_Transition_Visit_AbstractSubStep());
+		tfsm_plaink3_Transition_Visit_ImplicitStepEClass.getESuperTypes().add(theTracePackage.getSmallStep());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(rootImplicitStepEClass, RootImplicitStep.class, "RootImplicitStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -534,6 +581,10 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		initEClass(tfsm_plaink3_Transition_VisitEClass, Tfsm_plaink3_Transition_Visit.class, "Tfsm_plaink3_Transition_Visit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEOperation(getTfsm_plaink3_Transition_Visit__GetCaller(), theTfsm_plaink3Package_1.getTracedTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(tfsm_plaink3_Transition_Visit_AbstractSubStepEClass, Tfsm_plaink3_Transition_Visit_AbstractSubStep.class, "Tfsm_plaink3_Transition_Visit_AbstractSubStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(tfsm_plaink3_Transition_Visit_ImplicitStepEClass, Tfsm_plaink3_Transition_Visit_ImplicitStep.class, "Tfsm_plaink3_Transition_Visit_ImplicitStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}
 
 } //StepsPackageImpl
