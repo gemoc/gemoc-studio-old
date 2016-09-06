@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="ActivityDiagram example" link_to="../org.gemoc.gemoc_language_workbench.documentation/toc.xml#GEMOC.examples">
+   <topic href="html/TFSM_concurrent.html" label="TFSM Concurrent Example">
+   </topic>
+   <topic href="html/SIGPML_concurrent.html" label="SIGPML Concurrent Example">
+   </topic>
+   <topic href="html/TFSM_and_SIGPML_coordination.html" label="TFSM and SIGPML coordination concurrent Example">
+   </topic>
+</toc>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+
+
+	<extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.gemoc.gemoc_modeling_workbench.samples.category"
+            name="GEMOC modeling workbench examples"
+            parentCategory="org.eclipse.ui.Examples"/>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
+            class="org.gemoc.gemoc_modeling_workbench.sample.deployer.wizards.TFSMExampleWizard"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+            hasPages="false"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.gemoc_modeling_workbench.sample.deployer.tfsm.model.wizard"
+            name="GEMOC model for TFSM Language (Concurrent)"
+            preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling">
+         <description>
+            T⁮his project contains some TFSM models that can be executed if you have installed the TFSM language.
+         </description>
+      </wizard>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
+            class="org.gemoc.gemoc_modeling_workbench.sample.deployer.wizards.TFSM_PlainK3ExampleWizard"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+            hasPages="false"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.gemoc_modeling_workbench.sample.deployer.tfsm_plaink3.model.wizard"
+            name="GEMOC model for TFSM Language (Sequential)"
+            preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling">
+         <description>
+            T⁮his project contains some TFSM models that can be executed if you have installed the TFSM language.
+         </description>
+      </wizard>      
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
+            class="org.gemoc.gemoc_modeling_workbench.sample.deployer.wizards.SigPMLExampleWizard"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+            hasPages="false"
+            icon="icons/IconeGemocModel-16.png"
+            id="org.gemoc.gemoc_modeling_workbench.sample.deployer.sigpml.model.wizard"
+            name="GEMOC model for SigPML Language (Concurrent)"
+            preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling">
+         <description>
+            T⁮his project contains some SigPML models that can be executed if you have installed the SigPML language.
+         </description>
+      </wizard>       
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
+            class="org.gemoc.gemoc_modeling_workbench.sample.deployer.wizards.TFSMAndSigPMLExampleWizard"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+            hasPages="false"
+            icon="icons/bcoolicon.png"
+            id="org.gemoc.gemoc_modeling_workbench.sample.deployer.sdf.model.wizard"
+            name="GEMOC coffee machine models for TFSM and SigPML (Coordination)"
+            preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling">
+         <description>
+            T⁮his project contains some TFSM and SigPML models and their coordination that can be executed if you have installed the TFSM and SigPML languages and the TFSMAndSigPML coordination.
+         </description>
+      </wizard>     
+   </extension>
+ 
+</plugin>

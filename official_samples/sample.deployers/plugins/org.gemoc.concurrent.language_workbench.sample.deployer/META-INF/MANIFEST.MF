@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: GEMOC concurrent language workbench sample deployer
+Bundle-SymbolicName: org.gemoc.concurrent.language_workbench.sample.deployer;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: org.gemoc.gemoc_language_workbench.sample.deployer.Activator
+Bundle-Vendor: INRIA
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Export-Package: org.gemoc.gemoc_language_workbench.sample.deployer,
+ org.gemoc.gemoc_language_workbench.sample.deployer.wizards

@@ -13,6 +13,8 @@
 	</parent>
     <modules>
         <!-- plugins -->
+        <module>plugins/org.gemoc.concurrent.language_workbench.sample.deployer</module>
+        <module>plugins/org.gemoc.concurrent.modeling_workbench.sample.deployer</module>
         <module>plugins/org.gemoc.gemoc_language_workbench.sample.deployer</module>
         <module>plugins/org.gemoc.gemoc_modeling_workbench.sample.deployer</module>
         <module>plugins/org.gemoc.tfsmandactivity.sampledeployer</module>

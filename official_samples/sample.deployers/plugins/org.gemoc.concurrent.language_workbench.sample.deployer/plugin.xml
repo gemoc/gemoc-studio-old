@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+
+
+	<extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.gemoc.gemoc_language_workbench.samples.category"
+            name="GEMOC language workbench examples"
+            parentCategory="org.eclipse.ui.Examples"/>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
+            class="org.gemoc.gemoc_language_workbench.sample.deployer.wizards.TFSMExampleWizard"
+            finalPerspective="org.gemoc.xdsmlframework.ide.ui.xdsml.perspective"
+            hasPages="false"
+            icon="icons/IconeGemocLanguage-16.png"
+            id="org.gemoc.gemoc_language_workbench.sample.deployer.tfsm.wizard"
+            name="GEMOC TFSM Language (Concurrent)"
+            preferredPerspectives="org.gemoc.xdsmlframework.ide.ui.xdsml.perspective">
+         <description>
+            T⁮his set of projects features a simple Timed Finite State Machine language which is made executable using GEMOC.
+         </description>
+      </wizard>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
+            class="org.gemoc.gemoc_language_workbench.sample.deployer.wizards.SigPMLExampleWizard"
+            finalPerspective="org.gemoc.xdsmlframework.ide.ui.xdsml.perspective"
+            hasPages="false"
+            icon="icons/IconeGemocLanguage-16.png"
+            id="org.gemoc.gemoc_language_workbench.sample.deployer.sigpml.wizard"
+            name="GEMOC SigPML Language (Concurrent)"
+            preferredPerspectives="org.gemoc.xdsmlframework.ide.ui.xdsml.perspective">
+         <description>
+T⁮his set of projects features a simple signal processing modeling language (SigPML) which is made executable using GEMOC.
+         </description>
+      </wizard>  
+            
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
+            class="org.gemoc.gemoc_language_workbench.sample.deployer.wizards.TFSMAndSigPMLExampleWizard"
+            finalPerspective="org.gemoc.xdsmlframework.ide.ui.xdsml.perspective"
+            hasPages="false"
+            icon="icons/bcoolicon.png"
+            id="org.gemoc.gemoc_language_workbench.sample.deployer.tfsmandsigpml.wizard"
+            name="GEMOC operator for TFSM and SigPML languages (Coordination)"
+            preferredPerspectives="org.gemoc.xdsmlframework.ide.ui.xdsml.perspective">
+         <description>
+T⁮his set of projects features a coordination between TFSM and SigPML concurrent languages.
+         </description>
+      </wizard>    
+   </extension>
+   <extension
+       point="org.eclipse.help.toc">
+    <toc
+          file="toc.xml"
+          primary="false">
+    </toc>
+   </extension>
+</plugin>

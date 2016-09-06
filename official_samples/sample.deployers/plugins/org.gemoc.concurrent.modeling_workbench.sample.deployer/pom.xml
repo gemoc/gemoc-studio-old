@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <sample_root>${basedir}/../../sample</sample_root>
+        <tfsm_sample_modeling_root>${basedir}/../../../TFSM/modeling_workbench</tfsm_sample_modeling_root>
+        <sigpml_sample_modeling_root>${basedir}/../../../SigPML/modeling_workbench</sigpml_sample_modeling_root>
+        <tfsmandsigpml_sample_modeling_root>${basedir}/../../../bcool_TFSMAndSigPML/modeling_workbench</tfsmandsigpml_sample_modeling_root>
+    </properties>
+    
+	<parent>
+		<relativePath>../..</relativePath>
+		<groupId>org.gemoc.official_samples.deployers</groupId>
+		<artifactId>org.gemoc.official_samples.deployers.root</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>org.gemoc.concurrent.modeling_workbench.sample.deployer</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<mkdir dir="${basedir}/zips" />
+								
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.simple_example.zip">
+									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.simple_example/" />
+								</zip>
+
+								<zip destfile="${basedir}/zips/org.gemoc.sample.sigpml.simple_example.zip">
+									<fileset dir="${sigpml_sample_modeling_root}/org.gemoc.sample.sigpml.simple_example/" />
+								</zip>
+								
+								
+								<!-- BCooL TFSM and SigPML  -->
+							
+								<zip destfile="${basedir}/zips/org.gemoc.sample.bcool.coffeemachinewithsigpml.zip">
+									<fileset dir="${tfsmandsigpml_sample_modeling_root}/org.gemoc.sample.bcool.coffeemachinewithsigpml/" />
+								</zip>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project> 
+
