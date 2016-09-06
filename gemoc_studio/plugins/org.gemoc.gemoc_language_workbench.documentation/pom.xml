@@ -11,14 +11,6 @@
 
 
 
-<dependencies>
-	<dependency>
-		<groupId>org.gemoc.documentation</groupId>
-    		<artifactId>gemoc-studio-guide</artifactId>
-    		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
-</dependencies>
-
 
 
 <profiles>
@@ -31,6 +23,16 @@
 	        <id>ignore_CI_repositories</id>
 	        <activation>
 	        </activation>
+
+
+<dependencies>
+	<dependency>
+		<groupId>org.gemoc.documentation</groupId>
+    		<artifactId>gemoc-studio-guide</artifactId>
+    		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+</dependencies>
+
 
    
 	<build>
