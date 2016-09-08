@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.gemoc.official_samples.deployers.feature"
-      label="Gemoc Official Samples"
+      label="GEMOC Official Samples"
       version="0.1.0.qualifier"
       provider-name="INRIA">
 

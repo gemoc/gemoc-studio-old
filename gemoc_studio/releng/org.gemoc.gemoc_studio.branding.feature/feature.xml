@@ -33,6 +33,7 @@
       <import feature="org.gemoc.modeldebugging.xdsmlframework.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.executionframework.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.execution.sequential.javaxdsml.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.concurrent.official_samples.deployers.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.official_samples.deployers.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.heterogeneous_coordination_engine.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>
