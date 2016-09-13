@@ -55,6 +55,11 @@
             <layout>p2</layout>
             <url>http://gemoc.org/pub/studio/patch_sirius_palette/</url>
         </repository>
+        <repository>
+            <id>elk</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/elk/updates/releases/0.1.0/</url>
+        </repository>
         
         <repository>
             <id>Sirius</id>
