@@ -19,15 +19,16 @@
         <module>plugins/org.gemoc.commons.eclipse.pde</module>
         <module>plugins/org.gemoc.commons.eclipse.jdt</module>
         <module>plugins/org.gemoc.commons.eclipse.ui</module>
-<!--         <module>../../org/gemoc/gemoc_commons/org.gemoc.execution.engine.trace.model</module> -->
-<!--         <module>../../org/gemoc/gemoc_commons/org.gemoc.execution.engine.trace.model.edit</module> -->
-<!--         <module>../../org/gemoc/gemoc_commons/org.gemoc.execution.engine.trace.model.editor</module> -->
-<!--         <module>../../org/gemoc/gemoc_commons/org.gemoc.execution.engine.scenario.model</module> -->
-<!--         <module>../org.gemoc.execution.engine.scenario.model.edit</module> -->
-<!--         <module>../org.gemoc.execution.engine.scenario.model.editor</module> -->
+        <module>plugins/fr.obeo.timeline</module>
+        <module>plugins/gexpressions/org.gemoc.gexpressions</module>
+        <module>plugins/gexpressions/org.gemoc.gexpressions.edit</module>
+        <module>plugins/gexpressions/org.gemoc.gexpressions.editor</module>
+        <module>plugins/gexpressions/org.gemoc.gexpressions.xtext</module>
+        <module>plugins/gexpressions/org.gemoc.gexpressions.xtext.ui</module>
 
         <!-- feature and update site -->
         <module>releng/org.gemoc.commons.feature</module>
+        <module>releng/org.gemoc.gexpressions.feature</module>
         <module>releng/org.gemoc.commons.repository</module>
     </modules>
 
