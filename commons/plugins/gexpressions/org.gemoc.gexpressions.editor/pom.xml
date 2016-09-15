@@ -24,7 +24,7 @@
   	<version>0.1.0-SNAPSHOT</version>	
   	<relativePath>../../../</relativePath>
   </parent>
-  <groupId>org.gemoc.gemoc_commons</groupId>
+  <groupId>org.gemoc.commons</groupId>
   <artifactId>org.gemoc.gexpressions.editor</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
