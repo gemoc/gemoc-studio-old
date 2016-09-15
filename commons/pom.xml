@@ -31,7 +31,28 @@
         <module>releng/org.gemoc.gexpressions.feature</module>
         <module>releng/org.gemoc.commons.repository</module>
     </modules>
-
+	<properties>
+		<xtend.version>2.9.1</xtend.version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+				<version>${xtend.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>xtend-gen</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
  
 	<profiles>
     <!-- Profiles are used for switching the repositories used for the build so they either use the CI update sites or local repositories -->

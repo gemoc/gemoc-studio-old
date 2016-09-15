@@ -4,8 +4,8 @@
 
   <parent>
     <relativePath>../../pom.xml</relativePath>
-    <groupId>org.gemoc.gemoc_commons</groupId>
-    <artifactId>org.gemoc.gemoc_commons.root</artifactId>
+    <groupId>org.gemoc.commons</groupId>
+    <artifactId>org.gemoc.commons.root</artifactId>
     <version>0.1.0-SNAPSHOT</version>
   </parent>
 
