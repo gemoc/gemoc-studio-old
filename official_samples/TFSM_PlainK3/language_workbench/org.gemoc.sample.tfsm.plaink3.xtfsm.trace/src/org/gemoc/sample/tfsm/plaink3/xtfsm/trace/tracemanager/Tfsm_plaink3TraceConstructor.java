@@ -134,14 +134,14 @@ public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 	private boolean addNewObjectToState(org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Guard o_cast,
 			tfsm_plaink3Trace.States.State newState) {
 		boolean added = false;
-		if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.EvaluateGuard) {
-			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.EvaluateGuard) o_cast,
+		if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TemporalGuard) {
+			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TemporalGuard) o_cast,
 					newState);
 		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.EventGuard) {
 			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.EventGuard) o_cast,
 					newState);
-		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TemporalGuard) {
-			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TemporalGuard) o_cast,
+		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.EvaluateGuard) {
+			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.EvaluateGuard) o_cast,
 					newState);
 		}
 
@@ -151,25 +151,25 @@ public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 	private boolean addNewObjectToState(org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.NamedElement o_cast,
 			tfsm_plaink3Trace.States.State newState) {
 		boolean added = false;
-		if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Transition) {
+		if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TimedSystem) {
+			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TimedSystem) o_cast,
+					newState);
+		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TFSM) {
+			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TFSM) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Transition) {
 			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Transition) o_cast,
 					newState);
 		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.State) {
 			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.State) o_cast,
 					newState);
-		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TFSM) {
-			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TFSM) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TimedSystem) {
-			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TimedSystem) o_cast,
+		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMClock) {
+			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMClock) o_cast,
 					newState);
 		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Guard) {
 			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Guard) o_cast,
 					newState);
 		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMEvent) {
 			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMEvent) o_cast,
-					newState);
-		} else if (o_cast instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMClock) {
-			added = addNewObjectToState((org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMClock) o_cast,
 					newState);
 		}
 
@@ -326,25 +326,29 @@ public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 						org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TFSM o_cast = (org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TFSM) o;
 
 						if (p.getFeatureID() == org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
-								.getTFSM_StepNumber().getFeatureID()) {
+								.getTFSM_CurrentState().getFeatureID()) {
 
 							// Rollback: we remove the last value of this field from the new state
 							tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) exeToTraced
 									.get(o);
-							tfsm_plaink3Trace.States.TFSM_stepNumber_Value lastValue = traced.getStepNumberSequence()
-									.get(traced.getStepNumberSequence().size() - 1);
-							newState.getTFSM_stepNumber_Values().remove(lastValue);
+							tfsm_plaink3Trace.States.TFSM_currentState_Value lastValue = traced
+									.getCurrentStateSequence().get(traced.getCurrentStateSequence().size() - 1);
+							newState.getTFSM_currentState_Values().remove(lastValue);
 
 							// And we create a proper new value
-							tfsm_plaink3Trace.States.TFSM_stepNumber_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-									.createTFSM_stepNumber_Value();
+							tfsm_plaink3Trace.States.TFSM_currentState_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+									.createTFSM_currentState_Value();
 
-							int value = o_cast.getStepNumber();
+							tfsm_plaink3Trace.States.tfsm_plaink3.TracedState value = null;
+							if (o_cast.getCurrentState() != null) {
+								value = ((tfsm_plaink3Trace.States.tfsm_plaink3.TracedState) exeToTraced
+										.get(o_cast.getCurrentState()));
+							}
 
-							newValue.setStepNumber((int) value);
+							newValue.setCurrentState((tfsm_plaink3Trace.States.tfsm_plaink3.TracedState) value);
 
-							traced.getStepNumberSequence().add(newValue);
-							newState.getTFSM_stepNumber_Values().add(newValue);
+							traced.getCurrentStateSequence().add(newValue);
+							newState.getTFSM_currentState_Values().add(newValue);
 						} else
 
 						if (p.getFeatureID() == org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
@@ -371,55 +375,25 @@ public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 						} else
 
 						if (p.getFeatureID() == org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
-								.getTFSM_CurrentState().getFeatureID()) {
+								.getTFSM_StepNumber().getFeatureID()) {
 
 							// Rollback: we remove the last value of this field from the new state
 							tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedTFSM) exeToTraced
 									.get(o);
-							tfsm_plaink3Trace.States.TFSM_currentState_Value lastValue = traced
-									.getCurrentStateSequence().get(traced.getCurrentStateSequence().size() - 1);
-							newState.getTFSM_currentState_Values().remove(lastValue);
+							tfsm_plaink3Trace.States.TFSM_stepNumber_Value lastValue = traced.getStepNumberSequence()
+									.get(traced.getStepNumberSequence().size() - 1);
+							newState.getTFSM_stepNumber_Values().remove(lastValue);
 
 							// And we create a proper new value
-							tfsm_plaink3Trace.States.TFSM_currentState_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-									.createTFSM_currentState_Value();
+							tfsm_plaink3Trace.States.TFSM_stepNumber_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+									.createTFSM_stepNumber_Value();
 
-							tfsm_plaink3Trace.States.tfsm_plaink3.TracedState value = null;
-							if (o_cast.getCurrentState() != null) {
-								value = ((tfsm_plaink3Trace.States.tfsm_plaink3.TracedState) exeToTraced
-										.get(o_cast.getCurrentState()));
-							}
+							int value = o_cast.getStepNumber();
 
-							newValue.setCurrentState((tfsm_plaink3Trace.States.tfsm_plaink3.TracedState) value);
+							newValue.setStepNumber((int) value);
 
-							traced.getCurrentStateSequence().add(newValue);
-							newState.getTFSM_currentState_Values().add(newValue);
-						}
-					}
-
-					if (o instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMEvent) {
-						org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMEvent o_cast = (org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMEvent) o;
-
-						if (p.getFeatureID() == org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
-								.getFSMEvent_IsTriggered().getFeatureID()) {
-
-							// Rollback: we remove the last value of this field from the new state
-							tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent) exeToTraced
-									.get(o);
-							tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value lastValue = traced
-									.getIsTriggeredSequence().get(traced.getIsTriggeredSequence().size() - 1);
-							newState.getFSMEvent_isTriggered_Values().remove(lastValue);
-
-							// And we create a proper new value
-							tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
-									.createFSMEvent_isTriggered_Value();
-
-							boolean value = o_cast.isIsTriggered();
-
-							newValue.setIsTriggered((boolean) value);
-
-							traced.getIsTriggeredSequence().add(newValue);
-							newState.getFSMEvent_isTriggered_Values().add(newValue);
+							traced.getStepNumberSequence().add(newValue);
+							newState.getTFSM_stepNumber_Values().add(newValue);
 						}
 					}
 
@@ -446,6 +420,32 @@ public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 
 							traced.getNumberOfTicksSequence().add(newValue);
 							newState.getFSMClock_numberOfTicks_Values().add(newValue);
+						}
+					}
+
+					if (o instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMEvent) {
+						org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMEvent o_cast = (org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.FSMEvent) o;
+
+						if (p.getFeatureID() == org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.Tfsm_plaink3Package.eINSTANCE
+								.getFSMEvent_IsTriggered().getFeatureID()) {
+
+							// Rollback: we remove the last value of this field from the new state
+							tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent traced = (tfsm_plaink3Trace.States.tfsm_plaink3.TracedFSMEvent) exeToTraced
+									.get(o);
+							tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value lastValue = traced
+									.getIsTriggeredSequence().get(traced.getIsTriggeredSequence().size() - 1);
+							newState.getFSMEvent_isTriggered_Values().remove(lastValue);
+
+							// And we create a proper new value
+							tfsm_plaink3Trace.States.FSMEvent_isTriggered_Value newValue = tfsm_plaink3Trace.States.StatesFactory.eINSTANCE
+									.createFSMEvent_isTriggered_Value();
+
+							boolean value = o_cast.isIsTriggered();
+
+							newValue.setIsTriggered((boolean) value);
+
+							traced.getIsTriggeredSequence().add(newValue);
+							newState.getFSMEvent_isTriggered_Values().add(newValue);
 						}
 					}
 				}

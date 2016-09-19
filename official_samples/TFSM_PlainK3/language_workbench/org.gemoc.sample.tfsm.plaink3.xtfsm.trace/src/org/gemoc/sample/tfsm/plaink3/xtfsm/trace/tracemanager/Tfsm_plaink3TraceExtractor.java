@@ -193,21 +193,26 @@ public class Tfsm_plaink3TraceExtractor implements ITraceExtractor {
 		}
 	};
 
-	private List<Diff> compareEObjects(EObject e1, EObject e2) {
+	private boolean compareInitialized = false;
 
+	private IPostProcessor.Descriptor descriptor = null;
+
+	private Registry registry = null;
+
+	private EMFCompare compare;
+
+	private List<Diff> compareEObjects(EObject e1, EObject e2) {
 		if (e1 == e2) {
 			return Collections.emptyList();
 		}
 
-		IPostProcessor.Descriptor descriptor = new BasicPostProcessorDescriptorImpl(customPostProcessor,
-				Pattern.compile(".*"), null);
-
-		Registry registry = new PostProcessorDescriptorRegistryImpl();
-		registry.put(customPostProcessor.getClass().getName(), descriptor);
-
-		final EMFCompare compare;
-
-		compare = EMFCompare.builder().setPostProcessorRegistry(registry).setDiffEngine(diffEngine).build();
+		if (!compareInitialized) {
+			descriptor = new BasicPostProcessorDescriptorImpl(customPostProcessor, Pattern.compile(".*"), null);
+			registry = new PostProcessorDescriptorRegistryImpl();
+			registry.put(customPostProcessor.getClass().getName(), descriptor);
+			compare = EMFCompare.builder().setPostProcessorRegistry(registry).setDiffEngine(diffEngine).build();
+			compareInitialized = true;
+		}
 
 		final IComparisonScope scope = new DefaultComparisonScope(e1, e2, null);
 		final Comparison comparison = compare.compare(scope);
@@ -259,9 +264,11 @@ public class Tfsm_plaink3TraceExtractor implements ITraceExtractor {
 	public Collection<List<EObject>> computeStateEquivalenceClasses(List<? extends EObject> states) {
 		final Map<Integer, List<tfsm_plaink3Trace.States.State>> statesMap = new HashMap<>();
 		final Map<tfsm_plaink3Trace.States.State, List<tfsm_plaink3Trace.States.Value>> stateToValues = new HashMap<>();
+		final Map<tfsm_plaink3Trace.States.State, Integer> stateToIndex = new HashMap<>();
 		// First we build the map of states, grouped by their number of dimensions
 		// and we associate to each state the list of its values
 		states.stream().distinct().map(e -> (tfsm_plaink3Trace.States.State) e).forEach(s -> {
+			stateToIndex.put(s, stateToIndex.size());
 			final List<tfsm_plaink3Trace.States.Value> values = getAllStateValues(s);
 			stateToValues.put(s, values);
 			final int size = values.size();
@@ -296,7 +303,15 @@ public class Tfsm_plaink3TraceExtractor implements ITraceExtractor {
 					equivalentStates = new ArrayList<>();
 					accumulator.put(n, equivalentStates);
 				}
-				equivalentStates.add(state);
+				if (equivalentStates.isEmpty()) {
+					equivalentStates.add(state);
+				} else {
+					if (stateToIndex.get(state) < stateToIndex.get(equivalentStates.get(0))) {
+						equivalentStates.add(0, state);
+					} else {
+						equivalentStates.add(state);
+					}
+				}
 			}
 		});
 		return accumulator.values();
@@ -531,7 +546,19 @@ public class Tfsm_plaink3TraceExtractor implements ITraceExtractor {
 	public StateWrapper getStateWrapper(int stateIndex) {
 		if (stateIndex > -1 && stateIndex < statesTrace.size()) {
 			final tfsm_plaink3Trace.States.State state = statesTrace.get(stateIndex);
-			return new StateWrapper(state, stateIndex, isStateBreakable(state));
+			return new StateWrapper(state, stateIndex, isStateBreakable(state), getStateDescription(stateIndex));
+		}
+		return null;
+	}
+
+	@Override
+	public StateWrapper getStateWrapper(EObject state) {
+		if (state instanceof tfsm_plaink3Trace.States.State) {
+			final int idx = statesTrace.indexOf(state);
+			if (idx != -1) {
+				final tfsm_plaink3Trace.States.State state_cast = (tfsm_plaink3Trace.States.State) state;
+				return new StateWrapper(state_cast, idx, isStateBreakable(state_cast), getStateDescription(idx));
+			}
 		}
 		return null;
 	}
@@ -544,7 +571,7 @@ public class Tfsm_plaink3TraceExtractor implements ITraceExtractor {
 
 		for (int i = startStateIndex; i < endStateIndex + 1; i++) {
 			final tfsm_plaink3Trace.States.State state = statesTrace.get(i);
-			result.add(new StateWrapper(state, i, isStateBreakable(state)));
+			result.add(new StateWrapper(state, i, isStateBreakable(state), getStateDescription(i)));
 		}
 
 		return result;
@@ -643,7 +670,7 @@ public class Tfsm_plaink3TraceExtractor implements ITraceExtractor {
 		String result = "";
 		for (int i = 0; i < valueTraces.size(); i++) {
 			if (!isValueTraceIgnored(i)) {
-				result += (i == 0 ? "" : "\n") + getValueDescription(i, stateIndex);
+				result += (result.length() == 0 ? "" : "\n") + getValueDescription(i, stateIndex);
 			}
 		}
 		return result;
