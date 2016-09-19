@@ -1,6 +1,6 @@
 package org.gemoc.sample.sigpml.xdsml
 
-language Sigpml {
+external language Sigpml {
 	
 	/*
 	 * Declare abstract syntax
