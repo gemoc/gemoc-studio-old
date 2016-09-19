@@ -1,6 +1,6 @@
 package org.gemoc.sample.tfsm.xdsml
 
-language TfsmConcurrent {
+external language TfsmConcurrent {
 	
 	/*
 	 * Declare abstract syntax
