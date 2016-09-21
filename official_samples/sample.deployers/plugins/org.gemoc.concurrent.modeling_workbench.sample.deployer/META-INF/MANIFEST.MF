@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: GEMOC concurrent  modeling workbench example deployer
 Bundle-SymbolicName: org.gemoc.concurrent.modeling_workbench.sample.deployer;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-Activator: org.gemoc.gemoc_modeling_workbench.sample.deployer.Activator
+Bundle-Activator: org.gemoc.concurrent.modeling_workbench.sample.deployer.Activator
 Bundle-Vendor: INRIA
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

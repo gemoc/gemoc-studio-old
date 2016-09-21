@@ -8,7 +8,7 @@
  * Authors : 
  *    Cyril Faucher
  */
-package org.gemoc.gemoc_language_workbench.sample.deployer.wizards;
+package org.gemoc.concurrent.modeling_workbench.sample.deployer.wizards;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,7 +35,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.gemoc.gemoc_language_workbench.sample.deployer.Activator;
+import org.gemoc.concurrent.modeling_workbench.sample.deployer.Activator;
 
 
 

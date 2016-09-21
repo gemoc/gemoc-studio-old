@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.sample.deployer;
+package org.gemoc.concurrent.modeling_workbench.sample.deployer;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -8,37 +8,39 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+/**
+ * The activator class controls the plug-in life cycle
+ */
 public class Activator extends AbstractUIPlugin {
 
-	
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.gemoc_language_workbench.sample.deployer"; //$NON-NLS-1$
-	
-	private static BundleContext context;
-	
+	public static final String PLUGIN_ID = "org.gemoc.gemoc_modeling_workbench.sample.deployer"; //$NON-NLS-1$
+
 	// The shared instance
 	private static Activator plugin;
-
-	static BundleContext getContext() {
-		return context;
+	
+	/**
+	 * The constructor
+	 */
+	public Activator() {
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
-	public void start(BundleContext bundleContext) throws Exception {
-		Activator.context = bundleContext;
+	public void start(BundleContext context) throws Exception {
+		super.start(context);
 		plugin = this;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
-	public void stop(BundleContext bundleContext) throws Exception {
-		Activator.context = null;
+	public void stop(BundleContext context) throws Exception {
 		plugin = null;
+		super.stop(context);
 	}
 
 	/**
@@ -49,7 +51,7 @@ public class Activator extends AbstractUIPlugin {
 	public static Activator getDefault() {
 		return plugin;
 	}
-	
+
 	/**
 	 * Log a message with given level into the Eclipse log file.
 	 * 
@@ -121,5 +123,4 @@ public class Activator extends AbstractUIPlugin {
 
 		log(status);
 	}
-	
 }

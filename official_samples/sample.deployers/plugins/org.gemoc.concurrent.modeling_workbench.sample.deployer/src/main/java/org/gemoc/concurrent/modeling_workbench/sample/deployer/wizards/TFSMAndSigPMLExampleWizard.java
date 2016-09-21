@@ -7,14 +7,14 @@
  * Authors : 
  *        	dvojtise <dvojtise@irisa.fr>
  */
-package org.gemoc.gemoc_language_workbench.sample.deployer.wizards;
+package org.gemoc.concurrent.modeling_workbench.sample.deployer.wizards;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.gemoc.gemoc_language_workbench.sample.deployer.Activator;
+import org.gemoc.concurrent.modeling_workbench.sample.deployer.Activator;
 
 public class TFSMAndSigPMLExampleWizard
 	extends AbstractExampleWizard {
@@ -23,7 +23,7 @@ public class TFSMAndSigPMLExampleWizard
 		// We need the statements example to be unzipped along with the
 		// EMF library example model, edit and editor examples
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.bcool.tfsmandsigpml.zip", "org.gemoc.sample.bcool.tfsmandsigpml"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.bcool.coffeemachinewithsigpml.zip", "org.gemoc.sample.bcool.coffeemachinewithsigpml"));
 		return projects;
 	}
 

@@ -7,14 +7,14 @@
  * Authors : 
  *        	dvojtise <dvojtise@irisa.fr>
  */
-package org.gemoc.gemoc_language_workbench.sample.deployer.wizards;
+package org.gemoc.concurrent.language_workbench.sample.deployer.wizards;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.gemoc.gemoc_language_workbench.sample.deployer.Activator;
+import org.gemoc.concurrent.language_workbench.sample.deployer.Activator;
 
 public class TFSMExampleWizard
 	extends AbstractExampleWizard {
