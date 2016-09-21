@@ -1,6 +1,6 @@
 package org.gemoc.sample.sigpml.xdsml
 
-external language Sigpml {
+language XSigPML {
 	
 	/*
 	 * Declare abstract syntax
@@ -21,10 +21,5 @@ external language Sigpml {
 	/*
 	 * Locate ECL file 
 	 */
-	ecl "org.gemoc.sample.sigpml.moc.application/MoCApplication/SigPML.ecl"
-	
-	/*
-	 * Set name of the ModelType (ie: the type of this language)
-	 */
-	exactType SigpmlMT
+	ecl "org.gemoc.sample.sigpml.moc.application/MoCApplication/SigPML.ecl"	
 }
