@@ -9,7 +9,9 @@ Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  fr.inria.diverse.k3.al.annotationprocessor.plugin,
- org.eclipse.xtext.xbase.lib
+ org.eclipse.xtext.xbase.lib,
+ fr.cnrs.luchogie.ultimateplotter;bundle-version="1.0.0",
+ org.codehaus.groovy;bundle-version="2.3.10"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.sample.sigpml.xsigpml.aspects,
  org.gemoc.sample.sigpml.xsigpml.sigpml,
