@@ -20,10 +20,6 @@ public class StandaloneSetup {
     	org.gemoc.sample.sigpml.xsigpml.sigpml.SigpmlPackage.eNS_URI,
     	org.gemoc.sample.sigpml.xsigpml.sigpml.SigpmlPackage.eINSTANCE
     );
-    EPackage.Registry.INSTANCE.put(
-    	org.gemoc.sample.sigpml.xsigpml.sigpml.SigpmlPackage.eNS_URI,
-    	org.gemoc.sample.sigpml.xsigpml.sigpml.SigpmlPackage.eINSTANCE
-    );
     
     Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
     	"*",

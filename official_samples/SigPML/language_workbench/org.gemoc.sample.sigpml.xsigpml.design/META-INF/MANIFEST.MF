@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.gemoc.sample.sigpml.model.design
-Bundle-SymbolicName: org.gemoc.sample.sigpml.model.design;singleton:=true
+Bundle-Name: org.gemoc.sample.sigpml.xsigpml.design
+Bundle-SymbolicName: org.gemoc.sample.sigpml.xsigpml.design;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.gemoc.sample.sigpml.concrete.design.Activator
 Require-Bundle: org.eclipse.ui,
