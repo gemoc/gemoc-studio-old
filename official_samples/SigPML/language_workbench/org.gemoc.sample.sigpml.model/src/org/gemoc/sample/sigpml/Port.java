@@ -10,13 +10,13 @@ package org.gemoc.sample.sigpml;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.Port#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Port#getRate <em>Rate</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Port#getByteRate <em>Byte Rate</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Port#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.sigpml.SigpmlPackage#getPort()
  * @model abstract="true"

@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.HWComputationalResource#isIsUnderPreemptiveManagement <em>Is Under Preemptive Management</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.HWComputationalResource#getAllocatedAgents <em>Allocated Agents</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.sigpml.SigpmlPackage#getHWComputationalResource()
  * @model
@@ -63,13 +63,5 @@ public interface HWComputationalResource extends HWRessource {
 	 * @generated
 	 */
 	EList<Agent> getAllocatedAgents();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void incCycle();
 
 } // HWComputationalResource

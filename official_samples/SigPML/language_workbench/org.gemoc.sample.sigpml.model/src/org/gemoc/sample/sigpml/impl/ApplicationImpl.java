@@ -25,11 +25,11 @@ import org.gemoc.sample.sigpml.SigpmlPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.impl.ApplicationImpl#getOwnedAgents <em>Owned Agents</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.impl.ApplicationImpl#getOwnedPlaces <em>Owned Places</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

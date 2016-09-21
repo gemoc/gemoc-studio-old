@@ -2,13 +2,10 @@
  */
 package org.gemoc.sample.sigpml.impl;
 
-import com.google.common.collect.LinkedListMultimap;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EValidator;
@@ -144,13 +141,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * @generated
 	 */
 	private EDataType objectEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType linkedListMultimapEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -317,42 +307,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAgent_IsCurrentlyExecuting() {
-		return (EAttribute)agentEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAgent__IsExecuting() {
-		return agentEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAgent__Execute() {
-		return agentEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAgent__Stop() {
-		return agentEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPort() {
 		return portEClass;
 	}
@@ -407,62 +361,8 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInputPort_SizeToread() {
-		return (EAttribute)inputPortEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getInputPort__Read() {
-		return inputPortEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getInputPort__LogSizeToReadWhenZero() {
-		return inputPortEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getInputPort__LogSizeToReadWhenNotZero() {
-		return inputPortEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getOutputPort() {
 		return outputPortEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOutputPort_SizeWritten() {
-		return (EAttribute)outputPortEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getOutputPort__Write() {
-		return outputPortEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -497,7 +397,7 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPlace_Fifo() {
+	public EAttribute getPlace_Size() {
 		return (EAttribute)placeEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -506,26 +406,8 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPlace_IsInitialized() {
-		return (EAttribute)placeEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPlace_Size() {
-		return (EAttribute)placeEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getPlace_Owner() {
-		return (EReference)placeEClass.getEStructuralFeatures().get(5);
+		return (EReference)placeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -534,7 +416,7 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * @generated
 	 */
 	public EAttribute getPlace_Type() {
-		return (EAttribute)placeEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)placeEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -543,7 +425,7 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * @generated
 	 */
 	public EAttribute getPlace_ByteSize() {
-		return (EAttribute)placeEClass.getEStructuralFeatures().get(7);
+		return (EAttribute)placeEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -552,34 +434,7 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * @generated
 	 */
 	public EAttribute getPlace_Delay() {
-		return (EAttribute)placeEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPlace_CurrentSize() {
-		return (EAttribute)placeEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getPlace__Push() {
-		return placeEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getPlace__Pop() {
-		return placeEClass.getEOperations().get(1);
+		return (EAttribute)placeEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -659,15 +514,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getHWComputationalResource__IncCycle() {
-		return hwComputationalResourceEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getHWStorageResource() {
 		return hwStorageResourceEClass;
 	}
@@ -740,15 +586,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSystem_SharedMemory() {
-		return (EAttribute)systemEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EEnum getsizeType() {
 		return sizeTypeEEnum;
 	}
@@ -760,15 +597,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 */
 	public EDataType getObject() {
 		return objectEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getLinkedListMultimap() {
-		return linkedListMultimapEDataType;
 	}
 
 	/**
@@ -810,10 +638,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		createEAttribute(agentEClass, AGENT__CODE);
 		createEReference(agentEClass, AGENT__ALLOCATED_TO);
 		createEAttribute(agentEClass, AGENT__CURRENT_EXEC_CYCLE);
-		createEAttribute(agentEClass, AGENT__IS_CURRENTLY_EXECUTING);
-		createEOperation(agentEClass, AGENT___IS_EXECUTING);
-		createEOperation(agentEClass, AGENT___EXECUTE);
-		createEOperation(agentEClass, AGENT___STOP);
 
 		portEClass = createEClass(PORT);
 		createEReference(portEClass, PORT__OWNER);
@@ -822,28 +646,17 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		createEAttribute(portEClass, PORT__TYPE);
 
 		inputPortEClass = createEClass(INPUT_PORT);
-		createEAttribute(inputPortEClass, INPUT_PORT__SIZE_TOREAD);
-		createEOperation(inputPortEClass, INPUT_PORT___READ);
-		createEOperation(inputPortEClass, INPUT_PORT___LOG_SIZE_TO_READ_WHEN_ZERO);
-		createEOperation(inputPortEClass, INPUT_PORT___LOG_SIZE_TO_READ_WHEN_NOT_ZERO);
 
 		outputPortEClass = createEClass(OUTPUT_PORT);
-		createEAttribute(outputPortEClass, OUTPUT_PORT__SIZE_WRITTEN);
-		createEOperation(outputPortEClass, OUTPUT_PORT___WRITE);
 
 		placeEClass = createEClass(PLACE);
 		createEReference(placeEClass, PLACE__ITS_OUTPUT_PORT);
 		createEReference(placeEClass, PLACE__ITS_INPUT_PORT);
-		createEAttribute(placeEClass, PLACE__FIFO);
-		createEAttribute(placeEClass, PLACE__IS_INITIALIZED);
 		createEAttribute(placeEClass, PLACE__SIZE);
 		createEReference(placeEClass, PLACE__OWNER);
 		createEAttribute(placeEClass, PLACE__TYPE);
 		createEAttribute(placeEClass, PLACE__BYTE_SIZE);
 		createEAttribute(placeEClass, PLACE__DELAY);
-		createEAttribute(placeEClass, PLACE__CURRENT_SIZE);
-		createEOperation(placeEClass, PLACE___PUSH);
-		createEOperation(placeEClass, PLACE___POP);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -855,7 +668,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		hwComputationalResourceEClass = createEClass(HW_COMPUTATIONAL_RESOURCE);
 		createEAttribute(hwComputationalResourceEClass, HW_COMPUTATIONAL_RESOURCE__IS_UNDER_PREEMPTIVE_MANAGEMENT);
 		createEReference(hwComputationalResourceEClass, HW_COMPUTATIONAL_RESOURCE__ALLOCATED_AGENTS);
-		createEOperation(hwComputationalResourceEClass, HW_COMPUTATIONAL_RESOURCE___INC_CYCLE);
 
 		hwStorageResourceEClass = createEClass(HW_STORAGE_RESOURCE);
 		createEReference(hwStorageResourceEClass, HW_STORAGE_RESOURCE__ALLOCATED_PLACES);
@@ -868,14 +680,12 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		systemEClass = createEClass(SYSTEM);
 		createEReference(systemEClass, SYSTEM__OWNED_APPLICATION);
 		createEReference(systemEClass, SYSTEM__OWNED_HW_PLATFORM);
-		createEAttribute(systemEClass, SYSTEM__SHARED_MEMORY);
 
 		// Create enums
 		sizeTypeEEnum = createEEnum(SIZE_TYPE);
 
 		// Create data types
 		objectEDataType = createEDataType(OBJECT);
-		linkedListMultimapEDataType = createEDataType(LINKED_LIST_MULTIMAP);
 	}
 
 	/**
@@ -931,13 +741,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		initEAttribute(getAgent_Code(), ecorePackage.getEString(), "code", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAgent_AllocatedTo(), this.getHWComputationalResource(), null, "allocatedTo", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAgent_CurrentExecCycle(), ecorePackage.getEInt(), "currentExecCycle", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAgent_IsCurrentlyExecuting(), ecorePackage.getEBoolean(), "isCurrentlyExecuting", "false", 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getAgent__IsExecuting(), null, "isExecuting", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getAgent__Execute(), null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getAgent__Stop(), null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPort_Owner(), this.getAgent(), this.getAgent_OwnedPorts(), "owner", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -946,34 +749,17 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		initEAttribute(getPort_Type(), this.getsizeType(), "type", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inputPortEClass, InputPort.class, "InputPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInputPort_SizeToread(), ecorePackage.getEInt(), "sizeToread", null, 0, 1, InputPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getInputPort__Read(), ecorePackage.getEInt(), "read", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getInputPort__LogSizeToReadWhenZero(), null, "logSizeToReadWhenZero", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getInputPort__LogSizeToReadWhenNotZero(), null, "logSizeToReadWhenNotZero", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(outputPortEClass, OutputPort.class, "OutputPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOutputPort_SizeWritten(), ecorePackage.getEInt(), "sizeWritten", null, 0, 1, OutputPort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getOutputPort__Write(), null, "write", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(placeEClass, Place.class, "Place", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPlace_ItsOutputPort(), this.getOutputPort(), null, "itsOutputPort", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlace_ItsInputPort(), this.getInputPort(), null, "itsInputPort", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlace_Fifo(), this.getObject(), "fifo", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlace_IsInitialized(), ecorePackage.getEBoolean(), "isInitialized", "false", 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlace_Size(), ecorePackage.getEInt(), "size", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlace_Owner(), this.getApplication(), this.getApplication_OwnedPlaces(), "owner", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlace_Type(), this.getsizeType(), "type", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlace_ByteSize(), ecorePackage.getEInt(), "byteSize", null, 1, 1, Place.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlace_Delay(), ecorePackage.getEInt(), "delay", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlace_CurrentSize(), ecorePackage.getEInt(), "currentSize", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getPlace__Push(), null, "push", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getPlace__Pop(), null, "pop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -986,8 +772,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		initEAttribute(getHWComputationalResource_IsUnderPreemptiveManagement(), ecorePackage.getEBoolean(), "isUnderPreemptiveManagement", null, 0, 1, HWComputationalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHWComputationalResource_AllocatedAgents(), this.getAgent(), null, "allocatedAgents", null, 0, -1, HWComputationalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getHWComputationalResource__IncCycle(), null, "incCycle", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(hwStorageResourceEClass, HWStorageResource.class, "HWStorageResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHWStorageResource_AllocatedPlaces(), this.getPlace(), null, "allocatedPlaces", null, 0, -1, HWStorageResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -999,7 +783,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		initEClass(systemEClass, org.gemoc.sample.sigpml.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystem_OwnedApplication(), this.getApplication(), null, "ownedApplication", null, 0, 1, org.gemoc.sample.sigpml.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystem_OwnedHWPlatform(), this.getHWPlatform(), null, "ownedHWPlatform", null, 0, 1, org.gemoc.sample.sigpml.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSystem_SharedMemory(), this.getLinkedListMultimap(), "sharedMemory", null, 0, 1, org.gemoc.sample.sigpml.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(sizeTypeEEnum, sizeType.class, "sizeType");
@@ -1010,7 +793,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 
 		// Initialize data types
 		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(linkedListMultimapEDataType, LinkedListMultimap.class, "LinkedListMultimap", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1018,8 +800,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		// Create annotations
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
-		// aspect
-		createAspectAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
 		createPivotAnnotations();
 	}
@@ -1045,96 +825,6 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		   source, 
 		   new String[] {
 			 "constraints", "matchRates"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>aspect</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createAspectAnnotations() {
-		String source = "aspect";	
-		addAnnotation
-		  (getAgent__IsExecuting(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAgent__Execute(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAgent__Stop(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAgent_IsCurrentlyExecuting(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getInputPort__Read(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getInputPort__LogSizeToReadWhenZero(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getInputPort__LogSizeToReadWhenNotZero(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getInputPort_SizeToread(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getOutputPort__Write(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getOutputPort_SizeWritten(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPlace__Push(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPlace__Pop(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPlace_Fifo(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPlace_IsInitialized(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getHWComputationalResource__IncCycle(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getSystem_SharedMemory(), 
-		   source, 
-		   new String[] {
 		   });
 	}
 

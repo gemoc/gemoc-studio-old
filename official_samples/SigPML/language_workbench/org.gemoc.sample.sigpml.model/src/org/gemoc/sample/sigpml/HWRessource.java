@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.HWRessource#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.HWRessource#getConnectedTo <em>Connected To</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.sigpml.SigpmlPackage#getHWRessource()
  * @model abstract="true"

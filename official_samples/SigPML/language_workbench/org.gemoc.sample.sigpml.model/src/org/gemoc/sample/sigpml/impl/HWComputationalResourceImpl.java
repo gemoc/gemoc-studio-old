@@ -2,7 +2,6 @@
  */
 package org.gemoc.sample.sigpml.impl;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -25,11 +24,11 @@ import org.gemoc.sample.sigpml.SigpmlPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.impl.HWComputationalResourceImpl#isIsUnderPreemptiveManagement <em>Is Under Preemptive Management</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.impl.HWComputationalResourceImpl#getAllocatedAgents <em>Allocated Agents</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -121,17 +120,6 @@ public class HWComputationalResourceImpl extends HWRessourceImpl implements HWCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void incCycle() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -195,21 +183,6 @@ public class HWComputationalResourceImpl extends HWRessourceImpl implements HWCo
 				return allocatedAgents != null && !allocatedAgents.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case SigpmlPackage.HW_COMPUTATIONAL_RESOURCE___INC_CYCLE:
-				incCycle();
-				return null;
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

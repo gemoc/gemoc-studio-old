@@ -32,6 +32,7 @@ import static extension org.gemoc.sample.sigpml.k3dsa.SystemAspect.*;
 import static extension org.gemoc.sample.sigpml.k3dsa.HWComputationalResourceAspect.*;
 import java.util.List
 import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
+import org.eclipse.emf.common.util.EList
 
 @Aspect(className = HWComputationalResource)
 class HWComputationalResourceAspect {
@@ -49,6 +50,8 @@ class AgentAspect extends NamedElementAspect {
 	private JFrame frame = new JFrame
 	private Figure figure = new Figure
 	private boolean hasBeenStopped = false
+
+	public boolean isCurrentlyExecuting
 
 	def public void isExecuting() {
 		println(_self.name+'\n      isExecuting ('+_self.currentExecCycle+')')
@@ -172,12 +175,13 @@ class OutputPortAspect extends NamedElementAspect {
 
 @Aspect(className = Place)
 class PlaceAspect extends NamedElementAspect {
-	public ArrayList<Object> fifo
+	public EList<Object> fifo
 	public int currentSize = 0
+	public boolean isInitialized = false
 
 	def public void initialize() {
 		println("place " + _self.name + "is initializing")
-		_self.fifo = newArrayList
+		_self.fifo.clear
 		for(i:0 ..< _self.delay) {
 			var Object initialObject = null
 			_self.fifo.add(initialObject)
@@ -233,7 +237,7 @@ class SystemAspect {
 	public LinkedListMultimap sharedMemory
 	
 	@InitializeModel
-	def void initializeModel(List<String> args){
+	def void initializeModel(EList<String> args){
 		for(Place place : _self.ownedApplication.ownedPlaces){
 			place.initialize
 		}

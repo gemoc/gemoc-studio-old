@@ -23,13 +23,13 @@ import org.gemoc.sample.sigpml.sizeType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.impl.PortImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.impl.PortImpl#getRate <em>Rate</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.impl.PortImpl#getByteRate <em>Byte Rate</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.impl.PortImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -20,10 +20,10 @@ import org.gemoc.sample.sigpml.SigpmlPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.impl.HWStorageResourceImpl#getAllocatedPlaces <em>Allocated Places</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

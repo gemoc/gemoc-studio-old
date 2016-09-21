@@ -2,8 +2,6 @@
  */
 package org.gemoc.sample.sigpml;
 
-import com.google.common.collect.LinkedListMultimap;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>System</b></em>'.
@@ -11,12 +9,11 @@ import com.google.common.collect.LinkedListMultimap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.System#getOwnedApplication <em>Owned Application</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.System#getOwnedHWPlatform <em>Owned HW Platform</em>}</li>
- *   <li>{@link org.gemoc.sample.sigpml.System#getSharedMemory <em>Shared Memory</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.sigpml.SigpmlPackage#getSystem()
  * @model
@@ -74,31 +71,5 @@ public interface System extends NamedElement {
 	 * @generated
 	 */
 	void setOwnedHWPlatform(HWPlatform value);
-
-	/**
-	 * Returns the value of the '<em><b>Shared Memory</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Shared Memory</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Shared Memory</em>' attribute.
-	 * @see #setSharedMemory(LinkedListMultimap)
-	 * @see org.gemoc.sample.sigpml.SigpmlPackage#getSystem_SharedMemory()
-	 * @model dataType="org.gemoc.sample.sigpml.LinkedListMultimap"
-	 * @generated
-	 */
-	LinkedListMultimap getSharedMemory();
-
-	/**
-	 * Sets the value of the '{@link org.gemoc.sample.sigpml.System#getSharedMemory <em>Shared Memory</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Shared Memory</em>' attribute.
-	 * @see #getSharedMemory()
-	 * @generated
-	 */
-	void setSharedMemory(LinkedListMultimap value);
 
 } // System

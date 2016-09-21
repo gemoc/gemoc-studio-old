@@ -2,8 +2,6 @@
  */
 package org.gemoc.sample.sigpml.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -32,6 +30,7 @@ import org.gemoc.sample.sigpml.SigpmlPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.impl.AgentImpl#getOwnedPorts <em>Owned Ports</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.impl.AgentImpl#getCycles <em>Cycles</em>}</li>
@@ -39,9 +38,7 @@ import org.gemoc.sample.sigpml.SigpmlPackage;
  *   <li>{@link org.gemoc.sample.sigpml.impl.AgentImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.impl.AgentImpl#getAllocatedTo <em>Allocated To</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.impl.AgentImpl#getCurrentExecCycle <em>Current Exec Cycle</em>}</li>
- *   <li>{@link org.gemoc.sample.sigpml.impl.AgentImpl#isIsCurrentlyExecuting <em>Is Currently Executing</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -125,26 +122,6 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 	 * @ordered
 	 */
 	protected int currentExecCycle = CURRENT_EXEC_CYCLE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isIsCurrentlyExecuting() <em>Is Currently Executing</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsCurrentlyExecuting()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_CURRENTLY_EXECUTING_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIsCurrentlyExecuting() <em>Is Currently Executing</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsCurrentlyExecuting()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isCurrentlyExecuting = IS_CURRENTLY_EXECUTING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -324,60 +301,6 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsCurrentlyExecuting() {
-		return isCurrentlyExecuting;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsCurrentlyExecuting(boolean newIsCurrentlyExecuting) {
-		boolean oldIsCurrentlyExecuting = isCurrentlyExecuting;
-		isCurrentlyExecuting = newIsCurrentlyExecuting;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SigpmlPackage.AGENT__IS_CURRENTLY_EXECUTING, oldIsCurrentlyExecuting, isCurrentlyExecuting));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void isExecuting() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void execute() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void stop() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -443,8 +366,6 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 				return basicGetAllocatedTo();
 			case SigpmlPackage.AGENT__CURRENT_EXEC_CYCLE:
 				return getCurrentExecCycle();
-			case SigpmlPackage.AGENT__IS_CURRENTLY_EXECUTING:
-				return isIsCurrentlyExecuting();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -477,9 +398,6 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 			case SigpmlPackage.AGENT__CURRENT_EXEC_CYCLE:
 				setCurrentExecCycle((Integer)newValue);
 				return;
-			case SigpmlPackage.AGENT__IS_CURRENTLY_EXECUTING:
-				setIsCurrentlyExecuting((Boolean)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -510,9 +428,6 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 			case SigpmlPackage.AGENT__CURRENT_EXEC_CYCLE:
 				setCurrentExecCycle(CURRENT_EXEC_CYCLE_EDEFAULT);
 				return;
-			case SigpmlPackage.AGENT__IS_CURRENTLY_EXECUTING:
-				setIsCurrentlyExecuting(IS_CURRENTLY_EXECUTING_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -537,31 +452,8 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 				return allocatedTo != null;
 			case SigpmlPackage.AGENT__CURRENT_EXEC_CYCLE:
 				return currentExecCycle != CURRENT_EXEC_CYCLE_EDEFAULT;
-			case SigpmlPackage.AGENT__IS_CURRENTLY_EXECUTING:
-				return isCurrentlyExecuting != IS_CURRENTLY_EXECUTING_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case SigpmlPackage.AGENT___IS_EXECUTING:
-				isExecuting();
-				return null;
-			case SigpmlPackage.AGENT___EXECUTE:
-				execute();
-				return null;
-			case SigpmlPackage.AGENT___STOP:
-				stop();
-				return null;
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**
@@ -580,8 +472,6 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 		result.append(code);
 		result.append(", currentExecCycle: ");
 		result.append(currentExecCycle);
-		result.append(", isCurrentlyExecuting: ");
-		result.append(isCurrentlyExecuting);
 		result.append(')');
 		return result.toString();
 	}

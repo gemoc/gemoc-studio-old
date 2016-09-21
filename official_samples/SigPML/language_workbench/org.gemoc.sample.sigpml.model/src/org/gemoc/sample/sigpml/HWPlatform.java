@@ -11,10 +11,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.HWPlatform#getOwnedHWResources <em>Owned HW Resources</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.sigpml.SigpmlPackage#getHWPlatform()
  * @model

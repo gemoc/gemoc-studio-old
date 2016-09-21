@@ -21,9 +21,6 @@
     <genDataTypes>
       <ecoreDataType href="sigpml.ecore#//Object"/>
     </genDataTypes>
-    <genDataTypes>
-      <ecoreDataType href="sigpml.ecore#//LinkedListMultimap"/>
-    </genDataTypes>
     <genClasses>
       <ecoreClass href="sigpml.ecore#//Application"/>
       <genFeatures property="None" children="true" createChild="true">
@@ -53,18 +50,6 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Agent/currentExecCycle"/>
       </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Agent/isCurrentlyExecuting"/>
-      </genFeatures>
-      <genOperations>
-        <ecoreOperation href="sigpml.ecore#//Agent/isExecuting"/>
-      </genOperations>
-      <genOperations>
-        <ecoreOperation href="sigpml.ecore#//Agent/execute"/>
-      </genOperations>
-      <genOperations>
-        <ecoreOperation href="sigpml.ecore#//Agent/stop"/>
-      </genOperations>
     </genClasses>
     <genClasses image="false">
       <ecoreClass href="sigpml.ecore#//Port"/>
@@ -83,27 +68,9 @@
     </genClasses>
     <genClasses>
       <ecoreClass href="sigpml.ecore#//InputPort"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//InputPort/sizeToread"/>
-      </genFeatures>
-      <genOperations>
-        <ecoreOperation href="sigpml.ecore#//InputPort/read"/>
-      </genOperations>
-      <genOperations>
-        <ecoreOperation href="sigpml.ecore#//InputPort/logSizeToReadWhenZero"/>
-      </genOperations>
-      <genOperations>
-        <ecoreOperation href="sigpml.ecore#//InputPort/logSizeToReadWhenNotZero"/>
-      </genOperations>
     </genClasses>
     <genClasses>
       <ecoreClass href="sigpml.ecore#//OutputPort"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//OutputPort/sizeWritten"/>
-      </genFeatures>
-      <genOperations>
-        <ecoreOperation href="sigpml.ecore#//OutputPort/write"/>
-      </genOperations>
     </genClasses>
     <genClasses>
       <ecoreClass href="sigpml.ecore#//Place"/>
@@ -112,12 +79,6 @@
       </genFeatures>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//Place/itsInputPort"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/fifo"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/isInitialized"/>
       </genFeatures>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/size"/>
@@ -134,15 +95,6 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/delay"/>
       </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//Place/currentSize"/>
-      </genFeatures>
-      <genOperations>
-        <ecoreOperation href="sigpml.ecore#//Place/push"/>
-      </genOperations>
-      <genOperations>
-        <ecoreOperation href="sigpml.ecore#//Place/pop"/>
-      </genOperations>
     </genClasses>
     <genClasses image="false">
       <ecoreClass href="sigpml.ecore#//NamedElement"/>
@@ -167,9 +119,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//HWComputationalResource/allocatedAgents"/>
       </genFeatures>
-      <genOperations>
-        <ecoreOperation href="sigpml.ecore#//HWComputationalResource/incCycle"/>
-      </genOperations>
     </genClasses>
     <genClasses>
       <ecoreClass href="sigpml.ecore#//HWStorageResource"/>
@@ -193,9 +142,6 @@
       </genFeatures>
       <genFeatures property="None" children="true" createChild="true">
         <ecoreFeature xsi:type="ecore:EReference" href="sigpml.ecore#//System/ownedHWPlatform"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="sigpml.ecore#//System/sharedMemory"/>
       </genFeatures>
     </genClasses>
   </genPackages>

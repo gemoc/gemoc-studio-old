@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -226,49 +225,13 @@ public interface SigpmlPackage extends EPackage {
 	int AGENT__CURRENT_EXEC_CYCLE = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Is Currently Executing</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AGENT__IS_CURRENTLY_EXECUTING = NAMED_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
 	 * The number of structural features of the '<em>Agent</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The operation id for the '<em>Is Executing</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AGENT___IS_EXECUTING = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Execute</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AGENT___EXECUTE = NAMED_ELEMENT_OPERATION_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Stop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AGENT___STOP = NAMED_ELEMENT_OPERATION_COUNT + 2;
+	int AGENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Agent</em>' class.
@@ -277,7 +240,7 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 3;
+	int AGENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.PortImpl <em>Port</em>}' class.
@@ -408,49 +371,13 @@ public interface SigpmlPackage extends EPackage {
 	int INPUT_PORT__TYPE = PORT__TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Size Toread</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PORT__SIZE_TOREAD = PORT_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Input Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Read</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PORT___READ = PORT_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Log Size To Read When Zero</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PORT___LOG_SIZE_TO_READ_WHEN_ZERO = PORT_OPERATION_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Log Size To Read When Not Zero</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PORT___LOG_SIZE_TO_READ_WHEN_NOT_ZERO = PORT_OPERATION_COUNT + 2;
+	int INPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Input Port</em>' class.
@@ -459,7 +386,7 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_PORT_OPERATION_COUNT = PORT_OPERATION_COUNT + 3;
+	int INPUT_PORT_OPERATION_COUNT = PORT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.OutputPortImpl <em>Output Port</em>}' class.
@@ -517,31 +444,13 @@ public interface SigpmlPackage extends EPackage {
 	int OUTPUT_PORT__TYPE = PORT__TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Size Written</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPUT_PORT__SIZE_WRITTEN = PORT_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Output Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OUTPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Write</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPUT_PORT___WRITE = PORT_OPERATION_COUNT + 0;
+	int OUTPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Output Port</em>' class.
@@ -550,7 +459,7 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OUTPUT_PORT_OPERATION_COUNT = PORT_OPERATION_COUNT + 1;
+	int OUTPUT_PORT_OPERATION_COUNT = PORT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.PlaceImpl <em>Place</em>}' class.
@@ -590,31 +499,13 @@ public interface SigpmlPackage extends EPackage {
 	int PLACE__ITS_INPUT_PORT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Fifo</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE__FIFO = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Is Initialized</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE__IS_INITIALIZED = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__SIZE = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int PLACE__SIZE = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' container reference.
@@ -623,7 +514,7 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__OWNER = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int PLACE__OWNER = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -632,7 +523,7 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int PLACE__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Byte Size</b></em>' attribute.
@@ -641,7 +532,7 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__BYTE_SIZE = NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int PLACE__BYTE_SIZE = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Delay</b></em>' attribute.
@@ -650,16 +541,7 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__DELAY = NAMED_ELEMENT_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>Current Size</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE__CURRENT_SIZE = NAMED_ELEMENT_FEATURE_COUNT + 9;
+	int PLACE__DELAY = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Place</em>' class.
@@ -668,25 +550,7 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 10;
-
-	/**
-	 * The operation id for the '<em>Push</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE___PUSH = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Pop</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE___POP = NAMED_ELEMENT_OPERATION_COUNT + 1;
+	int PLACE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Place</em>' class.
@@ -695,7 +559,7 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 2;
+	int PLACE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.HWRessourceImpl <em>HW Ressource</em>}' class.
@@ -817,22 +681,13 @@ public interface SigpmlPackage extends EPackage {
 	int HW_COMPUTATIONAL_RESOURCE_FEATURE_COUNT = HW_RESSOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Inc Cycle</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HW_COMPUTATIONAL_RESOURCE___INC_CYCLE = HW_RESSOURCE_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>HW Computational Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_COMPUTATIONAL_RESOURCE_OPERATION_COUNT = HW_RESSOURCE_OPERATION_COUNT + 1;
+	int HW_COMPUTATIONAL_RESOURCE_OPERATION_COUNT = HW_RESSOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.HWStorageResourceImpl <em>HW Storage Resource</em>}' class.
@@ -1037,22 +892,13 @@ public interface SigpmlPackage extends EPackage {
 	int SYSTEM__OWNED_HW_PLATFORM = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Shared Memory</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM__SHARED_MEMORY = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int SYSTEM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>System</em>' class.
@@ -1082,17 +928,6 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 */
 	int OBJECT = 14;
-
-	/**
-	 * The meta object id for the '<em>Linked List Multimap</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.google.common.collect.LinkedListMultimap
-	 * @see org.gemoc.sample.sigpml.impl.SigpmlPackageImpl#getLinkedListMultimap()
-	 * @generated
-	 */
-	int LINKED_LIST_MULTIMAP = 15;
-
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.Application <em>Application</em>}'.
@@ -1203,47 +1038,6 @@ public interface SigpmlPackage extends EPackage {
 	EAttribute getAgent_CurrentExecCycle();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.sigpml.Agent#isIsCurrentlyExecuting <em>Is Currently Executing</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Currently Executing</em>'.
-	 * @see org.gemoc.sample.sigpml.Agent#isIsCurrentlyExecuting()
-	 * @see #getAgent()
-	 * @generated
-	 */
-	EAttribute getAgent_IsCurrentlyExecuting();
-
-	/**
-	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Agent#isExecuting() <em>Is Executing</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Executing</em>' operation.
-	 * @see org.gemoc.sample.sigpml.Agent#isExecuting()
-	 * @generated
-	 */
-	EOperation getAgent__IsExecuting();
-
-	/**
-	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Agent#execute() <em>Execute</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Execute</em>' operation.
-	 * @see org.gemoc.sample.sigpml.Agent#execute()
-	 * @generated
-	 */
-	EOperation getAgent__Execute();
-
-	/**
-	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Agent#stop() <em>Stop</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Stop</em>' operation.
-	 * @see org.gemoc.sample.sigpml.Agent#stop()
-	 * @generated
-	 */
-	EOperation getAgent__Stop();
-
-	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.Port <em>Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1308,47 +1102,6 @@ public interface SigpmlPackage extends EPackage {
 	EClass getInputPort();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.sigpml.InputPort#getSizeToread <em>Size Toread</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Size Toread</em>'.
-	 * @see org.gemoc.sample.sigpml.InputPort#getSizeToread()
-	 * @see #getInputPort()
-	 * @generated
-	 */
-	EAttribute getInputPort_SizeToread();
-
-	/**
-	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.InputPort#read() <em>Read</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Read</em>' operation.
-	 * @see org.gemoc.sample.sigpml.InputPort#read()
-	 * @generated
-	 */
-	EOperation getInputPort__Read();
-
-	/**
-	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.InputPort#logSizeToReadWhenZero() <em>Log Size To Read When Zero</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Log Size To Read When Zero</em>' operation.
-	 * @see org.gemoc.sample.sigpml.InputPort#logSizeToReadWhenZero()
-	 * @generated
-	 */
-	EOperation getInputPort__LogSizeToReadWhenZero();
-
-	/**
-	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.InputPort#logSizeToReadWhenNotZero() <em>Log Size To Read When Not Zero</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Log Size To Read When Not Zero</em>' operation.
-	 * @see org.gemoc.sample.sigpml.InputPort#logSizeToReadWhenNotZero()
-	 * @generated
-	 */
-	EOperation getInputPort__LogSizeToReadWhenNotZero();
-
-	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.OutputPort <em>Output Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1357,27 +1110,6 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getOutputPort();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.sigpml.OutputPort#getSizeWritten <em>Size Written</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Size Written</em>'.
-	 * @see org.gemoc.sample.sigpml.OutputPort#getSizeWritten()
-	 * @see #getOutputPort()
-	 * @generated
-	 */
-	EAttribute getOutputPort_SizeWritten();
-
-	/**
-	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.OutputPort#write() <em>Write</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Write</em>' operation.
-	 * @see org.gemoc.sample.sigpml.OutputPort#write()
-	 * @generated
-	 */
-	EOperation getOutputPort__Write();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.Place <em>Place</em>}'.
@@ -1410,28 +1142,6 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPlace_ItsInputPort();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.gemoc.sample.sigpml.Place#getFifo <em>Fifo</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Fifo</em>'.
-	 * @see org.gemoc.sample.sigpml.Place#getFifo()
-	 * @see #getPlace()
-	 * @generated
-	 */
-	EAttribute getPlace_Fifo();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.sigpml.Place#isIsInitialized <em>Is Initialized</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Initialized</em>'.
-	 * @see org.gemoc.sample.sigpml.Place#isIsInitialized()
-	 * @see #getPlace()
-	 * @generated
-	 */
-	EAttribute getPlace_IsInitialized();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.gemoc.sample.sigpml.Place#getSize <em>Size</em>}'.
@@ -1487,37 +1197,6 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPlace_Delay();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.sigpml.Place#getCurrentSize <em>Current Size</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Current Size</em>'.
-	 * @see org.gemoc.sample.sigpml.Place#getCurrentSize()
-	 * @see #getPlace()
-	 * @generated
-	 */
-	EAttribute getPlace_CurrentSize();
-
-	/**
-	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Place#push() <em>Push</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Push</em>' operation.
-	 * @see org.gemoc.sample.sigpml.Place#push()
-	 * @generated
-	 */
-	EOperation getPlace__Push();
-
-	/**
-	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Place#pop() <em>Pop</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Pop</em>' operation.
-	 * @see org.gemoc.sample.sigpml.Place#pop()
-	 * @generated
-	 */
-	EOperation getPlace__Pop();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.NamedElement <em>Named Element</em>}'.
@@ -1605,16 +1284,6 @@ public interface SigpmlPackage extends EPackage {
 	EReference getHWComputationalResource_AllocatedAgents();
 
 	/**
-	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.HWComputationalResource#incCycle() <em>Inc Cycle</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Inc Cycle</em>' operation.
-	 * @see org.gemoc.sample.sigpml.HWComputationalResource#incCycle()
-	 * @generated
-	 */
-	EOperation getHWComputationalResource__IncCycle();
-
-	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.HWStorageResource <em>HW Storage Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1699,17 +1368,6 @@ public interface SigpmlPackage extends EPackage {
 	EReference getSystem_OwnedHWPlatform();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.sigpml.System#getSharedMemory <em>Shared Memory</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Shared Memory</em>'.
-	 * @see org.gemoc.sample.sigpml.System#getSharedMemory()
-	 * @see #getSystem()
-	 * @generated
-	 */
-	EAttribute getSystem_SharedMemory();
-
-	/**
 	 * Returns the meta object for enum '{@link org.gemoc.sample.sigpml.sizeType <em>size Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1729,17 +1387,6 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getObject();
-
-	/**
-	 * Returns the meta object for data type '{@link com.google.common.collect.LinkedListMultimap <em>Linked List Multimap</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Linked List Multimap</em>'.
-	 * @see com.google.common.collect.LinkedListMultimap
-	 * @model instanceClass="com.google.common.collect.LinkedListMultimap"
-	 * @generated
-	 */
-	EDataType getLinkedListMultimap();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1849,38 +1496,6 @@ public interface SigpmlPackage extends EPackage {
 		EAttribute AGENT__CURRENT_EXEC_CYCLE = eINSTANCE.getAgent_CurrentExecCycle();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Currently Executing</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute AGENT__IS_CURRENTLY_EXECUTING = eINSTANCE.getAgent_IsCurrentlyExecuting();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Executing</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation AGENT___IS_EXECUTING = eINSTANCE.getAgent__IsExecuting();
-
-		/**
-		 * The meta object literal for the '<em><b>Execute</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation AGENT___EXECUTE = eINSTANCE.getAgent__Execute();
-
-		/**
-		 * The meta object literal for the '<em><b>Stop</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation AGENT___STOP = eINSTANCE.getAgent__Stop();
-
-		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.PortImpl <em>Port</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1933,38 +1548,6 @@ public interface SigpmlPackage extends EPackage {
 		EClass INPUT_PORT = eINSTANCE.getInputPort();
 
 		/**
-		 * The meta object literal for the '<em><b>Size Toread</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INPUT_PORT__SIZE_TOREAD = eINSTANCE.getInputPort_SizeToread();
-
-		/**
-		 * The meta object literal for the '<em><b>Read</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation INPUT_PORT___READ = eINSTANCE.getInputPort__Read();
-
-		/**
-		 * The meta object literal for the '<em><b>Log Size To Read When Zero</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation INPUT_PORT___LOG_SIZE_TO_READ_WHEN_ZERO = eINSTANCE.getInputPort__LogSizeToReadWhenZero();
-
-		/**
-		 * The meta object literal for the '<em><b>Log Size To Read When Not Zero</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation INPUT_PORT___LOG_SIZE_TO_READ_WHEN_NOT_ZERO = eINSTANCE.getInputPort__LogSizeToReadWhenNotZero();
-
-		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.OutputPortImpl <em>Output Port</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1973,22 +1556,6 @@ public interface SigpmlPackage extends EPackage {
 		 * @generated
 		 */
 		EClass OUTPUT_PORT = eINSTANCE.getOutputPort();
-
-		/**
-		 * The meta object literal for the '<em><b>Size Written</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OUTPUT_PORT__SIZE_WRITTEN = eINSTANCE.getOutputPort_SizeWritten();
-
-		/**
-		 * The meta object literal for the '<em><b>Write</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation OUTPUT_PORT___WRITE = eINSTANCE.getOutputPort__Write();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.PlaceImpl <em>Place</em>}' class.
@@ -2015,22 +1582,6 @@ public interface SigpmlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PLACE__ITS_INPUT_PORT = eINSTANCE.getPlace_ItsInputPort();
-
-		/**
-		 * The meta object literal for the '<em><b>Fifo</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PLACE__FIFO = eINSTANCE.getPlace_Fifo();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Initialized</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PLACE__IS_INITIALIZED = eINSTANCE.getPlace_IsInitialized();
 
 		/**
 		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
@@ -2071,30 +1622,6 @@ public interface SigpmlPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PLACE__DELAY = eINSTANCE.getPlace_Delay();
-
-		/**
-		 * The meta object literal for the '<em><b>Current Size</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PLACE__CURRENT_SIZE = eINSTANCE.getPlace_CurrentSize();
-
-		/**
-		 * The meta object literal for the '<em><b>Push</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation PLACE___PUSH = eINSTANCE.getPlace__Push();
-
-		/**
-		 * The meta object literal for the '<em><b>Pop</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation PLACE___POP = eINSTANCE.getPlace__Pop();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -2165,14 +1692,6 @@ public interface SigpmlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HW_COMPUTATIONAL_RESOURCE__ALLOCATED_AGENTS = eINSTANCE.getHWComputationalResource_AllocatedAgents();
-
-		/**
-		 * The meta object literal for the '<em><b>Inc Cycle</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation HW_COMPUTATIONAL_RESOURCE___INC_CYCLE = eINSTANCE.getHWComputationalResource__IncCycle();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.HWStorageResourceImpl <em>HW Storage Resource</em>}' class.
@@ -2247,14 +1766,6 @@ public interface SigpmlPackage extends EPackage {
 		EReference SYSTEM__OWNED_HW_PLATFORM = eINSTANCE.getSystem_OwnedHWPlatform();
 
 		/**
-		 * The meta object literal for the '<em><b>Shared Memory</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SYSTEM__SHARED_MEMORY = eINSTANCE.getSystem_SharedMemory();
-
-		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.sizeType <em>size Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2273,16 +1784,6 @@ public interface SigpmlPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType OBJECT = eINSTANCE.getObject();
-
-		/**
-		 * The meta object literal for the '<em>Linked List Multimap</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.google.common.collect.LinkedListMultimap
-		 * @see org.gemoc.sample.sigpml.impl.SigpmlPackageImpl#getLinkedListMultimap()
-		 * @generated
-		 */
-		EDataType LINKED_LIST_MULTIMAP = eINSTANCE.getLinkedListMultimap();
 
 	}
 
