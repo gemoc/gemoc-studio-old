@@ -1,4 +1,4 @@
-package org.gemoc.sample.sigpml.xdsml;
+package org.gemoc.sample.sigpml;
 
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
 import org.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
@@ -12,7 +12,7 @@ public class Activator extends GemocUIPlugin {
 
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.sample.sigpml.xdsml"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.gemoc.sample.sigpml"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;

@@ -1,4 +1,4 @@
-package org.gemoc.sample.sigpml.xdsml
+package org.gemoc.sample.sigpml
 
 language XSigPML {
 	

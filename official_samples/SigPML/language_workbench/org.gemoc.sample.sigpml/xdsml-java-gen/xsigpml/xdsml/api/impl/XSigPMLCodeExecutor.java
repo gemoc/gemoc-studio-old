@@ -1,13 +1,13 @@
 /* GENERATED FILE, do not modify manually                                                    *
  * If you need to modify it, disable the generation in the BuildOptions of the project.xdsml */
-package sigpml.xdsml.api.impl;
+package xsigpml.xdsml.api.impl;
 import org.gemoc.execution.concurrent.ccsljavaengine.dsa.executors.CodeExecutorDispatcher;
-public class SigpmlCodeExecutor extends CodeExecutorDispatcher 
+public class XSigPMLCodeExecutor extends CodeExecutorDispatcher 
 		implements org.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.api.IK3DSAExecutorClassLoader  {
-	public SigpmlCodeExecutor(){
+	public XSigPMLCodeExecutor(){
 	    // add Melange or K3 DSA specific executors
 		addExecutor(new org.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.impl.MelangeCodeExecutor(this,
-			"org.gemoc.sample.sigpml.xdsml.Sigpml"));
+			"org.gemoc.sample.sigpml.XSigPML"));
 		// fall back executor : search classic java method
 		addExecutor(new org.gemoc.execution.concurrent.ccsljavaengine.dsa.executors.JavaCodeExecutor());
 	}
