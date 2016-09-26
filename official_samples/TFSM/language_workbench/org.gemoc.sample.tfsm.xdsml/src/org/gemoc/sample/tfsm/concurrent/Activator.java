@@ -1,4 +1,4 @@
-package org.gemoc.sample.tfsm.xdsml;
+package org.gemoc.sample.tfsm.concurrent;
 
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
@@ -13,7 +13,7 @@ import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 public class Activator extends Plugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.sample.tfsm.xdsml"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.gemoc.sample.tfsm.concurrent"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;

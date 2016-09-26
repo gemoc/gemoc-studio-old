@@ -1,6 +1,6 @@
-package org.gemoc.sample.tfsm.xdsml
+package org.gemoc.sample.tfsm.concurrent
 
-external language TfsmConcurrent {
+language XTfsmConcurrent {
 	
 	/*
 	 * Declare abstract syntax
@@ -28,8 +28,4 @@ external language TfsmConcurrent {
 	 */
 	ecl "org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl"
 	
-	/*
-	 * Set name of the ModelType (ie: the type of this language)
-	 */
-	exactType TfsmConcurrentMT
 }
