@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.gemoc.sample.tfsm.k3dsa
-Bundle-SymbolicName: org.gemoc.sample.tfsm.k3dsa; singleton:=true
+Bundle-SymbolicName: org.gemoc.sample.tfsm.concurrent.k3dsa;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Require-Bundle: org.eclipse.xtend2.lib;bundle-version="2.4.3",
  org.eclipse.emf.ecore;bundle-version="2.9.1",
@@ -16,9 +16,9 @@ Require-Bundle: org.eclipse.xtend2.lib;bundle-version="2.4.3",
  org.eclipse.emf.ecore.xmi,
  org.aspectj.runtime
 Bundle-ClassPath: .,libs/groovy-all-2.1.2.jar
-Export-Package: org.gemoc.sample.tfsm.k3dsa,
- org.gemoc.sample.tfsm.k3dsa.aspect
+Export-Package: org.gemoc.sample.tfsm.concurrent.k3dsa,
+ org.gemoc.sample.tfsm.concurrent.k3dsa.aspect
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-Activator: org.gemoc.sample.tfsm.k3dsa.Activator
+Bundle-Activator: org.gemoc.sample.tfsm.concurrent.k3dsa.Activator
 

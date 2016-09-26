@@ -1,4 +1,4 @@
-package org.gemoc.sample.tfsm.k3dsa.aspect
+package org.gemoc.sample.tfsm.concurrent.k3dsa.aspect
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import org.gemoc.sample.tfsm.EvaluateGuard
@@ -12,20 +12,20 @@ import org.gemoc.sample.tfsm.TFSM
 import org.gemoc.sample.tfsm.TemporalGuard
 import org.gemoc.sample.tfsm.TimedSystem
 import org.gemoc.sample.tfsm.Transition
-import org.gemoc.sample.tfsm.k3dsa.GroovyRunner
+import org.gemoc.sample.tfsm.concurrent.k3dsa.GroovyRunner
 
 
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TFSMAspect.*
-/*import static extension org.gemoc.sample.tfsm.k3dsa.aspect.StateAspect.*
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TransitionAspect.*
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.NamedElementAspect.*
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.GuardAspect.*
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TemporalGuardAspect.*
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.EventGuardAspect.*
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.FSMEventAspect.*
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.FSMClockAspect.*
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.TimedSystemAspect.*
-import static extension org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect.*
+import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TFSMAspect.*
+/*import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.StateAspect.*
+import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TransitionAspect.*
+import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.NamedElementAspect.*
+import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.GuardAspect.*
+import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TemporalGuardAspect.*
+import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.EventGuardAspect.*
+import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.FSMEventAspect.*
+import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.FSMClockAspect.*
+import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TimedSystemAspect.*
+import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.EvaluateGuardAspect.*
 */
 
 @Aspect(className=TFSM)

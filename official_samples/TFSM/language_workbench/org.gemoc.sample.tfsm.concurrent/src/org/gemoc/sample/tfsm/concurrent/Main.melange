@@ -10,17 +10,17 @@ language XTfsmConcurrent {
 	/*
 	 * Declare DSA
 	 */
-	with org.gemoc.sample.tfsm.k3dsa.aspect.TFSMAspect
-	with org.gemoc.sample.tfsm.k3dsa.aspect.StateAspect
-	with org.gemoc.sample.tfsm.k3dsa.aspect.TransitionAspect
-	with org.gemoc.sample.tfsm.k3dsa.aspect.NamedElementAspect
-	with org.gemoc.sample.tfsm.k3dsa.aspect.GuardAspect
-	with org.gemoc.sample.tfsm.k3dsa.aspect.TemporalGuardAspect
-	with org.gemoc.sample.tfsm.k3dsa.aspect.EventGuardAspect
-	with org.gemoc.sample.tfsm.k3dsa.aspect.FSMEventAspect
-	with org.gemoc.sample.tfsm.k3dsa.aspect.FSMClockAspect
-	with org.gemoc.sample.tfsm.k3dsa.aspect.TimedSystemAspect
-	with org.gemoc.sample.tfsm.k3dsa.aspect.EvaluateGuardAspect
+	with org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TFSMAspect
+	with org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.StateAspect
+	with org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TransitionAspect
+	with org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.NamedElementAspect
+	with org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.GuardAspect
+	with org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TemporalGuardAspect
+	with org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.EventGuardAspect
+	with org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.FSMEventAspect
+	with org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.FSMClockAspect
+	with org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TimedSystemAspect
+	with org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.EvaluateGuardAspect
  
 
 	/*

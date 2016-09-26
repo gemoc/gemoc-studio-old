@@ -1,4 +1,4 @@
-package org.gemoc.sample.tfsm.k3dsa;
+package org.gemoc.sample.tfsm.concurrent.k3dsa;
 
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
 import org.gemoc.commons.eclipse.pde.GemocPlugin;
@@ -13,7 +13,7 @@ import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 public class Activator extends GemocPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.sample.tfsm.k3dsa"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.gemoc.sample.tfsm.concurrent.k3dsa"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;

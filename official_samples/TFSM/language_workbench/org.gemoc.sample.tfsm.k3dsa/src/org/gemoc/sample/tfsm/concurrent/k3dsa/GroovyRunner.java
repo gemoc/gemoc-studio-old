@@ -1,4 +1,4 @@
-package org.gemoc.sample.tfsm.k3dsa;
+package org.gemoc.sample.tfsm.concurrent.k3dsa;
 
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyObject;
