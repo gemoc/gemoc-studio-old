@@ -1,13 +1,12 @@
 /**
  */
-package org.gemoc.sample.tfsm.util;
+package org.gemoc.sample.tfsm.concurrent.tfsm.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.gemoc.sample.tfsm.*;
+import org.gemoc.sample.tfsm.concurrent.tfsm.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +18,7 @@ import org.gemoc.sample.tfsm.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.gemoc.sample.tfsm.TfsmPackage
+ * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage
  * @generated
  */
 public class TfsmSwitch<T> extends Switch<T> {

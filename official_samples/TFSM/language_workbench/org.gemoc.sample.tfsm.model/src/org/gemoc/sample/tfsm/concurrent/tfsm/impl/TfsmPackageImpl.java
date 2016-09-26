@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm.impl;
+package org.gemoc.sample.tfsm.concurrent.tfsm.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -9,19 +9,18 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.gemoc.sample.tfsm.EvaluateGuard;
-import org.gemoc.sample.tfsm.EventGuard;
-import org.gemoc.sample.tfsm.FSMClock;
-import org.gemoc.sample.tfsm.FSMEvent;
-import org.gemoc.sample.tfsm.Guard;
-import org.gemoc.sample.tfsm.NamedElement;
-import org.gemoc.sample.tfsm.State;
-import org.gemoc.sample.tfsm.TemporalGuard;
-import org.gemoc.sample.tfsm.TfsmFactory;
-import org.gemoc.sample.tfsm.TfsmPackage;
-import org.gemoc.sample.tfsm.TimedSystem;
-import org.gemoc.sample.tfsm.Transition;
+import org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock;
+import org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent;
+import org.gemoc.sample.tfsm.concurrent.tfsm.Guard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement;
+import org.gemoc.sample.tfsm.concurrent.tfsm.State;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmFactory;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem;
+import org.gemoc.sample.tfsm.concurrent.tfsm.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -118,7 +117,7 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#eNS_URI
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -598,13 +597,13 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		evaluateGuardEClass.getESuperTypes().add(this.getGuard());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(tfsmEClass, org.gemoc.sample.tfsm.TFSM.class, "TFSM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTFSM_OwnedStates(), this.getState(), this.getState_OwningFSM(), "ownedStates", null, 0, -1, org.gemoc.sample.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTFSM_InitialState(), this.getState(), null, "initialState", null, 1, 1, org.gemoc.sample.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTFSM_LocalEvents(), this.getFSMEvent(), null, "localEvents", null, 0, -1, org.gemoc.sample.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTFSM_LocalClock(), this.getFSMClock(), null, "localClock", null, 1, 1, org.gemoc.sample.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTFSM_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, org.gemoc.sample.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTFSM_CurrentState(), this.getState(), null, "currentState", null, 0, 1, org.gemoc.sample.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(tfsmEClass, org.gemoc.sample.tfsm.concurrent.tfsm.TFSM.class, "TFSM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTFSM_OwnedStates(), this.getState(), this.getState_OwningFSM(), "ownedStates", null, 0, -1, org.gemoc.sample.tfsm.concurrent.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTFSM_InitialState(), this.getState(), null, "initialState", null, 1, 1, org.gemoc.sample.tfsm.concurrent.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTFSM_LocalEvents(), this.getFSMEvent(), null, "localEvents", null, 0, -1, org.gemoc.sample.tfsm.concurrent.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTFSM_LocalClock(), this.getFSMClock(), null, "localClock", null, 1, 1, org.gemoc.sample.tfsm.concurrent.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTFSM_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, org.gemoc.sample.tfsm.concurrent.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTFSM_CurrentState(), this.getState(), null, "currentState", null, 0, 1, org.gemoc.sample.tfsm.concurrent.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(tfsmEClass, ecorePackage.getEString(), "init", 0, 1, IS_UNIQUE, IS_ORDERED);
 

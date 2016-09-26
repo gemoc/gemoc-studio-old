@@ -21,12 +21,11 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.gemoc.sample.tfsm.NamedElement;
-import org.gemoc.sample.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.NamedElement} object.
+ * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

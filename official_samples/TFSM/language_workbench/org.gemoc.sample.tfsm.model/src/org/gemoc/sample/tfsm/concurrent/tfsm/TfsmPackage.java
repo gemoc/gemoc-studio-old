@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm;
+package org.gemoc.sample.tfsm.concurrent.tfsm;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.gemoc.sample.tfsm.TfsmFactory
+ * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmFactory
  * @model kind="package"
  * @generated
  */
@@ -53,14 +53,14 @@ public interface TfsmPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	TfsmPackage eINSTANCE = org.gemoc.sample.tfsm.impl.TfsmPackageImpl.init();
+	TfsmPackage eINSTANCE = org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.NamedElementImpl <em>Named Element</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.NamedElementImpl <em>Named Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.impl.NamedElementImpl
-	 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getNamedElement()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.NamedElementImpl
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getNamedElement()
 	 * @generated
 	 */
 	int NAMED_ELEMENT = 3;
@@ -84,11 +84,11 @@ public interface TfsmPackage extends EPackage {
 	int NAMED_ELEMENT_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.TFSMImpl <em>TFSM</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl <em>TFSM</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.impl.TFSMImpl
-	 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getTFSM()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getTFSM()
 	 * @generated
 	 */
 	int TFSM = 0;
@@ -166,11 +166,11 @@ public interface TfsmPackage extends EPackage {
 	int TFSM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.StateImpl <em>State</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.StateImpl <em>State</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.impl.StateImpl
-	 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getState()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.StateImpl
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getState()
 	 * @generated
 	 */
 	int STATE = 1;
@@ -221,11 +221,11 @@ public interface TfsmPackage extends EPackage {
 	int STATE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.TransitionImpl <em>Transition</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl <em>Transition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.impl.TransitionImpl
-	 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getTransition()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getTransition()
 	 * @generated
 	 */
 	int TRANSITION = 2;
@@ -294,11 +294,11 @@ public interface TfsmPackage extends EPackage {
 	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.GuardImpl <em>Guard</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.GuardImpl <em>Guard</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.impl.GuardImpl
-	 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getGuard()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.GuardImpl
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getGuard()
 	 * @generated
 	 */
 	int GUARD = 4;
@@ -322,11 +322,11 @@ public interface TfsmPackage extends EPackage {
 	int GUARD_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.TemporalGuardImpl <em>Temporal Guard</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TemporalGuardImpl <em>Temporal Guard</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.impl.TemporalGuardImpl
-	 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getTemporalGuard()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TemporalGuardImpl
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getTemporalGuard()
 	 * @generated
 	 */
 	int TEMPORAL_GUARD = 5;
@@ -368,11 +368,11 @@ public interface TfsmPackage extends EPackage {
 	int TEMPORAL_GUARD_FEATURE_COUNT = GUARD_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.EventGuardImpl <em>Event Guard</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.EventGuardImpl <em>Event Guard</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.impl.EventGuardImpl
-	 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getEventGuard()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.EventGuardImpl
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getEventGuard()
 	 * @generated
 	 */
 	int EVENT_GUARD = 6;
@@ -405,11 +405,11 @@ public interface TfsmPackage extends EPackage {
 	int EVENT_GUARD_FEATURE_COUNT = GUARD_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.FSMEventImpl <em>FSM Event</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.FSMEventImpl <em>FSM Event</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.impl.FSMEventImpl
-	 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getFSMEvent()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.FSMEventImpl
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getFSMEvent()
 	 * @generated
 	 */
 	int FSM_EVENT = 7;
@@ -442,11 +442,11 @@ public interface TfsmPackage extends EPackage {
 	int FSM_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.FSMClockImpl <em>FSM Clock</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.FSMClockImpl <em>FSM Clock</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.impl.FSMClockImpl
-	 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getFSMClock()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.FSMClockImpl
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getFSMClock()
 	 * @generated
 	 */
 	int FSM_CLOCK = 8;
@@ -479,11 +479,11 @@ public interface TfsmPackage extends EPackage {
 	int FSM_CLOCK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.TimedSystemImpl <em>Timed System</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TimedSystemImpl <em>Timed System</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.impl.TimedSystemImpl
-	 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getTimedSystem()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TimedSystemImpl
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getTimedSystem()
 	 * @generated
 	 */
 	int TIMED_SYSTEM = 9;
@@ -534,11 +534,11 @@ public interface TfsmPackage extends EPackage {
 	int TIMED_SYSTEM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.tfsm.impl.EvaluateGuardImpl <em>Evaluate Guard</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.EvaluateGuardImpl <em>Evaluate Guard</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.tfsm.impl.EvaluateGuardImpl
-	 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getEvaluateGuard()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.EvaluateGuardImpl
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getEvaluateGuard()
 	 * @generated
 	 */
 	int EVALUATE_GUARD = 10;
@@ -572,374 +572,374 @@ public interface TfsmPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.TFSM <em>TFSM</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM <em>TFSM</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>TFSM</em>'.
-	 * @see org.gemoc.sample.tfsm.TFSM
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TFSM
 	 * @generated
 	 */
 	EClass getTFSM();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.TFSM#getOwnedStates <em>Owned States</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getOwnedStates <em>Owned States</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Owned States</em>'.
-	 * @see org.gemoc.sample.tfsm.TFSM#getOwnedStates()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getOwnedStates()
 	 * @see #getTFSM()
 	 * @generated
 	 */
 	EReference getTFSM_OwnedStates();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.TFSM#getInitialState <em>Initial State</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getInitialState <em>Initial State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Initial State</em>'.
-	 * @see org.gemoc.sample.tfsm.TFSM#getInitialState()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getInitialState()
 	 * @see #getTFSM()
 	 * @generated
 	 */
 	EReference getTFSM_InitialState();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.TFSM#getLocalEvents <em>Local Events</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getLocalEvents <em>Local Events</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Local Events</em>'.
-	 * @see org.gemoc.sample.tfsm.TFSM#getLocalEvents()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getLocalEvents()
 	 * @see #getTFSM()
 	 * @generated
 	 */
 	EReference getTFSM_LocalEvents();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.sample.tfsm.TFSM#getLocalClock <em>Local Clock</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getLocalClock <em>Local Clock</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Local Clock</em>'.
-	 * @see org.gemoc.sample.tfsm.TFSM#getLocalClock()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getLocalClock()
 	 * @see #getTFSM()
 	 * @generated
 	 */
 	EReference getTFSM_LocalClock();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.TFSM#getOwnedTransitions <em>Owned Transitions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getOwnedTransitions <em>Owned Transitions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Owned Transitions</em>'.
-	 * @see org.gemoc.sample.tfsm.TFSM#getOwnedTransitions()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getOwnedTransitions()
 	 * @see #getTFSM()
 	 * @generated
 	 */
 	EReference getTFSM_OwnedTransitions();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.TFSM#getCurrentState <em>Current State</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getCurrentState <em>Current State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Current State</em>'.
-	 * @see org.gemoc.sample.tfsm.TFSM#getCurrentState()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getCurrentState()
 	 * @see #getTFSM()
 	 * @generated
 	 */
 	EReference getTFSM_CurrentState();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.State <em>State</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.State <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>State</em>'.
-	 * @see org.gemoc.sample.tfsm.State
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.State
 	 * @generated
 	 */
 	EClass getState();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.gemoc.sample.tfsm.State#getOwningFSM <em>Owning FSM</em>}'.
+	 * Returns the meta object for the container reference '{@link org.gemoc.sample.tfsm.concurrent.tfsm.State#getOwningFSM <em>Owning FSM</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Owning FSM</em>'.
-	 * @see org.gemoc.sample.tfsm.State#getOwningFSM()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.State#getOwningFSM()
 	 * @see #getState()
 	 * @generated
 	 */
 	EReference getState_OwningFSM();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.gemoc.sample.tfsm.State#getOutgoingTransitions <em>Outgoing Transitions</em>}'.
+	 * Returns the meta object for the reference list '{@link org.gemoc.sample.tfsm.concurrent.tfsm.State#getOutgoingTransitions <em>Outgoing Transitions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Outgoing Transitions</em>'.
-	 * @see org.gemoc.sample.tfsm.State#getOutgoingTransitions()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.State#getOutgoingTransitions()
 	 * @see #getState()
 	 * @generated
 	 */
 	EReference getState_OutgoingTransitions();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.gemoc.sample.tfsm.State#getIncomingTransitions <em>Incoming Transitions</em>}'.
+	 * Returns the meta object for the reference list '{@link org.gemoc.sample.tfsm.concurrent.tfsm.State#getIncomingTransitions <em>Incoming Transitions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Incoming Transitions</em>'.
-	 * @see org.gemoc.sample.tfsm.State#getIncomingTransitions()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.State#getIncomingTransitions()
 	 * @see #getState()
 	 * @generated
 	 */
 	EReference getState_IncomingTransitions();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.Transition <em>Transition</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition <em>Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Transition</em>'.
-	 * @see org.gemoc.sample.tfsm.Transition
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.Transition
 	 * @generated
 	 */
 	EClass getTransition();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.Transition#getSource <em>Source</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see org.gemoc.sample.tfsm.Transition#getSource()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getSource()
 	 * @see #getTransition()
 	 * @generated
 	 */
 	EReference getTransition_Source();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.Transition#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see org.gemoc.sample.tfsm.Transition#getTarget()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getTarget()
 	 * @see #getTransition()
 	 * @generated
 	 */
 	EReference getTransition_Target();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.sample.tfsm.Transition#getOwnedGuard <em>Owned Guard</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getOwnedGuard <em>Owned Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Owned Guard</em>'.
-	 * @see org.gemoc.sample.tfsm.Transition#getOwnedGuard()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getOwnedGuard()
 	 * @see #getTransition()
 	 * @generated
 	 */
 	EReference getTransition_OwnedGuard();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.gemoc.sample.tfsm.Transition#getGeneratedEvents <em>Generated Events</em>}'.
+	 * Returns the meta object for the reference list '{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getGeneratedEvents <em>Generated Events</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Generated Events</em>'.
-	 * @see org.gemoc.sample.tfsm.Transition#getGeneratedEvents()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getGeneratedEvents()
 	 * @see #getTransition()
 	 * @generated
 	 */
 	EReference getTransition_GeneratedEvents();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm.Transition#getAction <em>Action</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getAction <em>Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Action</em>'.
-	 * @see org.gemoc.sample.tfsm.Transition#getAction()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getAction()
 	 * @see #getTransition()
 	 * @generated
 	 */
 	EAttribute getTransition_Action();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.NamedElement <em>Named Element</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Named Element</em>'.
-	 * @see org.gemoc.sample.tfsm.NamedElement
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement
 	 * @generated
 	 */
 	EClass getNamedElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm.NamedElement#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.gemoc.sample.tfsm.NamedElement#getName()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement#getName()
 	 * @see #getNamedElement()
 	 * @generated
 	 */
 	EAttribute getNamedElement_Name();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.Guard <em>Guard</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.Guard <em>Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Guard</em>'.
-	 * @see org.gemoc.sample.tfsm.Guard
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.Guard
 	 * @generated
 	 */
 	EClass getGuard();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.TemporalGuard <em>Temporal Guard</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard <em>Temporal Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Temporal Guard</em>'.
-	 * @see org.gemoc.sample.tfsm.TemporalGuard
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard
 	 * @generated
 	 */
 	EClass getTemporalGuard();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.TemporalGuard#getOnClock <em>On Clock</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard#getOnClock <em>On Clock</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>On Clock</em>'.
-	 * @see org.gemoc.sample.tfsm.TemporalGuard#getOnClock()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard#getOnClock()
 	 * @see #getTemporalGuard()
 	 * @generated
 	 */
 	EReference getTemporalGuard_OnClock();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm.TemporalGuard#getAfterDuration <em>After Duration</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard#getAfterDuration <em>After Duration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>After Duration</em>'.
-	 * @see org.gemoc.sample.tfsm.TemporalGuard#getAfterDuration()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard#getAfterDuration()
 	 * @see #getTemporalGuard()
 	 * @generated
 	 */
 	EAttribute getTemporalGuard_AfterDuration();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.EventGuard <em>Event Guard</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard <em>Event Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Event Guard</em>'.
-	 * @see org.gemoc.sample.tfsm.EventGuard
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard
 	 * @generated
 	 */
 	EClass getEventGuard();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.EventGuard#getTriggeringEvent <em>Triggering Event</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard#getTriggeringEvent <em>Triggering Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Triggering Event</em>'.
-	 * @see org.gemoc.sample.tfsm.EventGuard#getTriggeringEvent()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard#getTriggeringEvent()
 	 * @see #getEventGuard()
 	 * @generated
 	 */
 	EReference getEventGuard_TriggeringEvent();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.FSMEvent <em>FSM Event</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent <em>FSM Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>FSM Event</em>'.
-	 * @see org.gemoc.sample.tfsm.FSMEvent
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent
 	 * @generated
 	 */
 	EClass getFSMEvent();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.gemoc.sample.tfsm.FSMEvent#getSollicitingTransitions <em>Solliciting Transitions</em>}'.
+	 * Returns the meta object for the reference list '{@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent#getSollicitingTransitions <em>Solliciting Transitions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Solliciting Transitions</em>'.
-	 * @see org.gemoc.sample.tfsm.FSMEvent#getSollicitingTransitions()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent#getSollicitingTransitions()
 	 * @see #getFSMEvent()
 	 * @generated
 	 */
 	EReference getFSMEvent_SollicitingTransitions();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.FSMClock <em>FSM Clock</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock <em>FSM Clock</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>FSM Clock</em>'.
-	 * @see org.gemoc.sample.tfsm.FSMClock
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock
 	 * @generated
 	 */
 	EClass getFSMClock();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm.FSMClock#getNumberOfTicks <em>Number Of Ticks</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock#getNumberOfTicks <em>Number Of Ticks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Number Of Ticks</em>'.
-	 * @see org.gemoc.sample.tfsm.FSMClock#getNumberOfTicks()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock#getNumberOfTicks()
 	 * @see #getFSMClock()
 	 * @generated
 	 */
 	EAttribute getFSMClock_NumberOfTicks();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.TimedSystem <em>Timed System</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem <em>Timed System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Timed System</em>'.
-	 * @see org.gemoc.sample.tfsm.TimedSystem
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem
 	 * @generated
 	 */
 	EClass getTimedSystem();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.TimedSystem#getTfsms <em>Tfsms</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getTfsms <em>Tfsms</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Tfsms</em>'.
-	 * @see org.gemoc.sample.tfsm.TimedSystem#getTfsms()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getTfsms()
 	 * @see #getTimedSystem()
 	 * @generated
 	 */
 	EReference getTimedSystem_Tfsms();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.TimedSystem#getGlobalClocks <em>Global Clocks</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getGlobalClocks <em>Global Clocks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Global Clocks</em>'.
-	 * @see org.gemoc.sample.tfsm.TimedSystem#getGlobalClocks()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getGlobalClocks()
 	 * @see #getTimedSystem()
 	 * @generated
 	 */
 	EReference getTimedSystem_GlobalClocks();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.TimedSystem#getGlobalEvents <em>Global Events</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getGlobalEvents <em>Global Events</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Global Events</em>'.
-	 * @see org.gemoc.sample.tfsm.TimedSystem#getGlobalEvents()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getGlobalEvents()
 	 * @see #getTimedSystem()
 	 * @generated
 	 */
 	EReference getTimedSystem_GlobalEvents();
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.EvaluateGuard <em>Evaluate Guard</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard <em>Evaluate Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Evaluate Guard</em>'.
-	 * @see org.gemoc.sample.tfsm.EvaluateGuard
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard
 	 * @generated
 	 */
 	EClass getEvaluateGuard();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm.EvaluateGuard#getCondition <em>Condition</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard#getCondition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Condition</em>'.
-	 * @see org.gemoc.sample.tfsm.EvaluateGuard#getCondition()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard#getCondition()
 	 * @see #getEvaluateGuard()
 	 * @generated
 	 */
@@ -968,11 +968,11 @@ public interface TfsmPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.TFSMImpl <em>TFSM</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl <em>TFSM</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.impl.TFSMImpl
-		 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getTFSM()
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getTFSM()
 		 * @generated
 		 */
 		EClass TFSM = eINSTANCE.getTFSM();
@@ -1026,11 +1026,11 @@ public interface TfsmPackage extends EPackage {
 		EReference TFSM__CURRENT_STATE = eINSTANCE.getTFSM_CurrentState();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.StateImpl <em>State</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.StateImpl <em>State</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.impl.StateImpl
-		 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getState()
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.StateImpl
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getState()
 		 * @generated
 		 */
 		EClass STATE = eINSTANCE.getState();
@@ -1060,11 +1060,11 @@ public interface TfsmPackage extends EPackage {
 		EReference STATE__INCOMING_TRANSITIONS = eINSTANCE.getState_IncomingTransitions();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.TransitionImpl <em>Transition</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl <em>Transition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.impl.TransitionImpl
-		 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getTransition()
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getTransition()
 		 * @generated
 		 */
 		EClass TRANSITION = eINSTANCE.getTransition();
@@ -1110,11 +1110,11 @@ public interface TfsmPackage extends EPackage {
 		EAttribute TRANSITION__ACTION = eINSTANCE.getTransition_Action();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.NamedElementImpl <em>Named Element</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.NamedElementImpl <em>Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.impl.NamedElementImpl
-		 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getNamedElement()
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.NamedElementImpl
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getNamedElement()
 		 * @generated
 		 */
 		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
@@ -1128,21 +1128,21 @@ public interface TfsmPackage extends EPackage {
 		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.GuardImpl <em>Guard</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.GuardImpl <em>Guard</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.impl.GuardImpl
-		 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getGuard()
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.GuardImpl
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getGuard()
 		 * @generated
 		 */
 		EClass GUARD = eINSTANCE.getGuard();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.TemporalGuardImpl <em>Temporal Guard</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TemporalGuardImpl <em>Temporal Guard</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.impl.TemporalGuardImpl
-		 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getTemporalGuard()
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TemporalGuardImpl
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getTemporalGuard()
 		 * @generated
 		 */
 		EClass TEMPORAL_GUARD = eINSTANCE.getTemporalGuard();
@@ -1164,11 +1164,11 @@ public interface TfsmPackage extends EPackage {
 		EAttribute TEMPORAL_GUARD__AFTER_DURATION = eINSTANCE.getTemporalGuard_AfterDuration();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.EventGuardImpl <em>Event Guard</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.EventGuardImpl <em>Event Guard</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.impl.EventGuardImpl
-		 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getEventGuard()
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.EventGuardImpl
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getEventGuard()
 		 * @generated
 		 */
 		EClass EVENT_GUARD = eINSTANCE.getEventGuard();
@@ -1182,11 +1182,11 @@ public interface TfsmPackage extends EPackage {
 		EReference EVENT_GUARD__TRIGGERING_EVENT = eINSTANCE.getEventGuard_TriggeringEvent();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.FSMEventImpl <em>FSM Event</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.FSMEventImpl <em>FSM Event</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.impl.FSMEventImpl
-		 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getFSMEvent()
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.FSMEventImpl
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getFSMEvent()
 		 * @generated
 		 */
 		EClass FSM_EVENT = eINSTANCE.getFSMEvent();
@@ -1200,11 +1200,11 @@ public interface TfsmPackage extends EPackage {
 		EReference FSM_EVENT__SOLLICITING_TRANSITIONS = eINSTANCE.getFSMEvent_SollicitingTransitions();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.FSMClockImpl <em>FSM Clock</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.FSMClockImpl <em>FSM Clock</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.impl.FSMClockImpl
-		 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getFSMClock()
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.FSMClockImpl
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getFSMClock()
 		 * @generated
 		 */
 		EClass FSM_CLOCK = eINSTANCE.getFSMClock();
@@ -1218,11 +1218,11 @@ public interface TfsmPackage extends EPackage {
 		EAttribute FSM_CLOCK__NUMBER_OF_TICKS = eINSTANCE.getFSMClock_NumberOfTicks();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.TimedSystemImpl <em>Timed System</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TimedSystemImpl <em>Timed System</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.impl.TimedSystemImpl
-		 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getTimedSystem()
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TimedSystemImpl
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getTimedSystem()
 		 * @generated
 		 */
 		EClass TIMED_SYSTEM = eINSTANCE.getTimedSystem();
@@ -1252,11 +1252,11 @@ public interface TfsmPackage extends EPackage {
 		EReference TIMED_SYSTEM__GLOBAL_EVENTS = eINSTANCE.getTimedSystem_GlobalEvents();
 
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.impl.EvaluateGuardImpl <em>Evaluate Guard</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.EvaluateGuardImpl <em>Evaluate Guard</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.tfsm.impl.EvaluateGuardImpl
-		 * @see org.gemoc.sample.tfsm.impl.TfsmPackageImpl#getEvaluateGuard()
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.EvaluateGuardImpl
+		 * @see org.gemoc.sample.tfsm.concurrent.tfsm.impl.TfsmPackageImpl#getEvaluateGuard()
 		 * @generated
 		 */
 		EClass EVALUATE_GUARD = eINSTANCE.getEvaluateGuard();

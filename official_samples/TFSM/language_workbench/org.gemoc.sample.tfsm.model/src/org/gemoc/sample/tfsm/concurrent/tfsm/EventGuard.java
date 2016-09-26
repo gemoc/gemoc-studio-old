@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm;
+package org.gemoc.sample.tfsm.concurrent.tfsm;
 
 
 /**
@@ -11,11 +11,11 @@ package org.gemoc.sample.tfsm;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.gemoc.sample.tfsm.EventGuard#getTriggeringEvent <em>Triggering Event</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard#getTriggeringEvent <em>Triggering Event</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.gemoc.sample.tfsm.TfsmPackage#getEventGuard()
+ * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getEventGuard()
  * @model
  * @generated
  */
@@ -30,14 +30,14 @@ public interface EventGuard extends Guard {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Triggering Event</em>' reference.
 	 * @see #setTriggeringEvent(FSMEvent)
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#getEventGuard_TriggeringEvent()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getEventGuard_TriggeringEvent()
 	 * @model required="true"
 	 * @generated
 	 */
 	FSMEvent getTriggeringEvent();
 
 	/**
-	 * Sets the value of the '{@link org.gemoc.sample.tfsm.EventGuard#getTriggeringEvent <em>Triggering Event</em>}' reference.
+	 * Sets the value of the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard#getTriggeringEvent <em>Triggering Event</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Triggering Event</em>' reference.

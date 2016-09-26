@@ -6,7 +6,7 @@
       <!-- @generated tfsm -->
       <package
             uri="http://www.gemoc.org/sample/tfsm"
-            class="org.gemoc.sample.tfsm.TfsmPackage"
+            class="org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage"
             genModel="model/tfsm.genmodel"/>
    </extension>
 

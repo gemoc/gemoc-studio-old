@@ -1,11 +1,10 @@
 /**
  */
-package org.gemoc.sample.tfsm.impl;
+package org.gemoc.sample.tfsm.concurrent.tfsm.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.gemoc.sample.tfsm.Guard;
-import org.gemoc.sample.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.Guard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
 
 /**
  * <!-- begin-user-doc -->

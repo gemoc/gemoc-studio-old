@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm;
+package org.gemoc.sample.tfsm.concurrent.tfsm;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -12,18 +12,18 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.gemoc.sample.tfsm.FSMEvent#getSollicitingTransitions <em>Solliciting Transitions</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent#getSollicitingTransitions <em>Solliciting Transitions</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.gemoc.sample.tfsm.TfsmPackage#getFSMEvent()
+ * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getFSMEvent()
  * @model
  * @generated
  */
 public interface FSMEvent extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Solliciting Transitions</b></em>' reference list.
-	 * The list contents are of type {@link org.gemoc.sample.tfsm.Transition}.
+	 * The list contents are of type {@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Solliciting Transitions</em>' reference list isn't clear,
@@ -31,7 +31,7 @@ public interface FSMEvent extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Solliciting Transitions</em>' reference list.
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#getFSMEvent_SollicitingTransitions()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getFSMEvent_SollicitingTransitions()
 	 * @model
 	 * @generated
 	 */

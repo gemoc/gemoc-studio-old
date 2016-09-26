@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm.impl;
+package org.gemoc.sample.tfsm.concurrent.tfsm.impl;
 
 import java.util.Collection;
 
@@ -13,12 +13,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.gemoc.sample.tfsm.FSMClock;
-import org.gemoc.sample.tfsm.FSMEvent;
-import org.gemoc.sample.tfsm.TFSM;
-import org.gemoc.sample.tfsm.TfsmPackage;
-import org.gemoc.sample.tfsm.TimedSystem;
+import org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock;
+import org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TFSM;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,9 +26,9 @@ import org.gemoc.sample.tfsm.TimedSystem;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TimedSystemImpl#getTfsms <em>Tfsms</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TimedSystemImpl#getGlobalClocks <em>Global Clocks</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TimedSystemImpl#getGlobalEvents <em>Global Events</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TimedSystemImpl#getTfsms <em>Tfsms</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TimedSystemImpl#getGlobalClocks <em>Global Clocks</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TimedSystemImpl#getGlobalEvents <em>Global Events</em>}</li>
  * </ul>
  * </p>
  *

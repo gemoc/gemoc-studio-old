@@ -12,11 +12,11 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.gemoc.sample.tfsm.TemporalGuard;
-import org.gemoc.sample.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.TemporalGuard} object.
+ * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

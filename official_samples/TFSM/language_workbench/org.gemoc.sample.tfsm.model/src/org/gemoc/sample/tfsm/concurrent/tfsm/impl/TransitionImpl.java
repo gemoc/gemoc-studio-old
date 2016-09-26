@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm.impl;
+package org.gemoc.sample.tfsm.concurrent.tfsm.impl;
 
 import java.util.Collection;
 
@@ -15,12 +15,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
-import org.gemoc.sample.tfsm.FSMEvent;
-import org.gemoc.sample.tfsm.Guard;
-import org.gemoc.sample.tfsm.State;
-import org.gemoc.sample.tfsm.TfsmPackage;
-import org.gemoc.sample.tfsm.Transition;
+import org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent;
+import org.gemoc.sample.tfsm.concurrent.tfsm.Guard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.State;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,11 +28,11 @@ import org.gemoc.sample.tfsm.Transition;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TransitionImpl#getSource <em>Source</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TransitionImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TransitionImpl#getOwnedGuard <em>Owned Guard</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TransitionImpl#getGeneratedEvents <em>Generated Events</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TransitionImpl#getAction <em>Action</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl#getOwnedGuard <em>Owned Guard</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl#getGeneratedEvents <em>Generated Events</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl#getAction <em>Action</em>}</li>
  * </ul>
  * </p>
  *

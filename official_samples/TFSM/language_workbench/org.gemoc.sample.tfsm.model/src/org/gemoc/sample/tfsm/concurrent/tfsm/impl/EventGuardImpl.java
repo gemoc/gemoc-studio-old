@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm.impl;
+package org.gemoc.sample.tfsm.concurrent.tfsm.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -8,10 +8,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.gemoc.sample.tfsm.EventGuard;
-import org.gemoc.sample.tfsm.FSMEvent;
-import org.gemoc.sample.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +19,7 @@ import org.gemoc.sample.tfsm.TfsmPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.gemoc.sample.tfsm.impl.EventGuardImpl#getTriggeringEvent <em>Triggering Event</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.EventGuardImpl#getTriggeringEvent <em>Triggering Event</em>}</li>
  * </ul>
  * </p>
  *

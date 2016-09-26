@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm;
+package org.gemoc.sample.tfsm.concurrent.tfsm;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -12,20 +12,20 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.gemoc.sample.tfsm.State#getOwningFSM <em>Owning FSM</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.State#getOutgoingTransitions <em>Outgoing Transitions</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.State#getIncomingTransitions <em>Incoming Transitions</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.State#getOwningFSM <em>Owning FSM</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.State#getOutgoingTransitions <em>Outgoing Transitions</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.State#getIncomingTransitions <em>Incoming Transitions</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.gemoc.sample.tfsm.TfsmPackage#getState()
+ * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getState()
  * @model
  * @generated
  */
 public interface State extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Owning FSM</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.gemoc.sample.tfsm.TFSM#getOwnedStates <em>Owned States</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getOwnedStates <em>Owned States</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owning FSM</em>' container reference isn't clear,
@@ -34,15 +34,15 @@ public interface State extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owning FSM</em>' container reference.
 	 * @see #setOwningFSM(TFSM)
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#getState_OwningFSM()
-	 * @see org.gemoc.sample.tfsm.TFSM#getOwnedStates
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getState_OwningFSM()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TFSM#getOwnedStates
 	 * @model opposite="ownedStates" required="true" transient="false"
 	 * @generated
 	 */
 	TFSM getOwningFSM();
 
 	/**
-	 * Sets the value of the '{@link org.gemoc.sample.tfsm.State#getOwningFSM <em>Owning FSM</em>}' container reference.
+	 * Sets the value of the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.State#getOwningFSM <em>Owning FSM</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Owning FSM</em>' container reference.
@@ -53,8 +53,8 @@ public interface State extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Outgoing Transitions</b></em>' reference list.
-	 * The list contents are of type {@link org.gemoc.sample.tfsm.Transition}.
-	 * It is bidirectional and its opposite is '{@link org.gemoc.sample.tfsm.Transition#getSource <em>Source</em>}'.
+	 * The list contents are of type {@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition}.
+	 * It is bidirectional and its opposite is '{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outgoing Transitions</em>' reference list isn't clear,
@@ -62,8 +62,8 @@ public interface State extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Outgoing Transitions</em>' reference list.
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#getState_OutgoingTransitions()
-	 * @see org.gemoc.sample.tfsm.Transition#getSource
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getState_OutgoingTransitions()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getSource
 	 * @model opposite="source"
 	 * @generated
 	 */
@@ -71,8 +71,8 @@ public interface State extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Incoming Transitions</b></em>' reference list.
-	 * The list contents are of type {@link org.gemoc.sample.tfsm.Transition}.
-	 * It is bidirectional and its opposite is '{@link org.gemoc.sample.tfsm.Transition#getTarget <em>Target</em>}'.
+	 * The list contents are of type {@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition}.
+	 * It is bidirectional and its opposite is '{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Incoming Transitions</em>' reference list isn't clear,
@@ -80,8 +80,8 @@ public interface State extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Incoming Transitions</em>' reference list.
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#getState_IncomingTransitions()
-	 * @see org.gemoc.sample.tfsm.Transition#getTarget
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getState_IncomingTransitions()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getTarget
 	 * @model opposite="target"
 	 * @generated
 	 */

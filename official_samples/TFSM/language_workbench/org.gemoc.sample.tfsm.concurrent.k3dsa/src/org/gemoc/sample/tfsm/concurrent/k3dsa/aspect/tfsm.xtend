@@ -1,17 +1,17 @@
 package org.gemoc.sample.tfsm.concurrent.k3dsa.aspect
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
-import org.gemoc.sample.tfsm.EvaluateGuard
-import org.gemoc.sample.tfsm.EventGuard
-import org.gemoc.sample.tfsm.FSMClock
-import org.gemoc.sample.tfsm.FSMEvent
-import org.gemoc.sample.tfsm.Guard
-import org.gemoc.sample.tfsm.NamedElement
-import org.gemoc.sample.tfsm.State
-import org.gemoc.sample.tfsm.TFSM
-import org.gemoc.sample.tfsm.TemporalGuard
-import org.gemoc.sample.tfsm.TimedSystem
-import org.gemoc.sample.tfsm.Transition
+import org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard
+import org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard
+import org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock
+import org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent
+import org.gemoc.sample.tfsm.concurrent.tfsm.Guard
+import org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement
+import org.gemoc.sample.tfsm.concurrent.tfsm.State
+import org.gemoc.sample.tfsm.concurrent.tfsm.TFSM
+import org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard
+import org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem
+import org.gemoc.sample.tfsm.concurrent.tfsm.Transition
 import org.gemoc.sample.tfsm.concurrent.k3dsa.GroovyRunner
 
 

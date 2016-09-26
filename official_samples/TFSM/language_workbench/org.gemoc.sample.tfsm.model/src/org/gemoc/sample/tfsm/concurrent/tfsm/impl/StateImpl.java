@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm.impl;
+package org.gemoc.sample.tfsm.concurrent.tfsm.impl;
 
 import java.util.Collection;
 
@@ -17,11 +17,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.gemoc.sample.tfsm.State;
-import org.gemoc.sample.tfsm.TFSM;
-import org.gemoc.sample.tfsm.TfsmPackage;
-import org.gemoc.sample.tfsm.Transition;
+import org.gemoc.sample.tfsm.concurrent.tfsm.State;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TFSM;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,9 +29,9 @@ import org.gemoc.sample.tfsm.Transition;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.gemoc.sample.tfsm.impl.StateImpl#getOwningFSM <em>Owning FSM</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.StateImpl#getOutgoingTransitions <em>Outgoing Transitions</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.StateImpl#getIncomingTransitions <em>Incoming Transitions</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.StateImpl#getOwningFSM <em>Owning FSM</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.StateImpl#getOutgoingTransitions <em>Outgoing Transitions</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.StateImpl#getIncomingTransitions <em>Incoming Transitions</em>}</li>
  * </ul>
  * </p>
  *

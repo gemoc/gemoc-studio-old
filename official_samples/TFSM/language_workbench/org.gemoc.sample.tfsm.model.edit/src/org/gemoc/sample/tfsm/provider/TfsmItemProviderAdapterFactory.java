@@ -20,8 +20,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import org.gemoc.sample.tfsm.util.TfsmAdapterFactory;
+import org.gemoc.sample.tfsm.concurrent.tfsm.util.TfsmAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -72,7 +71,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.TFSM} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -80,7 +79,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	protected TFSMItemProvider tfsmItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.TFSM}.
+	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -95,7 +94,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.State} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.concurrent.tfsm.State} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -103,7 +102,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	protected StateItemProvider stateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.State}.
+	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.State}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -118,7 +117,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.Transition} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -126,7 +125,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	protected TransitionItemProvider transitionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.Transition}.
+	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -141,7 +140,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.TemporalGuard} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -149,7 +148,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	protected TemporalGuardItemProvider temporalGuardItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.TemporalGuard}.
+	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -164,7 +163,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.EventGuard} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -172,7 +171,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	protected EventGuardItemProvider eventGuardItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.EventGuard}.
+	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -187,7 +186,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.FSMEvent} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -195,7 +194,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	protected FSMEventItemProvider fsmEventItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.FSMEvent}.
+	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -210,7 +209,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.FSMClock} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -218,7 +217,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	protected FSMClockItemProvider fsmClockItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.FSMClock}.
+	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -233,7 +232,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.TimedSystem} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -241,7 +240,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	protected TimedSystemItemProvider timedSystemItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.TimedSystem}.
+	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -256,7 +255,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.EvaluateGuard} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -264,7 +263,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	protected EvaluateGuardItemProvider evaluateGuardItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.EvaluateGuard}.
+	 * This creates an adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

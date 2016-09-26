@@ -4,7 +4,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Name: Concurrent TFSM
 Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
- org.gemoc.sample.tfsm.model;bundle-version="0.0.0";visibility:="reexport",
+ org.gemoc.sample.tfsm.concurrent.model;bundle-version="0.0.0";visibility:="reexport",
  
  org.gemoc.sample.tfsm.concurrent.k3dsa;bundle-version="0.0.0";visibility:="reexport",
  

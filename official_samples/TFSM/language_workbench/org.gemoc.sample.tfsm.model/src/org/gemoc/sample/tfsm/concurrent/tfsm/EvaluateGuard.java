@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm;
+package org.gemoc.sample.tfsm.concurrent.tfsm;
 
 
 /**
@@ -11,11 +11,11 @@ package org.gemoc.sample.tfsm;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.gemoc.sample.tfsm.EvaluateGuard#getCondition <em>Condition</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard#getCondition <em>Condition</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.gemoc.sample.tfsm.TfsmPackage#getEvaluateGuard()
+ * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getEvaluateGuard()
  * @model
  * @generated
  */
@@ -30,14 +30,14 @@ public interface EvaluateGuard extends Guard {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Condition</em>' attribute.
 	 * @see #setCondition(String)
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#getEvaluateGuard_Condition()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getEvaluateGuard_Condition()
 	 * @model
 	 * @generated
 	 */
 	String getCondition();
 
 	/**
-	 * Sets the value of the '{@link org.gemoc.sample.tfsm.EvaluateGuard#getCondition <em>Condition</em>}' attribute.
+	 * Sets the value of the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard#getCondition <em>Condition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Condition</em>' attribute.

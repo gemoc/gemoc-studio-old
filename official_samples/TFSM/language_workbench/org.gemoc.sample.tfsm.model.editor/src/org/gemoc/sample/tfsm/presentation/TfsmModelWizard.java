@@ -68,9 +68,8 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
-
-import org.gemoc.sample.tfsm.TfsmFactory;
-import org.gemoc.sample.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmFactory;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
 import org.gemoc.sample.tfsm.provider.TfsmEditPlugin;
 
 

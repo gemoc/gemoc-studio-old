@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm.impl;
+package org.gemoc.sample.tfsm.concurrent.tfsm.impl;
 
 import java.util.Collection;
 
@@ -17,13 +17,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.gemoc.sample.tfsm.FSMClock;
-import org.gemoc.sample.tfsm.FSMEvent;
-import org.gemoc.sample.tfsm.State;
-import org.gemoc.sample.tfsm.TFSM;
-import org.gemoc.sample.tfsm.TfsmPackage;
-import org.gemoc.sample.tfsm.Transition;
+import org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock;
+import org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent;
+import org.gemoc.sample.tfsm.concurrent.tfsm.State;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TFSM;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,12 +31,12 @@ import org.gemoc.sample.tfsm.Transition;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TFSMImpl#getOwnedStates <em>Owned States</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TFSMImpl#getInitialState <em>Initial State</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TFSMImpl#getLocalEvents <em>Local Events</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TFSMImpl#getLocalClock <em>Local Clock</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TFSMImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.impl.TFSMImpl#getCurrentState <em>Current State</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getOwnedStates <em>Owned States</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getLocalEvents <em>Local Events</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getLocalClock <em>Local Clock</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getCurrentState <em>Current State</em>}</li>
  * </ul>
  * </p>
  *

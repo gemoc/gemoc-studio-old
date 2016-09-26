@@ -1,10 +1,10 @@
 package org.gemoc.sample.tfsm.design.services;
 
-import org.gemoc.sample.tfsm.EvaluateGuard;
-import org.gemoc.sample.tfsm.EventGuard;
-import org.gemoc.sample.tfsm.FSMEvent;
-import org.gemoc.sample.tfsm.TemporalGuard;
-import org.gemoc.sample.tfsm.Transition;
+import org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.Transition;
 
 /** TFSM services.
  * 

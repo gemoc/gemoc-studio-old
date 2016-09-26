@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm.util;
+package org.gemoc.sample.tfsm.concurrent.tfsm.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -8,15 +8,14 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.gemoc.sample.tfsm.*;
+import org.gemoc.sample.tfsm.concurrent.tfsm.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.gemoc.sample.tfsm.TfsmPackage
+ * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage
  * @generated
  */
 public class TfsmAdapterFactory extends AdapterFactoryImpl {
@@ -132,13 +131,13 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.TFSM <em>TFSM</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM <em>TFSM</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.tfsm.TFSM
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TFSM
 	 * @generated
 	 */
 	public Adapter createTFSMAdapter() {
@@ -146,13 +145,13 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.State <em>State</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.State <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.tfsm.State
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.State
 	 * @generated
 	 */
 	public Adapter createStateAdapter() {
@@ -160,13 +159,13 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.Transition <em>Transition</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition <em>Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.tfsm.Transition
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.Transition
 	 * @generated
 	 */
 	public Adapter createTransitionAdapter() {
@@ -174,13 +173,13 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.NamedElement <em>Named Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.tfsm.NamedElement
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement
 	 * @generated
 	 */
 	public Adapter createNamedElementAdapter() {
@@ -188,13 +187,13 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.Guard <em>Guard</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.Guard <em>Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.tfsm.Guard
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.Guard
 	 * @generated
 	 */
 	public Adapter createGuardAdapter() {
@@ -202,13 +201,13 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.TemporalGuard <em>Temporal Guard</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard <em>Temporal Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.tfsm.TemporalGuard
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard
 	 * @generated
 	 */
 	public Adapter createTemporalGuardAdapter() {
@@ -216,13 +215,13 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.EventGuard <em>Event Guard</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard <em>Event Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.tfsm.EventGuard
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard
 	 * @generated
 	 */
 	public Adapter createEventGuardAdapter() {
@@ -230,13 +229,13 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.FSMEvent <em>FSM Event</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent <em>FSM Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.tfsm.FSMEvent
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent
 	 * @generated
 	 */
 	public Adapter createFSMEventAdapter() {
@@ -244,13 +243,13 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.FSMClock <em>FSM Clock</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock <em>FSM Clock</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.tfsm.FSMClock
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock
 	 * @generated
 	 */
 	public Adapter createFSMClockAdapter() {
@@ -258,13 +257,13 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.TimedSystem <em>Timed System</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem <em>Timed System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.tfsm.TimedSystem
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem
 	 * @generated
 	 */
 	public Adapter createTimedSystemAdapter() {
@@ -272,13 +271,13 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.EvaluateGuard <em>Evaluate Guard</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard <em>Evaluate Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.tfsm.EvaluateGuard
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard
 	 * @generated
 	 */
 	public Adapter createEvaluateGuardAdapter() {

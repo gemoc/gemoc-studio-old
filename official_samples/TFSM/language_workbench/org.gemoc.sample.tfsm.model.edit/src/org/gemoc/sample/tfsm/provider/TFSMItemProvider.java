@@ -12,12 +12,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.gemoc.sample.tfsm.TFSM;
-import org.gemoc.sample.tfsm.TfsmFactory;
-import org.gemoc.sample.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TFSM;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmFactory;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.TFSM} object.
+ * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

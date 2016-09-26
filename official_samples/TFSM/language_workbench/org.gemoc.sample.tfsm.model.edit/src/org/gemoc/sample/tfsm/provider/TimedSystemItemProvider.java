@@ -11,12 +11,12 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.gemoc.sample.tfsm.TfsmFactory;
-import org.gemoc.sample.tfsm.TfsmPackage;
-import org.gemoc.sample.tfsm.TimedSystem;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmFactory;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.TimedSystem} object.
+ * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

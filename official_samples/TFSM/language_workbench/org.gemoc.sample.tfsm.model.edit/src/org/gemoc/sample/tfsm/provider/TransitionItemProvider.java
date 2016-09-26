@@ -13,12 +13,12 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.gemoc.sample.tfsm.TfsmFactory;
-import org.gemoc.sample.tfsm.TfsmPackage;
-import org.gemoc.sample.tfsm.Transition;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmFactory;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.Transition;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.Transition} object.
+ * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

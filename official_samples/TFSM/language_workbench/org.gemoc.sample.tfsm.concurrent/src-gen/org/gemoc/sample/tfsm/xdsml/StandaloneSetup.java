@@ -17,8 +17,8 @@ public class StandaloneSetup {
   
   public void doEMFRegistration() {
     EPackage.Registry.INSTANCE.put(
-    	org.gemoc.sample.tfsm.TfsmPackage.eNS_URI,
-    	org.gemoc.sample.tfsm.TfsmPackage.eINSTANCE
+    	org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage.eNS_URI,
+    	org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage.eINSTANCE
     );
     
     Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(

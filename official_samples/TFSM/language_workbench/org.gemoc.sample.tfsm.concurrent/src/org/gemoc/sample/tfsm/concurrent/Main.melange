@@ -5,7 +5,7 @@ language XTfsmConcurrent {
 	/*
 	 * Declare abstract syntax
 	 */
-	syntax "platform:/resource/org.gemoc.sample.tfsm.model/model/tfsm.ecore"
+	syntax "platform:/resource/org.gemoc.sample.tfsm.concurrent.model/model/tfsm.ecore"
 	
 	/*
 	 * Declare DSA

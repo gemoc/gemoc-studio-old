@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm;
+package org.gemoc.sample.tfsm.concurrent.tfsm;
 
 
 /**
@@ -9,7 +9,7 @@ package org.gemoc.sample.tfsm;
  * <!-- end-user-doc -->
  *
  *
- * @see org.gemoc.sample.tfsm.TfsmPackage#getGuard()
+ * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getGuard()
  * @model abstract="true"
  * @generated
  */

@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm;
+package org.gemoc.sample.tfsm.concurrent.tfsm;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -12,11 +12,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.gemoc.sample.tfsm.NamedElement#getName <em>Name</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.gemoc.sample.tfsm.TfsmPackage#getNamedElement()
+ * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getNamedElement()
  * @model abstract="true"
  * @generated
  */
@@ -31,14 +31,14 @@ public interface NamedElement extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#getNamedElement_Name()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getNamedElement_Name()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.gemoc.sample.tfsm.NamedElement#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.gemoc.sample.tfsm.concurrent.tfsm.NamedElement#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.

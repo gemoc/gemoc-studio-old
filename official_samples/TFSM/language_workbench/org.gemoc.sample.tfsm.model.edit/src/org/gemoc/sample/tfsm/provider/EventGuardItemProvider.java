@@ -10,11 +10,11 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.gemoc.sample.tfsm.EventGuard;
-import org.gemoc.sample.tfsm.TfsmPackage;
+import org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard;
+import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.EventGuard} object.
+ * This is the item provider adapter for a {@link org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

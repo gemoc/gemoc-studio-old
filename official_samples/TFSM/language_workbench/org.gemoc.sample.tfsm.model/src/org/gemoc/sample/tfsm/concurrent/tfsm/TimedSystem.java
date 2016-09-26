@@ -1,6 +1,6 @@
 /**
  */
-package org.gemoc.sample.tfsm;
+package org.gemoc.sample.tfsm.concurrent.tfsm;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -12,20 +12,20 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.gemoc.sample.tfsm.TimedSystem#getTfsms <em>Tfsms</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.TimedSystem#getGlobalClocks <em>Global Clocks</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.TimedSystem#getGlobalEvents <em>Global Events</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getTfsms <em>Tfsms</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getGlobalClocks <em>Global Clocks</em>}</li>
+ *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getGlobalEvents <em>Global Events</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.gemoc.sample.tfsm.TfsmPackage#getTimedSystem()
+ * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getTimedSystem()
  * @model
  * @generated
  */
 public interface TimedSystem extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Tfsms</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.sample.tfsm.TFSM}.
+	 * The list contents are of type {@link org.gemoc.sample.tfsm.concurrent.tfsm.TFSM}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Tfsms</em>' containment reference list isn't clear,
@@ -33,7 +33,7 @@ public interface TimedSystem extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tfsms</em>' containment reference list.
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#getTimedSystem_Tfsms()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getTimedSystem_Tfsms()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
@@ -41,7 +41,7 @@ public interface TimedSystem extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Global Clocks</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.sample.tfsm.FSMClock}.
+	 * The list contents are of type {@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Global Clocks</em>' containment reference list isn't clear,
@@ -49,7 +49,7 @@ public interface TimedSystem extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Global Clocks</em>' containment reference list.
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#getTimedSystem_GlobalClocks()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getTimedSystem_GlobalClocks()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
@@ -57,7 +57,7 @@ public interface TimedSystem extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Global Events</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.sample.tfsm.FSMEvent}.
+	 * The list contents are of type {@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Global Events</em>' containment reference list isn't clear,
@@ -65,7 +65,7 @@ public interface TimedSystem extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Global Events</em>' containment reference list.
-	 * @see org.gemoc.sample.tfsm.TfsmPackage#getTimedSystem_GlobalEvents()
+	 * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getTimedSystem_GlobalEvents()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
