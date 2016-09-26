@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Dse
-Bundle-SymbolicName: org.gemoc.sample.tfsm.eclmoc2as
+Bundle-SymbolicName: org.gemoc.sample.tfsm.concurrent.moc.dse
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.gemoc.sample.tfsm.dse.Activator
 Require-Bundle: org.eclipse.core.runtime

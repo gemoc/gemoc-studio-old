@@ -26,6 +26,6 @@ language XTfsmConcurrent {
 	/*
 	 * Locate ECL file 
 	 */
-	ecl "org.gemoc.sample.tfsm.eclmoc2as/ecl/TFSM.ecl"
+	ecl "org.gemoc.sample.tfsm.concurrent.moc.dse/ecl/TFSM.ecl"
 	
 }
