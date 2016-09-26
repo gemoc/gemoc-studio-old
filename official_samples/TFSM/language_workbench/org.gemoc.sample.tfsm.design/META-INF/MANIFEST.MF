@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-Name: org.gemoc.sample.tfsm.design
-Bundle-SymbolicName: org.gemoc.sample.tfsm.design;singleton:=true
+Bundle-SymbolicName: org.gemoc.sample.tfsm.concurrent.xtfsm.design;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.gemoc.sample.tfsm.design.Activator
 Require-Bundle: org.eclipse.ui,

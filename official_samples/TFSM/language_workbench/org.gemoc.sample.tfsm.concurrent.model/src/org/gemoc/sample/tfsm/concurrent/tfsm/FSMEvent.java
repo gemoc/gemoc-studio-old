@@ -11,10 +11,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMEvent#getSollicitingTransitions <em>Solliciting Transitions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getFSMEvent()
  * @model
@@ -36,13 +36,5 @@ public interface FSMEvent extends NamedElement {
 	 * @generated
 	 */
 	EList<Transition> getSollicitingTransitions();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	String occurs();
 
 } // FSMEvent

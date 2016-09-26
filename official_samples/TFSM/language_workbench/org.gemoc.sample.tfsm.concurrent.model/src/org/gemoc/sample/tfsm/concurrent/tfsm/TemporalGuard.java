@@ -10,11 +10,11 @@ package org.gemoc.sample.tfsm.concurrent.tfsm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard#getOnClock <em>On Clock</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.TemporalGuard#getAfterDuration <em>After Duration</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getTemporalGuard()
  * @model

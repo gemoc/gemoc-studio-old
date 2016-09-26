@@ -28,12 +28,12 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.Transition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.StateImpl#getOwningFSM <em>Owning FSM</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.StateImpl#getOutgoingTransitions <em>Outgoing Transitions</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.StateImpl#getIncomingTransitions <em>Incoming Transitions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -150,28 +150,6 @@ public class StateImpl extends NamedElementImpl implements State {
 			incomingTransitions = new EObjectWithInverseResolvingEList<Transition>(Transition.class, this, TfsmPackage.STATE__INCOMING_TRANSITIONS, TfsmPackage.TRANSITION__TARGET);
 		}
 		return incomingTransitions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String onEnter() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String onLeave() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**

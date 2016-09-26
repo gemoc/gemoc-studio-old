@@ -1,5 +1,5 @@
 Bundle-SymbolicName: org.gemoc.sample.tfsm.concurrent;singleton:=true
-Export-Package: xtfsmconcurrent.xdsml.api.impl
+Export-Package: xtfsm.xdsml.api.impl
 Bundle-Version: 1.0.0.qualifier
 Bundle-Name: Concurrent TFSM
 Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
@@ -22,7 +22,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
  org.gemoc.execution.concurrent.ccsljavaengine.ui;bundle-version="0.1.0",
  
- org.gemoc.sample.tfsm.design;bundle-version="0.0.0";visibility:="reexport",
+ org.gemoc.sample.tfsm.concurrent.xtfsm.design;bundle-version="0.0.0";visibility:="reexport",
  
  org.gemoc.sample.tfsm.concurrent.moc.dse;bundle-version="0.0.0";visibility:="reexport",
  
@@ -44,7 +44,9 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
  fr.inria.diverse.melange.adapters;bundle-version="0.1.0",
  
- fr.inria.diverse.melange.resource;bundle-version="0.1.0"
+ fr.inria.diverse.melange.resource;bundle-version="0.1.0",
+ 
+ org.gemoc.sample.tfsm.concurrent.xtfsm
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Manifest-Version: 1.0

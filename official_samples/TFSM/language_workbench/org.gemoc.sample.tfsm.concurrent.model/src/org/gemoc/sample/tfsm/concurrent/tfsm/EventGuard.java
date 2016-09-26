@@ -10,10 +10,10 @@ package org.gemoc.sample.tfsm.concurrent.tfsm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.EventGuard#getTriggeringEvent <em>Triggering Event</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getEventGuard()
  * @model

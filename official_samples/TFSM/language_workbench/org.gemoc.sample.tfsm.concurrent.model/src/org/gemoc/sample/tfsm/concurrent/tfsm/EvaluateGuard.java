@@ -10,10 +10,10 @@ package org.gemoc.sample.tfsm.concurrent.tfsm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.EvaluateGuard#getCondition <em>Condition</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getEvaluateGuard()
  * @model
@@ -45,13 +45,5 @@ public interface EvaluateGuard extends Guard {
 	 * @generated
 	 */
 	void setCondition(String value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean evaluate();
 
 } // EvaluateGuard

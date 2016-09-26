@@ -19,10 +19,10 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.Transition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.FSMEventImpl#getSollicitingTransitions <em>Solliciting Transitions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -66,17 +66,6 @@ public class FSMEventImpl extends NamedElementImpl implements FSMEvent {
 			sollicitingTransitions = new EObjectResolvingEList<Transition>(Transition.class, this, TfsmPackage.FSM_EVENT__SOLLICITING_TRANSITIONS);
 		}
 		return sollicitingTransitions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String occurs() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**

@@ -15,10 +15,10 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.FSMClockImpl#getNumberOfTicks <em>Number Of Ticks</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -80,17 +80,6 @@ public class FSMClockImpl extends NamedElementImpl implements FSMClock {
 		numberOfTicks = newNumberOfTicks;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.FSM_CLOCK__NUMBER_OF_TICKS, oldNumberOfTicks, numberOfTicks));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String ticks() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**

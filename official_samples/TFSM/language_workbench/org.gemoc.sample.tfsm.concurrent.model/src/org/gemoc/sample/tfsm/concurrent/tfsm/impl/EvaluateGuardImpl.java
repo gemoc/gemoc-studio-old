@@ -16,10 +16,10 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.EvaluateGuardImpl#getCondition <em>Condition</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -82,17 +82,6 @@ public class EvaluateGuardImpl extends GuardImpl implements EvaluateGuard {
 		condition = newCondition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.EVALUATE_GUARD__CONDITION, oldCondition, condition));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean evaluate() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**

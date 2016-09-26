@@ -17,10 +17,10 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.NamedElementImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

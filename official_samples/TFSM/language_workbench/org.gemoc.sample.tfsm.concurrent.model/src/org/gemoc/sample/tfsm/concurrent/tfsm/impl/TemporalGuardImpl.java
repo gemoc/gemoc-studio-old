@@ -18,11 +18,11 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TemporalGuardImpl#getOnClock <em>On Clock</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TemporalGuardImpl#getAfterDuration <em>After Duration</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

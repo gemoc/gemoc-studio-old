@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getSource <em>Source</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getTarget <em>Target</em>}</li>
@@ -18,7 +19,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getGeneratedEvents <em>Generated Events</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.Transition#getAction <em>Action</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getTransition()
  * @model
@@ -148,13 +148,5 @@ public interface Transition extends NamedElement {
 	 * @generated
 	 */
 	void setAction(String value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	String fire();
 
 } // Transition

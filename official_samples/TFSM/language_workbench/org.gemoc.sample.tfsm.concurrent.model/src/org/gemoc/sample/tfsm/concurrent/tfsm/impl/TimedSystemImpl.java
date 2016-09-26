@@ -25,12 +25,12 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TimedSystemImpl#getTfsms <em>Tfsms</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TimedSystemImpl#getGlobalClocks <em>Global Clocks</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TimedSystemImpl#getGlobalEvents <em>Global Events</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -118,17 +118,6 @@ public class TimedSystemImpl extends NamedElementImpl implements TimedSystem {
 			globalEvents = new EObjectContainmentEList.Resolving<FSMEvent>(FSMEvent.class, this, TfsmPackage.TIMED_SYSTEM__GLOBAL_EVENTS);
 		}
 		return globalEvents;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String init() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**

@@ -18,10 +18,10 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.EventGuardImpl#getTriggeringEvent <em>Triggering Event</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

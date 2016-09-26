@@ -11,12 +11,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getTfsms <em>Tfsms</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getGlobalClocks <em>Global Clocks</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.TimedSystem#getGlobalEvents <em>Global Events</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getTimedSystem()
  * @model
@@ -70,13 +70,5 @@ public interface TimedSystem extends NamedElement {
 	 * @generated
 	 */
 	EList<FSMEvent> getGlobalEvents();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	String init();
 
 } // TimedSystem

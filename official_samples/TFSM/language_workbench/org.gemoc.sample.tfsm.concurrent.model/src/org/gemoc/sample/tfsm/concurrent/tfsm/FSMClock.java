@@ -10,10 +10,10 @@ package org.gemoc.sample.tfsm.concurrent.tfsm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.FSMClock#getNumberOfTicks <em>Number Of Ticks</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getFSMClock()
  * @model
@@ -46,13 +46,5 @@ public interface FSMClock extends NamedElement {
 	 * @generated
 	 */
 	void setNumberOfTicks(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	String ticks();
 
 } // FSMClock

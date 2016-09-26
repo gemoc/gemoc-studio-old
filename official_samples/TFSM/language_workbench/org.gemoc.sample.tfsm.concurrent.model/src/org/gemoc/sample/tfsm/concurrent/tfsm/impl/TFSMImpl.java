@@ -30,15 +30,14 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.Transition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getOwnedStates <em>Owned States</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getInitialState <em>Initial State</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getLocalEvents <em>Local Events</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getLocalClock <em>Local Clock</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
- *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TFSMImpl#getCurrentState <em>Current State</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -92,16 +91,6 @@ public class TFSMImpl extends NamedElementImpl implements TFSM {
 	 * @ordered
 	 */
 	protected EList<Transition> ownedTransitions;
-
-	/**
-	 * The cached value of the '{@link #getCurrentState() <em>Current State</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCurrentState()
-	 * @generated
-	 * @ordered
-	 */
-	protected State currentState;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -267,66 +256,6 @@ public class TFSMImpl extends NamedElementImpl implements TFSM {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public State getCurrentState() {
-		if (currentState != null && currentState.eIsProxy()) {
-			InternalEObject oldCurrentState = (InternalEObject)currentState;
-			currentState = (State)eResolveProxy(oldCurrentState);
-			if (currentState != oldCurrentState) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TfsmPackage.TFSM__CURRENT_STATE, oldCurrentState, currentState));
-			}
-		}
-		return currentState;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public State basicGetCurrentState() {
-		return currentState;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCurrentState(State newCurrentState) {
-		State oldCurrentState = currentState;
-		currentState = newCurrentState;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TFSM__CURRENT_STATE, oldCurrentState, currentState));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String init() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void changeCurrentState(State newState) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -377,9 +306,6 @@ public class TFSMImpl extends NamedElementImpl implements TFSM {
 				return basicGetLocalClock();
 			case TfsmPackage.TFSM__OWNED_TRANSITIONS:
 				return getOwnedTransitions();
-			case TfsmPackage.TFSM__CURRENT_STATE:
-				if (resolve) return getCurrentState();
-				return basicGetCurrentState();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -411,9 +337,6 @@ public class TFSMImpl extends NamedElementImpl implements TFSM {
 				getOwnedTransitions().clear();
 				getOwnedTransitions().addAll((Collection<? extends Transition>)newValue);
 				return;
-			case TfsmPackage.TFSM__CURRENT_STATE:
-				setCurrentState((State)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -441,9 +364,6 @@ public class TFSMImpl extends NamedElementImpl implements TFSM {
 			case TfsmPackage.TFSM__OWNED_TRANSITIONS:
 				getOwnedTransitions().clear();
 				return;
-			case TfsmPackage.TFSM__CURRENT_STATE:
-				setCurrentState((State)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -466,8 +386,6 @@ public class TFSMImpl extends NamedElementImpl implements TFSM {
 				return localClock != null;
 			case TfsmPackage.TFSM__OWNED_TRANSITIONS:
 				return ownedTransitions != null && !ownedTransitions.isEmpty();
-			case TfsmPackage.TFSM__CURRENT_STATE:
-				return currentState != null;
 		}
 		return super.eIsSet(featureID);
 	}

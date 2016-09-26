@@ -11,12 +11,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.State#getOwningFSM <em>Owning FSM</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.State#getOutgoingTransitions <em>Outgoing Transitions</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.State#getIncomingTransitions <em>Incoming Transitions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage#getState()
  * @model
@@ -86,21 +86,5 @@ public interface State extends NamedElement {
 	 * @generated
 	 */
 	EList<Transition> getIncomingTransitions();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	String onEnter();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	String onLeave();
 
 } // State

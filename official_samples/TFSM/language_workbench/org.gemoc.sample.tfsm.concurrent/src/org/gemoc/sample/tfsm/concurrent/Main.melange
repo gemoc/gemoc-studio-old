@@ -1,6 +1,6 @@
 package org.gemoc.sample.tfsm.concurrent
 
-language XTfsmConcurrent {
+language XTfsm {
 	
 	/*
 	 * Declare abstract syntax

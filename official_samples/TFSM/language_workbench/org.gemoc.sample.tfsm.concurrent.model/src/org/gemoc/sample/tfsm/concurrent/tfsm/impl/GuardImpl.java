@@ -10,8 +10,6 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.TfsmPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Guard</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

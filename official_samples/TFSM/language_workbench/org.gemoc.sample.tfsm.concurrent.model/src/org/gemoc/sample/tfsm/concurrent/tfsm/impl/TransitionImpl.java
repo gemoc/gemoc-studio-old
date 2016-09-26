@@ -27,6 +27,7 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.Transition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl#getTarget <em>Target</em>}</li>
@@ -34,7 +35,6 @@ import org.gemoc.sample.tfsm.concurrent.tfsm.Transition;
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl#getGeneratedEvents <em>Generated Events</em>}</li>
  *   <li>{@link org.gemoc.sample.tfsm.concurrent.tfsm.impl.TransitionImpl#getAction <em>Action</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -335,17 +335,6 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 		action = newAction;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TRANSITION__ACTION, oldAction, action));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String fire() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
