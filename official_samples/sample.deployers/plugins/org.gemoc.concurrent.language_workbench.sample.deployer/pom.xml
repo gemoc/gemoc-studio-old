@@ -70,8 +70,8 @@
 								<zip destfile="${basedir}/zips/org.gemoc.sample.sigpml.k3dsa.zip">
 									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sample.sigpml.k3dsa/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.sigpml.moc.application.zip">
-									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sample.sigpml.moc.application/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.sigpml.moc.dse.zip">
+									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sample.sigpml.moc.dse/" />
 								</zip>
 								<zip destfile="${basedir}/zips/org.gemoc.sample.sigpml.moc.lib.zip">
 									<fileset dir="${sigpml_sample_language_root}/org.gemoc.sample.sigpml.moc.lib/" />

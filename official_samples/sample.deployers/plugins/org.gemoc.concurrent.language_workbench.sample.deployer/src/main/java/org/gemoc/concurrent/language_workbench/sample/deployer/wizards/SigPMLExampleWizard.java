@@ -26,7 +26,7 @@ public class SigPMLExampleWizard
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/fr.cnrs.luchogie.ultimateplotter.zip", "fr.cnrs.luchogie.ultimateplotter"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.sigpml.zip", "org.gemoc.sample.sigpml"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.sigpml.k3dsa.zip", "org.gemoc.sample.sigpml.k3dsa"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.sigpml.moc.application.zip", "org.gemoc.sample.sigpml.moc.application"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.sigpml.moc.dse.zip", "org.gemoc.sample.sigpml.moc.dse"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.sigpml.moc.lib.zip", "org.gemoc.sample.sigpml.moc.lib"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.sigpml.model.zip", "org.gemoc.sample.sigpml.model"));
 		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.sigpml.xsigpml.zip", "org.gemoc.sample.sigpml.xsigpml"));
