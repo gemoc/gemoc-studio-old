@@ -1,4 +1,4 @@
-package org.gemoc.sample.tfsm.moc.lib;
+package org.gemoc.sample.tfsm.concurrent.moc.lib;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

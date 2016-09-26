@@ -10,7 +10,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
  org.gemoc.execution.concurrent.ccsljavaengine.extensions.k3;bundle-version="0.0.0";visibility:="reexport",
  
- org.gemoc.sample.tfsm.moc.lib;bundle-version="0.0.0";visibility:="reexport",
+ org.gemoc.sample.tfsm.concurrent.moc.lib;bundle-version="0.0.0";visibility:="reexport",
  
  org.eclipse.core.runtime;bundle-version="3.9.100",
  
