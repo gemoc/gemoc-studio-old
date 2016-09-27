@@ -1,4 +1,4 @@
-Bundle-SymbolicName: org.gemoc.sample.tfsm.plaink3.xdsml;singleton:=true
+Bundle-SymbolicName: org.gemoc.sample.tfsm.sequential;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Name: org.gemoc.sample.tfsm.plaink3.xdsml
 Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
