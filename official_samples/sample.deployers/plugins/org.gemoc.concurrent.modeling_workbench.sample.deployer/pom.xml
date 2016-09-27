@@ -34,8 +34,8 @@
 							<tasks>
 								<mkdir dir="${basedir}/zips" />
 								
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.simple_example.zip">
-									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.simple_example/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.concurrent.simple_example.zip">
+									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.concurrent.simple_example/" />
 								</zip>
 
 								<zip destfile="${basedir}/zips/org.gemoc.sample.sigpml.simple_example.zip">

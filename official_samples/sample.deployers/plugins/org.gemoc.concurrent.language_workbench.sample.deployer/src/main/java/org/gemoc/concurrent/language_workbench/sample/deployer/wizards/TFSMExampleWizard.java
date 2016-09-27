@@ -23,14 +23,15 @@ public class TFSMExampleWizard
 		// We need the statements example to be unzipped along with the
 		// EMF library example model, edit and editor examples
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.design.zip", "org.gemoc.sample.tfsm.design"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.eclmoc2as.zip", "org.gemoc.sample.tfsm.eclmoc2as"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.k3dsa.zip", "org.gemoc.sample.tfsm.k3dsa"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.moc.lib.zip", "org.gemoc.sample.tfsm.moc.lib"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.model.zip", "org.gemoc.sample.tfsm.model"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.model.edit.zip", "org.gemoc.sample.tfsm.model.edit"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.model.editor.zip", "org.gemoc.sample.tfsm.model.editor"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.xdsml.zip", "org.gemoc.sample.tfsm.xdsml"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.concurrent.zip", "org.gemoc.sample.tfsm.concurrent"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.concurrent.k3dsa.zip", "org.gemoc.sample.tfsm.concurrent.k3dsa"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.concurrent.moc.dse.zip", "org.gemoc.sample.tfsm.concurrent.moc.dse"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.concurrent.moc.lib.zip", "org.gemoc.sample.tfsm.concurrent.moc.lib"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.concurrent.model.zip", "org.gemoc.sample.tfsm.concurrent.model"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.concurrent.xtfsm.zip", "org.gemoc.sample.tfsm.concurrent.xtfsm"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.concurrent.xtfsm.design.zip", "org.gemoc.sample.tfsm.concurrent.xtfsm.design"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.concurrent.xtfsm.edit.zip", "org.gemoc.sample.tfsm.concurrent.xtfsm.edit"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.concurrent.xtfsm.editor.zip", "org.gemoc.sample.tfsm.concurrent.xtfsm.editor"));
 		return projects;
 	}
 
