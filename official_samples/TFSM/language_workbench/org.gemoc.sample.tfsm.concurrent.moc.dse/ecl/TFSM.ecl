@@ -1,14 +1,13 @@
-import 'http://www.gemoc.org/sample/tfsm'
---import 'platform:/resource/org.gemoc.sample.tfsm.model/model/tfsm.ecore'
---import 'platform:/resource/org.gemoc.sample.tfsm.tfsmextended.model/model/TfsmExtended.ecore'
+import 'http://xtfsm/tfsm/'
+--import 'platform:/resource/org.gemoc.sample.tfsm.concurrent.xtfsm/model/tfsm.ecore'
 import _'http://www.eclipse.org/emf/2002/Ecore'
 
 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib"
 --ECLimport "platform:/plugin/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib"
-ECLimport "platform:/resource/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoC.ccslLib"
-ECLimport "platform:/resource/org.gemoc.sample.tfsm.moc.lib/ccsl/TFSMMoCC.moccml"
+ECLimport "platform:/resource/org.gemoc.sample.tfsm.concurrent.moc.lib/ccsl/TFSMMoC.ccslLib"
+ECLimport "platform:/resource/org.gemoc.sample.tfsm.concurrent.moc.lib/ccsl/TFSMMoCC.moccml"
 
 package tfsm
 /** 
