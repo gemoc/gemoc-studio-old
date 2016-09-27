@@ -4,6 +4,7 @@ import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.TimedSystem;
 import org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.FSMClock;
 import org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.FSMEvent;
@@ -11,7 +12,7 @@ import org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.TFSM;
 
 @SuppressWarnings("all")
 public class TimedSystemAdapter extends EObjectAdapter<TimedSystem> implements org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.TimedSystem {
-  private org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory adaptersFactory;
+  private XTfsmMTAdaptersFactory adaptersFactory;
   
   public TimedSystemAdapter() {
     super(org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory.getInstance());
@@ -57,7 +58,7 @@ public class TimedSystemAdapter extends EObjectAdapter<TimedSystem> implements o
   
   @Override
   public String init() {
-    return adaptee.init();
+    return org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TimedSystemAspect.init(adaptee);
   }
   
   protected final static String NAME_EDEFAULT = null;

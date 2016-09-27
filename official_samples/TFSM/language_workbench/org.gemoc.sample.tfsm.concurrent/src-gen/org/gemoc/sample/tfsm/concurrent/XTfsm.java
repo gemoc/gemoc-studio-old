@@ -5,6 +5,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.gemoc.sample.tfsm.concurrent.XTfsmMT;
 
 @SuppressWarnings("all")
 public class XTfsm implements IMetamodel {
@@ -18,7 +19,7 @@ public class XTfsm implements IMetamodel {
     this.resource = resource;
   }
   
-  public static org.gemoc.sample.tfsm.concurrent.XTfsm load(final String uri) {
+  public static XTfsm load(final String uri) {
     ResourceSet rs = new ResourceSetImpl();
     Resource res = rs.getResource(URI.createURI(uri), true);
     XTfsm mm = new XTfsm();
@@ -26,7 +27,7 @@ public class XTfsm implements IMetamodel {
     return mm ;
   }
   
-  public org.gemoc.sample.tfsm.concurrent.XTfsmMT toXTfsmMT() {
+  public XTfsmMT toXTfsmMT() {
     org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmAdapter adaptee = new org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmAdapter() ;
     adaptee.setAdaptee(resource);
     return adaptee;

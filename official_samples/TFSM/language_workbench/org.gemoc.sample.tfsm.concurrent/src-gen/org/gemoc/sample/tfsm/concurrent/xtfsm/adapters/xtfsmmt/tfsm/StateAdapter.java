@@ -4,13 +4,14 @@ import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.State;
 import org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.TFSM;
 import org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.Transition;
 
 @SuppressWarnings("all")
 public class StateAdapter extends EObjectAdapter<State> implements org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.State {
-  private org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory adaptersFactory;
+  private XTfsmMTAdaptersFactory adaptersFactory;
   
   public StateAdapter() {
     super(org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory.getInstance());
@@ -59,12 +60,12 @@ public class StateAdapter extends EObjectAdapter<State> implements org.gemoc.sam
   
   @Override
   public String onEnter() {
-    return adaptee.onEnter();
+    return org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspect.onEnter(adaptee);
   }
   
   @Override
   public String onLeave() {
-    return adaptee.onLeave();
+    return org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspect.onLeave(adaptee);
   }
   
   protected final static String NAME_EDEFAULT = null;

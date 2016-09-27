@@ -2,11 +2,12 @@ package org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm;
 
 import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import org.eclipse.emf.ecore.EClass;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.FSMClock;
 
 @SuppressWarnings("all")
 public class FSMClockAdapter extends EObjectAdapter<FSMClock> implements org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.FSMClock {
-  private org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory adaptersFactory;
+  private XTfsmMTAdaptersFactory adaptersFactory;
   
   public FSMClockAdapter() {
     super(org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory.getInstance());
@@ -24,11 +25,6 @@ public class FSMClockAdapter extends EObjectAdapter<FSMClock> implements org.gem
   }
   
   @Override
-  public String ticks() {
-    return adaptee.ticks();
-  }
-  
-  @Override
   public int getNumberOfTicks() {
     return org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspect.numberOfTicks(adaptee);
   }
@@ -37,6 +33,11 @@ public class FSMClockAdapter extends EObjectAdapter<FSMClock> implements org.gem
   public void setNumberOfTicks(final int numberOfTicks) {
     org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspect.numberOfTicks(adaptee, numberOfTicks
     );
+  }
+  
+  @Override
+  public String ticks() {
+    return org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspect.ticks(adaptee);
   }
   
   protected final static String NAME_EDEFAULT = null;

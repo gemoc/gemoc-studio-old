@@ -5,6 +5,17 @@ import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import java.util.WeakHashMap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.EvaluateGuardAdapter;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.EventGuardAdapter;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.FSMClockAdapter;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.FSMEventAdapter;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.GuardAdapter;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.NamedElementAdapter;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.StateAdapter;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.TFSMAdapter;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.TemporalGuardAdapter;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.TimedSystemAdapter;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.TransitionAdapter;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.EvaluateGuard;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.EventGuard;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.FSMClock;
@@ -19,9 +30,9 @@ import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.Transition;
 
 @SuppressWarnings("all")
 public class XTfsmMTAdaptersFactory implements AdaptersFactory {
-  private static org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory instance;
+  private static XTfsmMTAdaptersFactory instance;
   
-  public static org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory getInstance() {
+  public static XTfsmMTAdaptersFactory getInstance() {
     if (instance == null) {
     	instance = new org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory();
     }
@@ -66,7 +77,7 @@ public class XTfsmMTAdaptersFactory implements AdaptersFactory {
     return null;
   }
   
-  public org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.TFSMAdapter createTFSMAdapter(final TFSM adaptee, final Resource res) {
+  public TFSMAdapter createTFSMAdapter(final TFSM adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
@@ -81,7 +92,7 @@ public class XTfsmMTAdaptersFactory implements AdaptersFactory {
     }
   }
   
-  public org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.StateAdapter createStateAdapter(final State adaptee, final Resource res) {
+  public StateAdapter createStateAdapter(final State adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
@@ -96,7 +107,7 @@ public class XTfsmMTAdaptersFactory implements AdaptersFactory {
     }
   }
   
-  public org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.TransitionAdapter createTransitionAdapter(final Transition adaptee, final Resource res) {
+  public TransitionAdapter createTransitionAdapter(final Transition adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
@@ -111,7 +122,7 @@ public class XTfsmMTAdaptersFactory implements AdaptersFactory {
     }
   }
   
-  public org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.NamedElementAdapter createNamedElementAdapter(final NamedElement adaptee, final Resource res) {
+  public NamedElementAdapter createNamedElementAdapter(final NamedElement adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
@@ -126,7 +137,7 @@ public class XTfsmMTAdaptersFactory implements AdaptersFactory {
     }
   }
   
-  public org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.GuardAdapter createGuardAdapter(final Guard adaptee, final Resource res) {
+  public GuardAdapter createGuardAdapter(final Guard adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
@@ -141,7 +152,7 @@ public class XTfsmMTAdaptersFactory implements AdaptersFactory {
     }
   }
   
-  public org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.TemporalGuardAdapter createTemporalGuardAdapter(final TemporalGuard adaptee, final Resource res) {
+  public TemporalGuardAdapter createTemporalGuardAdapter(final TemporalGuard adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
@@ -156,7 +167,7 @@ public class XTfsmMTAdaptersFactory implements AdaptersFactory {
     }
   }
   
-  public org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.EventGuardAdapter createEventGuardAdapter(final EventGuard adaptee, final Resource res) {
+  public EventGuardAdapter createEventGuardAdapter(final EventGuard adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
@@ -171,7 +182,7 @@ public class XTfsmMTAdaptersFactory implements AdaptersFactory {
     }
   }
   
-  public org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.FSMEventAdapter createFSMEventAdapter(final FSMEvent adaptee, final Resource res) {
+  public FSMEventAdapter createFSMEventAdapter(final FSMEvent adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
@@ -186,7 +197,7 @@ public class XTfsmMTAdaptersFactory implements AdaptersFactory {
     }
   }
   
-  public org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.FSMClockAdapter createFSMClockAdapter(final FSMClock adaptee, final Resource res) {
+  public FSMClockAdapter createFSMClockAdapter(final FSMClock adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
@@ -201,7 +212,7 @@ public class XTfsmMTAdaptersFactory implements AdaptersFactory {
     }
   }
   
-  public org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.TimedSystemAdapter createTimedSystemAdapter(final TimedSystem adaptee, final Resource res) {
+  public TimedSystemAdapter createTimedSystemAdapter(final TimedSystem adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
@@ -216,7 +227,7 @@ public class XTfsmMTAdaptersFactory implements AdaptersFactory {
     }
   }
   
-  public org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm.EvaluateGuardAdapter createEvaluateGuardAdapter(final EvaluateGuard adaptee, final Resource res) {
+  public EvaluateGuardAdapter createEvaluateGuardAdapter(final EvaluateGuard adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);

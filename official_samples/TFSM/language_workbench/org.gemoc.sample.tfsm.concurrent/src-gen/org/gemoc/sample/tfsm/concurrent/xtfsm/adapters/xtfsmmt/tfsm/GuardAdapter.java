@@ -2,11 +2,12 @@ package org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm;
 
 import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import org.eclipse.emf.ecore.EClass;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.Guard;
 
 @SuppressWarnings("all")
 public class GuardAdapter extends EObjectAdapter<Guard> implements org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.Guard {
-  private org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory adaptersFactory;
+  private XTfsmMTAdaptersFactory adaptersFactory;
   
   public GuardAdapter() {
     super(org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory.getInstance());

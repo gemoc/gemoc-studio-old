@@ -16,6 +16,10 @@ import org.gemoc.sample.tfsm.concurrent.k3dsa.GroovyRunner
 
 
 import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TFSMAspect.*
+import groovy.lang.GroovyShell
+import java.util.Map
+import groovy.lang.Binding
+
 /*import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.StateAspect.*
 import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TransitionAspect.*
 import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.NamedElementAspect.*
@@ -64,7 +68,24 @@ class StateAspect extends NamedElementAspect {
 @Aspect(className=Transition)
 class TransitionAspect extends NamedElementAspect {
 	def public String fire() {
-		GroovyRunner.executeScript(_self.action, _self);
+		if(_self.action!= null && !_self.action.empty){		
+			//GroovyRunner.executeScript(_self.action, _self);
+			var Object res;
+			try {	
+				// add variables _self and _this for use in the expression
+				val binding = new Binding
+				binding.setVariable("_self", _self)
+				binding.setVariable("_this", _self)		
+				val ucl = EvaluateGuardAspect.classLoader
+				val shell = new GroovyShell(ucl, binding)
+		
+				res = shell.evaluate(_self.action) as Map<String, Object>
+		
+			} catch (org.codehaus.groovy.control.MultipleCompilationErrorsException cnfe) {
+				println("Failed to call Groovy script" + cnfe.message)
+				cnfe.printStackTrace
+			}	
+		}
 		_self.source.owningFSM.currentState = null
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".fire()]Fired " + _self.name + " -> " +
 			_self.action)
@@ -96,18 +117,13 @@ class FSMEventAspect extends NamedElementAspect {
 
 @Aspect(className=FSMClock)
 class FSMClockAspect extends NamedElementAspect {
-	//public Integer numberOfTicks;
+	
 	public int numberOfTicks
 
 	// Clock tick
 	def public String ticks() {
-		GroovyRunner.executeScript("doTick", _self);
-
-		//if (_self.numberOfTicks == null) {
-		//	_self.numberOfTicks = 0
-		//} else {
-			_self.numberOfTicks = _self.numberOfTicks + 1
-		//}
+		_self.numberOfTicks = _self.numberOfTicks + 1
+		
 		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".ticks()]New number of ticks : " +
 			_self.numberOfTicks.toString())
 	}
@@ -127,7 +143,20 @@ class TimedSystemAspect extends NamedElementAspect {
 class EvaluateGuardAspect extends GuardAspect {
 	def public boolean evaluate() {
 		var Object res;
-		res = GroovyRunner.executeScript(_self.condition, _self)
+		try {	
+			// add variables _self and _this for use in the expression
+			val binding = new Binding
+			binding.setVariable("_self", _self)
+			binding.setVariable("_this", _self)		
+			val ucl = EvaluateGuardAspect.classLoader
+			val shell = new GroovyShell(ucl, binding)
+	
+			res = shell.evaluate(_self.condition) as Map<String, Object>
+	
+		} catch (org.codehaus.groovy.control.MultipleCompilationErrorsException cnfe) {
+			println("Failed to call Groovy script" + cnfe.message)
+			cnfe.printStackTrace
+		}
 
 		return res as Boolean;
 	}

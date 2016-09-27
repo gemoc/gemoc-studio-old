@@ -673,8 +673,6 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		// Create annotations
 		// aspect
 		createAspectAnnotations();
-		// dynamic
-		createDynamicAnnotations();
 	}
 
 	/**
@@ -701,36 +699,6 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (transitionEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (fsmEventEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getFSMClock_NumberOfTicks(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (evaluateGuardEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>dynamic</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createDynamicAnnotations() {
-		String source = "dynamic";	
-		addAnnotation
 		  (stateEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
@@ -741,7 +709,32 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (transitionEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (fsmEventEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (fsmClockEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getFSMClock_NumberOfTicks(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (timedSystemEClass.getEOperations().get(0), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (evaluateGuardEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });

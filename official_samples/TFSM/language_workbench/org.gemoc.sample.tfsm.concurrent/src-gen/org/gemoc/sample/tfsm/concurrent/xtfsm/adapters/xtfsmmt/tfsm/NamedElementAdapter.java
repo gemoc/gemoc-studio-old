@@ -2,11 +2,12 @@ package org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm;
 
 import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import org.eclipse.emf.ecore.EClass;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.NamedElement;
 
 @SuppressWarnings("all")
 public class NamedElementAdapter extends EObjectAdapter<NamedElement> implements org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.NamedElement {
-  private org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory adaptersFactory;
+  private XTfsmMTAdaptersFactory adaptersFactory;
   
   public NamedElementAdapter() {
     super(org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory.getInstance());

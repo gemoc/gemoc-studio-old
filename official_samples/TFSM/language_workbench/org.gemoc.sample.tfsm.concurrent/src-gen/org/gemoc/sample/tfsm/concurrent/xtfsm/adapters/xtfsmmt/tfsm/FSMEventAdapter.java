@@ -4,12 +4,13 @@ import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.FSMEvent;
 import org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.Transition;
 
 @SuppressWarnings("all")
 public class FSMEventAdapter extends EObjectAdapter<FSMEvent> implements org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.FSMEvent {
-  private org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory adaptersFactory;
+  private XTfsmMTAdaptersFactory adaptersFactory;
   
   public FSMEventAdapter() {
     super(org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory.getInstance());

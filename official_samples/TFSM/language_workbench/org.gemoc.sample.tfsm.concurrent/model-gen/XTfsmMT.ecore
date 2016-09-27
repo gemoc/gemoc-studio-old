@@ -20,11 +20,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="//NamedElement">
     <eOperations name="onEnter">
-      <eAnnotations source="dynamic"/>
+      <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="onLeave">
-      <eAnnotations source="dynamic"/>
+      <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningFSM" lowerBound="1" eType="//TFSM" eOpposite="//TFSM/ownedStates"/>
@@ -68,7 +68,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FSMClock" eSuperTypes="//NamedElement">
     <eOperations name="ticks">
-      <eAnnotations source="dynamic"/>
+      <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfTicks">
@@ -78,6 +78,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TimedSystem" eSuperTypes="//NamedElement">
     <eOperations name="init">
+      <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tfsms" upperBound="-1" eType="//TFSM" containment="true"/>

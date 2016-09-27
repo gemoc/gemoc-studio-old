@@ -4,6 +4,7 @@ import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.Transition;
 import org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.FSMEvent;
 import org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.Guard;
@@ -11,7 +12,7 @@ import org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.State;
 
 @SuppressWarnings("all")
 public class TransitionAdapter extends EObjectAdapter<Transition> implements org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.Transition {
-  private org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory adaptersFactory;
+  private XTfsmMTAdaptersFactory adaptersFactory;
   
   public TransitionAdapter() {
     super(org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory.getInstance());

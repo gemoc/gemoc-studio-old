@@ -2,12 +2,13 @@ package org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm;
 
 import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import org.eclipse.emf.ecore.EClass;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.EventGuard;
 import org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.FSMEvent;
 
 @SuppressWarnings("all")
 public class EventGuardAdapter extends EObjectAdapter<EventGuard> implements org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.EventGuard {
-  private org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory adaptersFactory;
+  private XTfsmMTAdaptersFactory adaptersFactory;
   
   public EventGuardAdapter() {
     super(org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory.getInstance());

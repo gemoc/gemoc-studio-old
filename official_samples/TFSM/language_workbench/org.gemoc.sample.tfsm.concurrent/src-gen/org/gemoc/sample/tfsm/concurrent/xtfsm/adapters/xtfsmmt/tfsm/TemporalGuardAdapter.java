@@ -2,12 +2,13 @@ package org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.tfsm;
 
 import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import org.eclipse.emf.ecore.EClass;
+import org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory;
 import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.TemporalGuard;
 import org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.FSMClock;
 
 @SuppressWarnings("all")
 public class TemporalGuardAdapter extends EObjectAdapter<TemporalGuard> implements org.gemoc.sample.tfsm.concurrent.xtfsmmt.tfsm.TemporalGuard {
-  private org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory adaptersFactory;
+  private XTfsmMTAdaptersFactory adaptersFactory;
   
   public TemporalGuardAdapter() {
     super(org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmMTAdaptersFactory.getInstance());
