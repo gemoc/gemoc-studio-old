@@ -1,17 +1,17 @@
-package org.gemoc.sample.tfsm.plaink3.design.services;
+package org.gemoc.sample.tfsm.sequential.xtfsm.design.services;
 
-import org.gemoc.sample.tfsm.sequential.tfsm.EvaluateGuard;
-import org.gemoc.sample.tfsm.sequential.tfsm.EventGuard;
-import org.gemoc.sample.tfsm.sequential.tfsm.FSMEvent;
-import org.gemoc.sample.tfsm.sequential.tfsm.TemporalGuard;
-import org.gemoc.sample.tfsm.sequential.tfsm.Transition;
+import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EvaluateGuard;
+import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard;
+import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.FSMEvent;
+import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard;
+import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Transition;
 
 /** TFSM services.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  * 
  */
-public class TFSMServices {
+public class XTFSMServices {
 
 	/**
 	 * Gets the label for the given {@link Transition}.

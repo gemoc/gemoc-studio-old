@@ -1,4 +1,4 @@
-package org.gemoc.sample.tfsm.plaink3.design.services;
+package org.gemoc.sample.tfsm.sequential.xtfsm.design.services;
 
 import java.util.ArrayList;
 import java.util.List;

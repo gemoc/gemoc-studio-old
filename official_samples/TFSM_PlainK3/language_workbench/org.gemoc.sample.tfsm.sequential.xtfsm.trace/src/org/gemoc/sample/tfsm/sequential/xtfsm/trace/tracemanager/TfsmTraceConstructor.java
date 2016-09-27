@@ -133,12 +133,12 @@ public class TfsmTraceConstructor implements ITraceConstructor {
 	private boolean addNewObjectToState(org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard o_cast,
 			tfsmTrace.States.State newState) {
 		boolean added = false;
-		if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard) {
-			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard) {
+		if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard) {
 			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard) o_cast, newState);
 		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EvaluateGuard) {
 			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EvaluateGuard) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard) {
+			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard) o_cast, newState);
 		}
 
 		return added;
@@ -147,20 +147,20 @@ public class TfsmTraceConstructor implements ITraceConstructor {
 	private boolean addNewObjectToState(org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.NamedElement o_cast,
 			tfsmTrace.States.State newState) {
 		boolean added = false;
-		if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TimedSystem) {
-			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TimedSystem) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.State) {
-			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.State) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Transition) {
-			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Transition) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM) {
+		if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM) {
 			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard) {
-			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard) o_cast, newState);
 		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.FSMClock) {
 			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.FSMClock) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TimedSystem) {
+			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TimedSystem) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Transition) {
+			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Transition) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.State) {
+			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.State) o_cast, newState);
 		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.FSMEvent) {
 			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.FSMEvent) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard) {
+			added = addNewObjectToState((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard) o_cast, newState);
 		}
 
 		return added;
@@ -314,6 +314,29 @@ public class TfsmTraceConstructor implements ITraceConstructor {
 						org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM o_cast = (org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM) o;
 
 						if (p.getFeatureID() == org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TfsmPackage.eINSTANCE
+								.getTFSM_LastStateChangeStepNumber().getFeatureID()) {
+
+							// Rollback: we remove the last value of this field from the new state
+							tfsmTrace.States.tfsm.TracedTFSM traced = (tfsmTrace.States.tfsm.TracedTFSM) exeToTraced
+									.get(o);
+							tfsmTrace.States.TFSM_lastStateChangeStepNumber_Value lastValue = traced
+									.getLastStateChangeStepNumberSequence()
+									.get(traced.getLastStateChangeStepNumberSequence().size() - 1);
+							newState.getTFSM_lastStateChangeStepNumber_Values().remove(lastValue);
+
+							// And we create a proper new value
+							tfsmTrace.States.TFSM_lastStateChangeStepNumber_Value newValue = tfsmTrace.States.StatesFactory.eINSTANCE
+									.createTFSM_lastStateChangeStepNumber_Value();
+
+							int value = o_cast.getLastStateChangeStepNumber();
+
+							newValue.setLastStateChangeStepNumber((int) value);
+
+							traced.getLastStateChangeStepNumberSequence().add(newValue);
+							newState.getTFSM_lastStateChangeStepNumber_Values().add(newValue);
+						} else
+
+						if (p.getFeatureID() == org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TfsmPackage.eINSTANCE
 								.getTFSM_CurrentState().getFeatureID()) {
 
 							// Rollback: we remove the last value of this field from the new state
@@ -336,29 +359,6 @@ public class TfsmTraceConstructor implements ITraceConstructor {
 
 							traced.getCurrentStateSequence().add(newValue);
 							newState.getTFSM_currentState_Values().add(newValue);
-						} else
-
-						if (p.getFeatureID() == org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TfsmPackage.eINSTANCE
-								.getTFSM_LastStateChangeStepNumber().getFeatureID()) {
-
-							// Rollback: we remove the last value of this field from the new state
-							tfsmTrace.States.tfsm.TracedTFSM traced = (tfsmTrace.States.tfsm.TracedTFSM) exeToTraced
-									.get(o);
-							tfsmTrace.States.TFSM_lastStateChangeStepNumber_Value lastValue = traced
-									.getLastStateChangeStepNumberSequence()
-									.get(traced.getLastStateChangeStepNumberSequence().size() - 1);
-							newState.getTFSM_lastStateChangeStepNumber_Values().remove(lastValue);
-
-							// And we create a proper new value
-							tfsmTrace.States.TFSM_lastStateChangeStepNumber_Value newValue = tfsmTrace.States.StatesFactory.eINSTANCE
-									.createTFSM_lastStateChangeStepNumber_Value();
-
-							int value = o_cast.getLastStateChangeStepNumber();
-
-							newValue.setLastStateChangeStepNumber((int) value);
-
-							traced.getLastStateChangeStepNumberSequence().add(newValue);
-							newState.getTFSM_lastStateChangeStepNumber_Values().add(newValue);
 						} else
 
 						if (p.getFeatureID() == org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TfsmPackage.eINSTANCE

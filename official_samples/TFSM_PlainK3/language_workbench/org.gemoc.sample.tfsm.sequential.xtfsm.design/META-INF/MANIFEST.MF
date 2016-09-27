@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-Name: org.gemoc.sample.tfsm.plaink3.design
 Bundle-SymbolicName: org.gemoc.sample.tfsm.sequential.xtfsm.design;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.gemoc.sample.tfsm.plaink3.design.Activator
+Bundle-Activator: org.gemoc.sample.tfsm.sequential.xtfsm.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius;bundle-version="1.0.0",
@@ -23,5 +23,5 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ManifestVersion: 2
-Export-Package: org.gemoc.sample.tfsm.plaink3.design,
- org.gemoc.sample.tfsm.plaink3.design.services
+Export-Package: org.gemoc.sample.tfsm.sequential.xtfsm.design,
+ org.gemoc.sample.tfsm.sequential.xtfsm.design.services

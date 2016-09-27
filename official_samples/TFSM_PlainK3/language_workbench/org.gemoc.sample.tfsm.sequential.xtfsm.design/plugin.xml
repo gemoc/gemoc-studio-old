@@ -2,9 +2,9 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.gemoc.sample.tfsm.plaink3.design.Activator"
-               id="org.gemoc.sample.tfsm.plaink3.design"
-	       name="TFSM Plain K3">
+    <component class="org.gemoc.sample.tfsm.sequential.xtfsm.design.Activator"
+               id="org.gemoc.sample.tfsm.sequential.xtfsm.design"
+	       name="TFSM Sequential">
     </component>
   </extension>
 </plugin>
