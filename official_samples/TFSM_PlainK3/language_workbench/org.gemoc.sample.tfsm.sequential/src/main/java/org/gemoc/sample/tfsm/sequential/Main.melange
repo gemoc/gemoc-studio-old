@@ -1,0 +1,28 @@
+package org.gemoc.sample.tfsm.sequential
+
+language XTfsm {
+	
+	/*
+	 * Declare abstract syntax
+	 */
+	syntax "platform:/resource/org.gemoc.sample.tfsm.sequential.model/model/tfsm.ecore"
+	
+	/*
+	 * Declare DSA
+	 */
+	with org.gemoc.sample.tfsm.sequential.k3dsa.TFSMAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.TFSMVisitorAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.FSMEventAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.FSMClockAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.FSMClockVisitorAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.StateAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.StateVisitorAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.TransitionAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.TransitionVisitorAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.GuardVisitorAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.TemporalGuardVisitorAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.EventGuardVisitorAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.TimedSystemAspect
+	with org.gemoc.sample.tfsm.sequential.k3dsa.TimedSystemVisitorAspect
+	
+}

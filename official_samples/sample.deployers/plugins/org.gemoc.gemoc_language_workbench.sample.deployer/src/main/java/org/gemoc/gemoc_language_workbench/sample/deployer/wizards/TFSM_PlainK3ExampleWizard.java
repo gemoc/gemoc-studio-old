@@ -23,14 +23,14 @@ public class TFSM_PlainK3ExampleWizard
 		// We need the statements example to be unzipped along with the
 		// EMF library example model, edit and editor examples
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.design.zip", "org.gemoc.sample.tfsm.plaink3.design"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.dsa.zip", "org.gemoc.sample.tfsm.plaink3.dsa"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.model.zip", "org.gemoc.sample.tfsm.plaink3.model"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.xdsml.zip", "org.gemoc.sample.tfsm.plaink3.xdsml"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.zip", "org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.edit.zip", "org.gemoc.sample.tfsm.plaink3.xdsml.xfsm.edit"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.editor.zip", "org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.editor"));
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.xtfsm.trace.zip", "org.gemoc.sample.tfsm.plaink3.xtfsm.trace"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.sequential.xtfsm.design.zip", "org.gemoc.sample.tfsm.sequential.xtfsm.design"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.sequential.k3dsa.zip", "org.gemoc.sample.tfsm.sequential.k3dsa"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.sequential.model.zip", "org.gemoc.sample.tfsm.sequential.model"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.sequential.zip", "org.gemoc.sample.tfsm.sequential"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.sequential.xtfsm.zip", "org.gemoc.sample.tfsm.sequential.xtfsm"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.sequential.xtfsm.edit.zip", "org.gemoc.sample.tfsm.sequential.xfsm.edit"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.sequential.xtfsm.editor.zip", "org.gemoc.sample.tfsm.sequential.xtfsm.editor"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.sequential.xtfsm.trace.zip", "org.gemoc.sample.tfsm.sequential.xtfsm.trace"));
 		return projects;
 	}
 

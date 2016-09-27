@@ -36,29 +36,29 @@
 								<mkdir dir="${basedir}/zips" />
 
 								<!-- TFSm plaink3 -->
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.design.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.design/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.sequential.xtfsm.design.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.sequential.xtfsm.design/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.dsa.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.dsa/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.sequential.k3dsa.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.sequential.k3dsa/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.model.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.model/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.sequential.model.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.sequential.model/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.sequential.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.sequential/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.sequential.xtfsm.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.sequential.xtfsm/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.edit.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.edit/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.sequential.xtfsm.edit.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.sequential.xtfsm.edit/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.editor.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.editor/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.sequential.xtfsm.editor.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.sequential.xtfsm.editor/" />
 								</zip>
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.xtfsm.trace.zip">
-									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.plaink3.xtfsm.trace/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.sequential.xtfsm.trace.zip">
+									<fileset dir="${tfsm_plaink3_sample_language_root}/org.gemoc.sample.tfsm.sequential.xtfsm.trace/" />
 								</zip>
 
 								

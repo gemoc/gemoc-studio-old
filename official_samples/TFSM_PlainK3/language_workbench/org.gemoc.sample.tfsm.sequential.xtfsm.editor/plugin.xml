@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated XTfsm -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.presentation.TfsmModelWizardID"
+            name="%_UI_TfsmModelWizard_label"
+            class="org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.presentation.TfsmModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/TfsmModelFile.gif">
+         <description>%_UI_TfsmModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated XTfsm -->
+      <editor
+            id="org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.presentation.TfsmEditorID"
+            name="%_UI_TfsmEditor_label"
+            icon="icons/full/obj16/TfsmModelFile.gif"
+            extensions="xtfsm"
+            class="org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.presentation.TfsmEditor"
+            contributorClass="org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.presentation.TfsmActionBarContributor">
+      </editor>
+   </extension>
+</plugin>
