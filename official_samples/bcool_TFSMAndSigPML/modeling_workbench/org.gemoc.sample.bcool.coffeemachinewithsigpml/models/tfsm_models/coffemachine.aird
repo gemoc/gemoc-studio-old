@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.gemoc.sample.tfsm="http://www.gemoc.org/sample/tfsm" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_oATm4F_FEeW2puvWbZ7pPQ" selectedViews="_oRYIwF_FEeW2puvWbZ7pPQ _oTFY8F_FEeW2puvWbZ7pPQ" version="8.1.1">
-  <models xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="coffemachine.tfsm#/"/>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_oRYIwF_FEeW2puvWbZ7pPQ" initialized="true">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.gemoc.sample.tfsm="http://xtfsm/tfsm/" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_oATm4F_FEeW2puvWbZ7pPQ" selectedViews="_oRYIwF_FEeW2puvWbZ7pPQ _oTFY8F_FEeW2puvWbZ7pPQ" version="10.1.0.201509162000">
+  <semanticResources>coffemachine.xtfsm</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_oRYIwF_FEeW2puvWbZ7pPQ">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_oSLaAF_FEeW2puvWbZ7pPQ" name="CoffeeMachine">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_oSPEYF_FEeW2puvWbZ7pPQ" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_oSPEYV_FEeW2puvWbZ7pPQ" type="Sirius" element="_oSLaAF_FEeW2puvWbZ7pPQ" measurementUnit="Pixel">
@@ -162,181 +162,156 @@
           </edges>
         </data>
       </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_zl_CkIVXEea9k-DQahpbxQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_zl_CkYVXEea9k-DQahpbxQ"/>
+      </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_oSLaAV_FEeW2puvWbZ7pPQ" name="CoffeeMachine">
-        <target xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="coffemachine.tfsm#/"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="coffemachine.tfsm#/"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_oSLaAl_FEeW2puvWbZ7pPQ" labelFormat="bold" showIcon="false">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_yQ-1AM_dEeWO6PmQE5u1XA" red="39" green="76" blue="114"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_yQ-1Ac_dEeWO6PmQE5u1XA" red="252" green="233" blue="79"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaBV_FEeW2puvWbZ7pPQ" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_yQ-1As_dEeWO6PmQE5u1XA" red="254" green="255" blue="224"/>
+        <target xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="coffemachine.xtfsm#/"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="coffemachine.xtfsm#/"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_oSLaAl_FEeW2puvWbZ7pPQ" showIcon="false" labelColor="39,76,114" borderSize="1" borderSizeComputationExpression="1" borderColor="252,233,79" foregroundColor="254,255,224">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_oSLaB1_FEeW2puvWbZ7pPQ" name="CoffeeCoin">
-          <target xmi:type="org.gemoc.sample.tfsm:TFSM" href="coffemachine.tfsm#//@tfsms.0"/>
-          <semanticElements xmi:type="org.gemoc.sample.tfsm:TFSM" href="coffemachine.tfsm#//@tfsms.0"/>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_oSLaCF_FEeW2puvWbZ7pPQ" labelFormat="bold" showIcon="false">
+          <target xmi:type="org.gemoc.sample.tfsm:TFSM" href="coffemachine.xtfsm#//@tfsms.0"/>
+          <semanticElements xmi:type="org.gemoc.sample.tfsm:TFSM" href="coffemachine.xtfsm#//@tfsms.0"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_oSLaCF_FEeW2puvWbZ7pPQ" showIcon="false" labelColor="77,137,20" borderSize="1" borderSizeComputationExpression="1" borderColor="138,226,52" foregroundColor="255,255,255">
             <customFeatures>backgroundColor</customFeatures>
             <customFeatures>foregroundColor</customFeatures>
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_yQ_cEM_dEeWO6PmQE5u1XA" red="77" green="137" blue="20"/>
-            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_yQ_cEc_dEeWO6PmQE5u1XA" red="138" green="226" blue="52"/>
-            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_t2YrYGBzEeWy5NmTI7P8Dw" red="255" green="255" blue="255"/>
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']"/>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']"/>
           <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oSLaDV_FEeW2puvWbZ7pPQ" name="init" outgoingEdges="_oSLaNF_FEeW2puvWbZ7pPQ" width="2" height="2" resizeKind="NSEW">
-            <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.0"/>
-            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.0"/>
+            <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.0"/>
+            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.0"/>
             <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_MhWAAGB4EeWy5NmTI7P8Dw"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_oSLaDl_FEeW2puvWbZ7pPQ" showIcon="false" borderSize="3" borderSizeComputationExpression="3">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaD1_FEeW2puvWbZ7pPQ" red="136" green="136" blue="136"/>
-              <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@conditionnalStyles.0/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaEF_FEeW2puvWbZ7pPQ"/>
-              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaEV_FEeW2puvWbZ7pPQ"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_oSLaDl_FEeW2puvWbZ7pPQ" showIcon="false" labelColor="136,136,136" borderSize="3" borderSizeComputationExpression="3" backgroundColor="0,0,0">
+              <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@conditionnalStyles.0/@style"/>
             </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
+            <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
           <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oSLaEl_FEeW2puvWbZ7pPQ" name="Locked" outgoingEdges="_oSLaOV_FEeW2puvWbZ7pPQ" incomingEdges="_oSLaNF_FEeW2puvWbZ7pPQ _oSLaPl_FEeW2puvWbZ7pPQ" width="8" height="8" resizeKind="NSEW">
-            <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.1"/>
-            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.1"/>
+            <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.1"/>
+            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.1"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_oSLaE1_FEeW2puvWbZ7pPQ" labelSize="12" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_oSLaE1_FEeW2puvWbZ7pPQ" labelSize="12" showIcon="false" labelColor="39,76,114" borderSize="3" borderSizeComputationExpression="3" borderColor="39,76,114" labelPosition="node" backgroundColor="255,255,255">
               <customFeatures>labelSize</customFeatures>
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaFF_FEeW2puvWbZ7pPQ" red="39" green="76" blue="114"/>
-              <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaFV_FEeW2puvWbZ7pPQ" red="39" green="76" blue="114"/>
-              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaFl_FEeW2puvWbZ7pPQ" red="255" green="255" blue="255"/>
+              <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
             </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
+            <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
           <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oSLaF1_FEeW2puvWbZ7pPQ" name="Unlocked" outgoingEdges="_oSLaPl_FEeW2puvWbZ7pPQ" incomingEdges="_oSLaOV_FEeW2puvWbZ7pPQ" width="10" height="10" resizeKind="NSEW">
-            <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.2"/>
-            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.2"/>
+            <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.2"/>
+            <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.2"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_oSLaGF_FEeW2puvWbZ7pPQ" labelSize="12" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_oSLaGF_FEeW2puvWbZ7pPQ" labelSize="12" showIcon="false" labelColor="39,76,114" borderSize="3" borderSizeComputationExpression="3" borderColor="39,76,114" labelPosition="node" backgroundColor="255,255,255">
               <customFeatures>labelSize</customFeatures>
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaGV_FEeW2puvWbZ7pPQ" red="39" green="76" blue="114"/>
-              <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaGl_FEeW2puvWbZ7pPQ" red="39" green="76" blue="114"/>
-              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaG1_FEeW2puvWbZ7pPQ" red="255" green="255" blue="255"/>
+              <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
             </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
+            <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
           <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oSLaHF_FEeW2puvWbZ7pPQ" name="localclk" visible="false" width="5" height="5" resizeKind="NSEW">
-            <target xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.tfsm#//@tfsms.0/@localClock"/>
-            <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.tfsm#//@tfsms.0/@localClock"/>
+            <target xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.xtfsm#//@tfsms.0/@localClock"/>
+            <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.xtfsm#//@tfsms.0/@localClock"/>
             <graphicalFilters xmi:type="diagram:HideFilter" xmi:id="_sTacwGBzEeWy5NmTI7P8Dw"/>
-            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oSLaHV_FEeW2puvWbZ7pPQ" labelFormat="bold" showIcon="false" workspacePath="/org.gemoc.sample.tfsm.design/icons/clock_local_small.gif">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaHl_FEeW2puvWbZ7pPQ"/>
-              <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaH1_FEeW2puvWbZ7pPQ"/>
+            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oSLaHV_FEeW2puvWbZ7pPQ" showIcon="false" workspacePath="/org.gemoc.sample.tfsm.concurrent.xtfsm.design/icons/clock_local_small.gif">
+              <labelFormat>bold</labelFormat>
+              <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']/@style"/>
             </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='Clocks']"/>
+            <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='Clocks']"/>
           </ownedDiagramElements>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oSLaIF_FEeW2puvWbZ7pPQ" name="globalClock" visible="false" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.tfsm#//@globalClocks.0"/>
-          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.tfsm#//@globalClocks.0"/>
+          <target xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.xtfsm#//@globalClocks.0"/>
+          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.xtfsm#//@globalClocks.0"/>
           <graphicalFilters xmi:type="diagram:HideFilter" xmi:id="_0-D4sGBzEeWy5NmTI7P8Dw"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oSLaIV_FEeW2puvWbZ7pPQ" labelFormat="bold" showIcon="false" workspacePath="/org.gemoc.sample.tfsm.design/icons/clock_global_small.gif">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaIl_FEeW2puvWbZ7pPQ"/>
-            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaI1_FEeW2puvWbZ7pPQ"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oSLaIV_FEeW2puvWbZ7pPQ" showIcon="false" workspacePath="/org.gemoc.sample.tfsm.concurrent.xtfsm.design/icons/clock_global_small.gif">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']"/>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oSLaJF_FEeW2puvWbZ7pPQ" name="selectCoffee" width="-1" height="-1">
-          <target xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.tfsm#//@globalEvents.0"/>
-          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.tfsm#//@globalEvents.0"/>
+          <target xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.xtfsm#//@globalEvents.0"/>
+          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.xtfsm#//@globalEvents.0"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oSLaJV_FEeW2puvWbZ7pPQ" labelFormat="bold" showIcon="false" iconPath="event_small.png" borderSize="1" borderSizeComputationExpression="1" workspacePath="/org.gemoc.sample.tfsm.design/icons/event_small.gif">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaJl_FEeW2puvWbZ7pPQ"/>
-            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_yRTlIM_dEeWO6PmQE5u1XA" red="156" green="12" blue="12"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oSLaJV_FEeW2puvWbZ7pPQ" showIcon="false" iconPath="event_small.png" borderSize="1" borderSizeComputationExpression="1" borderColor="156,12,12" workspacePath="/org.gemoc.sample.tfsm.concurrent.xtfsm.design/icons/event_small.gif">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']"/>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oSLaKF_FEeW2puvWbZ7pPQ" name="releaseCoffee" width="-1" height="-1">
-          <target xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.tfsm#//@globalEvents.1"/>
-          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.tfsm#//@globalEvents.1"/>
+          <target xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.xtfsm#//@globalEvents.1"/>
+          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.xtfsm#//@globalEvents.1"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oSLaKV_FEeW2puvWbZ7pPQ" labelFormat="bold" showIcon="false" iconPath="event_small.png" borderSize="1" borderSizeComputationExpression="1" workspacePath="/org.gemoc.sample.tfsm.design/icons/event_small.gif">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaKl_FEeW2puvWbZ7pPQ"/>
-            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_yRUMMM_dEeWO6PmQE5u1XA" red="156" green="12" blue="12"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oSLaKV_FEeW2puvWbZ7pPQ" showIcon="false" iconPath="event_small.png" borderSize="1" borderSizeComputationExpression="1" borderColor="156,12,12" workspacePath="/org.gemoc.sample.tfsm.concurrent.xtfsm.design/icons/event_small.gif">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']"/>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oSLaLF_FEeW2puvWbZ7pPQ" name="coin" width="-1" height="-1">
-          <target xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.tfsm#//@globalEvents.2"/>
-          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.tfsm#//@globalEvents.2"/>
+          <target xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.xtfsm#//@globalEvents.2"/>
+          <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMEvent" href="coffemachine.xtfsm#//@globalEvents.2"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oSLaLV_FEeW2puvWbZ7pPQ" labelFormat="bold" showIcon="false" iconPath="event_small.png" borderSize="1" borderSizeComputationExpression="1" workspacePath="/org.gemoc.sample.tfsm.design/icons/event_small.gif">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaLl_FEeW2puvWbZ7pPQ"/>
-            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_yRUMMc_dEeWO6PmQE5u1XA" red="156" green="12" blue="12"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oSLaLV_FEeW2puvWbZ7pPQ" showIcon="false" iconPath="event_small.png" borderSize="1" borderSizeComputationExpression="1" borderColor="156,12,12" workspacePath="/org.gemoc.sample.tfsm.concurrent.xtfsm.design/icons/event_small.gif">
+            <labelFormat>bold</labelFormat>
+            <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']"/>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oSLaNF_FEeW2puvWbZ7pPQ" name="Invalid feature as name" sourceNode="_oSLaDV_FEeW2puvWbZ7pPQ" targetNode="_oSLaEl_FEeW2puvWbZ7pPQ">
-        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.0"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oSLaNF_FEeW2puvWbZ7pPQ" name="&#xA; / &#xA;doInit&#xA;" sourceNode="_oSLaDV_FEeW2puvWbZ7pPQ" targetNode="_oSLaEl_FEeW2puvWbZ7pPQ">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.0"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_IFgt4GB4EeWy5NmTI7P8Dw"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_oSLaNV_FEeW2puvWbZ7pPQ" targetArrow="InputFillClosedArrow" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaNl_FEeW2puvWbZ7pPQ" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oSLaN1_FEeW2puvWbZ7pPQ" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaOF_FEeW2puvWbZ7pPQ"/>
-          </centerLabelStyle>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oSLaN1_FEeW2puvWbZ7pPQ" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
+        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oSLaOV_FEeW2puvWbZ7pPQ" name="when coin&#xA; / &#xA;&#xA;  !selectCoffee;" sourceNode="_oSLaEl_FEeW2puvWbZ7pPQ" targetNode="_oSLaF1_FEeW2puvWbZ7pPQ">
-        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.1"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.1"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_IjaK0GB4EeWy5NmTI7P8Dw"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_oSLaOl_FEeW2puvWbZ7pPQ" targetArrow="InputFillClosedArrow" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaO1_FEeW2puvWbZ7pPQ" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oSLaPF_FEeW2puvWbZ7pPQ" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaPV_FEeW2puvWbZ7pPQ"/>
-          </centerLabelStyle>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oSLaPF_FEeW2puvWbZ7pPQ" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
+        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oSLaPl_FEeW2puvWbZ7pPQ" name="when releaseCoffee&#xA; / &#xA;doLock&#xA;" sourceNode="_oSLaF1_FEeW2puvWbZ7pPQ" targetNode="_oSLaEl_FEeW2puvWbZ7pPQ">
-        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.2"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.2"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_HskpcGB4EeWy5NmTI7P8Dw"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_oSLaP1_FEeW2puvWbZ7pPQ" targetArrow="InputFillClosedArrow" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaQF_FEeW2puvWbZ7pPQ" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oSLaQV_FEeW2puvWbZ7pPQ" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oSLaQl_FEeW2puvWbZ7pPQ"/>
-          </centerLabelStyle>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oSLaQV_FEeW2puvWbZ7pPQ" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
+        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']"/>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_oSLaQ1_FEeW2puvWbZ7pPQ"/>
-      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer"/>
-      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@additionalLayers[name='Debug']"/>
-      <target xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="coffemachine.tfsm#/"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@additionalLayers[name='Debug']"/>
+      <target xmi:type="org.gemoc.sample.tfsm:TimedSystem" href="coffemachine.xtfsm#/"/>
     </ownedRepresentations>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_oS3WgF_FEeW2puvWbZ7pPQ" name="CoffeeCoin">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_oS39kF_FEeW2puvWbZ7pPQ" source="GMF_DIAGRAMS">
@@ -436,105 +411,89 @@
           </edges>
         </data>
       </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_zmFJMIVXEea9k-DQahpbxQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_zmFJMYVXEea9k-DQahpbxQ"/>
+      </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oS3WgV_FEeW2puvWbZ7pPQ" name="localclk" visible="false" width="5" height="5" resizeKind="NSEW">
-        <target xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.tfsm#//@tfsms.0/@localClock"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.tfsm#//@tfsms.0/@localClock"/>
+        <target xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.xtfsm#//@tfsms.0/@localClock"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:FSMClock" href="coffemachine.xtfsm#//@tfsms.0/@localClock"/>
         <graphicalFilters xmi:type="diagram:HideFilter" xmi:id="_8akRwGHMEeW_OdDsrmbS_g"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oS3Wgl_FEeW2puvWbZ7pPQ" labelFormat="bold" showIcon="false" workspacePath="/org.gemoc.sample.tfsm.design/icons/clock_local_small.gif">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3Wg1_FEeW2puvWbZ7pPQ"/>
-          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3WhF_FEeW2puvWbZ7pPQ"/>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_oS3Wgl_FEeW2puvWbZ7pPQ" showIcon="false" workspacePath="/org.gemoc.sample.tfsm.concurrent.xtfsm.design/icons/clock_local_small.gif">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oS3WhV_FEeW2puvWbZ7pPQ" name="init" outgoingEdges="_oS3WlF_FEeW2puvWbZ7pPQ" width="2" height="2" resizeKind="NSEW">
-        <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.0"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.0"/>
+        <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.0"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_oS3Whl_FEeW2puvWbZ7pPQ" showIcon="false" borderSize="3" borderSizeComputationExpression="3">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3Wh1_FEeW2puvWbZ7pPQ" red="136" green="136" blue="136"/>
-          <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@conditionnalStyles.0/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3WiF_FEeW2puvWbZ7pPQ"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3WiV_FEeW2puvWbZ7pPQ"/>
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_oS3Whl_FEeW2puvWbZ7pPQ" showIcon="false" labelColor="136,136,136" borderSize="3" borderSizeComputationExpression="3" backgroundColor="0,0,0">
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oS3Wil_FEeW2puvWbZ7pPQ" name="Locked" outgoingEdges="_oS3WmV_FEeW2puvWbZ7pPQ" incomingEdges="_oS3WlF_FEeW2puvWbZ7pPQ _oS3Wnl_FEeW2puvWbZ7pPQ" width="8" height="8" resizeKind="NSEW">
-        <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.1"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.1"/>
+        <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.1"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_oS3Wi1_FEeW2puvWbZ7pPQ" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3WjF_FEeW2puvWbZ7pPQ" red="39" green="76" blue="114"/>
-          <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3WjV_FEeW2puvWbZ7pPQ" red="39" green="76" blue="114"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3Wjl_FEeW2puvWbZ7pPQ" red="255" green="255" blue="255"/>
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_oS3Wi1_FEeW2puvWbZ7pPQ" showIcon="false" labelColor="39,76,114" borderSize="3" borderSizeComputationExpression="3" borderColor="39,76,114" labelPosition="node" backgroundColor="255,255,255">
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_oS3Wj1_FEeW2puvWbZ7pPQ" name="Unlocked" outgoingEdges="_oS3Wnl_FEeW2puvWbZ7pPQ" incomingEdges="_oS3WmV_FEeW2puvWbZ7pPQ" width="10" height="10" resizeKind="NSEW">
-        <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.2"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.tfsm#//@tfsms.0/@ownedStates.2"/>
+        <target xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.2"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="coffemachine.xtfsm#//@tfsms.0/@ownedStates.2"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_oS3WkF_FEeW2puvWbZ7pPQ" showIcon="false" borderSize="3" borderSizeComputationExpression="3" labelPosition="node">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3WkV_FEeW2puvWbZ7pPQ" red="39" green="76" blue="114"/>
-          <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3Wkl_FEeW2puvWbZ7pPQ" red="39" green="76" blue="114"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3Wk1_FEeW2puvWbZ7pPQ" red="255" green="255" blue="255"/>
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_oS3WkF_FEeW2puvWbZ7pPQ" showIcon="false" labelColor="39,76,114" borderSize="3" borderSizeComputationExpression="3" borderColor="39,76,114" labelPosition="node" backgroundColor="255,255,255">
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='State']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oS3WlF_FEeW2puvWbZ7pPQ" name="Invalid feature as name" sourceNode="_oS3WhV_FEeW2puvWbZ7pPQ" targetNode="_oS3Wil_FEeW2puvWbZ7pPQ">
-        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.0"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oS3WlF_FEeW2puvWbZ7pPQ" name="&#xA; / &#xA;doInit&#xA;" sourceNode="_oS3WhV_FEeW2puvWbZ7pPQ" targetNode="_oS3Wil_FEeW2puvWbZ7pPQ">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.0"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_1LF1sM_dEeWO6PmQE5u1XA"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_oS3WlV_FEeW2puvWbZ7pPQ" targetArrow="InputFillClosedArrow" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3Wll_FEeW2puvWbZ7pPQ" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oS3Wl1_FEeW2puvWbZ7pPQ" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3WmF_FEeW2puvWbZ7pPQ"/>
-          </centerLabelStyle>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oS3Wl1_FEeW2puvWbZ7pPQ" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oS3WmV_FEeW2puvWbZ7pPQ" name="when coin&#xA; / &#xA;&#xA;  !selectCoffee;" sourceNode="_oS3Wil_FEeW2puvWbZ7pPQ" targetNode="_oS3Wj1_FEeW2puvWbZ7pPQ">
-        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.1"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_oS3Wml_FEeW2puvWbZ7pPQ" targetArrow="InputFillClosedArrow" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3Wm1_FEeW2puvWbZ7pPQ" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oS3WnF_FEeW2puvWbZ7pPQ" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3WnV_FEeW2puvWbZ7pPQ"/>
-          </centerLabelStyle>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oS3WnF_FEeW2puvWbZ7pPQ" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_oS3Wnl_FEeW2puvWbZ7pPQ" name="when releaseCoffee&#xA; / &#xA;doLock&#xA;" sourceNode="_oS3Wj1_FEeW2puvWbZ7pPQ" targetNode="_oS3Wil_FEeW2puvWbZ7pPQ">
-        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.2"/>
-        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="coffemachine.xtfsm#//@tfsms.0/@ownedTransitions.2"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_oS3Wn1_FEeW2puvWbZ7pPQ" targetArrow="InputFillClosedArrow" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3WoF_FEeW2puvWbZ7pPQ" red="136" green="136" blue="136"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oS3WoV_FEeW2puvWbZ7pPQ" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_oS3Wol_FEeW2puvWbZ7pPQ"/>
-          </centerLabelStyle>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_oS3WoV_FEeW2puvWbZ7pPQ" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']"/>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_oS3Wo1_FEeW2puvWbZ7pPQ"/>
-      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer"/>
-      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Debug']"/>
-      <target xmi:type="org.gemoc.sample.tfsm:TFSM" href="coffemachine.tfsm#//@tfsms.0"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@additionalLayers[name='Debug']"/>
+      <target xmi:type="org.gemoc.sample.tfsm:TFSM" href="coffemachine.xtfsm#//@tfsms.0"/>
     </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.tfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']"/>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']"/>
   </ownedViews>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_oTFY8F_FEeW2puvWbZ7pPQ" initialized="true">
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_oTFY8F_FEeW2puvWbZ7pPQ">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Reused']"/>
   </ownedViews>
 </viewpoint:DAnalysis>
