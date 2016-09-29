@@ -4,7 +4,6 @@
   <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
   <semanticResources>model/tfsm.ecorediag</semanticResources>
   <semanticResources>model/tfsm.genmodel</semanticResources>
-  <semanticResources>model/tfsm2.ecore</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_qPOyULWTEeOg6O2N_7zirw">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_qRrpYLWTEeOg6O2N_7zirw" name="tfsm class diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_qRsQcLWTEeOg6O2N_7zirw" source="GMF_DIAGRAMS">

@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated XTfsm -->
       <factory
-            uri="http://xtfsm/tfsm/"
+            uri="http://org.gemoc.sample.tfsm.concurrent.xtfsm/tfsm/"
             class="org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.provider.TfsmItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

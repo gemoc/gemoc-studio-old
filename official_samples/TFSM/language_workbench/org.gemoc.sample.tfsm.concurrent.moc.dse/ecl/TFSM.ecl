@@ -1,4 +1,4 @@
-import 'http://xtfsm/tfsm/'
+import 'http://org.gemoc.sample.tfsm.concurrent.xtfsm/tfsm/'
 --import 'platform:/resource/org.gemoc.sample.tfsm.concurrent.xtfsm/model/tfsm.ecore'
 import _'http://www.eclipse.org/emf/2002/Ecore'
 

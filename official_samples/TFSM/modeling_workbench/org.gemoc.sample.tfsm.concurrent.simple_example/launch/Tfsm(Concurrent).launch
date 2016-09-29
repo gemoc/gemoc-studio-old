@@ -14,4 +14,5 @@
 <stringAttribute key="Resource" value="/org.gemoc.sample.tfsm.concurrent.simple_example/simple_example.xtfsm"/>
 <booleanAttribute key="VCD visualization" value="false"/>
 <stringAttribute key="airdResource" value="/org.gemoc.sample.tfsm.concurrent.simple_example/simple_example.aird"/>
+<booleanAttribute key="arduino MultiDimensional Trace" value="false"/>
 </launchConfiguration>

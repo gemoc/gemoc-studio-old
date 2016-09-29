@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<org.gemoc.sample.tfsm:TimedSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.gemoc.sample.tfsm="http://xtfsm/tfsm/" name="CoffeeMachine">
+<org.gemoc.sample.tfsm:TimedSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.gemoc.sample.tfsm="http://org.gemoc.sample.tfsm.concurrent.xtfsm/tfsm/" name="CoffeeMachine">
   <tfsms name="CoffeeCoin" initialState="//@tfsms.0/@ownedStates.0">
     <ownedStates name="init" outgoingTransitions="//@tfsms.0/@ownedTransitions.0"/>
     <ownedStates name="Locked" outgoingTransitions="//@tfsms.0/@ownedTransitions.1" incomingTransitions="//@tfsms.0/@ownedTransitions.0 //@tfsms.0/@ownedTransitions.2"/>

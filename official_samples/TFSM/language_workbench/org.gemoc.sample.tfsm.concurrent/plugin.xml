@@ -7,10 +7,10 @@
     </XDSML_Definition>
   </extension>
   <extension point="fr.inria.diverse.melange.modeltype">
-    <modeltype id="org.gemoc.sample.tfsm.concurrent.XTfsmMT" uri="http://xtfsmmt/" />
+    <modeltype id="org.gemoc.sample.tfsm.concurrent.XTfsmMT" uri="http://org.gemoc.sample.tfsm.concurrent.xtfsmmt/" />
   </extension>
   <extension point="fr.inria.diverse.melange.language">
-    <language aspects="FSMClock:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspect;TimedSystem:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TimedSystemAspect;State:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspect;EvaluateGuard:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.EvaluateGuardAspect;EventGuard:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.EventGuardAspect;Transition:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TransitionAspect;Guard:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.GuardAspect;FSMEvent:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMEventAspect;TFSM:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TFSMAspect;TemporalGuard:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TemporalGuardAspect;NamedElement:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.NamedElementAspect" entryPoints="" exactType="org.gemoc.sample.tfsm.concurrent.XTfsmMT" id="org.gemoc.sample.tfsm.concurrent.XTfsm" uri="http://xtfsm/tfsm/">
+    <language aspects="FSMClock:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspect;TimedSystem:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TimedSystemAspect;State:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspect;EvaluateGuard:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.EvaluateGuardAspect;EventGuard:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.EventGuardAspect;Transition:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TransitionAspect;Guard:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.GuardAspect;FSMEvent:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMEventAspect;TFSM:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TFSMAspect;TemporalGuard:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TemporalGuardAspect;NamedElement:org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.NamedElementAspect" entryPoints="" exactType="org.gemoc.sample.tfsm.concurrent.XTfsmMT" id="org.gemoc.sample.tfsm.concurrent.XTfsm" uri="http://org.gemoc.sample.tfsm.concurrent.xtfsm/tfsm/">
       <adapter class="org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmAdapter" modeltypeId="org.gemoc.sample.tfsm.concurrent.XTfsmMT" />
     </language>
   </extension>

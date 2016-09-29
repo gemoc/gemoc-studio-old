@@ -33,7 +33,7 @@ public class StandaloneSetup {
   
   public void doAdaptersRegistration() {
     MelangeRegistry.LanguageDescriptor xTfsm = new MelangeRegistryImpl.LanguageDescriptorImpl(
-    	"org.gemoc.sample.tfsm.concurrent.XTfsm", "", "http://xtfsm/tfsm/", "org.gemoc.sample.tfsm.concurrent.XTfsmMT"
+    	"org.gemoc.sample.tfsm.concurrent.XTfsm", "", "http://org.gemoc.sample.tfsm.concurrent.xtfsm/tfsm/", "org.gemoc.sample.tfsm.concurrent.XTfsmMT"
     );
     xTfsm.addAdapter("org.gemoc.sample.tfsm.concurrent.XTfsmMT", org.gemoc.sample.tfsm.concurrent.xtfsm.adapters.xtfsmmt.XTfsmAdapter.class);
     MelangeRegistry.INSTANCE.getLanguageMap().put(
@@ -41,7 +41,7 @@ public class StandaloneSetup {
     	xTfsm
     );
     MelangeRegistry.ModelTypeDescriptor xTfsmMT = new MelangeRegistryImpl.ModelTypeDescriptorImpl(
-    	"org.gemoc.sample.tfsm.concurrent.XTfsmMT", "", "http://xtfsmmt/"
+    	"org.gemoc.sample.tfsm.concurrent.XTfsmMT", "", "http://org.gemoc.sample.tfsm.concurrent.xtfsmmt/"
     );
     MelangeRegistry.INSTANCE.getModelTypeMap().put(
     	"org.gemoc.sample.tfsm.concurrent.XTfsmMT",

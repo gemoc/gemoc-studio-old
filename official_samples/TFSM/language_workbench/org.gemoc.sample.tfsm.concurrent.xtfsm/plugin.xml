@@ -7,7 +7,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated XTfsm -->
       <package
-            uri="http://xtfsm/tfsm/"
+            uri="http://org.gemoc.sample.tfsm.concurrent.xtfsm/tfsm/"
             class="org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.TfsmPackage"
             genModel="model/XTfsm.genmodel"/>
    </extension>

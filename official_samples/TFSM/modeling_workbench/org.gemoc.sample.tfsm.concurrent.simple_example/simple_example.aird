@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.gemoc.sample.tfsm="http://xtfsm/tfsm/" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_7lZlsISSEea8Dde4ZOczEw" selectedViews="_8ReBgISSEea8Dde4ZOczEw" version="10.1.0.201509162000">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.gemoc.sample.tfsm="http://org.gemoc.sample.tfsm.concurrent.xtfsm/tfsm/" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_7lZlsISSEea8Dde4ZOczEw" selectedViews="_8ReBgISSEea8Dde4ZOczEw" version="10.1.0.201509162000">
   <semanticResources>simple_example.xtfsm</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_8ReBgISSEea8Dde4ZOczEw">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_8ah24ISSEea8Dde4ZOczEw" name="PingPong">
@@ -157,6 +157,102 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8bkYsoSSEea8Dde4ZOczEw"/>
           </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_8bVIIoSSEea8Dde4ZOczEw"/>
+          <edges xmi:type="notation:Edge" xmi:id="_U04icIY_EeaoxqyNaumOAw" type="4001" element="_Uz_KkIY_EeaoxqyNaumOAw" source="_8d4F0ISSEea8Dde4ZOczEw" target="_8d4s4oSSEea8Dde4ZOczEw">
+            <children xmi:type="notation:Node" xmi:id="_U0_3MIY_EeaoxqyNaumOAw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U0_3MYY_EeaoxqyNaumOAw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1C6gIY_EeaoxqyNaumOAw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1C6gYY_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1DhkIY_EeaoxqyNaumOAw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1DhkYY_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_U04icYY_EeaoxqyNaumOAw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_U04icoY_EeaoxqyNaumOAw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_U04ic4Y_EeaoxqyNaumOAw" points="[140, 60, 140, 60]$[64, 233, 64, 233]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1OgsIY_EeaoxqyNaumOAw" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1OgsYY_EeaoxqyNaumOAw" id="(0.5,0.49504950495049505)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_U1PHwIY_EeaoxqyNaumOAw" type="4001" element="_U0DcAIY_EeaoxqyNaumOAw" source="_8d4s4oSSEea8Dde4ZOczEw" target="_8d5T8oSSEea8Dde4ZOczEw">
+            <children xmi:type="notation:Node" xmi:id="_U1PHxIY_EeaoxqyNaumOAw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1PHxYY_EeaoxqyNaumOAw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1PHxoY_EeaoxqyNaumOAw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1PHx4Y_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1PHyIY_EeaoxqyNaumOAw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1PHyYY_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_U1PHwYY_EeaoxqyNaumOAw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_U1PHwoY_EeaoxqyNaumOAw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_U1PHw4Y_EeaoxqyNaumOAw" points="[64, 233, 64, 233]$[60, 118, 60, 118]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1Pu0IY_EeaoxqyNaumOAw" id="(0.5,0.49504950495049505)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1Pu0YY_EeaoxqyNaumOAw" id="(0.4945054945054945,0.4943820224719101)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_U1Pu0oY_EeaoxqyNaumOAw" type="4001" element="_U0EqIIY_EeaoxqyNaumOAw" source="_8d5T8oSSEea8Dde4ZOczEw" target="_8d4s4oSSEea8Dde4ZOczEw">
+            <children xmi:type="notation:Node" xmi:id="_U1Pu1oY_EeaoxqyNaumOAw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1Pu14Y_EeaoxqyNaumOAw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1Pu2IY_EeaoxqyNaumOAw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1Pu2YY_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1QV4IY_EeaoxqyNaumOAw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1QV4YY_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_U1Pu04Y_EeaoxqyNaumOAw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_U1Pu1IY_EeaoxqyNaumOAw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_U1Pu1YY_EeaoxqyNaumOAw" points="[60, 118, 60, 118]$[64, 233, 64, 233]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1QV4oY_EeaoxqyNaumOAw" id="(0.4945054945054945,0.4943820224719101)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1QV44Y_EeaoxqyNaumOAw" id="(0.5,0.49504950495049505)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_U1QV5IY_EeaoxqyNaumOAw" type="4001" element="_U0F4QIY_EeaoxqyNaumOAw" source="_8d9lYISSEea8Dde4ZOczEw" target="_8d-McoSSEea8Dde4ZOczEw">
+            <children xmi:type="notation:Node" xmi:id="_U1Q88IY_EeaoxqyNaumOAw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1Q88YY_EeaoxqyNaumOAw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1Q88oY_EeaoxqyNaumOAw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1Q884Y_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1Q89IY_EeaoxqyNaumOAw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1Q89YY_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_U1QV5YY_EeaoxqyNaumOAw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_U1QV5oY_EeaoxqyNaumOAw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_U1QV54Y_EeaoxqyNaumOAw" points="[375, 60, 375, 60]$[295, 238, 295, 238]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1Q89oY_EeaoxqyNaumOAw" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1Q894Y_EeaoxqyNaumOAw" id="(0.4945054945054945,0.4945054945054945)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_U1RkAIY_EeaoxqyNaumOAw" type="4001" element="_U0HGYIY_EeaoxqyNaumOAw" source="_8d-McoSSEea8Dde4ZOczEw" target="_8d-zgoSSEea8Dde4ZOczEw">
+            <children xmi:type="notation:Node" xmi:id="_U1RkBIY_EeaoxqyNaumOAw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1RkBYY_EeaoxqyNaumOAw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1RkBoY_EeaoxqyNaumOAw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1RkB4Y_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1RkCIY_EeaoxqyNaumOAw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1RkCYY_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_U1RkAYY_EeaoxqyNaumOAw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_U1RkAoY_EeaoxqyNaumOAw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_U1RkA4Y_EeaoxqyNaumOAw" points="[295, 238, 295, 238]$[295, 123, 295, 123]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1SLEIY_EeaoxqyNaumOAw" id="(0.4945054945054945,0.4945054945054945)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1SLEYY_EeaoxqyNaumOAw" id="(0.4945054945054945,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_U1SLEoY_EeaoxqyNaumOAw" type="4001" element="_U0HtcIY_EeaoxqyNaumOAw" source="_8d-zgoSSEea8Dde4ZOczEw" target="_8d-McoSSEea8Dde4ZOczEw">
+            <children xmi:type="notation:Node" xmi:id="_U1SyIIY_EeaoxqyNaumOAw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1SyIYY_EeaoxqyNaumOAw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1SyIoY_EeaoxqyNaumOAw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1SyI4Y_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_U1SyJIY_EeaoxqyNaumOAw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1SyJYY_EeaoxqyNaumOAw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_U1SLE4Y_EeaoxqyNaumOAw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_U1SLFIY_EeaoxqyNaumOAw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_U1SLFYY_EeaoxqyNaumOAw" points="[295, 123, 295, 123]$[295, 238, 295, 238]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1SyJoY_EeaoxqyNaumOAw" id="(0.4945054945054945,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1SyJ4Y_EeaoxqyNaumOAw" id="(0.4945054945054945,0.4945054945054945)"/>
+          </edges>
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_8ah244SSEea8Dde4ZOczEw" name="PingPong">
@@ -175,7 +271,7 @@
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']"/>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah254SSEea8Dde4ZOczEw" name="initPonger" width="2" height="2" resizeKind="NSEW">
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah254SSEea8Dde4ZOczEw" name="initPonger" outgoingEdges="_Uz_KkIY_EeaoxqyNaumOAw" width="2" height="2" resizeKind="NSEW">
             <target xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.0/@ownedStates.0"/>
             <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.0/@ownedStates.0"/>
             <ownedStyle xmi:type="diagram:Dot" xmi:id="_8ah26oSSEea8Dde4ZOczEw" showIcon="false" labelColor="136,136,136" borderSize="3" borderSizeComputationExpression="3" backgroundColor="0,0,0">
@@ -183,7 +279,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah264SSEea8Dde4ZOczEw" name="Pong_ofPonger" width="15" height="15" resizeKind="NSEW">
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah264SSEea8Dde4ZOczEw" name="Pong_ofPonger" outgoingEdges="_U0DcAIY_EeaoxqyNaumOAw" incomingEdges="_Uz_KkIY_EeaoxqyNaumOAw _U0EqIIY_EeaoxqyNaumOAw" width="15" height="15" resizeKind="NSEW">
             <target xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.0/@ownedStates.1"/>
             <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.0/@ownedStates.1"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -194,7 +290,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah274SSEea8Dde4ZOczEw" name="Ping_ofPonger" width="15" height="15" resizeKind="NSEW">
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah274SSEea8Dde4ZOczEw" name="Ping_ofPonger" outgoingEdges="_U0EqIIY_EeaoxqyNaumOAw" incomingEdges="_U0DcAIY_EeaoxqyNaumOAw" width="15" height="15" resizeKind="NSEW">
             <target xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.0/@ownedStates.2"/>
             <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.0/@ownedStates.2"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -225,7 +321,7 @@
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']"/>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah2-YSSEea8Dde4ZOczEw" name="initPinger" width="2" height="2" resizeKind="NSEW">
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah2-YSSEea8Dde4ZOczEw" name="initPinger" outgoingEdges="_U0F4QIY_EeaoxqyNaumOAw" width="2" height="2" resizeKind="NSEW">
             <target xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.1/@ownedStates.0"/>
             <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.1/@ownedStates.0"/>
             <ownedStyle xmi:type="diagram:Dot" xmi:id="_8ah2_ISSEea8Dde4ZOczEw" showIcon="false" labelColor="136,136,136" borderSize="3" borderSizeComputationExpression="3" backgroundColor="0,0,0">
@@ -233,7 +329,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah2_YSSEea8Dde4ZOczEw" name="Ping_ofPinger" width="15" height="15" resizeKind="NSEW">
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah2_YSSEea8Dde4ZOczEw" name="Ping_ofPinger" outgoingEdges="_U0HGYIY_EeaoxqyNaumOAw" incomingEdges="_U0F4QIY_EeaoxqyNaumOAw _U0HtcIY_EeaoxqyNaumOAw" width="15" height="15" resizeKind="NSEW">
             <target xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.1/@ownedStates.1"/>
             <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.1/@ownedStates.1"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -244,7 +340,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@subNodeMappings[name='States']"/>
           </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah3AYSSEea8Dde4ZOczEw" name="Pong_ofPinger" width="15" height="15" resizeKind="NSEW">
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_8ah3AYSSEea8Dde4ZOczEw" name="Pong_ofPinger" outgoingEdges="_U0HtcIY_EeaoxqyNaumOAw" incomingEdges="_U0HGYIY_EeaoxqyNaumOAw" width="15" height="15" resizeKind="NSEW">
             <target xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.1/@ownedStates.2"/>
             <semanticElements xmi:type="org.gemoc.sample.tfsm:State" href="simple_example.xtfsm#//@tfsms.1/@ownedStates.2"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -288,6 +384,60 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='Event']"/>
         </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Uz_KkIY_EeaoxqyNaumOAw" name="&#xA; / &#xA;&#xA;" sourceNode="_8ah254SSEea8Dde4ZOczEw" targetNode="_8ah264SSEea8Dde4ZOczEw">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_U0CN4IY_EeaoxqyNaumOAw" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_U0CN4YY_EeaoxqyNaumOAw" showIcon="false"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_U0DcAIY_EeaoxqyNaumOAw" name="when ping&#xA; / &#xA;&#xA;" sourceNode="_8ah264SSEea8Dde4ZOczEw" targetNode="_8ah274SSEea8Dde4ZOczEw">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_U0EDEIY_EeaoxqyNaumOAw" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_U0EDEYY_EeaoxqyNaumOAw" showIcon="false"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_U0EqIIY_EeaoxqyNaumOAw" name="after 3 on pongerTime&#xA; / &#xA;&#xA;  !pong;" sourceNode="_8ah274SSEea8Dde4ZOczEw" targetNode="_8ah264SSEea8Dde4ZOczEw">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_U0FRMIY_EeaoxqyNaumOAw" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_U0FRMYY_EeaoxqyNaumOAw" showIcon="false"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_U0F4QIY_EeaoxqyNaumOAw" name="&#xA; / &#xA;&#xA;" sourceNode="_8ah2-YSSEea8Dde4ZOczEw" targetNode="_8ah2_YSSEea8Dde4ZOczEw">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.1/@ownedTransitions.0"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.1/@ownedTransitions.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_U0GfUIY_EeaoxqyNaumOAw" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_U0GfUYY_EeaoxqyNaumOAw" showIcon="false"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_U0HGYIY_EeaoxqyNaumOAw" name="after 3 on pingerTime&#xA; / &#xA;&#xA;  !ping;" sourceNode="_8ah2_YSSEea8Dde4ZOczEw" targetNode="_8ah3AYSSEea8Dde4ZOczEw">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.1/@ownedTransitions.1"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.1/@ownedTransitions.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_U0HGYYY_EeaoxqyNaumOAw" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_U0HGYoY_EeaoxqyNaumOAw" showIcon="false"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_U0HtcIY_EeaoxqyNaumOAw" name="when pong&#xA; / &#xA;&#xA;" sourceNode="_8ah3AYSSEea8Dde4ZOczEw" targetNode="_8ah2_YSSEea8Dde4ZOczEw">
+        <target xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.1/@ownedTransitions.2"/>
+        <semanticElements xmi:type="org.gemoc.sample.tfsm:Transition" href="simple_example.xtfsm#//@tfsms.1/@ownedTransitions.2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_U0HtcYY_EeaoxqyNaumOAw" targetArrow="InputFillClosedArrow" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_U0HtcoY_EeaoxqyNaumOAw" showIcon="false"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMappingImport" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@edgeMappingImports[name='Transitions']"/>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.tfsm.concurrent.xtfsm.design/description/TFSM.odesign#//@ownedViewpoints[name='TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_8ah3I4SSEea8Dde4ZOczEw"/>
