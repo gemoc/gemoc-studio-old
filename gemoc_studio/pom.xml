@@ -336,30 +336,10 @@
 		            <url>https://ci.inria.fr/gemoc/job/gemoc-studio_commons/lastSuccessfulBuild/artifact/commons/releng/org.gemoc.commons.repository/target/repository/</url>
 		        </repository>
 		        <repository>
-		            <id>modeldebugging_framework_frameworkcommons on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/framework/framework_commons/releng/org.gemoc.modeldebugging.framework.commons.repository/target/repository/</url>
-		        </repository>
-		        <repository>
-		            <id>modeldebugging_framework_xdsmlframework on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/framework/xdsml_framework/releng/org.gemoc.modeldebugging.xdsmlframework.repository/target/repository/</url>
-		        </repository>
-		        <repository>
-		            <id>modeldebugging_framework_executionframework on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/framework/execution_framework/releng/org.gemoc.modeldebugging.executionframework.repository/target/repository/</url>
-		        </repository>
-		        <repository>
 		            <id>modelanimation_siriusmodelanimation on CI</id>
 		            <layout>p2</layout>
 		            <url>http://obeo-siriuslab-nightly.s3-website-eu-west-1.amazonaws.com/SiriusAnimator/master/repository/</url>
-		        </repository>		        
-		        <repository>
-		            <id>modelanimation_executionengine_java on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/java_execution/lastSuccessfulBuild/artifact/java_execution/releng/org.gemoc.execution.sequential.java.repository/target/repository/</url>
-		        </repository>
+		        </repository>	
 		        <repository>
 		            <id>concurrency_executionengine_ccsljava on CI</id>
 		            <layout>p2</layout>
