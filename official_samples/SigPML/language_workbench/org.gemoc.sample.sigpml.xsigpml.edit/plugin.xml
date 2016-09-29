@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated XSigPML -->
       <factory
-            uri="http://xsigpml/sigpml/"
+            uri="http://org.gemoc.sample.sigpml.xsigpml/sigpml/"
             class="org.gemoc.sample.sigpml.xsigpml.sigpml.provider.SigpmlItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

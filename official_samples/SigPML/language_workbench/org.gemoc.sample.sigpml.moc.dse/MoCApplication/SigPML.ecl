@@ -1,4 +1,4 @@
-import 'http://xsigpml/sigpml/'
+import 'http://org.gemoc.sample.sigpml.xsigpml/sigpml/'
 
 ECLimport "platform:/resource/org.gemoc.sample.sigpml.moc.lib/MoCLib/SigPML.ccslLib"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" 

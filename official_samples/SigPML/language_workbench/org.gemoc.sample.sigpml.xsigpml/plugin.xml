@@ -7,7 +7,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated XSigPML -->
       <package
-            uri="http://xsigpml/sigpml/"
+            uri="http://org.gemoc.sample.sigpml.xsigpml/sigpml/"
             class="org.gemoc.sample.sigpml.xsigpml.sigpml.SigpmlPackage"
             genModel="model/XSigPML.genmodel"/>
    </extension>

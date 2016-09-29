@@ -88,7 +88,7 @@ public interface System extends NamedElement {
 	 * @return the value of the '<em>Shared Memory</em>' attribute.
 	 * @see #setSharedMemory(LinkedListMultimap)
 	 * @see org.gemoc.sample.sigpml.xsigpmlmt.sigpml.SigpmlPackage#getSystem_SharedMemory()
-	 * @model dataType="org.gemoc.sample.sigpml.xsigpmlmt.sigpml.LinkedListMultimap"
+	 * @model unique="false" dataType="org.gemoc.sample.sigpml.xsigpmlmt.sigpml.LinkedListMultimap"
 	 * @generated
 	 */
 	LinkedListMultimap getSharedMemory();

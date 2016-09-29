@@ -31,7 +31,7 @@ public interface OutputPort extends Port {
 	 * @return the value of the '<em>Size Written</em>' attribute.
 	 * @see #setSizeWritten(int)
 	 * @see org.gemoc.sample.sigpml.xsigpmlmt.sigpml.SigpmlPackage#getOutputPort_SizeWritten()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	int getSizeWritten();

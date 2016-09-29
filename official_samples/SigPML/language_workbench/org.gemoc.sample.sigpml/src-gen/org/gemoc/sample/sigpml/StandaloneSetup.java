@@ -33,7 +33,7 @@ public class StandaloneSetup {
   
   public void doAdaptersRegistration() {
     MelangeRegistry.LanguageDescriptor xSigPML = new MelangeRegistryImpl.LanguageDescriptorImpl(
-    	"org.gemoc.sample.sigpml.XSigPML", "", "http://xsigpml/sigpml/", "org.gemoc.sample.sigpml.XSigPMLMT"
+    	"org.gemoc.sample.sigpml.XSigPML", "", "http://org.gemoc.sample.sigpml.xsigpml/sigpml/", "org.gemoc.sample.sigpml.XSigPMLMT"
     );
     xSigPML.addAdapter("org.gemoc.sample.sigpml.XSigPMLMT", org.gemoc.sample.sigpml.xsigpml.adapters.xsigpmlmt.XSigPMLAdapter.class);
     MelangeRegistry.INSTANCE.getLanguageMap().put(
@@ -41,7 +41,7 @@ public class StandaloneSetup {
     	xSigPML
     );
     MelangeRegistry.ModelTypeDescriptor xSigPMLMT = new MelangeRegistryImpl.ModelTypeDescriptorImpl(
-    	"org.gemoc.sample.sigpml.XSigPMLMT", "", "http://xsigpmlmt/"
+    	"org.gemoc.sample.sigpml.XSigPMLMT", "", "http://org.gemoc.sample.sigpml.xsigpmlmt/"
     );
     MelangeRegistry.INSTANCE.getModelTypeMap().put(
     	"org.gemoc.sample.sigpml.XSigPMLMT",

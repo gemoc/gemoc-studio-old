@@ -7,10 +7,10 @@
     </XDSML_Definition>
   </extension>
   <extension point="fr.inria.diverse.melange.modeltype">
-    <modeltype id="org.gemoc.sample.sigpml.XSigPMLMT" uri="http://xsigpmlmt/" />
+    <modeltype id="org.gemoc.sample.sigpml.XSigPMLMT" uri="http://org.gemoc.sample.sigpml.xsigpmlmt/" />
   </extension>
   <extension point="fr.inria.diverse.melange.language">
-    <language aspects="OutputPort:org.gemoc.sample.sigpml.xsigpml.aspects.OutputPortAspect;Agent:org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspect;InputPort:org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspect;HWComputationalResource:org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspect;NamedElement:org.gemoc.sample.sigpml.xsigpml.aspects.NamedElementAspect;Place:org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspect;System:org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspect" entryPoints="" exactType="org.gemoc.sample.sigpml.XSigPMLMT" id="org.gemoc.sample.sigpml.XSigPML" uri="http://xsigpml/sigpml/">
+    <language aspects="OutputPort:org.gemoc.sample.sigpml.xsigpml.aspects.OutputPortAspect;Agent:org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspect;InputPort:org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspect;HWComputationalResource:org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspect;NamedElement:org.gemoc.sample.sigpml.xsigpml.aspects.NamedElementAspect;Place:org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspect;System:org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspect" entryPoints="" exactType="org.gemoc.sample.sigpml.XSigPMLMT" id="org.gemoc.sample.sigpml.XSigPML" uri="http://org.gemoc.sample.sigpml.xsigpml/sigpml/">
       <adapter class="org.gemoc.sample.sigpml.xsigpml.adapters.xsigpmlmt.XSigPMLAdapter" modeltypeId="org.gemoc.sample.sigpml.XSigPMLMT" />
     </language>
   </extension>

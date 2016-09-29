@@ -40,7 +40,7 @@ public interface SigpmlPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://xsigpml/sigpml/";
+	String eNS_URI = "http://org.gemoc.sample.sigpml.xsigpml/sigpml/";
 
 	/**
 	 * The package namespace name.

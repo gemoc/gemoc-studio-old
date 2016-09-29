@@ -76,7 +76,7 @@ public interface HWComputationalResource extends HWRessource {
 	 * @return the value of the '<em>Current Exec Cycle</em>' attribute.
 	 * @see #setCurrentExecCycle(int)
 	 * @see org.gemoc.sample.sigpml.xsigpmlmt.sigpml.SigpmlPackage#getHWComputationalResource_CurrentExecCycle()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	int getCurrentExecCycle();

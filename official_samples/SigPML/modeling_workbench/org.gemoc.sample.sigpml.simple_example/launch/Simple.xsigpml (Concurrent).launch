@@ -15,6 +15,7 @@
 <stringAttribute key="Resource" value="/org.gemoc.sample.sigpml.simple_example/Simple.xsigpml"/>
 <booleanAttribute key="VCD visualization" value="false"/>
 <stringAttribute key="airdResource" value="/org.gemoc.sample.sigpml.simple_example/Simple.aird"/>
+<booleanAttribute key="arduino MultiDimensional Trace" value="false"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/org.gemoc.sample.sigpml.simple_example/Simple.xsigpml"/>
 </listAttribute>

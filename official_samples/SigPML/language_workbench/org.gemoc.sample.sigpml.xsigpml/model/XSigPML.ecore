@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sigpml" nsURI="http://xsigpml/sigpml/" nsPrefix="sigpml">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sigpml" nsURI="http://org.gemoc.sample.sigpml.xsigpml/sigpml/" nsPrefix="sigpml">
   <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
     <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
@@ -31,7 +31,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentExecCycle">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isCurrentlyExecuting">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isCurrentlyExecuting" unique="false">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
@@ -57,7 +57,7 @@
     <eOperations name="logSizeToReadWhenNotZero">
       <eAnnotations source="aspect"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeToread">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeToread" unique="false">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
@@ -66,7 +66,7 @@
     <eOperations name="write">
       <eAnnotations source="aspect"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeWritten">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeWritten" unique="false">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
@@ -100,14 +100,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="delay">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fifo" upperBound="-1" eType="//Object">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fifo" unique="false" upperBound="-1" eType="//Object">
       <eAnnotations source="aspect"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentSize">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentSize" unique="false">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitialized">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitialized" unique="false">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
@@ -139,7 +139,7 @@
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedAgents" upperBound="-1" eType="//Agent"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentExecCycle">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentExecCycle" unique="false">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
@@ -160,7 +160,7 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedApplication" eType="//Application" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedHWPlatform" eType="//HWPlatform" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sharedMemory" eType="//LinkedListMultimap">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sharedMemory" unique="false" eType="//LinkedListMultimap">
       <eAnnotations source="aspect"/>
     </eStructuralFeatures>
   </eClassifiers>
