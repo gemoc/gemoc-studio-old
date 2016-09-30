@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="SigPML" version="9.0.0">
-  <ownedViewpoints name="SigPML" modelFileExtension="*.sigpml">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="SigPML" version="10.1.3.201511131800">
+  <ownedViewpoints name="SigPML" modelFileExtension="*.sigpml *.xsigpml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SigPML" initialisation="true" showOnStartup="true" domainClass="System">
-      <metamodel href="../../org.gemoc.sample.sigpml.model/model/sigpml.ecore#/"/>
+      <metamodel href="../../org.gemoc.sample.sigpml.xsigpml/model/XSigPML.ecore#/"/>
       <defaultLayer name="SigPML">
         <edgeMappings name="Place" sourceMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='OutputPort']" targetMapping="//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@borderedNodeMappings[name='InputPort']" targetFinderExpression="[self.itsInputPort/]" sourceFinderExpression="[self.itsOutputPort/]" domainClass="Place" useDomainElement="true">
           <style sizeComputationExpression="2" routingStyle="manhattan">
@@ -38,24 +38,26 @@
         </edgeMappings>
         <containerMappings name="HWPlatform" domainClass="HWPlatform">
           <subNodeMappings name="HWComputationalResource" semanticCandidatesExpression="feature:eAllContents" domainClass="HWComputationalResource">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="[self.name+'\n(is preemptive='+self.isUnderPreemptiveManagement+') '/]" labelAlignment="LEFT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.gemoc.sample.sigpml.xsigpml.design/picts/ksim_cpu.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="[self.name+'\n(is preemptive='+self.isUnderPreemptiveManagement+') '/]" labelAlignment="LEFT" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.gemoc.sample.sigpml.xsigpml.design/picts/ksim_cpu.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="HWStorageResources" semanticCandidatesExpression="feature:eAllContents" domainClass="HWStorageResource">
-            <style xsi:type="style:WorkspaceImageDescription" labelFormat="bold" showIcon="false" labelExpression="[self.name/]" labelAlignment="RIGHT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.gemoc.sample.sigpml.xsigpml.design/picts/ram_small.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="[self.name/]" labelAlignment="RIGHT" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.gemoc.sample.sigpml.xsigpml.design/picts/ram_small.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="HWCommunicationResource" semanticCandidatesExpression="feature:eAllContents" domainClass="HWCommunicationResource">
-            <style xsi:type="style:WorkspaceImageDescription" labelFormat="bold" showIcon="false" labelExpression="[self.name/]" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/org.gemoc.sample.sigpml.xsigpml.design/picts/Bus_small.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="[self.name/]" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.gemoc.sample.sigpml.xsigpml.design/picts/Bus_small.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:ShapeContainerStyleDescription" borderSizeComputationExpression="2" showIcon="false">
+          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="2" showIcon="false">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -75,13 +77,14 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="1" labelFormat="bold" showIcon="false" labelExpression="[self.name + '\n execTime:' + (self.cycles-1)/]" sizeComputationExpression="[self.name.size()+6/]" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[self.name + '\n execTime:' + (self.cycles-1)/]" sizeComputationExpression="[self.name.size()+6/]" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[self.name/]" backgroundColor="//@userColorsPalettes[name='MyPalette']/@entries[name='veryPaleYellow']">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" showIcon="false" labelExpression="[self.name/]" backgroundColor="//@userColorsPalettes[name='MyPalette']/@entries[name='veryPaleYellow']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
