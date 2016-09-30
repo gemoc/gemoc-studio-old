@@ -4,7 +4,32 @@
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_S4YnAIbjEeag-eGstlZchQ">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_S_IIMIbjEeag-eGstlZchQ" name="SigPML">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_S_IIMYbjEeag-eGstlZchQ" source="DANNOTATION_CUSTOMIZATION_KEY">
-        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_S_IIMobjEeag-eGstlZchQ"/>
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_S_IIMobjEeag-eGstlZchQ">
+          <computedStyleDescriptions xmi:type="style:EllipseNodeDescription" xmi:id="_HZY-sIbkEeag-eGstlZchQ" borderSizeComputationExpression="1" showIcon="false" labelExpression="A1&#xA;0 on 1" sizeComputationExpression="[self.name.size()+6/]" labelPosition="node" resizeKind="NSEW">
+            <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <color xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </computedStyleDescriptions>
+          <computedStyleDescriptions xmi:type="style:EllipseNodeDescription" xmi:id="_HZZlwIbkEeag-eGstlZchQ" borderSizeComputationExpression="1" showIcon="false" labelExpression="A2&#xA;0 on 3" sizeComputationExpression="[self.name.size()+6/]" labelPosition="node" resizeKind="NSEW">
+            <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <color xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </computedStyleDescriptions>
+          <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_HZiIoIbkEeag-eGstlZchQ" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_HZiIoYbkEeag-eGstlZchQ" labelSize="9" showIcon="false" labelExpression="0 / 6">
+              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </computedStyleDescriptions>
+          <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_HZivsIbkEeag-eGstlZchQ" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_HZivsYbkEeag-eGstlZchQ" labelSize="9" showIcon="false" labelExpression="0 / 1">
+              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </computedStyleDescriptions>
+        </data>
       </ownedAnnotationEntries>
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_S_OO0IbjEeag-eGstlZchQ" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_S_OO0YbjEeag-eGstlZchQ" type="Sirius" element="_S_IIMIbjEeag-eGstlZchQ" measurementUnit="Pixel">
@@ -90,9 +115,9 @@
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_S_yPgYbjEeag-eGstlZchQ" fontName="Noto Sans" fontHeight="5"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S_yPgobjEeag-eGstlZchQ" x="25" y="-12" width="20" height="20"/>
                 </children>
-                <children xmi:type="notation:Node" xmi:id="_S_zdoIbjEeag-eGstlZchQ" type="3016" element="_S_IIRIbjEeag-eGstlZchQ">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_S_zdoYbjEeag-eGstlZchQ" fontName="Noto Sans"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S_zdoobjEeag-eGstlZchQ"/>
+                <children xmi:type="notation:Node" xmi:id="_HZmaEIbkEeag-eGstlZchQ" type="3016" element="_HZY-sYbkEeag-eGstlZchQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_HZmaEYbkEeag-eGstlZchQ" fontName="Noto Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HZmaEobkEeag-eGstlZchQ"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_S_vMMYbjEeag-eGstlZchQ" fontColor="7490599" fontName="Noto Sans" fontHeight="8" bold="true"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S_vMMobjEeag-eGstlZchQ" x="85" y="54" width="121" height="121"/>
@@ -112,9 +137,9 @@
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_S_1S14bjEeag-eGstlZchQ" fontName="Noto Sans" fontHeight="5"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S_1S2IbjEeag-eGstlZchQ" x="-12" y="47" width="20" height="20"/>
                 </children>
-                <children xmi:type="notation:Node" xmi:id="_S_154objEeag-eGstlZchQ" type="3016" element="_S_IISIbjEeag-eGstlZchQ">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_S_1544bjEeag-eGstlZchQ" fontName="Noto Sans"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S_155IbjEeag-eGstlZchQ"/>
+                <children xmi:type="notation:Node" xmi:id="_HZnoMIbkEeag-eGstlZchQ" type="3016" element="_HZZlwYbkEeag-eGstlZchQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_HZnoMYbkEeag-eGstlZchQ" fontName="Noto Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HZnoMobkEeag-eGstlZchQ"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_S_vzQ4bjEeag-eGstlZchQ" fontColor="7490599" fontName="Noto Sans" fontHeight="8" bold="true"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S_vzRIbjEeag-eGstlZchQ" x="535" y="54" width="121" height="121"/>
@@ -290,7 +315,7 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']"/>
-        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_S_IIPYbjEeag-eGstlZchQ" name="A1&#xA; execTime:1" incomingEdges="_S_IIT4bjEeag-eGstlZchQ" width="8" height="8" resizeKind="NSEW">
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_S_IIPYbjEeag-eGstlZchQ" name="A1&#xA;0 on 1" incomingEdges="_S_IIT4bjEeag-eGstlZchQ" width="8" height="8" resizeKind="NSEW">
           <target xmi:type="sigpml:Agent" href="Simple.xsigpml#//@ownedApplication/@ownedAgents.0"/>
           <semanticElements xmi:type="sigpml:Agent" href="Simple.xsigpml#//@ownedApplication/@ownedAgents.0"/>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_S_IIPobjEeag-eGstlZchQ" name="pA1inState" incomingEdges="_S_IITIbjEeag-eGstlZchQ" width="2" height="2" resizeKind="NSEW">
@@ -329,13 +354,12 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_S_IIRIbjEeag-eGstlZchQ" showIcon="false" labelColor="39,76,114" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" labelPosition="node" color="255,255,255">
+          <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_HZY-sYbkEeag-eGstlZchQ" showIcon="false" labelColor="39,76,114" description="_HZY-sIbkEeag-eGstlZchQ" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" labelPosition="node" color="255,255,255">
             <labelFormat>bold</labelFormat>
-            <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']"/>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_S_IIRYbjEeag-eGstlZchQ" name="A2&#xA; execTime:3" incomingEdges="_S_IIUobjEeag-eGstlZchQ" width="8" height="8" resizeKind="NSEW">
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_S_IIRYbjEeag-eGstlZchQ" name="A2&#xA;0 on 3" incomingEdges="_S_IIUobjEeag-eGstlZchQ" width="8" height="8" resizeKind="NSEW">
           <target xmi:type="sigpml:Agent" href="Simple.xsigpml#//@ownedApplication/@ownedAgents.1"/>
           <semanticElements xmi:type="sigpml:Agent" href="Simple.xsigpml#//@ownedApplication/@ownedAgents.1"/>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_S_IIRobjEeag-eGstlZchQ" name="pA2in" incomingEdges="_S_IISYbjEeag-eGstlZchQ" width="2" height="2" resizeKind="NSEW">
@@ -352,28 +376,25 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_S_IISIbjEeag-eGstlZchQ" showIcon="false" labelColor="39,76,114" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" labelPosition="node" color="255,255,255">
+          <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_HZZlwYbkEeag-eGstlZchQ" showIcon="false" labelColor="39,76,114" description="_HZZlwIbkEeag-eGstlZchQ" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" labelPosition="node" color="255,255,255">
             <labelFormat>bold</labelFormat>
-            <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@containerMappings[name='Application']/@subNodeMappings[name='Agent']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_S_IISYbjEeag-eGstlZchQ" name="6" incomingEdges="_S_IIW4bjEeag-eGstlZchQ" sourceNode="_S_IIQIbjEeag-eGstlZchQ" targetNode="_S_IIRobjEeag-eGstlZchQ">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_S_IISYbjEeag-eGstlZchQ" name="0 / 6" incomingEdges="_S_IIW4bjEeag-eGstlZchQ" sourceNode="_S_IIQIbjEeag-eGstlZchQ" targetNode="_S_IIRobjEeag-eGstlZchQ">
         <target xmi:type="sigpml:Place" href="Simple.xsigpml#//@ownedApplication/@ownedPlaces.0"/>
         <semanticElements xmi:type="sigpml:Place" href="Simple.xsigpml#//@ownedApplication/@ownedPlaces.0"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_S_IISobjEeag-eGstlZchQ" size="2" routingStyle="manhattan" strokeColor="138,226,52">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']/@style"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_S_IIS4bjEeag-eGstlZchQ" labelSize="9" showIcon="false"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_HZiIoobkEeag-eGstlZchQ" description="_HZiIoIbkEeag-eGstlZchQ" size="2" routingStyle="manhattan" strokeColor="138,226,52">
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_HZiIo4bkEeag-eGstlZchQ" labelSize="9" showIcon="false"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_S_IITIbjEeag-eGstlZchQ" name="1" sourceNode="_S_IIQobjEeag-eGstlZchQ" targetNode="_S_IIPobjEeag-eGstlZchQ">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_S_IITIbjEeag-eGstlZchQ" name="0 / 1" sourceNode="_S_IIQobjEeag-eGstlZchQ" targetNode="_S_IIPobjEeag-eGstlZchQ">
         <target xmi:type="sigpml:Place" href="Simple.xsigpml#//@ownedApplication/@ownedPlaces.1"/>
         <semanticElements xmi:type="sigpml:Place" href="Simple.xsigpml#//@ownedApplication/@ownedPlaces.1"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_S_IITYbjEeag-eGstlZchQ" size="2" routingStyle="manhattan" strokeColor="138,226,52">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']/@style"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_S_IITobjEeag-eGstlZchQ" labelSize="9" showIcon="false"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_HZivsobkEeag-eGstlZchQ" description="_HZivsIbkEeag-eGstlZchQ" size="2" routingStyle="manhattan" strokeColor="138,226,52">
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_HZivs4bkEeag-eGstlZchQ" labelSize="9" showIcon="false"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer/@edgeMappings[name='Place']"/>
       </ownedDiagramElements>
@@ -420,6 +441,7 @@
       <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_S_IIXobjEeag-eGstlZchQ"/>
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']/@ownedRepresentations[name='SigPML']/@additionalLayers[name='SigPMLAnimation']"/>
       <target xmi:type="sigpml:System" href="Simple.xsigpml#/"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.sigpml.xsigpml.design/description/SigPML.odesign#//@ownedViewpoints[name='SigPML']"/>
