@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.gemoc_studio.branding.feature"
       label="GEMOC Studio Main Features"
-      version="2.2.0.qualifier"
+      version="2.2.1.qualifier"
       provider-name="GEMOC"
       plugin="org.gemoc.gemoc_studio.branding">
 

@@ -4,7 +4,7 @@
     <name>GEMOC Studio root build</name>
     <groupId>org.gemoc.gemoc_studio</groupId>
     <artifactId>org.gemoc.gemoc_studio.parent</artifactId>
-    <version>2.2.0-SNAPSHOT</version>
+    <version>2.2.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 	<parent>
 		<groupId>org.gemoc</groupId>
@@ -369,21 +369,6 @@
 		            <id>gemoc-studio_official_samples_deployer on CI</id>
 		            <layout>p2</layout>
 		            <url>https://ci.inria.fr/gemoc/job/gemoc-studio_official_samples_deployer/lastSuccessfulBuild/artifact/official_samples/sample.deployers/releng/org.gemoc.official_samples.deployers.repository/target/repository/</url>
-		        </repository>
-		        <repository>
-		            <id>modeldebugging_trace_commons on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/trace/commons/releng/fr.inria.diverse.trace.commons.updatesite/target/repository/</url>
-		        </repository>
-		    	<repository>
-		            <id>modeldebugging_trace_generator on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/trace/generator/releng/org.gemoc.modeldebugging.trace.generator.updatesite/target/repository/</url>
-		        </repository>
-		    	<repository>
-		            <id>modeldebugging_trace_manager on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/framework_and_trace/lastSuccessfulBuild/artifact/trace/manager/releng/org.gemoc.modeldebugging.trace.manager.updatesite/target/repository/</url>
 		        </repository>
 		        <repository>
 		            <id>concurrency_gel on CI</id>
