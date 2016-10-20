@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.gemoc.modeldebugging.feature_2.2.0.qualifier.jar" id="org.gemoc.modeldebugging.feature" version="2.2.0.qualifier">
+   <feature url="features/org.gemoc.modeldebugging.feature_2.2.1.qualifier.jar" id="org.gemoc.modeldebugging.feature" version="2.2.1.qualifier">
       <category name="GEMOC_AllInOne"/>
    </feature>
-   <feature url="features/org.gemoc.concurrency.feature_2.2.0.qualifier.jar" id="org.gemoc.concurrency.feature" version="2.2.0.qualifier">
+   <feature url="features/org.gemoc.concurrency.feature_2.2.1.qualifier.jar" id="org.gemoc.concurrency.feature" version="2.2.1.qualifier">
       <category name="GEMOC_AllInOne"/>
    </feature>
-   <feature url="features/org.gemoc.coordination.feature_2.2.0.qualifier.jar" id="org.gemoc.coordination.feature" version="2.2.0.qualifier">
+   <feature url="features/org.gemoc.coordination.feature_2.2.1.qualifier.jar" id="org.gemoc.coordination.feature" version="2.2.1.qualifier">
       <category name="GEMOC_AllInOne"/>
    </feature>
    <feature url="features/org.gemoc.commons.feature_0.1.0.qualifier.jar" id="org.gemoc.commons.feature" version="0.1.0.qualifier">
@@ -18,16 +18,10 @@
    <feature url="features/org.gemoc.commons.feature.source_0.1.0.qualifier.jar" id="org.gemoc.commons.feature.source" version="0.1.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.execution.sequential.javaxdsml.feature_0.1.0.qualifier.jar" id="org.gemoc.execution.sequential.javaxdsml.feature" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.execution.sequential.javaxdsml.feature_2.2.0.qualifier.jar" id="org.gemoc.execution.sequential.javaxdsml.feature" version="2.2.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.execution.sequential.javaxdsml.feature.source_0.1.0.qualifier.jar" id="org.gemoc.execution.sequential.javaxdsml.feature.source" version="0.1.0.qualifier">
-      <category name="GEMOC_ModelDebugging_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.gemoc_commons.feature_0.1.0.qualifier.jar" id="org.gemoc.gemoc_commons.feature" version="0.1.0.qualifier">
-      <category name="GEMOC_ModelDebugging_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.gemoc_commons.feature.source_0.1.0.qualifier.jar" id="org.gemoc.gemoc_commons.feature.source" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.execution.sequential.javaxdsml.feature.source_2.2.0.qualifier.jar" id="org.gemoc.execution.sequential.javaxdsml.feature.source" version="2.2.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
    <feature url="features/org.gemoc.modeldebugging.executionframework.feature_0.1.0.qualifier.jar" id="org.gemoc.modeldebugging.executionframework.feature" version="0.1.0.qualifier">
@@ -69,28 +63,28 @@
    <feature url="features/org.gemoc.official_samples.deployers.feature_0.1.0.qualifier.jar" id="org.gemoc.official_samples.deployers.feature" version="0.1.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.concurrent_addons.feature_0.1.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.concurrent_addons.feature_2.2.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature" version="2.2.0.qualifier">
       <category name="GEMOC_Concurrency_Components"/>
    </feature>
-   <feature url="features/org.gemoc.concurrent_addons.feature.source_0.1.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature.source" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.concurrent_addons.feature.source_2.2.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature.source" version="2.2.0.qualifier">
       <category name="GEMOC_Concurrency_Components"/>
    </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.feature_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.executionengine.ccsljava.feature_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature" version="2.2.0.qualifier">
       <category name="GEMOC_Concurrency_Components"/>
    </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.feature.source_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature.source" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.executionengine.ccsljava.feature.source_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature.source" version="2.2.0.qualifier">
       <category name="GEMOC_Concurrency_Components"/>
    </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature" version="2.2.0.qualifier">
       <category name="GEMOC_Concurrency_Components"/>
    </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature.source_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature.source" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature.source_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature.source" version="2.2.0.qualifier">
       <category name="GEMOC_Concurrency_Components"/>
    </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature" version="2.2.0.qualifier">
       <category name="GEMOC_Concurrency_Components"/>
    </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature.source_0.1.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature.source" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature.source_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature.source" version="2.2.0.qualifier">
       <category name="GEMOC_Concurrency_Components"/>
    </feature>
    <feature url="features/org.gemoc.gel.feature_0.1.0.qualifier.jar" id="org.gemoc.gel.feature" version="0.1.0.qualifier">

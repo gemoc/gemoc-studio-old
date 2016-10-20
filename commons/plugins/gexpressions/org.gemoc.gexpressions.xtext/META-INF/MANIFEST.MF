@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.gemoc.gexpressions.xtext
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.gemoc.gexpressions.xtext; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.gemoc.gexpressions,
+ org.eclipse.equinox.common,
+ org.eclipse.xtext.util,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.gemoc.gexpressions.xtext,
+ org.gemoc.gexpressions.xtext.formatting,
+ org.gemoc.gexpressions.xtext.generator,
+ org.gemoc.gexpressions.xtext.linking,
+ org.gemoc.gexpressions.xtext.parser.antlr,
+ org.gemoc.gexpressions.xtext.parser.antlr.internal,
+ org.gemoc.gexpressions.xtext.scoping,
+ org.gemoc.gexpressions.xtext.serializer,
+ org.gemoc.gexpressions.xtext.services,
+ org.gemoc.gexpressions.xtext.validation

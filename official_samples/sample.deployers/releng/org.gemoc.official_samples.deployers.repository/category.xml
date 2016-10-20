@@ -7,6 +7,12 @@
       <category name="gemoc_samples"/>
    </feature>
    
+   <feature url="features/org.gemoc.concurrent.official_samples.deployers.feature_0.1.0.qualifier.jar" id="org.gemoc.concurrent.official_samples.deployers.feature" version="0.1.0.qualifier">
+      <category name="gemoc_samples"/>
+   </feature>
+   <feature url="features/org.gemoc.concurrent.official_samples.deployers.source_0.1.0.qualifier.jar" id="org.gemoc.concurrent.official_samples.deployers.feature.source" version="0.1.0.qualifier">
+      <category name="gemoc_samples"/>
+   </feature>
    <feature url="features/org.gemoc.tfsmandactivity.deployer.feature_0.1.0.qualifier.jar" id="org.gemoc.tfsmandactivity.deployer.feature" version="0.1.0.qualifier">
       <category name="gemoc_samples"/>
    </feature>

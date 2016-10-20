@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.gemoc.gexpressions.test;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: test,
+ test.impl,
+ test.util
+Require-Bundle: org.eclipse.xtext.ui,
+ org.gemoc.gexpressions,
+ org.gemoc.gexpressions.xtext
+Bundle-ActivationPolicy: lazy

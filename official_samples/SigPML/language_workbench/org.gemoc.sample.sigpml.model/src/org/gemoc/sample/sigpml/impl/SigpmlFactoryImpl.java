@@ -2,8 +2,6 @@
  */
 package org.gemoc.sample.sigpml.impl;
 
-import com.google.common.collect.LinkedListMultimap;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -97,8 +95,6 @@ public class SigpmlFactoryImpl extends EFactoryImpl implements SigpmlFactory {
 				return createsizeTypeFromString(eDataType, initialValue);
 			case SigpmlPackage.OBJECT:
 				return createObjectFromString(eDataType, initialValue);
-			case SigpmlPackage.LINKED_LIST_MULTIMAP:
-				return createLinkedListMultimapFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -116,8 +112,6 @@ public class SigpmlFactoryImpl extends EFactoryImpl implements SigpmlFactory {
 				return convertsizeTypeToString(eDataType, instanceValue);
 			case SigpmlPackage.OBJECT:
 				return convertObjectToString(eDataType, instanceValue);
-			case SigpmlPackage.LINKED_LIST_MULTIMAP:
-				return convertLinkedListMultimapToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -258,24 +252,6 @@ public class SigpmlFactoryImpl extends EFactoryImpl implements SigpmlFactory {
 	 * @generated
 	 */
 	public String convertObjectToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public LinkedListMultimap createLinkedListMultimapFromString(EDataType eDataType, String initialValue) {
-		return (LinkedListMultimap)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertLinkedListMultimapToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

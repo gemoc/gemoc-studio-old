@@ -4,10 +4,7 @@
 
     <properties>
         <sample_root>${basedir}/../../sample</sample_root>
-        <tfsm_sample_modeling_root>${basedir}/../../../TFSM/modeling_workbench</tfsm_sample_modeling_root>
         <tfsm_plaink3_sample_modeling_root>${basedir}/../../../TFSM_PlainK3/modeling_workbench</tfsm_plaink3_sample_modeling_root>
-        <sigpml_sample_modeling_root>${basedir}/../../../SigPML/modeling_workbench</sigpml_sample_modeling_root>
-        <tfsmandsigpml_sample_modeling_root>${basedir}/../../../bcool_TFSMAndSigPML/modeling_workbench</tfsmandsigpml_sample_modeling_root>
     </properties>
     
 	<parent>
@@ -34,31 +31,11 @@
 						<configuration>
 							<tasks>
 								<mkdir dir="${basedir}/zips" />
-								
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.simple_example.zip">
-									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.simple_example/" />
-								</zip>
-								<!-- <zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample.zip">
-									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.daynight_single_traffic_light_sample/" />
-								</zip> 
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample.zip">
-									<fileset dir="${tfsm_sample_modeling_root}/org.gemoc.sample.tfsm.daynight_traffic_light_with_groovygui_sample/" />
-								</zip> -->
 
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.plaink3.single_traffic_light_sample.zip">
-									<fileset dir="${tfsm_plaink3_sample_modeling_root}/org.gemoc.sample.tfsm.plaink3.single_traffic_light_sample/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.sequential.single_traffic_light_sample.zip">
+									<fileset dir="${tfsm_plaink3_sample_modeling_root}/org.gemoc.sample.tfsm.sequential.single_traffic_light_sample/" />
 								</zip>
 
-								<zip destfile="${basedir}/zips/org.gemoc.sample.sigpml.simple_example.zip">
-									<fileset dir="${sigpml_sample_modeling_root}/org.gemoc.sample.sigpml.simple_example/" />
-								</zip>
-								
-								
-								<!-- BCooL TFSM and SigPML  -->
-							
-								<zip destfile="${basedir}/zips/org.gemoc.sample.bcool.coffeemachinewithsigpml.zip">
-									<fileset dir="${tfsmandsigpml_sample_modeling_root}/org.gemoc.sample.bcool.coffeemachinewithsigpml/" />
-								</zip>
 							</tasks>
 						</configuration>
 					</execution>

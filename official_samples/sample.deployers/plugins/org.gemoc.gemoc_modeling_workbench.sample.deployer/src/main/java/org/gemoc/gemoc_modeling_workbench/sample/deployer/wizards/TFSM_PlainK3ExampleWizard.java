@@ -23,7 +23,7 @@ public class TFSM_PlainK3ExampleWizard
 		// We need the statements example to be unzipped along with the
 		// EMF library example model, edit and editor examples
 		List<ProjectDescriptor> projects = new ArrayList<ProjectDescriptor>(1);
-		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.plaink3.single_traffic_light_sample.zip", "org.gemoc.sample.tfsm.plaink3.single_traffic_light_sample"));
+		projects.add(new ProjectDescriptor(Activator.PLUGIN_ID, "zips/org.gemoc.sample.tfsm.sequential.single_traffic_light_sample.zip", "org.gemoc.sample.tfsm.sequential.single_traffic_light_sample"));
 		return projects;
 	}
 

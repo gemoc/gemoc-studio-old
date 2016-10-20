@@ -27,11 +27,11 @@ import org.gemoc.sample.sigpml.SigpmlPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.impl.HWRessourceImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.impl.HWRessourceImpl#getConnectedTo <em>Connected To</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

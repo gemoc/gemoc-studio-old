@@ -2,8 +2,6 @@
  */
 package org.gemoc.sample.sigpml.util;
 
-import com.google.common.collect.LinkedListMultimap;
-
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -131,8 +129,6 @@ public class SigpmlValidator extends EObjectValidator {
 				return validatesizeType((sizeType)value, diagnostics, context);
 			case SigpmlPackage.OBJECT:
 				return validateObject(value, diagnostics, context);
-			case SigpmlPackage.LINKED_LIST_MULTIMAP:
-				return validateLinkedListMultimap((LinkedListMultimap)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -309,15 +305,6 @@ public class SigpmlValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateObject(Object object, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateLinkedListMultimap(LinkedListMultimap linkedListMultimap, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

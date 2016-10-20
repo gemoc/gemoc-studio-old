@@ -2,8 +2,6 @@
  */
 package org.gemoc.sample.sigpml;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Place</b></em>'.
@@ -11,19 +9,16 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.Place#getItsOutputPort <em>Its Output Port</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Place#getItsInputPort <em>Its Input Port</em>}</li>
- *   <li>{@link org.gemoc.sample.sigpml.Place#getFifo <em>Fifo</em>}</li>
- *   <li>{@link org.gemoc.sample.sigpml.Place#isIsInitialized <em>Is Initialized</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Place#getSize <em>Size</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Place#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Place#getType <em>Type</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Place#getByteSize <em>Byte Size</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Place#getDelay <em>Delay</em>}</li>
- *   <li>{@link org.gemoc.sample.sigpml.Place#getCurrentSize <em>Current Size</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.sigpml.SigpmlPackage#getPlace()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='matchRates'"
@@ -82,49 +77,6 @@ public interface Place extends NamedElement {
 	 * @generated
 	 */
 	void setItsInputPort(InputPort value);
-
-	/**
-	 * Returns the value of the '<em><b>Fifo</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.Object}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Fifo</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Fifo</em>' attribute list.
-	 * @see org.gemoc.sample.sigpml.SigpmlPackage#getPlace_Fifo()
-	 * @model dataType="org.gemoc.sample.sigpml.Object"
-	 * @generated
-	 */
-	EList<Object> getFifo();
-
-	/**
-	 * Returns the value of the '<em><b>Is Initialized</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Is Initialized</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Initialized</em>' attribute.
-	 * @see #setIsInitialized(boolean)
-	 * @see org.gemoc.sample.sigpml.SigpmlPackage#getPlace_IsInitialized()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isIsInitialized();
-
-	/**
-	 * Sets the value of the '{@link org.gemoc.sample.sigpml.Place#isIsInitialized <em>Is Initialized</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Initialized</em>' attribute.
-	 * @see #isIsInitialized()
-	 * @generated
-	 */
-	void setIsInitialized(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Size</b></em>' attribute.
@@ -260,47 +212,5 @@ public interface Place extends NamedElement {
 	 * @generated
 	 */
 	void setDelay(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Current Size</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Current Size</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Current Size</em>' attribute.
-	 * @see #setCurrentSize(int)
-	 * @see org.gemoc.sample.sigpml.SigpmlPackage#getPlace_CurrentSize()
-	 * @model
-	 * @generated
-	 */
-	int getCurrentSize();
-
-	/**
-	 * Sets the value of the '{@link org.gemoc.sample.sigpml.Place#getCurrentSize <em>Current Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Current Size</em>' attribute.
-	 * @see #getCurrentSize()
-	 * @generated
-	 */
-	void setCurrentSize(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void push();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void pop();
 
 } // Place

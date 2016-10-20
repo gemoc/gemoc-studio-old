@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.gemoc.tfsmandactivity.deployer.feature"
-      label="Gemoc TFSM and Activity Language coordination samples"
+      label="GEMOC TFSM and Activity Language coordination samples"
       version="0.1.0.qualifier"
       provider-name="I3S/INRIA">
 

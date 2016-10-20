@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.gemoc.sample.sigpml.xsigpml;singleton:=true
+Bundle-Version: 0.1.0
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ fr.inria.diverse.k3.al.annotationprocessor.plugin,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.osgi,
+ org.gemoc.execution.concurrent.ccsljavaengine.extensions.k3,
+ fr.inria.diverse.trace.commons.model,
+ fr.cnrs.luchogie.ultimateplotter,
+ org.codehaus.groovy,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore.xmi,
+ org.gemoc.execution.concurrent.ccsljavaxdsml.api
+Bundle-ActivationPolicy: lazy
+Export-Package: org.gemoc.sample.sigpml.xsigpml.aspects,
+ org.gemoc.sample.sigpml.xsigpml.sigpml,
+ org.gemoc.sample.sigpml.xsigpml.sigpml.impl,
+ org.gemoc.sample.sigpml.xsigpml.sigpml.util
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+

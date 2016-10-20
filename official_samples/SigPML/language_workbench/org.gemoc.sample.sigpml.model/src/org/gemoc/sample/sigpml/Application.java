@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.Application#getOwnedAgents <em>Owned Agents</em>}</li>
  *   <li>{@link org.gemoc.sample.sigpml.Application#getOwnedPlaces <em>Owned Places</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.gemoc.sample.sigpml.SigpmlPackage#getApplication()
  * @model

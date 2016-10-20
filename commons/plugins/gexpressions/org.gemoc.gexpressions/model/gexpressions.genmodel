@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.gexpressions/src" modelPluginID="org.gemoc.gexpressions"
+    modelName="Gexpressions" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore" operationReflection="true"
+    importOrganizing="true">
+  <foreignModel>gexpressions.ecore</foreignModel>
+  <genPackages prefix="Gexpressions" basePackage="org.gemoc" disposableProviderFactory="true"
+      ecorePackage="gexpressions.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gexpressions.ecore#//GAndOperator">
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GAndOperator/AND"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gexpressions.ecore#//GXorOperator">
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GXorOperator/XOR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gexpressions.ecore#//GOrOperator">
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GOrOperator/OR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gexpressions.ecore#//GEqualityOperator">
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GEqualityOperator/EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GEqualityOperator/NOTEQUAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gexpressions.ecore#//GRelationOperator">
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GRelationOperator/LESS"/>
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GRelationOperator/GREATER"/>
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GRelationOperator/LESSEQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GRelationOperator/GREATEREQUAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gexpressions.ecore#//GAdditionOperator">
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GAdditionOperator/ADDITION"/>
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GAdditionOperator/SUBTRACTION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gexpressions.ecore#//GMultiplicationOperator">
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GMultiplicationOperator/MULTIPLICATION"/>
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GMultiplicationOperator/DIVISION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gexpressions.ecore#//GNegationOperator">
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GNegationOperator/NEGATION"/>
+      <genEnumLiterals ecoreEnumLiteral="gexpressions.ecore#//GNegationOperator/MINUS"/>
+    </genEnums>
+    <genClasses ecoreClass="gexpressions.ecore#//GProgram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GProgram/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GProgram/expressions"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GImportStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GImportStatement/importURI"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="gexpressions.ecore#//GExpression"/>
+    <genClasses ecoreClass="gexpressions.ecore#//GNavigationExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GNavigationExpression/body"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GNavigationExpression/referencedEObject"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GReferenceExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GReferenceExpression/referencedObject"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GReferenceExpression/referencedEObject"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="gexpressions.ecore#//GPrimaryExpression"/>
+    <genClasses ecoreClass="gexpressions.ecore#//GStringExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GStringExpression/value"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GBooleanExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GBooleanExpression/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="gexpressions.ecore#//GNumericExpression"/>
+    <genClasses ecoreClass="gexpressions.ecore#//GIntegerExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GIntegerExpression/value"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GDoubleExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GDoubleExpression/value"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GIfExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GIfExpression/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GIfExpression/thenExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GIfExpression/elseExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GBraceExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GBraceExpression/innerExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GEnumLiteralExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GEnumLiteralExpression/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="gexpressions.ecore#//GBinaryOperatorExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GBinaryOperatorExpression/leftOperand"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GBinaryOperatorExpression/rightOperand"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="gexpressions.ecore#//GUnaryOperatorExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gexpressions.ecore#//GUnaryOperatorExpression/operand"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="gexpressions.ecore#//GBooleanOperatorExpression"/>
+    <genClasses ecoreClass="gexpressions.ecore#//GAndExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GAndExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GXorExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GXorExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GOrExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GOrExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GEqualityExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GEqualityExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GRelationExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GRelationExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GAdditionExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GAdditionExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GMultiplicationExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GMultiplicationExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="gexpressions.ecore#//GNegationExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gexpressions.ecore#//GNegationExpression/operator"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

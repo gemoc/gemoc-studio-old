@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated gexpressions -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.gemoc.gexpressions.presentation.GexpressionsModelWizardID"
+            name="%_UI_GexpressionsModelWizard_label"
+            class="org.gemoc.gexpressions.presentation.GexpressionsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/GexpressionsModelFile.gif">
+         <description>%_UI_GexpressionsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated gexpressions -->
+      <editor
+            id="org.gemoc.gexpressions.presentation.GexpressionsEditorID"
+            name="%_UI_GexpressionsEditor_label"
+            icon="icons/full/obj16/GexpressionsModelFile.gif"
+            extensions="gexpressions"
+            class="org.gemoc.gexpressions.presentation.GexpressionsEditor"
+            contributorClass="org.gemoc.gexpressions.presentation.GexpressionsActionBarContributor">
+      </editor>
+   </extension>
+</plugin>

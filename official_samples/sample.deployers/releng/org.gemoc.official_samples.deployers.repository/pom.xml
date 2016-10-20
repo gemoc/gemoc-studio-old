@@ -9,7 +9,7 @@
     <artifactId>org.gemoc.official_samples.deployers.root</artifactId>
   </parent>
 
-  <artifactId>org.gemoc.gemoc_commons.repository</artifactId>
+  <artifactId>org.gemoc.official_samples.deployers.repository</artifactId>
   <packaging>eclipse-repository</packaging>
 
 </project> 

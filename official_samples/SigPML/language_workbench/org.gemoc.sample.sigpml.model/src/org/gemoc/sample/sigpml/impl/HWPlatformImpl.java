@@ -24,10 +24,10 @@ import org.gemoc.sample.sigpml.SigpmlPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.gemoc.sample.sigpml.impl.HWPlatformImpl#getOwnedHWResources <em>Owned HW Resources</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

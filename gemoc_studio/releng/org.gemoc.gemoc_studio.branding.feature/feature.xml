@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.gemoc_studio.branding.feature"
       label="GEMOC Studio Main Features"
-      version="2.2.0.qualifier"
+      version="2.2.1.qualifier"
       provider-name="GEMOC"
       plugin="org.gemoc.gemoc_studio.branding">
 
@@ -25,7 +25,6 @@
       <import feature="org.eclipse.emf.ecoretools.sdk" version="2.0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.concurrent_addons.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.commons.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.gemoc_commons.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionengine.ccsljava.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionengine.ccsljava.runtime.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.executionengine.ccsljava.runtime.ui.feature" version="0.0.0" match="greaterOrEqual"/>
@@ -33,6 +32,7 @@
       <import feature="org.gemoc.modeldebugging.xdsmlframework.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.executionframework.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.execution.sequential.javaxdsml.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.concurrent.official_samples.deployers.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.official_samples.deployers.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.heterogeneous_coordination_engine.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>
