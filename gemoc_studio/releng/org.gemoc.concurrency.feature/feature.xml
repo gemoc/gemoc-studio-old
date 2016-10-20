@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.concurrency.feature"
       label="GEMOC Concurrency"
-      version="2.2.0.qualifier"
+      version="2.2.1.qualifier"
       provider-name="GEMOC">
 
    <description url="http://www.gemoc.org">
