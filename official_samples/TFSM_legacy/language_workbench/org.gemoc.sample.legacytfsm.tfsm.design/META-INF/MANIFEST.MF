@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.gemoc.sample.legacytfsm.tfsm.design
+Bundle-SymbolicName: org.gemoc.sample.legacytfsm.tfsm.design;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: org.gemoc.sample.legacytfsm.tfsm.design.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.sirius,
+ org.eclipse.sirius.common.acceleo.aql,
+ org.gemoc.sample.legacytfsm.tfsm.model;bundle-version="0.1.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
