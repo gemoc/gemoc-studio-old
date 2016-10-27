@@ -17,6 +17,10 @@ public class StandaloneSetup {
   
   public void doEMFRegistration() {
     EPackage.Registry.INSTANCE.put(
+    	org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.eNS_URI,
+    	org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.eINSTANCE
+    );
+    EPackage.Registry.INSTANCE.put(
     	org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TfsmPackage.eNS_URI,
     	org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TfsmPackage.eINSTANCE
     );
@@ -32,17 +36,33 @@ public class StandaloneSetup {
   }
   
   public void doAdaptersRegistration() {
+    MelangeRegistry.LanguageDescriptor tFSM = new MelangeRegistryImpl.LanguageDescriptorImpl(
+    	"org.gemoc.sample.legacytfsm.xstfsm.TFSM", "", "http://www.gemoc.org/legacytfsm/tfsm", "org.gemoc.sample.legacytfsm.xstfsm.TFSMMT"
+    );
+    MelangeRegistry.INSTANCE.getLanguageMap().put(
+    	"org.gemoc.sample.legacytfsm.xstfsm.TFSM",
+    	tFSM
+    );
     MelangeRegistry.LanguageDescriptor xSTFSM = new MelangeRegistryImpl.LanguageDescriptorImpl(
     	"org.gemoc.sample.legacytfsm.xstfsm.XSTFSM", "", "http://org.gemoc.sample.legacytfsm.xstfsm.xstfsm/tfsm/", "org.gemoc.sample.legacytfsm.xstfsm.XSTFSMMT"
     );
+    xSTFSM.addAdapter("org.gemoc.sample.legacytfsm.xstfsm.TFSMMT", org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.XSTFSMAdapter.class);
     xSTFSM.addAdapter("org.gemoc.sample.legacytfsm.xstfsm.XSTFSMMT", org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.XSTFSMAdapter.class);
     MelangeRegistry.INSTANCE.getLanguageMap().put(
     	"org.gemoc.sample.legacytfsm.xstfsm.XSTFSM",
     	xSTFSM
     );
+    MelangeRegistry.ModelTypeDescriptor tFSMMT = new MelangeRegistryImpl.ModelTypeDescriptorImpl(
+    	"org.gemoc.sample.legacytfsm.xstfsm.TFSMMT", "", "http://org.gemoc.sample.legacytfsm.xstfsm.tfsmmt/"
+    );
+    MelangeRegistry.INSTANCE.getModelTypeMap().put(
+    	"org.gemoc.sample.legacytfsm.xstfsm.TFSMMT",
+    	tFSMMT
+    );
     MelangeRegistry.ModelTypeDescriptor xSTFSMMT = new MelangeRegistryImpl.ModelTypeDescriptorImpl(
     	"org.gemoc.sample.legacytfsm.xstfsm.XSTFSMMT", "", "http://org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt/"
     );
+    xSTFSMMT.addSuperType("org.gemoc.sample.legacytfsm.xstfsm.TFSMMT");
     MelangeRegistry.INSTANCE.getModelTypeMap().put(
     	"org.gemoc.sample.legacytfsm.xstfsm.XSTFSMMT",
     	xSTFSMMT

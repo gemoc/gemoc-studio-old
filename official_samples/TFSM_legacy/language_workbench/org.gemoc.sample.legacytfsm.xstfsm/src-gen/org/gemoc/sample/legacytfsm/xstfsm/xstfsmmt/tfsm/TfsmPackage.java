@@ -85,14 +85,14 @@ public interface TfsmPackage extends EPackage {
 	int NAMED_ELEMENT_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TimedFSMImpl <em>Timed FSM</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TimeFSMImpl <em>Time FSM</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TimedFSMImpl
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TfsmPackageImpl#getTimedFSM()
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TimeFSMImpl
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TfsmPackageImpl#getTimeFSM()
 	 * @generated
 	 */
-	int TIMED_FSM = 0;
+	int TIME_FSM = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -101,7 +101,7 @@ public interface TfsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_FSM__NAME = NAMED_ELEMENT__NAME;
+	int TIME_FSM__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Owned States</b></em>' containment reference list.
@@ -110,7 +110,7 @@ public interface TfsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_FSM__OWNED_STATES = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int TIME_FSM__OWNED_STATES = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Initial State</b></em>' reference.
@@ -119,7 +119,7 @@ public interface TfsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_FSM__INITIAL_STATE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int TIME_FSM__INITIAL_STATE = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Local Events</b></em>' containment reference list.
@@ -128,7 +128,7 @@ public interface TfsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_FSM__LOCAL_EVENTS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int TIME_FSM__LOCAL_EVENTS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Local Clock</b></em>' containment reference.
@@ -137,7 +137,7 @@ public interface TfsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_FSM__LOCAL_CLOCK = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int TIME_FSM__LOCAL_CLOCK = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Owned Transitions</b></em>' containment reference list.
@@ -146,7 +146,7 @@ public interface TfsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_FSM__OWNED_TRANSITIONS = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int TIME_FSM__OWNED_TRANSITIONS = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Step Number</b></em>' attribute.
@@ -155,7 +155,7 @@ public interface TfsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_FSM__STEP_NUMBER = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int TIME_FSM__STEP_NUMBER = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Last State Change Step Number</b></em>' attribute.
@@ -164,7 +164,7 @@ public interface TfsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_FSM__LAST_STATE_CHANGE_STEP_NUMBER = NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int TIME_FSM__LAST_STATE_CHANGE_STEP_NUMBER = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Current State</b></em>' reference.
@@ -173,16 +173,16 @@ public interface TfsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_FSM__CURRENT_STATE = NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int TIME_FSM__CURRENT_STATE = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
-	 * The number of structural features of the '<em>Timed FSM</em>' class.
+	 * The number of structural features of the '<em>Time FSM</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_FSM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 8;
+	int TIME_FSM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.StateImpl <em>State</em>}' class.
@@ -600,102 +600,102 @@ public interface TfsmPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM <em>Timed FSM</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM <em>Time FSM</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Timed FSM</em>'.
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM
+	 * @return the meta object for class '<em>Time FSM</em>'.
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM
 	 * @generated
 	 */
-	EClass getTimedFSM();
+	EClass getTimeFSM();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getOwnedStates <em>Owned States</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getOwnedStates <em>Owned States</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Owned States</em>'.
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getOwnedStates()
-	 * @see #getTimedFSM()
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getOwnedStates()
+	 * @see #getTimeFSM()
 	 * @generated
 	 */
-	EReference getTimedFSM_OwnedStates();
+	EReference getTimeFSM_OwnedStates();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getInitialState <em>Initial State</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getInitialState <em>Initial State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Initial State</em>'.
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getInitialState()
-	 * @see #getTimedFSM()
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getInitialState()
+	 * @see #getTimeFSM()
 	 * @generated
 	 */
-	EReference getTimedFSM_InitialState();
+	EReference getTimeFSM_InitialState();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getLocalEvents <em>Local Events</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getLocalEvents <em>Local Events</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Local Events</em>'.
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getLocalEvents()
-	 * @see #getTimedFSM()
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getLocalEvents()
+	 * @see #getTimeFSM()
 	 * @generated
 	 */
-	EReference getTimedFSM_LocalEvents();
+	EReference getTimeFSM_LocalEvents();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getLocalClock <em>Local Clock</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getLocalClock <em>Local Clock</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Local Clock</em>'.
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getLocalClock()
-	 * @see #getTimedFSM()
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getLocalClock()
+	 * @see #getTimeFSM()
 	 * @generated
 	 */
-	EReference getTimedFSM_LocalClock();
+	EReference getTimeFSM_LocalClock();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getOwnedTransitions <em>Owned Transitions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getOwnedTransitions <em>Owned Transitions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Owned Transitions</em>'.
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getOwnedTransitions()
-	 * @see #getTimedFSM()
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getOwnedTransitions()
+	 * @see #getTimeFSM()
 	 * @generated
 	 */
-	EReference getTimedFSM_OwnedTransitions();
+	EReference getTimeFSM_OwnedTransitions();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getStepNumber <em>Step Number</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getStepNumber <em>Step Number</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Step Number</em>'.
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getStepNumber()
-	 * @see #getTimedFSM()
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getStepNumber()
+	 * @see #getTimeFSM()
 	 * @generated
 	 */
-	EAttribute getTimedFSM_StepNumber();
+	EAttribute getTimeFSM_StepNumber();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getLastStateChangeStepNumber <em>Last State Change Step Number</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getLastStateChangeStepNumber <em>Last State Change Step Number</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Last State Change Step Number</em>'.
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getLastStateChangeStepNumber()
-	 * @see #getTimedFSM()
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getLastStateChangeStepNumber()
+	 * @see #getTimeFSM()
 	 * @generated
 	 */
-	EAttribute getTimedFSM_LastStateChangeStepNumber();
+	EAttribute getTimeFSM_LastStateChangeStepNumber();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getCurrentState <em>Current State</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getCurrentState <em>Current State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Current State</em>'.
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedFSM#getCurrentState()
-	 * @see #getTimedFSM()
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM#getCurrentState()
+	 * @see #getTimeFSM()
 	 * @generated
 	 */
-	EReference getTimedFSM_CurrentState();
+	EReference getTimeFSM_CurrentState();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.State <em>State</em>}'.
@@ -1029,14 +1029,14 @@ public interface TfsmPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TimedFSMImpl <em>Timed FSM</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TimeFSMImpl <em>Time FSM</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TimedFSMImpl
-		 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TfsmPackageImpl#getTimedFSM()
+		 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TimeFSMImpl
+		 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TfsmPackageImpl#getTimeFSM()
 		 * @generated
 		 */
-		EClass TIMED_FSM = eINSTANCE.getTimedFSM();
+		EClass TIME_FSM = eINSTANCE.getTimeFSM();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned States</b></em>' containment reference list feature.
@@ -1044,7 +1044,7 @@ public interface TfsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIMED_FSM__OWNED_STATES = eINSTANCE.getTimedFSM_OwnedStates();
+		EReference TIME_FSM__OWNED_STATES = eINSTANCE.getTimeFSM_OwnedStates();
 
 		/**
 		 * The meta object literal for the '<em><b>Initial State</b></em>' reference feature.
@@ -1052,7 +1052,7 @@ public interface TfsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIMED_FSM__INITIAL_STATE = eINSTANCE.getTimedFSM_InitialState();
+		EReference TIME_FSM__INITIAL_STATE = eINSTANCE.getTimeFSM_InitialState();
 
 		/**
 		 * The meta object literal for the '<em><b>Local Events</b></em>' containment reference list feature.
@@ -1060,7 +1060,7 @@ public interface TfsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIMED_FSM__LOCAL_EVENTS = eINSTANCE.getTimedFSM_LocalEvents();
+		EReference TIME_FSM__LOCAL_EVENTS = eINSTANCE.getTimeFSM_LocalEvents();
 
 		/**
 		 * The meta object literal for the '<em><b>Local Clock</b></em>' containment reference feature.
@@ -1068,7 +1068,7 @@ public interface TfsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIMED_FSM__LOCAL_CLOCK = eINSTANCE.getTimedFSM_LocalClock();
+		EReference TIME_FSM__LOCAL_CLOCK = eINSTANCE.getTimeFSM_LocalClock();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Transitions</b></em>' containment reference list feature.
@@ -1076,7 +1076,7 @@ public interface TfsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIMED_FSM__OWNED_TRANSITIONS = eINSTANCE.getTimedFSM_OwnedTransitions();
+		EReference TIME_FSM__OWNED_TRANSITIONS = eINSTANCE.getTimeFSM_OwnedTransitions();
 
 		/**
 		 * The meta object literal for the '<em><b>Step Number</b></em>' attribute feature.
@@ -1084,7 +1084,7 @@ public interface TfsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TIMED_FSM__STEP_NUMBER = eINSTANCE.getTimedFSM_StepNumber();
+		EAttribute TIME_FSM__STEP_NUMBER = eINSTANCE.getTimeFSM_StepNumber();
 
 		/**
 		 * The meta object literal for the '<em><b>Last State Change Step Number</b></em>' attribute feature.
@@ -1092,7 +1092,7 @@ public interface TfsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TIMED_FSM__LAST_STATE_CHANGE_STEP_NUMBER = eINSTANCE.getTimedFSM_LastStateChangeStepNumber();
+		EAttribute TIME_FSM__LAST_STATE_CHANGE_STEP_NUMBER = eINSTANCE.getTimeFSM_LastStateChangeStepNumber();
 
 		/**
 		 * The meta object literal for the '<em><b>Current State</b></em>' reference feature.
@@ -1100,7 +1100,7 @@ public interface TfsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIMED_FSM__CURRENT_STATE = eINSTANCE.getTimedFSM_CurrentState();
+		EReference TIME_FSM__CURRENT_STATE = eINSTANCE.getTimeFSM_CurrentState();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.StateImpl <em>State</em>}' class.

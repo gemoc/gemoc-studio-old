@@ -4,36 +4,36 @@
   <genPackages prefix="Tfsm" basePackage="org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt" disposableProviderFactory="true">
     <ecorePackage href="XSTFSMMT.ecore#/"/>
     <genClasses>
-      <ecoreClass href="XSTFSMMT.ecore#//TimedFSM"/>
+      <ecoreClass href="XSTFSMMT.ecore#//TimeFSM"/>
       <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimedFSM/ownedStates"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimeFSM/ownedStates"/>
       </genFeatures>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimedFSM/initialState"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimeFSM/initialState"/>
       </genFeatures>
       <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimedFSM/localEvents"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimeFSM/localEvents"/>
       </genFeatures>
       <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimedFSM/localClock"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimeFSM/localClock"/>
       </genFeatures>
       <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimedFSM/ownedTransitions"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimeFSM/ownedTransitions"/>
       </genFeatures>
       <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="XSTFSMMT.ecore#//TimedFSM/stepNumber"/>
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSTFSMMT.ecore#//TimeFSM/stepNumber"/>
       </genFeatures>
       <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="XSTFSMMT.ecore#//TimedFSM/lastStateChangeStepNumber"/>
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSTFSMMT.ecore#//TimeFSM/lastStateChangeStepNumber"/>
       </genFeatures>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimedFSM/currentState"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="XSTFSMMT.ecore#//TimeFSM/currentState"/>
       </genFeatures>
       <genOperations>
-        <ecoreOperation href="XSTFSMMT.ecore#//TimedFSM/visit"/>
+        <ecoreOperation href="XSTFSMMT.ecore#//TimeFSM/visit"/>
       </genOperations>
       <genOperations>
-        <ecoreOperation href="XSTFSMMT.ecore#//TimedFSM/init"/>
+        <ecoreOperation href="XSTFSMMT.ecore#//TimeFSM/init"/>
       </genOperations>
     </genClasses>
     <genClasses>

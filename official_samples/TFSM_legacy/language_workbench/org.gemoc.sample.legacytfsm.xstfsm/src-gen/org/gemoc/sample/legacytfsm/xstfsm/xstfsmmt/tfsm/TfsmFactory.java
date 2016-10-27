@@ -22,13 +22,13 @@ public interface TfsmFactory extends EFactory {
 	TfsmFactory eINSTANCE = org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl.TfsmFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Timed FSM</em>'.
+	 * Returns a new object of class '<em>Time FSM</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Timed FSM</em>'.
+	 * @return a new object of class '<em>Time FSM</em>'.
 	 * @generated
 	 */
-	TimedFSM createTimedFSM();
+	TimeFSM createTimeFSM();
 
 	/**
 	 * Returns a new object of class '<em>State</em>'.

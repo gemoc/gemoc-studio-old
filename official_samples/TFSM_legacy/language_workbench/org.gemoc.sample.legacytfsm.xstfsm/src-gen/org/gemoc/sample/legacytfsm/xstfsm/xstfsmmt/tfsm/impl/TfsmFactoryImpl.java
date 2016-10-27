@@ -56,7 +56,7 @@ public class TfsmFactoryImpl extends EFactoryImpl implements TfsmFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case TfsmPackage.TIMED_FSM: return createTimedFSM();
+			case TfsmPackage.TIME_FSM: return createTimeFSM();
 			case TfsmPackage.STATE: return createState();
 			case TfsmPackage.TRANSITION: return createTransition();
 			case TfsmPackage.TEMPORAL_GUARD: return createTemporalGuard();
@@ -75,7 +75,7 @@ public class TfsmFactoryImpl extends EFactoryImpl implements TfsmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimedFSM createTimedFSM() {
+	public TimeFSM createTimeFSM() {
 		throw new UnsupportedOperationException("Cannot invoke element creation on a model type");
 	}
 

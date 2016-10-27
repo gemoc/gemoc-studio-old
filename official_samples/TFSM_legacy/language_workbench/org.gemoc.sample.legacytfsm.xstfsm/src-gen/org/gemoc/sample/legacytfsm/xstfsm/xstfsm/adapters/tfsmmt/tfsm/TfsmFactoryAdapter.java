@@ -1,23 +1,23 @@
-package org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm;
+package org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.XSTFSMMTAdaptersFactory;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.EvaluateGuard;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.EventGuard;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.FSMClock;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.FSMEvent;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.State;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TemporalGuard;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmFactory;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedSystem;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.Transition;
+import org.gemoc.sample.legacytfsm.tfsm.EvaluateGuard;
+import org.gemoc.sample.legacytfsm.tfsm.EventGuard;
+import org.gemoc.sample.legacytfsm.tfsm.FSMClock;
+import org.gemoc.sample.legacytfsm.tfsm.FSMEvent;
+import org.gemoc.sample.legacytfsm.tfsm.State;
+import org.gemoc.sample.legacytfsm.tfsm.TemporalGuard;
+import org.gemoc.sample.legacytfsm.tfsm.TfsmFactory;
+import org.gemoc.sample.legacytfsm.tfsm.TfsmPackage;
+import org.gemoc.sample.legacytfsm.tfsm.TimeFSM;
+import org.gemoc.sample.legacytfsm.tfsm.TimedSystem;
+import org.gemoc.sample.legacytfsm.tfsm.Transition;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.TFSMMTAdaptersFactory;
 
 @SuppressWarnings("all")
 public class TfsmFactoryAdapter extends EFactoryImpl implements TfsmFactory {
-  private XSTFSMMTAdaptersFactory adaptersFactory = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.XSTFSMMTAdaptersFactory.getInstance();
+  private TFSMMTAdaptersFactory adaptersFactory = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.TFSMMTAdaptersFactory.getInstance();
   
   private org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TfsmFactory tfsmAdaptee = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TfsmFactory.eINSTANCE;
   
@@ -72,6 +72,6 @@ public class TfsmFactoryAdapter extends EFactoryImpl implements TfsmFactory {
   }
   
   public TfsmPackage getTfsmPackage() {
-    return org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.eINSTANCE;
+    return org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.eINSTANCE;
   }
 }

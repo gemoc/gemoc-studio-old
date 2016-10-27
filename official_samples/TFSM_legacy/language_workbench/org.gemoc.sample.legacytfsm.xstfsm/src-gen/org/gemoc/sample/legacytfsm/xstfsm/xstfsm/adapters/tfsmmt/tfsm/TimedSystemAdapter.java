@@ -1,22 +1,22 @@
-package org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm;
+package org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm;
 
 import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.XSTFSMMTAdaptersFactory;
+import org.gemoc.sample.legacytfsm.tfsm.FSMClock;
+import org.gemoc.sample.legacytfsm.tfsm.FSMEvent;
+import org.gemoc.sample.legacytfsm.tfsm.TimeFSM;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.TFSMMTAdaptersFactory;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedSystem;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.FSMClock;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.FSMEvent;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimeFSM;
 
 @SuppressWarnings("all")
-public class TimedSystemAdapter extends EObjectAdapter<TimedSystem> implements org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TimedSystem {
-  private XSTFSMMTAdaptersFactory adaptersFactory;
+public class TimedSystemAdapter extends EObjectAdapter<TimedSystem> implements org.gemoc.sample.legacytfsm.tfsm.TimedSystem {
+  private TFSMMTAdaptersFactory adaptersFactory;
   
   public TimedSystemAdapter() {
-    super(org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.XSTFSMMTAdaptersFactory.getInstance());
-    adaptersFactory = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.XSTFSMMTAdaptersFactory.getInstance();
+    super(org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.TFSMMTAdaptersFactory.getInstance());
+    adaptersFactory = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.TFSMMTAdaptersFactory.getInstance();
   }
   
   @Override
@@ -56,39 +56,23 @@ public class TimedSystemAdapter extends EObjectAdapter<TimedSystem> implements o
     return globalEvents_;
   }
   
-  @Override
-  public void initializeModel(final org.eclipse.emf.common.util.EList<java.lang.String> args) {
-    org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedSystemAspect.initializeModel(adaptee, args
-    );
-  }
-  
-  @Override
-  public void main() {
-    org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedSystemAspect.main(adaptee);
-  }
-  
-  @Override
-  public void visit() {
-    org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedSystemVisitorAspect.visit(adaptee);
-  }
-  
   protected final static String NAME_EDEFAULT = null;
   
   @Override
   public EClass eClass() {
-    return org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.eINSTANCE.getTimedSystem();
+    return org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.eINSTANCE.getTimedSystem();
   }
   
   @Override
   public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
     switch (featureID) {
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__NAME:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__NAME:
     		return getName();
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__TFSMS:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__TFSMS:
     		return getTfsms();
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_CLOCKS:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_CLOCKS:
     		return getGlobalClocks();
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_EVENTS:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_EVENTS:
     		return getGlobalEvents();
     }
     
@@ -98,13 +82,13 @@ public class TimedSystemAdapter extends EObjectAdapter<TimedSystem> implements o
   @Override
   public boolean eIsSet(final int featureID) {
     switch (featureID) {
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__NAME:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__NAME:
     		return getName() != NAME_EDEFAULT;
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__TFSMS:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__TFSMS:
     		return getTfsms() != null && !getTfsms().isEmpty();
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_CLOCKS:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_CLOCKS:
     		return getGlobalClocks() != null && !getGlobalClocks().isEmpty();
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_EVENTS:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_EVENTS:
     		return getGlobalEvents() != null && !getGlobalEvents().isEmpty();
     }
     
@@ -114,20 +98,20 @@ public class TimedSystemAdapter extends EObjectAdapter<TimedSystem> implements o
   @Override
   public void eSet(final int featureID, final Object newValue) {
     switch (featureID) {
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__NAME:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__NAME:
     		setName(
     		(java.lang.String)
     		 newValue);
     		return;
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__TFSMS:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__TFSMS:
     		getTfsms().clear();
     		getTfsms().addAll((Collection) newValue);
     		return;
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_CLOCKS:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_CLOCKS:
     		getGlobalClocks().clear();
     		getGlobalClocks().addAll((Collection) newValue);
     		return;
-    	case org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_EVENTS:
+    	case org.gemoc.sample.legacytfsm.tfsm.TfsmPackage.TIMED_SYSTEM__GLOBAL_EVENTS:
     		getGlobalEvents().clear();
     		getGlobalEvents().addAll((Collection) newValue);
     		return;

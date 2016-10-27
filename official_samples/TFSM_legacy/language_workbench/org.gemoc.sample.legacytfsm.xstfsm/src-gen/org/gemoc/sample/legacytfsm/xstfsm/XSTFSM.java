@@ -5,6 +5,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.gemoc.sample.legacytfsm.xstfsm.TFSMMT;
 import org.gemoc.sample.legacytfsm.xstfsm.XSTFSMMT;
 
 @SuppressWarnings("all")
@@ -25,6 +26,12 @@ public class XSTFSM implements IMetamodel {
     XSTFSM mm = new XSTFSM();
     mm.setResource(res);
     return mm ;
+  }
+  
+  public TFSMMT toTFSMMT() {
+    org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.XSTFSMAdapter adaptee = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.XSTFSMAdapter() ;
+    adaptee.setAdaptee(resource);
+    return adaptee;
   }
   
   public XSTFSMMT toXSTFSMMT() {

@@ -1,21 +1,21 @@
-package org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt;
+package org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt;
 
 import fr.inria.diverse.melange.adapters.AdaptersFactory;
 import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import java.util.WeakHashMap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.EvaluateGuardAdapter;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.EventGuardAdapter;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.FSMClockAdapter;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.FSMEventAdapter;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.GuardAdapter;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.NamedElementAdapter;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.StateAdapter;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TemporalGuardAdapter;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TimeFSMAdapter;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TimedSystemAdapter;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TransitionAdapter;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.EvaluateGuardAdapter;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.EventGuardAdapter;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.FSMClockAdapter;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.FSMEventAdapter;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.GuardAdapter;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.NamedElementAdapter;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.StateAdapter;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TemporalGuardAdapter;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TimeFSMAdapter;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TimedSystemAdapter;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TransitionAdapter;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EvaluateGuard;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EventGuard;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock;
@@ -29,19 +29,19 @@ import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedSystem;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Transition;
 
 @SuppressWarnings("all")
-public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
-  private static XSTFSMMTAdaptersFactory instance;
+public class TFSMMTAdaptersFactory implements AdaptersFactory {
+  private static TFSMMTAdaptersFactory instance;
   
-  public static XSTFSMMTAdaptersFactory getInstance() {
+  public static TFSMMTAdaptersFactory getInstance() {
     if (instance == null) {
-    	instance = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.XSTFSMMTAdaptersFactory();
+    	instance = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.TFSMMTAdaptersFactory();
     }
     return instance;
   }
   
   private WeakHashMap<EObject, EObjectAdapter> register;
   
-  public XSTFSMMTAdaptersFactory() {
+  public TFSMMTAdaptersFactory() {
     register = new WeakHashMap();
   }
   
@@ -82,13 +82,13 @@ public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TimeFSMAdapter) adapter;
+    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TimeFSMAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TimeFSMAdapter();
+    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TimeFSMAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TimeFSMAdapter) adapter;
+    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TimeFSMAdapter) adapter;
     }
   }
   
@@ -97,13 +97,13 @@ public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.StateAdapter) adapter;
+    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.StateAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.StateAdapter();
+    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.StateAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.StateAdapter) adapter;
+    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.StateAdapter) adapter;
     }
   }
   
@@ -112,13 +112,13 @@ public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TransitionAdapter) adapter;
+    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TransitionAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TransitionAdapter();
+    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TransitionAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TransitionAdapter) adapter;
+    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TransitionAdapter) adapter;
     }
   }
   
@@ -127,13 +127,13 @@ public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.NamedElementAdapter) adapter;
+    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.NamedElementAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.NamedElementAdapter();
+    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.NamedElementAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.NamedElementAdapter) adapter;
+    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.NamedElementAdapter) adapter;
     }
   }
   
@@ -142,13 +142,13 @@ public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.GuardAdapter) adapter;
+    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.GuardAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.GuardAdapter();
+    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.GuardAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.GuardAdapter) adapter;
+    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.GuardAdapter) adapter;
     }
   }
   
@@ -157,13 +157,13 @@ public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TemporalGuardAdapter) adapter;
+    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TemporalGuardAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TemporalGuardAdapter();
+    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TemporalGuardAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TemporalGuardAdapter) adapter;
+    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TemporalGuardAdapter) adapter;
     }
   }
   
@@ -172,13 +172,13 @@ public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.EventGuardAdapter) adapter;
+    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.EventGuardAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.EventGuardAdapter();
+    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.EventGuardAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.EventGuardAdapter) adapter;
+    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.EventGuardAdapter) adapter;
     }
   }
   
@@ -187,13 +187,13 @@ public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.FSMEventAdapter) adapter;
+    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.FSMEventAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.FSMEventAdapter();
+    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.FSMEventAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.FSMEventAdapter) adapter;
+    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.FSMEventAdapter) adapter;
     }
   }
   
@@ -202,13 +202,13 @@ public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.FSMClockAdapter) adapter;
+    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.FSMClockAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.FSMClockAdapter();
+    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.FSMClockAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.FSMClockAdapter) adapter;
+    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.FSMClockAdapter) adapter;
     }
   }
   
@@ -217,13 +217,13 @@ public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TimedSystemAdapter) adapter;
+    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TimedSystemAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TimedSystemAdapter();
+    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TimedSystemAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.TimedSystemAdapter) adapter;
+    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.TimedSystemAdapter) adapter;
     }
   }
   
@@ -232,13 +232,13 @@ public class XSTFSMMTAdaptersFactory implements AdaptersFactory {
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.EvaluateGuardAdapter) adapter;
+    	 return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.EvaluateGuardAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.EvaluateGuardAdapter();
+    	adapter = new org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.EvaluateGuardAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm.EvaluateGuardAdapter) adapter;
+    	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm.EvaluateGuardAdapter) adapter;
     }
   }
 }
