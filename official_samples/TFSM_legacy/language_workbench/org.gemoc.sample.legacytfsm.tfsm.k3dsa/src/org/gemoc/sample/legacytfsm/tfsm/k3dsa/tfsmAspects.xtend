@@ -3,7 +3,7 @@ package org.gemoc.sample.legacytfsm.tfsm.k3dsa
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import fr.inria.diverse.k3.al.annotationprocessor.Step
 
-import org.gemoc.sample.legacytfsm.tfsm.TimedFSM
+import org.gemoc.sample.legacytfsm.tfsm.TimeFSM
 import org.gemoc.sample.legacytfsm.tfsm.State
 import org.gemoc.sample.legacytfsm.tfsm.Transition
 import org.gemoc.sample.legacytfsm.tfsm.NamedElement
@@ -15,8 +15,8 @@ import org.gemoc.sample.legacytfsm.tfsm.FSMClock
 import org.gemoc.sample.legacytfsm.tfsm.TimedSystem
 import org.gemoc.sample.legacytfsm.tfsm.EvaluateGuard
 
-import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TimedFSMAspect.*
-import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TimedFSMVisitorAspect.*
+import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TimeFSMAspect.*
+import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TimeFSMVisitorAspect.*
 import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.StateAspect.*
 import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TransitionAspect.*
 import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.FSMEventAspect.*
@@ -24,8 +24,8 @@ import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.FSMClockAspect.*
 import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TimedSystemAspect.*
 import org.eclipse.emf.common.util.EList
 
-@Aspect(className=TimedFSM)
-class TimedFSMAspect {
+@Aspect(className=TimeFSM)
+class TimeFSMAspect {
 
 	public State currentState
 	

@@ -3,7 +3,7 @@ package org.gemoc.sample.legacytfsm.tfsm.k3dsa
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import fr.inria.diverse.k3.al.annotationprocessor.Step
 
-import org.gemoc.sample.legacytfsm.tfsm.TimedFSM
+import org.gemoc.sample.legacytfsm.tfsm.TimeFSM
 import org.gemoc.sample.legacytfsm.tfsm.State
 import org.gemoc.sample.legacytfsm.tfsm.Transition
 import org.gemoc.sample.legacytfsm.tfsm.NamedElement
@@ -21,8 +21,8 @@ import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.FSMEventAspect.*
 import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.GuardVisitorAspect.*
 import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.StateAspect.*
 import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.StateVisitorAspect.*
-import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TimedFSMAspect.*
-import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TimedFSMVisitorAspect.*
+import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TimeFSMAspect.*
+import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TimeFSMVisitorAspect.*
 import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TransitionAspect.*
 import static extension org.gemoc.sample.legacytfsm.tfsm.k3dsa.TransitionVisitorAspect.*
 
@@ -34,8 +34,8 @@ class TimedSystemVisitorAspect {
 	}
 }
 
-@Aspect(className=TimedFSM)
-class TimedFSMVisitorAspect {
+@Aspect(className=TimeFSM)
+class TimeFSMVisitorAspect {
 
 	public int stepNumber = 0
 	public int lastStateChangeStepNumber = 0
@@ -98,12 +98,12 @@ abstract class GuardVisitorAspect {
 	}
 
 	protected def int lastStateChangeStepNumber() {
-		val tfsm = _self.eContainer.eContainer as TimedFSM
+		val tfsm = _self.eContainer.eContainer as TimeFSM
 		return tfsm.lastStateChangeStepNumber
 	}
 
 	protected def void saveLastStateChangeStepNumber() {
-		val tfsm = _self.eContainer.eContainer as TimedFSM
+		val tfsm = _self.eContainer.eContainer as TimeFSM
 		tfsm.lastStateChangeStepNumber = tfsm.stepNumber
 	}
 }
