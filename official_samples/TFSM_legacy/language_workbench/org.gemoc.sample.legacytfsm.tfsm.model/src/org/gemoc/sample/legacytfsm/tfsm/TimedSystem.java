@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
 public interface TimedSystem extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Tfsms</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.sample.legacytfsm.tfsm.TimedFSM}.
+	 * The list contents are of type {@link org.gemoc.sample.legacytfsm.tfsm.TimeFSM}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Tfsms</em>' containment reference list isn't clear,
@@ -37,7 +37,7 @@ public interface TimedSystem extends NamedElement {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<TimedFSM> getTfsms();
+	EList<TimeFSM> getTfsms();
 
 	/**
 	 * Returns the value of the '<em><b>Global Clocks</b></em>' containment reference list.

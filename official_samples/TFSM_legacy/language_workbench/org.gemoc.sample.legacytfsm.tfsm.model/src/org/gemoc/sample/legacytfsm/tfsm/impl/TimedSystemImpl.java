@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.gemoc.sample.legacytfsm.tfsm.FSMClock;
 import org.gemoc.sample.legacytfsm.tfsm.FSMEvent;
 import org.gemoc.sample.legacytfsm.tfsm.TfsmPackage;
-import org.gemoc.sample.legacytfsm.tfsm.TimedFSM;
+import org.gemoc.sample.legacytfsm.tfsm.TimeFSM;
 import org.gemoc.sample.legacytfsm.tfsm.TimedSystem;
 
 /**
@@ -44,7 +44,7 @@ public class TimedSystemImpl extends NamedElementImpl implements TimedSystem {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TimedFSM> tfsms;
+	protected EList<TimeFSM> tfsms;
 
 	/**
 	 * The cached value of the '{@link #getGlobalClocks() <em>Global Clocks</em>}' containment reference list.
@@ -90,9 +90,9 @@ public class TimedSystemImpl extends NamedElementImpl implements TimedSystem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TimedFSM> getTfsms() {
+	public EList<TimeFSM> getTfsms() {
 		if (tfsms == null) {
-			tfsms = new EObjectContainmentEList<TimedFSM>(TimedFSM.class, this, TfsmPackage.TIMED_SYSTEM__TFSMS);
+			tfsms = new EObjectContainmentEList<TimeFSM>(TimeFSM.class, this, TfsmPackage.TIMED_SYSTEM__TFSMS);
 		}
 		return tfsms;
 	}
@@ -168,7 +168,7 @@ public class TimedSystemImpl extends NamedElementImpl implements TimedSystem {
 		switch (featureID) {
 			case TfsmPackage.TIMED_SYSTEM__TFSMS:
 				getTfsms().clear();
-				getTfsms().addAll((Collection<? extends TimedFSM>)newValue);
+				getTfsms().addAll((Collection<? extends TimeFSM>)newValue);
 				return;
 			case TfsmPackage.TIMED_SYSTEM__GLOBAL_CLOCKS:
 				getGlobalClocks().clear();

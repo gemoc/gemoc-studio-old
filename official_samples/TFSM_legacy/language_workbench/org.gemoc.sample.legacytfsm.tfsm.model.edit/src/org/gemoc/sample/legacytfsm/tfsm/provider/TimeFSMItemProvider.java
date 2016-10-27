@@ -17,22 +17,22 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.gemoc.sample.legacytfsm.tfsm.TfsmFactory;
 import org.gemoc.sample.legacytfsm.tfsm.TfsmPackage;
-import org.gemoc.sample.legacytfsm.tfsm.TimedFSM;
+import org.gemoc.sample.legacytfsm.tfsm.TimeFSM;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.sample.legacytfsm.tfsm.TimedFSM} object.
+ * This is the item provider adapter for a {@link org.gemoc.sample.legacytfsm.tfsm.TimeFSM} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TimedFSMItemProvider extends NamedElementItemProvider {
+public class TimeFSMItemProvider extends NamedElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimedFSMItemProvider(AdapterFactory adapterFactory) {
+	public TimeFSMItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,9 +63,9 @@ public class TimedFSMItemProvider extends NamedElementItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TimedFSM_initialState_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TimedFSM_initialState_feature", "_UI_TimedFSM_type"),
-				 TfsmPackage.Literals.TIMED_FSM__INITIAL_STATE,
+				 getString("_UI_TimeFSM_initialState_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TimeFSM_initialState_feature", "_UI_TimeFSM_type"),
+				 TfsmPackage.Literals.TIME_FSM__INITIAL_STATE,
 				 true,
 				 false,
 				 true,
@@ -86,10 +86,10 @@ public class TimedFSMItemProvider extends NamedElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(TfsmPackage.Literals.TIMED_FSM__OWNED_STATES);
-			childrenFeatures.add(TfsmPackage.Literals.TIMED_FSM__LOCAL_EVENTS);
-			childrenFeatures.add(TfsmPackage.Literals.TIMED_FSM__LOCAL_CLOCK);
-			childrenFeatures.add(TfsmPackage.Literals.TIMED_FSM__OWNED_TRANSITIONS);
+			childrenFeatures.add(TfsmPackage.Literals.TIME_FSM__OWNED_STATES);
+			childrenFeatures.add(TfsmPackage.Literals.TIME_FSM__LOCAL_EVENTS);
+			childrenFeatures.add(TfsmPackage.Literals.TIME_FSM__LOCAL_CLOCK);
+			childrenFeatures.add(TfsmPackage.Literals.TIME_FSM__OWNED_TRANSITIONS);
 		}
 		return childrenFeatures;
 	}
@@ -108,14 +108,14 @@ public class TimedFSMItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This returns TimedFSM.gif.
+	 * This returns TimeFSM.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TimedFSM"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TimeFSM"));
 	}
 
 	/**
@@ -126,10 +126,10 @@ public class TimedFSMItemProvider extends NamedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TimedFSM)object).getName();
+		String label = ((TimeFSM)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_TimedFSM_type") :
-			getString("_UI_TimedFSM_type") + " " + label;
+			getString("_UI_TimeFSM_type") :
+			getString("_UI_TimeFSM_type") + " " + label;
 	}
 	
 
@@ -144,11 +144,11 @@ public class TimedFSMItemProvider extends NamedElementItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TimedFSM.class)) {
-			case TfsmPackage.TIMED_FSM__OWNED_STATES:
-			case TfsmPackage.TIMED_FSM__LOCAL_EVENTS:
-			case TfsmPackage.TIMED_FSM__LOCAL_CLOCK:
-			case TfsmPackage.TIMED_FSM__OWNED_TRANSITIONS:
+		switch (notification.getFeatureID(TimeFSM.class)) {
+			case TfsmPackage.TIME_FSM__OWNED_STATES:
+			case TfsmPackage.TIME_FSM__LOCAL_EVENTS:
+			case TfsmPackage.TIME_FSM__LOCAL_CLOCK:
+			case TfsmPackage.TIME_FSM__OWNED_TRANSITIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -168,22 +168,22 @@ public class TimedFSMItemProvider extends NamedElementItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TfsmPackage.Literals.TIMED_FSM__OWNED_STATES,
+				(TfsmPackage.Literals.TIME_FSM__OWNED_STATES,
 				 TfsmFactory.eINSTANCE.createState()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TfsmPackage.Literals.TIMED_FSM__LOCAL_EVENTS,
+				(TfsmPackage.Literals.TIME_FSM__LOCAL_EVENTS,
 				 TfsmFactory.eINSTANCE.createFSMEvent()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TfsmPackage.Literals.TIMED_FSM__LOCAL_CLOCK,
+				(TfsmPackage.Literals.TIME_FSM__LOCAL_CLOCK,
 				 TfsmFactory.eINSTANCE.createFSMClock()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TfsmPackage.Literals.TIMED_FSM__OWNED_TRANSITIONS,
+				(TfsmPackage.Literals.TIME_FSM__OWNED_TRANSITIONS,
 				 TfsmFactory.eINSTANCE.createTransition()));
 	}
 

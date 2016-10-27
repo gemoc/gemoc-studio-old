@@ -72,26 +72,26 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacytfsm.tfsm.TimedFSM} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacytfsm.tfsm.TimeFSM} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TimedFSMItemProvider timedFSMItemProvider;
+	protected TimeFSMItemProvider timeFSMItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.legacytfsm.tfsm.TimedFSM}.
+	 * This creates an adapter for a {@link org.gemoc.sample.legacytfsm.tfsm.TimeFSM}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createTimedFSMAdapter() {
-		if (timedFSMItemProvider == null) {
-			timedFSMItemProvider = new TimedFSMItemProvider(this);
+	public Adapter createTimeFSMAdapter() {
+		if (timeFSMItemProvider == null) {
+			timeFSMItemProvider = new TimeFSMItemProvider(this);
 		}
 
-		return timedFSMItemProvider;
+		return timeFSMItemProvider;
 	}
 
 	/**
@@ -377,7 +377,7 @@ public class TfsmItemProviderAdapterFactory extends TfsmAdapterFactory implement
 	 * @generated
 	 */
 	public void dispose() {
-		if (timedFSMItemProvider != null) timedFSMItemProvider.dispose();
+		if (timeFSMItemProvider != null) timeFSMItemProvider.dispose();
 		if (stateItemProvider != null) stateItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
 		if (temporalGuardItemProvider != null) temporalGuardItemProvider.dispose();

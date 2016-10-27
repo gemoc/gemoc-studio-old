@@ -66,10 +66,10 @@ public class TfsmSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case TfsmPackage.TIMED_FSM: {
-				TimedFSM timedFSM = (TimedFSM)theEObject;
-				T result = caseTimedFSM(timedFSM);
-				if (result == null) result = caseNamedElement(timedFSM);
+			case TfsmPackage.TIME_FSM: {
+				TimeFSM timeFSM = (TimeFSM)theEObject;
+				T result = caseTimeFSM(timeFSM);
+				if (result == null) result = caseNamedElement(timeFSM);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -150,17 +150,17 @@ public class TfsmSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Timed FSM</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Time FSM</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Timed FSM</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Time FSM</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTimedFSM(TimedFSM object) {
+	public T caseTimeFSM(TimeFSM object) {
 		return null;
 	}
 

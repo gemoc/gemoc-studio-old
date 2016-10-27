@@ -19,7 +19,7 @@ import org.gemoc.sample.legacytfsm.tfsm.State;
 import org.gemoc.sample.legacytfsm.tfsm.TemporalGuard;
 import org.gemoc.sample.legacytfsm.tfsm.TfsmFactory;
 import org.gemoc.sample.legacytfsm.tfsm.TfsmPackage;
-import org.gemoc.sample.legacytfsm.tfsm.TimedFSM;
+import org.gemoc.sample.legacytfsm.tfsm.TimeFSM;
 import org.gemoc.sample.legacytfsm.tfsm.TimedSystem;
 import org.gemoc.sample.legacytfsm.tfsm.Transition;
 
@@ -35,7 +35,7 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass timedFSMEClass = null;
+	private EClass timeFSMEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,8 +173,8 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTimedFSM() {
-		return timedFSMEClass;
+	public EClass getTimeFSM() {
+		return timeFSMEClass;
 	}
 
 	/**
@@ -182,8 +182,8 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimedFSM_OwnedStates() {
-		return (EReference)timedFSMEClass.getEStructuralFeatures().get(0);
+	public EReference getTimeFSM_OwnedStates() {
+		return (EReference)timeFSMEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -191,8 +191,8 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimedFSM_InitialState() {
-		return (EReference)timedFSMEClass.getEStructuralFeatures().get(1);
+	public EReference getTimeFSM_InitialState() {
+		return (EReference)timeFSMEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -200,8 +200,8 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimedFSM_LocalEvents() {
-		return (EReference)timedFSMEClass.getEStructuralFeatures().get(2);
+	public EReference getTimeFSM_LocalEvents() {
+		return (EReference)timeFSMEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -209,8 +209,8 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimedFSM_LocalClock() {
-		return (EReference)timedFSMEClass.getEStructuralFeatures().get(3);
+	public EReference getTimeFSM_LocalClock() {
+		return (EReference)timeFSMEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -218,8 +218,8 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimedFSM_OwnedTransitions() {
-		return (EReference)timedFSMEClass.getEStructuralFeatures().get(4);
+	public EReference getTimeFSM_OwnedTransitions() {
+		return (EReference)timeFSMEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -493,12 +493,12 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		timedFSMEClass = createEClass(TIMED_FSM);
-		createEReference(timedFSMEClass, TIMED_FSM__OWNED_STATES);
-		createEReference(timedFSMEClass, TIMED_FSM__INITIAL_STATE);
-		createEReference(timedFSMEClass, TIMED_FSM__LOCAL_EVENTS);
-		createEReference(timedFSMEClass, TIMED_FSM__LOCAL_CLOCK);
-		createEReference(timedFSMEClass, TIMED_FSM__OWNED_TRANSITIONS);
+		timeFSMEClass = createEClass(TIME_FSM);
+		createEReference(timeFSMEClass, TIME_FSM__OWNED_STATES);
+		createEReference(timeFSMEClass, TIME_FSM__INITIAL_STATE);
+		createEReference(timeFSMEClass, TIME_FSM__LOCAL_EVENTS);
+		createEReference(timeFSMEClass, TIME_FSM__LOCAL_CLOCK);
+		createEReference(timeFSMEClass, TIME_FSM__OWNED_TRANSITIONS);
 
 		stateEClass = createEClass(STATE);
 		createEReference(stateEClass, STATE__OWNING_FSM);
@@ -566,7 +566,7 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		timedFSMEClass.getESuperTypes().add(this.getNamedElement());
+		timeFSMEClass.getESuperTypes().add(this.getNamedElement());
 		stateEClass.getESuperTypes().add(this.getNamedElement());
 		transitionEClass.getESuperTypes().add(this.getNamedElement());
 		guardEClass.getESuperTypes().add(this.getNamedElement());
@@ -578,15 +578,15 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		evaluateGuardEClass.getESuperTypes().add(this.getGuard());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(timedFSMEClass, TimedFSM.class, "TimedFSM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTimedFSM_OwnedStates(), this.getState(), this.getState_OwningFSM(), "ownedStates", null, 0, -1, TimedFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimedFSM_InitialState(), this.getState(), null, "initialState", null, 1, 1, TimedFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimedFSM_LocalEvents(), this.getFSMEvent(), null, "localEvents", null, 0, -1, TimedFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimedFSM_LocalClock(), this.getFSMClock(), null, "localClock", null, 1, 1, TimedFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimedFSM_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, TimedFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(timeFSMEClass, TimeFSM.class, "TimeFSM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTimeFSM_OwnedStates(), this.getState(), this.getState_OwningFSM(), "ownedStates", null, 0, -1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTimeFSM_InitialState(), this.getState(), null, "initialState", null, 1, 1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTimeFSM_LocalEvents(), this.getFSMEvent(), null, "localEvents", null, 0, -1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTimeFSM_LocalClock(), this.getFSMClock(), null, "localClock", null, 1, 1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTimeFSM_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getState_OwningFSM(), this.getTimedFSM(), this.getTimedFSM_OwnedStates(), "owningFSM", null, 1, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getState_OwningFSM(), this.getTimeFSM(), this.getTimeFSM_OwnedStates(), "owningFSM", null, 1, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getState_OutgoingTransitions(), this.getTransition(), this.getTransition_Source(), "outgoingTransitions", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getState_IncomingTransitions(), this.getTransition(), this.getTransition_Target(), "incomingTransitions", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -615,7 +615,7 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		initEClass(fsmClockEClass, FSMClock.class, "FSMClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(timedSystemEClass, TimedSystem.class, "TimedSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTimedSystem_Tfsms(), this.getTimedFSM(), null, "tfsms", null, 0, -1, TimedSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTimedSystem_Tfsms(), this.getTimeFSM(), null, "tfsms", null, 0, -1, TimedSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTimedSystem_GlobalClocks(), this.getFSMClock(), null, "globalClocks", null, 0, -1, TimedSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTimedSystem_GlobalEvents(), this.getFSMEvent(), null, "globalEvents", null, 0, -1, TimedSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

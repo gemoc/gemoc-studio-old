@@ -143,7 +143,7 @@ public class TimedSystemItemProvider extends NamedElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TfsmPackage.Literals.TIMED_SYSTEM__TFSMS,
-				 TfsmFactory.eINSTANCE.createTimedFSM()));
+				 TfsmFactory.eINSTANCE.createTimeFSM()));
 
 		newChildDescriptors.add
 			(createChildParameter
