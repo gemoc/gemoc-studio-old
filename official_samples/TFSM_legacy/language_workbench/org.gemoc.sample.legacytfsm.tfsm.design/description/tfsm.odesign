@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TimedSystem" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="TimedSystem">
       <metamodel href="../../org.gemoc.sample.legacytfsm.tfsm.model/model/tfsm.ecore#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="TimeSystem" labelDirectEdit="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self/]" domainClass="TimeSystem">
+        <containerMappings name="TimedSystem" labelDirectEdit="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self/]" domainClass="TimedSystem">
           <subNodeMappings name="GlobalClock" labelDirectEdit="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self.globalClocks/]" domainClass="FSMClock">
             <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="4" showIcon="false" resizeKind="NSEW" arcWidth="1" arcHeight="1" roundedCorner="true" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/clock_global_small.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
@@ -13,7 +13,7 @@
             </style>
           </subNodeMappings>
           <subNodeMappings name="Event" labelDirectEdit="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self.globalEvents/]" domainClass="FSMEvent">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="4" showIcon="false" iconPath="event_small.png" sizeComputationExpression="-1" arcWidth="1" arcHeight="1" roundedCorner="true" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/event_small.gif">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="4" showIcon="false" iconPath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/event_small.gif" sizeComputationExpression="-1" arcWidth="1" arcHeight="1" roundedCorner="true" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/event_small.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -35,16 +35,16 @@
           </style>
         </containerMappings>
         <toolSections name="Node">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="TFSM" forceRefresh="true" containerMappings="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimeSystem']/@subContainerMappings[name='TFSM']" iconPath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/TFSM_small.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="TFSM" forceRefresh="true" containerMappings="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']" iconPath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/TFSM_small.gif">
             <variable name="container"/>
             <viewVariable name="itsTFSM"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="TFSM" referenceName="tfsms">
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="TimeFSM" referenceName="tfsms">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="itsTFSM"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="GlobalClockCreation" nodeMappings="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimeSystem']/@subNodeMappings[name='GlobalClock']" iconPath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/clock_global_small.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="GlobalClockCreation" nodeMappings="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subNodeMappings[name='GlobalClock']" iconPath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/clock_global_small.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -53,7 +53,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="Open TFSM" mappings="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimeSystem']/@subContainerMappings[name='TFSM']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Open TFSM" mappings="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -71,19 +71,19 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TFSM" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="TimedFSM">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TFSM" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="TimeFSM">
       <metamodel href="../../org.gemoc.sample.legacytfsm.tfsm.model/model/tfsm.ecore#/"/>
       <defaultLayer name="Default">
         <nodeMappings name="LocalEvents" labelDirectEdit="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self.localEvents/]" domainClass="FSMEvent">
-          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="2" showIcon="false" iconPath="event_small.png" sizeComputationExpression="-1" arcWidth="1" arcHeight="1" roundedCorner="true" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/event_small.gif">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="2" showIcon="false" iconPath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/event_small.gif" sizeComputationExpression="-1" arcWidth="1" arcHeight="1" roundedCorner="true" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/event_small.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="Local Clock" labelDirectEdit="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@toolSections.1/@ownedTools[name='editName']" semanticCandidatesExpression="[self.localClock/]" domainClass="FSMClock">
-          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="4" showIcon="false" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" roundedCorner="true" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/clock_local_small.gif">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="2" showIcon="false" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" roundedCorner="true" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/clock_local_small.gif">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -91,7 +91,7 @@
         <edgeMappings name="EventTransition" labelDirectEdit="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@toolSections.1/@ownedTools[name='editEventTransition']" sourceMapping="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']" targetMapping="//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']" targetFinderExpression="[self.target/]" sourceFinderExpression="[self.source/]" domainClass="Transition" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="service:self.getLabel">
+            <centerLabelStyleDescription showIcon="false" labelExpression="[self.getLabel()/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -104,7 +104,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
-          <conditionnalStyles predicateExpression="[self.eContainer().oclAsType(TFSM).initialState = self/]">
+          <conditionnalStyles predicateExpression="[self.eContainer().oclAsType(TimeFSM).initialState = self/]">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="50" arcHeight="50" borderSizeComputationExpression="4" showIcon="false" roundedCorner="true" backgroundStyle="Liquid">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -121,7 +121,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;TFSM&quot;)%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;TimeFSM&quot;)%>">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Transition" referenceName="ownedTransitions">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$source.name%>_to_&lt;%$target.name%>"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="&lt;%$source%>"/>

@@ -9,6 +9,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  org.eclipse.sirius,
  org.eclipse.sirius.common.acceleo.aql,
- org.gemoc.sample.legacytfsm.tfsm.model;bundle-version="0.1.0"
+ org.gemoc.sample.legacytfsm.tfsm.model
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.gemoc.sample.legacytfsm.tfsm.design.services
