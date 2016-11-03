@@ -38,6 +38,13 @@
             <mappings xsi:type="description_1:ContainerMapping" href="../../org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
           </decorationDescriptions>
         </decorationDescriptionsSet>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenAnimated">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="borderColor" value="//@userColorsPalettes[name='XSTFSM%20Palette']/@entries[name='hasBeenAnimated']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name='XSTFSM%20Palette']/@entries[name='hasBeenAnimated']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor" value="//@userColorsPalettes[name='XSTFSM%20Palette']/@entries[name='hasBeenAnimated']"/>
+          </vsmElementCustomizations>
+        </customization>
       </layers>
     </ownedRepresentationExtensions>
     <ownedJavaExtensions qualifiedClassName="org.gemoc.sample.legacytfsm.xstfsm.design.services.XstfsmDebugServices"/>
