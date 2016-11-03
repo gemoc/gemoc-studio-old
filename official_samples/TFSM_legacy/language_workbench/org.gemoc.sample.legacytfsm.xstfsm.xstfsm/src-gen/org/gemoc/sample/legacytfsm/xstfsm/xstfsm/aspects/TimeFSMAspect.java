@@ -8,25 +8,25 @@ import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.State;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedFSM;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMClockAspect;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMEventAspect;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMAspectTimedFSMAspectProperties;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMVisitorAspect;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspectTimeFSMAspectProperties;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMVisitorAspect;
 
-@Aspect(className = TimedFSM.class)
+@Aspect(className = TimeFSM.class)
 @SuppressWarnings("all")
-public class TimedFSMAspect {
+public class TimeFSMAspect {
   @Step
-  public static void init(final TimedFSM _self) {
-	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMAspectTimedFSMAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMAspectTimedFSMAspectContext
+  public static void init(final TimeFSM _self) {
+	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspectTimeFSMAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspectTimeFSMAspectContext
 			.getSelf(_self);
 	_privk3_init(_self_, _self);
 	;
 }
   
-  public static State currentState(final TimedFSM _self) {
-	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMAspectTimedFSMAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMAspectTimedFSMAspectContext
+  public static State currentState(final TimeFSM _self) {
+	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspectTimeFSMAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspectTimeFSMAspectContext
 			.getSelf(_self);
 	Object result = null;
 	result = _privk3_currentState(_self_, _self);
@@ -34,16 +34,16 @@ public class TimedFSMAspect {
 	return (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.State) result;
 }
   
-  public static void currentState(final TimedFSM _self, final State currentState) {
-	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMAspectTimedFSMAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMAspectTimedFSMAspectContext
+  public static void currentState(final TimeFSM _self, final State currentState) {
+	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspectTimeFSMAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspectTimeFSMAspectContext
 			.getSelf(_self);
 	_privk3_currentState(_self_, _self, currentState);
 	;
 }
   
-  protected static void _privk3_init(final TimedFSMAspectTimedFSMAspectProperties _self_, final TimedFSM _self) {
+  protected static void _privk3_init(final TimeFSMAspectTimeFSMAspectProperties _self_, final TimeFSM _self) {
     State _initialState = _self.getInitialState();
-    TimedFSMAspect.currentState(_self, _initialState);
+    TimeFSMAspect.currentState(_self, _initialState);
     FSMClock _localClock = _self.getLocalClock();
     FSMClockAspect.numberOfTicks(_localClock, Integer.valueOf(0));
     EList<FSMEvent> _localEvents = _self.getLocalEvents();
@@ -51,9 +51,9 @@ public class TimedFSMAspect {
       FSMEventAspect.isTriggered(e, false);
     };
     _localEvents.forEach(_function);
-    TimedFSMVisitorAspect.stepNumber(_self, 0);
-    TimedFSMVisitorAspect.lastStateChangeStepNumber(_self, 0);
-    Class<? extends TimedFSM> _class = _self.getClass();
+    TimeFSMVisitorAspect.stepNumber(_self, 0);
+    TimeFSMVisitorAspect.lastStateChangeStepNumber(_self, 0);
+    Class<? extends TimeFSM> _class = _self.getClass();
     String _simpleName = _class.getSimpleName();
     String _plus = ("[" + _simpleName);
     String _plus_1 = (_plus + ":");
@@ -65,7 +65,7 @@ public class TimedFSMAspect {
     InputOutput.<String>println(_plus_4);
   }
   
-  protected static State _privk3_currentState(final TimedFSMAspectTimedFSMAspectProperties _self_, final TimedFSM _self) {
+  protected static State _privk3_currentState(final TimeFSMAspectTimeFSMAspectProperties _self_, final TimeFSM _self) {
     try {
     	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
     		if (m.getName().equals("getCurrentState") &&
@@ -82,7 +82,7 @@ public class TimedFSMAspect {
     return _self_.currentState;
   }
   
-  protected static void _privk3_currentState(final TimedFSMAspectTimedFSMAspectProperties _self_, final TimedFSM _self, final State currentState) {
+  protected static void _privk3_currentState(final TimeFSMAspectTimeFSMAspectProperties _self_, final TimeFSM _self, final State currentState) {
     _self_.currentState = currentState; try {
     	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
     		if (m.getName().equals("setCurrentState")

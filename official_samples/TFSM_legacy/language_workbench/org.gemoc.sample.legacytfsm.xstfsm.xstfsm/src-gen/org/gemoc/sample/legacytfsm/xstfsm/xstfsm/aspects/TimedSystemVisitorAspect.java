@@ -4,10 +4,10 @@ import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedFSM;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedSystem;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMClockVisitorAspect;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMVisitorAspect;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMVisitorAspect;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedSystemVisitorAspectTimedSystemAspectProperties;
 
 @Aspect(className = TimedSystem.class)
@@ -26,9 +26,9 @@ public class TimedSystemVisitorAspect {
       FSMClockVisitorAspect.visit(e);
     };
     _globalClocks.forEach(_function);
-    EList<TimedFSM> _tfsms = _self.getTfsms();
-    final Consumer<TimedFSM> _function_1 = (TimedFSM t) -> {
-      TimedFSMVisitorAspect.visit(t);
+    EList<TimeFSM> _tfsms = _self.getTfsms();
+    final Consumer<TimeFSM> _function_1 = (TimeFSM t) -> {
+      TimeFSMVisitorAspect.visit(t);
     };
     _tfsms.forEach(_function_1);
   }

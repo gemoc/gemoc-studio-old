@@ -4,9 +4,9 @@ import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import fr.inria.diverse.k3.al.annotationprocessor.Step;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.State;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedFSM;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Transition;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMAspect;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspect;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TransitionAspectTransitionAspectProperties;
 
 @Aspect(className = Transition.class)
@@ -22,9 +22,9 @@ public class TransitionAspect {
   
   protected static void _privk3_fire(final TransitionAspectTransitionAspectProperties _self_, final Transition _self) {
     State _source = _self.getSource();
-    TimedFSM _owningFSM = _source.getOwningFSM();
+    TimeFSM _owningFSM = _source.getOwningFSM();
     State _target = _self.getTarget();
-    TimedFSMAspect.currentState(_owningFSM, _target);
+    TimeFSMAspect.currentState(_owningFSM, _target);
     Class<? extends Transition> _class = _self.getClass();
     String _simpleName = _class.getSimpleName();
     String _plus = ("[" + _simpleName);

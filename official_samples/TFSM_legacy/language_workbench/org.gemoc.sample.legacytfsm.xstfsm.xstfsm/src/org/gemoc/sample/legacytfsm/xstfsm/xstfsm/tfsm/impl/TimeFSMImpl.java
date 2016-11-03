@@ -22,30 +22,30 @@ import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.State;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TfsmPackage;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedFSM;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Transition;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Timed FSM</b></em>'.
+ * An implementation of the model object '<em><b>Time FSM</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimedFSMImpl#getOwnedStates <em>Owned States</em>}</li>
- *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimedFSMImpl#getInitialState <em>Initial State</em>}</li>
- *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimedFSMImpl#getLocalEvents <em>Local Events</em>}</li>
- *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimedFSMImpl#getLocalClock <em>Local Clock</em>}</li>
- *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimedFSMImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
- *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimedFSMImpl#getStepNumber <em>Step Number</em>}</li>
- *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimedFSMImpl#getLastStateChangeStepNumber <em>Last State Change Step Number</em>}</li>
- *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimedFSMImpl#getCurrentState <em>Current State</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimeFSMImpl#getOwnedStates <em>Owned States</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimeFSMImpl#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimeFSMImpl#getLocalEvents <em>Local Events</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimeFSMImpl#getLocalClock <em>Local Clock</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimeFSMImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimeFSMImpl#getStepNumber <em>Step Number</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimeFSMImpl#getLastStateChangeStepNumber <em>Last State Change Step Number</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl.TimeFSMImpl#getCurrentState <em>Current State</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
+public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	/**
 	 * The cached value of the '{@link #getOwnedStates() <em>Owned States</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -151,7 +151,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TimedFSMImpl() {
+	protected TimeFSMImpl() {
 		super();
 	}
 
@@ -162,7 +162,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TfsmPackage.Literals.TIMED_FSM;
+		return TfsmPackage.Literals.TIME_FSM;
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 	 */
 	public EList<State> getOwnedStates() {
 		if (ownedStates == null) {
-			ownedStates = new EObjectContainmentWithInverseEList<State>(State.class, this, TfsmPackage.TIMED_FSM__OWNED_STATES, TfsmPackage.STATE__OWNING_FSM);
+			ownedStates = new EObjectContainmentWithInverseEList<State>(State.class, this, TfsmPackage.TIME_FSM__OWNED_STATES, TfsmPackage.STATE__OWNING_FSM);
 		}
 		return ownedStates;
 	}
@@ -188,7 +188,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 			initialState = (State)eResolveProxy(oldInitialState);
 			if (initialState != oldInitialState) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TfsmPackage.TIMED_FSM__INITIAL_STATE, oldInitialState, initialState));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TfsmPackage.TIME_FSM__INITIAL_STATE, oldInitialState, initialState));
 			}
 		}
 		return initialState;
@@ -212,7 +212,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 		State oldInitialState = initialState;
 		initialState = newInitialState;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TIMED_FSM__INITIAL_STATE, oldInitialState, initialState));
+			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TIME_FSM__INITIAL_STATE, oldInitialState, initialState));
 	}
 
 	/**
@@ -222,7 +222,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 	 */
 	public EList<FSMEvent> getLocalEvents() {
 		if (localEvents == null) {
-			localEvents = new EObjectContainmentEList<FSMEvent>(FSMEvent.class, this, TfsmPackage.TIMED_FSM__LOCAL_EVENTS);
+			localEvents = new EObjectContainmentEList<FSMEvent>(FSMEvent.class, this, TfsmPackage.TIME_FSM__LOCAL_EVENTS);
 		}
 		return localEvents;
 	}
@@ -245,7 +245,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 		FSMClock oldLocalClock = localClock;
 		localClock = newLocalClock;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TfsmPackage.TIMED_FSM__LOCAL_CLOCK, oldLocalClock, newLocalClock);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TfsmPackage.TIME_FSM__LOCAL_CLOCK, oldLocalClock, newLocalClock);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -260,14 +260,14 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 		if (newLocalClock != localClock) {
 			NotificationChain msgs = null;
 			if (localClock != null)
-				msgs = ((InternalEObject)localClock).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TfsmPackage.TIMED_FSM__LOCAL_CLOCK, null, msgs);
+				msgs = ((InternalEObject)localClock).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TfsmPackage.TIME_FSM__LOCAL_CLOCK, null, msgs);
 			if (newLocalClock != null)
-				msgs = ((InternalEObject)newLocalClock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TfsmPackage.TIMED_FSM__LOCAL_CLOCK, null, msgs);
+				msgs = ((InternalEObject)newLocalClock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TfsmPackage.TIME_FSM__LOCAL_CLOCK, null, msgs);
 			msgs = basicSetLocalClock(newLocalClock, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TIMED_FSM__LOCAL_CLOCK, newLocalClock, newLocalClock));
+			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TIME_FSM__LOCAL_CLOCK, newLocalClock, newLocalClock));
 	}
 
 	/**
@@ -277,7 +277,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 	 */
 	public EList<Transition> getOwnedTransitions() {
 		if (ownedTransitions == null) {
-			ownedTransitions = new EObjectContainmentEList<Transition>(Transition.class, this, TfsmPackage.TIMED_FSM__OWNED_TRANSITIONS);
+			ownedTransitions = new EObjectContainmentEList<Transition>(Transition.class, this, TfsmPackage.TIME_FSM__OWNED_TRANSITIONS);
 		}
 		return ownedTransitions;
 	}
@@ -300,7 +300,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 		int oldStepNumber = stepNumber;
 		stepNumber = newStepNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TIMED_FSM__STEP_NUMBER, oldStepNumber, stepNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TIME_FSM__STEP_NUMBER, oldStepNumber, stepNumber));
 	}
 
 	/**
@@ -321,7 +321,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 		int oldLastStateChangeStepNumber = lastStateChangeStepNumber;
 		lastStateChangeStepNumber = newLastStateChangeStepNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TIMED_FSM__LAST_STATE_CHANGE_STEP_NUMBER, oldLastStateChangeStepNumber, lastStateChangeStepNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TIME_FSM__LAST_STATE_CHANGE_STEP_NUMBER, oldLastStateChangeStepNumber, lastStateChangeStepNumber));
 	}
 
 	/**
@@ -335,7 +335,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 			currentState = (State)eResolveProxy(oldCurrentState);
 			if (currentState != oldCurrentState) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TfsmPackage.TIMED_FSM__CURRENT_STATE, oldCurrentState, currentState));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TfsmPackage.TIME_FSM__CURRENT_STATE, oldCurrentState, currentState));
 			}
 		}
 		return currentState;
@@ -359,7 +359,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 		State oldCurrentState = currentState;
 		currentState = newCurrentState;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TIMED_FSM__CURRENT_STATE, oldCurrentState, currentState));
+			eNotify(new ENotificationImpl(this, Notification.SET, TfsmPackage.TIME_FSM__CURRENT_STATE, oldCurrentState, currentState));
 	}
 
 	/**
@@ -393,7 +393,7 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case TfsmPackage.TIMED_FSM__OWNED_STATES:
+			case TfsmPackage.TIME_FSM__OWNED_STATES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwnedStates()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -407,13 +407,13 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case TfsmPackage.TIMED_FSM__OWNED_STATES:
+			case TfsmPackage.TIME_FSM__OWNED_STATES:
 				return ((InternalEList<?>)getOwnedStates()).basicRemove(otherEnd, msgs);
-			case TfsmPackage.TIMED_FSM__LOCAL_EVENTS:
+			case TfsmPackage.TIME_FSM__LOCAL_EVENTS:
 				return ((InternalEList<?>)getLocalEvents()).basicRemove(otherEnd, msgs);
-			case TfsmPackage.TIMED_FSM__LOCAL_CLOCK:
+			case TfsmPackage.TIME_FSM__LOCAL_CLOCK:
 				return basicSetLocalClock(null, msgs);
-			case TfsmPackage.TIMED_FSM__OWNED_TRANSITIONS:
+			case TfsmPackage.TIME_FSM__OWNED_TRANSITIONS:
 				return ((InternalEList<?>)getOwnedTransitions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -427,22 +427,22 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TfsmPackage.TIMED_FSM__OWNED_STATES:
+			case TfsmPackage.TIME_FSM__OWNED_STATES:
 				return getOwnedStates();
-			case TfsmPackage.TIMED_FSM__INITIAL_STATE:
+			case TfsmPackage.TIME_FSM__INITIAL_STATE:
 				if (resolve) return getInitialState();
 				return basicGetInitialState();
-			case TfsmPackage.TIMED_FSM__LOCAL_EVENTS:
+			case TfsmPackage.TIME_FSM__LOCAL_EVENTS:
 				return getLocalEvents();
-			case TfsmPackage.TIMED_FSM__LOCAL_CLOCK:
+			case TfsmPackage.TIME_FSM__LOCAL_CLOCK:
 				return getLocalClock();
-			case TfsmPackage.TIMED_FSM__OWNED_TRANSITIONS:
+			case TfsmPackage.TIME_FSM__OWNED_TRANSITIONS:
 				return getOwnedTransitions();
-			case TfsmPackage.TIMED_FSM__STEP_NUMBER:
+			case TfsmPackage.TIME_FSM__STEP_NUMBER:
 				return getStepNumber();
-			case TfsmPackage.TIMED_FSM__LAST_STATE_CHANGE_STEP_NUMBER:
+			case TfsmPackage.TIME_FSM__LAST_STATE_CHANGE_STEP_NUMBER:
 				return getLastStateChangeStepNumber();
-			case TfsmPackage.TIMED_FSM__CURRENT_STATE:
+			case TfsmPackage.TIME_FSM__CURRENT_STATE:
 				if (resolve) return getCurrentState();
 				return basicGetCurrentState();
 		}
@@ -458,31 +458,31 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TfsmPackage.TIMED_FSM__OWNED_STATES:
+			case TfsmPackage.TIME_FSM__OWNED_STATES:
 				getOwnedStates().clear();
 				getOwnedStates().addAll((Collection<? extends State>)newValue);
 				return;
-			case TfsmPackage.TIMED_FSM__INITIAL_STATE:
+			case TfsmPackage.TIME_FSM__INITIAL_STATE:
 				setInitialState((State)newValue);
 				return;
-			case TfsmPackage.TIMED_FSM__LOCAL_EVENTS:
+			case TfsmPackage.TIME_FSM__LOCAL_EVENTS:
 				getLocalEvents().clear();
 				getLocalEvents().addAll((Collection<? extends FSMEvent>)newValue);
 				return;
-			case TfsmPackage.TIMED_FSM__LOCAL_CLOCK:
+			case TfsmPackage.TIME_FSM__LOCAL_CLOCK:
 				setLocalClock((FSMClock)newValue);
 				return;
-			case TfsmPackage.TIMED_FSM__OWNED_TRANSITIONS:
+			case TfsmPackage.TIME_FSM__OWNED_TRANSITIONS:
 				getOwnedTransitions().clear();
 				getOwnedTransitions().addAll((Collection<? extends Transition>)newValue);
 				return;
-			case TfsmPackage.TIMED_FSM__STEP_NUMBER:
+			case TfsmPackage.TIME_FSM__STEP_NUMBER:
 				setStepNumber((Integer)newValue);
 				return;
-			case TfsmPackage.TIMED_FSM__LAST_STATE_CHANGE_STEP_NUMBER:
+			case TfsmPackage.TIME_FSM__LAST_STATE_CHANGE_STEP_NUMBER:
 				setLastStateChangeStepNumber((Integer)newValue);
 				return;
-			case TfsmPackage.TIMED_FSM__CURRENT_STATE:
+			case TfsmPackage.TIME_FSM__CURRENT_STATE:
 				setCurrentState((State)newValue);
 				return;
 		}
@@ -497,28 +497,28 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TfsmPackage.TIMED_FSM__OWNED_STATES:
+			case TfsmPackage.TIME_FSM__OWNED_STATES:
 				getOwnedStates().clear();
 				return;
-			case TfsmPackage.TIMED_FSM__INITIAL_STATE:
+			case TfsmPackage.TIME_FSM__INITIAL_STATE:
 				setInitialState((State)null);
 				return;
-			case TfsmPackage.TIMED_FSM__LOCAL_EVENTS:
+			case TfsmPackage.TIME_FSM__LOCAL_EVENTS:
 				getLocalEvents().clear();
 				return;
-			case TfsmPackage.TIMED_FSM__LOCAL_CLOCK:
+			case TfsmPackage.TIME_FSM__LOCAL_CLOCK:
 				setLocalClock((FSMClock)null);
 				return;
-			case TfsmPackage.TIMED_FSM__OWNED_TRANSITIONS:
+			case TfsmPackage.TIME_FSM__OWNED_TRANSITIONS:
 				getOwnedTransitions().clear();
 				return;
-			case TfsmPackage.TIMED_FSM__STEP_NUMBER:
+			case TfsmPackage.TIME_FSM__STEP_NUMBER:
 				setStepNumber(STEP_NUMBER_EDEFAULT);
 				return;
-			case TfsmPackage.TIMED_FSM__LAST_STATE_CHANGE_STEP_NUMBER:
+			case TfsmPackage.TIME_FSM__LAST_STATE_CHANGE_STEP_NUMBER:
 				setLastStateChangeStepNumber(LAST_STATE_CHANGE_STEP_NUMBER_EDEFAULT);
 				return;
-			case TfsmPackage.TIMED_FSM__CURRENT_STATE:
+			case TfsmPackage.TIME_FSM__CURRENT_STATE:
 				setCurrentState((State)null);
 				return;
 		}
@@ -533,21 +533,21 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TfsmPackage.TIMED_FSM__OWNED_STATES:
+			case TfsmPackage.TIME_FSM__OWNED_STATES:
 				return ownedStates != null && !ownedStates.isEmpty();
-			case TfsmPackage.TIMED_FSM__INITIAL_STATE:
+			case TfsmPackage.TIME_FSM__INITIAL_STATE:
 				return initialState != null;
-			case TfsmPackage.TIMED_FSM__LOCAL_EVENTS:
+			case TfsmPackage.TIME_FSM__LOCAL_EVENTS:
 				return localEvents != null && !localEvents.isEmpty();
-			case TfsmPackage.TIMED_FSM__LOCAL_CLOCK:
+			case TfsmPackage.TIME_FSM__LOCAL_CLOCK:
 				return localClock != null;
-			case TfsmPackage.TIMED_FSM__OWNED_TRANSITIONS:
+			case TfsmPackage.TIME_FSM__OWNED_TRANSITIONS:
 				return ownedTransitions != null && !ownedTransitions.isEmpty();
-			case TfsmPackage.TIMED_FSM__STEP_NUMBER:
+			case TfsmPackage.TIME_FSM__STEP_NUMBER:
 				return stepNumber != STEP_NUMBER_EDEFAULT;
-			case TfsmPackage.TIMED_FSM__LAST_STATE_CHANGE_STEP_NUMBER:
+			case TfsmPackage.TIME_FSM__LAST_STATE_CHANGE_STEP_NUMBER:
 				return lastStateChangeStepNumber != LAST_STATE_CHANGE_STEP_NUMBER_EDEFAULT;
-			case TfsmPackage.TIMED_FSM__CURRENT_STATE:
+			case TfsmPackage.TIME_FSM__CURRENT_STATE:
 				return currentState != null;
 		}
 		return super.eIsSet(featureID);
@@ -571,4 +571,4 @@ public class TimedFSMImpl extends NamedElementImpl implements TimedFSM {
 		return result.toString();
 	}
 
-} //TimedFSMImpl
+} //TimeFSMImpl

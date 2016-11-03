@@ -7,11 +7,11 @@ import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedFSM;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedSystem;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMEventAspect;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMAspect;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMVisitorAspect;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspect;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMVisitorAspect;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedSystemAspectTimedSystemAspectProperties;
 
 @Aspect(className = TimedSystem.class)
@@ -32,8 +32,8 @@ public class TimedSystemAspect {
   }
   
   protected static void _privk3_main(final TimedSystemAspectTimedSystemAspectProperties _self_, final TimedSystem _self) {
-    EList<TimedFSM> _tfsms = _self.getTfsms();
-    final TimedFSM tfsm = _tfsms.get(0);
+    EList<TimeFSM> _tfsms = _self.getTfsms();
+    final TimeFSM tfsm = _tfsms.get(0);
     int i = 0;
     while ((i != 20)) {
       {
@@ -44,7 +44,7 @@ public class TimedSystemAspect {
           };
           _localEvents.forEach(_function);
         }
-        TimedFSMVisitorAspect.visit(tfsm);
+        TimeFSMVisitorAspect.visit(tfsm);
         if ((i == 10)) {
           EList<FSMEvent> _localEvents_1 = tfsm.getLocalEvents();
           final Consumer<FSMEvent> _function_1 = (FSMEvent e) -> {
@@ -59,8 +59,8 @@ public class TimedSystemAspect {
   }
   
   protected static void _privk3_initializeModel(final TimedSystemAspectTimedSystemAspectProperties _self_, final TimedSystem _self, final EList<String> args) {
-    EList<TimedFSM> _tfsms = _self.getTfsms();
-    final TimedFSM tfsm = _tfsms.get(0);
-    TimedFSMAspect.init(tfsm);
+    EList<TimeFSM> _tfsms = _self.getTfsms();
+    final TimeFSM tfsm = _tfsms.get(0);
+    TimeFSMAspect.init(tfsm);
   }
 }

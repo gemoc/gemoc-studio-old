@@ -5,10 +5,10 @@ import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Guard;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedFSM;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Transition;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.GuardVisitorAspectGuardAspectProperties;
-import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedFSMVisitorAspect;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMVisitorAspect;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TransitionAspect;
 
 @Aspect(className = Guard.class)
@@ -18,12 +18,12 @@ public abstract class GuardVisitorAspect {
   public static void visit(final Guard _self) {
 	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.GuardVisitorAspectGuardAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.GuardVisitorAspectGuardAspectContext
 			.getSelf(_self);
-	if (_self instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EvaluateGuard) {
-		org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.GuardVisitorAspect._privk3_visit(_self_,
-				(org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EvaluateGuard) _self);
-	} else if (_self instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TemporalGuard) {
+	if (_self instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TemporalGuard) {
 		org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TemporalGuardVisitorAspect
 				.visit((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TemporalGuard) _self);
+	} else if (_self instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EvaluateGuard) {
+		org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.GuardVisitorAspect._privk3_visit(_self_,
+				(org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EvaluateGuard) _self);
 	} else if (_self instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EventGuard) {
 		org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.EventGuardVisitorAspect
 				.visit((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EventGuard) _self);
@@ -71,15 +71,15 @@ public abstract class GuardVisitorAspect {
   protected static int _privk3_lastStateChangeStepNumber(final GuardVisitorAspectGuardAspectProperties _self_, final Guard _self) {
     EObject _eContainer = _self.eContainer();
     EObject _eContainer_1 = _eContainer.eContainer();
-    final TimedFSM tfsm = ((TimedFSM) _eContainer_1);
-    return TimedFSMVisitorAspect.lastStateChangeStepNumber(tfsm);
+    final TimeFSM tfsm = ((TimeFSM) _eContainer_1);
+    return TimeFSMVisitorAspect.lastStateChangeStepNumber(tfsm);
   }
   
   protected static void _privk3_saveLastStateChangeStepNumber(final GuardVisitorAspectGuardAspectProperties _self_, final Guard _self) {
     EObject _eContainer = _self.eContainer();
     EObject _eContainer_1 = _eContainer.eContainer();
-    final TimedFSM tfsm = ((TimedFSM) _eContainer_1);
-    int _stepNumber = TimedFSMVisitorAspect.stepNumber(tfsm);
-    TimedFSMVisitorAspect.lastStateChangeStepNumber(tfsm, _stepNumber);
+    final TimeFSM tfsm = ((TimeFSM) _eContainer_1);
+    int _stepNumber = TimeFSMVisitorAspect.stepNumber(tfsm);
+    TimeFSMVisitorAspect.lastStateChangeStepNumber(tfsm, _stepNumber);
   }
 }

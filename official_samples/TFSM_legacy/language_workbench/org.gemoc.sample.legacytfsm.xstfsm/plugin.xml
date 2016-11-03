@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?eclipse version="3.4"?><plugin>
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
   <extension point="org.gemoc.gemoc_language_workbench.sequential.xdsml">
-    <XDSML_Definition modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.legacytfsm.xstfsm.XSTFSM" xdsmlFilePath="/org.gemoc.sample.legacytfsm.xstfsm/src/org/gemoc/sample/legacytfsm/xstfsm/XSTFSM.melange"/>
+    <XDSML_Definition modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.legacytfsm.xstfsm.XSTFSM" xdsmlFilePath="/org.gemoc.sample.legacytfsm.xstfsm/src/org/gemoc/sample/legacytfsm/xstfsm/XSTFSM.melange" />
   </extension>
-  
-<extension point="fr.inria.diverse.melange.modeltype">
-    <modeltype id="org.gemoc.sample.legacytfsm.xstfsm.TFSMMT" uri="http://org.gemoc.sample.legacytfsm.xstfsm.tfsmmt/"/>
+  <extension point="fr.inria.diverse.melange.modeltype">
+    <modeltype id="org.gemoc.sample.legacytfsm.xstfsm.TFSMMT" uri="http://org.gemoc.sample.legacytfsm.xstfsm.tfsmmt/" />
     <modeltype id="org.gemoc.sample.legacytfsm.xstfsm.XSTFSMMT" uri="http://org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt/">
-      <subtyping modeltypeId="org.gemoc.sample.legacytfsm.xstfsm.TFSMMT"/>
+      <subtyping modeltypeId="org.gemoc.sample.legacytfsm.xstfsm.TFSMMT" />
     </modeltype>
   </extension>
   <extension point="fr.inria.diverse.melange.language">
-    <language aspects="" entryPoints="" exactType="org.gemoc.sample.legacytfsm.xstfsm.TFSMMT" id="org.gemoc.sample.legacytfsm.xstfsm.TFSM" uri="http://www.gemoc.org/legacytfsm/tfsm"/>
+    <language aspects="" entryPoints="" exactType="org.gemoc.sample.legacytfsm.xstfsm.TFSMMT" id="org.gemoc.sample.legacytfsm.xstfsm.TFSM" uri="http://www.gemoc.org/legacytfsm/tfsm" />
     <language aspects="FSMClock:org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMClockAspect,org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMClockVisitorAspect;TimedSystem:org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedSystemAspect,org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedSystemVisitorAspect;TimeFSM:org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMVisitorAspect,org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspect;State:org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.StateAspect,org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.StateVisitorAspect;EventGuard:org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.EventGuardVisitorAspect;Transition:org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TransitionAspect,org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TransitionVisitorAspect;Guard:org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.GuardVisitorAspect;FSMEvent:org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMEventAspect;TemporalGuard:org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TemporalGuardVisitorAspect" entryPoints="org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedSystemAspect.main(org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedSystem)" exactType="org.gemoc.sample.legacytfsm.xstfsm.XSTFSMMT" id="org.gemoc.sample.legacytfsm.xstfsm.XSTFSM" uri="http://org.gemoc.sample.legacytfsm.xstfsm.xstfsm/tfsm/">
-      <adapter class="org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.XSTFSMAdapter" modeltypeId="org.gemoc.sample.legacytfsm.xstfsm.TFSMMT"/>
-      <adapter class="org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.XSTFSMAdapter" modeltypeId="org.gemoc.sample.legacytfsm.xstfsm.XSTFSMMT"/>
+      <adapter class="org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.XSTFSMAdapter" modeltypeId="org.gemoc.sample.legacytfsm.xstfsm.TFSMMT" />
+      <adapter class="org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.XSTFSMAdapter" modeltypeId="org.gemoc.sample.legacytfsm.xstfsm.XSTFSMMT" />
     </language>
   </extension>
 </plugin>

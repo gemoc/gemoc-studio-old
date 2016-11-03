@@ -68,8 +68,8 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 	protected TfsmSwitch<Adapter> modelSwitch =
 		new TfsmSwitch<Adapter>() {
 			@Override
-			public Adapter caseTimedFSM(TimedFSM object) {
-				return createTimedFSMAdapter();
+			public Adapter caseTimeFSM(TimeFSM object) {
+				return createTimeFSMAdapter();
 			}
 			@Override
 			public Adapter caseState(State object) {
@@ -132,16 +132,16 @@ public class TfsmAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedFSM <em>Timed FSM</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM <em>Time FSM</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedFSM
+	 * @see org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM
 	 * @generated
 	 */
-	public Adapter createTimedFSMAdapter() {
+	public Adapter createTimeFSMAdapter() {
 		return null;
 	}
 
