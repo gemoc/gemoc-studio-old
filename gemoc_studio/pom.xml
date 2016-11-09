@@ -13,7 +13,7 @@
 		<relativePath>..</relativePath>
 	</parent>
     <properties>
-        <tycho-version>0.25.0</tycho-version>
+        <tycho-version>0.26.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -43,7 +43,7 @@
     	<repository>
             <id>Subversive</id>
             <layout>p2</layout>
-            <url>http://community.polarion.com/projects/subversive/download/eclipse/5.0/mars-site/</url>
+            <url>http://community.polarion.com/projects/subversive/download/eclipse/6.0/neon-site/</url>
         </repository>         
         <repository>
             <id>M2E connectors</id>
@@ -59,12 +59,11 @@
             <id>elk</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/elk/updates/releases/0.1.0/</url>
-        </repository>
-        
+        </repository>        
         <repository>
             <id>Sirius</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/sirius/updates/releases/3.1.4/mars</url>
+            <url>http://download.eclipse.org/sirius/updates/releases/4.1.1/neon/</url>
         </repository>
 		<repository>
             <id>Groovy4Eclipse</id>
@@ -88,12 +87,12 @@
         <repository>
             <id>Checkstyle</id>
             <layout>p2</layout>
-            <url>http://sourceforge.net/projects/eclipse-cs/files/updatesite/5.7.0/</url>
+            <url>http://sourceforge.net/projects/eclipse-cs/files/updatesite/6.19.1/</url>
         </repository>
         <repository>
             <id>AspectJ</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/tools/ajdt/44/dev/update</url>
+            <url>http://download.eclipse.org/tools/ajdt/46/dev/update</url>
         </repository>
     
     </repositories>
@@ -170,11 +169,11 @@
 	    	<!-- use this command line to activate this profile -->
 	    	<!-- mvn clean package -Denvironment=test_win32 -->
 	    	<!-- or directly with the ID using the eclipse UI -->
-	    	<id>test_win32</id>
+	    	<id>test_win64</id>
 	    	<activation>
 		      <property>
 		        <name>environment</name>
-		        <value>test_win32</value>
+		        <value>test_win64</value>
 		      </property>
 		    </activation>
     		<build>

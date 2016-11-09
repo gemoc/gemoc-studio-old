@@ -9,7 +9,7 @@
 	</modules>
 
     <properties>
-		<tycho-version>0.25.0</tycho-version>
+		<tycho-version>0.26.0</tycho-version>
 		<project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
 	</properties>
 	
@@ -18,9 +18,9 @@
   	<!--  must NOT include the repositories of the tools included in the Studio has it has its own complementary list -->
   	        
         <repository>
-            <id>Mars release</id>
+            <id>Neon release</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/releases/mars/201602261000</url>
+            <url>http://download.eclipse.org/releases/neon</url>
         </repository>
         <repository>
             <id>timesquare</id>
@@ -50,13 +50,13 @@
         <repository>
             <id>Sirius</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/sirius/updates/releases/3.1.4/mars</url>
+            <url>http://download.eclipse.org/sirius/updates/releases/4.1.1/neon/</url>
         </repository>
-        <repository>
+        <!-- <repository>
             <id>umldesigner</id>
             <layout>p2</layout>
             <url>http://releases.umldesigner.org/5.0.1/repository/</url>
-        </repository>
+        </repository> -->
         <repository>
             <id>nebula</id>
             <layout>p2</layout>
