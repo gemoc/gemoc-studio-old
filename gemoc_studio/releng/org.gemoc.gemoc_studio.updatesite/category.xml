@@ -3,12 +3,12 @@
    <feature url="features/org.gemoc.modeldebugging.feature_2.2.1.qualifier.jar" id="org.gemoc.modeldebugging.feature" version="2.2.1.qualifier">
       <category name="GEMOC_AllInOne"/>
    </feature>
-   <feature url="features/org.gemoc.concurrency.feature_2.2.1.qualifier.jar" id="org.gemoc.concurrency.feature" version="2.2.1.qualifier">
+<!--  temporarily disable timesquare   <feature url="features/org.gemoc.concurrency.feature_2.2.1.qualifier.jar" id="org.gemoc.concurrency.feature" version="2.2.1.qualifier">
       <category name="GEMOC_AllInOne"/>
    </feature>
    <feature url="features/org.gemoc.coordination.feature_2.2.1.qualifier.jar" id="org.gemoc.coordination.feature" version="2.2.1.qualifier">
       <category name="GEMOC_AllInOne"/>
-   </feature>
+   </feature> -->
    <feature url="features/org.gemoc.commons.feature_0.1.0.qualifier.jar" id="org.gemoc.commons.feature" version="0.1.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
@@ -63,7 +63,7 @@
    <feature url="features/org.gemoc.official_samples.deployers.feature_0.1.0.qualifier.jar" id="org.gemoc.official_samples.deployers.feature" version="0.1.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.concurrent_addons.feature_2.2.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature" version="2.2.0.qualifier">
+ <!--  temporarily disable timesquare   <feature url="features/org.gemoc.concurrent_addons.feature_2.2.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature" version="2.2.0.qualifier">
       <category name="GEMOC_Concurrency_Components"/>
    </feature>
    <feature url="features/org.gemoc.concurrent_addons.feature.source_2.2.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature.source" version="2.2.0.qualifier">
@@ -117,7 +117,7 @@
    <feature url="features/org.gemoc.heterogeneous_coordination_engine.feature_0.1.0.qualifier.jar" id="org.gemoc.heterogeneous_coordination_engine.feature" version="0.1.0.qualifier">
       <category name="GEMOC_Coordination_Components"/>
    </feature>
-   
+   -->
    <category-def name="GEMOC_AllInOne" label="GEMOC all in one">
       <description>
          All GEMOC components installed via simple features dedicated for the main scenarios.

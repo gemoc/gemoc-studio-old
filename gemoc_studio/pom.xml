@@ -25,8 +25,8 @@
         <module>releng/org.gemoc.gemoc_studio.branding.source.feature</module>		
         <module>releng/org.gemoc.gemoc_studio.additions.feature</module>	
         <module>releng/org.gemoc.modeldebugging.feature</module>
-        <module>releng/org.gemoc.concurrency.feature</module>
-        <module>releng/org.gemoc.coordination.feature</module>
+      <!-- temporarily disable timesquare  <module>releng/org.gemoc.concurrency.feature</module>
+        <module>releng/org.gemoc.coordination.feature</module> -->
         <module>releng/org.gemoc.gemoc_studio.updatesite</module>
     </modules>
 
@@ -45,11 +45,11 @@
             <layout>p2</layout>
             <url>http://community.polarion.com/projects/subversive/download/eclipse/6.0/neon-site/</url>
         </repository>         
-        <repository>
+       <!--  <repository>
             <id>M2E connectors</id>
             <layout>p2</layout>
             <url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.7.0/N/0.7.0.201309291400/</url>
-        </repository>
+        </repository> -->
         <repository>
             <id>Palette patch update site</id>
             <layout>p2</layout>
@@ -68,7 +68,7 @@
 		<repository>
             <id>Groovy4Eclipse</id>
             <layout>p2</layout>
-            <url>http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/</url>
+            <url>http://dist.springsource.org/snapshot/GRECLIPSE/e4.6/</url>
         </repository>
         <!-- *********** Xtext related update site -->
        <!--  <repository>
