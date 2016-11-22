@@ -12,7 +12,20 @@ public class FSMEventAspect {
   public static void trigger(final FSMEvent _self) {
 	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMEventAspectFSMEventAspectContext
 			.getSelf(_self);
-	_privk3_trigger(_self_, _self);
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
+		@Override
+		public void execute() {
+			_privk3_trigger(_self_, _self);
+		}
+	};
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
+			.getInstance().findStepManager(_self);
+	if (manager != null) {
+		manager.executeStep(_self, command, "FSMEvent", "trigger");
+	} else {
+		command.execute();
+	}
+	;
 	;
 }
   
@@ -20,7 +33,20 @@ public class FSMEventAspect {
   public static void unTrigger(final FSMEvent _self) {
 	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMEventAspectFSMEventAspectContext
 			.getSelf(_self);
-	_privk3_unTrigger(_self_, _self);
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
+		@Override
+		public void execute() {
+			_privk3_unTrigger(_self_, _self);
+		}
+	};
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
+			.getInstance().findStepManager(_self);
+	if (manager != null) {
+		manager.executeStep(_self, command, "FSMEvent", "unTrigger");
+	} else {
+		command.execute();
+	}
+	;
 	;
 }
   

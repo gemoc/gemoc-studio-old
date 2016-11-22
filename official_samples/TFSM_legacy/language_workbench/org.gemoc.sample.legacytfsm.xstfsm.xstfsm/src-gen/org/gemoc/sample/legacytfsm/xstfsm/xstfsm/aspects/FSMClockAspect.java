@@ -14,7 +14,21 @@ public class FSMClockAspect {
 	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.FSMClockAspectFSMClockAspectContext
 			.getSelf(_self);
 	Object result = null;
-	result = _privk3_ticks(_self_, _self);
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
+		@Override
+		public void execute() {
+			addToResult(_privk3_ticks(_self_, _self));
+		}
+	};
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
+			.getInstance().findStepManager(_self);
+	if (manager != null) {
+		manager.executeStep(_self, command, "FSMClock", "ticks");
+	} else {
+		command.execute();
+	}
+	result = command.getResult();
+	;
 	;
 	return (java.lang.Integer) result;
 }

@@ -9,7 +9,12 @@ Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  fr.inria.diverse.k3.al.annotationprocessor.plugin,
- org.eclipse.xtext.xbase.lib
+ fr.inria.diverse.melange,
+ org.eclipse.xtext.xbase.lib,
+ com.google.guava,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore.xmi
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects,
  org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm,

@@ -1,8 +1,10 @@
 package org.gemoc.sample.legacytfsm.xstfsm.design.services;
 
+import org.eclipse.emf.ecore.EObject;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EvaluateGuard;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EventGuard;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.State;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TemporalGuard;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Transition;
 
@@ -49,6 +51,19 @@ public class TFSMServices {
 		}
 
 		return res.toString();
+	}
+	
+	public String getTypeString(EObject o) {
+		return o.getClass().toString();
+	}
+	
+	
+	public boolean isCurrentState(Object o){
+		if(o instanceof State){
+			return ((State)o).getOwningFSM().getCurrentState() == o;
+		} else {
+			return false;
+		}
 	}
 
 }

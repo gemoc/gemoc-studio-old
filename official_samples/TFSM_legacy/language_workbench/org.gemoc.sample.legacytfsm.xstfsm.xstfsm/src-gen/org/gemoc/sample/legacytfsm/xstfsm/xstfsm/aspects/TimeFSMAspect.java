@@ -21,7 +21,20 @@ public class TimeFSMAspect {
   public static void init(final TimeFSM _self) {
 	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspectTimeFSMAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimeFSMAspectTimeFSMAspectContext
 			.getSelf(_self);
-	_privk3_init(_self_, _self);
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
+		@Override
+		public void execute() {
+			_privk3_init(_self_, _self);
+		}
+	};
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
+			.getInstance().findStepManager(_self);
+	if (manager != null) {
+		manager.executeStep(_self, command, "TimeFSM", "init");
+	} else {
+		command.execute();
+	}
+	;
 	;
 }
   

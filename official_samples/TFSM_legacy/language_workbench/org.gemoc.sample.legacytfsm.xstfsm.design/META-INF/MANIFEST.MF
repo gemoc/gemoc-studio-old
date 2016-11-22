@@ -8,7 +8,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common.acceleo.aql,
  org.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.sample.legacytfsm.tfsm.design;bundle-version="1.0.0",
- org.gemoc.sample.legacytfsm.xstfsm.xstfsm
+ org.gemoc.sample.legacytfsm.xstfsm.xstfsm,
+ org.gemoc.execution.sequential.javaengine.ui;bundle-version="2.2.0"
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.gemoc.sample.legacytfsm.xstfsm.design.Activator
 Bundle-ActivationPolicy: lazy

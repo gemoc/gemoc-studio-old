@@ -17,7 +17,20 @@ public class StateVisitorAspect {
   public static void visit(final State _self) {
 	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.StateVisitorAspectStateAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.StateVisitorAspectStateAspectContext
 			.getSelf(_self);
-	_privk3_visit(_self_, _self);
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
+		@Override
+		public void execute() {
+			_privk3_visit(_self_, _self);
+		}
+	};
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
+			.getInstance().findStepManager(_self);
+	if (manager != null) {
+		manager.executeStep(_self, command, "State", "visit");
+	} else {
+		command.execute();
+	}
+	;
 	;
 }
   
