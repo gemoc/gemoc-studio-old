@@ -16,15 +16,26 @@ import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Transition;
 public abstract class GuardVisitorAspect {
   @Abstract
   public static void visit(final Guard _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspectGuardAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspectGuardAspectContext.getSelf(_self);
-     if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard){
-    					org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TemporalGuardVisitorAspect.visit((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard)_self);
-    } else  if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard){
-    					org.gemoc.sample.tfsm.sequential.xtfsm.aspects.EventGuardVisitorAspect.visit((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard)_self);
-    } else  if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard){
-    					org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspect._privk3_visit(_self_, (org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard)_self);
-    } else  { throw new IllegalArgumentException("Unhandled parameter types: " + java.util.Arrays.<Object>asList(_self).toString()); };
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspectGuardAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspectGuardAspectContext
+			.getSelf(_self);
+	if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard) {
+		org.gemoc.sample.tfsm.sequential.xtfsm.aspects.EventGuardVisitorAspect
+				.visit((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard) _self);
+	} else if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EvaluateGuard) {
+		org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspect._privk3_visit(_self_,
+				(org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EvaluateGuard) _self);
+	} else if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard) {
+		org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TemporalGuardVisitorAspect
+				.visit((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard) _self);
+	} else if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard) {
+		org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspect._privk3_visit(_self_,
+				(org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard) _self);
+	} else {
+		throw new IllegalArgumentException(
+				"Unhandled parameter types: " + java.util.Arrays.<Object> asList(_self).toString());
+	}
+	;
+}
   
   protected static void fireTransition(final Guard _self) {
     final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspectGuardAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspectGuardAspectContext.getSelf(_self);

@@ -15,9 +15,11 @@ import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM;
 @SuppressWarnings("all")
 public class TFSMVisitorAspect {
   public static void visit(final TFSM _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectContext.getSelf(_self);
-    _privk3_visit(_self_, _self);;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectContext
+			.getSelf(_self);
+	_privk3_visit(_self_, _self);
+	;
+}
   
   private static String getCurrentStateName(final TFSM _self) {
     final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectContext.getSelf(_self);
@@ -27,28 +29,36 @@ public class TFSMVisitorAspect {
   }
   
   public static int stepNumber(final TFSM _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_stepNumber(_self_, _self);;
-    return (int)result;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_stepNumber(_self_, _self);
+	;
+	return (int) result;
+}
   
   public static void stepNumber(final TFSM _self, final int stepNumber) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectContext.getSelf(_self);
-    _privk3_stepNumber(_self_, _self,stepNumber);;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectContext
+			.getSelf(_self);
+	_privk3_stepNumber(_self_, _self, stepNumber);
+	;
+}
   
   public static int lastStateChangeStepNumber(final TFSM _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_lastStateChangeStepNumber(_self_, _self);;
-    return (int)result;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_lastStateChangeStepNumber(_self_, _self);
+	;
+	return (int) result;
+}
   
   public static void lastStateChangeStepNumber(final TFSM _self, final int lastStateChangeStepNumber) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectContext.getSelf(_self);
-    _privk3_lastStateChangeStepNumber(_self_, _self,lastStateChangeStepNumber);;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMVisitorAspectTFSMAspectContext
+			.getSelf(_self);
+	_privk3_lastStateChangeStepNumber(_self_, _self, lastStateChangeStepNumber);
+	;
+}
   
   protected static void _privk3_visit(final TFSMVisitorAspectTFSMAspectProperties _self_, final TFSM _self) {
     InputOutput.println();

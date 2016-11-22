@@ -19,33 +19,40 @@ import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM;
 public class TFSMAspect {
   @Step
   public static void init(final TFSM _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectContext.getSelf(_self);
-    fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
-    	@Override
-    	public void execute() {
-    		_privk3_init(_self_, _self);
-    	}
-    };
-    fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry.getInstance().findStepManager(_self);
-    if (manager != null) {
-    	manager.executeStep(_self,command,"TFSM","init");
-    } else {
-    	command.execute();
-    }
-    ;;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectContext
+			.getSelf(_self);
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
+		@Override
+		public void execute() {
+			_privk3_init(_self_, _self);
+		}
+	};
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
+			.getInstance().findStepManager(_self);
+	if (manager != null) {
+		manager.executeStep(_self, command, "TFSM", "init");
+	} else {
+		command.execute();
+	}
+	;
+	;
+}
   
   public static State currentState(final TFSM _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_currentState(_self_, _self);;
-    return (org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.State)result;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_currentState(_self_, _self);
+	;
+	return (org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.State) result;
+}
   
   public static void currentState(final TFSM _self, final State currentState) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectContext.getSelf(_self);
-    _privk3_currentState(_self_, _self,currentState);;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TFSMAspectTFSMAspectContext
+			.getSelf(_self);
+	_privk3_currentState(_self_, _self, currentState);
+	;
+}
   
   protected static void _privk3_init(final TFSMAspectTFSMAspectProperties _self_, final TFSM _self) {
     State _initialState = _self.getInitialState();

@@ -13,21 +13,24 @@ import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Transition;
 public class TransitionVisitorAspect {
   @Step
   public static void visit(final Transition _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TransitionVisitorAspectTransitionAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TransitionVisitorAspectTransitionAspectContext.getSelf(_self);
-    fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
-    	@Override
-    	public void execute() {
-    		_privk3_visit(_self_, _self);
-    	}
-    };
-    fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry.getInstance().findStepManager(_self);
-    if (manager != null) {
-    	manager.executeStep(_self,command,"Transition","visit");
-    } else {
-    	command.execute();
-    }
-    ;;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TransitionVisitorAspectTransitionAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TransitionVisitorAspectTransitionAspectContext
+			.getSelf(_self);
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
+		@Override
+		public void execute() {
+			_privk3_visit(_self_, _self);
+		}
+	};
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
+			.getInstance().findStepManager(_self);
+	if (manager != null) {
+		manager.executeStep(_self, command, "Transition", "visit");
+	} else {
+		command.execute();
+	}
+	;
+	;
+}
   
   protected static void _privk3_visit(final TransitionVisitorAspectTransitionAspectProperties _self_, final Transition _self) {
     Guard _ownedGuard = _self.getOwnedGuard();

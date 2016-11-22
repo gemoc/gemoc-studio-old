@@ -19,9 +19,11 @@ import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TimedSystem;
 public class TimedSystemAspect {
   @Main
   public static void main(final TimedSystem _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TimedSystemAspectTimedSystemAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TimedSystemAspectTimedSystemAspectContext.getSelf(_self);
-    _privk3_main(_self_, _self);;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TimedSystemAspectTimedSystemAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TimedSystemAspectTimedSystemAspectContext
+			.getSelf(_self);
+	_privk3_main(_self_, _self);
+	;
+}
   
   @InitializeModel
   public static void initializeModel(final TimedSystem _self, final EList<String> args) {

@@ -634,9 +634,9 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		initEReference(getTFSM_LocalEvents(), this.getFSMEvent(), null, "localEvents", null, 0, -1, org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTFSM_LocalClock(), this.getFSMClock(), null, "localClock", null, 1, 1, org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTFSM_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTFSM_CurrentState(), this.getState(), null, "currentState", null, 0, 1, org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTFSM_StepNumber(), ecorePackage.getEInt(), "stepNumber", null, 0, 1, org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTFSM_LastStateChangeStepNumber(), ecorePackage.getEInt(), "lastStateChangeStepNumber", null, 0, 1, org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTFSM_CurrentState(), this.getState(), null, "currentState", null, 0, 1, org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTFSM_StepNumber(), ecorePackage.getEInt(), "stepNumber", null, 0, 1, org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTFSM_LastStateChangeStepNumber(), ecorePackage.getEInt(), "lastStateChangeStepNumber", null, 0, 1, org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(tfsmEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -684,14 +684,14 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 
 		initEClass(fsmEventEClass, FSMEvent.class, "FSMEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFSMEvent_SollicitingTransitions(), this.getTransition(), null, "sollicitingTransitions", null, 0, -1, FSMEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFSMEvent_IsTriggered(), ecorePackage.getEBoolean(), "isTriggered", null, 0, 1, FSMEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFSMEvent_IsTriggered(), ecorePackage.getEBoolean(), "isTriggered", null, 0, 1, FSMEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(fsmEventEClass, null, "trigger", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(fsmEventEClass, null, "unTrigger", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fsmClockEClass, FSMClock.class, "FSMClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFSMClock_NumberOfTicks(), ecorePackage.getEIntegerObject(), "numberOfTicks", null, 0, 1, FSMClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFSMClock_NumberOfTicks(), ecorePackage.getEIntegerObject(), "numberOfTicks", null, 0, 1, FSMClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(fsmClockEClass, ecorePackage.getEIntegerObject(), "ticks", 0, 1, IS_UNIQUE, IS_ORDERED);
 

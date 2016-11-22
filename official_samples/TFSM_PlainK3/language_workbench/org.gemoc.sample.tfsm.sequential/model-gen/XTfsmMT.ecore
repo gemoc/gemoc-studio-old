@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tfsm" nsURI="http://xtfsmmt/tfsm/" nsPrefix="org.gemoc.sample.tfsm">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tfsm" nsURI="http://org.gemoc.sample.tfsm.sequential.xtfsmmt/tfsm/" nsPrefix="org.gemoc.sample.tfsm">
   <eClassifiers xsi:type="ecore:EClass" name="TFSM" eSuperTypes="//NamedElement">
     <eOperations name="init">
       <eAnnotations source="aspect"/>
@@ -12,14 +12,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="localEvents" upperBound="-1" eType="//FSMEvent" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="localClock" lowerBound="1" eType="//FSMClock" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTransitions" upperBound="-1" eType="//Transition" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="currentState" eType="//State">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currentState" unique="false" eType="//State">
       <eAnnotations source="aspect"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stepNumber">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stepNumber" unique="false">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastStateChangeStepNumber">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastStateChangeStepNumber" unique="false">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
@@ -86,7 +86,7 @@
       <eAnnotations source="aspect"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sollicitingTransitions" upperBound="-1" eType="//Transition"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTriggered">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTriggered" unique="false">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
@@ -99,7 +99,7 @@
     <eOperations name="visit">
       <eAnnotations source="aspect"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfTicks">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfTicks" unique="false">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     </eStructuralFeatures>

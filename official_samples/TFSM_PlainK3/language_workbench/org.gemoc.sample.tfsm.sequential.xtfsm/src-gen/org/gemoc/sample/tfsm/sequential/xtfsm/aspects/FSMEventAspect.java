@@ -10,51 +10,61 @@ import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.FSMEvent;
 public class FSMEventAspect {
   @Step
   public static void trigger(final FSMEvent _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectContext.getSelf(_self);
-    fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
-    	@Override
-    	public void execute() {
-    		_privk3_trigger(_self_, _self);
-    	}
-    };
-    fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry.getInstance().findStepManager(_self);
-    if (manager != null) {
-    	manager.executeStep(_self,command,"FSMEvent","trigger");
-    } else {
-    	command.execute();
-    }
-    ;;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectContext
+			.getSelf(_self);
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
+		@Override
+		public void execute() {
+			_privk3_trigger(_self_, _self);
+		}
+	};
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
+			.getInstance().findStepManager(_self);
+	if (manager != null) {
+		manager.executeStep(_self, command, "FSMEvent", "trigger");
+	} else {
+		command.execute();
+	}
+	;
+	;
+}
   
   @Step
   public static void unTrigger(final FSMEvent _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectContext.getSelf(_self);
-    fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
-    	@Override
-    	public void execute() {
-    		_privk3_unTrigger(_self_, _self);
-    	}
-    };
-    fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry.getInstance().findStepManager(_self);
-    if (manager != null) {
-    	manager.executeStep(_self,command,"FSMEvent","unTrigger");
-    } else {
-    	command.execute();
-    }
-    ;;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectContext
+			.getSelf(_self);
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
+		@Override
+		public void execute() {
+			_privk3_unTrigger(_self_, _self);
+		}
+	};
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
+			.getInstance().findStepManager(_self);
+	if (manager != null) {
+		manager.executeStep(_self, command, "FSMEvent", "unTrigger");
+	} else {
+		command.execute();
+	}
+	;
+	;
+}
   
   public static boolean isTriggered(final FSMEvent _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_isTriggered(_self_, _self);;
-    return (boolean)result;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_isTriggered(_self_, _self);
+	;
+	return (boolean) result;
+}
   
   public static void isTriggered(final FSMEvent _self, final boolean isTriggered) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectContext.getSelf(_self);
-    _privk3_isTriggered(_self_, _self,isTriggered);;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMEventAspectFSMEventAspectContext
+			.getSelf(_self);
+	_privk3_isTriggered(_self_, _self, isTriggered);
+	;
+}
   
   protected static void _privk3_trigger(final FSMEventAspectFSMEventAspectProperties _self_, final FSMEvent _self) {
     FSMEventAspect.isTriggered(_self, true);

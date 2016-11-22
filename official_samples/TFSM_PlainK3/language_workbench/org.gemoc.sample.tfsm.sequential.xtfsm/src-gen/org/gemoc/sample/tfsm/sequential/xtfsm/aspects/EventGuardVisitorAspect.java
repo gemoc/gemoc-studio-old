@@ -11,13 +11,11 @@ import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.FSMEvent;
 @SuppressWarnings("all")
 public class EventGuardVisitorAspect extends GuardVisitorAspect {
   public static void visit(final EventGuard _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.EventGuardVisitorAspectEventGuardAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.EventGuardVisitorAspectEventGuardAspectContext.getSelf(_self);
-     if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard){
-    					org.gemoc.sample.tfsm.sequential.xtfsm.aspects.EventGuardVisitorAspect._privk3_visit(_self_, (org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard)_self);
-    } else  if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard){
-    					org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspect.visit((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard)_self);
-    } else  { throw new IllegalArgumentException("Unhandled parameter types: " + java.util.Arrays.<Object>asList(_self).toString()); };
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.EventGuardVisitorAspectEventGuardAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.EventGuardVisitorAspectEventGuardAspectContext
+			.getSelf(_self);
+	_privk3_visit(_self_, _self);
+	;
+}
   
   protected static void _privk3_visit(final EventGuardVisitorAspectEventGuardAspectProperties _self_, final EventGuard _self) {
     FSMEvent _triggeringEvent = _self.getTriggeringEvent();

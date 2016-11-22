@@ -167,7 +167,7 @@ public interface TFSM extends NamedElement {
 	 * @return the value of the '<em>Step Number</em>' attribute.
 	 * @see #setStepNumber(int)
 	 * @see org.gemoc.sample.tfsm.sequential.xtfsmmt.tfsm.TfsmPackage#getTFSM_StepNumber()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	int getStepNumber();
@@ -193,7 +193,7 @@ public interface TFSM extends NamedElement {
 	 * @return the value of the '<em>Last State Change Step Number</em>' attribute.
 	 * @see #setLastStateChangeStepNumber(int)
 	 * @see org.gemoc.sample.tfsm.sequential.xtfsmmt.tfsm.TfsmPackage#getTFSM_LastStateChangeStepNumber()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	int getLastStateChangeStepNumber();

@@ -37,7 +37,7 @@ public interface TfsmPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://xtfsm/tfsm/";
+	String eNS_URI = "http://org.gemoc.sample.tfsm.sequential.xtfsm/tfsm/";
 
 	/**
 	 * The package namespace name.

@@ -11,36 +11,43 @@ import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.FSMClock;
 public class FSMClockAspect {
   @Step
   public static Integer ticks(final FSMClock _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectContext.getSelf(_self);
-    Object result = null;
-    fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
-    	@Override
-    	public void execute() {
-    		addToResult(_privk3_ticks(_self_, _self));
-    	}
-    };
-    fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry.getInstance().findStepManager(_self);
-    if (manager != null) {
-    	manager.executeStep(_self,command,"FSMClock","ticks");
-    } else {
-    	command.execute();
-    }
-    result = command.getResult();
-    ;;
-    return (java.lang.Integer)result;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectContext
+			.getSelf(_self);
+	Object result = null;
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
+		@Override
+		public void execute() {
+			addToResult(_privk3_ticks(_self_, _self));
+		}
+	};
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
+			.getInstance().findStepManager(_self);
+	if (manager != null) {
+		manager.executeStep(_self, command, "FSMClock", "ticks");
+	} else {
+		command.execute();
+	}
+	result = command.getResult();
+	;
+	;
+	return (java.lang.Integer) result;
+}
   
   public static Integer numberOfTicks(final FSMClock _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_numberOfTicks(_self_, _self);;
-    return (java.lang.Integer)result;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_numberOfTicks(_self_, _self);
+	;
+	return (java.lang.Integer) result;
+}
   
   public static void numberOfTicks(final FSMClock _self, final Integer numberOfTicks) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectContext.getSelf(_self);
-    _privk3_numberOfTicks(_self_, _self,numberOfTicks);;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.FSMClockAspectFSMClockAspectContext
+			.getSelf(_self);
+	_privk3_numberOfTicks(_self_, _self, numberOfTicks);
+	;
+}
   
   protected static Integer _privk3_ticks(final FSMClockAspectFSMClockAspectProperties _self_, final FSMClock _self) {
     Integer _numberOfTicks = FSMClockAspect.numberOfTicks(_self);

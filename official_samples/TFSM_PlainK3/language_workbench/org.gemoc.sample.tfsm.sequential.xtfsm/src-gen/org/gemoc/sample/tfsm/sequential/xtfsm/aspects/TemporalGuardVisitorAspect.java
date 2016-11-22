@@ -11,13 +11,11 @@ import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard;
 @SuppressWarnings("all")
 public class TemporalGuardVisitorAspect extends GuardVisitorAspect {
   public static void visit(final TemporalGuard _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TemporalGuardVisitorAspectTemporalGuardAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TemporalGuardVisitorAspectTemporalGuardAspectContext.getSelf(_self);
-     if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard){
-    					org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TemporalGuardVisitorAspect._privk3_visit(_self_, (org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard)_self);
-    } else  if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard){
-    					org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspect.visit((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.Guard)_self);
-    } else  { throw new IllegalArgumentException("Unhandled parameter types: " + java.util.Arrays.<Object>asList(_self).toString()); };
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TemporalGuardVisitorAspectTemporalGuardAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TemporalGuardVisitorAspectTemporalGuardAspectContext
+			.getSelf(_self);
+	_privk3_visit(_self_, _self);
+	;
+}
   
   protected static void _privk3_visit(final TemporalGuardVisitorAspectTemporalGuardAspectProperties _self_, final TemporalGuard _self) {
     int _afterDuration = _self.getAfterDuration();

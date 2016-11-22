@@ -14,9 +14,11 @@ import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TimedSystem;
 @SuppressWarnings("all")
 public class TimedSystemVisitorAspect {
   public static void visit(final TimedSystem _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TimedSystemVisitorAspectTimedSystemAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TimedSystemVisitorAspectTimedSystemAspectContext.getSelf(_self);
-    _privk3_visit(_self_, _self);;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TimedSystemVisitorAspectTimedSystemAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TimedSystemVisitorAspectTimedSystemAspectContext
+			.getSelf(_self);
+	_privk3_visit(_self_, _self);
+	;
+}
   
   protected static void _privk3_visit(final TimedSystemVisitorAspectTimedSystemAspectProperties _self_, final TimedSystem _self) {
     EList<FSMClock> _globalClocks = _self.getGlobalClocks();

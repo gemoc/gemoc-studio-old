@@ -49,7 +49,7 @@ public interface FSMEvent extends NamedElement {
 	 * @return the value of the '<em>Is Triggered</em>' attribute.
 	 * @see #setIsTriggered(boolean)
 	 * @see org.gemoc.sample.tfsm.sequential.xtfsmmt.tfsm.TfsmPackage#getFSMEvent_IsTriggered()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	boolean isIsTriggered();

@@ -31,7 +31,7 @@ public interface FSMClock extends NamedElement {
 	 * @return the value of the '<em>Number Of Ticks</em>' attribute.
 	 * @see #setNumberOfTicks(Integer)
 	 * @see org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TfsmPackage#getFSMClock_NumberOfTicks()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	Integer getNumberOfTicks();

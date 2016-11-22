@@ -9,14 +9,18 @@ import org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.State;
 @SuppressWarnings("all")
 public class StateAspect {
   public static void onEnter(final State _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.StateAspectStateAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.StateAspectStateAspectContext.getSelf(_self);
-    _privk3_onEnter(_self_, _self);;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.StateAspectStateAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.StateAspectStateAspectContext
+			.getSelf(_self);
+	_privk3_onEnter(_self_, _self);
+	;
+}
   
   public static void onLeave(final State _self) {
-    final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.StateAspectStateAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.StateAspectStateAspectContext.getSelf(_self);
-    _privk3_onLeave(_self_, _self);;
-  }
+	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.StateAspectStateAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.StateAspectStateAspectContext
+			.getSelf(_self);
+	_privk3_onLeave(_self_, _self);
+	;
+}
   
   protected static void _privk3_onEnter(final StateAspectStateAspectProperties _self_, final State _self) {
     Class<? extends State> _class = _self.getClass();
