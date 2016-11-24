@@ -82,7 +82,7 @@ public interface TFSM_stepNumber_Value extends Value {
 	 * @return the value of the '<em>Step Number</em>' attribute.
 	 * @see #setStepNumber(int)
 	 * @see tfsmTrace.States.StatesPackage#getTFSM_stepNumber_Value_StepNumber()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	int getStepNumber();

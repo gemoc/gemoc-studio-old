@@ -11,13 +11,13 @@ public class XstfsmDebugServices extends AbstractGemocDebuggerServices {
 	protected List<StringCouple> getRepresentationRefreshList() {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 
-		res.add(new StringCouple("XSTFSM", "Debug"));
+		res.add(new StringCouple("TFSM_legacy_XSTFSM", "Debug"));
 
 		return res;
 	}
 	
 	@Override
 	public String getModelIdentifier() {
-		return org.gemoc.execution.sequential.javaengine.ui.Activator.PLUGIN_ID+".debugModel";
+		return org.gemoc.execution.sequential.javaengine.ui.Activator.DEBUG_MODEL_ID;
 	}
 }

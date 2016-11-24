@@ -6,7 +6,6 @@ import fr.inria.diverse.trace.commons.model.trace.TracePackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -207,15 +206,6 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getFSMClock_numberOfTicks_Value__GetStatesNoOpposite() {
-		return fsmClock_numberOfTicks_ValueEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getFSMEvent_isTriggered_Value() {
 		return fsmEvent_isTriggered_ValueEClass;
 	}
@@ -245,15 +235,6 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 */
 	public EReference getFSMEvent_isTriggered_Value_States() {
 		return (EReference)fsmEvent_isTriggered_ValueEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getFSMEvent_isTriggered_Value__GetStatesNoOpposite() {
-		return fsmEvent_isTriggered_ValueEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -369,15 +350,6 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTFSM_currentState_Value__GetStatesNoOpposite() {
-		return tfsM_currentState_ValueEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTFSM_lastStateChangeStepNumber_Value() {
 		return tfsM_lastStateChangeStepNumber_ValueEClass;
 	}
@@ -414,15 +386,6 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTFSM_lastStateChangeStepNumber_Value__GetStatesNoOpposite() {
-		return tfsM_lastStateChangeStepNumber_ValueEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTFSM_stepNumber_Value() {
 		return tfsM_stepNumber_ValueEClass;
 	}
@@ -452,15 +415,6 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 */
 	public EAttribute getTFSM_stepNumber_Value_StepNumber() {
 		return (EAttribute)tfsM_stepNumber_ValueEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getTFSM_stepNumber_Value__GetStatesNoOpposite() {
-		return tfsM_stepNumber_ValueEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -513,13 +467,11 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		createEAttribute(fsmClock_numberOfTicks_ValueEClass, FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS);
 		createEReference(fsmClock_numberOfTicks_ValueEClass, FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT);
 		createEReference(fsmClock_numberOfTicks_ValueEClass, FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES);
-		createEOperation(fsmClock_numberOfTicks_ValueEClass, FSM_CLOCK_NUMBER_OF_TICKS_VALUE___GET_STATES_NO_OPPOSITE);
 
 		fsmEvent_isTriggered_ValueEClass = createEClass(FSM_EVENT_IS_TRIGGERED_VALUE);
 		createEAttribute(fsmEvent_isTriggered_ValueEClass, FSM_EVENT_IS_TRIGGERED_VALUE__IS_TRIGGERED);
 		createEReference(fsmEvent_isTriggered_ValueEClass, FSM_EVENT_IS_TRIGGERED_VALUE__PARENT);
 		createEReference(fsmEvent_isTriggered_ValueEClass, FSM_EVENT_IS_TRIGGERED_VALUE__STATES);
-		createEOperation(fsmEvent_isTriggered_ValueEClass, FSM_EVENT_IS_TRIGGERED_VALUE___GET_STATES_NO_OPPOSITE);
 
 		stateEClass = createEClass(STATE);
 		createEReference(stateEClass, STATE__ENDED_STEPS);
@@ -534,19 +486,16 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		createEReference(tfsM_currentState_ValueEClass, TFSM_CURRENT_STATE_VALUE__CURRENT_STATE);
 		createEReference(tfsM_currentState_ValueEClass, TFSM_CURRENT_STATE_VALUE__PARENT);
 		createEReference(tfsM_currentState_ValueEClass, TFSM_CURRENT_STATE_VALUE__STATES);
-		createEOperation(tfsM_currentState_ValueEClass, TFSM_CURRENT_STATE_VALUE___GET_STATES_NO_OPPOSITE);
 
 		tfsM_lastStateChangeStepNumber_ValueEClass = createEClass(TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE);
 		createEAttribute(tfsM_lastStateChangeStepNumber_ValueEClass, TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__LAST_STATE_CHANGE_STEP_NUMBER);
 		createEReference(tfsM_lastStateChangeStepNumber_ValueEClass, TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__PARENT);
 		createEReference(tfsM_lastStateChangeStepNumber_ValueEClass, TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__STATES);
-		createEOperation(tfsM_lastStateChangeStepNumber_ValueEClass, TFSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE___GET_STATES_NO_OPPOSITE);
 
 		tfsM_stepNumber_ValueEClass = createEClass(TFSM_STEP_NUMBER_VALUE);
 		createEReference(tfsM_stepNumber_ValueEClass, TFSM_STEP_NUMBER_VALUE__PARENT);
 		createEReference(tfsM_stepNumber_ValueEClass, TFSM_STEP_NUMBER_VALUE__STATES);
 		createEAttribute(tfsM_stepNumber_ValueEClass, TFSM_STEP_NUMBER_VALUE__STEP_NUMBER);
-		createEOperation(tfsM_stepNumber_ValueEClass, TFSM_STEP_NUMBER_VALUE___GET_STATES_NO_OPPOSITE);
 
 		valueEClass = createEClass(VALUE);
 		createEReference(valueEClass, VALUE__STATES_NO_OPPOSITE);
@@ -593,20 +542,20 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		tfsM_lastStateChangeStepNumber_ValueEClass.getESuperTypes().add(this.getValue());
 		tfsM_stepNumber_ValueEClass.getESuperTypes().add(this.getValue());
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
 		initEClass(fsmClock_numberOfTicks_ValueEClass, FSMClock_numberOfTicks_Value.class, "FSMClock_numberOfTicks_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFSMClock_numberOfTicks_Value_NumberOfTicks(), ecorePackage.getEIntegerObject(), "numberOfTicks", null, 0, 1, FSMClock_numberOfTicks_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFSMClock_numberOfTicks_Value_NumberOfTicks(), ecorePackage.getEIntegerObject(), "numberOfTicks", null, 0, 1, FSMClock_numberOfTicks_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFSMClock_numberOfTicks_Value_Parent(), theTfsmPackage_1.getTracedFSMClock(), theTfsmPackage_1.getTracedFSMClock_NumberOfTicksSequence(), "parent", null, 1, 1, FSMClock_numberOfTicks_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFSMClock_numberOfTicks_Value_States(), this.getState(), this.getState_FSMClock_numberOfTicks_Values(), "states", null, 1, -1, FSMClock_numberOfTicks_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getFSMClock_numberOfTicks_Value__GetStatesNoOpposite(), this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(fsmClock_numberOfTicks_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fsmEvent_isTriggered_ValueEClass, FSMEvent_isTriggered_Value.class, "FSMEvent_isTriggered_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFSMEvent_isTriggered_Value_IsTriggered(), ecorePackage.getEBoolean(), "isTriggered", null, 0, 1, FSMEvent_isTriggered_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFSMEvent_isTriggered_Value_IsTriggered(), ecorePackage.getEBoolean(), "isTriggered", null, 0, 1, FSMEvent_isTriggered_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFSMEvent_isTriggered_Value_Parent(), theTfsmPackage_1.getTracedFSMEvent(), theTfsmPackage_1.getTracedFSMEvent_IsTriggeredSequence(), "parent", null, 1, 1, FSMEvent_isTriggered_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFSMEvent_isTriggered_Value_States(), this.getState(), this.getState_FSMEvent_isTriggered_Values(), "states", null, 1, -1, FSMEvent_isTriggered_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getFSMEvent_isTriggered_Value__GetStatesNoOpposite(), this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(fsmEvent_isTriggered_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getState_EndedSteps(), theStepsPackage.getSpecificStep(), theStepsPackage.getSpecificStep_EndingState(), "endedSteps", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -618,25 +567,25 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		initEReference(getState_TFSM_stepNumber_Values(), this.getTFSM_stepNumber_Value(), this.getTFSM_stepNumber_Value_States(), "tFSM_stepNumber_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(tfsM_currentState_ValueEClass, TFSM_currentState_Value.class, "TFSM_currentState_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTFSM_currentState_Value_CurrentState(), theTfsmPackage_1.getTracedState(), null, "currentState", null, 0, 1, TFSM_currentState_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTFSM_currentState_Value_CurrentState(), theTfsmPackage_1.getTracedState(), null, "currentState", null, 0, 1, TFSM_currentState_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTFSM_currentState_Value_Parent(), theTfsmPackage_1.getTracedTFSM(), theTfsmPackage_1.getTracedTFSM_CurrentStateSequence(), "parent", null, 1, 1, TFSM_currentState_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTFSM_currentState_Value_States(), this.getState(), this.getState_TFSM_currentState_Values(), "states", null, 1, -1, TFSM_currentState_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getTFSM_currentState_Value__GetStatesNoOpposite(), this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsM_currentState_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsM_lastStateChangeStepNumber_ValueEClass, TFSM_lastStateChangeStepNumber_Value.class, "TFSM_lastStateChangeStepNumber_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTFSM_lastStateChangeStepNumber_Value_LastStateChangeStepNumber(), ecorePackage.getEInt(), "lastStateChangeStepNumber", null, 0, 1, TFSM_lastStateChangeStepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTFSM_lastStateChangeStepNumber_Value_LastStateChangeStepNumber(), ecorePackage.getEInt(), "lastStateChangeStepNumber", null, 0, 1, TFSM_lastStateChangeStepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTFSM_lastStateChangeStepNumber_Value_Parent(), theTfsmPackage_1.getTracedTFSM(), theTfsmPackage_1.getTracedTFSM_LastStateChangeStepNumberSequence(), "parent", null, 1, 1, TFSM_lastStateChangeStepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTFSM_lastStateChangeStepNumber_Value_States(), this.getState(), this.getState_TFSM_lastStateChangeStepNumber_Values(), "states", null, 1, -1, TFSM_lastStateChangeStepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getTFSM_lastStateChangeStepNumber_Value__GetStatesNoOpposite(), this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsM_lastStateChangeStepNumber_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsM_stepNumber_ValueEClass, TFSM_stepNumber_Value.class, "TFSM_stepNumber_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTFSM_stepNumber_Value_Parent(), theTfsmPackage_1.getTracedTFSM(), theTfsmPackage_1.getTracedTFSM_StepNumberSequence(), "parent", null, 1, 1, TFSM_stepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTFSM_stepNumber_Value_States(), this.getState(), this.getState_TFSM_stepNumber_Values(), "states", null, 1, -1, TFSM_stepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTFSM_stepNumber_Value_StepNumber(), ecorePackage.getEInt(), "stepNumber", null, 0, 1, TFSM_stepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTFSM_stepNumber_Value_StepNumber(), ecorePackage.getEInt(), "stepNumber", null, 0, 1, TFSM_stepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getTFSM_stepNumber_Value__GetStatesNoOpposite(), this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsM_stepNumber_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getValue_StatesNoOpposite(), this.getState(), null, "statesNoOpposite", null, 1, -1, Value.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);

@@ -35,7 +35,9 @@ Require-Bundle: org.eclipse.xtend.lib;bundle-version="2.7.0";visibility:="privat
  
  org.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
  
- org.gemoc.sample.legacytfsm.xstfsm.xstfsm
+ org.gemoc.sample.legacytfsm.xstfsm.xstfsm,
+ 
+ org.gemoc.sample.legacytfsm.tfsm;bundle-version="1.0.0"
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Manifest-Version: 1.0

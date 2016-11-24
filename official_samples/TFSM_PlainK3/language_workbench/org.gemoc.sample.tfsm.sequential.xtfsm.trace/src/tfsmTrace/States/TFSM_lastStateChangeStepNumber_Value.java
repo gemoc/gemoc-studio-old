@@ -36,7 +36,7 @@ public interface TFSM_lastStateChangeStepNumber_Value extends Value {
 	 * @return the value of the '<em>Last State Change Step Number</em>' attribute.
 	 * @see #setLastStateChangeStepNumber(int)
 	 * @see tfsmTrace.States.StatesPackage#getTFSM_lastStateChangeStepNumber_Value_LastStateChangeStepNumber()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	int getLastStateChangeStepNumber();

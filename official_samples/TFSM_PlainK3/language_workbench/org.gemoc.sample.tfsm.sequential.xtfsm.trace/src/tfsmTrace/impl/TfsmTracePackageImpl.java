@@ -373,7 +373,7 @@ public class TfsmTracePackageImpl extends EPackageImpl implements TfsmTracePacka
 		g2.getETypeArguments().add(g3);
 		specificTraceEClass.getEGenericSuperTypes().add(g1);
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
 		initEClass(specificTraceEClass, SpecificTrace.class, "SpecificTrace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSpecificTrace_Tfsm_FSMClock_Ticks_Sequence(), theStepsPackage.getTfsm_FSMClock_Ticks(), null, "Tfsm_FSMClock_Ticks_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSpecificTrace_Tfsm_FSMEvent_Trigger_Sequence(), theStepsPackage.getTfsm_FSMEvent_Trigger(), null, "Tfsm_FSMEvent_Trigger_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

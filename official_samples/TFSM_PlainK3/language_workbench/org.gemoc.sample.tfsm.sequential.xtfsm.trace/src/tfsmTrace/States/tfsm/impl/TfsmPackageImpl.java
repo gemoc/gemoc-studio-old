@@ -529,7 +529,7 @@ public class TfsmPackageImpl extends EPackageImpl implements TfsmPackage {
 		tracedTimedSystemEClass.getESuperTypes().add(this.getTracedNamedElement());
 		tracedTransitionEClass.getESuperTypes().add(this.getTracedNamedElement());
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
 		initEClass(tracedEvaluateGuardEClass, TracedEvaluateGuard.class, "TracedEvaluateGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTracedEvaluateGuard_OriginalObject(), theTfsmPackage_1.getEvaluateGuard(), null, "originalObject", null, 0, 1, TracedEvaluateGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

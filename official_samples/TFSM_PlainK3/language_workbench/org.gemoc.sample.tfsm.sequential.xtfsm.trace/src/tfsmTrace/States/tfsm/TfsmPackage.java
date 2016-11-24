@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EReference;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
- *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
@@ -75,15 +74,6 @@ public interface TfsmPackage extends EPackage {
 	int TRACED_NAMED_ELEMENT_FEATURE_COUNT = 0;
 
 	/**
-	 * The number of operations of the '<em>Traced Named Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_NAMED_ELEMENT_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link tfsmTrace.States.tfsm.impl.TracedGuardImpl <em>Traced Guard</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,15 +91,6 @@ public interface TfsmPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRACED_GUARD_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Traced Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_GUARD_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link tfsmTrace.States.tfsm.impl.TracedEvaluateGuardImpl <em>Traced Evaluate Guard</em>}' class.
@@ -140,15 +121,6 @@ public interface TfsmPackage extends EPackage {
 	int TRACED_EVALUATE_GUARD_FEATURE_COUNT = TRACED_GUARD_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Traced Evaluate Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_EVALUATE_GUARD_OPERATION_COUNT = TRACED_GUARD_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link tfsmTrace.States.tfsm.impl.TracedEventGuardImpl <em>Traced Event Guard</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -175,15 +147,6 @@ public interface TfsmPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRACED_EVENT_GUARD_FEATURE_COUNT = TRACED_GUARD_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Traced Event Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_EVENT_GUARD_OPERATION_COUNT = TRACED_GUARD_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link tfsmTrace.States.tfsm.impl.TracedFSMClockImpl <em>Traced FSM Clock</em>}' class.
@@ -223,15 +186,6 @@ public interface TfsmPackage extends EPackage {
 	int TRACED_FSM_CLOCK_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Traced FSM Clock</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_FSM_CLOCK_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link tfsmTrace.States.tfsm.impl.TracedFSMEventImpl <em>Traced FSM Event</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -269,15 +223,6 @@ public interface TfsmPackage extends EPackage {
 	int TRACED_FSM_EVENT_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Traced FSM Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_FSM_EVENT_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link tfsmTrace.States.tfsm.impl.TracedStateImpl <em>Traced State</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -304,15 +249,6 @@ public interface TfsmPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRACED_STATE_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Traced State</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_STATE_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link tfsmTrace.States.tfsm.impl.TracedTFSMImpl <em>Traced TFSM</em>}' class.
@@ -370,15 +306,6 @@ public interface TfsmPackage extends EPackage {
 	int TRACED_TFSM_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of operations of the '<em>Traced TFSM</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_TFSM_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link tfsmTrace.States.tfsm.impl.TracedTemporalGuardImpl <em>Traced Temporal Guard</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -405,15 +332,6 @@ public interface TfsmPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRACED_TEMPORAL_GUARD_FEATURE_COUNT = TRACED_GUARD_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Traced Temporal Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_TEMPORAL_GUARD_OPERATION_COUNT = TRACED_GUARD_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link tfsmTrace.States.tfsm.impl.TracedTimedSystemImpl <em>Traced Timed System</em>}' class.
@@ -444,15 +362,6 @@ public interface TfsmPackage extends EPackage {
 	int TRACED_TIMED_SYSTEM_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Traced Timed System</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_TIMED_SYSTEM_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link tfsmTrace.States.tfsm.impl.TracedTransitionImpl <em>Traced Transition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -479,15 +388,6 @@ public interface TfsmPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRACED_TRANSITION_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Traced Transition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_TRANSITION_OPERATION_COUNT = TRACED_NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 
 	/**
@@ -769,7 +669,6 @@ public interface TfsmPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
-	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>

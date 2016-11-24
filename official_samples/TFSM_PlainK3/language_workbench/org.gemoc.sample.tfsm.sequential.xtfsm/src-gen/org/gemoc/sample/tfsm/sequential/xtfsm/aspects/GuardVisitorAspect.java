@@ -18,12 +18,12 @@ public abstract class GuardVisitorAspect {
   public static void visit(final Guard _self) {
 	final org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspectGuardAspectProperties _self_ = org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspectGuardAspectContext
 			.getSelf(_self);
-	if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard) {
-		org.gemoc.sample.tfsm.sequential.xtfsm.aspects.EventGuardVisitorAspect
-				.visit((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard) _self);
-	} else if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EvaluateGuard) {
+	if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EvaluateGuard) {
 		org.gemoc.sample.tfsm.sequential.xtfsm.aspects.GuardVisitorAspect._privk3_visit(_self_,
 				(org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EvaluateGuard) _self);
+	} else if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard) {
+		org.gemoc.sample.tfsm.sequential.xtfsm.aspects.EventGuardVisitorAspect
+				.visit((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.EventGuard) _self);
 	} else if (_self instanceof org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard) {
 		org.gemoc.sample.tfsm.sequential.xtfsm.aspects.TemporalGuardVisitorAspect
 				.visit((org.gemoc.sample.tfsm.sequential.xtfsm.tfsm.TemporalGuard) _self);

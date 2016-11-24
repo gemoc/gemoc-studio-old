@@ -3,7 +3,6 @@
 package tfsmTrace.impl;
 
 import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
-
 import fr.inria.diverse.trace.commons.model.trace.impl.TraceImpl;
 
 import java.util.Collection;

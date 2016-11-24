@@ -1,14 +1,13 @@
 package org.gemoc.sample.legacytfsm.xstfsm
 
 // Workaround bug in Melange, duplicate language definition for TFSM in current project
-external language TFSM {
-	syntax "platform:/resource/org.gemoc.sample.legacytfsm.tfsm.model/model/tfsm.ecore"
+//external language TFSM {
+//	syntax "platform:/resource/org.gemoc.sample.legacytfsm.tfsm.model/model/tfsm.ecore"
+//}
 
-}
-
-language XSTFSM inherits TFSM {
+//language XSTFSM inherits TFSM {
 // end workaround	
-// language XSTFSM inherits org.gemoc.sample.legacytfsm.tfsm.TFSM {
+language XSTFSM inherits org.gemoc.sample.legacytfsm.tfsm.TFSM {
 	
 	with org.gemoc.sample.legacytfsm.tfsm.k3dsa.TimedSystemAspect
 	with org.gemoc.sample.legacytfsm.tfsm.k3dsa.StateAspect

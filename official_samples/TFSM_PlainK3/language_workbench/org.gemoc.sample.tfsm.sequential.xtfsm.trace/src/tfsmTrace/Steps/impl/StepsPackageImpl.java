@@ -6,7 +6,6 @@ import fr.inria.diverse.trace.commons.model.trace.TracePackage;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -264,26 +263,8 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTfsm_FSMClock_Ticks__GetCaller() {
-		return tfsm_FSMClock_TicksEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTfsm_FSMEvent_Trigger() {
 		return tfsm_FSMEvent_TriggerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getTfsm_FSMEvent_Trigger__GetCaller() {
-		return tfsm_FSMEvent_TriggerEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -300,26 +281,8 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTfsm_FSMEvent_UnTrigger__GetCaller() {
-		return tfsm_FSMEvent_UnTriggerEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTfsm_State_Visit() {
 		return tfsm_State_VisitEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getTfsm_State_Visit__GetCaller() {
-		return tfsm_State_VisitEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -354,15 +317,6 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTfsm_TFSM_Init__GetCaller() {
-		return tfsm_TFSM_InitEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTfsm_Transition_Fire() {
 		return tfsm_Transition_FireEClass;
 	}
@@ -372,26 +326,8 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTfsm_Transition_Fire__GetCaller() {
-		return tfsm_Transition_FireEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTfsm_Transition_Visit() {
 		return tfsm_Transition_VisitEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getTfsm_Transition_Visit__GetCaller() {
-		return tfsm_Transition_VisitEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -447,29 +383,22 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		createEReference(specificStepEClass, SPECIFIC_STEP__STARTING_STATE);
 
 		tfsm_FSMClock_TicksEClass = createEClass(TFSM_FSM_CLOCK_TICKS);
-		createEOperation(tfsm_FSMClock_TicksEClass, TFSM_FSM_CLOCK_TICKS___GET_CALLER);
 
 		tfsm_FSMEvent_TriggerEClass = createEClass(TFSM_FSM_EVENT_TRIGGER);
-		createEOperation(tfsm_FSMEvent_TriggerEClass, TFSM_FSM_EVENT_TRIGGER___GET_CALLER);
 
 		tfsm_FSMEvent_UnTriggerEClass = createEClass(TFSM_FSM_EVENT_UN_TRIGGER);
-		createEOperation(tfsm_FSMEvent_UnTriggerEClass, TFSM_FSM_EVENT_UN_TRIGGER___GET_CALLER);
 
 		tfsm_State_VisitEClass = createEClass(TFSM_STATE_VISIT);
-		createEOperation(tfsm_State_VisitEClass, TFSM_STATE_VISIT___GET_CALLER);
 
 		tfsm_State_Visit_AbstractSubStepEClass = createEClass(TFSM_STATE_VISIT_ABSTRACT_SUB_STEP);
 
 		tfsm_State_Visit_ImplicitStepEClass = createEClass(TFSM_STATE_VISIT_IMPLICIT_STEP);
 
 		tfsm_TFSM_InitEClass = createEClass(TFSM_TFSM_INIT);
-		createEOperation(tfsm_TFSM_InitEClass, TFSM_TFSM_INIT___GET_CALLER);
 
 		tfsm_Transition_FireEClass = createEClass(TFSM_TRANSITION_FIRE);
-		createEOperation(tfsm_Transition_FireEClass, TFSM_TRANSITION_FIRE___GET_CALLER);
 
 		tfsm_Transition_VisitEClass = createEClass(TFSM_TRANSITION_VISIT);
-		createEOperation(tfsm_Transition_VisitEClass, TFSM_TRANSITION_VISIT___GET_CALLER);
 
 		tfsm_Transition_Visit_AbstractSubStepEClass = createEClass(TFSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP);
 
@@ -543,7 +472,7 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		tfsm_Transition_Visit_ImplicitStepEClass.getESuperTypes().add(this.getTfsm_Transition_Visit_AbstractSubStep());
 		tfsm_Transition_Visit_ImplicitStepEClass.getESuperTypes().add(theTracePackage.getSmallStep());
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
 		initEClass(rootImplicitStepEClass, RootImplicitStep.class, "RootImplicitStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(specificStepEClass, SpecificStep.class, "SpecificStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -552,19 +481,19 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 
 		initEClass(tfsm_FSMClock_TicksEClass, Tfsm_FSMClock_Ticks.class, "Tfsm_FSMClock_Ticks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_FSMClock_Ticks__GetCaller(), theTfsmPackage_1.getTracedFSMClock(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsm_FSMClock_TicksEClass, theTfsmPackage_1.getTracedFSMClock(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_FSMEvent_TriggerEClass, Tfsm_FSMEvent_Trigger.class, "Tfsm_FSMEvent_Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_FSMEvent_Trigger__GetCaller(), theTfsmPackage_1.getTracedFSMEvent(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsm_FSMEvent_TriggerEClass, theTfsmPackage_1.getTracedFSMEvent(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_FSMEvent_UnTriggerEClass, Tfsm_FSMEvent_UnTrigger.class, "Tfsm_FSMEvent_UnTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_FSMEvent_UnTrigger__GetCaller(), theTfsmPackage_1.getTracedFSMEvent(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsm_FSMEvent_UnTriggerEClass, theTfsmPackage_1.getTracedFSMEvent(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_State_VisitEClass, Tfsm_State_Visit.class, "Tfsm_State_Visit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_State_Visit__GetCaller(), theTfsmPackage_1.getTracedState(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsm_State_VisitEClass, theTfsmPackage_1.getTracedState(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_State_Visit_AbstractSubStepEClass, Tfsm_State_Visit_AbstractSubStep.class, "Tfsm_State_Visit_AbstractSubStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -572,15 +501,15 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 
 		initEClass(tfsm_TFSM_InitEClass, Tfsm_TFSM_Init.class, "Tfsm_TFSM_Init", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_TFSM_Init__GetCaller(), theTfsmPackage_1.getTracedTFSM(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsm_TFSM_InitEClass, theTfsmPackage_1.getTracedTFSM(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_Transition_FireEClass, Tfsm_Transition_Fire.class, "Tfsm_Transition_Fire", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_Transition_Fire__GetCaller(), theTfsmPackage_1.getTracedTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsm_Transition_FireEClass, theTfsmPackage_1.getTracedTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_Transition_VisitEClass, Tfsm_Transition_Visit.class, "Tfsm_Transition_Visit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getTfsm_Transition_Visit__GetCaller(), theTfsmPackage_1.getTracedTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(tfsm_Transition_VisitEClass, theTfsmPackage_1.getTracedTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(tfsm_Transition_Visit_AbstractSubStepEClass, Tfsm_Transition_Visit_AbstractSubStep.class, "Tfsm_Transition_Visit_AbstractSubStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
