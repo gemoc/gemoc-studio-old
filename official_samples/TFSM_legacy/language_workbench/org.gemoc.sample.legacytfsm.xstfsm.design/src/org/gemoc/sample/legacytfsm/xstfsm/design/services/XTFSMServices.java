@@ -3,6 +3,7 @@ package org.gemoc.sample.legacytfsm.xstfsm.design.services;
 import org.eclipse.emf.ecore.EObject;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EvaluateGuard;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EventGuard;
+import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.State;
 import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TemporalGuard;
@@ -13,7 +14,7 @@ import org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Transition;
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  * 
  */
-public class TFSMServices {
+public class XTFSMServices {
 
 	/**
 	 * Gets the label for the given {@link Transition}.
@@ -57,8 +58,17 @@ public class TFSMServices {
 		return o.getClass().toString();
 	}
 	
+	/* for use in legacy models */ 
+	public String getClockLabel(org.gemoc.sample.legacytfsm.tfsm.FSMClock fsmclock){
+		return fsmclock.getName() + " : <N/A>";
+	}
+	/* for use with executable models */
+	public String getClockLabel(FSMClock fsmclock){
+		return fsmclock.getName() + " : " +fsmclock.getNumberOfTicks();
+	}
 	
-	public boolean isCurrentState(Object o){
+	
+	public boolean isCurrentState(EObject o){
 		if(o instanceof State){
 			return ((State)o).getOwningFSM().getCurrentState() == o;
 		} else {

@@ -149,20 +149,20 @@ public class TfsmTraceConstructor implements ITraceConstructor {
 	private boolean addNewObjectToState(org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.NamedElement o_cast,
 			tfsmTrace.States.State newState) {
 		boolean added = false;
-		if (o_cast instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent) {
-			added = addNewObjectToState((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent) o_cast, newState);
+		if (o_cast instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock) {
+			added = addNewObjectToState((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock) o_cast, newState);
 		} else if (o_cast instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.State) {
 			added = addNewObjectToState((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.State) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Guard) {
-			added = addNewObjectToState((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Guard) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedSystem) {
+			added = addNewObjectToState((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedSystem) o_cast, newState);
 		} else if (o_cast instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM) {
 			added = addNewObjectToState((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM) o_cast, newState);
 		} else if (o_cast instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Transition) {
 			added = addNewObjectToState((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Transition) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedSystem) {
-			added = addNewObjectToState((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedSystem) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock) {
-			added = addNewObjectToState((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent) {
+			added = addNewObjectToState((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Guard) {
+			added = addNewObjectToState((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Guard) o_cast, newState);
 		}
 
 		return added;
@@ -313,29 +313,29 @@ public class TfsmTraceConstructor implements ITraceConstructor {
 					org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange modelChange_cast = (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) modelChange;
 					org.eclipse.emf.ecore.EStructuralFeature p = modelChange_cast.getChangedField();
 
-					if (o instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent) {
-						org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent o_cast = (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent) o;
+					if (o instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock) {
+						org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock o_cast = (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock) o;
 
 						if (p.getFeatureID() == org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TfsmPackage.eINSTANCE
-								.getFSMEvent_IsTriggered().getFeatureID()) {
+								.getFSMClock_NumberOfTicks().getFeatureID()) {
 
 							// Rollback: we remove the last value of this field from the new state
-							tfsmTrace.States.tfsm.TracedFSMEvent traced = (tfsmTrace.States.tfsm.TracedFSMEvent) exeToTraced
+							tfsmTrace.States.tfsm.TracedFSMClock traced = (tfsmTrace.States.tfsm.TracedFSMClock) exeToTraced
 									.get(o);
-							tfsmTrace.States.FSMEvent_isTriggered_Value lastValue = traced.getIsTriggeredSequence()
-									.get(traced.getIsTriggeredSequence().size() - 1);
-							newState.getFSMEvent_isTriggered_Values().remove(lastValue);
+							tfsmTrace.States.FSMClock_numberOfTicks_Value lastValue = traced.getNumberOfTicksSequence()
+									.get(traced.getNumberOfTicksSequence().size() - 1);
+							newState.getFSMClock_numberOfTicks_Values().remove(lastValue);
 
 							// And we create a proper new value
-							tfsmTrace.States.FSMEvent_isTriggered_Value newValue = tfsmTrace.States.StatesFactory.eINSTANCE
-									.createFSMEvent_isTriggered_Value();
+							tfsmTrace.States.FSMClock_numberOfTicks_Value newValue = tfsmTrace.States.StatesFactory.eINSTANCE
+									.createFSMClock_numberOfTicks_Value();
 
-							boolean value = o_cast.isIsTriggered();
+							java.lang.Integer value = o_cast.getNumberOfTicks();
 
-							newValue.setIsTriggered((boolean) value);
+							newValue.setNumberOfTicks((java.lang.Integer) value);
 
-							traced.getIsTriggeredSequence().add(newValue);
-							newState.getFSMEvent_isTriggered_Values().add(newValue);
+							traced.getNumberOfTicksSequence().add(newValue);
+							newState.getFSMClock_numberOfTicks_Values().add(newValue);
 						}
 					}
 
@@ -343,25 +343,26 @@ public class TfsmTraceConstructor implements ITraceConstructor {
 						org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM o_cast = (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimeFSM) o;
 
 						if (p.getFeatureID() == org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TfsmPackage.eINSTANCE
-								.getTimeFSM_StepNumber().getFeatureID()) {
+								.getTimeFSM_LastStateChangeStepNumber().getFeatureID()) {
 
 							// Rollback: we remove the last value of this field from the new state
 							tfsmTrace.States.tfsm.TracedTimeFSM traced = (tfsmTrace.States.tfsm.TracedTimeFSM) exeToTraced
 									.get(o);
-							tfsmTrace.States.TimeFSM_stepNumber_Value lastValue = traced.getStepNumberSequence()
-									.get(traced.getStepNumberSequence().size() - 1);
-							newState.getTimeFSM_stepNumber_Values().remove(lastValue);
+							tfsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value lastValue = traced
+									.getLastStateChangeStepNumberSequence()
+									.get(traced.getLastStateChangeStepNumberSequence().size() - 1);
+							newState.getTimeFSM_lastStateChangeStepNumber_Values().remove(lastValue);
 
 							// And we create a proper new value
-							tfsmTrace.States.TimeFSM_stepNumber_Value newValue = tfsmTrace.States.StatesFactory.eINSTANCE
-									.createTimeFSM_stepNumber_Value();
+							tfsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value newValue = tfsmTrace.States.StatesFactory.eINSTANCE
+									.createTimeFSM_lastStateChangeStepNumber_Value();
 
-							int value = o_cast.getStepNumber();
+							int value = o_cast.getLastStateChangeStepNumber();
 
-							newValue.setStepNumber((int) value);
+							newValue.setLastStateChangeStepNumber((int) value);
 
-							traced.getStepNumberSequence().add(newValue);
-							newState.getTimeFSM_stepNumber_Values().add(newValue);
+							traced.getLastStateChangeStepNumberSequence().add(newValue);
+							newState.getTimeFSM_lastStateChangeStepNumber_Values().add(newValue);
 						} else
 
 						if (p.getFeatureID() == org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TfsmPackage.eINSTANCE
@@ -390,52 +391,51 @@ public class TfsmTraceConstructor implements ITraceConstructor {
 						} else
 
 						if (p.getFeatureID() == org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TfsmPackage.eINSTANCE
-								.getTimeFSM_LastStateChangeStepNumber().getFeatureID()) {
+								.getTimeFSM_StepNumber().getFeatureID()) {
 
 							// Rollback: we remove the last value of this field from the new state
 							tfsmTrace.States.tfsm.TracedTimeFSM traced = (tfsmTrace.States.tfsm.TracedTimeFSM) exeToTraced
 									.get(o);
-							tfsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value lastValue = traced
-									.getLastStateChangeStepNumberSequence()
-									.get(traced.getLastStateChangeStepNumberSequence().size() - 1);
-							newState.getTimeFSM_lastStateChangeStepNumber_Values().remove(lastValue);
+							tfsmTrace.States.TimeFSM_stepNumber_Value lastValue = traced.getStepNumberSequence()
+									.get(traced.getStepNumberSequence().size() - 1);
+							newState.getTimeFSM_stepNumber_Values().remove(lastValue);
 
 							// And we create a proper new value
-							tfsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value newValue = tfsmTrace.States.StatesFactory.eINSTANCE
-									.createTimeFSM_lastStateChangeStepNumber_Value();
+							tfsmTrace.States.TimeFSM_stepNumber_Value newValue = tfsmTrace.States.StatesFactory.eINSTANCE
+									.createTimeFSM_stepNumber_Value();
 
-							int value = o_cast.getLastStateChangeStepNumber();
+							int value = o_cast.getStepNumber();
 
-							newValue.setLastStateChangeStepNumber((int) value);
+							newValue.setStepNumber((int) value);
 
-							traced.getLastStateChangeStepNumberSequence().add(newValue);
-							newState.getTimeFSM_lastStateChangeStepNumber_Values().add(newValue);
+							traced.getStepNumberSequence().add(newValue);
+							newState.getTimeFSM_stepNumber_Values().add(newValue);
 						}
 					}
 
-					if (o instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock) {
-						org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock o_cast = (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMClock) o;
+					if (o instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent) {
+						org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent o_cast = (org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.FSMEvent) o;
 
 						if (p.getFeatureID() == org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TfsmPackage.eINSTANCE
-								.getFSMClock_NumberOfTicks().getFeatureID()) {
+								.getFSMEvent_IsTriggered().getFeatureID()) {
 
 							// Rollback: we remove the last value of this field from the new state
-							tfsmTrace.States.tfsm.TracedFSMClock traced = (tfsmTrace.States.tfsm.TracedFSMClock) exeToTraced
+							tfsmTrace.States.tfsm.TracedFSMEvent traced = (tfsmTrace.States.tfsm.TracedFSMEvent) exeToTraced
 									.get(o);
-							tfsmTrace.States.FSMClock_numberOfTicks_Value lastValue = traced.getNumberOfTicksSequence()
-									.get(traced.getNumberOfTicksSequence().size() - 1);
-							newState.getFSMClock_numberOfTicks_Values().remove(lastValue);
+							tfsmTrace.States.FSMEvent_isTriggered_Value lastValue = traced.getIsTriggeredSequence()
+									.get(traced.getIsTriggeredSequence().size() - 1);
+							newState.getFSMEvent_isTriggered_Values().remove(lastValue);
 
 							// And we create a proper new value
-							tfsmTrace.States.FSMClock_numberOfTicks_Value newValue = tfsmTrace.States.StatesFactory.eINSTANCE
-									.createFSMClock_numberOfTicks_Value();
+							tfsmTrace.States.FSMEvent_isTriggered_Value newValue = tfsmTrace.States.StatesFactory.eINSTANCE
+									.createFSMEvent_isTriggered_Value();
 
-							java.lang.Integer value = o_cast.getNumberOfTicks();
+							boolean value = o_cast.isIsTriggered();
 
-							newValue.setNumberOfTicks((java.lang.Integer) value);
+							newValue.setIsTriggered((boolean) value);
 
-							traced.getNumberOfTicksSequence().add(newValue);
-							newState.getFSMClock_numberOfTicks_Values().add(newValue);
+							traced.getIsTriggeredSequence().add(newValue);
+							newState.getFSMEvent_isTriggered_Values().add(newValue);
 						}
 					}
 				}
