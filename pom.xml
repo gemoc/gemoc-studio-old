@@ -22,16 +22,16 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/releases/neon</url>
         </repository>
- <!-- temporarily disable timesquare       <repository>
-            <id>timesquare</id>
-            <layout>p2</layout>
-            <url>http://timesquare.inria.fr/update_site/experimental</url>
-        </repository>
-        <repository>
-            <id>timesquare-ecl</id>
-            <layout>p2</layout>
-            <url>http://timesquare.inria.fr/ecl/update_site/experimental</url>
-        </repository> -->
+<repository>
+       <id>timesquare</id>
+       <layout>p2</layout>
+       <url>http://timesquare.inria.fr/update_site/neon</url>
+</repository>
+<repository>
+    <id>timesquare-ecl</id>
+    <layout>p2</layout>
+    <url>http://timesquare.inria.fr/ecl/update_site/neon</url>
+</repository>
         <repository>
             <id>diverse-commons</id>
             <layout>p2</layout>

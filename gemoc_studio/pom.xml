@@ -25,19 +25,19 @@
         <module>releng/org.gemoc.gemoc_studio.branding.source.feature</module>		
         <module>releng/org.gemoc.gemoc_studio.additions.feature</module>	
         <module>releng/org.gemoc.modeldebugging.feature</module>
-      <!-- temporarily disable timesquare  <module>releng/org.gemoc.concurrency.feature</module>
-        <module>releng/org.gemoc.coordination.feature</module> -->
+<module>releng/org.gemoc.concurrency.feature</module>
+<module>releng/org.gemoc.coordination.feature</module>
         <module>releng/org.gemoc.gemoc_studio.updatesite</module>
     </modules>
 
     <repositories>
 
         <!-- IMPORTANT : repository used to get older versions of org.eclipse.ocl.examples.feature.group for ECL, need to be removed ASAP -->
-        <repository>
+<!--        <repository>
             <id>OCL releases</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/mdt/ocl/updates</url>
-        </repository>
+        </repository>-->
         
     	<!-- Repositories specific for the studio (typically referred by the additional feature) -->
     	<repository>
