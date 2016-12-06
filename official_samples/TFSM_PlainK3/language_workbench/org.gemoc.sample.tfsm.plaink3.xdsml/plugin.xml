@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension point="org.gemoc.gemoc_language_workbench.sequential.xdsml">
+    <XDSML_Definition modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.tfsm.plaink3.xdsml.XTfsm" xdsmlFilePath="/org.gemoc.sample.tfsm.plaink3.xdsml/src/main/java/org/gemoc/sample/tfsm/plaink3/xdsml/Main.melange">
+      <XDSML_Definition_Customization fileExtensions="xtfsm" />
+    </XDSML_Definition>
+  </extension>
+  <extension point="fr.inria.diverse.melange.modeltype">
+    <modeltype id="org.gemoc.sample.tfsm.plaink3.xdsml.XTfsmMT" uri="http://xtfsmmt/" />
+  </extension>
+  <extension point="fr.inria.diverse.melange.language">
+    <language aspects="FSMClock:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.FSMClockAspect,org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.FSMClockVisitorAspect;TimedSystem:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TimedSystemAspect,org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TimedSystemVisitorAspect;State:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.StateAspect,org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.StateVisitorAspect;EventGuard:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.EventGuardVisitorAspect;Transition:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TransitionAspect,org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TransitionVisitorAspect;FSMEvent:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.FSMEventAspect;Guard:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.GuardVisitorAspect;TFSM:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TFSMAspect,org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TFSMVisitorAspect;TemporalGuard:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TemporalGuardVisitorAspect" entryPoints="org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TimedSystemAspect.main(org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TimedSystem)" exactType="org.gemoc.sample.tfsm.plaink3.xdsml.XTfsmMT" id="org.gemoc.sample.tfsm.plaink3.xdsml.XTfsm" uri="http://xtfsm/tfsm_plaink3/">
+      <adapter class="org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.adapters.xtfsmmt.XTfsmAdapter" modeltypeId="org.gemoc.sample.tfsm.plaink3.xdsml.XTfsmMT" />
+    </language>
+  </extension>
+</plugin>

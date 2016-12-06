@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated XTfsm -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.presentation.Tfsm_plaink3ModelWizardID"
+            name="%_UI_Tfsm_plaink3ModelWizard_label"
+            class="org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.presentation.Tfsm_plaink3ModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Tfsm_plaink3ModelFile.gif">
+         <description>%_UI_Tfsm_plaink3ModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated XTfsm -->
+      <editor
+            id="org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.presentation.Tfsm_plaink3EditorID"
+            name="%_UI_Tfsm_plaink3Editor_label"
+            icon="icons/full/obj16/Tfsm_plaink3ModelFile.gif"
+            extensions="xtfsm"
+            class="org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.presentation.Tfsm_plaink3Editor"
+            contributorClass="org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.presentation.Tfsm_plaink3ActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
