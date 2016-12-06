@@ -33,8 +33,8 @@
     	"https://ci.inria.fr/gemoc/job/modeldebugging_trace_manager/lastSuccessfulBuild/artifact/trace/manager/releng/org.gemoc.modeldebugging.trace.manager.updatesite/target/repository/"
     	],
     "timesquare": [
-        "http://timesquare.inria.fr/update_site/experimental",
-        "http://timesquare.inria.fr/ecl/update_site/experimental"
+        "http://timesquare.inria.fr/update_site/neon",
+        "http://timesquare.inria.fr/ecl/update_site/neon"
         ],    
     "kermeta3-melange": [
 		"http://melange-lang.org/updatesite/"

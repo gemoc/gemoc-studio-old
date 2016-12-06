@@ -1,15 +1,11 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
-import cnrs.luchogie.up.SwingPlotter;
-import cnrs.luchogie.up.data.Figure;
-import com.google.common.collect.LinkedListMultimap;
-import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
-import groovy.lang.Binding;
-import groovy.lang.GroovyShell;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import javax.swing.JFrame;
+
 import org.codehaus.groovy.control.MultipleCompilationErrorsException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -20,29 +16,38 @@ import org.gemoc.sample.sigpml.xsigpml.sigpml.Agent;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.HWComputationalResource;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.InputPort;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.Port;
-import org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties;
-import org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspect;
-import org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspect;
-import org.gemoc.sample.sigpml.xsigpml.aspects.NamedElementAspect;
-import org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspect;
+
+import com.google.common.collect.LinkedListMultimap;
+
+import cnrs.luchogie.up.SwingPlotter;
+import cnrs.luchogie.up.data.Figure;
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
+import groovy.lang.Binding;
+import groovy.lang.GroovyShell;
 
 @Aspect(className = Agent.class)
 @SuppressWarnings("all")
 public class AgentAspect extends NamedElementAspect {
   public static void isExecuting(final Agent _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectContext.getSelf(_self);
-    _privk3_isExecuting(_self_, _self);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectContext
+			.getSelf(_self);
+	_privk3_isExecuting(_self_, _self);
+	;
+}
   
   public static void stop(final Agent _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectContext.getSelf(_self);
-    _privk3_stop(_self_, _self);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectContext
+			.getSelf(_self);
+	_privk3_stop(_self_, _self);
+	;
+}
   
   public static void execute(final Agent _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectContext.getSelf(_self);
-    _privk3_execute(_self_, _self);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectContext
+			.getSelf(_self);
+	_privk3_execute(_self_, _self);
+	;
+}
   
   private static SwingPlotter plotter(final Agent _self) {
     final org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectContext.getSelf(_self);
@@ -93,16 +98,20 @@ public class AgentAspect extends NamedElementAspect {
   }
   
   public static boolean isCurrentlyExecuting(final Agent _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_isCurrentlyExecuting(_self_, _self);;
-    return (boolean)result;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_isCurrentlyExecuting(_self_, _self);
+	;
+	return (boolean) result;
+}
   
   public static void isCurrentlyExecuting(final Agent _self, final boolean isCurrentlyExecuting) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectContext.getSelf(_self);
-    _privk3_isCurrentlyExecuting(_self_, _self,isCurrentlyExecuting);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectContext
+			.getSelf(_self);
+	_privk3_isCurrentlyExecuting(_self_, _self, isCurrentlyExecuting);
+	;
+}
   
   protected static void _privk3_isExecuting(final AgentAspectAgentAspectProperties _self_, final Agent _self) {
     String _name = _self.getName();
@@ -111,20 +120,9 @@ public class AgentAspect extends NamedElementAspect {
     String _plus_1 = (_plus + Integer.valueOf(_currentExecCycle));
     String _plus_2 = (_plus_1 + ")");
     InputOutput.<String>println(_plus_2);
-    boolean _and = false;
-    int _currentExecCycle_1 = _self.getCurrentExecCycle();
-    int _cycles = _self.getCycles();
-    boolean _lessEqualsThan = (_currentExecCycle_1 <= _cycles);
-    if (!_lessEqualsThan) {
-      _and = false;
-    } else {
-      boolean _hasBeenStopped = AgentAspect.hasBeenStopped(_self);
-      boolean _not = (!_hasBeenStopped);
-      _and = _not;
-    }
-    if (_and) {
-      int _currentExecCycle_2 = _self.getCurrentExecCycle();
-      int _plus_3 = (_currentExecCycle_2 + 1);
+    if (((_self.getCurrentExecCycle() <= _self.getCycles()) && (!AgentAspect.hasBeenStopped(_self)))) {
+      int _currentExecCycle_1 = _self.getCurrentExecCycle();
+      int _plus_3 = (_currentExecCycle_1 + 1);
       _self.setCurrentExecCycle(_plus_3);
     }
   }

@@ -1,8 +1,8 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
 import java.util.Map;
+
 import org.gemoc.sample.sigpml.xsigpml.sigpml.OutputPort;
-import org.gemoc.sample.sigpml.xsigpml.aspects.OutputPortAspectOutputPortAspectProperties;
 
 @SuppressWarnings("all")
 public class OutputPortAspectOutputPortAspectContext {

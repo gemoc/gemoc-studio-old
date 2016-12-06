@@ -3,12 +3,12 @@
    <feature url="features/org.gemoc.modeldebugging.feature_2.2.1.qualifier.jar" id="org.gemoc.modeldebugging.feature" version="2.2.1.qualifier">
       <category name="GEMOC_AllInOne"/>
    </feature>
-   <feature url="features/org.gemoc.concurrency.feature_2.2.1.qualifier.jar" id="org.gemoc.concurrency.feature" version="2.2.1.qualifier">
+<feature url="features/org.gemoc.concurrency.feature_2.2.1.qualifier.jar" id="org.gemoc.concurrency.feature" version="2.2.1.qualifier">
       <category name="GEMOC_AllInOne"/>
-   </feature>
-   <feature url="features/org.gemoc.coordination.feature_2.2.1.qualifier.jar" id="org.gemoc.coordination.feature" version="2.2.1.qualifier">
+</feature>
+<feature url="features/org.gemoc.coordination.feature_2.2.1.qualifier.jar" id="org.gemoc.coordination.feature" version="2.2.1.qualifier">
       <category name="GEMOC_AllInOne"/>
-   </feature>
+</feature>
    <feature url="features/org.gemoc.commons.feature_0.1.0.qualifier.jar" id="org.gemoc.commons.feature" version="0.1.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
@@ -63,61 +63,62 @@
    <feature url="features/org.gemoc.official_samples.deployers.feature_0.1.0.qualifier.jar" id="org.gemoc.official_samples.deployers.feature" version="0.1.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.concurrent_addons.feature_2.2.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature" version="2.2.0.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.concurrent_addons.feature.source_2.2.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature.source" version="2.2.0.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.feature_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature" version="2.2.0.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.feature.source_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature.source" version="2.2.0.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature" version="2.2.0.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature.source_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature.source" version="2.2.0.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature" version="2.2.0.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature.source_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature.source" version="2.2.0.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.gel.feature_0.1.0.qualifier.jar" id="org.gemoc.gel.feature" version="0.1.0.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.gel.microgel.feature_0.1.0.qualifier.jar" id="org.gemoc.gel.microgel.feature" version="0.1.0.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.mocc.core.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.core.feature" version="0.1.1.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.mocc.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.feature" version="0.1.1.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.mocc.graphical.editors.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.graphical.editors.feature" version="0.1.1.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.mocc.text.editors.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.text.editors.feature" version="0.1.1.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature" version="0.1.1.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.mocc.transformations.feature_0.0.1.qualifier.jar" id="org.gemoc.mocc.transformations.feature" version="0.0.1.qualifier">
-      <category name="GEMOC_Concurrency_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.bcool.feature_1.0.0.qualifier.jar" id="org.gemoc.bcool.feature" version="1.0.0.qualifier">
-      <category name="GEMOC_Coordination_Components"/>
-   </feature>
-   <feature url="features/org.gemoc.heterogeneous_coordination_engine.feature_0.1.0.qualifier.jar" id="org.gemoc.heterogeneous_coordination_engine.feature" version="0.1.0.qualifier">
-      <category name="GEMOC_Coordination_Components"/>
-   </feature>
-   
+
+<feature url="features/org.gemoc.concurrent_addons.feature_2.2.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature" version="2.2.0.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.concurrent_addons.feature.source_2.2.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature.source" version="2.2.0.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.executionengine.ccsljava.feature_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature" version="2.2.0.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.executionengine.ccsljava.feature.source_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature.source" version="2.2.0.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature" version="2.2.0.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature.source_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature.source" version="2.2.0.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature" version="2.2.0.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature.source_2.2.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature.source" version="2.2.0.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.gel.feature_0.1.0.qualifier.jar" id="org.gemoc.gel.feature" version="0.1.0.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.gel.microgel.feature_0.1.0.qualifier.jar" id="org.gemoc.gel.microgel.feature" version="0.1.0.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.mocc.core.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.core.feature" version="0.1.1.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.mocc.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.feature" version="0.1.1.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.mocc.graphical.editors.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.graphical.editors.feature" version="0.1.1.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.mocc.text.editors.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.text.editors.feature" version="0.1.1.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature" version="0.1.1.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.mocc.transformations.feature_0.0.1.qualifier.jar" id="org.gemoc.mocc.transformations.feature" version="0.0.1.qualifier">
+    <category name="GEMOC_Concurrency_Components"/>
+</feature>
+<feature url="features/org.gemoc.bcool.feature_1.0.0.qualifier.jar" id="org.gemoc.bcool.feature" version="1.0.0.qualifier">
+    <category name="GEMOC_Coordination_Components"/>
+</feature>
+<feature url="features/org.gemoc.heterogeneous_coordination_engine.feature_0.1.0.qualifier.jar" id="org.gemoc.heterogeneous_coordination_engine.feature" version="0.1.0.qualifier">
+    <category name="GEMOC_Coordination_Components"/>
+</feature>
+
    <category-def name="GEMOC_AllInOne" label="GEMOC all in one">
       <description>
          All GEMOC components installed via simple features dedicated for the main scenarios.

@@ -36,7 +36,7 @@
       <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.1.1" match="greaterOrEqual"/>
       <import feature="org.eclipse.epp.mpc" version="1.2.1.v20140219-1000" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtend.sdk" version="0.0.0"/>
-      <import feature="org.sonatype.tycho.m2e.feature" version="0.0.0" match="greaterOrEqual"/>
+<!--      <import feature="org.sonatype.tycho.m2e.feature" version="0.0.0" match="greaterOrEqual"/> -->
       <import feature="net.sf.eclipsecs" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.polarion.eclipse.team.svn.connector.svnkit18" version="0.0.0"/>
       <import feature="org.eclipse.m2m.qvt.oml" version="0.0.0" match="greaterOrEqual"/>
@@ -46,9 +46,9 @@
       <import feature="org.eclipse.m2m.qvt.oml.examples" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml.runtime" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.ajdt" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.fx.ide.basic.feature" version="2.2.0.201508240705"/>
-      <import feature="org.eclipse.fx.ide.pde.feature" version="2.2.0.201508240705"/>
-      <import feature="org.eclipse.sirius.runtime.ide.ui.palettepatch" version="1.0.0"/>
+      <import feature="org.eclipse.fx.ide.basic.feature" version="2.2.0.201508240705" match="greaterOrEqual"/>
+      <import feature="org.eclipse.fx.ide.pde.feature" version="2.2.0.201508240705" match="greaterOrEqual"/>
+      <!-- <import feature="org.eclipse.sirius.runtime.ide.ui.palettepatch" version="1.0.0"/> -->
       <import feature="org.eclipse.sirius.runtime.ide.ui" version="0.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.amalgam.discovery.modeling"/>
       <import feature="org.eclipse.elk.feature" version="0.1.0.201607121925" match="greaterOrEqual"/>

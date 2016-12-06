@@ -1,8 +1,8 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
 import java.util.Map;
+
 import org.gemoc.sample.sigpml.xsigpml.sigpml.InputPort;
-import org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties;
 
 @SuppressWarnings("all")
 public class InputPortAspectInputPortAspectContext {

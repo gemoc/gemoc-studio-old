@@ -13,7 +13,7 @@
 	</parent>
 
 	<properties>
-		<eclipse.version.name>Mars.2</eclipse.version.name>
+		<eclipse.version.name>Neon.1</eclipse.version.name>
 	</properties>
 
 	<artifactId>org.gemoc.gemoc_studio.branding</artifactId>
@@ -94,7 +94,7 @@
 			                        <!-- Eclipse version -->
 	                            	<drawText>
 			                            <text>${eclipse.version.name}</text>
-			                            <textColor>#f7941e</textColor>
+			                            <textColor>#305c31</textColor>
 			                            <fontName>SansSerif</fontName>
 			                            <fontStyle>italic,bold</fontStyle>
 			                            <fontSize>16</fontSize>

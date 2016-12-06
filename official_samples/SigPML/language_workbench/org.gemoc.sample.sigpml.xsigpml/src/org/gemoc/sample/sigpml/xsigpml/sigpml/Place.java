@@ -229,7 +229,7 @@ public interface Place extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fifo</em>' attribute list.
 	 * @see org.gemoc.sample.sigpml.xsigpml.sigpml.SigpmlPackage#getPlace_Fifo()
-	 * @model dataType="org.gemoc.sample.sigpml.xsigpml.sigpml.Object"
+	 * @model unique="false" dataType="org.gemoc.sample.sigpml.xsigpml.sigpml.Object"
 	 * @generated
 	 */
 	EList<Object> getFifo();
@@ -245,7 +245,7 @@ public interface Place extends NamedElement {
 	 * @return the value of the '<em>Current Size</em>' attribute.
 	 * @see #setCurrentSize(int)
 	 * @see org.gemoc.sample.sigpml.xsigpml.sigpml.SigpmlPackage#getPlace_CurrentSize()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	int getCurrentSize();
@@ -271,7 +271,7 @@ public interface Place extends NamedElement {
 	 * @return the value of the '<em>Is Initialized</em>' attribute.
 	 * @see #setIsInitialized(boolean)
 	 * @see org.gemoc.sample.sigpml.xsigpml.sigpml.SigpmlPackage#getPlace_IsInitialized()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	boolean isIsInitialized();

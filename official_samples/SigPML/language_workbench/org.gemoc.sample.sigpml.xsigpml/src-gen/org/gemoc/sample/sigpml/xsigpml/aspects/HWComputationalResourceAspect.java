@@ -1,29 +1,35 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
-import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.HWComputationalResource;
-import org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectProperties;
+
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 
 @Aspect(className = HWComputationalResource.class)
 @SuppressWarnings("all")
 public class HWComputationalResourceAspect {
   public static void incCycle(final HWComputationalResource _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectContext.getSelf(_self);
-    _privk3_incCycle(_self_, _self);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectContext
+			.getSelf(_self);
+	_privk3_incCycle(_self_, _self);
+	;
+}
   
   public static int currentExecCycle(final HWComputationalResource _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_currentExecCycle(_self_, _self);;
-    return (int)result;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_currentExecCycle(_self_, _self);
+	;
+	return (int) result;
+}
   
   public static void currentExecCycle(final HWComputationalResource _self, final int currentExecCycle) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectContext.getSelf(_self);
-    _privk3_currentExecCycle(_self_, _self,currentExecCycle);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspectHWComputationalResourceAspectContext
+			.getSelf(_self);
+	_privk3_currentExecCycle(_self_, _self, currentExecCycle);
+	;
+}
   
   protected static void _privk3_incCycle(final HWComputationalResourceAspectHWComputationalResourceAspectProperties _self_, final HWComputationalResource _self) {
     int _currentExecCycle = HWComputationalResourceAspect.currentExecCycle(_self);

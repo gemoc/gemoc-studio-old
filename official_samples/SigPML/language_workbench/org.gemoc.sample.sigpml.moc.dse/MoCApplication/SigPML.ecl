@@ -10,7 +10,7 @@ package sigpml
 	def : startAgent: Event= self.execute()
 	def : stopAgent: Event = self.stop()
 	def : isExecuting :Event = self.isExecuting()
-	
+
 	context InputPort
 	def : ratePlusOne : Integer = self.rate+1
 	def : read : Event= self.read()

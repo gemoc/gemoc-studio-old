@@ -1,7 +1,6 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
 import java.util.Map;
-import org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspectSystemAspectProperties;
 
 @SuppressWarnings("all")
 public class SystemAspectSystemAspectContext {
