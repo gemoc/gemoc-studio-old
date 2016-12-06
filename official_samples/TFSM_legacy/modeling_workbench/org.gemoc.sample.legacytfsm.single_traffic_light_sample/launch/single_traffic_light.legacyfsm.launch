@@ -6,7 +6,7 @@
 <booleanAttribute key="GEMOC_LAUNCH_BREAK_START" value="true"/>
 <stringAttribute key="GEMOC_LAUNCH_INITIALIZATION_ARGUMENTS" value=""/>
 <stringAttribute key="GEMOC_LAUNCH_INITIALIZATION_METHOD" value="org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedSystemAspect.initializeModel"/>
-<stringAttribute key="GEMOC_LAUNCH_MELANGE_QUERY" value="?lang=org.gemoc.sample.legacytfsm.xstfsm.XSTFSM&amp;mt=org.gemoc.sample.legacytfsm.xstfsm.XSTFSMMT"/>
+<stringAttribute key="GEMOC_LAUNCH_MELANGE_QUERY" value="?lang=org.gemoc.sample.legacytfsm.xstfsm.XSTFSM"/>
 <stringAttribute key="GEMOC_LAUNCH_SELECTED_LANGUAGE" value="org.gemoc.sample.legacytfsm.xstfsm.XSTFSM"/>
 <stringAttribute key="LAUNCH_METHOD_ENTRY_POINT" value="public static void org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TimedSystemAspect.main(org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TimedSystem)"/>
 <stringAttribute key="LAUNCH_MODEL_ENTRY_POINT" value="/"/>
