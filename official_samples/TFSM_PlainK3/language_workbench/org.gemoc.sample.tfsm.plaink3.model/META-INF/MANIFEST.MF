@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.gemoc.sample.tfsm.plaink3.model
+Bundle-SymbolicName: org.gemoc.sample.tfsm.plaink3.model;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.gemoc.sample.tfsm_plaink3,
+ org.gemoc.sample.tfsm_plaink3.impl,
+ org.gemoc.sample.tfsm_plaink3.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport
+Bundle-ActivationPolicy: lazy

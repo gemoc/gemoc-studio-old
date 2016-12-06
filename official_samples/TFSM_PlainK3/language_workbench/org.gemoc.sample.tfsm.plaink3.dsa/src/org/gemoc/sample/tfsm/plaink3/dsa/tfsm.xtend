@@ -1,20 +1,20 @@
 package org.gemoc.sample.tfsm.plaink3.dsa
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
+import fr.inria.diverse.k3.al.annotationprocessor.Step
+
 import org.gemoc.sample.tfsm_plaink3.FSMClock
 import org.gemoc.sample.tfsm_plaink3.FSMEvent
 import org.gemoc.sample.tfsm_plaink3.State
 import org.gemoc.sample.tfsm_plaink3.TFSM
 import org.gemoc.sample.tfsm_plaink3.Transition
+import org.gemoc.sample.tfsm_plaink3.TimedSystem
+import org.eclipse.emf.common.util.EList
 
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMClockAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.FSMEventAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMAspect.*
 import static extension org.gemoc.sample.tfsm.plaink3.dsa.TFSMVisitorAspect.*
-import fr.inria.diverse.k3.al.annotationprocessor.Step
-import org.gemoc.sample.tfsm_plaink3.TimedSystem
-import java.util.List
-import org.eclipse.emf.common.util.EList
 
 @Aspect(className=TFSM)
 class TFSMAspect {
@@ -37,7 +37,9 @@ class TFSMAspect {
 
 @Aspect(className=FSMClock)
 class FSMClockAspect {
-	public int numberOfTicks
+
+	public Integer numberOfTicks
+	
 	// Clock tick
 	@Step
 	def public Integer ticks() {
@@ -75,7 +77,8 @@ class TransitionAspect {
 @Aspect(className=FSMEvent)
 class FSMEventAspect {
 
-	public boolean isTriggered 
+	public boolean isTriggered
+	
 	@Step
 	def public void trigger() {
 		_self.isTriggered = true

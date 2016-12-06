@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.gemoc.execution.sequential.javaengine.ui.launcher">
+<stringAttribute key="First Instruction" value="http://www.eclipse.org/emf/2002/Ecore#/"/>
+<intAttribute key="GEMOC_ANIMATE_DELAY" value="0"/>
+<booleanAttribute key="GEMOC_LAUNCH_BREAK_START" value="true"/>
+<stringAttribute key="GEMOC_LAUNCH_INITIALIZATION_ARGUMENTS" value=""/>
+<stringAttribute key="GEMOC_LAUNCH_INITIALIZATION_METHOD" value="org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TimedSystemAspect.initializeModel"/>
+<stringAttribute key="GEMOC_LAUNCH_SELECTED_LANGUAGE" value="org.gemoc.sample.tfsm.plaink3.xdsml.XTfsm"/>
+<stringAttribute key="LAUNCH_METHOD_ENTRY_POINT" value="public static void org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TimedSystemAspect.main(org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TimedSystem)"/>
+<stringAttribute key="LAUNCH_MODEL_ENTRY_POINT" value="/"/>
+<booleanAttribute key="MultiBranch Reflective Trace" value="false"/>
+<stringAttribute key="Resource" value="/org.gemoc.sample.tfsm.plaink3.single_traffic_light_sample/single_traffic_light.xtfsm"/>
+<booleanAttribute key="VCD visualization" value="false"/>
+<stringAttribute key="airdResource" value="/org.gemoc.sample.tfsm.plaink3.single_traffic_light_sample/single_traffic_light.aird"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/org.gemoc.sample.tfsm.plaink3.single_traffic_light_sample/single_traffic_light.xtfsm"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<booleanAttribute key="tfsm_plaink3 MultiDimensional Trace" value="true"/>
+</launchConfiguration>

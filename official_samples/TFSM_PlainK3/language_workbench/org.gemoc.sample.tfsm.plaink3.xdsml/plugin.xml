@@ -2,23 +2,16 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.sequential.xdsml">
-    <XDSML_Definition modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.tfsm.xdsml.ExecutableTfsm" xdsmlFilePath="/org.gemoc.sample.tfsm.plaink3.xdsml/src/main/java/org/gemoc/sample/tfsm/xdsml/Main.melange">
-      <XDSML_Definition_Customization fileExtensions="tfsm" />
+    <XDSML_Definition modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.tfsm.plaink3.xdsml.XTfsm" xdsmlFilePath="/org.gemoc.sample.tfsm.plaink3.xdsml/src/main/java/org/gemoc/sample/tfsm/plaink3/xdsml/Main.melange">
+      <XDSML_Definition_Customization fileExtensions="xtfsm" />
     </XDSML_Definition>
   </extension>
   <extension point="fr.inria.diverse.melange.modeltype">
-    <modeltype id="org.gemoc.sample.tfsm.xdsml.TfsmMT" uri="http://tfsmmt/" />
-    <modeltype id="org.gemoc.sample.tfsm.xdsml.ExecutableTfsmMT" uri="http://executabletfsmmt/">
-      <subtyping modeltypeId="org.gemoc.sample.tfsm.xdsml.TfsmMT" />
-    </modeltype>
+    <modeltype id="org.gemoc.sample.tfsm.plaink3.xdsml.XTfsmMT" uri="http://xtfsmmt/" />
   </extension>
   <extension point="fr.inria.diverse.melange.language">
-    <language aspects="" entryPoints="" exactType="org.gemoc.sample.tfsm.xdsml.TfsmMT" id="org.gemoc.sample.tfsm.xdsml.Tfsm" uri="http://www.gemoc.org/sample/tfsm/plaink3">
-      <adapter class="org.gemoc.sample.tfsm.xdsml.tfsm.adapters.tfsmmt.TfsmAdapter" modeltypeId="org.gemoc.sample.tfsm.xdsml.TfsmMT" />
-    </language>
-    <language aspects="FSMClock:org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.FSMClockAspect,org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.FSMClockVisitorAspect;TimedSystem:org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.TimedSystemAspect,org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.TimedSystemVisitorAspect;State:org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.StateAspect,org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.StateVisitorAspect;EventGuard:org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.EventGuardVisitorAspect;Transition:org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.TransitionAspect,org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.TransitionVisitorAspect;FSMEvent:org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.FSMEventAspect;Guard:org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.GuardVisitorAspect;TFSM:org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.TFSMAspect,org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.TFSMVisitorAspect;TemporalGuard:org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.TemporalGuardVisitorAspect" entryPoints="org.gemoc.sample.tfsm.xdsml.executabletfsm.aspects.TimedSystemAspect.main(org.gemoc.sample.tfsm.xdsml.executabletfsm.tfsm_plaink3.TimedSystem)" exactType="org.gemoc.sample.tfsm.xdsml.ExecutableTfsmMT" id="org.gemoc.sample.tfsm.xdsml.ExecutableTfsm" uri="http://executabletfsm/tfsm_plaink3/">
-      <adapter class="org.gemoc.sample.tfsm.xdsml.executabletfsm.adapters.tfsmmt.ExecutableTfsmAdapter" modeltypeId="org.gemoc.sample.tfsm.xdsml.TfsmMT" />
-      <adapter class="org.gemoc.sample.tfsm.xdsml.executabletfsm.adapters.executabletfsmmt.ExecutableTfsmAdapter" modeltypeId="org.gemoc.sample.tfsm.xdsml.ExecutableTfsmMT" />
+    <language aspects="FSMClock:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.FSMClockAspect,org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.FSMClockVisitorAspect;TimedSystem:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TimedSystemAspect,org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TimedSystemVisitorAspect;State:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.StateAspect,org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.StateVisitorAspect;EventGuard:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.EventGuardVisitorAspect;Transition:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TransitionAspect,org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TransitionVisitorAspect;FSMEvent:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.FSMEventAspect;Guard:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.GuardVisitorAspect;TFSM:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TFSMAspect,org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TFSMVisitorAspect;TemporalGuard:org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TemporalGuardVisitorAspect" entryPoints="org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.aspects.TimedSystemAspect.main(org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TimedSystem)" exactType="org.gemoc.sample.tfsm.plaink3.xdsml.XTfsmMT" id="org.gemoc.sample.tfsm.plaink3.xdsml.XTfsm" uri="http://xtfsm/tfsm_plaink3/">
+      <adapter class="org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.adapters.xtfsmmt.XTfsmAdapter" modeltypeId="org.gemoc.sample.tfsm.plaink3.xdsml.XTfsmMT" />
     </language>
   </extension>
 </plugin>

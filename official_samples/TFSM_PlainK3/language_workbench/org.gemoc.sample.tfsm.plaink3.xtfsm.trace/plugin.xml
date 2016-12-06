@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+-->
+<plugin>
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <!-- @generated tfsm_plaink3Trace -->
+    <package uri="tfsm_plaink3Trace" class="tfsm_plaink3Trace.Tfsm_plaink3TracePackage" genModel="model/tfsm_plaink3Trace.genmodel" />
+  </extension>
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <!-- @generated tfsm_plaink3Trace -->
+    <package uri="tfsm_plaink3Trace_Steps" class="tfsm_plaink3Trace.Steps.StepsPackage" genModel="model/tfsm_plaink3Trace.genmodel" />
+  </extension>
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <!-- @generated tfsm_plaink3Trace -->
+    <package uri="tfsm_plaink3Trace_States" class="tfsm_plaink3Trace.States.StatesPackage" genModel="model/tfsm_plaink3Trace.genmodel" />
+  </extension>
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <!-- @generated tfsm_plaink3Trace -->
+    <package uri="tfsm_plaink3Trace_tfsm_plaink3" class="tfsm_plaink3Trace.States.tfsm_plaink3.Tfsm_plaink3Package" genModel="model/tfsm_plaink3Trace.genmodel" />
+  </extension>
+  <extension point="org.gemoc.gemoc_language_workbench.engine_addon">
+    <Addon Class="org.gemoc.sample.tfsm.plaink3.xtfsm.trace.tracemanager.Tfsm_plaink3TraceEngineAddon" Default="false" id="org.gemoc.sample.tfsm.plaink3.xtfsm.trace" Name="tfsm_plaink3 MultiDimensional Trace" ShortDescription="MultiDimensional Trace support dedicated to tfsm_plaink3 language" openViewIds="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.MultidimensionalTimeLineView" />
+  </extension>
+</plugin>
