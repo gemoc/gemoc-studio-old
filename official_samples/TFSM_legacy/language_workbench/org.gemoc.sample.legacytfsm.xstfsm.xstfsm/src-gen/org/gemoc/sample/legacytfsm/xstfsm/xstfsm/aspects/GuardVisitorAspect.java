@@ -18,15 +18,15 @@ public abstract class GuardVisitorAspect {
   public static void visit(final Guard _self) {
 	final org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.GuardVisitorAspectGuardAspectProperties _self_ = org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.GuardVisitorAspectGuardAspectContext
 			.getSelf(_self);
-	if (_self instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EvaluateGuard) {
-		org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.GuardVisitorAspect._privk3_visit(_self_,
-				(org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EvaluateGuard) _self);
-	} else if (_self instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TemporalGuard) {
+	if (_self instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TemporalGuard) {
 		org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.TemporalGuardVisitorAspect
 				.visit((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TemporalGuard) _self);
 	} else if (_self instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EventGuard) {
 		org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.EventGuardVisitorAspect
 				.visit((org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EventGuard) _self);
+	} else if (_self instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EvaluateGuard) {
+		org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.GuardVisitorAspect._privk3_visit(_self_,
+				(org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.EvaluateGuard) _self);
 	} else if (_self instanceof org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Guard) {
 		org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects.GuardVisitorAspect._privk3_visit(_self_,
 				(org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.Guard) _self);
