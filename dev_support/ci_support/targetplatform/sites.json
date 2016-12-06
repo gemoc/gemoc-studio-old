@@ -1,7 +1,7 @@
 {
     "platform": [
-        "http://download.eclipse.org/mpc/luna",
-        "http://download.eclipse.org/releases/luna/201502271000"
+        "http://download.eclipse.org/mpc/neon",
+        "http://download.eclipse.org/releases/neon"
         ],
     "modeling-base": [
         "http://download.eclipse.org/modeling/mdt/ocl/updates/maintenance/4.1.2/M201401201522",
@@ -12,10 +12,10 @@
         "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/R201309031307"
         ],
     "ecoretools": [
-        "http://download.eclipse.org/ecoretools/updates/nightly/2.0.x/luna"
+        "http://download.eclipse.org/ecoretools/updates/nightly/2.0.x/neon"
         ],
     "sirius": [
-        "http://download.eclipse.org/sirius/updates/nightly/2.0.x/luna"
+        "http://download.eclipse.org/sirius/updates/nightly/2.0.x/neon"
         ],    
     "umldesigner": [
         "http://marketplace.obeonetwork.com/updates/nightly/uml/repository"
@@ -38,10 +38,10 @@
         "https://ci.inria.fr/diverse-commons/job/diverse-commons.eclipse.root/lastSuccessfulBuild/artifact/commons-eclipse/fr.inria.diverse.commons.eclipse.root/p2updatesite/target/repository/"
         ],
     "timesquare": [
-        "http://timesquare.inria.fr/update_site/experimental"
+        "http://timesquare.inria.fr/update_site/neon"
         ],
     "timesquare-ecl": [
-        "http://timesquare.inria.fr/ecl/update_site/experimental"
+        "http://timesquare.inria.fr/ecl/update_site/neon"
         ],
     "gemoc-commons": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.commons.root/p2updatesite/target/repository/"
