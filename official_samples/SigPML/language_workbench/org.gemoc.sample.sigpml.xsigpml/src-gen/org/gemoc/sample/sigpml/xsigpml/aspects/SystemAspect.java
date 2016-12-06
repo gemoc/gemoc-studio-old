@@ -1,13 +1,13 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
-import com.google.common.collect.LinkedListMultimap;
-import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
-import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel;
 import org.eclipse.emf.common.util.EList;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.Application;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.Place;
-import org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspect;
-import org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspectSystemAspectProperties;
+
+import com.google.common.collect.LinkedListMultimap;
+
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
+import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel;
 
 @Aspect(className = org.gemoc.sample.sigpml.xsigpml.sigpml.System.class)
 @SuppressWarnings("all")
@@ -19,16 +19,20 @@ public class SystemAspect {
   }
   
   public static LinkedListMultimap sharedMemory(final org.gemoc.sample.sigpml.xsigpml.sigpml.System _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspectSystemAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspectSystemAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_sharedMemory(_self_, _self);;
-    return (com.google.common.collect.LinkedListMultimap)result;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspectSystemAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspectSystemAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_sharedMemory(_self_, _self);
+	;
+	return (com.google.common.collect.LinkedListMultimap) result;
+}
   
   public static void sharedMemory(final org.gemoc.sample.sigpml.xsigpml.sigpml.System _self, final LinkedListMultimap sharedMemory) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspectSystemAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspectSystemAspectContext.getSelf(_self);
-    _privk3_sharedMemory(_self_, _self,sharedMemory);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspectSystemAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspectSystemAspectContext
+			.getSelf(_self);
+	_privk3_sharedMemory(_self_, _self, sharedMemory);
+	;
+}
   
   protected static void _privk3_initializeModel(final SystemAspectSystemAspectProperties _self_, final org.gemoc.sample.sigpml.xsigpml.sigpml.System _self, final EList<String> args) {
     Application _ownedApplication = _self.getOwnedApplication();

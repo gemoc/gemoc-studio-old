@@ -1,43 +1,50 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
-import com.google.common.collect.LinkedListMultimap;
-import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.InputPort;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.OutputPort;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.Place;
-import org.gemoc.sample.sigpml.xsigpml.aspects.NamedElementAspect;
-import org.gemoc.sample.sigpml.xsigpml.aspects.OutputPortAspect;
-import org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties;
-import org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspect;
+
+import com.google.common.collect.LinkedListMultimap;
+
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 
 @Aspect(className = Place.class)
 @SuppressWarnings("all")
 public class PlaceAspect extends NamedElementAspect {
   public static void initialize(final Place _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext.getSelf(_self);
-    _privk3_initialize(_self_, _self);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext
+			.getSelf(_self);
+	_privk3_initialize(_self_, _self);
+	;
+}
   
   public static void push(final Place _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext.getSelf(_self);
-    _privk3_push(_self_, _self);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext
+			.getSelf(_self);
+	_privk3_push(_self_, _self);
+	;
+}
   
   public static void pop(final Place _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext.getSelf(_self);
-    _privk3_pop(_self_, _self);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext
+			.getSelf(_self);
+	_privk3_pop(_self_, _self);
+	;
+}
   
   public static EList<Object> fifo(final Place _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_fifo(_self_, _self);;
-    return (org.eclipse.emf.common.util.EList<java.lang.Object>)result;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_fifo(_self_, _self);
+	;
+	return (org.eclipse.emf.common.util.EList) result;
+}
   
   public static void fifo(final Place _self, final EList<Object> fifo) {
     final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext.getSelf(_self);
@@ -45,28 +52,36 @@ public class PlaceAspect extends NamedElementAspect {
   }
   
   public static int currentSize(final Place _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_currentSize(_self_, _self);;
-    return (int)result;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_currentSize(_self_, _self);
+	;
+	return (int) result;
+}
   
   public static void currentSize(final Place _self, final int currentSize) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext.getSelf(_self);
-    _privk3_currentSize(_self_, _self,currentSize);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext
+			.getSelf(_self);
+	_privk3_currentSize(_self_, _self, currentSize);
+	;
+}
   
   public static boolean isInitialized(final Place _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_isInitialized(_self_, _self);;
-    return (boolean)result;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_isInitialized(_self_, _self);
+	;
+	return (boolean) result;
+}
   
   public static void isInitialized(final Place _self, final boolean isInitialized) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext.getSelf(_self);
-    _privk3_isInitialized(_self_, _self,isInitialized);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectContext
+			.getSelf(_self);
+	_privk3_isInitialized(_self_, _self, isInitialized);
+	;
+}
   
   protected static void _privk3_initialize(final PlaceAspectPlaceAspectProperties _self_, final Place _self) {
     String _name = _self.getName();

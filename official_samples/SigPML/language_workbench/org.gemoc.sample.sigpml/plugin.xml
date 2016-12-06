@@ -6,6 +6,10 @@
       <XDSML_Definition_Customization fileExtensions="sigpml" />
     </XDSML_Definition>
   </extension>
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <!-- @generated XSigPMLMT -->
+    <package class="org.gemoc.sample.sigpml.xsigpmlmt.sigpml.SigpmlPackage" genModel="model-gen/XSigPMLMT.genmodel" uri="http://org.gemoc.sample.sigpml.xsigpmlmt/sigpml/" />
+  </extension>
   <extension point="fr.inria.diverse.melange.modeltype">
     <modeltype id="org.gemoc.sample.sigpml.XSigPMLMT" uri="http://org.gemoc.sample.sigpml.xsigpmlmt/" />
   </extension>

@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.gemoc.sample.sigpml.xsigpml.sigpml.Application;
@@ -424,7 +424,7 @@ public class PlaceImpl extends NamedElementImpl implements Place {
 	 */
 	public EList<Object> getFifo() {
 		if (fifo == null) {
-			fifo = new EDataTypeUniqueEList<Object>(Object.class, this, SigpmlPackage.PLACE__FIFO);
+			fifo = new EDataTypeEList<Object>(Object.class, this, SigpmlPackage.PLACE__FIFO);
 		}
 		return fifo;
 	}

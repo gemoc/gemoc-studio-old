@@ -1,8 +1,8 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
 import java.util.Map;
+
 import org.gemoc.sample.sigpml.xsigpml.sigpml.Place;
-import org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties;
 
 @SuppressWarnings("all")
 public class PlaceAspectPlaceAspectContext {
