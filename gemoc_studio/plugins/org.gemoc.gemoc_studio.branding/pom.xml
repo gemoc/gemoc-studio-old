@@ -71,7 +71,7 @@
 	                                <name>splash</name>
 	                            </loadImage>
 	                            <loadImage>
-	                                <imageFile>src/main/splash/eclipse_48.png</imageFile>
+	                                <imageFile>src/main/splash/eclipse_white_48.png</imageFile>
 	                                <name>eclipse</name>
 	                            </loadImage>
 	                        </resources>
@@ -94,7 +94,7 @@
 			                        <!-- Eclipse version -->
 	                            	<drawText>
 			                            <text>${eclipse.version.name}</text>
-			                            <textColor>#305c31</textColor>
+			                            <textColor>#4eeb0e</textColor>
 			                            <fontName>SansSerif</fontName>
 			                            <fontStyle>italic,bold</fontStyle>
 			                            <fontSize>16</fontSize>

@@ -15,7 +15,7 @@
          <property name="aboutImage" value="/images/GemocStudioAboutImage.png"/> 
          <property name="appName" value="Gemoc Studio"/> 
          <property name="windowImages" value="images/icons/IconeGemocStudio/png/IconeGemocStudio_16x16x32.png,images/icons/IconeGemocStudio/png/IconeGemocStudio_32x32x32.png,images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_48x48x32.png,images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_64x64x32.png,images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_128x128x32.png,images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_256x256x32.png"/> 
-          <property name="startupForegroundColor" value="000000"/>
+          <property name="startupForegroundColor" value="F9F9F9"/>
 	      <property name="startupMessageRect" value="8,295,470,15"/>
 	      <property name="startupProgressRect" value="8,310,485,15"/>
 	      <property name="preferenceCustomization" value="plugin_customization.ini"/>

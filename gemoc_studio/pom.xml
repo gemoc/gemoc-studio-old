@@ -25,8 +25,8 @@
         <module>releng/org.gemoc.gemoc_studio.branding.source.feature</module>		
         <module>releng/org.gemoc.gemoc_studio.additions.feature</module>	
         <module>releng/org.gemoc.modeldebugging.feature</module>
-<module>releng/org.gemoc.concurrency.feature</module>
-<module>releng/org.gemoc.coordination.feature</module>
+		<module>releng/org.gemoc.concurrency.feature</module>
+		<module>releng/org.gemoc.coordination.feature</module>
         <module>releng/org.gemoc.gemoc_studio.updatesite</module>
     </modules>
 
