@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.sample.legacyfsm.xsfsm.trace/src" modelPluginID="org.gemoc.sample.legacyfsm.xsfsm.trace" modelName="FsmTrace" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" complianceLevel="8.0" copyrightFields="false" importOrganizing="true">
+  <foreignModel>platform:/resource/org.gemoc.sample.legacyfsm.xsfsm.trace/model/fsmTrace.ecore</foreignModel>
+  <genPackages prefix="FsmTrace" disposableProviderFactory="true">
+    <ecorePackage href="fsmTrace.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="fsmTrace.ecore#//SpecificTrace"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/Fsm_FSMClock_Ticks_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/Fsm_FSMEvent_Trigger_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/Fsm_FSMEvent_UnTrigger_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/Fsm_State_Visit_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/Fsm_TimeFSM_Init_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/Fsm_Transition_Fire_Sequence"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/Fsm_Transition_Visit_Sequence"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/fsm_tracedEvaluateGuards"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/fsm_tracedEventGuards"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/fsm_tracedFSMClocks"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/fsm_tracedFSMEvents"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/fsm_tracedStates"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/fsm_tracedTemporalGuards"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/fsm_tracedTimeFSMs"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/fsm_tracedTimedSystems"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/fsm_tracedTransitions"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//SpecificTrace/statesTrace"/>
+      </genFeatures>
+    </genClasses>
+    <nestedGenPackages prefix="Steps" disposableProviderFactory="true">
+      <ecorePackage href="fsmTrace.ecore#//Steps"/>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//Steps/Fsm_FSMClock_Ticks"/>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//Steps/Fsm_FSMClock_Ticks/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//Steps/Fsm_FSMEvent_Trigger"/>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//Steps/Fsm_FSMEvent_Trigger/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//Steps/Fsm_FSMEvent_UnTrigger"/>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//Steps/Fsm_FSMEvent_UnTrigger/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//Steps/Fsm_State_Visit"/>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//Steps/Fsm_State_Visit/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false">
+        <ecoreClass href="fsmTrace.ecore#//Steps/Fsm_State_Visit_AbstractSubStep"/>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//Steps/Fsm_State_Visit_ImplicitStep"/>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//Steps/Fsm_TimeFSM_Init"/>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//Steps/Fsm_TimeFSM_Init/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//Steps/Fsm_Transition_Fire"/>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//Steps/Fsm_Transition_Fire/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//Steps/Fsm_Transition_Visit"/>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//Steps/Fsm_Transition_Visit/getCaller"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false">
+        <ecoreClass href="fsmTrace.ecore#//Steps/Fsm_Transition_Visit_AbstractSubStep"/>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//Steps/Fsm_Transition_Visit_ImplicitStep"/>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//Steps/RootImplicitStep"/>
+      </genClasses>
+      <genClasses image="false">
+        <ecoreClass href="fsmTrace.ecore#//Steps/SpecificStep"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//Steps/SpecificStep/endingState"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//Steps/SpecificStep/startingState"/>
+        </genFeatures>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="States" disposableProviderFactory="true">
+      <ecorePackage href="fsmTrace.ecore#//States"/>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//States/FSMClock_numberOfTicks_Value"/>
+        <genFeatures createChild="false">
+          <ecoreFeature xsi:type="ecore:EAttribute" href="fsmTrace.ecore#//States/FSMClock_numberOfTicks_Value/numberOfTicks"/>
+        </genFeatures>
+        <genFeatures property="None" notify="false" createChild="false">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/FSMClock_numberOfTicks_Value/parent"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/FSMClock_numberOfTicks_Value/states"/>
+        </genFeatures>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//States/FSMClock_numberOfTicks_Value/getStatesNoOpposite"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//States/FSMEvent_isTriggered_Value"/>
+        <genFeatures createChild="false">
+          <ecoreFeature xsi:type="ecore:EAttribute" href="fsmTrace.ecore#//States/FSMEvent_isTriggered_Value/isTriggered"/>
+        </genFeatures>
+        <genFeatures property="None" notify="false" createChild="false">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/FSMEvent_isTriggered_Value/parent"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/FSMEvent_isTriggered_Value/states"/>
+        </genFeatures>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//States/FSMEvent_isTriggered_Value/getStatesNoOpposite"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//States/State"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/State/endedSteps"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/State/fSMClock_numberOfTicks_Values"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/State/fSMEvent_isTriggered_Values"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/State/startedSteps"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/State/timeFSM_currentState_Values"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/State/timeFSM_lastStateChangeStepNumber_Values"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/State/timeFSM_stepNumber_Values"/>
+        </genFeatures>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//States/TimeFSM_currentState_Value"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/TimeFSM_currentState_Value/currentState"/>
+        </genFeatures>
+        <genFeatures property="None" notify="false" createChild="false">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/TimeFSM_currentState_Value/parent"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/TimeFSM_currentState_Value/states"/>
+        </genFeatures>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//States/TimeFSM_currentState_Value/getStatesNoOpposite"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//States/TimeFSM_lastStateChangeStepNumber_Value"/>
+        <genFeatures createChild="false">
+          <ecoreFeature xsi:type="ecore:EAttribute" href="fsmTrace.ecore#//States/TimeFSM_lastStateChangeStepNumber_Value/lastStateChangeStepNumber"/>
+        </genFeatures>
+        <genFeatures property="None" notify="false" createChild="false">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/TimeFSM_lastStateChangeStepNumber_Value/parent"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/TimeFSM_lastStateChangeStepNumber_Value/states"/>
+        </genFeatures>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//States/TimeFSM_lastStateChangeStepNumber_Value/getStatesNoOpposite"/>
+        </genOperations>
+      </genClasses>
+      <genClasses>
+        <ecoreClass href="fsmTrace.ecore#//States/TimeFSM_stepNumber_Value"/>
+        <genFeatures property="None" notify="false" createChild="false">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/TimeFSM_stepNumber_Value/parent"/>
+        </genFeatures>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/TimeFSM_stepNumber_Value/states"/>
+        </genFeatures>
+        <genFeatures createChild="false">
+          <ecoreFeature xsi:type="ecore:EAttribute" href="fsmTrace.ecore#//States/TimeFSM_stepNumber_Value/stepNumber"/>
+        </genFeatures>
+        <genOperations>
+          <ecoreOperation href="fsmTrace.ecore#//States/TimeFSM_stepNumber_Value/getStatesNoOpposite"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false">
+        <ecoreClass href="fsmTrace.ecore#//States/Value"/>
+        <genFeatures property="Readonly" notify="false" createChild="false">
+          <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/Value/statesNoOpposite"/>
+        </genFeatures>
+      </genClasses>
+      <nestedGenPackages prefix="Fsm" disposableProviderFactory="true">
+        <ecorePackage href="fsmTrace.ecore#//States/fsm"/>
+        <genClasses>
+          <ecoreClass href="fsmTrace.ecore#//States/fsm/TracedEvaluateGuard"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedEvaluateGuard/originalObject"/>
+          </genFeatures>
+        </genClasses>
+        <genClasses>
+          <ecoreClass href="fsmTrace.ecore#//States/fsm/TracedEventGuard"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedEventGuard/originalObject"/>
+          </genFeatures>
+        </genClasses>
+        <genClasses>
+          <ecoreClass href="fsmTrace.ecore#//States/fsm/TracedFSMClock"/>
+          <genFeatures property="None" children="true" createChild="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedFSMClock/numberOfTicksSequence"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedFSMClock/originalObject"/>
+          </genFeatures>
+        </genClasses>
+        <genClasses>
+          <ecoreClass href="fsmTrace.ecore#//States/fsm/TracedFSMEvent"/>
+          <genFeatures property="None" children="true" createChild="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedFSMEvent/isTriggeredSequence"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedFSMEvent/originalObject"/>
+          </genFeatures>
+        </genClasses>
+        <genClasses image="false">
+          <ecoreClass href="fsmTrace.ecore#//States/fsm/TracedGuard"/>
+        </genClasses>
+        <genClasses image="false">
+          <ecoreClass href="fsmTrace.ecore#//States/fsm/TracedNamedElement"/>
+        </genClasses>
+        <genClasses>
+          <ecoreClass href="fsmTrace.ecore#//States/fsm/TracedState"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedState/originalObject"/>
+          </genFeatures>
+        </genClasses>
+        <genClasses>
+          <ecoreClass href="fsmTrace.ecore#//States/fsm/TracedTemporalGuard"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedTemporalGuard/originalObject"/>
+          </genFeatures>
+        </genClasses>
+        <genClasses>
+          <ecoreClass href="fsmTrace.ecore#//States/fsm/TracedTimeFSM"/>
+          <genFeatures property="None" children="true" createChild="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedTimeFSM/currentStateSequence"/>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedTimeFSM/lastStateChangeStepNumberSequence"/>
+          </genFeatures>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedTimeFSM/originalObject"/>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedTimeFSM/stepNumberSequence"/>
+          </genFeatures>
+        </genClasses>
+        <genClasses>
+          <ecoreClass href="fsmTrace.ecore#//States/fsm/TracedTimedSystem"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedTimedSystem/originalObject"/>
+          </genFeatures>
+        </genClasses>
+        <genClasses>
+          <ecoreClass href="fsmTrace.ecore#//States/fsm/TracedTransition"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true">
+            <ecoreFeature xsi:type="ecore:EReference" href="fsmTrace.ecore#//States/fsm/TracedTransition/originalObject"/>
+          </genFeatures>
+        </genClasses>
+      </nestedGenPackages>
+    </nestedGenPackages>
+  </genPackages>
+  <usedGenPackages href="../../../plugin/fr.inria.diverse.trace.commons.model/model/GenericTrace.genmodel#//trace"/>
+  <usedGenPackages href="../../org.gemoc.sample.legacyfsm.xsfsm.xsfsm/model/XSFSM.genmodel#//fsm"/>
+</genmodel:GenModel>

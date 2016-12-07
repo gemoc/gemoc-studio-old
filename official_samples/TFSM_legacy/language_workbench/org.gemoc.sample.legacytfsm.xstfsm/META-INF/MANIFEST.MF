@@ -1,6 +1,6 @@
-Bundle-SymbolicName: org.gemoc.sample.legacytfsm.xstfsm; singleton:=true
-Export-Package: org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm,org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.impl,org.gemoc.sample.legacytfsm.xstfsm.xstfsmmt.tfsm.util,org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt,org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt,org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.tfsmmt.tfsm,org.gemoc.sample.legacytfsm.xstfsm.xstfsm.adapters.xstfsmmt.tfsm,org.gemoc.sample.legacytfsm.xstfsm
-Bundle-Name: org.gemoc.sample.legacytfsm.xstfsm
+Bundle-SymbolicName: org.gemoc.sample.legacyfsm.xsfsm;singleton:=true
+Export-Package: org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm,org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.impl,org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.util,org.gemoc.sample.legacyfsm.xsfsm,org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.xsfsmmt,org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt,org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.xsfsmmt.fsm,org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm
+Bundle-Name: org.gemoc.sample.legacyfsm.xsfsm
 Bundle-Version: 1.0.0
 Bundle-ClassPath: .
 Require-Bundle: org.eclipse.xtend.lib;bundle-version="2.7.0";visibility:="private",
@@ -29,15 +29,15 @@ Require-Bundle: org.eclipse.xtend.lib;bundle-version="2.7.0";visibility:="privat
  
  org.gemoc.executionframework.engine;bundle-version="0.0.0";visibility:="reexport",
  
- org.gemoc.sample.legacytfsm.tfsm.model;bundle-version="0.0.0";visibility:="private",
+ org.gemoc.sample.legacyfsm.fsm.model;bundle-version="0.0.0";visibility:="private",
  
- org.gemoc.sample.legacytfsm.tfsm.k3dsa;bundle-version="0.0.0";visibility:="private",
+ org.gemoc.sample.legacyfsm.fsm.k3dsa;bundle-version="0.0.0";visibility:="private",
  
  org.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
  
- org.gemoc.sample.legacytfsm.xstfsm.xstfsm,
+ org.gemoc.sample.legacyfsm.xsfsm.xsfsm,
  
- org.gemoc.sample.legacytfsm.tfsm;bundle-version="1.0.0"
+ org.gemoc.sample.legacyfsm.fsm;bundle-version="1.0.0"
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Manifest-Version: 1.0

@@ -1,0 +1,20 @@
+package org.gemoc.sample.legacyfsm.xsfsm
+	
+language XSFSM inherits org.gemoc.sample.legacyfsm.fsm.FSM {
+	
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.TimedSystemAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.StateAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.TimedSystemVisitorAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.TransitionAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.GuardVisitorAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.FSMEventAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.TransitionVisitorAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.FSMClockAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.TemporalGuardVisitorAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.StateVisitorAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.FSMClockVisitorAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.EventGuardVisitorAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.TimeFSMVisitorAspect
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.TimeFSMAspect
+
+}

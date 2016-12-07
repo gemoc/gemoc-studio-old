@@ -2,8 +2,8 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.gemoc.sample.legacytfsm.tfsm.design.Activator"
-               id="org.gemoc.sample.legacytfsm.tfsm.design"
+    <component class="org.gemoc.sample.legacyfsm.fsm.design.Activator"
+               id="org.gemoc.sample.legacyfsm.fsm.design"
 	       name="tfsm">
     </component>
   </extension>

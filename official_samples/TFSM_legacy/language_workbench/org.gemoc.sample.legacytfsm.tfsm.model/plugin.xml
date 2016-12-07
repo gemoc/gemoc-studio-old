@@ -10,8 +10,16 @@
       <!-- @generated tfsm -->
       <package
             uri="http://www.gemoc.org/legacytfsm/tfsm"
-            class="org.gemoc.sample.legacytfsm.tfsm.TfsmPackage"
-            genModel="model/tfsm.genmodel"/>
+            class="org.gemoc.sample.legacyfsm.fsm.TfsmPackage"
+            genModel="model/fsm.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated fsm -->
+      <package
+            uri="http://www.gemoc.org/legacyfsm/fsm"
+            class="org.gemoc.sample.legacyfsm.fsm.FsmPackage"
+            genModel="model/fsm.genmodel"/>
    </extension>
 
 </plugin>

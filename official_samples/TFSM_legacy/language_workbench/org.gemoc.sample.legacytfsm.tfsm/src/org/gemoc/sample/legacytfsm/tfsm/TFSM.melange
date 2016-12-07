@@ -1,6 +1,0 @@
-package org.gemoc.sample.legacytfsm.tfsm
-
-external language TFSM {
-	syntax "platform:/resource/org.gemoc.sample.legacytfsm.tfsm.model/model/tfsm.ecore"
-
-}

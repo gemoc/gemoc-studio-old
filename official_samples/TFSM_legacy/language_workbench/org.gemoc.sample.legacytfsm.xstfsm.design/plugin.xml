@@ -2,9 +2,9 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.gemoc.sample.legacytfsm.xstfsm.design.Activator"
-               id="org.gemoc.sample.legacytfsm.xstfsm.design"
-	       name="XSTFSM">
+    <component class="org.gemoc.sample.legacyfsm.xsfsm.design.Activator"
+               id="org.gemoc.sample.legacyfsm.xsfsm.design"
+	       name="XTFSM">
     </component>
   </extension>
 </plugin>

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.gemoc.sample.legacytfsm.xstfsm.xstfsm;singleton:=true
+Bundle-SymbolicName: org.gemoc.sample.legacyfsm.xsfsm.xsfsm;singleton:=true
 Bundle-Version: 0.1.0
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
@@ -16,9 +16,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore.xmi
 Bundle-ActivationPolicy: lazy
-Export-Package: org.gemoc.sample.legacytfsm.xstfsm.xstfsm.aspects,
- org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm,
- org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.impl,
- org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.util
+Export-Package: org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects,
+ org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm,
+ org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl,
+ org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.util
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

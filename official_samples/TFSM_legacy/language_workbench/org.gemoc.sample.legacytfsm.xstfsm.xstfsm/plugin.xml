@@ -5,11 +5,11 @@
 
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated XSTFSM -->
+      <!-- @generated XSFSM -->
       <package
-            uri="http://org.gemoc.sample.legacytfsm.xstfsm.xstfsm/tfsm/"
-            class="org.gemoc.sample.legacytfsm.xstfsm.xstfsm.tfsm.TfsmPackage"
-            genModel="model/XSTFSM.genmodel"/>
+            uri="http://org.gemoc.sample.legacyfsm.xsfsm.xsfsm/fsm/"
+            class="org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage"
+            genModel="model/XSFSM.genmodel"/>
    </extension>
 
 </plugin>

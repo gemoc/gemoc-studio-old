@@ -2,8 +2,8 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.gemoc.sample.legacytfsm.xstfsm.allinone.design.Activator"
-               id="org.gemoc.sample.legacytfsm.xstfsm.allinone.design"
+    <component class="org.gemoc.sample.legacyfsm.xsfsm.allinone.design.Activator"
+               id="org.gemoc.sample.legacyfsm.xsfsm.allinone.design"
 	       name="AllinOneXSTFSM">
     </component>
   </extension>

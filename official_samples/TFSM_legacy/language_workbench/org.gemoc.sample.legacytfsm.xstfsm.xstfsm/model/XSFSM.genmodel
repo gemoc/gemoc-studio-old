@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.gemoc.sample.legacyfsm.xsfsm.xsfsm/src/" modelPluginID="org.gemoc.sample.legacyfsm.xsfsm.xsfsm" modelName="XSFSM" complianceLevel="7.0" copyrightFields="false">
+  <foreignModel>platform:/resource/org.gemoc.sample.legacyfsm.xsfsm.xsfsm/model/XSFSM.ecore</foreignModel>
+  <genPackages prefix="Fsm" basePackage="org.gemoc.sample.legacyfsm.xsfsm.xsfsm" disposableProviderFactory="true" fileExtensions="xsfsm">
+    <ecorePackage href="XSFSM.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="XSFSM.ecore#//TimeFSM"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//TimeFSM/ownedStates"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//TimeFSM/initialState"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//TimeFSM/localEvents"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//TimeFSM/localClock"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//TimeFSM/ownedTransitions"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//TimeFSM/stepNumber"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//TimeFSM/lastStateChangeStepNumber"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//TimeFSM/currentState"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//TimeFSM/visit"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//TimeFSM/init"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="XSFSM.ecore#//State"/>
+      <genFeatures property="None" notify="false" createChild="false">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//State/owningFSM"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//State/outgoingTransitions"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//State/incomingTransitions"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//State/onEnter"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//State/onLeave"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//State/visit"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="XSFSM.ecore#//Transition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//Transition/source"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//Transition/target"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//Transition/ownedGuard"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//Transition/generatedEvents"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//Transition/action"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//Transition/fire"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//Transition/visit"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="XSFSM.ecore#//NamedElement"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//NamedElement/name"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="XSFSM.ecore#//Guard"/>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//Guard/visit"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="XSFSM.ecore#//TemporalGuard"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//TemporalGuard/onClock"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//TemporalGuard/afterDuration"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//TemporalGuard/visit"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="XSFSM.ecore#//EventGuard"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//EventGuard/triggeringEvent"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//EventGuard/visit"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="XSFSM.ecore#//FSMEvent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//FSMEvent/sollicitingTransitions"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//FSMEvent/isTriggered"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//FSMEvent/trigger"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//FSMEvent/unTrigger"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="XSFSM.ecore#//FSMClock"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//FSMClock/numberOfTicks"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//FSMClock/ticks"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//FSMClock/visit"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="XSFSM.ecore#//TimedSystem"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//TimedSystem/fsms"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//TimedSystem/globalClocks"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//TimedSystem/globalEvents"/>
+      </genFeatures>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//TimedSystem/main"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//TimedSystem/initializeModel"/>
+        <genParameters>
+          <ecoreParameter href="XSFSM.ecore#//TimedSystem/initializeModel/args"/>
+        </genParameters>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="XSFSM.ecore#//TimedSystem/visit"/>
+      </genOperations>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="XSFSM.ecore#//EvaluateGuard"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//EvaluateGuard/condition"/>
+      </genFeatures>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
