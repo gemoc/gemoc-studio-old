@@ -13,41 +13,41 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalGExpressionsLexer extends Lexer {
     public static final int RULE_BOOLEAN=6;
-    public static final int RULE_ID=4;
-    public static final int T__29=29;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int RULE_ANY_OTHER=12;
-    public static final int T__21=21;
-    public static final int T__20=20;
-    public static final int EOF=-1;
+    public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=10;
-    public static final int RULE_DOUBLE=8;
-    public static final int RULE_ML_COMMENT=9;
     public static final int T__19=19;
+    public static final int T__15=15;
+    public static final int T__37=37;
+    public static final int RULE_DOUBLE=8;
+    public static final int T__16=16;
+    public static final int T__38=38;
+    public static final int T__17=17;
+    public static final int T__18=18;
+    public static final int T__33=33;
+    public static final int T__34=34;
+    public static final int T__13=13;
+    public static final int T__35=35;
+    public static final int T__14=14;
+    public static final int T__36=36;
+    public static final int EOF=-1;
     public static final int T__30=30;
     public static final int T__31=31;
     public static final int T__32=32;
-    public static final int RULE_STRING=5;
-    public static final int T__16=16;
-    public static final int T__33=33;
-    public static final int T__15=15;
-    public static final int T__34=34;
-    public static final int T__18=18;
-    public static final int T__35=35;
-    public static final int T__17=17;
-    public static final int T__36=36;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__14=14;
-    public static final int T__13=13;
-    public static final int RULE_INT=7;
+    public static final int RULE_ID=4;
     public static final int RULE_WS=11;
+    public static final int RULE_ANY_OTHER=12;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
+    public static final int RULE_INT=7;
+    public static final int T__29=29;
+    public static final int T__22=22;
+    public static final int RULE_ML_COMMENT=9;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
 
     // delegates
     // delegators
@@ -60,15 +60,15 @@ public class InternalGExpressionsLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g"; }
+    public String getGrammarFileName() { return "InternalGExpressions.g"; }
 
     // $ANTLR start "T__13"
     public final void mT__13() throws RecognitionException {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:11:7: ( 'and' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:11:9: 'and'
+            // InternalGExpressions.g:11:7: ( 'and' )
+            // InternalGExpressions.g:11:9: 'and'
             {
             match("and"); 
 
@@ -88,8 +88,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:12:7: ( 'xor' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:12:9: 'xor'
+            // InternalGExpressions.g:12:7: ( 'xor' )
+            // InternalGExpressions.g:12:9: 'xor'
             {
             match("xor"); 
 
@@ -109,8 +109,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:13:7: ( 'or' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:13:9: 'or'
+            // InternalGExpressions.g:13:7: ( 'or' )
+            // InternalGExpressions.g:13:9: 'or'
             {
             match("or"); 
 
@@ -130,8 +130,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:14:7: ( '.' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:14:9: '.'
+            // InternalGExpressions.g:14:7: ( '.' )
+            // InternalGExpressions.g:14:9: '.'
             {
             match('.'); 
 
@@ -150,8 +150,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:15:7: ( '->' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:15:9: '->'
+            // InternalGExpressions.g:15:7: ( '->' )
+            // InternalGExpressions.g:15:9: '->'
             {
             match("->"); 
 
@@ -171,8 +171,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:16:7: ( '=' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:16:9: '='
+            // InternalGExpressions.g:16:7: ( '=' )
+            // InternalGExpressions.g:16:9: '='
             {
             match('='); 
 
@@ -191,8 +191,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:17:7: ( '<>' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:17:9: '<>'
+            // InternalGExpressions.g:17:7: ( '<>' )
+            // InternalGExpressions.g:17:9: '<>'
             {
             match("<>"); 
 
@@ -212,8 +212,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:18:7: ( '<' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:18:9: '<'
+            // InternalGExpressions.g:18:7: ( '<' )
+            // InternalGExpressions.g:18:9: '<'
             {
             match('<'); 
 
@@ -232,8 +232,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:19:7: ( '>' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:19:9: '>'
+            // InternalGExpressions.g:19:7: ( '>' )
+            // InternalGExpressions.g:19:9: '>'
             {
             match('>'); 
 
@@ -252,8 +252,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:20:7: ( '<=' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:20:9: '<='
+            // InternalGExpressions.g:20:7: ( '<=' )
+            // InternalGExpressions.g:20:9: '<='
             {
             match("<="); 
 
@@ -273,8 +273,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:21:7: ( '>=' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:21:9: '>='
+            // InternalGExpressions.g:21:7: ( '>=' )
+            // InternalGExpressions.g:21:9: '>='
             {
             match(">="); 
 
@@ -294,8 +294,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:22:7: ( '+' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:22:9: '+'
+            // InternalGExpressions.g:22:7: ( '+' )
+            // InternalGExpressions.g:22:9: '+'
             {
             match('+'); 
 
@@ -314,8 +314,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:23:7: ( '-' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:23:9: '-'
+            // InternalGExpressions.g:23:7: ( '-' )
+            // InternalGExpressions.g:23:9: '-'
             {
             match('-'); 
 
@@ -334,8 +334,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:24:7: ( '*' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:24:9: '*'
+            // InternalGExpressions.g:24:7: ( '*' )
+            // InternalGExpressions.g:24:9: '*'
             {
             match('*'); 
 
@@ -354,8 +354,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:25:7: ( '/' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:25:9: '/'
+            // InternalGExpressions.g:25:7: ( '/' )
+            // InternalGExpressions.g:25:9: '/'
             {
             match('/'); 
 
@@ -374,8 +374,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:26:7: ( 'not' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:26:9: 'not'
+            // InternalGExpressions.g:26:7: ( 'not' )
+            // InternalGExpressions.g:26:9: 'not'
             {
             match("not"); 
 
@@ -395,8 +395,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:27:7: ( '~' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:27:9: '~'
+            // InternalGExpressions.g:27:7: ( '~' )
+            // InternalGExpressions.g:27:9: '~'
             {
             match('~'); 
 
@@ -415,8 +415,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:28:7: ( ';' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:28:9: ';'
+            // InternalGExpressions.g:28:7: ( ';' )
+            // InternalGExpressions.g:28:9: ';'
             {
             match(';'); 
 
@@ -435,8 +435,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:29:7: ( 'import' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:29:9: 'import'
+            // InternalGExpressions.g:29:7: ( 'import' )
+            // InternalGExpressions.g:29:9: 'import'
             {
             match("import"); 
 
@@ -456,8 +456,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:30:7: ( '#' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:30:9: '#'
+            // InternalGExpressions.g:30:7: ( '#' )
+            // InternalGExpressions.g:30:9: '#'
             {
             match('#'); 
 
@@ -476,8 +476,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:31:7: ( 'if' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:31:9: 'if'
+            // InternalGExpressions.g:31:7: ( 'if' )
+            // InternalGExpressions.g:31:9: 'if'
             {
             match("if"); 
 
@@ -497,8 +497,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:32:7: ( 'then' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:32:9: 'then'
+            // InternalGExpressions.g:32:7: ( 'then' )
+            // InternalGExpressions.g:32:9: 'then'
             {
             match("then"); 
 
@@ -518,8 +518,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:33:7: ( 'else' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:33:9: 'else'
+            // InternalGExpressions.g:33:7: ( 'else' )
+            // InternalGExpressions.g:33:9: 'else'
             {
             match("else"); 
 
@@ -539,8 +539,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:34:7: ( 'endif' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:34:9: 'endif'
+            // InternalGExpressions.g:34:7: ( 'endif' )
+            // InternalGExpressions.g:34:9: 'endif'
             {
             match("endif"); 
 
@@ -560,8 +560,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:35:7: ( '(' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:35:9: '('
+            // InternalGExpressions.g:35:7: ( '(' )
+            // InternalGExpressions.g:35:9: '('
             {
             match('('); 
 
@@ -580,8 +580,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:36:7: ( ')' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:36:9: ')'
+            // InternalGExpressions.g:36:7: ( ')' )
+            // InternalGExpressions.g:36:9: ')'
             {
             match(')'); 
 
@@ -600,10 +600,10 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = RULE_BOOLEAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4144:14: ( ( 'true' | 'false' ) )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4144:16: ( 'true' | 'false' )
+            // InternalGExpressions.g:4144:14: ( ( 'true' | 'false' ) )
+            // InternalGExpressions.g:4144:16: ( 'true' | 'false' )
             {
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4144:16: ( 'true' | 'false' )
+            // InternalGExpressions.g:4144:16: ( 'true' | 'false' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -621,7 +621,7 @@ public class InternalGExpressionsLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4144:17: 'true'
+                    // InternalGExpressions.g:4144:17: 'true'
                     {
                     match("true"); 
 
@@ -629,7 +629,7 @@ public class InternalGExpressionsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4144:24: 'false'
+                    // InternalGExpressions.g:4144:24: 'false'
                     {
                     match("false"); 
 
@@ -655,10 +655,10 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = RULE_DOUBLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4146:13: ( ( '-' | '+' )? ( RULE_INT '.' RULE_INT | '.' RULE_INT | RULE_INT '.' ) ( 'e' ( '-' | '+' ) RULE_INT )? )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4146:15: ( '-' | '+' )? ( RULE_INT '.' RULE_INT | '.' RULE_INT | RULE_INT '.' ) ( 'e' ( '-' | '+' ) RULE_INT )?
+            // InternalGExpressions.g:4146:13: ( ( '-' | '+' )? ( RULE_INT '.' RULE_INT | '.' RULE_INT | RULE_INT '.' ) ( 'e' ( '-' | '+' ) RULE_INT )? )
+            // InternalGExpressions.g:4146:15: ( '-' | '+' )? ( RULE_INT '.' RULE_INT | '.' RULE_INT | RULE_INT '.' ) ( 'e' ( '-' | '+' ) RULE_INT )?
             {
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4146:15: ( '-' | '+' )?
+            // InternalGExpressions.g:4146:15: ( '-' | '+' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -667,7 +667,7 @@ public class InternalGExpressionsLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:
+                    // InternalGExpressions.g:
                     {
                     if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
                         input.consume();
@@ -684,12 +684,12 @@ public class InternalGExpressionsLexer extends Lexer {
 
             }
 
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4146:26: ( RULE_INT '.' RULE_INT | '.' RULE_INT | RULE_INT '.' )
+            // InternalGExpressions.g:4146:26: ( RULE_INT '.' RULE_INT | '.' RULE_INT | RULE_INT '.' )
             int alt3=3;
             alt3 = dfa3.predict(input);
             switch (alt3) {
                 case 1 :
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4146:27: RULE_INT '.' RULE_INT
+                    // InternalGExpressions.g:4146:27: RULE_INT '.' RULE_INT
                     {
                     mRULE_INT(); 
                     match('.'); 
@@ -698,7 +698,7 @@ public class InternalGExpressionsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4146:49: '.' RULE_INT
+                    // InternalGExpressions.g:4146:49: '.' RULE_INT
                     {
                     match('.'); 
                     mRULE_INT(); 
@@ -706,7 +706,7 @@ public class InternalGExpressionsLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4146:62: RULE_INT '.'
+                    // InternalGExpressions.g:4146:62: RULE_INT '.'
                     {
                     mRULE_INT(); 
                     match('.'); 
@@ -716,7 +716,7 @@ public class InternalGExpressionsLexer extends Lexer {
 
             }
 
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4146:76: ( 'e' ( '-' | '+' ) RULE_INT )?
+            // InternalGExpressions.g:4146:76: ( 'e' ( '-' | '+' ) RULE_INT )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -725,7 +725,7 @@ public class InternalGExpressionsLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4146:77: 'e' ( '-' | '+' ) RULE_INT
+                    // InternalGExpressions.g:4146:77: 'e' ( '-' | '+' ) RULE_INT
                     {
                     match('e'); 
                     if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
@@ -760,10 +760,10 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4148:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4148:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGExpressions.g:4148:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalGExpressions.g:4148:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4148:11: ( '^' )?
+            // InternalGExpressions.g:4148:11: ( '^' )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -772,7 +772,7 @@ public class InternalGExpressionsLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4148:11: '^'
+                    // InternalGExpressions.g:4148:11: '^'
                     {
                     match('^'); 
 
@@ -790,7 +790,7 @@ public class InternalGExpressionsLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4148:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGExpressions.g:4148:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop6:
             do {
                 int alt6=2;
@@ -803,7 +803,7 @@ public class InternalGExpressionsLexer extends Lexer {
 
                 switch (alt6) {
             	case 1 :
-            	    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:
+            	    // InternalGExpressions.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -839,10 +839,10 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4150:10: ( ( '0' .. '9' )+ )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4150:12: ( '0' .. '9' )+
+            // InternalGExpressions.g:4150:10: ( ( '0' .. '9' )+ )
+            // InternalGExpressions.g:4150:12: ( '0' .. '9' )+
             {
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4150:12: ( '0' .. '9' )+
+            // InternalGExpressions.g:4150:12: ( '0' .. '9' )+
             int cnt7=0;
             loop7:
             do {
@@ -856,7 +856,7 @@ public class InternalGExpressionsLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4150:13: '0' .. '9'
+            	    // InternalGExpressions.g:4150:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -888,10 +888,10 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4152:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4152:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalGExpressions.g:4152:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalGExpressions.g:4152:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4152:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalGExpressions.g:4152:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -909,10 +909,10 @@ public class InternalGExpressionsLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4152:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalGExpressions.g:4152:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4152:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalGExpressions.g:4152:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop8:
                     do {
                         int alt8=3;
@@ -928,7 +928,7 @@ public class InternalGExpressionsLexer extends Lexer {
 
                         switch (alt8) {
                     	case 1 :
-                    	    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4152:21: '\\\\' .
+                    	    // InternalGExpressions.g:4152:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -936,7 +936,7 @@ public class InternalGExpressionsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4152:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalGExpressions.g:4152:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -961,10 +961,10 @@ public class InternalGExpressionsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4152:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalGExpressions.g:4152:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4152:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalGExpressions.g:4152:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop9:
                     do {
                         int alt9=3;
@@ -980,7 +980,7 @@ public class InternalGExpressionsLexer extends Lexer {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4152:54: '\\\\' .
+                    	    // InternalGExpressions.g:4152:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -988,7 +988,7 @@ public class InternalGExpressionsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4152:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalGExpressions.g:4152:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1031,12 +1031,12 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4154:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4154:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalGExpressions.g:4154:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalGExpressions.g:4154:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4154:24: ( options {greedy=false; } : . )*
+            // InternalGExpressions.g:4154:24: ( options {greedy=false; } : . )*
             loop11:
             do {
                 int alt11=2;
@@ -1061,7 +1061,7 @@ public class InternalGExpressionsLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4154:52: .
+            	    // InternalGExpressions.g:4154:52: .
             	    {
             	    matchAny(); 
 
@@ -1091,12 +1091,12 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4156:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4156:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalGExpressions.g:4156:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalGExpressions.g:4156:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4156:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalGExpressions.g:4156:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop12:
             do {
                 int alt12=2;
@@ -1109,7 +1109,7 @@ public class InternalGExpressionsLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4156:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalGExpressions.g:4156:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1129,7 +1129,7 @@ public class InternalGExpressionsLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4156:40: ( ( '\\r' )? '\\n' )?
+            // InternalGExpressions.g:4156:40: ( ( '\\r' )? '\\n' )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1138,9 +1138,9 @@ public class InternalGExpressionsLexer extends Lexer {
             }
             switch (alt14) {
                 case 1 :
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4156:41: ( '\\r' )? '\\n'
+                    // InternalGExpressions.g:4156:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4156:41: ( '\\r' )?
+                    // InternalGExpressions.g:4156:41: ( '\\r' )?
                     int alt13=2;
                     int LA13_0 = input.LA(1);
 
@@ -1149,7 +1149,7 @@ public class InternalGExpressionsLexer extends Lexer {
                     }
                     switch (alt13) {
                         case 1 :
-                            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4156:41: '\\r'
+                            // InternalGExpressions.g:4156:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1181,10 +1181,10 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4158:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4158:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalGExpressions.g:4158:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalGExpressions.g:4158:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4158:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalGExpressions.g:4158:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt15=0;
             loop15:
             do {
@@ -1198,7 +1198,7 @@ public class InternalGExpressionsLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:
+            	    // InternalGExpressions.g:
             	    {
             	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -1238,8 +1238,8 @@ public class InternalGExpressionsLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4160:16: ( . )
-            // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:4160:18: .
+            // InternalGExpressions.g:4160:16: ( . )
+            // InternalGExpressions.g:4160:18: .
             {
             matchAny(); 
 
@@ -1254,250 +1254,250 @@ public class InternalGExpressionsLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:8: ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | RULE_BOOLEAN | RULE_DOUBLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        // InternalGExpressions.g:1:8: ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | RULE_BOOLEAN | RULE_DOUBLE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
         int alt16=35;
         alt16 = dfa16.predict(input);
         switch (alt16) {
             case 1 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:10: T__13
+                // InternalGExpressions.g:1:10: T__13
                 {
                 mT__13(); 
 
                 }
                 break;
             case 2 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:16: T__14
+                // InternalGExpressions.g:1:16: T__14
                 {
                 mT__14(); 
 
                 }
                 break;
             case 3 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:22: T__15
+                // InternalGExpressions.g:1:22: T__15
                 {
                 mT__15(); 
 
                 }
                 break;
             case 4 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:28: T__16
+                // InternalGExpressions.g:1:28: T__16
                 {
                 mT__16(); 
 
                 }
                 break;
             case 5 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:34: T__17
+                // InternalGExpressions.g:1:34: T__17
                 {
                 mT__17(); 
 
                 }
                 break;
             case 6 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:40: T__18
+                // InternalGExpressions.g:1:40: T__18
                 {
                 mT__18(); 
 
                 }
                 break;
             case 7 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:46: T__19
+                // InternalGExpressions.g:1:46: T__19
                 {
                 mT__19(); 
 
                 }
                 break;
             case 8 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:52: T__20
+                // InternalGExpressions.g:1:52: T__20
                 {
                 mT__20(); 
 
                 }
                 break;
             case 9 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:58: T__21
+                // InternalGExpressions.g:1:58: T__21
                 {
                 mT__21(); 
 
                 }
                 break;
             case 10 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:64: T__22
+                // InternalGExpressions.g:1:64: T__22
                 {
                 mT__22(); 
 
                 }
                 break;
             case 11 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:70: T__23
+                // InternalGExpressions.g:1:70: T__23
                 {
                 mT__23(); 
 
                 }
                 break;
             case 12 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:76: T__24
+                // InternalGExpressions.g:1:76: T__24
                 {
                 mT__24(); 
 
                 }
                 break;
             case 13 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:82: T__25
+                // InternalGExpressions.g:1:82: T__25
                 {
                 mT__25(); 
 
                 }
                 break;
             case 14 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:88: T__26
+                // InternalGExpressions.g:1:88: T__26
                 {
                 mT__26(); 
 
                 }
                 break;
             case 15 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:94: T__27
+                // InternalGExpressions.g:1:94: T__27
                 {
                 mT__27(); 
 
                 }
                 break;
             case 16 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:100: T__28
+                // InternalGExpressions.g:1:100: T__28
                 {
                 mT__28(); 
 
                 }
                 break;
             case 17 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:106: T__29
+                // InternalGExpressions.g:1:106: T__29
                 {
                 mT__29(); 
 
                 }
                 break;
             case 18 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:112: T__30
+                // InternalGExpressions.g:1:112: T__30
                 {
                 mT__30(); 
 
                 }
                 break;
             case 19 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:118: T__31
+                // InternalGExpressions.g:1:118: T__31
                 {
                 mT__31(); 
 
                 }
                 break;
             case 20 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:124: T__32
+                // InternalGExpressions.g:1:124: T__32
                 {
                 mT__32(); 
 
                 }
                 break;
             case 21 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:130: T__33
+                // InternalGExpressions.g:1:130: T__33
                 {
                 mT__33(); 
 
                 }
                 break;
             case 22 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:136: T__34
+                // InternalGExpressions.g:1:136: T__34
                 {
                 mT__34(); 
 
                 }
                 break;
             case 23 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:142: T__35
+                // InternalGExpressions.g:1:142: T__35
                 {
                 mT__35(); 
 
                 }
                 break;
             case 24 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:148: T__36
+                // InternalGExpressions.g:1:148: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
             case 25 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:154: T__37
+                // InternalGExpressions.g:1:154: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
             case 26 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:160: T__38
+                // InternalGExpressions.g:1:160: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
             case 27 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:166: RULE_BOOLEAN
+                // InternalGExpressions.g:1:166: RULE_BOOLEAN
                 {
                 mRULE_BOOLEAN(); 
 
                 }
                 break;
             case 28 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:179: RULE_DOUBLE
+                // InternalGExpressions.g:1:179: RULE_DOUBLE
                 {
                 mRULE_DOUBLE(); 
 
                 }
                 break;
             case 29 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:191: RULE_ID
+                // InternalGExpressions.g:1:191: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
             case 30 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:199: RULE_INT
+                // InternalGExpressions.g:1:199: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
             case 31 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:208: RULE_STRING
+                // InternalGExpressions.g:1:208: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
             case 32 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:220: RULE_ML_COMMENT
+                // InternalGExpressions.g:1:220: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
             case 33 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:236: RULE_SL_COMMENT
+                // InternalGExpressions.g:1:236: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
             case 34 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:252: RULE_WS
+                // InternalGExpressions.g:1:252: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
             case 35 :
-                // ../org.gemoc.gexpressions.xtext.ui/src-gen/org/gemoc/gexpressions/xtext/ui/contentassist/antlr/internal/InternalGExpressions.g:1:260: RULE_ANY_OTHER
+                // InternalGExpressions.g:1:260: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1512,7 +1512,7 @@ public class InternalGExpressionsLexer extends Lexer {
     protected DFA3 dfa3 = new DFA3(this);
     protected DFA16 dfa16 = new DFA16(this);
     static final String DFA3_eotS =
-        "\3\uffff\1\5\2\uffff";
+        "\3\uffff\1\4\2\uffff";
     static final String DFA3_eofS =
         "\6\uffff";
     static final String DFA3_minS =
@@ -1520,14 +1520,14 @@ public class InternalGExpressionsLexer extends Lexer {
     static final String DFA3_maxS =
         "\2\71\1\uffff\1\71\2\uffff";
     static final String DFA3_acceptS =
-        "\2\uffff\1\2\1\uffff\1\1\1\3";
+        "\2\uffff\1\2\1\uffff\1\3\1\1";
     static final String DFA3_specialS =
         "\6\uffff}>";
     static final String[] DFA3_transitionS = {
             "\1\2\1\uffff\12\1",
             "\1\3\1\uffff\12\1",
             "",
-            "\12\4",
+            "\12\5",
             "",
             ""
     };
@@ -1576,7 +1576,7 @@ public class InternalGExpressionsLexer extends Lexer {
     static final String DFA16_acceptS =
         "\6\uffff\1\6\3\uffff\1\16\2\uffff\1\21\1\22\1\uffff\1\24\2\uffff\1\31\1\32\3\uffff\1\35\2\uffff\1\42\1\43\1\uffff\1\35\2\uffff\1\4\1\34\1\5\1\15\1\6\1\7\1\12\1\10\1\13\1\11\1\14\1\16\1\40\1\41\1\17\1\uffff\1\21\1\22\2\uffff\1\24\4\uffff\1\31\1\32\1\uffff\1\36\1\uffff\1\37\1\42\2\uffff\1\3\2\uffff\1\25\5\uffff\1\1\1\2\1\20\7\uffff\1\26\1\33\1\27\3\uffff\1\30\1\23";
     static final String DFA16_specialS =
-        "\1\2\30\uffff\1\1\1\0\103\uffff}>";
+        "\1\2\30\uffff\1\0\1\1\103\uffff}>";
     static final String[] DFA16_transitionS = {
             "\11\34\2\33\2\34\1\33\22\34\1\33\1\34\1\31\1\20\3\34\1\32\1\23\1\24\1\12\1\11\1\34\1\5\1\4\1\13\12\26\1\34\1\16\1\7\1\6\1\10\2\34\32\30\3\34\1\27\1\30\1\34\1\1\3\30\1\22\1\25\2\30\1\17\4\30\1\14\1\3\4\30\1\21\3\30\1\2\2\30\3\34\1\15\uff81\34",
             "\1\35",
@@ -1711,20 +1711,20 @@ public class InternalGExpressionsLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA16_26 = input.LA(1);
+                        int LA16_25 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA16_26>='\u0000' && LA16_26<='\uFFFF')) ) {s = 63;}
+                        if ( ((LA16_25>='\u0000' && LA16_25<='\uFFFF')) ) {s = 63;}
 
                         else s = 28;
 
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA16_25 = input.LA(1);
+                        int LA16_26 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA16_25>='\u0000' && LA16_25<='\uFFFF')) ) {s = 63;}
+                        if ( ((LA16_26>='\u0000' && LA16_26<='\uFFFF')) ) {s = 63;}
 
                         else s = 28;
 

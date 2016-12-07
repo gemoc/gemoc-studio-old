@@ -1,8 +1,8 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
 import java.util.Map;
+
 import org.gemoc.sample.sigpml.xsigpml.sigpml.NamedElement;
-import org.gemoc.sample.sigpml.xsigpml.aspects.NamedElementAspectNamedElementAspectProperties;
 
 @SuppressWarnings("all")
 public class NamedElementAspectNamedElementAspectContext {

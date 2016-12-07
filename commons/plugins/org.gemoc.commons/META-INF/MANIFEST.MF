@@ -26,6 +26,7 @@ Export-Package: ch.lambdaj,
  net.sf.cglib.transform,
  net.sf.cglib.transform.impl,
  net.sf.cglib.util,
+ org.gemoc.commons,
  org.hamcrest,
  org.hamcrest.beans,
  org.hamcrest.collection,
@@ -66,3 +67,4 @@ Bundle-Vendor: INRIA
 Bundle-ClassPath: .,
  lib/lambdaj-2.4-with-dependencies.jar,
  lib/toools-2013.04.16.17.54.16.jar
+Bundle-ActivationPolicy: lazy

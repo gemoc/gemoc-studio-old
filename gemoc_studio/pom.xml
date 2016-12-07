@@ -4,7 +4,7 @@
     <name>GEMOC Studio root build</name>
     <groupId>org.gemoc.gemoc_studio</groupId>
     <artifactId>org.gemoc.gemoc_studio.parent</artifactId>
-    <version>2.2.1-SNAPSHOT</version>
+    <version>2.3.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 	<parent>
 		<groupId>org.gemoc</groupId>
@@ -13,7 +13,7 @@
 		<relativePath>..</relativePath>
 	</parent>
     <properties>
-        <tycho-version>0.25.0</tycho-version>
+        <tycho-version>0.26.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -25,31 +25,31 @@
         <module>releng/org.gemoc.gemoc_studio.branding.source.feature</module>		
         <module>releng/org.gemoc.gemoc_studio.additions.feature</module>	
         <module>releng/org.gemoc.modeldebugging.feature</module>
-        <module>releng/org.gemoc.concurrency.feature</module>
-        <module>releng/org.gemoc.coordination.feature</module>
+<module>releng/org.gemoc.concurrency.feature</module>
+<module>releng/org.gemoc.coordination.feature</module>
         <module>releng/org.gemoc.gemoc_studio.updatesite</module>
     </modules>
 
     <repositories>
 
         <!-- IMPORTANT : repository used to get older versions of org.eclipse.ocl.examples.feature.group for ECL, need to be removed ASAP -->
-        <repository>
+<!--        <repository>
             <id>OCL releases</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/modeling/mdt/ocl/updates</url>
-        </repository>
+        </repository>-->
         
     	<!-- Repositories specific for the studio (typically referred by the additional feature) -->
     	<repository>
             <id>Subversive</id>
             <layout>p2</layout>
-            <url>http://community.polarion.com/projects/subversive/download/eclipse/5.0/mars-site/</url>
+            <url>http://community.polarion.com/projects/subversive/download/eclipse/6.0/neon-site/</url>
         </repository>         
-        <repository>
+       <!--  <repository>
             <id>M2E connectors</id>
             <layout>p2</layout>
             <url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.7.0/N/0.7.0.201309291400/</url>
-        </repository>
+        </repository> -->
         <repository>
             <id>Palette patch update site</id>
             <layout>p2</layout>
@@ -59,17 +59,16 @@
             <id>elk</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/elk/updates/releases/0.1.0/</url>
-        </repository>
-        
+        </repository>        
         <repository>
             <id>Sirius</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/sirius/updates/releases/3.1.4/mars</url>
+            <url>http://download.eclipse.org/sirius/updates/releases/4.1.1/neon/</url>
         </repository>
 		<repository>
             <id>Groovy4Eclipse</id>
             <layout>p2</layout>
-            <url>http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/</url>
+            <url>http://dist.springsource.org/snapshot/GRECLIPSE/e4.6/</url>
         </repository>
         <!-- *********** Xtext related update site -->
        <!--  <repository>
@@ -88,12 +87,12 @@
         <repository>
             <id>Checkstyle</id>
             <layout>p2</layout>
-            <url>http://sourceforge.net/projects/eclipse-cs/files/updatesite/5.7.0/</url>
+            <url>http://sourceforge.net/projects/eclipse-cs/files/updatesite/6.19.1/</url>
         </repository>
         <repository>
             <id>AspectJ</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/tools/ajdt/44/dev/update</url>
+            <url>http://download.eclipse.org/tools/ajdt/46/dev/update</url>
         </repository>
     
     </repositories>
@@ -170,11 +169,11 @@
 	    	<!-- use this command line to activate this profile -->
 	    	<!-- mvn clean package -Denvironment=test_win32 -->
 	    	<!-- or directly with the ID using the eclipse UI -->
-	    	<id>test_win32</id>
+	    	<id>test_win64</id>
 	    	<activation>
 		      <property>
 		        <name>environment</name>
-		        <value>test_win32</value>
+		        <value>test_win64</value>
 		      </property>
 		    </activation>
     		<build>

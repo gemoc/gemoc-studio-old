@@ -188,7 +188,7 @@ public interface Agent extends NamedElement {
 	 * @return the value of the '<em>Is Currently Executing</em>' attribute.
 	 * @see #setIsCurrentlyExecuting(boolean)
 	 * @see org.gemoc.sample.sigpml.xsigpml.sigpml.SigpmlPackage#getAgent_IsCurrentlyExecuting()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	boolean isIsCurrentlyExecuting();

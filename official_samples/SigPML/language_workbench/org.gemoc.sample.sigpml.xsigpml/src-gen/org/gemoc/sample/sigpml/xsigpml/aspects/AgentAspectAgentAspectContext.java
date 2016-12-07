@@ -1,8 +1,8 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
 import java.util.Map;
+
 import org.gemoc.sample.sigpml.xsigpml.sigpml.Agent;
-import org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties;
 
 @SuppressWarnings("all")
 public class AgentAspectAgentAspectContext {

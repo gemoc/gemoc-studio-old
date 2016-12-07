@@ -31,7 +31,7 @@ public interface InputPort extends Port {
 	 * @return the value of the '<em>Size Toread</em>' attribute.
 	 * @see #setSizeToread(int)
 	 * @see org.gemoc.sample.sigpml.xsigpml.sigpml.SigpmlPackage#getInputPort_SizeToread()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	int getSizeToread();

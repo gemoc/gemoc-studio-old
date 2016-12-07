@@ -1,42 +1,51 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
-import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.InputPort;
-import org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties;
-import org.gemoc.sample.sigpml.xsigpml.aspects.NamedElementAspect;
+
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 
 @Aspect(className = InputPort.class)
 @SuppressWarnings("all")
 public class InputPortAspect extends NamedElementAspect {
   public static int read(final InputPort _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_read(_self_, _self);;
-    return (int)result;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_read(_self_, _self);
+	;
+	return (int) result;
+}
   
   public static void logSizeToReadWhenZero(final InputPort _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectContext.getSelf(_self);
-    _privk3_logSizeToReadWhenZero(_self_, _self);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectContext
+			.getSelf(_self);
+	_privk3_logSizeToReadWhenZero(_self_, _self);
+	;
+}
   
   public static void logSizeToReadWhenNotZero(final InputPort _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectContext.getSelf(_self);
-    _privk3_logSizeToReadWhenNotZero(_self_, _self);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectContext
+			.getSelf(_self);
+	_privk3_logSizeToReadWhenNotZero(_self_, _self);
+	;
+}
   
   public static int sizeToread(final InputPort _self) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_sizeToread(_self_, _self);;
-    return (int)result;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_sizeToread(_self_, _self);
+	;
+	return (int) result;
+}
   
   public static void sizeToread(final InputPort _self, final int sizeToread) {
-    final org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectContext.getSelf(_self);
-    _privk3_sizeToread(_self_, _self,sizeToread);;
-  }
+	final org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectProperties _self_ = org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspectInputPortAspectContext
+			.getSelf(_self);
+	_privk3_sizeToread(_self_, _self, sizeToread);
+	;
+}
   
   protected static int _privk3_read(final InputPortAspectInputPortAspectProperties _self_, final InputPort _self) {
     int _sizeToread = InputPortAspect.sizeToread(_self);
