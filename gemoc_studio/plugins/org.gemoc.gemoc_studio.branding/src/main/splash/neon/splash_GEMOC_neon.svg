@@ -17,7 +17,10 @@
    width="500"
    height="331"
    viewBox="0 0 500 331"
-   sodipodi:docname="splash_GEMOC_neon.svg"><metadata
+   sodipodi:docname="splash_GEMOC_neon.svg"
+   inkscape:export-filename="C:\Users\dvojtise\git\gemoc-studio\gemoc_studio\plugins\org.gemoc.gemoc_studio.branding\src\main\splash\neon\splash_GEMOC_neon.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
@@ -97,7 +100,7 @@
      id="namedview4"
      showgrid="false"
      inkscape:zoom="1.1705587"
-     inkscape:cx="296.72576"
+     inkscape:cx="273.2327"
      inkscape:cy="111.10919"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
