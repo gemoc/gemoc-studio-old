@@ -80,11 +80,11 @@
 	                            <draw>
 	                            	<drawText>
 			                            <text>${project.version}  ${buildNumber}</text>
-			                            <textColor>#000000</textColor>
+			                            <textColor>#909090</textColor>
 			                            <fontName>SansSerif</fontName>
 			                            <fontStyle>italic,bold</fontStyle>
 			                            <fontSize>12</fontSize>
-			                            <position>right-15,bottom-20</position>
+			                            <position>right-15,bottom-25</position>
 			                        </drawText>
 			                        <!-- Eclipse Logo 64 -->
 			                        <drawImage>
