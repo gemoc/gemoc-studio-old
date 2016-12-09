@@ -4,11 +4,13 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.BatchModelChangeListener;
 
 import fr.inria.diverse.trace.gemoc.api.IStepFactory;
 import fr.inria.diverse.trace.gemoc.api.ITraceConstructor;
 import fr.inria.diverse.trace.gemoc.api.ITraceExplorer;
 import fr.inria.diverse.trace.gemoc.api.ITraceExtractor;
+import fr.inria.diverse.trace.gemoc.api.ITraceNotifier;
 import fr.inria.diverse.trace.gemoc.traceaddon.AbstractTraceAddon;
 
 public class FsmTraceEngineAddon extends AbstractTraceAddon {
@@ -53,6 +55,11 @@ public class FsmTraceEngineAddon extends AbstractTraceAddon {
 			return extractor;
 		}
 		return null;
+	}
+
+	@Override
+	public ITraceNotifier constructTraceNotifier(BatchModelChangeListener traceListener) {
+		return new FsmTraceNotifier(traceListener);
 	}
 
 	@Override

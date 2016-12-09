@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -19,7 +21,7 @@ import org.gemoc.executionframework.engine.core.CommandExecution;
 import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
 import fr.inria.diverse.trace.commons.model.trace.Step;
 import fr.inria.diverse.trace.gemoc.api.ITraceExplorer;
-import fr.inria.diverse.trace.gemoc.api.ITraceListener;
+import fr.inria.diverse.trace.gemoc.api.ITraceViewListener;
 
 public class FsmTraceExplorer implements ITraceExplorer {
 	private fsmTrace.SpecificTrace traceRoot;
@@ -28,9 +30,9 @@ public class FsmTraceExplorer implements ITraceExplorer {
 
 	private int lastJumpIndex = -1;
 	private fsmTrace.States.State currentState = null;
-	final private List<Step> callStack = new ArrayList<>();
+	private final List<Step> callStack = new ArrayList<>();
 
-	final private List<List<? extends fsmTrace.States.Value>> valueTraces = new ArrayList<>();
+	private final List<List<? extends fsmTrace.States.Value>> valueTraces = new ArrayList<>();
 
 	private List<fsmTrace.States.State> statesTrace;
 
@@ -42,12 +44,12 @@ public class FsmTraceExplorer implements ITraceExplorer {
 	private fsmTrace.Steps.SpecificStep stepBackOverResult;
 	private fsmTrace.Steps.SpecificStep stepBackOutResult;
 
-	final private Map<fsmTrace.Steps.SpecificStep, Integer> stepToStartingIndex = new HashMap<>();
-	final private Map<fsmTrace.Steps.SpecificStep, Integer> stepToEndingIndex = new HashMap<>();
+	private final Map<fsmTrace.Steps.SpecificStep, Integer> stepToStartingIndex = new HashMap<>();
+	private final Map<fsmTrace.Steps.SpecificStep, Integer> stepToEndingIndex = new HashMap<>();
 
-	private final HashMap<Integer, Boolean> canBackValueCache = new HashMap<>();
+	private final HashMap<List<? extends fsmTrace.States.Value>, fsmTrace.States.Value> backValueCache = new HashMap<>();
 
-	final private List<ITraceListener> listeners = new ArrayList<>();
+	private final Map<ITraceViewListener, Set<TraceViewCommand>> listeners = new HashMap<>();
 
 	public FsmTraceExplorer(Map<EObject, EObject> tracedToExe) {
 		this.tracedToExe = tracedToExe;
@@ -73,8 +75,8 @@ public class FsmTraceExplorer implements ITraceExplorer {
 		return result;
 	}
 
-	private fsmTrace.States.Value getActiveValue(List<? extends fsmTrace.States.Value> valueTrace,
-			fsmTrace.States.State state) {
+	private fsmTrace.States.Value getActiveValue(final List<? extends fsmTrace.States.Value> valueTrace,
+			final fsmTrace.States.State state) {
 		fsmTrace.States.Value result = null;
 		for (fsmTrace.States.Value value : valueTrace) {
 			if (value.getStatesNoOpposite().contains(state)) {
@@ -85,49 +87,27 @@ public class FsmTraceExplorer implements ITraceExplorer {
 		return result;
 	}
 
-	private int getPreviousValueIndex(final List<? extends fsmTrace.States.Value> valueTrace) {
-		fsmTrace.States.Value value = getActiveValue(valueTrace, currentState);
-		if (value != null) {
-			return valueTrace.indexOf(value) - 1;
-		} else {
-			int i = getCurrentStateIndex() - 1;
-			while (i > -1 && value == null) {
-				value = getActiveValue(valueTrace, statesTrace.get(i));
-				i--;
-			}
-			if (value == null) {
-				return -1;
-			} else {
-				return valueTrace.indexOf(value) - 1;
-			}
+	private fsmTrace.States.Value getPreviousValue(final List<? extends fsmTrace.States.Value> valueTrace) {
+		int i = getCurrentStateIndex() - 1;
+		final fsmTrace.States.Value value = getActiveValue(valueTrace, statesTrace.get(i + 1));
+		fsmTrace.States.Value previousValue = null;
+		while (i > -1 && (previousValue == null || previousValue == value)) {
+			previousValue = getActiveValue(valueTrace, statesTrace.get(i));
+			i--;
 		}
+		return previousValue;
 	}
 
-	private int getNextValueIndex(List<? extends fsmTrace.States.Value> valueTrace) {
-		fsmTrace.States.Value value = getActiveValue(valueTrace, currentState);
-		if (value != null) {
-			final int idx = valueTrace.indexOf(value) + 1;
-			if (idx < valueTrace.size()) {
-				return idx;
-			}
-			return -1;
-		} else {
-			int i = getCurrentStateIndex() + 1;
-			final int traceLength = valueTrace.size();
-			while (i < traceLength && value == null) {
-				value = getActiveValue(valueTrace, statesTrace.get(i));
-				i++;
-			}
-			if (value == null) {
-				return -1;
-			} else {
-				final int idx = valueTrace.indexOf(value) + 1;
-				if (idx < valueTrace.size()) {
-					return idx;
-				}
-				return -1;
-			}
+	private fsmTrace.States.Value getNextValue(final List<? extends fsmTrace.States.Value> valueTrace) {
+		int i = getCurrentStateIndex() + 1;
+		final fsmTrace.States.Value value = getActiveValue(valueTrace, statesTrace.get(i - 1));
+		fsmTrace.States.Value nextValue = null;
+		final int traceLength = valueTrace.stream().map(v -> v.getStatesNoOpposite().size()).reduce(0, (a, b) -> a + b);
+		while (i < traceLength && (nextValue == null || nextValue == value)) {
+			nextValue = getActiveValue(valueTrace, statesTrace.get(i));
+			i++;
 		}
+		return nextValue;
 	}
 
 	private int getStartingIndex(fsmTrace.Steps.SpecificStep step) {
@@ -393,6 +373,7 @@ public class FsmTraceExplorer implements ITraceExplorer {
 					}
 				}
 			}
+			backValueCache.clear();
 		} else if (eObject instanceof fsmTrace.States.Value) {
 			goTo(((fsmTrace.States.Value) eObject).getStatesNoOpposite().get(0));
 		}
@@ -462,11 +443,8 @@ public class FsmTraceExplorer implements ITraceExplorer {
 	@Override
 	public boolean canBackValue(int traceIndex) {
 		if (traceIndex > -1 && traceIndex < valueTraces.size()) {
-			return canBackValueCache.computeIfAbsent(traceIndex, i -> {
-				final List<? extends fsmTrace.States.Value> valueTrace = valueTraces.get(traceIndex);
-				final int previousValueIndex = getPreviousValueIndex(valueTrace);
-				return previousValueIndex > -1;
-			});
+			return backValueCache.computeIfAbsent(valueTraces.get(traceIndex),
+					valueTrace -> getPreviousValue(valueTrace)) != null;
 		}
 		return false;
 	}
@@ -479,10 +457,9 @@ public class FsmTraceExplorer implements ITraceExplorer {
 	@Override
 	public void backValue(int traceIndex) {
 		if (traceIndex > -1 && traceIndex < valueTraces.size()) {
-			final List<? extends fsmTrace.States.Value> valueTrace = valueTraces.get(traceIndex);
-			final int previousValueIndex = getPreviousValueIndex(valueTrace);
-			if (previousValueIndex > -1) {
-				jump(valueTrace.get(previousValueIndex));
+			final fsmTrace.States.Value previousValue = backValueCache.get(valueTraces.get(traceIndex));
+			if (previousValue != null) {
+				jump(previousValue);
 			}
 		}
 	}
@@ -490,10 +467,9 @@ public class FsmTraceExplorer implements ITraceExplorer {
 	@Override
 	public void stepValue(int traceIndex) {
 		if (traceIndex > -1 && traceIndex < valueTraces.size()) {
-			final List<? extends fsmTrace.States.Value> valueTrace = valueTraces.get(traceIndex);
-			final int nextValueIndex = getNextValueIndex(valueTrace);
-			if (nextValueIndex > -1) {
-				jump(valueTrace.get(nextValueIndex));
+			final fsmTrace.States.Value nextValue = getNextValue(valueTraces.get(traceIndex));
+			if (nextValue != null) {
+				jump(nextValue);
 			}
 		}
 	}
@@ -632,31 +608,28 @@ public class FsmTraceExplorer implements ITraceExplorer {
 
 	@Override
 	public void notifyListeners() {
-		for (ITraceListener listener : listeners) {
-			listener.update();
+		for (Map.Entry<ITraceViewListener, Set<TraceViewCommand>> entry : listeners.entrySet()) {
+			entry.getValue().forEach(c -> c.execute());
 		}
 	}
 
 	@Override
-	public void addListener(ITraceListener listener) {
+	public void registerCommand(ITraceViewListener listener, TraceViewCommand command) {
 		if (listener != null) {
-			listeners.add(listener);
+			Set<TraceViewCommand> commands = listeners.get(listener);
+			if (commands == null) {
+				commands = new HashSet<>();
+				listeners.put(listener, commands);
+			}
+			commands.add(command);
 		}
 	}
 
 	@Override
-	public void removeListener(ITraceListener listener) {
+	public void removeListener(ITraceViewListener listener) {
 		if (listener != null) {
 			listeners.remove(listener);
 		}
-	}
-
-	@Override
-	public void update() {
-		valueTraces.clear();
-		valueTraces.addAll(getAllValueTraces());
-		canBackValueCache.clear();
-		notifyListeners();
 	}
 
 	@Override
@@ -781,10 +754,33 @@ public class FsmTraceExplorer implements ITraceExplorer {
 				container = container.eContainer();
 			}
 			computeExplorerState(newPath);
-			update();
+			notifyListeners();
 		} else {
 			throw new IllegalArgumentException(
 					"FsmTraceExplorer expects specific steps and cannot handle this: " + step);
 		}
+	}
+
+	@Override
+	public void statesAdded(List<EObject> state) {
+	}
+
+	@Override
+	public void valuesAdded(List<EObject> value) {
+	}
+
+	@Override
+	public void dimensionsAdded(List<List<? extends EObject>> dimensions) {
+		valueTraces.clear();
+		valueTraces.addAll(getAllValueTraces());
+		notifyListeners();
+	}
+
+	@Override
+	public void stepsStarted(List<EObject> steps) {
+	}
+
+	@Override
+	public void stepsEnded(List<EObject> steps) {
 	}
 }

@@ -133,12 +133,12 @@ public class FsmTraceConstructor implements ITraceConstructor {
 	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Guard o_cast,
 			fsmTrace.States.State newState) {
 		boolean added = false;
-		if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EventGuard) {
+		if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TemporalGuard) {
+			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TemporalGuard) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EventGuard) {
 			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EventGuard) o_cast, newState);
 		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EvaluateGuard) {
 			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EvaluateGuard) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TemporalGuard) {
-			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TemporalGuard) o_cast, newState);
 		}
 
 		return added;
@@ -147,18 +147,18 @@ public class FsmTraceConstructor implements ITraceConstructor {
 	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NamedElement o_cast,
 			fsmTrace.States.State newState) {
 		boolean added = false;
-		if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) {
+		if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimedSystem) {
+			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimedSystem) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) {
 			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMClock) {
-			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMClock) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) {
-			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) o_cast, newState);
 		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Guard) {
 			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Guard) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMClock) {
+			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMClock) o_cast, newState);
 		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) {
 			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) o_cast, newState);
-		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimedSystem) {
-			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimedSystem) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) {
+			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) o_cast, newState);
 		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMEvent) {
 			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMEvent) o_cast, newState);
 		}
@@ -340,25 +340,26 @@ public class FsmTraceConstructor implements ITraceConstructor {
 						org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM o_cast = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) o;
 
 						if (p.getFeatureID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
-								.getTimeFSM_StepNumber().getFeatureID()) {
+								.getTimeFSM_LastStateChangeStepNumber().getFeatureID()) {
 
 							// Rollback: we remove the last value of this field from the new state
 							fsmTrace.States.fsm.TracedTimeFSM traced = (fsmTrace.States.fsm.TracedTimeFSM) exeToTraced
 									.get(o);
-							fsmTrace.States.TimeFSM_stepNumber_Value lastValue = traced.getStepNumberSequence()
-									.get(traced.getStepNumberSequence().size() - 1);
-							newState.getTimeFSM_stepNumber_Values().remove(lastValue);
+							fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value lastValue = traced
+									.getLastStateChangeStepNumberSequence()
+									.get(traced.getLastStateChangeStepNumberSequence().size() - 1);
+							newState.getTimeFSM_lastStateChangeStepNumber_Values().remove(lastValue);
 
 							// And we create a proper new value
-							fsmTrace.States.TimeFSM_stepNumber_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
-									.createTimeFSM_stepNumber_Value();
+							fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
+									.createTimeFSM_lastStateChangeStepNumber_Value();
 
-							int value = o_cast.getStepNumber();
+							int value = o_cast.getLastStateChangeStepNumber();
 
-							newValue.setStepNumber((int) value);
+							newValue.setLastStateChangeStepNumber((int) value);
 
-							traced.getStepNumberSequence().add(newValue);
-							newState.getTimeFSM_stepNumber_Values().add(newValue);
+							traced.getLastStateChangeStepNumberSequence().add(newValue);
+							newState.getTimeFSM_lastStateChangeStepNumber_Values().add(newValue);
 						} else
 
 						if (p.getFeatureID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
@@ -387,26 +388,25 @@ public class FsmTraceConstructor implements ITraceConstructor {
 						} else
 
 						if (p.getFeatureID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
-								.getTimeFSM_LastStateChangeStepNumber().getFeatureID()) {
+								.getTimeFSM_StepNumber().getFeatureID()) {
 
 							// Rollback: we remove the last value of this field from the new state
 							fsmTrace.States.fsm.TracedTimeFSM traced = (fsmTrace.States.fsm.TracedTimeFSM) exeToTraced
 									.get(o);
-							fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value lastValue = traced
-									.getLastStateChangeStepNumberSequence()
-									.get(traced.getLastStateChangeStepNumberSequence().size() - 1);
-							newState.getTimeFSM_lastStateChangeStepNumber_Values().remove(lastValue);
+							fsmTrace.States.TimeFSM_stepNumber_Value lastValue = traced.getStepNumberSequence()
+									.get(traced.getStepNumberSequence().size() - 1);
+							newState.getTimeFSM_stepNumber_Values().remove(lastValue);
 
 							// And we create a proper new value
-							fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
-									.createTimeFSM_lastStateChangeStepNumber_Value();
+							fsmTrace.States.TimeFSM_stepNumber_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
+									.createTimeFSM_stepNumber_Value();
 
-							int value = o_cast.getLastStateChangeStepNumber();
+							int value = o_cast.getStepNumber();
 
-							newValue.setLastStateChangeStepNumber((int) value);
+							newValue.setStepNumber((int) value);
 
-							traced.getLastStateChangeStepNumberSequence().add(newValue);
-							newState.getTimeFSM_lastStateChangeStepNumber_Values().add(newValue);
+							traced.getStepNumberSequence().add(newValue);
+							newState.getTimeFSM_stepNumber_Values().add(newValue);
 						}
 					}
 
