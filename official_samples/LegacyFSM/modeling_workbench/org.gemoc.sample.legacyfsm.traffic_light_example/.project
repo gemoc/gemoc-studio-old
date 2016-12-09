@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.gemoc.sample.legacytfsm.single_traffic_light_sample</name>
+	<name>org.gemoc.sample.legacyfsm.traffic_light_example</name>
 	<comment></comment>
 	<projects>
 	</projects>
