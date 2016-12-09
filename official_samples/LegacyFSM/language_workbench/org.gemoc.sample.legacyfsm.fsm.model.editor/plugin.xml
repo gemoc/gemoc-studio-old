@@ -7,30 +7,30 @@
 <plugin>
 
    <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated tfsm -->
+      <!-- @generated fsm -->
       <category
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="org.gemoc.sample.legacyfsm.fsm.presentation.TfsmModelWizardID"
-            name="%_UI_TfsmModelWizard_label"
-            class="org.gemoc.sample.legacyfsm.fsm.presentation.TfsmModelWizard"
+            id="org.gemoc.sample.legacyfsm.fsm.presentation.FsmModelWizardID"
+            name="%_UI_FsmModelWizard_label"
+            class="org.gemoc.sample.legacyfsm.fsm.presentation.FsmModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/TfsmModelFile.gif">
-         <description>%_UI_TfsmModelWizard_description</description>
+            icon="icons/full/obj16/FsmModelFile.gif">
+         <description>%_UI_FsmModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
 
    <extension point="org.eclipse.ui.editors">
-      <!-- @generated tfsm -->
+      <!-- @generated fsm -->
       <editor
-            id="org.gemoc.sample.legacyfsm.fsm.presentation.TfsmEditorID"
-            name="%_UI_TfsmEditor_label"
-            icon="icons/full/obj16/TfsmModelFile.gif"
-            extensions="tfsm"
-            class="org.gemoc.sample.legacyfsm.fsm.presentation.TfsmEditor"
-            contributorClass="org.gemoc.sample.legacyfsm.fsm.presentation.TfsmActionBarContributor">
+            id="org.gemoc.sample.legacyfsm.fsm.presentation.FsmEditorID"
+            name="%_UI_FsmEditor_label"
+            icon="icons/full/obj16/FsmModelFile.gif"
+            extensions="fsm"
+            class="org.gemoc.sample.legacyfsm.fsm.presentation.FsmEditor"
+            contributorClass="org.gemoc.sample.legacyfsm.fsm.presentation.FsmActionBarContributor">
       </editor>
    </extension>
 

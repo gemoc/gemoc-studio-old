@@ -104,23 +104,23 @@ class TimedSystemAspect {
        
        @fr.inria.diverse.k3.al.annotationprocessor.Main
        def public void main() {
-       	       val tfsm = _self.fsms.get(0)
+       	       val fsm = _self.fsms.get(0)
                var i = 0
                while (i != 20)
                {
 
                        if (i == 10)
                        {
-                               tfsm.localEvents.forEach [ e |
+                               fsm.localEvents.forEach [ e |
                                        e.trigger
                                ]
                        }
 
-                       tfsm.visit
+                       fsm.visit
 
                        if (i == 10)
                        {
-                               tfsm.localEvents.forEach[e|e.unTrigger]
+                               fsm.localEvents.forEach[e|e.unTrigger]
                        }
 
                        i++
@@ -131,7 +131,7 @@ class TimedSystemAspect {
        
        @fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
        def public void initializeModel(EList<String> args){
-       		val tfsm = _self.fsms.get(0)
-            tfsm.init	
+       		val fsm = _self.fsms.get(0)
+            fsm.init	
        }
 }

@@ -4,7 +4,7 @@
   <extension point="org.eclipse.sirius.componentization">
     <component class="org.gemoc.sample.legacyfsm.xsfsm.design.Activator"
                id="org.gemoc.sample.legacyfsm.xsfsm.design"
-	       name="XTFSM">
+	       name="XFSM">
     </component>
   </extension>
 </plugin>

@@ -71,15 +71,15 @@ public abstract class GuardVisitorAspect {
   protected static int _privk3_lastStateChangeStepNumber(final GuardVisitorAspectGuardAspectProperties _self_, final Guard _self) {
     EObject _eContainer = _self.eContainer();
     EObject _eContainer_1 = _eContainer.eContainer();
-    final TimeFSM tfsm = ((TimeFSM) _eContainer_1);
-    return TimeFSMVisitorAspect.lastStateChangeStepNumber(tfsm);
+    final TimeFSM fsm = ((TimeFSM) _eContainer_1);
+    return TimeFSMVisitorAspect.lastStateChangeStepNumber(fsm);
   }
   
   protected static void _privk3_saveLastStateChangeStepNumber(final GuardVisitorAspectGuardAspectProperties _self_, final Guard _self) {
     EObject _eContainer = _self.eContainer();
     EObject _eContainer_1 = _eContainer.eContainer();
-    final TimeFSM tfsm = ((TimeFSM) _eContainer_1);
-    int _stepNumber = TimeFSMVisitorAspect.stepNumber(tfsm);
-    TimeFSMVisitorAspect.lastStateChangeStepNumber(tfsm, _stepNumber);
+    final TimeFSM fsm = ((TimeFSM) _eContainer_1);
+    int _stepNumber = TimeFSMVisitorAspect.stepNumber(fsm);
+    TimeFSMVisitorAspect.lastStateChangeStepNumber(fsm, _stepNumber);
   }
 }

@@ -98,13 +98,13 @@ abstract class GuardVisitorAspect {
 	}
 
 	protected def int lastStateChangeStepNumber() {
-		val tfsm = _self.eContainer.eContainer as TimeFSM
-		return tfsm.lastStateChangeStepNumber
+		val fsm = _self.eContainer.eContainer as TimeFSM
+		return fsm.lastStateChangeStepNumber
 	}
 
 	protected def void saveLastStateChangeStepNumber() {
-		val tfsm = _self.eContainer.eContainer as TimeFSM
-		tfsm.lastStateChangeStepNumber = tfsm.stepNumber
+		val fsm = _self.eContainer.eContainer as TimeFSM
+		fsm.lastStateChangeStepNumber = fsm.stepNumber
 	}
 }
 

@@ -6,7 +6,7 @@ import org.gemoc.sample.legacyfsm.fsm.FSMEvent;
 import org.gemoc.sample.legacyfsm.fsm.TemporalGuard;
 import org.gemoc.sample.legacyfsm.fsm.Transition;
 
-/** TFSM services.
+/** FSM services.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  * 

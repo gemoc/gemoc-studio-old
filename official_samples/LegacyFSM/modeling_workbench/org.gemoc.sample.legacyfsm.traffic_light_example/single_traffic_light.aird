@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tfsm="http://www.gemoc.org/legacytfsm/tfsm" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="__DiqILI9EearyrA2e7QRhw" selectedViews="_E5P24LvOEeaIC_LpdF_lRw _FD0vMLvOEeaIC_LpdF_lRw" version="10.1.6.201608121430">
-  <semanticResources>single_traffic_light.tfsm</semanticResources>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:fsm="http://www.gemoc.org/legacyfsm/fsm" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="__DiqILI9EearyrA2e7QRhw" selectedViews="_E5P24LvOEeaIC_LpdF_lRw _FD0vMLvOEeaIC_LpdF_lRw" version="10.1.6.201608121430">
+  <semanticResources>single_traffic_light.fsm</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_AjTMsLI-EearyrA2e7QRhw">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_AoM60LI-EearyrA2e7QRhw" name="TrafficControl">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_AoM60bI-EearyrA2e7QRhw" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -30,25 +30,25 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_AoNh4LI-EearyrA2e7QRhw" name="TrafficControl">
-        <target xmi:type="tfsm:TimedSystem" href="single_traffic_light.tfsm#/"/>
-        <semanticElements xmi:type="tfsm:TimedSystem" href="single_traffic_light.tfsm#/"/>
+        <target xmi:type="fsm:TimedSystem" href="single_traffic_light.fsm#/"/>
+        <semanticElements xmi:type="fsm:TimedSystem" href="single_traffic_light.fsm#/"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_AoNh4bI-EearyrA2e7QRhw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" foregroundColor="224,133,3">
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_AoNh4rI-EearyrA2e7QRhw" name="Semaphore">
-          <target xmi:type="tfsm:TimeFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
-          <semanticElements xmi:type="tfsm:TimeFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
+          <target xmi:type="fsm:TimeFSM" href="single_traffic_light.fsm#//@fsms.0"/>
+          <semanticElements xmi:type="fsm:TimeFSM" href="single_traffic_light.fsm#//@fsms.0"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_AoNh47I-EearyrA2e7QRhw" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
-            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@style"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='FSM']/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']"/>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='FSM']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']"/>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_AoNh5LI-EearyrA2e7QRhw"/>
-      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer"/>
-      <target xmi:type="tfsm:TimedSystem" href="single_traffic_light.tfsm#/"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer"/>
+      <target xmi:type="fsm:TimedSystem" href="single_traffic_light.fsm#/"/>
     </ownedRepresentations>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Ars6wLI-EearyrA2e7QRhw" name="Semaphore">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Ars6wbI-EearyrA2e7QRhw" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -157,90 +157,90 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_Ars6w7I-EearyrA2e7QRhw" name="switch" width="-1" height="-1">
-        <target xmi:type="tfsm:FSMEvent" href="single_traffic_light.tfsm#//@tfsms.0/@localEvents.0"/>
-        <semanticElements xmi:type="tfsm:FSMEvent" href="single_traffic_light.tfsm#//@tfsms.0/@localEvents.0"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_C6OU4LJLEeajFIRtVtQLrw" showIcon="false" iconPath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/event_small.gif" borderSize="2" borderSizeComputationExpression="2" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/event_small.gif">
+        <target xmi:type="fsm:FSMEvent" href="single_traffic_light.fsm#//@fsms.0/@localEvents.0"/>
+        <semanticElements xmi:type="fsm:FSMEvent" href="single_traffic_light.fsm#//@fsms.0/@localEvents.0"/>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_C6OU4LJLEeajFIRtVtQLrw" showIcon="false" iconPath="/org.gemoc.sample.legacyfsm.fsm.design/icons/event_small.gif" borderSize="2" borderSizeComputationExpression="2" workspacePath="/org.gemoc.sample.legacyfsm.fsm.design/icons/event_small.gif">
           <labelFormat>bold</labelFormat>
-          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='LocalEvents']/@style"/>
+          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@nodeMappings[name='LocalEvents']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='LocalEvents']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@nodeMappings[name='LocalEvents']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_Ars6xbI-EearyrA2e7QRhw" name="minutes" width="5" height="5" resizeKind="NSEW">
-        <target xmi:type="tfsm:FSMClock" href="single_traffic_light.tfsm#//@tfsms.0/@localClock"/>
-        <semanticElements xmi:type="tfsm:FSMClock" href="single_traffic_light.tfsm#//@tfsms.0/@localClock"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_C6QxILJLEeajFIRtVtQLrw" showIcon="false" borderSize="2" borderSizeComputationExpression="2" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/clock_local_small.gif">
+        <target xmi:type="fsm:FSMClock" href="single_traffic_light.fsm#//@fsms.0/@localClock"/>
+        <semanticElements xmi:type="fsm:FSMClock" href="single_traffic_light.fsm#//@fsms.0/@localClock"/>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_C6QxILJLEeajFIRtVtQLrw" showIcon="false" borderSize="2" borderSizeComputationExpression="2" workspacePath="/org.gemoc.sample.legacyfsm.fsm.design/icons/clock_local_small.gif">
           <labelFormat>bold</labelFormat>
-          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']/@style"/>
+          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Ars6x7I-EearyrA2e7QRhw" name="initSemaphore" outgoingEdges="_Arth0rI-EearyrA2e7QRhw">
-        <target xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.0"/>
-        <semanticElements xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.0"/>
+        <target xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.0"/>
+        <semanticElements xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.0"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Ars6yLI-EearyrA2e7QRhw" showIcon="false" borderSize="4" borderSizeComputationExpression="4" backgroundStyle="Liquid" foregroundColor="204,242,166">
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']/@conditionnalStyles.0/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Ars6ybI-EearyrA2e7QRhw" name="Yellow" outgoingEdges="_Arth1bI-EearyrA2e7QRhw" incomingEdges="_Arth0rI-EearyrA2e7QRhw _Arth2LI-EearyrA2e7QRhw">
-        <target xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
-        <semanticElements xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
+        <target xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.1"/>
+        <semanticElements xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Ars6yrI-EearyrA2e7QRhw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="204,242,166">
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Arth0LI-EearyrA2e7QRhw" name="Green" outgoingEdges="_Arth2LI-EearyrA2e7QRhw" incomingEdges="_Arth1bI-EearyrA2e7QRhw">
-        <target xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
-        <semanticElements xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
+        <target xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.2"/>
+        <semanticElements xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.2"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Arth0bI-EearyrA2e7QRhw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="204,242,166">
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Arth0rI-EearyrA2e7QRhw" sourceNode="_Ars6x7I-EearyrA2e7QRhw" targetNode="_Ars6ybI-EearyrA2e7QRhw">
-        <target xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.0"/>
-        <semanticElements xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <target xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.0"/>
+        <semanticElements xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Arth07I-EearyrA2e7QRhw" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_Arth1LI-EearyrA2e7QRhw" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Arth1bI-EearyrA2e7QRhw" sourceNode="_Ars6ybI-EearyrA2e7QRhw" targetNode="_Arth0LI-EearyrA2e7QRhw">
-        <target xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.1"/>
-        <semanticElements xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <target xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.1"/>
+        <semanticElements xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Arth1rI-EearyrA2e7QRhw" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_Arth17I-EearyrA2e7QRhw" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Arth2LI-EearyrA2e7QRhw" sourceNode="_Arth0LI-EearyrA2e7QRhw" targetNode="_Ars6ybI-EearyrA2e7QRhw">
-        <target xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
-        <semanticElements xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <target xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.2"/>
+        <semanticElements xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.2"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Arth2bI-EearyrA2e7QRhw" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_Arth2rI-EearyrA2e7QRhw" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']"/>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Arth27I-EearyrA2e7QRhw"/>
-      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer"/>
-      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.design/description/XSTFSM.odesign#//@ownedViewpoints[name='TFSM_legacy_XSTFSM_Viewpoint']/@ownedRepresentationExtensions[name='TFSM_legacy_XSTFSM']/@layers[name='Animation']"/>
-      <target xmi:type="tfsm:TimeFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.design/description/XSFSM.odesign#//@ownedViewpoints[name='FSM_legacy_XSFSM_Viewpoint']/@ownedRepresentationExtensions[name='FSM_legacy_XSFSM']/@layers[name='Animation']"/>
+      <target xmi:type="fsm:TimeFSM" href="single_traffic_light.fsm#//@fsms.0"/>
     </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='TFSM_Legacy_ViewPoint']"/>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='FSM_Legacy_ViewPoint']"/>
   </ownedViews>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_AtEzwLI-EearyrA2e7QRhw">
-    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.design/description/XSTFSM.odesign#//@ownedViewpoints[name='TFSM_legacy_XSTFSM_Viewpoint']"/>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.design/description/XSFSM.odesign#//@ownedViewpoints[name='FSM_legacy_XSFSM_Viewpoint']"/>
   </ownedViews>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_BnW-0LJLEeajFIRtVtQLrw">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_xJNU4LJLEeal3pHbrjQS6A" name="new TimeFSM_AllInOne">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_xJNU4bJLEeal3pHbrjQS6A" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_xJNU4rJLEeal3pHbrjQS6A">
-          <computedStyleDescriptions xmi:type="style:WorkspaceImageDescription" xmi:id="_PPzfkLJNEeaEqqpmVeaH9w" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/icons/clock_local_small.png">
+          <computedStyleDescriptions xmi:type="style:WorkspaceImageDescription" xmi:id="_PPzfkLJNEeaEqqpmVeaH9w" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/icons/clock_local_small.png">
             <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </computedStyleDescriptions>
@@ -349,93 +349,93 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_xJNU47JLEeal3pHbrjQS6A" name="switch" width="-1" height="-1" resizeKind="NSEW">
-        <target xmi:type="tfsm:FSMEvent" href="single_traffic_light.tfsm#//@tfsms.0/@localEvents.0"/>
-        <semanticElements xmi:type="tfsm:FSMEvent" href="single_traffic_light.tfsm#//@tfsms.0/@localEvents.0"/>
+        <target xmi:type="fsm:FSMEvent" href="single_traffic_light.fsm#//@fsms.0/@localEvents.0"/>
+        <semanticElements xmi:type="fsm:FSMEvent" href="single_traffic_light.fsm#//@fsms.0/@localEvents.0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_xJNU5LJLEeal3pHbrjQS6A" showIcon="false" labelPosition="node" workspacePath="/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/icons/event_small.gif">
-          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@nodeMappings[name='LocalEvents']/@style"/>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_xJNU5LJLEeal3pHbrjQS6A" showIcon="false" labelPosition="node" workspacePath="/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/icons/event_small.gif">
+          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@nodeMappings[name='LocalEvents']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@nodeMappings[name='LocalEvents']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@nodeMappings[name='LocalEvents']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_xJNU5bJLEeal3pHbrjQS6A" name="minutes" width="-1" height="-1" resizeKind="NSEW">
-        <target xmi:type="tfsm:FSMClock" href="single_traffic_light.tfsm#//@tfsms.0/@localClock"/>
-        <semanticElements xmi:type="tfsm:FSMClock" href="single_traffic_light.tfsm#//@tfsms.0/@localClock"/>
+        <target xmi:type="fsm:FSMClock" href="single_traffic_light.fsm#//@fsms.0/@localClock"/>
+        <semanticElements xmi:type="fsm:FSMClock" href="single_traffic_light.fsm#//@fsms.0/@localClock"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PPzfkbJNEeaEqqpmVeaH9w" description="_PPzfkLJNEeaEqqpmVeaH9w" workspacePath="/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/icons/clock_local_small.png"/>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@nodeMappings[name='LocalClock']"/>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PPzfkbJNEeaEqqpmVeaH9w" description="_PPzfkLJNEeaEqqpmVeaH9w" workspacePath="/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/icons/clock_local_small.png"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@nodeMappings[name='LocalClock']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_xJNU57JLEeal3pHbrjQS6A" name="initSemaphore" outgoingEdges="__JQIMLJLEeakPJbmEegQbA">
-        <target xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.0"/>
-        <semanticElements xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.0"/>
+        <target xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.0"/>
+        <semanticElements xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_M0vLULJNEeaEqqpmVeaH9w" borderSize="4" borderSizeComputationExpression="4" backgroundStyle="Liquid" foregroundColor="204,242,166">
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']/@conditionnalStyles.0/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_xJNU6bJLEeal3pHbrjQS6A" name="Yellow" outgoingEdges="__JQIM7JLEeakPJbmEegQbA" incomingEdges="__JQIMLJLEeakPJbmEegQbA __JQINrJLEeakPJbmEegQbA">
-        <target xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
-        <semanticElements xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
+        <target xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.1"/>
+        <semanticElements xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_xJNU6rJLEeal3pHbrjQS6A" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="204,242,166">
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_xJNU67JLEeal3pHbrjQS6A" name="Green" outgoingEdges="__JQINrJLEeakPJbmEegQbA" incomingEdges="__JQIM7JLEeakPJbmEegQbA">
-        <target xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
-        <semanticElements xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
+        <target xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.2"/>
+        <semanticElements xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.2"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_xJNU7LJLEeal3pHbrjQS6A" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="204,242,166">
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="__JQIMLJLEeakPJbmEegQbA" name="after 1 on minutes&#xA; / &#xA;dosomething&#xA;" sourceNode="_xJNU57JLEeal3pHbrjQS6A" targetNode="_xJNU6bJLEeal3pHbrjQS6A">
-        <target xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.0"/>
-        <semanticElements xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <target xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.0"/>
+        <semanticElements xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="__JQIMbJLEeakPJbmEegQbA" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="__JQIMrJLEeakPJbmEegQbA"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="__JQIM7JLEeakPJbmEegQbA" name="after 3 on minutes&#xA; / &#xA;doGreen&#xA;" sourceNode="_xJNU6bJLEeal3pHbrjQS6A" targetNode="_xJNU67JLEeal3pHbrjQS6A">
-        <target xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.1"/>
-        <semanticElements xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <target xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.1"/>
+        <semanticElements xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="__JQINLJLEeakPJbmEegQbA" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="__JQINbJLEeakPJbmEegQbA"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="__JQINrJLEeakPJbmEegQbA" name="when switch&#xA; / &#xA;doRed&#xA;" sourceNode="_xJNU67JLEeal3pHbrjQS6A" targetNode="_xJNU6bJLEeal3pHbrjQS6A">
-        <target xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
-        <semanticElements xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <target xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.2"/>
+        <semanticElements xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.2"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="__JQIN7JLEeakPJbmEegQbA" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="__JQIOLJLEeakPJbmEegQbA"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']"/>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_xJNU7bJLEeal3pHbrjQS6A"/>
-      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer"/>
-      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@additionalLayers[name='Debug']"/>
-      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@additionalLayers[name='Animation']"/>
-      <target xmi:type="tfsm:TimeFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@additionalLayers[name='Debug']"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']/@ownedRepresentations[name='TimeFSM_AllInOne']/@additionalLayers[name='Animation']"/>
+      <target xmi:type="fsm:TimeFSM" href="single_traffic_light.fsm#//@fsms.0"/>
     </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.allinone.design/description/AllinOneXSTFSM.odesign#//@ownedViewpoints[name='XSTFSM_AllInOneViewpoint']"/>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.allinone.design/description/AllinOneXSFSM.odesign#//@ownedViewpoints[name='XSFSM_AllInOneViewpoint']"/>
   </ownedViews>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_E5P24LvOEeaIC_LpdF_lRw">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_E967gLvOEeaIC_LpdF_lRw" name="TrafficControl">
@@ -466,30 +466,30 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E97ikrvOEeaIC_LpdF_lRw" name="TrafficControl">
-        <target xmi:type="tfsm:TimedSystem" href="single_traffic_light.tfsm#/"/>
-        <semanticElements xmi:type="tfsm:TimedSystem" href="single_traffic_light.tfsm#/"/>
+        <target xmi:type="fsm:TimedSystem" href="single_traffic_light.fsm#/"/>
+        <semanticElements xmi:type="fsm:TimedSystem" href="single_traffic_light.fsm#/"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E97ik7vOEeaIC_LpdF_lRw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" foregroundColor="224,133,3">
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E97ilLvOEeaIC_LpdF_lRw" name="Semaphore">
-          <target xmi:type="tfsm:TimeFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
-          <semanticElements xmi:type="tfsm:TimeFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
+          <target xmi:type="fsm:TimeFSM" href="single_traffic_light.fsm#//@fsms.0"/>
+          <semanticElements xmi:type="fsm:TimeFSM" href="single_traffic_light.fsm#//@fsms.0"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E97ilbvOEeaIC_LpdF_lRw" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
-            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']/@style"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='FSM']/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='TFSM']"/>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer/@containerMappings[name='TimedSystem']/@subContainerMappings[name='FSM']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']"/>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_E97ilrvOEeaIC_LpdF_lRw"/>
-      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer"/>
-      <target xmi:type="tfsm:TimedSystem" href="single_traffic_light.tfsm#/"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='TimedSystem']/@defaultLayer"/>
+      <target xmi:type="fsm:TimedSystem" href="single_traffic_light.fsm#/"/>
     </ownedRepresentations>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_FCLwcLvOEeaIC_LpdF_lRw" name="Semaphore">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_FCLwcbvOEeaIC_LpdF_lRw" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_FCLwcrvOEeaIC_LpdF_lRw">
-          <computedStyleDescriptions xmi:type="style:WorkspaceImageDescription" xmi:id="_JBIc0LvPEeaqweNDdDMOHw" borderSizeComputationExpression="2" showIcon="false" labelExpression="minutes : &lt;N/A>" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" roundedCorner="true" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/clock_local_small.gif">
+          <computedStyleDescriptions xmi:type="style:WorkspaceImageDescription" xmi:id="_JBIc0LvPEeaqweNDdDMOHw" borderSizeComputationExpression="2" showIcon="false" labelExpression="minutes : &lt;N/A>" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" roundedCorner="true" workspacePath="/org.gemoc.sample.legacyfsm.fsm.design/icons/clock_local_small.gif">
             <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
             <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -599,86 +599,86 @@
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_FCLwc7vOEeaIC_LpdF_lRw" name="switch" width="-1" height="-1">
-        <target xmi:type="tfsm:FSMEvent" href="single_traffic_light.tfsm#//@tfsms.0/@localEvents.0"/>
-        <semanticElements xmi:type="tfsm:FSMEvent" href="single_traffic_light.tfsm#//@tfsms.0/@localEvents.0"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_FCLwdLvOEeaIC_LpdF_lRw" showIcon="false" iconPath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/event_small.gif" borderSize="2" borderSizeComputationExpression="2" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/event_small.gif">
+        <target xmi:type="fsm:FSMEvent" href="single_traffic_light.fsm#//@fsms.0/@localEvents.0"/>
+        <semanticElements xmi:type="fsm:FSMEvent" href="single_traffic_light.fsm#//@fsms.0/@localEvents.0"/>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_FCLwdLvOEeaIC_LpdF_lRw" showIcon="false" iconPath="/org.gemoc.sample.legacyfsm.fsm.design/icons/event_small.gif" borderSize="2" borderSizeComputationExpression="2" workspacePath="/org.gemoc.sample.legacyfsm.fsm.design/icons/event_small.gif">
           <labelFormat>bold</labelFormat>
-          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='LocalEvents']/@style"/>
+          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@nodeMappings[name='LocalEvents']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='LocalEvents']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@nodeMappings[name='LocalEvents']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_FCLwdbvOEeaIC_LpdF_lRw" name="minutes : &lt;N/A>" width="5" height="5" resizeKind="NSEW">
-        <target xmi:type="tfsm:FSMClock" href="single_traffic_light.tfsm#//@tfsms.0/@localClock"/>
-        <semanticElements xmi:type="tfsm:FSMClock" href="single_traffic_light.tfsm#//@tfsms.0/@localClock"/>
+        <target xmi:type="fsm:FSMClock" href="single_traffic_light.fsm#//@fsms.0/@localClock"/>
+        <semanticElements xmi:type="fsm:FSMClock" href="single_traffic_light.fsm#//@fsms.0/@localClock"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_JBJD4LvPEeaqweNDdDMOHw" showIcon="false" description="_JBIc0LvPEeaqweNDdDMOHw" borderSize="2" borderSizeComputationExpression="2" workspacePath="/org.gemoc.sample.legacytfsm.tfsm.design/icons/clock_local_small.gif">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_JBJD4LvPEeaqweNDdDMOHw" showIcon="false" description="_JBIc0LvPEeaqweNDdDMOHw" borderSize="2" borderSizeComputationExpression="2" workspacePath="/org.gemoc.sample.legacyfsm.fsm.design/icons/clock_local_small.gif">
           <labelFormat>bold</labelFormat>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_FCLwd7vOEeaIC_LpdF_lRw" name="initSemaphore" outgoingEdges="_FCLwfbvOEeaIC_LpdF_lRw">
-        <target xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.0"/>
-        <semanticElements xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.0"/>
+        <target xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.0"/>
+        <semanticElements xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.0"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_FCLweLvOEeaIC_LpdF_lRw" showIcon="false" borderSize="4" borderSizeComputationExpression="4" backgroundStyle="Liquid" foregroundColor="204,242,166">
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']/@conditionnalStyles.0/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_FCLwebvOEeaIC_LpdF_lRw" name="Yellow" outgoingEdges="_FCLwgLvOEeaIC_LpdF_lRw" incomingEdges="_FCLwfbvOEeaIC_LpdF_lRw _FCLwg7vOEeaIC_LpdF_lRw">
-        <target xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
-        <semanticElements xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.1"/>
+        <target xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.1"/>
+        <semanticElements xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_FCLwervOEeaIC_LpdF_lRw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="204,242,166">
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_FCLwe7vOEeaIC_LpdF_lRw" name="Green" outgoingEdges="_FCLwg7vOEeaIC_LpdF_lRw" incomingEdges="_FCLwgLvOEeaIC_LpdF_lRw">
-        <target xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
-        <semanticElements xmi:type="tfsm:State" href="single_traffic_light.tfsm#//@tfsms.0/@ownedStates.2"/>
+        <target xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.2"/>
+        <semanticElements xmi:type="fsm:State" href="single_traffic_light.fsm#//@fsms.0/@ownedStates.2"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_FCLwfLvOEeaIC_LpdF_lRw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="204,242,166">
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@containerMappings[name='State']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_FCLwfbvOEeaIC_LpdF_lRw" name="after 1 on minutes&#xA; / &#xA;dosomething&#xA;" sourceNode="_FCLwd7vOEeaIC_LpdF_lRw" targetNode="_FCLwebvOEeaIC_LpdF_lRw">
-        <target xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.0"/>
-        <semanticElements xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.0"/>
+        <target xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.0"/>
+        <semanticElements xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.0"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_FCLwfrvOEeaIC_LpdF_lRw" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_FCLwf7vOEeaIC_LpdF_lRw" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_FCLwgLvOEeaIC_LpdF_lRw" name="after 3 on minutes&#xA; / &#xA;doGreen&#xA;" sourceNode="_FCLwebvOEeaIC_LpdF_lRw" targetNode="_FCLwe7vOEeaIC_LpdF_lRw">
-        <target xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.1"/>
-        <semanticElements xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.1"/>
+        <target xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.1"/>
+        <semanticElements xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.1"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_FCLwgbvOEeaIC_LpdF_lRw" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_FCLwgrvOEeaIC_LpdF_lRw" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_FCLwg7vOEeaIC_LpdF_lRw" name="when switch&#xA; / &#xA;doRed&#xA;" sourceNode="_FCLwe7vOEeaIC_LpdF_lRw" targetNode="_FCLwebvOEeaIC_LpdF_lRw">
-        <target xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
-        <semanticElements xmi:type="tfsm:Transition" href="single_traffic_light.tfsm#//@tfsms.0/@ownedTransitions.2"/>
+        <target xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.2"/>
+        <semanticElements xmi:type="fsm:Transition" href="single_traffic_light.fsm#//@fsms.0/@ownedTransitions.2"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_FCLwhLvOEeaIC_LpdF_lRw" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']/@style"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_FCLwhbvOEeaIC_LpdF_lRw" showIcon="false"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']"/>
       </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']"/>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_FCLwhrvOEeaIC_LpdF_lRw"/>
-      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']/@ownedRepresentations[name='TFSM']/@defaultLayer"/>
-      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.design/description/XSTFSM.odesign#//@ownedViewpoints[name='LegacyTFSM_XSTFSM_Viewpoint']/@ownedRepresentationExtensions[name='LegacyTFSM_XSTFSM']/@layers[name='Debug']"/>
-      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.design/description/XSTFSM.odesign#//@ownedViewpoints[name='LegacyTFSM_XSTFSM_Viewpoint']/@ownedRepresentationExtensions[name='LegacyTFSM_XSTFSM']/@layers[name='Animation']"/>
-      <target xmi:type="tfsm:TimeFSM" href="single_traffic_light.tfsm#//@tfsms.0"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.design/description/XSFSM.odesign#//@ownedViewpoints[name='LegacyFSM_XSFSM_Viewpoint']/@ownedRepresentationExtensions[name='LegacyFSM_XSFSM']/@layers[name='Debug']"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.design/description/XSFSM.odesign#//@ownedViewpoints[name='LegacyFSM_XSFSM_Viewpoint']/@ownedRepresentationExtensions[name='LegacyFSM_XSFSM']/@layers[name='Animation']"/>
+      <target xmi:type="fsm:TimeFSM" href="single_traffic_light.fsm#//@fsms.0"/>
     </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.legacytfsm.tfsm.design/description/tfsm.odesign#//@ownedViewpoints[name='LegacyTFSM_TFSM_ViewPoint']"/>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']"/>
   </ownedViews>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_FD0vMLvOEeaIC_LpdF_lRw">
-    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.legacytfsm.xstfsm.design/description/XSTFSM.odesign#//@ownedViewpoints[name='LegacyTFSM_XSTFSM_Viewpoint']"/>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.gemoc.sample.legacyfsm.xsfsm.design/description/XSFSM.odesign#//@ownedViewpoints[name='LegacyFSM_XSFSM_Viewpoint']"/>
   </ownedViews>
 </viewpoint:DAnalysis>

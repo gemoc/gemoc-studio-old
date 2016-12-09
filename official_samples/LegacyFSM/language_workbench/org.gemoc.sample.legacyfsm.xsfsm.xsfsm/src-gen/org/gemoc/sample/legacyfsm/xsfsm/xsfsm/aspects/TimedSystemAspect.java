@@ -33,20 +33,20 @@ public class TimedSystemAspect {
   
   protected static void _privk3_main(final TimedSystemAspectTimedSystemAspectProperties _self_, final TimedSystem _self) {
     EList<TimeFSM> _fsms = _self.getFsms();
-    final TimeFSM tfsm = _fsms.get(0);
+    final TimeFSM fsm = _fsms.get(0);
     int i = 0;
     while ((i != 20)) {
       {
         if ((i == 10)) {
-          EList<FSMEvent> _localEvents = tfsm.getLocalEvents();
+          EList<FSMEvent> _localEvents = fsm.getLocalEvents();
           final Consumer<FSMEvent> _function = (FSMEvent e) -> {
             FSMEventAspect.trigger(e);
           };
           _localEvents.forEach(_function);
         }
-        TimeFSMVisitorAspect.visit(tfsm);
+        TimeFSMVisitorAspect.visit(fsm);
         if ((i == 10)) {
-          EList<FSMEvent> _localEvents_1 = tfsm.getLocalEvents();
+          EList<FSMEvent> _localEvents_1 = fsm.getLocalEvents();
           final Consumer<FSMEvent> _function_1 = (FSMEvent e) -> {
             FSMEventAspect.unTrigger(e);
           };
@@ -60,7 +60,7 @@ public class TimedSystemAspect {
   
   protected static void _privk3_initializeModel(final TimedSystemAspectTimedSystemAspectProperties _self_, final TimedSystem _self, final EList<String> args) {
     EList<TimeFSM> _fsms = _self.getFsms();
-    final TimeFSM tfsm = _fsms.get(0);
-    TimeFSMAspect.init(tfsm);
+    final TimeFSM fsm = _fsms.get(0);
+    TimeFSMAspect.init(fsm);
   }
 }

@@ -11,8 +11,8 @@ public class XsfsmDebugServices extends AbstractGemocDebuggerServices {
 	protected List<StringCouple> getRepresentationRefreshList() {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 
-		res.add(new StringCouple("TFSM", "Debug"));
-		res.add(new StringCouple("XTFSM", "Debug"));
+		res.add(new StringCouple("FSM", "Debug"));
+		res.add(new StringCouple("XFSM", "Debug"));
 
 		return res;
 	}

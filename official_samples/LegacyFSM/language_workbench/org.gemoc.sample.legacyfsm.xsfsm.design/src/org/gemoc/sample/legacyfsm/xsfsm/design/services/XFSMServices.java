@@ -9,7 +9,7 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TemporalGuard;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
 
-/** TFSM services.
+/** FSM services.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  * 

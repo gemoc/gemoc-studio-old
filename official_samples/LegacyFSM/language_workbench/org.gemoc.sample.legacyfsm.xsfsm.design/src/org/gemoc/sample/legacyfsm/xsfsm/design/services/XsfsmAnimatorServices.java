@@ -11,8 +11,8 @@ public class XsfsmAnimatorServices extends AbstractGemocAnimatorServices {
 	protected List<StringCouple> getRepresentationRefreshList() {
 		final List<StringCouple> res = new ArrayList<StringCouple>();
 
-		res.add(new StringCouple("TFSM", "Animation"));
-		res.add(new StringCouple("XTFSM", "Animation"));
+		res.add(new StringCouple("FSM", "Animation"));
+		res.add(new StringCouple("XFSM", "Animation"));
 
 		return res;
 	}

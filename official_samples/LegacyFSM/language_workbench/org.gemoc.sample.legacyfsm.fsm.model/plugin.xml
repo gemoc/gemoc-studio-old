@@ -7,10 +7,10 @@
 <plugin>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated tfsm -->
+      <!-- @generated fsm -->
       <package
-            uri="http://www.gemoc.org/legacytfsm/tfsm"
-            class="org.gemoc.sample.legacyfsm.fsm.TfsmPackage"
+            uri="http://www.gemoc.org/legacyfsm/fsm"
+            class="org.gemoc.sample.legacyfsm.fsm.FsmPackage"
             genModel="model/fsm.genmodel"/>
    </extension>
 
