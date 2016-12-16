@@ -13,15 +13,15 @@
       <wizard
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
-            class="org.gemoc.gemoc_modeling_workbench.sample.deployer.wizards.TFSM_PlainK3ExampleWizard"
+            class="org.gemoc.gemoc_modeling_workbench.sample.deployer.wizards.LegacyFSMExampleWizard"
             finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             hasPages="false"
             icon="icons/IconeGemocModel-16.png"
             id="org.gemoc.gemoc_modeling_workbench.sample.deployer.tfsm_plaink3.model.wizard"
-            name="GEMOC model for TFSM Language (Sequential)"
+            name="GEMOC model for Legacy FSM Language (Sequential)"
             preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling">
          <description>
-            T⁮his project contains some TFSM models that can be executed if you have installed the TFSM language.
+            T⁮his project contains some FSM models that can be executed if you have installed the LegacyFSM language.
          </description>
       </wizard>      
    </extension>

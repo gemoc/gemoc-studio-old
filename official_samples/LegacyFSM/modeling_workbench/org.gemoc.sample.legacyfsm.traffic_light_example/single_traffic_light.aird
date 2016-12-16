@@ -68,7 +68,7 @@
   <diagram:DSemanticDiagram xmi:id="_p7tXkL4sEeabhPWkkdEXjw" name="Semaphore">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_p7tXkb4sEeabhPWkkdEXjw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_p7tXkr4sEeabhPWkkdEXjw">
-        <computedStyleDescriptions xmi:type="style:WorkspaceImageDescription" xmi:id="_tCOckL4sEeabhPWkkdEXjw" borderSizeComputationExpression="2" showIcon="false" labelExpression="minutes : &lt;N/A>" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" roundedCorner="true" workspacePath="/org.gemoc.sample.legacyfsm.fsm.design/icons/clock_local_small.gif">
+        <computedStyleDescriptions xmi:type="style:WorkspaceImageDescription" xmi:id="_7nLo4L4uEeabhPWkkdEXjw" borderSizeComputationExpression="2" showIcon="false" labelExpression="minutes : &lt;N/A>" sizeComputationExpression="5" resizeKind="NSEW" arcWidth="1" arcHeight="1" roundedCorner="true" workspacePath="/org.gemoc.sample.legacyfsm.fsm.design/icons/clock_local_small.gif">
           <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelFormat>bold</labelFormat>
           <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -92,9 +92,9 @@
           <children xmi:type="notation:Node" xmi:id="_p7_rc74sEeabhPWkkdEXjw" type="5002">
             <layoutConstraint xmi:type="notation:Location" xmi:id="_p7_rdL4sEeabhPWkkdEXjw" y="-21"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_tCbQ4L4sEeabhPWkkdEXjw" type="3005" element="_tCPDoL4sEeabhPWkkdEXjw">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_tCbQ4b4sEeabhPWkkdEXjw" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tCbQ4r4sEeabhPWkkdEXjw"/>
+          <children xmi:type="notation:Node" xmi:id="_7nRIcL4uEeabhPWkkdEXjw" type="3005" element="_7nLo4b4uEeabhPWkkdEXjw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_7nRIcb4uEeabhPWkkdEXjw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7nRIcr4uEeabhPWkkdEXjw"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_p7_rcb4sEeabhPWkkdEXjw" fontName="Segoe UI" fontHeight="8" bold="true"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p7_rcr4sEeabhPWkkdEXjw" x="75" y="26" width="50" height="45"/>
@@ -192,7 +192,7 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_tCPDoL4sEeabhPWkkdEXjw" showIcon="false" description="_tCOckL4sEeabhPWkkdEXjw" borderSize="2" borderSizeComputationExpression="2" workspacePath="/org.gemoc.sample.legacyfsm.fsm.design/icons/clock_local_small.gif">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_7nLo4b4uEeabhPWkkdEXjw" showIcon="false" description="_7nLo4L4uEeabhPWkkdEXjw" borderSize="2" borderSizeComputationExpression="2" workspacePath="/org.gemoc.sample.legacyfsm.fsm.design/icons/clock_local_small.gif">
         <labelFormat>bold</labelFormat>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@nodeMappings[name='Local%20Clock']"/>

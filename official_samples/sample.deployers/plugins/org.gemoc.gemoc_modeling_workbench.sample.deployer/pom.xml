@@ -4,7 +4,7 @@
 
     <properties>
         <sample_root>${basedir}/../../sample</sample_root>
-        <tfsm_plaink3_sample_modeling_root>${basedir}/../../../TFSM_PlainK3/modeling_workbench</tfsm_plaink3_sample_modeling_root>
+        <tfsm_plaink3_sample_modeling_root>${basedir}/../../../LegacyFSM/modeling_workbench</tfsm_plaink3_sample_modeling_root>
     </properties>
     
 	<parent>
@@ -32,8 +32,8 @@
 							<tasks>
 								<mkdir dir="${basedir}/zips" />
 
-								<zip destfile="${basedir}/zips/org.gemoc.sample.tfsm.sequential.single_traffic_light_sample.zip">
-									<fileset dir="${tfsm_plaink3_sample_modeling_root}/org.gemoc.sample.tfsm.sequential.single_traffic_light_sample/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.legacyfsm.traffic_light_example.zip">
+									<fileset dir="${tfsm_plaink3_sample_modeling_root}/org.gemoc.sample.legacyfsm.traffic_light_example/" />
 								</zip>
 
 							</tasks>
