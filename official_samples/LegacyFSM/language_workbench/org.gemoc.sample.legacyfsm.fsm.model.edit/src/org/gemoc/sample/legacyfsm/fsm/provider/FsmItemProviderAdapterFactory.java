@@ -72,26 +72,26 @@ public class FsmItemProviderAdapterFactory extends FsmAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacyfsm.fsm.TimeFSM} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacyfsm.fsm.FSM} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TimeFSMItemProvider timeFSMItemProvider;
+	protected FSMItemProvider fsmItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.legacyfsm.fsm.TimeFSM}.
+	 * This creates an adapter for a {@link org.gemoc.sample.legacyfsm.fsm.FSM}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createTimeFSMAdapter() {
-		if (timeFSMItemProvider == null) {
-			timeFSMItemProvider = new TimeFSMItemProvider(this);
+	public Adapter createFSMAdapter() {
+		if (fsmItemProvider == null) {
+			fsmItemProvider = new FSMItemProvider(this);
 		}
 
-		return timeFSMItemProvider;
+		return fsmItemProvider;
 	}
 
 	/**
@@ -138,144 +138,6 @@ public class FsmItemProviderAdapterFactory extends FsmAdapterFactory implements 
 		}
 
 		return transitionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacyfsm.fsm.TemporalGuard} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TemporalGuardItemProvider temporalGuardItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.legacyfsm.fsm.TemporalGuard}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTemporalGuardAdapter() {
-		if (temporalGuardItemProvider == null) {
-			temporalGuardItemProvider = new TemporalGuardItemProvider(this);
-		}
-
-		return temporalGuardItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacyfsm.fsm.EventGuard} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EventGuardItemProvider eventGuardItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.legacyfsm.fsm.EventGuard}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEventGuardAdapter() {
-		if (eventGuardItemProvider == null) {
-			eventGuardItemProvider = new EventGuardItemProvider(this);
-		}
-
-		return eventGuardItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacyfsm.fsm.FSMEvent} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FSMEventItemProvider fsmEventItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.legacyfsm.fsm.FSMEvent}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createFSMEventAdapter() {
-		if (fsmEventItemProvider == null) {
-			fsmEventItemProvider = new FSMEventItemProvider(this);
-		}
-
-		return fsmEventItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacyfsm.fsm.FSMClock} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FSMClockItemProvider fsmClockItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.legacyfsm.fsm.FSMClock}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createFSMClockAdapter() {
-		if (fsmClockItemProvider == null) {
-			fsmClockItemProvider = new FSMClockItemProvider(this);
-		}
-
-		return fsmClockItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacyfsm.fsm.TimedSystem} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TimedSystemItemProvider timedSystemItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.legacyfsm.fsm.TimedSystem}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTimedSystemAdapter() {
-		if (timedSystemItemProvider == null) {
-			timedSystemItemProvider = new TimedSystemItemProvider(this);
-		}
-
-		return timedSystemItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacyfsm.fsm.EvaluateGuard} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EvaluateGuardItemProvider evaluateGuardItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.legacyfsm.fsm.EvaluateGuard}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEvaluateGuardAdapter() {
-		if (evaluateGuardItemProvider == null) {
-			evaluateGuardItemProvider = new EvaluateGuardItemProvider(this);
-		}
-
-		return evaluateGuardItemProvider;
 	}
 
 	/**
@@ -377,15 +239,9 @@ public class FsmItemProviderAdapterFactory extends FsmAdapterFactory implements 
 	 * @generated
 	 */
 	public void dispose() {
-		if (timeFSMItemProvider != null) timeFSMItemProvider.dispose();
+		if (fsmItemProvider != null) fsmItemProvider.dispose();
 		if (stateItemProvider != null) stateItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
-		if (temporalGuardItemProvider != null) temporalGuardItemProvider.dispose();
-		if (eventGuardItemProvider != null) eventGuardItemProvider.dispose();
-		if (fsmEventItemProvider != null) fsmEventItemProvider.dispose();
-		if (fsmClockItemProvider != null) fsmClockItemProvider.dispose();
-		if (timedSystemItemProvider != null) timedSystemItemProvider.dispose();
-		if (evaluateGuardItemProvider != null) evaluateGuardItemProvider.dispose();
 	}
 
 }

@@ -3,71 +3,68 @@ package org.gemoc.sample.legacyfsm.fsm.k3dsa
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import fr.inria.diverse.k3.al.annotationprocessor.Step
 
-import org.gemoc.sample.legacyfsm.fsm.TimeFSM
+import org.gemoc.sample.legacyfsm.fsm.FSM
 import org.gemoc.sample.legacyfsm.fsm.State
 import org.gemoc.sample.legacyfsm.fsm.Transition
-import org.gemoc.sample.legacyfsm.fsm.NamedElement
-import org.gemoc.sample.legacyfsm.fsm.Guard
-import org.gemoc.sample.legacyfsm.fsm.TemporalGuard
-import org.gemoc.sample.legacyfsm.fsm.EventGuard
-import org.gemoc.sample.legacyfsm.fsm.FSMEvent
-import org.gemoc.sample.legacyfsm.fsm.FSMClock
-import org.gemoc.sample.legacyfsm.fsm.TimedSystem
-import org.gemoc.sample.legacyfsm.fsm.EvaluateGuard
 
-import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.TimeFSMAspect.*
-import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.TimeFSMVisitorAspect.*
+import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.FSMAspect.*
 import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.StateAspect.*
 import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.TransitionAspect.*
-import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.FSMEventAspect.*
-import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.FSMClockAspect.*
-import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.TimedSystemAspect.*
 import org.eclipse.emf.common.util.EList
 
-@Aspect(className=TimeFSM)
-class TimeFSMAspect {
+@Aspect(className=FSM)
+class FSMAspect {
 
 	public State currentState
 	
-	@Step
-	def public void init() {
-
-		_self.currentState = _self.initialState;
-		_self.localClock.numberOfTicks = 0
-		_self.localEvents.forEach[e|e.isTriggered = false]
-		_self.stepNumber = 0
-		_self.lastStateChangeStepNumber = 0
-
-		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".Init()]Initialized " + _self.name)
-	}
-
-}
-
-@Aspect(className=FSMClock)
-class FSMClockAspect {
-
-	public Integer numberOfTicks
+	public EList<String> actionsToProcess
+	public String producedString 
 	
-	// Clock tick
-	@Step
-	def public Integer ticks() {
-		_self.numberOfTicks = _self.numberOfTicks + 1
-		println(
-			"[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".ticks()]New number of ticks : " +
-				_self.numberOfTicks.toString)
-		return _self.numberOfTicks
+	private int processedTokens
+	
+	@fr.inria.diverse.k3.al.annotationprocessor.Main
+    def public void main() {
+    	try{
+			_self.actionsToProcess.forEach[inputToken, counter |
+				println("Reading "+inputToken)
+				_self.currentState.step(inputToken) 
+				_self.processedTokens = counter			
+			]
+		
+		} catch (NoTransition nt){
+			println("Stopped due to NoTransition")
+		} catch (NonDeterminism nd){
+			println("Stopped due to NonDeterminism")
+		}
+		println("processed tokens: "+_self.processedTokens+"/"+_self.actionsToProcess.size)
+		println("produced string: "+_self.producedString)
 	}
+       
+       
+	@fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
+	def public void initializeModel(EList<String> args){
+		_self.currentState = _self.initialState;
+		_self.actionsToProcess.addAll(args)
+	}
+	
 
 }
+
 
 @Aspect(className=State)
 class StateAspect {
-	def public void onEnter() {
-		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".onEnter()]Entering " + _self.name)
-	}
-
-	def public void onLeave() {
-		println("[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".onLeave()]Leaving " + _self.name)
+	@Step
+	def public void step(String inputToken) {
+		// Get the valid transitions	
+		val validTransitions =  _self.outgoingTransitions.filter[t | t.input.equals(inputToken)]
+		if(validTransitions.empty) {
+			throw new NoTransition
+		}
+		if(validTransitions.size > 1) {
+			throw new NonDeterminism
+		}
+		// Fire transition
+		validTransitions.get(0).fire
 	}
 }
 
@@ -75,63 +72,16 @@ class StateAspect {
 class TransitionAspect {
 	@Step
 	def public void fire() {
+		println("Firing " + _self.name + " and entering " + _self.target.name)
 		_self.source.owningFSM.currentState = _self.target
-		println(
-			"[" + _self.getClass().getSimpleName() + ":" + _self.getName() + ".fire()]Fired " + _self.name + " -> " +
-				_self.action)
+		_self.source.owningFSM.producedString = _self.source.owningFSM.producedString + _self.output
 	}
 }
 
-@Aspect(className=FSMEvent)
-class FSMEventAspect {
-
-	public boolean isTriggered
+class NoTransition extends Exception{
 	
-	@Step
-	def public void trigger() {
-		_self.isTriggered = true
-	}
-
-	@Step
-	def public void unTrigger() {
-		_self.isTriggered = false
-	}
-
 }
 
-@Aspect(className=TimedSystem)
-class TimedSystemAspect {
-       
-       @fr.inria.diverse.k3.al.annotationprocessor.Main
-       def public void main() {
-       	       val fsm = _self.fsms.get(0)
-               var i = 0
-               while (i != 20)
-               {
-
-                       if (i == 10)
-                       {
-                               fsm.localEvents.forEach [ e |
-                                       e.trigger
-                               ]
-                       }
-
-                       fsm.visit
-
-                       if (i == 10)
-                       {
-                               fsm.localEvents.forEach[e|e.unTrigger]
-                       }
-
-                       i++
-               }
-               println("Normal stop after "+i+" iterations (set in main)");
-       }
-       
-       
-       @fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
-       def public void initializeModel(EList<String> args){
-       		val fsm = _self.fsms.get(0)
-            fsm.init	
-       }
+class NonDeterminism extends Exception{
+	
 }

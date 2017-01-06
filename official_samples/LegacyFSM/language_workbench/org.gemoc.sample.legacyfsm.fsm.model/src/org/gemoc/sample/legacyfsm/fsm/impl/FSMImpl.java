@@ -18,31 +18,27 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.gemoc.sample.legacyfsm.fsm.FSMClock;
-import org.gemoc.sample.legacyfsm.fsm.FSMEvent;
+import org.gemoc.sample.legacyfsm.fsm.FSM;
 import org.gemoc.sample.legacyfsm.fsm.FsmPackage;
 import org.gemoc.sample.legacyfsm.fsm.State;
-import org.gemoc.sample.legacyfsm.fsm.TimeFSM;
 import org.gemoc.sample.legacyfsm.fsm.Transition;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Time FSM</b></em>'.
+ * An implementation of the model object '<em><b>FSM</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.TimeFSMImpl#getOwnedStates <em>Owned States</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.TimeFSMImpl#getInitialState <em>Initial State</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.TimeFSMImpl#getLocalEvents <em>Local Events</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.TimeFSMImpl#getLocalClock <em>Local Clock</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.TimeFSMImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.FSMImpl#getOwnedStates <em>Owned States</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.FSMImpl#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.FSMImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
+public class FSMImpl extends NamedElementImpl implements FSM {
 	/**
 	 * The cached value of the '{@link #getOwnedStates() <em>Owned States</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -64,26 +60,6 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	protected State initialState;
 
 	/**
-	 * The cached value of the '{@link #getLocalEvents() <em>Local Events</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLocalEvents()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<FSMEvent> localEvents;
-
-	/**
-	 * The cached value of the '{@link #getLocalClock() <em>Local Clock</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLocalClock()
-	 * @generated
-	 * @ordered
-	 */
-	protected FSMClock localClock;
-
-	/**
 	 * The cached value of the '{@link #getOwnedTransitions() <em>Owned Transitions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -98,7 +74,7 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TimeFSMImpl() {
+	protected FSMImpl() {
 		super();
 	}
 
@@ -109,7 +85,7 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return FsmPackage.Literals.TIME_FSM;
+		return FsmPackage.Literals.FSM;
 	}
 
 	/**
@@ -119,7 +95,7 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	 */
 	public EList<State> getOwnedStates() {
 		if (ownedStates == null) {
-			ownedStates = new EObjectContainmentWithInverseEList<State>(State.class, this, FsmPackage.TIME_FSM__OWNED_STATES, FsmPackage.STATE__OWNING_FSM);
+			ownedStates = new EObjectContainmentWithInverseEList<State>(State.class, this, FsmPackage.FSM__OWNED_STATES, FsmPackage.STATE__OWNING_FSM);
 		}
 		return ownedStates;
 	}
@@ -135,7 +111,7 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 			initialState = (State)eResolveProxy(oldInitialState);
 			if (initialState != oldInitialState) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FsmPackage.TIME_FSM__INITIAL_STATE, oldInitialState, initialState));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FsmPackage.FSM__INITIAL_STATE, oldInitialState, initialState));
 			}
 		}
 		return initialState;
@@ -159,62 +135,7 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 		State oldInitialState = initialState;
 		initialState = newInitialState;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TIME_FSM__INITIAL_STATE, oldInitialState, initialState));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<FSMEvent> getLocalEvents() {
-		if (localEvents == null) {
-			localEvents = new EObjectContainmentEList<FSMEvent>(FSMEvent.class, this, FsmPackage.TIME_FSM__LOCAL_EVENTS);
-		}
-		return localEvents;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FSMClock getLocalClock() {
-		return localClock;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetLocalClock(FSMClock newLocalClock, NotificationChain msgs) {
-		FSMClock oldLocalClock = localClock;
-		localClock = newLocalClock;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FsmPackage.TIME_FSM__LOCAL_CLOCK, oldLocalClock, newLocalClock);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setLocalClock(FSMClock newLocalClock) {
-		if (newLocalClock != localClock) {
-			NotificationChain msgs = null;
-			if (localClock != null)
-				msgs = ((InternalEObject)localClock).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TIME_FSM__LOCAL_CLOCK, null, msgs);
-			if (newLocalClock != null)
-				msgs = ((InternalEObject)newLocalClock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TIME_FSM__LOCAL_CLOCK, null, msgs);
-			msgs = basicSetLocalClock(newLocalClock, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TIME_FSM__LOCAL_CLOCK, newLocalClock, newLocalClock));
+			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.FSM__INITIAL_STATE, oldInitialState, initialState));
 	}
 
 	/**
@@ -224,7 +145,7 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	 */
 	public EList<Transition> getOwnedTransitions() {
 		if (ownedTransitions == null) {
-			ownedTransitions = new EObjectContainmentEList<Transition>(Transition.class, this, FsmPackage.TIME_FSM__OWNED_TRANSITIONS);
+			ownedTransitions = new EObjectContainmentEList<Transition>(Transition.class, this, FsmPackage.FSM__OWNED_TRANSITIONS);
 		}
 		return ownedTransitions;
 	}
@@ -238,7 +159,7 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FsmPackage.TIME_FSM__OWNED_STATES:
+			case FsmPackage.FSM__OWNED_STATES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwnedStates()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -252,13 +173,9 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FsmPackage.TIME_FSM__OWNED_STATES:
+			case FsmPackage.FSM__OWNED_STATES:
 				return ((InternalEList<?>)getOwnedStates()).basicRemove(otherEnd, msgs);
-			case FsmPackage.TIME_FSM__LOCAL_EVENTS:
-				return ((InternalEList<?>)getLocalEvents()).basicRemove(otherEnd, msgs);
-			case FsmPackage.TIME_FSM__LOCAL_CLOCK:
-				return basicSetLocalClock(null, msgs);
-			case FsmPackage.TIME_FSM__OWNED_TRANSITIONS:
+			case FsmPackage.FSM__OWNED_TRANSITIONS:
 				return ((InternalEList<?>)getOwnedTransitions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -272,16 +189,12 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FsmPackage.TIME_FSM__OWNED_STATES:
+			case FsmPackage.FSM__OWNED_STATES:
 				return getOwnedStates();
-			case FsmPackage.TIME_FSM__INITIAL_STATE:
+			case FsmPackage.FSM__INITIAL_STATE:
 				if (resolve) return getInitialState();
 				return basicGetInitialState();
-			case FsmPackage.TIME_FSM__LOCAL_EVENTS:
-				return getLocalEvents();
-			case FsmPackage.TIME_FSM__LOCAL_CLOCK:
-				return getLocalClock();
-			case FsmPackage.TIME_FSM__OWNED_TRANSITIONS:
+			case FsmPackage.FSM__OWNED_TRANSITIONS:
 				return getOwnedTransitions();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -296,21 +209,14 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FsmPackage.TIME_FSM__OWNED_STATES:
+			case FsmPackage.FSM__OWNED_STATES:
 				getOwnedStates().clear();
 				getOwnedStates().addAll((Collection<? extends State>)newValue);
 				return;
-			case FsmPackage.TIME_FSM__INITIAL_STATE:
+			case FsmPackage.FSM__INITIAL_STATE:
 				setInitialState((State)newValue);
 				return;
-			case FsmPackage.TIME_FSM__LOCAL_EVENTS:
-				getLocalEvents().clear();
-				getLocalEvents().addAll((Collection<? extends FSMEvent>)newValue);
-				return;
-			case FsmPackage.TIME_FSM__LOCAL_CLOCK:
-				setLocalClock((FSMClock)newValue);
-				return;
-			case FsmPackage.TIME_FSM__OWNED_TRANSITIONS:
+			case FsmPackage.FSM__OWNED_TRANSITIONS:
 				getOwnedTransitions().clear();
 				getOwnedTransitions().addAll((Collection<? extends Transition>)newValue);
 				return;
@@ -326,19 +232,13 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FsmPackage.TIME_FSM__OWNED_STATES:
+			case FsmPackage.FSM__OWNED_STATES:
 				getOwnedStates().clear();
 				return;
-			case FsmPackage.TIME_FSM__INITIAL_STATE:
+			case FsmPackage.FSM__INITIAL_STATE:
 				setInitialState((State)null);
 				return;
-			case FsmPackage.TIME_FSM__LOCAL_EVENTS:
-				getLocalEvents().clear();
-				return;
-			case FsmPackage.TIME_FSM__LOCAL_CLOCK:
-				setLocalClock((FSMClock)null);
-				return;
-			case FsmPackage.TIME_FSM__OWNED_TRANSITIONS:
+			case FsmPackage.FSM__OWNED_TRANSITIONS:
 				getOwnedTransitions().clear();
 				return;
 		}
@@ -353,18 +253,14 @@ public class TimeFSMImpl extends NamedElementImpl implements TimeFSM {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FsmPackage.TIME_FSM__OWNED_STATES:
+			case FsmPackage.FSM__OWNED_STATES:
 				return ownedStates != null && !ownedStates.isEmpty();
-			case FsmPackage.TIME_FSM__INITIAL_STATE:
+			case FsmPackage.FSM__INITIAL_STATE:
 				return initialState != null;
-			case FsmPackage.TIME_FSM__LOCAL_EVENTS:
-				return localEvents != null && !localEvents.isEmpty();
-			case FsmPackage.TIME_FSM__LOCAL_CLOCK:
-				return localClock != null;
-			case FsmPackage.TIME_FSM__OWNED_TRANSITIONS:
+			case FsmPackage.FSM__OWNED_TRANSITIONS:
 				return ownedTransitions != null && !ownedTransitions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //TimeFSMImpl
+} //FSMImpl

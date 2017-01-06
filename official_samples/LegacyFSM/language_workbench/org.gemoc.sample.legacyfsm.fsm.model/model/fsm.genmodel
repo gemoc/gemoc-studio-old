@@ -4,21 +4,15 @@
   <genPackages prefix="Fsm" basePackage="org.gemoc.sample.legacyfsm" disposableProviderFactory="true">
     <ecorePackage href="fsm.ecore#/"/>
     <genClasses>
-      <ecoreClass href="fsm.ecore#//TimeFSM"/>
+      <ecoreClass href="fsm.ecore#//FSM"/>
       <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//TimeFSM/ownedStates"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//FSM/ownedStates"/>
       </genFeatures>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//TimeFSM/initialState"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//FSM/initialState"/>
       </genFeatures>
       <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//TimeFSM/localEvents"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//TimeFSM/localClock"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//TimeFSM/ownedTransitions"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//FSM/ownedTransitions"/>
       </genFeatures>
     </genClasses>
     <genClasses>
@@ -41,65 +35,17 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
         <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//Transition/target"/>
       </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//Transition/ownedGuard"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//Transition/generatedEvents"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="fsm.ecore#//Transition/input"/>
       </genFeatures>
       <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="fsm.ecore#//Transition/action"/>
+        <ecoreFeature xsi:type="ecore:EAttribute" href="fsm.ecore#//Transition/output"/>
       </genFeatures>
     </genClasses>
     <genClasses image="false">
       <ecoreClass href="fsm.ecore#//NamedElement"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="fsm.ecore#//NamedElement/name"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses image="false">
-      <ecoreClass href="fsm.ecore#//Guard"/>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="fsm.ecore#//TemporalGuard"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//TemporalGuard/onClock"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="fsm.ecore#//TemporalGuard/afterDuration"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="fsm.ecore#//EventGuard"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//EventGuard/triggeringEvent"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="fsm.ecore#//FSMEvent"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//FSMEvent/sollicitingTransitions"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="fsm.ecore#//FSMClock"/>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="fsm.ecore#//TimedSystem"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//TimedSystem/fsms"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//TimedSystem/globalClocks"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//TimedSystem/globalEvents"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="fsm.ecore#//EvaluateGuard"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="fsm.ecore#//EvaluateGuard/condition"/>
       </genFeatures>
     </genClasses>
   </genPackages>

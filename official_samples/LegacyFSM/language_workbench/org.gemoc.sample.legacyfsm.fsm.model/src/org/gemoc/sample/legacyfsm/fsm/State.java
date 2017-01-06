@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
 public interface State extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Owning FSM</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.gemoc.sample.legacyfsm.fsm.TimeFSM#getOwnedStates <em>Owned States</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.gemoc.sample.legacyfsm.fsm.FSM#getOwnedStates <em>Owned States</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owning FSM</em>' container reference isn't clear,
@@ -33,13 +33,13 @@ public interface State extends NamedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owning FSM</em>' container reference.
-	 * @see #setOwningFSM(TimeFSM)
+	 * @see #setOwningFSM(FSM)
 	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getState_OwningFSM()
-	 * @see org.gemoc.sample.legacyfsm.fsm.TimeFSM#getOwnedStates
+	 * @see org.gemoc.sample.legacyfsm.fsm.FSM#getOwnedStates
 	 * @model opposite="ownedStates" required="true" transient="false"
 	 * @generated
 	 */
-	TimeFSM getOwningFSM();
+	FSM getOwningFSM();
 
 	/**
 	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.fsm.State#getOwningFSM <em>Owning FSM</em>}' container reference.
@@ -49,7 +49,7 @@ public interface State extends NamedElement {
 	 * @see #getOwningFSM()
 	 * @generated
 	 */
-	void setOwningFSM(TimeFSM value);
+	void setOwningFSM(FSM value);
 
 	/**
 	 * Returns the value of the '<em><b>Outgoing Transitions</b></em>' reference list.

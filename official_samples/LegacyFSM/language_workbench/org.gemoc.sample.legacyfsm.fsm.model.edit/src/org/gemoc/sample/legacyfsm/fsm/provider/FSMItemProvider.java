@@ -11,27 +11,28 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.gemoc.sample.legacyfsm.fsm.FSM;
 import org.gemoc.sample.legacyfsm.fsm.FsmFactory;
 import org.gemoc.sample.legacyfsm.fsm.FsmPackage;
-import org.gemoc.sample.legacyfsm.fsm.TimedSystem;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.sample.legacyfsm.fsm.TimedSystem} object.
+ * This is the item provider adapter for a {@link org.gemoc.sample.legacyfsm.fsm.FSM} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TimedSystemItemProvider extends NamedElementItemProvider {
+public class FSMItemProvider extends NamedElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimedSystemItemProvider(AdapterFactory adapterFactory) {
+	public FSMItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -46,8 +47,31 @@ public class TimedSystemItemProvider extends NamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addInitialStatePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Initial State feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInitialStatePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FSM_initialState_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FSM_initialState_feature", "_UI_FSM_type"),
+				 FsmPackage.Literals.FSM__INITIAL_STATE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -62,9 +86,8 @@ public class TimedSystemItemProvider extends NamedElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(FsmPackage.Literals.TIMED_SYSTEM__FSMS);
-			childrenFeatures.add(FsmPackage.Literals.TIMED_SYSTEM__GLOBAL_CLOCKS);
-			childrenFeatures.add(FsmPackage.Literals.TIMED_SYSTEM__GLOBAL_EVENTS);
+			childrenFeatures.add(FsmPackage.Literals.FSM__OWNED_STATES);
+			childrenFeatures.add(FsmPackage.Literals.FSM__OWNED_TRANSITIONS);
 		}
 		return childrenFeatures;
 	}
@@ -83,14 +106,14 @@ public class TimedSystemItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This returns TimedSystem.gif.
+	 * This returns FSM.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TimedSystem"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/FSM"));
 	}
 
 	/**
@@ -101,10 +124,10 @@ public class TimedSystemItemProvider extends NamedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TimedSystem)object).getName();
+		String label = ((FSM)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_TimedSystem_type") :
-			getString("_UI_TimedSystem_type") + " " + label;
+			getString("_UI_FSM_type") :
+			getString("_UI_FSM_type") + " " + label;
 	}
 	
 
@@ -119,10 +142,9 @@ public class TimedSystemItemProvider extends NamedElementItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TimedSystem.class)) {
-			case FsmPackage.TIMED_SYSTEM__FSMS:
-			case FsmPackage.TIMED_SYSTEM__GLOBAL_CLOCKS:
-			case FsmPackage.TIMED_SYSTEM__GLOBAL_EVENTS:
+		switch (notification.getFeatureID(FSM.class)) {
+			case FsmPackage.FSM__OWNED_STATES:
+			case FsmPackage.FSM__OWNED_TRANSITIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -142,18 +164,13 @@ public class TimedSystemItemProvider extends NamedElementItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(FsmPackage.Literals.TIMED_SYSTEM__FSMS,
-				 FsmFactory.eINSTANCE.createTimeFSM()));
+				(FsmPackage.Literals.FSM__OWNED_STATES,
+				 FsmFactory.eINSTANCE.createState()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(FsmPackage.Literals.TIMED_SYSTEM__GLOBAL_CLOCKS,
-				 FsmFactory.eINSTANCE.createFSMClock()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(FsmPackage.Literals.TIMED_SYSTEM__GLOBAL_EVENTS,
-				 FsmFactory.eINSTANCE.createFSMEvent()));
+				(FsmPackage.Literals.FSM__OWNED_TRANSITIONS,
+				 FsmFactory.eINSTANCE.createTransition()));
 	}
 
 }

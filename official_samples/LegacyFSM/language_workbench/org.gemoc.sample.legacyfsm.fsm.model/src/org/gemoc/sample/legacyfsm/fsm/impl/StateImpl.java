@@ -18,9 +18,9 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.gemoc.sample.legacyfsm.fsm.FSM;
 import org.gemoc.sample.legacyfsm.fsm.FsmPackage;
 import org.gemoc.sample.legacyfsm.fsm.State;
-import org.gemoc.sample.legacyfsm.fsm.TimeFSM;
 import org.gemoc.sample.legacyfsm.fsm.Transition;
 
 /**
@@ -83,9 +83,9 @@ public class StateImpl extends NamedElementImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeFSM getOwningFSM() {
+	public FSM getOwningFSM() {
 		if (eContainerFeatureID() != FsmPackage.STATE__OWNING_FSM) return null;
-		return (TimeFSM)eInternalContainer();
+		return (FSM)eInternalContainer();
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class StateImpl extends NamedElementImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOwningFSM(TimeFSM newOwningFSM, NotificationChain msgs) {
+	public NotificationChain basicSetOwningFSM(FSM newOwningFSM, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject)newOwningFSM, FsmPackage.STATE__OWNING_FSM, msgs);
 		return msgs;
 	}
@@ -103,7 +103,7 @@ public class StateImpl extends NamedElementImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOwningFSM(TimeFSM newOwningFSM) {
+	public void setOwningFSM(FSM newOwningFSM) {
 		if (newOwningFSM != eInternalContainer() || (eContainerFeatureID() != FsmPackage.STATE__OWNING_FSM && newOwningFSM != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningFSM))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -111,7 +111,7 @@ public class StateImpl extends NamedElementImpl implements State {
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningFSM != null)
-				msgs = ((InternalEObject)newOwningFSM).eInverseAdd(this, FsmPackage.TIME_FSM__OWNED_STATES, TimeFSM.class, msgs);
+				msgs = ((InternalEObject)newOwningFSM).eInverseAdd(this, FsmPackage.FSM__OWNED_STATES, FSM.class, msgs);
 			msgs = basicSetOwningFSM(newOwningFSM, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -155,7 +155,7 @@ public class StateImpl extends NamedElementImpl implements State {
 			case FsmPackage.STATE__OWNING_FSM:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetOwningFSM((TimeFSM)otherEnd, msgs);
+				return basicSetOwningFSM((FSM)otherEnd, msgs);
 			case FsmPackage.STATE__OUTGOING_TRANSITIONS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOutgoingTransitions()).basicAdd(otherEnd, msgs);
 			case FsmPackage.STATE__INCOMING_TRANSITIONS:
@@ -191,7 +191,7 @@ public class StateImpl extends NamedElementImpl implements State {
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case FsmPackage.STATE__OWNING_FSM:
-				return eInternalContainer().eInverseRemove(this, FsmPackage.TIME_FSM__OWNED_STATES, TimeFSM.class, msgs);
+				return eInternalContainer().eInverseRemove(this, FsmPackage.FSM__OWNED_STATES, FSM.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -224,7 +224,7 @@ public class StateImpl extends NamedElementImpl implements State {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FsmPackage.STATE__OWNING_FSM:
-				setOwningFSM((TimeFSM)newValue);
+				setOwningFSM((FSM)newValue);
 				return;
 			case FsmPackage.STATE__OUTGOING_TRANSITIONS:
 				getOutgoingTransitions().clear();
@@ -247,7 +247,7 @@ public class StateImpl extends NamedElementImpl implements State {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case FsmPackage.STATE__OWNING_FSM:
-				setOwningFSM((TimeFSM)null);
+				setOwningFSM((FSM)null);
 				return;
 			case FsmPackage.STATE__OUTGOING_TRANSITIONS:
 				getOutgoingTransitions().clear();

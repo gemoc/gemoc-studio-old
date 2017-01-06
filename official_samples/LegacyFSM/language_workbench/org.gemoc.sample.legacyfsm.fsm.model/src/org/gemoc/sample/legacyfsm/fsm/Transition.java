@@ -2,8 +2,6 @@
  */
 package org.gemoc.sample.legacyfsm.fsm;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Transition</b></em>'.
@@ -15,9 +13,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.Transition#getSource <em>Source</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.Transition#getTarget <em>Target</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.Transition#getOwnedGuard <em>Owned Guard</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.Transition#getGeneratedEvents <em>Generated Events</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.Transition#getAction <em>Action</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacyfsm.fsm.Transition#getInput <em>Input</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacyfsm.fsm.Transition#getOutput <em>Output</em>}</li>
  * </ul>
  *
  * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getTransition()
@@ -82,71 +79,55 @@ public interface Transition extends NamedElement {
 	void setTarget(State value);
 
 	/**
-	 * Returns the value of the '<em><b>Owned Guard</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Input</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned Guard</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Input</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Guard</em>' containment reference.
-	 * @see #setOwnedGuard(Guard)
-	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getTransition_OwnedGuard()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	Guard getOwnedGuard();
-
-	/**
-	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.fsm.Transition#getOwnedGuard <em>Owned Guard</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Guard</em>' containment reference.
-	 * @see #getOwnedGuard()
-	 * @generated
-	 */
-	void setOwnedGuard(Guard value);
-
-	/**
-	 * Returns the value of the '<em><b>Generated Events</b></em>' reference list.
-	 * The list contents are of type {@link org.gemoc.sample.legacyfsm.fsm.FSMEvent}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Generated Events</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Generated Events</em>' reference list.
-	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getTransition_GeneratedEvents()
+	 * @return the value of the '<em>Input</em>' attribute.
+	 * @see #setInput(String)
+	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getTransition_Input()
 	 * @model
 	 * @generated
 	 */
-	EList<FSMEvent> getGeneratedEvents();
+	String getInput();
 
 	/**
-	 * Returns the value of the '<em><b>Action</b></em>' attribute.
+	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.fsm.Transition#getInput <em>Input</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Input</em>' attribute.
+	 * @see #getInput()
+	 * @generated
+	 */
+	void setInput(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Output</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Action</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Output</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Action</em>' attribute.
-	 * @see #setAction(String)
-	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getTransition_Action()
+	 * @return the value of the '<em>Output</em>' attribute.
+	 * @see #setOutput(String)
+	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getTransition_Output()
 	 * @model
 	 * @generated
 	 */
-	String getAction();
+	String getOutput();
 
 	/**
-	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.fsm.Transition#getAction <em>Action</em>}' attribute.
+	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.fsm.Transition#getOutput <em>Output</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Action</em>' attribute.
-	 * @see #getAction()
+	 * @param value the new value of the '<em>Output</em>' attribute.
+	 * @see #getOutput()
 	 * @generated
 	 */
-	void setAction(String value);
+	void setOutput(String value);
 
 } // Transition

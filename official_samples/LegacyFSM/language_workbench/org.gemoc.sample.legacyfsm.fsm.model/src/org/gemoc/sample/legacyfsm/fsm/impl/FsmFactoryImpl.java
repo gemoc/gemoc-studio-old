@@ -56,15 +56,9 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case FsmPackage.TIME_FSM: return createTimeFSM();
+			case FsmPackage.FSM: return createFSM();
 			case FsmPackage.STATE: return createState();
 			case FsmPackage.TRANSITION: return createTransition();
-			case FsmPackage.TEMPORAL_GUARD: return createTemporalGuard();
-			case FsmPackage.EVENT_GUARD: return createEventGuard();
-			case FsmPackage.FSM_EVENT: return createFSMEvent();
-			case FsmPackage.FSM_CLOCK: return createFSMClock();
-			case FsmPackage.TIMED_SYSTEM: return createTimedSystem();
-			case FsmPackage.EVALUATE_GUARD: return createEvaluateGuard();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -75,9 +69,9 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeFSM createTimeFSM() {
-		TimeFSMImpl timeFSM = new TimeFSMImpl();
-		return timeFSM;
+	public FSM createFSM() {
+		FSMImpl fsm = new FSMImpl();
+		return fsm;
 	}
 
 	/**
@@ -98,66 +92,6 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 	public Transition createTransition() {
 		TransitionImpl transition = new TransitionImpl();
 		return transition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TemporalGuard createTemporalGuard() {
-		TemporalGuardImpl temporalGuard = new TemporalGuardImpl();
-		return temporalGuard;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EventGuard createEventGuard() {
-		EventGuardImpl eventGuard = new EventGuardImpl();
-		return eventGuard;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FSMEvent createFSMEvent() {
-		FSMEventImpl fsmEvent = new FSMEventImpl();
-		return fsmEvent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FSMClock createFSMClock() {
-		FSMClockImpl fsmClock = new FSMClockImpl();
-		return fsmClock;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TimedSystem createTimedSystem() {
-		TimedSystemImpl timedSystem = new TimedSystemImpl();
-		return timedSystem;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EvaluateGuard createEvaluateGuard() {
-		EvaluateGuardImpl evaluateGuard = new EvaluateGuardImpl();
-		return evaluateGuard;
 	}
 
 	/**

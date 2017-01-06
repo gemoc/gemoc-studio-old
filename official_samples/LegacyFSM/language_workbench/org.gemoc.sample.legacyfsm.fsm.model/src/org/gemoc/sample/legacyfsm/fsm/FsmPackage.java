@@ -95,14 +95,14 @@ public interface FsmPackage extends EPackage {
 	int NAMED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.TimeFSMImpl <em>Time FSM</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.FSMImpl <em>FSM</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.TimeFSMImpl
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getTimeFSM()
+	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FSMImpl
+	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getFSM()
 	 * @generated
 	 */
-	int TIME_FSM = 0;
+	int FSM = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -111,7 +111,7 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM__NAME = NAMED_ELEMENT__NAME;
+	int FSM__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Owned States</b></em>' containment reference list.
@@ -120,7 +120,7 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM__OWNED_STATES = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int FSM__OWNED_STATES = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Initial State</b></em>' reference.
@@ -129,25 +129,7 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM__INITIAL_STATE = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Local Events</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_FSM__LOCAL_EVENTS = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Local Clock</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_FSM__LOCAL_CLOCK = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int FSM__INITIAL_STATE = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Owned Transitions</b></em>' containment reference list.
@@ -156,25 +138,25 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM__OWNED_TRANSITIONS = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int FSM__OWNED_TRANSITIONS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Time FSM</em>' class.
+	 * The number of structural features of the '<em>FSM</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int FSM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Time FSM</em>' class.
+	 * The number of operations of the '<em>FSM</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int FSM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.StateImpl <em>State</em>}' class.
@@ -278,31 +260,22 @@ public interface FsmPackage extends EPackage {
 	int TRANSITION__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Owned Guard</b></em>' containment reference.
+	 * The feature id for the '<em><b>Input</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__OWNED_GUARD = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int TRANSITION__INPUT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Generated Events</b></em>' reference list.
+	 * The feature id for the '<em><b>Output</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__GENERATED_EVENTS = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Action</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__ACTION = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int TRANSITION__OUTPUT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
@@ -311,7 +284,7 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Transition</em>' class.
@@ -323,401 +296,47 @@ public interface FsmPackage extends EPackage {
 	int TRANSITION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.GuardImpl <em>Guard</em>}' class.
+	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.FSM <em>FSM</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.GuardImpl
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getGuard()
+	 * @return the meta object for class '<em>FSM</em>'.
+	 * @see org.gemoc.sample.legacyfsm.fsm.FSM
 	 * @generated
 	 */
-	int GUARD = 4;
+	EClass getFSM();
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GUARD__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The number of structural features of the '<em>Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GUARD_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GUARD_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.TemporalGuardImpl <em>Temporal Guard</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.TemporalGuardImpl
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getTemporalGuard()
-	 * @generated
-	 */
-	int TEMPORAL_GUARD = 5;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL_GUARD__NAME = GUARD__NAME;
-
-	/**
-	 * The feature id for the '<em><b>On Clock</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL_GUARD__ON_CLOCK = GUARD_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>After Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL_GUARD__AFTER_DURATION = GUARD_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Temporal Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL_GUARD_FEATURE_COUNT = GUARD_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Temporal Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL_GUARD_OPERATION_COUNT = GUARD_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.EventGuardImpl <em>Event Guard</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.EventGuardImpl
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getEventGuard()
-	 * @generated
-	 */
-	int EVENT_GUARD = 6;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_GUARD__NAME = GUARD__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Triggering Event</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_GUARD__TRIGGERING_EVENT = GUARD_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Event Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_GUARD_FEATURE_COUNT = GUARD_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Event Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_GUARD_OPERATION_COUNT = GUARD_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.FSMEventImpl <em>FSM Event</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FSMEventImpl
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getFSMEvent()
-	 * @generated
-	 */
-	int FSM_EVENT = 7;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_EVENT__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Solliciting Transitions</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_EVENT__SOLLICITING_TRANSITIONS = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>FSM Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_EVENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>FSM Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_EVENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.FSMClockImpl <em>FSM Clock</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FSMClockImpl
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getFSMClock()
-	 * @generated
-	 */
-	int FSM_CLOCK = 8;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_CLOCK__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The number of structural features of the '<em>FSM Clock</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_CLOCK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>FSM Clock</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_CLOCK_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.TimedSystemImpl <em>Timed System</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.TimedSystemImpl
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getTimedSystem()
-	 * @generated
-	 */
-	int TIMED_SYSTEM = 9;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIMED_SYSTEM__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Fsms</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIMED_SYSTEM__FSMS = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Global Clocks</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIMED_SYSTEM__GLOBAL_CLOCKS = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Global Events</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIMED_SYSTEM__GLOBAL_EVENTS = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Timed System</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIMED_SYSTEM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Timed System</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIMED_SYSTEM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.EvaluateGuardImpl <em>Evaluate Guard</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.EvaluateGuardImpl
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getEvaluateGuard()
-	 * @generated
-	 */
-	int EVALUATE_GUARD = 10;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVALUATE_GUARD__NAME = GUARD__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Condition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVALUATE_GUARD__CONDITION = GUARD_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Evaluate Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVALUATE_GUARD_FEATURE_COUNT = GUARD_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Evaluate Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVALUATE_GUARD_OPERATION_COUNT = GUARD_OPERATION_COUNT + 0;
-
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.TimeFSM <em>Time FSM</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Time FSM</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TimeFSM
-	 * @generated
-	 */
-	EClass getTimeFSM();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.TimeFSM#getOwnedStates <em>Owned States</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.FSM#getOwnedStates <em>Owned States</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Owned States</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TimeFSM#getOwnedStates()
-	 * @see #getTimeFSM()
+	 * @see org.gemoc.sample.legacyfsm.fsm.FSM#getOwnedStates()
+	 * @see #getFSM()
 	 * @generated
 	 */
-	EReference getTimeFSM_OwnedStates();
+	EReference getFSM_OwnedStates();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.legacyfsm.fsm.TimeFSM#getInitialState <em>Initial State</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.sample.legacyfsm.fsm.FSM#getInitialState <em>Initial State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Initial State</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TimeFSM#getInitialState()
-	 * @see #getTimeFSM()
+	 * @see org.gemoc.sample.legacyfsm.fsm.FSM#getInitialState()
+	 * @see #getFSM()
 	 * @generated
 	 */
-	EReference getTimeFSM_InitialState();
+	EReference getFSM_InitialState();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.TimeFSM#getLocalEvents <em>Local Events</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Local Events</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TimeFSM#getLocalEvents()
-	 * @see #getTimeFSM()
-	 * @generated
-	 */
-	EReference getTimeFSM_LocalEvents();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.sample.legacyfsm.fsm.TimeFSM#getLocalClock <em>Local Clock</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Local Clock</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TimeFSM#getLocalClock()
-	 * @see #getTimeFSM()
-	 * @generated
-	 */
-	EReference getTimeFSM_LocalClock();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.TimeFSM#getOwnedTransitions <em>Owned Transitions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.FSM#getOwnedTransitions <em>Owned Transitions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Owned Transitions</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TimeFSM#getOwnedTransitions()
-	 * @see #getTimeFSM()
+	 * @see org.gemoc.sample.legacyfsm.fsm.FSM#getOwnedTransitions()
+	 * @see #getFSM()
 	 * @generated
 	 */
-	EReference getTimeFSM_OwnedTransitions();
+	EReference getFSM_OwnedTransitions();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.State <em>State</em>}'.
@@ -795,37 +414,26 @@ public interface FsmPackage extends EPackage {
 	EReference getTransition_Target();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.gemoc.sample.legacyfsm.fsm.Transition#getOwnedGuard <em>Owned Guard</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacyfsm.fsm.Transition#getInput <em>Input</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Owned Guard</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.Transition#getOwnedGuard()
+	 * @return the meta object for the attribute '<em>Input</em>'.
+	 * @see org.gemoc.sample.legacyfsm.fsm.Transition#getInput()
 	 * @see #getTransition()
 	 * @generated
 	 */
-	EReference getTransition_OwnedGuard();
+	EAttribute getTransition_Input();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.gemoc.sample.legacyfsm.fsm.Transition#getGeneratedEvents <em>Generated Events</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacyfsm.fsm.Transition#getOutput <em>Output</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Generated Events</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.Transition#getGeneratedEvents()
+	 * @return the meta object for the attribute '<em>Output</em>'.
+	 * @see org.gemoc.sample.legacyfsm.fsm.Transition#getOutput()
 	 * @see #getTransition()
 	 * @generated
 	 */
-	EReference getTransition_GeneratedEvents();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacyfsm.fsm.Transition#getAction <em>Action</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Action</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.Transition#getAction()
-	 * @see #getTransition()
-	 * @generated
-	 */
-	EAttribute getTransition_Action();
+	EAttribute getTransition_Output();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.NamedElement <em>Named Element</em>}'.
@@ -847,164 +455,6 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNamedElement_Name();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.Guard <em>Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Guard</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.Guard
-	 * @generated
-	 */
-	EClass getGuard();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.TemporalGuard <em>Temporal Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Temporal Guard</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TemporalGuard
-	 * @generated
-	 */
-	EClass getTemporalGuard();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.legacyfsm.fsm.TemporalGuard#getOnClock <em>On Clock</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>On Clock</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TemporalGuard#getOnClock()
-	 * @see #getTemporalGuard()
-	 * @generated
-	 */
-	EReference getTemporalGuard_OnClock();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacyfsm.fsm.TemporalGuard#getAfterDuration <em>After Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>After Duration</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TemporalGuard#getAfterDuration()
-	 * @see #getTemporalGuard()
-	 * @generated
-	 */
-	EAttribute getTemporalGuard_AfterDuration();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.EventGuard <em>Event Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Event Guard</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.EventGuard
-	 * @generated
-	 */
-	EClass getEventGuard();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.legacyfsm.fsm.EventGuard#getTriggeringEvent <em>Triggering Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Triggering Event</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.EventGuard#getTriggeringEvent()
-	 * @see #getEventGuard()
-	 * @generated
-	 */
-	EReference getEventGuard_TriggeringEvent();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.FSMEvent <em>FSM Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>FSM Event</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.FSMEvent
-	 * @generated
-	 */
-	EClass getFSMEvent();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.gemoc.sample.legacyfsm.fsm.FSMEvent#getSollicitingTransitions <em>Solliciting Transitions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Solliciting Transitions</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.FSMEvent#getSollicitingTransitions()
-	 * @see #getFSMEvent()
-	 * @generated
-	 */
-	EReference getFSMEvent_SollicitingTransitions();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.FSMClock <em>FSM Clock</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>FSM Clock</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.FSMClock
-	 * @generated
-	 */
-	EClass getFSMClock();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.TimedSystem <em>Timed System</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Timed System</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TimedSystem
-	 * @generated
-	 */
-	EClass getTimedSystem();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.TimedSystem#getFsms <em>Fsms</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Fsms</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TimedSystem#getFsms()
-	 * @see #getTimedSystem()
-	 * @generated
-	 */
-	EReference getTimedSystem_Fsms();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.TimedSystem#getGlobalClocks <em>Global Clocks</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Global Clocks</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TimedSystem#getGlobalClocks()
-	 * @see #getTimedSystem()
-	 * @generated
-	 */
-	EReference getTimedSystem_GlobalClocks();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.TimedSystem#getGlobalEvents <em>Global Events</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Global Events</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.TimedSystem#getGlobalEvents()
-	 * @see #getTimedSystem()
-	 * @generated
-	 */
-	EReference getTimedSystem_GlobalEvents();
-
-	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.EvaluateGuard <em>Evaluate Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Evaluate Guard</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.EvaluateGuard
-	 * @generated
-	 */
-	EClass getEvaluateGuard();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacyfsm.fsm.EvaluateGuard#getCondition <em>Condition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Condition</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.EvaluateGuard#getCondition()
-	 * @see #getEvaluateGuard()
-	 * @generated
-	 */
-	EAttribute getEvaluateGuard_Condition();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1030,14 +480,14 @@ public interface FsmPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.TimeFSMImpl <em>Time FSM</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.FSMImpl <em>FSM</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.TimeFSMImpl
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getTimeFSM()
+		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FSMImpl
+		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getFSM()
 		 * @generated
 		 */
-		EClass TIME_FSM = eINSTANCE.getTimeFSM();
+		EClass FSM = eINSTANCE.getFSM();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned States</b></em>' containment reference list feature.
@@ -1045,7 +495,7 @@ public interface FsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIME_FSM__OWNED_STATES = eINSTANCE.getTimeFSM_OwnedStates();
+		EReference FSM__OWNED_STATES = eINSTANCE.getFSM_OwnedStates();
 
 		/**
 		 * The meta object literal for the '<em><b>Initial State</b></em>' reference feature.
@@ -1053,23 +503,7 @@ public interface FsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIME_FSM__INITIAL_STATE = eINSTANCE.getTimeFSM_InitialState();
-
-		/**
-		 * The meta object literal for the '<em><b>Local Events</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TIME_FSM__LOCAL_EVENTS = eINSTANCE.getTimeFSM_LocalEvents();
-
-		/**
-		 * The meta object literal for the '<em><b>Local Clock</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TIME_FSM__LOCAL_CLOCK = eINSTANCE.getTimeFSM_LocalClock();
+		EReference FSM__INITIAL_STATE = eINSTANCE.getFSM_InitialState();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Transitions</b></em>' containment reference list feature.
@@ -1077,7 +511,7 @@ public interface FsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIME_FSM__OWNED_TRANSITIONS = eINSTANCE.getTimeFSM_OwnedTransitions();
+		EReference FSM__OWNED_TRANSITIONS = eINSTANCE.getFSM_OwnedTransitions();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.StateImpl <em>State</em>}' class.
@@ -1140,28 +574,20 @@ public interface FsmPackage extends EPackage {
 		EReference TRANSITION__TARGET = eINSTANCE.getTransition_Target();
 
 		/**
-		 * The meta object literal for the '<em><b>Owned Guard</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Input</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSITION__OWNED_GUARD = eINSTANCE.getTransition_OwnedGuard();
+		EAttribute TRANSITION__INPUT = eINSTANCE.getTransition_Input();
 
 		/**
-		 * The meta object literal for the '<em><b>Generated Events</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Output</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSITION__GENERATED_EVENTS = eINSTANCE.getTransition_GeneratedEvents();
-
-		/**
-		 * The meta object literal for the '<em><b>Action</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TRANSITION__ACTION = eINSTANCE.getTransition_Action();
+		EAttribute TRANSITION__OUTPUT = eINSTANCE.getTransition_Output();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -1180,140 +606,6 @@ public interface FsmPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.GuardImpl <em>Guard</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.GuardImpl
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getGuard()
-		 * @generated
-		 */
-		EClass GUARD = eINSTANCE.getGuard();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.TemporalGuardImpl <em>Temporal Guard</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.TemporalGuardImpl
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getTemporalGuard()
-		 * @generated
-		 */
-		EClass TEMPORAL_GUARD = eINSTANCE.getTemporalGuard();
-
-		/**
-		 * The meta object literal for the '<em><b>On Clock</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEMPORAL_GUARD__ON_CLOCK = eINSTANCE.getTemporalGuard_OnClock();
-
-		/**
-		 * The meta object literal for the '<em><b>After Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TEMPORAL_GUARD__AFTER_DURATION = eINSTANCE.getTemporalGuard_AfterDuration();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.EventGuardImpl <em>Event Guard</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.EventGuardImpl
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getEventGuard()
-		 * @generated
-		 */
-		EClass EVENT_GUARD = eINSTANCE.getEventGuard();
-
-		/**
-		 * The meta object literal for the '<em><b>Triggering Event</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EVENT_GUARD__TRIGGERING_EVENT = eINSTANCE.getEventGuard_TriggeringEvent();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.FSMEventImpl <em>FSM Event</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FSMEventImpl
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getFSMEvent()
-		 * @generated
-		 */
-		EClass FSM_EVENT = eINSTANCE.getFSMEvent();
-
-		/**
-		 * The meta object literal for the '<em><b>Solliciting Transitions</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FSM_EVENT__SOLLICITING_TRANSITIONS = eINSTANCE.getFSMEvent_SollicitingTransitions();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.FSMClockImpl <em>FSM Clock</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FSMClockImpl
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getFSMClock()
-		 * @generated
-		 */
-		EClass FSM_CLOCK = eINSTANCE.getFSMClock();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.TimedSystemImpl <em>Timed System</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.TimedSystemImpl
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getTimedSystem()
-		 * @generated
-		 */
-		EClass TIMED_SYSTEM = eINSTANCE.getTimedSystem();
-
-		/**
-		 * The meta object literal for the '<em><b>Fsms</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TIMED_SYSTEM__FSMS = eINSTANCE.getTimedSystem_Fsms();
-
-		/**
-		 * The meta object literal for the '<em><b>Global Clocks</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TIMED_SYSTEM__GLOBAL_CLOCKS = eINSTANCE.getTimedSystem_GlobalClocks();
-
-		/**
-		 * The meta object literal for the '<em><b>Global Events</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TIMED_SYSTEM__GLOBAL_EVENTS = eINSTANCE.getTimedSystem_GlobalEvents();
-
-		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.EvaluateGuardImpl <em>Evaluate Guard</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.EvaluateGuardImpl
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getEvaluateGuard()
-		 * @generated
-		 */
-		EClass EVALUATE_GUARD = eINSTANCE.getEvaluateGuard();
-
-		/**
-		 * The meta object literal for the '<em><b>Condition</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EVALUATE_GUARD__CONDITION = eINSTANCE.getEvaluateGuard_Condition();
 
 	}
 

@@ -66,10 +66,10 @@ public class FsmSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case FsmPackage.TIME_FSM: {
-				TimeFSM timeFSM = (TimeFSM)theEObject;
-				T result = caseTimeFSM(timeFSM);
-				if (result == null) result = caseNamedElement(timeFSM);
+			case FsmPackage.FSM: {
+				FSM fsm = (FSM)theEObject;
+				T result = caseFSM(fsm);
+				if (result == null) result = caseNamedElement(fsm);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -93,74 +93,22 @@ public class FsmSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case FsmPackage.GUARD: {
-				Guard guard = (Guard)theEObject;
-				T result = caseGuard(guard);
-				if (result == null) result = caseNamedElement(guard);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case FsmPackage.TEMPORAL_GUARD: {
-				TemporalGuard temporalGuard = (TemporalGuard)theEObject;
-				T result = caseTemporalGuard(temporalGuard);
-				if (result == null) result = caseGuard(temporalGuard);
-				if (result == null) result = caseNamedElement(temporalGuard);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case FsmPackage.EVENT_GUARD: {
-				EventGuard eventGuard = (EventGuard)theEObject;
-				T result = caseEventGuard(eventGuard);
-				if (result == null) result = caseGuard(eventGuard);
-				if (result == null) result = caseNamedElement(eventGuard);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case FsmPackage.FSM_EVENT: {
-				FSMEvent fsmEvent = (FSMEvent)theEObject;
-				T result = caseFSMEvent(fsmEvent);
-				if (result == null) result = caseNamedElement(fsmEvent);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case FsmPackage.FSM_CLOCK: {
-				FSMClock fsmClock = (FSMClock)theEObject;
-				T result = caseFSMClock(fsmClock);
-				if (result == null) result = caseNamedElement(fsmClock);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case FsmPackage.TIMED_SYSTEM: {
-				TimedSystem timedSystem = (TimedSystem)theEObject;
-				T result = caseTimedSystem(timedSystem);
-				if (result == null) result = caseNamedElement(timedSystem);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case FsmPackage.EVALUATE_GUARD: {
-				EvaluateGuard evaluateGuard = (EvaluateGuard)theEObject;
-				T result = caseEvaluateGuard(evaluateGuard);
-				if (result == null) result = caseGuard(evaluateGuard);
-				if (result == null) result = caseNamedElement(evaluateGuard);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Time FSM</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>FSM</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Time FSM</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>FSM</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTimeFSM(TimeFSM object) {
+	public T caseFSM(FSM object) {
 		return null;
 	}
 
@@ -206,111 +154,6 @@ public class FsmSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNamedElement(NamedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Guard</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseGuard(Guard object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Temporal Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Temporal Guard</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTemporalGuard(TemporalGuard object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event Guard</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEventGuard(EventGuard object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>FSM Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>FSM Event</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFSMEvent(FSMEvent object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>FSM Clock</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>FSM Clock</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFSMClock(FSMClock object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Timed System</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Timed System</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTimedSystem(TimedSystem object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Evaluate Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Evaluate Guard</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEvaluateGuard(EvaluateGuard object) {
 		return null;
 	}
 
