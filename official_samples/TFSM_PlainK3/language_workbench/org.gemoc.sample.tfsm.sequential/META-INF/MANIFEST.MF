@@ -1,6 +1,6 @@
 Bundle-SymbolicName: org.gemoc.sample.tfsm.sequential;singleton:=true
 Export-Package: org.gemoc.sample.tfsm.sequential.xtfsmmt.tfsm.util,org.gemoc.sample.tfsm.sequential.xtfsmmt.tfsm,org.gemoc.sample.tfsm.sequential.xtfsmmt.tfsm.impl,org.gemoc.sample.tfsm.sequential.xtfsm.adapters.xtfsmmt,org.gemoc.sample.tfsm.sequential,org.gemoc.sample.tfsm.sequential.xtfsm.adapters.xtfsmmt.tfsm
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.3.0.qualifier
 Bundle-Name: org.gemoc.sample.tfsm.plaink3.xdsml
 Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  

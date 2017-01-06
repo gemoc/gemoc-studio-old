@@ -13,7 +13,7 @@
 	</parent>
 
 	<properties>
-		<eclipse.version.name>Neon.1</eclipse.version.name>
+		<eclipse.version.name>Neon.2</eclipse.version.name>
 	</properties>
 
 	<artifactId>org.gemoc.gemoc_studio.branding</artifactId>

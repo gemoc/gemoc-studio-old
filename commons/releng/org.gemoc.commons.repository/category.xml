@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.gemoc.commons.feature_0.1.0.qualifier.jar" id="org.gemoc.commons.feature" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.commons.feature_2.3.0.qualifier.jar" id="org.gemoc.commons.feature" version="2.3.0.qualifier">
       <category name="gemoc_commons"/>
    </feature>
-   <feature url="features/org.gemoc.commons.feature.source_0.1.0.qualifier.jar" id="org.gemoc.commons.feature.source" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.commons.feature.source_2.3.0.qualifier.jar" id="org.gemoc.commons.feature.source" version="2.3.0.qualifier">
       <category name="gemoc_commons"/>
    </feature>
-   <feature url="features/org.gemoc.gexpressions.feature_0.1.0.qualifier.jar" id="org.gemoc.gexpressions.feature" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.gexpressions.feature_2.3.0.qualifier.jar" id="org.gemoc.gexpressions.feature" version="2.3.0.qualifier">
       <category name="gemoc_commons"/>
    </feature>
-   <feature url="features/org.gemoc.gexpressions.feature.source_0.1.0.qualifier.jar" id="org.gemoc.gexpressions.feature.source" version="0.1.0.qualifier">
+   <feature url="features/org.gemoc.gexpressions.feature.source_2.3.0.qualifier.jar" id="org.gemoc.gexpressions.feature.source" version="2.3.0.qualifier">
       <category name="gemoc_commons"/>
    </feature>
    <category-def name="gemoc_commons" label="GEMOC Commons"/>

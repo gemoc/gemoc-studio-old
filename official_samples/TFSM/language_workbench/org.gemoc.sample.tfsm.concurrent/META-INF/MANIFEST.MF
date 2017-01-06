@@ -1,6 +1,6 @@
 Bundle-SymbolicName: org.gemoc.sample.tfsm.concurrent;singleton:=true
 Export-Package: xtfsm.xdsml.api.impl
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.3.0.qualifier
 Bundle-Name: Concurrent TFSM
 Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  

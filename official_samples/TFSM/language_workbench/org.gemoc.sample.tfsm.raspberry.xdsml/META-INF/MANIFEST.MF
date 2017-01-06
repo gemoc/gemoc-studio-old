@@ -1,6 +1,6 @@
 Export-Package: tfsm.xdsml.api.impl
 Bundle-SymbolicName: org.gemoc.sample.tfsm.raspberry.xdsml;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.3.0.qualifier
 Bundle-Name: Tfsm
 Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.gemoc.sample.tfsm.model;bundle-version="0.0.0";visibility:=reexport,

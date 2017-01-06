@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TFSM MoC
 Bundle-SymbolicName: org.gemoc.sample.tfsm.concurrent.moc.lib
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 2.3.0.qualifier
 Bundle-Activator: org.gemoc.sample.tfsm.concurrent.moc.lib.Activator
 Require-Bundle: org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy

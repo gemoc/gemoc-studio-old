@@ -115,7 +115,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
    <requires>
       <import feature="org.gemoc.concurrency.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.heterogeneous_coordination_engine.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.bcool.feature" version="1.0.0.qualifier"/>
+      <import feature="org.gemoc.bcool.feature" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
 </feature>

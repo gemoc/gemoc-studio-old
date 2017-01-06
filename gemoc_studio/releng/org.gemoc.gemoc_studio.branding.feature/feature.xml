@@ -43,15 +43,15 @@
       <import feature="fr.obeo.dsl.debug.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.ui.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.sirius.ui.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="fr.inria.aoste.timesquare.core.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="fr.inria.aoste.timesquare.backend.power.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="fr.inria.aoste.timesquare.backend.vcd.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="fr.inria.aoste.timesquare.backend.codeexecution.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="fr.inria.aoste.timesquare.launcher.ui.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="fr.inria.aoste.timesquare.ccslkernel.clocktree.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="fr.inria.aoste.timesquare.nobackend.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="fr.inria.aoste.timesquare.backend.obeoviewpointanimator.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="fr.inria.aoste.timesquare.ecl.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.core.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.power.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.vcd.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.codeexecution.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.launcher.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.ccslkernel.clocktree.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.nobackend.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.backend.obeoviewpointanimator.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.inria.aoste.timesquare.ecl.feature" version="0.0.0" match="greaterOrEqual"/>
 
       <import feature="org.eclipse.sirius.doc.feature" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime" version="1.0.0.201403121231" match="greaterOrEqual"/>
@@ -63,16 +63,15 @@
       <import feature="org.eclipse.sirius.runtime.ocl" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.specifier.ide.ui" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
-<import feature="org.gemoc.mocc.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="org.gemoc.mocc.transformations.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.mocc.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.mocc.transformations.feature" version="0.0.0" match="greaterOrEqual"/>
 
       <import feature="org.eclipse.e4.rcp" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.melange.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.trace.commons.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.trace.generator.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.trace.manager.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="org.gemoc.bcool.feature" version="1.0.0.qualifier"/>
-<import feature="org.gemoc.gel.microgel.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.bcool.feature" version="0.0.0" match="greaterOrEqual"/>
 
    </requires>
 

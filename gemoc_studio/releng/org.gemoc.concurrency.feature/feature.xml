@@ -129,8 +129,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import feature="fr.inria.aoste.timesquare.ecl.feature" version="1.0.0.201403211604" match="greaterOrEqual"/>
       <import feature="org.gemoc.mocc.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.mocc.transformations.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.gel.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.gel.microgel.feature" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
 </feature>

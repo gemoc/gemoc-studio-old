@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Created-By: 1.6.0_51 (Apple Inc.)
 Bundle-SymbolicName: fr.cnrs.luchogie.ultimateplotter
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.3.0.qualifier
 Bundle-Name: Ultimate Plotter
 Bundle-Vendor: CNRS I3S Aoste
 Eclipse-AutoStart: true

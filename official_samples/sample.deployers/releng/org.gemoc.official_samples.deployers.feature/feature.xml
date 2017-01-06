@@ -2,7 +2,7 @@
 <feature
       id="org.gemoc.official_samples.deployers.feature"
       label="GEMOC Official Samples"
-      version="0.1.0.qualifier"
+      version="2.3.0.qualifier"
       provider-name="INRIA">
 
    <description url="http://gemoc.org/studio/">
