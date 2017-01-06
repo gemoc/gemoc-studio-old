@@ -1,5 +1,22 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+	<style media="screen" type="text/css">
+
+figure {
+  float: right;
+  width: 100%;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+img.scaled {
+  width: 100%;
+}
+	</style>
    <head>
       <title>LegacyFSM Sequential example</title>
    </head>
@@ -42,5 +59,18 @@
          Install sample models for the language:<br>
          File &gt; new  &gt; Examples... &gt; GEMOC model example for Legacy FSM  (Sequential)
       </p>
+      
+		<h2>Language structure overview</h2>
+       	<p>The following figure presents :</p>
+		<ul>
+		<li>the base language <i>fsm</i> content;</li>
+		<li>how the aspects extends the base classes;</li>
+		<li>how the <i>xsfsm</i> language is built by inheriting from the <i>fsm</i> language and using the aspects.</li>
+		</ul>		
+       	<figure>
+       		<img class=scaled  src="../figures-gen/src/main/plantuml/LegacyFSM_language_figure.png">
+			<figcaption>Language relations, packages and classes view.</figcaption>
+		</figure>
+		<p>Please note that for simplification of the diagram, the associations that doesn't represent a containment, have been represented as attribute rather than links.</p>
    </body>
 </html>
