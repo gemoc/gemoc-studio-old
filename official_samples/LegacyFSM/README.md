@@ -17,7 +17,7 @@ for more details about the language deployment process)
 Alternatively, this language is part of the basic example of GEMOC and is directly available in the GEMOC Studio. 
 Simply, go to _File > New > Example..._ and use the wizards to install the LegacyFSM projects in the language workbench and modeling workbench. 
 
-# Language Designer documentation ![GEMOC Language Logo](http://gemoc.github.io/gemoc-studio/publish/guide/html_single/images/icons/IconeGemocLanguage_16.png)
+# Developper documentation (Language Designer) ![GEMOC Language Logo](http://gemoc.github.io/gemoc-studio/publish/guide/html_single/images/icons/IconeGemocLanguage_16.png)
 
 ## Organization of the code
 Main eclipse plugins:
@@ -51,7 +51,7 @@ not used in the debug views (Stack and variable views) and replaced by default i
 __Workaround:__ you can generate the edit project from _XSFSM.genmodel_ and copy the icons from _fsm.model.edit_ to _xsfsm.xsfsm.edit_.
 
 
-# Model Designer documentation ![GEMOC Model Logo](http://gemoc.github.io/gemoc-studio/publish/guide/html_single/images/icons/IconeGemocModel_16.png)
+# User Documentation (Model Designer) ![GEMOC Model Logo](http://gemoc.github.io/gemoc-studio/publish/guide/html_single/images/icons/IconeGemocModel_16.png)
 
 The projects in modeling workbench contains some sample models.
 
