@@ -6,6 +6,24 @@ skinparam class {
 	BorderColor Black
 }
 
+namespace fsm.ecore #LightGreen-white {
+  class FSM {
+    name : String
+    initialState : State
+    finalState : State
+  }
+  class State{
+    name : String
+    incommingTransition : Transition
+  }
+	class Transition{
+		input : String
+		target : State
+	}
+	FSM *-- State : ownedStates
+	State *-- Transition : outgoingTransitions
+}
+
 namespace fsm <<Node>> {
 	namespace fsm #LightGray-white {
 	  class FSM {
@@ -26,7 +44,7 @@ namespace fsm <<Node>> {
 	}
 }
 
-namespace fsm.k3dsa  #LightGray-white {
+namespace fsm.k3dsa  #LightGreen-white {
     class FSMAspect << (@,#FF7700) Aspect >>{
 	    currentState : State
 	    run()
@@ -67,6 +85,7 @@ namespace xsfsm <<Node>> {
 	}
 }
 
+fsm --> fsm.ecore : syntax (legacy)
 fsm <-- xsfsm : inherits
 xsfsm *-- fsm.k3dsa : with
 @enduml
