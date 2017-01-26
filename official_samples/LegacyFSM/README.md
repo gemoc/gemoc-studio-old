@@ -34,7 +34,15 @@ Main eclipse plugins:
 and dynamic features (from org.gemoc.sample.legacyfsm.fsm.k3dsa).
 
 ## Relation between FSM and XSFSM languages
-TODO (use plantuml figure)
+The following figure presents :
+- the base language fsm content;
+- how the aspects extends the base classes;
+- how the xsfsm language is built by inheriting from the fsm language and using the aspects.
+
+![Language relations, packages and classes view.](https://github.com/gemoc/gemoc-studio/raw/master/official_samples/sample.deployers/plugins/org.gemoc.gemoc_language_workbench.sample.deployer/figures-gen/src/main/plantuml/LegacyFSM_language_figure.png)
+*Language relations, packages and classes view.*
+
+Please note that for simplification of the diagram, the associations that doesn't represent a containment, have been represented as attributes rather than links.
 
 ## Note about current limitations/issues
 Currently, Melange doesn't automatically copy the .edit project from FSM to XSFSM. As a consequence, the customized icons defined in _fsm.model.edit_ are 
