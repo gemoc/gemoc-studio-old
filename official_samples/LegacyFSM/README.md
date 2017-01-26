@@ -1,8 +1,8 @@
 # Presentation
-LegacyFSM is a simple Finite State Machine DSL implementing a mealy machine semantics.
+FSM is a simple Finite State Machine DSL implementing a mealy machine semantics.
 
 This implementation focuses on illustrating the hierarchy of languages: a base FSM with editor support 
-considered as a legacy language (ie. as if it was developped by thirdparties)
+considered as a _legacy_ language (ie. as if it was developped by thirdparties)
 and an executable sequential FSM with animation support built by extension of the FSM language.
 
 ## Installation
