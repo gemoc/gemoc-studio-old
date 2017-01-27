@@ -6,7 +6,7 @@ skinparam class {
 	BorderColor Black
 }
 
-namespace fsm.ecore #LightGreen-white {
+namespace fsm.ecore <<Frame>>  {
   class FSM {
     name : String
     initialState : State
@@ -24,8 +24,8 @@ namespace fsm.ecore #LightGreen-white {
 	State *-- Transition : outgoingTransitions
 }
 
-namespace fsm <<Node>> {
-	namespace fsm #LightGray-white {
+namespace fsm.melange <<Cloud>> #PaleGreen-white {
+	namespace fsm  #white {
 	  class FSM {
 	    name : String
 	    initialState : State
@@ -44,7 +44,7 @@ namespace fsm <<Node>> {
 	}
 }
 
-namespace fsm.k3dsa  #LightGreen-white {
+namespace fsm.k3dsa   {
     class FSMAspect << (@,#FF7700) Aspect >>{
 	    currentState : State
 	    run()
@@ -57,11 +57,11 @@ namespace fsm.k3dsa  #LightGreen-white {
 	}
 }
 
-fsm.fsm.FSM .. fsm.k3dsa.FSMAspect  : <
-fsm.fsm.State .. fsm.k3dsa.StateAspect  : <
-fsm.fsm.Transition .. fsm.k3dsa.TransitionAspect  : <
+fsm.melange.fsm.FSM .. fsm.k3dsa.FSMAspect  : <
+fsm.melange.fsm.State .. fsm.k3dsa.StateAspect  : <
+fsm.melange.fsm.Transition .. fsm.k3dsa.TransitionAspect  : <
 
-namespace xsfsm <<Node>> {
+namespace xsfsm.melange <<Cloud>> #PaleGreen-white {
 	namespace fsm  #LightGray-white {
 	  class FSM {
 	    name : String
@@ -85,7 +85,7 @@ namespace xsfsm <<Node>> {
 	}
 }
 
-fsm --> fsm.ecore : syntax (legacy)
-fsm <-- xsfsm : inherits
-xsfsm *-- fsm.k3dsa : with
+fsm.melange --> fsm.ecore : syntax (legacy)
+fsm.melange <-- xsfsm.melange : inherits
+xsfsm.melange *-- fsm.k3dsa : with
 @enduml

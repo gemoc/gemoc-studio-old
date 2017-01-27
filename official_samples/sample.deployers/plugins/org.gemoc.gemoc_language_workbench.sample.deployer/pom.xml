@@ -100,7 +100,7 @@
 		        <dependency>
 		          <groupId>net.sourceforge.plantuml</groupId>
 		          <artifactId>plantuml</artifactId>
-		          <version>8053</version>
+		          <version>8054</version>
 		        </dependency>
 		      </dependencies>
 		    </plugin>
