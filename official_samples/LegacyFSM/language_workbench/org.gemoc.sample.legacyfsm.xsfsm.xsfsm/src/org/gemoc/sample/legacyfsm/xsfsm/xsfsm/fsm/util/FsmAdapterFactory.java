@@ -68,8 +68,8 @@ public class FsmAdapterFactory extends AdapterFactoryImpl {
 	protected FsmSwitch<Adapter> modelSwitch =
 		new FsmSwitch<Adapter>() {
 			@Override
-			public Adapter caseTimeFSM(TimeFSM object) {
-				return createTimeFSMAdapter();
+			public Adapter caseStateMachine(StateMachine object) {
+				return createStateMachineAdapter();
 			}
 			@Override
 			public Adapter caseState(State object) {
@@ -82,34 +82,6 @@ public class FsmAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseNamedElement(NamedElement object) {
 				return createNamedElementAdapter();
-			}
-			@Override
-			public Adapter caseGuard(Guard object) {
-				return createGuardAdapter();
-			}
-			@Override
-			public Adapter caseTemporalGuard(TemporalGuard object) {
-				return createTemporalGuardAdapter();
-			}
-			@Override
-			public Adapter caseEventGuard(EventGuard object) {
-				return createEventGuardAdapter();
-			}
-			@Override
-			public Adapter caseFSMEvent(FSMEvent object) {
-				return createFSMEventAdapter();
-			}
-			@Override
-			public Adapter caseFSMClock(FSMClock object) {
-				return createFSMClockAdapter();
-			}
-			@Override
-			public Adapter caseTimedSystem(TimedSystem object) {
-				return createTimedSystemAdapter();
-			}
-			@Override
-			public Adapter caseEvaluateGuard(EvaluateGuard object) {
-				return createEvaluateGuardAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -132,16 +104,16 @@ public class FsmAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM <em>Time FSM</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine <em>State Machine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM
+	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine
 	 * @generated
 	 */
-	public Adapter createTimeFSMAdapter() {
+	public Adapter createStateMachineAdapter() {
 		return null;
 	}
 
@@ -184,104 +156,6 @@ public class FsmAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNamedElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Guard <em>Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Guard
-	 * @generated
-	 */
-	public Adapter createGuardAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TemporalGuard <em>Temporal Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TemporalGuard
-	 * @generated
-	 */
-	public Adapter createTemporalGuardAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EventGuard <em>Event Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EventGuard
-	 * @generated
-	 */
-	public Adapter createEventGuardAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMEvent <em>FSM Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMEvent
-	 * @generated
-	 */
-	public Adapter createFSMEventAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMClock <em>FSM Clock</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMClock
-	 * @generated
-	 */
-	public Adapter createFSMClockAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimedSystem <em>Timed System</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimedSystem
-	 * @generated
-	 */
-	public Adapter createTimedSystemAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EvaluateGuard <em>Evaluate Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EvaluateGuard
-	 * @generated
-	 */
-	public Adapter createEvaluateGuardAdapter() {
 		return null;
 	}
 

@@ -56,6 +56,70 @@ public interface StatesPackage extends EPackage {
 	StatesPackage eINSTANCE = fsmTrace.States.impl.StatesPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link fsmTrace.States.impl.StateImpl <em>State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fsmTrace.States.impl.StateImpl
+	 * @see fsmTrace.States.impl.StatesPackageImpl#getState()
+	 * @generated
+	 */
+	int STATE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Ended Steps</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__ENDED_STEPS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Started Steps</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__STARTED_STEPS = 1;
+
+	/**
+	 * The feature id for the '<em><b>State Machine actions To Process Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__STATE_MACHINE_ACTIONS_TO_PROCESS_VALUES = 2;
+
+	/**
+	 * The feature id for the '<em><b>State Machine current State Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__STATE_MACHINE_CURRENT_STATE_VALUES = 3;
+
+	/**
+	 * The feature id for the '<em><b>State Machine produced String Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__STATE_MACHINE_PRODUCED_STRING_VALUES = 4;
+
+	/**
+	 * The number of structural features of the '<em>State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_FEATURE_COUNT = 5;
+
+	/**
 	 * The meta object id for the '{@link fsmTrace.States.Value <em>Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,7 +127,7 @@ public interface StatesPackage extends EPackage {
 	 * @see fsmTrace.States.impl.StatesPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 6;
+	int VALUE = 4;
 
 	/**
 	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
@@ -84,14 +148,14 @@ public interface StatesPackage extends EPackage {
 	int VALUE_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link fsmTrace.States.impl.FSMClock_numberOfTicks_ValueImpl <em>FSM Clock number Of Ticks Value</em>}' class.
+	 * The meta object id for the '{@link fsmTrace.States.impl.StateMachine_actionsToProcess_ValueImpl <em>State Machine actions To Process Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.impl.FSMClock_numberOfTicks_ValueImpl
-	 * @see fsmTrace.States.impl.StatesPackageImpl#getFSMClock_numberOfTicks_Value()
+	 * @see fsmTrace.States.impl.StateMachine_actionsToProcess_ValueImpl
+	 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_actionsToProcess_Value()
 	 * @generated
 	 */
-	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE = 0;
+	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE = 1;
 
 	/**
 	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
@@ -100,16 +164,16 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
+	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
 
 	/**
-	 * The feature id for the '<em><b>Number Of Ticks</b></em>' attribute.
+	 * The feature id for the '<em><b>Actions To Process</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS = VALUE_FEATURE_COUNT + 0;
+	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__ACTIONS_TO_PROCESS = VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -118,7 +182,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
+	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>States</b></em>' reference list.
@@ -127,26 +191,26 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
+	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>FSM Clock number Of Ticks Value</em>' class.
+	 * The number of structural features of the '<em>State Machine actions To Process Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_CLOCK_NUMBER_OF_TICKS_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
+	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link fsmTrace.States.impl.FSMEvent_isTriggered_ValueImpl <em>FSM Event is Triggered Value</em>}' class.
+	 * The meta object id for the '{@link fsmTrace.States.impl.StateMachine_currentState_ValueImpl <em>State Machine current State Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.impl.FSMEvent_isTriggered_ValueImpl
-	 * @see fsmTrace.States.impl.StatesPackageImpl#getFSMEvent_isTriggered_Value()
+	 * @see fsmTrace.States.impl.StateMachine_currentState_ValueImpl
+	 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_currentState_Value()
 	 * @generated
 	 */
-	int FSM_EVENT_IS_TRIGGERED_VALUE = 1;
+	int STATE_MACHINE_CURRENT_STATE_VALUE = 2;
 
 	/**
 	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
@@ -155,144 +219,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_EVENT_IS_TRIGGERED_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
-
-	/**
-	 * The feature id for the '<em><b>Is Triggered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_EVENT_IS_TRIGGERED_VALUE__IS_TRIGGERED = VALUE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_EVENT_IS_TRIGGERED_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>States</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_EVENT_IS_TRIGGERED_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>FSM Event is Triggered Value</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_EVENT_IS_TRIGGERED_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.States.impl.StateImpl <em>State</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.impl.StateImpl
-	 * @see fsmTrace.States.impl.StatesPackageImpl#getState()
-	 * @generated
-	 */
-	int STATE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Ended Steps</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE__ENDED_STEPS = 0;
-
-	/**
-	 * The feature id for the '<em><b>FSM Clock number Of Ticks Values</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE__FSM_CLOCK_NUMBER_OF_TICKS_VALUES = 1;
-
-	/**
-	 * The feature id for the '<em><b>FSM Event is Triggered Values</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE__FSM_EVENT_IS_TRIGGERED_VALUES = 2;
-
-	/**
-	 * The feature id for the '<em><b>Started Steps</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE__STARTED_STEPS = 3;
-
-	/**
-	 * The feature id for the '<em><b>Time FSM current State Values</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE__TIME_FSM_CURRENT_STATE_VALUES = 4;
-
-	/**
-	 * The feature id for the '<em><b>Time FSM last State Change Step Number Values</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE__TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES = 5;
-
-	/**
-	 * The feature id for the '<em><b>Time FSM step Number Values</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE__TIME_FSM_STEP_NUMBER_VALUES = 6;
-
-	/**
-	 * The number of structural features of the '<em>State</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE_FEATURE_COUNT = 7;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.States.impl.TimeFSM_currentState_ValueImpl <em>Time FSM current State Value</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.impl.TimeFSM_currentState_ValueImpl
-	 * @see fsmTrace.States.impl.StatesPackageImpl#getTimeFSM_currentState_Value()
-	 * @generated
-	 */
-	int TIME_FSM_CURRENT_STATE_VALUE = 3;
-
-	/**
-	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_FSM_CURRENT_STATE_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
+	int STATE_MACHINE_CURRENT_STATE_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
 
 	/**
 	 * The feature id for the '<em><b>Current State</b></em>' reference.
@@ -301,7 +228,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM_CURRENT_STATE_VALUE__CURRENT_STATE = VALUE_FEATURE_COUNT + 0;
+	int STATE_MACHINE_CURRENT_STATE_VALUE__CURRENT_STATE = VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -310,7 +237,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM_CURRENT_STATE_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
+	int STATE_MACHINE_CURRENT_STATE_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>States</b></em>' reference list.
@@ -319,26 +246,26 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM_CURRENT_STATE_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
+	int STATE_MACHINE_CURRENT_STATE_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Time FSM current State Value</em>' class.
+	 * The number of structural features of the '<em>State Machine current State Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM_CURRENT_STATE_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
+	int STATE_MACHINE_CURRENT_STATE_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link fsmTrace.States.impl.TimeFSM_lastStateChangeStepNumber_ValueImpl <em>Time FSM last State Change Step Number Value</em>}' class.
+	 * The meta object id for the '{@link fsmTrace.States.impl.StateMachine_producedString_ValueImpl <em>State Machine produced String Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.impl.TimeFSM_lastStateChangeStepNumber_ValueImpl
-	 * @see fsmTrace.States.impl.StatesPackageImpl#getTimeFSM_lastStateChangeStepNumber_Value()
+	 * @see fsmTrace.States.impl.StateMachine_producedString_ValueImpl
+	 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_producedString_Value()
 	 * @generated
 	 */
-	int TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE = 4;
+	int STATE_MACHINE_PRODUCED_STRING_VALUE = 3;
 
 	/**
 	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
@@ -347,16 +274,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
-
-	/**
-	 * The feature id for the '<em><b>Last State Change Step Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__LAST_STATE_CHANGE_STEP_NUMBER = VALUE_FEATURE_COUNT + 0;
+	int STATE_MACHINE_PRODUCED_STRING_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -365,7 +283,16 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
+	int STATE_MACHINE_PRODUCED_STRING_VALUE__PARENT = VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Produced String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE_PRODUCED_STRING_VALUE__PRODUCED_STRING = VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>States</b></em>' reference list.
@@ -374,158 +301,17 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
+	int STATE_MACHINE_PRODUCED_STRING_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Time FSM last State Change Step Number Value</em>' class.
+	 * The number of structural features of the '<em>State Machine produced String Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
+	int STATE_MACHINE_PRODUCED_STRING_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
 
-	/**
-	 * The meta object id for the '{@link fsmTrace.States.impl.TimeFSM_stepNumber_ValueImpl <em>Time FSM step Number Value</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.impl.TimeFSM_stepNumber_ValueImpl
-	 * @see fsmTrace.States.impl.StatesPackageImpl#getTimeFSM_stepNumber_Value()
-	 * @generated
-	 */
-	int TIME_FSM_STEP_NUMBER_VALUE = 5;
-
-	/**
-	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_FSM_STEP_NUMBER_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
-
-	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_FSM_STEP_NUMBER_VALUE__PARENT = VALUE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>States</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_FSM_STEP_NUMBER_VALUE__STATES = VALUE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Step Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_FSM_STEP_NUMBER_VALUE__STEP_NUMBER = VALUE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Time FSM step Number Value</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_FSM_STEP_NUMBER_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
-
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.FSMClock_numberOfTicks_Value <em>FSM Clock number Of Ticks Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>FSM Clock number Of Ticks Value</em>'.
-	 * @see fsmTrace.States.FSMClock_numberOfTicks_Value
-	 * @generated
-	 */
-	EClass getFSMClock_numberOfTicks_Value();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fsmTrace.States.FSMClock_numberOfTicks_Value#getNumberOfTicks <em>Number Of Ticks</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Number Of Ticks</em>'.
-	 * @see fsmTrace.States.FSMClock_numberOfTicks_Value#getNumberOfTicks()
-	 * @see #getFSMClock_numberOfTicks_Value()
-	 * @generated
-	 */
-	EAttribute getFSMClock_numberOfTicks_Value_NumberOfTicks();
-
-	/**
-	 * Returns the meta object for the container reference '{@link fsmTrace.States.FSMClock_numberOfTicks_Value#getParent <em>Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Parent</em>'.
-	 * @see fsmTrace.States.FSMClock_numberOfTicks_Value#getParent()
-	 * @see #getFSMClock_numberOfTicks_Value()
-	 * @generated
-	 */
-	EReference getFSMClock_numberOfTicks_Value_Parent();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.FSMClock_numberOfTicks_Value#getStates <em>States</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>States</em>'.
-	 * @see fsmTrace.States.FSMClock_numberOfTicks_Value#getStates()
-	 * @see #getFSMClock_numberOfTicks_Value()
-	 * @generated
-	 */
-	EReference getFSMClock_numberOfTicks_Value_States();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.FSMEvent_isTriggered_Value <em>FSM Event is Triggered Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>FSM Event is Triggered Value</em>'.
-	 * @see fsmTrace.States.FSMEvent_isTriggered_Value
-	 * @generated
-	 */
-	EClass getFSMEvent_isTriggered_Value();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fsmTrace.States.FSMEvent_isTriggered_Value#isIsTriggered <em>Is Triggered</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Triggered</em>'.
-	 * @see fsmTrace.States.FSMEvent_isTriggered_Value#isIsTriggered()
-	 * @see #getFSMEvent_isTriggered_Value()
-	 * @generated
-	 */
-	EAttribute getFSMEvent_isTriggered_Value_IsTriggered();
-
-	/**
-	 * Returns the meta object for the container reference '{@link fsmTrace.States.FSMEvent_isTriggered_Value#getParent <em>Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Parent</em>'.
-	 * @see fsmTrace.States.FSMEvent_isTriggered_Value#getParent()
-	 * @see #getFSMEvent_isTriggered_Value()
-	 * @generated
-	 */
-	EReference getFSMEvent_isTriggered_Value_Parent();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.FSMEvent_isTriggered_Value#getStates <em>States</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>States</em>'.
-	 * @see fsmTrace.States.FSMEvent_isTriggered_Value#getStates()
-	 * @see #getFSMEvent_isTriggered_Value()
-	 * @generated
-	 */
-	EReference getFSMEvent_isTriggered_Value_States();
 
 	/**
 	 * Returns the meta object for class '{@link fsmTrace.States.State <em>State</em>}'.
@@ -549,28 +335,6 @@ public interface StatesPackage extends EPackage {
 	EReference getState_EndedSteps();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getFSMClock_numberOfTicks_Values <em>FSM Clock number Of Ticks Values</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>FSM Clock number Of Ticks Values</em>'.
-	 * @see fsmTrace.States.State#getFSMClock_numberOfTicks_Values()
-	 * @see #getState()
-	 * @generated
-	 */
-	EReference getState_FSMClock_numberOfTicks_Values();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getFSMEvent_isTriggered_Values <em>FSM Event is Triggered Values</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>FSM Event is Triggered Values</em>'.
-	 * @see fsmTrace.States.State#getFSMEvent_isTriggered_Values()
-	 * @see #getState()
-	 * @generated
-	 */
-	EReference getState_FSMEvent_isTriggered_Values();
-
-	/**
 	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getStartedSteps <em>Started Steps</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -582,166 +346,166 @@ public interface StatesPackage extends EPackage {
 	EReference getState_StartedSteps();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getTimeFSM_currentState_Values <em>Time FSM current State Values</em>}'.
+	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getStateMachine_actionsToProcess_Values <em>State Machine actions To Process Values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Time FSM current State Values</em>'.
-	 * @see fsmTrace.States.State#getTimeFSM_currentState_Values()
+	 * @return the meta object for the reference list '<em>State Machine actions To Process Values</em>'.
+	 * @see fsmTrace.States.State#getStateMachine_actionsToProcess_Values()
 	 * @see #getState()
 	 * @generated
 	 */
-	EReference getState_TimeFSM_currentState_Values();
+	EReference getState_StateMachine_actionsToProcess_Values();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getTimeFSM_lastStateChangeStepNumber_Values <em>Time FSM last State Change Step Number Values</em>}'.
+	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getStateMachine_currentState_Values <em>State Machine current State Values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Time FSM last State Change Step Number Values</em>'.
-	 * @see fsmTrace.States.State#getTimeFSM_lastStateChangeStepNumber_Values()
+	 * @return the meta object for the reference list '<em>State Machine current State Values</em>'.
+	 * @see fsmTrace.States.State#getStateMachine_currentState_Values()
 	 * @see #getState()
 	 * @generated
 	 */
-	EReference getState_TimeFSM_lastStateChangeStepNumber_Values();
+	EReference getState_StateMachine_currentState_Values();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getTimeFSM_stepNumber_Values <em>Time FSM step Number Values</em>}'.
+	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getStateMachine_producedString_Values <em>State Machine produced String Values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Time FSM step Number Values</em>'.
-	 * @see fsmTrace.States.State#getTimeFSM_stepNumber_Values()
+	 * @return the meta object for the reference list '<em>State Machine produced String Values</em>'.
+	 * @see fsmTrace.States.State#getStateMachine_producedString_Values()
 	 * @see #getState()
 	 * @generated
 	 */
-	EReference getState_TimeFSM_stepNumber_Values();
+	EReference getState_StateMachine_producedString_Values();
 
 	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.TimeFSM_currentState_Value <em>Time FSM current State Value</em>}'.
+	 * Returns the meta object for class '{@link fsmTrace.States.StateMachine_actionsToProcess_Value <em>State Machine actions To Process Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Time FSM current State Value</em>'.
-	 * @see fsmTrace.States.TimeFSM_currentState_Value
+	 * @return the meta object for class '<em>State Machine actions To Process Value</em>'.
+	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value
 	 * @generated
 	 */
-	EClass getTimeFSM_currentState_Value();
+	EClass getStateMachine_actionsToProcess_Value();
 
 	/**
-	 * Returns the meta object for the reference '{@link fsmTrace.States.TimeFSM_currentState_Value#getCurrentState <em>Current State</em>}'.
+	 * Returns the meta object for the attribute list '{@link fsmTrace.States.StateMachine_actionsToProcess_Value#getActionsToProcess <em>Actions To Process</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Actions To Process</em>'.
+	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value#getActionsToProcess()
+	 * @see #getStateMachine_actionsToProcess_Value()
+	 * @generated
+	 */
+	EAttribute getStateMachine_actionsToProcess_Value_ActionsToProcess();
+
+	/**
+	 * Returns the meta object for the container reference '{@link fsmTrace.States.StateMachine_actionsToProcess_Value#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Parent</em>'.
+	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value#getParent()
+	 * @see #getStateMachine_actionsToProcess_Value()
+	 * @generated
+	 */
+	EReference getStateMachine_actionsToProcess_Value_Parent();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fsmTrace.States.StateMachine_actionsToProcess_Value#getStates <em>States</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>States</em>'.
+	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value#getStates()
+	 * @see #getStateMachine_actionsToProcess_Value()
+	 * @generated
+	 */
+	EReference getStateMachine_actionsToProcess_Value_States();
+
+	/**
+	 * Returns the meta object for class '{@link fsmTrace.States.StateMachine_currentState_Value <em>State Machine current State Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>State Machine current State Value</em>'.
+	 * @see fsmTrace.States.StateMachine_currentState_Value
+	 * @generated
+	 */
+	EClass getStateMachine_currentState_Value();
+
+	/**
+	 * Returns the meta object for the reference '{@link fsmTrace.States.StateMachine_currentState_Value#getCurrentState <em>Current State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Current State</em>'.
-	 * @see fsmTrace.States.TimeFSM_currentState_Value#getCurrentState()
-	 * @see #getTimeFSM_currentState_Value()
+	 * @see fsmTrace.States.StateMachine_currentState_Value#getCurrentState()
+	 * @see #getStateMachine_currentState_Value()
 	 * @generated
 	 */
-	EReference getTimeFSM_currentState_Value_CurrentState();
+	EReference getStateMachine_currentState_Value_CurrentState();
 
 	/**
-	 * Returns the meta object for the container reference '{@link fsmTrace.States.TimeFSM_currentState_Value#getParent <em>Parent</em>}'.
+	 * Returns the meta object for the container reference '{@link fsmTrace.States.StateMachine_currentState_Value#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Parent</em>'.
-	 * @see fsmTrace.States.TimeFSM_currentState_Value#getParent()
-	 * @see #getTimeFSM_currentState_Value()
+	 * @see fsmTrace.States.StateMachine_currentState_Value#getParent()
+	 * @see #getStateMachine_currentState_Value()
 	 * @generated
 	 */
-	EReference getTimeFSM_currentState_Value_Parent();
+	EReference getStateMachine_currentState_Value_Parent();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.TimeFSM_currentState_Value#getStates <em>States</em>}'.
+	 * Returns the meta object for the reference list '{@link fsmTrace.States.StateMachine_currentState_Value#getStates <em>States</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>States</em>'.
-	 * @see fsmTrace.States.TimeFSM_currentState_Value#getStates()
-	 * @see #getTimeFSM_currentState_Value()
+	 * @see fsmTrace.States.StateMachine_currentState_Value#getStates()
+	 * @see #getStateMachine_currentState_Value()
 	 * @generated
 	 */
-	EReference getTimeFSM_currentState_Value_States();
+	EReference getStateMachine_currentState_Value_States();
 
 	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value <em>Time FSM last State Change Step Number Value</em>}'.
+	 * Returns the meta object for class '{@link fsmTrace.States.StateMachine_producedString_Value <em>State Machine produced String Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Time FSM last State Change Step Number Value</em>'.
-	 * @see fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value
+	 * @return the meta object for class '<em>State Machine produced String Value</em>'.
+	 * @see fsmTrace.States.StateMachine_producedString_Value
 	 * @generated
 	 */
-	EClass getTimeFSM_lastStateChangeStepNumber_Value();
+	EClass getStateMachine_producedString_Value();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value#getLastStateChangeStepNumber <em>Last State Change Step Number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Last State Change Step Number</em>'.
-	 * @see fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value#getLastStateChangeStepNumber()
-	 * @see #getTimeFSM_lastStateChangeStepNumber_Value()
-	 * @generated
-	 */
-	EAttribute getTimeFSM_lastStateChangeStepNumber_Value_LastStateChangeStepNumber();
-
-	/**
-	 * Returns the meta object for the container reference '{@link fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value#getParent <em>Parent</em>}'.
+	 * Returns the meta object for the container reference '{@link fsmTrace.States.StateMachine_producedString_Value#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Parent</em>'.
-	 * @see fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value#getParent()
-	 * @see #getTimeFSM_lastStateChangeStepNumber_Value()
+	 * @see fsmTrace.States.StateMachine_producedString_Value#getParent()
+	 * @see #getStateMachine_producedString_Value()
 	 * @generated
 	 */
-	EReference getTimeFSM_lastStateChangeStepNumber_Value_Parent();
+	EReference getStateMachine_producedString_Value_Parent();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value#getStates <em>States</em>}'.
+	 * Returns the meta object for the attribute '{@link fsmTrace.States.StateMachine_producedString_Value#getProducedString <em>Produced String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Produced String</em>'.
+	 * @see fsmTrace.States.StateMachine_producedString_Value#getProducedString()
+	 * @see #getStateMachine_producedString_Value()
+	 * @generated
+	 */
+	EAttribute getStateMachine_producedString_Value_ProducedString();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fsmTrace.States.StateMachine_producedString_Value#getStates <em>States</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>States</em>'.
-	 * @see fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value#getStates()
-	 * @see #getTimeFSM_lastStateChangeStepNumber_Value()
+	 * @see fsmTrace.States.StateMachine_producedString_Value#getStates()
+	 * @see #getStateMachine_producedString_Value()
 	 * @generated
 	 */
-	EReference getTimeFSM_lastStateChangeStepNumber_Value_States();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.TimeFSM_stepNumber_Value <em>Time FSM step Number Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Time FSM step Number Value</em>'.
-	 * @see fsmTrace.States.TimeFSM_stepNumber_Value
-	 * @generated
-	 */
-	EClass getTimeFSM_stepNumber_Value();
-
-	/**
-	 * Returns the meta object for the container reference '{@link fsmTrace.States.TimeFSM_stepNumber_Value#getParent <em>Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Parent</em>'.
-	 * @see fsmTrace.States.TimeFSM_stepNumber_Value#getParent()
-	 * @see #getTimeFSM_stepNumber_Value()
-	 * @generated
-	 */
-	EReference getTimeFSM_stepNumber_Value_Parent();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.TimeFSM_stepNumber_Value#getStates <em>States</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>States</em>'.
-	 * @see fsmTrace.States.TimeFSM_stepNumber_Value#getStates()
-	 * @see #getTimeFSM_stepNumber_Value()
-	 * @generated
-	 */
-	EReference getTimeFSM_stepNumber_Value_States();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fsmTrace.States.TimeFSM_stepNumber_Value#getStepNumber <em>Step Number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Step Number</em>'.
-	 * @see fsmTrace.States.TimeFSM_stepNumber_Value#getStepNumber()
-	 * @see #getTimeFSM_stepNumber_Value()
-	 * @generated
-	 */
-	EAttribute getTimeFSM_stepNumber_Value_StepNumber();
+	EReference getStateMachine_producedString_Value_States();
 
 	/**
 	 * Returns the meta object for class '{@link fsmTrace.States.Value <em>Value</em>}'.
@@ -787,74 +551,6 @@ public interface StatesPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link fsmTrace.States.impl.FSMClock_numberOfTicks_ValueImpl <em>FSM Clock number Of Ticks Value</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.impl.FSMClock_numberOfTicks_ValueImpl
-		 * @see fsmTrace.States.impl.StatesPackageImpl#getFSMClock_numberOfTicks_Value()
-		 * @generated
-		 */
-		EClass FSM_CLOCK_NUMBER_OF_TICKS_VALUE = eINSTANCE.getFSMClock_numberOfTicks_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Number Of Ticks</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS = eINSTANCE.getFSMClock_numberOfTicks_Value_NumberOfTicks();
-
-		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT = eINSTANCE.getFSMClock_numberOfTicks_Value_Parent();
-
-		/**
-		 * The meta object literal for the '<em><b>States</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES = eINSTANCE.getFSMClock_numberOfTicks_Value_States();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.States.impl.FSMEvent_isTriggered_ValueImpl <em>FSM Event is Triggered Value</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.impl.FSMEvent_isTriggered_ValueImpl
-		 * @see fsmTrace.States.impl.StatesPackageImpl#getFSMEvent_isTriggered_Value()
-		 * @generated
-		 */
-		EClass FSM_EVENT_IS_TRIGGERED_VALUE = eINSTANCE.getFSMEvent_isTriggered_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Triggered</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FSM_EVENT_IS_TRIGGERED_VALUE__IS_TRIGGERED = eINSTANCE.getFSMEvent_isTriggered_Value_IsTriggered();
-
-		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FSM_EVENT_IS_TRIGGERED_VALUE__PARENT = eINSTANCE.getFSMEvent_isTriggered_Value_Parent();
-
-		/**
-		 * The meta object literal for the '<em><b>States</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FSM_EVENT_IS_TRIGGERED_VALUE__STATES = eINSTANCE.getFSMEvent_isTriggered_Value_States();
-
-		/**
 		 * The meta object literal for the '{@link fsmTrace.States.impl.StateImpl <em>State</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -873,22 +569,6 @@ public interface StatesPackage extends EPackage {
 		EReference STATE__ENDED_STEPS = eINSTANCE.getState_EndedSteps();
 
 		/**
-		 * The meta object literal for the '<em><b>FSM Clock number Of Ticks Values</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference STATE__FSM_CLOCK_NUMBER_OF_TICKS_VALUES = eINSTANCE.getState_FSMClock_numberOfTicks_Values();
-
-		/**
-		 * The meta object literal for the '<em><b>FSM Event is Triggered Values</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference STATE__FSM_EVENT_IS_TRIGGERED_VALUES = eINSTANCE.getState_FSMEvent_isTriggered_Values();
-
-		/**
 		 * The meta object literal for the '<em><b>Started Steps</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -897,38 +577,72 @@ public interface StatesPackage extends EPackage {
 		EReference STATE__STARTED_STEPS = eINSTANCE.getState_StartedSteps();
 
 		/**
-		 * The meta object literal for the '<em><b>Time FSM current State Values</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>State Machine actions To Process Values</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATE__TIME_FSM_CURRENT_STATE_VALUES = eINSTANCE.getState_TimeFSM_currentState_Values();
+		EReference STATE__STATE_MACHINE_ACTIONS_TO_PROCESS_VALUES = eINSTANCE.getState_StateMachine_actionsToProcess_Values();
 
 		/**
-		 * The meta object literal for the '<em><b>Time FSM last State Change Step Number Values</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>State Machine current State Values</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATE__TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES = eINSTANCE.getState_TimeFSM_lastStateChangeStepNumber_Values();
+		EReference STATE__STATE_MACHINE_CURRENT_STATE_VALUES = eINSTANCE.getState_StateMachine_currentState_Values();
 
 		/**
-		 * The meta object literal for the '<em><b>Time FSM step Number Values</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>State Machine produced String Values</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATE__TIME_FSM_STEP_NUMBER_VALUES = eINSTANCE.getState_TimeFSM_stepNumber_Values();
+		EReference STATE__STATE_MACHINE_PRODUCED_STRING_VALUES = eINSTANCE.getState_StateMachine_producedString_Values();
 
 		/**
-		 * The meta object literal for the '{@link fsmTrace.States.impl.TimeFSM_currentState_ValueImpl <em>Time FSM current State Value</em>}' class.
+		 * The meta object literal for the '{@link fsmTrace.States.impl.StateMachine_actionsToProcess_ValueImpl <em>State Machine actions To Process Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.impl.TimeFSM_currentState_ValueImpl
-		 * @see fsmTrace.States.impl.StatesPackageImpl#getTimeFSM_currentState_Value()
+		 * @see fsmTrace.States.impl.StateMachine_actionsToProcess_ValueImpl
+		 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_actionsToProcess_Value()
 		 * @generated
 		 */
-		EClass TIME_FSM_CURRENT_STATE_VALUE = eINSTANCE.getTimeFSM_currentState_Value();
+		EClass STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE = eINSTANCE.getStateMachine_actionsToProcess_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Actions To Process</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__ACTIONS_TO_PROCESS = eINSTANCE.getStateMachine_actionsToProcess_Value_ActionsToProcess();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__PARENT = eINSTANCE.getStateMachine_actionsToProcess_Value_Parent();
+
+		/**
+		 * The meta object literal for the '<em><b>States</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__STATES = eINSTANCE.getStateMachine_actionsToProcess_Value_States();
+
+		/**
+		 * The meta object literal for the '{@link fsmTrace.States.impl.StateMachine_currentState_ValueImpl <em>State Machine current State Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fsmTrace.States.impl.StateMachine_currentState_ValueImpl
+		 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_currentState_Value()
+		 * @generated
+		 */
+		EClass STATE_MACHINE_CURRENT_STATE_VALUE = eINSTANCE.getStateMachine_currentState_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Current State</b></em>' reference feature.
@@ -936,7 +650,7 @@ public interface StatesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIME_FSM_CURRENT_STATE_VALUE__CURRENT_STATE = eINSTANCE.getTimeFSM_currentState_Value_CurrentState();
+		EReference STATE_MACHINE_CURRENT_STATE_VALUE__CURRENT_STATE = eINSTANCE.getStateMachine_currentState_Value_CurrentState();
 
 		/**
 		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
@@ -944,7 +658,7 @@ public interface StatesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIME_FSM_CURRENT_STATE_VALUE__PARENT = eINSTANCE.getTimeFSM_currentState_Value_Parent();
+		EReference STATE_MACHINE_CURRENT_STATE_VALUE__PARENT = eINSTANCE.getStateMachine_currentState_Value_Parent();
 
 		/**
 		 * The meta object literal for the '<em><b>States</b></em>' reference list feature.
@@ -952,25 +666,17 @@ public interface StatesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIME_FSM_CURRENT_STATE_VALUE__STATES = eINSTANCE.getTimeFSM_currentState_Value_States();
+		EReference STATE_MACHINE_CURRENT_STATE_VALUE__STATES = eINSTANCE.getStateMachine_currentState_Value_States();
 
 		/**
-		 * The meta object literal for the '{@link fsmTrace.States.impl.TimeFSM_lastStateChangeStepNumber_ValueImpl <em>Time FSM last State Change Step Number Value</em>}' class.
+		 * The meta object literal for the '{@link fsmTrace.States.impl.StateMachine_producedString_ValueImpl <em>State Machine produced String Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.impl.TimeFSM_lastStateChangeStepNumber_ValueImpl
-		 * @see fsmTrace.States.impl.StatesPackageImpl#getTimeFSM_lastStateChangeStepNumber_Value()
+		 * @see fsmTrace.States.impl.StateMachine_producedString_ValueImpl
+		 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_producedString_Value()
 		 * @generated
 		 */
-		EClass TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE = eINSTANCE.getTimeFSM_lastStateChangeStepNumber_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Last State Change Step Number</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__LAST_STATE_CHANGE_STEP_NUMBER = eINSTANCE.getTimeFSM_lastStateChangeStepNumber_Value_LastStateChangeStepNumber();
+		EClass STATE_MACHINE_PRODUCED_STRING_VALUE = eINSTANCE.getStateMachine_producedString_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
@@ -978,7 +684,15 @@ public interface StatesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__PARENT = eINSTANCE.getTimeFSM_lastStateChangeStepNumber_Value_Parent();
+		EReference STATE_MACHINE_PRODUCED_STRING_VALUE__PARENT = eINSTANCE.getStateMachine_producedString_Value_Parent();
+
+		/**
+		 * The meta object literal for the '<em><b>Produced String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE_MACHINE_PRODUCED_STRING_VALUE__PRODUCED_STRING = eINSTANCE.getStateMachine_producedString_Value_ProducedString();
 
 		/**
 		 * The meta object literal for the '<em><b>States</b></em>' reference list feature.
@@ -986,41 +700,7 @@ public interface StatesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__STATES = eINSTANCE.getTimeFSM_lastStateChangeStepNumber_Value_States();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.States.impl.TimeFSM_stepNumber_ValueImpl <em>Time FSM step Number Value</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.impl.TimeFSM_stepNumber_ValueImpl
-		 * @see fsmTrace.States.impl.StatesPackageImpl#getTimeFSM_stepNumber_Value()
-		 * @generated
-		 */
-		EClass TIME_FSM_STEP_NUMBER_VALUE = eINSTANCE.getTimeFSM_stepNumber_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TIME_FSM_STEP_NUMBER_VALUE__PARENT = eINSTANCE.getTimeFSM_stepNumber_Value_Parent();
-
-		/**
-		 * The meta object literal for the '<em><b>States</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TIME_FSM_STEP_NUMBER_VALUE__STATES = eINSTANCE.getTimeFSM_stepNumber_Value_States();
-
-		/**
-		 * The meta object literal for the '<em><b>Step Number</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TIME_FSM_STEP_NUMBER_VALUE__STEP_NUMBER = eINSTANCE.getTimeFSM_stepNumber_Value_StepNumber();
+		EReference STATE_MACHINE_PRODUCED_STRING_VALUE__STATES = eINSTANCE.getStateMachine_producedString_Value_States();
 
 		/**
 		 * The meta object literal for the '{@link fsmTrace.States.Value <em>Value</em>}' class.

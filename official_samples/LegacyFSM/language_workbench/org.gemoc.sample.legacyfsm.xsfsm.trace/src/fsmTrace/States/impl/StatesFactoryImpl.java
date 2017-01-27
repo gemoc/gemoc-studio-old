@@ -56,35 +56,13 @@ public class StatesFactoryImpl extends EFactoryImpl implements StatesFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE: return createFSMClock_numberOfTicks_Value();
-			case StatesPackage.FSM_EVENT_IS_TRIGGERED_VALUE: return createFSMEvent_isTriggered_Value();
 			case StatesPackage.STATE: return createState();
-			case StatesPackage.TIME_FSM_CURRENT_STATE_VALUE: return createTimeFSM_currentState_Value();
-			case StatesPackage.TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE: return createTimeFSM_lastStateChangeStepNumber_Value();
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE: return createTimeFSM_stepNumber_Value();
+			case StatesPackage.STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE: return createStateMachine_actionsToProcess_Value();
+			case StatesPackage.STATE_MACHINE_CURRENT_STATE_VALUE: return createStateMachine_currentState_Value();
+			case StatesPackage.STATE_MACHINE_PRODUCED_STRING_VALUE: return createStateMachine_producedString_Value();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FSMClock_numberOfTicks_Value createFSMClock_numberOfTicks_Value() {
-		FSMClock_numberOfTicks_ValueImpl fsmClock_numberOfTicks_Value = new FSMClock_numberOfTicks_ValueImpl();
-		return fsmClock_numberOfTicks_Value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FSMEvent_isTriggered_Value createFSMEvent_isTriggered_Value() {
-		FSMEvent_isTriggered_ValueImpl fsmEvent_isTriggered_Value = new FSMEvent_isTriggered_ValueImpl();
-		return fsmEvent_isTriggered_Value;
 	}
 
 	/**
@@ -102,9 +80,9 @@ public class StatesFactoryImpl extends EFactoryImpl implements StatesFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeFSM_currentState_Value createTimeFSM_currentState_Value() {
-		TimeFSM_currentState_ValueImpl timeFSM_currentState_Value = new TimeFSM_currentState_ValueImpl();
-		return timeFSM_currentState_Value;
+	public StateMachine_actionsToProcess_Value createStateMachine_actionsToProcess_Value() {
+		StateMachine_actionsToProcess_ValueImpl stateMachine_actionsToProcess_Value = new StateMachine_actionsToProcess_ValueImpl();
+		return stateMachine_actionsToProcess_Value;
 	}
 
 	/**
@@ -112,9 +90,9 @@ public class StatesFactoryImpl extends EFactoryImpl implements StatesFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeFSM_lastStateChangeStepNumber_Value createTimeFSM_lastStateChangeStepNumber_Value() {
-		TimeFSM_lastStateChangeStepNumber_ValueImpl timeFSM_lastStateChangeStepNumber_Value = new TimeFSM_lastStateChangeStepNumber_ValueImpl();
-		return timeFSM_lastStateChangeStepNumber_Value;
+	public StateMachine_currentState_Value createStateMachine_currentState_Value() {
+		StateMachine_currentState_ValueImpl stateMachine_currentState_Value = new StateMachine_currentState_ValueImpl();
+		return stateMachine_currentState_Value;
 	}
 
 	/**
@@ -122,9 +100,9 @@ public class StatesFactoryImpl extends EFactoryImpl implements StatesFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeFSM_stepNumber_Value createTimeFSM_stepNumber_Value() {
-		TimeFSM_stepNumber_ValueImpl timeFSM_stepNumber_Value = new TimeFSM_stepNumber_ValueImpl();
-		return timeFSM_stepNumber_Value;
+	public StateMachine_producedString_Value createStateMachine_producedString_Value() {
+		StateMachine_producedString_ValueImpl stateMachine_producedString_Value = new StateMachine_producedString_ValueImpl();
+		return stateMachine_producedString_Value;
 	}
 
 	/**

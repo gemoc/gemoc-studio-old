@@ -61,16 +61,10 @@ public class FsmTraceExplorer implements ITraceExplorer {
 
 	private List<List<? extends fsmTrace.States.Value>> getAllValueTraces() {
 		final List<List<? extends fsmTrace.States.Value>> result = new ArrayList<>();
-		for (fsmTrace.States.fsm.TracedFSMClock tracedObject : traceRoot.getFsm_tracedFSMClocks()) {
-			result.add(tracedObject.getNumberOfTicksSequence());
-		}
-		for (fsmTrace.States.fsm.TracedFSMEvent tracedObject : traceRoot.getFsm_tracedFSMEvents()) {
-			result.add(tracedObject.getIsTriggeredSequence());
-		}
-		for (fsmTrace.States.fsm.TracedTimeFSM tracedObject : traceRoot.getFsm_tracedTimeFSMs()) {
+		for (fsmTrace.States.fsm.TracedStateMachine tracedObject : traceRoot.getFsm_tracedStateMachines()) {
+			result.add(tracedObject.getActionsToProcessSequence());
 			result.add(tracedObject.getCurrentStateSequence());
-			result.add(tracedObject.getLastStateChangeStepNumberSequence());
-			result.add(tracedObject.getStepNumberSequence());
+			result.add(tracedObject.getProducedStringSequence());
 		}
 		return result;
 	}
@@ -306,70 +300,43 @@ public class FsmTraceExplorer implements ITraceExplorer {
 	private void goTo(EObject eObject) {
 		if (eObject instanceof fsmTrace.States.State) {
 			fsmTrace.States.State stateToGo = (fsmTrace.States.State) eObject;
-			for (fsmTrace.States.TimeFSM_currentState_Value value : stateToGo.getTimeFSM_currentState_Values()) {
-				if (value.getParent() instanceof fsmTrace.States.fsm.TracedTimeFSM) {
-					fsmTrace.States.fsm.TracedTimeFSM parent_cast = (fsmTrace.States.fsm.TracedTimeFSM) value
+			for (fsmTrace.States.StateMachine_actionsToProcess_Value value : stateToGo
+					.getStateMachine_actionsToProcess_Values()) {
+				if (value.getParent() instanceof fsmTrace.States.fsm.TracedStateMachine) {
+					fsmTrace.States.fsm.TracedStateMachine parent_cast = (fsmTrace.States.fsm.TracedStateMachine) value
+							.getParent();
+					org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine originalObject = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast
+							.getOriginalObject();
+					originalObject.getActionsToProcess().clear();
+					originalObject.getActionsToProcess().addAll(value.getActionsToProcess());
+				}
+			}
+			for (fsmTrace.States.StateMachine_currentState_Value value : stateToGo
+					.getStateMachine_currentState_Values()) {
+				if (value.getParent() instanceof fsmTrace.States.fsm.TracedStateMachine) {
+					fsmTrace.States.fsm.TracedStateMachine parent_cast = (fsmTrace.States.fsm.TracedStateMachine) value
 							.getParent();
 					org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State toset = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) getTracedToExe(
 							value.getCurrentState());
-					org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State current = ((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) parent_cast
+					org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State current = ((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast
 							.getOriginalObject()).getCurrentState();
 					if (current != toset) {
-						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) parent_cast.getOriginalObject())
+						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast.getOriginalObject())
 								.setCurrentState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) toset);
 					}
 				}
 			}
-			for (fsmTrace.States.FSMEvent_isTriggered_Value value : stateToGo.getFSMEvent_isTriggered_Values()) {
-				if (value.getParent() instanceof fsmTrace.States.fsm.TracedFSMEvent) {
-					fsmTrace.States.fsm.TracedFSMEvent parent_cast = (fsmTrace.States.fsm.TracedFSMEvent) value
+			for (fsmTrace.States.StateMachine_producedString_Value value : stateToGo
+					.getStateMachine_producedString_Values()) {
+				if (value.getParent() instanceof fsmTrace.States.fsm.TracedStateMachine) {
+					fsmTrace.States.fsm.TracedStateMachine parent_cast = (fsmTrace.States.fsm.TracedStateMachine) value
 							.getParent();
-					boolean toset = value.isIsTriggered();
-					boolean current = ((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMEvent) parent_cast
-							.getOriginalObject()).isIsTriggered();
+					java.lang.String toset = value.getProducedString();
+					java.lang.String current = ((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast
+							.getOriginalObject()).getProducedString();
 					if (current != toset) {
-						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMEvent) parent_cast.getOriginalObject())
-								.setIsTriggered((boolean) toset);
-					}
-				}
-			}
-			for (fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value value : stateToGo
-					.getTimeFSM_lastStateChangeStepNumber_Values()) {
-				if (value.getParent() instanceof fsmTrace.States.fsm.TracedTimeFSM) {
-					fsmTrace.States.fsm.TracedTimeFSM parent_cast = (fsmTrace.States.fsm.TracedTimeFSM) value
-							.getParent();
-					int toset = value.getLastStateChangeStepNumber();
-					int current = ((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) parent_cast.getOriginalObject())
-							.getLastStateChangeStepNumber();
-					if (current != toset) {
-						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) parent_cast.getOriginalObject())
-								.setLastStateChangeStepNumber((int) toset);
-					}
-				}
-			}
-			for (fsmTrace.States.FSMClock_numberOfTicks_Value value : stateToGo.getFSMClock_numberOfTicks_Values()) {
-				if (value.getParent() instanceof fsmTrace.States.fsm.TracedFSMClock) {
-					fsmTrace.States.fsm.TracedFSMClock parent_cast = (fsmTrace.States.fsm.TracedFSMClock) value
-							.getParent();
-					java.lang.Integer toset = value.getNumberOfTicks();
-					java.lang.Integer current = ((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMClock) parent_cast
-							.getOriginalObject()).getNumberOfTicks();
-					if (current != toset) {
-						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMClock) parent_cast.getOriginalObject())
-								.setNumberOfTicks((java.lang.Integer) toset);
-					}
-				}
-			}
-			for (fsmTrace.States.TimeFSM_stepNumber_Value value : stateToGo.getTimeFSM_stepNumber_Values()) {
-				if (value.getParent() instanceof fsmTrace.States.fsm.TracedTimeFSM) {
-					fsmTrace.States.fsm.TracedTimeFSM parent_cast = (fsmTrace.States.fsm.TracedTimeFSM) value
-							.getParent();
-					int toset = value.getStepNumber();
-					int current = ((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) parent_cast.getOriginalObject())
-							.getStepNumber();
-					if (current != toset) {
-						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) parent_cast.getOriginalObject())
-								.setStepNumber((int) toset);
+						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast.getOriginalObject())
+								.setProducedString((java.lang.String) toset);
 					}
 				}
 			}

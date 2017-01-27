@@ -62,7 +62,7 @@ public interface FsmPackage extends EPackage {
 	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedNamedElement()
 	 * @generated
 	 */
-	int TRACED_NAMED_ELEMENT = 5;
+	int TRACED_NAMED_ELEMENT = 0;
 
 	/**
 	 * The number of structural features of the '<em>Traced Named Element</em>' class.
@@ -74,155 +74,6 @@ public interface FsmPackage extends EPackage {
 	int TRACED_NAMED_ELEMENT_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedGuardImpl <em>Traced Guard</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.fsm.impl.TracedGuardImpl
-	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedGuard()
-	 * @generated
-	 */
-	int TRACED_GUARD = 4;
-
-	/**
-	 * The number of structural features of the '<em>Traced Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_GUARD_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedEvaluateGuardImpl <em>Traced Evaluate Guard</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.fsm.impl.TracedEvaluateGuardImpl
-	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedEvaluateGuard()
-	 * @generated
-	 */
-	int TRACED_EVALUATE_GUARD = 0;
-
-	/**
-	 * The feature id for the '<em><b>Original Object</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_EVALUATE_GUARD__ORIGINAL_OBJECT = TRACED_GUARD_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Traced Evaluate Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_EVALUATE_GUARD_FEATURE_COUNT = TRACED_GUARD_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedEventGuardImpl <em>Traced Event Guard</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.fsm.impl.TracedEventGuardImpl
-	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedEventGuard()
-	 * @generated
-	 */
-	int TRACED_EVENT_GUARD = 1;
-
-	/**
-	 * The feature id for the '<em><b>Original Object</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_EVENT_GUARD__ORIGINAL_OBJECT = TRACED_GUARD_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Traced Event Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_EVENT_GUARD_FEATURE_COUNT = TRACED_GUARD_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedFSMClockImpl <em>Traced FSM Clock</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.fsm.impl.TracedFSMClockImpl
-	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedFSMClock()
-	 * @generated
-	 */
-	int TRACED_FSM_CLOCK = 2;
-
-	/**
-	 * The feature id for the '<em><b>Number Of Ticks Sequence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_FSM_CLOCK__NUMBER_OF_TICKS_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Original Object</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_FSM_CLOCK__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Traced FSM Clock</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_FSM_CLOCK_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedFSMEventImpl <em>Traced FSM Event</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.fsm.impl.TracedFSMEventImpl
-	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedFSMEvent()
-	 * @generated
-	 */
-	int TRACED_FSM_EVENT = 3;
-
-	/**
-	 * The feature id for the '<em><b>Is Triggered Sequence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_FSM_EVENT__IS_TRIGGERED_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Original Object</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_FSM_EVENT__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Traced FSM Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_FSM_EVENT_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
 	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedStateImpl <em>Traced State</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -230,7 +81,7 @@ public interface FsmPackage extends EPackage {
 	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedState()
 	 * @generated
 	 */
-	int TRACED_STATE = 6;
+	int TRACED_STATE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Original Object</b></em>' reference.
@@ -251,42 +102,23 @@ public interface FsmPackage extends EPackage {
 	int TRACED_STATE_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedTemporalGuardImpl <em>Traced Temporal Guard</em>}' class.
+	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl <em>Traced State Machine</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.fsm.impl.TracedTemporalGuardImpl
-	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedTemporalGuard()
+	 * @see fsmTrace.States.fsm.impl.TracedStateMachineImpl
+	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedStateMachine()
 	 * @generated
 	 */
-	int TRACED_TEMPORAL_GUARD = 7;
+	int TRACED_STATE_MACHINE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Original Object</b></em>' reference.
+	 * The feature id for the '<em><b>Actions To Process Sequence</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_TEMPORAL_GUARD__ORIGINAL_OBJECT = TRACED_GUARD_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Traced Temporal Guard</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_TEMPORAL_GUARD_FEATURE_COUNT = TRACED_GUARD_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedTimeFSMImpl <em>Traced Time FSM</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.fsm.impl.TracedTimeFSMImpl
-	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedTimeFSM()
-	 * @generated
-	 */
-	int TRACED_TIME_FSM = 8;
+	int TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Current State Sequence</b></em>' containment reference list.
@@ -295,16 +127,7 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_TIME_FSM__CURRENT_STATE_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Last State Change Step Number Sequence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_TIME_FSM__LAST_STATE_CHANGE_STEP_NUMBER_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Original Object</b></em>' reference.
@@ -313,53 +136,25 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_TIME_FSM__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int TRACED_STATE_MACHINE__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Step Number Sequence</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Produced String Sequence</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_TIME_FSM__STEP_NUMBER_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Traced Time FSM</em>' class.
+	 * The number of structural features of the '<em>Traced State Machine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_TIME_FSM_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedTimedSystemImpl <em>Traced Timed System</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.fsm.impl.TracedTimedSystemImpl
-	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedTimedSystem()
-	 * @generated
-	 */
-	int TRACED_TIMED_SYSTEM = 9;
-
-	/**
-	 * The feature id for the '<em><b>Original Object</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_TIMED_SYSTEM__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Traced Timed System</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_TIMED_SYSTEM_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int TRACED_STATE_MACHINE_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedTransitionImpl <em>Traced Transition</em>}' class.
@@ -369,7 +164,7 @@ public interface FsmPackage extends EPackage {
 	 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedTransition()
 	 * @generated
 	 */
-	int TRACED_TRANSITION = 10;
+	int TRACED_TRANSITION = 3;
 
 	/**
 	 * The feature id for the '<em><b>Original Object</b></em>' reference.
@@ -389,122 +184,6 @@ public interface FsmPackage extends EPackage {
 	 */
 	int TRACED_TRANSITION_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
 
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedEvaluateGuard <em>Traced Evaluate Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Traced Evaluate Guard</em>'.
-	 * @see fsmTrace.States.fsm.TracedEvaluateGuard
-	 * @generated
-	 */
-	EClass getTracedEvaluateGuard();
-
-	/**
-	 * Returns the meta object for the reference '{@link fsmTrace.States.fsm.TracedEvaluateGuard#getOriginalObject <em>Original Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Original Object</em>'.
-	 * @see fsmTrace.States.fsm.TracedEvaluateGuard#getOriginalObject()
-	 * @see #getTracedEvaluateGuard()
-	 * @generated
-	 */
-	EReference getTracedEvaluateGuard_OriginalObject();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedEventGuard <em>Traced Event Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Traced Event Guard</em>'.
-	 * @see fsmTrace.States.fsm.TracedEventGuard
-	 * @generated
-	 */
-	EClass getTracedEventGuard();
-
-	/**
-	 * Returns the meta object for the reference '{@link fsmTrace.States.fsm.TracedEventGuard#getOriginalObject <em>Original Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Original Object</em>'.
-	 * @see fsmTrace.States.fsm.TracedEventGuard#getOriginalObject()
-	 * @see #getTracedEventGuard()
-	 * @generated
-	 */
-	EReference getTracedEventGuard_OriginalObject();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedFSMClock <em>Traced FSM Clock</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Traced FSM Clock</em>'.
-	 * @see fsmTrace.States.fsm.TracedFSMClock
-	 * @generated
-	 */
-	EClass getTracedFSMClock();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedFSMClock#getNumberOfTicksSequence <em>Number Of Ticks Sequence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Number Of Ticks Sequence</em>'.
-	 * @see fsmTrace.States.fsm.TracedFSMClock#getNumberOfTicksSequence()
-	 * @see #getTracedFSMClock()
-	 * @generated
-	 */
-	EReference getTracedFSMClock_NumberOfTicksSequence();
-
-	/**
-	 * Returns the meta object for the reference '{@link fsmTrace.States.fsm.TracedFSMClock#getOriginalObject <em>Original Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Original Object</em>'.
-	 * @see fsmTrace.States.fsm.TracedFSMClock#getOriginalObject()
-	 * @see #getTracedFSMClock()
-	 * @generated
-	 */
-	EReference getTracedFSMClock_OriginalObject();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedFSMEvent <em>Traced FSM Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Traced FSM Event</em>'.
-	 * @see fsmTrace.States.fsm.TracedFSMEvent
-	 * @generated
-	 */
-	EClass getTracedFSMEvent();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedFSMEvent#getIsTriggeredSequence <em>Is Triggered Sequence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Is Triggered Sequence</em>'.
-	 * @see fsmTrace.States.fsm.TracedFSMEvent#getIsTriggeredSequence()
-	 * @see #getTracedFSMEvent()
-	 * @generated
-	 */
-	EReference getTracedFSMEvent_IsTriggeredSequence();
-
-	/**
-	 * Returns the meta object for the reference '{@link fsmTrace.States.fsm.TracedFSMEvent#getOriginalObject <em>Original Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Original Object</em>'.
-	 * @see fsmTrace.States.fsm.TracedFSMEvent#getOriginalObject()
-	 * @see #getTracedFSMEvent()
-	 * @generated
-	 */
-	EReference getTracedFSMEvent_OriginalObject();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedGuard <em>Traced Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Traced Guard</em>'.
-	 * @see fsmTrace.States.fsm.TracedGuard
-	 * @generated
-	 */
-	EClass getTracedGuard();
 
 	/**
 	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedNamedElement <em>Traced Named Element</em>}'.
@@ -538,100 +217,58 @@ public interface FsmPackage extends EPackage {
 	EReference getTracedState_OriginalObject();
 
 	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedTemporalGuard <em>Traced Temporal Guard</em>}'.
+	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedStateMachine <em>Traced State Machine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Traced Temporal Guard</em>'.
-	 * @see fsmTrace.States.fsm.TracedTemporalGuard
+	 * @return the meta object for class '<em>Traced State Machine</em>'.
+	 * @see fsmTrace.States.fsm.TracedStateMachine
 	 * @generated
 	 */
-	EClass getTracedTemporalGuard();
+	EClass getTracedStateMachine();
 
 	/**
-	 * Returns the meta object for the reference '{@link fsmTrace.States.fsm.TracedTemporalGuard#getOriginalObject <em>Original Object</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedStateMachine#getActionsToProcessSequence <em>Actions To Process Sequence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Original Object</em>'.
-	 * @see fsmTrace.States.fsm.TracedTemporalGuard#getOriginalObject()
-	 * @see #getTracedTemporalGuard()
+	 * @return the meta object for the containment reference list '<em>Actions To Process Sequence</em>'.
+	 * @see fsmTrace.States.fsm.TracedStateMachine#getActionsToProcessSequence()
+	 * @see #getTracedStateMachine()
 	 * @generated
 	 */
-	EReference getTracedTemporalGuard_OriginalObject();
+	EReference getTracedStateMachine_ActionsToProcessSequence();
 
 	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedTimeFSM <em>Traced Time FSM</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Traced Time FSM</em>'.
-	 * @see fsmTrace.States.fsm.TracedTimeFSM
-	 * @generated
-	 */
-	EClass getTracedTimeFSM();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedTimeFSM#getCurrentStateSequence <em>Current State Sequence</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedStateMachine#getCurrentStateSequence <em>Current State Sequence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Current State Sequence</em>'.
-	 * @see fsmTrace.States.fsm.TracedTimeFSM#getCurrentStateSequence()
-	 * @see #getTracedTimeFSM()
+	 * @see fsmTrace.States.fsm.TracedStateMachine#getCurrentStateSequence()
+	 * @see #getTracedStateMachine()
 	 * @generated
 	 */
-	EReference getTracedTimeFSM_CurrentStateSequence();
+	EReference getTracedStateMachine_CurrentStateSequence();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedTimeFSM#getLastStateChangeStepNumberSequence <em>Last State Change Step Number Sequence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Last State Change Step Number Sequence</em>'.
-	 * @see fsmTrace.States.fsm.TracedTimeFSM#getLastStateChangeStepNumberSequence()
-	 * @see #getTracedTimeFSM()
-	 * @generated
-	 */
-	EReference getTracedTimeFSM_LastStateChangeStepNumberSequence();
-
-	/**
-	 * Returns the meta object for the reference '{@link fsmTrace.States.fsm.TracedTimeFSM#getOriginalObject <em>Original Object</em>}'.
+	 * Returns the meta object for the reference '{@link fsmTrace.States.fsm.TracedStateMachine#getOriginalObject <em>Original Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Original Object</em>'.
-	 * @see fsmTrace.States.fsm.TracedTimeFSM#getOriginalObject()
-	 * @see #getTracedTimeFSM()
+	 * @see fsmTrace.States.fsm.TracedStateMachine#getOriginalObject()
+	 * @see #getTracedStateMachine()
 	 * @generated
 	 */
-	EReference getTracedTimeFSM_OriginalObject();
+	EReference getTracedStateMachine_OriginalObject();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedTimeFSM#getStepNumberSequence <em>Step Number Sequence</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedStateMachine#getProducedStringSequence <em>Produced String Sequence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Step Number Sequence</em>'.
-	 * @see fsmTrace.States.fsm.TracedTimeFSM#getStepNumberSequence()
-	 * @see #getTracedTimeFSM()
+	 * @return the meta object for the containment reference list '<em>Produced String Sequence</em>'.
+	 * @see fsmTrace.States.fsm.TracedStateMachine#getProducedStringSequence()
+	 * @see #getTracedStateMachine()
 	 * @generated
 	 */
-	EReference getTracedTimeFSM_StepNumberSequence();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedTimedSystem <em>Traced Timed System</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Traced Timed System</em>'.
-	 * @see fsmTrace.States.fsm.TracedTimedSystem
-	 * @generated
-	 */
-	EClass getTracedTimedSystem();
-
-	/**
-	 * Returns the meta object for the reference '{@link fsmTrace.States.fsm.TracedTimedSystem#getOriginalObject <em>Original Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Original Object</em>'.
-	 * @see fsmTrace.States.fsm.TracedTimedSystem#getOriginalObject()
-	 * @see #getTracedTimedSystem()
-	 * @generated
-	 */
-	EReference getTracedTimedSystem_OriginalObject();
+	EReference getTracedStateMachine_ProducedStringSequence();
 
 	/**
 	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedTransition <em>Traced Transition</em>}'.
@@ -677,104 +314,6 @@ public interface FsmPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedEvaluateGuardImpl <em>Traced Evaluate Guard</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.fsm.impl.TracedEvaluateGuardImpl
-		 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedEvaluateGuard()
-		 * @generated
-		 */
-		EClass TRACED_EVALUATE_GUARD = eINSTANCE.getTracedEvaluateGuard();
-
-		/**
-		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRACED_EVALUATE_GUARD__ORIGINAL_OBJECT = eINSTANCE.getTracedEvaluateGuard_OriginalObject();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedEventGuardImpl <em>Traced Event Guard</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.fsm.impl.TracedEventGuardImpl
-		 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedEventGuard()
-		 * @generated
-		 */
-		EClass TRACED_EVENT_GUARD = eINSTANCE.getTracedEventGuard();
-
-		/**
-		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRACED_EVENT_GUARD__ORIGINAL_OBJECT = eINSTANCE.getTracedEventGuard_OriginalObject();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedFSMClockImpl <em>Traced FSM Clock</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.fsm.impl.TracedFSMClockImpl
-		 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedFSMClock()
-		 * @generated
-		 */
-		EClass TRACED_FSM_CLOCK = eINSTANCE.getTracedFSMClock();
-
-		/**
-		 * The meta object literal for the '<em><b>Number Of Ticks Sequence</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRACED_FSM_CLOCK__NUMBER_OF_TICKS_SEQUENCE = eINSTANCE.getTracedFSMClock_NumberOfTicksSequence();
-
-		/**
-		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRACED_FSM_CLOCK__ORIGINAL_OBJECT = eINSTANCE.getTracedFSMClock_OriginalObject();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedFSMEventImpl <em>Traced FSM Event</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.fsm.impl.TracedFSMEventImpl
-		 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedFSMEvent()
-		 * @generated
-		 */
-		EClass TRACED_FSM_EVENT = eINSTANCE.getTracedFSMEvent();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Triggered Sequence</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRACED_FSM_EVENT__IS_TRIGGERED_SEQUENCE = eINSTANCE.getTracedFSMEvent_IsTriggeredSequence();
-
-		/**
-		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRACED_FSM_EVENT__ORIGINAL_OBJECT = eINSTANCE.getTracedFSMEvent_OriginalObject();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedGuardImpl <em>Traced Guard</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.fsm.impl.TracedGuardImpl
-		 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedGuard()
-		 * @generated
-		 */
-		EClass TRACED_GUARD = eINSTANCE.getTracedGuard();
-
-		/**
 		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedNamedElementImpl <em>Traced Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -803,32 +342,22 @@ public interface FsmPackage extends EPackage {
 		EReference TRACED_STATE__ORIGINAL_OBJECT = eINSTANCE.getTracedState_OriginalObject();
 
 		/**
-		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedTemporalGuardImpl <em>Traced Temporal Guard</em>}' class.
+		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl <em>Traced State Machine</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.fsm.impl.TracedTemporalGuardImpl
-		 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedTemporalGuard()
+		 * @see fsmTrace.States.fsm.impl.TracedStateMachineImpl
+		 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedStateMachine()
 		 * @generated
 		 */
-		EClass TRACED_TEMPORAL_GUARD = eINSTANCE.getTracedTemporalGuard();
+		EClass TRACED_STATE_MACHINE = eINSTANCE.getTracedStateMachine();
 
 		/**
-		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Actions To Process Sequence</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRACED_TEMPORAL_GUARD__ORIGINAL_OBJECT = eINSTANCE.getTracedTemporalGuard_OriginalObject();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedTimeFSMImpl <em>Traced Time FSM</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.fsm.impl.TracedTimeFSMImpl
-		 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedTimeFSM()
-		 * @generated
-		 */
-		EClass TRACED_TIME_FSM = eINSTANCE.getTracedTimeFSM();
+		EReference TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE = eINSTANCE.getTracedStateMachine_ActionsToProcessSequence();
 
 		/**
 		 * The meta object literal for the '<em><b>Current State Sequence</b></em>' containment reference list feature.
@@ -836,15 +365,7 @@ public interface FsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRACED_TIME_FSM__CURRENT_STATE_SEQUENCE = eINSTANCE.getTracedTimeFSM_CurrentStateSequence();
-
-		/**
-		 * The meta object literal for the '<em><b>Last State Change Step Number Sequence</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRACED_TIME_FSM__LAST_STATE_CHANGE_STEP_NUMBER_SEQUENCE = eINSTANCE.getTracedTimeFSM_LastStateChangeStepNumberSequence();
+		EReference TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE = eINSTANCE.getTracedStateMachine_CurrentStateSequence();
 
 		/**
 		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
@@ -852,33 +373,15 @@ public interface FsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRACED_TIME_FSM__ORIGINAL_OBJECT = eINSTANCE.getTracedTimeFSM_OriginalObject();
+		EReference TRACED_STATE_MACHINE__ORIGINAL_OBJECT = eINSTANCE.getTracedStateMachine_OriginalObject();
 
 		/**
-		 * The meta object literal for the '<em><b>Step Number Sequence</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Produced String Sequence</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRACED_TIME_FSM__STEP_NUMBER_SEQUENCE = eINSTANCE.getTracedTimeFSM_StepNumberSequence();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedTimedSystemImpl <em>Traced Timed System</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.fsm.impl.TracedTimedSystemImpl
-		 * @see fsmTrace.States.fsm.impl.FsmPackageImpl#getTracedTimedSystem()
-		 * @generated
-		 */
-		EClass TRACED_TIMED_SYSTEM = eINSTANCE.getTracedTimedSystem();
-
-		/**
-		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRACED_TIMED_SYSTEM__ORIGINAL_OBJECT = eINSTANCE.getTracedTimedSystem_OriginalObject();
+		EReference TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE = eINSTANCE.getTracedStateMachine_ProducedStringSequence();
 
 		/**
 		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedTransitionImpl <em>Traced Transition</em>}' class.

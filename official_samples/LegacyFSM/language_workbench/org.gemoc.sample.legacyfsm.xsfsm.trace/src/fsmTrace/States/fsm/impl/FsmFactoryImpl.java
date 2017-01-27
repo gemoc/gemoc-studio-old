@@ -56,58 +56,12 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case FsmPackage.TRACED_EVALUATE_GUARD: return createTracedEvaluateGuard();
-			case FsmPackage.TRACED_EVENT_GUARD: return createTracedEventGuard();
-			case FsmPackage.TRACED_FSM_CLOCK: return createTracedFSMClock();
-			case FsmPackage.TRACED_FSM_EVENT: return createTracedFSMEvent();
 			case FsmPackage.TRACED_STATE: return createTracedState();
-			case FsmPackage.TRACED_TEMPORAL_GUARD: return createTracedTemporalGuard();
-			case FsmPackage.TRACED_TIME_FSM: return createTracedTimeFSM();
-			case FsmPackage.TRACED_TIMED_SYSTEM: return createTracedTimedSystem();
+			case FsmPackage.TRACED_STATE_MACHINE: return createTracedStateMachine();
 			case FsmPackage.TRACED_TRANSITION: return createTracedTransition();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TracedEvaluateGuard createTracedEvaluateGuard() {
-		TracedEvaluateGuardImpl tracedEvaluateGuard = new TracedEvaluateGuardImpl();
-		return tracedEvaluateGuard;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TracedEventGuard createTracedEventGuard() {
-		TracedEventGuardImpl tracedEventGuard = new TracedEventGuardImpl();
-		return tracedEventGuard;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TracedFSMClock createTracedFSMClock() {
-		TracedFSMClockImpl tracedFSMClock = new TracedFSMClockImpl();
-		return tracedFSMClock;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TracedFSMEvent createTracedFSMEvent() {
-		TracedFSMEventImpl tracedFSMEvent = new TracedFSMEventImpl();
-		return tracedFSMEvent;
 	}
 
 	/**
@@ -125,29 +79,9 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TracedTemporalGuard createTracedTemporalGuard() {
-		TracedTemporalGuardImpl tracedTemporalGuard = new TracedTemporalGuardImpl();
-		return tracedTemporalGuard;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TracedTimeFSM createTracedTimeFSM() {
-		TracedTimeFSMImpl tracedTimeFSM = new TracedTimeFSMImpl();
-		return tracedTimeFSM;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TracedTimedSystem createTracedTimedSystem() {
-		TracedTimedSystemImpl tracedTimedSystem = new TracedTimedSystemImpl();
-		return tracedTimedSystem;
+	public TracedStateMachine createTracedStateMachine() {
+		TracedStateMachineImpl tracedStateMachine = new TracedStateMachineImpl();
+		return tracedStateMachine;
 	}
 
 	/**

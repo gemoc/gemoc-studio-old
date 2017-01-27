@@ -31,10 +31,12 @@ class StateMachineAspect {
 				_self.processedTokens = counter			
 			]
 		
-		} catch (NoTransition nt){
-			println("Stopped due to NoTransition")
-		} catch (NonDeterminism nd){
-			println("Stopped due to NonDeterminism")
+		} /* catch (NoTransition nt){
+			println("Stopped due to NoTransition"+nt.message)
+		} catch (NonDeterminism nt){
+			println("Stopped due to NonDeterminism"+nt.message)
+		} */ catch (Exception nt){
+			println("Stopped due to "+nt.message)
 		}
 		println("processed tokens: "+_self.processedTokens+"/"+_self.actionsToProcess.size)
 		println("produced string: "+_self.producedString)
@@ -58,10 +60,13 @@ class StateAspect {
 		// Get the valid transitions	
 		val validTransitions =  _self.outgoingTransitions.filter[t | t.input.equals(inputToken)]
 		if(validTransitions.empty) {
-			throw new NoTransition
+			//throw new NoTransition()
+			throw new Exception("No Transition")
 		}
 		if(validTransitions.size > 1) {
-			throw new NonDeterminism
+			//throw new NonDeterminism()
+			throw new Exception("Non Determinism")
+			
 		}
 		// Fire transition
 		validTransitions.get(0).fire
@@ -77,11 +82,10 @@ class TransitionAspect {
 		_self.source.owningFSM.producedString = _self.source.owningFSM.producedString + _self.output
 	}
 }
-
+/* need to be enabled when feature request  */
 class NoTransition extends Exception{
 	
 }
-
 class NonDeterminism extends Exception{
 	
 }

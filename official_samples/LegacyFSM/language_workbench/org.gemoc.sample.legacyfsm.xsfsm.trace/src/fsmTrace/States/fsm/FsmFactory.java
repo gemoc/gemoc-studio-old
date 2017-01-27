@@ -22,42 +22,6 @@ public interface FsmFactory extends EFactory {
 	FsmFactory eINSTANCE = fsmTrace.States.fsm.impl.FsmFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Traced Evaluate Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Traced Evaluate Guard</em>'.
-	 * @generated
-	 */
-	TracedEvaluateGuard createTracedEvaluateGuard();
-
-	/**
-	 * Returns a new object of class '<em>Traced Event Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Traced Event Guard</em>'.
-	 * @generated
-	 */
-	TracedEventGuard createTracedEventGuard();
-
-	/**
-	 * Returns a new object of class '<em>Traced FSM Clock</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Traced FSM Clock</em>'.
-	 * @generated
-	 */
-	TracedFSMClock createTracedFSMClock();
-
-	/**
-	 * Returns a new object of class '<em>Traced FSM Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Traced FSM Event</em>'.
-	 * @generated
-	 */
-	TracedFSMEvent createTracedFSMEvent();
-
-	/**
 	 * Returns a new object of class '<em>Traced State</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,31 +31,13 @@ public interface FsmFactory extends EFactory {
 	TracedState createTracedState();
 
 	/**
-	 * Returns a new object of class '<em>Traced Temporal Guard</em>'.
+	 * Returns a new object of class '<em>Traced State Machine</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Traced Temporal Guard</em>'.
+	 * @return a new object of class '<em>Traced State Machine</em>'.
 	 * @generated
 	 */
-	TracedTemporalGuard createTracedTemporalGuard();
-
-	/**
-	 * Returns a new object of class '<em>Traced Time FSM</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Traced Time FSM</em>'.
-	 * @generated
-	 */
-	TracedTimeFSM createTracedTimeFSM();
-
-	/**
-	 * Returns a new object of class '<em>Traced Timed System</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Traced Timed System</em>'.
-	 * @generated
-	 */
-	TracedTimedSystem createTracedTimedSystem();
+	TracedStateMachine createTracedStateMachine();
 
 	/**
 	 * Returns a new object of class '<em>Traced Transition</em>'.

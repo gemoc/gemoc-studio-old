@@ -71,106 +71,41 @@ public class StepsSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case StepsPackage.FSM_FSM_CLOCK_TICKS: {
-				Fsm_FSMClock_Ticks fsm_FSMClock_Ticks = (Fsm_FSMClock_Ticks)theEObject;
-				T result = caseFsm_FSMClock_Ticks(fsm_FSMClock_Ticks);
-				if (result == null) result = caseSpecificStep(fsm_FSMClock_Ticks);
-				if (result == null) result = caseSmallStep(fsm_FSMClock_Ticks);
-				if (result == null) result = caseStep(fsm_FSMClock_Ticks);
+			case StepsPackage.FSM_STATE_STEP: {
+				Fsm_State_Step fsm_State_Step = (Fsm_State_Step)theEObject;
+				T result = caseFsm_State_Step(fsm_State_Step);
+				if (result == null) result = caseSpecificStep(fsm_State_Step);
+				if (result == null) result = caseSequentialStep(fsm_State_Step);
+				if (result == null) result = caseBigStep(fsm_State_Step);
+				if (result == null) result = caseStep(fsm_State_Step);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case StepsPackage.FSM_FSM_EVENT_TRIGGER: {
-				Fsm_FSMEvent_Trigger fsm_FSMEvent_Trigger = (Fsm_FSMEvent_Trigger)theEObject;
-				T result = caseFsm_FSMEvent_Trigger(fsm_FSMEvent_Trigger);
-				if (result == null) result = caseSpecificStep(fsm_FSMEvent_Trigger);
-				if (result == null) result = caseSmallStep(fsm_FSMEvent_Trigger);
-				if (result == null) result = caseStep(fsm_FSMEvent_Trigger);
+			case StepsPackage.FSM_STATE_STEP_ABSTRACT_SUB_STEP: {
+				Fsm_State_Step_AbstractSubStep fsm_State_Step_AbstractSubStep = (Fsm_State_Step_AbstractSubStep)theEObject;
+				T result = caseFsm_State_Step_AbstractSubStep(fsm_State_Step_AbstractSubStep);
+				if (result == null) result = caseSpecificStep(fsm_State_Step_AbstractSubStep);
+				if (result == null) result = caseStep(fsm_State_Step_AbstractSubStep);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case StepsPackage.FSM_FSM_EVENT_UN_TRIGGER: {
-				Fsm_FSMEvent_UnTrigger fsm_FSMEvent_UnTrigger = (Fsm_FSMEvent_UnTrigger)theEObject;
-				T result = caseFsm_FSMEvent_UnTrigger(fsm_FSMEvent_UnTrigger);
-				if (result == null) result = caseSpecificStep(fsm_FSMEvent_UnTrigger);
-				if (result == null) result = caseSmallStep(fsm_FSMEvent_UnTrigger);
-				if (result == null) result = caseStep(fsm_FSMEvent_UnTrigger);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StepsPackage.FSM_STATE_VISIT: {
-				Fsm_State_Visit fsm_State_Visit = (Fsm_State_Visit)theEObject;
-				T result = caseFsm_State_Visit(fsm_State_Visit);
-				if (result == null) result = caseSpecificStep(fsm_State_Visit);
-				if (result == null) result = caseSequentialStep(fsm_State_Visit);
-				if (result == null) result = caseBigStep(fsm_State_Visit);
-				if (result == null) result = caseStep(fsm_State_Visit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StepsPackage.FSM_STATE_VISIT_ABSTRACT_SUB_STEP: {
-				Fsm_State_Visit_AbstractSubStep fsm_State_Visit_AbstractSubStep = (Fsm_State_Visit_AbstractSubStep)theEObject;
-				T result = caseFsm_State_Visit_AbstractSubStep(fsm_State_Visit_AbstractSubStep);
-				if (result == null) result = caseSpecificStep(fsm_State_Visit_AbstractSubStep);
-				if (result == null) result = caseStep(fsm_State_Visit_AbstractSubStep);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StepsPackage.FSM_STATE_VISIT_IMPLICIT_STEP: {
-				Fsm_State_Visit_ImplicitStep fsm_State_Visit_ImplicitStep = (Fsm_State_Visit_ImplicitStep)theEObject;
-				T result = caseFsm_State_Visit_ImplicitStep(fsm_State_Visit_ImplicitStep);
-				if (result == null) result = caseFsm_State_Visit_AbstractSubStep(fsm_State_Visit_ImplicitStep);
-				if (result == null) result = caseSmallStep(fsm_State_Visit_ImplicitStep);
-				if (result == null) result = caseSpecificStep(fsm_State_Visit_ImplicitStep);
-				if (result == null) result = caseStep(fsm_State_Visit_ImplicitStep);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StepsPackage.FSM_TIME_FSM_INIT: {
-				Fsm_TimeFSM_Init fsm_TimeFSM_Init = (Fsm_TimeFSM_Init)theEObject;
-				T result = caseFsm_TimeFSM_Init(fsm_TimeFSM_Init);
-				if (result == null) result = caseSpecificStep(fsm_TimeFSM_Init);
-				if (result == null) result = caseSmallStep(fsm_TimeFSM_Init);
-				if (result == null) result = caseStep(fsm_TimeFSM_Init);
+			case StepsPackage.FSM_STATE_STEP_IMPLICIT_STEP: {
+				Fsm_State_Step_ImplicitStep fsm_State_Step_ImplicitStep = (Fsm_State_Step_ImplicitStep)theEObject;
+				T result = caseFsm_State_Step_ImplicitStep(fsm_State_Step_ImplicitStep);
+				if (result == null) result = caseFsm_State_Step_AbstractSubStep(fsm_State_Step_ImplicitStep);
+				if (result == null) result = caseSmallStep(fsm_State_Step_ImplicitStep);
+				if (result == null) result = caseSpecificStep(fsm_State_Step_ImplicitStep);
+				if (result == null) result = caseStep(fsm_State_Step_ImplicitStep);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case StepsPackage.FSM_TRANSITION_FIRE: {
 				Fsm_Transition_Fire fsm_Transition_Fire = (Fsm_Transition_Fire)theEObject;
 				T result = caseFsm_Transition_Fire(fsm_Transition_Fire);
-				if (result == null) result = caseFsm_Transition_Visit_AbstractSubStep(fsm_Transition_Fire);
+				if (result == null) result = caseFsm_State_Step_AbstractSubStep(fsm_Transition_Fire);
 				if (result == null) result = caseSmallStep(fsm_Transition_Fire);
 				if (result == null) result = caseSpecificStep(fsm_Transition_Fire);
 				if (result == null) result = caseStep(fsm_Transition_Fire);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StepsPackage.FSM_TRANSITION_VISIT: {
-				Fsm_Transition_Visit fsm_Transition_Visit = (Fsm_Transition_Visit)theEObject;
-				T result = caseFsm_Transition_Visit(fsm_Transition_Visit);
-				if (result == null) result = caseFsm_State_Visit_AbstractSubStep(fsm_Transition_Visit);
-				if (result == null) result = caseSequentialStep(fsm_Transition_Visit);
-				if (result == null) result = caseSpecificStep(fsm_Transition_Visit);
-				if (result == null) result = caseBigStep(fsm_Transition_Visit);
-				if (result == null) result = caseStep(fsm_Transition_Visit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StepsPackage.FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP: {
-				Fsm_Transition_Visit_AbstractSubStep fsm_Transition_Visit_AbstractSubStep = (Fsm_Transition_Visit_AbstractSubStep)theEObject;
-				T result = caseFsm_Transition_Visit_AbstractSubStep(fsm_Transition_Visit_AbstractSubStep);
-				if (result == null) result = caseSpecificStep(fsm_Transition_Visit_AbstractSubStep);
-				if (result == null) result = caseStep(fsm_Transition_Visit_AbstractSubStep);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StepsPackage.FSM_TRANSITION_VISIT_IMPLICIT_STEP: {
-				Fsm_Transition_Visit_ImplicitStep fsm_Transition_Visit_ImplicitStep = (Fsm_Transition_Visit_ImplicitStep)theEObject;
-				T result = caseFsm_Transition_Visit_ImplicitStep(fsm_Transition_Visit_ImplicitStep);
-				if (result == null) result = caseFsm_Transition_Visit_AbstractSubStep(fsm_Transition_Visit_ImplicitStep);
-				if (result == null) result = caseSmallStep(fsm_Transition_Visit_ImplicitStep);
-				if (result == null) result = caseSpecificStep(fsm_Transition_Visit_ImplicitStep);
-				if (result == null) result = caseStep(fsm_Transition_Visit_ImplicitStep);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -194,107 +129,47 @@ public class StepsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fsm FSM Clock Ticks</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Fsm State Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fsm FSM Clock Ticks</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Fsm State Step</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFsm_FSMClock_Ticks(Fsm_FSMClock_Ticks object) {
+	public T caseFsm_State_Step(Fsm_State_Step object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fsm FSM Event Trigger</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Fsm State Step Abstract Sub Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fsm FSM Event Trigger</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Fsm State Step Abstract Sub Step</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFsm_FSMEvent_Trigger(Fsm_FSMEvent_Trigger object) {
+	public T caseFsm_State_Step_AbstractSubStep(Fsm_State_Step_AbstractSubStep object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fsm FSM Event Un Trigger</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Fsm State Step Implicit Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fsm FSM Event Un Trigger</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Fsm State Step Implicit Step</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFsm_FSMEvent_UnTrigger(Fsm_FSMEvent_UnTrigger object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fsm State Visit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fsm State Visit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFsm_State_Visit(Fsm_State_Visit object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fsm State Visit Abstract Sub Step</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fsm State Visit Abstract Sub Step</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFsm_State_Visit_AbstractSubStep(Fsm_State_Visit_AbstractSubStep object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fsm State Visit Implicit Step</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fsm State Visit Implicit Step</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFsm_State_Visit_ImplicitStep(Fsm_State_Visit_ImplicitStep object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fsm Time FSM Init</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fsm Time FSM Init</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFsm_TimeFSM_Init(Fsm_TimeFSM_Init object) {
+	public T caseFsm_State_Step_ImplicitStep(Fsm_State_Step_ImplicitStep object) {
 		return null;
 	}
 
@@ -310,51 +185,6 @@ public class StepsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseFsm_Transition_Fire(Fsm_Transition_Fire object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fsm Transition Visit</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fsm Transition Visit</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFsm_Transition_Visit(Fsm_Transition_Visit object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fsm Transition Visit Abstract Sub Step</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fsm Transition Visit Abstract Sub Step</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFsm_Transition_Visit_AbstractSubStep(Fsm_Transition_Visit_AbstractSubStep object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fsm Transition Visit Implicit Step</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fsm Transition Visit Implicit Step</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFsm_Transition_Visit_ImplicitStep(Fsm_Transition_Visit_ImplicitStep object) {
 		return null;
 	}
 
@@ -404,21 +234,6 @@ public class StepsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Small Step</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Small Step</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSmallStep(SmallStep object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Big Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -445,6 +260,21 @@ public class StepsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public <StepSubtype extends Step> T caseSequentialStep(SequentialStep<StepSubtype> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Small Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Small Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSmallStep(SmallStep object) {
 		return null;
 	}
 

@@ -10,16 +10,9 @@ import fsmTrace.States.StatesPackage;
 
 import fsmTrace.States.fsm.FsmFactory;
 import fsmTrace.States.fsm.FsmPackage;
-import fsmTrace.States.fsm.TracedEvaluateGuard;
-import fsmTrace.States.fsm.TracedEventGuard;
-import fsmTrace.States.fsm.TracedFSMClock;
-import fsmTrace.States.fsm.TracedFSMEvent;
-import fsmTrace.States.fsm.TracedGuard;
 import fsmTrace.States.fsm.TracedNamedElement;
 import fsmTrace.States.fsm.TracedState;
-import fsmTrace.States.fsm.TracedTemporalGuard;
-import fsmTrace.States.fsm.TracedTimeFSM;
-import fsmTrace.States.fsm.TracedTimedSystem;
+import fsmTrace.States.fsm.TracedStateMachine;
 import fsmTrace.States.fsm.TracedTransition;
 
 import fsmTrace.States.impl.StatesPackageImpl;
@@ -48,41 +41,6 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass tracedEvaluateGuardEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass tracedEventGuardEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass tracedFSMClockEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass tracedFSMEventEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass tracedGuardEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass tracedNamedElementEClass = null;
 
 	/**
@@ -97,21 +55,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass tracedTemporalGuardEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass tracedTimeFSMEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass tracedTimedSystemEClass = null;
+	private EClass tracedStateMachineEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -201,105 +145,6 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTracedEvaluateGuard() {
-		return tracedEvaluateGuardEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTracedEvaluateGuard_OriginalObject() {
-		return (EReference)tracedEvaluateGuardEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTracedEventGuard() {
-		return tracedEventGuardEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTracedEventGuard_OriginalObject() {
-		return (EReference)tracedEventGuardEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTracedFSMClock() {
-		return tracedFSMClockEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTracedFSMClock_NumberOfTicksSequence() {
-		return (EReference)tracedFSMClockEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTracedFSMClock_OriginalObject() {
-		return (EReference)tracedFSMClockEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTracedFSMEvent() {
-		return tracedFSMEventEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTracedFSMEvent_IsTriggeredSequence() {
-		return (EReference)tracedFSMEventEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTracedFSMEvent_OriginalObject() {
-		return (EReference)tracedFSMEventEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTracedGuard() {
-		return tracedGuardEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTracedNamedElement() {
 		return tracedNamedElementEClass;
 	}
@@ -327,8 +172,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTracedTemporalGuard() {
-		return tracedTemporalGuardEClass;
+	public EClass getTracedStateMachine() {
+		return tracedStateMachineEClass;
 	}
 
 	/**
@@ -336,8 +181,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTracedTemporalGuard_OriginalObject() {
-		return (EReference)tracedTemporalGuardEClass.getEStructuralFeatures().get(0);
+	public EReference getTracedStateMachine_ActionsToProcessSequence() {
+		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -345,8 +190,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTracedTimeFSM() {
-		return tracedTimeFSMEClass;
+	public EReference getTracedStateMachine_CurrentStateSequence() {
+		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -354,8 +199,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTracedTimeFSM_CurrentStateSequence() {
-		return (EReference)tracedTimeFSMEClass.getEStructuralFeatures().get(0);
+	public EReference getTracedStateMachine_OriginalObject() {
+		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -363,44 +208,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTracedTimeFSM_LastStateChangeStepNumberSequence() {
-		return (EReference)tracedTimeFSMEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTracedTimeFSM_OriginalObject() {
-		return (EReference)tracedTimeFSMEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTracedTimeFSM_StepNumberSequence() {
-		return (EReference)tracedTimeFSMEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTracedTimedSystem() {
-		return tracedTimedSystemEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTracedTimedSystem_OriginalObject() {
-		return (EReference)tracedTimedSystemEClass.getEStructuralFeatures().get(0);
+	public EReference getTracedStateMachine_ProducedStringSequence() {
+		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -449,38 +258,16 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		tracedEvaluateGuardEClass = createEClass(TRACED_EVALUATE_GUARD);
-		createEReference(tracedEvaluateGuardEClass, TRACED_EVALUATE_GUARD__ORIGINAL_OBJECT);
-
-		tracedEventGuardEClass = createEClass(TRACED_EVENT_GUARD);
-		createEReference(tracedEventGuardEClass, TRACED_EVENT_GUARD__ORIGINAL_OBJECT);
-
-		tracedFSMClockEClass = createEClass(TRACED_FSM_CLOCK);
-		createEReference(tracedFSMClockEClass, TRACED_FSM_CLOCK__NUMBER_OF_TICKS_SEQUENCE);
-		createEReference(tracedFSMClockEClass, TRACED_FSM_CLOCK__ORIGINAL_OBJECT);
-
-		tracedFSMEventEClass = createEClass(TRACED_FSM_EVENT);
-		createEReference(tracedFSMEventEClass, TRACED_FSM_EVENT__IS_TRIGGERED_SEQUENCE);
-		createEReference(tracedFSMEventEClass, TRACED_FSM_EVENT__ORIGINAL_OBJECT);
-
-		tracedGuardEClass = createEClass(TRACED_GUARD);
-
 		tracedNamedElementEClass = createEClass(TRACED_NAMED_ELEMENT);
 
 		tracedStateEClass = createEClass(TRACED_STATE);
 		createEReference(tracedStateEClass, TRACED_STATE__ORIGINAL_OBJECT);
 
-		tracedTemporalGuardEClass = createEClass(TRACED_TEMPORAL_GUARD);
-		createEReference(tracedTemporalGuardEClass, TRACED_TEMPORAL_GUARD__ORIGINAL_OBJECT);
-
-		tracedTimeFSMEClass = createEClass(TRACED_TIME_FSM);
-		createEReference(tracedTimeFSMEClass, TRACED_TIME_FSM__CURRENT_STATE_SEQUENCE);
-		createEReference(tracedTimeFSMEClass, TRACED_TIME_FSM__LAST_STATE_CHANGE_STEP_NUMBER_SEQUENCE);
-		createEReference(tracedTimeFSMEClass, TRACED_TIME_FSM__ORIGINAL_OBJECT);
-		createEReference(tracedTimeFSMEClass, TRACED_TIME_FSM__STEP_NUMBER_SEQUENCE);
-
-		tracedTimedSystemEClass = createEClass(TRACED_TIMED_SYSTEM);
-		createEReference(tracedTimedSystemEClass, TRACED_TIMED_SYSTEM__ORIGINAL_OBJECT);
+		tracedStateMachineEClass = createEClass(TRACED_STATE_MACHINE);
+		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE);
+		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE);
+		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__ORIGINAL_OBJECT);
+		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE);
 
 		tracedTransitionEClass = createEClass(TRACED_TRANSITION);
 		createEReference(tracedTransitionEClass, TRACED_TRANSITION__ORIGINAL_OBJECT);
@@ -518,50 +305,21 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		tracedEvaluateGuardEClass.getESuperTypes().add(this.getTracedGuard());
-		tracedEventGuardEClass.getESuperTypes().add(this.getTracedGuard());
-		tracedFSMClockEClass.getESuperTypes().add(this.getTracedNamedElement());
-		tracedFSMEventEClass.getESuperTypes().add(this.getTracedNamedElement());
-		tracedGuardEClass.getESuperTypes().add(this.getTracedNamedElement());
 		tracedStateEClass.getESuperTypes().add(this.getTracedNamedElement());
-		tracedTemporalGuardEClass.getESuperTypes().add(this.getTracedGuard());
-		tracedTimeFSMEClass.getESuperTypes().add(this.getTracedNamedElement());
-		tracedTimedSystemEClass.getESuperTypes().add(this.getTracedNamedElement());
+		tracedStateMachineEClass.getESuperTypes().add(this.getTracedNamedElement());
 		tracedTransitionEClass.getESuperTypes().add(this.getTracedNamedElement());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(tracedEvaluateGuardEClass, TracedEvaluateGuard.class, "TracedEvaluateGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTracedEvaluateGuard_OriginalObject(), theFsmPackage_1.getEvaluateGuard(), null, "originalObject", null, 0, 1, TracedEvaluateGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(tracedEventGuardEClass, TracedEventGuard.class, "TracedEventGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTracedEventGuard_OriginalObject(), theFsmPackage_1.getEventGuard(), null, "originalObject", null, 0, 1, TracedEventGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(tracedFSMClockEClass, TracedFSMClock.class, "TracedFSMClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTracedFSMClock_NumberOfTicksSequence(), theStatesPackage.getFSMClock_numberOfTicks_Value(), theStatesPackage.getFSMClock_numberOfTicks_Value_Parent(), "numberOfTicksSequence", null, 0, -1, TracedFSMClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTracedFSMClock_OriginalObject(), theFsmPackage_1.getFSMClock(), null, "originalObject", null, 0, 1, TracedFSMClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(tracedFSMEventEClass, TracedFSMEvent.class, "TracedFSMEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTracedFSMEvent_IsTriggeredSequence(), theStatesPackage.getFSMEvent_isTriggered_Value(), theStatesPackage.getFSMEvent_isTriggered_Value_Parent(), "isTriggeredSequence", null, 0, -1, TracedFSMEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTracedFSMEvent_OriginalObject(), theFsmPackage_1.getFSMEvent(), null, "originalObject", null, 0, 1, TracedFSMEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(tracedGuardEClass, TracedGuard.class, "TracedGuard", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(tracedNamedElementEClass, TracedNamedElement.class, "TracedNamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(tracedStateEClass, TracedState.class, "TracedState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTracedState_OriginalObject(), theFsmPackage_1.getState(), null, "originalObject", null, 0, 1, TracedState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(tracedTemporalGuardEClass, TracedTemporalGuard.class, "TracedTemporalGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTracedTemporalGuard_OriginalObject(), theFsmPackage_1.getTemporalGuard(), null, "originalObject", null, 0, 1, TracedTemporalGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(tracedTimeFSMEClass, TracedTimeFSM.class, "TracedTimeFSM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTracedTimeFSM_CurrentStateSequence(), theStatesPackage.getTimeFSM_currentState_Value(), theStatesPackage.getTimeFSM_currentState_Value_Parent(), "currentStateSequence", null, 0, -1, TracedTimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTracedTimeFSM_LastStateChangeStepNumberSequence(), theStatesPackage.getTimeFSM_lastStateChangeStepNumber_Value(), theStatesPackage.getTimeFSM_lastStateChangeStepNumber_Value_Parent(), "lastStateChangeStepNumberSequence", null, 0, -1, TracedTimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTracedTimeFSM_OriginalObject(), theFsmPackage_1.getTimeFSM(), null, "originalObject", null, 0, 1, TracedTimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTracedTimeFSM_StepNumberSequence(), theStatesPackage.getTimeFSM_stepNumber_Value(), theStatesPackage.getTimeFSM_stepNumber_Value_Parent(), "stepNumberSequence", null, 0, -1, TracedTimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(tracedTimedSystemEClass, TracedTimedSystem.class, "TracedTimedSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTracedTimedSystem_OriginalObject(), theFsmPackage_1.getTimedSystem(), null, "originalObject", null, 0, 1, TracedTimedSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(tracedStateMachineEClass, TracedStateMachine.class, "TracedStateMachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTracedStateMachine_ActionsToProcessSequence(), theStatesPackage.getStateMachine_actionsToProcess_Value(), theStatesPackage.getStateMachine_actionsToProcess_Value_Parent(), "actionsToProcessSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTracedStateMachine_CurrentStateSequence(), theStatesPackage.getStateMachine_currentState_Value(), theStatesPackage.getStateMachine_currentState_Value_Parent(), "currentStateSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTracedStateMachine_OriginalObject(), theFsmPackage_1.getStateMachine(), null, "originalObject", null, 0, 1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTracedStateMachine_ProducedStringSequence(), theStatesPackage.getStateMachine_producedString_Value(), theStatesPackage.getStateMachine_producedString_Value_Parent(), "producedStringSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tracedTransitionEClass, TracedTransition.class, "TracedTransition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTracedTransition_OriginalObject(), theFsmPackage_1.getTransition(), null, "originalObject", null, 0, 1, TracedTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -48,15 +48,10 @@ public class FsmTraceNotifier implements ITraceNotifier {
 						final fsmTrace.States.State newState = (fsmTrace.States.State) o;
 						newStates.add(newState);
 						endedSteps.addAll(newState.getEndedSteps());
-					} else if (o instanceof fsmTrace.States.fsm.TracedFSMClock) {
-						newDimensions.add(((fsmTrace.States.fsm.TracedFSMClock) o).getNumberOfTicksSequence());
-					} else if (o instanceof fsmTrace.States.fsm.TracedFSMEvent) {
-						newDimensions.add(((fsmTrace.States.fsm.TracedFSMEvent) o).getIsTriggeredSequence());
-					} else if (o instanceof fsmTrace.States.fsm.TracedTimeFSM) {
-						newDimensions.add(((fsmTrace.States.fsm.TracedTimeFSM) o).getCurrentStateSequence());
-						newDimensions
-								.add(((fsmTrace.States.fsm.TracedTimeFSM) o).getLastStateChangeStepNumberSequence());
-						newDimensions.add(((fsmTrace.States.fsm.TracedTimeFSM) o).getStepNumberSequence());
+					} else if (o instanceof fsmTrace.States.fsm.TracedStateMachine) {
+						newDimensions.add(((fsmTrace.States.fsm.TracedStateMachine) o).getActionsToProcessSequence());
+						newDimensions.add(((fsmTrace.States.fsm.TracedStateMachine) o).getCurrentStateSequence());
+						newDimensions.add(((fsmTrace.States.fsm.TracedStateMachine) o).getProducedStringSequence());
 					}
 				}
 			});

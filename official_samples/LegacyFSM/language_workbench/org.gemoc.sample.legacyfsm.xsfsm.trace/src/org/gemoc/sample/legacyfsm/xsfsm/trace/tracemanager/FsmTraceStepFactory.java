@@ -15,44 +15,12 @@ public class FsmTraceStepFactory implements IStepFactory {
 		String stepRule = fr.inria.diverse.trace.commons.EcoreCraftingUtil.getFQN(ec, ".") + "."
 				+ mse.getAction().getName();
 
-		if (mse.getAction().getName().equalsIgnoreCase("ticks")
-				&& (ec.getClassifierID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
-						.getFSMClock().getClassifierID()))
-
-		{
-			step = fsmTrace.Steps.StepsFactory.eINSTANCE.createFsm_FSMClock_Ticks();
-		} else
-
-		if (mse.getAction().getName().equalsIgnoreCase("trigger")
-				&& (ec.getClassifierID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
-						.getFSMEvent().getClassifierID()))
-
-		{
-			step = fsmTrace.Steps.StepsFactory.eINSTANCE.createFsm_FSMEvent_Trigger();
-		} else
-
-		if (mse.getAction().getName().equalsIgnoreCase("unTrigger")
-				&& (ec.getClassifierID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
-						.getFSMEvent().getClassifierID()))
-
-		{
-			step = fsmTrace.Steps.StepsFactory.eINSTANCE.createFsm_FSMEvent_UnTrigger();
-		} else
-
-		if (mse.getAction().getName().equalsIgnoreCase("visit")
+		if (mse.getAction().getName().equalsIgnoreCase("step")
 				&& (ec.getClassifierID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE.getState()
 						.getClassifierID()))
 
 		{
-			step = fsmTrace.Steps.StepsFactory.eINSTANCE.createFsm_State_Visit();
-		} else
-
-		if (mse.getAction().getName().equalsIgnoreCase("init")
-				&& (ec.getClassifierID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE.getTimeFSM()
-						.getClassifierID()))
-
-		{
-			step = fsmTrace.Steps.StepsFactory.eINSTANCE.createFsm_TimeFSM_Init();
+			step = fsmTrace.Steps.StepsFactory.eINSTANCE.createFsm_State_Step();
 		} else
 
 		if (mse.getAction().getName().equalsIgnoreCase("fire")
@@ -61,14 +29,6 @@ public class FsmTraceStepFactory implements IStepFactory {
 
 		{
 			step = fsmTrace.Steps.StepsFactory.eINSTANCE.createFsm_Transition_Fire();
-		} else
-
-		if (mse.getAction().getName().equalsIgnoreCase("visit")
-				&& (ec.getClassifierID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
-						.getTransition().getClassifierID()))
-
-		{
-			step = fsmTrace.Steps.StepsFactory.eINSTANCE.createFsm_Transition_Visit();
 		}
 
 		else {

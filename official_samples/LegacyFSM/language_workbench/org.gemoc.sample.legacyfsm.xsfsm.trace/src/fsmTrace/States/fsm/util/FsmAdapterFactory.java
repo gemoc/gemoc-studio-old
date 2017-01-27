@@ -68,26 +68,6 @@ public class FsmAdapterFactory extends AdapterFactoryImpl {
 	protected FsmSwitch<Adapter> modelSwitch =
 		new FsmSwitch<Adapter>() {
 			@Override
-			public Adapter caseTracedEvaluateGuard(TracedEvaluateGuard object) {
-				return createTracedEvaluateGuardAdapter();
-			}
-			@Override
-			public Adapter caseTracedEventGuard(TracedEventGuard object) {
-				return createTracedEventGuardAdapter();
-			}
-			@Override
-			public Adapter caseTracedFSMClock(TracedFSMClock object) {
-				return createTracedFSMClockAdapter();
-			}
-			@Override
-			public Adapter caseTracedFSMEvent(TracedFSMEvent object) {
-				return createTracedFSMEventAdapter();
-			}
-			@Override
-			public Adapter caseTracedGuard(TracedGuard object) {
-				return createTracedGuardAdapter();
-			}
-			@Override
 			public Adapter caseTracedNamedElement(TracedNamedElement object) {
 				return createTracedNamedElementAdapter();
 			}
@@ -96,16 +76,8 @@ public class FsmAdapterFactory extends AdapterFactoryImpl {
 				return createTracedStateAdapter();
 			}
 			@Override
-			public Adapter caseTracedTemporalGuard(TracedTemporalGuard object) {
-				return createTracedTemporalGuardAdapter();
-			}
-			@Override
-			public Adapter caseTracedTimeFSM(TracedTimeFSM object) {
-				return createTracedTimeFSMAdapter();
-			}
-			@Override
-			public Adapter caseTracedTimedSystem(TracedTimedSystem object) {
-				return createTracedTimedSystemAdapter();
+			public Adapter caseTracedStateMachine(TracedStateMachine object) {
+				return createTracedStateMachineAdapter();
 			}
 			@Override
 			public Adapter caseTracedTransition(TracedTransition object) {
@@ -130,76 +102,6 @@ public class FsmAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.fsm.TracedEvaluateGuard <em>Traced Evaluate Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fsmTrace.States.fsm.TracedEvaluateGuard
-	 * @generated
-	 */
-	public Adapter createTracedEvaluateGuardAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.fsm.TracedEventGuard <em>Traced Event Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fsmTrace.States.fsm.TracedEventGuard
-	 * @generated
-	 */
-	public Adapter createTracedEventGuardAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.fsm.TracedFSMClock <em>Traced FSM Clock</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fsmTrace.States.fsm.TracedFSMClock
-	 * @generated
-	 */
-	public Adapter createTracedFSMClockAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.fsm.TracedFSMEvent <em>Traced FSM Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fsmTrace.States.fsm.TracedFSMEvent
-	 * @generated
-	 */
-	public Adapter createTracedFSMEventAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.fsm.TracedGuard <em>Traced Guard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fsmTrace.States.fsm.TracedGuard
-	 * @generated
-	 */
-	public Adapter createTracedGuardAdapter() {
-		return null;
-	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link fsmTrace.States.fsm.TracedNamedElement <em>Traced Named Element</em>}'.
@@ -230,44 +132,16 @@ public class FsmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.fsm.TracedTemporalGuard <em>Traced Temporal Guard</em>}'.
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.fsm.TracedStateMachine <em>Traced State Machine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fsmTrace.States.fsm.TracedTemporalGuard
+	 * @see fsmTrace.States.fsm.TracedStateMachine
 	 * @generated
 	 */
-	public Adapter createTracedTemporalGuardAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.fsm.TracedTimeFSM <em>Traced Time FSM</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fsmTrace.States.fsm.TracedTimeFSM
-	 * @generated
-	 */
-	public Adapter createTracedTimeFSMAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.fsm.TracedTimedSystem <em>Traced Timed System</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fsmTrace.States.fsm.TracedTimedSystem
-	 * @generated
-	 */
-	public Adapter createTracedTimedSystemAdapter() {
+	public Adapter createTracedStateMachineAdapter() {
 		return null;
 	}
 

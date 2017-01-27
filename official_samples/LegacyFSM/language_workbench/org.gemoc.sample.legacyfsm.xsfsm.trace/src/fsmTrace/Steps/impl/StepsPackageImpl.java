@@ -12,17 +12,10 @@ import fsmTrace.States.fsm.impl.FsmPackageImpl;
 
 import fsmTrace.States.impl.StatesPackageImpl;
 
-import fsmTrace.Steps.Fsm_FSMClock_Ticks;
-import fsmTrace.Steps.Fsm_FSMEvent_Trigger;
-import fsmTrace.Steps.Fsm_FSMEvent_UnTrigger;
-import fsmTrace.Steps.Fsm_State_Visit;
-import fsmTrace.Steps.Fsm_State_Visit_AbstractSubStep;
-import fsmTrace.Steps.Fsm_State_Visit_ImplicitStep;
-import fsmTrace.Steps.Fsm_TimeFSM_Init;
+import fsmTrace.Steps.Fsm_State_Step;
+import fsmTrace.Steps.Fsm_State_Step_AbstractSubStep;
+import fsmTrace.Steps.Fsm_State_Step_ImplicitStep;
 import fsmTrace.Steps.Fsm_Transition_Fire;
-import fsmTrace.Steps.Fsm_Transition_Visit;
-import fsmTrace.Steps.Fsm_Transition_Visit_AbstractSubStep;
-import fsmTrace.Steps.Fsm_Transition_Visit_ImplicitStep;
 import fsmTrace.Steps.RootImplicitStep;
 import fsmTrace.Steps.SpecificStep;
 import fsmTrace.Steps.StepsFactory;
@@ -51,49 +44,21 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass fsm_FSMClock_TicksEClass = null;
+	private EClass fsm_State_StepEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass fsm_FSMEvent_TriggerEClass = null;
+	private EClass fsm_State_Step_AbstractSubStepEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass fsm_FSMEvent_UnTriggerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fsm_State_VisitEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fsm_State_Visit_AbstractSubStepEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fsm_State_Visit_ImplicitStepEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fsm_TimeFSM_InitEClass = null;
+	private EClass fsm_State_Step_ImplicitStepEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,27 +66,6 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * @generated
 	 */
 	private EClass fsm_Transition_FireEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fsm_Transition_VisitEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fsm_Transition_Visit_AbstractSubStepEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fsm_Transition_Visit_ImplicitStepEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -218,8 +162,8 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getFsm_FSMClock_Ticks() {
-		return fsm_FSMClock_TicksEClass;
+	public EClass getFsm_State_Step() {
+		return fsm_State_StepEClass;
 	}
 
 	/**
@@ -227,8 +171,8 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getFsm_FSMEvent_Trigger() {
-		return fsm_FSMEvent_TriggerEClass;
+	public EClass getFsm_State_Step_AbstractSubStep() {
+		return fsm_State_Step_AbstractSubStepEClass;
 	}
 
 	/**
@@ -236,44 +180,8 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getFsm_FSMEvent_UnTrigger() {
-		return fsm_FSMEvent_UnTriggerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFsm_State_Visit() {
-		return fsm_State_VisitEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFsm_State_Visit_AbstractSubStep() {
-		return fsm_State_Visit_AbstractSubStepEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFsm_State_Visit_ImplicitStep() {
-		return fsm_State_Visit_ImplicitStepEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFsm_TimeFSM_Init() {
-		return fsm_TimeFSM_InitEClass;
+	public EClass getFsm_State_Step_ImplicitStep() {
+		return fsm_State_Step_ImplicitStepEClass;
 	}
 
 	/**
@@ -283,33 +191,6 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 */
 	public EClass getFsm_Transition_Fire() {
 		return fsm_Transition_FireEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFsm_Transition_Visit() {
-		return fsm_Transition_VisitEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFsm_Transition_Visit_AbstractSubStep() {
-		return fsm_Transition_Visit_AbstractSubStepEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFsm_Transition_Visit_ImplicitStep() {
-		return fsm_Transition_Visit_ImplicitStepEClass;
 	}
 
 	/**
@@ -376,27 +257,13 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		fsm_FSMClock_TicksEClass = createEClass(FSM_FSM_CLOCK_TICKS);
+		fsm_State_StepEClass = createEClass(FSM_STATE_STEP);
 
-		fsm_FSMEvent_TriggerEClass = createEClass(FSM_FSM_EVENT_TRIGGER);
+		fsm_State_Step_AbstractSubStepEClass = createEClass(FSM_STATE_STEP_ABSTRACT_SUB_STEP);
 
-		fsm_FSMEvent_UnTriggerEClass = createEClass(FSM_FSM_EVENT_UN_TRIGGER);
-
-		fsm_State_VisitEClass = createEClass(FSM_STATE_VISIT);
-
-		fsm_State_Visit_AbstractSubStepEClass = createEClass(FSM_STATE_VISIT_ABSTRACT_SUB_STEP);
-
-		fsm_State_Visit_ImplicitStepEClass = createEClass(FSM_STATE_VISIT_IMPLICIT_STEP);
-
-		fsm_TimeFSM_InitEClass = createEClass(FSM_TIME_FSM_INIT);
+		fsm_State_Step_ImplicitStepEClass = createEClass(FSM_STATE_STEP_IMPLICIT_STEP);
 
 		fsm_Transition_FireEClass = createEClass(FSM_TRANSITION_FIRE);
-
-		fsm_Transition_VisitEClass = createEClass(FSM_TRANSITION_VISIT);
-
-		fsm_Transition_Visit_AbstractSubStepEClass = createEClass(FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP);
-
-		fsm_Transition_Visit_ImplicitStepEClass = createEClass(FSM_TRANSITION_VISIT_IMPLICIT_STEP);
 
 		rootImplicitStepEClass = createEClass(ROOT_IMPLICIT_STEP);
 
@@ -438,76 +305,33 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		fsm_FSMClock_TicksEClass.getESuperTypes().add(this.getSpecificStep());
-		fsm_FSMClock_TicksEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		fsm_FSMEvent_TriggerEClass.getESuperTypes().add(this.getSpecificStep());
-		fsm_FSMEvent_TriggerEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		fsm_FSMEvent_UnTriggerEClass.getESuperTypes().add(this.getSpecificStep());
-		fsm_FSMEvent_UnTriggerEClass.getESuperTypes().add(theTracePackage.getSmallStep());
 		EGenericType g1 = createEGenericType(this.getSpecificStep());
-		fsm_State_VisitEClass.getEGenericSuperTypes().add(g1);
+		fsm_State_StepEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(theTracePackage.getSequentialStep());
-		EGenericType g2 = createEGenericType(this.getFsm_State_Visit_AbstractSubStep());
+		EGenericType g2 = createEGenericType(this.getFsm_State_Step_AbstractSubStep());
 		g1.getETypeArguments().add(g2);
-		fsm_State_VisitEClass.getEGenericSuperTypes().add(g1);
-		fsm_State_Visit_AbstractSubStepEClass.getESuperTypes().add(this.getSpecificStep());
-		fsm_State_Visit_ImplicitStepEClass.getESuperTypes().add(this.getFsm_State_Visit_AbstractSubStep());
-		fsm_State_Visit_ImplicitStepEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		fsm_TimeFSM_InitEClass.getESuperTypes().add(this.getSpecificStep());
-		fsm_TimeFSM_InitEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		fsm_Transition_FireEClass.getESuperTypes().add(this.getFsm_Transition_Visit_AbstractSubStep());
+		fsm_State_StepEClass.getEGenericSuperTypes().add(g1);
+		fsm_State_Step_AbstractSubStepEClass.getESuperTypes().add(this.getSpecificStep());
+		fsm_State_Step_ImplicitStepEClass.getESuperTypes().add(this.getFsm_State_Step_AbstractSubStep());
+		fsm_State_Step_ImplicitStepEClass.getESuperTypes().add(theTracePackage.getSmallStep());
+		fsm_Transition_FireEClass.getESuperTypes().add(this.getFsm_State_Step_AbstractSubStep());
 		fsm_Transition_FireEClass.getESuperTypes().add(this.getSpecificStep());
 		fsm_Transition_FireEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		g1 = createEGenericType(this.getFsm_State_Visit_AbstractSubStep());
-		fsm_Transition_VisitEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getSpecificStep());
-		fsm_Transition_VisitEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theTracePackage.getSequentialStep());
-		g2 = createEGenericType(this.getFsm_Transition_Visit_AbstractSubStep());
-		g1.getETypeArguments().add(g2);
-		fsm_Transition_VisitEClass.getEGenericSuperTypes().add(g1);
-		fsm_Transition_Visit_AbstractSubStepEClass.getESuperTypes().add(this.getSpecificStep());
-		fsm_Transition_Visit_ImplicitStepEClass.getESuperTypes().add(this.getFsm_Transition_Visit_AbstractSubStep());
-		fsm_Transition_Visit_ImplicitStepEClass.getESuperTypes().add(theTracePackage.getSmallStep());
 		rootImplicitStepEClass.getESuperTypes().add(theTracePackage.getSmallStep());
 		specificStepEClass.getESuperTypes().add(theTracePackage.getStep());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(fsm_FSMClock_TicksEClass, Fsm_FSMClock_Ticks.class, "Fsm_FSMClock_Ticks", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(fsm_State_StepEClass, Fsm_State_Step.class, "Fsm_State_Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(fsm_FSMClock_TicksEClass, theFsmPackage_1.getTracedFSMClock(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(fsm_State_StepEClass, theFsmPackage_1.getTracedState(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(fsm_FSMEvent_TriggerEClass, Fsm_FSMEvent_Trigger.class, "Fsm_FSMEvent_Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(fsm_State_Step_AbstractSubStepEClass, Fsm_State_Step_AbstractSubStep.class, "Fsm_State_Step_AbstractSubStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(fsm_FSMEvent_TriggerEClass, theFsmPackage_1.getTracedFSMEvent(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(fsm_FSMEvent_UnTriggerEClass, Fsm_FSMEvent_UnTrigger.class, "Fsm_FSMEvent_UnTrigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(fsm_FSMEvent_UnTriggerEClass, theFsmPackage_1.getTracedFSMEvent(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(fsm_State_VisitEClass, Fsm_State_Visit.class, "Fsm_State_Visit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(fsm_State_VisitEClass, theFsmPackage_1.getTracedState(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(fsm_State_Visit_AbstractSubStepEClass, Fsm_State_Visit_AbstractSubStep.class, "Fsm_State_Visit_AbstractSubStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(fsm_State_Visit_ImplicitStepEClass, Fsm_State_Visit_ImplicitStep.class, "Fsm_State_Visit_ImplicitStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(fsm_TimeFSM_InitEClass, Fsm_TimeFSM_Init.class, "Fsm_TimeFSM_Init", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(fsm_TimeFSM_InitEClass, theFsmPackage_1.getTracedTimeFSM(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		initEClass(fsm_State_Step_ImplicitStepEClass, Fsm_State_Step_ImplicitStep.class, "Fsm_State_Step_ImplicitStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(fsm_Transition_FireEClass, Fsm_Transition_Fire.class, "Fsm_Transition_Fire", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(fsm_Transition_FireEClass, theFsmPackage_1.getTracedTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(fsm_Transition_VisitEClass, Fsm_Transition_Visit.class, "Fsm_Transition_Visit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(fsm_Transition_VisitEClass, theFsmPackage_1.getTracedTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(fsm_Transition_Visit_AbstractSubStepEClass, Fsm_Transition_Visit_AbstractSubStep.class, "Fsm_Transition_Visit_AbstractSubStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(fsm_Transition_Visit_ImplicitStepEClass, Fsm_Transition_Visit_ImplicitStep.class, "Fsm_Transition_Visit_ImplicitStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(rootImplicitStepEClass, RootImplicitStep.class, "RootImplicitStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

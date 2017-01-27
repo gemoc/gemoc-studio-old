@@ -2,23 +2,15 @@
  */
 package org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMEvent;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Guard;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
 
@@ -32,9 +24,8 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
  * <ul>
  *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.TransitionImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.TransitionImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.TransitionImpl#getOwnedGuard <em>Owned Guard</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.TransitionImpl#getGeneratedEvents <em>Generated Events</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.TransitionImpl#getAction <em>Action</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.TransitionImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.TransitionImpl#getOutput <em>Output</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,44 +52,44 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	protected State target;
 
 	/**
-	 * The cached value of the '{@link #getOwnedGuard() <em>Owned Guard</em>}' containment reference.
+	 * The default value of the '{@link #getInput() <em>Input</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedGuard()
+	 * @see #getInput()
 	 * @generated
 	 * @ordered
 	 */
-	protected Guard ownedGuard;
+	protected static final String INPUT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getGeneratedEvents() <em>Generated Events</em>}' reference list.
+	 * The cached value of the '{@link #getInput() <em>Input</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGeneratedEvents()
+	 * @see #getInput()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<FSMEvent> generatedEvents;
+	protected String input = INPUT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getAction() <em>Action</em>}' attribute.
+	 * The default value of the '{@link #getOutput() <em>Output</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAction()
+	 * @see #getOutput()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ACTION_EDEFAULT = null;
+	protected static final String OUTPUT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getAction() <em>Action</em>}' attribute.
+	 * The cached value of the '{@link #getOutput() <em>Output</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAction()
+	 * @see #getOutput()
 	 * @generated
 	 * @ordered
 	 */
-	protected String action = ACTION_EDEFAULT;
+	protected String output = OUTPUT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -244,8 +235,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Guard getOwnedGuard() {
-		return ownedGuard;
+	public String getInput() {
+		return input;
 	}
 
 	/**
@@ -253,66 +244,32 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOwnedGuard(Guard newOwnedGuard, NotificationChain msgs) {
-		Guard oldOwnedGuard = ownedGuard;
-		ownedGuard = newOwnedGuard;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FsmPackage.TRANSITION__OWNED_GUARD, oldOwnedGuard, newOwnedGuard);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOwnedGuard(Guard newOwnedGuard) {
-		if (newOwnedGuard != ownedGuard) {
-			NotificationChain msgs = null;
-			if (ownedGuard != null)
-				msgs = ((InternalEObject)ownedGuard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRANSITION__OWNED_GUARD, null, msgs);
-			if (newOwnedGuard != null)
-				msgs = ((InternalEObject)newOwnedGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRANSITION__OWNED_GUARD, null, msgs);
-			msgs = basicSetOwnedGuard(newOwnedGuard, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TRANSITION__OWNED_GUARD, newOwnedGuard, newOwnedGuard));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<FSMEvent> getGeneratedEvents() {
-		if (generatedEvents == null) {
-			generatedEvents = new EObjectResolvingEList<FSMEvent>(FSMEvent.class, this, FsmPackage.TRANSITION__GENERATED_EVENTS);
-		}
-		return generatedEvents;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getAction() {
-		return action;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAction(String newAction) {
-		String oldAction = action;
-		action = newAction;
+	public void setInput(String newInput) {
+		String oldInput = input;
+		input = newInput;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TRANSITION__ACTION, oldAction, action));
+			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TRANSITION__INPUT, oldInput, input));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getOutput() {
+		return output;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutput(String newOutput) {
+		String oldOutput = output;
+		output = newOutput;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TRANSITION__OUTPUT, oldOutput, output));
 	}
 
 	/**
@@ -321,17 +278,6 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @generated
 	 */
 	public void fire() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void visit() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -369,8 +315,6 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return basicSetSource(null, msgs);
 			case FsmPackage.TRANSITION__TARGET:
 				return basicSetTarget(null, msgs);
-			case FsmPackage.TRANSITION__OWNED_GUARD:
-				return basicSetOwnedGuard(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -389,12 +333,10 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			case FsmPackage.TRANSITION__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
-			case FsmPackage.TRANSITION__OWNED_GUARD:
-				return getOwnedGuard();
-			case FsmPackage.TRANSITION__GENERATED_EVENTS:
-				return getGeneratedEvents();
-			case FsmPackage.TRANSITION__ACTION:
-				return getAction();
+			case FsmPackage.TRANSITION__INPUT:
+				return getInput();
+			case FsmPackage.TRANSITION__OUTPUT:
+				return getOutput();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -404,7 +346,6 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -414,15 +355,11 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			case FsmPackage.TRANSITION__TARGET:
 				setTarget((State)newValue);
 				return;
-			case FsmPackage.TRANSITION__OWNED_GUARD:
-				setOwnedGuard((Guard)newValue);
+			case FsmPackage.TRANSITION__INPUT:
+				setInput((String)newValue);
 				return;
-			case FsmPackage.TRANSITION__GENERATED_EVENTS:
-				getGeneratedEvents().clear();
-				getGeneratedEvents().addAll((Collection<? extends FSMEvent>)newValue);
-				return;
-			case FsmPackage.TRANSITION__ACTION:
-				setAction((String)newValue);
+			case FsmPackage.TRANSITION__OUTPUT:
+				setOutput((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -442,14 +379,11 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			case FsmPackage.TRANSITION__TARGET:
 				setTarget((State)null);
 				return;
-			case FsmPackage.TRANSITION__OWNED_GUARD:
-				setOwnedGuard((Guard)null);
+			case FsmPackage.TRANSITION__INPUT:
+				setInput(INPUT_EDEFAULT);
 				return;
-			case FsmPackage.TRANSITION__GENERATED_EVENTS:
-				getGeneratedEvents().clear();
-				return;
-			case FsmPackage.TRANSITION__ACTION:
-				setAction(ACTION_EDEFAULT);
+			case FsmPackage.TRANSITION__OUTPUT:
+				setOutput(OUTPUT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -467,12 +401,10 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return source != null;
 			case FsmPackage.TRANSITION__TARGET:
 				return target != null;
-			case FsmPackage.TRANSITION__OWNED_GUARD:
-				return ownedGuard != null;
-			case FsmPackage.TRANSITION__GENERATED_EVENTS:
-				return generatedEvents != null && !generatedEvents.isEmpty();
-			case FsmPackage.TRANSITION__ACTION:
-				return ACTION_EDEFAULT == null ? action != null : !ACTION_EDEFAULT.equals(action);
+			case FsmPackage.TRANSITION__INPUT:
+				return INPUT_EDEFAULT == null ? input != null : !INPUT_EDEFAULT.equals(input);
+			case FsmPackage.TRANSITION__OUTPUT:
+				return OUTPUT_EDEFAULT == null ? output != null : !OUTPUT_EDEFAULT.equals(output);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -487,8 +419,10 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (action: ");
-		result.append(action);
+		result.append(" (input: ");
+		result.append(input);
+		result.append(", output: ");
+		result.append(output);
 		result.append(')');
 		return result.toString();
 	}

@@ -131,7 +131,7 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSpecificTrace_Fsm_FSMClock_Ticks_Sequence() {
+	public EReference getSpecificTrace_Fsm_State_Step_Sequence() {
 		return (EReference)specificTraceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -140,7 +140,7 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSpecificTrace_Fsm_FSMEvent_Trigger_Sequence() {
+	public EReference getSpecificTrace_Fsm_Transition_Fire_Sequence() {
 		return (EReference)specificTraceEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -149,7 +149,7 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSpecificTrace_Fsm_FSMEvent_UnTrigger_Sequence() {
+	public EReference getSpecificTrace_Fsm_tracedStateMachines() {
 		return (EReference)specificTraceEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -158,7 +158,7 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSpecificTrace_Fsm_State_Visit_Sequence() {
+	public EReference getSpecificTrace_Fsm_tracedStates() {
 		return (EReference)specificTraceEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -167,7 +167,7 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSpecificTrace_Fsm_TimeFSM_Init_Sequence() {
+	public EReference getSpecificTrace_Fsm_tracedTransitions() {
 		return (EReference)specificTraceEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -176,107 +176,8 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSpecificTrace_Fsm_Transition_Fire_Sequence() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_Transition_Visit_Sequence() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_tracedEvaluateGuards() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_tracedEventGuards() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_tracedFSMClocks() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_tracedFSMEvents() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_tracedStates() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_tracedTemporalGuards() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(12);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_tracedTimeFSMs() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_tracedTimedSystems() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(14);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_tracedTransitions() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(15);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getSpecificTrace_StatesTrace() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(16);
+		return (EReference)specificTraceEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -308,21 +209,10 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 
 		// Create classes and their features
 		specificTraceEClass = createEClass(SPECIFIC_TRACE);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_FSM_CLOCK_TICKS_SEQUENCE);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_FSM_EVENT_TRIGGER_SEQUENCE);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_FSM_EVENT_UN_TRIGGER_SEQUENCE);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_STATE_VISIT_SEQUENCE);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TIME_FSM_INIT_SEQUENCE);
+		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_STATE_STEP_SEQUENCE);
 		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRANSITION_FIRE_SEQUENCE);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRANSITION_VISIT_SEQUENCE);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_EVALUATE_GUARDS);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_EVENT_GUARDS);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_FSM_CLOCKS);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_FSM_EVENTS);
+		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_STATE_MACHINES);
 		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_STATES);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_TEMPORAL_GUARDS);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_TIME_FS_MS);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_TIMED_SYSTEMS);
 		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_TRANSITIONS);
 		createEReference(specificTraceEClass, SPECIFIC_TRACE__STATES_TRACE);
 	}
@@ -374,21 +264,10 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(specificTraceEClass, SpecificTrace.class, "SpecificTrace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSpecificTrace_Fsm_FSMClock_Ticks_Sequence(), theStepsPackage.getFsm_FSMClock_Ticks(), null, "Fsm_FSMClock_Ticks_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_FSMEvent_Trigger_Sequence(), theStepsPackage.getFsm_FSMEvent_Trigger(), null, "Fsm_FSMEvent_Trigger_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_FSMEvent_UnTrigger_Sequence(), theStepsPackage.getFsm_FSMEvent_UnTrigger(), null, "Fsm_FSMEvent_UnTrigger_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_State_Visit_Sequence(), theStepsPackage.getFsm_State_Visit(), null, "Fsm_State_Visit_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_TimeFSM_Init_Sequence(), theStepsPackage.getFsm_TimeFSM_Init(), null, "Fsm_TimeFSM_Init_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpecificTrace_Fsm_State_Step_Sequence(), theStepsPackage.getFsm_State_Step(), null, "Fsm_State_Step_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSpecificTrace_Fsm_Transition_Fire_Sequence(), theStepsPackage.getFsm_Transition_Fire(), null, "Fsm_Transition_Fire_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_Transition_Visit_Sequence(), theStepsPackage.getFsm_Transition_Visit(), null, "Fsm_Transition_Visit_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_tracedEvaluateGuards(), theFsmPackage_1.getTracedEvaluateGuard(), null, "fsm_tracedEvaluateGuards", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_tracedEventGuards(), theFsmPackage_1.getTracedEventGuard(), null, "fsm_tracedEventGuards", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_tracedFSMClocks(), theFsmPackage_1.getTracedFSMClock(), null, "fsm_tracedFSMClocks", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_tracedFSMEvents(), theFsmPackage_1.getTracedFSMEvent(), null, "fsm_tracedFSMEvents", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getSpecificTrace_Fsm_tracedStateMachines(), theFsmPackage_1.getTracedStateMachine(), null, "fsm_tracedStateMachines", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getSpecificTrace_Fsm_tracedStates(), theFsmPackage_1.getTracedState(), null, "fsm_tracedStates", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_tracedTemporalGuards(), theFsmPackage_1.getTracedTemporalGuard(), null, "fsm_tracedTemporalGuards", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_tracedTimeFSMs(), theFsmPackage_1.getTracedTimeFSM(), null, "fsm_tracedTimeFSMs", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_tracedTimedSystems(), theFsmPackage_1.getTracedTimedSystem(), null, "fsm_tracedTimedSystems", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getSpecificTrace_Fsm_tracedTransitions(), theFsmPackage_1.getTracedTransition(), null, "fsm_tracedTransitions", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getSpecificTrace_StatesTrace(), theStatesPackage.getState(), null, "statesTrace", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

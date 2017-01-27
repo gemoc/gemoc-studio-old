@@ -22,58 +22,22 @@ public interface StepsFactory extends EFactory {
 	StepsFactory eINSTANCE = fsmTrace.Steps.impl.StepsFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Fsm FSM Clock Ticks</em>'.
+	 * Returns a new object of class '<em>Fsm State Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Fsm FSM Clock Ticks</em>'.
+	 * @return a new object of class '<em>Fsm State Step</em>'.
 	 * @generated
 	 */
-	Fsm_FSMClock_Ticks createFsm_FSMClock_Ticks();
+	Fsm_State_Step createFsm_State_Step();
 
 	/**
-	 * Returns a new object of class '<em>Fsm FSM Event Trigger</em>'.
+	 * Returns a new object of class '<em>Fsm State Step Implicit Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Fsm FSM Event Trigger</em>'.
+	 * @return a new object of class '<em>Fsm State Step Implicit Step</em>'.
 	 * @generated
 	 */
-	Fsm_FSMEvent_Trigger createFsm_FSMEvent_Trigger();
-
-	/**
-	 * Returns a new object of class '<em>Fsm FSM Event Un Trigger</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Fsm FSM Event Un Trigger</em>'.
-	 * @generated
-	 */
-	Fsm_FSMEvent_UnTrigger createFsm_FSMEvent_UnTrigger();
-
-	/**
-	 * Returns a new object of class '<em>Fsm State Visit</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Fsm State Visit</em>'.
-	 * @generated
-	 */
-	Fsm_State_Visit createFsm_State_Visit();
-
-	/**
-	 * Returns a new object of class '<em>Fsm State Visit Implicit Step</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Fsm State Visit Implicit Step</em>'.
-	 * @generated
-	 */
-	Fsm_State_Visit_ImplicitStep createFsm_State_Visit_ImplicitStep();
-
-	/**
-	 * Returns a new object of class '<em>Fsm Time FSM Init</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Fsm Time FSM Init</em>'.
-	 * @generated
-	 */
-	Fsm_TimeFSM_Init createFsm_TimeFSM_Init();
+	Fsm_State_Step_ImplicitStep createFsm_State_Step_ImplicitStep();
 
 	/**
 	 * Returns a new object of class '<em>Fsm Transition Fire</em>'.
@@ -83,24 +47,6 @@ public interface StepsFactory extends EFactory {
 	 * @generated
 	 */
 	Fsm_Transition_Fire createFsm_Transition_Fire();
-
-	/**
-	 * Returns a new object of class '<em>Fsm Transition Visit</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Fsm Transition Visit</em>'.
-	 * @generated
-	 */
-	Fsm_Transition_Visit createFsm_Transition_Visit();
-
-	/**
-	 * Returns a new object of class '<em>Fsm Transition Visit Implicit Step</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Fsm Transition Visit Implicit Step</em>'.
-	 * @generated
-	 */
-	Fsm_Transition_Visit_ImplicitStep createFsm_Transition_Visit_ImplicitStep();
 
 	/**
 	 * Returns a new object of class '<em>Root Implicit Step</em>'.

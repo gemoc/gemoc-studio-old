@@ -22,24 +22,6 @@ public interface StatesFactory extends EFactory {
 	StatesFactory eINSTANCE = fsmTrace.States.impl.StatesFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>FSM Clock number Of Ticks Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>FSM Clock number Of Ticks Value</em>'.
-	 * @generated
-	 */
-	FSMClock_numberOfTicks_Value createFSMClock_numberOfTicks_Value();
-
-	/**
-	 * Returns a new object of class '<em>FSM Event is Triggered Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>FSM Event is Triggered Value</em>'.
-	 * @generated
-	 */
-	FSMEvent_isTriggered_Value createFSMEvent_isTriggered_Value();
-
-	/**
 	 * Returns a new object of class '<em>State</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49,31 +31,31 @@ public interface StatesFactory extends EFactory {
 	State createState();
 
 	/**
-	 * Returns a new object of class '<em>Time FSM current State Value</em>'.
+	 * Returns a new object of class '<em>State Machine actions To Process Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Time FSM current State Value</em>'.
+	 * @return a new object of class '<em>State Machine actions To Process Value</em>'.
 	 * @generated
 	 */
-	TimeFSM_currentState_Value createTimeFSM_currentState_Value();
+	StateMachine_actionsToProcess_Value createStateMachine_actionsToProcess_Value();
 
 	/**
-	 * Returns a new object of class '<em>Time FSM last State Change Step Number Value</em>'.
+	 * Returns a new object of class '<em>State Machine current State Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Time FSM last State Change Step Number Value</em>'.
+	 * @return a new object of class '<em>State Machine current State Value</em>'.
 	 * @generated
 	 */
-	TimeFSM_lastStateChangeStepNumber_Value createTimeFSM_lastStateChangeStepNumber_Value();
+	StateMachine_currentState_Value createStateMachine_currentState_Value();
 
 	/**
-	 * Returns a new object of class '<em>Time FSM step Number Value</em>'.
+	 * Returns a new object of class '<em>State Machine produced String Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Time FSM step Number Value</em>'.
+	 * @return a new object of class '<em>State Machine produced String Value</em>'.
 	 * @generated
 	 */
-	TimeFSM_stepNumber_Value createTimeFSM_stepNumber_Value();
+	StateMachine_producedString_Value createStateMachine_producedString_Value();
 
 	/**
 	 * Returns the package supported by this factory.

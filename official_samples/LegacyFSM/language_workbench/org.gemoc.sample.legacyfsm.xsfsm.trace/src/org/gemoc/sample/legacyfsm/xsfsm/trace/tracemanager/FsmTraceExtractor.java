@@ -91,16 +91,10 @@ public class FsmTraceExtractor implements ITraceExtractor {
 
 	private List<List<? extends fsmTrace.States.Value>> getAllValueTraces() {
 		final List<List<? extends fsmTrace.States.Value>> result = new ArrayList<>();
-		for (fsmTrace.States.fsm.TracedFSMClock tracedObject : traceRoot.getFsm_tracedFSMClocks()) {
-			result.add(tracedObject.getNumberOfTicksSequence());
-		}
-		for (fsmTrace.States.fsm.TracedFSMEvent tracedObject : traceRoot.getFsm_tracedFSMEvents()) {
-			result.add(tracedObject.getIsTriggeredSequence());
-		}
-		for (fsmTrace.States.fsm.TracedTimeFSM tracedObject : traceRoot.getFsm_tracedTimeFSMs()) {
+		for (fsmTrace.States.fsm.TracedStateMachine tracedObject : traceRoot.getFsm_tracedStateMachines()) {
+			result.add(tracedObject.getActionsToProcessSequence());
 			result.add(tracedObject.getCurrentStateSequence());
-			result.add(tracedObject.getLastStateChangeStepNumberSequence());
-			result.add(tracedObject.getStepNumberSequence());
+			result.add(tracedObject.getProducedStringSequence());
 		}
 		return result;
 	}
@@ -549,8 +543,7 @@ public class FsmTraceExtractor implements ITraceExtractor {
 		final boolean b = state.getStartedSteps().size() == 1;
 		if (b) {
 			fsmTrace.Steps.SpecificStep s = state.getStartedSteps().get(0);
-			return !(s instanceof fsmTrace.Steps.Fsm_State_Visit_ImplicitStep
-					|| s instanceof fsmTrace.Steps.Fsm_Transition_Visit_ImplicitStep);
+			return !(s instanceof fsmTrace.Steps.Fsm_State_Step_ImplicitStep);
 		}
 		return true;
 	}

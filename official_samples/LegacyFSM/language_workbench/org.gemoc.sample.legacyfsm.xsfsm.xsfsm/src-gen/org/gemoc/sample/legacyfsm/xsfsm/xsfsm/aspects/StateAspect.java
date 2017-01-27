@@ -1,50 +1,67 @@
 package org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects;
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
-import org.eclipse.xtext.xbase.lib.InputOutput;
+import fr.inria.diverse.k3.al.annotationprocessor.Step;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspectStateAspectProperties;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.TransitionAspect;
 
 @Aspect(className = State.class)
 @SuppressWarnings("all")
 public class StateAspect {
-  public static void onEnter(final State _self) {
+  @Step
+  public static void step(final State _self, final String inputToken) {
 	final org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspectStateAspectProperties _self_ = org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspectStateAspectContext
 			.getSelf(_self);
-	_privk3_onEnter(_self_, _self);
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
+		@Override
+		public void execute() {
+			_privk3_step(_self_, _self, inputToken);
+		}
+	};
+	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
+			.getInstance().findStepManager(_self);
+	if (manager != null) {
+		manager.executeStep(_self, command, "State", "step");
+	} else {
+		fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IEventManager eventManager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.EventManagerRegistry
+				.getInstance().findEventManager(null);
+		if (eventManager != null) {
+			eventManager.manageEvents();
+		}
+		command.execute();
+	}
+	;
 	;
 }
   
-  public static void onLeave(final State _self) {
-	final org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspectStateAspectProperties _self_ = org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspectStateAspectContext
-			.getSelf(_self);
-	_privk3_onLeave(_self_, _self);
-	;
-}
-  
-  protected static void _privk3_onEnter(final StateAspectStateAspectProperties _self_, final State _self) {
-    Class<? extends State> _class = _self.getClass();
-    String _simpleName = _class.getSimpleName();
-    String _plus = ("[" + _simpleName);
-    String _plus_1 = (_plus + ":");
-    String _name = _self.getName();
-    String _plus_2 = (_plus_1 + _name);
-    String _plus_3 = (_plus_2 + ".onEnter()]Entering ");
-    String _name_1 = _self.getName();
-    String _plus_4 = (_plus_3 + _name_1);
-    InputOutput.<String>println(_plus_4);
-  }
-  
-  protected static void _privk3_onLeave(final StateAspectStateAspectProperties _self_, final State _self) {
-    Class<? extends State> _class = _self.getClass();
-    String _simpleName = _class.getSimpleName();
-    String _plus = ("[" + _simpleName);
-    String _plus_1 = (_plus + ":");
-    String _name = _self.getName();
-    String _plus_2 = (_plus_1 + _name);
-    String _plus_3 = (_plus_2 + ".onLeave()]Leaving ");
-    String _name_1 = _self.getName();
-    String _plus_4 = (_plus_3 + _name_1);
-    InputOutput.<String>println(_plus_4);
+  protected static void _privk3_step(final StateAspectStateAspectProperties _self_, final State _self, final String inputToken) {
+    try {
+      EList<Transition> _outgoingTransitions = _self.getOutgoingTransitions();
+      final Function1<Transition, Boolean> _function = (Transition t) -> {
+        String _input = t.getInput();
+        return Boolean.valueOf(_input.equals(inputToken));
+      };
+      final Iterable<Transition> validTransitions = IterableExtensions.<Transition>filter(_outgoingTransitions, _function);
+      boolean _isEmpty = IterableExtensions.isEmpty(validTransitions);
+      if (_isEmpty) {
+        throw new Exception("No Transition");
+      }
+      int _size = IterableExtensions.size(validTransitions);
+      boolean _greaterThan = (_size > 1);
+      if (_greaterThan) {
+        throw new Exception("Non Determinism");
+      }
+      Transition _get = ((Transition[])Conversions.unwrapArray(validTransitions, Transition.class))[0];
+      TransitionAspect.fire(_get);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }

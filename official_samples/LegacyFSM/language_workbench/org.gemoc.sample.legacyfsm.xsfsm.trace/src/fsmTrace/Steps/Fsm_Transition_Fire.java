@@ -16,7 +16,7 @@ import fsmTrace.States.fsm.TracedTransition;
  * @model
  * @generated
  */
-public interface Fsm_Transition_Fire extends Fsm_Transition_Visit_AbstractSubStep, SpecificStep, SmallStep {
+public interface Fsm_Transition_Fire extends Fsm_State_Step_AbstractSubStep, SpecificStep, SmallStep {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

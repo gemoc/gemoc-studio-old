@@ -66,44 +66,30 @@ public class StatesSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE: {
-				FSMClock_numberOfTicks_Value fsmClock_numberOfTicks_Value = (FSMClock_numberOfTicks_Value)theEObject;
-				T result = caseFSMClock_numberOfTicks_Value(fsmClock_numberOfTicks_Value);
-				if (result == null) result = caseValue(fsmClock_numberOfTicks_Value);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StatesPackage.FSM_EVENT_IS_TRIGGERED_VALUE: {
-				FSMEvent_isTriggered_Value fsmEvent_isTriggered_Value = (FSMEvent_isTriggered_Value)theEObject;
-				T result = caseFSMEvent_isTriggered_Value(fsmEvent_isTriggered_Value);
-				if (result == null) result = caseValue(fsmEvent_isTriggered_Value);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case StatesPackage.STATE: {
 				State state = (State)theEObject;
 				T result = caseState(state);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case StatesPackage.TIME_FSM_CURRENT_STATE_VALUE: {
-				TimeFSM_currentState_Value timeFSM_currentState_Value = (TimeFSM_currentState_Value)theEObject;
-				T result = caseTimeFSM_currentState_Value(timeFSM_currentState_Value);
-				if (result == null) result = caseValue(timeFSM_currentState_Value);
+			case StatesPackage.STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE: {
+				StateMachine_actionsToProcess_Value stateMachine_actionsToProcess_Value = (StateMachine_actionsToProcess_Value)theEObject;
+				T result = caseStateMachine_actionsToProcess_Value(stateMachine_actionsToProcess_Value);
+				if (result == null) result = caseValue(stateMachine_actionsToProcess_Value);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case StatesPackage.TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE: {
-				TimeFSM_lastStateChangeStepNumber_Value timeFSM_lastStateChangeStepNumber_Value = (TimeFSM_lastStateChangeStepNumber_Value)theEObject;
-				T result = caseTimeFSM_lastStateChangeStepNumber_Value(timeFSM_lastStateChangeStepNumber_Value);
-				if (result == null) result = caseValue(timeFSM_lastStateChangeStepNumber_Value);
+			case StatesPackage.STATE_MACHINE_CURRENT_STATE_VALUE: {
+				StateMachine_currentState_Value stateMachine_currentState_Value = (StateMachine_currentState_Value)theEObject;
+				T result = caseStateMachine_currentState_Value(stateMachine_currentState_Value);
+				if (result == null) result = caseValue(stateMachine_currentState_Value);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE: {
-				TimeFSM_stepNumber_Value timeFSM_stepNumber_Value = (TimeFSM_stepNumber_Value)theEObject;
-				T result = caseTimeFSM_stepNumber_Value(timeFSM_stepNumber_Value);
-				if (result == null) result = caseValue(timeFSM_stepNumber_Value);
+			case StatesPackage.STATE_MACHINE_PRODUCED_STRING_VALUE: {
+				StateMachine_producedString_Value stateMachine_producedString_Value = (StateMachine_producedString_Value)theEObject;
+				T result = caseStateMachine_producedString_Value(stateMachine_producedString_Value);
+				if (result == null) result = caseValue(stateMachine_producedString_Value);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -115,36 +101,6 @@ public class StatesSwitch<T> extends Switch<T> {
 			}
 			default: return defaultCase(theEObject);
 		}
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>FSM Clock number Of Ticks Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>FSM Clock number Of Ticks Value</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFSMClock_numberOfTicks_Value(FSMClock_numberOfTicks_Value object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>FSM Event is Triggered Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>FSM Event is Triggered Value</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFSMEvent_isTriggered_Value(FSMEvent_isTriggered_Value object) {
-		return null;
 	}
 
 	/**
@@ -163,47 +119,47 @@ public class StatesSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Time FSM current State Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>State Machine actions To Process Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Time FSM current State Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>State Machine actions To Process Value</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTimeFSM_currentState_Value(TimeFSM_currentState_Value object) {
+	public T caseStateMachine_actionsToProcess_Value(StateMachine_actionsToProcess_Value object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Time FSM last State Change Step Number Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>State Machine current State Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Time FSM last State Change Step Number Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>State Machine current State Value</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTimeFSM_lastStateChangeStepNumber_Value(TimeFSM_lastStateChangeStepNumber_Value object) {
+	public T caseStateMachine_currentState_Value(StateMachine_currentState_Value object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Time FSM step Number Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>State Machine produced String Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Time FSM step Number Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>State Machine produced String Value</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTimeFSM_stepNumber_Value(TimeFSM_stepNumber_Value object) {
+	public T caseStateMachine_producedString_Value(StateMachine_producedString_Value object) {
 		return null;
 	}
 

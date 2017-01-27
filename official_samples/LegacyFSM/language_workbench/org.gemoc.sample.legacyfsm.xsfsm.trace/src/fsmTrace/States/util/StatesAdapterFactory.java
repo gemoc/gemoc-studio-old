@@ -68,28 +68,20 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	protected StatesSwitch<Adapter> modelSwitch =
 		new StatesSwitch<Adapter>() {
 			@Override
-			public Adapter caseFSMClock_numberOfTicks_Value(FSMClock_numberOfTicks_Value object) {
-				return createFSMClock_numberOfTicks_ValueAdapter();
-			}
-			@Override
-			public Adapter caseFSMEvent_isTriggered_Value(FSMEvent_isTriggered_Value object) {
-				return createFSMEvent_isTriggered_ValueAdapter();
-			}
-			@Override
 			public Adapter caseState(State object) {
 				return createStateAdapter();
 			}
 			@Override
-			public Adapter caseTimeFSM_currentState_Value(TimeFSM_currentState_Value object) {
-				return createTimeFSM_currentState_ValueAdapter();
+			public Adapter caseStateMachine_actionsToProcess_Value(StateMachine_actionsToProcess_Value object) {
+				return createStateMachine_actionsToProcess_ValueAdapter();
 			}
 			@Override
-			public Adapter caseTimeFSM_lastStateChangeStepNumber_Value(TimeFSM_lastStateChangeStepNumber_Value object) {
-				return createTimeFSM_lastStateChangeStepNumber_ValueAdapter();
+			public Adapter caseStateMachine_currentState_Value(StateMachine_currentState_Value object) {
+				return createStateMachine_currentState_ValueAdapter();
 			}
 			@Override
-			public Adapter caseTimeFSM_stepNumber_Value(TimeFSM_stepNumber_Value object) {
-				return createTimeFSM_stepNumber_ValueAdapter();
+			public Adapter caseStateMachine_producedString_Value(StateMachine_producedString_Value object) {
+				return createStateMachine_producedString_ValueAdapter();
 			}
 			@Override
 			public Adapter caseValue(Value object) {
@@ -116,34 +108,6 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.FSMClock_numberOfTicks_Value <em>FSM Clock number Of Ticks Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fsmTrace.States.FSMClock_numberOfTicks_Value
-	 * @generated
-	 */
-	public Adapter createFSMClock_numberOfTicks_ValueAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.FSMEvent_isTriggered_Value <em>FSM Event is Triggered Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fsmTrace.States.FSMEvent_isTriggered_Value
-	 * @generated
-	 */
-	public Adapter createFSMEvent_isTriggered_ValueAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link fsmTrace.States.State <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -158,44 +122,44 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.TimeFSM_currentState_Value <em>Time FSM current State Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_actionsToProcess_Value <em>State Machine actions To Process Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fsmTrace.States.TimeFSM_currentState_Value
+	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value
 	 * @generated
 	 */
-	public Adapter createTimeFSM_currentState_ValueAdapter() {
+	public Adapter createStateMachine_actionsToProcess_ValueAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value <em>Time FSM last State Change Step Number Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_currentState_Value <em>State Machine current State Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value
+	 * @see fsmTrace.States.StateMachine_currentState_Value
 	 * @generated
 	 */
-	public Adapter createTimeFSM_lastStateChangeStepNumber_ValueAdapter() {
+	public Adapter createStateMachine_currentState_ValueAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.TimeFSM_stepNumber_Value <em>Time FSM step Number Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_producedString_Value <em>State Machine produced String Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fsmTrace.States.TimeFSM_stepNumber_Value
+	 * @see fsmTrace.States.StateMachine_producedString_Value
 	 * @generated
 	 */
-	public Adapter createTimeFSM_stepNumber_ValueAdapter() {
+	public Adapter createStateMachine_producedString_ValueAdapter() {
 		return null;
 	}
 

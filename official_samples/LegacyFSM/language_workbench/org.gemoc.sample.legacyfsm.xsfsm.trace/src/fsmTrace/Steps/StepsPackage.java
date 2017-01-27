@@ -64,7 +64,7 @@ public interface StepsPackage extends EPackage {
 	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getSpecificStep()
 	 * @generated
 	 */
-	int SPECIFIC_STEP = 12;
+	int SPECIFIC_STEP = 5;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -103,14 +103,14 @@ public interface StepsPackage extends EPackage {
 	int SPECIFIC_STEP_FEATURE_COUNT = TracePackage.STEP_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_FSMClock_TicksImpl <em>Fsm FSM Clock Ticks</em>}' class.
+	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_State_StepImpl <em>Fsm State Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fsmTrace.Steps.impl.Fsm_FSMClock_TicksImpl
-	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_FSMClock_Ticks()
+	 * @see fsmTrace.Steps.impl.Fsm_State_StepImpl
+	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Step()
 	 * @generated
 	 */
-	int FSM_FSM_CLOCK_TICKS = 0;
+	int FSM_STATE_STEP = 0;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -119,7 +119,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_FSM_CLOCK_TICKS__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
+	int FSM_STATE_STEP__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -128,7 +128,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_FSM_CLOCK_TICKS__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
+	int FSM_STATE_STEP__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -137,145 +137,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_FSM_CLOCK_TICKS__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
-
-	/**
-	 * The number of structural features of the '<em>Fsm FSM Clock Ticks</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_FSM_CLOCK_TICKS_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_FSMEvent_TriggerImpl <em>Fsm FSM Event Trigger</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.Steps.impl.Fsm_FSMEvent_TriggerImpl
-	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_FSMEvent_Trigger()
-	 * @generated
-	 */
-	int FSM_FSM_EVENT_TRIGGER = 1;
-
-	/**
-	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_FSM_EVENT_TRIGGER__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_FSM_EVENT_TRIGGER__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_FSM_EVENT_TRIGGER__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
-
-	/**
-	 * The number of structural features of the '<em>Fsm FSM Event Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_FSM_EVENT_TRIGGER_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_FSMEvent_UnTriggerImpl <em>Fsm FSM Event Un Trigger</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.Steps.impl.Fsm_FSMEvent_UnTriggerImpl
-	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_FSMEvent_UnTrigger()
-	 * @generated
-	 */
-	int FSM_FSM_EVENT_UN_TRIGGER = 2;
-
-	/**
-	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_FSM_EVENT_UN_TRIGGER__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_FSM_EVENT_UN_TRIGGER__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_FSM_EVENT_UN_TRIGGER__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
-
-	/**
-	 * The number of structural features of the '<em>Fsm FSM Event Un Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_FSM_EVENT_UN_TRIGGER_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_State_VisitImpl <em>Fsm State Visit</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.Steps.impl.Fsm_State_VisitImpl
-	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Visit()
-	 * @generated
-	 */
-	int FSM_STATE_VISIT = 3;
-
-	/**
-	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_STATE_VISIT__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_STATE_VISIT__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_STATE_VISIT__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
+	int FSM_STATE_STEP__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Sub Steps</b></em>' containment reference list.
@@ -284,26 +146,26 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_STATE_VISIT__SUB_STEPS = SPECIFIC_STEP_FEATURE_COUNT + 0;
+	int FSM_STATE_STEP__SUB_STEPS = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Fsm State Visit</em>' class.
+	 * The number of structural features of the '<em>Fsm State Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_STATE_VISIT_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 1;
+	int FSM_STATE_STEP_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link fsmTrace.Steps.Fsm_State_Visit_AbstractSubStep <em>Fsm State Visit Abstract Sub Step</em>}' class.
+	 * The meta object id for the '{@link fsmTrace.Steps.Fsm_State_Step_AbstractSubStep <em>Fsm State Step Abstract Sub Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fsmTrace.Steps.Fsm_State_Visit_AbstractSubStep
-	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Visit_AbstractSubStep()
+	 * @see fsmTrace.Steps.Fsm_State_Step_AbstractSubStep
+	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Step_AbstractSubStep()
 	 * @generated
 	 */
-	int FSM_STATE_VISIT_ABSTRACT_SUB_STEP = 4;
+	int FSM_STATE_STEP_ABSTRACT_SUB_STEP = 1;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -312,7 +174,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_STATE_VISIT_ABSTRACT_SUB_STEP__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
+	int FSM_STATE_STEP_ABSTRACT_SUB_STEP__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -321,7 +183,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_STATE_VISIT_ABSTRACT_SUB_STEP__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
+	int FSM_STATE_STEP_ABSTRACT_SUB_STEP__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -330,26 +192,26 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_STATE_VISIT_ABSTRACT_SUB_STEP__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
+	int FSM_STATE_STEP_ABSTRACT_SUB_STEP__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
 
 	/**
-	 * The number of structural features of the '<em>Fsm State Visit Abstract Sub Step</em>' class.
+	 * The number of structural features of the '<em>Fsm State Step Abstract Sub Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_STATE_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
+	int FSM_STATE_STEP_ABSTRACT_SUB_STEP_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_State_Visit_ImplicitStepImpl <em>Fsm State Visit Implicit Step</em>}' class.
+	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_State_Step_ImplicitStepImpl <em>Fsm State Step Implicit Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fsmTrace.Steps.impl.Fsm_State_Visit_ImplicitStepImpl
-	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Visit_ImplicitStep()
+	 * @see fsmTrace.Steps.impl.Fsm_State_Step_ImplicitStepImpl
+	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Step_ImplicitStep()
 	 * @generated
 	 */
-	int FSM_STATE_VISIT_IMPLICIT_STEP = 5;
+	int FSM_STATE_STEP_IMPLICIT_STEP = 2;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -358,7 +220,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_STATE_VISIT_IMPLICIT_STEP__MSEOCCURRENCE = FSM_STATE_VISIT_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
+	int FSM_STATE_STEP_IMPLICIT_STEP__MSEOCCURRENCE = FSM_STATE_STEP_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -367,7 +229,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_STATE_VISIT_IMPLICIT_STEP__ENDING_STATE = FSM_STATE_VISIT_ABSTRACT_SUB_STEP__ENDING_STATE;
+	int FSM_STATE_STEP_IMPLICIT_STEP__ENDING_STATE = FSM_STATE_STEP_ABSTRACT_SUB_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -376,108 +238,16 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_STATE_VISIT_IMPLICIT_STEP__STARTING_STATE = FSM_STATE_VISIT_ABSTRACT_SUB_STEP__STARTING_STATE;
+	int FSM_STATE_STEP_IMPLICIT_STEP__STARTING_STATE = FSM_STATE_STEP_ABSTRACT_SUB_STEP__STARTING_STATE;
 
 	/**
-	 * The number of structural features of the '<em>Fsm State Visit Implicit Step</em>' class.
+	 * The number of structural features of the '<em>Fsm State Step Implicit Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_STATE_VISIT_IMPLICIT_STEP_FEATURE_COUNT = FSM_STATE_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_TimeFSM_InitImpl <em>Fsm Time FSM Init</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.Steps.impl.Fsm_TimeFSM_InitImpl
-	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_TimeFSM_Init()
-	 * @generated
-	 */
-	int FSM_TIME_FSM_INIT = 6;
-
-	/**
-	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TIME_FSM_INIT__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TIME_FSM_INIT__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TIME_FSM_INIT__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
-
-	/**
-	 * The number of structural features of the '<em>Fsm Time FSM Init</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TIME_FSM_INIT_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.Steps.Fsm_Transition_Visit_AbstractSubStep <em>Fsm Transition Visit Abstract Sub Step</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.Steps.Fsm_Transition_Visit_AbstractSubStep
-	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_Transition_Visit_AbstractSubStep()
-	 * @generated
-	 */
-	int FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP = 9;
-
-	/**
-	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
-
-	/**
-	 * The number of structural features of the '<em>Fsm Transition Visit Abstract Sub Step</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
+	int FSM_STATE_STEP_IMPLICIT_STEP_FEATURE_COUNT = FSM_STATE_STEP_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_Transition_FireImpl <em>Fsm Transition Fire</em>}' class.
@@ -487,7 +257,7 @@ public interface StepsPackage extends EPackage {
 	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_Transition_Fire()
 	 * @generated
 	 */
-	int FSM_TRANSITION_FIRE = 7;
+	int FSM_TRANSITION_FIRE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -496,7 +266,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_TRANSITION_FIRE__MSEOCCURRENCE = FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
+	int FSM_TRANSITION_FIRE__MSEOCCURRENCE = FSM_STATE_STEP_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -505,7 +275,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_TRANSITION_FIRE__ENDING_STATE = FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP__ENDING_STATE;
+	int FSM_TRANSITION_FIRE__ENDING_STATE = FSM_STATE_STEP_ABSTRACT_SUB_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -514,7 +284,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_TRANSITION_FIRE__STARTING_STATE = FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP__STARTING_STATE;
+	int FSM_TRANSITION_FIRE__STARTING_STATE = FSM_STATE_STEP_ABSTRACT_SUB_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Fsm Transition Fire</em>' class.
@@ -523,108 +293,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_TRANSITION_FIRE_FEATURE_COUNT = FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_Transition_VisitImpl <em>Fsm Transition Visit</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.Steps.impl.Fsm_Transition_VisitImpl
-	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_Transition_Visit()
-	 * @generated
-	 */
-	int FSM_TRANSITION_VISIT = 8;
-
-	/**
-	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT__MSEOCCURRENCE = FSM_STATE_VISIT_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT__ENDING_STATE = FSM_STATE_VISIT_ABSTRACT_SUB_STEP__ENDING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT__STARTING_STATE = FSM_STATE_VISIT_ABSTRACT_SUB_STEP__STARTING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Sub Steps</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT__SUB_STEPS = FSM_STATE_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Fsm Transition Visit</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT_FEATURE_COUNT = FSM_STATE_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_Transition_Visit_ImplicitStepImpl <em>Fsm Transition Visit Implicit Step</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.Steps.impl.Fsm_Transition_Visit_ImplicitStepImpl
-	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_Transition_Visit_ImplicitStep()
-	 * @generated
-	 */
-	int FSM_TRANSITION_VISIT_IMPLICIT_STEP = 10;
-
-	/**
-	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT_IMPLICIT_STEP__MSEOCCURRENCE = FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT_IMPLICIT_STEP__ENDING_STATE = FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP__ENDING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT_IMPLICIT_STEP__STARTING_STATE = FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP__STARTING_STATE;
-
-	/**
-	 * The number of structural features of the '<em>Fsm Transition Visit Implicit Step</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_VISIT_IMPLICIT_STEP_FEATURE_COUNT = FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
+	int FSM_TRANSITION_FIRE_FEATURE_COUNT = FSM_STATE_STEP_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.Steps.impl.RootImplicitStepImpl <em>Root Implicit Step</em>}' class.
@@ -634,7 +303,7 @@ public interface StepsPackage extends EPackage {
 	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getRootImplicitStep()
 	 * @generated
 	 */
-	int ROOT_IMPLICIT_STEP = 11;
+	int ROOT_IMPLICIT_STEP = 4;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -656,74 +325,34 @@ public interface StepsPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_FSMClock_Ticks <em>Fsm FSM Clock Ticks</em>}'.
+	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_State_Step <em>Fsm State Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Fsm FSM Clock Ticks</em>'.
-	 * @see fsmTrace.Steps.Fsm_FSMClock_Ticks
+	 * @return the meta object for class '<em>Fsm State Step</em>'.
+	 * @see fsmTrace.Steps.Fsm_State_Step
 	 * @generated
 	 */
-	EClass getFsm_FSMClock_Ticks();
+	EClass getFsm_State_Step();
 
 	/**
-	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_FSMEvent_Trigger <em>Fsm FSM Event Trigger</em>}'.
+	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_State_Step_AbstractSubStep <em>Fsm State Step Abstract Sub Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Fsm FSM Event Trigger</em>'.
-	 * @see fsmTrace.Steps.Fsm_FSMEvent_Trigger
+	 * @return the meta object for class '<em>Fsm State Step Abstract Sub Step</em>'.
+	 * @see fsmTrace.Steps.Fsm_State_Step_AbstractSubStep
 	 * @generated
 	 */
-	EClass getFsm_FSMEvent_Trigger();
+	EClass getFsm_State_Step_AbstractSubStep();
 
 	/**
-	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_FSMEvent_UnTrigger <em>Fsm FSM Event Un Trigger</em>}'.
+	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_State_Step_ImplicitStep <em>Fsm State Step Implicit Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Fsm FSM Event Un Trigger</em>'.
-	 * @see fsmTrace.Steps.Fsm_FSMEvent_UnTrigger
+	 * @return the meta object for class '<em>Fsm State Step Implicit Step</em>'.
+	 * @see fsmTrace.Steps.Fsm_State_Step_ImplicitStep
 	 * @generated
 	 */
-	EClass getFsm_FSMEvent_UnTrigger();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_State_Visit <em>Fsm State Visit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Fsm State Visit</em>'.
-	 * @see fsmTrace.Steps.Fsm_State_Visit
-	 * @generated
-	 */
-	EClass getFsm_State_Visit();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_State_Visit_AbstractSubStep <em>Fsm State Visit Abstract Sub Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Fsm State Visit Abstract Sub Step</em>'.
-	 * @see fsmTrace.Steps.Fsm_State_Visit_AbstractSubStep
-	 * @generated
-	 */
-	EClass getFsm_State_Visit_AbstractSubStep();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_State_Visit_ImplicitStep <em>Fsm State Visit Implicit Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Fsm State Visit Implicit Step</em>'.
-	 * @see fsmTrace.Steps.Fsm_State_Visit_ImplicitStep
-	 * @generated
-	 */
-	EClass getFsm_State_Visit_ImplicitStep();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_TimeFSM_Init <em>Fsm Time FSM Init</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Fsm Time FSM Init</em>'.
-	 * @see fsmTrace.Steps.Fsm_TimeFSM_Init
-	 * @generated
-	 */
-	EClass getFsm_TimeFSM_Init();
+	EClass getFsm_State_Step_ImplicitStep();
 
 	/**
 	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_Transition_Fire <em>Fsm Transition Fire</em>}'.
@@ -734,36 +363,6 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getFsm_Transition_Fire();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_Transition_Visit <em>Fsm Transition Visit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Fsm Transition Visit</em>'.
-	 * @see fsmTrace.Steps.Fsm_Transition_Visit
-	 * @generated
-	 */
-	EClass getFsm_Transition_Visit();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_Transition_Visit_AbstractSubStep <em>Fsm Transition Visit Abstract Sub Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Fsm Transition Visit Abstract Sub Step</em>'.
-	 * @see fsmTrace.Steps.Fsm_Transition_Visit_AbstractSubStep
-	 * @generated
-	 */
-	EClass getFsm_Transition_Visit_AbstractSubStep();
-
-	/**
-	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_Transition_Visit_ImplicitStep <em>Fsm Transition Visit Implicit Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Fsm Transition Visit Implicit Step</em>'.
-	 * @see fsmTrace.Steps.Fsm_Transition_Visit_ImplicitStep
-	 * @generated
-	 */
-	EClass getFsm_Transition_Visit_ImplicitStep();
 
 	/**
 	 * Returns the meta object for class '{@link fsmTrace.Steps.RootImplicitStep <em>Root Implicit Step</em>}'.
@@ -830,74 +429,34 @@ public interface StepsPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_FSMClock_TicksImpl <em>Fsm FSM Clock Ticks</em>}' class.
+		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_State_StepImpl <em>Fsm State Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fsmTrace.Steps.impl.Fsm_FSMClock_TicksImpl
-		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_FSMClock_Ticks()
+		 * @see fsmTrace.Steps.impl.Fsm_State_StepImpl
+		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Step()
 		 * @generated
 		 */
-		EClass FSM_FSM_CLOCK_TICKS = eINSTANCE.getFsm_FSMClock_Ticks();
+		EClass FSM_STATE_STEP = eINSTANCE.getFsm_State_Step();
 
 		/**
-		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_FSMEvent_TriggerImpl <em>Fsm FSM Event Trigger</em>}' class.
+		 * The meta object literal for the '{@link fsmTrace.Steps.Fsm_State_Step_AbstractSubStep <em>Fsm State Step Abstract Sub Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fsmTrace.Steps.impl.Fsm_FSMEvent_TriggerImpl
-		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_FSMEvent_Trigger()
+		 * @see fsmTrace.Steps.Fsm_State_Step_AbstractSubStep
+		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Step_AbstractSubStep()
 		 * @generated
 		 */
-		EClass FSM_FSM_EVENT_TRIGGER = eINSTANCE.getFsm_FSMEvent_Trigger();
+		EClass FSM_STATE_STEP_ABSTRACT_SUB_STEP = eINSTANCE.getFsm_State_Step_AbstractSubStep();
 
 		/**
-		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_FSMEvent_UnTriggerImpl <em>Fsm FSM Event Un Trigger</em>}' class.
+		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_State_Step_ImplicitStepImpl <em>Fsm State Step Implicit Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fsmTrace.Steps.impl.Fsm_FSMEvent_UnTriggerImpl
-		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_FSMEvent_UnTrigger()
+		 * @see fsmTrace.Steps.impl.Fsm_State_Step_ImplicitStepImpl
+		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Step_ImplicitStep()
 		 * @generated
 		 */
-		EClass FSM_FSM_EVENT_UN_TRIGGER = eINSTANCE.getFsm_FSMEvent_UnTrigger();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_State_VisitImpl <em>Fsm State Visit</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.Steps.impl.Fsm_State_VisitImpl
-		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Visit()
-		 * @generated
-		 */
-		EClass FSM_STATE_VISIT = eINSTANCE.getFsm_State_Visit();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.Steps.Fsm_State_Visit_AbstractSubStep <em>Fsm State Visit Abstract Sub Step</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.Steps.Fsm_State_Visit_AbstractSubStep
-		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Visit_AbstractSubStep()
-		 * @generated
-		 */
-		EClass FSM_STATE_VISIT_ABSTRACT_SUB_STEP = eINSTANCE.getFsm_State_Visit_AbstractSubStep();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_State_Visit_ImplicitStepImpl <em>Fsm State Visit Implicit Step</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.Steps.impl.Fsm_State_Visit_ImplicitStepImpl
-		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Visit_ImplicitStep()
-		 * @generated
-		 */
-		EClass FSM_STATE_VISIT_IMPLICIT_STEP = eINSTANCE.getFsm_State_Visit_ImplicitStep();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_TimeFSM_InitImpl <em>Fsm Time FSM Init</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.Steps.impl.Fsm_TimeFSM_InitImpl
-		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_TimeFSM_Init()
-		 * @generated
-		 */
-		EClass FSM_TIME_FSM_INIT = eINSTANCE.getFsm_TimeFSM_Init();
+		EClass FSM_STATE_STEP_IMPLICIT_STEP = eINSTANCE.getFsm_State_Step_ImplicitStep();
 
 		/**
 		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_Transition_FireImpl <em>Fsm Transition Fire</em>}' class.
@@ -908,36 +467,6 @@ public interface StepsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FSM_TRANSITION_FIRE = eINSTANCE.getFsm_Transition_Fire();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_Transition_VisitImpl <em>Fsm Transition Visit</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.Steps.impl.Fsm_Transition_VisitImpl
-		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_Transition_Visit()
-		 * @generated
-		 */
-		EClass FSM_TRANSITION_VISIT = eINSTANCE.getFsm_Transition_Visit();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.Steps.Fsm_Transition_Visit_AbstractSubStep <em>Fsm Transition Visit Abstract Sub Step</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.Steps.Fsm_Transition_Visit_AbstractSubStep
-		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_Transition_Visit_AbstractSubStep()
-		 * @generated
-		 */
-		EClass FSM_TRANSITION_VISIT_ABSTRACT_SUB_STEP = eINSTANCE.getFsm_Transition_Visit_AbstractSubStep();
-
-		/**
-		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_Transition_Visit_ImplicitStepImpl <em>Fsm Transition Visit Implicit Step</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fsmTrace.Steps.impl.Fsm_Transition_Visit_ImplicitStepImpl
-		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_Transition_Visit_ImplicitStep()
-		 * @generated
-		 */
-		EClass FSM_TRANSITION_VISIT_IMPLICIT_STEP = eINSTANCE.getFsm_Transition_Visit_ImplicitStep();
 
 		/**
 		 * The meta object literal for the '{@link fsmTrace.Steps.impl.RootImplicitStepImpl <em>Root Implicit Step</em>}' class.

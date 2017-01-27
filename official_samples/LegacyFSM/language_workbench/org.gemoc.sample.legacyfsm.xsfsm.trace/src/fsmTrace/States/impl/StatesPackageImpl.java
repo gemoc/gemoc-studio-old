@@ -6,14 +6,12 @@ import fr.inria.diverse.trace.commons.model.trace.TracePackage;
 
 import fsmTrace.FsmTracePackage;
 
-import fsmTrace.States.FSMClock_numberOfTicks_Value;
-import fsmTrace.States.FSMEvent_isTriggered_Value;
 import fsmTrace.States.State;
+import fsmTrace.States.StateMachine_actionsToProcess_Value;
+import fsmTrace.States.StateMachine_currentState_Value;
+import fsmTrace.States.StateMachine_producedString_Value;
 import fsmTrace.States.StatesFactory;
 import fsmTrace.States.StatesPackage;
-import fsmTrace.States.TimeFSM_currentState_Value;
-import fsmTrace.States.TimeFSM_lastStateChangeStepNumber_Value;
-import fsmTrace.States.TimeFSM_stepNumber_Value;
 import fsmTrace.States.Value;
 
 import fsmTrace.States.fsm.impl.FsmPackageImpl;
@@ -45,20 +43,6 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass fsmClock_numberOfTicks_ValueEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fsmEvent_isTriggered_ValueEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass stateEClass = null;
 
 	/**
@@ -66,21 +50,21 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass timeFSM_currentState_ValueEClass = null;
+	private EClass stateMachine_actionsToProcess_ValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass timeFSM_lastStateChangeStepNumber_ValueEClass = null;
+	private EClass stateMachine_currentState_ValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass timeFSM_stepNumber_ValueEClass = null;
+	private EClass stateMachine_producedString_ValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,78 +154,6 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getFSMClock_numberOfTicks_Value() {
-		return fsmClock_numberOfTicks_ValueEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFSMClock_numberOfTicks_Value_NumberOfTicks() {
-		return (EAttribute)fsmClock_numberOfTicks_ValueEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFSMClock_numberOfTicks_Value_Parent() {
-		return (EReference)fsmClock_numberOfTicks_ValueEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFSMClock_numberOfTicks_Value_States() {
-		return (EReference)fsmClock_numberOfTicks_ValueEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFSMEvent_isTriggered_Value() {
-		return fsmEvent_isTriggered_ValueEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFSMEvent_isTriggered_Value_IsTriggered() {
-		return (EAttribute)fsmEvent_isTriggered_ValueEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFSMEvent_isTriggered_Value_Parent() {
-		return (EReference)fsmEvent_isTriggered_ValueEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFSMEvent_isTriggered_Value_States() {
-		return (EReference)fsmEvent_isTriggered_ValueEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getState() {
 		return stateEClass;
 	}
@@ -260,7 +172,7 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_FSMClock_numberOfTicks_Values() {
+	public EReference getState_StartedSteps() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -269,7 +181,7 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_FSMEvent_isTriggered_Values() {
+	public EReference getState_StateMachine_actionsToProcess_Values() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -278,7 +190,7 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_StartedSteps() {
+	public EReference getState_StateMachine_currentState_Values() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -287,7 +199,7 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_TimeFSM_currentState_Values() {
+	public EReference getState_StateMachine_producedString_Values() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -296,8 +208,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_TimeFSM_lastStateChangeStepNumber_Values() {
-		return (EReference)stateEClass.getEStructuralFeatures().get(5);
+	public EClass getStateMachine_actionsToProcess_Value() {
+		return stateMachine_actionsToProcess_ValueEClass;
 	}
 
 	/**
@@ -305,8 +217,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_TimeFSM_stepNumber_Values() {
-		return (EReference)stateEClass.getEStructuralFeatures().get(6);
+	public EAttribute getStateMachine_actionsToProcess_Value_ActionsToProcess() {
+		return (EAttribute)stateMachine_actionsToProcess_ValueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -314,8 +226,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTimeFSM_currentState_Value() {
-		return timeFSM_currentState_ValueEClass;
+	public EReference getStateMachine_actionsToProcess_Value_Parent() {
+		return (EReference)stateMachine_actionsToProcess_ValueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -323,8 +235,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeFSM_currentState_Value_CurrentState() {
-		return (EReference)timeFSM_currentState_ValueEClass.getEStructuralFeatures().get(0);
+	public EReference getStateMachine_actionsToProcess_Value_States() {
+		return (EReference)stateMachine_actionsToProcess_ValueEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -332,8 +244,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeFSM_currentState_Value_Parent() {
-		return (EReference)timeFSM_currentState_ValueEClass.getEStructuralFeatures().get(1);
+	public EClass getStateMachine_currentState_Value() {
+		return stateMachine_currentState_ValueEClass;
 	}
 
 	/**
@@ -341,8 +253,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeFSM_currentState_Value_States() {
-		return (EReference)timeFSM_currentState_ValueEClass.getEStructuralFeatures().get(2);
+	public EReference getStateMachine_currentState_Value_CurrentState() {
+		return (EReference)stateMachine_currentState_ValueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -350,8 +262,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTimeFSM_lastStateChangeStepNumber_Value() {
-		return timeFSM_lastStateChangeStepNumber_ValueEClass;
+	public EReference getStateMachine_currentState_Value_Parent() {
+		return (EReference)stateMachine_currentState_ValueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -359,8 +271,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTimeFSM_lastStateChangeStepNumber_Value_LastStateChangeStepNumber() {
-		return (EAttribute)timeFSM_lastStateChangeStepNumber_ValueEClass.getEStructuralFeatures().get(0);
+	public EReference getStateMachine_currentState_Value_States() {
+		return (EReference)stateMachine_currentState_ValueEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -368,8 +280,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeFSM_lastStateChangeStepNumber_Value_Parent() {
-		return (EReference)timeFSM_lastStateChangeStepNumber_ValueEClass.getEStructuralFeatures().get(1);
+	public EClass getStateMachine_producedString_Value() {
+		return stateMachine_producedString_ValueEClass;
 	}
 
 	/**
@@ -377,8 +289,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeFSM_lastStateChangeStepNumber_Value_States() {
-		return (EReference)timeFSM_lastStateChangeStepNumber_ValueEClass.getEStructuralFeatures().get(2);
+	public EReference getStateMachine_producedString_Value_Parent() {
+		return (EReference)stateMachine_producedString_ValueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -386,8 +298,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTimeFSM_stepNumber_Value() {
-		return timeFSM_stepNumber_ValueEClass;
+	public EAttribute getStateMachine_producedString_Value_ProducedString() {
+		return (EAttribute)stateMachine_producedString_ValueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -395,26 +307,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeFSM_stepNumber_Value_Parent() {
-		return (EReference)timeFSM_stepNumber_ValueEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTimeFSM_stepNumber_Value_States() {
-		return (EReference)timeFSM_stepNumber_ValueEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTimeFSM_stepNumber_Value_StepNumber() {
-		return (EAttribute)timeFSM_stepNumber_ValueEClass.getEStructuralFeatures().get(2);
+	public EReference getStateMachine_producedString_Value_States() {
+		return (EReference)stateMachine_producedString_ValueEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -463,39 +357,27 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		fsmClock_numberOfTicks_ValueEClass = createEClass(FSM_CLOCK_NUMBER_OF_TICKS_VALUE);
-		createEAttribute(fsmClock_numberOfTicks_ValueEClass, FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS);
-		createEReference(fsmClock_numberOfTicks_ValueEClass, FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT);
-		createEReference(fsmClock_numberOfTicks_ValueEClass, FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES);
-
-		fsmEvent_isTriggered_ValueEClass = createEClass(FSM_EVENT_IS_TRIGGERED_VALUE);
-		createEAttribute(fsmEvent_isTriggered_ValueEClass, FSM_EVENT_IS_TRIGGERED_VALUE__IS_TRIGGERED);
-		createEReference(fsmEvent_isTriggered_ValueEClass, FSM_EVENT_IS_TRIGGERED_VALUE__PARENT);
-		createEReference(fsmEvent_isTriggered_ValueEClass, FSM_EVENT_IS_TRIGGERED_VALUE__STATES);
-
 		stateEClass = createEClass(STATE);
 		createEReference(stateEClass, STATE__ENDED_STEPS);
-		createEReference(stateEClass, STATE__FSM_CLOCK_NUMBER_OF_TICKS_VALUES);
-		createEReference(stateEClass, STATE__FSM_EVENT_IS_TRIGGERED_VALUES);
 		createEReference(stateEClass, STATE__STARTED_STEPS);
-		createEReference(stateEClass, STATE__TIME_FSM_CURRENT_STATE_VALUES);
-		createEReference(stateEClass, STATE__TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUES);
-		createEReference(stateEClass, STATE__TIME_FSM_STEP_NUMBER_VALUES);
+		createEReference(stateEClass, STATE__STATE_MACHINE_ACTIONS_TO_PROCESS_VALUES);
+		createEReference(stateEClass, STATE__STATE_MACHINE_CURRENT_STATE_VALUES);
+		createEReference(stateEClass, STATE__STATE_MACHINE_PRODUCED_STRING_VALUES);
 
-		timeFSM_currentState_ValueEClass = createEClass(TIME_FSM_CURRENT_STATE_VALUE);
-		createEReference(timeFSM_currentState_ValueEClass, TIME_FSM_CURRENT_STATE_VALUE__CURRENT_STATE);
-		createEReference(timeFSM_currentState_ValueEClass, TIME_FSM_CURRENT_STATE_VALUE__PARENT);
-		createEReference(timeFSM_currentState_ValueEClass, TIME_FSM_CURRENT_STATE_VALUE__STATES);
+		stateMachine_actionsToProcess_ValueEClass = createEClass(STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE);
+		createEAttribute(stateMachine_actionsToProcess_ValueEClass, STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__ACTIONS_TO_PROCESS);
+		createEReference(stateMachine_actionsToProcess_ValueEClass, STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__PARENT);
+		createEReference(stateMachine_actionsToProcess_ValueEClass, STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__STATES);
 
-		timeFSM_lastStateChangeStepNumber_ValueEClass = createEClass(TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE);
-		createEAttribute(timeFSM_lastStateChangeStepNumber_ValueEClass, TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__LAST_STATE_CHANGE_STEP_NUMBER);
-		createEReference(timeFSM_lastStateChangeStepNumber_ValueEClass, TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__PARENT);
-		createEReference(timeFSM_lastStateChangeStepNumber_ValueEClass, TIME_FSM_LAST_STATE_CHANGE_STEP_NUMBER_VALUE__STATES);
+		stateMachine_currentState_ValueEClass = createEClass(STATE_MACHINE_CURRENT_STATE_VALUE);
+		createEReference(stateMachine_currentState_ValueEClass, STATE_MACHINE_CURRENT_STATE_VALUE__CURRENT_STATE);
+		createEReference(stateMachine_currentState_ValueEClass, STATE_MACHINE_CURRENT_STATE_VALUE__PARENT);
+		createEReference(stateMachine_currentState_ValueEClass, STATE_MACHINE_CURRENT_STATE_VALUE__STATES);
 
-		timeFSM_stepNumber_ValueEClass = createEClass(TIME_FSM_STEP_NUMBER_VALUE);
-		createEReference(timeFSM_stepNumber_ValueEClass, TIME_FSM_STEP_NUMBER_VALUE__PARENT);
-		createEReference(timeFSM_stepNumber_ValueEClass, TIME_FSM_STEP_NUMBER_VALUE__STATES);
-		createEAttribute(timeFSM_stepNumber_ValueEClass, TIME_FSM_STEP_NUMBER_VALUE__STEP_NUMBER);
+		stateMachine_producedString_ValueEClass = createEClass(STATE_MACHINE_PRODUCED_STRING_VALUE);
+		createEReference(stateMachine_producedString_ValueEClass, STATE_MACHINE_PRODUCED_STRING_VALUE__PARENT);
+		createEAttribute(stateMachine_producedString_ValueEClass, STATE_MACHINE_PRODUCED_STRING_VALUE__PRODUCED_STRING);
+		createEReference(stateMachine_producedString_ValueEClass, STATE_MACHINE_PRODUCED_STRING_VALUE__STATES);
 
 		valueEClass = createEClass(VALUE);
 		createEReference(valueEClass, VALUE__STATES_NO_OPPOSITE);
@@ -536,56 +418,38 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		fsmClock_numberOfTicks_ValueEClass.getESuperTypes().add(this.getValue());
-		fsmEvent_isTriggered_ValueEClass.getESuperTypes().add(this.getValue());
-		timeFSM_currentState_ValueEClass.getESuperTypes().add(this.getValue());
-		timeFSM_lastStateChangeStepNumber_ValueEClass.getESuperTypes().add(this.getValue());
-		timeFSM_stepNumber_ValueEClass.getESuperTypes().add(this.getValue());
+		stateMachine_actionsToProcess_ValueEClass.getESuperTypes().add(this.getValue());
+		stateMachine_currentState_ValueEClass.getESuperTypes().add(this.getValue());
+		stateMachine_producedString_ValueEClass.getESuperTypes().add(this.getValue());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(fsmClock_numberOfTicks_ValueEClass, FSMClock_numberOfTicks_Value.class, "FSMClock_numberOfTicks_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFSMClock_numberOfTicks_Value_NumberOfTicks(), ecorePackage.getEIntegerObject(), "numberOfTicks", null, 0, 1, FSMClock_numberOfTicks_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFSMClock_numberOfTicks_Value_Parent(), theFsmPackage_1.getTracedFSMClock(), theFsmPackage_1.getTracedFSMClock_NumberOfTicksSequence(), "parent", null, 1, 1, FSMClock_numberOfTicks_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFSMClock_numberOfTicks_Value_States(), this.getState(), this.getState_FSMClock_numberOfTicks_Values(), "states", null, 1, -1, FSMClock_numberOfTicks_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(fsmClock_numberOfTicks_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(fsmEvent_isTriggered_ValueEClass, FSMEvent_isTriggered_Value.class, "FSMEvent_isTriggered_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFSMEvent_isTriggered_Value_IsTriggered(), ecorePackage.getEBoolean(), "isTriggered", null, 0, 1, FSMEvent_isTriggered_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFSMEvent_isTriggered_Value_Parent(), theFsmPackage_1.getTracedFSMEvent(), theFsmPackage_1.getTracedFSMEvent_IsTriggeredSequence(), "parent", null, 1, 1, FSMEvent_isTriggered_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFSMEvent_isTriggered_Value_States(), this.getState(), this.getState_FSMEvent_isTriggered_Values(), "states", null, 1, -1, FSMEvent_isTriggered_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(fsmEvent_isTriggered_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getState_EndedSteps(), theStepsPackage.getSpecificStep(), theStepsPackage.getSpecificStep_EndingState(), "endedSteps", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getState_FSMClock_numberOfTicks_Values(), this.getFSMClock_numberOfTicks_Value(), this.getFSMClock_numberOfTicks_Value_States(), "fSMClock_numberOfTicks_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getState_FSMEvent_isTriggered_Values(), this.getFSMEvent_isTriggered_Value(), this.getFSMEvent_isTriggered_Value_States(), "fSMEvent_isTriggered_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getState_StartedSteps(), theStepsPackage.getSpecificStep(), theStepsPackage.getSpecificStep_StartingState(), "startedSteps", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getState_TimeFSM_currentState_Values(), this.getTimeFSM_currentState_Value(), this.getTimeFSM_currentState_Value_States(), "timeFSM_currentState_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getState_TimeFSM_lastStateChangeStepNumber_Values(), this.getTimeFSM_lastStateChangeStepNumber_Value(), this.getTimeFSM_lastStateChangeStepNumber_Value_States(), "timeFSM_lastStateChangeStepNumber_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getState_TimeFSM_stepNumber_Values(), this.getTimeFSM_stepNumber_Value(), this.getTimeFSM_stepNumber_Value_States(), "timeFSM_stepNumber_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getState_StateMachine_actionsToProcess_Values(), this.getStateMachine_actionsToProcess_Value(), this.getStateMachine_actionsToProcess_Value_States(), "stateMachine_actionsToProcess_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getState_StateMachine_currentState_Values(), this.getStateMachine_currentState_Value(), this.getStateMachine_currentState_Value_States(), "stateMachine_currentState_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getState_StateMachine_producedString_Values(), this.getStateMachine_producedString_Value(), this.getStateMachine_producedString_Value_States(), "stateMachine_producedString_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(timeFSM_currentState_ValueEClass, TimeFSM_currentState_Value.class, "TimeFSM_currentState_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTimeFSM_currentState_Value_CurrentState(), theFsmPackage_1.getTracedState(), null, "currentState", null, 0, 1, TimeFSM_currentState_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeFSM_currentState_Value_Parent(), theFsmPackage_1.getTracedTimeFSM(), theFsmPackage_1.getTracedTimeFSM_CurrentStateSequence(), "parent", null, 1, 1, TimeFSM_currentState_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeFSM_currentState_Value_States(), this.getState(), this.getState_TimeFSM_currentState_Values(), "states", null, 1, -1, TimeFSM_currentState_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(stateMachine_actionsToProcess_ValueEClass, StateMachine_actionsToProcess_Value.class, "StateMachine_actionsToProcess_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStateMachine_actionsToProcess_Value_ActionsToProcess(), ecorePackage.getEString(), "actionsToProcess", null, 0, -1, StateMachine_actionsToProcess_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_actionsToProcess_Value_Parent(), theFsmPackage_1.getTracedStateMachine(), theFsmPackage_1.getTracedStateMachine_ActionsToProcessSequence(), "parent", null, 1, 1, StateMachine_actionsToProcess_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_actionsToProcess_Value_States(), this.getState(), this.getState_StateMachine_actionsToProcess_Values(), "states", null, 1, -1, StateMachine_actionsToProcess_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(timeFSM_currentState_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(stateMachine_actionsToProcess_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(timeFSM_lastStateChangeStepNumber_ValueEClass, TimeFSM_lastStateChangeStepNumber_Value.class, "TimeFSM_lastStateChangeStepNumber_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTimeFSM_lastStateChangeStepNumber_Value_LastStateChangeStepNumber(), ecorePackage.getEInt(), "lastStateChangeStepNumber", null, 0, 1, TimeFSM_lastStateChangeStepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeFSM_lastStateChangeStepNumber_Value_Parent(), theFsmPackage_1.getTracedTimeFSM(), theFsmPackage_1.getTracedTimeFSM_LastStateChangeStepNumberSequence(), "parent", null, 1, 1, TimeFSM_lastStateChangeStepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeFSM_lastStateChangeStepNumber_Value_States(), this.getState(), this.getState_TimeFSM_lastStateChangeStepNumber_Values(), "states", null, 1, -1, TimeFSM_lastStateChangeStepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(stateMachine_currentState_ValueEClass, StateMachine_currentState_Value.class, "StateMachine_currentState_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStateMachine_currentState_Value_CurrentState(), theFsmPackage_1.getTracedState(), null, "currentState", null, 0, 1, StateMachine_currentState_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_currentState_Value_Parent(), theFsmPackage_1.getTracedStateMachine(), theFsmPackage_1.getTracedStateMachine_CurrentStateSequence(), "parent", null, 1, 1, StateMachine_currentState_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_currentState_Value_States(), this.getState(), this.getState_StateMachine_currentState_Values(), "states", null, 1, -1, StateMachine_currentState_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(timeFSM_lastStateChangeStepNumber_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(stateMachine_currentState_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(timeFSM_stepNumber_ValueEClass, TimeFSM_stepNumber_Value.class, "TimeFSM_stepNumber_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTimeFSM_stepNumber_Value_Parent(), theFsmPackage_1.getTracedTimeFSM(), theFsmPackage_1.getTracedTimeFSM_StepNumberSequence(), "parent", null, 1, 1, TimeFSM_stepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeFSM_stepNumber_Value_States(), this.getState(), this.getState_TimeFSM_stepNumber_Values(), "states", null, 1, -1, TimeFSM_stepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTimeFSM_stepNumber_Value_StepNumber(), ecorePackage.getEInt(), "stepNumber", null, 0, 1, TimeFSM_stepNumber_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(stateMachine_producedString_ValueEClass, StateMachine_producedString_Value.class, "StateMachine_producedString_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStateMachine_producedString_Value_Parent(), theFsmPackage_1.getTracedStateMachine(), theFsmPackage_1.getTracedStateMachine_ProducedStringSequence(), "parent", null, 1, 1, StateMachine_producedString_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStateMachine_producedString_Value_ProducedString(), ecorePackage.getEString(), "producedString", null, 0, 1, StateMachine_producedString_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_producedString_Value_States(), this.getState(), this.getState_StateMachine_producedString_Values(), "states", null, 1, -1, StateMachine_producedString_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(timeFSM_stepNumber_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(stateMachine_producedString_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getValue_StatesNoOpposite(), this.getState(), null, "statesNoOpposite", null, 1, -1, Value.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -606,31 +470,19 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	protected void createXMOFAnnotations() {
 		String source = "http://www.modelexecution.org/trace/XMOF";	
 		addAnnotation
-		  (fsmClock_numberOfTicks_ValueEClass, 
+		  (stateMachine_actionsToProcess_ValueEClass, 
 		   source, 
 		   new String[] {
 			 "executionMetamodelElement", null
 		   });	
 		addAnnotation
-		  (fsmEvent_isTriggered_ValueEClass, 
+		  (stateMachine_currentState_ValueEClass, 
 		   source, 
 		   new String[] {
 			 "executionMetamodelElement", null
 		   });	
 		addAnnotation
-		  (timeFSM_currentState_ValueEClass, 
-		   source, 
-		   new String[] {
-			 "executionMetamodelElement", null
-		   });	
-		addAnnotation
-		  (timeFSM_lastStateChangeStepNumber_ValueEClass, 
-		   source, 
-		   new String[] {
-			 "executionMetamodelElement", null
-		   });	
-		addAnnotation
-		  (timeFSM_stepNumber_ValueEClass, 
+		  (stateMachine_producedString_ValueEClass, 
 		   source, 
 		   new String[] {
 			 "executionMetamodelElement", null
@@ -646,27 +498,17 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	protected void createAspectAnnotations() {
 		String source = "aspect";	
 		addAnnotation
-		  (getFSMClock_numberOfTicks_Value_NumberOfTicks(), 
+		  (getStateMachine_actionsToProcess_Value_ActionsToProcess(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getFSMEvent_isTriggered_Value_IsTriggered(), 
+		  (getStateMachine_currentState_Value_CurrentState(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getTimeFSM_currentState_Value_CurrentState(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getTimeFSM_lastStateChangeStepNumber_Value_LastStateChangeStepNumber(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getTimeFSM_stepNumber_Value_StepNumber(), 
+		  (getStateMachine_producedString_Value_ProducedString(), 
 		   source, 
 		   new String[] {
 		   });
