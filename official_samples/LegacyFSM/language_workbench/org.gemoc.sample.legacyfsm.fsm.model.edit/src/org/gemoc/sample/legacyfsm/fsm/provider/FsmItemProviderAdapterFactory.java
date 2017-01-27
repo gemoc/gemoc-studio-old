@@ -72,26 +72,26 @@ public class FsmItemProviderAdapterFactory extends FsmAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacyfsm.fsm.FSM} instances.
+	 * This keeps track of the one adapter used for all {@link org.gemoc.sample.legacyfsm.fsm.StateMachine} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected FSMItemProvider fsmItemProvider;
+	protected StateMachineItemProvider stateMachineItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.gemoc.sample.legacyfsm.fsm.FSM}.
+	 * This creates an adapter for a {@link org.gemoc.sample.legacyfsm.fsm.StateMachine}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createFSMAdapter() {
-		if (fsmItemProvider == null) {
-			fsmItemProvider = new FSMItemProvider(this);
+	public Adapter createStateMachineAdapter() {
+		if (stateMachineItemProvider == null) {
+			stateMachineItemProvider = new StateMachineItemProvider(this);
 		}
 
-		return fsmItemProvider;
+		return stateMachineItemProvider;
 	}
 
 	/**
@@ -239,7 +239,7 @@ public class FsmItemProviderAdapterFactory extends FsmAdapterFactory implements 
 	 * @generated
 	 */
 	public void dispose() {
-		if (fsmItemProvider != null) fsmItemProvider.dispose();
+		if (stateMachineItemProvider != null) stateMachineItemProvider.dispose();
 		if (stateItemProvider != null) stateItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
 	}

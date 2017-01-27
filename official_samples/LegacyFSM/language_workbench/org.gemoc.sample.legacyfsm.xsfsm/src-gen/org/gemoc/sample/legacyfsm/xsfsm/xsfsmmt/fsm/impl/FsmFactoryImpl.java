@@ -56,15 +56,9 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case FsmPackage.TIME_FSM: return createTimeFSM();
+			case FsmPackage.STATE_MACHINE: return createStateMachine();
 			case FsmPackage.STATE: return createState();
 			case FsmPackage.TRANSITION: return createTransition();
-			case FsmPackage.TEMPORAL_GUARD: return createTemporalGuard();
-			case FsmPackage.EVENT_GUARD: return createEventGuard();
-			case FsmPackage.FSM_EVENT: return createFSMEvent();
-			case FsmPackage.FSM_CLOCK: return createFSMClock();
-			case FsmPackage.TIMED_SYSTEM: return createTimedSystem();
-			case FsmPackage.EVALUATE_GUARD: return createEvaluateGuard();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -75,7 +69,7 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TimeFSM createTimeFSM() {
+	public StateMachine createStateMachine() {
 		throw new UnsupportedOperationException("Cannot invoke element creation on a model type");
 	}
 
@@ -94,60 +88,6 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 	 * @generated
 	 */
 	public Transition createTransition() {
-		throw new UnsupportedOperationException("Cannot invoke element creation on a model type");
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TemporalGuard createTemporalGuard() {
-		throw new UnsupportedOperationException("Cannot invoke element creation on a model type");
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EventGuard createEventGuard() {
-		throw new UnsupportedOperationException("Cannot invoke element creation on a model type");
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FSMEvent createFSMEvent() {
-		throw new UnsupportedOperationException("Cannot invoke element creation on a model type");
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FSMClock createFSMClock() {
-		throw new UnsupportedOperationException("Cannot invoke element creation on a model type");
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TimedSystem createTimedSystem() {
-		throw new UnsupportedOperationException("Cannot invoke element creation on a model type");
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EvaluateGuard createEvaluateGuard() {
 		throw new UnsupportedOperationException("Cannot invoke element creation on a model type");
 	}
 

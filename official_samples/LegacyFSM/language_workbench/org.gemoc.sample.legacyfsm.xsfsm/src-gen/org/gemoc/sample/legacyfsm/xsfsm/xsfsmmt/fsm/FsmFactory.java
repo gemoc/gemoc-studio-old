@@ -22,13 +22,13 @@ public interface FsmFactory extends EFactory {
 	FsmFactory eINSTANCE = org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.impl.FsmFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Time FSM</em>'.
+	 * Returns a new object of class '<em>State Machine</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Time FSM</em>'.
+	 * @return a new object of class '<em>State Machine</em>'.
 	 * @generated
 	 */
-	TimeFSM createTimeFSM();
+	StateMachine createStateMachine();
 
 	/**
 	 * Returns a new object of class '<em>State</em>'.
@@ -47,60 +47,6 @@ public interface FsmFactory extends EFactory {
 	 * @generated
 	 */
 	Transition createTransition();
-
-	/**
-	 * Returns a new object of class '<em>Temporal Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Temporal Guard</em>'.
-	 * @generated
-	 */
-	TemporalGuard createTemporalGuard();
-
-	/**
-	 * Returns a new object of class '<em>Event Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Event Guard</em>'.
-	 * @generated
-	 */
-	EventGuard createEventGuard();
-
-	/**
-	 * Returns a new object of class '<em>FSM Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>FSM Event</em>'.
-	 * @generated
-	 */
-	FSMEvent createFSMEvent();
-
-	/**
-	 * Returns a new object of class '<em>FSM Clock</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>FSM Clock</em>'.
-	 * @generated
-	 */
-	FSMClock createFSMClock();
-
-	/**
-	 * Returns a new object of class '<em>Timed System</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Timed System</em>'.
-	 * @generated
-	 */
-	TimedSystem createTimedSystem();
-
-	/**
-	 * Returns a new object of class '<em>Evaluate Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Evaluate Guard</em>'.
-	 * @generated
-	 */
-	EvaluateGuard createEvaluateGuard();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -3,17 +3,17 @@ package org.gemoc.sample.legacyfsm.fsm.k3dsa
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
 import fr.inria.diverse.k3.al.annotationprocessor.Step
 
-import org.gemoc.sample.legacyfsm.fsm.FSM
 import org.gemoc.sample.legacyfsm.fsm.State
+import org.gemoc.sample.legacyfsm.fsm.StateMachine
 import org.gemoc.sample.legacyfsm.fsm.Transition
 
-import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.FSMAspect.*
 import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.StateAspect.*
+import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.StateMachineAspect.*
 import static extension org.gemoc.sample.legacyfsm.fsm.k3dsa.TransitionAspect.*
 import org.eclipse.emf.common.util.EList
 
-@Aspect(className=FSM)
-class FSMAspect {
+@Aspect(className=StateMachine)
+class StateMachineAspect {
 
 	public State currentState
 	

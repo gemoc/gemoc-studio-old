@@ -15,24 +15,24 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.gemoc.sample.legacyfsm.fsm.FSM;
 import org.gemoc.sample.legacyfsm.fsm.FsmFactory;
 import org.gemoc.sample.legacyfsm.fsm.FsmPackage;
+import org.gemoc.sample.legacyfsm.fsm.StateMachine;
 
 /**
- * This is the item provider adapter for a {@link org.gemoc.sample.legacyfsm.fsm.FSM} object.
+ * This is the item provider adapter for a {@link org.gemoc.sample.legacyfsm.fsm.StateMachine} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class FSMItemProvider extends NamedElementItemProvider {
+public class StateMachineItemProvider extends NamedElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FSMItemProvider(AdapterFactory adapterFactory) {
+	public StateMachineItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,9 +63,9 @@ public class FSMItemProvider extends NamedElementItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_FSM_initialState_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_FSM_initialState_feature", "_UI_FSM_type"),
-				 FsmPackage.Literals.FSM__INITIAL_STATE,
+				 getString("_UI_StateMachine_initialState_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_StateMachine_initialState_feature", "_UI_StateMachine_type"),
+				 FsmPackage.Literals.STATE_MACHINE__INITIAL_STATE,
 				 true,
 				 false,
 				 true,
@@ -86,8 +86,8 @@ public class FSMItemProvider extends NamedElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(FsmPackage.Literals.FSM__OWNED_STATES);
-			childrenFeatures.add(FsmPackage.Literals.FSM__OWNED_TRANSITIONS);
+			childrenFeatures.add(FsmPackage.Literals.STATE_MACHINE__OWNED_STATES);
+			childrenFeatures.add(FsmPackage.Literals.STATE_MACHINE__OWNED_TRANSITIONS);
 		}
 		return childrenFeatures;
 	}
@@ -106,14 +106,14 @@ public class FSMItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This returns FSM.gif.
+	 * This returns StateMachine.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FSM"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StateMachine"));
 	}
 
 	/**
@@ -124,10 +124,10 @@ public class FSMItemProvider extends NamedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FSM)object).getName();
+		String label = ((StateMachine)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_FSM_type") :
-			getString("_UI_FSM_type") + " " + label;
+			getString("_UI_StateMachine_type") :
+			getString("_UI_StateMachine_type") + " " + label;
 	}
 	
 
@@ -142,9 +142,9 @@ public class FSMItemProvider extends NamedElementItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(FSM.class)) {
-			case FsmPackage.FSM__OWNED_STATES:
-			case FsmPackage.FSM__OWNED_TRANSITIONS:
+		switch (notification.getFeatureID(StateMachine.class)) {
+			case FsmPackage.STATE_MACHINE__OWNED_STATES:
+			case FsmPackage.STATE_MACHINE__OWNED_TRANSITIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -164,12 +164,12 @@ public class FSMItemProvider extends NamedElementItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(FsmPackage.Literals.FSM__OWNED_STATES,
+				(FsmPackage.Literals.STATE_MACHINE__OWNED_STATES,
 				 FsmFactory.eINSTANCE.createState()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(FsmPackage.Literals.FSM__OWNED_TRANSITIONS,
+				(FsmPackage.Literals.STATE_MACHINE__OWNED_TRANSITIONS,
 				 FsmFactory.eINSTANCE.createTransition()));
 	}
 

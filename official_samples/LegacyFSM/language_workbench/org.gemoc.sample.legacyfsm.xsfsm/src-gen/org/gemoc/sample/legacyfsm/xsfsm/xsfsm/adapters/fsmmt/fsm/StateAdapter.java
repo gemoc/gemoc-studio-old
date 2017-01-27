@@ -4,7 +4,7 @@ import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.gemoc.sample.legacyfsm.fsm.TimeFSM;
+import org.gemoc.sample.legacyfsm.fsm.StateMachine;
 import org.gemoc.sample.legacyfsm.fsm.Transition;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.FSMMTAdaptersFactory;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State;
@@ -29,14 +29,14 @@ public class StateAdapter extends EObjectAdapter<State> implements org.gemoc.sam
   }
   
   @Override
-  public TimeFSM getOwningFSM() {
-    return (TimeFSM) adaptersFactory.createAdapter(adaptee.getOwningFSM(), eResource);
+  public StateMachine getOwningFSM() {
+    return (StateMachine) adaptersFactory.createAdapter(adaptee.getOwningFSM(), eResource);
   }
   
   @Override
-  public void setOwningFSM(final TimeFSM o) {
+  public void setOwningFSM(final StateMachine o) {
     if (o != null)
-    	adaptee.setOwningFSM(((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TimeFSMAdapter) o).getAdaptee());
+    	adaptee.setOwningFSM(((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.StateMachineAdapter) o).getAdaptee());
     else adaptee.setOwningFSM(null);
   }
   
@@ -107,7 +107,7 @@ public class StateAdapter extends EObjectAdapter<State> implements org.gemoc.sam
     		return;
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE__OWNING_FSM:
     		setOwningFSM(
-    		(org.gemoc.sample.legacyfsm.fsm.TimeFSM)
+    		(org.gemoc.sample.legacyfsm.fsm.StateMachine)
     		 newValue);
     		return;
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE__OUTGOING_TRANSITIONS:

@@ -68,8 +68,8 @@ public class FsmAdapterFactory extends AdapterFactoryImpl {
 	protected FsmSwitch<Adapter> modelSwitch =
 		new FsmSwitch<Adapter>() {
 			@Override
-			public Adapter caseFSM(FSM object) {
-				return createFSMAdapter();
+			public Adapter caseStateMachine(StateMachine object) {
+				return createStateMachineAdapter();
 			}
 			@Override
 			public Adapter caseState(State object) {
@@ -104,16 +104,16 @@ public class FsmAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacyfsm.fsm.FSM <em>FSM</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.gemoc.sample.legacyfsm.fsm.StateMachine <em>State Machine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.gemoc.sample.legacyfsm.fsm.FSM
+	 * @see org.gemoc.sample.legacyfsm.fsm.StateMachine
 	 * @generated
 	 */
-	public Adapter createFSMAdapter() {
+	public Adapter createStateMachineAdapter() {
 		return null;
 	}
 

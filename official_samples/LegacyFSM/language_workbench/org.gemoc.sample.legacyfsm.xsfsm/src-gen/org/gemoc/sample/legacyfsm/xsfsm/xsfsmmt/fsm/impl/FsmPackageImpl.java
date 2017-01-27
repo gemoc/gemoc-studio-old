@@ -11,18 +11,11 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.EvaluateGuard;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.EventGuard;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FSMClock;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FSMEvent;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmFactory;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.Guard;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.NamedElement;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.State;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.TemporalGuard;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.TimeFSM;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.TimedSystem;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.StateMachine;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.Transition;
 
 /**
@@ -37,7 +30,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass timeFSMEClass = null;
+	private EClass stateMachineEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -59,55 +52,6 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * @generated
 	 */
 	private EClass namedElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass guardEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass temporalGuardEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass eventGuardEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fsmEventEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fsmClockEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass timedSystemEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass evaluateGuardEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -178,8 +122,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTimeFSM() {
-		return timeFSMEClass;
+	public EClass getStateMachine() {
+		return stateMachineEClass;
 	}
 
 	/**
@@ -187,8 +131,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeFSM_OwnedStates() {
-		return (EReference)timeFSMEClass.getEStructuralFeatures().get(0);
+	public EReference getStateMachine_OwnedStates() {
+		return (EReference)stateMachineEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -196,8 +140,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeFSM_InitialState() {
-		return (EReference)timeFSMEClass.getEStructuralFeatures().get(1);
+	public EReference getStateMachine_InitialState() {
+		return (EReference)stateMachineEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -205,8 +149,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeFSM_LocalEvents() {
-		return (EReference)timeFSMEClass.getEStructuralFeatures().get(2);
+	public EReference getStateMachine_OwnedTransitions() {
+		return (EReference)stateMachineEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -214,8 +158,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeFSM_LocalClock() {
-		return (EReference)timeFSMEClass.getEStructuralFeatures().get(3);
+	public EReference getStateMachine_CurrentState() {
+		return (EReference)stateMachineEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -223,8 +167,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTimeFSM_OwnedTransitions() {
-		return (EReference)timeFSMEClass.getEStructuralFeatures().get(4);
+	public EAttribute getStateMachine_ActionsToProcess() {
+		return (EAttribute)stateMachineEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -232,26 +176,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTimeFSM_StepNumber() {
-		return (EAttribute)timeFSMEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTimeFSM_LastStateChangeStepNumber() {
-		return (EAttribute)timeFSMEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTimeFSM_CurrentState() {
-		return (EReference)timeFSMEClass.getEStructuralFeatures().get(7);
+	public EAttribute getStateMachine_ProducedString() {
+		return (EAttribute)stateMachineEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -322,8 +248,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransition_OwnedGuard() {
-		return (EReference)transitionEClass.getEStructuralFeatures().get(2);
+	public EAttribute getTransition_Input() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -331,17 +257,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransition_GeneratedEvents() {
-		return (EReference)transitionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTransition_Action() {
-		return (EAttribute)transitionEClass.getEStructuralFeatures().get(4);
+	public EAttribute getTransition_Output() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -360,159 +277,6 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 */
 	public EAttribute getNamedElement_Name() {
 		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getGuard() {
-		return guardEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTemporalGuard() {
-		return temporalGuardEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTemporalGuard_OnClock() {
-		return (EReference)temporalGuardEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTemporalGuard_AfterDuration() {
-		return (EAttribute)temporalGuardEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getEventGuard() {
-		return eventGuardEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEventGuard_TriggeringEvent() {
-		return (EReference)eventGuardEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFSMEvent() {
-		return fsmEventEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFSMEvent_SollicitingTransitions() {
-		return (EReference)fsmEventEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFSMEvent_IsTriggered() {
-		return (EAttribute)fsmEventEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFSMClock() {
-		return fsmClockEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFSMClock_NumberOfTicks() {
-		return (EAttribute)fsmClockEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTimedSystem() {
-		return timedSystemEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTimedSystem_Fsms() {
-		return (EReference)timedSystemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTimedSystem_GlobalClocks() {
-		return (EReference)timedSystemEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTimedSystem_GlobalEvents() {
-		return (EReference)timedSystemEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getEvaluateGuard() {
-		return evaluateGuardEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEvaluateGuard_Condition() {
-		return (EAttribute)evaluateGuardEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -543,15 +307,13 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		timeFSMEClass = createEClass(TIME_FSM);
-		createEReference(timeFSMEClass, TIME_FSM__OWNED_STATES);
-		createEReference(timeFSMEClass, TIME_FSM__INITIAL_STATE);
-		createEReference(timeFSMEClass, TIME_FSM__LOCAL_EVENTS);
-		createEReference(timeFSMEClass, TIME_FSM__LOCAL_CLOCK);
-		createEReference(timeFSMEClass, TIME_FSM__OWNED_TRANSITIONS);
-		createEAttribute(timeFSMEClass, TIME_FSM__STEP_NUMBER);
-		createEAttribute(timeFSMEClass, TIME_FSM__LAST_STATE_CHANGE_STEP_NUMBER);
-		createEReference(timeFSMEClass, TIME_FSM__CURRENT_STATE);
+		stateMachineEClass = createEClass(STATE_MACHINE);
+		createEReference(stateMachineEClass, STATE_MACHINE__OWNED_STATES);
+		createEReference(stateMachineEClass, STATE_MACHINE__INITIAL_STATE);
+		createEReference(stateMachineEClass, STATE_MACHINE__OWNED_TRANSITIONS);
+		createEReference(stateMachineEClass, STATE_MACHINE__CURRENT_STATE);
+		createEAttribute(stateMachineEClass, STATE_MACHINE__ACTIONS_TO_PROCESS);
+		createEAttribute(stateMachineEClass, STATE_MACHINE__PRODUCED_STRING);
 
 		stateEClass = createEClass(STATE);
 		createEReference(stateEClass, STATE__OWNING_FSM);
@@ -561,36 +323,11 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		transitionEClass = createEClass(TRANSITION);
 		createEReference(transitionEClass, TRANSITION__SOURCE);
 		createEReference(transitionEClass, TRANSITION__TARGET);
-		createEReference(transitionEClass, TRANSITION__OWNED_GUARD);
-		createEReference(transitionEClass, TRANSITION__GENERATED_EVENTS);
-		createEAttribute(transitionEClass, TRANSITION__ACTION);
+		createEAttribute(transitionEClass, TRANSITION__INPUT);
+		createEAttribute(transitionEClass, TRANSITION__OUTPUT);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
-
-		guardEClass = createEClass(GUARD);
-
-		temporalGuardEClass = createEClass(TEMPORAL_GUARD);
-		createEReference(temporalGuardEClass, TEMPORAL_GUARD__ON_CLOCK);
-		createEAttribute(temporalGuardEClass, TEMPORAL_GUARD__AFTER_DURATION);
-
-		eventGuardEClass = createEClass(EVENT_GUARD);
-		createEReference(eventGuardEClass, EVENT_GUARD__TRIGGERING_EVENT);
-
-		fsmEventEClass = createEClass(FSM_EVENT);
-		createEReference(fsmEventEClass, FSM_EVENT__SOLLICITING_TRANSITIONS);
-		createEAttribute(fsmEventEClass, FSM_EVENT__IS_TRIGGERED);
-
-		fsmClockEClass = createEClass(FSM_CLOCK);
-		createEAttribute(fsmClockEClass, FSM_CLOCK__NUMBER_OF_TICKS);
-
-		timedSystemEClass = createEClass(TIMED_SYSTEM);
-		createEReference(timedSystemEClass, TIMED_SYSTEM__FSMS);
-		createEReference(timedSystemEClass, TIMED_SYSTEM__GLOBAL_CLOCKS);
-		createEReference(timedSystemEClass, TIMED_SYSTEM__GLOBAL_EVENTS);
-
-		evaluateGuardEClass = createEClass(EVALUATE_GUARD);
-		createEAttribute(evaluateGuardEClass, EVALUATE_GUARD__CONDITION);
 	}
 
 	/**
@@ -621,101 +358,42 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		timeFSMEClass.getESuperTypes().add(this.getNamedElement());
+		stateMachineEClass.getESuperTypes().add(this.getNamedElement());
 		stateEClass.getESuperTypes().add(this.getNamedElement());
 		transitionEClass.getESuperTypes().add(this.getNamedElement());
-		guardEClass.getESuperTypes().add(this.getNamedElement());
-		temporalGuardEClass.getESuperTypes().add(this.getGuard());
-		eventGuardEClass.getESuperTypes().add(this.getGuard());
-		fsmEventEClass.getESuperTypes().add(this.getNamedElement());
-		fsmClockEClass.getESuperTypes().add(this.getNamedElement());
-		timedSystemEClass.getESuperTypes().add(this.getNamedElement());
-		evaluateGuardEClass.getESuperTypes().add(this.getGuard());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(timeFSMEClass, TimeFSM.class, "TimeFSM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTimeFSM_OwnedStates(), this.getState(), this.getState_OwningFSM(), "ownedStates", null, 0, -1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeFSM_InitialState(), this.getState(), null, "initialState", null, 1, 1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeFSM_LocalEvents(), this.getFSMEvent(), null, "localEvents", null, 0, -1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeFSM_LocalClock(), this.getFSMClock(), null, "localClock", null, 1, 1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeFSM_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTimeFSM_StepNumber(), ecorePackage.getEInt(), "stepNumber", null, 0, 1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTimeFSM_LastStateChangeStepNumber(), ecorePackage.getEInt(), "lastStateChangeStepNumber", null, 0, 1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimeFSM_CurrentState(), this.getState(), null, "currentState", null, 0, 1, TimeFSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(stateMachineEClass, StateMachine.class, "StateMachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStateMachine_OwnedStates(), this.getState(), this.getState_OwningFSM(), "ownedStates", null, 0, -1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_InitialState(), this.getState(), null, "initialState", null, 1, 1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_CurrentState(), this.getState(), null, "currentState", null, 0, 1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStateMachine_ActionsToProcess(), ecorePackage.getEString(), "actionsToProcess", null, 0, -1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStateMachine_ProducedString(), ecorePackage.getEString(), "producedString", null, 0, 1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(timeFSMEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(stateMachineEClass, null, "main", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(timeFSMEClass, null, "init", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(stateMachineEClass, null, "initializeModel", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "args", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getState_OwningFSM(), this.getTimeFSM(), this.getTimeFSM_OwnedStates(), "owningFSM", null, 1, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getState_OwningFSM(), this.getStateMachine(), this.getStateMachine_OwnedStates(), "owningFSM", null, 1, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getState_OutgoingTransitions(), this.getTransition(), this.getTransition_Source(), "outgoingTransitions", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getState_IncomingTransitions(), this.getTransition(), this.getTransition_Target(), "incomingTransitions", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(stateEClass, null, "onEnter", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(stateEClass, null, "onLeave", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(stateEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(stateEClass, null, "step", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "inputToken", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransition_Source(), this.getState(), this.getState_OutgoingTransitions(), "source", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransition_Target(), this.getState(), this.getState_IncomingTransitions(), "target", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransition_OwnedGuard(), this.getGuard(), null, "ownedGuard", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransition_GeneratedEvents(), this.getFSMEvent(), null, "generatedEvents", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransition_Action(), ecorePackage.getEString(), "action", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Input(), ecorePackage.getEString(), "input", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Output(), ecorePackage.getEString(), "output", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(transitionEClass, null, "fire", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(transitionEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(guardEClass, Guard.class, "Guard", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(guardEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(temporalGuardEClass, TemporalGuard.class, "TemporalGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTemporalGuard_OnClock(), this.getFSMClock(), null, "onClock", null, 1, 1, TemporalGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTemporalGuard_AfterDuration(), ecorePackage.getEInt(), "afterDuration", null, 1, 1, TemporalGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(temporalGuardEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(eventGuardEClass, EventGuard.class, "EventGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEventGuard_TriggeringEvent(), this.getFSMEvent(), null, "triggeringEvent", null, 1, 1, EventGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(eventGuardEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(fsmEventEClass, FSMEvent.class, "FSMEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFSMEvent_SollicitingTransitions(), this.getTransition(), null, "sollicitingTransitions", null, 0, -1, FSMEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFSMEvent_IsTriggered(), ecorePackage.getEBoolean(), "isTriggered", null, 0, 1, FSMEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(fsmEventEClass, null, "trigger", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(fsmEventEClass, null, "unTrigger", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(fsmClockEClass, FSMClock.class, "FSMClock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFSMClock_NumberOfTicks(), ecorePackage.getEIntegerObject(), "numberOfTicks", null, 0, 1, FSMClock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(fsmClockEClass, ecorePackage.getEIntegerObject(), "ticks", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(fsmClockEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(timedSystemEClass, TimedSystem.class, "TimedSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTimedSystem_Fsms(), this.getTimeFSM(), null, "fsms", null, 0, -1, TimedSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimedSystem_GlobalClocks(), this.getFSMClock(), null, "globalClocks", null, 0, -1, TimedSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTimedSystem_GlobalEvents(), this.getFSMEvent(), null, "globalEvents", null, 0, -1, TimedSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(timedSystemEClass, null, "main", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		EOperation op = addEOperation(timedSystemEClass, null, "initializeModel", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "args", 0, -1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(timedSystemEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(evaluateGuardEClass, EvaluateGuard.class, "EvaluateGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEvaluateGuard_Condition(), ecorePackage.getEString(), "condition", null, 0, 1, EvaluateGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -752,27 +430,27 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	protected void createAspectAnnotations() {
 		String source = "aspect";	
 		addAnnotation
-		  (timeFSMEClass.getEOperations().get(0), 
+		  (stateMachineEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (timeFSMEClass.getEOperations().get(1), 
+		  (stateMachineEClass.getEOperations().get(1), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getTimeFSM_StepNumber(), 
+		  (getStateMachine_CurrentState(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getTimeFSM_LastStateChangeStepNumber(), 
+		  (getStateMachine_ActionsToProcess(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getTimeFSM_CurrentState(), 
+		  (getStateMachine_ProducedString(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -782,82 +460,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (stateEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (stateEClass.getEOperations().get(2), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (transitionEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (transitionEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (guardEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (temporalGuardEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (eventGuardEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (fsmEventEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (fsmEventEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getFSMEvent_IsTriggered(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (fsmClockEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (fsmClockEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getFSMClock_NumberOfTicks(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (timedSystemEClass.getEOperations().get(0), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (timedSystemEClass.getEOperations().get(1), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (timedSystemEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
 		   });

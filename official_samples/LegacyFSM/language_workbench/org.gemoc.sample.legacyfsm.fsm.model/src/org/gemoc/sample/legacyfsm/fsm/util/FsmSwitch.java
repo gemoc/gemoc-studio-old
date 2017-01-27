@@ -66,10 +66,10 @@ public class FsmSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case FsmPackage.FSM: {
-				FSM fsm = (FSM)theEObject;
-				T result = caseFSM(fsm);
-				if (result == null) result = caseNamedElement(fsm);
+			case FsmPackage.STATE_MACHINE: {
+				StateMachine stateMachine = (StateMachine)theEObject;
+				T result = caseStateMachine(stateMachine);
+				if (result == null) result = caseNamedElement(stateMachine);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -98,17 +98,17 @@ public class FsmSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>FSM</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>State Machine</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>FSM</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>State Machine</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFSM(FSM object) {
+	public T caseStateMachine(StateMachine object) {
 		return null;
 	}
 

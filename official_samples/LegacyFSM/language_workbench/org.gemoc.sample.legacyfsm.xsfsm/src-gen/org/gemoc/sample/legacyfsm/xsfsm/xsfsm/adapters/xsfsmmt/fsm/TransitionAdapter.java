@@ -1,13 +1,9 @@
 package org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.xsfsmmt.fsm;
 
 import fr.inria.diverse.melange.adapters.EObjectAdapter;
-import java.util.Collection;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.xsfsmmt.XSFSMMTAdaptersFactory;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FSMEvent;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.Guard;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.State;
 
 @SuppressWarnings("all")
@@ -30,13 +26,23 @@ public class TransitionAdapter extends EObjectAdapter<Transition> implements org
   }
   
   @Override
-  public String getAction() {
-    return adaptee.getAction();
+  public String getInput() {
+    return adaptee.getInput();
   }
   
   @Override
-  public void setAction(final String o) {
-    adaptee.setAction(o);
+  public void setInput(final String o) {
+    adaptee.setInput(o);
+  }
+  
+  @Override
+  public String getOutput() {
+    return adaptee.getOutput();
+  }
+  
+  @Override
+  public void setOutput(final String o) {
+    adaptee.setOutput(o);
   }
   
   @Override
@@ -64,39 +70,15 @@ public class TransitionAdapter extends EObjectAdapter<Transition> implements org
   }
   
   @Override
-  public Guard getOwnedGuard() {
-    return (Guard) adaptersFactory.createAdapter(adaptee.getOwnedGuard(), eResource);
-  }
-  
-  @Override
-  public void setOwnedGuard(final Guard o) {
-    if (o != null)
-    	adaptee.setOwnedGuard(((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.xsfsmmt.fsm.GuardAdapter) o).getAdaptee());
-    else adaptee.setOwnedGuard(null);
-  }
-  
-  private EList<FSMEvent> generatedEvents_;
-  
-  @Override
-  public EList<FSMEvent> getGeneratedEvents() {
-    if (generatedEvents_ == null)
-    	generatedEvents_ = fr.inria.diverse.melange.adapters.EListAdapter.newInstance(adaptee.getGeneratedEvents(), adaptersFactory, eResource);
-    return generatedEvents_;
-  }
-  
-  @Override
   public void fire() {
     org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.TransitionAspect.fire(adaptee);
   }
   
-  @Override
-  public void visit() {
-    org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.TransitionVisitorAspect.visit(adaptee);
-  }
-  
   protected final static String NAME_EDEFAULT = null;
   
-  protected final static String ACTION_EDEFAULT = null;
+  protected final static String INPUT_EDEFAULT = null;
+  
+  protected final static String OUTPUT_EDEFAULT = null;
   
   @Override
   public EClass eClass() {
@@ -112,12 +94,10 @@ public class TransitionAdapter extends EObjectAdapter<Transition> implements org
     		return getSource();
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__TARGET:
     		return getTarget();
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__OWNED_GUARD:
-    		return getOwnedGuard();
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__GENERATED_EVENTS:
-    		return getGeneratedEvents();
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__ACTION:
-    		return getAction();
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__INPUT:
+    		return getInput();
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__OUTPUT:
+    		return getOutput();
     }
     
     return super.eGet(featureID, resolve, coreType);
@@ -132,12 +112,10 @@ public class TransitionAdapter extends EObjectAdapter<Transition> implements org
     		return getSource() != null;
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__TARGET:
     		return getTarget() != null;
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__OWNED_GUARD:
-    		return getOwnedGuard() != null;
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__GENERATED_EVENTS:
-    		return getGeneratedEvents() != null && !getGeneratedEvents().isEmpty();
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__ACTION:
-    		return getAction() != ACTION_EDEFAULT;
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__INPUT:
+    		return getInput() != INPUT_EDEFAULT;
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__OUTPUT:
+    		return getOutput() != OUTPUT_EDEFAULT;
     }
     
     return super.eIsSet(featureID);
@@ -161,17 +139,13 @@ public class TransitionAdapter extends EObjectAdapter<Transition> implements org
     		(org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.State)
     		 newValue);
     		return;
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__OWNED_GUARD:
-    		setOwnedGuard(
-    		(org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.Guard)
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__INPUT:
+    		setInput(
+    		(java.lang.String)
     		 newValue);
     		return;
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__GENERATED_EVENTS:
-    		getGeneratedEvents().clear();
-    		getGeneratedEvents().addAll((Collection) newValue);
-    		return;
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__ACTION:
-    		setAction(
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.TRANSITION__OUTPUT:
+    		setOutput(
     		(java.lang.String)
     		 newValue);
     		return;

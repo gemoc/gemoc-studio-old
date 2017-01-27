@@ -261,9 +261,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_RlOFsJecEeaFTadvhWYj4Q" name="FSM" tooltipText="" outgoingEdges="_RldWQ5ecEeaFTadvhWYj4Q _RlfLcJecEeaFTadvhWYj4Q _RlkD9JecEeaFTadvhWYj4Q" incomingEdges="_RlmgMJecEeaFTadvhWYj4Q" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="fsm.ecore#//FSM"/>
-      <semanticElements xmi:type="ecore:EClass" href="fsm.ecore#//FSM"/>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_RlOFsJecEeaFTadvhWYj4Q" name="StateMachine" tooltipText="" outgoingEdges="_RldWQ5ecEeaFTadvhWYj4Q _RlfLcJecEeaFTadvhWYj4Q _RlkD9JecEeaFTadvhWYj4Q" incomingEdges="_RlmgMJecEeaFTadvhWYj4Q" width="12" height="10">
+      <target xmi:type="ecore:EClass" href="fsm.ecore#//StateMachine"/>
+      <semanticElements xmi:type="ecore:EClass" href="fsm.ecore#//StateMachine"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -300,8 +300,8 @@
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_RldWQ5ecEeaFTadvhWYj4Q" name="[1..1] initialState" sourceNode="_RlOFsJecEeaFTadvhWYj4Q" targetNode="_RlMQgJecEeaFTadvhWYj4Q">
-      <target xmi:type="ecore:EReference" href="fsm.ecore#//FSM/initialState"/>
-      <semanticElements xmi:type="ecore:EReference" href="fsm.ecore#//FSM/initialState"/>
+      <target xmi:type="ecore:EReference" href="fsm.ecore#//StateMachine/initialState"/>
+      <semanticElements xmi:type="ecore:EReference" href="fsm.ecore#//StateMachine/initialState"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Rld9UJecEeaFTadvhWYj4Q" description="_RlcIIZecEeaFTadvhWYj4Q" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_Rld9UZecEeaFTadvhWYj4Q" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -314,8 +314,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_RlfLcJecEeaFTadvhWYj4Q" name="[0..*] ownedTransitions" sourceNode="_RlOFsJecEeaFTadvhWYj4Q" targetNode="_RlPT0JecEeaFTadvhWYj4Q">
-      <target xmi:type="ecore:EReference" href="fsm.ecore#//FSM/ownedTransitions"/>
-      <semanticElements xmi:type="ecore:EReference" href="fsm.ecore#//FSM/ownedTransitions"/>
+      <target xmi:type="ecore:EReference" href="fsm.ecore#//StateMachine/ownedTransitions"/>
+      <semanticElements xmi:type="ecore:EReference" href="fsm.ecore#//StateMachine/ownedTransitions"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_RlfLcZecEeaFTadvhWYj4Q" description="_Rld9VJecEeaFTadvhWYj4Q" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_RlfLcpecEeaFTadvhWYj4Q" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -339,8 +339,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_RlkD9JecEeaFTadvhWYj4Q" sourceNode="_RlOFsJecEeaFTadvhWYj4Q" targetNode="_RlLpcJecEeaFTadvhWYj4Q">
-      <target xmi:type="ecore:EClass" href="fsm.ecore#//FSM"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="fsm.ecore#//FSM/@eGenericSuperTypes.0"/>
+      <target xmi:type="ecore:EClass" href="fsm.ecore#//StateMachine"/>
+      <semanticElements xmi:type="ecore:EGenericType" href="fsm.ecore#//StateMachine/@eGenericSuperTypes.0"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_RlkrAJecEeaFTadvhWYj4Q" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_RlkrAZecEeaFTadvhWYj4Q" showIcon="false">
@@ -364,7 +364,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_RlmgMJecEeaFTadvhWYj4Q" sourceNode="_RlMQgJecEeaFTadvhWYj4Q" targetNode="_RlOFsJecEeaFTadvhWYj4Q" beginLabel="[0..*] ownedStates" endLabel="[1..1] owningFSM">
       <target xmi:type="ecore:EReference" href="fsm.ecore#//State/owningFSM"/>
-      <semanticElements xmi:type="ecore:EReference" href="fsm.ecore#//FSM/ownedStates"/>
+      <semanticElements xmi:type="ecore:EReference" href="fsm.ecore#//StateMachine/ownedStates"/>
       <semanticElements xmi:type="ecore:EReference" href="fsm.ecore#//State/owningFSM"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_RlmgNJecEeaFTadvhWYj4Q" description="_RlmgMZecEeaFTadvhWYj4Q" sourceArrow="InputArrow" targetArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_RlmgNZecEeaFTadvhWYj4Q" showIcon="false">

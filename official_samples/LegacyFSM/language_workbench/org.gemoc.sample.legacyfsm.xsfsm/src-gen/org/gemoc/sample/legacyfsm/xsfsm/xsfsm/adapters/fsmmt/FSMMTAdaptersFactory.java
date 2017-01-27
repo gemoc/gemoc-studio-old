@@ -5,27 +5,13 @@ import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import java.util.WeakHashMap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.EvaluateGuardAdapter;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.EventGuardAdapter;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.FSMClockAdapter;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.FSMEventAdapter;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.GuardAdapter;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.NamedElementAdapter;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.StateAdapter;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TemporalGuardAdapter;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TimeFSMAdapter;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TimedSystemAdapter;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.StateMachineAdapter;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TransitionAdapter;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EvaluateGuard;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EventGuard;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMClock;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMEvent;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Guard;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NamedElement;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TemporalGuard;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimedSystem;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
 
 @SuppressWarnings("all")
@@ -46,8 +32,8 @@ public class FSMMTAdaptersFactory implements AdaptersFactory {
   }
   
   public EObjectAdapter createAdapter(final EObject o, final Resource res) {
-    if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM){
-    	return createTimeFSMAdapter((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM) o, res);
+    if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine){
+    	return createStateMachineAdapter((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) o, res);
     }
     if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State){
     	return createStateAdapter((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) o, res);
@@ -55,40 +41,22 @@ public class FSMMTAdaptersFactory implements AdaptersFactory {
     if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition){
     	return createTransitionAdapter((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) o, res);
     }
-    if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TemporalGuard){
-    	return createTemporalGuardAdapter((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TemporalGuard) o, res);
-    }
-    if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EventGuard){
-    	return createEventGuardAdapter((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EventGuard) o, res);
-    }
-    if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMEvent){
-    	return createFSMEventAdapter((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMEvent) o, res);
-    }
-    if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMClock){
-    	return createFSMClockAdapter((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FSMClock) o, res);
-    }
-    if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimedSystem){
-    	return createTimedSystemAdapter((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimedSystem) o, res);
-    }
-    if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EvaluateGuard){
-    	return createEvaluateGuardAdapter((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EvaluateGuard) o, res);
-    }
     
     return null;
   }
   
-  public TimeFSMAdapter createTimeFSMAdapter(final TimeFSM adaptee, final Resource res) {
+  public StateMachineAdapter createStateMachineAdapter(final StateMachine adaptee, final Resource res) {
     if (adaptee == null)
     	return null;
     EObjectAdapter adapter = register.get(adaptee);
     if(adapter != null)
-    	 return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TimeFSMAdapter) adapter;
+    	 return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.StateMachineAdapter) adapter;
     else {
-    	adapter = new org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TimeFSMAdapter();
+    	adapter = new org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.StateMachineAdapter();
     	adapter.setAdaptee(adaptee);
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TimeFSMAdapter) adapter;
+    	return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.StateMachineAdapter) adapter;
     }
   }
   
@@ -134,111 +102,6 @@ public class FSMMTAdaptersFactory implements AdaptersFactory {
     	adapter.setResource(res);
     	register.put(adaptee, adapter);
     	return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.NamedElementAdapter) adapter;
-    }
-  }
-  
-  public GuardAdapter createGuardAdapter(final Guard adaptee, final Resource res) {
-    if (adaptee == null)
-    	return null;
-    EObjectAdapter adapter = register.get(adaptee);
-    if(adapter != null)
-    	 return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.GuardAdapter) adapter;
-    else {
-    	adapter = new org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.GuardAdapter();
-    	adapter.setAdaptee(adaptee);
-    	adapter.setResource(res);
-    	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.GuardAdapter) adapter;
-    }
-  }
-  
-  public TemporalGuardAdapter createTemporalGuardAdapter(final TemporalGuard adaptee, final Resource res) {
-    if (adaptee == null)
-    	return null;
-    EObjectAdapter adapter = register.get(adaptee);
-    if(adapter != null)
-    	 return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TemporalGuardAdapter) adapter;
-    else {
-    	adapter = new org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TemporalGuardAdapter();
-    	adapter.setAdaptee(adaptee);
-    	adapter.setResource(res);
-    	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TemporalGuardAdapter) adapter;
-    }
-  }
-  
-  public EventGuardAdapter createEventGuardAdapter(final EventGuard adaptee, final Resource res) {
-    if (adaptee == null)
-    	return null;
-    EObjectAdapter adapter = register.get(adaptee);
-    if(adapter != null)
-    	 return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.EventGuardAdapter) adapter;
-    else {
-    	adapter = new org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.EventGuardAdapter();
-    	adapter.setAdaptee(adaptee);
-    	adapter.setResource(res);
-    	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.EventGuardAdapter) adapter;
-    }
-  }
-  
-  public FSMEventAdapter createFSMEventAdapter(final FSMEvent adaptee, final Resource res) {
-    if (adaptee == null)
-    	return null;
-    EObjectAdapter adapter = register.get(adaptee);
-    if(adapter != null)
-    	 return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.FSMEventAdapter) adapter;
-    else {
-    	adapter = new org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.FSMEventAdapter();
-    	adapter.setAdaptee(adaptee);
-    	adapter.setResource(res);
-    	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.FSMEventAdapter) adapter;
-    }
-  }
-  
-  public FSMClockAdapter createFSMClockAdapter(final FSMClock adaptee, final Resource res) {
-    if (adaptee == null)
-    	return null;
-    EObjectAdapter adapter = register.get(adaptee);
-    if(adapter != null)
-    	 return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.FSMClockAdapter) adapter;
-    else {
-    	adapter = new org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.FSMClockAdapter();
-    	adapter.setAdaptee(adaptee);
-    	adapter.setResource(res);
-    	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.FSMClockAdapter) adapter;
-    }
-  }
-  
-  public TimedSystemAdapter createTimedSystemAdapter(final TimedSystem adaptee, final Resource res) {
-    if (adaptee == null)
-    	return null;
-    EObjectAdapter adapter = register.get(adaptee);
-    if(adapter != null)
-    	 return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TimedSystemAdapter) adapter;
-    else {
-    	adapter = new org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TimedSystemAdapter();
-    	adapter.setAdaptee(adaptee);
-    	adapter.setResource(res);
-    	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.TimedSystemAdapter) adapter;
-    }
-  }
-  
-  public EvaluateGuardAdapter createEvaluateGuardAdapter(final EvaluateGuard adaptee, final Resource res) {
-    if (adaptee == null)
-    	return null;
-    EObjectAdapter adapter = register.get(adaptee);
-    if(adapter != null)
-    	 return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.EvaluateGuardAdapter) adapter;
-    else {
-    	adapter = new org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.EvaluateGuardAdapter();
-    	adapter.setAdaptee(adaptee);
-    	adapter.setResource(res);
-    	register.put(adaptee, adapter);
-    	return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.EvaluateGuardAdapter) adapter;
     }
   }
 }

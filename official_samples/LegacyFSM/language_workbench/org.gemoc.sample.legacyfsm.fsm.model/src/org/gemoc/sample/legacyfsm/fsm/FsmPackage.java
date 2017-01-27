@@ -95,14 +95,14 @@ public interface FsmPackage extends EPackage {
 	int NAMED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.FSMImpl <em>FSM</em>}' class.
+	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.StateMachineImpl <em>State Machine</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FSMImpl
-	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getFSM()
+	 * @see org.gemoc.sample.legacyfsm.fsm.impl.StateMachineImpl
+	 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getStateMachine()
 	 * @generated
 	 */
-	int FSM = 0;
+	int STATE_MACHINE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -111,7 +111,7 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM__NAME = NAMED_ELEMENT__NAME;
+	int STATE_MACHINE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Owned States</b></em>' containment reference list.
@@ -120,7 +120,7 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM__OWNED_STATES = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int STATE_MACHINE__OWNED_STATES = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Initial State</b></em>' reference.
@@ -129,7 +129,7 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM__INITIAL_STATE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int STATE_MACHINE__INITIAL_STATE = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Owned Transitions</b></em>' containment reference list.
@@ -138,25 +138,25 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM__OWNED_TRANSITIONS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int STATE_MACHINE__OWNED_TRANSITIONS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>FSM</em>' class.
+	 * The number of structural features of the '<em>State Machine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int STATE_MACHINE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>FSM</em>' class.
+	 * The number of operations of the '<em>State Machine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int STATE_MACHINE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.StateImpl <em>State</em>}' class.
@@ -296,47 +296,47 @@ public interface FsmPackage extends EPackage {
 	int TRANSITION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.FSM <em>FSM</em>}'.
+	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.StateMachine <em>State Machine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>FSM</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.FSM
+	 * @return the meta object for class '<em>State Machine</em>'.
+	 * @see org.gemoc.sample.legacyfsm.fsm.StateMachine
 	 * @generated
 	 */
-	EClass getFSM();
+	EClass getStateMachine();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.FSM#getOwnedStates <em>Owned States</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.StateMachine#getOwnedStates <em>Owned States</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Owned States</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.FSM#getOwnedStates()
-	 * @see #getFSM()
+	 * @see org.gemoc.sample.legacyfsm.fsm.StateMachine#getOwnedStates()
+	 * @see #getStateMachine()
 	 * @generated
 	 */
-	EReference getFSM_OwnedStates();
+	EReference getStateMachine_OwnedStates();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.gemoc.sample.legacyfsm.fsm.FSM#getInitialState <em>Initial State</em>}'.
+	 * Returns the meta object for the reference '{@link org.gemoc.sample.legacyfsm.fsm.StateMachine#getInitialState <em>Initial State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Initial State</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.FSM#getInitialState()
-	 * @see #getFSM()
+	 * @see org.gemoc.sample.legacyfsm.fsm.StateMachine#getInitialState()
+	 * @see #getStateMachine()
 	 * @generated
 	 */
-	EReference getFSM_InitialState();
+	EReference getStateMachine_InitialState();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.FSM#getOwnedTransitions <em>Owned Transitions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.gemoc.sample.legacyfsm.fsm.StateMachine#getOwnedTransitions <em>Owned Transitions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Owned Transitions</em>'.
-	 * @see org.gemoc.sample.legacyfsm.fsm.FSM#getOwnedTransitions()
-	 * @see #getFSM()
+	 * @see org.gemoc.sample.legacyfsm.fsm.StateMachine#getOwnedTransitions()
+	 * @see #getStateMachine()
 	 * @generated
 	 */
-	EReference getFSM_OwnedTransitions();
+	EReference getStateMachine_OwnedTransitions();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.legacyfsm.fsm.State <em>State</em>}'.
@@ -480,14 +480,14 @@ public interface FsmPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.FSMImpl <em>FSM</em>}' class.
+		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.StateMachineImpl <em>State Machine</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FSMImpl
-		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getFSM()
+		 * @see org.gemoc.sample.legacyfsm.fsm.impl.StateMachineImpl
+		 * @see org.gemoc.sample.legacyfsm.fsm.impl.FsmPackageImpl#getStateMachine()
 		 * @generated
 		 */
-		EClass FSM = eINSTANCE.getFSM();
+		EClass STATE_MACHINE = eINSTANCE.getStateMachine();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned States</b></em>' containment reference list feature.
@@ -495,7 +495,7 @@ public interface FsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference FSM__OWNED_STATES = eINSTANCE.getFSM_OwnedStates();
+		EReference STATE_MACHINE__OWNED_STATES = eINSTANCE.getStateMachine_OwnedStates();
 
 		/**
 		 * The meta object literal for the '<em><b>Initial State</b></em>' reference feature.
@@ -503,7 +503,7 @@ public interface FsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference FSM__INITIAL_STATE = eINSTANCE.getFSM_InitialState();
+		EReference STATE_MACHINE__INITIAL_STATE = eINSTANCE.getStateMachine_InitialState();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Transitions</b></em>' containment reference list feature.
@@ -511,7 +511,7 @@ public interface FsmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference FSM__OWNED_TRANSITIONS = eINSTANCE.getFSM_OwnedTransitions();
+		EReference STATE_MACHINE__OWNED_TRANSITIONS = eINSTANCE.getStateMachine_OwnedTransitions();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.legacyfsm.fsm.impl.StateImpl <em>State</em>}' class.

@@ -4,15 +4,15 @@
   <genPackages prefix="Fsm" basePackage="org.gemoc.sample.legacyfsm" disposableProviderFactory="true">
     <ecorePackage href="fsm.ecore#/"/>
     <genClasses>
-      <ecoreClass href="fsm.ecore#//FSM"/>
+      <ecoreClass href="fsm.ecore#//StateMachine"/>
       <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//FSM/ownedStates"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//StateMachine/ownedStates"/>
       </genFeatures>
       <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//FSM/initialState"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//StateMachine/initialState"/>
       </genFeatures>
       <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//FSM/ownedTransitions"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="fsm.ecore#//StateMachine/ownedTransitions"/>
       </genFeatures>
     </genClasses>
     <genClasses>

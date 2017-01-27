@@ -4,18 +4,16 @@ import fr.inria.diverse.melange.adapters.EObjectAdapter;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.gemoc.sample.legacyfsm.fsm.FSMClock;
-import org.gemoc.sample.legacyfsm.fsm.FSMEvent;
 import org.gemoc.sample.legacyfsm.fsm.State;
 import org.gemoc.sample.legacyfsm.fsm.Transition;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.FSMMTAdaptersFactory;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.TimeFSM;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine;
 
 @SuppressWarnings("all")
-public class TimeFSMAdapter extends EObjectAdapter<TimeFSM> implements org.gemoc.sample.legacyfsm.fsm.TimeFSM {
+public class StateMachineAdapter extends EObjectAdapter<StateMachine> implements org.gemoc.sample.legacyfsm.fsm.StateMachine {
   private FSMMTAdaptersFactory adaptersFactory;
   
-  public TimeFSMAdapter() {
+  public StateMachineAdapter() {
     super(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.FSMMTAdaptersFactory.getInstance());
     adaptersFactory = org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.FSMMTAdaptersFactory.getInstance();
   }
@@ -51,27 +49,6 @@ public class TimeFSMAdapter extends EObjectAdapter<TimeFSM> implements org.gemoc
     else adaptee.setInitialState(null);
   }
   
-  private EList<FSMEvent> localEvents_;
-  
-  @Override
-  public EList<FSMEvent> getLocalEvents() {
-    if (localEvents_ == null)
-    	localEvents_ = fr.inria.diverse.melange.adapters.EListAdapter.newInstance(adaptee.getLocalEvents(), adaptersFactory, eResource);
-    return localEvents_;
-  }
-  
-  @Override
-  public FSMClock getLocalClock() {
-    return (FSMClock) adaptersFactory.createAdapter(adaptee.getLocalClock(), eResource);
-  }
-  
-  @Override
-  public void setLocalClock(final FSMClock o) {
-    if (o != null)
-    	adaptee.setLocalClock(((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.fsmmt.fsm.FSMClockAdapter) o).getAdaptee());
-    else adaptee.setLocalClock(null);
-  }
-  
   private EList<Transition> ownedTransitions_;
   
   @Override
@@ -85,23 +62,19 @@ public class TimeFSMAdapter extends EObjectAdapter<TimeFSM> implements org.gemoc
   
   @Override
   public EClass eClass() {
-    return org.gemoc.sample.legacyfsm.fsm.FsmPackage.eINSTANCE.getTimeFSM();
+    return org.gemoc.sample.legacyfsm.fsm.FsmPackage.eINSTANCE.getStateMachine();
   }
   
   @Override
   public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
     switch (featureID) {
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__NAME:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__NAME:
     		return getName();
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__OWNED_STATES:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__OWNED_STATES:
     		return getOwnedStates();
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__INITIAL_STATE:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__INITIAL_STATE:
     		return getInitialState();
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__LOCAL_EVENTS:
-    		return getLocalEvents();
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__LOCAL_CLOCK:
-    		return getLocalClock();
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__OWNED_TRANSITIONS:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__OWNED_TRANSITIONS:
     		return getOwnedTransitions();
     }
     
@@ -111,17 +84,13 @@ public class TimeFSMAdapter extends EObjectAdapter<TimeFSM> implements org.gemoc
   @Override
   public boolean eIsSet(final int featureID) {
     switch (featureID) {
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__NAME:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__NAME:
     		return getName() != NAME_EDEFAULT;
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__OWNED_STATES:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__OWNED_STATES:
     		return getOwnedStates() != null && !getOwnedStates().isEmpty();
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__INITIAL_STATE:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__INITIAL_STATE:
     		return getInitialState() != null;
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__LOCAL_EVENTS:
-    		return getLocalEvents() != null && !getLocalEvents().isEmpty();
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__LOCAL_CLOCK:
-    		return getLocalClock() != null;
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__OWNED_TRANSITIONS:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__OWNED_TRANSITIONS:
     		return getOwnedTransitions() != null && !getOwnedTransitions().isEmpty();
     }
     
@@ -131,30 +100,21 @@ public class TimeFSMAdapter extends EObjectAdapter<TimeFSM> implements org.gemoc
   @Override
   public void eSet(final int featureID, final Object newValue) {
     switch (featureID) {
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__NAME:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__NAME:
     		setName(
     		(java.lang.String)
     		 newValue);
     		return;
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__OWNED_STATES:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__OWNED_STATES:
     		getOwnedStates().clear();
     		getOwnedStates().addAll((Collection) newValue);
     		return;
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__INITIAL_STATE:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__INITIAL_STATE:
     		setInitialState(
     		(org.gemoc.sample.legacyfsm.fsm.State)
     		 newValue);
     		return;
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__LOCAL_EVENTS:
-    		getLocalEvents().clear();
-    		getLocalEvents().addAll((Collection) newValue);
-    		return;
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__LOCAL_CLOCK:
-    		setLocalClock(
-    		(org.gemoc.sample.legacyfsm.fsm.FSMClock)
-    		 newValue);
-    		return;
-    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.TIME_FSM__OWNED_TRANSITIONS:
+    	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.STATE_MACHINE__OWNED_TRANSITIONS:
     		getOwnedTransitions().clear();
     		getOwnedTransitions().addAll((Collection) newValue);
     		return;

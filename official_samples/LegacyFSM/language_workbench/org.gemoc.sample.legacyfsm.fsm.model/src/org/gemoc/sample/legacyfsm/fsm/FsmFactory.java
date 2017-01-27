@@ -22,13 +22,13 @@ public interface FsmFactory extends EFactory {
 	FsmFactory eINSTANCE = org.gemoc.sample.legacyfsm.fsm.impl.FsmFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>FSM</em>'.
+	 * Returns a new object of class '<em>State Machine</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>FSM</em>'.
+	 * @return a new object of class '<em>State Machine</em>'.
 	 * @generated
 	 */
-	FSM createFSM();
+	StateMachine createStateMachine();
 
 	/**
 	 * Returns a new object of class '<em>State</em>'.

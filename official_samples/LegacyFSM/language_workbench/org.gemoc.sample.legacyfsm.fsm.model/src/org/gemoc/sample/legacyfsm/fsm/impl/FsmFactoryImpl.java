@@ -56,7 +56,7 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case FsmPackage.FSM: return createFSM();
+			case FsmPackage.STATE_MACHINE: return createStateMachine();
 			case FsmPackage.STATE: return createState();
 			case FsmPackage.TRANSITION: return createTransition();
 			default:
@@ -69,9 +69,9 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FSM createFSM() {
-		FSMImpl fsm = new FSMImpl();
-		return fsm;
+	public StateMachine createStateMachine() {
+		StateMachineImpl stateMachine = new StateMachineImpl();
+		return stateMachine;
 	}
 
 	/**

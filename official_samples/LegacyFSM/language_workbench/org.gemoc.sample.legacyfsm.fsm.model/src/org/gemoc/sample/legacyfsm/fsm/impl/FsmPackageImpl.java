@@ -12,6 +12,7 @@ import org.gemoc.sample.legacyfsm.fsm.FsmFactory;
 import org.gemoc.sample.legacyfsm.fsm.FsmPackage;
 import org.gemoc.sample.legacyfsm.fsm.NamedElement;
 import org.gemoc.sample.legacyfsm.fsm.State;
+import org.gemoc.sample.legacyfsm.fsm.StateMachine;
 import org.gemoc.sample.legacyfsm.fsm.Transition;
 
 /**
@@ -26,7 +27,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass fsmEClass = null;
+	private EClass stateMachineEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,8 +116,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getFSM() {
-		return fsmEClass;
+	public EClass getStateMachine() {
+		return stateMachineEClass;
 	}
 
 	/**
@@ -124,8 +125,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFSM_OwnedStates() {
-		return (EReference)fsmEClass.getEStructuralFeatures().get(0);
+	public EReference getStateMachine_OwnedStates() {
+		return (EReference)stateMachineEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -133,8 +134,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFSM_InitialState() {
-		return (EReference)fsmEClass.getEStructuralFeatures().get(1);
+	public EReference getStateMachine_InitialState() {
+		return (EReference)stateMachineEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -142,8 +143,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFSM_OwnedTransitions() {
-		return (EReference)fsmEClass.getEStructuralFeatures().get(2);
+	public EReference getStateMachine_OwnedTransitions() {
+		return (EReference)stateMachineEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -273,10 +274,10 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		fsmEClass = createEClass(FSM);
-		createEReference(fsmEClass, FSM__OWNED_STATES);
-		createEReference(fsmEClass, FSM__INITIAL_STATE);
-		createEReference(fsmEClass, FSM__OWNED_TRANSITIONS);
+		stateMachineEClass = createEClass(STATE_MACHINE);
+		createEReference(stateMachineEClass, STATE_MACHINE__OWNED_STATES);
+		createEReference(stateMachineEClass, STATE_MACHINE__INITIAL_STATE);
+		createEReference(stateMachineEClass, STATE_MACHINE__OWNED_TRANSITIONS);
 
 		stateEClass = createEClass(STATE);
 		createEReference(stateEClass, STATE__OWNING_FSM);
@@ -321,18 +322,18 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		fsmEClass.getESuperTypes().add(this.getNamedElement());
+		stateMachineEClass.getESuperTypes().add(this.getNamedElement());
 		stateEClass.getESuperTypes().add(this.getNamedElement());
 		transitionEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(fsmEClass, org.gemoc.sample.legacyfsm.fsm.FSM.class, "FSM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFSM_OwnedStates(), this.getState(), this.getState_OwningFSM(), "ownedStates", null, 0, -1, org.gemoc.sample.legacyfsm.fsm.FSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFSM_InitialState(), this.getState(), null, "initialState", null, 1, 1, org.gemoc.sample.legacyfsm.fsm.FSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFSM_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, org.gemoc.sample.legacyfsm.fsm.FSM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(stateMachineEClass, StateMachine.class, "StateMachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStateMachine_OwnedStates(), this.getState(), this.getState_OwningFSM(), "ownedStates", null, 0, -1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_InitialState(), this.getState(), null, "initialState", null, 1, 1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getState_OwningFSM(), this.getFSM(), this.getFSM_OwnedStates(), "owningFSM", null, 1, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getState_OwningFSM(), this.getStateMachine(), this.getStateMachine_OwnedStates(), "owningFSM", null, 1, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getState_OutgoingTransitions(), this.getTransition(), this.getTransition_Source(), "outgoingTransitions", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getState_IncomingTransitions(), this.getTransition(), this.getTransition_Target(), "incomingTransitions", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

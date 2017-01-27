@@ -6,7 +6,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.xsfsmmt.XSFSMMTAdaptersFactory;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State;
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.TimeFSM;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.StateMachine;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.Transition;
 
 @SuppressWarnings("all")
@@ -29,14 +29,14 @@ public class StateAdapter extends EObjectAdapter<State> implements org.gemoc.sam
   }
   
   @Override
-  public TimeFSM getOwningFSM() {
-    return (TimeFSM) adaptersFactory.createAdapter(adaptee.getOwningFSM(), eResource);
+  public StateMachine getOwningFSM() {
+    return (StateMachine) adaptersFactory.createAdapter(adaptee.getOwningFSM(), eResource);
   }
   
   @Override
-  public void setOwningFSM(final TimeFSM o) {
+  public void setOwningFSM(final StateMachine o) {
     if (o != null)
-    	adaptee.setOwningFSM(((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.xsfsmmt.fsm.TimeFSMAdapter) o).getAdaptee());
+    	adaptee.setOwningFSM(((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.adapters.xsfsmmt.fsm.StateMachineAdapter) o).getAdaptee());
     else adaptee.setOwningFSM(null);
   }
   
@@ -59,18 +59,9 @@ public class StateAdapter extends EObjectAdapter<State> implements org.gemoc.sam
   }
   
   @Override
-  public void onEnter() {
-    org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspect.onEnter(adaptee);
-  }
-  
-  @Override
-  public void onLeave() {
-    org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspect.onLeave(adaptee);
-  }
-  
-  @Override
-  public void visit() {
-    org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateVisitorAspect.visit(adaptee);
+  public void step(final String inputToken) {
+    org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspect.step(adaptee, inputToken
+    );
   }
   
   protected final static String NAME_EDEFAULT = null;
@@ -122,7 +113,7 @@ public class StateAdapter extends EObjectAdapter<State> implements org.gemoc.sam
     		return;
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE__OWNING_FSM:
     		setOwningFSM(
-    		(org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.TimeFSM)
+    		(org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.StateMachine)
     		 newValue);
     		return;
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE__OUTGOING_TRANSITIONS:
