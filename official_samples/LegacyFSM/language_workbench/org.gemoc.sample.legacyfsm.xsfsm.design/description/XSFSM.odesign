@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="XSFSM" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="XSFSM" version="11.1.1.201610211630">
   <ownedViewpoints name="LegacyFSM_XFSM_Viewpoint">
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="LegacyFSM_XFSM" viewpointURI="viewpoint:/org.gemoc.sample.legacyfsm.fsm.design/LegacyFSM_FSM_ViewPoint" representationName="FSM">
       <layers name="Debug" activeByDefault="true">
@@ -45,11 +45,32 @@
         </customization>
       </layers>
       <layers name="Animation">
+        <containerMappings semanticCandidatesExpression="[self/]" domainClass="StateMachine" childrenPresentation="List">
+          <subNodeMappings name="StringToProcess" semanticCandidatesExpression="[self/]" domainClass="StateMachine">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="aql:' string to process: '+self.actionsToProcess" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="ProducedString" semanticCandidatesExpression="[self/]" domainClass="StateMachine">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="aql: ' produced String: '+self.producedString" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.name+ ' processing status'" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
         <decorationDescriptionsSet>
           <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="Current State" position="SOUTH_EAST" decoratorPath="/org.gemoc.sample.legacyfsm.xsfsm.design/icons/cursor-3-24.png" preconditionExpression="service:self.isCurrentState">
             <mappings xsi:type="description_1:ContainerMapping" href="../../org.gemoc.sample.legacyfsm.fsm.design/description/fsm.odesign#//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']"/>
           </decorationDescriptions>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="EventOccured" position="CENTER" decoratorPath="/org.gemoc.sample.legacyfsm.xsfsm.design/icons/eventOccurred.png" preconditionExpression="service:self.hasBeenActivated" domainClass="FSMEvent"/>
         </decorationDescriptionsSet>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:self.hasBeenActivated">
