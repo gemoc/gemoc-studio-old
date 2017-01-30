@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="FSM" titleExpression="feature:name" initialisation="true" showOnStartup="true" domainClass="StateMachine">
       <metamodel href="../../org.gemoc.sample.legacyfsm.fsm.model/model/fsm.ecore#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="EventTransition" labelDirectEdit="//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@toolSections.1/@ownedTools[name='editEventTransition']" sourceMapping="//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']" targetMapping="//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']" targetFinderExpression="[self.target/]" sourceFinderExpression="[self.source/]" domainClass="Transition" useDomainElement="true">
+        <edgeMappings name="EventTransition" sourceMapping="//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']" targetMapping="//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']" targetFinderExpression="[self.target/]" sourceFinderExpression="[self.source/]" domainClass="Transition" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.getLabel()">
@@ -31,24 +31,6 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="Node">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Event Guarded Transition" edgeMappings="//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']" iconPath="/org.gemoc.sample.legacyfsm.fsm.design/icons/eventTransition_small.gif">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;TimeFSM&quot;)%>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Transition" referenceName="ownedTransitions">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$source.name%>_to_&lt;%$target.name%>"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="&lt;%$source%>"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="&lt;%$target%>"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EventGuard" referenceName="ownedGuard">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%self.eContainer().name%>_guard"/>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="State" containerMappings="//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@containerMappings[name='State']" iconPath="/org.gemoc.sample.legacyfsm.fsm.design/icons/state_small.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -58,26 +40,29 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Transition" edgeMappings="//@ownedViewpoints[name='LegacyFSM_FSM_ViewPoint']/@ownedRepresentations[name='FSM']/@defaultLayer/@edgeMappings[name='EventTransition']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer()">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Transition" referenceName="ownedTransitions">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:source.name+'_to_'+target.name"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="aql:source"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="aql:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="input" valueExpression="aql:''"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="output" valueExpression="aql:''"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
         <toolSections name="edit">
           <ownedTools xsi:type="tool:DirectEditLabel" name="editName" inputLabelExpression="&lt;%name%>">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="editEventTransition" forceRefresh="true" inputLabelExpression="when &lt;%self.ownedGuard.triggeringEvent.name%> / &lt;%self.action%>  &lt;%for (self.generatedEvents){%>!&lt;%self.name+&quot;;&quot;%>&lt;%}%>">
-            <mask mask="when {0} / {1} !{2};"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="action" valueExpression="&lt;%$1%>">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="generatedEvents" elementExpression="&lt;%self.generatedEvents%>">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="generatedEvents" valueExpression="&lt;%self.eContainer().eContainer().eAllContents(&quot;FSMEvent&quot;)[name == $2].nFirst().cast(&quot;FSMEvent&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%self.ownedGuard%>">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="triggeringEvent" valueExpression="&lt;%self.eContainer().eContainer().eContainer().eAllContents(&quot;FSMEvent&quot;)[name == $0].nFirst().cast(&quot;FSMEvent&quot;)%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
