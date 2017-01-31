@@ -32,8 +32,8 @@
 							<tasks>
 								<mkdir dir="${basedir}/zips" />
 
-								<zip destfile="${basedir}/zips/org.gemoc.sample.legacyfsm.traffic_light_example.zip">
-									<fileset dir="${tfsm_plaink3_sample_modeling_root}/org.gemoc.sample.legacyfsm.traffic_light_example/" />
+								<zip destfile="${basedir}/zips/org.gemoc.sample.legacyfsm.model_examples.zip">
+									<fileset dir="${tfsm_plaink3_sample_modeling_root}/org.gemoc.sample.legacyfsm.model_examples/" />
 								</zip>
 
 							</tasks>
