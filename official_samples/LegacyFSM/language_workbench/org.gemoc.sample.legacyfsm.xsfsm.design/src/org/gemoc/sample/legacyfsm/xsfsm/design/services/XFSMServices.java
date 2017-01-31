@@ -21,11 +21,12 @@ public class XFSMServices {
 	public String getLabel(Transition transition) {
 		final StringBuilder res = new StringBuilder();
 
-		res.append("on ");
+		res.append(transition.getName());
+		res.append("\n");	
+		res.append("");
 		res.append(transition.getInput());
-		res.append(" do ");
-		res.append(transition.getOutput());
-		res.append("\n");		
+		res.append(" / ");
+		res.append(transition.getOutput());	
 		return res.toString();
 	}
 	

@@ -21,9 +21,9 @@ public class FSMServices {
 
 		res.append(transition.getName());
 		res.append("\n");	
-		res.append("on ");
+		res.append("");
 		res.append(transition.getInput());
-		res.append(" do ");
+		res.append(" / ");
 		res.append(transition.getOutput());	
 		return res.toString();
 	}
