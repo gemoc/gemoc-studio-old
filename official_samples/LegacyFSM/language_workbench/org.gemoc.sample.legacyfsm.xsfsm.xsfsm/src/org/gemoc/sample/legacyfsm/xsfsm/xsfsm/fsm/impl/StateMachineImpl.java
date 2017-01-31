@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -36,7 +35,8 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
  *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.StateMachineImpl#getInitialState <em>Initial State</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.StateMachineImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.StateMachineImpl#getCurrentState <em>Current State</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.StateMachineImpl#getActionsToProcess <em>Actions To Process</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.StateMachineImpl#getUnprocessedString <em>Unprocessed String</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.StateMachineImpl#getConsummedString <em>Consummed String</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.StateMachineImpl#getProducedString <em>Produced String</em>}</li>
  * </ul>
  *
@@ -84,14 +84,44 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 	protected State currentState;
 
 	/**
-	 * The cached value of the '{@link #getActionsToProcess() <em>Actions To Process</em>}' attribute list.
+	 * The default value of the '{@link #getUnprocessedString() <em>Unprocessed String</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getActionsToProcess()
+	 * @see #getUnprocessedString()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> actionsToProcess;
+	protected static final String UNPROCESSED_STRING_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUnprocessedString() <em>Unprocessed String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnprocessedString()
+	 * @generated
+	 * @ordered
+	 */
+	protected String unprocessedString = UNPROCESSED_STRING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getConsummedString() <em>Consummed String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConsummedString()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CONSUMMED_STRING_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getConsummedString() <em>Consummed String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConsummedString()
+	 * @generated
+	 * @ordered
+	 */
+	protected String consummedString = CONSUMMED_STRING_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getProducedString() <em>Produced String</em>}' attribute.
@@ -237,11 +267,41 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<String> getActionsToProcess() {
-		if (actionsToProcess == null) {
-			actionsToProcess = new EDataTypeEList<String>(String.class, this, FsmPackage.STATE_MACHINE__ACTIONS_TO_PROCESS);
-		}
-		return actionsToProcess;
+	public String getUnprocessedString() {
+		return unprocessedString;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnprocessedString(String newUnprocessedString) {
+		String oldUnprocessedString = unprocessedString;
+		unprocessedString = newUnprocessedString;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.STATE_MACHINE__UNPROCESSED_STRING, oldUnprocessedString, unprocessedString));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getConsummedString() {
+		return consummedString;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConsummedString(String newConsummedString) {
+		String oldConsummedString = consummedString;
+		consummedString = newConsummedString;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.STATE_MACHINE__CONSUMMED_STRING, oldConsummedString, consummedString));
 	}
 
 	/**
@@ -336,8 +396,10 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 			case FsmPackage.STATE_MACHINE__CURRENT_STATE:
 				if (resolve) return getCurrentState();
 				return basicGetCurrentState();
-			case FsmPackage.STATE_MACHINE__ACTIONS_TO_PROCESS:
-				return getActionsToProcess();
+			case FsmPackage.STATE_MACHINE__UNPROCESSED_STRING:
+				return getUnprocessedString();
+			case FsmPackage.STATE_MACHINE__CONSUMMED_STRING:
+				return getConsummedString();
 			case FsmPackage.STATE_MACHINE__PRODUCED_STRING:
 				return getProducedString();
 		}
@@ -367,9 +429,11 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 			case FsmPackage.STATE_MACHINE__CURRENT_STATE:
 				setCurrentState((State)newValue);
 				return;
-			case FsmPackage.STATE_MACHINE__ACTIONS_TO_PROCESS:
-				getActionsToProcess().clear();
-				getActionsToProcess().addAll((Collection<? extends String>)newValue);
+			case FsmPackage.STATE_MACHINE__UNPROCESSED_STRING:
+				setUnprocessedString((String)newValue);
+				return;
+			case FsmPackage.STATE_MACHINE__CONSUMMED_STRING:
+				setConsummedString((String)newValue);
 				return;
 			case FsmPackage.STATE_MACHINE__PRODUCED_STRING:
 				setProducedString((String)newValue);
@@ -398,8 +462,11 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 			case FsmPackage.STATE_MACHINE__CURRENT_STATE:
 				setCurrentState((State)null);
 				return;
-			case FsmPackage.STATE_MACHINE__ACTIONS_TO_PROCESS:
-				getActionsToProcess().clear();
+			case FsmPackage.STATE_MACHINE__UNPROCESSED_STRING:
+				setUnprocessedString(UNPROCESSED_STRING_EDEFAULT);
+				return;
+			case FsmPackage.STATE_MACHINE__CONSUMMED_STRING:
+				setConsummedString(CONSUMMED_STRING_EDEFAULT);
 				return;
 			case FsmPackage.STATE_MACHINE__PRODUCED_STRING:
 				setProducedString(PRODUCED_STRING_EDEFAULT);
@@ -424,8 +491,10 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 				return ownedTransitions != null && !ownedTransitions.isEmpty();
 			case FsmPackage.STATE_MACHINE__CURRENT_STATE:
 				return currentState != null;
-			case FsmPackage.STATE_MACHINE__ACTIONS_TO_PROCESS:
-				return actionsToProcess != null && !actionsToProcess.isEmpty();
+			case FsmPackage.STATE_MACHINE__UNPROCESSED_STRING:
+				return UNPROCESSED_STRING_EDEFAULT == null ? unprocessedString != null : !UNPROCESSED_STRING_EDEFAULT.equals(unprocessedString);
+			case FsmPackage.STATE_MACHINE__CONSUMMED_STRING:
+				return CONSUMMED_STRING_EDEFAULT == null ? consummedString != null : !CONSUMMED_STRING_EDEFAULT.equals(consummedString);
 			case FsmPackage.STATE_MACHINE__PRODUCED_STRING:
 				return PRODUCED_STRING_EDEFAULT == null ? producedString != null : !PRODUCED_STRING_EDEFAULT.equals(producedString);
 		}
@@ -442,8 +511,10 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (actionsToProcess: ");
-		result.append(actionsToProcess);
+		result.append(" (unprocessedString: ");
+		result.append(unprocessedString);
+		result.append(", consummedString: ");
+		result.append(consummedString);
 		result.append(", producedString: ");
 		result.append(producedString);
 		result.append(')');

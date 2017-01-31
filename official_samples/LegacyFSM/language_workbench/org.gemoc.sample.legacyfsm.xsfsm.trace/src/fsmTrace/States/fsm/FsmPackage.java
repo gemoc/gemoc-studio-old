@@ -112,13 +112,13 @@ public interface FsmPackage extends EPackage {
 	int TRACED_STATE_MACHINE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Actions To Process Sequence</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Consummed String Sequence</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Current State Sequence</b></em>' containment reference list.
@@ -148,13 +148,22 @@ public interface FsmPackage extends EPackage {
 	int TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Unprocessed String Sequence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Traced State Machine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_STATE_MACHINE_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int TRACED_STATE_MACHINE_FEATURE_COUNT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedTransitionImpl <em>Traced Transition</em>}' class.
@@ -227,15 +236,15 @@ public interface FsmPackage extends EPackage {
 	EClass getTracedStateMachine();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedStateMachine#getActionsToProcessSequence <em>Actions To Process Sequence</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedStateMachine#getConsummedStringSequence <em>Consummed String Sequence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Actions To Process Sequence</em>'.
-	 * @see fsmTrace.States.fsm.TracedStateMachine#getActionsToProcessSequence()
+	 * @return the meta object for the containment reference list '<em>Consummed String Sequence</em>'.
+	 * @see fsmTrace.States.fsm.TracedStateMachine#getConsummedStringSequence()
 	 * @see #getTracedStateMachine()
 	 * @generated
 	 */
-	EReference getTracedStateMachine_ActionsToProcessSequence();
+	EReference getTracedStateMachine_ConsummedStringSequence();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedStateMachine#getCurrentStateSequence <em>Current State Sequence</em>}'.
@@ -269,6 +278,17 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTracedStateMachine_ProducedStringSequence();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedStateMachine#getUnprocessedStringSequence <em>Unprocessed String Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Unprocessed String Sequence</em>'.
+	 * @see fsmTrace.States.fsm.TracedStateMachine#getUnprocessedStringSequence()
+	 * @see #getTracedStateMachine()
+	 * @generated
+	 */
+	EReference getTracedStateMachine_UnprocessedStringSequence();
 
 	/**
 	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedTransition <em>Traced Transition</em>}'.
@@ -352,12 +372,12 @@ public interface FsmPackage extends EPackage {
 		EClass TRACED_STATE_MACHINE = eINSTANCE.getTracedStateMachine();
 
 		/**
-		 * The meta object literal for the '<em><b>Actions To Process Sequence</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Consummed String Sequence</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE = eINSTANCE.getTracedStateMachine_ActionsToProcessSequence();
+		EReference TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE = eINSTANCE.getTracedStateMachine_ConsummedStringSequence();
 
 		/**
 		 * The meta object literal for the '<em><b>Current State Sequence</b></em>' containment reference list feature.
@@ -382,6 +402,14 @@ public interface FsmPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE = eINSTANCE.getTracedStateMachine_ProducedStringSequence();
+
+		/**
+		 * The meta object literal for the '<em><b>Unprocessed String Sequence</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE = eINSTANCE.getTracedStateMachine_UnprocessedStringSequence();
 
 		/**
 		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedTransitionImpl <em>Traced Transition</em>}' class.

@@ -22,6 +22,15 @@ public interface StepsFactory extends EFactory {
 	StepsFactory eINSTANCE = fsmTrace.Steps.impl.StepsFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Fsm State Machine Initialize Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Fsm State Machine Initialize Model</em>'.
+	 * @generated
+	 */
+	Fsm_StateMachine_InitializeModel createFsm_StateMachine_InitializeModel();
+
+	/**
 	 * Returns a new object of class '<em>Fsm State Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

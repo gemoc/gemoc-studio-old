@@ -19,7 +19,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentState" unique="false" eType="//State">
       <eAnnotations source="aspect"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actionsToProcess" unique="false" upperBound="-1">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unprocessedString" unique="false">
+      <eAnnotations source="aspect"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="consummedString" unique="false">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
@@ -31,7 +35,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="//NamedElement">
     <eOperations name="step">
       <eAnnotations source="aspect"/>
-      <eParameters name="inputToken">
+      <eParameters name="inputString">
         <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eParameters>
     </eOperations>

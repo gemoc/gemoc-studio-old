@@ -71,6 +71,15 @@ public class StepsSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case StepsPackage.FSM_STATE_MACHINE_INITIALIZE_MODEL: {
+				Fsm_StateMachine_InitializeModel fsm_StateMachine_InitializeModel = (Fsm_StateMachine_InitializeModel)theEObject;
+				T result = caseFsm_StateMachine_InitializeModel(fsm_StateMachine_InitializeModel);
+				if (result == null) result = caseSpecificStep(fsm_StateMachine_InitializeModel);
+				if (result == null) result = caseSmallStep(fsm_StateMachine_InitializeModel);
+				if (result == null) result = caseStep(fsm_StateMachine_InitializeModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case StepsPackage.FSM_STATE_STEP: {
 				Fsm_State_Step fsm_State_Step = (Fsm_State_Step)theEObject;
 				T result = caseFsm_State_Step(fsm_State_Step);
@@ -126,6 +135,21 @@ public class StepsSwitch<T> extends Switch<T> {
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Fsm State Machine Initialize Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Fsm State Machine Initialize Model</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFsm_StateMachine_InitializeModel(Fsm_StateMachine_InitializeModel object) {
+		return null;
 	}
 
 	/**
@@ -234,6 +258,21 @@ public class StepsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Small Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Small Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSmallStep(SmallStep object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Big Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -260,21 +299,6 @@ public class StepsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public <StepSubtype extends Step> T caseSequentialStep(SequentialStep<StepSubtype> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Small Step</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Small Step</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSmallStep(SmallStep object) {
 		return null;
 	}
 

@@ -140,13 +140,22 @@ public interface FsmPackage extends EPackage {
 	int STATE_MACHINE__CURRENT_STATE = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Actions To Process</b></em>' attribute list.
+	 * The feature id for the '<em><b>Unprocessed String</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE__ACTIONS_TO_PROCESS = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int STATE_MACHINE__UNPROCESSED_STRING = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Consummed String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE__CONSUMMED_STRING = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Produced String</b></em>' attribute.
@@ -155,7 +164,7 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE__PRODUCED_STRING = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int STATE_MACHINE__PRODUCED_STRING = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>State Machine</em>' class.
@@ -164,7 +173,7 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int STATE_MACHINE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.impl.StateImpl <em>State</em>}' class.
@@ -341,15 +350,26 @@ public interface FsmPackage extends EPackage {
 	EReference getStateMachine_CurrentState();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getActionsToProcess <em>Actions To Process</em>}'.
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getUnprocessedString <em>Unprocessed String</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Actions To Process</em>'.
-	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getActionsToProcess()
+	 * @return the meta object for the attribute '<em>Unprocessed String</em>'.
+	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getUnprocessedString()
 	 * @see #getStateMachine()
 	 * @generated
 	 */
-	EAttribute getStateMachine_ActionsToProcess();
+	EAttribute getStateMachine_UnprocessedString();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getConsummedString <em>Consummed String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Consummed String</em>'.
+	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getConsummedString()
+	 * @see #getStateMachine()
+	 * @generated
+	 */
+	EAttribute getStateMachine_ConsummedString();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getProducedString <em>Produced String</em>}'.
@@ -545,12 +565,20 @@ public interface FsmPackage extends EPackage {
 		EReference STATE_MACHINE__CURRENT_STATE = eINSTANCE.getStateMachine_CurrentState();
 
 		/**
-		 * The meta object literal for the '<em><b>Actions To Process</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Unprocessed String</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STATE_MACHINE__ACTIONS_TO_PROCESS = eINSTANCE.getStateMachine_ActionsToProcess();
+		EAttribute STATE_MACHINE__UNPROCESSED_STRING = eINSTANCE.getStateMachine_UnprocessedString();
+
+		/**
+		 * The meta object literal for the '<em><b>Consummed String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE_MACHINE__CONSUMMED_STRING = eINSTANCE.getStateMachine_ConsummedString();
 
 		/**
 		 * The meta object literal for the '<em><b>Produced String</b></em>' attribute feature.

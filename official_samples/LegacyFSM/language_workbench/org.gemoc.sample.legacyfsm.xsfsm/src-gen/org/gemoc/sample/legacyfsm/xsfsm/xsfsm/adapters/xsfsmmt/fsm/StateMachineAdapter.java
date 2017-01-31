@@ -59,8 +59,14 @@ public class StateMachineAdapter extends EObjectAdapter<StateMachine> implements
   }
   
   @Override
-  public EList<String> getActionsToProcess() {
-    return org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateMachineAspect.actionsToProcess(adaptee);
+  public String getConsummedString() {
+    return org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateMachineAspect.consummedString(adaptee);
+  }
+  
+  @Override
+  public void setConsummedString(final String consummedString) {
+    org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateMachineAspect.consummedString(adaptee, consummedString
+    );
   }
   
   @Override
@@ -96,7 +102,22 @@ public class StateMachineAdapter extends EObjectAdapter<StateMachine> implements
     );
   }
   
+  @Override
+  public String getUnprocessedString() {
+    return org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateMachineAspect.unprocessedString(adaptee);
+  }
+  
+  @Override
+  public void setUnprocessedString(final String unprocessedString) {
+    org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateMachineAspect.unprocessedString(adaptee, unprocessedString
+    );
+  }
+  
   protected final static String NAME_EDEFAULT = null;
+  
+  protected final static String UNPROCESSED_STRING_EDEFAULT = null;
+  
+  protected final static String CONSUMMED_STRING_EDEFAULT = null;
   
   protected final static String PRODUCED_STRING_EDEFAULT = null;
   
@@ -118,8 +139,10 @@ public class StateMachineAdapter extends EObjectAdapter<StateMachine> implements
     		return getOwnedTransitions();
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__CURRENT_STATE:
     		return getCurrentState();
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__ACTIONS_TO_PROCESS:
-    		return getActionsToProcess();
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__UNPROCESSED_STRING:
+    		return getUnprocessedString();
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__CONSUMMED_STRING:
+    		return getConsummedString();
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__PRODUCED_STRING:
     		return getProducedString();
     }
@@ -140,8 +163,10 @@ public class StateMachineAdapter extends EObjectAdapter<StateMachine> implements
     		return getOwnedTransitions() != null && !getOwnedTransitions().isEmpty();
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__CURRENT_STATE:
     		return getCurrentState() != null;
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__ACTIONS_TO_PROCESS:
-    		return getActionsToProcess() != null && !getActionsToProcess().isEmpty();
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__UNPROCESSED_STRING:
+    		return getUnprocessedString() != UNPROCESSED_STRING_EDEFAULT;
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__CONSUMMED_STRING:
+    		return getConsummedString() != CONSUMMED_STRING_EDEFAULT;
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__PRODUCED_STRING:
     		return getProducedString() != PRODUCED_STRING_EDEFAULT;
     }
@@ -175,9 +200,15 @@ public class StateMachineAdapter extends EObjectAdapter<StateMachine> implements
     		(org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.State)
     		 newValue);
     		return;
-    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__ACTIONS_TO_PROCESS:
-    		getActionsToProcess().clear();
-    		getActionsToProcess().addAll((Collection) newValue);
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__UNPROCESSED_STRING:
+    		setUnprocessedString(
+    		(java.lang.String)
+    		 newValue);
+    		return;
+    	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__CONSUMMED_STRING:
+    		setConsummedString(
+    		(java.lang.String)
+    		 newValue);
     		return;
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.STATE_MACHINE__PRODUCED_STRING:
     		setProducedString(

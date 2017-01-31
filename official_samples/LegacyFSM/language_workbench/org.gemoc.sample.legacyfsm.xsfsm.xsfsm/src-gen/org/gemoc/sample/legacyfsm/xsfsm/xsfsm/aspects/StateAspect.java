@@ -16,13 +16,13 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.TransitionAspect;
 @SuppressWarnings("all")
 public class StateAspect {
   @Step
-  public static void step(final State _self, final String inputToken) {
+  public static void step(final State _self, final String inputString) {
 	final org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspectStateAspectProperties _self_ = org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspectStateAspectContext
 			.getSelf(_self);
 	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand command = new fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepCommand() {
 		@Override
 		public void execute() {
-			_privk3_step(_self_, _self, inputToken);
+			_privk3_step(_self_, _self, inputString);
 		}
 	};
 	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IStepManager manager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.StepManagerRegistry
@@ -41,12 +41,12 @@ public class StateAspect {
 	;
 }
   
-  protected static void _privk3_step(final StateAspectStateAspectProperties _self_, final State _self, final String inputToken) {
+  protected static void _privk3_step(final StateAspectStateAspectProperties _self_, final State _self, final String inputString) {
     try {
       EList<Transition> _outgoingTransitions = _self.getOutgoingTransitions();
       final Function1<Transition, Boolean> _function = (Transition t) -> {
         String _input = t.getInput();
-        return Boolean.valueOf(_input.equals(inputToken));
+        return Boolean.valueOf(inputString.startsWith(_input));
       };
       final Iterable<Transition> validTransitions = IterableExtensions.<Transition>filter(_outgoingTransitions, _function);
       boolean _isEmpty = IterableExtensions.isEmpty(validTransitions);

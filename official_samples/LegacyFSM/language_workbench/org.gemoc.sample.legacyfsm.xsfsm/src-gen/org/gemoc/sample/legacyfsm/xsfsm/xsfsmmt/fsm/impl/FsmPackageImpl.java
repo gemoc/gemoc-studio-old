@@ -167,7 +167,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStateMachine_ActionsToProcess() {
+	public EAttribute getStateMachine_UnprocessedString() {
 		return (EAttribute)stateMachineEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -176,8 +176,17 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStateMachine_ProducedString() {
+	public EAttribute getStateMachine_ConsummedString() {
 		return (EAttribute)stateMachineEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStateMachine_ProducedString() {
+		return (EAttribute)stateMachineEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -312,7 +321,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		createEReference(stateMachineEClass, STATE_MACHINE__INITIAL_STATE);
 		createEReference(stateMachineEClass, STATE_MACHINE__OWNED_TRANSITIONS);
 		createEReference(stateMachineEClass, STATE_MACHINE__CURRENT_STATE);
-		createEAttribute(stateMachineEClass, STATE_MACHINE__ACTIONS_TO_PROCESS);
+		createEAttribute(stateMachineEClass, STATE_MACHINE__UNPROCESSED_STRING);
+		createEAttribute(stateMachineEClass, STATE_MACHINE__CONSUMMED_STRING);
 		createEAttribute(stateMachineEClass, STATE_MACHINE__PRODUCED_STRING);
 
 		stateEClass = createEClass(STATE);
@@ -368,7 +378,8 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		initEReference(getStateMachine_InitialState(), this.getState(), null, "initialState", null, 1, 1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStateMachine_OwnedTransitions(), this.getTransition(), null, "ownedTransitions", null, 0, -1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStateMachine_CurrentState(), this.getState(), null, "currentState", null, 0, 1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStateMachine_ActionsToProcess(), ecorePackage.getEString(), "actionsToProcess", null, 0, -1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStateMachine_UnprocessedString(), ecorePackage.getEString(), "unprocessedString", null, 0, 1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStateMachine_ConsummedString(), ecorePackage.getEString(), "consummedString", null, 0, 1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStateMachine_ProducedString(), ecorePackage.getEString(), "producedString", null, 0, 1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(stateMachineEClass, null, "main", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -382,7 +393,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		initEReference(getState_IncomingTransitions(), this.getTransition(), this.getTransition_Target(), "incomingTransitions", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(stateEClass, null, "step", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "inputToken", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "inputString", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransition_Source(), this.getState(), this.getState_OutgoingTransitions(), "source", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -445,7 +456,12 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getStateMachine_ActionsToProcess(), 
+		  (getStateMachine_UnprocessedString(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getStateMachine_ConsummedString(), 
 		   source, 
 		   new String[] {
 		   });	

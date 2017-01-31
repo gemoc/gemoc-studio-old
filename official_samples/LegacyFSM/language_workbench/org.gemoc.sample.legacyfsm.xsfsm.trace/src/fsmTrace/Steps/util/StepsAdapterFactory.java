@@ -73,6 +73,10 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 	protected StepsSwitch<Adapter> modelSwitch =
 		new StepsSwitch<Adapter>() {
 			@Override
+			public Adapter caseFsm_StateMachine_InitializeModel(Fsm_StateMachine_InitializeModel object) {
+				return createFsm_StateMachine_InitializeModelAdapter();
+			}
+			@Override
 			public Adapter caseFsm_State_Step(Fsm_State_Step object) {
 				return createFsm_State_StepAdapter();
 			}
@@ -101,16 +105,16 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 				return createStepAdapter();
 			}
 			@Override
+			public Adapter caseSmallStep(SmallStep object) {
+				return createSmallStepAdapter();
+			}
+			@Override
 			public <StepSubtype extends Step> Adapter caseBigStep(BigStep<StepSubtype> object) {
 				return createBigStepAdapter();
 			}
 			@Override
 			public <StepSubtype extends Step> Adapter caseSequentialStep(SequentialStep<StepSubtype> object) {
 				return createSequentialStepAdapter();
-			}
-			@Override
-			public Adapter caseSmallStep(SmallStep object) {
-				return createSmallStepAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -131,6 +135,20 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fsmTrace.Steps.Fsm_StateMachine_InitializeModel <em>Fsm State Machine Initialize Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fsmTrace.Steps.Fsm_StateMachine_InitializeModel
+	 * @generated
+	 */
+	public Adapter createFsm_StateMachine_InitializeModelAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link fsmTrace.Steps.Fsm_State_Step <em>Fsm State Step</em>}'.
@@ -231,6 +249,20 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.SmallStep <em>Small Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.diverse.trace.commons.model.trace.SmallStep
+	 * @generated
+	 */
+	public Adapter createSmallStepAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.BigStep <em>Big Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -255,20 +287,6 @@ public class StepsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSequentialStepAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.SmallStep <em>Small Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fr.inria.diverse.trace.commons.model.trace.SmallStep
-	 * @generated
-	 */
-	public Adapter createSmallStepAdapter() {
 		return null;
 	}
 

@@ -19,11 +19,12 @@ public class FSMServices {
 	public String getLabel(Transition transition) {
 		final StringBuilder res = new StringBuilder();
 
+		res.append(transition.getName());
+		res.append("\n");	
 		res.append("on ");
 		res.append(transition.getInput());
 		res.append(" do ");
-		res.append(transition.getOutput());
-		res.append("\n");		
+		res.append(transition.getOutput());	
 		return res.toString();
 	}
 

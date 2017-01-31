@@ -72,10 +72,10 @@ public class StatesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case StatesPackage.STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE: {
-				StateMachine_actionsToProcess_Value stateMachine_actionsToProcess_Value = (StateMachine_actionsToProcess_Value)theEObject;
-				T result = caseStateMachine_actionsToProcess_Value(stateMachine_actionsToProcess_Value);
-				if (result == null) result = caseValue(stateMachine_actionsToProcess_Value);
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE: {
+				StateMachine_consummedString_Value stateMachine_consummedString_Value = (StateMachine_consummedString_Value)theEObject;
+				T result = caseStateMachine_consummedString_Value(stateMachine_consummedString_Value);
+				if (result == null) result = caseValue(stateMachine_consummedString_Value);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -90,6 +90,13 @@ public class StatesSwitch<T> extends Switch<T> {
 				StateMachine_producedString_Value stateMachine_producedString_Value = (StateMachine_producedString_Value)theEObject;
 				T result = caseStateMachine_producedString_Value(stateMachine_producedString_Value);
 				if (result == null) result = caseValue(stateMachine_producedString_Value);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE: {
+				StateMachine_unprocessedString_Value stateMachine_unprocessedString_Value = (StateMachine_unprocessedString_Value)theEObject;
+				T result = caseStateMachine_unprocessedString_Value(stateMachine_unprocessedString_Value);
+				if (result == null) result = caseValue(stateMachine_unprocessedString_Value);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -119,17 +126,17 @@ public class StatesSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>State Machine actions To Process Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>State Machine consummed String Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>State Machine actions To Process Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>State Machine consummed String Value</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStateMachine_actionsToProcess_Value(StateMachine_actionsToProcess_Value object) {
+	public T caseStateMachine_consummedString_Value(StateMachine_consummedString_Value object) {
 		return null;
 	}
 
@@ -160,6 +167,21 @@ public class StatesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStateMachine_producedString_Value(StateMachine_producedString_Value object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>State Machine unprocessed String Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>State Machine unprocessed String Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStateMachine_unprocessedString_Value(StateMachine_unprocessedString_Value object) {
 		return null;
 	}
 

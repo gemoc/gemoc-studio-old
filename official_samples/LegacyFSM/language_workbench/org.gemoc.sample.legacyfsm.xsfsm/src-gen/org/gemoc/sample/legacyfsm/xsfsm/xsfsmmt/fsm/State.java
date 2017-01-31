@@ -93,6 +93,6 @@ public interface State extends NamedElement {
 	 * @model
 	 * @generated
 	 */
-	void step(String inputToken);
+	void step(String inputString);
 
 } // State

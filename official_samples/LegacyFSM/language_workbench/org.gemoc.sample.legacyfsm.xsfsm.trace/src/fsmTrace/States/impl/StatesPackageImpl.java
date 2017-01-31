@@ -7,9 +7,10 @@ import fr.inria.diverse.trace.commons.model.trace.TracePackage;
 import fsmTrace.FsmTracePackage;
 
 import fsmTrace.States.State;
-import fsmTrace.States.StateMachine_actionsToProcess_Value;
+import fsmTrace.States.StateMachine_consummedString_Value;
 import fsmTrace.States.StateMachine_currentState_Value;
 import fsmTrace.States.StateMachine_producedString_Value;
+import fsmTrace.States.StateMachine_unprocessedString_Value;
 import fsmTrace.States.StatesFactory;
 import fsmTrace.States.StatesPackage;
 import fsmTrace.States.Value;
@@ -50,7 +51,7 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass stateMachine_actionsToProcess_ValueEClass = null;
+	private EClass stateMachine_consummedString_ValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -65,6 +66,13 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * @generated
 	 */
 	private EClass stateMachine_producedString_ValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stateMachine_unprocessedString_ValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -181,7 +189,7 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_StateMachine_actionsToProcess_Values() {
+	public EReference getState_StateMachine_consummedString_Values() {
 		return (EReference)stateEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -208,8 +216,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getStateMachine_actionsToProcess_Value() {
-		return stateMachine_actionsToProcess_ValueEClass;
+	public EReference getState_StateMachine_unprocessedString_Values() {
+		return (EReference)stateEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -217,8 +225,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStateMachine_actionsToProcess_Value_ActionsToProcess() {
-		return (EAttribute)stateMachine_actionsToProcess_ValueEClass.getEStructuralFeatures().get(0);
+	public EClass getStateMachine_consummedString_Value() {
+		return stateMachine_consummedString_ValueEClass;
 	}
 
 	/**
@@ -226,8 +234,8 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStateMachine_actionsToProcess_Value_Parent() {
-		return (EReference)stateMachine_actionsToProcess_ValueEClass.getEStructuralFeatures().get(1);
+	public EAttribute getStateMachine_consummedString_Value_ConsummedString() {
+		return (EAttribute)stateMachine_consummedString_ValueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -235,8 +243,17 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStateMachine_actionsToProcess_Value_States() {
-		return (EReference)stateMachine_actionsToProcess_ValueEClass.getEStructuralFeatures().get(2);
+	public EReference getStateMachine_consummedString_Value_Parent() {
+		return (EReference)stateMachine_consummedString_ValueEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStateMachine_consummedString_Value_States() {
+		return (EReference)stateMachine_consummedString_ValueEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -316,6 +333,42 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getStateMachine_unprocessedString_Value() {
+		return stateMachine_unprocessedString_ValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStateMachine_unprocessedString_Value_Parent() {
+		return (EReference)stateMachine_unprocessedString_ValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStateMachine_unprocessedString_Value_States() {
+		return (EReference)stateMachine_unprocessedString_ValueEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStateMachine_unprocessedString_Value_UnprocessedString() {
+		return (EAttribute)stateMachine_unprocessedString_ValueEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getValue() {
 		return valueEClass;
 	}
@@ -360,14 +413,15 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		stateEClass = createEClass(STATE);
 		createEReference(stateEClass, STATE__ENDED_STEPS);
 		createEReference(stateEClass, STATE__STARTED_STEPS);
-		createEReference(stateEClass, STATE__STATE_MACHINE_ACTIONS_TO_PROCESS_VALUES);
+		createEReference(stateEClass, STATE__STATE_MACHINE_CONSUMMED_STRING_VALUES);
 		createEReference(stateEClass, STATE__STATE_MACHINE_CURRENT_STATE_VALUES);
 		createEReference(stateEClass, STATE__STATE_MACHINE_PRODUCED_STRING_VALUES);
+		createEReference(stateEClass, STATE__STATE_MACHINE_UNPROCESSED_STRING_VALUES);
 
-		stateMachine_actionsToProcess_ValueEClass = createEClass(STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE);
-		createEAttribute(stateMachine_actionsToProcess_ValueEClass, STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__ACTIONS_TO_PROCESS);
-		createEReference(stateMachine_actionsToProcess_ValueEClass, STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__PARENT);
-		createEReference(stateMachine_actionsToProcess_ValueEClass, STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__STATES);
+		stateMachine_consummedString_ValueEClass = createEClass(STATE_MACHINE_CONSUMMED_STRING_VALUE);
+		createEAttribute(stateMachine_consummedString_ValueEClass, STATE_MACHINE_CONSUMMED_STRING_VALUE__CONSUMMED_STRING);
+		createEReference(stateMachine_consummedString_ValueEClass, STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT);
+		createEReference(stateMachine_consummedString_ValueEClass, STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES);
 
 		stateMachine_currentState_ValueEClass = createEClass(STATE_MACHINE_CURRENT_STATE_VALUE);
 		createEReference(stateMachine_currentState_ValueEClass, STATE_MACHINE_CURRENT_STATE_VALUE__CURRENT_STATE);
@@ -378,6 +432,11 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		createEReference(stateMachine_producedString_ValueEClass, STATE_MACHINE_PRODUCED_STRING_VALUE__PARENT);
 		createEAttribute(stateMachine_producedString_ValueEClass, STATE_MACHINE_PRODUCED_STRING_VALUE__PRODUCED_STRING);
 		createEReference(stateMachine_producedString_ValueEClass, STATE_MACHINE_PRODUCED_STRING_VALUE__STATES);
+
+		stateMachine_unprocessedString_ValueEClass = createEClass(STATE_MACHINE_UNPROCESSED_STRING_VALUE);
+		createEReference(stateMachine_unprocessedString_ValueEClass, STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT);
+		createEReference(stateMachine_unprocessedString_ValueEClass, STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES);
+		createEAttribute(stateMachine_unprocessedString_ValueEClass, STATE_MACHINE_UNPROCESSED_STRING_VALUE__UNPROCESSED_STRING);
 
 		valueEClass = createEClass(VALUE);
 		createEReference(valueEClass, VALUE__STATES_NO_OPPOSITE);
@@ -418,24 +477,26 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		stateMachine_actionsToProcess_ValueEClass.getESuperTypes().add(this.getValue());
+		stateMachine_consummedString_ValueEClass.getESuperTypes().add(this.getValue());
 		stateMachine_currentState_ValueEClass.getESuperTypes().add(this.getValue());
 		stateMachine_producedString_ValueEClass.getESuperTypes().add(this.getValue());
+		stateMachine_unprocessedString_ValueEClass.getESuperTypes().add(this.getValue());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getState_EndedSteps(), theStepsPackage.getSpecificStep(), theStepsPackage.getSpecificStep_EndingState(), "endedSteps", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getState_StartedSteps(), theStepsPackage.getSpecificStep(), theStepsPackage.getSpecificStep_StartingState(), "startedSteps", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getState_StateMachine_actionsToProcess_Values(), this.getStateMachine_actionsToProcess_Value(), this.getStateMachine_actionsToProcess_Value_States(), "stateMachine_actionsToProcess_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getState_StateMachine_consummedString_Values(), this.getStateMachine_consummedString_Value(), this.getStateMachine_consummedString_Value_States(), "stateMachine_consummedString_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getState_StateMachine_currentState_Values(), this.getStateMachine_currentState_Value(), this.getStateMachine_currentState_Value_States(), "stateMachine_currentState_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getState_StateMachine_producedString_Values(), this.getStateMachine_producedString_Value(), this.getStateMachine_producedString_Value_States(), "stateMachine_producedString_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getState_StateMachine_unprocessedString_Values(), this.getStateMachine_unprocessedString_Value(), this.getStateMachine_unprocessedString_Value_States(), "stateMachine_unprocessedString_Values", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(stateMachine_actionsToProcess_ValueEClass, StateMachine_actionsToProcess_Value.class, "StateMachine_actionsToProcess_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStateMachine_actionsToProcess_Value_ActionsToProcess(), ecorePackage.getEString(), "actionsToProcess", null, 0, -1, StateMachine_actionsToProcess_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStateMachine_actionsToProcess_Value_Parent(), theFsmPackage_1.getTracedStateMachine(), theFsmPackage_1.getTracedStateMachine_ActionsToProcessSequence(), "parent", null, 1, 1, StateMachine_actionsToProcess_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStateMachine_actionsToProcess_Value_States(), this.getState(), this.getState_StateMachine_actionsToProcess_Values(), "states", null, 1, -1, StateMachine_actionsToProcess_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(stateMachine_consummedString_ValueEClass, StateMachine_consummedString_Value.class, "StateMachine_consummedString_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStateMachine_consummedString_Value_ConsummedString(), ecorePackage.getEString(), "consummedString", null, 0, 1, StateMachine_consummedString_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_consummedString_Value_Parent(), theFsmPackage_1.getTracedStateMachine(), theFsmPackage_1.getTracedStateMachine_ConsummedStringSequence(), "parent", null, 1, 1, StateMachine_consummedString_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_consummedString_Value_States(), this.getState(), this.getState_StateMachine_consummedString_Values(), "states", null, 1, -1, StateMachine_consummedString_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(stateMachine_actionsToProcess_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(stateMachine_consummedString_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(stateMachine_currentState_ValueEClass, StateMachine_currentState_Value.class, "StateMachine_currentState_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStateMachine_currentState_Value_CurrentState(), theFsmPackage_1.getTracedState(), null, "currentState", null, 0, 1, StateMachine_currentState_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -450,6 +511,13 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		initEReference(getStateMachine_producedString_Value_States(), this.getState(), this.getState_StateMachine_producedString_Values(), "states", null, 1, -1, StateMachine_producedString_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(stateMachine_producedString_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(stateMachine_unprocessedString_ValueEClass, StateMachine_unprocessedString_Value.class, "StateMachine_unprocessedString_Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStateMachine_unprocessedString_Value_Parent(), theFsmPackage_1.getTracedStateMachine(), theFsmPackage_1.getTracedStateMachine_UnprocessedStringSequence(), "parent", null, 1, 1, StateMachine_unprocessedString_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStateMachine_unprocessedString_Value_States(), this.getState(), this.getState_StateMachine_unprocessedString_Values(), "states", null, 1, -1, StateMachine_unprocessedString_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStateMachine_unprocessedString_Value_UnprocessedString(), ecorePackage.getEString(), "unprocessedString", null, 0, 1, StateMachine_unprocessedString_Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(stateMachine_unprocessedString_ValueEClass, this.getState(), "getStatesNoOpposite", 1, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getValue_StatesNoOpposite(), this.getState(), null, "statesNoOpposite", null, 1, -1, Value.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -470,7 +538,7 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	protected void createXMOFAnnotations() {
 		String source = "http://www.modelexecution.org/trace/XMOF";	
 		addAnnotation
-		  (stateMachine_actionsToProcess_ValueEClass, 
+		  (stateMachine_consummedString_ValueEClass, 
 		   source, 
 		   new String[] {
 			 "executionMetamodelElement", null
@@ -486,6 +554,12 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		   source, 
 		   new String[] {
 			 "executionMetamodelElement", null
+		   });	
+		addAnnotation
+		  (stateMachine_unprocessedString_ValueEClass, 
+		   source, 
+		   new String[] {
+			 "executionMetamodelElement", null
 		   });
 	}
 
@@ -498,7 +572,7 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 	protected void createAspectAnnotations() {
 		String source = "aspect";	
 		addAnnotation
-		  (getStateMachine_actionsToProcess_Value_ActionsToProcess(), 
+		  (getStateMachine_consummedString_Value_ConsummedString(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -509,6 +583,11 @@ public class StatesPackageImpl extends EPackageImpl implements StatesPackage {
 		   });	
 		addAnnotation
 		  (getStateMachine_producedString_Value_ProducedString(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getStateMachine_unprocessedString_Value_UnprocessedString(), 
 		   source, 
 		   new String[] {
 		   });

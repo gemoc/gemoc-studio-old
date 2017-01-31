@@ -47,7 +47,7 @@
       <layers name="Animation">
         <containerMappings semanticCandidatesExpression="[self/]" domainClass="StateMachine" childrenPresentation="List">
           <subNodeMappings name="StringToProcess" semanticCandidatesExpression="[self/]" domainClass="StateMachine">
-            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="aql:' string to process: '+self.actionsToProcess" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="aql:' string to process: '+self.unprocessedString" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

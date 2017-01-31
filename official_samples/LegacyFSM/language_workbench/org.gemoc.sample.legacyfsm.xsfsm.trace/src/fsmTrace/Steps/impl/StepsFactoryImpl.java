@@ -56,6 +56,7 @@ public class StepsFactoryImpl extends EFactoryImpl implements StepsFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case StepsPackage.FSM_STATE_MACHINE_INITIALIZE_MODEL: return createFsm_StateMachine_InitializeModel();
 			case StepsPackage.FSM_STATE_STEP: return createFsm_State_Step();
 			case StepsPackage.FSM_STATE_STEP_IMPLICIT_STEP: return createFsm_State_Step_ImplicitStep();
 			case StepsPackage.FSM_TRANSITION_FIRE: return createFsm_Transition_Fire();
@@ -63,6 +64,16 @@ public class StepsFactoryImpl extends EFactoryImpl implements StepsFactory {
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Fsm_StateMachine_InitializeModel createFsm_StateMachine_InitializeModel() {
+		Fsm_StateMachine_InitializeModelImpl fsm_StateMachine_InitializeModel = new Fsm_StateMachine_InitializeModelImpl();
+		return fsm_StateMachine_InitializeModel;
 	}
 
 	/**

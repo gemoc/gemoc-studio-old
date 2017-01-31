@@ -2,9 +2,10 @@
  */
 package fsmTrace.States.fsm;
 
-import fsmTrace.States.StateMachine_actionsToProcess_Value;
+import fsmTrace.States.StateMachine_consummedString_Value;
 import fsmTrace.States.StateMachine_currentState_Value;
 import fsmTrace.States.StateMachine_producedString_Value;
+import fsmTrace.States.StateMachine_unprocessedString_Value;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -19,10 +20,11 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getActionsToProcessSequence <em>Actions To Process Sequence</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getConsummedStringSequence <em>Consummed String Sequence</em>}</li>
  *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getCurrentStateSequence <em>Current State Sequence</em>}</li>
  *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getOriginalObject <em>Original Object</em>}</li>
  *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getProducedStringSequence <em>Produced String Sequence</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getUnprocessedStringSequence <em>Unprocessed String Sequence</em>}</li>
  * </ul>
  *
  * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine()
@@ -31,22 +33,22 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine;
  */
 public interface TracedStateMachine extends TracedNamedElement {
 	/**
-	 * Returns the value of the '<em><b>Actions To Process Sequence</b></em>' containment reference list.
-	 * The list contents are of type {@link fsmTrace.States.StateMachine_actionsToProcess_Value}.
-	 * It is bidirectional and its opposite is '{@link fsmTrace.States.StateMachine_actionsToProcess_Value#getParent <em>Parent</em>}'.
+	 * Returns the value of the '<em><b>Consummed String Sequence</b></em>' containment reference list.
+	 * The list contents are of type {@link fsmTrace.States.StateMachine_consummedString_Value}.
+	 * It is bidirectional and its opposite is '{@link fsmTrace.States.StateMachine_consummedString_Value#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Actions To Process Sequence</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Consummed String Sequence</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Actions To Process Sequence</em>' containment reference list.
-	 * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine_ActionsToProcessSequence()
-	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value#getParent
+	 * @return the value of the '<em>Consummed String Sequence</em>' containment reference list.
+	 * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine_ConsummedStringSequence()
+	 * @see fsmTrace.States.StateMachine_consummedString_Value#getParent
 	 * @model opposite="parent" containment="true"
 	 * @generated
 	 */
-	EList<StateMachine_actionsToProcess_Value> getActionsToProcessSequence();
+	EList<StateMachine_consummedString_Value> getConsummedStringSequence();
 
 	/**
 	 * Returns the value of the '<em><b>Current State Sequence</b></em>' containment reference list.
@@ -109,5 +111,23 @@ public interface TracedStateMachine extends TracedNamedElement {
 	 * @generated
 	 */
 	EList<StateMachine_producedString_Value> getProducedStringSequence();
+
+	/**
+	 * Returns the value of the '<em><b>Unprocessed String Sequence</b></em>' containment reference list.
+	 * The list contents are of type {@link fsmTrace.States.StateMachine_unprocessedString_Value}.
+	 * It is bidirectional and its opposite is '{@link fsmTrace.States.StateMachine_unprocessedString_Value#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Unprocessed String Sequence</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unprocessed String Sequence</em>' containment reference list.
+	 * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine_UnprocessedStringSequence()
+	 * @see fsmTrace.States.StateMachine_unprocessedString_Value#getParent
+	 * @model opposite="parent" containment="true"
+	 * @generated
+	 */
+	EList<StateMachine_unprocessedString_Value> getUnprocessedStringSequence();
 
 } // TracedStateMachine

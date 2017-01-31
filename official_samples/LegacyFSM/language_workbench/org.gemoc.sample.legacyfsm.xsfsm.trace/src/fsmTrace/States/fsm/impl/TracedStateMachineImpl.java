@@ -2,9 +2,10 @@
  */
 package fsmTrace.States.fsm.impl;
 
-import fsmTrace.States.StateMachine_actionsToProcess_Value;
+import fsmTrace.States.StateMachine_consummedString_Value;
 import fsmTrace.States.StateMachine_currentState_Value;
 import fsmTrace.States.StateMachine_producedString_Value;
+import fsmTrace.States.StateMachine_unprocessedString_Value;
 import fsmTrace.States.StatesPackage;
 
 import fsmTrace.States.fsm.FsmPackage;
@@ -35,24 +36,25 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getActionsToProcessSequence <em>Actions To Process Sequence</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getConsummedStringSequence <em>Consummed String Sequence</em>}</li>
  *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getCurrentStateSequence <em>Current State Sequence</em>}</li>
  *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getOriginalObject <em>Original Object</em>}</li>
  *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getProducedStringSequence <em>Produced String Sequence</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getUnprocessedStringSequence <em>Unprocessed String Sequence</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TracedStateMachineImpl extends TracedNamedElementImpl implements TracedStateMachine {
 	/**
-	 * The cached value of the '{@link #getActionsToProcessSequence() <em>Actions To Process Sequence</em>}' containment reference list.
+	 * The cached value of the '{@link #getConsummedStringSequence() <em>Consummed String Sequence</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getActionsToProcessSequence()
+	 * @see #getConsummedStringSequence()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<StateMachine_actionsToProcess_Value> actionsToProcessSequence;
+	protected EList<StateMachine_consummedString_Value> consummedStringSequence;
 
 	/**
 	 * The cached value of the '{@link #getCurrentStateSequence() <em>Current State Sequence</em>}' containment reference list.
@@ -85,6 +87,16 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	protected EList<StateMachine_producedString_Value> producedStringSequence;
 
 	/**
+	 * The cached value of the '{@link #getUnprocessedStringSequence() <em>Unprocessed String Sequence</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnprocessedStringSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<StateMachine_unprocessedString_Value> unprocessedStringSequence;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -108,11 +120,11 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<StateMachine_actionsToProcess_Value> getActionsToProcessSequence() {
-		if (actionsToProcessSequence == null) {
-			actionsToProcessSequence = new EObjectContainmentWithInverseEList<StateMachine_actionsToProcess_Value>(StateMachine_actionsToProcess_Value.class, this, FsmPackage.TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE, StatesPackage.STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__PARENT);
+	public EList<StateMachine_consummedString_Value> getConsummedStringSequence() {
+		if (consummedStringSequence == null) {
+			consummedStringSequence = new EObjectContainmentWithInverseEList<StateMachine_consummedString_Value>(StateMachine_consummedString_Value.class, this, FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE, StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT);
 		}
-		return actionsToProcessSequence;
+		return consummedStringSequence;
 	}
 
 	/**
@@ -182,16 +194,30 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<StateMachine_unprocessedString_Value> getUnprocessedStringSequence() {
+		if (unprocessedStringSequence == null) {
+			unprocessedStringSequence = new EObjectContainmentWithInverseEList<StateMachine_unprocessedString_Value>(StateMachine_unprocessedString_Value.class, this, FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE, StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT);
+		}
+		return unprocessedStringSequence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getActionsToProcessSequence()).basicAdd(otherEnd, msgs);
+			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConsummedStringSequence()).basicAdd(otherEnd, msgs);
 			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCurrentStateSequence()).basicAdd(otherEnd, msgs);
 			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getProducedStringSequence()).basicAdd(otherEnd, msgs);
+			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getUnprocessedStringSequence()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -204,12 +230,14 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE:
-				return ((InternalEList<?>)getActionsToProcessSequence()).basicRemove(otherEnd, msgs);
+			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
+				return ((InternalEList<?>)getConsummedStringSequence()).basicRemove(otherEnd, msgs);
 			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
 				return ((InternalEList<?>)getCurrentStateSequence()).basicRemove(otherEnd, msgs);
 			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
 				return ((InternalEList<?>)getProducedStringSequence()).basicRemove(otherEnd, msgs);
+			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
+				return ((InternalEList<?>)getUnprocessedStringSequence()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -222,8 +250,8 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE:
-				return getActionsToProcessSequence();
+			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
+				return getConsummedStringSequence();
 			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
 				return getCurrentStateSequence();
 			case FsmPackage.TRACED_STATE_MACHINE__ORIGINAL_OBJECT:
@@ -231,6 +259,8 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 				return basicGetOriginalObject();
 			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
 				return getProducedStringSequence();
+			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
+				return getUnprocessedStringSequence();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -244,9 +274,9 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE:
-				getActionsToProcessSequence().clear();
-				getActionsToProcessSequence().addAll((Collection<? extends StateMachine_actionsToProcess_Value>)newValue);
+			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
+				getConsummedStringSequence().clear();
+				getConsummedStringSequence().addAll((Collection<? extends StateMachine_consummedString_Value>)newValue);
 				return;
 			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
 				getCurrentStateSequence().clear();
@@ -258,6 +288,10 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
 				getProducedStringSequence().clear();
 				getProducedStringSequence().addAll((Collection<? extends StateMachine_producedString_Value>)newValue);
+				return;
+			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
+				getUnprocessedStringSequence().clear();
+				getUnprocessedStringSequence().addAll((Collection<? extends StateMachine_unprocessedString_Value>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -271,8 +305,8 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE:
-				getActionsToProcessSequence().clear();
+			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
+				getConsummedStringSequence().clear();
 				return;
 			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
 				getCurrentStateSequence().clear();
@@ -282,6 +316,9 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 				return;
 			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
 				getProducedStringSequence().clear();
+				return;
+			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
+				getUnprocessedStringSequence().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -295,14 +332,16 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE:
-				return actionsToProcessSequence != null && !actionsToProcessSequence.isEmpty();
+			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
+				return consummedStringSequence != null && !consummedStringSequence.isEmpty();
 			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
 				return currentStateSequence != null && !currentStateSequence.isEmpty();
 			case FsmPackage.TRACED_STATE_MACHINE__ORIGINAL_OBJECT:
 				return originalObject != null;
 			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
 				return producedStringSequence != null && !producedStringSequence.isEmpty();
+			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
+				return unprocessedStringSequence != null && !unprocessedStringSequence.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

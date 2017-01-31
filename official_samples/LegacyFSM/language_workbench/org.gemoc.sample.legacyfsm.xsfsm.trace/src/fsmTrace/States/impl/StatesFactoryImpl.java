@@ -57,9 +57,10 @@ public class StatesFactoryImpl extends EFactoryImpl implements StatesFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case StatesPackage.STATE: return createState();
-			case StatesPackage.STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE: return createStateMachine_actionsToProcess_Value();
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE: return createStateMachine_consummedString_Value();
 			case StatesPackage.STATE_MACHINE_CURRENT_STATE_VALUE: return createStateMachine_currentState_Value();
 			case StatesPackage.STATE_MACHINE_PRODUCED_STRING_VALUE: return createStateMachine_producedString_Value();
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE: return createStateMachine_unprocessedString_Value();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,9 +81,9 @@ public class StatesFactoryImpl extends EFactoryImpl implements StatesFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StateMachine_actionsToProcess_Value createStateMachine_actionsToProcess_Value() {
-		StateMachine_actionsToProcess_ValueImpl stateMachine_actionsToProcess_Value = new StateMachine_actionsToProcess_ValueImpl();
-		return stateMachine_actionsToProcess_Value;
+	public StateMachine_consummedString_Value createStateMachine_consummedString_Value() {
+		StateMachine_consummedString_ValueImpl stateMachine_consummedString_Value = new StateMachine_consummedString_ValueImpl();
+		return stateMachine_consummedString_Value;
 	}
 
 	/**
@@ -103,6 +104,16 @@ public class StatesFactoryImpl extends EFactoryImpl implements StatesFactory {
 	public StateMachine_producedString_Value createStateMachine_producedString_Value() {
 		StateMachine_producedString_ValueImpl stateMachine_producedString_Value = new StateMachine_producedString_ValueImpl();
 		return stateMachine_producedString_Value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StateMachine_unprocessedString_Value createStateMachine_unprocessedString_Value() {
+		StateMachine_unprocessedString_ValueImpl stateMachine_unprocessedString_Value = new StateMachine_unprocessedString_ValueImpl();
+		return stateMachine_unprocessedString_Value;
 	}
 
 	/**

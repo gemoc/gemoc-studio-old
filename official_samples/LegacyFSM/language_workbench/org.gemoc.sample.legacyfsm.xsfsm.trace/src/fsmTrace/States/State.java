@@ -19,9 +19,10 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fsmTrace.States.State#getEndedSteps <em>Ended Steps</em>}</li>
  *   <li>{@link fsmTrace.States.State#getStartedSteps <em>Started Steps</em>}</li>
- *   <li>{@link fsmTrace.States.State#getStateMachine_actionsToProcess_Values <em>State Machine actions To Process Values</em>}</li>
+ *   <li>{@link fsmTrace.States.State#getStateMachine_consummedString_Values <em>State Machine consummed String Values</em>}</li>
  *   <li>{@link fsmTrace.States.State#getStateMachine_currentState_Values <em>State Machine current State Values</em>}</li>
  *   <li>{@link fsmTrace.States.State#getStateMachine_producedString_Values <em>State Machine produced String Values</em>}</li>
+ *   <li>{@link fsmTrace.States.State#getStateMachine_unprocessedString_Values <em>State Machine unprocessed String Values</em>}</li>
  * </ul>
  *
  * @see fsmTrace.States.StatesPackage#getState()
@@ -66,22 +67,22 @@ public interface State extends EObject {
 	EList<SpecificStep> getStartedSteps();
 
 	/**
-	 * Returns the value of the '<em><b>State Machine actions To Process Values</b></em>' reference list.
-	 * The list contents are of type {@link fsmTrace.States.StateMachine_actionsToProcess_Value}.
-	 * It is bidirectional and its opposite is '{@link fsmTrace.States.StateMachine_actionsToProcess_Value#getStates <em>States</em>}'.
+	 * Returns the value of the '<em><b>State Machine consummed String Values</b></em>' reference list.
+	 * The list contents are of type {@link fsmTrace.States.StateMachine_consummedString_Value}.
+	 * It is bidirectional and its opposite is '{@link fsmTrace.States.StateMachine_consummedString_Value#getStates <em>States</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>State Machine actions To Process Values</em>' reference list isn't clear,
+	 * If the meaning of the '<em>State Machine consummed String Values</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>State Machine actions To Process Values</em>' reference list.
-	 * @see fsmTrace.States.StatesPackage#getState_StateMachine_actionsToProcess_Values()
-	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value#getStates
+	 * @return the value of the '<em>State Machine consummed String Values</em>' reference list.
+	 * @see fsmTrace.States.StatesPackage#getState_StateMachine_consummedString_Values()
+	 * @see fsmTrace.States.StateMachine_consummedString_Value#getStates
 	 * @model opposite="states" ordered="false"
 	 * @generated
 	 */
-	EList<StateMachine_actionsToProcess_Value> getStateMachine_actionsToProcess_Values();
+	EList<StateMachine_consummedString_Value> getStateMachine_consummedString_Values();
 
 	/**
 	 * Returns the value of the '<em><b>State Machine current State Values</b></em>' reference list.
@@ -118,5 +119,23 @@ public interface State extends EObject {
 	 * @generated
 	 */
 	EList<StateMachine_producedString_Value> getStateMachine_producedString_Values();
+
+	/**
+	 * Returns the value of the '<em><b>State Machine unprocessed String Values</b></em>' reference list.
+	 * The list contents are of type {@link fsmTrace.States.StateMachine_unprocessedString_Value}.
+	 * It is bidirectional and its opposite is '{@link fsmTrace.States.StateMachine_unprocessedString_Value#getStates <em>States</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>State Machine unprocessed String Values</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>State Machine unprocessed String Values</em>' reference list.
+	 * @see fsmTrace.States.StatesPackage#getState_StateMachine_unprocessedString_Values()
+	 * @see fsmTrace.States.StateMachine_unprocessedString_Value#getStates
+	 * @model opposite="states" ordered="false"
+	 * @generated
+	 */
+	EList<StateMachine_unprocessedString_Value> getStateMachine_unprocessedString_Values();
 
 } // State

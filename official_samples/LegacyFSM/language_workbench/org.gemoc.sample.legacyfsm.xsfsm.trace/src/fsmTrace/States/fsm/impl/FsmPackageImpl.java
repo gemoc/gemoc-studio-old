@@ -181,7 +181,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTracedStateMachine_ActionsToProcessSequence() {
+	public EReference getTracedStateMachine_ConsummedStringSequence() {
 		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -210,6 +210,15 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 */
 	public EReference getTracedStateMachine_ProducedStringSequence() {
 		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTracedStateMachine_UnprocessedStringSequence() {
+		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -264,10 +273,11 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		createEReference(tracedStateEClass, TRACED_STATE__ORIGINAL_OBJECT);
 
 		tracedStateMachineEClass = createEClass(TRACED_STATE_MACHINE);
-		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__ACTIONS_TO_PROCESS_SEQUENCE);
+		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE);
 		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE);
 		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__ORIGINAL_OBJECT);
 		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE);
+		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE);
 
 		tracedTransitionEClass = createEClass(TRACED_TRANSITION);
 		createEReference(tracedTransitionEClass, TRACED_TRANSITION__ORIGINAL_OBJECT);
@@ -316,10 +326,11 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		initEReference(getTracedState_OriginalObject(), theFsmPackage_1.getState(), null, "originalObject", null, 0, 1, TracedState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tracedStateMachineEClass, TracedStateMachine.class, "TracedStateMachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTracedStateMachine_ActionsToProcessSequence(), theStatesPackage.getStateMachine_actionsToProcess_Value(), theStatesPackage.getStateMachine_actionsToProcess_Value_Parent(), "actionsToProcessSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTracedStateMachine_ConsummedStringSequence(), theStatesPackage.getStateMachine_consummedString_Value(), theStatesPackage.getStateMachine_consummedString_Value_Parent(), "consummedStringSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTracedStateMachine_CurrentStateSequence(), theStatesPackage.getStateMachine_currentState_Value(), theStatesPackage.getStateMachine_currentState_Value_Parent(), "currentStateSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTracedStateMachine_OriginalObject(), theFsmPackage_1.getStateMachine(), null, "originalObject", null, 0, 1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTracedStateMachine_ProducedStringSequence(), theStatesPackage.getStateMachine_producedString_Value(), theStatesPackage.getStateMachine_producedString_Value_Parent(), "producedStringSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTracedStateMachine_UnprocessedStringSequence(), theStatesPackage.getStateMachine_unprocessedString_Value(), theStatesPackage.getStateMachine_unprocessedString_Value_Parent(), "unprocessedStringSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tracedTransitionEClass, TracedTransition.class, "TracedTransition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTracedTransition_OriginalObject(), theFsmPackage_1.getTransition(), null, "originalObject", null, 0, 1, TracedTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -23,6 +23,14 @@ public class FsmTraceStepFactory implements IStepFactory {
 			step = fsmTrace.Steps.StepsFactory.eINSTANCE.createFsm_State_Step();
 		} else
 
+		if (mse.getAction().getName().equalsIgnoreCase("initializeModel")
+				&& (ec.getClassifierID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
+						.getStateMachine().getClassifierID()))
+
+		{
+			step = fsmTrace.Steps.StepsFactory.eINSTANCE.createFsm_StateMachine_InitializeModel();
+		} else
+
 		if (mse.getAction().getName().equalsIgnoreCase("fire")
 				&& (ec.getClassifierID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
 						.getTransition().getClassifierID()))

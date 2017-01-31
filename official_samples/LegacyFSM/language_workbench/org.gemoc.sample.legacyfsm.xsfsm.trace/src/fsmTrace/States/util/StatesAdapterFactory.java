@@ -72,8 +72,8 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 				return createStateAdapter();
 			}
 			@Override
-			public Adapter caseStateMachine_actionsToProcess_Value(StateMachine_actionsToProcess_Value object) {
-				return createStateMachine_actionsToProcess_ValueAdapter();
+			public Adapter caseStateMachine_consummedString_Value(StateMachine_consummedString_Value object) {
+				return createStateMachine_consummedString_ValueAdapter();
 			}
 			@Override
 			public Adapter caseStateMachine_currentState_Value(StateMachine_currentState_Value object) {
@@ -82,6 +82,10 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseStateMachine_producedString_Value(StateMachine_producedString_Value object) {
 				return createStateMachine_producedString_ValueAdapter();
+			}
+			@Override
+			public Adapter caseStateMachine_unprocessedString_Value(StateMachine_unprocessedString_Value object) {
+				return createStateMachine_unprocessedString_ValueAdapter();
 			}
 			@Override
 			public Adapter caseValue(Value object) {
@@ -122,16 +126,16 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_actionsToProcess_Value <em>State Machine actions To Process Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_consummedString_Value <em>State Machine consummed String Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value
+	 * @see fsmTrace.States.StateMachine_consummedString_Value
 	 * @generated
 	 */
-	public Adapter createStateMachine_actionsToProcess_ValueAdapter() {
+	public Adapter createStateMachine_consummedString_ValueAdapter() {
 		return null;
 	}
 
@@ -160,6 +164,20 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStateMachine_producedString_ValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_unprocessedString_Value <em>State Machine unprocessed String Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fsmTrace.States.StateMachine_unprocessedString_Value
+	 * @generated
+	 */
+	public Adapter createStateMachine_unprocessedString_ValueAdapter() {
 		return null;
 	}
 

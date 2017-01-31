@@ -17,7 +17,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getInitialState <em>Initial State</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getOwnedTransitions <em>Owned Transitions</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getCurrentState <em>Current State</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getActionsToProcess <em>Actions To Process</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getUnprocessedString <em>Unprocessed String</em>}</li>
+ *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getConsummedString <em>Consummed String</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getProducedString <em>Produced String</em>}</li>
  * </ul>
  *
@@ -113,20 +114,56 @@ public interface StateMachine extends NamedElement {
 	void setCurrentState(State value);
 
 	/**
-	 * Returns the value of the '<em><b>Actions To Process</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Unprocessed String</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Actions To Process</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Unprocessed String</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Actions To Process</em>' attribute list.
-	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage#getStateMachine_ActionsToProcess()
+	 * @return the value of the '<em>Unprocessed String</em>' attribute.
+	 * @see #setUnprocessedString(String)
+	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage#getStateMachine_UnprocessedString()
 	 * @model unique="false"
 	 * @generated
 	 */
-	EList<String> getActionsToProcess();
+	String getUnprocessedString();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getUnprocessedString <em>Unprocessed String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unprocessed String</em>' attribute.
+	 * @see #getUnprocessedString()
+	 * @generated
+	 */
+	void setUnprocessedString(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Consummed String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Consummed String</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Consummed String</em>' attribute.
+	 * @see #setConsummedString(String)
+	 * @see org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage#getStateMachine_ConsummedString()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getConsummedString();
+
+	/**
+	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine#getConsummedString <em>Consummed String</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Consummed String</em>' attribute.
+	 * @see #getConsummedString()
+	 * @generated
+	 */
+	void setConsummedString(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Produced String</b></em>' attribute.

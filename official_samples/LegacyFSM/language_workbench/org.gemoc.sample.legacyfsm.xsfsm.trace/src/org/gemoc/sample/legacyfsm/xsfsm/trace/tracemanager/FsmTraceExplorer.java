@@ -62,9 +62,10 @@ public class FsmTraceExplorer implements ITraceExplorer {
 	private List<List<? extends fsmTrace.States.Value>> getAllValueTraces() {
 		final List<List<? extends fsmTrace.States.Value>> result = new ArrayList<>();
 		for (fsmTrace.States.fsm.TracedStateMachine tracedObject : traceRoot.getFsm_tracedStateMachines()) {
-			result.add(tracedObject.getActionsToProcessSequence());
+			result.add(tracedObject.getConsummedStringSequence());
 			result.add(tracedObject.getCurrentStateSequence());
 			result.add(tracedObject.getProducedStringSequence());
+			result.add(tracedObject.getUnprocessedStringSequence());
 		}
 		return result;
 	}
@@ -300,15 +301,18 @@ public class FsmTraceExplorer implements ITraceExplorer {
 	private void goTo(EObject eObject) {
 		if (eObject instanceof fsmTrace.States.State) {
 			fsmTrace.States.State stateToGo = (fsmTrace.States.State) eObject;
-			for (fsmTrace.States.StateMachine_actionsToProcess_Value value : stateToGo
-					.getStateMachine_actionsToProcess_Values()) {
+			for (fsmTrace.States.StateMachine_consummedString_Value value : stateToGo
+					.getStateMachine_consummedString_Values()) {
 				if (value.getParent() instanceof fsmTrace.States.fsm.TracedStateMachine) {
 					fsmTrace.States.fsm.TracedStateMachine parent_cast = (fsmTrace.States.fsm.TracedStateMachine) value
 							.getParent();
-					org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine originalObject = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast
-							.getOriginalObject();
-					originalObject.getActionsToProcess().clear();
-					originalObject.getActionsToProcess().addAll(value.getActionsToProcess());
+					java.lang.String toset = value.getConsummedString();
+					java.lang.String current = ((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast
+							.getOriginalObject()).getConsummedString();
+					if (current != toset) {
+						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast.getOriginalObject())
+								.setConsummedString((java.lang.String) toset);
+					}
 				}
 			}
 			for (fsmTrace.States.StateMachine_currentState_Value value : stateToGo
@@ -337,6 +341,20 @@ public class FsmTraceExplorer implements ITraceExplorer {
 					if (current != toset) {
 						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast.getOriginalObject())
 								.setProducedString((java.lang.String) toset);
+					}
+				}
+			}
+			for (fsmTrace.States.StateMachine_unprocessedString_Value value : stateToGo
+					.getStateMachine_unprocessedString_Values()) {
+				if (value.getParent() instanceof fsmTrace.States.fsm.TracedStateMachine) {
+					fsmTrace.States.fsm.TracedStateMachine parent_cast = (fsmTrace.States.fsm.TracedStateMachine) value
+							.getParent();
+					java.lang.String toset = value.getUnprocessedString();
+					java.lang.String current = ((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast
+							.getOriginalObject()).getUnprocessedString();
+					if (current != toset) {
+						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast.getOriginalObject())
+								.setUnprocessedString((java.lang.String) toset);
 					}
 				}
 			}

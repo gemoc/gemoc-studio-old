@@ -2,12 +2,12 @@
  */
 package fsmTrace.States.impl;
 
-import fsmTrace.States.FSMClock_numberOfTicks_Value;
 import fsmTrace.States.State;
+import fsmTrace.States.StateMachine_consummedString_Value;
 import fsmTrace.States.StatesPackage;
 
 import fsmTrace.States.fsm.FsmPackage;
-import fsmTrace.States.fsm.TracedFSMClock;
+import fsmTrace.States.fsm.TracedStateMachine;
 
 import java.util.Collection;
 
@@ -28,40 +28,40 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>FSM Clock number Of Ticks Value</b></em>'.
+ * An implementation of the model object '<em><b>State Machine consummed String Value</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fsmTrace.States.impl.FSMClock_numberOfTicks_ValueImpl#getStatesNoOpposite <em>States No Opposite</em>}</li>
- *   <li>{@link fsmTrace.States.impl.FSMClock_numberOfTicks_ValueImpl#getNumberOfTicks <em>Number Of Ticks</em>}</li>
- *   <li>{@link fsmTrace.States.impl.FSMClock_numberOfTicks_ValueImpl#getParent <em>Parent</em>}</li>
- *   <li>{@link fsmTrace.States.impl.FSMClock_numberOfTicks_ValueImpl#getStates <em>States</em>}</li>
+ *   <li>{@link fsmTrace.States.impl.StateMachine_consummedString_ValueImpl#getStatesNoOpposite <em>States No Opposite</em>}</li>
+ *   <li>{@link fsmTrace.States.impl.StateMachine_consummedString_ValueImpl#getConsummedString <em>Consummed String</em>}</li>
+ *   <li>{@link fsmTrace.States.impl.StateMachine_consummedString_ValueImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link fsmTrace.States.impl.StateMachine_consummedString_ValueImpl#getStates <em>States</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Container implements FSMClock_numberOfTicks_Value {
+public class StateMachine_consummedString_ValueImpl extends MinimalEObjectImpl.Container implements StateMachine_consummedString_Value {
 	/**
-	 * The default value of the '{@link #getNumberOfTicks() <em>Number Of Ticks</em>}' attribute.
+	 * The default value of the '{@link #getConsummedString() <em>Consummed String</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNumberOfTicks()
+	 * @see #getConsummedString()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer NUMBER_OF_TICKS_EDEFAULT = null;
+	protected static final String CONSUMMED_STRING_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getNumberOfTicks() <em>Number Of Ticks</em>}' attribute.
+	 * The cached value of the '{@link #getConsummedString() <em>Consummed String</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNumberOfTicks()
+	 * @see #getConsummedString()
 	 * @generated
 	 * @ordered
 	 */
-	protected Integer numberOfTicks = NUMBER_OF_TICKS_EDEFAULT;
+	protected String consummedString = CONSUMMED_STRING_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getStates() <em>States</em>}' reference list.
@@ -78,7 +78,7 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected FSMClock_numberOfTicks_ValueImpl() {
+	protected StateMachine_consummedString_ValueImpl() {
 		super();
 	}
 
@@ -89,7 +89,7 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return StatesPackage.Literals.FSM_CLOCK_NUMBER_OF_TICKS_VALUE;
+		return StatesPackage.Literals.STATE_MACHINE_CONSUMMED_STRING_VALUE;
 	}
 
 	/**
@@ -106,8 +106,8 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Integer getNumberOfTicks() {
-		return numberOfTicks;
+	public String getConsummedString() {
+		return consummedString;
 	}
 
 	/**
@@ -115,11 +115,11 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNumberOfTicks(Integer newNumberOfTicks) {
-		Integer oldNumberOfTicks = numberOfTicks;
-		numberOfTicks = newNumberOfTicks;
+	public void setConsummedString(String newConsummedString) {
+		String oldConsummedString = consummedString;
+		consummedString = newConsummedString;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS, oldNumberOfTicks, numberOfTicks));
+			eNotify(new ENotificationImpl(this, Notification.SET, StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__CONSUMMED_STRING, oldConsummedString, consummedString));
 	}
 
 	/**
@@ -127,9 +127,9 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TracedFSMClock getParent() {
-		if (eContainerFeatureID() != StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT) return null;
-		return (TracedFSMClock)eInternalContainer();
+	public TracedStateMachine getParent() {
+		if (eContainerFeatureID() != StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT) return null;
+		return (TracedStateMachine)eInternalContainer();
 	}
 
 	/**
@@ -137,8 +137,8 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetParent(TracedFSMClock newParent, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newParent, StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT, msgs);
+	public NotificationChain basicSetParent(TracedStateMachine newParent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newParent, StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT, msgs);
 		return msgs;
 	}
 
@@ -147,20 +147,20 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParent(TracedFSMClock newParent) {
-		if (newParent != eInternalContainer() || (eContainerFeatureID() != StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT && newParent != null)) {
+	public void setParent(TracedStateMachine newParent) {
+		if (newParent != eInternalContainer() || (eContainerFeatureID() != StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT && newParent != null)) {
 			if (EcoreUtil.isAncestor(this, newParent))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newParent != null)
-				msgs = ((InternalEObject)newParent).eInverseAdd(this, FsmPackage.TRACED_FSM_CLOCK__NUMBER_OF_TICKS_SEQUENCE, TracedFSMClock.class, msgs);
+				msgs = ((InternalEObject)newParent).eInverseAdd(this, FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE, TracedStateMachine.class, msgs);
 			msgs = basicSetParent(newParent, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT, newParent, newParent));
+			eNotify(new ENotificationImpl(this, Notification.SET, StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT, newParent, newParent));
 	}
 
 	/**
@@ -170,7 +170,7 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	 */
 	public EList<State> getStates() {
 		if (states == null) {
-			states = new EObjectWithInverseResolvingEList.ManyInverse<State>(State.class, this, StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES, StatesPackage.STATE__FSM_CLOCK_NUMBER_OF_TICKS_VALUES);
+			states = new EObjectWithInverseResolvingEList.ManyInverse<State>(State.class, this, StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES, StatesPackage.STATE__STATE_MACHINE_CONSUMMED_STRING_VALUES);
 		}
 		return states;
 	}
@@ -184,11 +184,11 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT:
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetParent((TracedFSMClock)otherEnd, msgs);
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES:
+				return basicSetParent((TracedStateMachine)otherEnd, msgs);
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getStates()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -202,9 +202,9 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT:
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT:
 				return basicSetParent(null, msgs);
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES:
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES:
 				return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -218,8 +218,8 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT:
-				return eInternalContainer().eInverseRemove(this, FsmPackage.TRACED_FSM_CLOCK__NUMBER_OF_TICKS_SEQUENCE, TracedFSMClock.class, msgs);
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT:
+				return eInternalContainer().eInverseRemove(this, FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE, TracedStateMachine.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -232,13 +232,13 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES_NO_OPPOSITE:
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES_NO_OPPOSITE:
 				return getStatesNoOpposite();
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS:
-				return getNumberOfTicks();
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT:
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__CONSUMMED_STRING:
+				return getConsummedString();
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT:
 				return getParent();
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES:
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES:
 				return getStates();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -253,13 +253,13 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS:
-				setNumberOfTicks((Integer)newValue);
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__CONSUMMED_STRING:
+				setConsummedString((String)newValue);
 				return;
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT:
-				setParent((TracedFSMClock)newValue);
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT:
+				setParent((TracedStateMachine)newValue);
 				return;
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES:
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES:
 				getStates().clear();
 				getStates().addAll((Collection<? extends State>)newValue);
 				return;
@@ -275,13 +275,13 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS:
-				setNumberOfTicks(NUMBER_OF_TICKS_EDEFAULT);
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__CONSUMMED_STRING:
+				setConsummedString(CONSUMMED_STRING_EDEFAULT);
 				return;
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT:
-				setParent((TracedFSMClock)null);
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT:
+				setParent((TracedStateMachine)null);
 				return;
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES:
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES:
 				getStates().clear();
 				return;
 		}
@@ -296,13 +296,13 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES_NO_OPPOSITE:
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES_NO_OPPOSITE:
 				return !getStatesNoOpposite().isEmpty();
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__NUMBER_OF_TICKS:
-				return NUMBER_OF_TICKS_EDEFAULT == null ? numberOfTicks != null : !NUMBER_OF_TICKS_EDEFAULT.equals(numberOfTicks);
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__PARENT:
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__CONSUMMED_STRING:
+				return CONSUMMED_STRING_EDEFAULT == null ? consummedString != null : !CONSUMMED_STRING_EDEFAULT.equals(consummedString);
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT:
 				return getParent() != null;
-			case StatesPackage.FSM_CLOCK_NUMBER_OF_TICKS_VALUE__STATES:
+			case StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES:
 				return states != null && !states.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -318,10 +318,10 @@ public class FSMClock_numberOfTicks_ValueImpl extends MinimalEObjectImpl.Contain
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (numberOfTicks: ");
-		result.append(numberOfTicks);
+		result.append(" (consummedString: ");
+		result.append(consummedString);
 		result.append(')');
 		return result.toString();
 	}
 
-} //FSMClock_numberOfTicks_ValueImpl
+} //StateMachine_consummedString_ValueImpl

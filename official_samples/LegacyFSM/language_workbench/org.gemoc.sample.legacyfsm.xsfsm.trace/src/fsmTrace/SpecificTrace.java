@@ -11,6 +11,7 @@ import fsmTrace.States.fsm.TracedState;
 import fsmTrace.States.fsm.TracedStateMachine;
 import fsmTrace.States.fsm.TracedTransition;
 
+import fsmTrace.Steps.Fsm_StateMachine_InitializeModel;
 import fsmTrace.Steps.Fsm_State_Step;
 import fsmTrace.Steps.Fsm_Transition_Fire;
 import fsmTrace.Steps.SpecificStep;
@@ -26,6 +27,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link fsmTrace.SpecificTrace#getFsm_StateMachine_InitializeModel_Sequence <em>Fsm State Machine Initialize Model Sequence</em>}</li>
  *   <li>{@link fsmTrace.SpecificTrace#getFsm_State_Step_Sequence <em>Fsm State Step Sequence</em>}</li>
  *   <li>{@link fsmTrace.SpecificTrace#getFsm_Transition_Fire_Sequence <em>Fsm Transition Fire Sequence</em>}</li>
  *   <li>{@link fsmTrace.SpecificTrace#getFsm_tracedStateMachines <em>Fsm traced State Machines</em>}</li>
@@ -39,6 +41,22 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface SpecificTrace extends Trace<SequentialStep<SpecificStep>> {
+	/**
+	 * Returns the value of the '<em><b>Fsm State Machine Initialize Model Sequence</b></em>' reference list.
+	 * The list contents are of type {@link fsmTrace.Steps.Fsm_StateMachine_InitializeModel}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Fsm State Machine Initialize Model Sequence</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Fsm State Machine Initialize Model Sequence</em>' reference list.
+	 * @see fsmTrace.FsmTracePackage#getSpecificTrace_Fsm_StateMachine_InitializeModel_Sequence()
+	 * @model
+	 * @generated
+	 */
+	EList<Fsm_StateMachine_InitializeModel> getFsm_StateMachine_InitializeModel_Sequence();
+
 	/**
 	 * Returns the value of the '<em><b>Fsm State Step Sequence</b></em>' reference list.
 	 * The list contents are of type {@link fsmTrace.Steps.Fsm_State_Step}.

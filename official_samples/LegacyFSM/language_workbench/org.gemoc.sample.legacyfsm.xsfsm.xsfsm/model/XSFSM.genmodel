@@ -18,7 +18,10 @@
         <ecoreFeature xsi:type="ecore:EReference" href="XSFSM.ecore#//StateMachine/currentState"/>
       </genFeatures>
       <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//StateMachine/actionsToProcess"/>
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//StateMachine/unprocessedString"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//StateMachine/consummedString"/>
       </genFeatures>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="XSFSM.ecore#//StateMachine/producedString"/>
@@ -47,7 +50,7 @@
       <genOperations>
         <ecoreOperation href="XSFSM.ecore#//State/step"/>
         <genParameters>
-          <ecoreParameter href="XSFSM.ecore#//State/step/inputToken"/>
+          <ecoreParameter href="XSFSM.ecore#//State/step/inputString"/>
         </genParameters>
       </genOperations>
     </genClasses>

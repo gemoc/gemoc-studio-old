@@ -59,8 +59,8 @@ public class StateAdapter extends EObjectAdapter<State> implements org.gemoc.sam
   }
   
   @Override
-  public void step(final String inputToken) {
-    org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspect.step(adaptee, inputToken
+  public void step(final String inputString) {
+    org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateAspect.step(adaptee, inputString
     );
   }
   

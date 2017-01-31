@@ -47,16 +47,21 @@ public class TransitionAspect {
     String _plus_2 = (_plus_1 + _name_1);
     InputOutput.<String>println(_plus_2);
     State _source = _self.getSource();
-    StateMachine _owningFSM = _source.getOwningFSM();
+    final StateMachine fsm = _source.getOwningFSM();
     State _target_1 = _self.getTarget();
-    StateMachineAspect.currentState(_owningFSM, _target_1);
-    State _source_1 = _self.getSource();
-    StateMachine _owningFSM_1 = _source_1.getOwningFSM();
-    State _source_2 = _self.getSource();
-    StateMachine _owningFSM_2 = _source_2.getOwningFSM();
-    String _producedString = StateMachineAspect.producedString(_owningFSM_2);
+    StateMachineAspect.currentState(fsm, _target_1);
+    String _producedString = StateMachineAspect.producedString(fsm);
     String _output = _self.getOutput();
     String _plus_3 = (_producedString + _output);
-    StateMachineAspect.producedString(_owningFSM_1, _plus_3);
+    StateMachineAspect.producedString(fsm, _plus_3);
+    String _consummedString = StateMachineAspect.consummedString(fsm);
+    String _input = _self.getInput();
+    String _plus_4 = (_consummedString + _input);
+    StateMachineAspect.consummedString(fsm, _plus_4);
+    String _unprocessedString = StateMachineAspect.unprocessedString(fsm);
+    String _input_1 = _self.getInput();
+    int _length = _input_1.length();
+    String _substring = _unprocessedString.substring(_length);
+    StateMachineAspect.unprocessedString(fsm, _substring);
   }
 }

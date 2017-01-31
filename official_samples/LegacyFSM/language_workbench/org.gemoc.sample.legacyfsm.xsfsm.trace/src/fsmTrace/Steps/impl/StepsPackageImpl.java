@@ -12,6 +12,7 @@ import fsmTrace.States.fsm.impl.FsmPackageImpl;
 
 import fsmTrace.States.impl.StatesPackageImpl;
 
+import fsmTrace.Steps.Fsm_StateMachine_InitializeModel;
 import fsmTrace.Steps.Fsm_State_Step;
 import fsmTrace.Steps.Fsm_State_Step_AbstractSubStep;
 import fsmTrace.Steps.Fsm_State_Step_ImplicitStep;
@@ -39,6 +40,13 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage;
  * @generated
  */
 public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fsm_StateMachine_InitializeModelEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -162,6 +170,15 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getFsm_StateMachine_InitializeModel() {
+		return fsm_StateMachine_InitializeModelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFsm_State_Step() {
 		return fsm_State_StepEClass;
 	}
@@ -257,6 +274,8 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		isCreated = true;
 
 		// Create classes and their features
+		fsm_StateMachine_InitializeModelEClass = createEClass(FSM_STATE_MACHINE_INITIALIZE_MODEL);
+
 		fsm_State_StepEClass = createEClass(FSM_STATE_STEP);
 
 		fsm_State_Step_AbstractSubStepEClass = createEClass(FSM_STATE_STEP_ABSTRACT_SUB_STEP);
@@ -305,6 +324,8 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		fsm_StateMachine_InitializeModelEClass.getESuperTypes().add(this.getSpecificStep());
+		fsm_StateMachine_InitializeModelEClass.getESuperTypes().add(theTracePackage.getSmallStep());
 		EGenericType g1 = createEGenericType(this.getSpecificStep());
 		fsm_State_StepEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(theTracePackage.getSequentialStep());
@@ -321,6 +342,10 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		specificStepEClass.getESuperTypes().add(theTracePackage.getStep());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(fsm_StateMachine_InitializeModelEClass, Fsm_StateMachine_InitializeModel.class, "Fsm_StateMachine_InitializeModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(fsm_StateMachine_InitializeModelEClass, theFsmPackage_1.getTracedStateMachine(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(fsm_State_StepEClass, Fsm_State_Step.class, "Fsm_State_Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(fsm_State_StepEClass, theFsmPackage_1.getTracedState(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);

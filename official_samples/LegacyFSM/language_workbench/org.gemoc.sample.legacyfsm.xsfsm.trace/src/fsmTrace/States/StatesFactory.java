@@ -31,13 +31,13 @@ public interface StatesFactory extends EFactory {
 	State createState();
 
 	/**
-	 * Returns a new object of class '<em>State Machine actions To Process Value</em>'.
+	 * Returns a new object of class '<em>State Machine consummed String Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>State Machine actions To Process Value</em>'.
+	 * @return a new object of class '<em>State Machine consummed String Value</em>'.
 	 * @generated
 	 */
-	StateMachine_actionsToProcess_Value createStateMachine_actionsToProcess_Value();
+	StateMachine_consummedString_Value createStateMachine_consummedString_Value();
 
 	/**
 	 * Returns a new object of class '<em>State Machine current State Value</em>'.
@@ -56,6 +56,15 @@ public interface StatesFactory extends EFactory {
 	 * @generated
 	 */
 	StateMachine_producedString_Value createStateMachine_producedString_Value();
+
+	/**
+	 * Returns a new object of class '<em>State Machine unprocessed String Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>State Machine unprocessed String Value</em>'.
+	 * @generated
+	 */
+	StateMachine_unprocessedString_Value createStateMachine_unprocessedString_Value();
 
 	/**
 	 * Returns the package supported by this factory.

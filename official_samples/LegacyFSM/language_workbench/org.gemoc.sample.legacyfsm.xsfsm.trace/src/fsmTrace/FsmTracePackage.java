@@ -85,13 +85,22 @@ public interface FsmTracePackage extends EPackage {
 	int SPECIFIC_TRACE__LAUNCHCONFIGURATION = TracePackage.TRACE__LAUNCHCONFIGURATION;
 
 	/**
+	 * The feature id for the '<em><b>Fsm State Machine Initialize Model Sequence</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_TRACE__FSM_STATE_MACHINE_INITIALIZE_MODEL_SEQUENCE = TracePackage.TRACE_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Fsm State Step Sequence</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_TRACE__FSM_STATE_STEP_SEQUENCE = TracePackage.TRACE_FEATURE_COUNT + 0;
+	int SPECIFIC_TRACE__FSM_STATE_STEP_SEQUENCE = TracePackage.TRACE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Fsm Transition Fire Sequence</b></em>' reference list.
@@ -100,7 +109,7 @@ public interface FsmTracePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_TRACE__FSM_TRANSITION_FIRE_SEQUENCE = TracePackage.TRACE_FEATURE_COUNT + 1;
+	int SPECIFIC_TRACE__FSM_TRANSITION_FIRE_SEQUENCE = TracePackage.TRACE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Fsm traced State Machines</b></em>' containment reference list.
@@ -109,7 +118,7 @@ public interface FsmTracePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_TRACE__FSM_TRACED_STATE_MACHINES = TracePackage.TRACE_FEATURE_COUNT + 2;
+	int SPECIFIC_TRACE__FSM_TRACED_STATE_MACHINES = TracePackage.TRACE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Fsm traced States</b></em>' containment reference list.
@@ -118,7 +127,7 @@ public interface FsmTracePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_TRACE__FSM_TRACED_STATES = TracePackage.TRACE_FEATURE_COUNT + 3;
+	int SPECIFIC_TRACE__FSM_TRACED_STATES = TracePackage.TRACE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Fsm traced Transitions</b></em>' containment reference list.
@@ -127,7 +136,7 @@ public interface FsmTracePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_TRACE__FSM_TRACED_TRANSITIONS = TracePackage.TRACE_FEATURE_COUNT + 4;
+	int SPECIFIC_TRACE__FSM_TRACED_TRANSITIONS = TracePackage.TRACE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>States Trace</b></em>' containment reference list.
@@ -136,7 +145,7 @@ public interface FsmTracePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_TRACE__STATES_TRACE = TracePackage.TRACE_FEATURE_COUNT + 5;
+	int SPECIFIC_TRACE__STATES_TRACE = TracePackage.TRACE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Specific Trace</em>' class.
@@ -145,7 +154,7 @@ public interface FsmTracePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_TRACE_FEATURE_COUNT = TracePackage.TRACE_FEATURE_COUNT + 6;
+	int SPECIFIC_TRACE_FEATURE_COUNT = TracePackage.TRACE_FEATURE_COUNT + 7;
 
 
 	/**
@@ -157,6 +166,17 @@ public interface FsmTracePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSpecificTrace();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fsmTrace.SpecificTrace#getFsm_StateMachine_InitializeModel_Sequence <em>Fsm State Machine Initialize Model Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Fsm State Machine Initialize Model Sequence</em>'.
+	 * @see fsmTrace.SpecificTrace#getFsm_StateMachine_InitializeModel_Sequence()
+	 * @see #getSpecificTrace()
+	 * @generated
+	 */
+	EReference getSpecificTrace_Fsm_StateMachine_InitializeModel_Sequence();
 
 	/**
 	 * Returns the meta object for the reference list '{@link fsmTrace.SpecificTrace#getFsm_State_Step_Sequence <em>Fsm State Step Sequence</em>}'.
@@ -255,6 +275,14 @@ public interface FsmTracePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SPECIFIC_TRACE = eINSTANCE.getSpecificTrace();
+
+		/**
+		 * The meta object literal for the '<em><b>Fsm State Machine Initialize Model Sequence</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIFIC_TRACE__FSM_STATE_MACHINE_INITIALIZE_MODEL_SEQUENCE = eINSTANCE.getSpecificTrace_Fsm_StateMachine_InitializeModel_Sequence();
 
 		/**
 		 * The meta object literal for the '<em><b>Fsm State Step Sequence</b></em>' reference list feature.

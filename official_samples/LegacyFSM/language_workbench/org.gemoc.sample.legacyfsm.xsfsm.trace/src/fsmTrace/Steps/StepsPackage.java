@@ -64,7 +64,7 @@ public interface StepsPackage extends EPackage {
 	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getSpecificStep()
 	 * @generated
 	 */
-	int SPECIFIC_STEP = 5;
+	int SPECIFIC_STEP = 6;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -103,6 +103,52 @@ public interface StepsPackage extends EPackage {
 	int SPECIFIC_STEP_FEATURE_COUNT = TracePackage.STEP_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_StateMachine_InitializeModelImpl <em>Fsm State Machine Initialize Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fsmTrace.Steps.impl.Fsm_StateMachine_InitializeModelImpl
+	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_StateMachine_InitializeModel()
+	 * @generated
+	 */
+	int FSM_STATE_MACHINE_INITIALIZE_MODEL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_STATE_MACHINE_INITIALIZE_MODEL__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Ending State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_STATE_MACHINE_INITIALIZE_MODEL__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Starting State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_STATE_MACHINE_INITIALIZE_MODEL__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
+
+	/**
+	 * The number of structural features of the '<em>Fsm State Machine Initialize Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_STATE_MACHINE_INITIALIZE_MODEL_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_State_StepImpl <em>Fsm State Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -110,7 +156,7 @@ public interface StepsPackage extends EPackage {
 	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Step()
 	 * @generated
 	 */
-	int FSM_STATE_STEP = 0;
+	int FSM_STATE_STEP = 1;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -165,7 +211,7 @@ public interface StepsPackage extends EPackage {
 	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Step_AbstractSubStep()
 	 * @generated
 	 */
-	int FSM_STATE_STEP_ABSTRACT_SUB_STEP = 1;
+	int FSM_STATE_STEP_ABSTRACT_SUB_STEP = 2;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -211,7 +257,7 @@ public interface StepsPackage extends EPackage {
 	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_State_Step_ImplicitStep()
 	 * @generated
 	 */
-	int FSM_STATE_STEP_IMPLICIT_STEP = 2;
+	int FSM_STATE_STEP_IMPLICIT_STEP = 3;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -257,7 +303,7 @@ public interface StepsPackage extends EPackage {
 	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_Transition_Fire()
 	 * @generated
 	 */
-	int FSM_TRANSITION_FIRE = 3;
+	int FSM_TRANSITION_FIRE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -303,7 +349,7 @@ public interface StepsPackage extends EPackage {
 	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getRootImplicitStep()
 	 * @generated
 	 */
-	int ROOT_IMPLICIT_STEP = 4;
+	int ROOT_IMPLICIT_STEP = 5;
 
 	/**
 	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
@@ -323,6 +369,16 @@ public interface StepsPackage extends EPackage {
 	 */
 	int ROOT_IMPLICIT_STEP_FEATURE_COUNT = TracePackage.SMALL_STEP_FEATURE_COUNT + 0;
 
+
+	/**
+	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_StateMachine_InitializeModel <em>Fsm State Machine Initialize Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Fsm State Machine Initialize Model</em>'.
+	 * @see fsmTrace.Steps.Fsm_StateMachine_InitializeModel
+	 * @generated
+	 */
+	EClass getFsm_StateMachine_InitializeModel();
 
 	/**
 	 * Returns the meta object for class '{@link fsmTrace.Steps.Fsm_State_Step <em>Fsm State Step</em>}'.
@@ -428,6 +484,16 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_StateMachine_InitializeModelImpl <em>Fsm State Machine Initialize Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fsmTrace.Steps.impl.Fsm_StateMachine_InitializeModelImpl
+		 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_StateMachine_InitializeModel()
+		 * @generated
+		 */
+		EClass FSM_STATE_MACHINE_INITIALIZE_MODEL = eINSTANCE.getFsm_StateMachine_InitializeModel();
+
 		/**
 		 * The meta object literal for the '{@link fsmTrace.Steps.impl.Fsm_State_StepImpl <em>Fsm State Step</em>}' class.
 		 * <!-- begin-user-doc -->

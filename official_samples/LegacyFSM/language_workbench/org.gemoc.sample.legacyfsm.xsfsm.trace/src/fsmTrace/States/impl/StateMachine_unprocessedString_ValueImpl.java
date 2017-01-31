@@ -3,11 +3,11 @@
 package fsmTrace.States.impl;
 
 import fsmTrace.States.State;
+import fsmTrace.States.StateMachine_unprocessedString_Value;
 import fsmTrace.States.StatesPackage;
-import fsmTrace.States.TimeFSM_stepNumber_Value;
 
 import fsmTrace.States.fsm.FsmPackage;
-import fsmTrace.States.fsm.TracedTimeFSM;
+import fsmTrace.States.fsm.TracedStateMachine;
 
 import java.util.Collection;
 
@@ -28,21 +28,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Time FSM step Number Value</b></em>'.
+ * An implementation of the model object '<em><b>State Machine unprocessed String Value</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fsmTrace.States.impl.TimeFSM_stepNumber_ValueImpl#getStatesNoOpposite <em>States No Opposite</em>}</li>
- *   <li>{@link fsmTrace.States.impl.TimeFSM_stepNumber_ValueImpl#getParent <em>Parent</em>}</li>
- *   <li>{@link fsmTrace.States.impl.TimeFSM_stepNumber_ValueImpl#getStates <em>States</em>}</li>
- *   <li>{@link fsmTrace.States.impl.TimeFSM_stepNumber_ValueImpl#getStepNumber <em>Step Number</em>}</li>
+ *   <li>{@link fsmTrace.States.impl.StateMachine_unprocessedString_ValueImpl#getStatesNoOpposite <em>States No Opposite</em>}</li>
+ *   <li>{@link fsmTrace.States.impl.StateMachine_unprocessedString_ValueImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link fsmTrace.States.impl.StateMachine_unprocessedString_ValueImpl#getStates <em>States</em>}</li>
+ *   <li>{@link fsmTrace.States.impl.StateMachine_unprocessedString_ValueImpl#getUnprocessedString <em>Unprocessed String</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container implements TimeFSM_stepNumber_Value {
+public class StateMachine_unprocessedString_ValueImpl extends MinimalEObjectImpl.Container implements StateMachine_unprocessedString_Value {
 	/**
 	 * The cached value of the '{@link #getStates() <em>States</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -54,31 +54,31 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	protected EList<State> states;
 
 	/**
-	 * The default value of the '{@link #getStepNumber() <em>Step Number</em>}' attribute.
+	 * The default value of the '{@link #getUnprocessedString() <em>Unprocessed String</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStepNumber()
+	 * @see #getUnprocessedString()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int STEP_NUMBER_EDEFAULT = 0;
+	protected static final String UNPROCESSED_STRING_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getStepNumber() <em>Step Number</em>}' attribute.
+	 * The cached value of the '{@link #getUnprocessedString() <em>Unprocessed String</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStepNumber()
+	 * @see #getUnprocessedString()
 	 * @generated
 	 * @ordered
 	 */
-	protected int stepNumber = STEP_NUMBER_EDEFAULT;
+	protected String unprocessedString = UNPROCESSED_STRING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TimeFSM_stepNumber_ValueImpl() {
+	protected StateMachine_unprocessedString_ValueImpl() {
 		super();
 	}
 
@@ -89,7 +89,7 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return StatesPackage.Literals.TIME_FSM_STEP_NUMBER_VALUE;
+		return StatesPackage.Literals.STATE_MACHINE_UNPROCESSED_STRING_VALUE;
 	}
 
 	/**
@@ -106,9 +106,9 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TracedTimeFSM getParent() {
-		if (eContainerFeatureID() != StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__PARENT) return null;
-		return (TracedTimeFSM)eInternalContainer();
+	public TracedStateMachine getParent() {
+		if (eContainerFeatureID() != StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT) return null;
+		return (TracedStateMachine)eInternalContainer();
 	}
 
 	/**
@@ -116,8 +116,8 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetParent(TracedTimeFSM newParent, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newParent, StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__PARENT, msgs);
+	public NotificationChain basicSetParent(TracedStateMachine newParent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newParent, StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT, msgs);
 		return msgs;
 	}
 
@@ -126,20 +126,20 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParent(TracedTimeFSM newParent) {
-		if (newParent != eInternalContainer() || (eContainerFeatureID() != StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__PARENT && newParent != null)) {
+	public void setParent(TracedStateMachine newParent) {
+		if (newParent != eInternalContainer() || (eContainerFeatureID() != StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT && newParent != null)) {
 			if (EcoreUtil.isAncestor(this, newParent))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newParent != null)
-				msgs = ((InternalEObject)newParent).eInverseAdd(this, FsmPackage.TRACED_TIME_FSM__STEP_NUMBER_SEQUENCE, TracedTimeFSM.class, msgs);
+				msgs = ((InternalEObject)newParent).eInverseAdd(this, FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE, TracedStateMachine.class, msgs);
 			msgs = basicSetParent(newParent, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__PARENT, newParent, newParent));
+			eNotify(new ENotificationImpl(this, Notification.SET, StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT, newParent, newParent));
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	 */
 	public EList<State> getStates() {
 		if (states == null) {
-			states = new EObjectWithInverseResolvingEList.ManyInverse<State>(State.class, this, StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STATES, StatesPackage.STATE__TIME_FSM_STEP_NUMBER_VALUES);
+			states = new EObjectWithInverseResolvingEList.ManyInverse<State>(State.class, this, StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES, StatesPackage.STATE__STATE_MACHINE_UNPROCESSED_STRING_VALUES);
 		}
 		return states;
 	}
@@ -159,8 +159,8 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getStepNumber() {
-		return stepNumber;
+	public String getUnprocessedString() {
+		return unprocessedString;
 	}
 
 	/**
@@ -168,11 +168,11 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStepNumber(int newStepNumber) {
-		int oldStepNumber = stepNumber;
-		stepNumber = newStepNumber;
+	public void setUnprocessedString(String newUnprocessedString) {
+		String oldUnprocessedString = unprocessedString;
+		unprocessedString = newUnprocessedString;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STEP_NUMBER, oldStepNumber, stepNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET, StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__UNPROCESSED_STRING, oldUnprocessedString, unprocessedString));
 	}
 
 	/**
@@ -184,11 +184,11 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__PARENT:
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetParent((TracedTimeFSM)otherEnd, msgs);
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STATES:
+				return basicSetParent((TracedStateMachine)otherEnd, msgs);
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getStates()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -202,9 +202,9 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__PARENT:
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT:
 				return basicSetParent(null, msgs);
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STATES:
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES:
 				return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -218,8 +218,8 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__PARENT:
-				return eInternalContainer().eInverseRemove(this, FsmPackage.TRACED_TIME_FSM__STEP_NUMBER_SEQUENCE, TracedTimeFSM.class, msgs);
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT:
+				return eInternalContainer().eInverseRemove(this, FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE, TracedStateMachine.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -232,14 +232,14 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STATES_NO_OPPOSITE:
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES_NO_OPPOSITE:
 				return getStatesNoOpposite();
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__PARENT:
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT:
 				return getParent();
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STATES:
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES:
 				return getStates();
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STEP_NUMBER:
-				return getStepNumber();
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__UNPROCESSED_STRING:
+				return getUnprocessedString();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -253,15 +253,15 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__PARENT:
-				setParent((TracedTimeFSM)newValue);
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT:
+				setParent((TracedStateMachine)newValue);
 				return;
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STATES:
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES:
 				getStates().clear();
 				getStates().addAll((Collection<? extends State>)newValue);
 				return;
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STEP_NUMBER:
-				setStepNumber((Integer)newValue);
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__UNPROCESSED_STRING:
+				setUnprocessedString((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -275,14 +275,14 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__PARENT:
-				setParent((TracedTimeFSM)null);
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT:
+				setParent((TracedStateMachine)null);
 				return;
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STATES:
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES:
 				getStates().clear();
 				return;
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STEP_NUMBER:
-				setStepNumber(STEP_NUMBER_EDEFAULT);
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__UNPROCESSED_STRING:
+				setUnprocessedString(UNPROCESSED_STRING_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -296,14 +296,14 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STATES_NO_OPPOSITE:
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES_NO_OPPOSITE:
 				return !getStatesNoOpposite().isEmpty();
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__PARENT:
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT:
 				return getParent() != null;
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STATES:
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES:
 				return states != null && !states.isEmpty();
-			case StatesPackage.TIME_FSM_STEP_NUMBER_VALUE__STEP_NUMBER:
-				return stepNumber != STEP_NUMBER_EDEFAULT;
+			case StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__UNPROCESSED_STRING:
+				return UNPROCESSED_STRING_EDEFAULT == null ? unprocessedString != null : !UNPROCESSED_STRING_EDEFAULT.equals(unprocessedString);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -318,10 +318,10 @@ public class TimeFSM_stepNumber_ValueImpl extends MinimalEObjectImpl.Container i
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (stepNumber: ");
-		result.append(stepNumber);
+		result.append(" (unprocessedString: ");
+		result.append(unprocessedString);
 		result.append(')');
 		return result.toString();
 	}
 
-} //TimeFSM_stepNumber_ValueImpl
+} //StateMachine_unprocessedString_ValueImpl

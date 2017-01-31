@@ -84,13 +84,13 @@ public interface StatesPackage extends EPackage {
 	int STATE__STARTED_STEPS = 1;
 
 	/**
-	 * The feature id for the '<em><b>State Machine actions To Process Values</b></em>' reference list.
+	 * The feature id for the '<em><b>State Machine consummed String Values</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE__STATE_MACHINE_ACTIONS_TO_PROCESS_VALUES = 2;
+	int STATE__STATE_MACHINE_CONSUMMED_STRING_VALUES = 2;
 
 	/**
 	 * The feature id for the '<em><b>State Machine current State Values</b></em>' reference list.
@@ -111,13 +111,22 @@ public interface StatesPackage extends EPackage {
 	int STATE__STATE_MACHINE_PRODUCED_STRING_VALUES = 4;
 
 	/**
+	 * The feature id for the '<em><b>State Machine unprocessed String Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__STATE_MACHINE_UNPROCESSED_STRING_VALUES = 5;
+
+	/**
 	 * The number of structural features of the '<em>State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_FEATURE_COUNT = 5;
+	int STATE_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.States.Value <em>Value</em>}' class.
@@ -127,7 +136,7 @@ public interface StatesPackage extends EPackage {
 	 * @see fsmTrace.States.impl.StatesPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 4;
+	int VALUE = 5;
 
 	/**
 	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
@@ -148,14 +157,14 @@ public interface StatesPackage extends EPackage {
 	int VALUE_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link fsmTrace.States.impl.StateMachine_actionsToProcess_ValueImpl <em>State Machine actions To Process Value</em>}' class.
+	 * The meta object id for the '{@link fsmTrace.States.impl.StateMachine_consummedString_ValueImpl <em>State Machine consummed String Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fsmTrace.States.impl.StateMachine_actionsToProcess_ValueImpl
-	 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_actionsToProcess_Value()
+	 * @see fsmTrace.States.impl.StateMachine_consummedString_ValueImpl
+	 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_consummedString_Value()
 	 * @generated
 	 */
-	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE = 1;
+	int STATE_MACHINE_CONSUMMED_STRING_VALUE = 1;
 
 	/**
 	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
@@ -164,16 +173,16 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
+	int STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
 
 	/**
-	 * The feature id for the '<em><b>Actions To Process</b></em>' attribute list.
+	 * The feature id for the '<em><b>Consummed String</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__ACTIONS_TO_PROCESS = VALUE_FEATURE_COUNT + 0;
+	int STATE_MACHINE_CONSUMMED_STRING_VALUE__CONSUMMED_STRING = VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -182,7 +191,7 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
+	int STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT = VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>States</b></em>' reference list.
@@ -191,16 +200,16 @@ public interface StatesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
+	int STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES = VALUE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>State Machine actions To Process Value</em>' class.
+	 * The number of structural features of the '<em>State Machine consummed String Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
+	int STATE_MACHINE_CONSUMMED_STRING_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.States.impl.StateMachine_currentState_ValueImpl <em>State Machine current State Value</em>}' class.
@@ -312,6 +321,61 @@ public interface StatesPackage extends EPackage {
 	 */
 	int STATE_MACHINE_PRODUCED_STRING_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
 
+	/**
+	 * The meta object id for the '{@link fsmTrace.States.impl.StateMachine_unprocessedString_ValueImpl <em>State Machine unprocessed String Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fsmTrace.States.impl.StateMachine_unprocessedString_ValueImpl
+	 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_unprocessedString_Value()
+	 * @generated
+	 */
+	int STATE_MACHINE_UNPROCESSED_STRING_VALUE = 4;
+
+	/**
+	 * The feature id for the '<em><b>States No Opposite</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES_NO_OPPOSITE = VALUE__STATES_NO_OPPOSITE;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT = VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES = VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Unprocessed String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE_UNPROCESSED_STRING_VALUE__UNPROCESSED_STRING = VALUE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>State Machine unprocessed String Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE_UNPROCESSED_STRING_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 3;
+
 
 	/**
 	 * Returns the meta object for class '{@link fsmTrace.States.State <em>State</em>}'.
@@ -346,15 +410,15 @@ public interface StatesPackage extends EPackage {
 	EReference getState_StartedSteps();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getStateMachine_actionsToProcess_Values <em>State Machine actions To Process Values</em>}'.
+	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getStateMachine_consummedString_Values <em>State Machine consummed String Values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>State Machine actions To Process Values</em>'.
-	 * @see fsmTrace.States.State#getStateMachine_actionsToProcess_Values()
+	 * @return the meta object for the reference list '<em>State Machine consummed String Values</em>'.
+	 * @see fsmTrace.States.State#getStateMachine_consummedString_Values()
 	 * @see #getState()
 	 * @generated
 	 */
-	EReference getState_StateMachine_actionsToProcess_Values();
+	EReference getState_StateMachine_consummedString_Values();
 
 	/**
 	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getStateMachine_currentState_Values <em>State Machine current State Values</em>}'.
@@ -379,47 +443,58 @@ public interface StatesPackage extends EPackage {
 	EReference getState_StateMachine_producedString_Values();
 
 	/**
-	 * Returns the meta object for class '{@link fsmTrace.States.StateMachine_actionsToProcess_Value <em>State Machine actions To Process Value</em>}'.
+	 * Returns the meta object for the reference list '{@link fsmTrace.States.State#getStateMachine_unprocessedString_Values <em>State Machine unprocessed String Values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>State Machine actions To Process Value</em>'.
-	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value
+	 * @return the meta object for the reference list '<em>State Machine unprocessed String Values</em>'.
+	 * @see fsmTrace.States.State#getStateMachine_unprocessedString_Values()
+	 * @see #getState()
 	 * @generated
 	 */
-	EClass getStateMachine_actionsToProcess_Value();
+	EReference getState_StateMachine_unprocessedString_Values();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link fsmTrace.States.StateMachine_actionsToProcess_Value#getActionsToProcess <em>Actions To Process</em>}'.
+	 * Returns the meta object for class '{@link fsmTrace.States.StateMachine_consummedString_Value <em>State Machine consummed String Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Actions To Process</em>'.
-	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value#getActionsToProcess()
-	 * @see #getStateMachine_actionsToProcess_Value()
+	 * @return the meta object for class '<em>State Machine consummed String Value</em>'.
+	 * @see fsmTrace.States.StateMachine_consummedString_Value
 	 * @generated
 	 */
-	EAttribute getStateMachine_actionsToProcess_Value_ActionsToProcess();
+	EClass getStateMachine_consummedString_Value();
 
 	/**
-	 * Returns the meta object for the container reference '{@link fsmTrace.States.StateMachine_actionsToProcess_Value#getParent <em>Parent</em>}'.
+	 * Returns the meta object for the attribute '{@link fsmTrace.States.StateMachine_consummedString_Value#getConsummedString <em>Consummed String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Consummed String</em>'.
+	 * @see fsmTrace.States.StateMachine_consummedString_Value#getConsummedString()
+	 * @see #getStateMachine_consummedString_Value()
+	 * @generated
+	 */
+	EAttribute getStateMachine_consummedString_Value_ConsummedString();
+
+	/**
+	 * Returns the meta object for the container reference '{@link fsmTrace.States.StateMachine_consummedString_Value#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Parent</em>'.
-	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value#getParent()
-	 * @see #getStateMachine_actionsToProcess_Value()
+	 * @see fsmTrace.States.StateMachine_consummedString_Value#getParent()
+	 * @see #getStateMachine_consummedString_Value()
 	 * @generated
 	 */
-	EReference getStateMachine_actionsToProcess_Value_Parent();
+	EReference getStateMachine_consummedString_Value_Parent();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fsmTrace.States.StateMachine_actionsToProcess_Value#getStates <em>States</em>}'.
+	 * Returns the meta object for the reference list '{@link fsmTrace.States.StateMachine_consummedString_Value#getStates <em>States</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>States</em>'.
-	 * @see fsmTrace.States.StateMachine_actionsToProcess_Value#getStates()
-	 * @see #getStateMachine_actionsToProcess_Value()
+	 * @see fsmTrace.States.StateMachine_consummedString_Value#getStates()
+	 * @see #getStateMachine_consummedString_Value()
 	 * @generated
 	 */
-	EReference getStateMachine_actionsToProcess_Value_States();
+	EReference getStateMachine_consummedString_Value_States();
 
 	/**
 	 * Returns the meta object for class '{@link fsmTrace.States.StateMachine_currentState_Value <em>State Machine current State Value</em>}'.
@@ -508,6 +583,49 @@ public interface StatesPackage extends EPackage {
 	EReference getStateMachine_producedString_Value_States();
 
 	/**
+	 * Returns the meta object for class '{@link fsmTrace.States.StateMachine_unprocessedString_Value <em>State Machine unprocessed String Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>State Machine unprocessed String Value</em>'.
+	 * @see fsmTrace.States.StateMachine_unprocessedString_Value
+	 * @generated
+	 */
+	EClass getStateMachine_unprocessedString_Value();
+
+	/**
+	 * Returns the meta object for the container reference '{@link fsmTrace.States.StateMachine_unprocessedString_Value#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Parent</em>'.
+	 * @see fsmTrace.States.StateMachine_unprocessedString_Value#getParent()
+	 * @see #getStateMachine_unprocessedString_Value()
+	 * @generated
+	 */
+	EReference getStateMachine_unprocessedString_Value_Parent();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fsmTrace.States.StateMachine_unprocessedString_Value#getStates <em>States</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>States</em>'.
+	 * @see fsmTrace.States.StateMachine_unprocessedString_Value#getStates()
+	 * @see #getStateMachine_unprocessedString_Value()
+	 * @generated
+	 */
+	EReference getStateMachine_unprocessedString_Value_States();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fsmTrace.States.StateMachine_unprocessedString_Value#getUnprocessedString <em>Unprocessed String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unprocessed String</em>'.
+	 * @see fsmTrace.States.StateMachine_unprocessedString_Value#getUnprocessedString()
+	 * @see #getStateMachine_unprocessedString_Value()
+	 * @generated
+	 */
+	EAttribute getStateMachine_unprocessedString_Value_UnprocessedString();
+
+	/**
 	 * Returns the meta object for class '{@link fsmTrace.States.Value <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -577,12 +695,12 @@ public interface StatesPackage extends EPackage {
 		EReference STATE__STARTED_STEPS = eINSTANCE.getState_StartedSteps();
 
 		/**
-		 * The meta object literal for the '<em><b>State Machine actions To Process Values</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>State Machine consummed String Values</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATE__STATE_MACHINE_ACTIONS_TO_PROCESS_VALUES = eINSTANCE.getState_StateMachine_actionsToProcess_Values();
+		EReference STATE__STATE_MACHINE_CONSUMMED_STRING_VALUES = eINSTANCE.getState_StateMachine_consummedString_Values();
 
 		/**
 		 * The meta object literal for the '<em><b>State Machine current State Values</b></em>' reference list feature.
@@ -601,22 +719,30 @@ public interface StatesPackage extends EPackage {
 		EReference STATE__STATE_MACHINE_PRODUCED_STRING_VALUES = eINSTANCE.getState_StateMachine_producedString_Values();
 
 		/**
-		 * The meta object literal for the '{@link fsmTrace.States.impl.StateMachine_actionsToProcess_ValueImpl <em>State Machine actions To Process Value</em>}' class.
+		 * The meta object literal for the '<em><b>State Machine unprocessed String Values</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fsmTrace.States.impl.StateMachine_actionsToProcess_ValueImpl
-		 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_actionsToProcess_Value()
 		 * @generated
 		 */
-		EClass STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE = eINSTANCE.getStateMachine_actionsToProcess_Value();
+		EReference STATE__STATE_MACHINE_UNPROCESSED_STRING_VALUES = eINSTANCE.getState_StateMachine_unprocessedString_Values();
 
 		/**
-		 * The meta object literal for the '<em><b>Actions To Process</b></em>' attribute list feature.
+		 * The meta object literal for the '{@link fsmTrace.States.impl.StateMachine_consummedString_ValueImpl <em>State Machine consummed String Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fsmTrace.States.impl.StateMachine_consummedString_ValueImpl
+		 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_consummedString_Value()
+		 * @generated
+		 */
+		EClass STATE_MACHINE_CONSUMMED_STRING_VALUE = eINSTANCE.getStateMachine_consummedString_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Consummed String</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__ACTIONS_TO_PROCESS = eINSTANCE.getStateMachine_actionsToProcess_Value_ActionsToProcess();
+		EAttribute STATE_MACHINE_CONSUMMED_STRING_VALUE__CONSUMMED_STRING = eINSTANCE.getStateMachine_consummedString_Value_ConsummedString();
 
 		/**
 		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
@@ -624,7 +750,7 @@ public interface StatesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__PARENT = eINSTANCE.getStateMachine_actionsToProcess_Value_Parent();
+		EReference STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT = eINSTANCE.getStateMachine_consummedString_Value_Parent();
 
 		/**
 		 * The meta object literal for the '<em><b>States</b></em>' reference list feature.
@@ -632,7 +758,7 @@ public interface StatesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATE_MACHINE_ACTIONS_TO_PROCESS_VALUE__STATES = eINSTANCE.getStateMachine_actionsToProcess_Value_States();
+		EReference STATE_MACHINE_CONSUMMED_STRING_VALUE__STATES = eINSTANCE.getStateMachine_consummedString_Value_States();
 
 		/**
 		 * The meta object literal for the '{@link fsmTrace.States.impl.StateMachine_currentState_ValueImpl <em>State Machine current State Value</em>}' class.
@@ -701,6 +827,40 @@ public interface StatesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference STATE_MACHINE_PRODUCED_STRING_VALUE__STATES = eINSTANCE.getStateMachine_producedString_Value_States();
+
+		/**
+		 * The meta object literal for the '{@link fsmTrace.States.impl.StateMachine_unprocessedString_ValueImpl <em>State Machine unprocessed String Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fsmTrace.States.impl.StateMachine_unprocessedString_ValueImpl
+		 * @see fsmTrace.States.impl.StatesPackageImpl#getStateMachine_unprocessedString_Value()
+		 * @generated
+		 */
+		EClass STATE_MACHINE_UNPROCESSED_STRING_VALUE = eINSTANCE.getStateMachine_unprocessedString_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT = eINSTANCE.getStateMachine_unprocessedString_Value_Parent();
+
+		/**
+		 * The meta object literal for the '<em><b>States</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_MACHINE_UNPROCESSED_STRING_VALUE__STATES = eINSTANCE.getStateMachine_unprocessedString_Value_States();
+
+		/**
+		 * The meta object literal for the '<em><b>Unprocessed String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE_MACHINE_UNPROCESSED_STRING_VALUE__UNPROCESSED_STRING = eINSTANCE.getStateMachine_unprocessedString_Value_UnprocessedString();
 
 		/**
 		 * The meta object literal for the '{@link fsmTrace.States.Value <em>Value</em>}' class.

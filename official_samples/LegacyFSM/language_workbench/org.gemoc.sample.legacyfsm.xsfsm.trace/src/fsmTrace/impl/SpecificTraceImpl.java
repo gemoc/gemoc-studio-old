@@ -14,6 +14,7 @@ import fsmTrace.States.fsm.TracedState;
 import fsmTrace.States.fsm.TracedStateMachine;
 import fsmTrace.States.fsm.TracedTransition;
 
+import fsmTrace.Steps.Fsm_StateMachine_InitializeModel;
 import fsmTrace.Steps.Fsm_State_Step;
 import fsmTrace.Steps.Fsm_Transition_Fire;
 
@@ -39,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link fsmTrace.impl.SpecificTraceImpl#getFsm_StateMachine_InitializeModel_Sequence <em>Fsm State Machine Initialize Model Sequence</em>}</li>
  *   <li>{@link fsmTrace.impl.SpecificTraceImpl#getFsm_State_Step_Sequence <em>Fsm State Step Sequence</em>}</li>
  *   <li>{@link fsmTrace.impl.SpecificTraceImpl#getFsm_Transition_Fire_Sequence <em>Fsm Transition Fire Sequence</em>}</li>
  *   <li>{@link fsmTrace.impl.SpecificTraceImpl#getFsm_tracedStateMachines <em>Fsm traced State Machines</em>}</li>
@@ -50,6 +52,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class SpecificTraceImpl extends TraceImpl<SequentialStep<SpecificStep>> implements SpecificTrace {
+	/**
+	 * The cached value of the '{@link #getFsm_StateMachine_InitializeModel_Sequence() <em>Fsm State Machine Initialize Model Sequence</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFsm_StateMachine_InitializeModel_Sequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Fsm_StateMachine_InitializeModel> fsm_StateMachine_InitializeModel_Sequence;
+
 	/**
 	 * The cached value of the '{@link #getFsm_State_Step_Sequence() <em>Fsm State Step Sequence</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -138,6 +150,18 @@ public class SpecificTraceImpl extends TraceImpl<SequentialStep<SpecificStep>> i
 	@Override
 	public NotificationChain basicSetRootStep(SequentialStep<SpecificStep> newRootStep, NotificationChain msgs) {
 		return super.basicSetRootStep(newRootStep, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Fsm_StateMachine_InitializeModel> getFsm_StateMachine_InitializeModel_Sequence() {
+		if (fsm_StateMachine_InitializeModel_Sequence == null) {
+			fsm_StateMachine_InitializeModel_Sequence = new EObjectResolvingEList<Fsm_StateMachine_InitializeModel>(Fsm_StateMachine_InitializeModel.class, this, FsmTracePackage.SPECIFIC_TRACE__FSM_STATE_MACHINE_INITIALIZE_MODEL_SEQUENCE);
+		}
+		return fsm_StateMachine_InitializeModel_Sequence;
 	}
 
 	/**
@@ -240,6 +264,8 @@ public class SpecificTraceImpl extends TraceImpl<SequentialStep<SpecificStep>> i
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case FsmTracePackage.SPECIFIC_TRACE__FSM_STATE_MACHINE_INITIALIZE_MODEL_SEQUENCE:
+				return getFsm_StateMachine_InitializeModel_Sequence();
 			case FsmTracePackage.SPECIFIC_TRACE__FSM_STATE_STEP_SEQUENCE:
 				return getFsm_State_Step_Sequence();
 			case FsmTracePackage.SPECIFIC_TRACE__FSM_TRANSITION_FIRE_SEQUENCE:
@@ -265,6 +291,10 @@ public class SpecificTraceImpl extends TraceImpl<SequentialStep<SpecificStep>> i
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case FsmTracePackage.SPECIFIC_TRACE__FSM_STATE_MACHINE_INITIALIZE_MODEL_SEQUENCE:
+				getFsm_StateMachine_InitializeModel_Sequence().clear();
+				getFsm_StateMachine_InitializeModel_Sequence().addAll((Collection<? extends Fsm_StateMachine_InitializeModel>)newValue);
+				return;
 			case FsmTracePackage.SPECIFIC_TRACE__FSM_STATE_STEP_SEQUENCE:
 				getFsm_State_Step_Sequence().clear();
 				getFsm_State_Step_Sequence().addAll((Collection<? extends Fsm_State_Step>)newValue);
@@ -301,6 +331,9 @@ public class SpecificTraceImpl extends TraceImpl<SequentialStep<SpecificStep>> i
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case FsmTracePackage.SPECIFIC_TRACE__FSM_STATE_MACHINE_INITIALIZE_MODEL_SEQUENCE:
+				getFsm_StateMachine_InitializeModel_Sequence().clear();
+				return;
 			case FsmTracePackage.SPECIFIC_TRACE__FSM_STATE_STEP_SEQUENCE:
 				getFsm_State_Step_Sequence().clear();
 				return;
@@ -331,6 +364,8 @@ public class SpecificTraceImpl extends TraceImpl<SequentialStep<SpecificStep>> i
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case FsmTracePackage.SPECIFIC_TRACE__FSM_STATE_MACHINE_INITIALIZE_MODEL_SEQUENCE:
+				return fsm_StateMachine_InitializeModel_Sequence != null && !fsm_StateMachine_InitializeModel_Sequence.isEmpty();
 			case FsmTracePackage.SPECIFIC_TRACE__FSM_STATE_STEP_SEQUENCE:
 				return fsm_State_Step_Sequence != null && !fsm_State_Step_Sequence.isEmpty();
 			case FsmTracePackage.SPECIFIC_TRACE__FSM_TRANSITION_FIRE_SEQUENCE:
