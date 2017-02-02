@@ -6,6 +6,7 @@ considered as a _legacy_ language (ie. as if it was developped by thirdparties)
 and an eXecutable Sequential FSM (XSFSM) with animation support built by extension of the FSM language.
 
 ![Concepts of the languages.](https://github.com/gemoc/gemoc-studio/raw/master/official_samples/sample.deployers/plugins/org.gemoc.gemoc_language_workbench.sample.deployer/figures-gen/src/main/plantuml/LegacyFSM_language_concepts_figure.png)
+
 *General view: Concepts of the languages..*
 
 ## Installation
@@ -43,7 +44,7 @@ The following figure presents an overview of the main artefacts in the projects:
 - the _xsfsm.melange_ file defines the _xsfsm_ language. It inherits from _fsm_ and add the _fsm.k3dsa_ aspects. This will generate the java implementation classes for the resulting xsfsm language.
 
 ![Ecore, melange, packages and classes view.](https://github.com/gemoc/gemoc-studio/raw/master/official_samples/sample.deployers/plugins/org.gemoc.gemoc_language_workbench.sample.deployer/figures-gen/src/main/plantuml/LegacyFSM_language_figure.png)
-*Main artefact view: Ecore, melange, packages and runtime classes.*
+*Main artefacts view: Ecore, melange, packages and runtime classes.*
 
 Please note that for simplification of the diagram, the associations that doesn't represent a containment, have been represented as attributes rather than links.
 
@@ -63,4 +64,4 @@ you can run them from the modeling workbench by creating a launch configuration 
 
 # Additionnal resources and related links
 Please note that some of the document listed here may describe an early implementation of the language and may slightly differ from the current version.
-- [Article about Melange](https://hal.inria.fr/hal-01197038)
+- [Melange documentation](http://melange-lang.org/)
