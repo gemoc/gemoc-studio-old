@@ -15,11 +15,13 @@ import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.TimedSystem;
 @SuppressWarnings("all")
 public class TimedSystemAspect extends NamedElementAspect {
   public static String init(final TimedSystem _self) {
-    final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TimedSystemAspectTimedSystemAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TimedSystemAspectTimedSystemAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_init(_self_, _self);;
-    return (java.lang.String)result;
-  }
+	final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TimedSystemAspectTimedSystemAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TimedSystemAspectTimedSystemAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_init(_self_, _self);
+	;
+	return (java.lang.String) result;
+}
   
   protected static String _privk3_init(final TimedSystemAspectTimedSystemAspectProperties _self_, final TimedSystem _self) {
     String _xblockexpression = null;

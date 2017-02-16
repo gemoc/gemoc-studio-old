@@ -10,11 +10,13 @@ import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.FSMEvent;
 @SuppressWarnings("all")
 public class FSMEventAspect extends NamedElementAspect {
   public static String occurs(final FSMEvent _self) {
-    final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMEventAspectFSMEventAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_occurs(_self_, _self);;
-    return (java.lang.String)result;
-  }
+	final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMEventAspectFSMEventAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMEventAspectFSMEventAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_occurs(_self_, _self);
+	;
+	return (java.lang.String) result;
+}
   
   protected static String _privk3_occurs(final FSMEventAspectFSMEventAspectProperties _self_, final FSMEvent _self) {
     Class<? extends FSMEvent> _class = _self.getClass();

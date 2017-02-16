@@ -15,11 +15,13 @@ import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.EvaluateGuard;
 @SuppressWarnings("all")
 public class EvaluateGuardAspect extends GuardAspect {
   public static boolean evaluate(final EvaluateGuard _self) {
-    final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.EvaluateGuardAspectEvaluateGuardAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.EvaluateGuardAspectEvaluateGuardAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_evaluate(_self_, _self);;
-    return (boolean)result;
-  }
+	final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.EvaluateGuardAspectEvaluateGuardAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.EvaluateGuardAspectEvaluateGuardAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_evaluate(_self_, _self);
+	;
+	return (boolean) result;
+}
   
   protected static boolean _privk3_evaluate(final EvaluateGuardAspectEvaluateGuardAspectProperties _self_, final EvaluateGuard _self) {
     Object res = null;

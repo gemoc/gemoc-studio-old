@@ -10,23 +10,29 @@ import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.FSMClock;
 @SuppressWarnings("all")
 public class FSMClockAspect extends NamedElementAspect {
   public static String ticks(final FSMClock _self) {
-    final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_ticks(_self_, _self);;
-    return (java.lang.String)result;
-  }
+	final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_ticks(_self_, _self);
+	;
+	return (java.lang.String) result;
+}
   
   public static int numberOfTicks(final FSMClock _self) {
-    final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_numberOfTicks(_self_, _self);;
-    return (int)result;
-  }
+	final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_numberOfTicks(_self_, _self);
+	;
+	return (int) result;
+}
   
   public static void numberOfTicks(final FSMClock _self, final int numberOfTicks) {
-    final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectContext.getSelf(_self);
-    _privk3_numberOfTicks(_self_, _self,numberOfTicks);;
-  }
+	final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.FSMClockAspectFSMClockAspectContext
+			.getSelf(_self);
+	_privk3_numberOfTicks(_self_, _self, numberOfTicks);
+	;
+}
   
   protected static String _privk3_ticks(final FSMClockAspectFSMClockAspectProperties _self_, final FSMClock _self) {
     String _xblockexpression = null;

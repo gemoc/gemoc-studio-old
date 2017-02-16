@@ -20,27 +20,18 @@ import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.Transition;
 @SuppressWarnings("all")
 public class TransitionAspect extends NamedElementAspect {
   public static String fire(final Transition _self) {
-    final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TransitionAspectTransitionAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TransitionAspectTransitionAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_fire(_self_, _self);;
-    return (java.lang.String)result;
-  }
+	final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TransitionAspectTransitionAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TransitionAspectTransitionAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_fire(_self_, _self);
+	;
+	return (java.lang.String) result;
+}
   
   protected static String _privk3_fire(final TransitionAspectTransitionAspectProperties _self_, final Transition _self) {
     String _xblockexpression = null;
     {
-      boolean _and = false;
-      String _action = _self.getAction();
-      boolean _notEquals = (!Objects.equal(_action, null));
-      if (!_notEquals) {
-        _and = false;
-      } else {
-        String _action_1 = _self.getAction();
-        boolean _isEmpty = _action_1.isEmpty();
-        boolean _not = (!_isEmpty);
-        _and = _not;
-      }
-      if (_and) {
+      if (((!Objects.equal(_self.getAction(), null)) && (!_self.getAction().isEmpty()))) {
         Object res = null;
         try {
           final Binding binding = new Binding();
@@ -48,8 +39,8 @@ public class TransitionAspect extends NamedElementAspect {
           binding.setVariable("_this", _self);
           final ClassLoader ucl = EvaluateGuardAspect.class.getClassLoader();
           final GroovyShell shell = new GroovyShell(ucl, binding);
-          String _action_2 = _self.getAction();
-          Object _evaluate = shell.evaluate(_action_2);
+          String _action = _self.getAction();
+          Object _evaluate = shell.evaluate(_action);
           res = ((Map<String, Object>) _evaluate);
         } catch (final Throwable _t) {
           if (_t instanceof MultipleCompilationErrorsException) {
@@ -76,8 +67,8 @@ public class TransitionAspect extends NamedElementAspect {
       String _name_1 = _self.getName();
       String _plus_5 = (_plus_4 + _name_1);
       String _plus_6 = (_plus_5 + " -> ");
-      String _action_3 = _self.getAction();
-      String _plus_7 = (_plus_6 + _action_3);
+      String _action_1 = _self.getAction();
+      String _plus_7 = (_plus_6 + _action_1);
       _xblockexpression = InputOutput.<String>println(_plus_7);
     }
     return _xblockexpression;

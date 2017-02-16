@@ -12,18 +12,22 @@ import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.TFSM;
 @SuppressWarnings("all")
 public class StateAspect extends NamedElementAspect {
   public static String onEnter(final State _self) {
-    final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspectStateAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspectStateAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_onEnter(_self_, _self);;
-    return (java.lang.String)result;
-  }
+	final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspectStateAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspectStateAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_onEnter(_self_, _self);
+	;
+	return (java.lang.String) result;
+}
   
   public static String onLeave(final State _self) {
-    final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspectStateAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspectStateAspectContext.getSelf(_self);
-    Object result = null;
-    result = _privk3_onLeave(_self_, _self);;
-    return (java.lang.String)result;
-  }
+	final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspectStateAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.StateAspectStateAspectContext
+			.getSelf(_self);
+	Object result = null;
+	result = _privk3_onLeave(_self_, _self);
+	;
+	return (java.lang.String) result;
+}
   
   protected static String _privk3_onEnter(final StateAspectStateAspectProperties _self_, final State _self) {
     String _xblockexpression = null;
