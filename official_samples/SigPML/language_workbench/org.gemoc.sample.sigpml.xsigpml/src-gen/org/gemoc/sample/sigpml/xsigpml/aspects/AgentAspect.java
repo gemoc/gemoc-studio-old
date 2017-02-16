@@ -1,11 +1,15 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
+import cnrs.luchogie.up.SwingPlotter;
+import cnrs.luchogie.up.data.Figure;
+import com.google.common.collect.LinkedListMultimap;
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
+import groovy.lang.Binding;
+import groovy.lang.GroovyShell;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javax.swing.JFrame;
-
 import org.codehaus.groovy.control.MultipleCompilationErrorsException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -16,14 +20,11 @@ import org.gemoc.sample.sigpml.xsigpml.sigpml.Agent;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.HWComputationalResource;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.InputPort;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.Port;
-
-import com.google.common.collect.LinkedListMultimap;
-
-import cnrs.luchogie.up.SwingPlotter;
-import cnrs.luchogie.up.data.Figure;
-import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
-import groovy.lang.Binding;
-import groovy.lang.GroovyShell;
+import org.gemoc.sample.sigpml.xsigpml.aspects.AgentAspectAgentAspectProperties;
+import org.gemoc.sample.sigpml.xsigpml.aspects.HWComputationalResourceAspect;
+import org.gemoc.sample.sigpml.xsigpml.aspects.InputPortAspect;
+import org.gemoc.sample.sigpml.xsigpml.aspects.NamedElementAspect;
+import org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspect;
 
 @Aspect(className = Agent.class)
 @SuppressWarnings("all")

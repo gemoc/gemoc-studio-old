@@ -1,17 +1,18 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
+import com.google.common.collect.LinkedListMultimap;
+import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.InputPort;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.OutputPort;
 import org.gemoc.sample.sigpml.xsigpml.sigpml.Place;
-
-import com.google.common.collect.LinkedListMultimap;
-
-import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
+import org.gemoc.sample.sigpml.xsigpml.aspects.NamedElementAspect;
+import org.gemoc.sample.sigpml.xsigpml.aspects.OutputPortAspect;
+import org.gemoc.sample.sigpml.xsigpml.aspects.PlaceAspectPlaceAspectProperties;
+import org.gemoc.sample.sigpml.xsigpml.aspects.SystemAspect;
 
 @Aspect(className = Place.class)
 @SuppressWarnings("all")

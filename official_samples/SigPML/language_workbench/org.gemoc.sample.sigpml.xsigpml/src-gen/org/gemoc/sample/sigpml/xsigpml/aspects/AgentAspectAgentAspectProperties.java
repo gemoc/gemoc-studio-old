@@ -1,10 +1,9 @@
 package org.gemoc.sample.sigpml.xsigpml.aspects;
 
-import javax.swing.JFrame;
-
 import cnrs.luchogie.up.InteractiveSwingPlotter;
 import cnrs.luchogie.up.SwingPlotter;
 import cnrs.luchogie.up.data.Figure;
+import javax.swing.JFrame;
 
 @SuppressWarnings("all")
 public class AgentAspectAgentAspectProperties {
