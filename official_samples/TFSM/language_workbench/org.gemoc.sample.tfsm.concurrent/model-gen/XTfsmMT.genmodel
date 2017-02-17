@@ -24,7 +24,7 @@
         <ecoreFeature xsi:type="ecore:EReference" href="XTfsmMT.ecore#//TFSM/currentState"/>
       </genFeatures>
       <genOperations>
-        <ecoreOperation href="XTfsmMT.ecore#//TFSM/init"/>
+        <ecoreOperation href="XTfsmMT.ecore#//TFSM/initialize"/>
       </genOperations>
       <genOperations>
         <ecoreOperation href="XTfsmMT.ecore#//TFSM/changeCurrentState"/>
@@ -126,7 +126,7 @@
         <ecoreFeature xsi:type="ecore:EReference" href="XTfsmMT.ecore#//TimedSystem/globalEvents"/>
       </genFeatures>
       <genOperations>
-        <ecoreOperation href="XTfsmMT.ecore#//TimedSystem/init"/>
+        <ecoreOperation href="XTfsmMT.ecore#//TimedSystem/initialize"/>
       </genOperations>
     </genClasses>
     <genClasses>

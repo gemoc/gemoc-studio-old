@@ -77,6 +77,6 @@ public interface TimedSystem extends NamedElement {
 	 * @model
 	 * @generated
 	 */
-	String init();
+	String initialize();
 
 } // TimedSystem

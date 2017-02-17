@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tfsm" nsURI="http://org.gemoc.sample.tfsm.concurrent.xtfsm/tfsm/" nsPrefix="org.gemoc.sample.tfsm">
   <eClassifiers xsi:type="ecore:EClass" name="TFSM" eSuperTypes="//NamedElement">
-    <eOperations name="init">
+    <eOperations name="initialize">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -77,7 +77,7 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TimedSystem" eSuperTypes="//NamedElement">
-    <eOperations name="init">
+    <eOperations name="initialize">
       <eAnnotations source="aspect"/>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>

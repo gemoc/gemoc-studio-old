@@ -57,8 +57,8 @@ public class TimedSystemAdapter extends EObjectAdapter<TimedSystem> implements o
   }
   
   @Override
-  public String init() {
-    return org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TimedSystemAspect.init(adaptee);
+  public String initialize() {
+    return org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TimedSystemAspect.initialize(adaptee);
   }
   
   protected final static String NAME_EDEFAULT = null;

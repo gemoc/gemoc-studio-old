@@ -23,11 +23,11 @@ import org.gemoc.sample.tfsm.concurrent.xtfsm.tfsm.TFSM;
 @Aspect(className = TFSM.class)
 @SuppressWarnings("all")
 public class TFSMAspect extends NamedElementAspect {
-  public static String init(final TFSM _self) {
+  public static String initialize(final TFSM _self) {
 	final org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TFSMAspectTFSMAspectProperties _self_ = org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TFSMAspectTFSMAspectContext
 			.getSelf(_self);
 	Object result = null;
-	result = _privk3_init(_self_, _self);
+	result = _privk3_initialize(_self_, _self);
 	;
 	return (java.lang.String) result;
 }
@@ -55,7 +55,7 @@ public class TFSMAspect extends NamedElementAspect {
 	;
 }
   
-  protected static String _privk3_init(final TFSMAspectTFSMAspectProperties _self_, final TFSM _self) {
+  protected static String _privk3_initialize(final TFSMAspectTFSMAspectProperties _self_, final TFSM _self) {
     String _xblockexpression = null;
     {
       State _currentState = TFSMAspect.currentState(_self);

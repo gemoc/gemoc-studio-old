@@ -126,7 +126,7 @@ public class TimedSystemImpl extends NamedElementImpl implements TimedSystem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String init() {
+	public String initialize() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

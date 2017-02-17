@@ -99,8 +99,8 @@ public class TFSMAdapter extends EObjectAdapter<TFSM> implements org.gemoc.sampl
   }
   
   @Override
-  public String init() {
-    return org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TFSMAspect.init(adaptee);
+  public String initialize() {
+    return org.gemoc.sample.tfsm.concurrent.xtfsm.aspects.TFSMAspect.initialize(adaptee);
   }
   
   protected final static String NAME_EDEFAULT = null;

@@ -46,9 +46,9 @@ package tfsm
 	 def : evaluatedTrue : Event  = self
 	 def : evaluatedFalse : Event = self
 	context TFSM
-	 def: start : Event = self.init()
+	 def: start : Event = self.initialize()
 	context TimedSystem
-	 def: start : Event = self.init() 
+	 def: start : Event = self.initialize()
 	
 
 /**
