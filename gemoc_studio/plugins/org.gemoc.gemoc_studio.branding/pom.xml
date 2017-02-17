@@ -89,7 +89,7 @@
 			                        <!-- Eclipse Logo 64 -->
 			                        <drawImage>
                             			<imageName>eclipse</imageName>
-                            			<position>right-15,bottom-45</position>
+                            			<position>right-17,bottom-45</position>
                         			</drawImage>
 			                        <!-- Eclipse version -->
 	                            	<drawText>
