@@ -50,11 +50,11 @@
             <layout>p2</layout>
             <url>http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.7.0/N/0.7.0.201309291400/</url>
         </repository> -->
-        <repository>
+        <!--<repository>
             <id>Palette patch update site</id>
             <layout>p2</layout>
             <url>http://gemoc.org/pub/studio/patch_sirius_palette/</url>
-        </repository>
+        </repository>-->
         <repository>
             <id>elk</id>
             <layout>p2</layout>
@@ -87,7 +87,7 @@
         <repository>
             <id>Checkstyle</id>
             <layout>p2</layout>
-            <url>http://sourceforge.net/projects/eclipse-cs/files/updatesite/6.19.1/</url>
+            <url>http://eclipse-cs.sourceforge.net/update/</url>
         </repository>
         <repository>
             <id>AspectJ</id>
