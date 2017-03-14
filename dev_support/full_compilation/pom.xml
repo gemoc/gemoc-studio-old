@@ -19,10 +19,9 @@
         <module>../../../concurrency/moccml</module>
         <module>../../../concurrency/ccsljava_execution</module>
         <module>../../../concurrency/exploration</module>
-        <module>../../../concurrency/gel</module>
-		<module>../../../coordination/bcool/deployment/org.gemoc.bcool.build</module>
-		<module>../../../coordination/heterogeneousCoordinationEngine</module>
-		<module>../../../gemoc-studio.wiki</module>
+	<module>../../../coordination/bcool/deployment/org.gemoc.bcool.build</module>
+	<module>../../../coordination/heterogeneousCoordinationEngine</module>
+	<module>../../../gemoc-studio.wiki</module>
     </modules>
 
 </project>
