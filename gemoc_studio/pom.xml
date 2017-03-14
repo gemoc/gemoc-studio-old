@@ -87,7 +87,7 @@
         <repository>
             <id>Checkstyle</id>
             <layout>p2</layout>
-            <url>http://sourceforge.net/projects/eclipse-cs/files/updatesite/6.19.1/</url>
+            <url>http://eclipse-cs.sourceforge.net/update/</url>
         </repository>
         <repository>
             <id>AspectJ</id>
