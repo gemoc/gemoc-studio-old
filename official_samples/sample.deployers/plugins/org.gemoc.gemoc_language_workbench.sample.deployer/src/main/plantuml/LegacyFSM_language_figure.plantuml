@@ -48,7 +48,7 @@ namespace fsm.melange <<Cloud>> #PaleGreen-white {
 	}
 }
 
-note "java implementation of the ecore is\nreused in the language implementation" as N2
+note "as the language is defined as <b>external</b>,\nthe java implementation of the ecore is\nreused as the language implementation" as N2
 N2 .. fsm.melange.fsm
 
 
@@ -96,10 +96,10 @@ namespace xsfsm.melange <<Cloud>> #PaleGreen-white {
 	}
 }
 
-note "generated ecore and java implementation (including aspect)\nfor the new language" as N4
+note "ecore and java implementation (including aspect)\nfor the new language is generated\nin <i>org.gemoc.sample.legacyfsm.xsfsm.xsfsm</i>" as N4
 N4 .. xsfsm.melange.fsm
 
-fsm.melange --> fsm.ecore : syntax (legacy)
+fsm.melange --> fsm.ecore : syntax 
 fsm.melange <-- xsfsm.melange : inherits
 xsfsm.melange *-- fsm.k3dsa : with
 @enduml
