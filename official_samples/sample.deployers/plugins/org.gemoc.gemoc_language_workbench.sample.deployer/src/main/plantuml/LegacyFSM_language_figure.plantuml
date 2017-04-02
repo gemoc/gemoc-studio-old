@@ -7,6 +7,7 @@ skinparam class {
 }
 
 namespace fsm.ecore <<Frame>>  {
+
   class FSM {
     name : String
     initialState : State
@@ -24,6 +25,9 @@ namespace fsm.ecore <<Frame>>  {
 	State *-- Transition : outgoingTransitions
 }
 
+note "ecore file" as N1
+N1 .. fsm.ecore
+ 
 namespace fsm.melange <<Cloud>> #PaleGreen-white {
 	namespace fsm  #white {
 	  class FSM {
@@ -44,6 +48,10 @@ namespace fsm.melange <<Cloud>> #PaleGreen-white {
 	}
 }
 
+note "java implementation of the ecore is\nreused in the language implementation" as N2
+N2 .. fsm.melange.fsm
+
+
 namespace fsm.k3dsa   {
     class FSMAspect << (@,#FF7700) Aspect >>{
 	    currentState : State
@@ -56,6 +64,9 @@ namespace fsm.k3dsa   {
 	    fire()
 	}
 }
+
+note "aspects extending the\njava implementation" as N3
+N3 .. fsm.k3dsa
 
 fsm.melange.fsm.FSM .. fsm.k3dsa.FSMAspect  : <
 fsm.melange.fsm.State .. fsm.k3dsa.StateAspect  : <
@@ -84,6 +95,9 @@ namespace xsfsm.melange <<Cloud>> #PaleGreen-white {
 	  State *-- Transition : outgoingTransitions
 	}
 }
+
+note "generated ecore and java implementation (including aspect)\nfor the new language" as N4
+N4 .. xsfsm.melange.fsm
 
 fsm.melange --> fsm.ecore : syntax (legacy)
 fsm.melange <-- xsfsm.melange : inherits
