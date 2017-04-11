@@ -119,14 +119,21 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import feature="org.eclipse.emf.ecoretools.sdk" version="2.0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.commons.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.framework.commons.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.framework.commons.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.xdsmlframework.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.xdsmlframework.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.executionframework.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.executionframework.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.execution.sequential.javaxdsml.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.execution.sequential.javaxdsml.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.official_samples.deployers.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.ui.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.debug.sirius.ui.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.debug.sirius.ui.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.doc.feature" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
@@ -139,8 +146,11 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="fr.inria.diverse.melange.sdk" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.trace.commons.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.trace.commons.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.trace.generator.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.trace.generator.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.trace.manager.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.gemoc.modeldebugging.trace.manager.feature.source" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

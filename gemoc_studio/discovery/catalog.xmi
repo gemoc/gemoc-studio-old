@@ -25,7 +25,8 @@
   </categories>
   <categories
       name="Exhaustive Exploration"
-      description="Tools for Exhaustive Exploration.">
+      description="Tools for Exhaustive Exploration."
+      relevance="4">
     <components
         name="Clocksystem (Incubation)"
         provider="ENSTA"
@@ -119,7 +120,7 @@
     </components>
   </categories>
   <categories
-      name="Alternative tools"
+      name="Alternative Tools"
       description="Engines and tools proposing alternative approaches (may not directly use GEMOC execution framework)"
       relevance="2">
     <components
@@ -135,6 +136,27 @@
           screenshot="images/tesl-screenshot-320x240.png"
           url="http://wwwdi.supelec.fr/software/TESL/"/>
       <id>fr.supelec.tesl.feature</id>
+    </components>
+  </categories>
+  <categories
+      name="Alternative GEMOC based Engines"
+      description="Engines and tools proposing alternative approaches (based on GEMOC execution framework)">
+    <components
+        name="GEMOC xMOF Engine"
+        provider="Vienna University of Technology"
+        description="xMOF allows you to define the execution semantics of your language with UML activity diagrams."
+        license="EPL"
+        image32="images/xmof-icon-30x30.png">
+      <sitesURLS>http://moliz.github.io/moliz.core/updatesite/nightly/</sitesURLS>
+      <sitesURLS>http://moliz.github.io/moliz.xmof/updatesite/nightly/</sitesURLS>
+      <sitesURLS>http://moliz.github.io/moliz.gemoc/updatesite/nightly/</sitesURLS>
+      <overview
+          summary="The xMOF language allows you to define the execution semantics of your language with UML activity diagrams. This component provides the xMOF language, editor and execution engine, as well as wizards helping you to setup your xMOF projects."
+          screenshot="images/xmof-figure-320x240.png"
+          url="https://github.com/moliz/moliz.xmof"/>
+      <id>org.modelexecution.moliz.gemoc.feature</id>
+      <id>org.modelexecution.moliz.xmof.feature</id>
+      <id>org.modelexecution.moliz.core.feature</id>
     </components>
   </categories>
   <filters name="Incubation"/>
