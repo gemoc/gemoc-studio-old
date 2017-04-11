@@ -155,8 +155,6 @@
           screenshot="images/xmof-figure-320x240.png"
           url="https://github.com/moliz/moliz.xmof"/>
       <id>org.modelexecution.moliz.gemoc.feature</id>
-      <id>org.modelexecution.moliz.xmof.feature</id>
-      <id>org.modelexecution.moliz.core.feature</id>
     </components>
   </categories>
   <filters name="Incubation"/>
