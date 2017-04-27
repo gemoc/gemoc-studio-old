@@ -21,8 +21,7 @@
         <module>plugins/org.gemoc.gemoc_studio.branding</module>
         <module>plugins/org.gemoc.gemoc_language_workbench.documentation</module>
         <module>releng/org.gemoc.gemoc_studio.product</module>
-        <module>releng/org.gemoc.gemoc_studio.branding.feature</module>	
-        <module>releng/org.gemoc.gemoc_studio.branding.source.feature</module>		
+        <module>releng/org.gemoc.gemoc_studio.branding.feature</module>			
         <module>releng/org.gemoc.gemoc_studio.additions.feature</module>	
         <module>releng/org.gemoc.modeldebugging.feature</module>
 		<module>releng/org.gemoc.concurrency.feature</module>
