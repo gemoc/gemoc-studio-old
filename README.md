@@ -1,7 +1,7 @@
 Gemoc Studio
 ============
 
-This repository contain the code for assembling the [GEMOC Studio](http://gemoc.org/studio-download/). 
+This repository contain the code for assembling the [GEMOC Studio](http://gemoc.org/download/). 
 
 This repository also it hosts the user documentation of the studio in the [Wiki](https://github.com/gemoc/gemoc-studio/wiki)
 
