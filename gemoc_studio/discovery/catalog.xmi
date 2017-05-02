@@ -4,44 +4,6 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:discovery="http://www.eclipse.org/amalgamation/discovery/1.0">
   <categories
-      name="Modeler"
-      description="Modeling environment tools."
-      relevance="3">
-    <components
-        name="UML Designer"
-        provider="Obeo"
-        description="Graphical tooling to edit and visualize UML models."
-        license="EPL"
-        image32="images/umldesigner.png">
-      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
-      <sitesURLS>http://download.eclipse.org/sirius/updates/nightly/3.0.x/luna</sitesURLS>
-      <sitesURLS>http://releases.umldesigner.org/5.0.1/repository/</sitesURLS>
-      <overview
-          summary="UML Designer provides a set of common diagrams to work with UML 2.5 models. The intent is to provide an easy way to make the transition from UML to domain specific modeling. This way users can continue to manipulate legacy UML models and start working with DSL. Users can even re-use the provided representations and work in a total transparence on both UML and DSL models at the same time."
-          screenshot="images/umldesigner-screenshot-320x240.png"
-          url="http://www.umldesigner.org/"/>
-      <id>org.obeonetwork.dsl.uml2.runtime.feature</id>
-    </components>
-  </categories>
-  <categories
-      name="Exhaustive Exploration"
-      description="Tools for Exhaustive Exploration."
-      relevance="4">
-    <components
-        name="Clocksystem (Incubation)"
-        provider="ENSTA"
-        description="Multiform Time Constraints"
-        license="MIT"
-        groups="//@filters.0"
-        image32="images/clocksystem_logo_32x32.png">
-      <sitesURLS>https://ci.inria.fr/gemoc/job/concurrency_exploration/lastSuccessfulBuild/artifact/exploration/releng/org.gemoc.mocc.clocksystem.features.updatesite/target/repository</sitesURLS>
-      <overview
-          summary="Clocksystem is meta-described clock-constraint engine, which embeds a formal model of logical time into the Smalltalk general-purpose language and environment"
-          screenshot="images/cs_screenshot_320x240.png"/>
-      <id>org.gemoc.mocc.clocksystem.common.feature</id>
-    </components>
-  </categories>
-  <categories
       name="GEMOC Language"
       description="Languages designed using GEMOC."
       relevance="7">
@@ -120,25 +82,6 @@
     </components>
   </categories>
   <categories
-      name="Alternative Tools"
-      description="Engines and tools proposing alternative approaches (may not directly use GEMOC execution framework)"
-      relevance="2">
-    <components
-        name="TESL Engine and Editor"
-        provider="CentraleSup&#xe9;lec/LRI"
-        description="The Tagged Event Specification Language allows the specification of timed systems by modeling events as clocks and occurrences of an event as ticks on its clock."
-        license="Unknown Licence"
-        groups="//@filters.0"
-        incubation="true">
-      <sitesURLS>http://wwwdi.supelec.fr/tesl-update-site</sitesURLS>
-      <overview
-          summary="The Tagged Event Specification Language allows the specification of timed systems by modeling events as clocks and occurrences of an event as ticks on its clock."
-          screenshot="images/tesl-screenshot-320x240.png"
-          url="http://wwwdi.supelec.fr/software/TESL/"/>
-      <id>fr.supelec.tesl.feature</id>
-    </components>
-  </categories>
-  <categories
       name="Alternative GEMOC based Engines"
       description="Engines and tools proposing alternative approaches (based on GEMOC execution framework)">
     <components
@@ -154,6 +97,76 @@
           screenshot="images/xmof-figure-320x240.png"
           url="https://github.com/moliz/moliz.xmof"/>
       <id>org.modelexecution.moliz.gemoc.feature</id>
+    </components>
+  </categories>
+  <categories
+      name="Exhaustive Exploration"
+      description="Tools for Exhaustive Exploration."
+      relevance="4">
+    <components
+        name="Clocksystem (Incubation)"
+        provider="ENSTA"
+        description="Multiform Time Constraints"
+        license="MIT"
+        groups="//@filters.0"
+        image32="images/clocksystem_logo_32x32.png">
+      <sitesURLS>https://ci.inria.fr/gemoc/job/concurrency_exploration/lastSuccessfulBuild/artifact/exploration/releng/org.gemoc.mocc.clocksystem.features.updatesite/target/repository</sitesURLS>
+      <overview
+          summary="Clocksystem is meta-described clock-constraint engine, which embeds a formal model of logical time into the Smalltalk general-purpose language and environment"
+          screenshot="images/cs_screenshot_320x240.png"/>
+      <id>org.gemoc.mocc.clocksystem.common.feature</id>
+    </components>
+  </categories>
+  <categories
+      name="Modeler"
+      description="Modeling environment tools."
+      relevance="3">
+    <components
+        name="UML Designer"
+        provider="Obeo"
+        description="Graphical tooling to edit and visualize UML models."
+        license="EPL"
+        image32="images/umldesigner.png">
+      <sitesURLS>http://download.eclipse.org/releases/luna/201502271000</sitesURLS>
+      <sitesURLS>http://download.eclipse.org/sirius/updates/nightly/3.0.x/luna</sitesURLS>
+      <sitesURLS>http://releases.umldesigner.org/5.0.1/repository/</sitesURLS>
+      <overview
+          summary="UML Designer provides a set of common diagrams to work with UML 2.5 models. The intent is to provide an easy way to make the transition from UML to domain specific modeling. This way users can continue to manipulate legacy UML models and start working with DSL. Users can even re-use the provided representations and work in a total transparence on both UML and DSL models at the same time."
+          screenshot="images/umldesigner-screenshot-320x240.png"
+          url="http://www.umldesigner.org/"/>
+      <id>org.obeonetwork.dsl.uml2.runtime.feature</id>
+    </components>
+  </categories>
+  <categories
+      name="Alternative Tools"
+      description="Engines and tools proposing alternative approaches (may not directly use GEMOC execution framework)"
+      relevance="2">
+    <components
+        name="ALE"
+        provider="Inria and Obeo"
+        description="Action Language for EMF"
+        license="EPL"
+        image32="images/modeling32.png"
+        incubation="true">
+      <sitesURLS>https://ci.inria.fr/gemoc/job/ale-lang/lastSuccessfulBuild/artifact/releng/org.eclipse.emf.ecoretools.ale.updatesite/target/repository/</sitesURLS>
+      <overview
+          summary="Ale is a language to define behaviors on the top of Ecore models. It is intended to be distributed in EcoreTools and will be an alternative to K3."
+          url="http://gemoc.org/ale-lang/"/>
+      <id>org.eclipse.emf.ecoretools.ale.feature</id>
+    </components>
+    <components
+        name="TESL Engine and Editor"
+        provider="CentraleSup&#xe9;lec/LRI"
+        description="The Tagged Event Specification Language allows the specification of timed systems by modeling events as clocks and occurrences of an event as ticks on its clock."
+        license="Unknown Licence"
+        groups="//@filters.0"
+        incubation="true">
+      <sitesURLS>http://wwwdi.supelec.fr/tesl-update-site</sitesURLS>
+      <overview
+          summary="The Tagged Event Specification Language allows the specification of timed systems by modeling events as clocks and occurrences of an event as ticks on its clock."
+          screenshot="images/tesl-screenshot-320x240.png"
+          url="http://wwwdi.supelec.fr/software/TESL/"/>
+      <id>fr.supelec.tesl.feature</id>
     </components>
   </categories>
   <filters name="Incubation"/>

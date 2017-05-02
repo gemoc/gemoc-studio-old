@@ -181,6 +181,25 @@ Modeling environment tools.
 ## Alternative Tools
 Engines and tools proposing alternative approaches (may not directly use GEMOC execution framework)
 
+<!-- ALE  -->
+<div class="row">    
+    <div class="col-md-8 col-md-push-4">    	
+        <h3><img src="{{ page.discoveryBaseURL }}images/modeling32.png" alt="">
+          ALE <small>by Inria and Obeo</small></h3>
+        <p>Action Language for EMF.</p>
+        <p>Ale is a language to define behaviors on the top of Ecore models. It is intended to be distributed in EcoreTools and will be an alternative to K3.
+        <a href="http://gemoc.org/ale-lang/">Learn more</a></p>
+
+        <h4>Update site</h4>
+        <ul>
+            <li><a href="https://ci.inria.fr/gemoc/job/ale-lang/lastSuccessfulBuild/artifact/releng/org.eclipse.emf.ecoretools.ale.updatesite/target/repository/">https://ci.inria.fr/gemoc/job/ale-lang/lastSuccessfulBuild/artifact/releng/org.eclipse.emf.ecoretools.ale.updatesite/target/repository/</a></li>            
+        </ul>
+    </div>
+    <div class="col-md-4 col-md-pull-8">
+        <!-- <img class="img-responsive img-hover" src="{{ page.discoveryBaseURL }}images/tesl-screenshot-320x240.png" alt=""> -->        
+    </div>
+</div>
+
 <!-- TESL Engine and Editor  -->
 <div class="row">    
     <div class="col-md-8 col-md-push-4">    	
