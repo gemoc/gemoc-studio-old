@@ -35,7 +35,7 @@ import org.gemoc.gemoc_studio.branding.Activator;
 
 public class GemocPackageDiscovery extends DiscoveryContentProvider {
 
-	private static final String CATALOG_URI = "https://raw.githubusercontent.com/gemoc/gemoc-studio/master/gemoc_studio/discovery/catalog.xmi";
+	private static final String CATALOG_URI = "http://gemoc.org/discovery/catalog.xmi";
 
 	@Override
 	public DiscoveryDefinition load(final IProgressMonitor monitor)
