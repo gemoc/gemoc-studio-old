@@ -142,12 +142,11 @@
       description="Engines and tools proposing alternative approaches (may not directly use GEMOC execution framework)"
       relevance="2">
     <components
-        name="ALE"
+        name="ALE (Incubation)"
         provider="Inria and Obeo"
         description="Action Language for EMF"
         license="EPL"
-        image32="images/modeling32.png"
-        incubation="true">
+        image32="images/modeling32.png">
       <sitesURLS>https://ci.inria.fr/gemoc/job/ale-lang/lastSuccessfulBuild/artifact/releng/org.eclipse.emf.ecoretools.ale.updatesite/target/repository/</sitesURLS>
       <overview
           summary="Ale is a language to define behaviors on the top of Ecore models. It is intended to be distributed in EcoreTools and will be an alternative to K3."
