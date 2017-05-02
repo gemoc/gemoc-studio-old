@@ -1,5 +1,5 @@
-the catalog.md is build manually and is intended to be copied in the [GEMOC website](http://www.gemoc.org)GEMOC website by its [build.sh](https://github.com/gemoc/gemoc.github.io/blob/gh-pages-edit/build.sh) script.
+# DEPRECATED
 
-This file is located here instead of directly in the site in order to have them both at the same location and simplify the manual synchronization.
+_this folder is now replaced by the version that is available on the gemoc web site. Ie. in (gemoc.github.io/discovery)[https://github.com/gemoc/gemoc.github.io/tree/gh-pages-edit/discovery]_
 
-May be in the future, we can write or retreive a tool that would generate is automatically...
+The folder is maintained only because old GEMOC Studio will continue to reference this url.
