@@ -4,6 +4,8 @@ package fsmTrace.Steps.impl;
 
 import fr.inria.diverse.trace.commons.model.trace.impl.SmallStepImpl;
 
+import fsmTrace.States.SpecificState;
+
 import fsmTrace.Steps.RootImplicitStep;
 import fsmTrace.Steps.StepsPackage;
 
@@ -16,7 +18,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class RootImplicitStepImpl extends SmallStepImpl implements RootImplicitStep {
+public class RootImplicitStepImpl extends SmallStepImpl<SpecificState> implements RootImplicitStep {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

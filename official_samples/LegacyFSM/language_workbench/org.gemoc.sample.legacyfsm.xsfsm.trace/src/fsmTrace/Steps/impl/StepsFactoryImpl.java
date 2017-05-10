@@ -61,6 +61,7 @@ public class StepsFactoryImpl extends EFactoryImpl implements StepsFactory {
 			case StepsPackage.FSM_STATE_STEP_IMPLICIT_STEP: return createFsm_State_Step_ImplicitStep();
 			case StepsPackage.FSM_TRANSITION_FIRE: return createFsm_Transition_Fire();
 			case StepsPackage.ROOT_IMPLICIT_STEP: return createRootImplicitStep();
+			case StepsPackage.SPECIFIC_ROOT_STEP: return createSpecificRootStep();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -114,6 +115,16 @@ public class StepsFactoryImpl extends EFactoryImpl implements StepsFactory {
 	public RootImplicitStep createRootImplicitStep() {
 		RootImplicitStepImpl rootImplicitStep = new RootImplicitStepImpl();
 		return rootImplicitStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SpecificRootStep createSpecificRootStep() {
+		SpecificRootStepImpl specificRootStep = new SpecificRootStepImpl();
+		return specificRootStep;
 	}
 
 	/**

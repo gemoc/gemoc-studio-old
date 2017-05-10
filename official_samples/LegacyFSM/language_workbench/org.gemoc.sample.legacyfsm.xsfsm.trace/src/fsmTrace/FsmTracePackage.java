@@ -76,6 +76,24 @@ public interface FsmTracePackage extends EPackage {
 	int SPECIFIC_TRACE__ROOT_STEP = TracePackage.TRACE__ROOT_STEP;
 
 	/**
+	 * The feature id for the '<em><b>Traced Objects</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_TRACE__TRACED_OBJECTS = TracePackage.TRACE__TRACED_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>States</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_TRACE__STATES = TracePackage.TRACE__STATES;
+
+	/**
 	 * The feature id for the '<em><b>Launchconfiguration</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -112,49 +130,13 @@ public interface FsmTracePackage extends EPackage {
 	int SPECIFIC_TRACE__FSM_TRANSITION_FIRE_SEQUENCE = TracePackage.TRACE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Fsm traced State Machines</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIFIC_TRACE__FSM_TRACED_STATE_MACHINES = TracePackage.TRACE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Fsm traced States</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIFIC_TRACE__FSM_TRACED_STATES = TracePackage.TRACE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Fsm traced Transitions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIFIC_TRACE__FSM_TRACED_TRANSITIONS = TracePackage.TRACE_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>States Trace</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIFIC_TRACE__STATES_TRACE = TracePackage.TRACE_FEATURE_COUNT + 6;
-
-	/**
 	 * The number of structural features of the '<em>Specific Trace</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_TRACE_FEATURE_COUNT = TracePackage.TRACE_FEATURE_COUNT + 7;
+	int SPECIFIC_TRACE_FEATURE_COUNT = TracePackage.TRACE_FEATURE_COUNT + 3;
 
 
 	/**
@@ -199,50 +181,6 @@ public interface FsmTracePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSpecificTrace_Fsm_Transition_Fire_Sequence();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.SpecificTrace#getFsm_tracedStateMachines <em>Fsm traced State Machines</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Fsm traced State Machines</em>'.
-	 * @see fsmTrace.SpecificTrace#getFsm_tracedStateMachines()
-	 * @see #getSpecificTrace()
-	 * @generated
-	 */
-	EReference getSpecificTrace_Fsm_tracedStateMachines();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.SpecificTrace#getFsm_tracedStates <em>Fsm traced States</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Fsm traced States</em>'.
-	 * @see fsmTrace.SpecificTrace#getFsm_tracedStates()
-	 * @see #getSpecificTrace()
-	 * @generated
-	 */
-	EReference getSpecificTrace_Fsm_tracedStates();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.SpecificTrace#getFsm_tracedTransitions <em>Fsm traced Transitions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Fsm traced Transitions</em>'.
-	 * @see fsmTrace.SpecificTrace#getFsm_tracedTransitions()
-	 * @see #getSpecificTrace()
-	 * @generated
-	 */
-	EReference getSpecificTrace_Fsm_tracedTransitions();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.SpecificTrace#getStatesTrace <em>States Trace</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>States Trace</em>'.
-	 * @see fsmTrace.SpecificTrace#getStatesTrace()
-	 * @see #getSpecificTrace()
-	 * @generated
-	 */
-	EReference getSpecificTrace_StatesTrace();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -299,38 +237,6 @@ public interface FsmTracePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SPECIFIC_TRACE__FSM_TRANSITION_FIRE_SEQUENCE = eINSTANCE.getSpecificTrace_Fsm_Transition_Fire_Sequence();
-
-		/**
-		 * The meta object literal for the '<em><b>Fsm traced State Machines</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SPECIFIC_TRACE__FSM_TRACED_STATE_MACHINES = eINSTANCE.getSpecificTrace_Fsm_tracedStateMachines();
-
-		/**
-		 * The meta object literal for the '<em><b>Fsm traced States</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SPECIFIC_TRACE__FSM_TRACED_STATES = eINSTANCE.getSpecificTrace_Fsm_tracedStates();
-
-		/**
-		 * The meta object literal for the '<em><b>Fsm traced Transitions</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SPECIFIC_TRACE__FSM_TRACED_TRANSITIONS = eINSTANCE.getSpecificTrace_Fsm_tracedTransitions();
-
-		/**
-		 * The meta object literal for the '<em><b>States Trace</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SPECIFIC_TRACE__STATES_TRACE = eINSTANCE.getSpecificTrace_StatesTrace();
 
 	}
 

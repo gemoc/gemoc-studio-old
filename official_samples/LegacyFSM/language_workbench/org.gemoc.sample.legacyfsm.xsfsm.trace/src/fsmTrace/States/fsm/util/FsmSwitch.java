@@ -2,6 +2,13 @@
  */
 package fsmTrace.States.fsm.util;
 
+import fr.inria.diverse.trace.commons.model.trace.Dimension;
+import fr.inria.diverse.trace.commons.model.trace.TracedObject;
+
+import fsmTrace.States.SpecificDimension;
+import fsmTrace.States.SpecificTracedObject;
+import fsmTrace.States.SpecificValue;
+
 import fsmTrace.States.fsm.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -69,6 +76,8 @@ public class FsmSwitch<T> extends Switch<T> {
 			case FsmPackage.TRACED_NAMED_ELEMENT: {
 				TracedNamedElement tracedNamedElement = (TracedNamedElement)theEObject;
 				T result = caseTracedNamedElement(tracedNamedElement);
+				if (result == null) result = caseSpecificTracedObject(tracedNamedElement);
+				if (result == null) result = caseTracedObject(tracedNamedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -76,6 +85,8 @@ public class FsmSwitch<T> extends Switch<T> {
 				TracedState tracedState = (TracedState)theEObject;
 				T result = caseTracedState(tracedState);
 				if (result == null) result = caseTracedNamedElement(tracedState);
+				if (result == null) result = caseSpecificTracedObject(tracedState);
+				if (result == null) result = caseTracedObject(tracedState);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -83,6 +94,8 @@ public class FsmSwitch<T> extends Switch<T> {
 				TracedStateMachine tracedStateMachine = (TracedStateMachine)theEObject;
 				T result = caseTracedStateMachine(tracedStateMachine);
 				if (result == null) result = caseTracedNamedElement(tracedStateMachine);
+				if (result == null) result = caseSpecificTracedObject(tracedStateMachine);
+				if (result == null) result = caseTracedObject(tracedStateMachine);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -90,6 +103,8 @@ public class FsmSwitch<T> extends Switch<T> {
 				TracedTransition tracedTransition = (TracedTransition)theEObject;
 				T result = caseTracedTransition(tracedTransition);
 				if (result == null) result = caseTracedNamedElement(tracedTransition);
+				if (result == null) result = caseSpecificTracedObject(tracedTransition);
+				if (result == null) result = caseTracedObject(tracedTransition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -154,6 +169,36 @@ public class FsmSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTracedTransition(TracedTransition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Traced Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Traced Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public <DimensionSubType extends Dimension<?>> T caseTracedObject(TracedObject<DimensionSubType> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Specific Traced Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Specific Traced Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public <DimensionSubType extends SpecificDimension<? extends SpecificValue>> T caseSpecificTracedObject(SpecificTracedObject<DimensionSubType> object) {
 		return null;
 	}
 

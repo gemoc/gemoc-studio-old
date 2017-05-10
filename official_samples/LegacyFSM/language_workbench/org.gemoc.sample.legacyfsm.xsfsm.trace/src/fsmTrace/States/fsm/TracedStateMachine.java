@@ -2,10 +2,11 @@
  */
 package fsmTrace.States.fsm;
 
-import fsmTrace.States.StateMachine_consummedString_Value;
-import fsmTrace.States.StateMachine_currentState_Value;
-import fsmTrace.States.StateMachine_producedString_Value;
-import fsmTrace.States.StateMachine_unprocessedString_Value;
+import fsmTrace.States.SpecificDimension;
+import fsmTrace.States.StateMachine_consummedString_Dimension;
+import fsmTrace.States.StateMachine_currentState_Dimension;
+import fsmTrace.States.StateMachine_producedString_Dimension;
+import fsmTrace.States.StateMachine_unprocessedString_Dimension;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -20,11 +21,11 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getConsummedStringSequence <em>Consummed String Sequence</em>}</li>
- *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getCurrentStateSequence <em>Current State Sequence</em>}</li>
  *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getOriginalObject <em>Original Object</em>}</li>
- *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getProducedStringSequence <em>Produced String Sequence</em>}</li>
- *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getUnprocessedStringSequence <em>Unprocessed String Sequence</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_consummedString_Dimension <em>State Machine consummed String Dimension</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_currentState_Dimension <em>State Machine current State Dimension</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_producedString_Dimension <em>State Machine produced String Dimension</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_unprocessedString_Dimension <em>State Machine unprocessed String Dimension</em>}</li>
  * </ul>
  *
  * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine()
@@ -32,42 +33,6 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine;
  * @generated
  */
 public interface TracedStateMachine extends TracedNamedElement {
-	/**
-	 * Returns the value of the '<em><b>Consummed String Sequence</b></em>' containment reference list.
-	 * The list contents are of type {@link fsmTrace.States.StateMachine_consummedString_Value}.
-	 * It is bidirectional and its opposite is '{@link fsmTrace.States.StateMachine_consummedString_Value#getParent <em>Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Consummed String Sequence</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Consummed String Sequence</em>' containment reference list.
-	 * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine_ConsummedStringSequence()
-	 * @see fsmTrace.States.StateMachine_consummedString_Value#getParent
-	 * @model opposite="parent" containment="true"
-	 * @generated
-	 */
-	EList<StateMachine_consummedString_Value> getConsummedStringSequence();
-
-	/**
-	 * Returns the value of the '<em><b>Current State Sequence</b></em>' containment reference list.
-	 * The list contents are of type {@link fsmTrace.States.StateMachine_currentState_Value}.
-	 * It is bidirectional and its opposite is '{@link fsmTrace.States.StateMachine_currentState_Value#getParent <em>Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Current State Sequence</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Current State Sequence</em>' containment reference list.
-	 * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine_CurrentStateSequence()
-	 * @see fsmTrace.States.StateMachine_currentState_Value#getParent
-	 * @model opposite="parent" containment="true"
-	 * @generated
-	 */
-	EList<StateMachine_currentState_Value> getCurrentStateSequence();
-
 	/**
 	 * Returns the value of the '<em><b>Original Object</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -95,39 +60,116 @@ public interface TracedStateMachine extends TracedNamedElement {
 	void setOriginalObject(StateMachine value);
 
 	/**
-	 * Returns the value of the '<em><b>Produced String Sequence</b></em>' containment reference list.
-	 * The list contents are of type {@link fsmTrace.States.StateMachine_producedString_Value}.
-	 * It is bidirectional and its opposite is '{@link fsmTrace.States.StateMachine_producedString_Value#getParent <em>Parent</em>}'.
+	 * Returns the value of the '<em><b>State Machine consummed String Dimension</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Produced String Sequence</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>State Machine consummed String Dimension</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Produced String Sequence</em>' containment reference list.
-	 * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine_ProducedStringSequence()
-	 * @see fsmTrace.States.StateMachine_producedString_Value#getParent
-	 * @model opposite="parent" containment="true"
+	 * @return the value of the '<em>State Machine consummed String Dimension</em>' containment reference.
+	 * @see #setStateMachine_consummedString_Dimension(StateMachine_consummedString_Dimension)
+	 * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine_StateMachine_consummedString_Dimension()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<StateMachine_producedString_Value> getProducedStringSequence();
+	StateMachine_consummedString_Dimension getStateMachine_consummedString_Dimension();
 
 	/**
-	 * Returns the value of the '<em><b>Unprocessed String Sequence</b></em>' containment reference list.
-	 * The list contents are of type {@link fsmTrace.States.StateMachine_unprocessedString_Value}.
-	 * It is bidirectional and its opposite is '{@link fsmTrace.States.StateMachine_unprocessedString_Value#getParent <em>Parent</em>}'.
+	 * Sets the value of the '{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_consummedString_Dimension <em>State Machine consummed String Dimension</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>State Machine consummed String Dimension</em>' containment reference.
+	 * @see #getStateMachine_consummedString_Dimension()
+	 * @generated
+	 */
+	void setStateMachine_consummedString_Dimension(StateMachine_consummedString_Dimension value);
+
+	/**
+	 * Returns the value of the '<em><b>State Machine current State Dimension</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Unprocessed String Sequence</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>State Machine current State Dimension</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unprocessed String Sequence</em>' containment reference list.
-	 * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine_UnprocessedStringSequence()
-	 * @see fsmTrace.States.StateMachine_unprocessedString_Value#getParent
-	 * @model opposite="parent" containment="true"
+	 * @return the value of the '<em>State Machine current State Dimension</em>' containment reference.
+	 * @see #setStateMachine_currentState_Dimension(StateMachine_currentState_Dimension)
+	 * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine_StateMachine_currentState_Dimension()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<StateMachine_unprocessedString_Value> getUnprocessedStringSequence();
+	StateMachine_currentState_Dimension getStateMachine_currentState_Dimension();
+
+	/**
+	 * Sets the value of the '{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_currentState_Dimension <em>State Machine current State Dimension</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>State Machine current State Dimension</em>' containment reference.
+	 * @see #getStateMachine_currentState_Dimension()
+	 * @generated
+	 */
+	void setStateMachine_currentState_Dimension(StateMachine_currentState_Dimension value);
+
+	/**
+	 * Returns the value of the '<em><b>State Machine produced String Dimension</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>State Machine produced String Dimension</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>State Machine produced String Dimension</em>' containment reference.
+	 * @see #setStateMachine_producedString_Dimension(StateMachine_producedString_Dimension)
+	 * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine_StateMachine_producedString_Dimension()
+	 * @model containment="true"
+	 * @generated
+	 */
+	StateMachine_producedString_Dimension getStateMachine_producedString_Dimension();
+
+	/**
+	 * Sets the value of the '{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_producedString_Dimension <em>State Machine produced String Dimension</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>State Machine produced String Dimension</em>' containment reference.
+	 * @see #getStateMachine_producedString_Dimension()
+	 * @generated
+	 */
+	void setStateMachine_producedString_Dimension(StateMachine_producedString_Dimension value);
+
+	/**
+	 * Returns the value of the '<em><b>State Machine unprocessed String Dimension</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>State Machine unprocessed String Dimension</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>State Machine unprocessed String Dimension</em>' containment reference.
+	 * @see #setStateMachine_unprocessedString_Dimension(StateMachine_unprocessedString_Dimension)
+	 * @see fsmTrace.States.fsm.FsmPackage#getTracedStateMachine_StateMachine_unprocessedString_Dimension()
+	 * @model containment="true"
+	 * @generated
+	 */
+	StateMachine_unprocessedString_Dimension getStateMachine_unprocessedString_Dimension();
+
+	/**
+	 * Sets the value of the '{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_unprocessedString_Dimension <em>State Machine unprocessed String Dimension</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>State Machine unprocessed String Dimension</em>' containment reference.
+	 * @see #getStateMachine_unprocessedString_Dimension()
+	 * @generated
+	 */
+	void setStateMachine_unprocessedString_Dimension(StateMachine_unprocessedString_Dimension value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='final EList<SpecificDimension<?>> result = new org.eclipse.emf.ecore.util.BasicInternalEList<SpecificDimension<?>>(Object.class);\nresult.addAll(super.getDimensionsInternal());\nresult.add(getStateMachine_currentState_Dimension());\nresult.add(getStateMachine_unprocessedString_Dimension());\nresult.add(getStateMachine_consummedString_Dimension());\nresult.add(getStateMachine_producedString_Dimension());\nreturn result;\n'"
+	 * @generated
+	 */
+	EList<SpecificDimension<?>> getDimensionsInternal();
 
 } // TracedStateMachine

@@ -18,6 +18,7 @@ import fsmTrace.Steps.Fsm_State_Step_AbstractSubStep;
 import fsmTrace.Steps.Fsm_State_Step_ImplicitStep;
 import fsmTrace.Steps.Fsm_Transition_Fire;
 import fsmTrace.Steps.RootImplicitStep;
+import fsmTrace.Steps.SpecificRootStep;
 import fsmTrace.Steps.SpecificStep;
 import fsmTrace.Steps.StepsFactory;
 import fsmTrace.Steps.StepsPackage;
@@ -27,7 +28,6 @@ import fsmTrace.impl.FsmTracePackageImpl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -81,6 +81,13 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * @generated
 	 */
 	private EClass rootImplicitStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass specificRootStepEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -224,26 +231,17 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSpecificRootStep() {
+		return specificRootStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSpecificStep() {
 		return specificStepEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificStep_EndingState() {
-		return (EReference)specificStepEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificStep_StartingState() {
-		return (EReference)specificStepEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -286,9 +284,9 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 
 		rootImplicitStepEClass = createEClass(ROOT_IMPLICIT_STEP);
 
+		specificRootStepEClass = createEClass(SPECIFIC_ROOT_STEP);
+
 		specificStepEClass = createEClass(SPECIFIC_STEP);
-		createEReference(specificStepEClass, SPECIFIC_STEP__ENDING_STATE);
-		createEReference(specificStepEClass, SPECIFIC_STEP__STARTING_STATE);
 	}
 
 	/**
@@ -316,30 +314,59 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 
 		// Obtain other dependent packages
 		TracePackage theTracePackage = (TracePackage)EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI);
-		fsmTrace.States.fsm.FsmPackage theFsmPackage_1 = (fsmTrace.States.fsm.FsmPackage)EPackage.Registry.INSTANCE.getEPackage(fsmTrace.States.fsm.FsmPackage.eNS_URI);
 		StatesPackage theStatesPackage = (StatesPackage)EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI);
+		fsmTrace.States.fsm.FsmPackage theFsmPackage_1 = (fsmTrace.States.fsm.FsmPackage)EPackage.Registry.INSTANCE.getEPackage(fsmTrace.States.fsm.FsmPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		fsm_StateMachine_InitializeModelEClass.getESuperTypes().add(this.getSpecificStep());
-		fsm_StateMachine_InitializeModelEClass.getESuperTypes().add(theTracePackage.getSmallStep());
 		EGenericType g1 = createEGenericType(this.getSpecificStep());
+		fsm_StateMachine_InitializeModelEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theTracePackage.getSmallStep());
+		EGenericType g2 = createEGenericType(theStatesPackage.getSpecificState());
+		g1.getETypeArguments().add(g2);
+		fsm_StateMachine_InitializeModelEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getSpecificStep());
 		fsm_State_StepEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(theTracePackage.getSequentialStep());
-		EGenericType g2 = createEGenericType(this.getFsm_State_Step_AbstractSubStep());
+		g2 = createEGenericType(this.getFsm_State_Step_AbstractSubStep());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theStatesPackage.getSpecificState());
 		g1.getETypeArguments().add(g2);
 		fsm_State_StepEClass.getEGenericSuperTypes().add(g1);
 		fsm_State_Step_AbstractSubStepEClass.getESuperTypes().add(this.getSpecificStep());
-		fsm_State_Step_ImplicitStepEClass.getESuperTypes().add(this.getFsm_State_Step_AbstractSubStep());
-		fsm_State_Step_ImplicitStepEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		fsm_Transition_FireEClass.getESuperTypes().add(this.getFsm_State_Step_AbstractSubStep());
-		fsm_Transition_FireEClass.getESuperTypes().add(this.getSpecificStep());
-		fsm_Transition_FireEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		rootImplicitStepEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		specificStepEClass.getESuperTypes().add(theTracePackage.getStep());
+		g1 = createEGenericType(this.getFsm_State_Step_AbstractSubStep());
+		fsm_State_Step_ImplicitStepEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theTracePackage.getSmallStep());
+		g2 = createEGenericType(theStatesPackage.getSpecificState());
+		g1.getETypeArguments().add(g2);
+		fsm_State_Step_ImplicitStepEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getFsm_State_Step_AbstractSubStep());
+		fsm_Transition_FireEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getSpecificStep());
+		fsm_Transition_FireEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theTracePackage.getSmallStep());
+		g2 = createEGenericType(theStatesPackage.getSpecificState());
+		g1.getETypeArguments().add(g2);
+		fsm_Transition_FireEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theTracePackage.getSmallStep());
+		g2 = createEGenericType(theStatesPackage.getSpecificState());
+		g1.getETypeArguments().add(g2);
+		rootImplicitStepEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theTracePackage.getSequentialStep());
+		g2 = createEGenericType(this.getSpecificStep());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theStatesPackage.getSpecificState());
+		g1.getETypeArguments().add(g2);
+		specificRootStepEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getSpecificStep());
+		specificRootStepEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theTracePackage.getStep());
+		g2 = createEGenericType(theStatesPackage.getSpecificState());
+		g1.getETypeArguments().add(g2);
+		specificStepEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(fsm_StateMachine_InitializeModelEClass, Fsm_StateMachine_InitializeModel.class, "Fsm_StateMachine_InitializeModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -360,9 +387,9 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 
 		initEClass(rootImplicitStepEClass, RootImplicitStep.class, "RootImplicitStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(specificStepEClass, SpecificStep.class, "SpecificStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSpecificStep_EndingState(), theStatesPackage.getState(), theStatesPackage.getState_EndedSteps(), "endingState", null, 0, 1, SpecificStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSpecificStep_StartingState(), theStatesPackage.getState(), theStatesPackage.getState_StartedSteps(), "startingState", null, 1, 1, SpecificStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(specificRootStepEClass, SpecificRootStep.class, "SpecificRootStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(specificStepEClass, SpecificStep.class, "SpecificStep", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 	}
 
 } //StepsPackageImpl

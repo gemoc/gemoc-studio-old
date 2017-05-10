@@ -22,13 +22,22 @@ public interface StatesFactory extends EFactory {
 	StatesFactory eINSTANCE = fsmTrace.States.impl.StatesFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>State</em>'.
+	 * Returns a new object of class '<em>Specific State</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>State</em>'.
+	 * @return a new object of class '<em>Specific State</em>'.
 	 * @generated
 	 */
-	State createState();
+	SpecificState createSpecificState();
+
+	/**
+	 * Returns a new object of class '<em>State Machine consummed String Dimension</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>State Machine consummed String Dimension</em>'.
+	 * @generated
+	 */
+	StateMachine_consummedString_Dimension createStateMachine_consummedString_Dimension();
 
 	/**
 	 * Returns a new object of class '<em>State Machine consummed String Value</em>'.
@@ -40,6 +49,15 @@ public interface StatesFactory extends EFactory {
 	StateMachine_consummedString_Value createStateMachine_consummedString_Value();
 
 	/**
+	 * Returns a new object of class '<em>State Machine current State Dimension</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>State Machine current State Dimension</em>'.
+	 * @generated
+	 */
+	StateMachine_currentState_Dimension createStateMachine_currentState_Dimension();
+
+	/**
 	 * Returns a new object of class '<em>State Machine current State Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49,6 +67,15 @@ public interface StatesFactory extends EFactory {
 	StateMachine_currentState_Value createStateMachine_currentState_Value();
 
 	/**
+	 * Returns a new object of class '<em>State Machine produced String Dimension</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>State Machine produced String Dimension</em>'.
+	 * @generated
+	 */
+	StateMachine_producedString_Dimension createStateMachine_producedString_Dimension();
+
+	/**
 	 * Returns a new object of class '<em>State Machine produced String Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,6 +83,15 @@ public interface StatesFactory extends EFactory {
 	 * @generated
 	 */
 	StateMachine_producedString_Value createStateMachine_producedString_Value();
+
+	/**
+	 * Returns a new object of class '<em>State Machine unprocessed String Dimension</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>State Machine unprocessed String Dimension</em>'.
+	 * @generated
+	 */
+	StateMachine_unprocessedString_Dimension createStateMachine_unprocessedString_Dimension();
 
 	/**
 	 * Returns a new object of class '<em>State Machine unprocessed String Value</em>'.

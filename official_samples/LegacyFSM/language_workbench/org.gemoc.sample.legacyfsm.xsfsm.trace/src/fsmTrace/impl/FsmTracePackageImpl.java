@@ -158,42 +158,6 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSpecificTrace_Fsm_tracedStateMachines() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_tracedStates() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_Fsm_tracedTransitions() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpecificTrace_StatesTrace() {
-		return (EReference)specificTraceEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public FsmTraceFactory getFsmTraceFactory() {
 		return (FsmTraceFactory)getEFactoryInstance();
 	}
@@ -221,10 +185,6 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_STATE_MACHINE_INITIALIZE_MODEL_SEQUENCE);
 		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_STATE_STEP_SEQUENCE);
 		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRANSITION_FIRE_SEQUENCE);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_STATE_MACHINES);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_STATES);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_TRANSITIONS);
-		createEReference(specificTraceEClass, SPECIFIC_TRACE__STATES_TRACE);
 	}
 
 	/**
@@ -254,7 +214,6 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 		StepsPackage theStepsPackage = (StepsPackage)EPackage.Registry.INSTANCE.getEPackage(StepsPackage.eNS_URI);
 		StatesPackage theStatesPackage = (StatesPackage)EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI);
 		TracePackage theTracePackage = (TracePackage)EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI);
-		fsmTrace.States.fsm.FsmPackage theFsmPackage_1 = (fsmTrace.States.fsm.FsmPackage)EPackage.Registry.INSTANCE.getEPackage(fsmTrace.States.fsm.FsmPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theStepsPackage);
@@ -268,8 +227,26 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 		EGenericType g1 = createEGenericType(theTracePackage.getTrace());
 		EGenericType g2 = createEGenericType(theTracePackage.getSequentialStep());
 		g1.getETypeArguments().add(g2);
-		EGenericType g3 = createEGenericType(theStepsPackage.getSpecificStep());
+		EGenericType g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
+		EGenericType g4 = createEGenericType(theStepsPackage.getSpecificStep());
+		g3.setEUpperBound(g4);
+		g3 = createEGenericType();
+		g2.getETypeArguments().add(g3);
+		g4 = createEGenericType(theStatesPackage.getSpecificState());
+		g3.setEUpperBound(g4);
+		g2 = createEGenericType(theStatesPackage.getSpecificTracedObject());
+		g1.getETypeArguments().add(g2);
+		g3 = createEGenericType();
+		g2.getETypeArguments().add(g3);
+		g4 = createEGenericType(theStatesPackage.getSpecificDimension());
+		g3.setEUpperBound(g4);
+		EGenericType g5 = createEGenericType();
+		g4.getETypeArguments().add(g5);
+		EGenericType g6 = createEGenericType(theStatesPackage.getSpecificValue());
+		g5.setEUpperBound(g6);
+		g2 = createEGenericType(theStatesPackage.getSpecificState());
+		g1.getETypeArguments().add(g2);
 		specificTraceEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
@@ -277,10 +254,6 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 		initEReference(getSpecificTrace_Fsm_StateMachine_InitializeModel_Sequence(), theStepsPackage.getFsm_StateMachine_InitializeModel(), null, "Fsm_StateMachine_InitializeModel_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSpecificTrace_Fsm_State_Step_Sequence(), theStepsPackage.getFsm_State_Step(), null, "Fsm_State_Step_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSpecificTrace_Fsm_Transition_Fire_Sequence(), theStepsPackage.getFsm_Transition_Fire(), null, "Fsm_Transition_Fire_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_tracedStateMachines(), theFsmPackage_1.getTracedStateMachine(), null, "fsm_tracedStateMachines", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_tracedStates(), theFsmPackage_1.getTracedState(), null, "fsm_tracedStates", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getSpecificTrace_Fsm_tracedTransitions(), theFsmPackage_1.getTracedTransition(), null, "fsm_tracedTransitions", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getSpecificTrace_StatesTrace(), theStatesPackage.getState(), null, "statesTrace", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

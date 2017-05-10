@@ -4,6 +4,8 @@ package fsmTrace.Steps;
 
 import fr.inria.diverse.trace.commons.model.trace.SmallStep;
 
+import fsmTrace.States.SpecificState;
+
 import fsmTrace.States.fsm.TracedStateMachine;
 
 /**
@@ -16,7 +18,7 @@ import fsmTrace.States.fsm.TracedStateMachine;
  * @model
  * @generated
  */
-public interface Fsm_StateMachine_InitializeModel extends SpecificStep, SmallStep {
+public interface Fsm_StateMachine_InitializeModel extends SpecificStep, SmallStep<SpecificState> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

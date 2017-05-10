@@ -2,10 +2,14 @@
  */
 package fsmTrace.States.fsm.impl;
 
+import fsmTrace.States.SpecificDimension;
+
 import fsmTrace.States.fsm.FsmPackage;
 import fsmTrace.States.fsm.TracedState;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -93,6 +97,18 @@ public class TracedStateImpl extends TracedNamedElementImpl implements TracedSta
 		originalObject = newOriginalObject;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TRACED_STATE__ORIGINAL_OBJECT, oldOriginalObject, originalObject));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<SpecificDimension<?>> getDimensionsInternal() {
+		final EList<SpecificDimension<?>> result = new org.eclipse.emf.ecore.util.BasicInternalEList<SpecificDimension<?>>(Object.class);
+		result.addAll(super.getDimensionsInternal());
+		return result;
+		
 	}
 
 	/**

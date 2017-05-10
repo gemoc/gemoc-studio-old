@@ -2,6 +2,12 @@
  */
 package fsmTrace.States.util;
 
+import fr.inria.diverse.trace.commons.model.trace.Dimension;
+import fr.inria.diverse.trace.commons.model.trace.State;
+import fr.inria.diverse.trace.commons.model.trace.Step;
+import fr.inria.diverse.trace.commons.model.trace.TracedObject;
+import fr.inria.diverse.trace.commons.model.trace.Value;
+
 import fsmTrace.States.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -68,28 +74,76 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	protected StatesSwitch<Adapter> modelSwitch =
 		new StatesSwitch<Adapter>() {
 			@Override
-			public Adapter caseState(State object) {
-				return createStateAdapter();
+			public Adapter caseSpecificAttributeValue(SpecificAttributeValue object) {
+				return createSpecificAttributeValueAdapter();
+			}
+			@Override
+			public <ValueSubType extends SpecificValue> Adapter caseSpecificDimension(SpecificDimension<ValueSubType> object) {
+				return createSpecificDimensionAdapter();
+			}
+			@Override
+			public <T> Adapter caseSpecificReferenceValue(SpecificReferenceValue<T> object) {
+				return createSpecificReferenceValueAdapter();
+			}
+			@Override
+			public Adapter caseSpecificState(SpecificState object) {
+				return createSpecificStateAdapter();
+			}
+			@Override
+			public <DimensionSubType extends SpecificDimension<? extends SpecificValue>> Adapter caseSpecificTracedObject(SpecificTracedObject<DimensionSubType> object) {
+				return createSpecificTracedObjectAdapter();
+			}
+			@Override
+			public Adapter caseSpecificValue(SpecificValue object) {
+				return createSpecificValueAdapter();
+			}
+			@Override
+			public Adapter caseStateMachine_consummedString_Dimension(StateMachine_consummedString_Dimension object) {
+				return createStateMachine_consummedString_DimensionAdapter();
 			}
 			@Override
 			public Adapter caseStateMachine_consummedString_Value(StateMachine_consummedString_Value object) {
 				return createStateMachine_consummedString_ValueAdapter();
 			}
 			@Override
+			public Adapter caseStateMachine_currentState_Dimension(StateMachine_currentState_Dimension object) {
+				return createStateMachine_currentState_DimensionAdapter();
+			}
+			@Override
 			public Adapter caseStateMachine_currentState_Value(StateMachine_currentState_Value object) {
 				return createStateMachine_currentState_ValueAdapter();
+			}
+			@Override
+			public Adapter caseStateMachine_producedString_Dimension(StateMachine_producedString_Dimension object) {
+				return createStateMachine_producedString_DimensionAdapter();
 			}
 			@Override
 			public Adapter caseStateMachine_producedString_Value(StateMachine_producedString_Value object) {
 				return createStateMachine_producedString_ValueAdapter();
 			}
 			@Override
+			public Adapter caseStateMachine_unprocessedString_Dimension(StateMachine_unprocessedString_Dimension object) {
+				return createStateMachine_unprocessedString_DimensionAdapter();
+			}
+			@Override
 			public Adapter caseStateMachine_unprocessedString_Value(StateMachine_unprocessedString_Value object) {
 				return createStateMachine_unprocessedString_ValueAdapter();
 			}
 			@Override
-			public Adapter caseValue(Value object) {
+			public <StateSubType extends State<?, ?>> Adapter caseValue(Value<StateSubType> object) {
 				return createValueAdapter();
+			}
+			@Override
+			public <ValueSubType extends Value<?>> Adapter caseDimension(Dimension<ValueSubType> object) {
+				return createDimensionAdapter();
+			}
+			@Override
+			public <StepSubType extends Step<?>, ValueSubType extends Value<?>> Adapter caseState(State<StepSubType, ValueSubType> object) {
+				return createStateAdapter();
+			}
+			@Override
+			public <DimensionSubType extends Dimension<?>> Adapter caseTracedObject(TracedObject<DimensionSubType> object) {
+				return createTracedObjectAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -112,16 +166,100 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.State <em>State</em>}'.
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.SpecificAttributeValue <em>Specific Attribute Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fsmTrace.States.State
+	 * @see fsmTrace.States.SpecificAttributeValue
 	 * @generated
 	 */
-	public Adapter createStateAdapter() {
+	public Adapter createSpecificAttributeValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.SpecificDimension <em>Specific Dimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fsmTrace.States.SpecificDimension
+	 * @generated
+	 */
+	public Adapter createSpecificDimensionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.SpecificReferenceValue <em>Specific Reference Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fsmTrace.States.SpecificReferenceValue
+	 * @generated
+	 */
+	public Adapter createSpecificReferenceValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.SpecificState <em>Specific State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fsmTrace.States.SpecificState
+	 * @generated
+	 */
+	public Adapter createSpecificStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.SpecificTracedObject <em>Specific Traced Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fsmTrace.States.SpecificTracedObject
+	 * @generated
+	 */
+	public Adapter createSpecificTracedObjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.SpecificValue <em>Specific Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fsmTrace.States.SpecificValue
+	 * @generated
+	 */
+	public Adapter createSpecificValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_consummedString_Dimension <em>State Machine consummed String Dimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fsmTrace.States.StateMachine_consummedString_Dimension
+	 * @generated
+	 */
+	public Adapter createStateMachine_consummedString_DimensionAdapter() {
 		return null;
 	}
 
@@ -140,6 +278,20 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_currentState_Dimension <em>State Machine current State Dimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fsmTrace.States.StateMachine_currentState_Dimension
+	 * @generated
+	 */
+	public Adapter createStateMachine_currentState_DimensionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_currentState_Value <em>State Machine current State Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -150,6 +302,20 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStateMachine_currentState_ValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_producedString_Dimension <em>State Machine produced String Dimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fsmTrace.States.StateMachine_producedString_Dimension
+	 * @generated
+	 */
+	public Adapter createStateMachine_producedString_DimensionAdapter() {
 		return null;
 	}
 
@@ -168,6 +334,20 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_unprocessedString_Dimension <em>State Machine unprocessed String Dimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fsmTrace.States.StateMachine_unprocessedString_Dimension
+	 * @generated
+	 */
+	public Adapter createStateMachine_unprocessedString_DimensionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_unprocessedString_Value <em>State Machine unprocessed String Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -182,16 +362,58 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.Value <em>Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.Value <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fsmTrace.States.Value
+	 * @see fr.inria.diverse.trace.commons.model.trace.Value
 	 * @generated
 	 */
 	public Adapter createValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.Dimension <em>Dimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.diverse.trace.commons.model.trace.Dimension
+	 * @generated
+	 */
+	public Adapter createDimensionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.State <em>State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.diverse.trace.commons.model.trace.State
+	 * @generated
+	 */
+	public Adapter createStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.diverse.trace.commons.model.trace.TracedObject <em>Traced Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.diverse.trace.commons.model.trace.TracedObject
+	 * @generated
+	 */
+	public Adapter createTracedObjectAdapter() {
 		return null;
 	}
 

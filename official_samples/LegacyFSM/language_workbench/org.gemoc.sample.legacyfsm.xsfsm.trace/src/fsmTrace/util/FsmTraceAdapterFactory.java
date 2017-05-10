@@ -2,7 +2,10 @@
  */
 package fsmTrace.util;
 
+import fr.inria.diverse.trace.commons.model.trace.State;
+import fr.inria.diverse.trace.commons.model.trace.Step;
 import fr.inria.diverse.trace.commons.model.trace.Trace;
+import fr.inria.diverse.trace.commons.model.trace.TracedObject;
 
 import fsmTrace.*;
 
@@ -74,7 +77,7 @@ public class FsmTraceAdapterFactory extends AdapterFactoryImpl {
 				return createSpecificTraceAdapter();
 			}
 			@Override
-			public <StepSubType> Adapter caseTrace(Trace<StepSubType> object) {
+			public <StepSubType extends Step<?>, TracedObjectSubtype extends TracedObject<?>, StateSubType extends State<?, ?>> Adapter caseTrace(Trace<StepSubType, TracedObjectSubtype, StateSubType> object) {
 				return createTraceAdapter();
 			}
 			@Override

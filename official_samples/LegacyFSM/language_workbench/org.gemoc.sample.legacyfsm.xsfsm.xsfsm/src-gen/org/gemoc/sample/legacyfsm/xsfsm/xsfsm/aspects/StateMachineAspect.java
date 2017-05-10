@@ -37,7 +37,7 @@ public class StateMachineAspect {
     if (stepManager != null) {
     	stepManager.executeStep(_self,command,"StateMachine","initializeModel");
     } else {
-    	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IEventManager eventManager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.EventManagerRegistry.getInstance().findEventManager(_self);
+    	fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IEventManager eventManager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.EventManagerRegistry.getInstance().findEventManager();
     	if (eventManager != null) {
     		eventManager.manageEvents();
     	}

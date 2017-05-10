@@ -4,6 +4,8 @@ package fsmTrace.Steps;
 
 import fr.inria.diverse.trace.commons.model.trace.SmallStep;
 
+import fsmTrace.States.SpecificState;
+
 import fsmTrace.States.fsm.TracedTransition;
 
 /**
@@ -16,7 +18,7 @@ import fsmTrace.States.fsm.TracedTransition;
  * @model
  * @generated
  */
-public interface Fsm_Transition_Fire extends Fsm_State_Step_AbstractSubStep, SpecificStep, SmallStep {
+public interface Fsm_Transition_Fire extends Fsm_State_Step_AbstractSubStep, SpecificStep, SmallStep<SpecificState> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

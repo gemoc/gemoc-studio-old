@@ -2,12 +2,16 @@
  */
 package fsmTrace.States.fsm.impl;
 
+import fsmTrace.States.SpecificDimension;
+
 import fsmTrace.States.fsm.FsmPackage;
 import fsmTrace.States.fsm.TracedNamedElement;
 
-import org.eclipse.emf.ecore.EClass;
+import fsmTrace.States.impl.SpecificTracedObjectImpl;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,7 +20,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public abstract class TracedNamedElementImpl extends MinimalEObjectImpl.Container implements TracedNamedElement {
+public abstract class TracedNamedElementImpl extends SpecificTracedObjectImpl<SpecificDimension<?>> implements TracedNamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34,6 +38,18 @@ public abstract class TracedNamedElementImpl extends MinimalEObjectImpl.Containe
 	@Override
 	protected EClass eStaticClass() {
 		return FsmPackage.Literals.TRACED_NAMED_ELEMENT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<SpecificDimension<?>> getDimensionsInternal() {
+		final EList<SpecificDimension<?>> result = new org.eclipse.emf.ecore.util.BasicInternalEList<SpecificDimension<?>>(Object.class);
+		result.addAll(super.getDimensionsInternal());
+		return result;
+		
 	}
 
 } //TracedNamedElementImpl

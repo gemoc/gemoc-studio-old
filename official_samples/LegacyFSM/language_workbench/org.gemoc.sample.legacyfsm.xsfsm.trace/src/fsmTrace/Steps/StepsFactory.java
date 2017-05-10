@@ -67,6 +67,15 @@ public interface StepsFactory extends EFactory {
 	RootImplicitStep createRootImplicitStep();
 
 	/**
+	 * Returns a new object of class '<em>Specific Root Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Specific Root Step</em>'.
+	 * @generated
+	 */
+	SpecificRootStep createSpecificRootStep();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

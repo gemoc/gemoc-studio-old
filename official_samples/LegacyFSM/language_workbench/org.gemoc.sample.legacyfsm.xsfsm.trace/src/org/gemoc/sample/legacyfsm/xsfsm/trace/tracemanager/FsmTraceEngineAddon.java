@@ -4,13 +4,12 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.BatchModelChangeListener;
 
+import fr.inria.diverse.trace.commons.model.trace.State;
+import fr.inria.diverse.trace.gemoc.api.IStateManager;
 import fr.inria.diverse.trace.gemoc.api.IStepFactory;
+import fr.inria.diverse.trace.commons.model.trace.TracedObject;
 import fr.inria.diverse.trace.gemoc.api.ITraceConstructor;
-import fr.inria.diverse.trace.gemoc.api.ITraceExplorer;
-import fr.inria.diverse.trace.gemoc.api.ITraceExtractor;
-import fr.inria.diverse.trace.gemoc.api.ITraceNotifier;
 import fr.inria.diverse.trace.gemoc.traceaddon.AbstractTraceAddon;
 
 public class FsmTraceEngineAddon extends AbstractTraceAddon {
@@ -19,47 +18,14 @@ public class FsmTraceEngineAddon extends AbstractTraceAddon {
 
 	@Override
 	public ITraceConstructor constructTraceConstructor(Resource modelResource, Resource traceResource,
-			Map<EObject, EObject> exeToTraced) {
+			Map<EObject, TracedObject<?>> exeToTraced) {
 		return new FsmTraceConstructor(modelResource, traceResource, exeToTraced);
 	}
 
 	@Override
-	public ITraceExplorer constructTraceExplorer(Resource traceResource) {
-		FsmTraceExplorer explorer = new FsmTraceExplorer();
-		EObject root = traceResource.getContents().get(0);
-		if (root instanceof fsmTrace.SpecificTrace) {
-			explorer.loadTrace((fsmTrace.SpecificTrace) root);
-			return explorer;
-		}
-		return null;
-	}
-
-	@Override
-	public ITraceExplorer constructTraceExplorer(Resource modelResource, Resource traceResource,
-			Map<EObject, EObject> tracedToExe) {
-		FsmTraceExplorer explorer = new FsmTraceExplorer(tracedToExe);
-		EObject root = traceResource.getContents().get(0);
-		if (root instanceof fsmTrace.SpecificTrace) {
-			explorer.loadTrace(modelResource, (fsmTrace.SpecificTrace) root);
-			return explorer;
-		}
-		return null;
-	}
-
-	@Override
-	public ITraceExtractor constructTraceExtractor(Resource traceResource) {
-		FsmTraceExtractor extractor = new FsmTraceExtractor();
-		EObject root = traceResource.getContents().get(0);
-		if (root instanceof fsmTrace.SpecificTrace) {
-			extractor.loadTrace((fsmTrace.SpecificTrace) root);
-			return extractor;
-		}
-		return null;
-	}
-
-	@Override
-	public ITraceNotifier constructTraceNotifier(BatchModelChangeListener traceListener) {
-		return new FsmTraceNotifier(traceListener);
+	public IStateManager<State<?, ?>> constructStateManager(Resource modelResource,
+			Map<TracedObject<?>, EObject> tracedToExe) {
+		return new FsmTraceStateManager(modelResource, tracedToExe);
 	}
 
 	@Override

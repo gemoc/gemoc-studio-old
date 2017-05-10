@@ -24,6 +24,8 @@ import fsmTrace.Steps.impl.StepsPackageImpl;
 import fsmTrace.impl.FsmTracePackageImpl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -181,7 +183,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTracedStateMachine_ConsummedStringSequence() {
+	public EReference getTracedStateMachine_OriginalObject() {
 		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -190,7 +192,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTracedStateMachine_CurrentStateSequence() {
+	public EReference getTracedStateMachine_StateMachine_consummedString_Dimension() {
 		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -199,7 +201,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTracedStateMachine_OriginalObject() {
+	public EReference getTracedStateMachine_StateMachine_currentState_Dimension() {
 		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -208,7 +210,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTracedStateMachine_ProducedStringSequence() {
+	public EReference getTracedStateMachine_StateMachine_producedString_Dimension() {
 		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -217,7 +219,7 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTracedStateMachine_UnprocessedStringSequence() {
+	public EReference getTracedStateMachine_StateMachine_unprocessedString_Dimension() {
 		return (EReference)tracedStateMachineEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -273,11 +275,11 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		createEReference(tracedStateEClass, TRACED_STATE__ORIGINAL_OBJECT);
 
 		tracedStateMachineEClass = createEClass(TRACED_STATE_MACHINE);
-		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE);
-		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE);
 		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__ORIGINAL_OBJECT);
-		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE);
-		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE);
+		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION);
+		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION);
+		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION);
+		createEReference(tracedStateMachineEClass, TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION);
 
 		tracedTransitionEClass = createEClass(TRACED_TRANSITION);
 		createEReference(tracedTransitionEClass, TRACED_TRANSITION__ORIGINAL_OBJECT);
@@ -307,14 +309,20 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage theFsmPackage_1 = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage)EPackage.Registry.INSTANCE.getEPackage(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eNS_URI);
 		StatesPackage theStatesPackage = (StatesPackage)EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI);
+		org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage theFsmPackage_1 = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage)EPackage.Registry.INSTANCE.getEPackage(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		EGenericType g1 = createEGenericType(theStatesPackage.getSpecificTracedObject());
+		EGenericType g2 = createEGenericType(theStatesPackage.getSpecificDimension());
+		g1.getETypeArguments().add(g2);
+		EGenericType g3 = createEGenericType();
+		g2.getETypeArguments().add(g3);
+		tracedNamedElementEClass.getEGenericSuperTypes().add(g1);
 		tracedStateEClass.getESuperTypes().add(this.getTracedNamedElement());
 		tracedStateMachineEClass.getESuperTypes().add(this.getTracedNamedElement());
 		tracedTransitionEClass.getESuperTypes().add(this.getTracedNamedElement());
@@ -322,18 +330,42 @@ public class FsmPackageImpl extends EPackageImpl implements FsmPackage {
 		// Initialize classes and features; add operations and parameters
 		initEClass(tracedNamedElementEClass, TracedNamedElement.class, "TracedNamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		EOperation op = addEOperation(tracedNamedElementEClass, null, "getDimensionsInternal", 0, -1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theStatesPackage.getSpecificDimension());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		initEClass(tracedStateEClass, TracedState.class, "TracedState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTracedState_OriginalObject(), theFsmPackage_1.getState(), null, "originalObject", null, 0, 1, TracedState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = addEOperation(tracedStateEClass, null, "getDimensionsInternal", 0, -1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theStatesPackage.getSpecificDimension());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		initEClass(tracedStateMachineEClass, TracedStateMachine.class, "TracedStateMachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTracedStateMachine_ConsummedStringSequence(), theStatesPackage.getStateMachine_consummedString_Value(), theStatesPackage.getStateMachine_consummedString_Value_Parent(), "consummedStringSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTracedStateMachine_CurrentStateSequence(), theStatesPackage.getStateMachine_currentState_Value(), theStatesPackage.getStateMachine_currentState_Value_Parent(), "currentStateSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTracedStateMachine_OriginalObject(), theFsmPackage_1.getStateMachine(), null, "originalObject", null, 0, 1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTracedStateMachine_ProducedStringSequence(), theStatesPackage.getStateMachine_producedString_Value(), theStatesPackage.getStateMachine_producedString_Value_Parent(), "producedStringSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTracedStateMachine_UnprocessedStringSequence(), theStatesPackage.getStateMachine_unprocessedString_Value(), theStatesPackage.getStateMachine_unprocessedString_Value_Parent(), "unprocessedStringSequence", null, 0, -1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTracedStateMachine_StateMachine_consummedString_Dimension(), theStatesPackage.getStateMachine_consummedString_Dimension(), null, "stateMachine_consummedString_Dimension", null, 0, 1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTracedStateMachine_StateMachine_currentState_Dimension(), theStatesPackage.getStateMachine_currentState_Dimension(), null, "stateMachine_currentState_Dimension", null, 0, 1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTracedStateMachine_StateMachine_producedString_Dimension(), theStatesPackage.getStateMachine_producedString_Dimension(), null, "stateMachine_producedString_Dimension", null, 0, 1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTracedStateMachine_StateMachine_unprocessedString_Dimension(), theStatesPackage.getStateMachine_unprocessedString_Dimension(), null, "stateMachine_unprocessedString_Dimension", null, 0, 1, TracedStateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = addEOperation(tracedStateMachineEClass, null, "getDimensionsInternal", 0, -1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theStatesPackage.getSpecificDimension());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
 
 		initEClass(tracedTransitionEClass, TracedTransition.class, "TracedTransition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTracedTransition_OriginalObject(), theFsmPackage_1.getTransition(), null, "originalObject", null, 0, 1, TracedTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = addEOperation(tracedTransitionEClass, null, "getDimensionsInternal", 0, -1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theStatesPackage.getSpecificDimension());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
 	}
 
 } //FsmPackageImpl

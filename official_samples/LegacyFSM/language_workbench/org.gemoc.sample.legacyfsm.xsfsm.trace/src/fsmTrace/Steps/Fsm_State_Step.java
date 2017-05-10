@@ -4,6 +4,8 @@ package fsmTrace.Steps;
 
 import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
 
+import fsmTrace.States.SpecificState;
+
 import fsmTrace.States.fsm.TracedState;
 
 /**
@@ -16,7 +18,7 @@ import fsmTrace.States.fsm.TracedState;
  * @model
  * @generated
  */
-public interface Fsm_State_Step extends SpecificStep, SequentialStep<Fsm_State_Step_AbstractSubStep> {
+public interface Fsm_State_Step extends SpecificStep, SequentialStep<Fsm_State_Step_AbstractSubStep, SpecificState> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -13,23 +13,24 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
-import fr.inria.diverse.trace.commons.model.trace.LaunchConfiguration;
+import fr.inria.diverse.trace.commons.model.launchconfiguration.LaunchConfiguration;
 import fr.inria.diverse.trace.commons.model.trace.MSEModel;
 import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
+import fr.inria.diverse.trace.commons.model.trace.TracedObject;
 import fr.inria.diverse.trace.gemoc.api.ITraceConstructor;
 
 public class FsmTraceConstructor implements ITraceConstructor {
 	private fsmTrace.SpecificTrace traceRoot;
 	private MSEModel mseModel;
 	private Resource executedModel;
-	private final Map<EObject, EObject> exeToTraced;
+	private final Map<EObject, TracedObject<?>> exeToTraced;
 
-	private fsmTrace.States.State lastState;
+	private fsmTrace.States.SpecificState lastState;
 
 	private Resource traceResource;
 	private final Deque<fsmTrace.Steps.SpecificStep> context = new LinkedList<fsmTrace.Steps.SpecificStep>();
 
-	public FsmTraceConstructor(Resource exeModel, Resource traceResource, Map<EObject, EObject> exeToTraced) {
+	public FsmTraceConstructor(Resource exeModel, Resource traceResource, Map<EObject, TracedObject<?>> exeToTraced) {
 		this.traceResource = traceResource;
 		this.executedModel = exeModel;
 		this.exeToTraced = exeToTraced;
@@ -39,7 +40,7 @@ public class FsmTraceConstructor implements ITraceConstructor {
 		if (lastState == null) {
 			// Creation of the initial state
 			Set<Resource> allResources = getAllExecutedModelResources();
-			lastState = fsmTrace.States.StatesFactory.eINSTANCE.createState();
+			lastState = fsmTrace.States.StatesFactory.eINSTANCE.createSpecificState();
 			for (Resource r : allResources) {
 				for (TreeIterator<EObject> i = r.getAllContents(); i.hasNext();) {
 					EObject o = i.next();
@@ -50,12 +51,12 @@ public class FsmTraceConstructor implements ITraceConstructor {
 					}
 				}
 			}
-			this.traceRoot.getStatesTrace().add(lastState);
+			this.traceRoot.getStates().add(lastState);
 		}
 	}
 
 	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NamedElement o_cast,
-			fsmTrace.States.State newState) {
+			fsmTrace.States.SpecificState newState) {
 		boolean added = false;
 		if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) {
 			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) o_cast, newState);
@@ -69,21 +70,21 @@ public class FsmTraceConstructor implements ITraceConstructor {
 	}// end addNewObjectToState
 
 	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State o_cast,
-			fsmTrace.States.State newState) {
+			fsmTrace.States.SpecificState newState) {
 		boolean added = false;
 
 		if (!added && !exeToTraced.containsKey(o_cast)) {
 			fsmTrace.States.fsm.TracedState tracedObject = fsmTrace.States.fsm.FsmFactory.eINSTANCE.createTracedState();
 			tracedObject.setOriginalObject((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) o_cast);
 			exeToTraced.put(o_cast, tracedObject);
-			traceRoot.getFsm_tracedStates().add(tracedObject);
+			traceRoot.getTracedObjects().add(tracedObject);
 
 		} // end if (!exeToTraced.containsKey
 		return added;
 	}// end addNewObjectToState
 
 	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine o_cast,
-			fsmTrace.States.State newState) {
+			fsmTrace.States.SpecificState newState) {
 		boolean added = false;
 
 		if (!added && !exeToTraced.containsKey(o_cast)) {
@@ -91,16 +92,22 @@ public class FsmTraceConstructor implements ITraceConstructor {
 					.createTracedStateMachine();
 			tracedObject.setOriginalObject((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) o_cast);
 			exeToTraced.put(o_cast, tracedObject);
-			traceRoot.getFsm_tracedStateMachines().add(tracedObject);
+			traceRoot.getTracedObjects().add(tracedObject);
 
+			// Creation of the dimension corresponding to the field consummedString
+			tracedObject.setStateMachine_consummedString_Dimension(
+					fsmTrace.States.StatesFactory.eINSTANCE.createStateMachine_consummedString_Dimension());
 			// Creation of the first value of the field consummedString
 			fsmTrace.States.StateMachine_consummedString_Value firstValue_consummedString = fsmTrace.States.StatesFactory.eINSTANCE
 					.createStateMachine_consummedString_Value();
 
 			firstValue_consummedString.setConsummedString((java.lang.String) o_cast.getConsummedString());
-			tracedObject.getConsummedStringSequence().add(firstValue_consummedString);
-			newState.getStateMachine_consummedString_Values().add(firstValue_consummedString);
+			tracedObject.getStateMachine_consummedString_Dimension().getValues().add(firstValue_consummedString);
+			newState.getValues().add(firstValue_consummedString);
 
+			// Creation of the dimension corresponding to the field currentState
+			tracedObject.setStateMachine_currentState_Dimension(
+					fsmTrace.States.StatesFactory.eINSTANCE.createStateMachine_currentState_Dimension());
 			// Creation of the first value of the field currentState
 			fsmTrace.States.StateMachine_currentState_Value firstValue_currentState = fsmTrace.States.StatesFactory.eINSTANCE
 					.createStateMachine_currentState_Value();
@@ -115,31 +122,37 @@ public class FsmTraceConstructor implements ITraceConstructor {
 				firstValue_currentState.setCurrentState((fsmTrace.States.fsm.TracedState) null);
 			}
 
-			tracedObject.getCurrentStateSequence().add(firstValue_currentState);
-			newState.getStateMachine_currentState_Values().add(firstValue_currentState);
+			tracedObject.getStateMachine_currentState_Dimension().getValues().add(firstValue_currentState);
+			newState.getValues().add(firstValue_currentState);
 
+			// Creation of the dimension corresponding to the field producedString
+			tracedObject.setStateMachine_producedString_Dimension(
+					fsmTrace.States.StatesFactory.eINSTANCE.createStateMachine_producedString_Dimension());
 			// Creation of the first value of the field producedString
 			fsmTrace.States.StateMachine_producedString_Value firstValue_producedString = fsmTrace.States.StatesFactory.eINSTANCE
 					.createStateMachine_producedString_Value();
 
 			firstValue_producedString.setProducedString((java.lang.String) o_cast.getProducedString());
-			tracedObject.getProducedStringSequence().add(firstValue_producedString);
-			newState.getStateMachine_producedString_Values().add(firstValue_producedString);
+			tracedObject.getStateMachine_producedString_Dimension().getValues().add(firstValue_producedString);
+			newState.getValues().add(firstValue_producedString);
 
+			// Creation of the dimension corresponding to the field unprocessedString
+			tracedObject.setStateMachine_unprocessedString_Dimension(
+					fsmTrace.States.StatesFactory.eINSTANCE.createStateMachine_unprocessedString_Dimension());
 			// Creation of the first value of the field unprocessedString
 			fsmTrace.States.StateMachine_unprocessedString_Value firstValue_unprocessedString = fsmTrace.States.StatesFactory.eINSTANCE
 					.createStateMachine_unprocessedString_Value();
 
 			firstValue_unprocessedString.setUnprocessedString((java.lang.String) o_cast.getUnprocessedString());
-			tracedObject.getUnprocessedStringSequence().add(firstValue_unprocessedString);
-			newState.getStateMachine_unprocessedString_Values().add(firstValue_unprocessedString);
+			tracedObject.getStateMachine_unprocessedString_Dimension().getValues().add(firstValue_unprocessedString);
+			newState.getValues().add(firstValue_unprocessedString);
 
 		} // end if (!exeToTraced.containsKey
 		return added;
 	}// end addNewObjectToState
 
 	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition o_cast,
-			fsmTrace.States.State newState) {
+			fsmTrace.States.SpecificState newState) {
 		boolean added = false;
 
 		if (!added && !exeToTraced.containsKey(o_cast)) {
@@ -147,7 +160,7 @@ public class FsmTraceConstructor implements ITraceConstructor {
 					.createTracedTransition();
 			tracedObject.setOriginalObject((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) o_cast);
 			exeToTraced.put(o_cast, tracedObject);
-			traceRoot.getFsm_tracedTransitions().add(tracedObject);
+			traceRoot.getTracedObjects().add(tracedObject);
 
 		} // end if (!exeToTraced.containsKey
 		return added;
@@ -155,12 +168,9 @@ public class FsmTraceConstructor implements ITraceConstructor {
 
 	private boolean copiedState = false;
 
-	private fsmTrace.States.State copyState(fsmTrace.States.State oldState) {
-		fsmTrace.States.State newState = fsmTrace.States.StatesFactory.eINSTANCE.createState();
-		newState.getStateMachine_consummedString_Values().addAll(oldState.getStateMachine_consummedString_Values());
-		newState.getStateMachine_currentState_Values().addAll(oldState.getStateMachine_currentState_Values());
-		newState.getStateMachine_producedString_Values().addAll(oldState.getStateMachine_producedString_Values());
-		newState.getStateMachine_unprocessedString_Values().addAll(oldState.getStateMachine_unprocessedString_Values());
+	private fsmTrace.States.SpecificState copyState(fsmTrace.States.SpecificState oldState) {
+		fsmTrace.States.SpecificState newState = fsmTrace.States.StatesFactory.eINSTANCE.createSpecificState();
+		newState.getValues().addAll(oldState.getValues());
 		copiedState = true;
 		return newState;
 	}
@@ -170,12 +180,11 @@ public class FsmTraceConstructor implements ITraceConstructor {
 	public void addState(List<org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange> changes) {
 		if (lastState == null) {
 			addInitialState();
-		}
-		if (!changes.isEmpty()) {
+		} else if (!changes.isEmpty()) {
 			boolean stateChanged = false;
 			// We start by a (shallow) copy of the last state
 			// But we will have to rollback a little by replacing values that changed
-			fsmTrace.States.State newState = copyState(lastState);
+			fsmTrace.States.SpecificState newState = copyState(lastState);
 			for (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange modelChange : changes) {
 				EObject o = modelChange.getChangedObject();
 				// Here we must look at non-collection mutable fields
@@ -191,15 +200,42 @@ public class FsmTraceConstructor implements ITraceConstructor {
 						org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine o_cast = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) o;
 
 						if (p.getFeatureID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
+								.getStateMachine_CurrentState().getFeatureID()) {
+
+							// Rollback: we remove the last value of this field from the new state
+							fsmTrace.States.fsm.TracedStateMachine traced = (fsmTrace.States.fsm.TracedStateMachine) exeToTraced
+									.get(o);
+							fsmTrace.States.StateMachine_currentState_Value lastValue = traced
+									.getStateMachine_currentState_Dimension().getValues()
+									.get(traced.getStateMachine_currentState_Dimension().getValues().size() - 1);
+							newState.getValues().remove(lastValue);
+
+							// And we create a proper new value
+							fsmTrace.States.StateMachine_currentState_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
+									.createStateMachine_currentState_Value();
+
+							fsmTrace.States.fsm.TracedState value = null;
+							if (o_cast.getCurrentState() != null) {
+								addNewObjectToState(o_cast.getCurrentState(), newState);
+								value = ((fsmTrace.States.fsm.TracedState) exeToTraced.get(o_cast.getCurrentState()));
+							}
+
+							newValue.setCurrentState((fsmTrace.States.fsm.TracedState) value);
+
+							traced.getStateMachine_currentState_Dimension().getValues().add(newValue);
+							newState.getValues().add(newValue);
+						} else
+
+						if (p.getFeatureID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
 								.getStateMachine_UnprocessedString().getFeatureID()) {
 
 							// Rollback: we remove the last value of this field from the new state
 							fsmTrace.States.fsm.TracedStateMachine traced = (fsmTrace.States.fsm.TracedStateMachine) exeToTraced
 									.get(o);
 							fsmTrace.States.StateMachine_unprocessedString_Value lastValue = traced
-									.getUnprocessedStringSequence()
-									.get(traced.getUnprocessedStringSequence().size() - 1);
-							newState.getStateMachine_unprocessedString_Values().remove(lastValue);
+									.getStateMachine_unprocessedString_Dimension().getValues()
+									.get(traced.getStateMachine_unprocessedString_Dimension().getValues().size() - 1);
+							newState.getValues().remove(lastValue);
 
 							// And we create a proper new value
 							fsmTrace.States.StateMachine_unprocessedString_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
@@ -209,55 +245,8 @@ public class FsmTraceConstructor implements ITraceConstructor {
 
 							newValue.setUnprocessedString((java.lang.String) value);
 
-							traced.getUnprocessedStringSequence().add(newValue);
-							newState.getStateMachine_unprocessedString_Values().add(newValue);
-						} else
-
-						if (p.getFeatureID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
-								.getStateMachine_ProducedString().getFeatureID()) {
-
-							// Rollback: we remove the last value of this field from the new state
-							fsmTrace.States.fsm.TracedStateMachine traced = (fsmTrace.States.fsm.TracedStateMachine) exeToTraced
-									.get(o);
-							fsmTrace.States.StateMachine_producedString_Value lastValue = traced
-									.getProducedStringSequence().get(traced.getProducedStringSequence().size() - 1);
-							newState.getStateMachine_producedString_Values().remove(lastValue);
-
-							// And we create a proper new value
-							fsmTrace.States.StateMachine_producedString_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
-									.createStateMachine_producedString_Value();
-
-							java.lang.String value = o_cast.getProducedString();
-
-							newValue.setProducedString((java.lang.String) value);
-
-							traced.getProducedStringSequence().add(newValue);
-							newState.getStateMachine_producedString_Values().add(newValue);
-						} else
-
-						if (p.getFeatureID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
-								.getStateMachine_CurrentState().getFeatureID()) {
-
-							// Rollback: we remove the last value of this field from the new state
-							fsmTrace.States.fsm.TracedStateMachine traced = (fsmTrace.States.fsm.TracedStateMachine) exeToTraced
-									.get(o);
-							fsmTrace.States.StateMachine_currentState_Value lastValue = traced.getCurrentStateSequence()
-									.get(traced.getCurrentStateSequence().size() - 1);
-							newState.getStateMachine_currentState_Values().remove(lastValue);
-
-							// And we create a proper new value
-							fsmTrace.States.StateMachine_currentState_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
-									.createStateMachine_currentState_Value();
-
-							fsmTrace.States.fsm.TracedState value = null;
-							if (o_cast.getCurrentState() != null) {
-								value = ((fsmTrace.States.fsm.TracedState) exeToTraced.get(o_cast.getCurrentState()));
-							}
-
-							newValue.setCurrentState((fsmTrace.States.fsm.TracedState) value);
-
-							traced.getCurrentStateSequence().add(newValue);
-							newState.getStateMachine_currentState_Values().add(newValue);
+							traced.getStateMachine_unprocessedString_Dimension().getValues().add(newValue);
+							newState.getValues().add(newValue);
 						} else
 
 						if (p.getFeatureID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
@@ -267,8 +256,9 @@ public class FsmTraceConstructor implements ITraceConstructor {
 							fsmTrace.States.fsm.TracedStateMachine traced = (fsmTrace.States.fsm.TracedStateMachine) exeToTraced
 									.get(o);
 							fsmTrace.States.StateMachine_consummedString_Value lastValue = traced
-									.getConsummedStringSequence().get(traced.getConsummedStringSequence().size() - 1);
-							newState.getStateMachine_consummedString_Values().remove(lastValue);
+									.getStateMachine_consummedString_Dimension().getValues()
+									.get(traced.getStateMachine_consummedString_Dimension().getValues().size() - 1);
+							newState.getValues().remove(lastValue);
 
 							// And we create a proper new value
 							fsmTrace.States.StateMachine_consummedString_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
@@ -278,8 +268,31 @@ public class FsmTraceConstructor implements ITraceConstructor {
 
 							newValue.setConsummedString((java.lang.String) value);
 
-							traced.getConsummedStringSequence().add(newValue);
-							newState.getStateMachine_consummedString_Values().add(newValue);
+							traced.getStateMachine_consummedString_Dimension().getValues().add(newValue);
+							newState.getValues().add(newValue);
+						} else
+
+						if (p.getFeatureID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
+								.getStateMachine_ProducedString().getFeatureID()) {
+
+							// Rollback: we remove the last value of this field from the new state
+							fsmTrace.States.fsm.TracedStateMachine traced = (fsmTrace.States.fsm.TracedStateMachine) exeToTraced
+									.get(o);
+							fsmTrace.States.StateMachine_producedString_Value lastValue = traced
+									.getStateMachine_producedString_Dimension().getValues()
+									.get(traced.getStateMachine_producedString_Dimension().getValues().size() - 1);
+							newState.getValues().remove(lastValue);
+
+							// And we create a proper new value
+							fsmTrace.States.StateMachine_producedString_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
+									.createStateMachine_producedString_Value();
+
+							java.lang.String value = o_cast.getProducedString();
+
+							newValue.setProducedString((java.lang.String) value);
+
+							traced.getStateMachine_producedString_Dimension().getValues().add(newValue);
+							newState.getValues().add(newValue);
 						}
 					}
 				}
@@ -287,17 +300,17 @@ public class FsmTraceConstructor implements ITraceConstructor {
 			if (stateChanged) {
 				final fsmTrace.Steps.SpecificStep currentStep = context.peekFirst();
 				if (currentStep != null && currentStep instanceof fr.inria.diverse.trace.commons.model.trace.BigStep) {
-					final fsmTrace.States.State startingState = lastState;
-					final fsmTrace.States.State endingState = newState;
+					final fsmTrace.States.SpecificState startingState = lastState;
+					final fsmTrace.States.SpecificState endingState = newState;
 					addImplicitStep(currentStep, startingState, endingState);
 				}
 				lastState = newState;
-				traceRoot.getStatesTrace().add(lastState);
+				traceRoot.getStates().add(lastState);
 			} else if (copiedState) {
-				newState.getStateMachine_consummedString_Values().clear();
-				newState.getStateMachine_currentState_Values().clear();
-				newState.getStateMachine_producedString_Values().clear();
-				newState.getStateMachine_unprocessedString_Values().clear();
+				newState.getValues().clear();
+				newState.getValues().clear();
+				newState.getValues().clear();
+				newState.getValues().clear();
 			}
 			copiedState = false;
 		}
@@ -305,7 +318,7 @@ public class FsmTraceConstructor implements ITraceConstructor {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void addStep(fr.inria.diverse.trace.commons.model.trace.Step step) {
+	public void addStep(fr.inria.diverse.trace.commons.model.trace.Step<?> step) {
 		fsmTrace.Steps.SpecificStep step_cast = null;
 		if (step != null && step instanceof fsmTrace.Steps.SpecificStep) {
 			step_cast = (fsmTrace.Steps.SpecificStep) step;
@@ -316,12 +329,14 @@ public class FsmTraceConstructor implements ITraceConstructor {
 			mseModel.getOwnedMSEs().add(step_cast.getMseoccurrence().getMse());
 
 			// Creating generic (or almost generic) links
-			fsmTrace.States.State state = traceRoot.getStatesTrace().get(traceRoot.getStatesTrace().size() - 1);
+			fsmTrace.States.SpecificState state = traceRoot.getStates().get(traceRoot.getStates().size() - 1);
 			step_cast.setStartingState(state);
 			if (!context.isEmpty() && context.getFirst() != null) {
-				((SequentialStep<fsmTrace.Steps.SpecificStep>) context.getFirst()).getSubSteps().add(step_cast);
+				((SequentialStep<fsmTrace.Steps.SpecificStep, fsmTrace.States.SpecificState>) context.getFirst())
+						.getSubSteps().add(step_cast);
 			} else {
-				traceRoot.getRootStep().getSubSteps().add(step_cast);
+				((SequentialStep<fsmTrace.Steps.SpecificStep, fsmTrace.States.SpecificState>) traceRoot.getRootStep())
+						.getSubSteps().add(step_cast);
 			}
 
 			// Adding step in its dedicated sequence/dimension
@@ -340,8 +355,8 @@ public class FsmTraceConstructor implements ITraceConstructor {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void addImplicitStep(fsmTrace.Steps.SpecificStep currentStep, fsmTrace.States.State startingState,
-			fsmTrace.States.State endingState) {
+	private void addImplicitStep(fsmTrace.Steps.SpecificStep currentStep, fsmTrace.States.SpecificState startingState,
+			fsmTrace.States.SpecificState endingState) {
 
 		fsmTrace.Steps.SpecificStep implicitStep = null;
 		if (currentStep instanceof fsmTrace.Steps.Fsm_State_Step) {
@@ -350,13 +365,14 @@ public class FsmTraceConstructor implements ITraceConstructor {
 		if (implicitStep != null) {
 			implicitStep.setStartingState(startingState);
 			implicitStep.setEndingState(endingState);
-			((SequentialStep<fsmTrace.Steps.SpecificStep>) currentStep).getSubSteps().add(implicitStep);
+			((SequentialStep<fsmTrace.Steps.SpecificStep, fsmTrace.States.SpecificState>) currentStep).getSubSteps()
+					.add(implicitStep);
 
 		}
 	}
 
 	@Override
-	public void endStep(fr.inria.diverse.trace.commons.model.trace.Step step) {
+	public void endStep(fr.inria.diverse.trace.commons.model.trace.Step<?> step) {
 		fsmTrace.Steps.SpecificStep popped = context.pop();
 		if (popped != null)
 			popped.setEndingState(lastState);
@@ -369,8 +385,8 @@ public class FsmTraceConstructor implements ITraceConstructor {
 		traceRoot.setLaunchconfiguration(launchConfiguration);
 
 		// Create root sequential step
-		fr.inria.diverse.trace.commons.model.trace.SequentialStep<fsmTrace.Steps.SpecificStep> rootStep = fr.inria.diverse.trace.commons.model.trace.TraceFactory.eINSTANCE
-				.createSequentialStep();
+		fr.inria.diverse.trace.commons.model.trace.SequentialStep<fsmTrace.Steps.SpecificStep, fsmTrace.States.SpecificState> rootStep = fsmTrace.Steps.StepsFactory.eINSTANCE
+				.createSpecificRootStep();
 		traceRoot.setRootStep(rootStep);
 
 		// Put in the resource
@@ -402,7 +418,8 @@ public class FsmTraceConstructor implements ITraceConstructor {
 		Set<Resource> allResources = new HashSet<>();
 		allResources.add(executedModel);
 		allResources.addAll(org.gemoc.commons.eclipse.emf.EMFResource.getRelatedResources(executedModel));
-		allResources.removeIf(r -> r == null);
+		allResources.removeIf(
+				r -> r == null || (r != executedModel && executedModel.getContents().contains(r.getContents().get(0))));
 		return allResources;
 	}
 

@@ -2,16 +2,14 @@
  */
 package fsmTrace.States.fsm.impl;
 
-import fsmTrace.States.StateMachine_consummedString_Value;
-import fsmTrace.States.StateMachine_currentState_Value;
-import fsmTrace.States.StateMachine_producedString_Value;
-import fsmTrace.States.StateMachine_unprocessedString_Value;
-import fsmTrace.States.StatesPackage;
+import fsmTrace.States.SpecificDimension;
+import fsmTrace.States.StateMachine_consummedString_Dimension;
+import fsmTrace.States.StateMachine_currentState_Dimension;
+import fsmTrace.States.StateMachine_producedString_Dimension;
+import fsmTrace.States.StateMachine_unprocessedString_Dimension;
 
 import fsmTrace.States.fsm.FsmPackage;
 import fsmTrace.States.fsm.TracedStateMachine;
-
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,9 +21,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine;
 
 /**
@@ -36,36 +31,16 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getConsummedStringSequence <em>Consummed String Sequence</em>}</li>
- *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getCurrentStateSequence <em>Current State Sequence</em>}</li>
  *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getOriginalObject <em>Original Object</em>}</li>
- *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getProducedStringSequence <em>Produced String Sequence</em>}</li>
- *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getUnprocessedStringSequence <em>Unprocessed String Sequence</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getStateMachine_consummedString_Dimension <em>State Machine consummed String Dimension</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getStateMachine_currentState_Dimension <em>State Machine current State Dimension</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getStateMachine_producedString_Dimension <em>State Machine produced String Dimension</em>}</li>
+ *   <li>{@link fsmTrace.States.fsm.impl.TracedStateMachineImpl#getStateMachine_unprocessedString_Dimension <em>State Machine unprocessed String Dimension</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TracedStateMachineImpl extends TracedNamedElementImpl implements TracedStateMachine {
-	/**
-	 * The cached value of the '{@link #getConsummedStringSequence() <em>Consummed String Sequence</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConsummedStringSequence()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<StateMachine_consummedString_Value> consummedStringSequence;
-
-	/**
-	 * The cached value of the '{@link #getCurrentStateSequence() <em>Current State Sequence</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCurrentStateSequence()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<StateMachine_currentState_Value> currentStateSequence;
-
 	/**
 	 * The cached value of the '{@link #getOriginalObject() <em>Original Object</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -77,24 +52,44 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	protected StateMachine originalObject;
 
 	/**
-	 * The cached value of the '{@link #getProducedStringSequence() <em>Produced String Sequence</em>}' containment reference list.
+	 * The cached value of the '{@link #getStateMachine_consummedString_Dimension() <em>State Machine consummed String Dimension</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProducedStringSequence()
+	 * @see #getStateMachine_consummedString_Dimension()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<StateMachine_producedString_Value> producedStringSequence;
+	protected StateMachine_consummedString_Dimension stateMachine_consummedString_Dimension;
 
 	/**
-	 * The cached value of the '{@link #getUnprocessedStringSequence() <em>Unprocessed String Sequence</em>}' containment reference list.
+	 * The cached value of the '{@link #getStateMachine_currentState_Dimension() <em>State Machine current State Dimension</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnprocessedStringSequence()
+	 * @see #getStateMachine_currentState_Dimension()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<StateMachine_unprocessedString_Value> unprocessedStringSequence;
+	protected StateMachine_currentState_Dimension stateMachine_currentState_Dimension;
+
+	/**
+	 * The cached value of the '{@link #getStateMachine_producedString_Dimension() <em>State Machine produced String Dimension</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStateMachine_producedString_Dimension()
+	 * @generated
+	 * @ordered
+	 */
+	protected StateMachine_producedString_Dimension stateMachine_producedString_Dimension;
+
+	/**
+	 * The cached value of the '{@link #getStateMachine_unprocessedString_Dimension() <em>State Machine unprocessed String Dimension</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStateMachine_unprocessedString_Dimension()
+	 * @generated
+	 * @ordered
+	 */
+	protected StateMachine_unprocessedString_Dimension stateMachine_unprocessedString_Dimension;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,30 +108,6 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	@Override
 	protected EClass eStaticClass() {
 		return FsmPackage.Literals.TRACED_STATE_MACHINE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<StateMachine_consummedString_Value> getConsummedStringSequence() {
-		if (consummedStringSequence == null) {
-			consummedStringSequence = new EObjectContainmentWithInverseEList<StateMachine_consummedString_Value>(StateMachine_consummedString_Value.class, this, FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE, StatesPackage.STATE_MACHINE_CONSUMMED_STRING_VALUE__PARENT);
-		}
-		return consummedStringSequence;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<StateMachine_currentState_Value> getCurrentStateSequence() {
-		if (currentStateSequence == null) {
-			currentStateSequence = new EObjectContainmentWithInverseEList<StateMachine_currentState_Value>(StateMachine_currentState_Value.class, this, FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE, StatesPackage.STATE_MACHINE_CURRENT_STATE_VALUE__PARENT);
-		}
-		return currentStateSequence;
 	}
 
 	/**
@@ -182,11 +153,8 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<StateMachine_producedString_Value> getProducedStringSequence() {
-		if (producedStringSequence == null) {
-			producedStringSequence = new EObjectContainmentWithInverseEList<StateMachine_producedString_Value>(StateMachine_producedString_Value.class, this, FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE, StatesPackage.STATE_MACHINE_PRODUCED_STRING_VALUE__PARENT);
-		}
-		return producedStringSequence;
+	public StateMachine_consummedString_Dimension getStateMachine_consummedString_Dimension() {
+		return stateMachine_consummedString_Dimension;
 	}
 
 	/**
@@ -194,11 +162,14 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<StateMachine_unprocessedString_Value> getUnprocessedStringSequence() {
-		if (unprocessedStringSequence == null) {
-			unprocessedStringSequence = new EObjectContainmentWithInverseEList<StateMachine_unprocessedString_Value>(StateMachine_unprocessedString_Value.class, this, FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE, StatesPackage.STATE_MACHINE_UNPROCESSED_STRING_VALUE__PARENT);
+	public NotificationChain basicSetStateMachine_consummedString_Dimension(StateMachine_consummedString_Dimension newStateMachine_consummedString_Dimension, NotificationChain msgs) {
+		StateMachine_consummedString_Dimension oldStateMachine_consummedString_Dimension = stateMachine_consummedString_Dimension;
+		stateMachine_consummedString_Dimension = newStateMachine_consummedString_Dimension;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION, oldStateMachine_consummedString_Dimension, newStateMachine_consummedString_Dimension);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return unprocessedStringSequence;
+		return msgs;
 	}
 
 	/**
@@ -206,20 +177,163 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConsummedStringSequence()).basicAdd(otherEnd, msgs);
-			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCurrentStateSequence()).basicAdd(otherEnd, msgs);
-			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getProducedStringSequence()).basicAdd(otherEnd, msgs);
-			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getUnprocessedStringSequence()).basicAdd(otherEnd, msgs);
+	public void setStateMachine_consummedString_Dimension(StateMachine_consummedString_Dimension newStateMachine_consummedString_Dimension) {
+		if (newStateMachine_consummedString_Dimension != stateMachine_consummedString_Dimension) {
+			NotificationChain msgs = null;
+			if (stateMachine_consummedString_Dimension != null)
+				msgs = ((InternalEObject)stateMachine_consummedString_Dimension).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION, null, msgs);
+			if (newStateMachine_consummedString_Dimension != null)
+				msgs = ((InternalEObject)newStateMachine_consummedString_Dimension).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION, null, msgs);
+			msgs = basicSetStateMachine_consummedString_Dimension(newStateMachine_consummedString_Dimension, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION, newStateMachine_consummedString_Dimension, newStateMachine_consummedString_Dimension));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StateMachine_currentState_Dimension getStateMachine_currentState_Dimension() {
+		return stateMachine_currentState_Dimension;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStateMachine_currentState_Dimension(StateMachine_currentState_Dimension newStateMachine_currentState_Dimension, NotificationChain msgs) {
+		StateMachine_currentState_Dimension oldStateMachine_currentState_Dimension = stateMachine_currentState_Dimension;
+		stateMachine_currentState_Dimension = newStateMachine_currentState_Dimension;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION, oldStateMachine_currentState_Dimension, newStateMachine_currentState_Dimension);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStateMachine_currentState_Dimension(StateMachine_currentState_Dimension newStateMachine_currentState_Dimension) {
+		if (newStateMachine_currentState_Dimension != stateMachine_currentState_Dimension) {
+			NotificationChain msgs = null;
+			if (stateMachine_currentState_Dimension != null)
+				msgs = ((InternalEObject)stateMachine_currentState_Dimension).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION, null, msgs);
+			if (newStateMachine_currentState_Dimension != null)
+				msgs = ((InternalEObject)newStateMachine_currentState_Dimension).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION, null, msgs);
+			msgs = basicSetStateMachine_currentState_Dimension(newStateMachine_currentState_Dimension, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION, newStateMachine_currentState_Dimension, newStateMachine_currentState_Dimension));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StateMachine_producedString_Dimension getStateMachine_producedString_Dimension() {
+		return stateMachine_producedString_Dimension;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStateMachine_producedString_Dimension(StateMachine_producedString_Dimension newStateMachine_producedString_Dimension, NotificationChain msgs) {
+		StateMachine_producedString_Dimension oldStateMachine_producedString_Dimension = stateMachine_producedString_Dimension;
+		stateMachine_producedString_Dimension = newStateMachine_producedString_Dimension;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION, oldStateMachine_producedString_Dimension, newStateMachine_producedString_Dimension);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStateMachine_producedString_Dimension(StateMachine_producedString_Dimension newStateMachine_producedString_Dimension) {
+		if (newStateMachine_producedString_Dimension != stateMachine_producedString_Dimension) {
+			NotificationChain msgs = null;
+			if (stateMachine_producedString_Dimension != null)
+				msgs = ((InternalEObject)stateMachine_producedString_Dimension).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION, null, msgs);
+			if (newStateMachine_producedString_Dimension != null)
+				msgs = ((InternalEObject)newStateMachine_producedString_Dimension).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION, null, msgs);
+			msgs = basicSetStateMachine_producedString_Dimension(newStateMachine_producedString_Dimension, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION, newStateMachine_producedString_Dimension, newStateMachine_producedString_Dimension));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StateMachine_unprocessedString_Dimension getStateMachine_unprocessedString_Dimension() {
+		return stateMachine_unprocessedString_Dimension;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStateMachine_unprocessedString_Dimension(StateMachine_unprocessedString_Dimension newStateMachine_unprocessedString_Dimension, NotificationChain msgs) {
+		StateMachine_unprocessedString_Dimension oldStateMachine_unprocessedString_Dimension = stateMachine_unprocessedString_Dimension;
+		stateMachine_unprocessedString_Dimension = newStateMachine_unprocessedString_Dimension;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION, oldStateMachine_unprocessedString_Dimension, newStateMachine_unprocessedString_Dimension);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStateMachine_unprocessedString_Dimension(StateMachine_unprocessedString_Dimension newStateMachine_unprocessedString_Dimension) {
+		if (newStateMachine_unprocessedString_Dimension != stateMachine_unprocessedString_Dimension) {
+			NotificationChain msgs = null;
+			if (stateMachine_unprocessedString_Dimension != null)
+				msgs = ((InternalEObject)stateMachine_unprocessedString_Dimension).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION, null, msgs);
+			if (newStateMachine_unprocessedString_Dimension != null)
+				msgs = ((InternalEObject)newStateMachine_unprocessedString_Dimension).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION, null, msgs);
+			msgs = basicSetStateMachine_unprocessedString_Dimension(newStateMachine_unprocessedString_Dimension, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION, newStateMachine_unprocessedString_Dimension, newStateMachine_unprocessedString_Dimension));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<SpecificDimension<?>> getDimensionsInternal() {
+		final EList<SpecificDimension<?>> result = new org.eclipse.emf.ecore.util.BasicInternalEList<SpecificDimension<?>>(Object.class);
+		result.addAll(super.getDimensionsInternal());
+		result.add(getStateMachine_currentState_Dimension());
+		result.add(getStateMachine_unprocessedString_Dimension());
+		result.add(getStateMachine_consummedString_Dimension());
+		result.add(getStateMachine_producedString_Dimension());
+		return result;
+		
 	}
 
 	/**
@@ -230,14 +344,14 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
-				return ((InternalEList<?>)getConsummedStringSequence()).basicRemove(otherEnd, msgs);
-			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
-				return ((InternalEList<?>)getCurrentStateSequence()).basicRemove(otherEnd, msgs);
-			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
-				return ((InternalEList<?>)getProducedStringSequence()).basicRemove(otherEnd, msgs);
-			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
-				return ((InternalEList<?>)getUnprocessedStringSequence()).basicRemove(otherEnd, msgs);
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION:
+				return basicSetStateMachine_consummedString_Dimension(null, msgs);
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION:
+				return basicSetStateMachine_currentState_Dimension(null, msgs);
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION:
+				return basicSetStateMachine_producedString_Dimension(null, msgs);
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION:
+				return basicSetStateMachine_unprocessedString_Dimension(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -250,17 +364,17 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
-				return getConsummedStringSequence();
-			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
-				return getCurrentStateSequence();
 			case FsmPackage.TRACED_STATE_MACHINE__ORIGINAL_OBJECT:
 				if (resolve) return getOriginalObject();
 				return basicGetOriginalObject();
-			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
-				return getProducedStringSequence();
-			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
-				return getUnprocessedStringSequence();
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION:
+				return getStateMachine_consummedString_Dimension();
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION:
+				return getStateMachine_currentState_Dimension();
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION:
+				return getStateMachine_producedString_Dimension();
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION:
+				return getStateMachine_unprocessedString_Dimension();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -270,28 +384,23 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
-				getConsummedStringSequence().clear();
-				getConsummedStringSequence().addAll((Collection<? extends StateMachine_consummedString_Value>)newValue);
-				return;
-			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
-				getCurrentStateSequence().clear();
-				getCurrentStateSequence().addAll((Collection<? extends StateMachine_currentState_Value>)newValue);
-				return;
 			case FsmPackage.TRACED_STATE_MACHINE__ORIGINAL_OBJECT:
 				setOriginalObject((StateMachine)newValue);
 				return;
-			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
-				getProducedStringSequence().clear();
-				getProducedStringSequence().addAll((Collection<? extends StateMachine_producedString_Value>)newValue);
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION:
+				setStateMachine_consummedString_Dimension((StateMachine_consummedString_Dimension)newValue);
 				return;
-			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
-				getUnprocessedStringSequence().clear();
-				getUnprocessedStringSequence().addAll((Collection<? extends StateMachine_unprocessedString_Value>)newValue);
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION:
+				setStateMachine_currentState_Dimension((StateMachine_currentState_Dimension)newValue);
+				return;
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION:
+				setStateMachine_producedString_Dimension((StateMachine_producedString_Dimension)newValue);
+				return;
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION:
+				setStateMachine_unprocessedString_Dimension((StateMachine_unprocessedString_Dimension)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -305,20 +414,20 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
-				getConsummedStringSequence().clear();
-				return;
-			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
-				getCurrentStateSequence().clear();
-				return;
 			case FsmPackage.TRACED_STATE_MACHINE__ORIGINAL_OBJECT:
 				setOriginalObject((StateMachine)null);
 				return;
-			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
-				getProducedStringSequence().clear();
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION:
+				setStateMachine_consummedString_Dimension((StateMachine_consummedString_Dimension)null);
 				return;
-			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
-				getUnprocessedStringSequence().clear();
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION:
+				setStateMachine_currentState_Dimension((StateMachine_currentState_Dimension)null);
+				return;
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION:
+				setStateMachine_producedString_Dimension((StateMachine_producedString_Dimension)null);
+				return;
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION:
+				setStateMachine_unprocessedString_Dimension((StateMachine_unprocessedString_Dimension)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -332,16 +441,16 @@ public class TracedStateMachineImpl extends TracedNamedElementImpl implements Tr
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FsmPackage.TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE:
-				return consummedStringSequence != null && !consummedStringSequence.isEmpty();
-			case FsmPackage.TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE:
-				return currentStateSequence != null && !currentStateSequence.isEmpty();
 			case FsmPackage.TRACED_STATE_MACHINE__ORIGINAL_OBJECT:
 				return originalObject != null;
-			case FsmPackage.TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE:
-				return producedStringSequence != null && !producedStringSequence.isEmpty();
-			case FsmPackage.TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE:
-				return unprocessedStringSequence != null && !unprocessedStringSequence.isEmpty();
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION:
+				return stateMachine_consummedString_Dimension != null;
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION:
+				return stateMachine_currentState_Dimension != null;
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION:
+				return stateMachine_producedString_Dimension != null;
+			case FsmPackage.TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION:
+				return stateMachine_unprocessedString_Dimension != null;
 		}
 		return super.eIsSet(featureID);
 	}

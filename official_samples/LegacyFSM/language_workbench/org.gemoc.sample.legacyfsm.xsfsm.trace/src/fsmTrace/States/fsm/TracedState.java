@@ -2,6 +2,10 @@
  */
 package fsmTrace.States.fsm;
 
+import fsmTrace.States.SpecificDimension;
+
+import org.eclipse.emf.common.util.EList;
+
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State;
 
 /**
@@ -46,5 +50,14 @@ public interface TracedState extends TracedNamedElement {
 	 * @generated
 	 */
 	void setOriginalObject(State value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='final EList<SpecificDimension<?>> result = new org.eclipse.emf.ecore.util.BasicInternalEList<SpecificDimension<?>>(Object.class);\nresult.addAll(super.getDimensionsInternal());\nreturn result;\n'"
+	 * @generated
+	 */
+	EList<SpecificDimension<?>> getDimensionsInternal();
 
 } // TracedState

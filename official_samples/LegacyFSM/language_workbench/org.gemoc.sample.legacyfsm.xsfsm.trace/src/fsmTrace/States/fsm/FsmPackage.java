@@ -2,6 +2,8 @@
  */
 package fsmTrace.States.fsm;
 
+import fsmTrace.States.StatesPackage;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -65,13 +67,22 @@ public interface FsmPackage extends EPackage {
 	int TRACED_NAMED_ELEMENT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Dimensions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_NAMED_ELEMENT__DIMENSIONS = StatesPackage.SPECIFIC_TRACED_OBJECT__DIMENSIONS;
+
+	/**
 	 * The number of structural features of the '<em>Traced Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_NAMED_ELEMENT_FEATURE_COUNT = 0;
+	int TRACED_NAMED_ELEMENT_FEATURE_COUNT = StatesPackage.SPECIFIC_TRACED_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.States.fsm.impl.TracedStateImpl <em>Traced State</em>}' class.
@@ -82,6 +93,15 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 */
 	int TRACED_STATE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Dimensions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_STATE__DIMENSIONS = TRACED_NAMED_ELEMENT__DIMENSIONS;
 
 	/**
 	 * The feature id for the '<em><b>Original Object</b></em>' reference.
@@ -112,22 +132,13 @@ public interface FsmPackage extends EPackage {
 	int TRACED_STATE_MACHINE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Consummed String Sequence</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Dimensions</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Current State Sequence</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int TRACED_STATE_MACHINE__DIMENSIONS = TRACED_NAMED_ELEMENT__DIMENSIONS;
 
 	/**
 	 * The feature id for the '<em><b>Original Object</b></em>' reference.
@@ -136,25 +147,43 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_STATE_MACHINE__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int TRACED_STATE_MACHINE__ORIGINAL_OBJECT = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Produced String Sequence</b></em>' containment reference list.
+	 * The feature id for the '<em><b>State Machine consummed String Dimension</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Unprocessed String Sequence</b></em>' containment reference list.
+	 * The feature id for the '<em><b>State Machine current State Dimension</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>State Machine produced String Dimension</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>State Machine unprocessed String Dimension</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION = TRACED_NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Traced State Machine</em>' class.
@@ -174,6 +203,15 @@ public interface FsmPackage extends EPackage {
 	 * @generated
 	 */
 	int TRACED_TRANSITION = 3;
+
+	/**
+	 * The feature id for the '<em><b>Dimensions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACED_TRANSITION__DIMENSIONS = TRACED_NAMED_ELEMENT__DIMENSIONS;
 
 	/**
 	 * The feature id for the '<em><b>Original Object</b></em>' reference.
@@ -236,28 +274,6 @@ public interface FsmPackage extends EPackage {
 	EClass getTracedStateMachine();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedStateMachine#getConsummedStringSequence <em>Consummed String Sequence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Consummed String Sequence</em>'.
-	 * @see fsmTrace.States.fsm.TracedStateMachine#getConsummedStringSequence()
-	 * @see #getTracedStateMachine()
-	 * @generated
-	 */
-	EReference getTracedStateMachine_ConsummedStringSequence();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedStateMachine#getCurrentStateSequence <em>Current State Sequence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Current State Sequence</em>'.
-	 * @see fsmTrace.States.fsm.TracedStateMachine#getCurrentStateSequence()
-	 * @see #getTracedStateMachine()
-	 * @generated
-	 */
-	EReference getTracedStateMachine_CurrentStateSequence();
-
-	/**
 	 * Returns the meta object for the reference '{@link fsmTrace.States.fsm.TracedStateMachine#getOriginalObject <em>Original Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -269,26 +285,48 @@ public interface FsmPackage extends EPackage {
 	EReference getTracedStateMachine_OriginalObject();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedStateMachine#getProducedStringSequence <em>Produced String Sequence</em>}'.
+	 * Returns the meta object for the containment reference '{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_consummedString_Dimension <em>State Machine consummed String Dimension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Produced String Sequence</em>'.
-	 * @see fsmTrace.States.fsm.TracedStateMachine#getProducedStringSequence()
+	 * @return the meta object for the containment reference '<em>State Machine consummed String Dimension</em>'.
+	 * @see fsmTrace.States.fsm.TracedStateMachine#getStateMachine_consummedString_Dimension()
 	 * @see #getTracedStateMachine()
 	 * @generated
 	 */
-	EReference getTracedStateMachine_ProducedStringSequence();
+	EReference getTracedStateMachine_StateMachine_consummedString_Dimension();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fsmTrace.States.fsm.TracedStateMachine#getUnprocessedStringSequence <em>Unprocessed String Sequence</em>}'.
+	 * Returns the meta object for the containment reference '{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_currentState_Dimension <em>State Machine current State Dimension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Unprocessed String Sequence</em>'.
-	 * @see fsmTrace.States.fsm.TracedStateMachine#getUnprocessedStringSequence()
+	 * @return the meta object for the containment reference '<em>State Machine current State Dimension</em>'.
+	 * @see fsmTrace.States.fsm.TracedStateMachine#getStateMachine_currentState_Dimension()
 	 * @see #getTracedStateMachine()
 	 * @generated
 	 */
-	EReference getTracedStateMachine_UnprocessedStringSequence();
+	EReference getTracedStateMachine_StateMachine_currentState_Dimension();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_producedString_Dimension <em>State Machine produced String Dimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>State Machine produced String Dimension</em>'.
+	 * @see fsmTrace.States.fsm.TracedStateMachine#getStateMachine_producedString_Dimension()
+	 * @see #getTracedStateMachine()
+	 * @generated
+	 */
+	EReference getTracedStateMachine_StateMachine_producedString_Dimension();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link fsmTrace.States.fsm.TracedStateMachine#getStateMachine_unprocessedString_Dimension <em>State Machine unprocessed String Dimension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>State Machine unprocessed String Dimension</em>'.
+	 * @see fsmTrace.States.fsm.TracedStateMachine#getStateMachine_unprocessedString_Dimension()
+	 * @see #getTracedStateMachine()
+	 * @generated
+	 */
+	EReference getTracedStateMachine_StateMachine_unprocessedString_Dimension();
 
 	/**
 	 * Returns the meta object for class '{@link fsmTrace.States.fsm.TracedTransition <em>Traced Transition</em>}'.
@@ -372,22 +410,6 @@ public interface FsmPackage extends EPackage {
 		EClass TRACED_STATE_MACHINE = eINSTANCE.getTracedStateMachine();
 
 		/**
-		 * The meta object literal for the '<em><b>Consummed String Sequence</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRACED_STATE_MACHINE__CONSUMMED_STRING_SEQUENCE = eINSTANCE.getTracedStateMachine_ConsummedStringSequence();
-
-		/**
-		 * The meta object literal for the '<em><b>Current State Sequence</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRACED_STATE_MACHINE__CURRENT_STATE_SEQUENCE = eINSTANCE.getTracedStateMachine_CurrentStateSequence();
-
-		/**
 		 * The meta object literal for the '<em><b>Original Object</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -396,20 +418,36 @@ public interface FsmPackage extends EPackage {
 		EReference TRACED_STATE_MACHINE__ORIGINAL_OBJECT = eINSTANCE.getTracedStateMachine_OriginalObject();
 
 		/**
-		 * The meta object literal for the '<em><b>Produced String Sequence</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>State Machine consummed String Dimension</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRACED_STATE_MACHINE__PRODUCED_STRING_SEQUENCE = eINSTANCE.getTracedStateMachine_ProducedStringSequence();
+		EReference TRACED_STATE_MACHINE__STATE_MACHINE_CONSUMMED_STRING_DIMENSION = eINSTANCE.getTracedStateMachine_StateMachine_consummedString_Dimension();
 
 		/**
-		 * The meta object literal for the '<em><b>Unprocessed String Sequence</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>State Machine current State Dimension</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRACED_STATE_MACHINE__UNPROCESSED_STRING_SEQUENCE = eINSTANCE.getTracedStateMachine_UnprocessedStringSequence();
+		EReference TRACED_STATE_MACHINE__STATE_MACHINE_CURRENT_STATE_DIMENSION = eINSTANCE.getTracedStateMachine_StateMachine_currentState_Dimension();
+
+		/**
+		 * The meta object literal for the '<em><b>State Machine produced String Dimension</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACED_STATE_MACHINE__STATE_MACHINE_PRODUCED_STRING_DIMENSION = eINSTANCE.getTracedStateMachine_StateMachine_producedString_Dimension();
+
+		/**
+		 * The meta object literal for the '<em><b>State Machine unprocessed String Dimension</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACED_STATE_MACHINE__STATE_MACHINE_UNPROCESSED_STRING_DIMENSION = eINSTANCE.getTracedStateMachine_StateMachine_unprocessedString_Dimension();
 
 		/**
 		 * The meta object literal for the '{@link fsmTrace.States.fsm.impl.TracedTransitionImpl <em>Traced Transition</em>}' class.

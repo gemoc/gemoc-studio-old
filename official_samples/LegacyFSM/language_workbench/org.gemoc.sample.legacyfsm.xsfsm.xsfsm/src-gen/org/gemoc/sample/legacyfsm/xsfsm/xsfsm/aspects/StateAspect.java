@@ -31,7 +31,7 @@ public class StateAspect {
 		manager.executeStep(_self, command, "State", "step");
 	} else {
 		fr.inria.diverse.k3.al.annotationprocessor.stepmanager.IEventManager eventManager = fr.inria.diverse.k3.al.annotationprocessor.stepmanager.EventManagerRegistry
-				.getInstance().findEventManager(null);
+				.getInstance().findEventManager();
 		if (eventManager != null) {
 			eventManager.manageEvents();
 		}
