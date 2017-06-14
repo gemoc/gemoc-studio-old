@@ -15,5 +15,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.gemoc.commons.eclipse.pde
+Export-Package: org.gemoc.commons.eclipse.pde,
+ org.gemoc.commons.eclipse.pde.classpath,
+ org.gemoc.commons.eclipse.pde.java,
+ org.gemoc.commons.eclipse.pde.manifest,
+ org.gemoc.commons.eclipse.pde.wizards.pages.pde,
+ org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui,
+ org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates
 Bundle-Vendor: INRIA
