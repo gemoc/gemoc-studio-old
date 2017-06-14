@@ -4,8 +4,8 @@ import org.eclipse.core.runtime.Status;
 import org.gemoc.commons.eclipse.logging.ILoggingBackend;
 import org.gemoc.commons.eclipse.logging.ILoggingEntity;
 
-import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
-import fr.inria.diverse.commons.messagingsystem.api.impl.StdioSimpleMessagingSystem;
+import org.eclipse.gemoc.commons.eclipse.messagingsystem.api.MessagingSystem;
+import org.eclipse.gemoc.commons.messagingsystem.api.impl.StdioSimpleMessagingSystem;
 
 public class DefaultLoggingBackend implements ILoggingBackend 
 {
