@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <!-- <requires>
+      <import plugin="org.eclipse.core.resources" version="3.5.2"/>
+   </requires> -->
+   <extension
+         id="Kermeta2ProblemMarker"
+         name="Problem marker"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+      <attribute
+            name="kermeta2_marker">
+      </attribute>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.ui.preferencePages.Workbench"
+            class="org.eclipse.gemoc.commons.eclipse.messagingsystem.ui.preferences.EclipseMessagingSystemPreferencePage"
+            id="fr.inria.diverse.commons.eclipse.messagingsystem.ui.preferences.EclipseMessagingSystemPreferencePage"
+            name="DiverSE messaging system">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.gemoc.commons.eclipse.messagingsystem.ui.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="fr.inria.diverse.commons.eclipse.messagingsystem">
+      <MessagingSystem_Contribution
+            MessagingSystem_class="org.eclipse.gemoc.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem"
+            name_string="EclipseMessagingSystem">
+      </MessagingSystem_Contribution>
+   </extension>
+</plugin>
