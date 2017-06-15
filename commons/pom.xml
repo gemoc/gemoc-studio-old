@@ -28,7 +28,7 @@
         <module>plugins/gexpressions/org.gemoc.gexpressions.xtext.ui</module>
 
         <!-- feature and update site -->
-        <module>releng/org.gemoc.commons.feature</module>
+        <module>releng/org.eclipse.gemoc.commons.feature</module>
         <module>releng/org.gemoc.gexpressions.feature</module>
         <module>releng/org.gemoc.commons.repository</module>
     </modules>

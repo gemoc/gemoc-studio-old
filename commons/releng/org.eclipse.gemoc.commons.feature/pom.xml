@@ -9,7 +9,7 @@
     <version>2.3.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>org.gemoc.commons.feature</artifactId>
+  <artifactId>org.eclipse.gemoc.commons.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 
 </project> 
