@@ -30,7 +30,7 @@
         <!-- feature and update site -->
         <module>releng/org.eclipse.gemoc.commons.feature</module>
         <module>releng/org.gemoc.gexpressions.feature</module>
-        <module>releng/org.gemoc.commons.repository</module>
+        <module>releng/org.eclipse.gemoc.commons.repository</module>
     </modules>
 	<properties>
 		<xtend.version>2.9.1</xtend.version>

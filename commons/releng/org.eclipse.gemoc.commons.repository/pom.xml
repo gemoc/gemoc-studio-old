@@ -9,7 +9,7 @@
     <artifactId>org.gemoc.commons.root</artifactId>
   </parent>
 
-  <artifactId>org.gemoc.commons.repository</artifactId>
+  <artifactId>org.eclipse.gemoc.commons.repository</artifactId>
   <packaging>eclipse-repository</packaging>
 
 </project> 

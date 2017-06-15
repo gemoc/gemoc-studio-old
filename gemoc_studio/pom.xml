@@ -331,7 +331,7 @@
 				<repository>
 		            <id>gemoc-studio_commons on CI</id>
 		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/gemoc-studio_commons/lastSuccessfulBuild/artifact/commons/releng/org.gemoc.commons.repository/target/repository/</url>
+		            <url>https://ci.inria.fr/gemoc/job/gemoc-studio_commons/lastSuccessfulBuild/artifact/commons/releng/org.eclipse.gemoc.commons.repository/target/repository/</url>
 		        </repository>
 		        <repository>
 		            <id>modelanimation_siriusmodelanimation on CI</id>
