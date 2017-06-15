@@ -15,11 +15,11 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.editpart;
+package org.eclipse.gemoc.timeline.editpart;
 
-import fr.obeo.timeline.layout.LineLayout;
-import fr.obeo.timeline.model.Choice;
-import fr.obeo.timeline.model.PossibleStep;
+import org.eclipse.gemoc.timeline.layout.LineLayout;
+import org.eclipse.gemoc.timeline.model.Choice;
+import org.eclipse.gemoc.timeline.model.PossibleStep;
 
 import java.util.ArrayList;
 import java.util.List;

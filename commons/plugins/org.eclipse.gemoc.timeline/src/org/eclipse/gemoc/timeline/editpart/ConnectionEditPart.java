@@ -15,9 +15,9 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.editpart;
+package org.eclipse.gemoc.timeline.editpart;
 
-import fr.obeo.timeline.model.Connection;
+import org.eclipse.gemoc.timeline.model.Connection;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.IFigure;

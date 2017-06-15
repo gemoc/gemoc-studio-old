@@ -1,12 +1,12 @@
-package fr.obeo.timeline.view;
+package org.eclipse.gemoc.timeline.view;
 
-import fr.obeo.timeline.Activator;
-import fr.obeo.timeline.editpart.BranchEditPart;
-import fr.obeo.timeline.editpart.ChoiceEditPart;
-import fr.obeo.timeline.editpart.PossibleStepEditPart;
-import fr.obeo.timeline.editpart.TimelineEditPartFactory;
-import fr.obeo.timeline.model.ITimelineWindowListener;
-import fr.obeo.timeline.model.TimelineWindow;
+import org.eclipse.gemoc.timeline.Activator;
+import org.eclipse.gemoc.timeline.editpart.BranchEditPart;
+import org.eclipse.gemoc.timeline.editpart.ChoiceEditPart;
+import org.eclipse.gemoc.timeline.editpart.PossibleStepEditPart;
+import org.eclipse.gemoc.timeline.editpart.TimelineEditPartFactory;
+import org.eclipse.gemoc.timeline.model.ITimelineWindowListener;
+import org.eclipse.gemoc.timeline.model.TimelineWindow;
 
 import java.util.Iterator;
 import java.util.List;
@@ -356,7 +356,7 @@ public abstract class AbstractTimelineView extends ViewPart {
 	/**
 	 * The ID of this {@link ViewPart}.
 	 */
-	public static final String ID = "fr.obeo.timeline.view";
+	public static final String ID = "org.eclipse.gemoc.timeline.view";
 
 	/**
 	 * The detail view ratio.

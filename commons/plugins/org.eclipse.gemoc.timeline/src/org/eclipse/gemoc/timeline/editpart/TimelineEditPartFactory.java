@@ -15,13 +15,13 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.editpart;
+package org.eclipse.gemoc.timeline.editpart;
 
-import fr.obeo.timeline.model.Branch;
-import fr.obeo.timeline.model.Choice;
-import fr.obeo.timeline.model.Connection;
-import fr.obeo.timeline.model.PossibleStep;
-import fr.obeo.timeline.model.TimelineWindow;
+import org.eclipse.gemoc.timeline.model.Branch;
+import org.eclipse.gemoc.timeline.model.Choice;
+import org.eclipse.gemoc.timeline.model.Connection;
+import org.eclipse.gemoc.timeline.model.PossibleStep;
+import org.eclipse.gemoc.timeline.model.TimelineWindow;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartFactory;

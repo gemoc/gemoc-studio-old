@@ -15,7 +15,7 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.view;
+package org.eclipse.gemoc.timeline.view;
 
 /**
  * Listener for {@link ITimelineProvider} changes.

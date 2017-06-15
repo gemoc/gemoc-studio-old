@@ -15,64 +15,30 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.model;
+package org.eclipse.gemoc.timeline.command;
 
-import fr.obeo.timeline.view.ITimelineListener;
-import fr.obeo.timeline.view.ITimelineProvider;
+import org.eclipse.gemoc.timeline.view.AbstractTimelineView;
+
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
- * Listener for {@link TimelineWindow} changes.
+ * Toggle the follow last choice in the timeline view.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public interface ITimelineWindowListener extends ITimelineListener {
+public class FollowHandler extends AbstractHandler {
 
-	/**
-	 * Stub implementation.
-	 * 
-	 * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
-	 */
-	class Stub extends ITimelineListener.Stub implements ITimelineWindowListener {
-
-		@Override
-		public void startChanged(int start) {
-			// nothing to do here
-		}
-
-		@Override
-		public void lengthChanged(int length) {
-			// nothing to do here
-		}
-
-		@Override
-		public void providerChanged(ITimelineProvider provider) {
-			// nothing to do here
-		}
-
+	@Override
+	public Object execute(ExecutionEvent event) throws ExecutionException {
+		final AbstractTimelineView timelineView = (AbstractTimelineView)HandlerUtil.getActivePart(event);
+		final Command command = event.getCommand();
+		final boolean oldValue = HandlerUtil.toggleCommandState(command);
+		timelineView.setFollow(!oldValue);
+		return null;
 	}
-
-	/**
-	 * Notifies the start has changed.
-	 * 
-	 * @param start
-	 *            the start
-	 */
-	void startChanged(int start);
-
-	/**
-	 * Notifies the length has changed.
-	 * 
-	 * @param length
-	 *            the length
-	 */
-	void lengthChanged(int length);
-
-	/**
-	 * Notifies the {@link ITimelineProvider} has changed.
-	 * 
-	 * @param provider
-	 *            the {@link ITimelineProvider}
-	 */
-	void providerChanged(ITimelineProvider provider);
 
 }

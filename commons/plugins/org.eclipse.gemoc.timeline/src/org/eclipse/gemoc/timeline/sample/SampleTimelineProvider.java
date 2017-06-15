@@ -15,12 +15,12 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.sample;
+package org.eclipse.gemoc.timeline.sample;
 
-import fr.obeo.timeline.view.AbstractTimelineProvider;
+import org.eclipse.gemoc.timeline.view.AbstractTimelineProvider;
 
 /**
- * A sample {@link fr.obeo.timeline.view.ITimelineProvider ITimelineProvider}.
+ * A sample {@link org.eclipse.gemoc.timeline.view.ITimelineProvider ITimelineProvider}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */

@@ -15,30 +15,64 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.command;
-
-import fr.obeo.timeline.view.AbstractTimelineView;
-
-import org.eclipse.core.commands.AbstractHandler;
-import org.eclipse.core.commands.Command;
-import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.ui.handlers.HandlerUtil;
+package org.eclipse.gemoc.timeline.model;
 
 /**
- * Toggle the follow last choice in the timeline view.
+ * Connect two {@link PossibleStep}.
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class FollowHandler extends AbstractHandler {
+public final class Connection {
 
-	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
-		final AbstractTimelineView timelineView = (AbstractTimelineView)HandlerUtil.getActivePart(event);
-		final Command command = event.getCommand();
-		final boolean oldValue = HandlerUtil.toggleCommandState(command);
-		timelineView.setFollow(!oldValue);
-		return null;
+	/**
+	 * The source {@link PossibleStep}.
+	 */
+	private final PossibleStep source;
+
+	/**
+	 * The target {@link PossibleStep}.
+	 */
+	private final PossibleStep target;
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param source
+	 *            the source {@link PossibleStep}
+	 * @param target
+	 *            the target {@link PossibleStep}
+	 */
+	public Connection(PossibleStep source, PossibleStep target) {
+		this.source = source;
+		this.target = target;
 	}
 
+	/**
+	 * Gets the source {@link PossibleStep}.
+	 * 
+	 * @return the source {@link PossibleStep}
+	 */
+	public PossibleStep getSource() {
+		return source;
+	}
+
+	/**
+	 * Gets the target {@link PossibleStep}.
+	 * 
+	 * @return the target {@link PossibleStep}
+	 */
+	public PossibleStep getTarget() {
+		return target;
+	}
+
+	@Override
+	public int hashCode() {
+		return source.hashCode() ^ target.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof Connection && ((Connection)obj).source.equals(source)
+				&& ((Connection)obj).target.equals(target);
+	}
 }

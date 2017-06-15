@@ -15,10 +15,10 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.model;
+package org.eclipse.gemoc.timeline.model;
 
-import fr.obeo.timeline.view.ITimelineListener;
-import fr.obeo.timeline.view.ITimelineProvider;
+import org.eclipse.gemoc.timeline.view.ITimelineListener;
+import org.eclipse.gemoc.timeline.view.ITimelineProvider;
 
 import java.util.ArrayList;
 import java.util.Collections;

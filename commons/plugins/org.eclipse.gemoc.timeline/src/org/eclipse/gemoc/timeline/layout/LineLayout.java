@@ -15,7 +15,7 @@
  * Should you not agree with these terms, you must stop to use this software and give it back to its legitimate owner.
  *
  *******************************************************************************/
-package fr.obeo.timeline.layout;
+package org.eclipse.gemoc.timeline.layout;
 
 import java.util.Iterator;
 
