@@ -10,7 +10,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.gemoc.commons.eclipse.core.resources.Project;
+import org.eclipse.gemoc.commons.eclipse.core.resources.IProjectUtils;
 
 public class JavaProject 
 {
@@ -19,9 +19,9 @@ public class JavaProject
 	{
 		if(!project.hasNature(JavaCore.NATURE_ID)){
 			JavaCore.create(project);
-			Project.addNature(project, JavaCore.NATURE_ID);
-			Project.createFolder(project, "src/main/java", new NullProgressMonitor());
-			Project.createFolder(project, "src/main/xdsml-java-gen", new NullProgressMonitor());
+			IProjectUtils.addNature(project, JavaCore.NATURE_ID);
+			IProjectUtils.createFolder(project, "src/main/java", new NullProgressMonitor());
+			IProjectUtils.createFolder(project, "src/main/xdsml-java-gen", new NullProgressMonitor());
 			addJavaResources(project);
 		}		
 	}
