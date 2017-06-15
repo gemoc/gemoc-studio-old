@@ -8,7 +8,7 @@
  *  Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -16,9 +16,9 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.*;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BaseOptionTemplateSection;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.StringOption;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.TemplateOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BaseOptionTemplateSection;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.StringOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.TemplateOption;
 
 /**
  * This template option can be used to collect string option from the user in

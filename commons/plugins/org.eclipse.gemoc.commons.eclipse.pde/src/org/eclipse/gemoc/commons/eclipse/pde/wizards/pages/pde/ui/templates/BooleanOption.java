@@ -8,7 +8,7 @@
  *  Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -17,9 +17,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BaseOptionTemplateSection;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BooleanOption;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.TemplateOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BaseOptionTemplateSection;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BooleanOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.TemplateOption;
 
 /**
  * This implementation of the TemplateOption can be used to represent options

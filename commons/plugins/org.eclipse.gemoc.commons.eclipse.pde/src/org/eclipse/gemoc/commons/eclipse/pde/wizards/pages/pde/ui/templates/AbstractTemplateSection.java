@@ -9,7 +9,7 @@
  *     IBM Corporation - initial API and implementation
  *     Les Jones <lesojones@gmail.com> - Bug 185477
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
 
 import java.util.zip.ZipEntry;
 import java.io.*;
@@ -31,7 +31,7 @@ import org.eclipse.pde.internal.ui.wizards.templates.ControlStack;
 import org.eclipse.pde.ui.templates.IVariableProvider;
 import org.eclipse.pde.ui.templates.PluginReference;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.ITemplateSection;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.ITemplateSection;
 
 /**
  * Common function for template sections. It is recommended to subclass this

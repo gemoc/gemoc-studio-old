@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
@@ -9,10 +9,10 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.pde.internal.ui.PDEPlugin;
 import org.eclipse.pde.internal.ui.elements.ElementList;
 import org.eclipse.swt.graphics.Image;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.TemplateListSelectionPage;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.TemplateListSelectionPage;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
 
 public abstract class AbstractNewProjectWizardWithTemplates extends Wizard{
 
@@ -49,7 +49,7 @@ public abstract class AbstractNewProjectWizardWithTemplates extends Wizard{
 	public ElementList getAvailableCodegenWizards() {
 		ElementList wizards = new ElementList("CodegenWizards"); //$NON-NLS-1$
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
-		IExtensionPoint point = registry.getExtensionPoint(org.gemoc.commons.eclipse.pde.Activator.PLUGIN_ID, PLUGIN_POINT);
+		IExtensionPoint point = registry.getExtensionPoint(org.eclipse.gemoc.commons.eclipse.pde.Activator.PLUGIN_ID, PLUGIN_POINT);
 		if (point == null)
 			return wizards;
 		IExtension[] extensions = point.getExtensions();

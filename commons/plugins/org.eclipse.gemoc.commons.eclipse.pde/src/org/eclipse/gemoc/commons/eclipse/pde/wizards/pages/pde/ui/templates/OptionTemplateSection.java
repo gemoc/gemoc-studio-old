@@ -8,7 +8,7 @@
  *  Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,9 +19,9 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.pde.internal.ui.PDEUIMessages;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BaseOptionTemplateSection;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.OptionTemplateWizardPage;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.TemplateOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BaseOptionTemplateSection;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.OptionTemplateWizardPage;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.TemplateOption;
 
 /**
  * This class adds some conventions to the class it is based on. For example, it

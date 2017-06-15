@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui;
 
 public class BaseProjectWizardFields {
 

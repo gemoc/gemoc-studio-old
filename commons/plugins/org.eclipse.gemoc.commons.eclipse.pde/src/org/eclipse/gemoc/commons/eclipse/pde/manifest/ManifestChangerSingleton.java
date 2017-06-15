@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.pde.manifest;
+package org.eclipse.gemoc.commons.eclipse.pde.manifest;
 
 import java.io.IOException;
 import java.util.jar.Attributes;
@@ -7,7 +7,7 @@ import java.util.jar.Manifest;
 import org.eclipse.core.runtime.CoreException;
 import org.osgi.framework.BundleException;
 
-import org.gemoc.commons.eclipse.pde.manifest.ManifestChanger;
+import org.eclipse.gemoc.commons.eclipse.pde.manifest.ManifestChanger;
 
 class ManifestChangerSingleton {
 

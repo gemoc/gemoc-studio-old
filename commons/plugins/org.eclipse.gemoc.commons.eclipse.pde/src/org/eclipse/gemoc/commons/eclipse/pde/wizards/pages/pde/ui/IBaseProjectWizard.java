@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui;
 
 import org.eclipse.jface.wizard.IWizard;
 

@@ -8,10 +8,10 @@
  *  Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.AbstractNewProjectTemplateWizard;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.ITemplateSection;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.AbstractNewProjectTemplateWizard;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.ITemplateSection;
 
 /**
  * This wizard should be used as a base class for wizards that generate plug-in

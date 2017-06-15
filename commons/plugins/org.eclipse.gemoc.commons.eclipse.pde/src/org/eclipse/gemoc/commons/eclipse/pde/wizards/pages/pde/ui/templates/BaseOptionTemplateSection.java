@@ -9,23 +9,23 @@
  *     IBM Corporation - initial API and implementation
  *     Les Jones <lesojones@gmail.com> - bug 208531
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
 
 import java.util.Hashtable;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.AbstractChoiceOption;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.AbstractTemplateSection;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BlankField;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BooleanOption;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.ComboChoiceOption;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.RadioChoiceOption;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.StringOption;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.TemplateOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.AbstractChoiceOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.AbstractTemplateSection;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BlankField;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BooleanOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.ComboChoiceOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.RadioChoiceOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.StringOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.TemplateOption;
 
 /**
  * This class adds a notion of options to the default template section

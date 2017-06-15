@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde;
 
 import java.util.Iterator;
 
@@ -16,10 +16,10 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IProjectContentWizard;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IProjectContentWizard;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.BaseWizardSelectionPage;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.BaseWizardSelectionPage;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
 
 public abstract class WizardListSelectionPage extends BaseWizardSelectionPage implements ISelectionChangedListener, IExecutableExtension {
 	protected TableViewer wizardSelectionViewer;

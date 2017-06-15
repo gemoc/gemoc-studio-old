@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde;
 
 
 import org.eclipse.core.runtime.CoreException;
@@ -20,13 +20,13 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IBaseProjectWizard;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IProjectContentWizard;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IBaseProjectWizard;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IProjectContentWizard;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardListSelectionPage;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardNode;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardListSelectionPage;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardNode;
 
 public class TemplateListSelectionPage extends WizardListSelectionPage implements ISelectionChangedListener, IExecutableExtension {
 	private BaseProjectWizardFields fContext;

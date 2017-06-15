@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -10,7 +10,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IPluginContribution;
 import org.osgi.framework.Bundle;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
 
 /**
  * Handle to a configuration element representing a wizard class.

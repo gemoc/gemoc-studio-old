@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -16,8 +16,8 @@ import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.pde.core.plugin.IPluginModelBase;
 import org.eclipse.pde.core.plugin.IPluginReference;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IBaseProjectWizard;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IBaseProjectWizard;
 
 /**
  * Classes that implement this interface are contributed via the extension point

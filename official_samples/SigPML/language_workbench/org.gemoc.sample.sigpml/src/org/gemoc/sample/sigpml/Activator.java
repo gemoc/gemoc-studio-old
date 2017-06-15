@@ -1,7 +1,7 @@
 package org.gemoc.sample.sigpml;
 
 import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
-import org.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
+import org.eclipse.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
 import org.osgi.framework.BundleContext;
 
 import fr.inria.diverse.commons.eclipse.messagingsystem.api.MessagingSystemManager;

@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde;
 
 
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -11,7 +11,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
 
 public abstract class BaseWizardSelectionPage extends WizardSelectionPage implements ISelectionChangedListener {
 	private String label;

@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.pde.manifest;
+package org.eclipse.gemoc.commons.eclipse.pde.manifest;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -16,9 +16,9 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.osgi.framework.BundleException;
 
-import org.gemoc.commons.eclipse.pde.manifest.ManifestChangerExportPackage;
-import org.gemoc.commons.eclipse.pde.manifest.ManifestChangerPluginDependency;
-import org.gemoc.commons.eclipse.pde.manifest.ManifestChangerSingleton;
+import org.eclipse.gemoc.commons.eclipse.pde.manifest.ManifestChangerExportPackage;
+import org.eclipse.gemoc.commons.eclipse.pde.manifest.ManifestChangerPluginDependency;
+import org.eclipse.gemoc.commons.eclipse.pde.manifest.ManifestChangerSingleton;
 
 public class ManifestChanger {
 

@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
 
 import java.util.ArrayList;
 import org.eclipse.jface.dialogs.Dialog;
@@ -19,9 +19,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.AbstractNewProjectTemplateWizard;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BaseOptionTemplateSection;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.TemplateOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.AbstractNewProjectTemplateWizard;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BaseOptionTemplateSection;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.TemplateOption;
 
 /**
  * An implementation of the standard wizard page that creates its contents from

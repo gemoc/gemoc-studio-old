@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.pde.java;
+package org.eclipse.gemoc.commons.eclipse.pde.java;
 
 import java.util.Locale;
 

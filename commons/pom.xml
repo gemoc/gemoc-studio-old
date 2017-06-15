@@ -18,7 +18,7 @@
         <module>plugins/org.gemoc.commons.eclipse</module>
         <module>plugins/org.eclipse.gemoc.commons.eclipse.messagingsystem.api</module>
         <module>plugins/org.eclipse.gemoc.commons.eclipse.messagingsystem.ui</module>
-        <module>plugins/org.gemoc.commons.eclipse.pde</module>
+        <module>plugins/org.eclipse.gemoc.commons.eclipse.pde</module>
         <module>plugins/org.gemoc.commons.eclipse.jdt</module>
         <module>plugins/org.eclipse.gemoc.commons.eclipse.ui</module>
         <module>plugins/fr.obeo.timeline</module>

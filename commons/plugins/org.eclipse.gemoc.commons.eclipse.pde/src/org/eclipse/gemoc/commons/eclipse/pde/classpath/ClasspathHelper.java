@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.pde.classpath;
+package org.eclipse.gemoc.commons.eclipse.pde.classpath;
 
 import java.util.ArrayList;
 

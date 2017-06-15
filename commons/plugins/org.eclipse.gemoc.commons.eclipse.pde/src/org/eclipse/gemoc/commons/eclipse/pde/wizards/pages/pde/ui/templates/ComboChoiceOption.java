@@ -9,16 +9,16 @@
  *     IBM Corporation - initial API and implementation
  *     Les Jones <lesojones@gmail.com> - bug 208534
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.*;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.AbstractChoiceOption;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BaseOptionTemplateSection;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.ComboChoiceOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.AbstractChoiceOption;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.BaseOptionTemplateSection;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.ComboChoiceOption;
 
 /**
  * Implementation of the AbstractTemplateOption that allows users to choose a value from

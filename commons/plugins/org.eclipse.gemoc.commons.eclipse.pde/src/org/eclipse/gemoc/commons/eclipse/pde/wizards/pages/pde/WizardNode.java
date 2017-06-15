@@ -8,7 +8,7 @@
  *  Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -17,10 +17,10 @@ import org.eclipse.pde.internal.ui.PDEPlugin;
 import org.eclipse.pde.internal.ui.PDEUIMessages;
 import org.eclipse.pde.ui.IBasePluginWizard;
 import org.eclipse.swt.graphics.Point;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IBaseProjectWizard;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IBaseProjectWizard;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.BaseWizardSelectionPage;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.BaseWizardSelectionPage;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
 
 public abstract class WizardNode implements IWizardNode {
 	private IWizard wizard;

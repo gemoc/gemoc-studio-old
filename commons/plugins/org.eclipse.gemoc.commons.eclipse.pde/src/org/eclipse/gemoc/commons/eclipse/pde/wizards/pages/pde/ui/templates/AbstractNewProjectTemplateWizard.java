@@ -8,7 +8,7 @@
  *  Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates;
 
 import java.util.ArrayList;
 
@@ -18,10 +18,10 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.pde.core.plugin.IPluginReference;
 import org.eclipse.pde.internal.ui.*;
 import org.eclipse.pde.ui.IBundleContentWizard;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IProjectContentWizard;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IProjectContentWizard;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.ITemplateSection;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.templates.ITemplateSection;
 
 /**
  * This class is used as a common base for plug-in content wizards that are

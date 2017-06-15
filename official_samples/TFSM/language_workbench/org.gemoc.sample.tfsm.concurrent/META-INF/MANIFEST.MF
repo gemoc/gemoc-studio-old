@@ -30,7 +30,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
  org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare;bundle-version="0.0.0";visibility:="reexport",
  
- org.gemoc.commons.eclipse.pde,
+ org.eclipse.gemoc.commons.eclipse.pde,
  
  fr.inria.diverse.commons.eclipse.messagingsystem.ui,
  

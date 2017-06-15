@@ -11,7 +11,7 @@
  *     Gary Duprex <Gary.Duprex@aspectstools.com> - bug 179213
  *     Benjamin Cabe <benjamin.cabe@anyware-tech.com> - bug 247553
  *******************************************************************************/
-package org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui;
+package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
@@ -44,8 +44,8 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 import org.osgi.framework.Constants;
 import org.osgi.service.prefs.BackingStoreException;
 
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
-import org.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IProjectContentWizard;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.IProjectContentWizard;
 
 public class ProjectTemplateApplicationOperation extends WorkspaceModifyOperation {
 	private IProjectContentWizard fContentWizard;
