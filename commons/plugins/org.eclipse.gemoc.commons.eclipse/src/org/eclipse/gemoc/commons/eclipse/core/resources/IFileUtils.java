@@ -5,17 +5,21 @@ import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 
 
 public class IFileUtils {
@@ -59,6 +63,23 @@ public class IFileUtils {
 			file.create(stream, true, monitor);
 		}
 		stream.close();
+	}
+	
+	public static void addMarker(IFile file, String markerType, String message, int severity) throws CoreException {
+		IMarker marker = file.createMarker(markerType);
+		marker.setAttribute(IMarker.MESSAGE, message);
+		marker.setAttribute(IMarker.SEVERITY, severity);
+		marker.setAttribute(IMarker.LINE_NUMBER, 1);
+	}
+	
+	public static String getStringContent(IFile file) throws CoreException, IOException {
+		BufferedReader r = new BufferedReader(new InputStreamReader(file.getContents(), StandardCharsets.UTF_8));     
+	    String str = null;
+	    StringBuilder sb = new StringBuilder();
+	    while ((str = r.readLine()) != null) {
+	    	sb.append(str);
+	    }
+		return sb.toString();     
 	}
 	
 	public static void copy(final InputStream inStream, final OutputStream outStream, final int bufferSize) throws IOException {
@@ -190,5 +211,7 @@ public class IFileUtils {
 	        if (i2 != null) i2.close();
 	    }
 	}
+	
+	
 }
 	
