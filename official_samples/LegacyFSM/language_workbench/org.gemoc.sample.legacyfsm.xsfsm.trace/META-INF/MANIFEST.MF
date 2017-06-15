@@ -30,7 +30,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gemoc.commons.eclipse,
  fr.inria.diverse.trace.gemoc,
  fr.inria.diverse.trace.gemoc.api,
- org.gemoc.xdsmlframework.api,
+ org.eclipse.gemoc.xdsmlframework.api,
  org.gemoc.sequential_addons.multidimensional.timeline,
  org.eclipse.gemoc.timeline,
  fr.inria.diverse.trace.commons

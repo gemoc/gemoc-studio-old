@@ -302,7 +302,7 @@ public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void addState(List<org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange> changes) {
+	public void addState(List<org.eclipse.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange> changes) {
 		if (lastState == null) {
 			addInitialState();
 		}
@@ -311,15 +311,15 @@ public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 			// We start by a (shallow) copy of the last state
 			// But we will have to rollback a little by replacing values that changed
 			tfsm_plaink3Trace.States.State newState = copyState(lastState);
-			for (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange modelChange : changes) {
+			for (org.eclipse.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange modelChange : changes) {
 				EObject o = modelChange.getChangedObject();
 				// Here we must look at non-collection mutable fields
 				// We must rollback the last values from the copied state, and add new values as well
 				// ie. mix of remove and new
-				if (modelChange instanceof org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) {
+				if (modelChange instanceof org.eclipse.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) {
 					stateChanged = true;
 
-					org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange modelChange_cast = (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) modelChange;
+					org.eclipse.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange modelChange_cast = (org.eclipse.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) modelChange;
 					org.eclipse.emf.ecore.EStructuralFeature p = modelChange_cast.getChangedField();
 
 					if (o instanceof org.gemoc.sample.tfsm.plaink3.xdsml.xtfsm.tfsm_plaink3.TFSM) {
