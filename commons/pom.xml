@@ -14,7 +14,6 @@
     <modules>
         <!-- plugins -->
 <!--         <module>../../org/gemoc/gemoc_language_workbench/org.gemoc.gemoc_language_workbench.api</module> -->
-        <module>plugins/org.gemoc.commons</module>
         <module>plugins/org.eclipse.gemoc.commons.eclipse</module>
         <module>plugins/org.eclipse.gemoc.commons.eclipse.messagingsystem.api</module>
         <module>plugins/org.eclipse.gemoc.commons.eclipse.messagingsystem.ui</module>
