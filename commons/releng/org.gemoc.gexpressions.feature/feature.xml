@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.gemoc.gexpressions.feature"
+      id="org.eclipse.gemoc.gexpressions.feature"
       label="GExpressions Feature"
       version="2.3.0.qualifier">
 
    <plugin
-         id="org.gemoc.gexpressions.xtext"
+         id="org.eclipse.gemoc.gexpressions.xtext"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.gemoc.gexpressions.xtext.ui"
+         id="org.eclipse.gemoc.gexpressions.xtext.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.gemoc.gexpressions"
+         id="org.eclipse.gemoc.gexpressions"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.gemoc.gexpressions.edit"
+         id="org.eclipse.gemoc.gexpressions.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.gemoc.gexpressions.editor"
+         id="org.eclipse.gemoc.gexpressions.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"

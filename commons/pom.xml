@@ -21,15 +21,15 @@
         <module>plugins/org.eclipse.gemoc.commons.eclipse.jdt</module>
         <module>plugins/org.eclipse.gemoc.commons.eclipse.ui</module>
         <module>plugins/org.eclipse.gemoc.timeline</module>
-        <module>plugins/gexpressions/org.gemoc.gexpressions</module>
-        <module>plugins/gexpressions/org.gemoc.gexpressions.edit</module>
-        <module>plugins/gexpressions/org.gemoc.gexpressions.editor</module>
-        <module>plugins/gexpressions/org.gemoc.gexpressions.xtext</module>
-        <module>plugins/gexpressions/org.gemoc.gexpressions.xtext.ui</module>
+        <module>plugins/gexpressions/org.eclipse.gemoc.gexpressions</module>
+        <module>plugins/gexpressions/org.eclipse.gemoc.gexpressions.edit</module>
+        <module>plugins/gexpressions/org.eclipse.gemoc.gexpressions.editor</module>
+        <module>plugins/gexpressions/org.eclipse.gemoc.gexpressions.xtext</module>
+        <module>plugins/gexpressions/org.eclipse.gemoc.gexpressions.xtext.ui</module>
 
         <!-- feature and update site -->
         <module>releng/org.eclipse.gemoc.commons.feature</module>
-        <module>releng/org.gemoc.gexpressions.feature</module>
+        <module>releng/org.eclipse.gemoc.gexpressions.feature</module>
         <module>releng/org.eclipse.gemoc.commons.repository</module>
     </modules>
 	<properties>

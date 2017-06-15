@@ -1,12 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.gemoc.gexpressions.xtext.tests
+Bundle-Name: org.eclipse.gemoc.gexpressions.xtext.tests
 Bundle-Vendor: My Company
 Bundle-Version: 2.3.0.qualifier
-Bundle-SymbolicName: org.gemoc.gexpressions.xtext.tests; singleton:=true
+Bundle-SymbolicName: org.eclipse.gemoc.gexpressions.xtext.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.gemoc.gexpressions.xtext,
- org.gemoc.gexpressions.xtext.ui,
+Require-Bundle: org.eclipse.gemoc.gexpressions.xtext,
+ org.eclipse.gemoc.gexpressions.xtext.ui,
  org.eclipse.core.runtime,
  org.eclipse.xtext.junit4,
  org.eclipse.ui.workbench;resolution:=optional,
@@ -20,4 +20,4 @@ Import-Package: org.apache.log4j,
  org.junit.runners.model;version="4.5.0",
  org.hamcrest.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.gemoc.gexpressions.xtext
+Export-Package: org.eclipse.gemoc.gexpressions.xtext

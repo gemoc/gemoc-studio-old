@@ -10,7 +10,7 @@
       <!-- @generated gexpressions -->
       <factory
             uri="http://www.gemoc.org/gexpressions"
-            class="org.gemoc.gexpressions.provider.GexpressionsItemProviderAdapterFactory"
+            class="org.eclipse.gemoc.gexpressions.provider.GexpressionsItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

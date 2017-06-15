@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.gemoc.gexpressions.test;singleton:=true
+Bundle-SymbolicName: org.eclipse.gemoc.gexpressions.test;singleton:=true
 Bundle-Version: 2.3.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
@@ -11,6 +11,6 @@ Export-Package: test,
  test.impl,
  test.util
 Require-Bundle: org.eclipse.xtext.ui,
- org.gemoc.gexpressions,
- org.gemoc.gexpressions.xtext
+ org.eclipse.gemoc.gexpressions,
+ org.eclipse.gemoc.gexpressions.xtext
 Bundle-ActivationPolicy: lazy

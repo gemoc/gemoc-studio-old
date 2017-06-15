@@ -12,9 +12,9 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="org.gemoc.gexpressions.presentation.GexpressionsModelWizardID"
+            id="org.eclipse.gemoc.gexpressions.presentation.GexpressionsModelWizardID"
             name="%_UI_GexpressionsModelWizard_label"
-            class="org.gemoc.gexpressions.presentation.GexpressionsModelWizard"
+            class="org.eclipse.gemoc.gexpressions.presentation.GexpressionsModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/GexpressionsModelFile.gif">
          <description>%_UI_GexpressionsModelWizard_description</description>
@@ -25,12 +25,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated gexpressions -->
       <editor
-            id="org.gemoc.gexpressions.presentation.GexpressionsEditorID"
+            id="org.eclipse.gemoc.gexpressions.presentation.GexpressionsEditorID"
             name="%_UI_GexpressionsEditor_label"
             icon="icons/full/obj16/GexpressionsModelFile.gif"
             extensions="gexpressions"
-            class="org.gemoc.gexpressions.presentation.GexpressionsEditor"
-            contributorClass="org.gemoc.gexpressions.presentation.GexpressionsActionBarContributor">
+            class="org.eclipse.gemoc.gexpressions.presentation.GexpressionsEditor"
+            contributorClass="org.eclipse.gemoc.gexpressions.presentation.GexpressionsActionBarContributor">
       </editor>
    </extension>
 </plugin>

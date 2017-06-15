@@ -10,7 +10,7 @@
       <!-- @generated gexpressions -->
       <package
             uri="http://www.gemoc.org/gexpressions"
-            class="org.gemoc.gexpressions.GexpressionsPackage"
+            class="org.eclipse.gemoc.gexpressions.GexpressionsPackage"
             genModel="model/gexpressions.genmodel"/>
    </extension>
 

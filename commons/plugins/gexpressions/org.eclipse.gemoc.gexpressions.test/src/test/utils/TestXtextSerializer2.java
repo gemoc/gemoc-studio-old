@@ -7,10 +7,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.serializer.impl.Serializer;
-import org.gemoc.gexpressions.GExpression;
-import org.gemoc.gexpressions.GProgram;
-import org.gemoc.gexpressions.GexpressionsPackage;
-import org.gemoc.gexpressions.xtext.GExpressionsStandaloneSetup;
+import org.eclipse.gemoc.gexpressions.GExpression;
+import org.eclipse.gemoc.gexpressions.GProgram;
+import org.eclipse.gemoc.gexpressions.GexpressionsPackage;
+import org.eclipse.gemoc.gexpressions.xtext.GExpressionsStandaloneSetup;
 
 import com.google.inject.Injector;
 
