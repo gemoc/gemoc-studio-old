@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.xtend2.lib;bundle-version="2.4.3",
  org.eclipse.emf.ecore.xmi;bundle-version="2.10.1",
  org.eclipse.core.expressions;bundle-version="3.4.600",
  org.eclipse.gemoc.commons.eclipse.pde;bundle-version="0.1.0",
- org.gemoc.commons;bundle-version="0.1.0",
+ org.eclipse.gemoc.commons;bundle-version="0.1.0",
  org.eclipse.gemoc.commons.eclipse;bundle-version="0.1.0",
  fr.inria.diverse.k3.al.annotationprocessor.plugin,
  org.gemoc.sample.tfsm.plaink3.model;bundle-version="0.1.0"

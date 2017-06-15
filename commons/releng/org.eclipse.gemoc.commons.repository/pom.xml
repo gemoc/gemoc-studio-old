@@ -4,9 +4,9 @@
 
   <parent>
     <relativePath>../../pom.xml</relativePath>
-    <groupId>org.gemoc.commons</groupId>
+    <groupId>org.eclipse.gemoc.commons</groupId>
     <version>2.3.0-SNAPSHOT</version>
-    <artifactId>org.gemoc.commons.root</artifactId>
+    <artifactId>org.eclipse.gemoc.commons.root</artifactId>
   </parent>
 
   <artifactId>org.eclipse.gemoc.commons.repository</artifactId>
