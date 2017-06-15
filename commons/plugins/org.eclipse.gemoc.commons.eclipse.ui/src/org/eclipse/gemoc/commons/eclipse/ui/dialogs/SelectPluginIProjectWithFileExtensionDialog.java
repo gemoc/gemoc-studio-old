@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.ui.dialogs;
+package org.eclipse.gemoc.commons.eclipse.ui.dialogs;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Shell;
 import org.gemoc.commons.eclipse.core.resources.FileFinderVisitor;
-import org.gemoc.commons.eclipse.ui.Activator;
+import org.eclipse.gemoc.commons.eclipse.ui.Activator;
 
 /**
  * Project finder dialog that searches for a Plugin project containing at least one file with one of the given extension. 

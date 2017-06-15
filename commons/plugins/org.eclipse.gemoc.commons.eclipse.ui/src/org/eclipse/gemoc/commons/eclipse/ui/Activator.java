@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.ui;
+package org.eclipse.gemoc.commons.eclipse.ui;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -12,7 +12,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.commons.eclipse.ui"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.eclipse.gemoc.commons.eclipse.ui"; //$NON-NLS-1$
 
 	
 	// The shared instance

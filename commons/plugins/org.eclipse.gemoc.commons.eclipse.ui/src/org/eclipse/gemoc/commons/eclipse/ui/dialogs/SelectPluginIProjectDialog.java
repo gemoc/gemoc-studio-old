@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.ui.dialogs;
+package org.eclipse.gemoc.commons.eclipse.ui.dialogs;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;

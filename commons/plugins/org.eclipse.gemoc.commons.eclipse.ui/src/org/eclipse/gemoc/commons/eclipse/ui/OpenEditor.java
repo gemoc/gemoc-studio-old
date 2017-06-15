@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.ui;
+package org.eclipse.gemoc.commons.eclipse.ui;
 
 import java.io.File;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.gemoc.commons.eclipse.core.resources.FileFinderVisitor;
-import org.gemoc.commons.eclipse.ui.dialogs.SelectAnyIFileDialog;
+import org.eclipse.gemoc.commons.eclipse.ui.dialogs.SelectAnyIFileDialog;
 
 public class OpenEditor {
 

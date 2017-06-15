@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.pde.ui;
+package org.eclipse.gemoc.commons.eclipse.pde.ui;
 
 import java.lang.reflect.InvocationTargetException;
 

@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.ui;
+package org.eclipse.gemoc.commons.eclipse.ui;
 
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.TreeColumn;

@@ -20,7 +20,7 @@
         <module>plugins/org.eclipse.gemoc.commons.eclipse.messagingsystem.ui</module>
         <module>plugins/org.gemoc.commons.eclipse.pde</module>
         <module>plugins/org.gemoc.commons.eclipse.jdt</module>
-        <module>plugins/org.gemoc.commons.eclipse.ui</module>
+        <module>plugins/org.eclipse.gemoc.commons.eclipse.ui</module>
         <module>plugins/fr.obeo.timeline</module>
         <module>plugins/gexpressions/org.gemoc.gexpressions</module>
         <module>plugins/gexpressions/org.gemoc.gexpressions.edit</module>
