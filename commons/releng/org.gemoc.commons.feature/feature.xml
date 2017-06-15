@@ -39,7 +39,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.gemoc.commons.eclipse.jdt"
+         id="org.eclipse.gemoc.commons.eclipse.jdt"
          download-size="0"
          install-size="0"
          version="0.0.0"

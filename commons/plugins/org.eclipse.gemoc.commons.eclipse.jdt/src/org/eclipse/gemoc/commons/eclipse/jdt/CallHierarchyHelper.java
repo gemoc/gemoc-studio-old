@@ -1,4 +1,4 @@
-package org.gemoc.commons.eclipse.jdt;
+package org.eclipse.gemoc.commons.eclipse.jdt;
 
 import java.util.HashSet;
 
