@@ -569,7 +569,7 @@ public class TfsmTraceConstructor implements ITraceConstructor {
 	private Set<Resource> getAllExecutedModelResources() {
 		Set<Resource> allResources = new HashSet<>();
 		allResources.add(executedModel);
-		allResources.addAll(org.gemoc.commons.eclipse.emf.EMFResource.getRelatedResources(executedModel));
+		allResources.addAll(org.eclipse.gemoc.commons.eclipse.emf.EMFResource.getRelatedResources(executedModel));
 		allResources.removeIf(r -> r == null);
 		return allResources;
 	}

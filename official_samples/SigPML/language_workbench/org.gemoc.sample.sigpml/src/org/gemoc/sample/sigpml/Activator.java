@@ -1,6 +1,6 @@
 package org.gemoc.sample.sigpml;
 
-import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
+import org.eclipse.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
 import org.eclipse.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
 import org.osgi.framework.BundleContext;
 

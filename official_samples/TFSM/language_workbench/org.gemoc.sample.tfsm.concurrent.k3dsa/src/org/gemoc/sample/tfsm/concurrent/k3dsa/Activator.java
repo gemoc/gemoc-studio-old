@@ -1,6 +1,6 @@
 package org.gemoc.sample.tfsm.concurrent.k3dsa;
 
-import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
+import org.eclipse.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
 import org.eclipse.gemoc.commons.eclipse.pde.GemocPlugin;
 import org.osgi.framework.BundleContext;
 

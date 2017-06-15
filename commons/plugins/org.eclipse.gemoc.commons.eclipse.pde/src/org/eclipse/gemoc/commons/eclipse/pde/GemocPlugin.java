@@ -3,9 +3,9 @@ package org.eclipse.gemoc.commons.eclipse.pde;
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.Plugin;
-import org.gemoc.commons.eclipse.logging.ILoggingBackend;
-import org.gemoc.commons.eclipse.logging.ILoggingEntity;
-import org.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
+import org.eclipse.gemoc.commons.eclipse.logging.ILoggingBackend;
+import org.eclipse.gemoc.commons.eclipse.logging.ILoggingEntity;
+import org.eclipse.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
 import org.osgi.framework.BundleContext;
 
 public abstract class GemocPlugin extends Plugin implements ILoggingEntity {

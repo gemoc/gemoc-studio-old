@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gemoc.commons.eclipse.pde,
  org.eclipse.emf.ecore.xmi,
  fr.inria.diverse.commons.eclipse.messagingsystem.api,
- org.gemoc.commons.eclipse,
+ org.eclipse.gemoc.commons.eclipse,
  org.eclipse.core.resources,
  org.eclipse.emf.transaction
 Bundle-ActivationPolicy: lazy
