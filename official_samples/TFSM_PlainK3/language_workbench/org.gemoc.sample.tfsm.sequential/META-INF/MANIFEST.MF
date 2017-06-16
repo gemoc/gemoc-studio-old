@@ -23,7 +23,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  org.gemoc.execution.sequential.javaxdsml.api;bundle-version="[0.1.0,
  2.4.0)",
  
- org.gemoc.xdsmlframework.extensions.sirius;bundle-version="0.0.0";visibility:="reexport",
+ org.eclipse.gemoc.xdsmlframework.extensions.sirius;bundle-version="0.0.0";visibility:="reexport",
  
  org.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
  

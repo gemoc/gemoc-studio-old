@@ -14,12 +14,12 @@
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
             class="org.gemoc.gemoc_language_workbench.sample.deployer.wizards.LegacyFSMExampleWizard"
-            finalPerspective="org.gemoc.xdsmlframework.ide.ui.xdsml.perspective"
+            finalPerspective="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective"
             hasPages="false"
             icon="icons/IconeGemocLanguage-16.png"
             id="org.gemoc.gemoc_language_workbench.sample.deployer.legacyfsm.wizard"
             name="GEMOC FSM Language (Sequential)"
-            preferredPerspectives="org.gemoc.xdsmlframework.ide.ui.xdsml.perspective">
+            preferredPerspectives="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective">
          <description>
             T⁮his set of projects features a simple Finite State Machine language which is extended and made executable using GEMOC.
 It illustrates the building of an executable sequential language (xsfsm) on top of an existing language environment and editor (fsm).
