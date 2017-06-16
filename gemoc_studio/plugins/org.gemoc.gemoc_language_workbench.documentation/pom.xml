@@ -181,7 +181,7 @@
 			<!-- <configuration> -->
 			<!-- <artifactItems> -->
 			<!-- <artifactItem> -->
-			<!-- <groupId>org.gemoc</groupId> -->
+			<!-- <groupId>org.eclipse.gemoc</groupId> -->
 			<!-- <artifactId>org.gemoc.gemoc-studio-guide</artifactId> -->
 			<!-- <type>jdocbook</type> -->
 			<!-- <version>0.0.1-SNAPSHOT</version> -->

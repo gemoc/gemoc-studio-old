@@ -5,7 +5,7 @@
                              http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.gemoc</groupId>
+    <groupId>org.eclipse.gemoc</groupId>
     <artifactId>complete-studio</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
