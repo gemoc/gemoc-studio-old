@@ -150,8 +150,8 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import feature="org.gemoc.modeldebugging.trace.commons.feature.source" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.trace.generator.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.modeldebugging.trace.generator.feature.source" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.modeldebugging.trace.manager.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.modeldebugging.trace.manager.feature.source" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.gemoc.trace.manager.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.gemoc.trace.manager.feature.source" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

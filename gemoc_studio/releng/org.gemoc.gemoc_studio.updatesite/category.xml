@@ -48,10 +48,10 @@
    <feature url="features/org.gemoc.modeldebugging.trace.generator.feature.source_2.3.0.qualifier.jar" id="org.gemoc.modeldebugging.trace.generator.feature.source" version="2.3.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.modeldebugging.trace.manager.feature_2.3.0.qualifier.jar" id="org.gemoc.modeldebugging.trace.manager.feature" version="2.3.0.qualifier">
+   <feature url="features/org.eclipse.gemoc.trace.manager.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.trace.manager.feature" version="2.3.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.modeldebugging.trace.manager.feature.source_2.3.0.qualifier.jar" id="org.gemoc.modeldebugging.trace.manager.feature.source" version="2.3.0.qualifier">
+   <feature url="features/org.eclipse.gemoc.trace.manager.feature.source_2.3.0.qualifier.jar" id="org.eclipse.gemoc.trace.manager.feature.source" version="2.3.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
    <feature url="features/org.eclipse.gemoc.xdsmlframework.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.xdsmlframework.feature" version="2.3.0.qualifier">
