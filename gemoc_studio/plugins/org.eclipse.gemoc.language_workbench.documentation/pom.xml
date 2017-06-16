@@ -161,7 +161,7 @@
 	</profile>
 </profiles>
 
-	<artifactId>org.gemoc.gemoc_language_workbench.documentation</artifactId>
+	<artifactId>org.eclipse.gemoc.language_workbench.documentation</artifactId>
 	<packaging>eclipse-plugin</packaging>
 	<build>
 		<plugins>

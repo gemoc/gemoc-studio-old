@@ -48,7 +48,7 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.gemoc.gemoc_language_workbench.documentation"
+         id="org.eclipse.gemoc.language_workbench.documentation"
          download-size="0"
          install-size="0"
          version="0.0.0"
