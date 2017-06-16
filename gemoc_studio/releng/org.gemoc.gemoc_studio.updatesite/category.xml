@@ -24,10 +24,10 @@
    <feature url="features/org.gemoc.execution.sequential.javaxdsml.feature.source_2.3.0.qualifier.jar" id="org.gemoc.execution.sequential.javaxdsml.feature.source" version="2.3.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.modeldebugging.executionframework.feature_2.3.0.qualifier.jar" id="org.gemoc.modeldebugging.executionframework.feature" version="2.3.0.qualifier">
+   <feature url="features/org.eclipse.gemoc.executionframework.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.executionframework.feature" version="2.3.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.modeldebugging.executionframework.feature.source_2.3.0.qualifier.jar" id="org.gemoc.modeldebugging.executionframework.feature.source" version="2.3.0.qualifier">
+   <feature url="features/org.eclipse.gemoc.executionframework.feature.source_2.3.0.qualifier.jar" id="org.eclipse.gemoc.executionframework.feature.source" version="2.3.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
    <feature url="features/org.eclipse.gemoc.modeldebugging.framework.commons.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.modeldebugging.framework.commons.feature" version="2.3.0.qualifier">
