@@ -3,7 +3,7 @@ package org.gemoc.sample.tfsm.plaink3.design.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gemoc.executionframework.extensions.sirius.services.AbstractGemocDebuggerServices;
+import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractGemocDebuggerServices;
 
 public class TFSMDebuggerServices extends AbstractGemocDebuggerServices {
 

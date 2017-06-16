@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.concurrent.xdsml">
-    <XDSML_Definition codeExecutor_class="xtfsm.xdsml.api.impl.XTfsmCodeExecutor" modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.tfsm.concurrent.XTfsm" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.concurrent.moc.dse/qvto-gen/modeling/TFSM.qvto" xdsmlFilePath="/org.gemoc.sample.tfsm.concurrent/src/org/gemoc/sample/tfsm/concurrent/Main.melange">
+    <XDSML_Definition codeExecutor_class="xtfsm.xdsml.api.impl.XTfsmCodeExecutor" modelLoader_class="org.eclipse.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.tfsm.concurrent.XTfsm" solver_class="org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.sample.tfsm.concurrent.moc.dse/qvto-gen/modeling/TFSM.qvto" xdsmlFilePath="/org.gemoc.sample.tfsm.concurrent/src/org/gemoc/sample/tfsm/concurrent/Main.melange">
       <XDSML_Definition_Customization fileExtensions="tfsm" />
     </XDSML_Definition>
   </extension>

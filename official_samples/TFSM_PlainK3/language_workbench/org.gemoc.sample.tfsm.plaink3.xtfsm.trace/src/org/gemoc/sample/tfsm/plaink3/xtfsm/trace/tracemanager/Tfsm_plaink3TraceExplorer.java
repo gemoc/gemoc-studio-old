@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.gemoc.executionframework.engine.core.CommandExecution;
+import org.eclipse.gemoc.executionframework.engine.core.CommandExecution;
 
 import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
 import fr.inria.diverse.trace.commons.model.trace.Step;

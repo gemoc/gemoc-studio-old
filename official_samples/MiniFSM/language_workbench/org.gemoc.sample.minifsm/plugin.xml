@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.gemoc.gemoc_language_workbench.sequential.xdsml">
-    <XDSML_Definition modelLoader_class="org.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.minifsm.MiniFSM" xdsmlFilePath="/org.gemoc.sample.minifsm/src/org/gemoc/sample/MiniFSM.melange" />
+    <XDSML_Definition modelLoader_class="org.eclipse.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.minifsm.MiniFSM" xdsmlFilePath="/org.gemoc.sample.minifsm/src/org/gemoc/sample/MiniFSM.melange" />
   </extension>
   <extension point="org.eclipse.emf.ecore.generated_package">
     <!-- @generated MiniFSMMT -->

@@ -7,7 +7,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.gemoc.sample.tfsm.k3dsa;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.execution.concurrent.ccsljavaengine.extensions.k3;bundle-version="0.0.0";visibility:=reexport,
  org.eclipse.gemoc.xdsmlframework.api,
- org.gemoc.executionframework.engine,
+ org.eclipse.gemoc.executionframework.engine,
  org.gemoc.execution.concurrent.ccsljavaengine,
  org.gemoc.sample.tfsm.moc.lib;bundle-version="0.0.0";visibility:=reexport,
  org.eclipse.core.runtime;bundle-version="3.9.100",
@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
  fr.inria.diverse.commons.eclipse.messagingsystem.api;bundle-version="1.0.0",
  org.gemoc.sample.tfsm.design;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.sample.tfsm.eclmoc2as;bundle-version="0.0.0";visibility:=reexport,
- org.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
+ org.eclipse.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

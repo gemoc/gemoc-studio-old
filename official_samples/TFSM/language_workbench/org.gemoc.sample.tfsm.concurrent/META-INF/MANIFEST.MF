@@ -26,7 +26,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
  org.gemoc.sample.tfsm.concurrent.moc.dse;bundle-version="0.0.0";visibility:="reexport",
  
- org.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
+ org.eclipse.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
  
  org.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare;bundle-version="0.0.0";visibility:="reexport",
  
@@ -38,7 +38,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
  org.gemoc.execution.concurrent.ccsljavaengine;bundle-version="1.0.0",
  
- org.gemoc.executionframework.engine,
+ org.eclipse.gemoc.executionframework.engine,
  
  fr.inria.diverse.melange.lib;bundle-version="0.1.0",
  

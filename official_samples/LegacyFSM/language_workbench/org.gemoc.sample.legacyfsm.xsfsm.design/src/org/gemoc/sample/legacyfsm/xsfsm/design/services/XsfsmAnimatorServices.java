@@ -3,7 +3,7 @@ package org.gemoc.sample.legacyfsm.xsfsm.design.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gemoc.executionframework.extensions.sirius.services.AbstractGemocAnimatorServices;
+import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractGemocAnimatorServices;
 
 public class XsfsmAnimatorServices extends AbstractGemocAnimatorServices {
 

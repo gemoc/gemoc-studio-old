@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.gemoc.execution.sequential.javaengine.ui.Activator;
-import org.gemoc.executionframework.extensions.sirius.services.AbstractGemocDebuggerServices;
+import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractGemocDebuggerServices;
 
 public class XsfsmDebugServices extends AbstractGemocDebuggerServices {
 
