@@ -32,6 +32,6 @@
             genModel="model/tfsmTrace.genmodel"/>
    </extension>
   <extension point="org.gemoc.gemoc_language_workbench.engine_addon">
-    <Addon Class="org.gemoc.sample.tfsm.sequential.xtfsm.trace.tracemanager.TfsmTraceEngineAddon" Default="false" id="org.gemoc.sample.tfsm.sequential.xtfsm.trace" Name="tfsm MultiDimensional Trace" ShortDescription="MultiDimensional Trace support dedicated to tfsm language" openViewIds="org.gemoc.sequential_addons.multidimensional.timeline.views.timeline.MultidimensionalTimeLineView" AddonGroupId="Sequential.AddonGroup" />
+    <Addon Class="org.gemoc.sample.tfsm.sequential.xtfsm.trace.tracemanager.TfsmTraceEngineAddon" Default="false" id="org.gemoc.sample.tfsm.sequential.xtfsm.trace" Name="tfsm MultiDimensional Trace" ShortDescription="MultiDimensional Trace support dedicated to tfsm language" openViewIds="org.eclipse.gemoc.sequential_addons.multidimensional.timeline.views.timeline.MultidimensionalTimeLineView" AddonGroupId="Sequential.AddonGroup" />
   </extension>
 </plugin>
