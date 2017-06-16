@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.gemoc.gemoc_studio.branding;
+package org.eclipse.gemoc.gemoc_studio.branding;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -30,7 +30,7 @@ import org.osgi.util.tracker.ServiceTracker;
 public class Activator extends Plugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.gemoc_studio.branding";
+	public static final String PLUGIN_ID = "org.eclipse.gemoc.gemoc_studio.branding";
 
 	private final ServiceTracker proxyTracker;
 

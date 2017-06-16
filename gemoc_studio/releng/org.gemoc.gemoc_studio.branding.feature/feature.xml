@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.gemoc.gemoc_studio.branding.feature"
+      id="org.eclipse.gemoc.gemoc_studio.branding.feature"
       label="GEMOC Studio Main Features"
       version="2.3.0.qualifier"
       provider-name="GEMOC"
-      plugin="org.gemoc.gemoc_studio.branding">
+      plugin="org.eclipse.gemoc.gemoc_studio.branding">
 
    <description url="http://www.gemoc.org">
       List of features in GEMOC Studio that are part of the core of the GEMOC process.
@@ -42,7 +42,7 @@
    </requires>
 
    <plugin
-         id="org.gemoc.gemoc_studio.branding"
+         id="org.eclipse.gemoc.gemoc_studio.branding"
          download-size="0"
          install-size="0"
          version="0.0.0"/>

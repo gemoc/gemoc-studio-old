@@ -16,7 +16,7 @@
 		<eclipse.version.name>Neon.3</eclipse.version.name>
 	</properties>
 
-	<artifactId>org.gemoc.gemoc_studio.branding</artifactId>
+	<artifactId>org.eclipse.gemoc.gemoc_studio.branding</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
 	<build>

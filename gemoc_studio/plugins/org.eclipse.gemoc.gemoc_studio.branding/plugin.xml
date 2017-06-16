@@ -38,7 +38,7 @@
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="org.gemoc.gemoc_studio.branding.handlers.GemocDiscoveryHandler"
+            class="org.eclipse.gemoc.gemoc_studio.branding.handlers.GemocDiscoveryHandler"
             commandId="org.gemoc.gemoc_studio.commands.discoveryCommand">
       </handler>
    </extension>

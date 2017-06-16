@@ -17,7 +17,7 @@
         <relativePath>../..</relativePath>
     </parent>
 
-    <artifactId>org.gemoc.gemoc_studio.branding.feature</artifactId>
+    <artifactId>org.eclipse.gemoc.gemoc_studio.branding.feature</artifactId>
     <packaging>eclipse-feature</packaging>
 
 </project>

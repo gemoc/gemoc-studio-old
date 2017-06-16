@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.gemoc.gemoc_studio.branding.handlers;
+package org.eclipse.gemoc.gemoc_studio.branding.handlers;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -31,7 +31,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.IProgressService;
-import org.gemoc.gemoc_studio.branding.Activator;
+import org.eclipse.gemoc.gemoc_studio.branding.Activator;
 
 public class GemocPackageDiscovery extends DiscoveryContentProvider {
 
