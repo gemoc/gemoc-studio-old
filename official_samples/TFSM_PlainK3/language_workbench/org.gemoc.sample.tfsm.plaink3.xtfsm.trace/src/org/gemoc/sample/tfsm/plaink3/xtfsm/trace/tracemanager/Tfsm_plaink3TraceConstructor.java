@@ -13,10 +13,10 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
-import fr.inria.diverse.trace.commons.model.trace.LaunchConfiguration;
-import fr.inria.diverse.trace.commons.model.trace.MSEModel;
-import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
-import fr.inria.diverse.trace.gemoc.api.ITraceConstructor;
+import org.eclipse.gemoc.trace.commons.model.trace.LaunchConfiguration;
+import org.eclipse.gemoc.trace.commons.model.trace.MSEModel;
+import org.eclipse.gemoc.trace.commons.model.trace.SequentialStep;
+import org.eclipse.gemoc.trace.gemoc.api.ITraceConstructor;
 
 public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 	private tfsm_plaink3Trace.SpecificTrace traceRoot;
@@ -452,7 +452,7 @@ public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 			}
 			if (stateChanged) {
 				final tfsm_plaink3Trace.Steps.SpecificStep currentStep = context.peekFirst();
-				if (currentStep != null && currentStep instanceof fr.inria.diverse.trace.commons.model.trace.BigStep) {
+				if (currentStep != null && currentStep instanceof org.eclipse.gemoc.trace.commons.model.trace.BigStep) {
 					final tfsm_plaink3Trace.States.State startingState = lastState;
 					final tfsm_plaink3Trace.States.State endingState = newState;
 					addImplicitStep(currentStep, startingState, endingState);
@@ -472,12 +472,12 @@ public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void addStep(fr.inria.diverse.trace.commons.model.trace.Step step) {
+	public void addStep(org.eclipse.gemoc.trace.commons.model.trace.Step step) {
 		tfsm_plaink3Trace.Steps.SpecificStep step_cast = null;
 		if (step != null && step instanceof tfsm_plaink3Trace.Steps.SpecificStep) {
 			step_cast = (tfsm_plaink3Trace.Steps.SpecificStep) step;
 			if (mseModel == null) {
-				mseModel = fr.inria.diverse.trace.commons.model.trace.TraceFactory.eINSTANCE.createMSEModel();
+				mseModel = org.eclipse.gemoc.trace.commons.model.trace.TraceFactory.eINSTANCE.createMSEModel();
 				traceResource.getContents().add(mseModel);
 			}
 			mseModel.getOwnedMSEs().add(step_cast.getMseoccurrence().getMse());
@@ -540,7 +540,7 @@ public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 	}
 
 	@Override
-	public void endStep(fr.inria.diverse.trace.commons.model.trace.Step step) {
+	public void endStep(org.eclipse.gemoc.trace.commons.model.trace.Step step) {
 		tfsm_plaink3Trace.Steps.SpecificStep popped = context.pop();
 		if (popped != null)
 			popped.setEndingState(lastState);
@@ -553,7 +553,7 @@ public class Tfsm_plaink3TraceConstructor implements ITraceConstructor {
 		traceRoot.setLaunchconfiguration(launchConfiguration);
 
 		// Create root sequential step
-		fr.inria.diverse.trace.commons.model.trace.SequentialStep<tfsm_plaink3Trace.Steps.SpecificStep> rootStep = fr.inria.diverse.trace.commons.model.trace.TraceFactory.eINSTANCE
+		org.eclipse.gemoc.trace.commons.model.trace.SequentialStep<tfsm_plaink3Trace.Steps.SpecificStep> rootStep = org.eclipse.gemoc.trace.commons.model.trace.TraceFactory.eINSTANCE
 				.createSequentialStep();
 		traceRoot.setRootStep(rootStep);
 

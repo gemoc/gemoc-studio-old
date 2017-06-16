@@ -2,7 +2,7 @@
  */
 package tfsm_plaink3Trace.Steps.impl;
 
-import fr.inria.diverse.trace.commons.model.trace.impl.StepImpl;
+import org.eclipse.gemoc.trace.commons.model.trace.impl.StepImpl;
 
 import java.lang.reflect.InvocationTargetException;
 

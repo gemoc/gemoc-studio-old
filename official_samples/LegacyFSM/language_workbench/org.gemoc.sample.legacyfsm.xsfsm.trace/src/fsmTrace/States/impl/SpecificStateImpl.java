@@ -2,11 +2,11 @@
  */
 package fsmTrace.States.impl;
 
-import fr.inria.diverse.trace.commons.model.trace.Step;
-import fr.inria.diverse.trace.commons.model.trace.TracePackage;
-import fr.inria.diverse.trace.commons.model.trace.Value;
+import org.eclipse.gemoc.trace.commons.model.trace.Step;
+import org.eclipse.gemoc.trace.commons.model.trace.TracePackage;
+import org.eclipse.gemoc.trace.commons.model.trace.Value;
 
-import fr.inria.diverse.trace.commons.model.trace.impl.StateImpl;
+import org.eclipse.gemoc.trace.commons.model.trace.impl.StateImpl;
 
 import fsmTrace.States.SpecificState;
 import fsmTrace.States.SpecificValue;

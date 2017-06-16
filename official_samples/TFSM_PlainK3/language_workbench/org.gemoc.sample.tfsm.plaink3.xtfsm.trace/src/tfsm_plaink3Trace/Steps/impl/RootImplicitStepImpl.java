@@ -2,7 +2,7 @@
  */
 package tfsm_plaink3Trace.Steps.impl;
 
-import fr.inria.diverse.trace.commons.model.trace.impl.SmallStepImpl;
+import org.eclipse.gemoc.trace.commons.model.trace.impl.SmallStepImpl;
 
 import org.eclipse.emf.ecore.EClass;
 

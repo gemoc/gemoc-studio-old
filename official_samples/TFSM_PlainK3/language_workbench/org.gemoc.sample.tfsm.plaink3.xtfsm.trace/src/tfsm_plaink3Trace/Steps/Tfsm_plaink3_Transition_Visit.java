@@ -2,7 +2,7 @@
  */
 package tfsm_plaink3Trace.Steps;
 
-import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
+import org.eclipse.gemoc.trace.commons.model.trace.SequentialStep;
 
 import tfsm_plaink3Trace.States.tfsm_plaink3.TracedTransition;
 

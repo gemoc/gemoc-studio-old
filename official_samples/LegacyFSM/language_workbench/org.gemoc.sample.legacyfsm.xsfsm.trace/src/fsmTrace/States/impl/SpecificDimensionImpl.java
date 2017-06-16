@@ -2,7 +2,7 @@
  */
 package fsmTrace.States.impl;
 
-import fr.inria.diverse.trace.commons.model.trace.impl.DimensionImpl;
+import org.eclipse.gemoc.trace.commons.model.trace.impl.DimensionImpl;
 
 import fsmTrace.States.SpecificDimension;
 import fsmTrace.States.SpecificValue;

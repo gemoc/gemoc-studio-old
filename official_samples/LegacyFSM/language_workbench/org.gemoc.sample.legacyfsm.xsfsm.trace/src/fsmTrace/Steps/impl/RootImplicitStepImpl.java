@@ -2,7 +2,7 @@
  */
 package fsmTrace.Steps.impl;
 
-import fr.inria.diverse.trace.commons.model.trace.impl.SmallStepImpl;
+import org.eclipse.gemoc.trace.commons.model.trace.impl.SmallStepImpl;
 
 import fsmTrace.States.SpecificState;
 

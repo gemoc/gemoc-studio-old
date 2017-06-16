@@ -13,11 +13,11 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
-import fr.inria.diverse.trace.commons.model.launchconfiguration.LaunchConfiguration;
-import fr.inria.diverse.trace.commons.model.trace.MSEModel;
-import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
-import fr.inria.diverse.trace.commons.model.trace.TracedObject;
-import fr.inria.diverse.trace.gemoc.api.ITraceConstructor;
+import org.eclipse.gemoc.trace.commons.model.launchconfiguration.LaunchConfiguration;
+import org.eclipse.gemoc.trace.commons.model.trace.MSEModel;
+import org.eclipse.gemoc.trace.commons.model.trace.SequentialStep;
+import org.eclipse.gemoc.trace.commons.model.trace.TracedObject;
+import org.eclipse.gemoc.trace.gemoc.api.ITraceConstructor;
 
 public class FsmTraceConstructor implements ITraceConstructor {
 	private fsmTrace.SpecificTrace traceRoot;
@@ -299,7 +299,7 @@ public class FsmTraceConstructor implements ITraceConstructor {
 			}
 			if (stateChanged) {
 				final fsmTrace.Steps.SpecificStep currentStep = context.peekFirst();
-				if (currentStep != null && currentStep instanceof fr.inria.diverse.trace.commons.model.trace.BigStep) {
+				if (currentStep != null && currentStep instanceof org.eclipse.gemoc.trace.commons.model.trace.BigStep) {
 					final fsmTrace.States.SpecificState startingState = lastState;
 					final fsmTrace.States.SpecificState endingState = newState;
 					addImplicitStep(currentStep, startingState, endingState);
@@ -318,12 +318,12 @@ public class FsmTraceConstructor implements ITraceConstructor {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void addStep(fr.inria.diverse.trace.commons.model.trace.Step<?> step) {
+	public void addStep(org.eclipse.gemoc.trace.commons.model.trace.Step<?> step) {
 		fsmTrace.Steps.SpecificStep step_cast = null;
 		if (step != null && step instanceof fsmTrace.Steps.SpecificStep) {
 			step_cast = (fsmTrace.Steps.SpecificStep) step;
 			if (mseModel == null) {
-				mseModel = fr.inria.diverse.trace.commons.model.trace.TraceFactory.eINSTANCE.createMSEModel();
+				mseModel = org.eclipse.gemoc.trace.commons.model.trace.TraceFactory.eINSTANCE.createMSEModel();
 				traceResource.getContents().add(mseModel);
 			}
 			mseModel.getOwnedMSEs().add(step_cast.getMseoccurrence().getMse());
@@ -372,7 +372,7 @@ public class FsmTraceConstructor implements ITraceConstructor {
 	}
 
 	@Override
-	public void endStep(fr.inria.diverse.trace.commons.model.trace.Step<?> step) {
+	public void endStep(org.eclipse.gemoc.trace.commons.model.trace.Step<?> step) {
 		fsmTrace.Steps.SpecificStep popped = context.pop();
 		if (popped != null)
 			popped.setEndingState(lastState);
@@ -385,7 +385,7 @@ public class FsmTraceConstructor implements ITraceConstructor {
 		traceRoot.setLaunchconfiguration(launchConfiguration);
 
 		// Create root sequential step
-		fr.inria.diverse.trace.commons.model.trace.SequentialStep<fsmTrace.Steps.SpecificStep, fsmTrace.States.SpecificState> rootStep = fsmTrace.Steps.StepsFactory.eINSTANCE
+		org.eclipse.gemoc.trace.commons.model.trace.SequentialStep<fsmTrace.Steps.SpecificStep, fsmTrace.States.SpecificState> rootStep = fsmTrace.Steps.StepsFactory.eINSTANCE
 				.createSpecificRootStep();
 		traceRoot.setRootStep(rootStep);
 

@@ -2,9 +2,9 @@
  */
 package tfsm_plaink3Trace.impl;
 
-import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
+import org.eclipse.gemoc.trace.commons.model.trace.SequentialStep;
 
-import fr.inria.diverse.trace.commons.model.trace.impl.TraceImpl;
+import org.eclipse.gemoc.trace.commons.model.trace.impl.TraceImpl;
 
 import java.util.Collection;
 

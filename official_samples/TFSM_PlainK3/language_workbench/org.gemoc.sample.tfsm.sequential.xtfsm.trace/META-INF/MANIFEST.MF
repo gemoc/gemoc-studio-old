@@ -21,19 +21,19 @@ Export-Package: tfsmTrace,
  tfsmTrace.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- fr.inria.diverse.trace.commons.model;visibility:=reexport,
+ org.eclipse.gemoc.trace.commons.model;visibility:=reexport,
  org.gemoc.sample.tfsm.sequential.xtfsm;visibility:=reexport,
- fr.inria.diverse.trace.api,
+ org.eclipse.gemoc.trace.api,
  org.eclipse.emf.transaction,
  org.eclipse.emf.compare,
  org.eclipse.gemoc.executionframework.engine,
  org.eclipse.xtext,
  org.eclipse.gemoc.commons.eclipse,
- fr.inria.diverse.trace.gemoc,
- fr.inria.diverse.trace.gemoc.api,
+ org.eclipse.gemoc.trace.gemoc,
+ org.eclipse.gemoc.trace.gemoc.api,
  org.eclipse.gemoc.xdsmlframework.api,
  org.gemoc.sequential_addons.multidimensional.timeline,
  org.eclipse.gemoc.timeline,
- fr.inria.diverse.trace.commons
+ org.eclipse.gemoc.trace.commons
 Bundle-ActivationPolicy: lazy
 

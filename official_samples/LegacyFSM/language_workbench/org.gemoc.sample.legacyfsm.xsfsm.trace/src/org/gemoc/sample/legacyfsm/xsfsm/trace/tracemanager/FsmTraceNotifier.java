@@ -8,8 +8,8 @@ import org.eclipse.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.Bat
 import org.eclipse.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange;
 import org.eclipse.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NewObjectModelChange;
 
-import fr.inria.diverse.trace.gemoc.api.ITraceListener;
-import fr.inria.diverse.trace.gemoc.api.ITraceNotifier;
+import org.eclipse.gemoc.trace.gemoc.api.ITraceListener;
+import org.eclipse.gemoc.trace.gemoc.api.ITraceNotifier;
 
 public class FsmTraceNotifier implements ITraceNotifier {
 

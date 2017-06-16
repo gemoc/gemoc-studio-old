@@ -2,7 +2,7 @@
  */
 package fsmTrace.impl;
 
-import fr.inria.diverse.trace.commons.model.trace.TracePackage;
+import org.eclipse.gemoc.trace.commons.model.trace.TracePackage;
 
 import fsmTrace.FsmTraceFactory;
 import fsmTrace.FsmTracePackage;

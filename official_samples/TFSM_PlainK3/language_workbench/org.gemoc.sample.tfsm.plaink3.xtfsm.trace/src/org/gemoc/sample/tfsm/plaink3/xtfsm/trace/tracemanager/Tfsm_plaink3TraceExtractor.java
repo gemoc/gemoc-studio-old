@@ -35,10 +35,10 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
 
-import fr.inria.diverse.trace.commons.model.trace.LaunchConfiguration;
-import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
-import fr.inria.diverse.trace.commons.model.trace.Step;
-import fr.inria.diverse.trace.gemoc.api.ITraceExtractor;
+import org.eclipse.gemoc.trace.commons.model.trace.LaunchConfiguration;
+import org.eclipse.gemoc.trace.commons.model.trace.SequentialStep;
+import org.eclipse.gemoc.trace.commons.model.trace.Step;
+import org.eclipse.gemoc.trace.gemoc.api.ITraceExtractor;
 
 public class Tfsm_plaink3TraceExtractor implements ITraceExtractor {
 

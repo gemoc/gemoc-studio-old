@@ -2,17 +2,17 @@
 package org.gemoc.sample.tfsm.sequential.xtfsm.trace.tracemanager;
 
 import java.util.List;
-import fr.inria.diverse.trace.gemoc.api.IStepFactory;
+import org.eclipse.gemoc.trace.gemoc.api.IStepFactory;
 
 public class TfsmTraceStepFactory implements IStepFactory {
 
 	@Override
-	public fr.inria.diverse.trace.commons.model.trace.Step createStep(
-			fr.inria.diverse.trace.commons.model.trace.MSE mse, List<Object> parameters, List<Object> result) {
+	public org.eclipse.gemoc.trace.commons.model.trace.Step createStep(
+			org.eclipse.gemoc.trace.commons.model.trace.MSE mse, List<Object> parameters, List<Object> result) {
 
-		fr.inria.diverse.trace.commons.model.trace.Step step = null;
+		org.eclipse.gemoc.trace.commons.model.trace.Step step = null;
 		org.eclipse.emf.ecore.EClass ec = mse.getCaller().eClass();
-		String stepRule = fr.inria.diverse.trace.commons.EcoreCraftingUtil.getFQN(ec, ".") + "."
+		String stepRule = org.eclipse.gemoc.trace.commons.EcoreCraftingUtil.getFQN(ec, ".") + "."
 				+ mse.getAction().getName();
 
 		if (mse.getAction().getName().equalsIgnoreCase("ticks")
@@ -72,10 +72,10 @@ public class TfsmTraceStepFactory implements IStepFactory {
 		}
 
 		else {
-			step = fr.inria.diverse.trace.commons.model.trace.TraceFactory.eINSTANCE.createGenericSequentialStep();
+			step = org.eclipse.gemoc.trace.commons.model.trace.TraceFactory.eINSTANCE.createGenericSequentialStep();
 		}
 
-		fr.inria.diverse.trace.commons.model.trace.MSEOccurrence mseocc = fr.inria.diverse.trace.commons.model.trace.TraceFactory.eINSTANCE
+		org.eclipse.gemoc.trace.commons.model.trace.MSEOccurrence mseocc = org.eclipse.gemoc.trace.commons.model.trace.TraceFactory.eINSTANCE
 				.createMSEOccurrence();
 		mseocc.setMse(mse);
 		mseocc.getParameters().addAll(parameters);
