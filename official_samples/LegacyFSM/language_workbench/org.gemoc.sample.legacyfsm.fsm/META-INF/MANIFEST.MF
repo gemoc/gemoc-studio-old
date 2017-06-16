@@ -25,7 +25,7 @@ Require-Bundle: org.eclipse.xtend.lib;bundle-version="2.7.0";visibility:="privat
  
  org.eclipse.gemoc.xdsmlframework.api;bundle-version="0.0.0";visibility:="reexport",
  
- org.gemoc.execution.sequential.javaxdsml.api;bundle-version="0.0.0";visibility:="reexport",
+ org.eclipse.gemoc.execution.sequential.javaxdsml.api;bundle-version="0.0.0";visibility:="reexport",
  
  org.eclipse.gemoc.executionframework.engine;bundle-version="0.0.0";visibility:="reexport",
  

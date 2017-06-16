@@ -9,7 +9,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
  org.gemoc.sample.legacyfsm.fsm.design;bundle-version="1.0.0",
  org.gemoc.sample.legacyfsm.xsfsm.xsfsm,
- org.gemoc.execution.sequential.javaengine.ui;bundle-version="2.2.0",
+ org.eclipse.gemoc.execution.sequential.javaengine.ui;bundle-version="2.2.0",
  org.gemoc.sample.legacyfsm.fsm.model;bundle-version="0.1.0"
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.gemoc.sample.legacyfsm.xsfsm.design.Activator

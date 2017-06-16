@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
  org.gemoc.sample.tfsm.plaink3.dsa;bundle-version="0.0.0";visibility:="reexport",
  
- org.gemoc.execution.sequential.javaxdsml.api,
+ org.eclipse.gemoc.execution.sequential.javaxdsml.api,
  
  org.eclipse.gemoc.xdsmlframework.extensions.sirius;bundle-version="0.0.0";visibility:="reexport",
  

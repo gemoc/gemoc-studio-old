@@ -3,7 +3,7 @@ package org.gemoc.sample.legacyfsm.xsfsm.allinone.design.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gemoc.execution.sequential.javaengine.ui.Activator;
+import org.eclipse.gemoc.execution.sequential.javaengine.ui.Activator;
 import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractGemocDebuggerServices;
 
 public class XsfsmDebugServices extends AbstractGemocDebuggerServices {
