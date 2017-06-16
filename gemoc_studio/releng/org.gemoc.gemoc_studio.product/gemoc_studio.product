@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Gemoc Studio" uid="gemoc_studio" id="org.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="2.3.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Gemoc Studio" uid="gemoc_studio" id="org.eclipse.gemoc.gemoc_studio.branding.gemoc_studio" application="org.eclipse.ui.ide.workbench" version="2.3.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/org.gemoc.gemoc_studio.branding/images/GemocStudioAboutImage.png"/>
+      <image path="/org.eclipse.gemoc.gemoc_studio.branding/images/GemocStudioAboutImage.png"/>
       <text>
          Gemoc Studio: A Language Workbench for Heterogeneous Modeling and Analysis of Complex Software-Intensive Systems
       </text>
@@ -31,7 +31,7 @@
    <windowImages i16="images/icons/IconeGemocStudio/png/IconeGemocStudio_16x16x32.png" i32="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_32x32x32.png" i48="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_48x48x32.png" i64="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_64x64x32.png" i128="images/icons/IconeGemocStudio-text/png/IconeGemocStudio-text_128x128x32.png"/>
 
    <splash
-      location="org.gemoc.gemoc_studio.branding"
+      location="org.eclipse.gemoc.gemoc_studio.branding"
       startupProgressRect="5,275,445,15" />
    <launcher name="GemocStudio">
       <linux icon="/images/icons/IconeGemocStudio-text/xpm/IconeGemocStudio-text.xpm"/>
@@ -59,7 +59,7 @@
    </plugins>
 
    <features>
-      <feature id="org.gemoc.gemoc_studio.branding.feature"/>
+      <feature id="org.eclipse.gemoc.gemoc_studio.branding.feature"/>
       <feature id="org.gemoc.gemoc_studio.additions.feature"/>
    </features>
 
