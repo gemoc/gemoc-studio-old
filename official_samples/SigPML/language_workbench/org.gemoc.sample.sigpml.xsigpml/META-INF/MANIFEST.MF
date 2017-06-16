@@ -18,7 +18,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.codehaus.groovy,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore.xmi,
- org.gemoc.execution.concurrent.ccsljavaxdsml.api
+ org.eclipse.gemoc.execution.concurrent.ccsljavaxdsml.api
 Bundle-ActivationPolicy: lazy
 Export-Package: org.gemoc.sample.sigpml.xsigpml.aspects,
  org.gemoc.sample.sigpml.xsigpml.sigpml,

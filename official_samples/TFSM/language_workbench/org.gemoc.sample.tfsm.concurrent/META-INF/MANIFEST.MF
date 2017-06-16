@@ -34,7 +34,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:="reexport",
  
  fr.inria.diverse.commons.eclipse.messagingsystem.ui,
  
- org.gemoc.execution.concurrent.ccsljavaxdsml.api;bundle-version="1.0.0",
+ org.eclipse.gemoc.execution.concurrent.ccsljavaxdsml.api;bundle-version="1.0.0",
  
  org.eclipse.gemoc.execution.concurrent.ccsljavaengine;bundle-version="1.0.0",
  

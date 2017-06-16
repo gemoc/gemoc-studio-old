@@ -21,13 +21,13 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.gemoc.execution.concurrent.ccsljavaxdsml.ui.dse_builder</name>
+			<name>org.eclipse.gemoc.execution.concurrent.ccsljavaxdsml.ui.dse_builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.gemoc.execution.concurrent.ccsljavaxdsml.ui.dse_nature</nature>
+		<nature>org.eclipse.gemoc.execution.concurrent.ccsljavaxdsml.ui.dse_nature</nature>
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
