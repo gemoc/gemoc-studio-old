@@ -113,13 +113,13 @@
 <feature url="features/org.gemoc.mocc.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.feature" version="0.1.1.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
-<feature url="features/org.gemoc.mocc.graphical.editors.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.graphical.editors.feature" version="0.1.1.qualifier">
+<feature url="features/org.eclipse.gemoc.moccml.constraint.graphical.editors.feature_0.1.1.qualifier.jar" id="org.eclipse.gemoc.moccml.constraint.graphical.editors.feature" version="0.1.1.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
-<feature url="features/org.gemoc.mocc.text.editors.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.text.editors.feature" version="0.1.1.qualifier">
+<feature url="features/org.eclipse.gemoc.moccml.constraint.text.editors.feature_0.1.1.qualifier.jar" id="org.eclipse.gemoc.moccml.constraint.text.editors.feature" version="0.1.1.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
-<feature url="features/org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.timesquare.ccsl.solver.extension.automata.feature" version="0.1.1.qualifier">
+<feature url="features/org.eclipse.gemoc.moccml.constraint.ccsl.solver.extension.automata.feature_0.1.1.qualifier.jar" id="org.eclipse.gemoc.moccml.constraint.ccsl.solver.extension.automata.feature" version="0.1.1.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
 <feature url="features/org.gemoc.mocc.transformations.feature_0.0.1.qualifier.jar" id="org.gemoc.mocc.transformations.feature" version="0.0.1.qualifier">
