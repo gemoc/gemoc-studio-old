@@ -94,10 +94,10 @@
    </feature>
 
 
-<feature url="features/org.gemoc.concurrent_addons.feature_2.3.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature" version="2.3.0.qualifier">
+<feature url="features/org.eclipse.gemoc.concurrent_addons.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.concurrent_addons.feature" version="2.3.0.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
-<feature url="features/org.gemoc.concurrent_addons.feature.source_2.3.0.qualifier.jar" id="org.gemoc.concurrent_addons.feature.source" version="2.3.0.qualifier">
+<feature url="features/org.eclipse.gemoc.concurrent_addons.feature.source_2.3.0.qualifier.jar" id="org.eclipse.gemoc.concurrent_addons.feature.source" version="2.3.0.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
 <feature url="features/org.gemoc.executionengine.ccsljava.feature_2.3.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature" version="2.3.0.qualifier">
