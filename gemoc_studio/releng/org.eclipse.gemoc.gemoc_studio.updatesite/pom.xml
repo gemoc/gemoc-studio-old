@@ -17,7 +17,7 @@
         <relativePath>../..</relativePath>
     </parent>
 
-    <artifactId>org.gemoc.gemoc_studio.updatesite</artifactId>
+    <artifactId>org.eclipse.gemoc.gemoc_studio.updatesite</artifactId>
     <packaging>eclipse-repository</packaging>
 	<build>
 	   <plugins>
