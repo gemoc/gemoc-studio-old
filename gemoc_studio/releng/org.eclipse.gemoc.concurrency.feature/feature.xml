@@ -11,7 +11,7 @@
  -->
 
 <feature
-      id="org.gemoc.concurrency.feature"
+      id="org.eclipse.gemoc.concurrency.feature"
       label="GEMOC Concurrency"
       version="2.3.0.qualifier"
       provider-name="GEMOC">
