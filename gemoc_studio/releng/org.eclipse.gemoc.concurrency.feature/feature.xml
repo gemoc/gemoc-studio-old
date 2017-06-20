@@ -127,7 +127,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
    <requires>
       <import feature="org.eclipse.gemoc.concurrent_addons.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.gemoc.concurrent.official_samples.deployers.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.modeldebugging.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.gemoc.modeldebugging.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.gemoc.executionengine.ccsljava.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.gemoc.executionengine.ccsljava.runtime.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.gemoc.executionengine.ccsljava.runtime.ui.feature" version="0.0.0" match="greaterOrEqual"/>
