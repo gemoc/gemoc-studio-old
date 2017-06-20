@@ -11,7 +11,7 @@
  -->
 
 <feature
-      id="org.gemoc.coordination.feature"
+      id="org.eclipse.gemoc.coordination.feature"
       label="GEMOC Coordination"
       version="2.3.0.qualifier"
       provider-name="GEMOC">

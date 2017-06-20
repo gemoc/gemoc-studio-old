@@ -37,7 +37,7 @@
 
       <import feature="org.gemoc.modeldebugging.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.gemoc.concurrency.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.gemoc.coordination.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.gemoc.coordination.feature" version="0.0.0" match="greaterOrEqual"/>
 
 
       <import feature="fr.inria.diverse.k3.feature" version="0.0.0" match="greaterOrEqual"/>

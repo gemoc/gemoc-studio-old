@@ -25,7 +25,7 @@
         <module>releng/org.gemoc.gemoc_studio.additions.feature</module>	
         <module>releng/org.gemoc.modeldebugging.feature</module>
 		<module>releng/org.eclipse.gemoc.concurrency.feature</module>
-		<module>releng/org.gemoc.coordination.feature</module>
+		<module>releng/org.eclipse.gemoc.coordination.feature</module>
         <module>releng/org.gemoc.gemoc_studio.updatesite</module>
     </modules>
 
