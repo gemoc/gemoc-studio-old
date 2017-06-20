@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2017 Inria and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Inria - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -5,14 +15,11 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.pde.internal.ui.PDEPlugin;
 import org.eclipse.pde.internal.ui.elements.ElementList;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.ui.BaseProjectWizardFields;
-
-import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.TemplateListSelectionPage;
-import org.eclipse.gemoc.commons.eclipse.pde.wizards.pages.pde.WizardElement;
 
 public abstract class AbstractNewProjectWizardWithTemplates extends Wizard{
 

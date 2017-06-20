@@ -1,15 +1,13 @@
-
-
-/*$Id: EclipseConsoleIO.java 13571 2010-11-22 16:33:54Z hrambelo $
-* Project : fr.irisa.triskell.eclipse.util
-* File : 	EclipseConsole.java
-* License : EPL
-* Copyright : IRISA / INRIA / Universite de Rennes 1
-* ----------------------------------------------------------------------------
-* Creation date : 29 nov. 07
-* Authors : paco
-*/
-
+/*******************************************************************************
+ * Copyright (c) 2011, 2017 Inria and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Inria - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.gemoc.commons.eclipse.messagingsystem.ui.internal.console;
 
 import java.io.BufferedReader;

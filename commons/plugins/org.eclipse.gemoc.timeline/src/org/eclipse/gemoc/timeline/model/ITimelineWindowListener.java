@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Obeo. All Rights Reserved.
+ * Copyright (c) 2013, 2017 Obeo. All Rights Reserved.
  *
  * This software and the attached documentation are the exclusive ownership
  * of its authors and was conceded to the profit of Obeo SARL.

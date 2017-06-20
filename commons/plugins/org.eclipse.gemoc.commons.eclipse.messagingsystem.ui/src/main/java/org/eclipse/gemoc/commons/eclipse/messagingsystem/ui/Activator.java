@@ -1,25 +1,23 @@
-/*$Id:  $
- * License : EPL
- * Copyright : IRISA / INRIA 
- * ----------------------------------------------------------------------------
- * Creation date : 20 avr. 2011
- * Authors : 
- *      Didier Vojtisek <didier.vojtisek@inria.fr>
- */
+/*******************************************************************************
+ * Copyright (c) 2011, 2017 Inria and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Inria - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.gemoc.commons.eclipse.messagingsystem.ui;
 
 import java.io.PrintStream;
 
-import org.eclipse.gemoc.commons.eclipse.messagingsystem.api.MessagingSystem;
 import org.eclipse.gemoc.commons.eclipse.messagingsystem.ui.internal.EclipseConsoleOutputStream;
 import org.eclipse.gemoc.commons.eclipse.messagingsystem.ui.internal.console.ConsoleIO;
 import org.eclipse.gemoc.commons.eclipse.messagingsystem.ui.internal.console.EclipseConsoleIO;
 import org.eclipse.gemoc.commons.eclipse.messagingsystem.ui.internal.console.EclipseConsoleIOFactory;
 import org.eclipse.gemoc.commons.eclipse.messagingsystem.ui.preferences.PreferenceConstants;
-import org.eclipse.gemoc.commons.messagingsystem.api.impl.StdioSimpleMessagingSystem;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
