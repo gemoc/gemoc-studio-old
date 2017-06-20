@@ -11,7 +11,7 @@
  -->
 
 <feature
-      id="org.gemoc.gemoc_studio.additions.feature"
+      id="org.eclipse.gemoc.gemoc_studio.additions.feature"
       label="GEMOC Studio Additional Features"
       version="2.3.0.qualifier"
       provider-name="GEMOC">

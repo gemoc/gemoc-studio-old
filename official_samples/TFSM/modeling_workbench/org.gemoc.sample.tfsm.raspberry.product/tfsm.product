@@ -45,7 +45,7 @@
    </plugins>
 
    <features>
-      <feature id="org.gemoc.gemoc_studio.additions.feature" version="1.0.0.201404241510"/>
+      <feature id="org.eclipse.gemoc.gemoc_studio.additions.feature" version="1.0.0.201404241510"/>
       <feature id="org.gemoc.gemoc_studio.branding.feature" version="1.0.0.201404241510"/>
       <feature id="fr.inria.aoste.timesquare.ecl.feature" version="1.0.0.201403211604"/>
       <feature id="fr.inria.aoste.timesquare.feature" version="1.0.0.201403240946"/>

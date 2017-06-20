@@ -60,7 +60,7 @@
 
    <features>
       <feature id="org.eclipse.gemoc.gemoc_studio.branding.feature"/>
-      <feature id="org.gemoc.gemoc_studio.additions.feature"/>
+      <feature id="org.eclipse.gemoc.gemoc_studio.additions.feature"/>
    </features>
 
    <configurations>
