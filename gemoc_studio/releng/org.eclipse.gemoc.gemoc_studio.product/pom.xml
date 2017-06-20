@@ -22,7 +22,7 @@
 	</parent>
 
 
-	<artifactId>org.gemoc.gemoc_studio.product</artifactId>
+	<artifactId>org.eclipse.gemoc.gemoc_studio.product</artifactId>
 	<packaging>eclipse-repository</packaging>
 
 
