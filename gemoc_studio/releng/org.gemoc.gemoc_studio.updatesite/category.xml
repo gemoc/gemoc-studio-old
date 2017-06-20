@@ -100,22 +100,22 @@
 <feature url="features/org.eclipse.gemoc.concurrent_addons.feature.source_2.3.0.qualifier.jar" id="org.eclipse.gemoc.concurrent_addons.feature.source" version="2.3.0.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
-<feature url="features/org.gemoc.executionengine.ccsljava.feature_2.3.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature" version="2.3.0.qualifier">
+<feature url="features/org.eclipse.gemoc.executionengine.ccsljava.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.executionengine.ccsljava.feature" version="2.3.0.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
-<feature url="features/org.gemoc.executionengine.ccsljava.feature.source_2.3.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.feature.source" version="2.3.0.qualifier">
+<feature url="features/org.eclipse.gemoc.executionengine.ccsljava.feature.source_2.3.0.qualifier.jar" id="org.eclipse.gemoc.executionengine.ccsljava.feature.source" version="2.3.0.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
-<feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature_2.3.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature" version="2.3.0.qualifier">
+<feature url="features/org.eclipse.gemoc.executionengine.ccsljava.runtime.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.executionengine.ccsljava.runtime.feature" version="2.3.0.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
-<feature url="features/org.gemoc.executionengine.ccsljava.runtime.feature.source_2.3.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.feature.source" version="2.3.0.qualifier">
+<feature url="features/org.eclipse.gemoc.executionengine.ccsljava.runtime.feature.source_2.3.0.qualifier.jar" id="org.eclipse.gemoc.executionengine.ccsljava.runtime.feature.source" version="2.3.0.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
-<feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature_2.3.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature" version="2.3.0.qualifier">
+<feature url="features/org.eclipse.gemoc.executionengine.ccsljava.runtime.ui.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.executionengine.ccsljava.runtime.ui.feature" version="2.3.0.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
-<feature url="features/org.gemoc.executionengine.ccsljava.runtime.ui.feature.source_2.3.0.qualifier.jar" id="org.gemoc.executionengine.ccsljava.runtime.ui.feature.source" version="2.3.0.qualifier">
+<feature url="features/org.eclipse.gemoc.executionengine.ccsljava.runtime.ui.feature.source_2.3.0.qualifier.jar" id="org.eclipse.gemoc.executionengine.ccsljava.runtime.ui.feature.source" version="2.3.0.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
 <feature url="features/org.gemoc.mocc.core.feature_0.1.1.qualifier.jar" id="org.gemoc.mocc.core.feature" version="0.1.1.qualifier">
