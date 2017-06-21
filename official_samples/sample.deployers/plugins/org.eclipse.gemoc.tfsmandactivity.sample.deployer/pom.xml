@@ -16,7 +16,7 @@
 		<version>2.3.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.gemoc.tfsmandactivity.sampledeployer</artifactId>
+	<artifactId>org.eclipse.gemoc.tfsmandactivity.sample.deployer</artifactId>
 	<packaging>eclipse-plugin</packaging>
 	<build>
 		<plugins>

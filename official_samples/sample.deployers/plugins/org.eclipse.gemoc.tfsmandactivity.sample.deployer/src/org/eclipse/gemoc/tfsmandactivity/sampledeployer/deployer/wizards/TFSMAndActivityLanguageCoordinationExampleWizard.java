@@ -7,7 +7,7 @@
  * Authors : 
  *        	dvojtise <dvojtise@irisa.fr>
  */
-package org.gemoc.tfsmandactivity.sampledeployer.wizards;
+package org.eclipse.gemoc.tfsmandactivity.sample.deployer.wizards;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,7 +15,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.gemoc.tfsmandactivity.sampledeployer.Activator;
+import org.eclipse.gemoc.tfsmandactivity.sample.deployer.Activator;
 
 import fr.inria.diverse.commons.eclipse.jface.wizards.AbstractExampleWizard;
 

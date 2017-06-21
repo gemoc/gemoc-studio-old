@@ -1,4 +1,4 @@
-package org.gemoc.tfsmandactivity.sampledeployer;
+package org.eclipse.gemoc.tfsmandactivity.sample.deployer;
 
 import java.lang.reflect.InvocationTargetException;
 
