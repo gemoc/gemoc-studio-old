@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_modeling_workbench.sample.deployer;
+package org.eclipse.gemoc.sequential.modeling.wb.sample.deployer;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -14,7 +14,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.gemoc_modeling_workbench.sample.deployer"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.eclipse.gemoc.sequential.modeling.wb.sample.deployer"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;

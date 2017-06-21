@@ -13,11 +13,11 @@
       <wizard
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
-            class="org.gemoc.gemoc_modeling_workbench.sample.deployer.wizards.LegacyFSMExampleWizard"
+            class="org.eclipse.gemoc.sequential.modeling.wb.sample.deployer.wizards.LegacyFSMExampleWizard"
             finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             hasPages="false"
             icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.gemoc_modeling_workbench.sample.deployer.tfsm_plaink3.model.wizard"
+            id="org.eclipse.gemoc.sequential.modeling.wb.sample.deployer.tfsm_plaink3.model.wizard"
             name="GEMOC model for FSM Language (Sequential)"
             preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling">
          <description>
