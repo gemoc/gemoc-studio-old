@@ -14,7 +14,7 @@
     <modules>
         <!-- plugins -->
         <module>plugins/org.eclipse.gemoc.concurrent.language.wb.sample.deployer</module>
-        <module>plugins/org.gemoc.concurrent.modeling_workbench.sample.deployer</module>
+        <module>plugins/org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer</module>
         <module>plugins/org.gemoc.gemoc_language_workbench.sample.deployer</module>
         <module>plugins/org.gemoc.gemoc_modeling_workbench.sample.deployer</module>
         <module>plugins/org.gemoc.tfsmandactivity.sampledeployer</module>

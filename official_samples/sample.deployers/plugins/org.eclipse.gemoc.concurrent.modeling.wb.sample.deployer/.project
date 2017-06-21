@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.gemoc.concurrent.modeling_workbench.sample.deployer</name>
+	<name>org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer</name>
 	<comment></comment>
 	<projects>
 	</projects>

@@ -36,7 +36,7 @@ Contributors:
          unpack="false"/>
 
    <plugin
-         id="org.gemoc.concurrent.modeling_workbench.sample.deployer"
+         id="org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer"
          download-size="0"
          install-size="0"
          version="0.0.0"

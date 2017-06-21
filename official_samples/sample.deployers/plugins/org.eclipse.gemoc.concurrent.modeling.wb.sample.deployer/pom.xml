@@ -16,7 +16,7 @@
 		<version>2.3.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.gemoc.concurrent.modeling_workbench.sample.deployer</artifactId>
+	<artifactId>org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer</artifactId>
 	<packaging>eclipse-plugin</packaging>
 	<build>
 		<plugins>

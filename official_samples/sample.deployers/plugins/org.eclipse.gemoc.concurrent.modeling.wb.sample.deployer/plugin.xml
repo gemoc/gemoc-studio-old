@@ -13,11 +13,11 @@
       <wizard
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
-            class="org.gemoc.concurrent.modeling_workbench.sample.deployer.wizards.TFSMExampleWizard"
+            class="org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer.wizards.TFSMExampleWizard"
             finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             hasPages="false"
             icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.concurrent.modeling_workbench.sample.deployer.tfsm.model.wizard"
+            id="org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer.tfsm.model.wizard"
             name="GEMOC model for TFSM Language (Concurrent)"
             preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling">
          <description>
@@ -27,11 +27,11 @@
       <wizard
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
-            class="org.gemoc.concurrent.modeling_workbench.sample.deployer.wizards.SigPMLExampleWizard"
+            class="org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer.wizards.SigPMLExampleWizard"
             finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             hasPages="false"
             icon="icons/IconeGemocModel-16.png"
-            id="org.gemoc.concurrent.modeling_workbench.sample.deployer.sigpml.model.wizard"
+            id="org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer.sigpml.model.wizard"
             name="GEMOC model for SigPML Language (Concurrent)"
             preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling">
          <description>
@@ -41,11 +41,11 @@
       <wizard
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.gemoc.gemoc_modeling_workbench.samples.category"
-            class="org.gemoc.concurrent.modeling_workbench.sample.deployer.wizards.TFSMAndSigPMLExampleWizard"
+            class="org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer.wizards.TFSMAndSigPMLExampleWizard"
             finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             hasPages="false"
             icon="icons/bcoolicon.png"
-            id="org.gemoc.concurrent.modeling_workbench.sample.deployer.sdf.model.wizard"
+            id="org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer.sdf.model.wizard"
             name="GEMOC coffee machine models for TFSM and SigPML (Coordination)"
             preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling">
          <description>
