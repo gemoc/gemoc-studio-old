@@ -47,16 +47,16 @@
    <feature url="features/org.eclipse.gemoc.modeldebugging.framework.commons.feature.source_2.3.0.qualifier.jar" id="org.eclipse.gemoc.modeldebugging.framework.commons.feature.source" version="2.3.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.modeldebugging.trace.commons.feature_2.3.0.qualifier.jar" id="org.gemoc.modeldebugging.trace.commons.feature" version="2.3.0.qualifier">
+   <feature url="features/org.eclipse.gemoc.trace.commons.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.trace.commons.feature" version="2.3.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.modeldebugging.trace.commons.feature.source_2.3.0.qualifier.jar" id="org.gemoc.modeldebugging.trace.commons.feature.source" version="2.3.0.qualifier">
+   <feature url="features/org.eclipse.gemoc.trace.commons.feature.source_2.3.0.qualifier.jar" id="org.eclipse.gemoc.trace.commons.feature.source" version="2.3.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.modeldebugging.trace.generator.feature_2.3.0.qualifier.jar" id="org.gemoc.modeldebugging.trace.generator.feature" version="2.3.0.qualifier">
+   <feature url="features/org.eclipse.gemoc.trace.generator.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.trace.generator.feature" version="2.3.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
-   <feature url="features/org.gemoc.modeldebugging.trace.generator.feature.source_2.3.0.qualifier.jar" id="org.gemoc.modeldebugging.trace.generator.feature.source" version="2.3.0.qualifier">
+   <feature url="features/org.eclipse.gemoc.trace.generator.feature.source_2.3.0.qualifier.jar" id="org.eclipse.gemoc.trace.generator.feature.source" version="2.3.0.qualifier">
       <category name="GEMOC_ModelDebugging_Components"/>
    </feature>
    <feature url="features/org.eclipse.gemoc.trace.manager.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.trace.manager.feature" version="2.3.0.qualifier">
