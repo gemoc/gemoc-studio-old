@@ -3,7 +3,7 @@
       id="org.gemoc.official_samples.deployers.feature"
       label="GEMOC Official Samples"
       version="2.3.0.qualifier"
-      provider-name="INRIA">
+      provider-name="%providerName">
 
    <description url="http://gemoc.org/studio/">
       Sample GEMOC-based languages, which can be used as examples and reference by specifiers. Install this if you plan to create GEMOC-based languages and want to have working examples to study.
