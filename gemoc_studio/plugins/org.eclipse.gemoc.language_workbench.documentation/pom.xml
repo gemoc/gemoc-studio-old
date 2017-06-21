@@ -21,28 +21,18 @@
 	</parent>
 
 
-
-
-
 <profiles>
-
-
-
-
-
 	<profile>
-	        <id>ignore_CI_repositories</id>
-	        <activation>
-	        </activation>
-
-
-<dependencies>
-	<dependency>
-		<groupId>org.gemoc.documentation</groupId>
-    		<artifactId>gemoc-studio-guide</artifactId>
-    		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
-</dependencies>
+		<id>ignore_CI_repositories</id>
+	    <activation>
+	    </activation>
+		<dependencies>
+			<dependency>
+				<groupId>org.gemoc.documentation</groupId>
+		    		<artifactId>gemoc-studio-guide</artifactId>
+		    		<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+		</dependencies>
 
 
    
@@ -65,18 +55,7 @@
 								<mkdir dir="eclipse_help/guide" />
 								<copy  todir="eclipse_help/guide/eclipse">
 									<fileset dir="${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/guide/eclipse"/>
-								</copy> 
-						
-								<mkdir dir="eclipse_help/tutorial_markedgraph" />
-								<copy  todir="eclipse_help/tutorial_markedgraph/eclipse">	
-									<fileset dir="${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/tutorial_markedgraph/eclipse"/>
-								</copy> 
-								
-								<mkdir dir="eclipse_help/tutorial_sigpml" />
-								<copy  todir="eclipse_help/tutorial_sigpml/eclipse">
-									<fileset dir="${project.basedir}/../../../../gemoc-studio.wiki/target/docbook/publish/tutorial_sigpml/eclipse"/>
-								</copy> 
-								
+								</copy> 						
 							</tasks>
 						</configuration>
 					</execution>
@@ -87,26 +66,6 @@
 
 
 	    </profile>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	    <profile>
 	        <id>use_CI_repositories</id>
@@ -136,28 +95,7 @@
 									dest="${project.build.directory}/zips/guide_eclipse.zip" />
 								<unzip src="${project.build.directory}/zips/guide_eclipse.zip"
 									dest="eclipse_help/guide" />
-								<!-- override eclipse html by html version which is cleaner -->
-								<!-- <get
-									src="https://ci.inria.fr/gemoc/view/Documentation/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/guide/html/*zip*/html.zip"
-									dest="${project.build.outputDirectory}/zips/guide_html.zip" />
-								<unzip src="${project.build.outputDirectory}/zips/guide_html.zip"
-									dest="eclipse_help" />
-								<copy todir="eclipse_help/eclipse" overwrite="true">
-									<fileset dir="eclipse_help/html"  />
-								</copy>-->
 								
-								<mkdir dir="eclipse_help/tutorial_markedgraph" />
-								<get
-									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_markedgraph/eclipse/*zip*/eclipse.zip"
-									dest="${project.build.directory}/zips/tutorial_markedgraph_eclipse.zip" />
-								<unzip src="${project.build.directory}/zips/tutorial_markedgraph_eclipse.zip"
-									dest="eclipse_help/tutorial_markedgraph" />
-								<mkdir dir="eclipse_help/tutorial_sigpml" />
-								<get
-									src="https://ci.inria.fr/gemoc/job/GEMOC_Studio_Documentation_Build/lastSuccessfulBuild/artifact/target/docbook/publish/tutorial_sigpml/eclipse/*zip*/eclipse.zip"
-									dest="${project.build.directory}/zips/tutorial_sigpml_eclipse.zip" />
-								<unzip src="${project.build.directory}/zips/tutorial_sigpml_eclipse.zip"
-									dest="eclipse_help/tutorial_sigpml" />
 							</tasks>
 						</configuration>
 					</execution>
@@ -165,10 +103,6 @@
 			</plugin>
 	</plugins>
 	</build>
-
-
-
-
 	</profile>
 </profiles>
 
@@ -176,38 +110,6 @@
 	<packaging>eclipse-plugin</packaging>
 	<build>
 		<plugins>
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-dependency-plugin</artifactId> -->
-			<!-- <version>2.4</version> -->
-			<!-- <executions> -->
-			<!-- manually copy some content from dependencies -->
-			<!-- get html -->
-			<!-- <execution> -->
-			<!-- <id>unpack_dependencies_km</id> -->
-			<!-- <phase>generate-sources</phase> -->
-			<!-- <goals> -->
-			<!-- <goal>unpack</goal> -->
-			<!-- </goals> -->
-			<!-- <configuration> -->
-			<!-- <artifactItems> -->
-			<!-- <artifactItem> -->
-			<!-- <groupId>org.eclipse.gemoc</groupId> -->
-			<!-- <artifactId>org.gemoc.gemoc-studio-guide</artifactId> -->
-			<!-- <type>jdocbook</type> -->
-			<!-- <version>0.0.1-SNAPSHOT</version> -->
-			<!-- <outputDirectory>${project.build.directory}/html_2</outputDirectory> -->
-			<!-- <includes>html/**</includes> -->
-			<!-- </artifactItem> -->
-			<!-- </artifactItems> -->
-			<!-- other configurations here -->
-			<!-- </configuration> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- </plugin> -->
-
-			
-
 			<!-- Workaround docbook generation, the toc.xml are gerenated in the same 
 				folder and navigation fails -->
 			<plugin>
@@ -231,41 +133,7 @@
 								</replacement>
 							</replacements>
 						</configuration>
-					</execution>
-					<execution>
-						<id>replace-for-tutorial_sigpml</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>replace</goal>
-						</goals>
-						<configuration>
-							<file>eclipse_help/tutorial_sigpml/eclipse/toc.xml</file>
-							<regex>false</regex>
-							<replacements>
-								<replacement>
-									<token>href="</token>
-									<value>href="eclipse_help/tutorial_sigpml/eclipse/</value>
-								</replacement>
-							</replacements>
-						</configuration>
-					</execution>
-					<execution>
-						<id>replace-for-tutorial_markedgraph</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>replace</goal>
-						</goals>
-						<configuration>
-							<file>eclipse_help/tutorial_markedgraph/eclipse/toc.xml</file>
-							<regex>false</regex>
-							<replacements>
-								<replacement>
-									<token>href="</token>
-									<value>href="eclipse_help/tutorial_markedgraph/eclipse/</value>
-								</replacement>
-							</replacements>
-						</configuration>
-					</execution>
+					</execution>					
 				</executions>
 			</plugin>
 			

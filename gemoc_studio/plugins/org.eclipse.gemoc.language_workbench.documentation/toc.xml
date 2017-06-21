@@ -17,13 +17,10 @@
     <link toc="eclipse_help/guide/eclipse/toc.xml"/>
  </topic>
  <topic label="GEMOC Studio Tutorials &amp; Examples">
-    <topic href="eclipse_help/tutorial_markedgraph/eclipse/GuideTutorialMarkedGraph.html" label="Tutorial : Markedgraph">
-       <link toc="eclipse_help/tutorial_markedgraph/eclipse/toc.xml"/>
+    <topic label="GEMOC Tutorials">
+       <anchor id="GEMOC.tutorials"/>
     </topic>
-    <topic href="eclipse_help/tutorial_sigpml/eclipse/Tutorial_SigPML.html" label="Tutorial : SigPML">
-       <link toc="eclipse_help/tutorial_sigpml/eclipse/toc.xml"/>
-    </topic>
-    <topic href="eclipse_help/html/index.html" label="GEMOC Examples">
+    <topic label="GEMOC Examples">
        <anchor id="GEMOC.examples"/>
     </topic>
  </topic>
