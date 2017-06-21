@@ -70,7 +70,7 @@
         license="EPL"
         groups="//@filters.0"
         image32="images/bcool-icon-32.png">
-      <sitesURLS>https://ci.inria.fr/gemoc/job/gemoc-studio_official_samples_deployer/lastSuccessfulBuild/artifact/official_samples/sample.deployers/releng/org.gemoc.official_samples.deployers.repository/target/repository/</sitesURLS>
+      <sitesURLS>https://ci.inria.fr/gemoc/job/gemoc-studio_official_samples_deployer/lastSuccessfulBuild/artifact/official_samples/sample.deployers/releng/org.eclipse.gemoc.samples.deployers.repository/target/repository/</sitesURLS>
       <overview
           summary="Deployer that installs the project sources for the coordination operator for TFSM and ActivityDiagram concurrent languages developped using GEMOC. The deployer also provides some sample models."
           screenshot="images/bcool-tfsm-activity-320x240.png"
