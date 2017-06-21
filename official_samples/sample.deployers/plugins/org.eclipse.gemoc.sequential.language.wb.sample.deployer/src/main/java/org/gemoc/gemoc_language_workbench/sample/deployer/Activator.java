@@ -1,4 +1,4 @@
-package org.gemoc.gemoc_language_workbench.sample.deployer;
+package org.eclipse.gemoc.sequential.language.wb.sample.deployer;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -12,7 +12,7 @@ public class Activator extends AbstractUIPlugin {
 
 	
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.gemoc.gemoc_language_workbench.sample.deployer"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.eclipse.gemoc.sequential.language.wb.sample.deployer"; //$NON-NLS-1$
 	
 	private static BundleContext context;
 	

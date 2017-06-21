@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Language workbench sample deployer
-Bundle-SymbolicName: org.gemoc.gemoc_language_workbench.sample.deployer;singleton:=true
+Bundle-SymbolicName: org.eclipse.gemoc.sequential.language.wb.sample.deployer;singleton:=true
 Bundle-Version: 2.3.0.qualifier
-Bundle-Activator: org.gemoc.gemoc_language_workbench.sample.deployer.Activator
+Bundle-Activator: org.eclipse.gemoc.sequential.language.wb.sample.deployer.Activator
 Bundle-Vendor: INRIA
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
@@ -11,5 +11,5 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
-Export-Package: org.gemoc.gemoc_language_workbench.sample.deployer,
- org.gemoc.gemoc_language_workbench.sample.deployer.wizards
+Export-Package: org.eclipse.gemoc.sequential.language.wb.sample.deployer,
+ org.eclipse.gemoc.sequential.language.wb.sample.deployer.wizards

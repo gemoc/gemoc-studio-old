@@ -10,7 +10,7 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil;
-import org.gemoc.gemoc_language_workbench.sample.deployer.wizards.TFSM_PlainK3ExampleWizard;
+import org.eclipse.gemoc.sequential.language.wb.sample.deployer.wizards.TFSM_PlainK3ExampleWizard;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
