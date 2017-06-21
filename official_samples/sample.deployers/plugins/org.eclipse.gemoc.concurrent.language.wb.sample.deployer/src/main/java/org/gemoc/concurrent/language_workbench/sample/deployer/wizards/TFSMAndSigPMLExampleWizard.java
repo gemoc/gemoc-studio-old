@@ -7,14 +7,14 @@
  * Authors : 
  *        	dvojtise <dvojtise@irisa.fr>
  */
-package org.gemoc.concurrent.language_workbench.sample.deployer.wizards;
+package org.eclipse.gemoc.concurrent.language.wb.sample.deployer.wizards;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.gemoc.concurrent.language_workbench.sample.deployer.Activator;
+import org.eclipse.gemoc.concurrent.language.wb.sample.deployer.Activator;
 
 public class TFSMAndSigPMLExampleWizard
 	extends AbstractExampleWizard {

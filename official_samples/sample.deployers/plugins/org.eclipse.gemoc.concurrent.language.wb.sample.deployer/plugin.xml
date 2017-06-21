@@ -13,11 +13,11 @@
       <wizard
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
-            class="org.gemoc.concurrent.language_workbench.sample.deployer.wizards.TFSMExampleWizard"
+            class="org.eclipse.gemoc.concurrent.language.wb.sample.deployer.wizards.TFSMExampleWizard"
             finalPerspective="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective"
             hasPages="false"
             icon="icons/IconeGemocLanguage-16.png"
-            id="org.gemoc.concurrent.language_workbench.sample.deployer.tfsm.wizard"
+            id="org.eclipse.gemoc.concurrent.language.wb.sample.deployer.tfsm.wizard"
             name="GEMOC TFSM Language (Concurrent)"
             preferredPerspectives="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective">
          <description>
@@ -27,11 +27,11 @@
       <wizard
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
-            class="org.gemoc.concurrent.language_workbench.sample.deployer.wizards.SigPMLExampleWizard"
+            class="org.eclipse.gemoc.concurrent.language.wb.sample.deployer.wizards.SigPMLExampleWizard"
             finalPerspective="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective"
             hasPages="false"
             icon="icons/IconeGemocLanguage-16.png"
-            id="org.gemoc.concurrent.language_workbench.sample.deployer.sigpml.wizard"
+            id="org.eclipse.gemoc.concurrent.language.wb.sample.deployer.sigpml.wizard"
             name="GEMOC SigPML Language (Concurrent)"
             preferredPerspectives="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective">
          <description>
@@ -42,11 +42,11 @@ T⁮his set of projects features a simple signal processing modeling language (S
       <wizard
             canFinishEarly="true"
             category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
-            class="org.gemoc.concurrent.language_workbench.sample.deployer.wizards.TFSMAndSigPMLExampleWizard"
+            class="org.eclipse.gemoc.concurrent.language.wb.sample.deployer.wizards.TFSMAndSigPMLExampleWizard"
             finalPerspective="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective"
             hasPages="false"
             icon="icons/bcoolicon.png"
-            id="org.gemoc.concurrent.language_workbench.sample.deployer.tfsmandsigpml.wizard"
+            id="org.eclipse.gemoc.concurrent.language.wb.sample.deployer.tfsmandsigpml.wizard"
             name="GEMOC operator for TFSM and SigPML languages (Coordination)"
             preferredPerspectives="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective">
          <description>
