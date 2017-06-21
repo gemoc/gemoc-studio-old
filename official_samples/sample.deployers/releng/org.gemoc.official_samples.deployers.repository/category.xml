@@ -7,10 +7,10 @@
       <category name="gemoc_samples"/>
    </feature>
    
-   <feature url="features/org.gemoc.concurrent.official_samples.deployers.feature_2.3.0.qualifier.jar" id="org.gemoc.concurrent.official_samples.deployers.feature" version="2.3.0.qualifier">
+   <feature url="features/org.eclipse.gemoc.concurrent.samples.deployers.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.concurrent.samples.deployers.feature" version="2.3.0.qualifier">
       <category name="gemoc_samples"/>
    </feature>
-   <feature url="features/org.gemoc.concurrent.official_samples.deployers.source_2.3.0.qualifier.jar" id="org.gemoc.concurrent.official_samples.deployers.feature.source" version="2.3.0.qualifier">
+   <feature url="features/org.gemoc.concurrent.official_samples.deployers.source_2.3.0.qualifier.jar" id="org.eclipse.gemoc.concurrent.samples.deployers.feature.source" version="2.3.0.qualifier">
       <category name="gemoc_samples"/>
    </feature>
    <feature url="features/org.gemoc.tfsmandactivity.deployer.feature_2.3.0.qualifier.jar" id="org.gemoc.tfsmandactivity.deployer.feature" version="2.3.0.qualifier">

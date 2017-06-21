@@ -20,7 +20,7 @@
         <module>plugins/org.eclipse.gemoc.tfsmandactivity.sample.deployer</module>
 
         <!-- feature and update site -->
-        <module>releng/org.gemoc.concurrent.official_samples.deployers.feature</module>
+        <module>releng/org.eclipse.gemoc.concurrent.samples.deployers.feature</module>
         <module>releng/org.gemoc.official_samples.deployers.feature</module>
         <module>releng/org.gemoc.tfsmandactivity.deployer.feature</module>
         <module>releng/org.gemoc.official_samples.deployers.repository</module>

@@ -9,7 +9,7 @@
     <version>2.3.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>org.gemoc.concurrent.official_samples.deployers.feature</artifactId>
+  <artifactId>org.eclipse.gemoc.concurrent.samples.deployers.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 
 </project> 
