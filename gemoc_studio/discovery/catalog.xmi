@@ -75,7 +75,7 @@
           summary="Deployer that installs the project sources for the coordination operator for TFSM and ActivityDiagram concurrent languages developped using GEMOC. The deployer also provides some sample models."
           screenshot="images/bcool-tfsm-activity-320x240.png"
           url="http://timesquare.inria.fr/BCOoL/"/>
-      <id>org.gemoc.tfsmandactivity.deployer.feature</id>
+      <id>org.eclipse.gemoc.coordination.samples.deployers.feature</id>
       <messages
           title="Getting started"
           message="Once Eclipse has restarted, your example languages will be available in the File > New > Example... menu. Look for the GEMOC categories. Some more informations will be available in the Eclipse help."/>
