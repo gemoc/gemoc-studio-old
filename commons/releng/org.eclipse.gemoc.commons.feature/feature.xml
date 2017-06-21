@@ -14,7 +14,8 @@
       id="org.eclipse.gemoc.commons.feature"
       label="GEMOC Eclipse Commons"
       version="2.3.0.qualifier"
-      provider-name="INRIA">
+      provider-name="INRIA"
+      image="gemocstudio32.png">
 
    <description url="http://gemoc.org/studio/">
       List of plugins that are part of GEMOC core (API, exchanged metamodels, ....)
@@ -28,8 +29,8 @@ which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
+   <license url="%licenseURL">
+      %license
    </license>
 
    <plugin

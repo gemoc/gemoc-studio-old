@@ -13,7 +13,8 @@
 <feature
       id="org.eclipse.gemoc.gexpressions.feature"
       label="GExpressions Feature"
-      version="2.3.0.qualifier">
+      version="2.3.0.qualifier"
+      image="gemocstudio32.png">
 
    <copyright url="http://www.eclipse.org/legal/epl-v10.html">
       Copyright (c) 2012, 2017 Inria and others

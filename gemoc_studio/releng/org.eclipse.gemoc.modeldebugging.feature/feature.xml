@@ -14,7 +14,8 @@
       id="org.eclipse.gemoc.modeldebugging.feature"
       label="GEMOC ModelDebugging"
       version="2.3.0.qualifier"
-      provider-name="GEMOC">
+      provider-name="GEMOC"
+      image="gemocstudio32.png">
 
    <description url="http://www.gemoc.org">
       GEMOC ModelDebugging components. 
