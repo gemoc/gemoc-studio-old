@@ -1,1 +1,0 @@
-File only existing to store src folder in git repository.
