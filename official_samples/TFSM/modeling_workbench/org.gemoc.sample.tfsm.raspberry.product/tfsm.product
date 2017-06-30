@@ -132,7 +132,7 @@
       <feature id="org.codehaus.groovy.headless.feature"/>
       <feature id="org.eclipse.emf"/>
       <feature id="fr.inria.aoste.timesquare.simulationpolicy.feature"/>
-      <feature id="fr.inria.aoste.timesquare.javabdd.feature"/>
+      <feature id="fr.inria.aoste.timesquare.buddywrapper.feature"/>
       <feature id="org.eclipse.gmf"/>
       <feature id="org.eclipse.pde"/>
       <feature id="org.codehaus.groovy20.feature"/>
