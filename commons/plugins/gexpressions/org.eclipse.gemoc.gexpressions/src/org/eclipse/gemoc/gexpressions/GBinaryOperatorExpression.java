@@ -20,11 +20,11 @@ package org.eclipse.gemoc.gexpressions;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.gemoc.gexpressions.GBinaryOperatorExpression#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link org.eclipse.gemoc.gexpressions.GBinaryOperatorExpression#getRightOperand <em>Right Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.gemoc.gexpressions.GexpressionsPackage#getGBinaryOperatorExpression()
  * @model abstract="true"

@@ -1,12 +1,12 @@
-module org.gemoc.gexpressions.xtext.GenerateGExpressions
+module org.eclipse.gemoc.gexpressions.xtext.GenerateGExpressions
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/org/gemoc/gexpressions/xtext/GExpressions.xtext"
+var grammarURI = "classpath:/org/eclipse/gemoc/gexpressions/xtext/GExpressions.xtext"
 var fileExtensions = "gexpressions"
-var projectName = "org.gemoc.gexpressions.xtext"
+var projectName = "org.eclipse.gemoc.gexpressions.xtext"
 var runtimeProject = "../${projectName}"
 var generateXtendStub = true
 var encoding = "UTF-8"
@@ -22,12 +22,12 @@ Workflow {
         }
         
     	uriMap = {
-            from = "platform:/plugin/org.gemoc.gexpressions/model/gexpressions.genmodel"
-            to = "platform:/resource/org.gemoc.gexpressions/model/gexpressions.genmodel"
+            from = "platform:/plugin/org.eclipse.gemoc.gexpressions/model/gexpressions.genmodel"
+            to = "platform:/resource/org.eclipse.gemoc.gexpressions/model/gexpressions.genmodel"
         }
         
-		registerGeneratedEPackage = "org.gemoc.gexpressions.GexpressionsPackage"
-		registerGenModelFile = "platform:/resource/org.gemoc.gexpressions/model/gexpressions.genmodel"
+		registerGeneratedEPackage = "org.eclipse.gemoc.gexpressions.GexpressionsPackage"
+		registerGenModelFile = "platform:/resource/org.eclipse.gemoc.gexpressions/model/gexpressions.genmodel"
 		
 		registerGeneratedEPackage = "org.eclipse.emf.ecore.EcorePackage"
         registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"

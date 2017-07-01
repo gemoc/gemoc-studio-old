@@ -30,10 +30,10 @@ import org.eclipse.gemoc.gexpressions.GexpressionsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.gemoc.gexpressions.impl.GUnaryOperatorExpressionImpl#getOperand <em>Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

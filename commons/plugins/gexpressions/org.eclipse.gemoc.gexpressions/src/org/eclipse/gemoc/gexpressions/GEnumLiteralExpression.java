@@ -21,10 +21,10 @@ import org.eclipse.emf.ecore.EEnumLiteral;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.gemoc.gexpressions.GEnumLiteralExpression#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.gemoc.gexpressions.GexpressionsPackage#getGEnumLiteralExpression()
  * @model

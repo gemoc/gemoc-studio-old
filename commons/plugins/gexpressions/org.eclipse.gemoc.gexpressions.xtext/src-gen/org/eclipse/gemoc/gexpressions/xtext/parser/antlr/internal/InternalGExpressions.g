@@ -9,7 +9,7 @@ options {
 }
 
 @lexer::header {
-package org.gemoc.gexpressions.xtext.parser.antlr.internal;
+package org.eclipse.gemoc.gexpressions.xtext.parser.antlr.internal;
 
 // Hack: Use our own Lexer superclass by means of import. 
 // Currently there is no other way to specify the superclass for the lexer.
@@ -17,7 +17,7 @@ import org.eclipse.xtext.parser.antlr.Lexer;
 }
 
 @parser::header {
-package org.gemoc.gexpressions.xtext.parser.antlr.internal; 
+package org.eclipse.gemoc.gexpressions.xtext.parser.antlr.internal; 
 
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parser.*;
@@ -29,7 +29,7 @@ import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
-import org.gemoc.gexpressions.xtext.services.GExpressionsGrammarAccess;
+import org.eclipse.gemoc.gexpressions.xtext.services.GExpressionsGrammarAccess;
 
 }
 
@@ -91,7 +91,7 @@ ruleGProgram returns [EObject current=null]
        			$current, 
        			"imports",
         		lv_imports_0_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GImportStatement");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GImportStatement");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -109,7 +109,7 @@ ruleGProgram returns [EObject current=null]
        			$current, 
        			"expressions",
         		lv_expressions_1_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -131,7 +131,7 @@ ruleGProgram returns [EObject current=null]
        			$current, 
        			"expressions",
         		lv_expressions_3_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -258,7 +258,7 @@ ruleGOrExpression returns [EObject current=null]
        			$current, 
        			"operator",
         		lv_operator_2_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GOrOperator");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GOrOperator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -276,7 +276,7 @@ ruleGOrExpression returns [EObject current=null]
        			$current, 
        			"rightOperand",
         		lv_rightOperand_3_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GXorExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GXorExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -330,7 +330,7 @@ ruleGXorExpression returns [EObject current=null]
        			$current, 
        			"operator",
         		lv_operator_2_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GXorOperator");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GXorOperator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -348,7 +348,7 @@ ruleGXorExpression returns [EObject current=null]
        			$current, 
        			"rightOperand",
         		lv_rightOperand_3_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GAndExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GAndExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -402,7 +402,7 @@ ruleGAndExpression returns [EObject current=null]
        			$current, 
        			"operator",
         		lv_operator_2_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GAndOperator");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GAndOperator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -420,7 +420,7 @@ ruleGAndExpression returns [EObject current=null]
        			$current, 
        			"rightOperand",
         		lv_rightOperand_3_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GEqualityExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GEqualityExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -474,7 +474,7 @@ ruleGEqualityExpression returns [EObject current=null]
        			$current, 
        			"operator",
         		lv_operator_2_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GEqualityOperator");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GEqualityOperator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -492,7 +492,7 @@ ruleGEqualityExpression returns [EObject current=null]
        			$current, 
        			"rightOperand",
         		lv_rightOperand_3_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GRelationExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GRelationExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -546,7 +546,7 @@ ruleGRelationExpression returns [EObject current=null]
        			$current, 
        			"operator",
         		lv_operator_2_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GRelationOperator");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GRelationOperator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -564,7 +564,7 @@ ruleGRelationExpression returns [EObject current=null]
        			$current, 
        			"rightOperand",
         		lv_rightOperand_3_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GAdditionExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GAdditionExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -618,7 +618,7 @@ ruleGAdditionExpression returns [EObject current=null]
        			$current, 
        			"operator",
         		lv_operator_2_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GAdditionOperator");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GAdditionOperator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -636,7 +636,7 @@ ruleGAdditionExpression returns [EObject current=null]
        			$current, 
        			"rightOperand",
         		lv_rightOperand_3_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GMultiplicationExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GMultiplicationExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -690,7 +690,7 @@ ruleGMultiplicationExpression returns [EObject current=null]
        			$current, 
        			"operator",
         		lv_operator_2_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GMultiplicationOperator");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GMultiplicationOperator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -708,7 +708,7 @@ ruleGMultiplicationExpression returns [EObject current=null]
        			$current, 
        			"rightOperand",
         		lv_rightOperand_3_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GNegationExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GNegationExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -763,7 +763,7 @@ ruleGNegationExpression returns [EObject current=null]
        			$current, 
        			"operator",
         		lv_operator_2_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GNegationOperator");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GNegationOperator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -781,7 +781,7 @@ ruleGNegationExpression returns [EObject current=null]
        			$current, 
        			"operand",
         		lv_operand_3_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GNavigationExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GNavigationExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1059,7 +1059,7 @@ ruleGBooleanExpression returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_1_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.BOOLEAN");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.BOOLEAN");
 	    }
 
 )
@@ -1189,7 +1189,7 @@ ruleGDoubleExpression returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_1_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.DOUBLE");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.DOUBLE");
 	    }
 
 )
@@ -1283,7 +1283,7 @@ ruleGIfExpression returns [EObject current=null]
        			$current, 
        			"condition",
         		lv_condition_2_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1305,7 +1305,7 @@ ruleGIfExpression returns [EObject current=null]
        			$current, 
        			"thenExpression",
         		lv_thenExpression_4_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1327,7 +1327,7 @@ ruleGIfExpression returns [EObject current=null]
        			$current, 
        			"elseExpression",
         		lv_elseExpression_6_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1380,7 +1380,7 @@ ruleGBraceExpression returns [EObject current=null]
        			$current, 
        			"innerExpression",
         		lv_innerExpression_2_0, 
-        		"org.gemoc.gexpressions.xtext.GExpressions.GExpression");
+        		"org.eclipse.gemoc.gexpressions.xtext.GExpressions.GExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 

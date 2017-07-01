@@ -30,12 +30,12 @@ import org.eclipse.gemoc.gexpressions.GexpressionsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.gemoc.gexpressions.impl.GIfExpressionImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.eclipse.gemoc.gexpressions.impl.GIfExpressionImpl#getThenExpression <em>Then Expression</em>}</li>
  *   <li>{@link org.eclipse.gemoc.gexpressions.impl.GIfExpressionImpl#getElseExpression <em>Else Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

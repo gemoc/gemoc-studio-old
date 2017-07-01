@@ -20,10 +20,10 @@ package org.eclipse.gemoc.gexpressions;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.gemoc.gexpressions.GStringExpression#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.gemoc.gexpressions.GexpressionsPackage#getGStringExpression()
  * @model

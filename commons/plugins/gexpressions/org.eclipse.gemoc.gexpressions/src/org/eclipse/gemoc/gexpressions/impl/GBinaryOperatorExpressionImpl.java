@@ -30,11 +30,11 @@ import org.eclipse.gemoc.gexpressions.GexpressionsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.gemoc.gexpressions.impl.GBinaryOperatorExpressionImpl#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link org.eclipse.gemoc.gexpressions.impl.GBinaryOperatorExpressionImpl#getRightOperand <em>Right Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

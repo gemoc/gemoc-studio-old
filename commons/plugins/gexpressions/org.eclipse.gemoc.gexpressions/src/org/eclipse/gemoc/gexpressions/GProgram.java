@@ -23,11 +23,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.gemoc.gexpressions.GProgram#getImports <em>Imports</em>}</li>
  *   <li>{@link org.eclipse.gemoc.gexpressions.GProgram#getExpressions <em>Expressions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.gemoc.gexpressions.GexpressionsPackage#getGProgram()
  * @model

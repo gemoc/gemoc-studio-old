@@ -6,48 +6,48 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="gexpressions"
-            id="org.gemoc.gexpressions.xtext.GExpressions"
+            id="org.eclipse.gemoc.gexpressions.xtext.GExpressions"
             name="GExpressions Editor">
         </editor>
     </extension>
     <extension
         point="org.eclipse.ui.handlers">
         <handler
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
             commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
             <activeWhen>
                 <reference
-                    definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
+                    definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
         <handler
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="org.gemoc.gexpressions.xtext.GExpressions.validate">
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.validate">
          <activeWhen>
             <reference
-                    definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
+                    definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
             </reference>
          </activeWhen>
       	</handler>
       	<!-- copy qualified name -->
         <handler
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
             <activeWhen>
-				<reference definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened" />
+				<reference definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened" />
             </activeWhen>
         </handler>
         <handler
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
             <activeWhen>
             	<and>
-            		<reference definitionId="org.gemoc.gexpressions.xtext.GExpressions.XtextEditor.opened" />
+            		<reference definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.XtextEditor.opened" />
 	                <iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -56,22 +56,22 @@
         </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
+        <definition id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="org.gemoc.gexpressions.xtext.GExpressions" 
+                        value="org.eclipse.gemoc.gexpressions.xtext.GExpressions" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
         </definition>
-        <definition id="org.gemoc.gexpressions.xtext.GExpressions.XtextEditor.opened">
+        <definition id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.XtextEditor.opened">
             <and>
                 <reference definitionId="isXtextEditorActive"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="org.gemoc.gexpressions.xtext.GExpressions" 
+                        value="org.eclipse.gemoc.gexpressions.xtext.GExpressions" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
@@ -80,33 +80,33 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.gemoc.gexpressions.xtext.GExpressions"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.eclipse.gemoc.gexpressions.xtext.GExpressions"
             name="GExpressions">
-            <keywordReference id="org.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
+            <keywordReference id="org.eclipse.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
         </page>
         <page
-            category="org.gemoc.gexpressions.xtext.GExpressions"
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="org.gemoc.gexpressions.xtext.GExpressions.coloring"
+            category="org.eclipse.gemoc.gexpressions.xtext.GExpressions"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.coloring"
             name="Syntax Coloring">
-            <keywordReference id="org.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
+            <keywordReference id="org.eclipse.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
         </page>
         <page
-            category="org.gemoc.gexpressions.xtext.GExpressions"
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="org.gemoc.gexpressions.xtext.GExpressions.templates"
+            category="org.eclipse.gemoc.gexpressions.xtext.GExpressions"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.templates"
             name="Templates">
-            <keywordReference id="org.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
+            <keywordReference id="org.eclipse.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.gemoc.gexpressions.xtext.GExpressions"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.eclipse.gemoc.gexpressions.xtext.GExpressions"
             name="GExpressions">
-            <keywordReference id="org.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
+            <keywordReference id="org.eclipse.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -116,14 +116,14 @@
     <extension
         point="org.eclipse.ui.keywords">
         <keyword
-            id="org.gemoc.gexpressions.xtext.ui.keyword_GExpressions"
+            id="org.eclipse.gemoc.gexpressions.xtext.ui.keyword_GExpressions"
             label="GExpressions"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
             description="Trigger expensive validation"
-            id="org.gemoc.gexpressions.xtext.GExpressions.validate"
+            id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.validate"
             name="Validate">
       </command>
       <!-- copy qualified name -->
@@ -144,12 +144,12 @@
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
-                 commandId="org.gemoc.gexpressions.xtext.GExpressions.validate"
+                 commandId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
             <visibleWhen checkEnabled="false">
                 <reference
-                    definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
+                    definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
                 </reference>
             </visibleWhen>
          </command>  
@@ -159,7 +159,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName" 
          		style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened" />
+                	<reference definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -167,7 +167,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
             	style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened" />
+                	<reference definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -176,7 +176,7 @@
 				style="push" tooltip="Copy Qualified Name">
          		<visibleWhen checkEnabled="false">
 	            	<and>
-	            		<reference definitionId="org.gemoc.gexpressions.xtext.GExpressions.XtextEditor.opened" />
+	            		<reference definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -189,7 +189,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
+                	<reference definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
                 	</reference>
             	</visibleWhen>
 			</command>
@@ -197,11 +197,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 	    <handler
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
             commandId="org.eclipse.xtext.ui.editor.FindReferences">
             <activeWhen>
                 <reference
-                    definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
+                    definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
@@ -212,19 +212,19 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="gexpressions">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
             uriExtension="gexpressions">
         </resourceServiceProvider>
     </extension>
 
 
-	<!-- marker definitions for org.gemoc.gexpressions.xtext.GExpressions -->
+	<!-- marker definitions for org.eclipse.gemoc.gexpressions.xtext.GExpressions -->
 	<extension
 	        id="gexpressions.check.fast"
 	        name="GExpressions Problem"
@@ -250,7 +250,7 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
             fileExtensions="gexpressions"
             >
       </participant>
@@ -258,21 +258,21 @@
    <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            category="org.gemoc.gexpressions.xtext.GExpressions"
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.gemoc.gexpressions.xtext.GExpressions.compiler.preferencePage"
+            category="org.eclipse.gemoc.gexpressions.xtext.GExpressions"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.compiler.preferencePage"
             name="Compiler">
-            <keywordReference id="org.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
+            <keywordReference id="org.eclipse.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            category="org.gemoc.gexpressions.xtext.GExpressions"
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.gemoc.gexpressions.xtext.GExpressions.compiler.propertyPage"
+            category="org.eclipse.gemoc.gexpressions.xtext.GExpressions"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.compiler.propertyPage"
             name="Compiler">
-            <keywordReference id="org.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
+            <keywordReference id="org.eclipse.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -283,20 +283,20 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="org.gemoc.gexpressions.xtext.GExpressions.OpenGeneratedCode"
+				id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.OpenGeneratedCode"
 				style="push">
 					<visibleWhen checkEnabled="false">
-						<reference definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened" />
+						<reference definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened" />
 					</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 				<activeWhen>
-					<reference definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened" />
+					<reference definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened" />
 				</activeWhen>
 		</handler>
 	</extension>
@@ -305,11 +305,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
+					definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -329,33 +329,33 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened"/>
+					<reference definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-    <!-- quickfix marker resolution generator for org.gemoc.gexpressions.xtext.GExpressions -->
+    <!-- quickfix marker resolution generator for org.eclipse.gemoc.gexpressions.xtext.GExpressions -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.gexpressions.xtext.ui.gexpressions.check.fast">
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.eclipse.gemoc.gexpressions.xtext.ui.gexpressions.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.gexpressions.xtext.ui.gexpressions.check.normal">
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.eclipse.gemoc.gexpressions.xtext.ui.gexpressions.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.gemoc.gexpressions.xtext.ui.gexpressions.check.expensive">
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.eclipse.gemoc.gexpressions.xtext.ui.gexpressions.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -365,11 +365,11 @@
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
+					definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -381,7 +381,7 @@
                style="push">
             <visibleWhen checkEnabled="false">
                <reference
-                     definitionId="org.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
+                     definitionId="org.eclipse.gemoc.gexpressions.xtext.GExpressions.Editor.opened">
                </reference>
             </visibleWhen>
          </command>
@@ -389,29 +389,29 @@
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
 	    <page
-	        category="org.gemoc.gexpressions.xtext.GExpressions"
-	        class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="org.gemoc.gexpressions.xtext.GExpressions.refactoring"
+	        category="org.eclipse.gemoc.gexpressions.xtext.GExpressions"
+	        class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.refactoring"
 	        name="Refactoring">
-	        <keywordReference id="org.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
+	        <keywordReference id="org.eclipse.gemoc.gexpressions.xtext.ui.keyword_GExpressions"/>
 	    </page>
 	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="org.gemoc.gexpressions.xtext.GExpressions.compare.contentViewers"
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.compare.contentViewers"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="gexpressions">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="org.gemoc.gexpressions.xtext.GExpressions.compare.contentMergeViewers"
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.compare.contentMergeViewers"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="gexpressions" label="GExpressions Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="org.gemoc.gexpressions.xtext.GExpressions.editors.documentProviders"
-            class="org.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+    <provider id="org.eclipse.gemoc.gexpressions.xtext.GExpressions.editors.documentProviders"
+            class="org.eclipse.gemoc.gexpressions.xtext.ui.GExpressionsExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
             extensions="gexpressions">
     </provider>
   </extension>

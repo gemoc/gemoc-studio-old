@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.gemoc.gexpressions.GNavigationExpression#getBody <em>Body</em>}</li>
  *   <li>{@link org.eclipse.gemoc.gexpressions.GNavigationExpression#getReferencedEObject <em>Referenced EObject</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.gemoc.gexpressions.GexpressionsPackage#getGNavigationExpression()
  * @model

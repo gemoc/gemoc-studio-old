@@ -29,10 +29,10 @@ import org.eclipse.gemoc.gexpressions.GexpressionsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.gemoc.gexpressions.impl.GEnumLiteralExpressionImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

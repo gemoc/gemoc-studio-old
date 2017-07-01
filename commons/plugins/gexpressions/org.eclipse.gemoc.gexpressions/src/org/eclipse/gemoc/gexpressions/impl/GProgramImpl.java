@@ -37,11 +37,11 @@ import org.eclipse.gemoc.gexpressions.GexpressionsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.gemoc.gexpressions.impl.GProgramImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link org.eclipse.gemoc.gexpressions.impl.GProgramImpl#getExpressions <em>Expressions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
