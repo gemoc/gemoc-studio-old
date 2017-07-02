@@ -34,7 +34,7 @@
     	],
     "timesquare": [
         "http://timesquare.inria.fr/update_site/neon",
-        "http://timesquare.inria.fr/ecl/update_site/neon"
+        "https://ci.inria.fr/gemoc/job/MoCCML-mapping/lastSuccessfulBuild/artifact/moccml/mapping/deployment/org.eclipse.gemoc.moccml.mapping.updatesite/target/repository/"
         ],    
     "kermeta3-melange": [
 		"http://melange-lang.org/updatesite/"
