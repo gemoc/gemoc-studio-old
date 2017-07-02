@@ -40,8 +40,8 @@
     "timesquare": [
         "http://timesquare.inria.fr/update_site/neon"
         ],
-    "timesquare-ecl": [
-        "http://timesquare.inria.fr/ecl/update_site/neon"
+    "moccml_mapping": [
+        "https://ci.inria.fr/gemoc/job/MoCCML-mapping/lastSuccessfulBuild/artifact/moccml/mapping/deployment/org.eclipse.gemoc.moccml.mapping.updatesite/target/repository/"
         ],
     "gemoc-commons": [
         "https://ci.inria.fr/gemoc/job/org.gemoc.gemoc_commons.root/lastSuccessfulBuild/artifact/org/gemoc/gemoc_commons/org.gemoc.commons.root/p2updatesite/target/repository/"
