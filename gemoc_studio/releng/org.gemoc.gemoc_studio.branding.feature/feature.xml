@@ -51,7 +51,7 @@
 <import feature="fr.inria.aoste.timesquare.ccslkernel.clocktree.feature" version="0.0.0" match="greaterOrEqual"/>
 <import feature="fr.inria.aoste.timesquare.nobackend.feature" version="0.0.0" match="greaterOrEqual"/>
 <import feature="fr.inria.aoste.timesquare.backend.obeoviewpointanimator.feature" version="0.0.0" match="greaterOrEqual"/>
-<import feature="fr.inria.aoste.timesquare.ecl.feature" version="0.0.0" match="greaterOrEqual"/>
+<import feature="org.eclipse.gemoc.moccml.mapping.feature" version="0.0.0" match="greaterOrEqual"/>
 
       <import feature="org.eclipse.sirius.doc.feature" version="1.0.0.201403121231" match="greaterOrEqual"/>
       <import feature="org.eclipse.sirius.runtime" version="1.0.0.201403121231" match="greaterOrEqual"/>
