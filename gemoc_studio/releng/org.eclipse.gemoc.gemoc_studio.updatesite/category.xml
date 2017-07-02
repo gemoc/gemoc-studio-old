@@ -133,10 +133,10 @@
 <feature url="features/org.eclipse.gemoc.moccml.constraint.ccsl.solver.extension.automata.feature_0.1.1.qualifier.jar" id="org.eclipse.gemoc.moccml.constraint.ccsl.solver.extension.automata.feature" version="0.1.1.qualifier">
     <category name="GEMOC_Concurrency_Components"/>
 </feature>
-<feature url="features/org.gemoc.bcool.feature_2.3.0.qualifier.jar" id="org.gemoc.bcool.feature" version="2.3.0.qualifier">
+<feature url="features/org.eclipse.gemoc.bcool.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.bcool.feature" version="2.3.0.qualifier">
     <category name="GEMOC_Coordination_Components"/>
 </feature>
-<feature url="features/org.gemoc.heterogeneous_coordination_engine.feature_2.3.0.qualifier.jar" id="org.gemoc.heterogeneous_coordination_engine.feature" version="2.3.0.qualifier">
+<feature url="features/org.eclipse.gemoc.heterogeneous_coordination_engine.feature_2.3.0.qualifier.jar" id="org.eclipse.gemoc.heterogeneous_coordination_engine.feature" version="2.3.0.qualifier">
     <category name="GEMOC_Coordination_Components"/>
 </feature>
 
