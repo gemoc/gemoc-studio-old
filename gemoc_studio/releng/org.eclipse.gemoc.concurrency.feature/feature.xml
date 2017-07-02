@@ -139,7 +139,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import feature="fr.inria.aoste.timesquare.ccslkernel.clocktree.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.aoste.timesquare.nobackend.feature" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.inria.aoste.timesquare.backend.obeoviewpointanimator.feature" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="fr.inria.aoste.timesquare.ecl.feature" version="1.0.0.201403211604" match="greaterOrEqual"/>
+      <import feature="org.eclipse.gemoc.moccml.mapping.feature" version="1.0.0.201403211604" match="greaterOrEqual"/>
       <import feature="org.eclipse.gemoc.moccml.constraint.feature" version="0.0.0" match="greaterOrEqual"/>
       
    </requires>
