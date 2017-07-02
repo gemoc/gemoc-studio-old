@@ -47,7 +47,7 @@
    <features>
       <feature id="org.eclipse.gemoc.gemoc_studio.additions.feature" version="1.0.0.201404241510"/>
       <feature id="org.gemoc.gemoc_studio.branding.feature" version="1.0.0.201404241510"/>
-      <feature id="fr.inria.aoste.timesquare.ecl.feature" version="1.0.0.201403211604"/>
+      <feature id="org.eclipse.gemoc.moccml.mapping.feature" version="1.0.0.201403211604"/>
       <feature id="fr.inria.aoste.timesquare.feature" version="1.0.0.201403240946"/>
       <feature id="org.eclipse.xtend.sdk" version="2.5.4.v201404100756"/>
       <feature id="org.eclipse.epp.mpc" version="1.2.1.v20140219-1000"/>
@@ -91,7 +91,7 @@
       <feature id="org.codehaus.groovy.eclipse.feature"/>
       <feature id="org.eclipse.emf.edit"/>
       <feature id="org.eclipse.emf.converter"/>
-      <feature id="fr.inria.aoste.timesquare.ecl.editor.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.mapping..editor.feature"/>
       <feature id="org.eclipse.emf.query"/>
       <feature id="org.eclipse.emf.mapping.ecore.editor"/>
       <feature id="fr.inria.aoste.timesquare.duration.model.feature"/>
@@ -114,7 +114,7 @@
       <feature id="org.eclipse.jgit"/>
       <feature id="org.eclipse.draw2d"/>
       <feature id="org.gemoc.gemoc_commons.feature"/>
-      <feature id="fr.inria.aoste.timesquare.ecl.transfos.feature"/>
+      <feature id="org.eclipse.gemoc.moccml.mapping.transfos.feature"/>
       <feature id="org.eclipse.ocl.all.sdk"/>
       <feature id="org.eclipse.emf.databinding.edit"/>
       <feature id="fr.inria.aoste.trace.feature"/>
