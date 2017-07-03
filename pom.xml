@@ -32,6 +32,12 @@
     <layout>p2</layout>
     <url>https://ci.inria.fr/gemoc/job/MoCCML-mapping/lastSuccessfulBuild/artifact/moccml/mapping/deployment/org.eclipse.gemoc.moccml.mapping.updatesite/target/repository/</url>
 </repository>
+<repository>
+    <id>heterogeneous_coordination_engine</id>
+    <layout>p2</layout>
+    <url>https://ci.inria.fr/gemoc/view/All/job/coordination_heterogeneousCoordinationEngine/lastSuccessfulBuild/artifact/heterogeneousCoordinationEngine/releng/org.gemoc.heterogeneous_coordination_engine.repository/target/repository/</url>
+</repository>
+
         <repository>
             <id>diverse-commons</id>
             <layout>p2</layout>
