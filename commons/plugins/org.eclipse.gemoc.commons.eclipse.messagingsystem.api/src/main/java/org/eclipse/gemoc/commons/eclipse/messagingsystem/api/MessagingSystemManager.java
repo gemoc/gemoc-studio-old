@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.gemoc.commons.eclipse.messagingsystem.api;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.gemoc.commons.messagingsystem.api.impl.StdioSimpleMessagingSystem;
