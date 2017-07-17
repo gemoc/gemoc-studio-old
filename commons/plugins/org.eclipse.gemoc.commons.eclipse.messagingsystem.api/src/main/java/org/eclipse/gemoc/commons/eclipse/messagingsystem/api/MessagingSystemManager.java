@@ -64,7 +64,7 @@ public class MessagingSystemManager {
 				result = (MessagingSystem) confElements[i].createExecutableExtension(MESSAGINGSYSTEM_EXTENSION_POINT_CONTRIB_MESSAGINGSYSTEM_ATT);
 				result.initialize(baseMessageGroup, userFriendlyName);
 				if(result != null)	break;
-			} catch (CoreException e) {;
+			} catch (Throwable t) {;
 			}
 		}
 		if (result == null){
