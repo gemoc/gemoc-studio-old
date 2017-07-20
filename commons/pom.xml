@@ -20,6 +20,7 @@
         <module>plugins/org.eclipse.gemoc.commons.eclipse.pde</module>
         <module>plugins/org.eclipse.gemoc.commons.eclipse.jdt</module>
         <module>plugins/org.eclipse.gemoc.commons.eclipse.ui</module>
+        <module>plugins/org.eclipse.gemoc.groovy</module>
         <module>plugins/org.eclipse.gemoc.timeline</module>
         <module>plugins/gexpressions/org.eclipse.gemoc.gexpressions</module>
         <module>plugins/gexpressions/org.eclipse.gemoc.gexpressions.edit</module>

@@ -45,6 +45,12 @@ http://www.eclipse.org/legal/epl-v10.html
          install-size="0"
          version="2.0.6.qualifier"
          unpack="false"/>
+   <plugin
+         id="org.eclipse.gemoc.groovy"
+         download-size="0"
+         install-size="0"
+         version="2.4.9.qualifier"
+         unpack="false"/>
 
 
 </feature>
