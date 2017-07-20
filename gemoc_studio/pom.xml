@@ -64,11 +64,6 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/sirius/updates/releases/4.1.1/neon/</url>
         </repository>
-		<repository>
-            <id>Groovy4Eclipse</id>
-            <layout>p2</layout>
-            <url>http://dist.springsource.org/snapshot/GRECLIPSE/e4.6/</url>
-        </repository>
         <!-- *********** Xtext related update site -->
        <!--  <repository>
             <id>xtext all releases</id>
