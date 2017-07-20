@@ -1,12 +1,13 @@
-/* $Id: KermetaExampleWizard.java,v 1.2 2008-10-30 16:45:57 dvojtise Exp $
- * Project    : fr.irisa.triskell.kermeta
- * File       : KermetaExampleWizard.java
- * License    : EPL
- * Copyright  : IRISA / INRIA / Universite de Rennes 1
- * -------------------------------------------------------------------
- * Authors : 
- *        	dvojtise <dvojtise@irisa.fr>
- */
+/*******************************************************************************
+ * Copyright (c) 2015, 2017  Inria  and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Inria - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.gemoc.concurrent.language.wb.sample.deployer.wizards;
 
 import java.util.ArrayList;
