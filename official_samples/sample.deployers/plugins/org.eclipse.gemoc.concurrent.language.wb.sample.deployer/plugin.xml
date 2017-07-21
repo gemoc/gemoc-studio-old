@@ -35,20 +35,6 @@
             T⁮his set of projects features a simple Timed Finite State Machine language which is made executable using GEMOC.
          </description>
       </wizard>
-      <wizard
-            canFinishEarly="true"
-            category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
-            class="org.eclipse.gemoc.concurrent.language.wb.sample.deployer.wizards.SigPMLExampleWizard"
-            finalPerspective="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective"
-            hasPages="false"
-            icon="icons/IconeGemocLanguage-16.png"
-            id="org.eclipse.gemoc.concurrent.language.wb.sample.deployer.sigpml.wizard"
-            name="GEMOC SigPML Language (Concurrent)"
-            preferredPerspectives="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective">
-         <description>
-T⁮his set of projects features a simple signal processing modeling language (SigPML) which is made executable using GEMOC.
-         </description>
-      </wizard>  
             
       <wizard
             canFinishEarly="true"
