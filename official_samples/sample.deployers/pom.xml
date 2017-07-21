@@ -28,7 +28,6 @@
         <module>plugins/org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer</module>
         <module>plugins/org.eclipse.gemoc.sequential.language.wb.sample.deployer</module>
         <module>plugins/org.eclipse.gemoc.sequential.modeling.wb.sample.deployer</module>
-        <module>plugins/org.eclipse.gemoc.tfsmandactivity.sample.deployer</module>
 
         <!-- feature and update site -->
         <module>releng/org.eclipse.gemoc.concurrent.samples.deployers.feature</module>

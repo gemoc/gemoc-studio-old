@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: BCool operator for TFSM and ActivityDiagram
-Bundle-SymbolicName: org.gemoc.sample.bcool.tfsmandactivity
-Bundle-Version: 2.3.0.qualifier
-Require-Bundle: org.gemoc.sample.tfsm.xdsml;bundle-version="1.0.0",
- org.modelexecution.operationalsemantics.ad.concurrent.xdsml;bundle-version="1.0.0"
