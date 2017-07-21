@@ -34,8 +34,6 @@
         <module>releng/org.eclipse.gemoc.gemoc_studio.branding.feature</module>			
         <module>releng/org.eclipse.gemoc.gemoc_studio.additions.feature</module>	
         <module>releng/org.eclipse.gemoc.modeldebugging.feature</module>
-		<module>releng/org.eclipse.gemoc.concurrency.feature</module>
-		<module>releng/org.eclipse.gemoc.coordination.feature</module>
         <module>releng/org.eclipse.gemoc.gemoc_studio.updatesite</module>
     </modules>
 
@@ -304,31 +302,6 @@
 		            <layout>p2</layout>
 		            <url>http://obeo-siriuslab-nightly.s3-website-eu-west-1.amazonaws.com/SiriusAnimator/master/repository/</url>
 		        </repository>	
-		        <repository>
-		            <id>concurrency_executionengine_ccsljava on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/view/All/job/concurrency_executionengine_ccsljava/lastSuccessfulBuild/artifact/concurrency/ccsljava_execution/releng/org.eclipse.gemoc.executionengine.ccsljava.repository/target/repository/</url>
-		        </repository>
-		        <repository>
-		            <id>concurrency_moccml on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/view/All/job/concurrency_moccml/lastSuccessfulBuild/artifact/moccml/releng/org.gemoc.mocc.p2updatesite/target/repository/</url>
-		        </repository>	
-				<repository>
-		            <id>concurrency_exploration on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/concurrency_exploration/lastSuccessfulBuild/artifact/exploration/releng/org.gemoc.mocc.clocksystem.features.updatesite/target/repository/</url>
-		        </repository>				
-		        <repository>
-		            <id>coordination_bcool on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/coordination_bcool/lastSuccessfulBuild/artifact/bcool/deployment/org.eclipse.gemoc.bcool.updatesite/target/repository/</url>
-		        </repository>
-		        <repository>
-		            <id>coordination_heterogeneousCoordinationEngine on CI</id>
-		            <layout>p2</layout>
-		            <url>https://ci.inria.fr/gemoc/job/coordination_heterogeneousCoordinationEngine/lastSuccessfulBuild/artifact/heterogeneousCoordinationEngine/releng/org.eclipse.gemoc.heterogeneous_coordination_engine.repository/target/repository/</url>
-		        </repository>		        
 		        <repository>
 		            <id>gemoc-studio_official_samples_deployer on CI</id>
 		            <layout>p2</layout>
