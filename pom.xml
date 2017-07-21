@@ -23,27 +23,6 @@
             <url>http://download.eclipse.org/releases/neon</url>
         </repository>
 		<repository>
-		       <id>timesquare</id>
-		       <layout>p2</layout>
-		       <url>http://timesquare.inria.fr/update_site/neon</url>
-		</repository>
-		<repository>
-		    <id>moccml_mapping</id>
-		    <layout>p2</layout>
-		    <url>https://ci.inria.fr/gemoc/job/MoCCML-mapping/lastSuccessfulBuild/artifact/moccml/mapping/deployment/org.eclipse.gemoc.moccml.mapping.updatesite/target/repository/</url>
-		</repository>
-		<repository>
-		    <id>heterogeneous_coordination_engine</id>
-		    <layout>p2</layout>
-		    <url>https://ci.inria.fr/gemoc/view/All/job/coordination_heterogeneousCoordinationEngine/lastSuccessfulBuild/artifact/heterogeneousCoordinationEngine/releng/org.eclipse.gemoc.heterogeneous_coordination_engine.repository/target/repository/</url>
-		</repository>
-
-        <repository>
-            <id>diverse-commons</id>
-            <layout>p2</layout>
-            <url>https://ci.inria.fr/diverse-commons/job/diverse-commons.eclipse.root/lastSuccessfulBuild/artifact/commons-eclipse/fr.inria.diverse.commons.eclipse.root/p2updatesite/target/repository/</url>
-        </repository>
-        <repository>
             <id>kermeta-3</id>
             <layout>p2</layout>
             <url>http://www.kermeta.org/k3/update/</url>
@@ -58,11 +37,6 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/sirius/updates/releases/4.1.2/neon/</url>
         </repository>
-        <!-- <repository>
-            <id>umldesigner</id>
-            <layout>p2</layout>
-            <url>http://releases.umldesigner.org/5.0.1/repository/</url>
-        </repository> -->
         <repository>
             <id>nebula</id>
             <layout>p2</layout>
@@ -73,11 +47,6 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/tools/gef/updates/milestones</url>
         </repository>
-       <!--  <repository>
-            <id>javafx</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/efxclipse/updates-released/2.1.0/site</url>
-        </repository>-->
     </repositories>
 
 
