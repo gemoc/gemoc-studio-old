@@ -15,6 +15,4 @@
 <toc label="GEMOC Studio example" link_to="../org.eclipse.gemoc.language_workbench.documentation/toc.xml#GEMOC.examples">
    <topic href="html/TFSM_concurrent.html" label="TFSM Concurrent Example">
    </topic>
-   <topic href="html/TFSM_and_SIGPML_coordination.html" label="TFSM and SIGPML coordination concurrent Example">
-   </topic>
 </toc>

@@ -35,21 +35,7 @@
             T⁮his set of projects features a simple Timed Finite State Machine language which is made executable using GEMOC.
          </description>
       </wizard>
-            
-      <wizard
-            canFinishEarly="true"
-            category="org.eclipse.ui.Examples/org.gemoc.gemoc_language_workbench.samples.category"
-            class="org.eclipse.gemoc.concurrent.language.wb.sample.deployer.wizards.TFSMAndSigPMLExampleWizard"
-            finalPerspective="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective"
-            hasPages="false"
-            icon="icons/bcoolicon.png"
-            id="org.eclipse.gemoc.concurrent.language.wb.sample.deployer.tfsmandsigpml.wizard"
-            name="GEMOC operator for TFSM and SigPML languages (Coordination)"
-            preferredPerspectives="org.eclipse.gemoc.xdsmlframework.ide.ui.xdsml.perspective">
-         <description>
-T⁮his set of projects features a coordination between TFSM and SigPML concurrent languages.
-         </description>
-      </wizard>    
+    
    </extension>
    <extension
        point="org.eclipse.help.toc">

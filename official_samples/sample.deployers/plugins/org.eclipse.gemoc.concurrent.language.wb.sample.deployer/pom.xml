@@ -74,10 +74,6 @@
 									<fileset dir="${tfsm_sample_language_root}/org.gemoc.sample.tfsm.concurrent.xtfsm.editor/" />
 								</zip>
 								
-								<!-- BCooL TFSM and SigPML  -->															
-								<zip destfile="${basedir}/zips/org.gemoc.sample.bcool.tfsmandsigpml.zip">
-									<fileset dir="${tfsmandsigpml_sample_language_root}/org.gemoc.sample.bcool.tfsmandsigpml/" />
-								</zip>
 							</tasks>
 						</configuration>
 					</execution>

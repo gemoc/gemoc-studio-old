@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: BCool operator for TFSM and SigPML
-Bundle-SymbolicName: org.gemoc.sample.bcool.tfsmandsigpml
-Bundle-Version: 2.3.0.qualifier
-Require-Bundle: org.gemoc.sample.tfsm.concurrent;bundle-version="1.0.0",
- org.gemoc.sample.sigpml;bundle-version="1.0.0"
