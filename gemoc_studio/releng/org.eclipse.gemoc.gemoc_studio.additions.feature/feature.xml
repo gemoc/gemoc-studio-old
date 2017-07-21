@@ -9,7 +9,6 @@
     Contributors:
         Inria - initial API and implementation
  -->
-
 <feature
       id="org.eclipse.gemoc.gemoc_studio.additions.feature"
       label="GEMOC Studio Additional Features"
@@ -49,7 +48,6 @@ http://www.eclipse.org/legal/epl-v10.html
       <import feature="org.eclipse.emf.ecoretools.registration.feature" version="0.1.1" match="greaterOrEqual"/>
       <import feature="org.eclipse.epp.mpc" version="1.2.1.v20140219-1000" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtend.sdk" version="0.0.0"/>
-      <import feature="net.sf.eclipsecs" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml.debug" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.m2m.qvt.oml.doc" version="0.0.0" match="greaterOrEqual"/>
