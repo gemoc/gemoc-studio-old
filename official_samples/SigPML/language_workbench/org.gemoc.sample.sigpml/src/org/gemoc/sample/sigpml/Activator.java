@@ -11,12 +11,13 @@
 package org.gemoc.sample.sigpml;
 
 import org.eclipse.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
+import org.eclipse.gemoc.commons.eclipse.messagingsystem.api.MessagingSystem;
+import org.eclipse.gemoc.commons.eclipse.messagingsystem.api.MessagingSystemManager;
+import org.eclipse.gemoc.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem;
 import org.eclipse.gemoc.commons.eclipse.pde.ui.GemocUIPlugin;
 import org.osgi.framework.BundleContext;
 
-import fr.inria.diverse.commons.eclipse.messagingsystem.api.MessagingSystemManager;
-import fr.inria.diverse.commons.eclipse.messagingsystem.ui.EclipseMessagingSystem;
-import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
+
 
 public class Activator extends GemocUIPlugin {
 

@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2015, 2017  I3S Laboratory  and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     I3S Laboratory - initial API and implementation
+ *******************************************************************************/
 package org.gemoc.sample.tfsm.concurrent.k3dsa.aspect
 
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
@@ -20,17 +30,6 @@ import groovy.lang.GroovyShell
 import java.util.Map
 import groovy.lang.Binding
 
-/*import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.StateAspect.*
-import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TransitionAspect.*
-import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.NamedElementAspect.*
-import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.GuardAspect.*
-import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TemporalGuardAspect.*
-import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.EventGuardAspect.*
-import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.FSMEventAspect.*
-import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.FSMClockAspect.*
-import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.TimedSystemAspect.*
-import static extension org.gemoc.sample.tfsm.concurrent.k3dsa.aspect.EvaluateGuardAspect.*
-*/
 
 @Aspect(className=TFSM)
 class TFSMAspect extends NamedElementAspect {
