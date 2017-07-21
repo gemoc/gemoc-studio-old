@@ -24,15 +24,11 @@
 	</parent>
     <modules>
         <!-- plugins -->
-        <module>plugins/org.eclipse.gemoc.concurrent.language.wb.sample.deployer</module>
-        <module>plugins/org.eclipse.gemoc.concurrent.modeling.wb.sample.deployer</module>
         <module>plugins/org.eclipse.gemoc.sequential.language.wb.sample.deployer</module>
         <module>plugins/org.eclipse.gemoc.sequential.modeling.wb.sample.deployer</module>
 
         <!-- feature and update site -->
-        <module>releng/org.eclipse.gemoc.concurrent.samples.deployers.feature</module>
         <module>releng/org.eclipse.gemoc.sequential.samples.deployers.feature</module>
-        <module>releng/org.eclipse.gemoc.coordination.samples.deployers.feature</module>
         <module>releng/org.eclipse.gemoc.samples.deployers.repository</module>
     </modules>
 
