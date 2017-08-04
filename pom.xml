@@ -27,12 +27,12 @@
 		       <layout>p2</layout>
 		       <url>http://timesquare.inria.fr/update_site/neon</url>
 		</repository>
-		
+		<!-- 
         <repository>
             <id>diverse-commons</id>
             <layout>p2</layout>
             <url>https://ci.inria.fr/diverse-commons/job/diverse-commons.eclipse.root/lastSuccessfulBuild/artifact/commons-eclipse/fr.inria.diverse.commons.eclipse.root/p2updatesite/target/repository/</url>
-        </repository>
+        </repository> -->
         <repository>
             <id>kermeta-3</id>
             <layout>p2</layout>
