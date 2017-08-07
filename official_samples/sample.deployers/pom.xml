@@ -76,11 +76,11 @@
 	            <activeByDefault>true</activeByDefault>
 	        </activation>
 	        <repositories>
-<!-- 		        <repository> -->
-<!-- 		            <id>Gemoc Target Platform all-except-gemoc-commons</id> -->
-<!-- 		            <layout>p2</layout> -->
-<!-- 		            <url>https://ci.inria.fr/gemoc/job/org.gemoc.targetplatform.redirects/lastSuccessfulBuild/artifact/org/gemoc/targetplatform/update/all-except-gemoc-commons</url> -->
-<!-- 		        </repository> -->
+				<repository>
+		            <id>gemoc-studio_commons on CI</id>
+		            <layout>p2</layout>
+		            <url>https://ci.inria.fr/gemoc/job/gemoc-studio_commons/lastSuccessfulBuild/artifact/commons/releng/org.eclipse.gemoc.commons.repository/target/repository</url> 
+		        </repository>
 		    </repositories>
 	    </profile>
     	
