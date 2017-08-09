@@ -16,11 +16,9 @@
 		<module>../../../gemoc-studio/official_samples/sample.deployers</module>
 		<module>../../../gemoc-studio.wiki</module>
 		<module>../../../gemoc-studio/gemoc_studio</module>
-        <module>../../../gemoc-studio/commons</module>
-        <module>../../../gemoc-studio/official_samples/sample.deployers</module>
-        <module>../../../gemoc-studio/gemoc_studio</module>
 		<module>../../../ModelDebugging</module>
-        <module>../../../concurrency/moccml</module>
+        <module>../../../concurrency/moccml/constraint/</module>
+        <module>../../../concurrency/moccml/mapping/deployment/org.eclipse.gemoc.moccml.mapping.build/</module>
         <module>../../../concurrency/ccsljava_execution</module>
         <!-- <module>../../../concurrency/exploration</module> -->
 		<module>../../../coordination/bcool/deployment/org.eclipse.gemoc.bcool.build</module>
