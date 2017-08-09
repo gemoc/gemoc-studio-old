@@ -64,7 +64,11 @@
             <layout>p2</layout>
             <url>http://download.eclipse.org/tools/ajdt/46/dev/update</url>
         </repository>
-    
+        <repository>
+            <id>CheckStyle</id>
+            <layout>p2</layout>
+            <url>http://eclipse-cs.sf.net/update</url>
+        </repository> 
     </repositories>
 
     <build>
