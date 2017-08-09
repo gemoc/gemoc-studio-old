@@ -15,6 +15,7 @@ Require-Bundle: org.eclipse.ui.workbench,
  org.eclipse.core.filesystem
 Export-Package: org.eclipse.gemoc.commons.eclipse.pde.ui,
  org.eclipse.gemoc.commons.eclipse.ui,
- org.eclipse.gemoc.commons.eclipse.ui.dialogs
+ org.eclipse.gemoc.commons.eclipse.ui.dialogs,
+ org.eclipse.gemoc.commons.eclipse.ui.wizards
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.gemoc.commons.eclipse.ui.Activator
