@@ -8,7 +8,7 @@
  * Contributors:
  *     Inria - initial API and implementation
  *******************************************************************************/
-package org.eclipse.gemoc.tfsmandactivity.sample.deployer.wizards;
+package org.eclipse.gemoc.tfsmandactivity.sampledeployer.deployer.wizards;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,9 +16,9 @@ import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.gemoc.tfsmandactivity.sample.deployer.Activator;
+import org.eclipse.gemoc.commons.eclipse.ui.wizards.AbstractExampleWizard;
+import org.eclipse.gemoc.tfsmandactivity.sampledeployer.deployer.Activator;
 
-import fr.inria.diverse.commons.eclipse.jface.wizards.AbstractExampleWizard;
 
 public class TFSMAndActivityModelExampleWizard
 	extends AbstractExampleWizard {

@@ -8,7 +8,7 @@
  * Contributors:
  *     Inria - initial API and implementation
  *******************************************************************************/
-package org.eclipse.gemoc.tfsmandactivity.sample.deployer;
+package org.eclipse.gemoc.tfsmandactivity.sampledeployer.deployer;
 
 import java.lang.reflect.InvocationTargetException;
 
