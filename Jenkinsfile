@@ -40,7 +40,7 @@ node {
 	      dir ('gemoc-studio/dev_support/full_compilation') {
 	          wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
 	              // sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean verify --errors -P ignore_CI_repositories,!use_CI_repositories"
-	              sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean verify --errors -P ignore_CI_repositories,!use_CI_repositories"
+	              sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore -DfailIfNoTests=false clean verify --errors -P ignore_CI_repositories,!use_CI_repositories"
 	          }
 	      }      
 	   }	   
