@@ -1,26 +1,31 @@
+Manifest-Version: 1.0
 Bundle-SymbolicName: org.gemoc.sample.sigpml;singleton:=true
-Export-Package: org.gemoc.sample.sigpml,xsigpml.xdsml.api.impl,org.gemoc.sample.sigpml.xsigpmlmt.sigpml.impl,org.gemoc.sample.sigpml.xsigpmlmt.sigpml.util,org.gemoc.sample.sigpml.xsigpmlmt.sigpml,org.gemoc.sample.sigpml.xsigpml.adapters.xsigpmlmt.sigpml,org.gemoc.sample.sigpml.xsigpml.adapters.xsigpmlmt
+Export-Package: org.gemoc.sample.sigpml,
+ xsigpml.xdsml.api.impl,
+ org.gemoc.sample.sigpml.xsigpmlmt.sigpml.impl,
+ org.gemoc.sample.sigpml.xsigpmlmt.sigpml.util,
+ org.gemoc.sample.sigpml.xsigpmlmt.sigpml,
+ org.gemoc.sample.sigpml.xsigpml.adapters.xsigpmlmt.sigpml,
+ org.gemoc.sample.sigpml.xsigpml.adapters.xsigpmlmt
 Bundle-Version: 2.3.0.qualifier
 Bundle-Name: Xdsml
 Bundle-ClassPath: .
-Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:=reexport,
- fr.cnrs.luchogie.ultimateplotter;bundle-version="1.0.0";visibility:=reexport,
+Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:="reexport",
+ fr.cnrs.luchogie.ultimateplotter;bundle-version="1.0.0";visibility:="reexport",
  fr.inria.aoste.timesquare.ccslkernel.solver;bundle-version="1.0.0",
  fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version="3.2.0",
- org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3;bundle-version="0.0.0";visibility:=reexport,
+ org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3;bundle-version="0.0.0";visibility:="reexport",
  org.eclipse.ui,
  org.eclipse.ui.workbench,
- org.gemoc.sample.sigpml.k3dsa;bundle-version="0.0.0";visibility:=reexport,
- org.gemoc.sample.sigpml.model;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.sample.sigpml.k3dsa;bundle-version="0.0.0";visibility:="reexport",
+ org.gemoc.sample.sigpml.model;bundle-version="0.0.0";visibility:="reexport",
  org.eclipse.core.runtime;bundle-version="3.9.100",
  org.eclipse.gemoc.commons.eclipse,
  org.eclipse.gemoc.commons.eclipse.ui,
- fr.inria.aoste.timesquare.ecl.feedback.model,
  org.eclipse.gemoc.execution.concurrent.ccsljavaengine.ui,
- org.gemoc.sample.sigpml.xsigpml.design;bundle-version="0.0.0";visibility:=reexport,
- org.gemoc.sample.sigpml.moc.lib;bundle-version="0.0.0";visibility:=reexport,
- org.gemoc.sample.sigpml.moc.dse;bundle-version="0.0.0";visibility:=reexport,
- org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare;bundle-version="0.0.0";visibility:=reexport,
+ org.gemoc.sample.sigpml.moc.lib;bundle-version="0.0.0";visibility:="reexport",
+ org.gemoc.sample.sigpml.moc.dse;bundle-version="0.0.0";visibility:="reexport",
+ org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare;bundle-version="0.0.0";visibility:="reexport",
  org.eclipse.gemoc.execution.concurrent.ccsljavaxdsml.api;bundle-version="[2.2.0,2.4.0)",
  org.eclipse.gemoc.execution.concurrent.ccsljavaengine;bundle-version="[2.2.0,2.4.0)",
  org.eclipse.gemoc.executionframework.extensions.sirius;bundle-version="0.0.0";visibility:=reexport,
@@ -28,11 +33,12 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="2.8.0";visibility:=ree
  fr.inria.diverse.melange.lib;bundle-version="0.2.0",
  fr.inria.diverse.melange.resource;bundle-version="0.2.0",
  org.eclipse.gemoc.trace.commons.model;bundle-version="0.1.0",
- org.gemoc.sample.sigpml.xsigpml,
  org.eclipse.gemoc.commons.eclipse.messagingsystem.api;bundle-version="2.3.0",
- org.eclipse.gemoc.commons.eclipse.messagingsystem.ui;bundle-version="2.3.0"
+ org.eclipse.gemoc.commons.eclipse.messagingsystem.ui;bundle-version="2.3.0",
+ org.eclipse.gemoc.moccml.mapping.feedback.model;bundle-version="1.0.0",
+ org.gemoc.sample.sigpml.xsigpml
 Bundle-ActivationPolicy: lazy
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.gemoc.sample.sigpml.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Manifest-Version: 1.0
+

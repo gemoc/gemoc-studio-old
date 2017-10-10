@@ -21,7 +21,7 @@ package sigpml
 	context Place
 	def : push :Event = self.push()
 	def : pop :Event = self.pop()
-	def : sizePlusOne:Integer = self.size+1
+	def : sizePlusOne:Integer = self.size+1 
 	def : delayPlusOne : Integer = self.delay +1
 	
 	context HWComputationalResource
@@ -77,7 +77,7 @@ package sigpml
 		Relation Output(
 			self.owner.oclAsType(Agent).stopAgent,
 			self.write,
-			itsORate
+			itsORate 
 		)
 		
 	inv portWriteInPlace:

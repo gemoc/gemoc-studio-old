@@ -31,7 +31,7 @@ import cnrs.luchogie.up.data.event.PointListener;
  * @author Luc Hogie
  * 
  */
-public class Point extends DataElement implements toools.math.Point
+public class Point extends DataElement implements toools.math.geometry.Point
 {
 	private static final Point ORIGIN = new Point(0, 0);
 
