@@ -3,19 +3,11 @@ package org.gemoc.sample.sigpml.k3dsa
 import cnrs.luchogie.up.InteractiveSwingPlotter
 import cnrs.luchogie.up.SwingPlotter
 import cnrs.luchogie.up.data.Figure
-
 import com.google.common.collect.LinkedListMultimap
-
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect
-
-//import groovy.lang.Binding
-//import groovy.lang.GroovyShell
-
-import java.util.ArrayList
-import java.util.Map
-
+import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
 import javax.swing.JFrame
-
+import org.eclipse.emf.common.util.EList
 import org.gemoc.sample.sigpml.Agent
 import org.gemoc.sample.sigpml.HWComputationalResource
 import org.gemoc.sample.sigpml.InputPort
@@ -25,14 +17,10 @@ import org.gemoc.sample.sigpml.Place
 import org.gemoc.sample.sigpml.Port
 import org.gemoc.sample.sigpml.System
 
-import static extension org.gemoc.sample.sigpml.k3dsa.InputPortAspect.*;
-import static extension org.gemoc.sample.sigpml.k3dsa.OutputPortAspect.*;
-import static extension org.gemoc.sample.sigpml.k3dsa.PlaceAspect.*;
-import static extension org.gemoc.sample.sigpml.k3dsa.SystemAspect.*;
-import static extension org.gemoc.sample.sigpml.k3dsa.HWComputationalResourceAspect.*;
-import java.util.List
-import fr.inria.diverse.k3.al.annotationprocessor.InitializeModel
-import org.eclipse.emf.common.util.EList
+import static extension org.gemoc.sample.sigpml.k3dsa.InputPortAspect.*
+import static extension org.gemoc.sample.sigpml.k3dsa.OutputPortAspect.*
+import static extension org.gemoc.sample.sigpml.k3dsa.PlaceAspect.*
+import static extension org.gemoc.sample.sigpml.k3dsa.SystemAspect.*
 
 @Aspect(className = HWComputationalResource)
 class HWComputationalResourceAspect {
@@ -248,7 +236,7 @@ class SystemAspect {
 abstract class NamedElementAspect {
 	def System getSystem() {
 		var contents = _self.eResource.contents
-		val system = contents.findFirst[x | x instanceof org.gemoc.sample.sigpml.System] as org.gemoc.sample.sigpml.System
+		val system = contents.findFirst[x | x instanceof System] as System
 		
 		if (system != null && system.sharedMemory == null)
 			system.sharedMemory = LinkedListMultimap.create

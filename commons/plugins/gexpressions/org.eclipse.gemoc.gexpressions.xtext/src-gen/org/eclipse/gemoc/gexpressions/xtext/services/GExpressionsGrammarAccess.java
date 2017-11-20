@@ -121,7 +121,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		////-----------------------------------------------------------------------------
 		//GOrExpression GExpression:
 		//	GXorExpression ({GOrExpression.leftOperand=current} operator=GOrOperator
-		//	rightOperand=GXorExpression)*
+		//	rightOperand=GXorExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 
 		//GXorExpression ({GOrExpression.leftOperand=current} operator=GOrOperator rightOperand=GXorExpression)*
@@ -162,7 +162,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GXorExpression GExpression:
 		//	GAndExpression ({GXorExpression.leftOperand=current} operator=GXorOperator
-		//	rightOperand=GAndExpression)*
+		//	rightOperand=GAndExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 
 		//GAndExpression ({GXorExpression.leftOperand=current} operator=GXorOperator rightOperand=GAndExpression)*
@@ -203,7 +203,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GAndExpression GExpression:
 		//	GEqualityExpression ({GAndExpression.leftOperand=current} operator=GAndOperator
-		//	rightOperand=GEqualityExpression)*
+		//	rightOperand=GEqualityExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 
 		//GEqualityExpression ({GAndExpression.leftOperand=current} operator=GAndOperator rightOperand=GEqualityExpression)*
@@ -244,7 +244,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GEqualityExpression GExpression:
 		//	GRelationExpression ({GEqualityExpression.leftOperand=current} operator=GEqualityOperator
-		//	rightOperand=GRelationExpression)*
+		//	rightOperand=GRelationExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 
 		//GRelationExpression ({GEqualityExpression.leftOperand=current} operator=GEqualityOperator
@@ -286,7 +286,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GRelationExpression GExpression:
 		//	GAdditionExpression ({GRelationExpression.leftOperand=current} operator=GRelationOperator
-		//	rightOperand=GAdditionExpression)*
+		//	rightOperand=GAdditionExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 
 		//GAdditionExpression ({GRelationExpression.leftOperand=current} operator=GRelationOperator
@@ -328,7 +328,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GAdditionExpression GExpression:
 		//	GMultiplicationExpression ({GAdditionExpression.leftOperand=current} operator=GAdditionOperator
-		//	rightOperand=GMultiplicationExpression)*
+		//	rightOperand=GMultiplicationExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 
 		//GMultiplicationExpression ({GAdditionExpression.leftOperand=current} operator=GAdditionOperator
@@ -370,7 +370,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GMultiplicationExpression GExpression:
 		//	GNegationExpression ({GMultiplicationExpression.leftOperand=current} operator=GMultiplicationOperator
-		//	rightOperand=GNegationExpression)*
+		//	rightOperand=GNegationExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 
 		//GNegationExpression ({GMultiplicationExpression.leftOperand=current} operator=GMultiplicationOperator
@@ -412,7 +412,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GNegationExpression GExpression:
 		//	GNavigationExpression
-		//	| {GNegationExpression} operator=GNegationOperator operand=GNavigationExpression
+		//	| {GNegationExpression} operator=GNegationOperator operand=GNavigationExpression;
 		@Override public ParserRule getRule() { return rule; }
 
 		//GNavigationExpression | {GNegationExpression} operator=GNegationOperator operand=GNavigationExpression
@@ -453,7 +453,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GNavigationExpression GExpression:
 		//	GReferenceExpression ({GNavigationExpression.body=current} NavigationOperator
-		//	referencedEObject=[ecore::EObject])*
+		//	referencedEObject=[ecore::EObject])*;
 		@Override public ParserRule getRule() { return rule; }
 
 		//GReferenceExpression ({GNavigationExpression.body=current} NavigationOperator referencedEObject=[ecore::EObject])*
@@ -493,7 +493,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GReferenceExpression GExpression:
 		//	GPrimaryExpression
-		//	| {GReferenceExpression} referencedEObject=[ecore::EObject]
+		//	| {GReferenceExpression} referencedEObject=[ecore::EObject];
 		@Override public ParserRule getRule() { return rule; }
 
 		//GPrimaryExpression | {GReferenceExpression} referencedEObject=[ecore::EObject]
@@ -537,7 +537,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		//	| GNumericExpression
 		//	| GEnumLiteralExpression
 		//	| GIfExpression
-		//	| GBraceExpression
+		//	| GBraceExpression;
 		@Override public ParserRule getRule() { return rule; }
 
 		//GStringExpression | GBooleanExpression | GNumericExpression | GEnumLiteralExpression | GIfExpression | GBraceExpression
@@ -570,7 +570,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueSTRINGTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
 		//GStringExpression GExpression:
-		//	{GStringExpression} value=STRING
+		//	{GStringExpression} value=STRING;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{GStringExpression} value=STRING
@@ -594,7 +594,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueBOOLEANTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
 		//GBooleanExpression GExpression:
-		//	{GBooleanExpression} value=BOOLEAN
+		//	{GBooleanExpression} value=BOOLEAN;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{GBooleanExpression} value=BOOLEAN
@@ -618,7 +618,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GNumericExpression GExpression:
 		//	GIntegerExpression
-		//	| GDoubleExpression
+		//	| GDoubleExpression;
 		@Override public ParserRule getRule() { return rule; }
 
 		//GIntegerExpression | GDoubleExpression
@@ -639,7 +639,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueINTTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
 		//GIntegerExpression GExpression:
-		//	{GIntegerExpression} value=INT
+		//	{GIntegerExpression} value=INT;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{GIntegerExpression} value=INT
@@ -663,7 +663,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueDOUBLETerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
 		//GDoubleExpression GExpression:
-		//	{GDoubleExpression} value=DOUBLE
+		//	{GDoubleExpression} value=DOUBLE;
 		@Override public ParserRule getRule() { return rule; }
 
 		//{GDoubleExpression} value=DOUBLE
@@ -690,7 +690,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//GEnumLiteralExpression GExpression:
 		//	{GEnumLiteralExpression}
-		//	'#' value=[ecore::EEnumLiteral|QualifiedName]
+		//	'#' value=[ecore::EEnumLiteral|QualifiedName];
 		@Override public ParserRule getRule() { return rule; }
 
 		//{GEnumLiteralExpression} '#' value=[ecore::EEnumLiteral|QualifiedName]
@@ -732,7 +732,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		//	'if' condition=GExpression
 		//	'then' thenExpression=GExpression
 		//	'else' elseExpression=GExpression
-		//	'endif'
+		//	'endif';
 		@Override public ParserRule getRule() { return rule; }
 
 		//{GIfExpression} 'if' condition=GExpression 'then' thenExpression=GExpression 'else' elseExpression=GExpression 'endif'
@@ -785,7 +785,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 		//	{GBraceExpression}
 		//	'('
 		//	innerExpression=GExpression
-		//	')'
+		//	')';
 		@Override public ParserRule getRule() { return rule; }
 
 		//{GBraceExpression} '(' innerExpression=GExpression ')'
@@ -1217,7 +1217,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 	////-----------------------------------------------------------------------------
 	//GOrExpression GExpression:
 	//	GXorExpression ({GOrExpression.leftOperand=current} operator=GOrOperator
-	//	rightOperand=GXorExpression)*
+	//	rightOperand=GXorExpression)*;
 	public GOrExpressionElements getGOrExpressionAccess() {
 		return pGOrExpression;
 	}
@@ -1228,7 +1228,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GXorExpression GExpression:
 	//	GAndExpression ({GXorExpression.leftOperand=current} operator=GXorOperator
-	//	rightOperand=GAndExpression)*
+	//	rightOperand=GAndExpression)*;
 	public GXorExpressionElements getGXorExpressionAccess() {
 		return pGXorExpression;
 	}
@@ -1239,7 +1239,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GAndExpression GExpression:
 	//	GEqualityExpression ({GAndExpression.leftOperand=current} operator=GAndOperator
-	//	rightOperand=GEqualityExpression)*
+	//	rightOperand=GEqualityExpression)*;
 	public GAndExpressionElements getGAndExpressionAccess() {
 		return pGAndExpression;
 	}
@@ -1250,7 +1250,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GEqualityExpression GExpression:
 	//	GRelationExpression ({GEqualityExpression.leftOperand=current} operator=GEqualityOperator
-	//	rightOperand=GRelationExpression)*
+	//	rightOperand=GRelationExpression)*;
 	public GEqualityExpressionElements getGEqualityExpressionAccess() {
 		return pGEqualityExpression;
 	}
@@ -1261,7 +1261,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GRelationExpression GExpression:
 	//	GAdditionExpression ({GRelationExpression.leftOperand=current} operator=GRelationOperator
-	//	rightOperand=GAdditionExpression)*
+	//	rightOperand=GAdditionExpression)*;
 	public GRelationExpressionElements getGRelationExpressionAccess() {
 		return pGRelationExpression;
 	}
@@ -1272,7 +1272,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GAdditionExpression GExpression:
 	//	GMultiplicationExpression ({GAdditionExpression.leftOperand=current} operator=GAdditionOperator
-	//	rightOperand=GMultiplicationExpression)*
+	//	rightOperand=GMultiplicationExpression)*;
 	public GAdditionExpressionElements getGAdditionExpressionAccess() {
 		return pGAdditionExpression;
 	}
@@ -1283,7 +1283,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GMultiplicationExpression GExpression:
 	//	GNegationExpression ({GMultiplicationExpression.leftOperand=current} operator=GMultiplicationOperator
-	//	rightOperand=GNegationExpression)*
+	//	rightOperand=GNegationExpression)*;
 	public GMultiplicationExpressionElements getGMultiplicationExpressionAccess() {
 		return pGMultiplicationExpression;
 	}
@@ -1294,7 +1294,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GNegationExpression GExpression:
 	//	GNavigationExpression
-	//	| {GNegationExpression} operator=GNegationOperator operand=GNavigationExpression
+	//	| {GNegationExpression} operator=GNegationOperator operand=GNavigationExpression;
 	public GNegationExpressionElements getGNegationExpressionAccess() {
 		return pGNegationExpression;
 	}
@@ -1305,7 +1305,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GNavigationExpression GExpression:
 	//	GReferenceExpression ({GNavigationExpression.body=current} NavigationOperator
-	//	referencedEObject=[ecore::EObject])*
+	//	referencedEObject=[ecore::EObject])*;
 	public GNavigationExpressionElements getGNavigationExpressionAccess() {
 		return pGNavigationExpression;
 	}
@@ -1316,7 +1316,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GReferenceExpression GExpression:
 	//	GPrimaryExpression
-	//	| {GReferenceExpression} referencedEObject=[ecore::EObject]
+	//	| {GReferenceExpression} referencedEObject=[ecore::EObject];
 	public GReferenceExpressionElements getGReferenceExpressionAccess() {
 		return pGReferenceExpression;
 	}
@@ -1334,7 +1334,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 	//	| GNumericExpression
 	//	| GEnumLiteralExpression
 	//	| GIfExpression
-	//	| GBraceExpression
+	//	| GBraceExpression;
 	public GPrimaryExpressionElements getGPrimaryExpressionAccess() {
 		return pGPrimaryExpression;
 	}
@@ -1344,7 +1344,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//GStringExpression GExpression:
-	//	{GStringExpression} value=STRING
+	//	{GStringExpression} value=STRING;
 	public GStringExpressionElements getGStringExpressionAccess() {
 		return pGStringExpression;
 	}
@@ -1354,7 +1354,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//GBooleanExpression GExpression:
-	//	{GBooleanExpression} value=BOOLEAN
+	//	{GBooleanExpression} value=BOOLEAN;
 	public GBooleanExpressionElements getGBooleanExpressionAccess() {
 		return pGBooleanExpression;
 	}
@@ -1365,7 +1365,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GNumericExpression GExpression:
 	//	GIntegerExpression
-	//	| GDoubleExpression
+	//	| GDoubleExpression;
 	public GNumericExpressionElements getGNumericExpressionAccess() {
 		return pGNumericExpression;
 	}
@@ -1375,7 +1375,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//GIntegerExpression GExpression:
-	//	{GIntegerExpression} value=INT
+	//	{GIntegerExpression} value=INT;
 	public GIntegerExpressionElements getGIntegerExpressionAccess() {
 		return pGIntegerExpression;
 	}
@@ -1385,7 +1385,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//GDoubleExpression GExpression:
-	//	{GDoubleExpression} value=DOUBLE
+	//	{GDoubleExpression} value=DOUBLE;
 	public GDoubleExpressionElements getGDoubleExpressionAccess() {
 		return pGDoubleExpression;
 	}
@@ -1396,7 +1396,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GEnumLiteralExpression GExpression:
 	//	{GEnumLiteralExpression}
-	//	'#' value=[ecore::EEnumLiteral|QualifiedName]
+	//	'#' value=[ecore::EEnumLiteral|QualifiedName];
 	public GEnumLiteralExpressionElements getGEnumLiteralExpressionAccess() {
 		return pGEnumLiteralExpression;
 	}
@@ -1410,7 +1410,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 	//	'if' condition=GExpression
 	//	'then' thenExpression=GExpression
 	//	'else' elseExpression=GExpression
-	//	'endif'
+	//	'endif';
 	public GIfExpressionElements getGIfExpressionAccess() {
 		return pGIfExpression;
 	}
@@ -1423,7 +1423,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 	//	{GBraceExpression}
 	//	'('
 	//	innerExpression=GExpression
-	//	')'
+	//	')';
 	public GBraceExpressionElements getGBraceExpressionAccess() {
 		return pGBraceExpression;
 	}
@@ -1577,7 +1577,7 @@ public class GExpressionsGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal ML_COMMENT:
-	//	'/ *'->'* /';
+	//	'/*'->'*/';
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 

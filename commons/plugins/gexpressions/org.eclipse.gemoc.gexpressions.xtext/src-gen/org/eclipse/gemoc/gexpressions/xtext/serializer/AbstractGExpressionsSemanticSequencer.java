@@ -326,7 +326,7 @@ public abstract class AbstractGExpressionsSemanticSequencer extends AbstractDele
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GexpressionsPackage.Literals.GENUM_LITERAL_EXPRESSION__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getGEnumLiteralExpressionAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_2_0_1(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getGEnumLiteralExpressionAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_2_0_1(), semanticObject.eGet(GexpressionsPackage.Literals.GENUM_LITERAL_EXPRESSION__VALUE, false));
 		feeder.finish();
 	}
 	
@@ -535,7 +535,7 @@ public abstract class AbstractGExpressionsSemanticSequencer extends AbstractDele
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getGNavigationExpressionAccess().getGNavigationExpressionBodyAction_1_0(), semanticObject.getBody());
-		feeder.accept(grammarAccess.getGNavigationExpressionAccess().getReferencedEObjectEObjectIDTerminalRuleCall_1_2_0_1(), semanticObject.getReferencedEObject());
+		feeder.accept(grammarAccess.getGNavigationExpressionAccess().getReferencedEObjectEObjectIDTerminalRuleCall_1_2_0_1(), semanticObject.eGet(GexpressionsPackage.Literals.GNAVIGATION_EXPRESSION__REFERENCED_EOBJECT, false));
 		feeder.finish();
 	}
 	
@@ -645,7 +645,7 @@ public abstract class AbstractGExpressionsSemanticSequencer extends AbstractDele
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GexpressionsPackage.Literals.GREFERENCE_EXPRESSION__REFERENCED_EOBJECT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getGReferenceExpressionAccess().getReferencedEObjectEObjectIDTerminalRuleCall_1_1_0_1(), semanticObject.getReferencedEObject());
+		feeder.accept(grammarAccess.getGReferenceExpressionAccess().getReferencedEObjectEObjectIDTerminalRuleCall_1_1_0_1(), semanticObject.eGet(GexpressionsPackage.Literals.GREFERENCE_EXPRESSION__REFERENCED_EOBJECT, false));
 		feeder.finish();
 	}
 	
