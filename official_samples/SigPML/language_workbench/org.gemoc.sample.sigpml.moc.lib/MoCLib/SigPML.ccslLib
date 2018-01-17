@@ -75,7 +75,7 @@ Library SDF{
 													FilterBySeq-> Place_oneThenByWeightPlusOne
 			)
 
-			Relation Place_weightTokenCausesExec[Causes](LeftClock-> Place_pushByWeightPlusOne,
+			Relation Place_weightTokenCausesExec[Precedes](LeftClock-> Place_pushByWeightPlusOne,
 														 RightClock-> Place_readOneThenByWeightPlusOne
 			)
 

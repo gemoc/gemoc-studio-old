@@ -17,7 +17,8 @@ Require-Bundle: fr.inria.diverse.k3.al.annotationprocessor.plugin;bundle-version
  org.eclipse.core.runtime;bundle-version="3.9.100",
  org.eclipse.gemoc.execution.concurrent.ccsljavaxdsml.api;bundle-version="1.0.0",
  org.eclipse.gemoc.trace.commons.model;bundle-version="0.1.0",
- org.eclipse.gemoc.groovy;bundle-version="2.4.9";resolution:=optional
+ fr.inria.aoste.utils.grph;bundle-version="1.0.0",
+ org.gemoc.sample.sigpml.groovy;bundle-version="1.0.0"
 Bundle-ManifestVersion: 2
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

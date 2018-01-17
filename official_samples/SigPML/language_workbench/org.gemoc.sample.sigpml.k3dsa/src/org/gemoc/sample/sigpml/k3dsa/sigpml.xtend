@@ -19,6 +19,7 @@ import org.gemoc.sample.sigpml.System
 import groovy.lang.Binding
 import groovy.lang.GroovyShell
 import java.util.Map
+import java.util.LinkedHashMap
 
 import static extension org.gemoc.sample.sigpml.k3dsa.InputPortAspect.*
 import static extension org.gemoc.sample.sigpml.k3dsa.OutputPortAspect.*
@@ -26,11 +27,13 @@ import static extension org.gemoc.sample.sigpml.k3dsa.PlaceAspect.*
 import static extension org.gemoc.sample.sigpml.k3dsa.SystemAspect.*
 import static extension org.gemoc.sample.sigpml.k3dsa.HWComputationalResourceAspect.*
 
+
 @Aspect(className = HWComputationalResource)
 class HWComputationalResourceAspect {
 	public int currentExecCycle = 0
 
 	def public void incCycle() {
+		
 		_self.currentExecCycle = _self.currentExecCycle + 1
 		println("time in CPU " + _self.name + " = " + _self.currentExecCycle)
 	}
@@ -123,8 +126,8 @@ class AgentAspect extends NamedElementAspect {
 				_self.system.sharedMemory.put(portName, res.get(portName))
 			}
 			println("sharedMemory: " + _self.system.sharedMemory)
-		} catch (org.codehaus.groovy.control.MultipleCompilationErrorsException cnfe){
-			println("Failed to call Groovy script"+cnfe.message)
+		} catch (Exception cnfe){
+			println("Failed to call Groovy script "+cnfe.message)
 			println("figure not correctly updated")
 			println("using default values for system.sharedMemory instead of computed ones")
 			for (String portName : outputPortNames) {
