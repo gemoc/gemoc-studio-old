@@ -36,10 +36,10 @@ Library SDF{
 		RelationDeclaration Token(Token_write:clock, Token_read:clock, Token_delay:int)
 		ConditionalRelationDefinition TokenDef[Token]{
 			Integer zero=0
-			
-			Expression Token_readDelayedForDelay=DelayFor( DelayForClockToDelay-> Token_read,
-													 DelayForClockForCounting-> Token_read,
-													 DelayForDelay-> Token_delay
+			Sequence sDelay = IntegerVariableRef[Token_delay]
+			Expression Token_readDelayedForDelay=Defer( BaseClock-> Token_read,
+													 DelayClock-> Token_read,
+													 DelayPatternExpression-> sDelay
 			)
 			
 			switch{

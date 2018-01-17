@@ -18,7 +18,7 @@
   </extension>
   <extension point="org.eclipse.emf.ecore.generated_package">
     <!-- @generated XSigPMLMT -->
-    <package class="org.gemoc.sample.sigpml.xsigpmlmt.sigpml.SigpmlPackage" genModel="model-gen/XSigPMLMT.genmodel" uri="http://org.gemoc.sample.sigpml.xsigpmlmt/sigpml/" />
+    <package uri="http://org.gemoc.sample.sigpml.xsigpmlmt/sigpml/" class="org.gemoc.sample.sigpml.xsigpmlmt.sigpml.SigpmlPackage" genModel="model-gen/XSigPMLMT.genmodel" />
   </extension>
   <extension point="org.eclipse.gemoc.gemoc_language_workbench.concurrent.xdsml">
     <XDSML_Definition codeExecutor_class="xsigpml.xdsml.api.impl.XSigPMLCodeExecutor" modelLoader_class="org.eclipse.gemoc.executionframework.extensions.sirius.modelloader.DefaultModelLoader" name="org.gemoc.sample.sigpml.XSigPML" solver_class="org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.timesquare.moc.impl.CcslSolver" toCCSLQVTOFilePath="/org.gemoc.sample.sigpml.moc.dse/qvto-gen/language/SigPML.qvto" xdsmlFilePath="/org.gemoc.sample.sigpml/bin/org/gemoc/sample/sigpml/Main.melange" />

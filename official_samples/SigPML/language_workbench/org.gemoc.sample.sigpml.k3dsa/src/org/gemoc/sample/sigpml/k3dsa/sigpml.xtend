@@ -16,11 +16,15 @@ import org.gemoc.sample.sigpml.OutputPort
 import org.gemoc.sample.sigpml.Place
 import org.gemoc.sample.sigpml.Port
 import org.gemoc.sample.sigpml.System
+import groovy.lang.Binding
+import groovy.lang.GroovyShell
+import java.util.Map
 
 import static extension org.gemoc.sample.sigpml.k3dsa.InputPortAspect.*
 import static extension org.gemoc.sample.sigpml.k3dsa.OutputPortAspect.*
 import static extension org.gemoc.sample.sigpml.k3dsa.PlaceAspect.*
 import static extension org.gemoc.sample.sigpml.k3dsa.SystemAspect.*
+import static extension org.gemoc.sample.sigpml.k3dsa.HWComputationalResourceAspect.*
 
 @Aspect(className = HWComputationalResource)
 class HWComputationalResourceAspect {
@@ -63,35 +67,35 @@ class AgentAspect extends NamedElementAspect {
 		_self.frame.setContentPane(_self.plotter)
 		_self.frame.setSize(400, 400)
 
-//		val binding = new Binding
-//		binding.setVariable("plotter", _self.plotter)
-//		binding.setVariable("frame", _self.frame)
-//
-//		val localTime = _self.allocatedTo.currentExecCycle
-//		binding.setVariable("localTime", localTime)
-//		binding.setVariable("figure", _self.figure)
-//
-//		for(Port p : _self.ownedPorts) { 
-//			if (p instanceof InputPort) {
-//				val params = newArrayList
-//
-//				for (i : 0 ..<  p.rate) {
-//					println("start for rate params sharedMemory: " + _self.system.sharedMemory)
-//
-//					val tmp = _self.system.sharedMemory.get(p.name).get(0)
-//					params.add(tmp)
-//					_self.system.sharedMemory.remove(p.name, tmp)
-//
-//					println("end for rate params sharedMemory: " + _self.system.sharedMemory)
-//				}
-//
-//				println("   in params: " + params)
-//				binding.setVariable(p.name, params)
-//			}
-//			else {
-//				outputPortNames.add(p.name)
-//			}
-//		}	
+		val binding = new Binding
+		binding.setVariable("plotter", _self.plotter)
+		binding.setVariable("frame", _self.frame)
+
+		val localTime = _self.allocatedTo.currentExecCycle
+		binding.setVariable("localTime", localTime)
+		binding.setVariable("figure", _self.figure)
+
+		for(Port p : _self.ownedPorts) { 
+			if (p instanceof InputPort) {
+				val params = newArrayList
+
+				for (i : 0 ..<  p.rate) {
+					println("start for rate params sharedMemory: " + _self.system.sharedMemory)
+
+					val tmp = _self.system.sharedMemory.get(p.name).get(0)
+					params.add(tmp)
+					_self.system.sharedMemory.remove(p.name, tmp)
+
+					println("end for rate params sharedMemory: " + _self.system.sharedMemory)
+				}
+
+				println("   in params: " + params)
+				binding.setVariable(p.name, params)
+			}
+			else {
+				outputPortNames.add(p.name)
+			}
+		}	
 
 		/* reset sizeToRead */
 		for (Port p : _self.ownedPorts) {
@@ -101,33 +105,33 @@ class AgentAspect extends NamedElementAspect {
 		}
 
 		
-//		try{
-//			//val ucl = _self.class.classLoader
-//			//val b = Platform.getBundle("org.gemoc.sample.sigpml.k3dsa")
-//			//val ucl = b.adapt(BundleWiring).getClassLoader()			
-//			val ucl = AgentAspect.classLoader
-//			//val ucl = _self.class.classLoader	
-//			val shell = new GroovyShell(ucl,binding)
-//	
-//			val res = shell.evaluate(_self.code) as Map<String, Object>
-//	
-//			if (res.containsValue("figure")) {
-//				_self.figure.addFigure(res.get("figure") as Figure)
-//			}
-//	
-//			for (String portName : outputPortNames) {
-//				_self.system.sharedMemory.put(portName, res.get(portName))
-//			}
-//			println("sharedMemory: " + _self.system.sharedMemory)
-//		} catch (org.codehaus.groovy.control.MultipleCompilationErrorsException cnfe){
-//			println("Failed to call Groovy script"+cnfe.message)
-//			println("figure not correctly updated")
-//			println("using default values for system.sharedMemory instead of computed ones")
-//			for (String portName : outputPortNames) {
-//				_self.system.sharedMemory.put(portName, 0.0)
-//			}
-//			cnfe.printStackTrace
-//		}
+		try{
+			//val ucl = _self.class.classLoader
+			//val b = Platform.getBundle("org.gemoc.sample.sigpml.k3dsa")
+			//val ucl = b.adapt(BundleWiring).getClassLoader()			
+			val ucl = AgentAspect.classLoader
+			//val ucl = _self.class.classLoader	
+			val shell = new GroovyShell(ucl,binding)
+	
+			val res = shell.evaluate(_self.code) as Map<String, Object>
+	
+			if (res.containsValue("figure")) {
+				_self.figure.addFigure(res.get("figure") as Figure)
+			}
+	
+			for (String portName : outputPortNames) {
+				_self.system.sharedMemory.put(portName, res.get(portName))
+			}
+			println("sharedMemory: " + _self.system.sharedMemory)
+		} catch (org.codehaus.groovy.control.MultipleCompilationErrorsException cnfe){
+			println("Failed to call Groovy script"+cnfe.message)
+			println("figure not correctly updated")
+			println("using default values for system.sharedMemory instead of computed ones")
+			for (String portName : outputPortNames) {
+				_self.system.sharedMemory.put(portName, 0.0)
+			}
+			cnfe.printStackTrace
+		}
 	}
 }
 

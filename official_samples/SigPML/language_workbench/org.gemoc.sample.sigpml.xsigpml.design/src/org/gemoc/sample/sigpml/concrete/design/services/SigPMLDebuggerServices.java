@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractGemocDebuggerServices;
+import org.eclipse.gemoc.execution.concurrent.ccsljavaengine.ui.Activator;
 
 public class SigPMLDebuggerServices extends AbstractGemocDebuggerServices {
 
@@ -29,6 +30,6 @@ public class SigPMLDebuggerServices extends AbstractGemocDebuggerServices {
 	
 	@Override
 	public String getModelIdentifier() {
-		return org.eclipse.gemoc.execution.concurrent.ccsljavaengine.ui.Activator.PLUGIN_ID+".debugModel";
+		return Activator.PLUGIN_ID+".debugModel";
 	}
 }
