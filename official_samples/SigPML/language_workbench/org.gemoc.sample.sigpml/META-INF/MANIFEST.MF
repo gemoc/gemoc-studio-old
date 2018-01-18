@@ -41,4 +41,3 @@ Bundle-ActivationPolicy: lazy
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.gemoc.sample.sigpml.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-
