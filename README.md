@@ -1,10 +1,10 @@
 Gemoc Studio
 ============
-:warning: **Gemoc studio code has moved to [Eclipse organisation](https://github.com/gemoc/gemoc-studio)**, the information here remains valid only for older builds (up to 2.3.x )
+:warning: **Gemoc studio code has moved to [Eclipse organisation](https://github.com/eclipse/gemoc-studio)**, the information here remains valid only for older builds (up to 2.3.x )
 
 This repository contain the code for assembling the [GEMOC Studio](http://gemoc.org/download.html). 
 
-This repository also it hosts the user documentation of the studio in the [Wiki](https://github.com/gemoc/gemoc-studio/wiki)
+This repository also it hosts the user documentation of the studio in the [Wiki](https://github.com/eclipse/gemoc-studio/wiki)
 
 Reporting issues
 ============
