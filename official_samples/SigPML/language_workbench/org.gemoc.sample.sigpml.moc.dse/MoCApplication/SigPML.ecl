@@ -1,6 +1,7 @@
 import 'http://org.gemoc.sample.sigpml.xsigpml/sigpml/'
 
 ECLimport "platform:/resource/org.gemoc.sample.sigpml.moc.lib/MoCLib/SigPML.ccslLib"
+ECLimport "platform:/resource/org.gemoc.sample.sigpml.moc.lib/MoCLib/SigPML_memory_fsm.moccml"
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" 
 ECLimport "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" 
  
@@ -17,13 +18,13 @@ package sigpml
 	
 	context OutputPort
 	def : write : Event= self.write()
-	 
+
 	context Place
 	def : push :Event = self.push()
 	def : pop :Event = self.pop()
 	def : sizePlusOne:Integer = self.size+1 
 	def : delayPlusOne : Integer = self.delay +1
-	
+
 	context HWComputationalResource
 	def : isExecuting : Event= self.incCycle()
 	def : idle: Event= self
