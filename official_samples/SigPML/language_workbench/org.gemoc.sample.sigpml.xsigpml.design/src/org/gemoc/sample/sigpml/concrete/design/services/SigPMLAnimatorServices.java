@@ -13,7 +13,9 @@ package org.gemoc.sample.sigpml.concrete.design.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.gemoc.dsl.debug.ide.sirius.ui.services.AbstractDSLDebuggerServices.StringCouple;
 import org.eclipse.gemoc.executionframework.extensions.sirius.services.AbstractGemocAnimatorServices;
+
 
 public class SigPMLAnimatorServices extends AbstractGemocAnimatorServices {
 

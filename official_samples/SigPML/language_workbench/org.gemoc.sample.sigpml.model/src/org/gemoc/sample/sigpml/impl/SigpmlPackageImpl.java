@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EValidator;
@@ -317,6 +318,33 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getAgent__Execute() {
+		return agentEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAgent__Stop() {
+		return agentEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAgent__IsExecuting() {
+		return agentEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPort() {
 		return portEClass;
 	}
@@ -371,8 +399,26 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getInputPort__Read() {
+		return inputPortEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOutputPort() {
 		return outputPortEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getOutputPort__Write() {
+		return outputPortEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -452,6 +498,24 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getPlace__Push() {
+		return placeEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPlace__Pop() {
+		return placeEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNamedElement() {
 		return namedElementEClass;
 	}
@@ -517,6 +581,15 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 	 */
 	public EReference getHWComputationalResource_AllocatedAgents() {
 		return (EReference)hwComputationalResourceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getHWComputationalResource__IncCycle() {
+		return hwComputationalResourceEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -648,6 +721,9 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		createEAttribute(agentEClass, AGENT__CODE);
 		createEReference(agentEClass, AGENT__ALLOCATED_TO);
 		createEAttribute(agentEClass, AGENT__CURRENT_EXEC_CYCLE);
+		createEOperation(agentEClass, AGENT___EXECUTE);
+		createEOperation(agentEClass, AGENT___STOP);
+		createEOperation(agentEClass, AGENT___IS_EXECUTING);
 
 		portEClass = createEClass(PORT);
 		createEReference(portEClass, PORT__OWNER);
@@ -656,8 +732,10 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		createEAttribute(portEClass, PORT__TYPE);
 
 		inputPortEClass = createEClass(INPUT_PORT);
+		createEOperation(inputPortEClass, INPUT_PORT___READ);
 
 		outputPortEClass = createEClass(OUTPUT_PORT);
+		createEOperation(outputPortEClass, OUTPUT_PORT___WRITE);
 
 		placeEClass = createEClass(PLACE);
 		createEReference(placeEClass, PLACE__ITS_OUTPUT_PORT);
@@ -667,6 +745,8 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		createEAttribute(placeEClass, PLACE__TYPE);
 		createEAttribute(placeEClass, PLACE__BYTE_SIZE);
 		createEAttribute(placeEClass, PLACE__DELAY);
+		createEOperation(placeEClass, PLACE___PUSH);
+		createEOperation(placeEClass, PLACE___POP);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -678,6 +758,7 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		hwComputationalResourceEClass = createEClass(HW_COMPUTATIONAL_RESOURCE);
 		createEAttribute(hwComputationalResourceEClass, HW_COMPUTATIONAL_RESOURCE__IS_UNDER_PREEMPTIVE_MANAGEMENT);
 		createEReference(hwComputationalResourceEClass, HW_COMPUTATIONAL_RESOURCE__ALLOCATED_AGENTS);
+		createEOperation(hwComputationalResourceEClass, HW_COMPUTATIONAL_RESOURCE___INC_CYCLE);
 
 		hwStorageResourceEClass = createEClass(HW_STORAGE_RESOURCE);
 		createEReference(hwStorageResourceEClass, HW_STORAGE_RESOURCE__ALLOCATED_PLACES);
@@ -752,6 +833,12 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		initEReference(getAgent_AllocatedTo(), this.getHWComputationalResource(), null, "allocatedTo", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAgent_CurrentExecCycle(), ecorePackage.getEInt(), "currentExecCycle", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEOperation(getAgent__Execute(), null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getAgent__Stop(), null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getAgent__IsExecuting(), null, "isExecuting", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPort_Owner(), this.getAgent(), this.getAgent_OwnedPorts(), "owner", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPort_Rate(), ecorePackage.getEInt(), "rate", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -760,7 +847,11 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 
 		initEClass(inputPortEClass, InputPort.class, "InputPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEOperation(getInputPort__Read(), null, "read", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(outputPortEClass, OutputPort.class, "OutputPort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getOutputPort__Write(), null, "write", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(placeEClass, Place.class, "Place", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPlace_ItsOutputPort(), this.getOutputPort(), null, "itsOutputPort", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -770,6 +861,10 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		initEAttribute(getPlace_Type(), this.getsizeType(), "type", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlace_ByteSize(), ecorePackage.getEInt(), "byteSize", null, 1, 1, Place.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlace_Delay(), ecorePackage.getEInt(), "delay", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getPlace__Push(), null, "push", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getPlace__Pop(), null, "pop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -781,6 +876,8 @@ public class SigpmlPackageImpl extends EPackageImpl implements SigpmlPackage {
 		initEClass(hwComputationalResourceEClass, HWComputationalResource.class, "HWComputationalResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHWComputationalResource_IsUnderPreemptiveManagement(), ecorePackage.getEBoolean(), "isUnderPreemptiveManagement", null, 0, 1, HWComputationalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHWComputationalResource_AllocatedAgents(), this.getAgent(), null, "allocatedAgents", null, 0, -1, HWComputationalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getHWComputationalResource__IncCycle(), null, "incCycle", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(hwStorageResourceEClass, HWStorageResource.class, "HWStorageResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHWStorageResource_AllocatedPlaces(), this.getPlace(), null, "allocatedPlaces", null, 0, -1, HWStorageResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

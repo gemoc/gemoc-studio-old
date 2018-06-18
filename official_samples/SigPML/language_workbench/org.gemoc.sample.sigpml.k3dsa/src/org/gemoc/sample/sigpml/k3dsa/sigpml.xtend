@@ -26,7 +26,7 @@ import static extension org.gemoc.sample.sigpml.k3dsa.OutputPortAspect.*
 import static extension org.gemoc.sample.sigpml.k3dsa.PlaceAspect.*
 import static extension org.gemoc.sample.sigpml.k3dsa.SystemAspect.*
 import static extension org.gemoc.sample.sigpml.k3dsa.HWComputationalResourceAspect.*
-
+import org.eclipse.emf.common.util.BasicEList
 
 @Aspect(className = HWComputationalResource)
 class HWComputationalResourceAspect {
@@ -170,7 +170,7 @@ class OutputPortAspect extends NamedElementAspect {
 
 @Aspect(className = Place)
 class PlaceAspect extends NamedElementAspect {
-	public EList<Object> fifo
+	public EList<Object> fifo = new BasicEList()
 	public int currentSize = 0
 	public boolean isInitialized = false
 

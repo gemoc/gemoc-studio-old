@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sigpml:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sigpml="http://org.gemoc.sigpml.model/1.0" name="simpleSystem">
+  <ownedApplication name="appli1">
+    <ownedAgents name="A1" cycles="2" code="import java.util.Random;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;Map&lt;String, Object> res = new LinkedHashMap&lt;String, Object>();&#xD;&#xA;&#x9;&#x9;Double state = null&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;if(pA1inState.get(0) == null){&#xD;&#xA;&#x9;&#x9;&#x9;state = new Float(0)&#xD;&#xA;&#x9;&#x9;}else{&#xD;&#xA;&#x9;&#x9;&#x9;state = pA1inState.get(0)&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;Double radians = Math.toRadians(state);&#xD;&#xA;&#x9;&#x9;Double  value = Math.sin(radians)&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;state = (state + 10)&#xD;&#xA;&#x9;&#x9;res.put(&quot;pA1out&quot;, value);&#xD;&#xA;&#x9;&#x9;res.put(&quot;pA1outState&quot;, state)&#xD;&#xA;&#x9;&#x9;return res;" allocatedTo="//@ownedHWPlatform/@ownedHWResources.0">
+      <ownedPorts xsi:type="sigpml:OutputPort" name="pA1out" rate="1"/>
+      <ownedPorts xsi:type="sigpml:InputPort" name="pA1inState" rate="1"/>
+      <ownedPorts xsi:type="sigpml:OutputPort" name="pA1outState" rate="1"/>
+    </ownedAgents>
+    <ownedAgents name="A2" cycles="4" code="import javax.swing.JFrame;&#xA;&#xA;import cnrs.luchogie.up.SwingPlotter;&#xA;import cnrs.luchogie.up.data.Figure;&#xA;import cnrs.luchogie.up.InteractiveSwingPlotter;&#xA;import cnrs.luchogie.up.data.Point;&#xA;import cnrs.luchogie.up.data.rendering.figure.ConnectedLineFigureRenderer;&#x9;&#xA;&#xA;Map&lt;String, Object> res = new LinkedHashMap&lt;String, Object>();&#xA;&#xA;&#xA;frame.setVisible(true);&#xA;Double v = new Double(0)&#xA;for(int i =0; i &lt; pA2in.size(); i++){&#xA;  v = v+ pA2in.get(i);&#xA;}&#xA;//v = v / pA2in.size()&#xA;&#xA;figure.addPoint(new Point(localTime, v))&#xA;figure.addRenderer(new ConnectedLineFigureRenderer());&#xA;&#xA;plotter.getGraphics2DPlotter().setFigure(figure);&#xA;&#xA;res.put(&quot;figure&quot;, figure); &#xA;return res" allocatedTo="//@ownedHWPlatform/@ownedHWResources.0">
+      <ownedPorts xsi:type="sigpml:InputPort" name="pA2in" rate="4"/>
+    </ownedAgents>
+    <ownedPlaces name="place1" itsOutputPort="//@ownedApplication/@ownedAgents.0/@ownedPorts.0" itsInputPort="//@ownedApplication/@ownedAgents.1/@ownedPorts.0" size="6"/>
+    <ownedPlaces name="placeA1State" itsOutputPort="//@ownedApplication/@ownedAgents.0/@ownedPorts.2" itsInputPort="//@ownedApplication/@ownedAgents.0/@ownedPorts.1" size="1" delay="1"/>
+  </ownedApplication>
+  <ownedHWPlatform name="platform1">
+    <ownedHWResources xsi:type="sigpml:HWComputationalResource" name="CPU1" connectedTo="//@ownedHWPlatform/@ownedHWResources.1" isUnderPreemptiveManagement="true" allocatedAgents="//@ownedApplication/@ownedAgents.0 //@ownedApplication/@ownedAgents.1"/>
+    <ownedHWResources xsi:type="sigpml:HWCommunicationResource" name="bus1" connectedTo="//@ownedHWPlatform/@ownedHWResources.0 //@ownedHWPlatform/@ownedHWResources.2"/>
+    <ownedHWResources xsi:type="sigpml:HWStorageResource" name="mem1" connectedTo="//@ownedHWPlatform/@ownedHWResources.1" allocatedPlaces="//@ownedApplication/@ownedPlaces.0"/>
+  </ownedHWPlatform>
+</sigpml:System>

@@ -6,7 +6,7 @@ public class XSigPMLCodeExecutor extends CodeExecutorDispatcher
 		implements org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.api.IK3DSAExecutorClassLoader  {
 	public XSigPMLCodeExecutor(){
 	    // add Melange or K3 DSA specific executors
-		addExecutor(new org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.impl.MelangeCodeExecutor(this,
+		addExecutor(new org.eclipse.gemoc.execution.concurrent.ccsljavaengine.extensions.k3.dsa.impl.K3DSLCodeExecutor(this,
 			"org.gemoc.sample.sigpml.XSigPML"));
 		// fall back executor : search classic java method
 		addExecutor(new org.eclipse.gemoc.execution.concurrent.ccsljavaengine.dsa.executors.JavaCodeExecutor());

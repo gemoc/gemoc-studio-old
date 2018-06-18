@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -244,13 +245,40 @@ public interface SigpmlPackage extends EPackage {
 	int AGENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
+	 * The operation id for the '<em>Execute</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGENT___EXECUTE = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Stop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGENT___STOP = NAMED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Is Executing</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGENT___IS_EXECUTING = NAMED_ELEMENT_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Agent</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int AGENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.PortImpl <em>Port</em>}' class.
@@ -390,13 +418,22 @@ public interface SigpmlPackage extends EPackage {
 	int INPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Read</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PORT___READ = PORT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Input Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_PORT_OPERATION_COUNT = PORT_OPERATION_COUNT + 0;
+	int INPUT_PORT_OPERATION_COUNT = PORT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.OutputPortImpl <em>Output Port</em>}' class.
@@ -463,13 +500,22 @@ public interface SigpmlPackage extends EPackage {
 	int OUTPUT_PORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Write</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PORT___WRITE = PORT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Output Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OUTPUT_PORT_OPERATION_COUNT = PORT_OPERATION_COUNT + 0;
+	int OUTPUT_PORT_OPERATION_COUNT = PORT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.PlaceImpl <em>Place</em>}' class.
@@ -563,13 +609,31 @@ public interface SigpmlPackage extends EPackage {
 	int PLACE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The operation id for the '<em>Push</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE___PUSH = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Pop</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE___POP = NAMED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Place</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int PLACE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.HWRessourceImpl <em>HW Ressource</em>}' class.
@@ -691,13 +755,22 @@ public interface SigpmlPackage extends EPackage {
 	int HW_COMPUTATIONAL_RESOURCE_FEATURE_COUNT = HW_RESSOURCE_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Inc Cycle</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_COMPUTATIONAL_RESOURCE___INC_CYCLE = HW_RESSOURCE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>HW Computational Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_COMPUTATIONAL_RESOURCE_OPERATION_COUNT = HW_RESSOURCE_OPERATION_COUNT + 0;
+	int HW_COMPUTATIONAL_RESOURCE_OPERATION_COUNT = HW_RESSOURCE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.gemoc.sample.sigpml.impl.HWStorageResourceImpl <em>HW Storage Resource</em>}' class.
@@ -1048,6 +1121,36 @@ public interface SigpmlPackage extends EPackage {
 	EAttribute getAgent_CurrentExecCycle();
 
 	/**
+	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Agent#execute() <em>Execute</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Execute</em>' operation.
+	 * @see org.gemoc.sample.sigpml.Agent#execute()
+	 * @generated
+	 */
+	EOperation getAgent__Execute();
+
+	/**
+	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Agent#stop() <em>Stop</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Stop</em>' operation.
+	 * @see org.gemoc.sample.sigpml.Agent#stop()
+	 * @generated
+	 */
+	EOperation getAgent__Stop();
+
+	/**
+	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Agent#isExecuting() <em>Is Executing</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Executing</em>' operation.
+	 * @see org.gemoc.sample.sigpml.Agent#isExecuting()
+	 * @generated
+	 */
+	EOperation getAgent__IsExecuting();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.Port <em>Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1112,6 +1215,16 @@ public interface SigpmlPackage extends EPackage {
 	EClass getInputPort();
 
 	/**
+	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.InputPort#read() <em>Read</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Read</em>' operation.
+	 * @see org.gemoc.sample.sigpml.InputPort#read()
+	 * @generated
+	 */
+	EOperation getInputPort__Read();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.OutputPort <em>Output Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1120,6 +1233,16 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getOutputPort();
+
+	/**
+	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.OutputPort#write() <em>Write</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Write</em>' operation.
+	 * @see org.gemoc.sample.sigpml.OutputPort#write()
+	 * @generated
+	 */
+	EOperation getOutputPort__Write();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.Place <em>Place</em>}'.
@@ -1209,6 +1332,26 @@ public interface SigpmlPackage extends EPackage {
 	EAttribute getPlace_Delay();
 
 	/**
+	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Place#push() <em>Push</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Push</em>' operation.
+	 * @see org.gemoc.sample.sigpml.Place#push()
+	 * @generated
+	 */
+	EOperation getPlace__Push();
+
+	/**
+	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.Place#pop() <em>Pop</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Pop</em>' operation.
+	 * @see org.gemoc.sample.sigpml.Place#pop()
+	 * @generated
+	 */
+	EOperation getPlace__Pop();
+
+	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1292,6 +1435,16 @@ public interface SigpmlPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHWComputationalResource_AllocatedAgents();
+
+	/**
+	 * Returns the meta object for the '{@link org.gemoc.sample.sigpml.HWComputationalResource#incCycle() <em>Inc Cycle</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Inc Cycle</em>' operation.
+	 * @see org.gemoc.sample.sigpml.HWComputationalResource#incCycle()
+	 * @generated
+	 */
+	EOperation getHWComputationalResource__IncCycle();
 
 	/**
 	 * Returns the meta object for class '{@link org.gemoc.sample.sigpml.HWStorageResource <em>HW Storage Resource</em>}'.
@@ -1506,6 +1659,30 @@ public interface SigpmlPackage extends EPackage {
 		EAttribute AGENT__CURRENT_EXEC_CYCLE = eINSTANCE.getAgent_CurrentExecCycle();
 
 		/**
+		 * The meta object literal for the '<em><b>Execute</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation AGENT___EXECUTE = eINSTANCE.getAgent__Execute();
+
+		/**
+		 * The meta object literal for the '<em><b>Stop</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation AGENT___STOP = eINSTANCE.getAgent__Stop();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Executing</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation AGENT___IS_EXECUTING = eINSTANCE.getAgent__IsExecuting();
+
+		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.PortImpl <em>Port</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1558,6 +1735,14 @@ public interface SigpmlPackage extends EPackage {
 		EClass INPUT_PORT = eINSTANCE.getInputPort();
 
 		/**
+		 * The meta object literal for the '<em><b>Read</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INPUT_PORT___READ = eINSTANCE.getInputPort__Read();
+
+		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.OutputPortImpl <em>Output Port</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1566,6 +1751,14 @@ public interface SigpmlPackage extends EPackage {
 		 * @generated
 		 */
 		EClass OUTPUT_PORT = eINSTANCE.getOutputPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Write</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation OUTPUT_PORT___WRITE = eINSTANCE.getOutputPort__Write();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.PlaceImpl <em>Place</em>}' class.
@@ -1632,6 +1825,22 @@ public interface SigpmlPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PLACE__DELAY = eINSTANCE.getPlace_Delay();
+
+		/**
+		 * The meta object literal for the '<em><b>Push</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PLACE___PUSH = eINSTANCE.getPlace__Push();
+
+		/**
+		 * The meta object literal for the '<em><b>Pop</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PLACE___POP = eINSTANCE.getPlace__Pop();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -1702,6 +1911,14 @@ public interface SigpmlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HW_COMPUTATIONAL_RESOURCE__ALLOCATED_AGENTS = eINSTANCE.getHWComputationalResource_AllocatedAgents();
+
+		/**
+		 * The meta object literal for the '<em><b>Inc Cycle</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation HW_COMPUTATIONAL_RESOURCE___INC_CYCLE = eINSTANCE.getHWComputationalResource__IncCycle();
 
 		/**
 		 * The meta object literal for the '{@link org.gemoc.sample.sigpml.impl.HWStorageResourceImpl <em>HW Storage Resource</em>}' class.

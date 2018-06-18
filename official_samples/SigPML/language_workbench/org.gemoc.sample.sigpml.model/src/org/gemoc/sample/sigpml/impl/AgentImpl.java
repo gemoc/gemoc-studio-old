@@ -12,6 +12,7 @@
  */
 package org.gemoc.sample.sigpml.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -311,6 +312,39 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void execute() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void stop() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void isExecuting() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -464,6 +498,27 @@ public class AgentImpl extends NamedElementImpl implements Agent {
 				return currentExecCycle != CURRENT_EXEC_CYCLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case SigpmlPackage.AGENT___EXECUTE:
+				execute();
+				return null;
+			case SigpmlPackage.AGENT___STOP:
+				stop();
+				return null;
+			case SigpmlPackage.AGENT___IS_EXECUTING:
+				isExecuting();
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

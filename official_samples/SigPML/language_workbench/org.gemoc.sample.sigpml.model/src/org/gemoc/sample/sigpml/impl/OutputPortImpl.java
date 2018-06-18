@@ -12,6 +12,8 @@
  */
 package org.gemoc.sample.sigpml.impl;
 
+import java.lang.reflect.InvocationTargetException;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.gemoc.sample.sigpml.OutputPort;
 import org.gemoc.sample.sigpml.SigpmlPackage;
@@ -41,6 +43,32 @@ public class OutputPortImpl extends PortImpl implements OutputPort {
 	@Override
 	protected EClass eStaticClass() {
 		return SigpmlPackage.Literals.OUTPUT_PORT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void write() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case SigpmlPackage.OUTPUT_PORT___WRITE:
+				write();
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //OutputPortImpl

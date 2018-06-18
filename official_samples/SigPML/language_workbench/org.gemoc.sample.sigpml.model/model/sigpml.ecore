@@ -13,6 +13,9 @@
         eType="#//Place" containment="true" eOpposite="#//Place/owner"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Agent" eSuperTypes="#//NamedElement">
+    <eOperations name="execute"/>
+    <eOperations name="stop"/>
+    <eOperations name="isExecuting"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPorts" upperBound="-1"
         eType="#//Port" containment="true" eOpposite="#//Port/owner"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cycles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -31,8 +34,12 @@
         transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//sizeType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InputPort" eSuperTypes="#//Port"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OutputPort" eSuperTypes="#//Port"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InputPort" eSuperTypes="#//Port">
+    <eOperations name="read"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputPort" eSuperTypes="#//Port">
+    <eOperations name="write"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//NamedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="matchRates"/>
@@ -40,6 +47,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="matchRates" value="if byteSize > 0 then byteSize >= itsOutputPort.byteRate and byteSize >= itsInputPort.byteRate else true endif"/>
     </eAnnotations>
+    <eOperations name="push"/>
+    <eOperations name="pop"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsOutputPort" lowerBound="1"
         eType="#//OutputPort"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itsInputPort" lowerBound="1"
@@ -70,6 +79,7 @@
         eType="#//HWRessource"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HWComputationalResource" eSuperTypes="#//HWRessource">
+    <eOperations name="incCycle"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isUnderPreemptiveManagement"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedAgents" upperBound="-1"

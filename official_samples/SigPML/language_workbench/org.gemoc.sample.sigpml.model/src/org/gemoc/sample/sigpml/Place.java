@@ -32,7 +32,7 @@ package org.gemoc.sample.sigpml;
  *
  * @see org.gemoc.sample.sigpml.SigpmlPackage#getPlace()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='matchRates'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot matchRates='if byteSize > 0 then byteSize >= itsOutputPort.byteRate and byteSize >= itsInputPort.byteRate else true endif'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot matchRates='if byteSize &gt; 0 then byteSize &gt;= itsOutputPort.byteRate and byteSize &gt;= itsInputPort.byteRate else true endif'"
  * @generated
  */
 public interface Place extends NamedElement {
@@ -222,5 +222,21 @@ public interface Place extends NamedElement {
 	 * @generated
 	 */
 	void setDelay(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void push();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void pop();
 
 } // Place

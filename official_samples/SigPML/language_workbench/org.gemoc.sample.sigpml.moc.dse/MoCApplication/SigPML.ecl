@@ -1,4 +1,4 @@
-import 'http://org.gemoc.sample.sigpml.xsigpml/sigpml/'
+import 'platform:/resource/org.gemoc.sample.sigpml.model/model/sigpml.ecore'
 
 ECLimport "platform:/resource/org.gemoc.sample.sigpml.moc.lib/MoCLib/SigPML.ccslLib"
 ECLimport "platform:/resource/org.gemoc.sample.sigpml.moc.lib/MoCLib/SigPML_memory_fsm.moccml"

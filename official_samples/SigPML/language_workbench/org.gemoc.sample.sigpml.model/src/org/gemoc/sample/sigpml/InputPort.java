@@ -25,4 +25,12 @@ package org.gemoc.sample.sigpml;
  */
 public interface InputPort extends Port {
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void read();
+
 } // InputPort
