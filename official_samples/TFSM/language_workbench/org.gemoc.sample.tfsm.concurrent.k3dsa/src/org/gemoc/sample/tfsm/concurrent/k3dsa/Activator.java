@@ -11,11 +11,11 @@
 package org.gemoc.sample.tfsm.concurrent.k3dsa;
 
 import org.eclipse.gemoc.commons.eclipse.logging.backends.DefaultLoggingBackend;
+import org.eclipse.gemoc.commons.eclipse.messagingsystem.api.MessagingSystem;
+import org.eclipse.gemoc.commons.eclipse.messagingsystem.api.MessagingSystemManager;
 import org.eclipse.gemoc.commons.eclipse.pde.GemocPlugin;
 import org.osgi.framework.BundleContext;
 
-import fr.inria.diverse.commons.eclipse.messagingsystem.api.MessagingSystemManager;
-import fr.inria.diverse.commons.messagingsystem.api.MessagingSystem;
 
 /**
  * The activator class controls the plug-in life cycle

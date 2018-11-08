@@ -97,4 +97,20 @@ public interface State extends NamedElement {
 	 */
 	EList<Transition> getIncomingTransitions();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void onEnter();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void onLeave();
+
 } // State

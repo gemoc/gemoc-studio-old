@@ -137,4 +137,12 @@ public interface TFSM extends NamedElement {
 	 */
 	EList<Transition> getOwnedTransitions();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void initialize();
+
 } // TFSM

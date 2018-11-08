@@ -13,8 +13,8 @@
 
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.gemoc.sample.tfsm.concurrent.xtfsm.design.Activator"
-               id="org.gemoc.sample.tfsm.concurrent.xtfsm.design"
+    <component class="org.gemoc.sample.tfsm.concurrent.design.Activator"
+               id="org.gemoc.sample.tfsm.concurrent.design"
 	       name="TFSM">
     </component>
   </extension>

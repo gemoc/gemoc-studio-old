@@ -57,4 +57,12 @@ public interface FSMClock extends NamedElement {
 	 */
 	void setNumberOfTicks(int value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void ticks();
+
 } // FSMClock

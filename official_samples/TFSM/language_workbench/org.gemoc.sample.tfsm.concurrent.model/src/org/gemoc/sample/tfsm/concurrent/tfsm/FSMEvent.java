@@ -47,4 +47,12 @@ public interface FSMEvent extends NamedElement {
 	 */
 	EList<Transition> getSollicitingTransitions();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void occurs();
+
 } // FSMEvent

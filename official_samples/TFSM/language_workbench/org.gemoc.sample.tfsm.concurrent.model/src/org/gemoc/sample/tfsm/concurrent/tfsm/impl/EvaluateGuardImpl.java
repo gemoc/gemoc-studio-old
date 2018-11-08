@@ -99,6 +99,17 @@ public class EvaluateGuardImpl extends GuardImpl implements EvaluateGuard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean evaluate() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -161,7 +172,7 @@ public class EvaluateGuardImpl extends GuardImpl implements EvaluateGuard {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (condition: ");
 		result.append(condition);
 		result.append(')');

@@ -223,7 +223,7 @@ public class TemporalGuardImpl extends GuardImpl implements TemporalGuard {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (afterDuration: ");
 		result.append(afterDuration);
 		result.append(')');

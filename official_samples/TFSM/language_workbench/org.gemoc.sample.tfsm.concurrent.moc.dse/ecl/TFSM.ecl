@@ -1,5 +1,4 @@
-import 'http://org.gemoc.sample.tfsm.concurrent.xtfsm/tfsm/'
---import 'platform:/resource/org.gemoc.sample.tfsm.concurrent.xtfsm/model/tfsm.ecore'
+import 'platform:/resource/org.gemoc.sample.tfsm.concurrent.model/model/tfsm.ecore'
 import _'http://www.eclipse.org/emf/2002/Ecore'
 
 
@@ -24,8 +23,10 @@ package tfsm
     
   	-- Mapped to the evaluation of the guard
   	context EvaluateGuard
-     def : evaluate : Event = self.evaluate()--[result] switch case (true) force evaluatedTrue  ;
-     											--			 case (false) force evaluatedFalse;
+  	 def : evaluatedTrue : Event  = self
+	 def : evaluatedFalse : Event = self
+     def if (true) : evaluate : Event = self.evaluate() [res] switch case (res = true) force evaluatedTrue;
+     										    			 		 case (res = false) force evaluatedFalse;
      														 
     
 	/**
@@ -41,10 +42,7 @@ package tfsm
     
 /**
  * @Private DSE
- */
-	context EvaluateGuard
-	 def : evaluatedTrue : Event  = self
-	 def : evaluatedFalse : Event = self
+ */	 
 	context TFSM
 	 def: start : Event = self.initialize()
 	context TimedSystem

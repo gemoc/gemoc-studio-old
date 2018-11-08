@@ -97,6 +97,17 @@ public class FSMClockImpl extends NamedElementImpl implements FSMClock {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void ticks() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -159,7 +170,7 @@ public class FSMClockImpl extends NamedElementImpl implements FSMClock {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (numberOfTicks: ");
 		result.append(numberOfTicks);
 		result.append(')');

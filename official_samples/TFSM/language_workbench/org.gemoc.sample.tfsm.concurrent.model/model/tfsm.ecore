@@ -2,6 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tfsm" nsURI="http://www.gemoc.org/sample/tfsm" nsPrefix="org.gemoc.sample.tfsm">
   <eClassifiers xsi:type="ecore:EClass" name="TFSM" eSuperTypes="#//NamedElement">
+    <eOperations name="initialize"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStates" upperBound="-1"
         eType="#//State" containment="true" eOpposite="#//State/owningFSM"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialState" lowerBound="1"
@@ -14,6 +15,8 @@
         eType="#//Transition" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//NamedElement">
+    <eOperations name="onEnter"/>
+    <eOperations name="onLeave"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owningFSM" lowerBound="1"
         eType="#//TFSM" eOpposite="#//TFSM/ownedStates"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingTransitions" upperBound="-1"
@@ -22,6 +25,7 @@
         eType="#//Transition" eOpposite="#//Transition/target"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//NamedElement">
+    <eOperations name="fire"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
         eType="#//State" eOpposite="#//State/outgoingTransitions"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
@@ -47,15 +51,18 @@
         eType="#//FSMEvent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FSMEvent" eSuperTypes="#//NamedElement">
+    <eOperations name="occurs"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sollicitingTransitions"
         upperBound="-1" eType="#//Transition"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FSMClock" eSuperTypes="#//NamedElement">
+    <eOperations name="ticks"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfTicks" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
       <eAnnotations source="aspect"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TimedSystem" eSuperTypes="#//NamedElement">
+    <eOperations name="initialize"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tfsms" upperBound="-1"
         eType="#//TFSM" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="globalClocks" upperBound="-1"
@@ -64,6 +71,7 @@
         eType="#//FSMEvent" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EvaluateGuard" eSuperTypes="#//Guard">
+    <eOperations name="evaluate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -151,7 +151,7 @@ class EvaluateGuardAspect extends GuardAspect {
 			val ucl = EvaluateGuardAspect.classLoader
 			val shell = new GroovyShell(ucl, binding)
 	
-			res = shell.evaluate(_self.condition) as Map<String, Object>
+			res = shell.evaluate(_self.condition)
 	
 		} catch (org.codehaus.groovy.control.MultipleCompilationErrorsException cnfe) {
 			println("Failed to call Groovy script" + cnfe.message)
